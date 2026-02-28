@@ -188,13 +188,13 @@ export default function Editor() {
 
         <button
           onClick={() => setShowTemplates(true)}
-          className="text-sm px-3 py-1 rounded border hover:bg-gray-50 dark:hover:bg-gray-800"
+          className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
           style={{ borderColor: 'var(--border)' }}
         >
           Templates
         </button>
 
-        <button onClick={() => handleSave()} className="text-sm px-4 py-1.5 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300">
+        <button onClick={() => handleSave()} className="text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300">
           Save
         </button>
 

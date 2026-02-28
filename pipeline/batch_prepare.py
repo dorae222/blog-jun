@@ -1,6 +1,6 @@
 """
 Prepare OpenAI Batch API JSONL for content refinement.
-Uses gpt-4o-mini with Structured Outputs (json_schema) for:
+Uses gpt-5-mini with Structured Outputs (json_schema) for:
 - Content quality improvement
 - Summary generation
 - Tag extraction
@@ -63,6 +63,16 @@ Guidelines:
 8. Do NOT add content that wasn't in the original. Do NOT remove technical details."""
 
 
+def estimate_max_tokens(content_chars: int) -> int:
+    """입력 콘텐츠 길이 기반 max_completion_tokens 추정.
+
+    한국어 토큰 비율 ~1.8 chars/token (실측 기반).
+    출력 = 리파인된 콘텐츠 + 메타데이터(title, summary, tags 등 ~1500 tokens).
+    """
+    estimated_output_tokens = int(content_chars / 1.8) + 1500
+    return max(4096, min(estimated_output_tokens, 32768))
+
+
 def load_preprocessed_or_raw(item: dict, ref_map: dict) -> str | None:
     """전처리된 파일 로드. 없으면 즉석 전처리."""
     preprocessed_path = PREPROCESSED_DIR / item["path"].replace("/", "__")
@@ -123,7 +133,7 @@ def prepare_batch():
             "method": "POST",
             "url": "/v1/chat/completions",
             "body": {
-                "model": "gpt-4o-mini",
+                "model": "gpt-5-mini",
                 "messages": [
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {
@@ -138,8 +148,7 @@ def prepare_batch():
                     },
                 ],
                 "response_format": RESPONSE_SCHEMA,
-                "max_tokens": 8192,
-                "temperature": 0.3,
+                "max_completion_tokens": estimate_max_tokens(len(content)),
             },
         }
         requests.append(request)
@@ -150,11 +159,11 @@ def prepare_batch():
         for req in requests:
             f.write(json.dumps(req, ensure_ascii=False) + "\n")
 
-    # 비용 추정: gpt-4o-mini batch pricing (50% discount)
-    # Input: $0.075/1M tokens, Output: $0.30/1M tokens (batch: 50% off)
+    # 비용 추정: gpt-5-mini batch pricing (50% discount)
+    # Input: $0.125/1M tokens, Output: $1.00/1M tokens (batch: 50% off)
     est_input_tokens = stats["prepared"] * 1000
     est_output_tokens = stats["prepared"] * 2000
-    est_cost = (est_input_tokens * 0.075 / 1_000_000) + (est_output_tokens * 0.3 / 1_000_000)
+    est_cost = (est_input_tokens * 0.125 / 1_000_000) + (est_output_tokens * 1.0 / 1_000_000)
 
     print(f"\n=== Batch Preparation Results ===")
     print(f"Prepared: {stats['prepared']} requests → {BATCH_INPUT_FILE}")

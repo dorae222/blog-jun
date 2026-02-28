@@ -1,12 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
-import useTheme from '../../hooks/useTheme'
 
 export default function Header() {
   const { user, logout } = useAuth()
-  const { dark, toggle } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
   const navigate = useNavigate()
 
@@ -51,18 +50,10 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggle}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {dark ? '☀️' : '🌙'}
-          </button>
-
           {user ? (
             <button
               onClick={() => { logout(); navigate('/') }}
-              className="text-sm px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="text-sm px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50"
               style={{ borderColor: 'var(--border)' }}
             >
               Logout
@@ -80,12 +71,7 @@ export default function Header() {
             className="md:hidden p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              {mobileOpen
-                ? <path d="M6 18L18 6M6 6l12 12" />
-                : <path d="M3 12h18M3 6h18M3 18h18" />
-              }
-            </svg>
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>

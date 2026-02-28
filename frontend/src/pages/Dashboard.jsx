@@ -122,7 +122,7 @@ export default function Dashboard() {
             <div className="flex items-center gap-2 ml-4">
               <Link
                 to={`/editor/${post.slug}`}
-                className="text-sm px-3 py-1 rounded border hover:bg-gray-50 dark:hover:bg-gray-800"
+                className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
                 style={{ borderColor: 'var(--border)' }}
               >
                 Edit

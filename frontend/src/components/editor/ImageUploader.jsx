@@ -27,7 +27,7 @@ export default function ImageUploader({ onInsert }) {
     <>
       <button
         onClick={() => inputRef.current?.click()}
-        className="text-sm px-3 py-1 rounded border hover:bg-gray-50 dark:hover:bg-gray-800"
+        className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
         style={{ borderColor: 'var(--border)' }}
       >
         Upload Image

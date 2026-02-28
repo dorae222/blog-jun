@@ -31,7 +31,7 @@ function CodeBlock({ children, className, ...props }) {
         <span className="font-mono">{lang}</span>
         <button
           onClick={handleCopy}
-          className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+          className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1 rounded hover:bg-gray-200"
         >
           {copied ? 'Copied!' : 'Copy'}
         </button>
@@ -73,7 +73,7 @@ function ImageWithZoom({ src, alt }) {
 
 export default function MarkdownRenderer({ content }) {
   return (
-    <div className="prose prose-lg max-w-none dark:prose-invert">
+    <div className="prose prose-lg max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkMath, remarkGfm]}
         rehypePlugins={[rehypeKatex, rehypeHighlight]}
