@@ -1,9 +1,43 @@
-import { useState } from 'react'
+import { useState, Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
+
+// Obsidian 위키 링크 등 비표준 마크다운을 표준으로 변환
+function preprocessContent(raw) {
+  if (!raw) return ''
+  return raw
+    // [[[Title|Display]]] → Display
+    .replace(/\[\[\[([^\]]*?)\|([^\]]*?)\]\]\]/g, '$2')
+    // [[[Title]]] → Title
+    .replace(/\[\[\[([^\]]*?)\]\]\]/g, '$1')
+    // [[Title|Display]] → Display
+    .replace(/\[\[([^\]]*?)\|([^\]]*?)\]\]/g, '$2')
+    // [[Title]] → Title
+    .replace(/\[\[([^\]]*?)\]\]/g, '$1')
+}
+
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="p-4 rounded-lg border border-red-200 bg-red-50 text-red-700 text-sm">
+          콘텐츠를 렌더링하는 중 오류가 발생했습니다.
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
 
 function CodeBlock({ children, className, ...props }) {
   const [copied, setCopied] = useState(false)
@@ -72,26 +106,32 @@ function ImageWithZoom({ src, alt }) {
 }
 
 export default function MarkdownRenderer({ content }) {
+  const processed = preprocessContent(content)
+
   return (
-    <div className="prose prose-lg max-w-none">
-      <ReactMarkdown
-        remarkPlugins={[remarkMath, remarkGfm]}
-        rehypePlugins={[rehypeKatex, rehypeHighlight]}
-        components={{
-          code: CodeBlock,
-          img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
-          a: ({ href, children }) => (
-            <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
-              {children}
-            </a>
-          ),
-          table: ({ children }) => (
-            <div className="overflow-x-auto my-4">
-              <table className="min-w-full text-sm">{children}</table>
-            </div>
-          ),
-        }}
-      />
-    </div>
+    <ErrorBoundary>
+      <div className="prose prose-lg max-w-none">
+        <ReactMarkdown
+          remarkPlugins={[remarkMath, remarkGfm]}
+          rehypePlugins={[rehypeKatex, rehypeHighlight]}
+          components={{
+            code: CodeBlock,
+            img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
+            a: ({ href, children }) => (
+              <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                {children}
+              </a>
+            ),
+            table: ({ children }) => (
+              <div className="overflow-x-auto my-4">
+                <table className="min-w-full text-sm">{children}</table>
+              </div>
+            ),
+          }}
+        >
+          {processed}
+        </ReactMarkdown>
+      </div>
+    </ErrorBoundary>
   )
 }
