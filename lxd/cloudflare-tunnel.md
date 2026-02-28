@@ -13,8 +13,8 @@ cloudflared tunnel create blog-jun
 
 # Configure tunnel
 cat > /etc/cloudflared/config.yml << EOF
-tunnel: <TUNNEL_ID>
-credentials-file: /root/.cloudflared/<TUNNEL_ID>.json
+tunnel: 079ef309-aa65-4739-a851-bdcd0a7fb14b
+credentials-file: /root/.cloudflared/079ef309-aa65-4739-a851-bdcd0a7fb14b.json
 
 ingress:
   - hostname: blog.dorae222.com

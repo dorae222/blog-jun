@@ -28,3 +28,17 @@ Personal tech blog: Django 5 + DRF backend, React 19 + Vite + Tailwind CSS front
 - Chatbot RAG: `backend/chatbot/views.py`
 - Frontend entry: `frontend/src/App.jsx`
 - Effects: `frontend/src/components/effects/` (ParticleBackground, TiltCard, GradientCursor)
+
+## Deployment
+- Live: https://blog.dorae222.com
+- Infra: LXD container `blog-server` (10.10.10.30) on hj-remote
+- Tunnel: Cloudflare Tunnel `blog-jun` (079ef309)
+- Docker: docker-compose.prod.yml (db, redis, backend, frontend)
+- CI/CD: GitHub Actions → Docker Hub → SSH deploy (ProxyJump)
+
+## Git Sync
+| Location | Path | Purpose |
+|----------|------|---------|
+| MacBook | ~/Documents/Obsidian/blog-jun/ | Development + Pipeline |
+| hj-remote | ~/lxd-servers/blog-jun/ | Infra management |
+| blog-server | /opt/blog-jun/ | Production |
