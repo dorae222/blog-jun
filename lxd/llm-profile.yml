@@ -1,0 +1,24 @@
+# llm-server LXD 프로파일 — GPU passthrough + vLLM 전용
+# 사전 조건: NVIDIA 드라이버 수정 완료, HDD /data 마운트 완료
+name: llm-server
+config:
+  limits.cpu: "8"
+  limits.memory: 32GB
+  security.nesting: "true"
+devices:
+  gpu0:
+    type: gpu
+    gputype: physical
+    pci: "01:00.0"   # RTX 3090 #1
+  gpu1:
+    type: gpu
+    gputype: physical
+    pci: "e1:00.0"   # RTX 3090 #2
+  models:
+    type: disk
+    source: /data/models   # HDD 마운트 경로 (NVMe 절약)
+    path: /models
+  eth0:
+    type: nic
+    network: lxdbr0
+    ipv4.address: 10.10.10.31

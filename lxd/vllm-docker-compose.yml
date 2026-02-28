@@ -1,0 +1,41 @@
+# llm-server의 /opt/vllm/docker-compose.yml
+# 2x RTX 3090 (PCIe, NVLink 없음) + Qwen3-32B-AWQ
+services:
+  vllm:
+    image: vllm/vllm-openai:latest
+    runtime: nvidia
+    ipc: host                    # TP에서 프로세스 간 통신에 필수
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NCCL_P2P_DISABLE=1      # NVLink 없으므로 P2P 비활성화 (PCIe 사용)
+    volumes:
+      - /models:/models
+      - huggingface_cache:/root/.cache/huggingface
+    ports:
+      - "8080:8000"
+    command: >
+      --model /models/Qwen3-32B-AWQ
+      --quantization awq
+      --tensor-parallel-size 2
+      --max-model-len 8192
+      --gpu-memory-utilization 0.85
+      --dtype half
+      --enforce-eager
+      --disable-log-requests
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s  # 32B 모델 로딩 시간 고려
+
+volumes:
+  huggingface_cache:
