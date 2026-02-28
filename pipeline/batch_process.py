@@ -24,9 +24,9 @@ def get_client() -> OpenAI:
     return OpenAI(api_key=api_key)
 
 
-def upload_and_create_batch(client: OpenAI) -> str:
-    print(f"Uploading {BATCH_INPUT_FILE}...")
-    with open(BATCH_INPUT_FILE, "rb") as f:
+def upload_and_create_batch(client: OpenAI, input_file: Path) -> str:
+    print(f"Uploading {input_file}...")
+    with open(input_file, "rb") as f:
         batch_file = client.files.create(file=f, purpose="batch")
     print(f"File uploaded: {batch_file.id}")
 
@@ -79,7 +79,21 @@ def main():
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--status", action="store_true")
     parser.add_argument("--batch-id", type=str)
+    parser.add_argument("--test", action="store_true", help="테스트 모드: batch_input_test.jsonl 사용 (5건)")
+    parser.add_argument("--input", type=str, help="입력 JSONL 파일 경로 지정")
     args = parser.parse_args()
+
+    # 입력 파일 결정
+    if args.test:
+        input_file = DATA_DIR / "batch_input_test.jsonl"
+    elif args.input:
+        input_file = Path(args.input)
+    else:
+        input_file = BATCH_INPUT_FILE
+
+    if not args.resume and not args.status and not input_file.exists():
+        print(f"Input file not found: {input_file}")
+        return
 
     client = get_client()
     batch_id = args.batch_id or (BATCH_ID_FILE.read_text().strip() if BATCH_ID_FILE.exists() else None)
@@ -97,7 +111,8 @@ def main():
             print("No batch ID to resume")
             return
     else:
-        batch_id = upload_and_create_batch(client)
+        print(f"Mode: {'TEST' if args.test else 'FULL'} | Input: {input_file}")
+        batch_id = upload_and_create_batch(client, input_file)
 
     batch = wait_for_batch(client, batch_id)
     download_results(client, batch)
