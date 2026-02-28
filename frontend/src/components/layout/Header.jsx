@@ -17,13 +17,12 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-40 backdrop-blur-md border-b"
-      style={{ background: 'var(--bg)', borderColor: 'var(--border)', opacity: 0.98 }}
+      className="sticky top-0 z-40 glass-nav"
     >
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link to="/" className="text-xl font-bold tracking-tight">
-          <span className="text-primary-600">blog</span>
-          <span style={{ color: 'var(--text)' }}>-jun</span>
+          <span className="text-primary-600">HJ</span>
+          <span style={{ color: 'var(--text)' }}> Tech</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-6">

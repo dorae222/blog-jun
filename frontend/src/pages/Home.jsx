@@ -40,7 +40,7 @@ export default function Home() {
       <HeroSection />
 
       {/* Blog Stats */}
-      <section className="py-12 px-4" style={{ background: 'var(--bg-secondary)' }}>
+      <section className="py-12 px-4 section-gradient-blue">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-center mb-8" style={{ color: 'var(--text)' }}>Blog</h2>
@@ -77,7 +77,7 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="py-16 px-4" style={{ background: 'var(--bg-secondary)' }}>
+      <section className="py-16 px-4 section-gradient-purple">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-center mb-10" style={{ color: 'var(--text)' }}>
@@ -90,8 +90,7 @@ export default function Home() {
               <ScrollReveal key={cat.id} delay={i * 0.05}>
                 <Link
                   to={`/category/${cat.slug}`}
-                  className="block p-5 rounded-xl border text-center transition-all hover:shadow-lg hover:-translate-y-1"
-                  style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
+                  className="block p-5 rounded-xl text-center transition-all hover:shadow-lg hover:-translate-y-1 glass"
                 >
                   <div className="flex justify-center mb-2" style={{ color: cat.color || 'var(--text-secondary)' }}>
                     {getCategoryIcon(cat.slug, 28)}
@@ -110,7 +109,7 @@ export default function Home() {
       </section>
 
       {/* Tech Stack */}
-      <div style={{ background: 'var(--bg-secondary)' }}>
+      <div className="section-gradient-cyan">
         <TechStack />
       </div>
 

@@ -39,10 +39,10 @@ export default function ChatModal({ onClose }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 100, scale: 0.9 }}
       className="fixed bottom-24 left-6 z-50 w-96 max-w-[calc(100vw-3rem)] rounded-2xl shadow-2xl overflow-hidden"
-      style={{ background: 'var(--card-bg)', border: '1px solid var(--border)' }}
+      style={{ background: 'rgba(255,255,255,0.45)', backdropFilter: 'blur(12px) saturate(180%)', WebkitBackdropFilter: 'blur(12px) saturate(180%)', border: '1px solid rgba(255,255,255,0.3)', boxShadow: '0 8px 32px rgba(31,38,135,0.08), inset 0 1px 0 rgba(255,255,255,0.4)' }}
     >
-      <div className="p-4 border-b flex justify-between items-center" style={{ borderColor: 'var(--border)' }}>
-        <h3 className="font-semibold">Chat with blog-jun</h3>
+      <div className="p-4 border-b flex justify-between items-center" style={{ borderColor: 'rgba(255,255,255,0.3)' }}>
+        <h3 className="font-semibold">Chat with HJ Tech</h3>
         <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded">
           <X size={18} />
         </button>

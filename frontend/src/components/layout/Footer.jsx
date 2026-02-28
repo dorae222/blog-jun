@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t py-8 mt-16" style={{ borderColor: 'var(--border)' }}>
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
         <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-          &copy; {new Date().getFullYear()} blog-jun. Built with Django + React.
+          &copy; {new Date().getFullYear()} HJ Tech Blog
         </p>
         <div className="flex items-center gap-3">
           <a
@@ -19,7 +19,7 @@ export default function Footer() {
             <Github size={20} />
           </a>
           <a
-            href="mailto:admin@blog.dorae222.com"
+            href="mailto:dhj9842@gmail.com"
             className="p-2 rounded-lg hover:bg-gray-50 transition-colors"
             style={{ color: 'var(--text-secondary)' }}
             aria-label="Email"

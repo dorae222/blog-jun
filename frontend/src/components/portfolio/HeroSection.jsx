@@ -3,7 +3,7 @@ import TypeWriter from '../common/TypeWriter'
 import GradientCursor from '../effects/GradientCursor'
 import TechIcon from '../icons/TechIcon'
 import { motion } from 'framer-motion'
-import { Github, Mail, ArrowRight } from 'lucide-react'
+import { Github, Mail, Linkedin, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const ORBIT_TECHS = [
@@ -14,7 +14,7 @@ const ORBIT_TECHS = [
   { name: 'Docker', angle: 180 },
   { name: 'HuggingFace', angle: 225 },
   { name: 'Django', angle: 270 },
-  { name: 'Kubernetes', angle: 315 },
+  { name: 'FastAPI', angle: 315 },
 ]
 
 export default function HeroSection() {
@@ -53,9 +53,12 @@ export default function HeroSection() {
               return (
                 <motion.div
                   key={tech.name}
-                  className="absolute w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-white z-20"
+                  className="absolute w-10 h-10 rounded-full flex items-center justify-center shadow-md z-20"
                   style={{
-                    border: '1px solid var(--border)',
+                    background: 'rgba(255,255,255,0.45)',
+                    backdropFilter: 'blur(12px) saturate(180%)',
+                    WebkitBackdropFilter: 'blur(12px) saturate(180%)',
+                    border: '1px solid rgba(255,255,255,0.3)',
                     left: '50%',
                     top: '50%',
                     marginLeft: -20,
@@ -121,7 +124,7 @@ export default function HeroSection() {
               'NLP / AI Engineer',
               'Cloud & Infrastructure Builder',
               'Full-Stack Developer',
-              'AWS 6x Certified',
+              'AWS 4x Certified',
             ]}
           />
         </motion.div>
@@ -159,7 +162,16 @@ export default function HeroSection() {
             <Github size={18} /> GitHub
           </a>
           <a
-            href="mailto:admin@blog.dorae222.com"
+            href="https://www.linkedin.com/in/hyeongjun-do-5519321aa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-gray-50"
+            style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+          >
+            <Linkedin size={18} /> LinkedIn
+          </a>
+          <a
+            href="mailto:dhj9842@gmail.com"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-gray-50"
             style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
           >
