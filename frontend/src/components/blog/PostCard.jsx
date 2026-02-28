@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import TiltCard from '../effects/TiltCard'
+import { getCategoryIcon } from '../../utils/categoryIcons'
 
 export default function PostCard({ post }) {
   const typeColors = {
@@ -23,7 +24,10 @@ export default function PostCard({ post }) {
                 color: post.category.color,
               }}
             >
-              {post.category.icon} {post.category.name}
+              <span className="inline-flex items-center gap-1">
+                {getCategoryIcon(post.category.slug, 12)}
+                {post.category.name}
+              </span>
             </span>
           )}
           <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${typeColors[post.post_type] || ''}`}>

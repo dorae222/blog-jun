@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { BookOpen } from 'lucide-react'
 import ScrollReveal from '../components/common/ScrollReveal'
 import { getPosts, getSeriesDetail } from '../api/posts'
 
@@ -24,7 +25,7 @@ export default function SeriesPage() {
       {series && (
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--text)' }}>
-            📚 {series.name}
+            <BookOpen size={28} className="inline mr-2 text-primary-600" />{series.name}
           </h1>
           {series.description && (
             <p style={{ color: 'var(--text-secondary)' }}>{series.description}</p>

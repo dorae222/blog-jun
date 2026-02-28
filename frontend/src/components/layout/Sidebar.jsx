@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { getCategoryIcon } from '../../utils/categoryIcons'
 
 export default function Sidebar({ categories = [], series = [] }) {
   return (
@@ -15,10 +16,10 @@ export default function Sidebar({ categories = [], series = [] }) {
                 <li key={cat.id}>
                   <Link
                     to={`/category/${cat.slug}`}
-                    className="flex items-center justify-between py-1.5 px-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                    className="flex items-center justify-between py-1.5 px-2 rounded-lg text-sm hover:bg-gray-50  transition-colors"
                     style={{ color: 'var(--text)' }}
                   >
-                    <span>{cat.icon} {cat.name}</span>
+                    <span className="inline-flex items-center gap-1.5">{getCategoryIcon(cat.slug, 14)} {cat.name}</span>
                     <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{cat.post_count}</span>
                   </Link>
                 </li>
@@ -38,7 +39,7 @@ export default function Sidebar({ categories = [], series = [] }) {
                 <li key={s.id}>
                   <Link
                     to={`/series/${s.slug}`}
-                    className="block py-1.5 px-2 rounded-lg text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                    className="block py-1.5 px-2 rounded-lg text-sm hover:bg-gray-50  transition-colors"
                     style={{ color: 'var(--text)' }}
                   >
                     {s.name}

@@ -1,38 +1,116 @@
 import ParticleBackground from '../effects/ParticleBackground'
 import TypeWriter from '../common/TypeWriter'
 import GradientCursor from '../effects/GradientCursor'
+import TechIcon from '../icons/TechIcon'
 import { motion } from 'framer-motion'
+import { Github, Mail, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
-const TECH_ICONS = [
-  { name: 'AWS', color: '#FF9900', angle: 0 },
-  { name: 'Python', color: '#3776AB', angle: 45 },
-  { name: 'Django', color: '#092E20', angle: 90 },
-  { name: 'React', color: '#61DAFB', angle: 135 },
-  { name: 'Docker', color: '#2496ED', angle: 180 },
-  { name: 'K8s', color: '#326CE5', angle: 225 },
-  { name: 'AI/ML', color: '#FF6F00', angle: 270 },
-  { name: 'Linux', color: '#FCC624', angle: 315 },
+const ORBIT_TECHS = [
+  { name: 'PyTorch', angle: 0 },
+  { name: 'AWS', angle: 45 },
+  { name: 'Python', angle: 90 },
+  { name: 'React', angle: 135 },
+  { name: 'Docker', angle: 180 },
+  { name: 'HuggingFace', angle: 225 },
+  { name: 'Django', angle: 270 },
+  { name: 'Kubernetes', angle: 315 },
 ]
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
       <ParticleBackground count={40} />
       <GradientCursor />
 
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-        <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 w-full text-center">
+        {/* Orbit icons (standalone, no photo) */}
+        <motion.div
+          className="relative mx-auto mb-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <span style={{ color: 'var(--text)' }}>Hi, I'm </span>
-          <span className="text-primary-600">HyeongJun</span>
+          <div className="relative w-48 h-48 mx-auto">
+            {/* Orbit ring */}
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{ border: '1px dashed var(--border)' }}
+            />
+
+            {/* Center dot */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-3 h-3 rounded-full bg-primary-500 opacity-60" />
+            </div>
+
+            {/* Tech icons */}
+            {ORBIT_TECHS.map((tech, i) => {
+              const rad = (tech.angle * Math.PI) / 180
+              const radius = 96
+              const x = Math.cos(rad) * radius
+              const y = Math.sin(rad) * radius
+
+              return (
+                <motion.div
+                  key={tech.name}
+                  className="absolute w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-white z-20"
+                  style={{
+                    border: '1px solid var(--border)',
+                    left: '50%',
+                    top: '50%',
+                    marginLeft: -20,
+                    marginTop: -20,
+                  }}
+                  animate={{
+                    x: [
+                      Math.cos(rad) * radius,
+                      Math.cos(rad + Math.PI * 2) * radius,
+                    ],
+                    y: [
+                      Math.sin(rad) * radius,
+                      Math.sin(rad + Math.PI * 2) * radius,
+                    ],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 24,
+                    ease: 'linear',
+                    delay: i * 0.3,
+                  }}
+                  initial={{ x, y }}
+                  title={tech.name}
+                >
+                  <TechIcon name={tech.name} size={20} />
+                </motion.div>
+              )
+            })}
+          </div>
+        </motion.div>
+
+        {/* Text content - centered */}
+        <motion.p
+          className="text-sm font-medium tracking-wide uppercase mb-3 text-primary-600"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Welcome to my blog
+        </motion.p>
+
+        <motion.h1
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+        >
+          <span style={{ color: 'var(--text)' }}>Do </span>
+          <span className="bg-gradient-to-r from-primary-500 to-accent bg-clip-text text-transparent">
+            HyeongJun
+          </span>
         </motion.h1>
 
         <motion.div
-          className="text-xl md:text-2xl mb-8 h-8"
+          className="text-lg md:text-xl mb-6 h-7"
           style={{ color: 'var(--text-secondary)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -40,51 +118,53 @@ export default function HeroSection() {
         >
           <TypeWriter
             texts={[
-              'Cloud & DevOps Engineer',
-              'AI/ML Enthusiast',
+              'NLP / AI Engineer',
+              'Cloud & Infrastructure Builder',
               'Full-Stack Developer',
-              'AWS Solutions Architect',
+              'AWS 6x Certified',
             ]}
           />
         </motion.div>
 
-        <motion.div
-          className="relative w-64 h-64 mx-auto mb-8"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+        <motion.p
+          className="text-base max-w-lg mx-auto mb-8 leading-relaxed"
+          style={{ color: 'var(--text-secondary)' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          {TECH_ICONS.map((tech, i) => (
-            <motion.div
-              key={tech.name}
-              className="absolute w-12 h-12 rounded-xl flex items-center justify-center text-xs font-bold shadow-md"
-              style={{
-                backgroundColor: tech.color + '20',
-                color: tech.color,
-                border: `2px solid ${tech.color}40`,
-              }}
-              animate={{
-                x: Math.cos((tech.angle * Math.PI) / 180 + Date.now() / 5000) * 100,
-                y: Math.sin((tech.angle * Math.PI) / 180 + Date.now() / 5000) * 100,
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 8,
-                ease: 'linear',
-                delay: i * 0.3,
-              }}
-              initial={{
-                x: Math.cos((tech.angle * Math.PI) / 180) * 100,
-                y: Math.sin((tech.angle * Math.PI) / 180) * 100,
-                left: '50%',
-                top: '50%',
-                marginLeft: -24,
-                marginTop: -24,
-              }}
-            >
-              {tech.name}
-            </motion.div>
-          ))}
+          Focused on NLP and AI, exploring cloud infrastructure along the way.
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          className="flex flex-wrap items-center gap-3 justify-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-colors"
+          >
+            About Me <ArrowRight size={16} />
+          </Link>
+          <a
+            href="https://github.com/dorae222"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-gray-50"
+            style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+          >
+            <Github size={18} /> GitHub
+          </a>
+          <a
+            href="mailto:admin@blog.dorae222.com"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-gray-50"
+            style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+          >
+            <Mail size={18} /> Email
+          </a>
         </motion.div>
       </div>
     </section>

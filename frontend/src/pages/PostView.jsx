@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { BookOpen } from 'lucide-react'
+import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
 import ReadingProgress from '../components/blog/ReadingProgress'
 import TableOfContents from '../components/blog/TableOfContents'
@@ -64,7 +66,10 @@ export default function PostView() {
                     color: post.category.color,
                   }}
                 >
-                  {post.category.icon} {post.category.name}
+                  <span className="inline-flex items-center gap-1">
+                    {getCategoryIcon(post.category.slug, 14)}
+                    {post.category.name}
+                  </span>
                 </Link>
               )}
               {post.series && (
@@ -72,7 +77,7 @@ export default function PostView() {
                   to={`/series/${post.series.slug}`}
                   className="text-sm font-medium text-primary-600 hover:underline"
                 >
-                  📚 {post.series.name}
+                  <BookOpen size={14} className="inline mr-1" /> {post.series.name}
                 </Link>
               )}
             </div>
