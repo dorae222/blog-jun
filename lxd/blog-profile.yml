@@ -1,0 +1,18 @@
+# blog-server LXD 프로파일
+# 사용법: lxc launch ubuntu:24.04 blog-server < blog-profile.yml
+name: blog-server
+description: Blog server container profile (4 CPU, 8GB RAM)
+config:
+  limits.cpu: "4"
+  limits.memory: 8GB
+  security.nesting: "true"  # Docker 지원
+devices:
+  root:
+    type: disk
+    pool: default
+    path: /
+    size: 50GB
+  eth0:
+    type: nic
+    network: lxdbr0
+    ipv4.address: 10.10.10.30
