@@ -1,12 +1,14 @@
 # Add to ~/.ssh/config on your local machine
 
-Host lxd-host
-  HostName YOUR_LXD_HOST_IP
-  User YOUR_USER
+Host hj-remote
+  HostName hj-server.iptime.org
+  User hj
   IdentityFile ~/.ssh/id_ed25519
+  ServerAliveInterval 30
+  ServerAliveCountMax 3
 
 Host blog-server
   HostName 10.10.10.30
   User root
-  ProxyJump lxd-host
+  ProxyJump hj-remote
   IdentityFile ~/.ssh/id_ed25519
