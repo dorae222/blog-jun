@@ -1,0 +1,27 @@
+{
+  "name": "blog-jun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "playwright.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dorae222/blog-jun.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dorae222/blog-jun/issues"
+  },
+  "homepage": "https://github.com/dorae222/blog-jun#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}
