@@ -79,12 +79,30 @@ def _convert_html_list(list_html, ordered=False):
     return '\n'.join(result)
 
 
+def _convert_tables(text):
+    """<table> 블록 변환 — 닫는 </table> 없는 경우(잘린 pandas HTML)도 처리"""
+    result = []
+    pos = 0
+    for m in re.finditer(r'<table[^>]*>', text, re.IGNORECASE):
+        if m.start() < pos:
+            continue  # 이전 테이블 범위 안에 중첩된 태그 건너뜀
+        result.append(text[pos:m.start()])
+        close = re.search(r'</table>', text[m.start():], re.IGNORECASE)
+        end = m.start() + close.end() if close else len(text)
+        result.append(_convert_html_table(text[m.start():end]))
+        pos = end
+    result.append(text[pos:])
+    return ''.join(result)
+
+
 def _process_html(text):
     """코드블록 외부 영역의 HTML 태그를 마크다운으로 변환"""
-    # 테이블
-    text = re.sub(r'<table[^>]*>.*?</table>',
-                  lambda m: _convert_html_table(m.group(0)),
-                  text, flags=re.IGNORECASE | re.DOTALL)
+    # <style> 블록 제거 (pandas DataFrame CSS 등)
+    text = re.sub(r'<style[^>]*>.*?</style>', '', text, flags=re.IGNORECASE | re.DOTALL)
+    # <thead>/<tbody>/<tfoot> 래퍼 태그 제거 (내용 유지)
+    text = re.sub(r'</?(?:thead|tbody|tfoot)[^>]*>', '', text, flags=re.IGNORECASE)
+    # 테이블 (</table> 없는 경우도 처리)
+    text = _convert_tables(text)
     # 리스트
     text = re.sub(r'<ul[^>]*>.*?</ul>',
                   lambda m: _convert_html_list(m.group(0), ordered=False),
