@@ -62,15 +62,17 @@ def wait_for_batch(client: OpenAI, batch_id: str, poll_interval: int = 60):
         time.sleep(poll_interval)
 
 
-def download_results(client: OpenAI, batch):
+def download_results(client: OpenAI, batch, output_file: Path = None):
     if not batch.output_file_id:
         raise Exception("No output file")
 
     result = client.files.content(batch.output_file_id)
-    BATCH_OUTPUT_FILE.write_text(result.text, encoding="utf-8")
+    dest = output_file if output_file else BATCH_OUTPUT_FILE
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(result.text, encoding="utf-8")
 
-    lines = BATCH_OUTPUT_FILE.read_text().strip().split("\n")
-    print(f"Downloaded {len(lines)} results → {BATCH_OUTPUT_FILE}")
+    lines = dest.read_text().strip().split("\n")
+    print(f"Downloaded {len(lines)} results → {dest}")
 
 
 def main():
@@ -81,6 +83,7 @@ def main():
     parser.add_argument("--batch-id", type=str)
     parser.add_argument("--test", action="store_true", help="테스트 모드: batch_input_test.jsonl 사용 (5건)")
     parser.add_argument("--input", type=str, help="입력 JSONL 파일 경로 지정")
+    parser.add_argument("--output", type=str, help="출력 JSONL 파일 경로 지정")
     args = parser.parse_args()
 
     # 입력 파일 결정
@@ -114,8 +117,9 @@ def main():
         print(f"Mode: {'TEST' if args.test else 'FULL'} | Input: {input_file}")
         batch_id = upload_and_create_batch(client, input_file)
 
+    output_file = Path(args.output) if args.output else None
     batch = wait_for_batch(client, batch_id)
-    download_results(client, batch)
+    download_results(client, batch, output_file)
     print("Done! Run batch_import.py next.")
 
 
