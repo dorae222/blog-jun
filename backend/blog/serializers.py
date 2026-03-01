@@ -59,6 +59,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
     series = SeriesSerializer(read_only=True)
     images = PostImageSerializer(many=True, read_only=True)
     adjacent_posts = serializers.SerializerMethodField()
+    pdf_file = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -66,8 +67,16 @@ class PostDetailSerializer(serializers.ModelSerializer):
             'id', 'title', 'slug', 'content', 'summary', 'category', 'tags',
             'series', 'series_order', 'post_type', 'status', 'quality_score',
             'reading_time', 'view_count', 'created_at', 'updated_at',
-            'published_at', 'images', 'adjacent_posts',
+            'published_at', 'images', 'adjacent_posts', 'pdf_file',
         ]
+
+    def get_pdf_file(self, obj):
+        if not obj.pdf_file:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.pdf_file.url)
+        return obj.pdf_file.url
 
     def get_adjacent_posts(self, obj):
         result = {}

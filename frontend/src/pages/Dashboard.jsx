@@ -8,6 +8,11 @@ import {
   getAuditResults, getTags, mergeTags, cleanupTags,
 } from '../api/posts'
 import toast from 'react-hot-toast'
+import {
+  FileText, CheckCircle, Clock, Eye, AlertTriangle, Pencil, Trash2,
+  LayoutGrid, Cloud, Brain, Database, Code2, FolderOpen, Terminal, BookOpen,
+  Archive, Plus, Tags, ChevronLeft, ChevronRight,
+} from 'lucide-react'
 
 // 이슈 배지 색상
 const ISSUE_COLORS = {
@@ -18,11 +23,7 @@ const ISSUE_COLORS = {
   ENCODING:     'bg-red-100 text-red-700',
 }
 
-const STATUS_COLORS = {
-  published: 'bg-green-100 text-green-700',
-  draft:     'bg-yellow-100 text-yellow-700',
-  archived:  'bg-gray-100 text-gray-500',
-}
+const STATUS_DOT = { published: '#10b981', draft: '#f59e0b', archived: '#94a3b8' }
 
 const PAGE_SIZE = 10
 
@@ -36,6 +37,24 @@ const CATEGORIES = [
   { label: 'Foundation', slug: 'foundation' },
   { label: 'Project',    slug: 'project' },
   { label: 'Program',    slug: 'program' },
+]
+
+const CAT_ICONS = {
+  '':           LayoutGrid,
+  'cloud':      Cloud,
+  'ai-ml':      Brain,
+  'data':       Database,
+  'dev':        Code2,
+  'foundation': BookOpen,
+  'project':    FolderOpen,
+  'program':    Terminal,
+}
+
+const STATUS_META = [
+  { value: '',          label: '전체',     Icon: LayoutGrid,  dot: null      },
+  { value: 'published', label: 'Published', Icon: CheckCircle, dot: '#10b981' },
+  { value: 'draft',     label: 'Draft',     Icon: Clock,       dot: '#f59e0b' },
+  { value: 'archived',  label: 'Archived',  Icon: Archive,     dot: '#94a3b8' },
 ]
 
 export default function Dashboard() {
@@ -96,15 +115,12 @@ export default function Dashboard() {
     if (!user) { navigate('/login'); return }
     getDashboardStats().then(r => setStats(r.data)).catch(() => {})
     loadAudit()
-    // loadPosts는 [statusFilter, categoryFilter, page] effect가 mount 시 자동 실행
   }, [user, navigate])
 
   useEffect(() => {
     if (tab === 'tags') loadTags()
   }, [tab])
 
-  // 필터·페이지 통합 effect — 이중 호출 방지
-  // 필터 버튼에서 setPage(1)과 setFilter를 동시에 호출하면 React 18이 배치해 1회만 실행
   useEffect(() => {
     loadPosts(statusFilter, categoryFilter, page)
   }, [statusFilter, categoryFilter, page])
@@ -193,6 +209,17 @@ export default function Dashboard() {
     }
   }
 
+  // Stats Bar 정의 (auditSummary 클로저 접근)
+  const STAT_DEFS = [
+    { label: '총 포스트', icon: FileText,      accent: '#3b82f6', fn: s => s.total_posts  },
+    { label: '발행',       icon: CheckCircle,   accent: '#10b981', fn: s => s.published   },
+    { label: '초안',       icon: Clock,         accent: '#f59e0b', fn: s => s.drafts      },
+    { label: '총 조회수',  icon: Eye,           accent: '#8b5cf6', fn: s => s.total_views },
+    { label: '감사 이슈',  icon: AlertTriangle, accent: '#ef4444', fn: () => auditSummary.total_issues },
+  ]
+
+  const totalPages = Math.ceil(totalPosts / PAGE_SIZE)
+
   if (!user) return null
 
   return (
@@ -203,46 +230,53 @@ export default function Dashboard() {
       className="max-w-7xl mx-auto px-4 py-10"
     >
       {/* 헤더 */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Dashboard</h1>
-        <Link
-          to="/editor"
-          className="px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors text-sm"
-        >
-          + New Post
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Dashboard</h1>
+          <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+            포스트 관리 및 블로그 현황
+          </p>
+        </div>
+        <Link to="/editor"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white
+            hover:bg-primary-700 text-sm font-medium transition-colors">
+          <Plus size={15} /> 새 포스트
         </Link>
       </div>
 
       {/* Stats Bar */}
       {stats && (
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
-          {[
-            { label: '총 포스트',  value: stats.total_posts,  color: 'text-blue-600' },
-            { label: '발행',        value: stats.published,    color: 'text-green-600' },
-            { label: '초안',        value: stats.drafts,       color: 'text-yellow-600' },
-            { label: '총 조회수',   value: stats.total_views,  color: 'text-purple-600' },
-            { label: '감사 이슈',   value: auditSummary.total_issues, color: 'text-red-600' },
-          ].map(s => (
-            <div key={s.label} className="p-3 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
-              <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{s.label}</p>
-              <p className={`text-xl font-bold ${s.color}`}>{s.value?.toLocaleString() ?? 0}</p>
+          {STAT_DEFS.map(({ label, icon: Icon, accent, fn }) => (
+            <div key={label} className="relative p-4 rounded-xl overflow-hidden"
+              style={{ background: 'var(--card-bg)', border: '1px solid var(--border)',
+                       borderLeft: `4px solid ${accent}` }}>
+              <Icon size={32} className="absolute right-3 top-3"
+                style={{ color: accent, opacity: 0.12 }} />
+              <p className="text-2xl font-bold" style={{ color: accent }}>
+                {(fn(stats) ?? 0).toLocaleString()}
+              </p>
+              <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{label}</p>
             </div>
           ))}
         </div>
       )}
 
-      {/* 탭 */}
-      <div className="flex gap-2 mb-6 border-b" style={{ borderColor: 'var(--border)' }}>
-        {['posts', 'tags'].map(t => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-              tab === t ? 'border-primary-600 text-primary-600' : 'border-transparent'
+      {/* 탭 (세그먼트 컨트롤) */}
+      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit"
+        style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
+        {[
+          { id: 'posts', label: '포스트', Icon: FileText },
+          { id: 'tags',  label: '태그 관리', Icon: Tags },
+        ].map(t => (
+          <button key={t.id} onClick={() => setTab(t.id)}
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+              tab === t.id
+                ? 'bg-white shadow-sm text-primary-600'
+                : 'hover:bg-white/50'
             }`}
-            style={tab !== t ? { color: 'var(--text-secondary)' } : {}}
-          >
-            {t === 'posts' ? '포스트' : '태그 관리'}
+            style={tab !== t.id ? { color: 'var(--text-secondary)' } : {}}>
+            <t.Icon size={14} /> {t.label}
           </button>
         ))}
       </div>
@@ -254,52 +288,60 @@ export default function Dashboard() {
           <aside className="w-44 shrink-0">
             <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>카테고리</p>
             <ul className="space-y-1">
-              {CATEGORIES.map(cat => (
-                <li key={cat.slug}>
-                  <button
-                    onClick={() => { setCategoryFilter(cat.slug); setPage(1) }}
-                    className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                      categoryFilter === cat.slug
-                        ? 'bg-primary-100 text-primary-700 font-medium'
-                        : 'hover:bg-gray-100'
-                    }`}
-                    style={categoryFilter !== cat.slug ? { color: 'var(--text)' } : {}}
-                  >
-                    {cat.label}
-                  </button>
-                </li>
-              ))}
+              {CATEGORIES.map(cat => {
+                const CatIcon = CAT_ICONS[cat.slug] || LayoutGrid
+                return (
+                  <li key={cat.slug}>
+                    <button
+                      onClick={() => { setCategoryFilter(cat.slug); setPage(1) }}
+                      className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                        categoryFilter === cat.slug
+                          ? 'bg-primary-50 text-primary-700 font-semibold border border-primary-200'
+                          : 'hover:bg-gray-50'
+                      }`}
+                      style={categoryFilter !== cat.slug ? { color: 'var(--text)' } : {}}>
+                      <CatIcon size={14} style={{ flexShrink: 0 }} />
+                      {cat.label}
+                    </button>
+                  </li>
+                )
+              })}
             </ul>
 
-            <div className="mt-6 space-y-2">
+            <div className="mt-6 space-y-1">
               <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>상태</p>
-              {['', 'draft', 'published', 'archived'].map(f => (
+              {STATUS_META.map(({ value, label, Icon, dot }) => (
                 <button
-                  key={f}
-                  onClick={() => { setStatusFilter(f); setPage(1) }}
-                  className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                    statusFilter === f ? 'bg-primary-100 text-primary-700 font-medium' : 'hover:bg-gray-100'
+                  key={value}
+                  onClick={() => { setStatusFilter(value); setPage(1) }}
+                  className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                    statusFilter === value
+                      ? 'bg-primary-50 text-primary-700 font-semibold border border-primary-200'
+                      : 'hover:bg-gray-50'
                   }`}
-                  style={statusFilter !== f ? { color: 'var(--text)' } : {}}
-                >
-                  {f || '전체'}
+                  style={statusFilter !== value ? { color: 'var(--text)' } : {}}>
+                  {dot
+                    ? <span style={{ width: 8, height: 8, borderRadius: '50%', background: dot, flexShrink: 0 }} />
+                    : <Icon size={14} style={{ flexShrink: 0 }} />
+                  }
+                  {label}
                 </button>
               ))}
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 space-y-1">
               <button
                 onClick={() => setAuditFilter(v => !v)}
-                className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                  auditFilter ? 'bg-red-100 text-red-700 font-medium' : 'hover:bg-gray-100'
+                className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                  auditFilter ? 'bg-red-50 text-red-700 font-medium border border-red-200' : 'hover:bg-gray-50'
                 }`}
-                style={!auditFilter ? { color: 'var(--text)' } : {}}
-              >
-                {auditFilter ? '⚠ 이슈 필터 ON' : '이슈 있는 것만'}
+                style={!auditFilter ? { color: 'var(--text)' } : {}}>
+                <AlertTriangle size={14} />
+                이슈 있는 것만
               </button>
               <button
                 onClick={loadAudit}
-                className="w-full text-left px-3 py-1.5 rounded-lg text-xs mt-1 hover:bg-gray-100"
+                className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-gray-100"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 ↻ 감사 새로고침
@@ -311,27 +353,24 @@ export default function Dashboard() {
           <div className="flex-1 min-w-0">
             {/* 벌크 액션 바 */}
             {selected.size > 0 && (
-              <div className="flex items-center gap-2 mb-3 p-3 rounded-lg bg-primary-50 border border-primary-200">
-                <span className="text-sm font-medium text-primary-700">{selected.size}개 선택됨</span>
-                <button
-                  onClick={handleBulkDelete}
-                  className="ml-auto px-3 py-1 rounded text-sm bg-red-600 text-white hover:bg-red-700"
-                >
-                  삭제
-                </button>
-                <button
-                  onClick={() => handleBulkStatus('archived')}
-                  className="px-3 py-1 rounded text-sm border hover:bg-gray-50"
-                  style={{ borderColor: 'var(--border)' }}
-                >
-                  보관
-                </button>
-                <button
-                  onClick={() => handleBulkStatus('published')}
-                  className="px-3 py-1 rounded text-sm bg-green-600 text-white hover:bg-green-700"
-                >
-                  발행
-                </button>
+              <div className="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-xl
+                bg-primary-50 border border-primary-200">
+                <span className="text-sm font-semibold text-primary-700">{selected.size}개 선택</span>
+                <div className="flex gap-2 ml-auto">
+                  <button onClick={() => handleBulkStatus('published')}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-600 text-white text-xs font-medium hover:bg-green-700">
+                    <CheckCircle size={12} /> 발행
+                  </button>
+                  <button onClick={() => handleBulkStatus('archived')}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium hover:bg-white transition-colors"
+                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
+                    <Archive size={12} /> 보관
+                  </button>
+                  <button onClick={handleBulkDelete}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium hover:bg-red-700">
+                    <Trash2 size={12} /> 삭제
+                  </button>
+                </div>
               </div>
             )}
 
@@ -386,46 +425,59 @@ export default function Dashboard() {
                             {new Date(post.created_at).toLocaleDateString('ko-KR')}
                           </span>
                         </td>
-                        <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
-                          {post.category?.name || '-'}
+                        <td className="px-3 py-2 hidden md:table-cell">
+                          {post.category ? (
+                            <span className="text-xs px-2 py-0.5 rounded-full font-medium"
+                              style={{
+                                background: `${post.category.color || '#6366f1'}15`,
+                                color: post.category.color || '#6366f1',
+                              }}>
+                              {post.category.name}
+                            </span>
+                          ) : <span style={{ color: 'var(--text-secondary)' }}>—</span>}
                         </td>
                         <td className="px-3 py-2">
-                          <div className="flex flex-wrap gap-1">
-                            {issues.map(iss => (
-                              <span key={iss} className={`text-xs px-1.5 py-0.5 rounded-full font-medium ${ISSUE_COLORS[iss] || 'bg-gray-100 text-gray-600'}`}>
-                                {iss}
+                          {issues.length > 0 ? (
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-red-600">{issues.length}</span>
+                              <span className={`text-xs px-1.5 py-0.5 rounded-full font-medium
+                                ${ISSUE_COLORS[issues[0]] || 'bg-gray-100 text-gray-600'}`}>
+                                {issues[0]}
                               </span>
-                            ))}
-                          </div>
+                              {issues.length > 1 &&
+                                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                                  +{issues.length - 1}
+                                </span>
+                              }
+                            </div>
+                          ) : <span style={{ color: 'var(--border)' }}>—</span>}
                         </td>
                         <td className="px-3 py-2">
-                          <span className={`text-xs px-2 py-0.5 rounded-full ${STATUS_COLORS[post.status] || 'bg-gray-100 text-gray-600'}`}>
+                          <span className="inline-flex items-center gap-1.5 text-xs px-2 py-0.5 rounded-full"
+                            style={{
+                              background: `${STATUS_DOT[post.status] || '#94a3b8'}15`,
+                              color: STATUS_DOT[post.status] || '#94a3b8',
+                            }}>
+                            <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'currentColor' }} />
                             {post.status}
                           </span>
                         </td>
                         <td className="px-3 py-2">
-                          <div className="flex items-center gap-1 justify-end">
-                            <Link
-                              to={`/post/${post.slug}`}
-                              target="_blank"
-                              className="px-2 py-1 text-xs rounded border hover:bg-gray-50"
-                              style={{ borderColor: 'var(--border)' }}
-                            >
-                              보기
+                          <div className="flex items-center gap-0.5 justify-end">
+                            <Link to={`/post/${post.slug}`} target="_blank" title="보기"
+                              className="p-1.5 rounded transition-colors hover:bg-gray-100"
+                              style={{ color: 'var(--text-secondary)' }}>
+                              <Eye size={14} />
                             </Link>
-                            <Link
-                              to={`/editor/${post.slug}`}
-                              className="px-2 py-1 text-xs rounded border hover:bg-gray-50"
-                              style={{ borderColor: 'var(--border)' }}
-                            >
-                              편집
+                            <Link to={`/editor/${post.slug}`} title="편집"
+                              className="p-1.5 rounded transition-colors hover:bg-blue-50 hover:text-blue-600"
+                              style={{ color: 'var(--text-secondary)' }}>
+                              <Pencil size={14} />
                             </Link>
-                            <button
-                              onClick={() => handleDelete(post.slug)}
-                              className="px-2 py-1 text-xs rounded border text-red-600 hover:bg-red-50"
-                              style={{ borderColor: 'var(--border)' }}
-                            >
-                              삭제
+                            <button onClick={() => handleDelete(post.slug)} title="삭제"
+                              className="p-1.5 rounded transition-colors hover:bg-red-50 hover:text-red-600"
+                              style={{ color: 'var(--text-secondary)' }}>
+                              <Trash2 size={14} />
                             </button>
                           </div>
                         </td>
@@ -440,26 +492,26 @@ export default function Dashboard() {
               <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
                 {visiblePosts.length}개 표시 / 전체 {totalPosts}개
               </p>
-              {Math.ceil(totalPosts / PAGE_SIZE) > 1 && (
+              {totalPages > 1 && (
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="px-3 py-1 rounded border text-xs transition-colors disabled:opacity-40"
+                    className="p-1.5 rounded border text-xs transition-colors disabled:opacity-40"
                     style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
                   >
-                    Prev
+                    <ChevronLeft size={14} />
                   </button>
                   <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                    {page} / {Math.ceil(totalPosts / PAGE_SIZE)}
+                    {page} / {totalPages}
                   </span>
                   <button
-                    onClick={() => setPage(p => Math.min(Math.ceil(totalPosts / PAGE_SIZE), p + 1))}
-                    disabled={page === Math.ceil(totalPosts / PAGE_SIZE)}
-                    className="px-3 py-1 rounded border text-xs transition-colors disabled:opacity-40"
+                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                    className="p-1.5 rounded border text-xs transition-colors disabled:opacity-40"
                     style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
                   >
-                    Next
+                    <ChevronRight size={14} />
                   </button>
                 </div>
               )}
@@ -542,8 +594,16 @@ export default function Dashboard() {
                   </tr>
                 )}
                 {tags.map(tag => (
-                  <tr key={tag.slug} className="border-t" style={{ borderColor: 'var(--border)' }}>
-                    <td className="px-4 py-2 font-medium" style={{ color: 'var(--text)' }}>{tag.name}</td>
+                  <tr key={tag.slug} className="border-t"
+                    style={{ borderColor: 'var(--border)', opacity: tag.post_count === 0 ? 0.45 : 1 }}>
+                    <td className="px-4 py-2">
+                      <span className="inline-flex items-center gap-1.5 text-sm font-medium"
+                        style={{ color: 'var(--text)' }}>
+                        <span className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ background: `hsl(${(tag.name.charCodeAt(0) * 37) % 360},55%,60%)` }} />
+                        {tag.name}
+                      </span>
+                    </td>
                     <td className="px-4 py-2 text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>{tag.slug}</td>
                     <td className="px-4 py-2 text-right" style={{ color: tag.post_count === 0 ? 'var(--text-secondary)' : 'var(--text)' }}>
                       {tag.post_count}

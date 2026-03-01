@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
 import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
+import PDFViewer from '../components/blog/PDFViewer'
 import ReadingProgress from '../components/blog/ReadingProgress'
 import TableOfContents from '../components/blog/TableOfContents'
 import TagChip from '../components/common/TagChip'
@@ -99,6 +100,14 @@ export default function PostView() {
 
           {/* Content */}
           <MarkdownRenderer content={post.content} />
+
+          {/* PDF 첨부 뷰어 */}
+          {post.pdf_file && (
+            <PDFViewer
+              url={post.pdf_file}
+              title={post.title + ' — 첨부 PDF'}
+            />
+          )}
 
           {/* Tags */}
           {post.tags?.length > 0 && (
