@@ -2,6 +2,7 @@ import { useState, Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 
@@ -113,7 +114,7 @@ export default function MarkdownRenderer({ content }) {
       <div className="prose prose-lg max-w-none">
         <ReactMarkdown
           remarkPlugins={[remarkMath, remarkGfm]}
-          rehypePlugins={[rehypeKatex, rehypeHighlight]}
+          rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
           components={{
             code: CodeBlock,
             img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,

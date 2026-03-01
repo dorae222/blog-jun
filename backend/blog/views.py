@@ -1,9 +1,12 @@
+import json
+import os
 from django.db.models import Count, Q, F, Sum
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from rest_framework import viewsets, generics, status, permissions
-from rest_framework.decorators import api_view, action
+from rest_framework.decorators import api_view, permission_classes, action
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -72,6 +75,26 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer = PostListSerializer(qs, many=True)
         return Response(serializer.data)
 
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def bulk_delete(self, request):
+        slugs = request.data.get('slugs', [])
+        if not slugs:
+            return Response({'detail': 'slugs 필드가 필요합니다.'}, status=400)
+        deleted, _ = Post.objects.filter(slug__in=slugs, author=request.user).delete()
+        return Response({'deleted': deleted})
+
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def bulk_update_status(self, request):
+        slugs = request.data.get('slugs', [])
+        new_status = request.data.get('status')
+        valid_statuses = ['draft', 'published', 'archived']
+        if not slugs:
+            return Response({'detail': 'slugs 필드가 필요합니다.'}, status=400)
+        if new_status not in valid_statuses:
+            return Response({'detail': f'status는 {valid_statuses} 중 하나여야 합니다.'}, status=400)
+        updated = Post.objects.filter(slug__in=slugs, author=request.user).update(status=new_status)
+        return Response({'updated': updated})
+
 
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CategorySerializer
@@ -82,13 +105,46 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
         )
 
 
-class TagViewSet(viewsets.ReadOnlyModelViewSet):
+class TagViewSet(viewsets.ModelViewSet):
     serializer_class = TagSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        return Tag.objects.annotate(
-            post_count=Count('posts', filter=Q(posts__status='published'))
-        ).filter(post_count__gt=0)
+        qs = Tag.objects.annotate(post_count=Count('posts'))
+        # 공개 목록은 포스트 있는 것만, 인증 사용자는 전체
+        if not self.request.user.is_authenticated:
+            qs = qs.filter(post_count__gt=0)
+        return qs
+
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def merge(self, request):
+        """source 태그의 포스트를 target으로 이전 후 source 삭제"""
+        src_slug = request.data.get('source')
+        dst_slug = request.data.get('target')
+        if not src_slug or not dst_slug:
+            return Response({'detail': 'source와 target이 필요합니다.'}, status=400)
+        try:
+            src = Tag.objects.get(slug=src_slug)
+            dst = Tag.objects.get(slug=dst_slug)
+        except Tag.DoesNotExist:
+            return Response({'detail': '태그를 찾을 수 없습니다.'}, status=404)
+        if src == dst:
+            return Response({'detail': 'source와 target이 같습니다.'}, status=400)
+        # 포스트 재연결
+        for post in src.posts.all():
+            post.tags.add(dst)
+            post.tags.remove(src)
+        moved = src.posts.count()
+        src.delete()
+        return Response({'merged': True, 'posts_moved': moved, 'target': dst_slug})
+
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def cleanup(self, request):
+        """포스트가 없는 고아 태그 일괄 삭제"""
+        orphaned = Tag.objects.annotate(post_count=Count('posts')).filter(post_count=0)
+        count = orphaned.count()
+        orphaned.delete()
+        return Response({'deleted_orphaned': count})
 
 
 class SeriesViewSet(viewsets.ReadOnlyModelViewSet):
@@ -159,6 +215,23 @@ def dashboard_stats(request):
 @api_view(['GET'])
 def health_check(request):
     return Response({'status': 'ok'})
+
+
+AUDIT_FILE = '/tmp/audit.json'
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def audit_results(request):
+    """감사 결과 JSON 파일을 읽어 반환"""
+    if not os.path.exists(AUDIT_FILE):
+        return Response({'total_audited': 0, 'total_issues': 0, 'results': []})
+    try:
+        with open(AUDIT_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return Response(data)
+    except (json.JSONDecodeError, IOError) as e:
+        return Response({'detail': f'감사 파일 읽기 오류: {e}'}, status=500)
 
 
 @api_view(['GET'])
