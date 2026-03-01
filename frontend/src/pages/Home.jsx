@@ -5,7 +5,6 @@ import { FileText, FolderOpen, BookOpen, Tags, ArrowRight, ChevronRight } from '
 
 import HeroSection from '../components/portfolio/HeroSection'
 import TechStack from '../components/portfolio/TechStack'
-import GitHubStats from '../components/portfolio/GitHubStats'
 import Timeline from '../components/portfolio/Timeline'
 import AnimatedCounter from '../components/common/AnimatedCounter'
 import ScrollReveal from '../components/common/ScrollReveal'
@@ -146,9 +145,6 @@ export default function Home() {
       <div className="section-gradient-cyan">
         <TechStack />
       </div>
-
-      {/* GitHub Stats */}
-      <GitHubStats />
 
       {/* Activities Timeline (정적 데이터) */}
       <Timeline items={ACTIVITIES} />
