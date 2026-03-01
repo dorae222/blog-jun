@@ -1,33 +1,25 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import {
-  FileText, FolderOpen, BookOpen, Tags, ArrowRight,
-} from 'lucide-react'
+import { FileText, FolderOpen, BookOpen, Tags } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
 import TechStack from '../components/portfolio/TechStack'
-import ProjectShowcase from '../components/portfolio/ProjectShowcase'
+import GitHubStats from '../components/portfolio/GitHubStats'
 import Timeline from '../components/portfolio/Timeline'
-import PostCard from '../components/blog/PostCard'
 import AnimatedCounter from '../components/common/AnimatedCounter'
 import ScrollReveal from '../components/common/ScrollReveal'
 import { getCategoryIcon } from '../utils/categoryIcons'
-import { getPosts, getCategories, getStats } from '../api/posts'
+import { getCategories, getStats } from '../api/posts'
+import { ACTIVITIES } from '../data/activities'
 
 export default function Home() {
-  const [latestPosts, setLatestPosts] = useState([])
   const [categories, setCategories] = useState([])
   const [stats, setStats] = useState({})
-  const [projects, setProjects] = useState([])
-  const [activities, setActivities] = useState([])
 
   useEffect(() => {
-    getPosts({ page_size: 6, status: 'published' }).then(r => setLatestPosts(r.data.results || []))
     getCategories().then(r => setCategories(r.data.results || r.data || []))
     getStats().then(r => setStats(r.data))
-    getPosts({ page_size: 4, status: 'published', category: 'project' }).then(r => setProjects(r.data.results || []))
-    getPosts({ page_size: 6, status: 'published', category: 'program' }).then(r => setActivities(r.data.results || []))
   }, [])
 
   return (
@@ -50,28 +42,6 @@ export default function Home() {
             <AnimatedCounter end={stats.categories || 0} label="Categories" icon={<FolderOpen size={28} />} />
             <AnimatedCounter end={stats.series || 0} label="Series" icon={<BookOpen size={28} />} />
             <AnimatedCounter end={stats.tags || 0} label="Tags" icon={<Tags size={28} />} />
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Posts */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Latest Posts</h2>
-              <Link to="/search" className="text-sm text-primary-600 hover:underline inline-flex items-center gap-1">
-                View all <ArrowRight size={14} />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestPosts.map((post, i) => (
-              <ScrollReveal key={post.id} delay={i * 0.1}>
-                <PostCard post={post} />
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>
@@ -113,11 +83,11 @@ export default function Home() {
         <TechStack />
       </div>
 
-      {/* Projects */}
-      {projects.length > 0 && <ProjectShowcase projects={projects} />}
+      {/* GitHub Stats */}
+      <GitHubStats />
 
-      {/* Activities Timeline */}
-      {activities.length > 0 && <Timeline items={activities} />}
+      {/* Activities Timeline (정적 데이터) */}
+      <Timeline items={ACTIVITIES} />
     </motion.div>
   )
 }

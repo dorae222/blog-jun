@@ -24,6 +24,8 @@ const STATUS_COLORS = {
   archived:  'bg-gray-100 text-gray-500',
 }
 
+const PAGE_SIZE = 10
+
 // 사이드바 카테고리 목록
 const CATEGORIES = [
   { label: '전체',       slug: '' },
@@ -46,6 +48,8 @@ export default function Dashboard() {
   // 포스트 목록 상태
   const [stats, setStats] = useState(null)
   const [posts, setPosts] = useState([])
+  const [totalPosts, setTotalPosts] = useState(0)
+  const [page, setPage] = useState(1)
   const [statusFilter, setStatusFilter] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('')
   const [auditFilter, setAuditFilter] = useState(false)
@@ -63,17 +67,17 @@ export default function Dashboard() {
   const [mergeDst, setMergeDst] = useState('')
 
   // 데이터 로드
-  const loadPosts = useCallback((statusF = statusFilter, catF = categoryFilter) => {
-    const params = {}
+  const loadPosts = useCallback((statusF = statusFilter, catF = categoryFilter, pageNum = page) => {
+    const params = { page_size: PAGE_SIZE, page: pageNum }
     if (statusF) params.status = statusF
     if (catF)    params['category__slug'] = catF
-    params.page_size = 500
     getPosts(params).then(r => {
       const list = r.data.results || r.data || []
       setPosts(list)
+      setTotalPosts(r.data.count || 0)
       setSelected(new Set())
     }).catch(() => toast.error('포스트 로드 실패'))
-  }, [statusFilter, categoryFilter])
+  }, [statusFilter, categoryFilter, page])
 
   const loadAudit = useCallback(() => {
     getAuditResults().then(r => {
@@ -91,17 +95,19 @@ export default function Dashboard() {
   useEffect(() => {
     if (!user) { navigate('/login'); return }
     getDashboardStats().then(r => setStats(r.data)).catch(() => {})
-    loadPosts()
     loadAudit()
+    // loadPosts는 [statusFilter, categoryFilter, page] effect가 mount 시 자동 실행
   }, [user, navigate])
 
   useEffect(() => {
     if (tab === 'tags') loadTags()
   }, [tab])
 
+  // 필터·페이지 통합 effect — 이중 호출 방지
+  // 필터 버튼에서 setPage(1)과 setFilter를 동시에 호출하면 React 18이 배치해 1회만 실행
   useEffect(() => {
-    loadPosts(statusFilter, categoryFilter)
-  }, [statusFilter, categoryFilter])
+    loadPosts(statusFilter, categoryFilter, page)
+  }, [statusFilter, categoryFilter, page])
 
   // 필터링된 포스트
   const visiblePosts = auditFilter
@@ -251,7 +257,7 @@ export default function Dashboard() {
               {CATEGORIES.map(cat => (
                 <li key={cat.slug}>
                   <button
-                    onClick={() => setCategoryFilter(cat.slug)}
+                    onClick={() => { setCategoryFilter(cat.slug); setPage(1) }}
                     className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
                       categoryFilter === cat.slug
                         ? 'bg-primary-100 text-primary-700 font-medium'
@@ -270,7 +276,7 @@ export default function Dashboard() {
               {['', 'draft', 'published', 'archived'].map(f => (
                 <button
                   key={f}
-                  onClick={() => setStatusFilter(f)}
+                  onClick={() => { setStatusFilter(f); setPage(1) }}
                   className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
                     statusFilter === f ? 'bg-primary-100 text-primary-700 font-medium' : 'hover:bg-gray-100'
                   }`}
@@ -430,9 +436,34 @@ export default function Dashboard() {
               </table>
             </div>
 
-            <p className="mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
-              {visiblePosts.length}개 표시 / 전체 {posts.length}개
-            </p>
+            <div className="mt-3 flex items-center justify-between">
+              <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                {visiblePosts.length}개 표시 / 전체 {totalPosts}개
+              </p>
+              {Math.ceil(totalPosts / PAGE_SIZE) > 1 && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setPage(p => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    className="px-3 py-1 rounded border text-xs transition-colors disabled:opacity-40"
+                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+                  >
+                    Prev
+                  </button>
+                  <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                    {page} / {Math.ceil(totalPosts / PAGE_SIZE)}
+                  </span>
+                  <button
+                    onClick={() => setPage(p => Math.min(Math.ceil(totalPosts / PAGE_SIZE), p + 1))}
+                    disabled={page === Math.ceil(totalPosts / PAGE_SIZE)}
+                    className="px-3 py-1 rounded border text-xs transition-colors disabled:opacity-40"
+                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

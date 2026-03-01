@@ -5,8 +5,14 @@ const STACKS = [
   {
     category: 'AI / NLP',
     description: 'Building intelligent systems with deep learning and NLP',
-    items: ['PyTorch', 'TensorFlow', 'HuggingFace', 'OpenAI', 'LangChain'],
+    items: ['PyTorch', 'TensorFlow', 'HuggingFace', 'OpenAI', 'LangChain', 'LangGraph', 'LangSmith'],
     color: '#FF6F00',
+  },
+  {
+    category: 'Data Science',
+    description: 'Analyzing and modeling data for insights',
+    items: ['NumPy', 'Pandas', 'Scikit-Learn', 'R'],
+    color: '#4DABF7',
   },
   {
     category: 'Data Engineering',
@@ -17,7 +23,7 @@ const STACKS = [
   {
     category: 'Backend',
     description: 'Crafting reliable APIs and server-side logic',
-    items: ['Python', 'Django', 'FastAPI', 'Flask'],
+    items: ['Python', 'Django', 'FastAPI', 'Flask', 'Spring Boot'],
     color: '#3776AB',
   },
   {

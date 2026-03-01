@@ -11,21 +11,17 @@ const BLOG_USER = process.env.BLOG_USER
 const BLOG_PASS = process.env.BLOG_PASS
 
 test('FOMC 포스트 일괄 삭제', async ({ page }) => {
-  // ── 1. 로그인
-  await page.goto(`${BASE}/login`)
-  await page.waitForLoadState('networkidle')
-  await page.fill('input[type="text"], input[name="username"]', BLOG_USER)
-  await page.fill('input[type="password"]', BLOG_PASS)
-  await page.click('button[type="submit"]')
-  await page.waitForURL(`${BASE}/dashboard`, { timeout: 15_000 }).catch(() => {})
-
-  // ── 2. 대시보드에서 API로 포스트 목록 수집 (page_size=500)
-  const token = await page.evaluate(() => {
-    return localStorage.getItem('access') || localStorage.getItem('token') || ''
+  // ── 1. /api/token/ 엔드포인트로 JWT 직접 획득
+  const tokenResp = await page.request.post(`${BASE}/api/token/`, {
+    data: { username: BLOG_USER, password: BLOG_PASS },
   })
+  expect(tokenResp.status()).toBe(200)
+  const { access } = await tokenResp.json()
+  console.log('JWT 토큰 획득 완료')
 
+  // ── 2. API로 포스트 목록 수집 (page_size=500)
   const resp = await page.request.get(`${BASE}/api/posts/?page_size=500`, {
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
+    headers: { Authorization: `Bearer ${access}` },
   })
   const data = await resp.json()
   const allPosts = data.results || data
@@ -47,7 +43,7 @@ test('FOMC 포스트 일괄 삭제', async ({ page }) => {
   const deleteResp = await page.request.post(`${BASE}/api/posts/bulk_delete/`, {
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      Authorization: `Bearer ${access}`,
     },
     data: JSON.stringify({ slugs }),
   })
