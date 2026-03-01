@@ -1,35 +1,45 @@
 // CDN-based tech icons — no more broken inline SVG paths
 // Primary: cdn.simpleicons.org (returns colored SVG)
 // Fallback: devicon CDN or inline SVG for unsupported icons
+import { useState } from 'react'
 
 const ICONS = {
-  aws:           { cdn: 'devicon', slug: 'amazonwebservices/amazonwebservices-plain-wordmark', color: '#FF9900' },
-  python:        { cdn: 'si', slug: 'python',        color: '#3776AB' },
-  django:        { cdn: 'si', slug: 'django',        color: '#092E20' },
-  fastapi:       { cdn: 'si', slug: 'fastapi',       color: '#009688' },
-  flask:         { cdn: 'si', slug: 'flask',         color: '#000000' },
-  react:         { cdn: 'si', slug: 'react',         color: '#61DAFB' },
-  docker:        { cdn: 'si', slug: 'docker',        color: '#2496ED' },
-  pytorch:       { cdn: 'si', slug: 'pytorch',       color: '#EE4C2C' },
-  tensorflow:    { cdn: 'si', slug: 'tensorflow',    color: '#FF6F00' },
-  huggingface:   { cdn: 'si', slug: 'huggingface',   color: '#FFD21E' },
-  langchain:     { cdn: 'si', slug: 'langchain',     color: '#1C3C3C' },
-  openai:        { cdn: 'si', slug: 'openai',        color: '#412991', fallbackSi: true },
-  postgresql:    { cdn: 'si', slug: 'postgresql',    color: '#4169E1' },
-  redis:         { cdn: 'si', slug: 'redis',         color: '#FF4438' },
-  mysql:         { cdn: 'si', slug: 'mysql',         color: '#4479A1' },
-  mongodb:       { cdn: 'si', slug: 'mongodb',       color: '#47A248' },
-  spark:         { cdn: 'si', slug: 'apachespark',   color: '#E25A1C' },
-  hadoop:        { cdn: 'si', slug: 'apachehadoop',  color: '#66CCFF' },
-  hive:          { cdn: 'si', slug: 'apachehive',    color: '#FDEE21' },
-  typescript:    { cdn: 'si', slug: 'typescript',    color: '#3178C6' },
-  tailwindcss:   { cdn: 'si', slug: 'tailwindcss',   color: '#06B6D4' },
-  vite:          { cdn: 'si', slug: 'vite',          color: '#646CFF' },
-  githubactions: { cdn: 'si', slug: 'githubactions', color: '#2088FF' },
-  linux:         { cdn: 'si', slug: 'linux',         color: '#FCC624' },
-  nginx:         { cdn: 'si', slug: 'nginx',         color: '#009639' },
-  cloudflare:    { cdn: 'si', slug: 'cloudflare',    color: '#F38020' },
-  figma:         { cdn: 'si', slug: 'figma',         color: '#F24E1E' },
+  aws:            { cdn: 'devicon', slug: 'amazonwebservices/amazonwebservices-plain-wordmark', color: '#FF9900' },
+  python:         { cdn: 'si', slug: 'python',        color: '#3776AB' },
+  django:         { cdn: 'si', slug: 'django',        color: '#092E20' },
+  fastapi:        { cdn: 'si', slug: 'fastapi',       color: '#009688' },
+  flask:          { cdn: 'si', slug: 'flask',         color: '#000000' },
+  react:          { cdn: 'si', slug: 'react',         color: '#61DAFB' },
+  docker:         { cdn: 'si', slug: 'docker',        color: '#2496ED' },
+  pytorch:        { cdn: 'si', slug: 'pytorch',       color: '#EE4C2C' },
+  tensorflow:     { cdn: 'si', slug: 'tensorflow',    color: '#FF6F00' },
+  huggingface:    { cdn: 'si', slug: 'huggingface',   color: '#FFD21E' },
+  langchain:      { cdn: 'si', slug: 'langchain',     color: '#1C3C3C' },
+  openai:         { cdn: 'si', slug: 'openai',        color: '#412991', fallbackSi: true },
+  postgresql:     { cdn: 'si', slug: 'postgresql',    color: '#4169E1' },
+  redis:          { cdn: 'si', slug: 'redis',         color: '#FF4438' },
+  mysql:          { cdn: 'si', slug: 'mysql',         color: '#4479A1' },
+  mongodb:        { cdn: 'si', slug: 'mongodb',       color: '#47A248' },
+  spark:          { cdn: 'si', slug: 'apachespark',   color: '#E25A1C' },
+  hadoop:         { cdn: 'si', slug: 'apachehadoop',  color: '#66CCFF' },
+  hive:           { cdn: 'si', slug: 'apachehive',    color: '#FDEE21' },
+  typescript:     { cdn: 'si', slug: 'typescript',    color: '#3178C6' },
+  tailwindcss:    { cdn: 'si', slug: 'tailwindcss',   color: '#06B6D4' },
+  vite:           { cdn: 'si', slug: 'vite',          color: '#646CFF' },
+  githubactions:  { cdn: 'si', slug: 'githubactions', color: '#2088FF' },
+  linux:          { cdn: 'si', slug: 'linux',         color: '#FCC624' },
+  nginx:          { cdn: 'si', slug: 'nginx',         color: '#009639' },
+  cloudflare:     { cdn: 'si', slug: 'cloudflare',    color: '#F38020' },
+  figma:          { cdn: 'si', slug: 'figma',         color: '#F24E1E' },
+  // 신규 추가 (8종)
+  numpy:          { cdn: 'si', slug: 'numpy',         color: '#013243' },
+  pandas:         { cdn: 'si', slug: 'pandas',        color: '#150458' },
+  'scikit-learn': { cdn: 'si', slug: 'scikitlearn',   color: '#F7931E' },
+  r:              { cdn: 'si', slug: 'r',              color: '#276DC3' },
+  springboot:     { cdn: 'si', slug: 'springboot',    color: '#6DB33F' },
+  langgraph:      { cdn: 'si', slug: 'langgraph',     color: '#22C55E' },
+  langsmith:      { cdn: 'si', slug: 'langsmith',     color: '#B45309' },
+  pig:            { cdn: 'devicon', slug: 'apachepig/apachepig-original', color: '#FF9900' },
 }
 
 function getIconUrl(icon) {
@@ -42,10 +52,11 @@ function getIconUrl(icon) {
 }
 
 export default function TechIcon({ name, size = 24, className = '' }) {
-  const key = name.toLowerCase().replace(/[\s./]/g, '')
+  const [broken, setBroken] = useState(false)
+  const key = name.toLowerCase().replace(/[\s./]/g, '')  // 하이픈은 유지
   const icon = ICONS[key]
 
-  if (!icon) {
+  if (!icon || broken) {
     return (
       <span
         className={`inline-flex items-center justify-center rounded text-xs font-bold ${className}`}
@@ -64,6 +75,7 @@ export default function TechIcon({ name, size = 24, className = '' }) {
       height={size}
       className={className}
       loading="lazy"
+      onError={() => setBroken(true)}
     />
   )
 }
