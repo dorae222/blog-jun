@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ScrollReveal from '../common/ScrollReveal'
 import TiltCard from '../effects/TiltCard'
 
@@ -22,44 +22,43 @@ const LANG_COLORS = {
 }
 const getLangColor = (name) => LANG_COLORS[name] || '#6366f1'
 
-/* ─── 기여도 히트맵 색상 (인디고) ──────────────────────── */
+/* ─── 기여도 히트맵 색상 ────────────────────────────────── */
 const HEAT = ['#eef2ff', '#c7d2fe', '#818cf8', '#4f46e5', '#312e81']
 const getHeatColor = (count, max) => {
   if (count === 0) return HEAT[0]
   return HEAT[Math.min(4, Math.ceil((count / Math.max(max, 1)) * 4))]
 }
 
-/* ─── count-up 훅 ──────────────────────────────────────── */
-function useCountUp(target, inView, delayMs = 0) {
+/* ─── count-up 훅 (value 변경 시 트리거, IntersectionObserver 불필요) ── */
+function useCountUp(target, delayMs = 0) {
   const [count, setCount] = useState(0)
   useEffect(() => {
-    if (!inView || !target) return
+    if (!target) return
     let rafId
     let startTs = null
-    const duration = 1500
-    const step = (ts) => {
-      if (!startTs) startTs = ts + delayMs
-      const t = Math.min(Math.max(0, ts - startTs) / duration, 1)
-      setCount(Math.round((1 - (1 - t) ** 3) * target))
-      if (t < 1) rafId = requestAnimationFrame(step)
-    }
-    rafId = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(rafId)
-  }, [inView, target, delayMs])
+    const duration = 1400
+    const timer = setTimeout(() => {
+      const step = (ts) => {
+        if (!startTs) startTs = ts
+        const t = Math.min((ts - startTs) / duration, 1)
+        setCount(Math.round((1 - (1 - t) ** 3) * target))
+        if (t < 1) rafId = requestAnimationFrame(step)
+      }
+      rafId = requestAnimationFrame(step)
+    }, delayMs)
+    return () => { clearTimeout(timer); cancelAnimationFrame(rafId) }
+  }, [target, delayMs])
   return count
 }
 
-/* ─── 애니메이션 통계 배지 ─────────────────────────────── */
+/* ─── 통계 배지 (whileInView 방식) ─────────────────────── */
 function StatBadge({ icon, label, value, gradient, delay = 0 }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  const count = useCountUp(value, inView, delay * 200)
-
+  const count = useCountUp(value, delay * 150)
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
       transition={{ delay, duration: 0.5, ease: 'easeOut' }}
       whileHover={{ y: -5, scale: 1.04 }}
       className="rounded-2xl p-5 relative overflow-hidden cursor-default select-none"
@@ -72,7 +71,6 @@ function StatBadge({ icon, label, value, gradient, delay = 0 }) {
       <div className="mt-1.5 text-sm font-medium" style={{ color: 'rgba(255,255,255,0.75)' }}>
         {label}
       </div>
-      {/* 장식 원 */}
       <div className="absolute -right-8 -bottom-8 rounded-full"
         style={{ width: 80, height: 80, background: 'rgba(255,255,255,0.1)' }} />
       <div className="absolute -right-3 -top-3 rounded-full"
@@ -85,9 +83,6 @@ function StatBadge({ icon, label, value, gradient, delay = 0 }) {
 const HEATMAP_WEEKS = 20
 
 function ContribHeatmap({ data = {} }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-
   const today = new Date()
   const weeks = Array.from({ length: HEATMAP_WEEKS }, (_, wi) =>
     Array.from({ length: 7 }, (_, di) => {
@@ -97,18 +92,16 @@ function ContribHeatmap({ data = {} }) {
       return { date: key, count: data[key] || 0 }
     })
   )
-
   const maxCount = Math.max(...weeks.flat().map(c => c.count), 1)
   const totalEvents = weeks.flat().reduce((s, c) => s + c.count, 0)
 
   return (
-    <div ref={ref} className="p-5 select-none">
-      {/* 요약 */}
+    <div className="p-5 select-none">
       <p className="text-sm font-medium mb-3" style={{ color: 'var(--text-secondary)' }}>
-        최근 {HEATMAP_WEEKS}주간 공개 이벤트 <strong style={{ color: 'var(--color-primary-500)' }}>{totalEvents}건</strong>
+        최근 {HEATMAP_WEEKS}주간 공개 이벤트{' '}
+        <strong style={{ color: 'var(--color-primary-500)' }}>{totalEvents}건</strong>
       </p>
 
-      {/* 그리드 */}
       <div className="flex gap-[3px] overflow-x-auto pb-1">
         {weeks.map((week, wi) => (
           <div key={wi} className="flex flex-col gap-[3px]">
@@ -119,10 +112,11 @@ function ContribHeatmap({ data = {} }) {
                   key={di}
                   title={`${day.date}: ${day.count}건`}
                   initial={{ opacity: 0, scale: 0.3 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: '-20px' }}
                   transition={{
-                    delay: wi * 0.02 + di * 0.004,
-                    duration: 0.35,
+                    delay: wi * 0.015 + di * 0.003,
+                    duration: 0.3,
                     type: 'spring',
                     stiffness: 400,
                     damping: 18,
@@ -159,16 +153,12 @@ function ContribHeatmap({ data = {} }) {
 
 /* ─── 언어 분포 바 ─────────────────────────────────────── */
 function LangBars({ langs, total }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-30px' })
-
   return (
-    <div ref={ref} className="p-5">
-      {/* 언어 태그 */}
+    <div className="p-5">
+      {/* 태그 */}
       <div className="flex flex-wrap gap-2 mb-5">
         {langs.map(([name], i) => (
-          <span
-            key={i}
+          <span key={i}
             className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full"
             style={{
               background: `${getLangColor(name)}18`,
@@ -195,8 +185,9 @@ function LangBars({ langs, total }) {
               <div className="rounded-full overflow-hidden" style={{ height: 6, background: '#e0e7ff' }}>
                 <motion.div
                   initial={{ width: 0, opacity: 0 }}
-                  animate={inView ? { width: `${pct}%`, opacity: 1 } : {}}
-                  transition={{ delay: i * 0.1 + 0.3, duration: 0.9, ease: 'easeOut' }}
+                  whileInView={{ width: `${pct}%`, opacity: 1 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{ delay: i * 0.1 + 0.2, duration: 0.9, ease: 'easeOut' }}
                   style={{
                     height: '100%',
                     background: getLangColor(name),
@@ -269,17 +260,14 @@ export default function GitHubStats() {
       .then(r => r.json()).then(d => Array.isArray(d) && setEvents(d)).catch(() => {})
   }, [])
 
-  /* 파생 통계 */
   const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0)
   const totalForks = repos.reduce((s, r) => s + (r.forks_count || 0), 0)
 
-  /* 언어 분포 */
   const langMap = {}
   repos.forEach(r => r.language && (langMap[r.language] = (langMap[r.language] || 0) + 1))
   const topLangs  = Object.entries(langMap).sort((a, b) => b[1] - a[1]).slice(0, 7)
   const langTotal = topLangs.reduce((s, [, c]) => s + c, 0)
 
-  /* 이벤트 → 기여도 맵 */
   const contribMap = {}
   events.forEach(e => {
     const date = e.created_at?.slice(0, 10)
@@ -312,7 +300,7 @@ export default function GitHubStats() {
           </div>
         </ScrollReveal>
 
-        {/* 통계 배지 (4개) */}
+        {/* 통계 배지 */}
         <div className="mb-10">
           <GroupLabel icon="📊" label="Overview" delay={0.05} />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -351,14 +339,14 @@ export default function GitHubStats() {
           </div>
         )}
 
-        {/* Streak SVG */}
+        {/* Streak */}
         <div className="mb-8">
           <GroupLabel icon="🔥" label="Streak" delay={0.4} />
           <SvgCard src={streakUrl} alt="GitHub Streak" delay={0.45}
             glowColor="rgba(239,68,68,0.35)" accent="#ef4444" />
         </div>
 
-        {/* Activity Graph SVG */}
+        {/* Activity Graph */}
         <div>
           <GroupLabel icon="📈" label="Contribution Graph" delay={0.5} />
           <SvgCard src={graphUrl} alt="Contribution Graph" delay={0.55}
