@@ -1,4 +1,4 @@
-.PHONY: dev up down migrate seed shell
+.PHONY: dev up down migrate seed shell deploy
 
 dev:
 	docker compose up --build
@@ -32,3 +32,6 @@ prod-migrate:
 
 prod-logs:
 	docker compose -f docker-compose.prod.yml logs -f
+
+deploy:
+	./deploy.sh
