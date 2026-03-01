@@ -145,7 +145,7 @@ export default function About() {
                 <span className="text-sm">Seoul, South Korea</span>
               </div>
               <p className="text-base max-w-xl mb-6" style={{ color: 'var(--text-secondary)' }}>
-                자연어처리(NLP) 기반 AI 엔지니어로, 클라우드 인프라와 풀스택 개발을 아우르며 실질적인 AI 서비스를 설계하고 구현합니다. AWS 4x Certified.
+                자연어처리(NLP) 기반 AI 엔지니어로, 클라우드 인프라와 풀스택 개발을 아우르며 실질적인 AI 서비스를 설계하고 구현합니다. AWS Certified.
               </p>
               <div className="flex items-center justify-center lg:justify-start gap-4">
                 <a
@@ -194,7 +194,7 @@ export default function About() {
               경영학부 + 빅데이터융합전공
             </p>
             <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-              2019.03 - 2025.02 | GPA 3.83 / 4.5
+              2019.03 - 2025.02 | GPA 4.0 / 4.5
             </p>
           </div>
         </ScrollReveal>
@@ -241,7 +241,16 @@ export default function About() {
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-3">
               <TechIcon name="AWS" size={20} />
-              <h3 className="font-semibold" style={{ color: 'var(--text)' }}>Amazon Web Services (4x)</h3>
+              <h3 className="font-semibold" style={{ color: 'var(--text)' }}>Amazon Web Services</h3>
+              <a
+                href="https://www.credly.com/users/hyeongjun-do"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs px-2 py-0.5 rounded-full border hover:opacity-80 transition-opacity"
+                style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+              >
+                Credly →
+              </a>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {CERTS_AWS.map((cert) => (
