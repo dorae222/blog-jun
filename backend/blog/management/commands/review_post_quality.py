@@ -97,8 +97,8 @@ class Command(BaseCommand):
         parser.add_argument(
             '--output',
             type=str,
-            default='/app/archived_posts_report.txt',
-            help='리포트 저장 경로 (기본값: /app/archived_posts_report.txt)',
+            default='/tmp/archived_posts_report.txt',
+            help='리포트 저장 경로 (기본값: /tmp/archived_posts_report.txt)',
         )
 
     def handle(self, *args, **options):
