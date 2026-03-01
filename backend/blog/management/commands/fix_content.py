@@ -51,10 +51,37 @@ def fix_meta_remnants(content):
     return META_RE.sub('', content)
 
 
+def fix_wiki_links(content):
+    """위키링크를 일반 텍스트로 변환
+    [[링크|표시텍스트]] → 표시텍스트
+    [[링크]] → 링크
+    """
+    content = re.sub(r'\[\[([^\]|]+)\|([^\]]+)\]\]', r'\2', content)
+    content = re.sub(r'\[\[([^\]]+)\]\]', r'\1', content)
+    return content
+
+
+def fix_dupe_title(content, title):
+    """content 첫 줄의 h1이 post.title과 동일하면 제거"""
+    lines = content.split('\n')
+    if lines and re.match(r'^#\s+', lines[0]):
+        h1_text = re.sub(r'^#\s+', '', lines[0]).strip()
+        if h1_text == title.strip():
+            return '\n'.join(lines[1:]).lstrip('\n')
+    return content
+
+
+# content만 받는 fix 함수
 FIX_FUNCS = {
     'html': fix_html_tags,
     'jupyter': fix_jupyter,
     'meta': fix_meta_remnants,
+    'wikilink': fix_wiki_links,
+}
+
+# title도 함께 받아야 하는 fix 함수 (post 객체 전달 방식)
+FIX_FUNCS_WITH_TITLE = {
+    'dupe_title': fix_dupe_title,
 }
 
 
@@ -62,11 +89,12 @@ class Command(BaseCommand):
     help = '포스트 콘텐츠를 자동 수정합니다.'
 
     def add_arguments(self, parser):
+        all_choices = list(FIX_FUNCS.keys()) + list(FIX_FUNCS_WITH_TITLE.keys())
         parser.add_argument(
             '--fix',
             required=True,
-            choices=list(FIX_FUNCS.keys()),
-            help='수정 유형: html | jupyter | meta',
+            choices=all_choices,
+            help='수정 유형: html | jupyter | meta | wikilink | dupe_title',
         )
         parser.add_argument(
             '--dry-run',
@@ -80,8 +108,11 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        fix_func = FIX_FUNCS[options['fix']]
+        fix_key = options['fix']
         dry_run = options['dry_run']
+        needs_title = fix_key in FIX_FUNCS_WITH_TITLE
+
+        fix_func = FIX_FUNCS_WITH_TITLE[fix_key] if needs_title else FIX_FUNCS[fix_key]
 
         qs = Post.objects.all()
         if options['category']:
@@ -90,7 +121,7 @@ class Command(BaseCommand):
         modified = 0
         for post in qs.iterator(chunk_size=200):
             original = post.content or ''
-            fixed = fix_func(original)
+            fixed = fix_func(original, post.title) if needs_title else fix_func(original)
             if fixed != original:
                 modified += 1
                 if dry_run:
@@ -102,6 +133,6 @@ class Command(BaseCommand):
         mode = '[dry-run] ' if dry_run else ''
         self.stdout.write(
             self.style.SUCCESS(
-                f'{mode}완료: {modified}개 포스트 수정됨 (fix={options["fix"]})'
+                f'{mode}완료: {modified}개 포스트 수정됨 (fix={fix_key})'
             )
         )
