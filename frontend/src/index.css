@@ -73,6 +73,24 @@ body {
   background: var(--code-bg) !important;
 }
 
+/* prose가 pre에 강제하는 다크 배경 제거 */
+.prose pre {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+.prose :not(pre) > code {
+  background-color: var(--code-bg) !important;
+  color: var(--text) !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 4px !important;
+  font-weight: 400 !important;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after { content: '' !important; }
+
 /* KaTeX */
 .katex-display {
   overflow-x: auto;

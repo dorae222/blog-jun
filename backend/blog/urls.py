@@ -15,4 +15,5 @@ urlpatterns = [
     path('dashboard/stats/', views.dashboard_stats, name='dashboard-stats'),
     path('stats/', views.public_stats, name='public-stats'),
     path('health/', views.health_check, name='health-check'),
+    path('audit/results/', views.audit_results, name='audit-results'),
 ]

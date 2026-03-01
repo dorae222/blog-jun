@@ -20,3 +20,9 @@ export const uploadImage = (formData) =>
 
 export const getStats = () => client.get('/stats/')
 export const getDashboardStats = () => client.get('/dashboard/stats/')
+
+export const bulkDeletePosts = (slugs) => client.post('/posts/bulk_delete/', { slugs })
+export const bulkUpdateStatus = (slugs, status) => client.post('/posts/bulk_update_status/', { slugs, status })
+export const getAuditResults = () => client.get('/audit/results/')
+export const mergeTags = (source, target) => client.post('/tags/merge/', { source, target })
+export const cleanupTags = () => client.post('/tags/cleanup/')
