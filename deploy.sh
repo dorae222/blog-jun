@@ -44,17 +44,17 @@ docker image prune -f
 REMOTE
 
 echo "▶ 2/3  헬스체크 대기..."
-for i in $(seq 1 12); do
-  if curl -sf https://blog.dorae222.com/api/health/ > /dev/null 2>&1; then
+for i in $(seq 1 10); do
+  if curl -sf https://blog.dorae222.com/ > /dev/null 2>&1; then
     echo "  ✓ 헬스체크 통과 (시도 $i)"
     break
   fi
-  echo "  헬스체크 실패 $i/12, 재시도..."
-  sleep 5
+  echo "  헬스체크 실패 $i/10, 재시도..."
+  sleep 10
 done
 
 echo "▶ 3/3  렌더링 검증"
-if curl -sf https://blog.dorae222.com/api/health/ > /dev/null; then
+if curl -sf https://blog.dorae222.com/ > /dev/null; then
   echo "✓ 배포 완료 — https://blog.dorae222.com"
 else
   echo "✗ 사이트 응답 없음, 로그 확인:"
