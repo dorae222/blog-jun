@@ -80,6 +80,10 @@ function CodeBlock({ children, className, ...props }) {
 
 function ImageWithZoom({ src, alt }) {
   const [zoomed, setZoomed] = useState(false)
+  const [broken, setBroken] = useState(false)
+
+  // 깨진 이미지(Pasted image 등 404)는 렌더링하지 않음
+  if (broken) return null
 
   return (
     <>
@@ -88,6 +92,7 @@ function ImageWithZoom({ src, alt }) {
         alt={alt || ''}
         loading="lazy"
         onClick={() => setZoomed(true)}
+        onError={() => setBroken(true)}
         className="rounded-lg cursor-zoom-in max-w-full mx-auto hover:shadow-lg transition-shadow"
       />
       {zoomed && (
