@@ -37,14 +37,6 @@ export const ACTIVITIES = [
   },
   {
     id: 5,
-    date: '2025.07 – 현재',
-    title: 'TOBIGS — 연합 AI 동아리',
-    description: '딥러닝 스터디, 논문 리뷰, AI 프로젝트 진행. 20기 활동',
-    tags: ['Deep Learning', 'NLP', 'CV'],
-    type: 'activity',
-  },
-  {
-    id: 6,
     date: '2024.07 – 12',
     title: 'BizLab Big Data Lab',
     description: '한양대학교 경영대 빅데이터 랩 활동. 데이터 분석·ML 프로젝트 수행',
@@ -52,7 +44,7 @@ export const ACTIVITIES = [
     type: 'activity',
   },
   {
-    id: 7,
+    id: 6,
     date: '2023.07 – 2024.06',
     title: 'TOBIGS — 연합 AI 동아리',
     description: '딥러닝 스터디, 논문 리뷰, AI 프로젝트 진행. 18기 활동',
@@ -60,7 +52,7 @@ export const ACTIVITIES = [
     type: 'activity',
   },
   {
-    id: 8,
+    id: 7,
     date: '2023.03 – 2024.02',
     title: 'HAI — 한양대 교내 AI 동아리',
     description: 'Kaggle 한국어 지역 방언 분류 대회 2위(97.2%), RAG 기반 교내 동아리 챗봇 팀 프로젝트 진행',
@@ -69,7 +61,7 @@ export const ACTIVITIES = [
     type: 'activity',
   },
   {
-    id: 9,
+    id: 8,
     date: '2022.09 – 10',
     title: '한국관광공사 데이터랩 공모전 — 우수상(2등)',
     description: '관광 부상지역 예측·원인 분석 서비스 (ARIMA, Prophet, TopicModeling)',
@@ -77,7 +69,7 @@ export const ACTIVITIES = [
     type: 'award',
   },
   {
-    id: 10,
+    id: 9,
     date: '2022.10 – 2023.03',
     title: 'Encore 빅데이터 엔지니어 17기',
     description: 'PlayData · Encore 주관. Hadoop, Spark, Hive 기반 빅데이터 엔지니어링 교육',
@@ -85,7 +77,7 @@ export const ACTIVITIES = [
     type: 'education',
   },
   {
-    id: 11,
+    id: 10,
     date: '2022.07 – 09',
     title: '데이터 청년 캠퍼스',
     description: '한국데이터산업진흥원 주관. 데이터 분석·ML 집중 과정 수료',
