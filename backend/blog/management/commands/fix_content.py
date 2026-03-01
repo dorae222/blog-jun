@@ -12,22 +12,112 @@ from django.core.management.base import BaseCommand
 from blog.models import Post
 
 
+_CODE_RE = re.compile(r'(```[\s\S]*?```|`[^`\n]+`)')
+
+
+def _inner_text(html):
+    """HTML 태그 제거 후 텍스트 추출 (기본 엔티티 변환 포함)"""
+    text = re.sub(r'<[^>]+>', '', html)
+    for entity, char in [('&amp;', '&'), ('&lt;', '<'), ('&gt;', '>'),
+                         ('&nbsp;', ' '), ('&quot;', '"')]:
+        text = text.replace(entity, char)
+    return text.strip()
+
+
+def _convert_html_table(table_html):
+    """HTML 테이블 → 마크다운 테이블
+    rowspan/colspan 있는 복잡한 테이블은 파이프 구분 텍스트로 변환
+    """
+    rows_html = re.findall(r'<tr[^>]*>(.*?)</tr>', table_html, re.IGNORECASE | re.DOTALL)
+    if not rows_html:
+        return _inner_text(table_html)
+
+    has_complex = bool(re.search(r'(rowspan|colspan)\s*=', table_html, re.IGNORECASE))
+
+    parsed = []
+    for row_html in rows_html:
+        splits = list(re.finditer(r'<t[dh][^>]*>', row_html, re.IGNORECASE))
+        if not splits:
+            continue
+        cells = []
+        for j, m in enumerate(splits):
+            end = splits[j + 1].start() if j + 1 < len(splits) else len(row_html)
+            raw = re.sub(r'</t[dh]>', '', row_html[m.end():end], flags=re.IGNORECASE)
+            cells.append(_inner_text(raw))
+        if any(cells):
+            parsed.append(cells)
+
+    if not parsed:
+        return _inner_text(table_html)
+
+    if has_complex:
+        # rowspan/colspan → 파이프 구분 텍스트 (마크다운 테이블 구조 포기)
+        return '\n'.join(' | '.join(row) for row in parsed)
+
+    # 단순 테이블 → 마크다운
+    col_count = max(len(r) for r in parsed)
+    lines = ['| ' + ' | '.join(parsed[0]) + ' |',
+             '| ' + ' | '.join(['---'] * col_count) + ' |']
+    for row in parsed[1:]:
+        lines.append('| ' + ' | '.join(row) + ' |')
+    return '\n'.join(lines)
+
+
+def _convert_html_list(list_html, ordered=False):
+    """HTML ul/ol → 마크다운 리스트 (닫는 태그 없는 경우도 처리)"""
+    items = re.findall(
+        r'<li[^>]*>(.*?)(?:</li>|(?=<li|</[uo]l>))',
+        list_html, re.IGNORECASE | re.DOTALL
+    )
+    if not items:
+        return _inner_text(list_html)
+    result = []
+    for i, item_html in enumerate(items):
+        text = _inner_text(item_html)
+        if text:
+            result.append(f'{i + 1}. {text}' if ordered else f'- {text}')
+    return '\n'.join(result)
+
+
+def _process_html(text):
+    """코드블록 외부 영역의 HTML 태그를 마크다운으로 변환"""
+    # 테이블
+    text = re.sub(r'<table[^>]*>.*?</table>',
+                  lambda m: _convert_html_table(m.group(0)),
+                  text, flags=re.IGNORECASE | re.DOTALL)
+    # 리스트
+    text = re.sub(r'<ul[^>]*>.*?</ul>',
+                  lambda m: _convert_html_list(m.group(0), ordered=False),
+                  text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r'<ol[^>]*>.*?</ol>',
+                  lambda m: _convert_html_list(m.group(0), ordered=True),
+                  text, flags=re.IGNORECASE | re.DOTALL)
+    # 헤딩 h1~h6
+    for lvl in range(1, 7):
+        hashes = '#' * lvl
+        text = re.sub(
+            rf'<h{lvl}[^>]*>(.*?)</h{lvl}>',
+            lambda m, h=hashes: f'{h} {_inner_text(m.group(1))}',
+            text, flags=re.IGNORECASE | re.DOTALL
+        )
+    # <hr> → ---
+    text = re.sub(r'<hr\s*/?>', '\n---\n', text, flags=re.IGNORECASE)
+    # 인라인 태그
+    text = re.sub(r'<u>(.*?)</u>', r'\1', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
+    text = re.sub(r'<(?:b|strong)>(.*?)</(?:b|strong)>', r'**\1**', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'<(?:i|em)>(.*?)</(?:i|em)>', r'*\1*', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'<span[^>]*>(.*?)</span>', r'\1', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'<(?:p|div|font)[^>]*>', '\n', text, flags=re.IGNORECASE)
+    text = re.sub(r'</(?:p|div|font)>', '\n', text, flags=re.IGNORECASE)
+    return text
+
+
 def fix_html_tags(content):
-    """HTML 태그를 마크다운으로 변환 또는 제거"""
-    # <u>text</u> → text (밑줄 마크다운 없음, 그냥 제거)
-    content = re.sub(r'<u>(.*?)</u>', r'\1', content, flags=re.DOTALL | re.IGNORECASE)
-    # <br> → 빈 줄
-    content = re.sub(r'<br\s*/?>', '\n', content, flags=re.IGNORECASE)
-    # <b>text</b> / <strong>text</strong> → **text**
-    content = re.sub(r'<(?:b|strong)>(.*?)</(?:b|strong)>', r'**\1**', content, flags=re.DOTALL | re.IGNORECASE)
-    # <i>text</i> / <em>text</em> → *text*
-    content = re.sub(r'<(?:i|em)>(.*?)</(?:i|em)>', r'*\1*', content, flags=re.DOTALL | re.IGNORECASE)
-    # <span ...>text</span> → text
-    content = re.sub(r'<span[^>]*>(.*?)</span>', r'\1', content, flags=re.DOTALL | re.IGNORECASE)
-    # 나머지 안전한 인라인 태그 제거
-    content = re.sub(r'<(?:p|div|font)[^>]*>', '\n', content, flags=re.IGNORECASE)
-    content = re.sub(r'</(?:p|div|font)>', '\n', content, flags=re.IGNORECASE)
-    return content
+    """HTML 태그를 마크다운으로 변환 (코드블록 내용은 보호)"""
+    parts = _CODE_RE.split(content)
+    return ''.join(part if i % 2 == 1 else _process_html(part)
+                   for i, part in enumerate(parts))
 
 
 def fix_jupyter(content):
