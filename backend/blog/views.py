@@ -38,9 +38,12 @@ class PostViewSet(viewsets.ModelViewSet):
     ordering_fields = ['created_at', 'published_at', 'view_count']
     lookup_field = 'slug'
 
-    @method_decorator(cache_page(60 * 5))  # 5분 캐시 (목록)
     def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
+        # 인증된 사용자(대시보드)는 캐시 bypass — 삭제 직후 즉시 반영
+        if request.user.is_authenticated:
+            return viewsets.ModelViewSet.list(self, request, *args, **kwargs)
+        # 비인증 공개 목록에만 5분 캐시 적용
+        return cache_page(60 * 5)(super().list)(request, *args, **kwargs)
 
     def get_queryset(self):
         qs = Post.objects.select_related('category', 'series', 'author').prefetch_related('tags')
