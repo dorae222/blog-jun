@@ -27,18 +27,28 @@ PATTERNS = {
         re.MULTILINE | re.IGNORECASE
     ),
     'ENCODING': re.compile(r'\x00|[\ufffd\ufffe\uffff]'),
+    'WIKI_LINK': re.compile(r'\[\[([^\]]+)\]\]'),
+    'ATTACHMENT': re.compile(r'!\[[^\]]*\]\(attachment:[^)]+\)'),
+    'EMPTY_HEADING': re.compile(r'^#{1,6}\s*$', re.MULTILINE),
 }
 
 SHORT_THRESHOLD = 100
 
+_H1_RE = re.compile(r'^#\s+(.+)$', re.MULTILINE)
 
-def detect_issues(content):
+
+def detect_issues(content, title=None):
     issues = []
     if len(content) < SHORT_THRESHOLD:
         issues.append('SHORT')
     for code, pattern in PATTERNS.items():
         if pattern.search(content):
             issues.append(code)
+    # 제목 중복 감지: content 첫 번째 h1이 post.title과 동일한 경우
+    if title:
+        m = _H1_RE.match(content.lstrip('\n'))
+        if m and m.group(1).strip() == title.strip():
+            issues.append('DUPE_TITLE')
     return issues
 
 
@@ -70,7 +80,7 @@ class Command(BaseCommand):
         issue_count = 0
 
         for post in qs.iterator(chunk_size=200):
-            issues = detect_issues(post.content or '')
+            issues = detect_issues(post.content or '', title=post.title)
             if issues:
                 issue_count += 1
                 results.append({
