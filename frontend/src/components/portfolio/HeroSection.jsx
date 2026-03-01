@@ -124,7 +124,6 @@ export default function HeroSection() {
               'NLP / AI Engineer',
               'Cloud & Infrastructure Builder',
               'Full-Stack Developer',
-              'AWS 4x Certified',
             ]}
           />
         </motion.div>
@@ -136,7 +135,9 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          Focused on NLP and AI, exploring cloud infrastructure along the way.
+          Building NLP &amp; LLM systems, cloud-native infrastructure,
+          <br />
+          and full-stack products — then writing about them here.
         </motion.p>
 
         {/* CTA */}

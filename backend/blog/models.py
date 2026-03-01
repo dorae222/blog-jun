@@ -82,6 +82,12 @@ class Post(models.Model):
     source_path = models.CharField(max_length=500, blank=True, help_text="Original file path")
     reading_time = models.IntegerField(default=0, help_text="Estimated reading time in minutes")
     view_count = models.IntegerField(default=0)
+    pdf_file = models.FileField(
+        upload_to='posts/pdfs/',
+        blank=True,
+        null=True,
+        help_text="포스트에 첨부할 PDF 파일",
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_at = models.DateTimeField(null=True, blank=True)
