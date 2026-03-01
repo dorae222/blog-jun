@@ -33,7 +33,7 @@ services:
           memory: 256M
 
   backend:
-    image: dorae222/blog-backend:${IMAGE_TAG:-latest}
+    build: ./backend
     restart: always
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.prod
@@ -68,7 +68,7 @@ services:
           memory: 1G
 
   frontend:
-    image: dorae222/blog-frontend:${IMAGE_TAG:-latest}
+    build: ./frontend
     restart: always
     ports:
       - "80:80"
