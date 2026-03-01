@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import {
-  BarChart3, Code2, Trophy,
+  BarChart3, Activity, Code2, Trophy,
   BookOpen, ExternalLink, Star, GitFork,
-  Package, Users,
+  Target, Calendar, Zap, Package, Users,
 } from 'lucide-react'
 import ScrollReveal from '../common/ScrollReveal'
 import TiltCard from '../effects/TiltCard'
@@ -26,6 +26,13 @@ const LANG_COLORS = {
   Dockerfile: '#0db7ed',
 }
 const getLangColor = (name) => LANG_COLORS[name] || '#6366f1'
+
+/* ─── 기여도 히트맵 색상 ────────────────────────────────── */
+const HEAT = ['#eef2ff', '#c7d2fe', '#818cf8', '#4f46e5', '#312e81']
+const getHeatColor = (count, max) => {
+  if (count === 0) return HEAT[0]
+  return HEAT[Math.min(4, Math.ceil((count / Math.max(max, 1)) * 4))]
+}
 
 /* ─── count-up 훅 ─────────────────────────────────────── */
 function useCountUp(target, delayMs = 0) {
@@ -74,6 +81,117 @@ function StatBadge({ icon: Icon, label, value, gradient, delay = 0 }) {
       <div className="absolute -right-3 -top-3 rounded-full"
         style={{ width: 40, height: 40, background: 'rgba(255,255,255,0.07)' }} />
     </motion.div>
+  )
+}
+
+/* ─── 이벤트 유형 한국어 맵 ─────────────────────────────── */
+const TYPE_KO = {
+  PushEvent:          '푸시',
+  PullRequestEvent:   'PR',
+  IssuesEvent:        '이슈',
+  WatchEvent:         '스타',
+  ForkEvent:          '포크',
+  CreateEvent:        '생성',
+  DeleteEvent:        '삭제',
+  IssueCommentEvent:  '댓글',
+  CommitCommentEvent: '댓글',
+  ReleaseEvent:       '릴리즈',
+}
+
+/* ─── 기여도 히트맵 (20주 × 7일) ──────────────────────── */
+const HEATMAP_WEEKS = 20
+
+function ContribHeatmap({ data = {}, events = [] }) {
+  const today = new Date()
+  const weeks = Array.from({ length: HEATMAP_WEEKS }, (_, wi) =>
+    Array.from({ length: 7 }, (_, di) => {
+      const d = new Date(today)
+      d.setDate(today.getDate() - (HEATMAP_WEEKS - 1 - wi) * 7 - (6 - di))
+      const key = d.toISOString().slice(0, 10)
+      return { date: key, count: data[key] || 0 }
+    })
+  )
+  const maxCount = Math.max(...weeks.flat().map(c => c.count), 1)
+  const totalEvents = weeks.flat().reduce((s, c) => s + c.count, 0)
+  const activeDays = weeks.flat().filter(c => c.count > 0).length
+
+  const typeCount = {}
+  events.forEach(e => { if (e.type) typeCount[e.type] = (typeCount[e.type] || 0) + 1 })
+  const topType = Object.entries(typeCount).sort((a, b) => b[1] - a[1])[0]?.[0] || ''
+  const avgPerDay = activeDays > 0 ? (totalEvents / activeDays).toFixed(1) : 0
+
+  const highlights = [
+    { Icon: Target,   value: TYPE_KO[topType] || '-', label: '주요 활동' },
+    { Icon: Calendar, value: `${activeDays}일`,        label: '활동 일수' },
+    { Icon: Zap,      value: `${avgPerDay}건`,         label: '일평균 이벤트' },
+  ]
+
+  return (
+    <div className="p-5 select-none">
+      <p className="text-sm font-medium mb-3" style={{ color: 'var(--text-secondary)' }}>
+        최근 공개 이벤트{' '}
+        <strong style={{ color: 'var(--color-primary-500)' }}>{totalEvents}건</strong>
+      </p>
+
+      <div className="flex gap-[3px] overflow-x-auto pb-1">
+        {weeks.map((week, wi) => (
+          <div key={wi} className="flex flex-col gap-[3px]">
+            {week.map((day, di) => {
+              const color = getHeatColor(day.count, maxCount)
+              return (
+                <motion.div
+                  key={di}
+                  title={`${day.date}: ${day.count}건`}
+                  initial={{ opacity: 0, scale: 0.3 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: '-20px' }}
+                  transition={{
+                    delay: wi * 0.015 + di * 0.003,
+                    duration: 0.3,
+                    type: 'spring',
+                    stiffness: 400,
+                    damping: 18,
+                  }}
+                  whileHover={{ scale: 1.9, zIndex: 10 }}
+                  style={{
+                    width: 11, height: 11,
+                    borderRadius: 2,
+                    background: color,
+                    flexShrink: 0,
+                    cursor: 'pointer',
+                    boxShadow: day.count > 0
+                      ? `1px 1px 0 rgba(0,0,0,0.08), 0 0 ${Math.min(day.count * 2, 8)}px ${color}90`
+                      : '1px 1px 0 rgba(0,0,0,0.04)',
+                  }}
+                />
+              )
+            })}
+          </div>
+        ))}
+      </div>
+
+      {/* 범례 */}
+      <div className="flex items-center gap-1 mt-3 justify-end">
+        <span style={{ fontSize: 10, color: 'var(--text-secondary)' }}>Less</span>
+        {HEAT.map((c, i) => (
+          <div key={i} style={{ width: 10, height: 10, borderRadius: 2, background: c }} />
+        ))}
+        <span style={{ fontSize: 10, color: 'var(--text-secondary)' }}>More</span>
+      </div>
+
+      {/* ActivityHighlights */}
+      <div className="grid grid-cols-3 gap-0 mt-4 pt-4" style={{ borderTop: '1px solid var(--border)' }}>
+        {highlights.map(({ Icon, value, label }, i) => (
+          <div key={label}
+            className={`text-center px-2 py-2 ${i < 2 ? 'border-r' : ''}`}
+            style={i < 2 ? { borderColor: 'var(--border)' } : {}}>
+            <Icon size={14} style={{ color: 'var(--color-primary-400)', margin: '0 auto 4px' }} />
+            <div className="text-xs font-bold" style={{ color: 'var(--text)' }}>{value}</div>
+            <div style={{ fontSize: 10, color: 'var(--text-secondary)' }}>{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 
@@ -205,8 +323,9 @@ function RepoCard({ repo, delay = 0 }) {
 
 /* ─── 메인 컴포넌트 ────────────────────────────────────── */
 export default function GitHubStats() {
-  const [user, setUser]   = useState(null)
-  const [repos, setRepos] = useState([])
+  const [user, setUser]     = useState(null)
+  const [repos, setRepos]   = useState([])
+  const [events, setEvents] = useState([])
 
   useEffect(() => {
     const h = { Accept: 'application/vnd.github+json' }
@@ -214,6 +333,8 @@ export default function GitHubStats() {
       .then(r => r.json()).then(d => d?.login && setUser(d)).catch(() => {})
     fetch(`https://api.github.com/users/${USERNAME}/repos?per_page=100&sort=pushed`, { headers: h })
       .then(r => r.json()).then(d => Array.isArray(d) && setRepos(d)).catch(() => {})
+    fetch(`https://api.github.com/users/${USERNAME}/events?per_page=100`, { headers: h })
+      .then(r => r.json()).then(d => Array.isArray(d) && setEvents(d)).catch(() => {})
   }, [])
 
   const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0)
@@ -223,6 +344,12 @@ export default function GitHubStats() {
   repos.forEach(r => r.language && (langMap[r.language] = (langMap[r.language] || 0) + 1))
   const topLangs  = Object.entries(langMap).sort((a, b) => b[1] - a[1]).slice(0, 7)
   const langTotal = topLangs.reduce((s, [, c]) => s + c, 0)
+
+  const contribMap = {}
+  events.forEach(e => {
+    const date = e.created_at?.slice(0, 10)
+    if (date) contribMap[date] = (contribMap[date] || 0) + 1
+  })
 
   const topRepos = useMemo(() =>
     [...repos].sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 4),
@@ -264,6 +391,17 @@ export default function GitHubStats() {
             <StatBadge icon={GitFork} label="Forks" value={totalForks}
               gradient="linear-gradient(135deg,#ef4444 0%,#ec4899 100%)" delay={0.4} />
           </div>
+        </div>
+
+        {/* 기여도 히트맵 */}
+        <div className="mb-8">
+          <GroupLabel icon={Activity} label="Contribution Activity" delay={0.2} />
+          <ScrollReveal delay={0.25}>
+            <TiltCard glowColor="rgba(99,102,241,0.3)" className="overflow-hidden">
+              <div style={{ height: 3, background: 'linear-gradient(90deg,#6366f1,transparent)' }} />
+              <ContribHeatmap data={contribMap} events={events} />
+            </TiltCard>
+          </ScrollReveal>
         </div>
 
         {/* 언어 분포 */}
