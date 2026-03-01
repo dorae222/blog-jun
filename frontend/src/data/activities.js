@@ -21,7 +21,7 @@ export const ACTIVITIES = [
   {
     id: 3,
     date: '2025',
-    title: 'AI Military Academy 온라인 해커톤 — 대상(1등)',
+    title: '인공지능사관학교 온라인 해커톤 — 대상(1등)',
     description: 'LLM 기반 서비스 개발 해커톤 최우수상',
     tags: ['LLM', 'FastAPI', 'AWS'],
     type: 'award',
