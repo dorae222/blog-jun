@@ -25,47 +25,29 @@ DATA_DIR = Path(__file__).parent / "data"
 BATCH_OUTPUT_FILE = DATA_DIR / "batch_output.jsonl"
 CATALOG_FILE = DATA_DIR / "catalog.json"
 
-# 부모 카테고리: 4개 (Cloud 제외 — Obsidian 볼트에서 유지)
+# 부모 카테고리: Cloud + Data Engineering만 유지
 PARENT_CATEGORY_MAP = {
-    "20.AI":      ("AI/ML",            "ai-ml",       "🤖", "#FF6F00"),
-    "30.Data":    ("Data Engineering",  "data-eng",    "📊", "#336791"),
-    "40.DEV":     ("Development",      "development", "💻", "#3776AB"),
-    "60.Project": ("Projects",         "projects",    "🚀", "#059669"),
+    "10.Cloud": ("Cloud",           "cloud",    "☁️", "#FF9900"),
+    "30.Data":  ("Data Engineering", "data-eng", "📊", "#336791"),
 }
 
-# 서브카테고리: Notion 폴더 기반 매핑
+# 서브카테고리: Cloud + Data Engineering 하위만 유지
 # (name, slug, icon, color, parent_code)
 SUB_CATEGORY_MAP = {
-    # AI/ML
-    "Deep Learning":    ("Deep Learning",    "deep-learning",    "🧠", "#EA4C89", "20.AI"),
-    "Machine Learning": ("Machine Learning", "machine-learning", "📈", "#10B981", "20.AI"),
-    "Statistics":       ("Statistics",       "statistics",       "📊", "#6366F1", "20.AI"),
-    "Time Series":      ("Time Series",      "time-series",      "📉", "#F59E0B", "20.AI"),
-    "Paper Review":     ("Paper Review",     "paper-review",     "📄", "#6366F1", "20.AI"),
+    # Cloud
+    "11.AWS":    ("AWS",    "aws",    "🟠", "#FF6600", "10.Cloud"),
+    "12.Docker": ("Docker", "docker", "🐳", "#2496ED", "10.Cloud"),
+    "13.DevOps": ("DevOps", "devops", "⚙️", "#0DB7ED", "10.Cloud"),
     # Data Engineering
-    "Hadoop":           ("Hadoop",           "hadoop",           "🐘", "#FF6F00", "30.Data"),
-    "Spark":            ("Spark",            "spark",            "⚡", "#E25A1C", "30.Data"),
-    "Hive":             ("Hive",             "hive",             "🐝", "#FDEE21", "30.Data"),
-    "Pig":              ("Pig",              "pig",              "🐷", "#FCA5A5", "30.Data"),
-    "SQOOP":            ("SQOOP",            "sqoop",            "🔄", "#60A5FA", "30.Data"),
-    "Big Data Intro":   ("Big Data Intro",   "big-data-intro",   "📊", "#8B5CF6", "30.Data"),
-    "Data Visualization": ("Data Visualization", "data-viz",     "📈", "#34D399", "30.Data"),
-    "Setting":          ("Setting",          "data-setting",     "⚙️",  "#9CA3AF", "30.Data"),
-    "Troubleshooting":  ("Troubleshooting",  "troubleshooting",  "🔧", "#EF4444", "30.Data"),
-    # Development
-    "Backend":          ("Backend",          "backend",          "🖥️", "#3776AB", "40.DEV"),
-    "Frontend":         ("Frontend",         "frontend",         "🎨", "#61DAFB", "40.DEV"),
-    "Database":         ("Database",         "database",         "🗄️", "#336791", "40.DEV"),
-    "Linux":            ("Linux",            "linux",            "🐧", "#FCC624", "40.DEV"),
-    "Git":              ("Git",              "git",              "🔀", "#F05032", "40.DEV"),
-    "Design":           ("Design",           "design",           "🎨", "#A259FF", "40.DEV"),
-    # Projects
-    "AI Projects":       ("AI Projects",       "ai-projects",       "🤖", "#7C3AED", "60.Project"),
-    "Business Projects": ("Business Projects", "business-projects", "💼", "#059669", "60.Project"),
-    "Data Projects":     ("Data Projects",     "data-projects",     "📊", "#2563EB", "60.Project"),
-    "2023 Summer":       ("2023 Summer",       "2023-summer",       "☀️", "#F59E0B", "60.Project"),
-    "2023 Semester":     ("2023 Semester",      "2023-semester",     "📚", "#8B5CF6", "60.Project"),
-    "General":           ("General",            "general",           "📁", "#6B7280", "60.Project"),
+    "Hadoop":           ("Hadoop",           "hadoop",         "🐘", "#FF6F00", "30.Data"),
+    "Spark":            ("Spark",            "spark",          "⚡", "#E25A1C", "30.Data"),
+    "Hive":             ("Hive",             "hive",           "🐝", "#FDEE21", "30.Data"),
+    "Pig":              ("Pig",              "pig",            "🐷", "#FCA5A5", "30.Data"),
+    "SQOOP":            ("SQOOP",            "sqoop",          "🔄", "#60A5FA", "30.Data"),
+    "Big Data Intro":   ("Big Data Intro",   "big-data-intro", "📊", "#8B5CF6", "30.Data"),
+    "Data Visualization": ("Data Visualization", "data-viz",   "📈", "#34D399", "30.Data"),
+    "Setting":          ("Setting",          "data-setting",   "⚙️",  "#9CA3AF", "30.Data"),
+    "Troubleshooting":  ("Troubleshooting",  "troubleshooting", "🔧", "#EF4444", "30.Data"),
 }
 
 
