@@ -1,0 +1,295 @@
+/* Notion Editor - WYSIWYG 스타일 */
+
+.notion-editor {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.notion-editor-wrapper {
+  height: 100%;
+}
+
+.notion-editor-wrapper .tiptap {
+  height: 100%;
+  padding: 2rem 3rem;
+  outline: none;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* Placeholder */
+.notion-editor-wrapper .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
+}
+
+.notion-editor-wrapper .tiptap .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--text-secondary);
+  opacity: 0.4;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Headings */
+.notion-editor-wrapper .tiptap h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.notion-editor-wrapper .tiptap h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.notion-editor-wrapper .tiptap h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* Paragraphs */
+.notion-editor-wrapper .tiptap p {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquote */
+.notion-editor-wrapper .tiptap blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Horizontal Rule */
+.notion-editor-wrapper .tiptap hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+/* Code Block */
+.notion-editor-wrapper .tiptap pre {
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+}
+
+.notion-editor-wrapper .tiptap pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Inline Code */
+.notion-editor-wrapper .tiptap code {
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  color: var(--text);
+}
+
+/* Lists */
+.notion-editor-wrapper .tiptap ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.notion-editor-wrapper .tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.notion-editor-wrapper .tiptap li {
+  margin-bottom: 0.25rem;
+}
+
+.notion-editor-wrapper .tiptap li p {
+  margin-bottom: 0;
+}
+
+/* Task List */
+.notion-editor-wrapper .tiptap ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0;
+}
+
+.notion-editor-wrapper .tiptap ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.notion-editor-wrapper .tiptap ul[data-type="taskList"] li > label {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.notion-editor-wrapper .tiptap ul[data-type="taskList"] li > label input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.notion-editor-wrapper .tiptap ul[data-type="taskList"] li > div {
+  flex: 1;
+}
+
+.notion-editor-wrapper .tiptap ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* Table */
+.notion-editor-wrapper .tiptap table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75rem 0;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.notion-editor-wrapper .tiptap table td,
+.notion-editor-wrapper .tiptap table th {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  min-width: 80px;
+  vertical-align: top;
+  position: relative;
+}
+
+.notion-editor-wrapper .tiptap table th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+  text-align: left;
+}
+
+.notion-editor-wrapper .tiptap table .selectedCell {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* Image */
+.notion-editor-wrapper .tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.75rem 0;
+  cursor: default;
+}
+
+.notion-editor-wrapper .tiptap img.ProseMirror-selectednode {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Link */
+.notion-editor-wrapper .tiptap a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.notion-editor-wrapper .tiptap a:hover {
+  color: #1d4ed8;
+}
+
+/* Highlight */
+.notion-editor-wrapper .tiptap mark {
+  background-color: #fef08a;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* Superscript / Subscript */
+.notion-editor-wrapper .tiptap sup {
+  font-size: 0.75em;
+  vertical-align: super;
+}
+
+.notion-editor-wrapper .tiptap sub {
+  font-size: 0.75em;
+  vertical-align: sub;
+}
+
+/* Video embed */
+.notion-editor-wrapper .tiptap .video-embed {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.notion-editor-wrapper .tiptap .video-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Focus ring for blocks */
+.notion-editor-wrapper .tiptap > *:focus {
+  outline: none;
+}
+
+/* Selection styles */
+.notion-editor-wrapper .tiptap ::selection {
+  background: rgba(37, 99, 235, 0.15);
+}
+
+/* Bubble Menu transition */
+.bubble-menu {
+  z-index: 50;
+}
+
+/* Slash command menu */
+.slash-menu {
+  z-index: 50;
+  animation: slash-menu-in 0.15s ease-out;
+}
+
+@keyframes slash-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

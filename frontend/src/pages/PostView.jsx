@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { BookOpen } from 'lucide-react'
 import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
+import PaperSummaryBox from '../components/blog/PaperSummaryBox'
 import PDFViewer from '../components/blog/PDFViewer'
 import ReadingProgress from '../components/blog/ReadingProgress'
 import TableOfContents from '../components/blog/TableOfContents'
@@ -97,6 +98,9 @@ export default function PostView() {
               <span>{post.view_count} views</span>
             </div>
           </header>
+
+          {/* Paper Summary */}
+          {post.post_type === 'paper_review' && <PaperSummaryBox post={post} />}
 
           {/* Content */}
           <MarkdownRenderer content={post.content} />
