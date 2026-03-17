@@ -42,4 +42,9 @@ Thumbs.db
 
 # Pipeline data (전처리 데이터)
 pipeline/data/
+pipeline/backup_*/
+pipeline/archive/
+
+# E2E test results
+e2e/test-results/
 
