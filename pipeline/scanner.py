@@ -9,7 +9,17 @@ from collections import Counter
 from pathlib import Path
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent / "hyeongjun"
-EXCLUDE_DIRS = {"80.Certificate", "90.Settings", "trash", "_scripts", ".obsidian", ".trash"}
+EXCLUDE_DIRS = {
+    "80.Certificate", "90.Settings", "trash", "_scripts", ".obsidian", ".trash",
+    # 공개 블로그 부적합: 수학 숙제/과제, 교육과정 추적용
+    "50.Foundation", "70.Program",
+    # AI 세부 폴더: 내용 빈약 or 이미지 의존도 높음
+    "21. Math & Statistics", "22. ML", "24. NLP", "25. Vision", "27. MFU",
+    # 데이터 엔지니어링: 기초 수준 소량
+    "31.Hadoop", "32.Spark", "34.Data Pipeline",
+    # 프론트엔드: 별도 검토 후 추가 가능
+    "42.Frontend",
+}
 OUTPUT_FILE = Path(__file__).parent / "data" / "catalog.json"
 
 # 00.Inbox 수동 제외 대상 파일명
@@ -18,13 +28,21 @@ MANUAL_SKIP_FILES = {
 }
 
 CATEGORY_MAP = {
-    "10.Cloud": ("Cloud", "☁️", "#FF9900"),
-    "20.AI": ("AI/ML", "🤖", "#FF6F00"),
-    "30.Data": ("Data Engineering", "📊", "#336791"),
-    "40.DEV": ("Development", "💻", "#3776AB"),
-    "50.Foundation": ("Foundation", "📐", "#6366F1"),
-    "60.Project": ("Projects", "🚀", "#059669"),
-    "70.Program": ("Programs", "🎓", "#EC4899"),
+    "10.Cloud":   ("Cloud",            "☁️", "#FF9900"),
+    "20.AI":      ("AI/ML",            "🤖", "#FF6F00"),
+    "30.Data":    ("Data Engineering", "📊", "#336791"),
+    "40.DEV":     ("Development",      "💻", "#3776AB"),
+    "60.Project": ("Projects",         "🚀", "#059669"),
+}
+
+# 서브카테고리 매핑: 2레벨 폴더명 → (name, slug, icon, color, parent_code)
+SUB_CATEGORY_MAP = {
+    "11.AWS":              ("AWS",           "aws",           "🟠", "#FF6600", "10.Cloud"),
+    "12.Docker":           ("Docker",        "docker",        "🐳", "#2496ED", "10.Cloud"),
+    "13.DevOps":           ("DevOps",        "devops",        "⚙️",  "#0DB7ED", "10.Cloud"),
+    "29. LLM & GenAI":     ("LLM & GenAI",   "llm-genai",     "✨", "#7C3AED", "20.AI"),
+    "23. DL Basic":        ("Deep Learning", "deep-learning", "🧠", "#EA4C89", "20.AI"),
+    "28. Paper Review":    ("Paper Review",  "paper-review",  "📄", "#6366F1", "20.AI"),
 }
 
 # 이미지 참조 패턴 (4가지)
@@ -99,6 +117,10 @@ def scan_vault():
         top_dir = parts[0] if len(parts) > 1 else ""
         cat_info = CATEGORY_MAP.get(top_dir, ("Uncategorized", "📁", "#6B7280"))
 
+        # 2레벨 서브카테고리 감지 (e.g. "11.AWS", "29. LLM & GenAI")
+        sub_dir = parts[1] if len(parts) > 2 else ""
+        sub_category_code = sub_dir if sub_dir in SUB_CATEGORY_MAP else None
+
         # Read content
         try:
             content = md_file.read_text(encoding="utf-8")
@@ -126,7 +148,8 @@ def scan_vault():
             "category_name": cat_info[0],
             "category_icon": cat_info[1],
             "category_color": cat_info[2],
-            "subcategory": parts[1] if len(parts) > 2 else "",
+            "subcategory": sub_dir,
+            "sub_category_code": sub_category_code,
             "word_count": word_count,
             "char_count": char_count,
             "quality": quality,

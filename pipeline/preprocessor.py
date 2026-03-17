@@ -14,7 +14,7 @@ import json
 import re
 from collections import Counter
 from pathlib import Path
-from urllib.parse import unquote
+from urllib.parse import quote, unquote
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent.parent / "hyeongjun"
 DATA_DIR = Path(__file__).parent / "data"
@@ -125,12 +125,20 @@ def clean_notion_artifacts(content: str, stats: Counter) -> str:
     )
     stats["notion_csv_ref_removed"] += n
 
-    # C-10: 임베디드 PDF/동영상 참조
+    # C-10: 임베디드 PDF/동영상 참조 (이미지 문법 ![])
     content, n = re.subn(
         r'!\[[^\]]*\]\([^\)]*\.(?:pdf|mp4|mov|avi|wmv)\)',
         '', content
     )
     stats["embedded_media_removed"] += n
+
+    # C-15: 마크다운 링크 형식 PDF/비디오/기타 첨부 파일 제거
+    # [파일명.pdf](경로) → 제거 (PDFViewer가 post.pdf_file로 별도 표시)
+    content, n = re.subn(
+        r'\[([^\]]+\.(?:pdf|PDF|mp4|mov|avi|wmv|zip|docx?))\]\([^)]*\)',
+        '', content
+    )
+    stats["attachment_link_removed"] += n
 
     return content
 
@@ -183,6 +191,10 @@ def convert_images(content: str, source_path: str, ref_map: dict, stats: Counter
     """4가지 이미지 참조 패턴을 블로그 URL로 변환."""
 
     # D-11/12/13: ![[path|150]], ![[path||400]], ![[path]] → ![](blog_url)
+    def _encode_url(url: str) -> str:
+        """공백 등 URL 비안전 문자 인코딩 (/ : 는 보존)."""
+        return quote(url, safe='/:#?&=')
+
     def replace_wikilink_img(m):
         full_ref = m.group(1)
         # |size 또는 ||size 제거
@@ -190,7 +202,7 @@ def convert_images(content: str, source_path: str, ref_map: dict, stats: Counter
         url = _resolve_ref_to_url(ref, source_path, ref_map)
         if url:
             stats["wikilink_img_converted"] += 1
-            return f"![]({url})"
+            return f"![]({_encode_url(url)})"
         stats["wikilink_img_unresolved"] += 1
         return ""  # resolve 실패 시 제거
 
@@ -207,7 +219,7 @@ def convert_images(content: str, source_path: str, ref_map: dict, stats: Counter
         url = _resolve_ref_to_url(path, source_path, ref_map)
         if url:
             stats["markdown_img_converted"] += 1
-            return f"![{alt}]({url})"
+            return f"![{alt}]({_encode_url(url)})"
         stats["markdown_img_unresolved"] += 1
         return f"![{alt}]({path})"  # 변환 실패 시 원본 유지
 
