@@ -16,6 +16,8 @@ import About from './pages/About'
 import Editor from './pages/Editor'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
+import ArchitectureGallery from './pages/ArchitectureGallery'
+import PaperList from './pages/PaperList'
 
 export default function App() {
   const location = useLocation()
@@ -31,6 +33,8 @@ export default function App() {
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/series/:slug" element={<SeriesPage />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/architecture" element={<ArchitectureGallery />} />
+            <Route path="/papers" element={<PaperList />} />
             <Route path="/about" element={<About />} />
             <Route path="/editor" element={<Editor />} />
             <Route path="/editor/:slug" element={<Editor />} />

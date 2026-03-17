@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
-import MarkdownRenderer from '../components/blog/MarkdownRenderer'
+import NotionEditor from '../components/editor/NotionEditor'
 import useAuth from '../hooks/useAuth'
 import { getPost, createPost, updatePost, getCategories, getTags, getSeries, getTemplates, uploadImage } from '../api/posts'
 
@@ -10,13 +10,11 @@ export default function Editor() {
   const { slug } = useParams()
   const navigate = useNavigate()
   const { user } = useAuth()
-  const [viewMode, setViewMode] = useState('split') // split, edit, preview
   const [showTemplates, setShowTemplates] = useState(false)
   const [templates, setTemplates] = useState([])
   const [categories, setCategories] = useState([])
   const [allTags, setAllTags] = useState([])
   const [allSeries, setAllSeries] = useState([])
-  const textareaRef = useRef(null)
 
   const [form, setForm] = useState({
     title: '',
@@ -90,27 +88,13 @@ export default function Editor() {
     setTimeout(() => handleSave(), 0)
   }
 
-  const handleImageDrop = async (e) => {
-    e.preventDefault()
-    const file = e.dataTransfer?.files?.[0] || e.target?.files?.[0]
-    if (!file || !file.type.startsWith('image/')) return
-
+  // 이미지 업로드 핸들러 (NotionEditor에서 사용)
+  const handleImageUpload = useCallback(async (file) => {
     const formData = new FormData()
     formData.append('image', file)
-    try {
-      const { data } = await uploadImage(formData)
-      const md = `![${file.name}](${data.image})`
-      const textarea = textareaRef.current
-      const start = textarea.selectionStart
-      setForm(prev => ({
-        ...prev,
-        content: prev.content.slice(0, start) + md + prev.content.slice(start),
-      }))
-      toast.success('Image uploaded!')
-    } catch {
-      toast.error('Upload failed')
-    }
-  }
+    const { data } = await uploadImage(formData)
+    return data.image // URL 반환
+  }, [])
 
   const applyTemplate = (tmpl) => {
     setForm(prev => ({
@@ -174,18 +158,6 @@ export default function Editor() {
           {allSeries.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>
 
-        <div className="flex rounded-lg border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
-          {['edit', 'split', 'preview'].map(m => (
-            <button
-              key={m}
-              onClick={() => setViewMode(m)}
-              className={`px-3 py-1 text-xs ${viewMode === m ? 'bg-primary-600 text-white' : ''}`}
-            >
-              {m}
-            </button>
-          ))}
-        </div>
-
         <button
           onClick={() => setShowTemplates(true)}
           className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
@@ -203,27 +175,13 @@ export default function Editor() {
         </button>
       </div>
 
-      {/* Editor Area */}
+      {/* Notion-style Editor Area */}
       <div className="flex-1 flex overflow-hidden">
-        {viewMode !== 'preview' && (
-          <div className={`${viewMode === 'split' ? 'w-1/2' : 'w-full'} flex flex-col border-r`} style={{ borderColor: 'var(--border)' }}>
-            <textarea
-              ref={textareaRef}
-              value={form.content}
-              onChange={e => setForm(prev => ({ ...prev, content: e.target.value }))}
-              onDrop={handleImageDrop}
-              onDragOver={e => e.preventDefault()}
-              className="flex-1 p-6 resize-none outline-none font-mono text-sm"
-              style={{ background: 'var(--bg)', color: 'var(--text)' }}
-              placeholder="Write your markdown here..."
-            />
-          </div>
-        )}
-        {viewMode !== 'edit' && (
-          <div className={`${viewMode === 'split' ? 'w-1/2' : 'w-full'} overflow-y-auto p-6`}>
-            <MarkdownRenderer content={form.content} />
-          </div>
-        )}
+        <NotionEditor
+          content={form.content}
+          onChange={(markdown) => setForm(prev => ({ ...prev, content: markdown }))}
+          onImageUpload={handleImageUpload}
+        />
       </div>
 
       {/* Template Modal */}

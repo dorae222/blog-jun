@@ -1,8 +1,9 @@
-import { useState, Component } from 'react'
+import { useState, useMemo, Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
+import rehypeSlug from 'rehype-slug'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 
@@ -112,14 +113,14 @@ function ImageWithZoom({ src, alt }) {
 }
 
 export default function MarkdownRenderer({ content }) {
-  const processed = preprocessContent(content)
+  const processed = useMemo(() => preprocessContent(content), [content])
 
   return (
     <ErrorBoundary>
       <div className="prose prose-lg max-w-none">
         <ReactMarkdown
           remarkPlugins={[remarkMath, remarkGfm]}
-          rehypePlugins={[rehypeRaw, rehypeKatex, rehypeHighlight]}
+          rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex, rehypeHighlight]}
           components={{
             code: CodeBlock,
             img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,

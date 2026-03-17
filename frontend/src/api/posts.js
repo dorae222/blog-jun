@@ -26,3 +26,9 @@ export const bulkUpdateStatus = (slugs, status) => client.post('/posts/bulk_upda
 export const getAuditResults = () => client.get('/audit/results/')
 export const mergeTags = (source, target) => client.post('/tags/merge/', { source, target })
 export const cleanupTags = () => client.post('/tags/cleanup/')
+
+// Architecture API
+export const getArchitectures = (params) => client.get('/architectures/', { params })
+export const getArchitecture = (slug) => client.get(`/architectures/${slug}/`)
+export const getArchitectureConcepts = () => client.get('/architectures/concepts/')
+export const getArchitectureStats = () => client.get('/architectures/stats/')
