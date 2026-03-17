@@ -14,8 +14,8 @@ from django.db.models import Count
 
 from blog.models import Category, Post, Tag
 
-# 유지 대상 부모 카테고리 slug (DB에 data-eng / data-engineering 두 slug가 존재)
-KEEP_SLUGS = {"cloud", "data-eng", "data-engineering"}
+# 유지 대상 부모 카테고리 slug
+KEEP_SLUGS = {"cloud", "data-engineering"}
 
 
 class Command(BaseCommand):
