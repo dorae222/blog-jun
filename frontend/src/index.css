@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "highlight.js/styles/github.css";
+@import "katex/dist/katex.min.css";
 @import "./components/editor/editor-styles.css";
 @plugin "@tailwindcss/typography";
 
@@ -93,7 +94,9 @@ body {
 .prose :not(pre) > code::before,
 .prose :not(pre) > code::after { content: '' !important; }
 
-/* KaTeX */
+/* KaTeX: prose 클래스 영향 제거 */
+.prose .katex, .prose .katex-display { font-size: inherit; }
+.prose .katex-display { overflow-x: auto; overflow-y: hidden; margin: 1.5em 0; }
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;

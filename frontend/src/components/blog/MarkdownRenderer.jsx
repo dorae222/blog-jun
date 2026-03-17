@@ -41,30 +41,36 @@ class ErrorBoundary extends Component {
   }
 }
 
-function CodeBlock({ children, className, ...props }) {
+// rehypeHighlight가 생성한 highlight 트리에서 plain text 재귀 추출 (복사용)
+function extractPlainText(children) {
+  if (typeof children === 'string') return children
+  if (Array.isArray(children)) return children.map(extractPlainText).join('')
+  if (children?.props?.children) return extractPlainText(children.props.children)
+  return ''
+}
+
+// 코드블록(block code) 전담 — pre 컴포넌트로 사용
+function PreBlock({ children }) {
   const [copied, setCopied] = useState(false)
-  const match = /language-(\w+)/.exec(className || '')
-  const lang = match?.[1] || ''
-  const code = String(children).replace(/\n$/, '')
+
+  // children은 rehypeHighlight가 처리한 <code className="language-xxx hljs">...</code>
+  const codeProps = children?.props ?? {}
+  const lang = /language-(\w+)/.exec(codeProps.className || '')?.[1] || ''
+  const plainText = extractPlainText(codeProps.children).trim()
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(code)
+    navigator.clipboard.writeText(plainText)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
-  if (!match) {
-    return (
-      <code className="px-1.5 py-0.5 rounded text-sm" style={{ background: 'var(--code-bg)' }} {...props}>
-        {children}
-      </code>
-    )
-  }
-
   return (
-    <div className="relative group rounded-xl overflow-hidden my-4" style={{ background: 'var(--code-bg)' }}>
-      <div className="flex items-center justify-between px-4 py-2 border-b text-xs" style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
-        <span className="font-mono">{lang}</span>
+    <div className="relative group rounded-xl overflow-hidden my-6" style={{ background: 'var(--code-bg)' }}>
+      <div
+        className="flex items-center justify-between px-4 py-2 border-b text-xs"
+        style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+      >
+        <span className="font-mono opacity-60">{lang || 'code'}</span>
         <button
           onClick={handleCopy}
           className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1 rounded hover:bg-gray-200"
@@ -72,10 +78,25 @@ function CodeBlock({ children, className, ...props }) {
           {copied ? 'Copied!' : 'Copy'}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm">
-        <code className={className} {...props}>{children}</code>
+      <pre className="p-4 overflow-x-auto text-sm leading-relaxed m-0 rounded-none">
+        {children}
       </pre>
     </div>
+  )
+}
+
+// inline code 전담 — code 컴포넌트로 사용 (className 없는 <code> 요소)
+function InlineCode({ children, className, node, ...props }) {
+  // className이 있으면 rehypeHighlight가 처리한 코드블록 내 code → PreBlock이 이미 담당
+  // 여기서는 inline code만 처리
+  return (
+    <code
+      className={className}
+      style={!className ? { background: 'var(--code-bg)', padding: '0.15em 0.4em', borderRadius: '4px', fontWeight: 400 } : undefined}
+      {...props}
+    >
+      {children}
+    </code>
   )
 }
 
@@ -119,10 +140,11 @@ export default function MarkdownRenderer({ content }) {
     <ErrorBoundary>
       <div className="prose prose-lg max-w-none">
         <ReactMarkdown
-          remarkPlugins={[remarkMath, remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex, rehypeHighlight]}
           components={{
-            code: CodeBlock,
+            pre: PreBlock,
+            code: InlineCode,
             img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
             a: ({ href, children }) => (
               <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
