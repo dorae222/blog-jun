@@ -10,11 +10,14 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import Category, Tag, Series, Post, PostImage, PostTemplate
+from .models import Category, Tag, Series, Post, PostImage, PostTemplate, ArchitectureConcept, ArchitectureEntry
 from .serializers import (
     CategorySerializer, TagSerializer, SeriesSerializer,
     PostListSerializer, PostDetailSerializer, PostWriteSerializer,
     PostImageSerializer, PostTemplateSerializer,
+    ArchitectureConceptSerializer,
+    ArchitectureEntryListSerializer,
+    ArchitectureEntryDetailSerializer,
 )
 
 
@@ -235,6 +238,49 @@ def audit_results(request):
         return Response(data)
     except (json.JSONDecodeError, IOError) as e:
         return Response({'detail': f'감사 파일 읽기 오류: {e}'}, status=500)
+
+
+class ArchitectureEntryViewSet(viewsets.ReadOnlyModelViewSet):
+    lookup_field = 'slug'
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['decoder_type']
+
+    def get_queryset(self):
+        qs = ArchitectureEntry.objects.prefetch_related('concepts', 'related_post')
+        concept = self.request.query_params.get('concept')
+        if concept:
+            qs = qs.filter(concepts__slug=concept)
+        return qs.distinct()
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return ArchitectureEntryDetailSerializer
+        return ArchitectureEntryListSerializer
+
+    @action(detail=False, methods=['get'])
+    def concepts(self, request):
+        qs = ArchitectureConcept.objects.all()
+        serializer = ArchitectureConceptSerializer(qs, many=True)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def stats(self, request):
+        from django.db.models import Count
+        stats = ArchitectureEntry.objects.values('decoder_type').annotate(
+            count=Count('id')
+        ).order_by('decoder_type')
+        return Response(list(stats))
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def upload_figure(self, request, slug=None):
+        entry = self.get_object()
+        figure = request.FILES.get('figure')
+        if not figure:
+            return Response({'detail': 'figure 파일이 필요합니다.'}, status=400)
+        entry.figure = figure
+        entry.figure_placeholder = False
+        entry.save()
+        return Response({'detail': 'Figure 업로드 완료', 'figure_url': request.build_absolute_uri(entry.figure.url)})
 
 
 @api_view(['GET'])

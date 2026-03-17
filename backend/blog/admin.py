@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Tag, Series, Post, PostImage, PostTemplate
+from .models import Category, Tag, Series, Post, PostImage, PostTemplate, ArchitectureConcept, ArchitectureEntry
 
 
 @admin.register(Category)
@@ -41,3 +41,26 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(PostTemplate)
 class PostTemplateAdmin(admin.ModelAdmin):
     list_display = ['name', 'post_type', 'category']
+
+
+@admin.register(ArchitectureConcept)
+class ArchitectureConceptAdmin(admin.ModelAdmin):
+    list_display = ['name', 'abbreviation', 'slug', 'color']
+    prepopulated_fields = {'slug': ('name',)}
+    search_fields = ['name', 'abbreviation']
+
+
+class ConceptInline(admin.TabularInline):
+    model = ArchitectureEntry.concepts.through
+    extra = 1
+
+
+@admin.register(ArchitectureEntry)
+class ArchitectureEntryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'organization', 'decoder_type', 'param_scale', 'release_date']
+    list_filter = ['decoder_type', 'organization']
+    search_fields = ['name', 'organization']
+    prepopulated_fields = {'slug': ('name',)}
+    inlines = [ConceptInline]
+    exclude = ['concepts']  # managed via inline
+    readonly_fields = ['created_at', 'updated_at']

@@ -138,3 +138,82 @@ class PostTemplate(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ArchitectureConcept(models.Model):
+    """MHA, GQA, MLA, RoPE, QK-Norm, SWA, MoE 등 아키텍처 개념 태그"""
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    abbreviation = models.CharField(max_length=20, blank=True)
+    description = models.TextField(blank=True)
+    color = models.CharField(max_length=7, default='#6366F1')
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.abbreviation or self.name
+
+
+class ArchitectureEntry(models.Model):
+    class DecoderType(models.TextChoices):
+        DENSE = 'dense', 'Dense'
+        SPARSE_MOE = 'sparse_moe', 'Sparse MoE'
+        SPARSE_HYBRID = 'sparse_hybrid', 'Sparse Hybrid'
+
+    # 기본 정보
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    organization = models.CharField(max_length=100)
+    release_date = models.DateField(null=True, blank=True)
+
+    # 분류
+    decoder_type = models.CharField(max_length=20, choices=DecoderType.choices, default=DecoderType.DENSE)
+    concepts = models.ManyToManyField(ArchitectureConcept, blank=True, related_name='entries')
+
+    # 기본 스펙
+    param_scale = models.CharField(max_length=50, blank=True, help_text="e.g. 8B parameters")
+    context_length = models.CharField(max_length=50, blank=True, help_text="e.g. 128K tokens")
+
+    # 아키텍처 상세
+    attention_type = models.CharField(max_length=100, blank=True, help_text="e.g. GQA + RoPE")
+    normalization = models.CharField(max_length=100, blank=True, help_text="e.g. RMSNorm (Pre-Norm)")
+    activation = models.CharField(max_length=100, blank=True, help_text="e.g. SiLU (SwiGLU)")
+    position_encoding = models.CharField(max_length=100, blank=True, help_text="e.g. RoPE")
+    vocab_size = models.CharField(max_length=50, blank=True)
+    hidden_dim = models.CharField(max_length=50, blank=True)
+    num_layers = models.CharField(max_length=50, blank=True)
+    num_heads = models.CharField(max_length=50, blank=True)
+
+    # MoE 전용
+    num_experts = models.CharField(max_length=50, blank=True, help_text="전문가 수 (dense 모델은 비워둠)")
+    active_experts = models.CharField(max_length=50, blank=True)
+
+    # 서술 필드
+    description = models.TextField(blank=True, help_text="한글 설명")
+    key_detail = models.TextField(blank=True, help_text="핵심 특징 한줄 요약")
+    training_detail = models.TextField(blank=True, help_text="학습 관련 특이사항")
+
+    # 링크
+    paper_url = models.URLField(blank=True)
+    code_url = models.URLField(blank=True)
+    license_type = models.CharField(max_length=100, blank=True)
+
+    # Figure
+    figure = models.ImageField(upload_to='architectures/', blank=True, null=True)
+    figure_placeholder = models.BooleanField(default=True)
+
+    # 연결
+    related_post = models.ForeignKey(
+        'Post', on_delete=models.SET_NULL, null=True, blank=True, related_name='architecture_entries'
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-release_date', 'name']
+        verbose_name_plural = 'architecture entries'
+
+    def __str__(self):
+        return f"{self.name} ({self.organization})"

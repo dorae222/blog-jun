@@ -8,6 +8,7 @@ router.register(r'categories', views.CategoryViewSet, basename='category')
 router.register(r'tags', views.TagViewSet, basename='tag')
 router.register(r'series', views.SeriesViewSet, basename='series')
 router.register(r'templates', views.PostTemplateViewSet, basename='template')
+router.register(r'architectures', views.ArchitectureEntryViewSet, basename='architecture')
 
 urlpatterns = [
     path('', include(router.urls)),

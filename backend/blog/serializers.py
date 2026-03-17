@@ -125,3 +125,62 @@ class PostTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostTemplate
         fields = ['id', 'name', 'description', 'content_template', 'post_type', 'category']
+
+
+from .models import ArchitectureConcept, ArchitectureEntry
+
+
+class ArchitectureConceptSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArchitectureConcept
+        fields = ['id', 'name', 'slug', 'abbreviation', 'color']
+
+
+class ArchitectureEntryListSerializer(serializers.ModelSerializer):
+    concepts = ArchitectureConceptSerializer(many=True, read_only=True)
+    figure_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ArchitectureEntry
+        fields = [
+            'id', 'name', 'slug', 'organization', 'release_date',
+            'decoder_type', 'concepts', 'param_scale', 'context_length',
+            'attention_type', 'normalization', 'activation', 'key_detail',
+            'figure_url', 'figure_placeholder', 'paper_url', 'license_type',
+        ]
+
+    def get_figure_url(self, obj):
+        if not obj.figure:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.figure.url)
+        return obj.figure.url
+
+
+class ArchitectureEntryDetailSerializer(serializers.ModelSerializer):
+    concepts = ArchitectureConceptSerializer(many=True, read_only=True)
+    figure_url = serializers.SerializerMethodField()
+    related_post = PostListSerializer(read_only=True)
+
+    class Meta:
+        model = ArchitectureEntry
+        fields = [
+            'id', 'name', 'slug', 'organization', 'release_date',
+            'decoder_type', 'concepts', 'param_scale', 'context_length',
+            'attention_type', 'normalization', 'activation', 'position_encoding',
+            'vocab_size', 'hidden_dim', 'num_layers', 'num_heads',
+            'num_experts', 'active_experts',
+            'description', 'key_detail', 'training_detail',
+            'paper_url', 'code_url', 'license_type',
+            'figure_url', 'figure_placeholder',
+            'related_post', 'created_at', 'updated_at',
+        ]
+
+    def get_figure_url(self, obj):
+        if not obj.figure:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.figure.url)
+        return obj.figure.url
