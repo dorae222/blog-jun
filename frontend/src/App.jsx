@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Toaster } from 'react-hot-toast'
 
@@ -12,6 +12,7 @@ import PostView from './pages/PostView'
 import CategoryPage from './pages/CategoryPage'
 import SeriesPage from './pages/SeriesPage'
 import SearchPage from './pages/SearchPage'
+import BrowsePage from './pages/BrowsePage'
 import About from './pages/About'
 import Editor from './pages/Editor'
 import Dashboard from './pages/Dashboard'
@@ -32,9 +33,9 @@ export default function App() {
             <Route path="/post/:slug" element={<PostView />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/series/:slug" element={<SeriesPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/architecture" element={<ArchitectureGallery />} />
-            <Route path="/papers" element={<PaperList />} />
+            <Route path="/search" element={<BrowsePage />} />
+            <Route path="/architecture" element={<Navigate to="/search?tab=architecture" replace />} />
+            <Route path="/papers" element={<Navigate to="/search?tab=papers" replace />} />
             <Route path="/about" element={<About />} />
             <Route path="/editor" element={<Editor />} />
             <Route path="/editor/:slug" element={<Editor />} />
