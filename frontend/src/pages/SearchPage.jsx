@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { LayoutGrid, List, ChevronDown, SlidersHorizontal, X } from 'lucide-react'
 import PostCard from '../components/blog/PostCard'
 import SearchBar from '../components/common/SearchBar'
-import { searchPosts, getPosts, getCategories, getTags } from '../api/posts'
+import { searchPosts, getPosts, getCategories, getTags, getArchitectures } from '../api/posts'
+import ArchitectureCard from '../components/architecture/ArchitectureCard'
 import { getCategoryIcon } from '../utils/categoryIcons'
 
 const PAGE_SIZE = 10
-const POST_TYPES = ['', 'article', 'tutorial', 'paper_review', 'til', 'project', 'activity_log']
+const POST_TYPES = ['', 'article', 'tutorial', 'paper_review', 'til', 'project', 'activity_log', 'architecture']
 const TYPE_LABELS = {
   '': 'All',
   article: 'Article',
@@ -17,6 +18,7 @@ const TYPE_LABELS = {
   til: 'TIL',
   project: 'Project',
   activity_log: 'Activity Log',
+  architecture: 'Architecture',
 }
 
 // ── Sidebar: 컴포넌트 외부에 정의해 매 렌더링 시 remount 방지
@@ -133,6 +135,7 @@ export default function SearchPage() {
   const paramSort   = searchParams.get('sort')     || 'newest'
 
   const [posts, setPosts]             = useState([])
+  const [archEntries, setArchEntries] = useState([])
   const [total, setTotal]             = useState(0)
   const [categories, setCategories]   = useState([])
   const [tags, setTags]               = useState([])
@@ -155,7 +158,15 @@ export default function SearchPage() {
   // 포스트 로드 — URL 파라미터 기반으로 단일 effect
   useEffect(() => {
     setLoading(true)
-    if (q) {
+    if (paramType === 'architecture') {
+      getArchitectures({})
+        .then(r => {
+          const list = r.data.results || r.data || []
+          setArchEntries(list)
+          setTotal(list.length)
+        })
+        .finally(() => setLoading(false))
+    } else if (q) {
       searchPosts(q)
         .then(r => {
           const list = Array.isArray(r.data) ? r.data : r.data.results || []
@@ -241,7 +252,7 @@ export default function SearchPage() {
                 Filters
               </button>
               <h1 className="text-xl font-bold" style={{ color: 'var(--text)' }}>
-                {q ? `"${q}" 검색 결과` : 'Posts'}
+                {q ? `"${q}" 검색 결과` : paramType === 'architecture' ? 'Architecture' : 'Posts'}
               </h1>
               <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                 {total.toLocaleString()}개
@@ -329,6 +340,18 @@ export default function SearchPage() {
                 />
               ))}
             </div>
+          ) : paramType === 'architecture' ? (
+            archEntries.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 gap-4">
+                <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>아키텍처가 없습니다.</p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {archEntries.map(entry => (
+                  <ArchitectureCard key={entry.id} entry={entry} />
+                ))}
+              </div>
+            )
           ) : posts.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-24 gap-4">
               <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>검색 결과가 없습니다.</p>
@@ -354,7 +377,7 @@ export default function SearchPage() {
           )}
 
           {/* 페이지네이션 */}
-          {!loading && totalPages > 1 && (
+          {!loading && totalPages > 1 && paramType !== 'architecture' && (
             <div className="flex items-center justify-center gap-4 mt-10">
               <button
                 onClick={() => updateParams({ page: paramPage - 1 })}

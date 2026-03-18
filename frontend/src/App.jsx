@@ -12,13 +12,10 @@ import PostView from './pages/PostView'
 import CategoryPage from './pages/CategoryPage'
 import SeriesPage from './pages/SeriesPage'
 import SearchPage from './pages/SearchPage'
-import BrowsePage from './pages/BrowsePage'
 import About from './pages/About'
 import Editor from './pages/Editor'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
-import ArchitectureGallery from './pages/ArchitectureGallery'
-import PaperList from './pages/PaperList'
 
 export default function App() {
   const location = useLocation()
@@ -33,9 +30,9 @@ export default function App() {
             <Route path="/post/:slug" element={<PostView />} />
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/series/:slug" element={<SeriesPage />} />
-            <Route path="/search" element={<BrowsePage />} />
-            <Route path="/architecture" element={<Navigate to="/search?tab=architecture" replace />} />
-            <Route path="/papers" element={<Navigate to="/search?tab=papers" replace />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/architecture" element={<Navigate to="/search?type=architecture" replace />} />
+            <Route path="/papers" element={<Navigate to="/search?type=paper_review" replace />} />
             <Route path="/about" element={<About />} />
             <Route path="/editor" element={<Editor />} />
             <Route path="/editor/:slug" element={<Editor />} />
