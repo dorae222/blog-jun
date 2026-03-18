@@ -19,6 +19,10 @@ function preprocessContent(raw) {
     .replace(/\[\[([^\]]*?)\|([^\]]*?)\]\]/g, '$2')
     // [[Title]] → Title
     .replace(/\[\[([^\]]*?)\]\]/g, '$1')
+    // CommonMark right-flanking fix:
+    // 닫는 ** 앞이 ) (구두점)이고 뒤가 한글이면 bold가 닫히지 않음 → 공백 삽입
+    // e.g. **Dual Chunk Attention(DCA)**과 → **Dual Chunk Attention(DCA)** 과
+    .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
 }
 
 class ErrorBoundary extends Component {
