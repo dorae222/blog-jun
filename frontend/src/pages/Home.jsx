@@ -93,7 +93,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-4 mb-8">
               {recentPosts.map((post, i) => (
                 <ScrollReveal key={post.slug} delay={i * 0.08}>
-                  <Link to={`/posts/${post.slug}`}
+                  <Link to={`/post/${post.slug}`}
                     className="flex flex-col p-5 rounded-xl glass transition-all hover:-translate-y-1"
                     style={{ minHeight: 120 }}>
                     {post.category && (
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
             <ScrollReveal delay={0.4}>
               <div className="text-center">
-                <Link to="/posts"
+                <Link to="/search"
                   className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-lg border
                     text-sm font-medium transition-colors hover:bg-white"
                   style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
