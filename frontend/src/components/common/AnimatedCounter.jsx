@@ -31,7 +31,7 @@ export default function AnimatedCounter({ end, duration = 2, label, icon }) {
       transition={{ duration: 0.5 }}
     >
       {icon && <div className="flex justify-center mb-2 text-primary-600">{icon}</div>}
-      <div className="text-4xl font-bold text-primary-600">{count.toLocaleString()}</div>
+      <div className="text-3xl md:text-4xl font-bold text-primary-600">{count.toLocaleString()}</div>
       <div className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>{label}</div>
     </motion.div>
   )

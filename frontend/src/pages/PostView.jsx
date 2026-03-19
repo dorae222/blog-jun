@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { BookOpen } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { BookOpen, List, X } from 'lucide-react'
 import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
 import PaperSummaryBox from '../components/blog/PaperSummaryBox'
@@ -15,6 +15,13 @@ export default function PostView() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [tocOpen, setTocOpen] = useState(false)
+
+  // TOC 드로어 열릴 때 배경 스크롤 잠금
+  useEffect(() => {
+    document.body.style.overflow = tocOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [tocOpen])
 
   useEffect(() => {
     setLoading(true)
@@ -56,6 +63,17 @@ export default function PostView() {
 
       <div className="max-w-7xl mx-auto px-4 py-12 flex gap-8">
         <article className="flex-1 max-w-4xl">
+          {/* 모바일 목차 버튼 (xl 미만에서만 표시) */}
+          <div className="xl:hidden mb-4">
+            <button
+              onClick={() => setTocOpen(true)}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm"
+              style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+            >
+              <List size={16} /> 목차
+            </button>
+          </div>
+
           {/* Header */}
           <header className="mb-8">
             <div className="flex items-center gap-2 mb-4">
@@ -151,11 +169,46 @@ export default function PostView() {
           )}
         </article>
 
-        {/* Sidebar TOC */}
+        {/* Sidebar TOC (데스크탑) */}
         <aside className="hidden xl:block w-64 shrink-0">
           <TableOfContents content={post.content} />
         </aside>
       </div>
+
+      {/* 모바일 TOC 슬라이드 드로어 */}
+      <AnimatePresence>
+        {tocOpen && (
+          <>
+            {/* 오버레이 */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/40 z-40 xl:hidden"
+              onClick={() => setTocOpen(false)}
+            />
+            {/* 드로어 패널 */}
+            <motion.div
+              initial={{ x: 256 }}
+              animate={{ x: 0 }}
+              exit={{ x: 256 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 h-full w-64 z-50 xl:hidden overflow-y-auto"
+              style={{ background: 'var(--card-bg)', borderLeft: '1px solid var(--border)' }}
+            >
+              <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: 'var(--border)' }}>
+                <span className="font-semibold text-sm" style={{ color: 'var(--text)' }}>목차</span>
+                <button onClick={() => setTocOpen(false)} style={{ color: 'var(--text-secondary)' }}>
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="px-4 py-3">
+                <TableOfContents content={post.content} />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }

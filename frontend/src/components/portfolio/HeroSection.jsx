@@ -31,7 +31,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="relative w-48 h-48 mx-auto">
+          <div className="relative w-48 h-48 mx-auto scale-75 md:scale-100 origin-center">
             {/* Orbit ring */}
             <div
               className="absolute inset-0 rounded-full"
