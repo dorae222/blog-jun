@@ -133,7 +133,7 @@ export default function About() {
 
             {/* Text content */}
             <div className="text-center lg:text-left flex-1">
-              <h1 className="text-4xl font-bold mb-2" style={{ color: 'var(--text)' }}>
+              <h1 className="text-2xl md:text-4xl font-bold mb-2" style={{ color: 'var(--text)' }}>
                 <span className="text-primary-600">Do</span> HyeongJun
               </h1>
               <p className="text-lg font-medium text-primary-600 mb-3">NLP 엔지니어</p>
