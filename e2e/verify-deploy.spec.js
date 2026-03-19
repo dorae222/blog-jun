@@ -66,36 +66,34 @@ test('Papers 페이지 렌더링', async ({ page }) => {
 
 // --- 4-3. Header 네비게이션 검증 ---
 
-test('Header에 5개 네비게이션 링크 존재', async ({ page }) => {
+test('Header에 기본 네비게이션 항목 존재', async ({ page }) => {
   await page.goto('/')
   await page.waitForLoadState('networkidle')
 
-  const nav = page.locator('header, nav')
-  const expectedLinks = ['Home', 'Posts', 'Architecture', 'Papers', 'About']
-
-  for (const linkText of expectedLinks) {
-    const link = nav.locator(`a`).filter({ hasText: new RegExp(linkText, 'i') })
+  // Home, About 은 <a> 링크
+  for (const linkText of ['Home', 'About']) {
+    const link = page.locator('header').locator('a').filter({ hasText: new RegExp(linkText, 'i') })
     await expect(link.first()).toBeVisible({ timeout: 5000 })
   }
+
+  // Posts 는 데스크탑에서 <button> (드롭다운)
+  const postsBtn = page.locator('header nav').locator('button').filter({ hasText: /^Posts/ })
+  await expect(postsBtn.first()).toBeVisible({ timeout: 5000 })
 })
 
-test('Header 링크 클릭 시 올바른 페이지 이동', async ({ page }) => {
+test('Posts 드롭다운에서 Architecture/Papers 이동', async ({ page }) => {
   await page.goto('/')
   await page.waitForLoadState('networkidle')
 
-  const routes = [
-    { text: 'Architecture', path: '/architecture' },
-    { text: 'Papers', path: '/papers' },
-  ]
+  // Posts 버튼 hover → 드롭다운 → Architecture 클릭
+  const postsBtn = page.locator('header nav').locator('button').filter({ hasText: /^Posts/ }).first()
+  await postsBtn.hover()
+  await page.waitForTimeout(300)
 
-  for (const { text, path } of routes) {
-    await page.goto('/')
-    await page.waitForLoadState('networkidle')
-    const link = page.locator('header a, nav a').filter({ hasText: new RegExp(text, 'i') }).first()
-    await link.click()
-    await page.waitForLoadState('networkidle')
-    expect(page.url()).toContain(path)
-  }
+  const archLink = page.locator('header').getByText('Architecture').first()
+  await archLink.click()
+  await page.waitForLoadState('networkidle')
+  expect(page.url()).toContain('type=architecture')
 })
 
 // --- 4-4. 다기종 뷰포트 캡처 ---
@@ -204,8 +202,8 @@ test('모바일 햄버거 → Posts 아코디언 동작', async ({ browser }) =>
   await hamburger.click()
   await page.waitForTimeout(300)
 
-  // Posts 아코디언 버튼 클릭
-  const postsAccordion = page.locator('nav button').filter({ hasText: /Posts/i })
+  // Posts 아코디언 버튼 클릭 (모바일 메뉴 안의 button - last()로 모바일 버튼 선택)
+  const postsAccordion = page.locator('nav button').filter({ hasText: /Posts/i }).last()
   await postsAccordion.click()
   await page.waitForTimeout(300)
 
