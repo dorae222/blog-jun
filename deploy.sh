@@ -37,7 +37,7 @@ echo "  마이그레이션..."
 docker compose -f ${COMPOSE_FILE} run --rm backend python manage.py migrate --noinput
 
 echo "  전체 서비스 재시작..."
-docker compose -f ${COMPOSE_FILE} up -d
+docker compose -f ${COMPOSE_FILE} up -d --force-recreate
 
 echo "  이미지 정리..."
 docker image prune -f

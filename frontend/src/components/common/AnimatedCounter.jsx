@@ -25,7 +25,7 @@ export default function AnimatedCounter({ end, duration = 2, label, icon }) {
   return (
     <motion.div
       ref={ref}
-      className="text-center p-6"
+      className="text-center p-4 md:p-6"
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5 }}

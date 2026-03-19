@@ -11,7 +11,7 @@ const TYPE_STYLES = {
 
 export default function Timeline({ items = [] }) {
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 px-4 overflow-x-hidden">
       <div className="max-w-4xl mx-auto">
         <ScrollReveal>
           <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text)' }}>
@@ -34,7 +34,7 @@ export default function Timeline({ items = [] }) {
 
             const card = (
               <div
-                className={`ml-10 md:ml-0 md:w-5/12 p-4 rounded-xl border ${i % 2 === 0 ? 'md:mr-auto md:mr-8' : 'md:ml-auto md:ml-8'}`}
+                className={`ml-10 md:ml-0 md:w-5/12 p-4 rounded-xl border ${i % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
                 style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
               >
                 {/* 날짜 + type 뱃지 */}

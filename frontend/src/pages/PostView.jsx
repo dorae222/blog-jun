@@ -102,11 +102,11 @@ export default function PostView() {
               )}
             </div>
 
-            <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
+            <div className="flex flex-wrap items-center gap-2 md:gap-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
               <span>
                 {post.published_at
                   ? new Date(post.published_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -144,7 +144,7 @@ export default function PostView() {
 
           {/* Series Navigation */}
           {post.adjacent_posts && (post.adjacent_posts.prev || post.adjacent_posts.next) && (
-            <nav className="mt-8 grid grid-cols-2 gap-4">
+            <nav className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
               {post.adjacent_posts.prev && (
                 <Link
                   to={`/post/${post.adjacent_posts.prev.slug}`}
@@ -158,7 +158,7 @@ export default function PostView() {
               {post.adjacent_posts.next && (
                 <Link
                   to={`/post/${post.adjacent_posts.next.slug}`}
-                  className="p-4 rounded-xl border hover:shadow-md transition-all text-right col-start-2"
+                  className="p-4 rounded-xl border hover:shadow-md transition-all text-right md:col-start-2"
                   style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
                 >
                   <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Next →</span>
