@@ -50,7 +50,7 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="py-16 px-4 section-gradient-purple">
+      <section className="py-12 md:py-16 px-4 section-gradient-purple">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-center mb-10" style={{ color: 'var(--text)' }}>
@@ -83,7 +83,7 @@ export default function Home() {
 
       {/* Recent Posts */}
       {recentPosts.length > 0 && (
-        <section className="py-16 px-4 section-gradient-purple">
+        <section className="py-12 md:py-16 px-4 section-gradient-purple">
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
               <h2 className="text-2xl font-bold text-center mb-10" style={{ color: 'var(--text)' }}>

@@ -1,13 +1,44 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
+
+const POSTS_MENU = [
+  { label: 'Papers',       to: '/search?type=paper_review' },
+  { label: 'Architecture', to: '/search?type=architecture' },
+  { label: 'Articles',     to: '/search?type=article' },
+  { label: 'TIL',          to: '/search?type=til' },
+  { label: 'All Posts',    to: '/search' },
+]
 
 export default function Header() {
   const { user, logout } = useAuth()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobilePostsOpen, setMobilePostsOpen] = useState(false)
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false)
   const navigate = useNavigate()
+  const hoverTimeout = useRef(null)
+
+  // 모바일 메뉴 열릴 때 배경 스크롤 잠금
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  const closeMobile = () => {
+    setMobileOpen(false)
+    setMobilePostsOpen(false)
+  }
+
+  const handlePostsMouseEnter = () => {
+    clearTimeout(hoverTimeout.current)
+    setDesktopDropdownOpen(true)
+  }
+
+  const handlePostsMouseLeave = () => {
+    hoverTimeout.current = setTimeout(() => setDesktopDropdownOpen(false), 150)
+  }
 
   return (
     <header className="sticky top-0 z-40 glass-nav">
@@ -27,13 +58,50 @@ export default function Header() {
             Home
           </Link>
 
-          <Link
-            to="/search"
-            className="text-sm font-medium hover:text-primary-600 transition-colors"
-            style={{ color: 'var(--text-secondary)' }}
+          {/* Posts 드롭다운 */}
+          <div
+            className="relative"
+            onMouseEnter={handlePostsMouseEnter}
+            onMouseLeave={handlePostsMouseLeave}
           >
-            Posts
-          </Link>
+            <button
+              className="flex items-center gap-1 text-sm font-medium hover:text-primary-600 transition-colors"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Posts
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${desktopDropdownOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+
+            <AnimatePresence>
+              {desktopDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute top-full left-0 mt-2 w-44 rounded-xl shadow-lg glass-nav overflow-hidden"
+                  style={{ border: '1px solid var(--border)' }}
+                  onMouseEnter={handlePostsMouseEnter}
+                  onMouseLeave={handlePostsMouseLeave}
+                >
+                  {POSTS_MENU.map((item) => (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                      style={{ color: 'var(--text-secondary)' }}
+                      onClick={() => setDesktopDropdownOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <Link
             to="/about"
@@ -75,6 +143,7 @@ export default function Header() {
 
           <button
             className="md:hidden p-2"
+            aria-label="메뉴 열기"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -92,28 +161,57 @@ export default function Header() {
             className="md:hidden overflow-hidden border-t"
             style={{ borderColor: 'var(--border)' }}
           >
-            <div className="px-4 py-3 space-y-1">
+            <div className="px-4 py-3 space-y-1 max-h-[80vh] overflow-y-auto">
               <Link
                 to="/"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobile}
                 className="block py-2 text-sm"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 Home
               </Link>
 
-              <Link
-                to="/search"
-                onClick={() => setMobileOpen(false)}
-                className="block py-2 text-sm"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                Posts
-              </Link>
+              {/* Posts 아코디언 */}
+              <div>
+                <button
+                  className="flex items-center gap-1 w-full py-2 text-sm text-left"
+                  style={{ color: 'var(--text-secondary)' }}
+                  onClick={() => setMobilePostsOpen(!mobilePostsOpen)}
+                >
+                  Posts
+                  <ChevronDown
+                    size={14}
+                    className={`ml-auto transition-transform duration-200 ${mobilePostsOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {mobilePostsOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden pl-4"
+                    >
+                      {POSTS_MENU.map((item) => (
+                        <Link
+                          key={item.to}
+                          to={item.to}
+                          onClick={closeMobile}
+                          className="block py-2 text-sm"
+                          style={{ color: 'var(--text-secondary)' }}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <Link
                 to="/about"
-                onClick={() => setMobileOpen(false)}
+                onClick={closeMobile}
                 className="block py-2 text-sm"
                 style={{ color: 'var(--text-secondary)' }}
               >
@@ -124,7 +222,7 @@ export default function Header() {
                 <>
                   <Link
                     to="/dashboard"
-                    onClick={() => setMobileOpen(false)}
+                    onClick={closeMobile}
                     className="block py-2 text-sm"
                     style={{ color: 'var(--text-secondary)' }}
                   >
@@ -132,7 +230,7 @@ export default function Header() {
                   </Link>
                   <Link
                     to="/editor"
-                    onClick={() => setMobileOpen(false)}
+                    onClick={closeMobile}
                     className="block py-2 text-sm"
                     style={{ color: 'var(--text-secondary)' }}
                   >
