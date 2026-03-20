@@ -37,7 +37,7 @@ const EXPERIENCE = [
 ]
 
 const ACTIVITIES = [
-  { period: '2025.12 ~ now', name: '멋쟁이 사자처럼 NLP 트랙 3기', desc: '금융 학습 컨텐츠 생성 및 챗봇 시스템' },
+  { period: '2025.12 ~ 2026.02', name: '멋쟁이 사자처럼 NLP 트랙 3기', desc: '금융 학습 컨텐츠 생성 및 챗봇 시스템' },
   { period: '2025.06 ~ 2025.12', name: 'AICA 인공지능사관학교 6기 NLP 트랙', desc: '광주광역시 플리마켓 챗봇 플랫폼' },
   { period: '2023.07 ~ 2024.06', name: '투빅스 (Tobigs)', desc: '학석사 연합 AI 동아리' },
   { period: '2023.03 ~ 2024.02', name: 'HAI', desc: '교내 AI 동아리' },
