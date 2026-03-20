@@ -198,22 +198,22 @@ class ArchitectureEntry(models.Model):
     concepts = models.ManyToManyField(ArchitectureConcept, blank=True, related_name='entries')
 
     # 기본 스펙
-    param_scale = models.CharField(max_length=50, blank=True, help_text="e.g. 8B parameters")
-    context_length = models.CharField(max_length=50, blank=True, help_text="e.g. 128K tokens")
+    param_scale = models.CharField(max_length=200, blank=True, help_text="e.g. 8B parameters")
+    context_length = models.CharField(max_length=200, blank=True, help_text="e.g. 128K tokens")
 
     # 아키텍처 상세
-    attention_type = models.CharField(max_length=100, blank=True, help_text="e.g. GQA + RoPE")
-    normalization = models.CharField(max_length=100, blank=True, help_text="e.g. RMSNorm (Pre-Norm)")
-    activation = models.CharField(max_length=100, blank=True, help_text="e.g. SiLU (SwiGLU)")
-    position_encoding = models.CharField(max_length=100, blank=True, help_text="e.g. RoPE")
-    vocab_size = models.CharField(max_length=50, blank=True)
-    hidden_dim = models.CharField(max_length=50, blank=True)
-    num_layers = models.CharField(max_length=50, blank=True)
-    num_heads = models.CharField(max_length=50, blank=True)
+    attention_type = models.CharField(max_length=200, blank=True, help_text="e.g. GQA + RoPE")
+    normalization = models.CharField(max_length=200, blank=True, help_text="e.g. RMSNorm (Pre-Norm)")
+    activation = models.CharField(max_length=200, blank=True, help_text="e.g. SiLU (SwiGLU)")
+    position_encoding = models.CharField(max_length=200, blank=True, help_text="e.g. RoPE")
+    vocab_size = models.CharField(max_length=200, blank=True)
+    hidden_dim = models.CharField(max_length=200, blank=True)
+    num_layers = models.CharField(max_length=200, blank=True)
+    num_heads = models.CharField(max_length=200, blank=True)
 
     # MoE 전용
-    num_experts = models.CharField(max_length=50, blank=True, help_text="전문가 수 (dense 모델은 비워둠)")
-    active_experts = models.CharField(max_length=50, blank=True)
+    num_experts = models.CharField(max_length=200, blank=True, help_text="전문가 수 (dense 모델은 비워둠)")
+    active_experts = models.CharField(max_length=200, blank=True)
 
     # 서술 필드
     description = models.TextField(blank=True, help_text="한글 설명")
