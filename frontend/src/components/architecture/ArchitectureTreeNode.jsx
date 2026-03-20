@@ -1,77 +1,110 @@
 import { memo } from 'react'
 import { Handle, Position } from '@xyflow/react'
 import { motion } from 'framer-motion'
-import { Lock, Unlock } from 'lucide-react'
 
 const BRANCH_COLORS = {
-  encoder_only: { ring: '#60a5fa', glow: '#3b82f640' },
-  encoder_decoder: { ring: '#34d399', glow: '#10b98140' },
-  decoder_only: { ring: '#a78bfa', glow: '#8b5cf640' },
-  ssm: { ring: '#22d3ee', glow: '#06b6d440' },
-  diffusion: { ring: '#fbbf24', glow: '#f59e0b40' },
-  vision: { ring: '#f472b6', glow: '#ec489940' },
-  multimodal: { ring: '#fb7185', glow: '#f4363640' },
-  agent: { ring: '#a3e635', glow: '#84cc1640' },
+  encoder_only: '#4ade80',
+  encoder_decoder: '#86efac',
+  decoder_only: '#93c5fd',
+  ssm: '#22d3ee',
+  diffusion: '#c084fc',
+  vision: '#f472b6',
+  multimodal: '#fb923c',
+  agent: '#a3e635',
 }
 
-const CATEGORY_LABELS = {
-  llm: 'LLM',
-  ssm: 'SSM',
-  diffusion: 'Diffusion',
-  vision: 'Vision',
-  multimodal: 'Multimodal',
-  agent: 'Agent',
-  technique: 'Technique',
+const ORG_ICONS = {
+  google: '🔵',
+  openai: '🟢',
+  meta: '🟣',
+  anthropic: '🟠',
+  microsoft: '🔷',
+  nvidia: '🟩',
+  deepseek: '🔹',
+  alibaba: '🟧',
+  mistral: '⬛',
+  hugging: '🟡',
+  stability: '🟪',
+  baidu: '🔴',
+  tsinghua: '🔶',
+  apple: '⬜',
+}
+
+function getOrgIcon(org) {
+  if (!org) return ''
+  const lower = org.toLowerCase()
+  for (const [key, icon] of Object.entries(ORG_ICONS)) {
+    if (lower.includes(key)) return icon
+  }
+  return '🏢'
 }
 
 function ArchitectureTreeNode({ data, selected }) {
-  const colors = BRANCH_COLORS[data.branch_type] || BRANCH_COLORS.decoder_only
-  const year = data.release_date?.slice(0, 4) || ''
+  const color = BRANCH_COLORS[data.branch_type] || BRANCH_COLORS.decoder_only
+  const orgIcon = getOrgIcon(data.organization)
+  const isOpen = data.is_open_source
 
   return (
     <>
-      <Handle type="target" position={Position.Left} className="!w-2 !h-2 !border-0" style={{ background: colors.ring }} />
+      {/* 상단 핸들 (자식으로부터 받는 = target) → 실제로는 parent에서 보내는 source */}
+      <Handle
+        type="source"
+        position={Position.Top}
+        className="!w-1.5 !h-1.5 !border-0 !opacity-0"
+        style={{ background: color }}
+      />
+
       <motion.div
-        whileHover={{ scale: 1.08 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-        className="relative cursor-pointer select-none"
+        whileHover={{ scale: 1.06, y: -2 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        className="relative cursor-pointer select-none group"
         style={{
-          background: 'rgba(15, 23, 42, 0.85)',
-          border: `2px solid ${selected ? '#fff' : colors.ring}`,
-          borderRadius: '9999px',
-          padding: '6px 16px',
+          background: isOpen
+            ? `${color}12`
+            : 'rgba(255,255,255,0.95)',
+          border: `1.5px solid ${selected ? color : `${color}60`}`,
+          borderRadius: '10px',
+          padding: '5px 12px',
           boxShadow: selected
-            ? `0 0 20px ${colors.ring}, 0 0 40px ${colors.glow}`
-            : `0 0 8px ${colors.glow}`,
-          backdropFilter: 'blur(8px)',
-          minWidth: 80,
+            ? `0 0 0 2px ${color}40, 0 4px 12px ${color}25`
+            : `0 1px 4px rgba(0,0,0,0.08)`,
+          minWidth: 60,
           textAlign: 'center',
+          transition: 'box-shadow 0.2s ease',
         }}
       >
-        {/* 카테고리 도트 */}
+        {/* Open/Closed source 인디케이터 */}
         <div
-          className="absolute -top-1 -left-1 w-3 h-3 rounded-full border-2"
-          style={{ background: colors.ring, borderColor: 'rgba(15, 23, 42, 0.9)' }}
+          className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-sm border"
+          style={{
+            background: isOpen ? '#d4a574' : '#ffffff',
+            borderColor: isOpen ? '#b8956a' : '#cbd5e1',
+          }}
         />
 
-        {/* Open/Closed source 아이콘 */}
-        <div className="absolute -top-1 -right-1">
-          {data.is_open_source ? (
-            <Unlock size={10} style={{ color: '#4ade80' }} />
-          ) : (
-            <Lock size={10} style={{ color: '#f87171' }} />
+        {/* 모델 이름 + 조직 아이콘 */}
+        <div className="flex items-center gap-1 justify-center">
+          <span
+            className="text-[11px] font-bold leading-tight whitespace-nowrap"
+            style={{ color: '#1e293b' }}
+          >
+            {data.name || data.slug}
+          </span>
+          {orgIcon && (
+            <span className="text-[10px] leading-none" title={data.organization}>
+              {orgIcon}
+            </span>
           )}
         </div>
-
-        <div className="text-white text-xs font-bold leading-tight whitespace-nowrap">
-          {data.name}
-        </div>
-        <div className="text-gray-400 text-[10px] leading-tight">
-          {data.organization?.split('/')[0]?.trim()}
-          {year && ` · ${year}`}
-        </div>
       </motion.div>
-      <Handle type="source" position={Position.Right} className="!w-2 !h-2 !border-0" style={{ background: colors.ring }} />
+
+      {/* 하단 핸들 (부모에서 오는 = target) */}
+      <Handle
+        type="target"
+        position={Position.Bottom}
+        className="!w-1.5 !h-1.5 !border-0 !opacity-0"
+        style={{ background: color }}
+      />
     </>
   )
 }
