@@ -105,9 +105,10 @@ def import_architectures(dry_run: bool = False):
         raw_branch = data.get('branch_type', '')
         branch_type = raw_branch if raw_branch in valid_branches else ''
 
-        # None → '' 변환 (DB NOT NULL 필드 호환)
-        def s(val, default=''):
-            return val if val is not None else default
+        # None → '' 변환 (DB NOT NULL 필드 호환) + max_length truncate
+        def s(val, default='', max_len=0):
+            v = val if val is not None else default
+            return str(v)[:max_len] if max_len else str(v)
 
         defaults = {
             'organization': s(data.get('organization')),
@@ -115,10 +116,10 @@ def import_architectures(dry_run: bool = False):
             'decoder_type': decoder_type,
             'param_scale': s(data.get('param_scale')),
             'context_length': s(data.get('context_length')),
-            'attention_type': s(data.get('attention_type')),
-            'normalization': s(data.get('normalization')),
-            'activation': s(data.get('activation')),
-            'position_encoding': s(data.get('position_encoding')),
+            'attention_type': s(data.get('attention_type'), max_len=50),
+            'normalization': s(data.get('normalization'), max_len=50),
+            'activation': s(data.get('activation'), max_len=50),
+            'position_encoding': s(data.get('position_encoding'), max_len=50),
             'vocab_size': s(data.get('vocab_size')),
             'hidden_dim': s(data.get('hidden_dim')),
             'num_layers': s(data.get('num_layers')),
@@ -130,7 +131,7 @@ def import_architectures(dry_run: bool = False):
             'training_detail': s(data.get('training_detail')),
             'paper_url': s(data.get('paper_url')),
             'code_url': s(data.get('code_url')),
-            'license_type': s(data.get('license_type')),
+            'license_type': s(data.get('license_type'), max_len=50),
             'architecture_category': architecture_category,
             'branch_type': branch_type,
             'is_open_source': data.get('is_open_source', True),
