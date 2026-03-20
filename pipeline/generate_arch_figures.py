@@ -35,217 +35,377 @@ OUTPUT_WIDTH = 1920  # PNG 출력 너비 (px)
 # ── 프롬프트 ──────────────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """\
-You are a technical diagram designer specializing in ML/AI architecture diagrams.
-You generate clean, publication-quality SVG code for neural network architecture diagrams.
+You are a world-class technical diagram designer specializing in ML/AI architecture diagrams,
+inspired by Sebastian Raschka's publication-quality style. You generate detailed, professional
+SVG code that looks like diagrams from academic papers and blog posts.
 
-CRITICAL SVG rules:
+CRITICAL SVG RULES:
 1. Output ONLY valid SVG code wrapped in <svg>...</svg> tags. No markdown, no explanation.
-2. Use viewBox for scaling (e.g., viewBox="0 0 960 600" for wide format).
-3. All text must use font-family="Arial, Helvetica, sans-serif".
-4. Use these exact colors:
-   - Attention blocks: #4A90D9 (blue)
-   - FFN/MLP blocks: #E8833A (orange)
-   - Normalization: #5CB85C (green)
-   - Embedding/Input: #9B59B6 (purple)
-   - Output/Head: #E74C3C (red)
-   - Other/misc: #95A5A6 (gray)
-   - Background: white (#FFFFFF)
-   - Text: #2C3E50 (dark)
-   - Arrows/lines: #34495E
-5. Use rounded rectangles (rx="6") for blocks.
-6. Use marker-end arrows for data flow.
-7. Keep labels concise (max 2-3 words per block).
-8. Ensure the diagram is readable at 400px width.
-9. Add a title text at the top with the model/technique name.
-10. Flow direction: bottom-to-top for model architectures, left-to-right for techniques/algorithms."""
+2. Use viewBox="0 0 1200 1600" for vertical (model architecture) or "0 0 1600 1000" for horizontal (technique/agent) layouts.
+3. Font rules:
+   - Title: font-size="42" font-weight="bold" font-family="Arial, Helvetica, sans-serif"
+   - Subtitle (specs): font-size="18" font-family="monospace"
+   - Block labels: font-size="16" font-weight="bold"
+   - Detail text inside blocks: font-size="14"
+   - Annotations/numbers outside: font-size="16" font-weight="bold" fill="#E74C3C" (red for key numbers)
+
+DESIGN STYLE (Sebastian Raschka inspired):
+4. Main architecture stack: Place in a large rounded rectangle with light blue fill (#D6EAF8) and gray border.
+5. Expanded sub-component views: Show 1-2 key internal components (e.g., attention mechanism, SSM block)
+   in SEPARATE dotted-border boxes to the RIGHT of the main stack, connected by dotted arrows.
+6. Key numbers MUST appear prominently:
+   - Parameter count next to the title in bold
+   - Vocabulary size, embedding dim, context length as labeled annotations
+   - Layer count as "N ×" with a bracket on the left side of the repeating block
+   - Number of attention heads, hidden dim inside expanded views
+7. Color scheme:
+   - Main stack background: #D6EAF8 (light blue)
+   - Attention/Self-Attention blocks: #4A90D9 (blue) with white text
+   - FFN/MLP blocks: #E8833A (orange) with white text
+   - Normalization blocks: #A8D5A2 (light green) with dark text
+   - Embedding/Input: #9B59B6 (purple) with white text
+   - Output/Head: #E74C3C (red) with white text
+   - SSM blocks: #1ABC9C (teal) with white text
+   - Gating/Router: #F39C12 (amber) with white text
+   - Diffusion process: #F59E0B (amber)
+   - Agent blocks: #84CC16 (lime)
+   - Vision blocks: #EC4899 (pink) with white text
+   - Residual connections: dashed gray lines
+   - Sub-component expanded boxes: white fill, dashed #666 border
+   - Annotations (key numbers): #E74C3C (red) bold text
+8. Block styling:
+   - Rounded rectangles with rx="8", clear padding
+   - Residual connections shown as "+" circle symbols with bypass arrows
+   - Data flow arrows: solid #34495E with proper arrowheads
+   - Use "×N" notation with curly brace for repeated layers
+9. Layout principles:
+   - Bottom-to-top flow for model architectures
+   - Left-to-right flow for techniques/pipelines
+   - Generous spacing between blocks (at least 20px)
+   - Every block must have readable text at 600px display width
+   - Show the INTERNAL structure of at least one key component in an expanded view
+10. Technical accuracy: Match the actual architecture described. Show correct data flow,
+    skip connections, and component relationships."""
 
 MODEL_ARCH_TEMPLATE = """\
-Generate an SVG architecture diagram for the {name} model.
+Generate a detailed, publication-quality SVG architecture diagram for {name}.
 
-Specs: {organization}, {release_date}
-- Type: {decoder_type} | Params: {param_scale}
-- Layers: {num_layers}, Heads: {num_heads}, Hidden: {hidden_dim}
-- Attention: {attention_type} | Norm: {normalization} | Act: {activation}
-- Position: {position_encoding}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
+Type: {decoder_type} | Layers: {num_layers} | Heads: {num_heads} | Hidden dim: {hidden_dim}
+Attention: {attention_type} | Norm: {normalization} | Activation: {activation}
+Position encoding: {position_encoding}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout (bottom-to-top):
-1. Input Embedding (purple block) at bottom
-2. "×N" stack indicator showing N={num_layers} layers
-3. One expanded Transformer block showing:
-   - {attention_label} (blue)
-   - Add & Norm (green)
-   - FFN with {activation} (orange)
-   - Add & Norm (green)
-   - Residual connections (dashed lines around the block)
-4. Output Head (red) at top
-5. {extra_component}
+=== LAYOUT (Sebastian Raschka style) ===
 
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT SIDE — Main Architecture Stack (inside light blue #D6EAF8 rounded rect):
+1. Bottom: "Tokenized text" label → "Token embedding layer" (purple block)
+   - Show "Embedding size of {hidden_dim}" as red bold annotation to the left
+2. Below the repeating block: show "×{num_layers} Layers" with a curly brace on the left
+3. Inside the repeating block (bottom to top):
+   - "{normalization}" (light green)
+   - "{attention_label}" (blue block, darker shade)
+   - "+" residual connection circle
+   - "{normalization}" (light green)
+   - "FFN" or "MLP" (orange block)
+   - "+" residual connection circle
+4. Top: "Final {normalization}" → "Linear output layer"
+   - Show "Vocabulary size of ..." as annotation at the top
+
+RIGHT SIDE — Expanded View (dotted border box, connected to main stack with dotted arrow):
+Show the internal structure of {attention_label}:
+- Input splits into Q, K, V via Linear projections
+- Show the attention computation: Scaled Dot-Product Attention
+- Show the output Linear projection
+- Include dimension annotations where known
+
+TITLE: "{name} ({param_scale})" in large bold at the very top.
+
+{extra_component}"""
 
 TECHNIQUE_TEMPLATE = """\
-Generate an SVG diagram for the {name} technique.
+Generate a detailed, publication-quality SVG diagram for the {name} technique.
 
-Specs: {organization}, {release_date}
-
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
 Description: {description_short}
 
-Key mechanism: {key_detail_short}
+=== KEY MECHANISM ===
+{key_detail_short}
 
-Layout (left-to-right):
-1. Show the core mechanism as a flow diagram
-2. If applicable, show before/after or standard vs. optimized comparison
-3. Label key mathematical operations or transformations
-4. Show how it relates to a Transformer block
+=== LAYOUT ===
 
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+Use viewBox="0 0 1600 1000" (horizontal layout).
+
+LEFT SIDE — Standard/Before approach:
+- Show the baseline method this technique improves upon
+- Label with specific operations and dimensions
+
+CENTER — The {name} technique:
+- Show the core mechanism as a detailed flow diagram
+- Include mathematical operations (formulas as text)
+- Show data dimensions at each step
+
+RIGHT SIDE — Result/Comparison:
+- Show the improvement or output
+- If applicable: performance comparison or efficiency gains
+
+BOTTOM — Key insight box with dotted border explaining the main innovation.
+
+TITLE: "{name}" in large bold at the top.
+Include organization and date as subtitle."""
 
 MOE_TEMPLATE = """\
-Generate an SVG architecture diagram for the {name} MoE model.
+Generate a detailed, publication-quality SVG architecture diagram for {name} (Mixture of Experts).
 
-Specs: {organization}, {release_date}
-- Params: {param_scale} | Layers: {num_layers}, Heads: {num_heads}, Hidden: {hidden_dim}
-- Experts: {num_experts} total, {active_experts} active per token
-- Attention: {attention_type} | Act: {activation}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
+Layers: {num_layers} | Heads: {num_heads} | Hidden dim: {hidden_dim}
+Experts: {num_experts} total, {active_experts} active per token
+Attention: {attention_type} | Activation: {activation}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout (bottom-to-top):
-1. Input Embedding (purple) at bottom
-2. Attention block (blue)
-3. Add & Norm (green)
-4. Router/Gating Network (gray) with arrows fanning out to expert blocks
-5. Expert FFN blocks (orange, show {num_experts} experts, highlight {active_experts} active)
-6. Weighted sum merge point
-7. Add & Norm (green)
-8. "×{num_layers}" stack indicator
-9. Output Head (red) at top
+=== LAYOUT (Sebastian Raschka style) ===
 
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT SIDE — Main Architecture Stack (light blue #D6EAF8 background):
+1. Bottom: Token embedding (purple)
+2. Repeating block with "×{num_layers} Layers" brace:
+   - {normalization} (light green)
+   - Attention block (blue)
+   - "+" residual
+   - {normalization} (light green)
+   - MoE block (amber #F39C12): Router → fan-out to experts → weighted sum
+   - "+" residual
+3. Top: Final norm → Linear output
+
+Show annotations: "{num_experts} experts, {active_experts} active" in red bold.
+
+RIGHT SIDE — Expanded MoE Block (dotted border):
+- Router/Gating network at top
+- Show {num_experts} expert FFN blocks (highlight {active_experts} active ones in orange, rest in gray)
+- Arrows from router to selected experts with "Top-{active_experts}" label
+- Weighted sum at bottom
+
+TITLE: "{name} ({param_scale})" in large bold."""
 
 HYBRID_TEMPLATE = """\
-Generate an SVG architecture diagram for the {name} hybrid model.
+Generate a detailed, publication-quality SVG architecture diagram for {name} (Hybrid model).
 
-Specs: {organization}, {release_date}
-- Params: {param_scale} | Layers: {num_layers}, Heads: {num_heads}, Hidden: {hidden_dim}
-- Attention: {attention_type} | Act: {activation}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
+Layers: {num_layers} | Heads: {num_heads} | Hidden dim: {hidden_dim}
+Attention: {attention_type} | Activation: {activation}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout (bottom-to-top):
-1. Input Embedding (purple) at bottom
-2. Show alternating block types:
-   - Attention blocks (blue) for some layers
-   - SSM/Mamba blocks (teal #1ABC9C) for other layers
-3. If MoE is involved, show expert routing in relevant layers
-4. Show the repeating pattern of hybrid blocks
-5. Output Head (red) at top
+=== LAYOUT (Sebastian Raschka style) ===
 
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT SIDE — Main Architecture Stack (light blue background):
+1. Bottom: Token embedding (purple)
+2. Show the ALTERNATING layer pattern explicitly:
+   - Attention layers (blue blocks)
+   - SSM/Linear attention layers (teal #1ABC9C blocks)
+   - If MoE: show expert routing in relevant layers
+3. Show the ratio pattern at the BOTTOM RIGHT in a table-like box:
+   "Layer 1: Linear attention → MoE"
+   "Layer 2: Linear attention → MoE"
+   "Layer N: Full attention → MoE"
+4. Top: Final norm → Linear output
+
+RIGHT SIDE — Expanded views (dotted borders):
+- Show one Attention block detail
+- Show one SSM/Linear block detail
+- Connected to main stack with dotted arrows
+
+TITLE: "{name} ({param_scale})" in large bold.
+Show key numbers as red bold annotations."""
 
 SSM_TEMPLATE = """\
-Generate an SVG architecture diagram for the {name} State Space Model.
+Generate a detailed, publication-quality SVG architecture diagram for {name} (State Space Model).
 
-Specs: {organization}, {release_date}
-- Params: {param_scale}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout (bottom-to-top):
-1. Input Sequence (purple) at bottom
-2. State Space block (teal #1ABC9C):
-   - Show state transition: x(t) → A·x(t) + B·u(t) → y(t) = C·x(t)
-   - If selective mechanism exists, show selection/gating component
-3. Show the recurrence pattern with a loop arrow
-4. If there's a discretization step, show continuous → discrete conversion
-5. Output projection (red) at top
-6. Show how sequence length scales linearly (vs quadratic for attention)
+=== LAYOUT (Sebastian Raschka style) ===
 
-Use teal (#1ABC9C) as the primary color for SSM blocks.
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT SIDE — Main Architecture Stack (light blue background):
+1. Bottom: "Tokenized text" → "Token embedding layer" (purple)
+   - Annotation: embedding dimension in red bold
+2. Repeating block with "×N Layers" brace:
+   - RMSNorm (light green)
+   - SSM Block (teal #1ABC9C, darker shade)
+   - "+" residual connection
+   - RMSNorm (light green)
+   - MLP/FFN (orange)
+   - "+" residual connection
+3. Top: Final norm → Linear output
+
+RIGHT SIDE — Expanded SSM Block (dotted border):
+Show the INTERNAL structure:
+- Input x → Linear projections
+- Conv1d (if applicable, red/coral block)
+- σ activation
+- Show state equation: x(t) = Ax(t-1) + Bu(t), y(t) = Cx(t)
+- If selective: show Δ, B, C as input-dependent (arrows from input)
+- Multiplicative gate (×) with SiLU
+- Linear output projection
+
+Show "Linear Complexity O(n)" vs "Attention O(n²)" comparison annotation.
+
+TITLE: "{name} ({param_scale})" in large bold.
+Use teal (#1ABC9C) as primary color for SSM-specific blocks."""
 
 DIFFUSION_TEMPLATE = """\
-Generate an SVG diagram for the {name} diffusion model/technique.
+Generate a detailed, publication-quality SVG diagram for {name} (Diffusion Model).
 
-Specs: {organization}, {release_date}
-- Params: {param_scale}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout (left-to-right):
-1. Clean Image x₀ on the left
-2. Forward Process arrow (adding noise): x₀ → x₁ → ... → xₜ (show progressively noisier images)
-3. Pure Noise xₜ in the middle
-4. Reverse Process arrow (denoising): xₜ → ... → x₁ → x₀ (show progressively cleaner images)
-5. Denoiser Network block below the reverse process:
-   - If U-Net: show encoder-decoder with skip connections
-   - If DiT: show transformer blocks with conditioning
-6. If text-conditioned: show text encoder feeding into denoiser
-7. Show the noise schedule or loss function if relevant
+=== LAYOUT (Sebastian Raschka style) ===
+Use viewBox="0 0 1600 1200".
 
-Use amber (#F59E0B) as the primary color for diffusion process blocks.
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+TOP SECTION — Diffusion Process (horizontal flow):
+- Left: Clean image x₀ (show as a small image placeholder with border)
+- Forward process arrows with "Add noise" label: x₀ → x₁ → ... → xₜ
+  (show 4-5 stages with progressively noisier placeholder squares)
+- Center: Pure noise xₜ
+- Reverse process arrows with "Denoise" label: xₜ → ... → x₀
+  (show progressively cleaner stages)
+
+BOTTOM LEFT — Denoiser Network (light blue background box):
+- If U-Net based: Show encoder-decoder with skip connections
+  - Encoder: progressively smaller blocks (downsampling)
+  - Bottleneck
+  - Decoder: progressively larger blocks (upsampling)
+  - Skip connections as horizontal arrows
+- If DiT based: Show transformer blocks with adaptive norm
+
+BOTTOM RIGHT — Conditioning (dotted border expanded view):
+- Text encoder (if text-conditioned): CLIP/T5 → text embeddings
+- Cross-attention mechanism connecting text to denoiser
+- Timestep embedding
+- Show how conditioning enters the denoiser
+
+Use amber (#F59E0B) for diffusion process blocks, blue (#4A90D9) for attention.
+TITLE: "{name} ({param_scale})" in large bold."""
 
 AGENT_TEMPLATE = """\
-Generate an SVG diagram for the {name} AI agent architecture/framework.
+Generate a detailed, publication-quality SVG diagram for {name} (AI Agent/Framework).
 
-Specs: {organization}, {release_date}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout:
-1. Central agent loop: Observe → Think → Act → Observe (circular flow)
-2. If multi-agent: show multiple agent nodes with communication arrows
-3. If tool-using: show tool connections (API, Code, Search, Browser)
-4. If protocol: show client-server or agent-agent communication flow
-5. Show memory/state management if applicable
-6. Show environment interaction
+=== LAYOUT (Sebastian Raschka style) ===
+Use viewBox="0 0 1600 1000" (horizontal).
 
-Use lime (#84CC16) as the primary color for agent blocks.
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT — Agent Core (light green #E8F5E9 background box):
+- User/Orchestrator at top
+- Agent Core: Observe → Think → Act loop (show as circular flow)
+- Memory/State store below
+
+CENTER — Communication Layer (white box with dotted border):
+- If protocol: show message format, transport layer
+- If tool-use: show tool connections (API, Code, Search, Browser)
+- Show the specific protocol/API (REST, JSON-RPC, SSE etc.)
+
+RIGHT — External Components:
+- If multi-agent: show Remote Agent with its own core
+- If tool-using: show tool icons/blocks
+- Environment/User interaction
+
+BOTTOM — Key features table or lifecycle diagram in a boxed section.
+
+Use lime (#84CC16) for agent blocks, blue (#4A90D9) for communication,
+orange (#E8833A) for tools.
+TITLE: "{name}" in large bold."""
 
 VISION_TEMPLATE = """\
-Generate an SVG architecture diagram for the {name} vision model.
+Generate a detailed, publication-quality SVG architecture diagram for {name} (Vision Model).
 
-Specs: {organization}, {release_date}
-- Params: {param_scale}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout (bottom-to-top):
-1. Input Image at bottom
-2. If patch-based: show image split into patches with linear embedding
-3. Vision Encoder blocks (pink #EC4899):
-   - If ViT-based: show transformer blocks with self-attention
-   - If hierarchical: show multi-scale feature maps
-4. If segmentation: show mask decoder with prompt inputs
-5. If detection: show object queries and bipartite matching
-6. Output predictions at top
+=== LAYOUT (Sebastian Raschka style) ===
 
-Use pink (#EC4899) as the primary color for vision blocks.
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT SIDE — Input Processing:
+- Show input image being split into patches (grid overlay on image)
+- Linear embedding / patch projection
+- Show patch size and resulting sequence length as annotations
+
+CENTER — Main Vision Stack (light pink #FDE8EF background):
+- Patch embedding (purple)
+- If ViT: transformer blocks with self-attention
+- If hierarchical: show multi-scale stages with decreasing resolution
+- Show "×N Layers" with brace
+- CLS token or global pooling at top
+
+RIGHT SIDE — Expanded View (dotted border):
+- Show internal structure of key block (attention, etc.)
+- If segmentation: show mask decoder + prompt encoder
+- If detection: show object queries
+
+TITLE: "{name} ({param_scale})" in large bold.
+Use pink (#EC4899) for vision-specific blocks."""
 
 MULTIMODAL_TEMPLATE = """\
-Generate an SVG architecture diagram for the {name} multimodal model.
+Generate a detailed, publication-quality SVG architecture diagram for {name} (Multimodal Model).
 
-Specs: {organization}, {release_date}
-- Params: {param_scale}
+=== SPECIFICATIONS ===
+Organization: {organization} | Released: {release_date}
+Parameters: {param_scale}
 
-Key feature: {key_detail_short}
+=== KEY INNOVATION ===
+{key_detail_short}
 
-Layout:
-1. Multiple input modalities on the left (image, text, audio if applicable)
-2. Each modality has its own encoder:
-   - Vision: ViT encoder (pink #EC4899)
-   - Text: Transformer encoder (blue #4A90D9)
-   - Audio: Whisper-like encoder (green #5CB85C)
-3. Fusion mechanism in the center (cross-attention, projection, Q-Former, etc.)
-4. LLM backbone (purple #9B59B6)
-5. Output on the right (text generation, image generation, etc.)
+=== LAYOUT (Sebastian Raschka style) ===
+Use viewBox="0 0 1600 1200".
 
-Use rose (#FB7185) as the primary color for fusion/multimodal blocks.
-Title: "{name}" at top. viewBox="0 0 960 600"."""
+LEFT — Input Modalities (separate boxes for each):
+- Image input → Vision Encoder (pink #EC4899 background box)
+  - Show ViT/CNN architecture briefly
+  - Output: visual tokens/features
+- Text input → Text Tokenizer
+  - Show token sequence
+
+CENTER — Fusion Mechanism (rose #FB7185 background box with dotted border):
+- If cross-attention: show Q from one modality, K/V from another
+- If projection: show linear projection layer
+- If Q-Former: show learnable queries + cross-attention
+- Label the specific fusion method used
+
+RIGHT — LLM Backbone (light blue background):
+- Show transformer decoder blocks
+- Show how visual tokens are integrated (prepended, interleaved, etc.)
+- Output: generated text/response
+
+BOTTOM — Training stages if multi-stage (e.g., Stage 1: Alignment, Stage 2: Instruction tuning)
+
+TITLE: "{name} ({param_scale})" in large bold.
+Show key numbers (visual tokens, text tokens, etc.) as red bold annotations."""
 
 
 def classify_architecture(data: dict) -> str:
