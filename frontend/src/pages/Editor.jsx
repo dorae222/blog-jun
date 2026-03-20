@@ -54,17 +54,27 @@ export default function Editor() {
     }
   }, [slug, user, navigate])
 
+  // 저장 상태 표시
+  const [saveStatus, setSaveStatus] = useState('saved') // saved | saving | changed
+
   // Auto-save every 30 seconds
   const autoSaveRef = useRef(null)
   useEffect(() => {
     if (!form.title || !form.content) return
     autoSaveRef.current = setInterval(() => {
-      handleSave(true)
+      if (saveStatus === 'changed') handleSave(true)
     }, 30000)
     return () => clearInterval(autoSaveRef.current)
-  }, [form])
+  }, [form, saveStatus])
+
+  // 폼 변경 감지
+  const updateForm = (updates) => {
+    setForm(prev => ({ ...prev, ...updates }))
+    setSaveStatus('changed')
+  }
 
   const handleSave = useCallback(async (silent = false) => {
+    setSaveStatus('saving')
     try {
       const data = { ...form }
       if (!data.category) delete data.category
@@ -78,10 +88,24 @@ export default function Editor() {
         if (!silent) toast.success('Created!')
         navigate(`/editor/${r.data.slug}`, { replace: true })
       }
+      setSaveStatus('saved')
     } catch (err) {
+      setSaveStatus('changed')
       toast.error('Save failed')
     }
   }, [form, slug, navigate])
+
+  // Ctrl+S 단축키
+  useEffect(() => {
+    const handler = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+        e.preventDefault()
+        handleSave()
+      }
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [handleSave])
 
   const handlePublish = async () => {
     setForm(prev => ({ ...prev, status: 'published' }))
@@ -118,7 +142,7 @@ export default function Editor() {
       <div className="flex items-center gap-3 px-4 py-2 border-b" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
         <input
           value={form.title}
-          onChange={e => setForm(prev => ({ ...prev, title: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-') }))}
+          onChange={e => updateForm({ title: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-') })}
           placeholder="Post title..."
           className="flex-1 text-lg font-semibold bg-transparent outline-none"
           style={{ color: 'var(--text)' }}
@@ -126,7 +150,7 @@ export default function Editor() {
 
         <select
           value={form.post_type}
-          onChange={e => setForm(prev => ({ ...prev, post_type: e.target.value }))}
+          onChange={e => updateForm({ post_type: e.target.value })}
           className="text-sm px-2 py-1 rounded border"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
@@ -140,7 +164,7 @@ export default function Editor() {
 
         <select
           value={form.category}
-          onChange={e => setForm(prev => ({ ...prev, category: e.target.value }))}
+          onChange={e => updateForm({ category: e.target.value })}
           className="text-sm px-2 py-1 rounded border"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
@@ -150,7 +174,7 @@ export default function Editor() {
 
         <select
           value={form.series}
-          onChange={e => setForm(prev => ({ ...prev, series: e.target.value }))}
+          onChange={e => updateForm({ series: e.target.value })}
           className="text-sm px-2 py-1 rounded border"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
@@ -166,6 +190,12 @@ export default function Editor() {
           Templates
         </button>
 
+        <span className="text-xs px-2" style={{
+          color: saveStatus === 'saved' ? '#10b981' : saveStatus === 'saving' ? '#f59e0b' : '#6366f1'
+        }}>
+          {saveStatus === 'saved' ? '✓ 저장됨' : saveStatus === 'saving' ? '저장 중...' : '● 변경사항'}
+        </span>
+
         <button onClick={() => handleSave()} className="text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300">
           Save
         </button>
@@ -179,7 +209,7 @@ export default function Editor() {
       <div className="flex-1 flex overflow-hidden">
         <NotionEditor
           content={form.content}
-          onChange={(markdown) => setForm(prev => ({ ...prev, content: markdown }))}
+          onChange={(markdown) => updateForm({ content: markdown })}
           onImageUpload={handleImageUpload}
         />
       </div>

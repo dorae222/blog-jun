@@ -6,12 +6,13 @@ import {
   getDashboardStats, getPosts, deletePost,
   bulkDeletePosts, bulkUpdateStatus,
   getAuditResults, getTags, mergeTags, cleanupTags,
+  getArchitectures, deleteArchitecture,
 } from '../api/posts'
 import toast from 'react-hot-toast'
 import {
   FileText, CheckCircle, Clock, Eye, AlertTriangle, Pencil, Trash2,
   LayoutGrid, Cloud, Brain, Database, Code2, FolderOpen, Terminal, BookOpen,
-  Archive, Plus, Tags, ChevronLeft, ChevronRight,
+  Archive, Plus, Tags, ChevronLeft, ChevronRight, Cpu,
 } from 'lucide-react'
 
 // 이슈 배지 색상
@@ -61,7 +62,7 @@ export default function Dashboard() {
   const { user } = useAuth()
   const navigate = useNavigate()
 
-  // 탭: posts | tags
+  // 탭: posts | tags | architectures
   const [tab, setTab] = useState('posts')
 
   // 포스트 목록 상태
@@ -84,6 +85,9 @@ export default function Dashboard() {
   const [tags, setTags] = useState([])
   const [mergeSrc, setMergeSrc] = useState('')
   const [mergeDst, setMergeDst] = useState('')
+
+  // 아키텍처 탭
+  const [archEntries, setArchEntries] = useState([])
 
   // 데이터 로드
   const loadPosts = useCallback((statusF = statusFilter, catF = categoryFilter, pageNum = page) => {
@@ -111,6 +115,10 @@ export default function Dashboard() {
     getTags().then(r => setTags(r.data.results || r.data || [])).catch(() => {})
   }, [])
 
+  const loadArchitectures = useCallback(() => {
+    getArchitectures().then(r => setArchEntries(r.data.results || r.data || [])).catch(() => {})
+  }, [])
+
   useEffect(() => {
     if (!user) { navigate('/login'); return }
     getDashboardStats().then(r => setStats(r.data)).catch(() => {})
@@ -119,6 +127,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (tab === 'tags') loadTags()
+    if (tab === 'architectures') loadArchitectures()
   }, [tab])
 
   useEffect(() => {
@@ -267,6 +276,7 @@ export default function Dashboard() {
         style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
         {[
           { id: 'posts', label: '포스트', Icon: FileText },
+          { id: 'architectures', label: 'Architectures', Icon: Cpu },
           { id: 'tags',  label: '태그 관리', Icon: Tags },
         ].map(t => (
           <button key={t.id} onClick={() => setTab(t.id)}
@@ -516,6 +526,81 @@ export default function Dashboard() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ─── Architectures 탭 ─── */}
+      {tab === 'architectures' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+              {archEntries.length}개 Architecture
+            </p>
+            <Link to="/architectures/new"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm hover:bg-primary-700">
+              <Plus size={15} /> 새 Architecture
+            </Link>
+          </div>
+          <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+            <table className="w-full text-sm">
+              <thead>
+                <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
+                  <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>Name</th>
+                  <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>Category</th>
+                  <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>Branch</th>
+                  <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>Org</th>
+                  <th className="px-3 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>액션</th>
+                </tr>
+              </thead>
+              <tbody>
+                {archEntries.map(entry => (
+                  <tr key={entry.id} className="border-t hover:bg-gray-50 transition-colors" style={{ borderColor: 'var(--border)' }}>
+                    <td className="px-3 py-2">
+                      <span className="font-medium" style={{ color: 'var(--text)' }}>{entry.name}</span>
+                      <span className="text-xs ml-1" style={{ color: 'var(--text-secondary)' }}>
+                        {entry.release_date?.slice(0, 4)}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
+                      {entry.architecture_category?.toUpperCase()}
+                    </td>
+                    <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
+                      {entry.branch_type}
+                    </td>
+                    <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
+                      {entry.organization}
+                    </td>
+                    <td className="px-3 py-2">
+                      <div className="flex items-center gap-0.5 justify-end">
+                        <Link to={`/architectures/${entry.slug}`} title="보기"
+                          className="p-1.5 rounded hover:bg-gray-100" style={{ color: 'var(--text-secondary)' }}>
+                          <Eye size={14} />
+                        </Link>
+                        <Link to={`/architectures/${entry.slug}/edit`} title="편집"
+                          className="p-1.5 rounded hover:bg-blue-50 hover:text-blue-600" style={{ color: 'var(--text-secondary)' }}>
+                          <Pencil size={14} />
+                        </Link>
+                        <button
+                          onClick={async () => {
+                            if (!confirm(`"${entry.name}" 삭제?`)) return
+                            try {
+                              await deleteArchitecture(entry.slug)
+                              toast.success('삭제 완료')
+                              loadArchitectures()
+                            } catch { toast.error('삭제 실패') }
+                          }}
+                          title="삭제"
+                          className="p-1.5 rounded hover:bg-red-50 hover:text-red-600"
+                          style={{ color: 'var(--text-secondary)' }}>
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       )}

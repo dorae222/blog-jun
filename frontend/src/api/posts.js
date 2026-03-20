@@ -30,5 +30,19 @@ export const cleanupTags = () => client.post('/tags/cleanup/')
 // Architecture API
 export const getArchitectures = (params) => client.get('/architectures/', { params })
 export const getArchitecture = (slug) => client.get(`/architectures/${slug}/`)
+export const createArchitecture = (data) => client.post('/architectures/', data)
+export const updateArchitecture = (slug, data) => client.patch(`/architectures/${slug}/`, data)
+export const deleteArchitecture = (slug) => client.delete(`/architectures/${slug}/`)
 export const getArchitectureConcepts = () => client.get('/architectures/concepts/')
 export const getArchitectureStats = () => client.get('/architectures/stats/')
+export const getArchitectureTree = () => client.get('/architectures/tree/')
+export const updateArchitecturePosition = (slug, x, y) =>
+  client.post(`/architectures/${slug}/update_position/`, { x, y })
+export const createArchitectureRelation = (data) =>
+  client.post('/architectures/relations/', data)
+export const deleteArchitectureRelation = (fromSlug, toSlug) =>
+  client.delete('/architectures/relations/', { data: { from_slug: fromSlug, to_slug: toSlug } })
+export const uploadArchitectureFigure = (slug, formData) =>
+  client.post(`/architectures/${slug}/upload_figure/`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  })
