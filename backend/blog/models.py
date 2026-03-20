@@ -160,6 +160,32 @@ class ArchitectureEntry(models.Model):
         DENSE = 'dense', 'Dense'
         SPARSE_MOE = 'sparse_moe', 'Sparse MoE'
         SPARSE_HYBRID = 'sparse_hybrid', 'Sparse Hybrid'
+        SSM = 'ssm', 'State Space Model'
+        HYBRID_SSM = 'hybrid_ssm', 'Hybrid SSM'
+        DIFFUSION_UNET = 'diffusion_unet', 'Diffusion (U-Net)'
+        DIFFUSION_DIT = 'diffusion_dit', 'Diffusion (DiT)'
+        VISION_ENCODER = 'vision_encoder', 'Vision Encoder'
+        MULTIMODAL = 'multimodal', 'Multimodal LLM'
+        TECHNIQUE = 'technique', 'Technique'
+
+    class ArchitectureCategory(models.TextChoices):
+        LLM = 'llm', 'LLM'
+        SSM = 'ssm', 'SSM'
+        DIFFUSION = 'diffusion', 'Diffusion'
+        MULTIMODAL = 'multimodal', 'Multimodal'
+        AGENT = 'agent', 'Agent'
+        TECHNIQUE = 'technique', 'Technique'
+        VISION = 'vision', 'Vision'
+
+    class BranchType(models.TextChoices):
+        ENCODER_ONLY = 'encoder_only', 'Encoder-Only'
+        ENCODER_DECODER = 'encoder_decoder', 'Encoder-Decoder'
+        DECODER_ONLY = 'decoder_only', 'Decoder-Only'
+        SSM = 'ssm', 'SSM'
+        DIFFUSION = 'diffusion', 'Diffusion'
+        VISION = 'vision', 'Vision'
+        MULTIMODAL = 'multimodal', 'Multimodal'
+        AGENT = 'agent', 'Agent'
 
     # 기본 정보
     name = models.CharField(max_length=200)
@@ -199,6 +225,18 @@ class ArchitectureEntry(models.Model):
     code_url = models.URLField(blank=True)
     license_type = models.CharField(max_length=100, blank=True)
 
+    # 트리 분류
+    architecture_category = models.CharField(
+        max_length=20, choices=ArchitectureCategory.choices, default=ArchitectureCategory.LLM
+    )
+    branch_type = models.CharField(
+        max_length=30, choices=BranchType.choices, blank=True,
+        help_text="트리 시각화에서의 가지 위치"
+    )
+    tree_x = models.FloatField(null=True, blank=True, help_text="트리 X 좌표")
+    tree_y = models.FloatField(null=True, blank=True, help_text="트리 Y 좌표")
+    is_open_source = models.BooleanField(default=True)
+
     # Figure
     figure = models.ImageField(upload_to='architectures/', blank=True, null=True)
     figure_placeholder = models.BooleanField(default=True)
@@ -217,3 +255,28 @@ class ArchitectureEntry(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.organization})"
+
+
+class ArchitectureRelation(models.Model):
+    class RelationType(models.TextChoices):
+        EVOLVED_FROM = 'evolved_from', '발전'
+        INSPIRED_BY = 'inspired_by', '영향'
+        VARIANT_OF = 'variant_of', '변형'
+        TECHNIQUE_USED = 'technique_used', '기법 적용'
+
+    from_entry = models.ForeignKey(
+        ArchitectureEntry, related_name='child_relations', on_delete=models.CASCADE
+    )
+    to_entry = models.ForeignKey(
+        ArchitectureEntry, related_name='parent_relations', on_delete=models.CASCADE
+    )
+    relation_type = models.CharField(
+        max_length=20, choices=RelationType.choices, default=RelationType.EVOLVED_FROM
+    )
+    description = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        unique_together = ('from_entry', 'to_entry', 'relation_type')
+
+    def __str__(self):
+        return f"{self.from_entry.slug} → {self.to_entry.slug} ({self.get_relation_type_display()})"
