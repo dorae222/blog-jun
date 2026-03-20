@@ -26,20 +26,20 @@ from blog.models import Post, Category, ArchitectureEntry
 
 CSV_PATH = Path(__file__).parent / 'data' / 'papers.csv'
 
-# 카테고리 매핑 (csv category → DB Category slug)
+# 카테고리 매핑 (csv category → DB Category slug, 5개 구조)
 CATEGORY_MAP = {
-    'transformer': 'ai',
-    'nlp': 'ai',
-    'llm': 'ai',
-    'alignment': 'ai',
-    'moe': 'ai',
-    'scaling': 'ai',
-    'technique': 'ai',
-    'finetuning': 'ai',
-    'rag': 'ai',
-    'vision': 'ai',
-    'multimodal': 'ai',
-    'ssm': 'ai',
+    'transformer': 'model-architecture',
+    'nlp':         'model-architecture',
+    'llm':         'model-architecture',
+    'vision':      'model-architecture',
+    'multimodal':  'model-architecture',
+    'ssm':         'model-architecture',
+    'moe':         'efficient-ai',
+    'scaling':     'efficient-ai',
+    'alignment':   'alignment-rlhf',
+    'finetuning':  'alignment-rlhf',
+    'rag':         'rag-knowledge',
+    'technique':   'core-techniques',
 }
 
 
