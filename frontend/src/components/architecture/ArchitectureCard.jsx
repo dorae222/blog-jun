@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ExternalLink, Cpu, Layers } from 'lucide-react'
 
@@ -5,16 +6,25 @@ const TYPE_COLORS = {
   dense: { bg: '#3B82F620', text: '#3B82F6', label: 'Dense' },
   sparse_moe: { bg: '#8B5CF620', text: '#8B5CF6', label: 'MoE' },
   sparse_hybrid: { bg: '#F59E0B20', text: '#F59E0B', label: 'Hybrid' },
+  ssm: { bg: '#06B6D420', text: '#06B6D4', label: 'SSM' },
+  hybrid_ssm: { bg: '#10B98120', text: '#10B981', label: 'Hybrid SSM' },
+  diffusion_unet: { bg: '#8B5CF620', text: '#8B5CF6', label: 'U-Net' },
+  diffusion_dit: { bg: '#EC489920', text: '#EC4899', label: 'DiT' },
+  vision_encoder: { bg: '#F4729B20', text: '#F472B6', label: 'Vision' },
+  multimodal: { bg: '#FB718520', text: '#FB7185', label: 'Multimodal' },
+  technique: { bg: '#9CA3AF20', text: '#9CA3AF', label: 'Technique' },
 }
 
 export default function ArchitectureCard({ entry }) {
+  const navigate = useNavigate()
   const typeStyle = TYPE_COLORS[entry.decoder_type] || TYPE_COLORS.dense
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border overflow-hidden hover:shadow-lg transition-shadow"
+      onClick={() => navigate(`/architectures/${entry.slug}`)}
+      className="rounded-2xl border overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
       style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
     >
       {/* Figure / Placeholder */}

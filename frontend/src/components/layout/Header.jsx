@@ -1,12 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, User } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
 
 const POSTS_MENU = [
   { label: 'Papers',       to: '/search?type=paper_review' },
-  { label: 'Architecture', to: '/search?type=architecture' },
+  { label: 'Architecture', to: '/architectures' },
+  { label: 'AI Tree',      to: '/architectures/tree' },
   { label: 'Articles',     to: '/search?type=article' },
   { label: 'TIL',          to: '/search?type=til' },
   { label: 'All Posts',    to: '/search' },
@@ -17,8 +18,10 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobilePostsOpen, setMobilePostsOpen] = useState(false)
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false)
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
   const navigate = useNavigate()
   const hoverTimeout = useRef(null)
+  const userMenuRef = useRef(null)
 
   // 모바일 메뉴 열릴 때 배경 스크롤 잠금
   useEffect(() => {
@@ -112,26 +115,53 @@ export default function Header() {
           </Link>
 
           {user && (
-            <>
-              <Link to="/dashboard" className="text-sm font-medium hover:text-primary-600 transition-colors" style={{ color: 'var(--text-secondary)' }}>
-                Dashboard
-              </Link>
-              <Link to="/editor" className="text-sm font-medium hover:text-primary-600 transition-colors" style={{ color: 'var(--text-secondary)' }}>
-                Write
-              </Link>
-            </>
+            <Link to="/dashboard" className="text-sm font-medium hover:text-primary-600 transition-colors" style={{ color: 'var(--text-secondary)' }}>
+              Dashboard
+            </Link>
           )}
         </nav>
 
         <div className="flex items-center gap-3">
           {user ? (
-            <button
-              onClick={() => { logout(); navigate('/') }}
-              className="text-sm px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50"
-              style={{ borderColor: 'var(--border)' }}
-            >
-              Logout
-            </button>
+            <div className="relative" ref={userMenuRef}>
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50"
+                style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+              >
+                <User size={14} />
+                {user.username || 'User'}
+                <ChevronDown size={12} className={`transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              <AnimatePresence>
+                {userMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="absolute right-0 top-full mt-2 w-48 rounded-xl shadow-lg glass-nav overflow-hidden z-50"
+                    style={{ border: '1px solid var(--border)' }}
+                  >
+                    <Link to="/dashboard" onClick={() => setUserMenuOpen(false)}
+                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                      style={{ color: 'var(--text-secondary)' }}>Dashboard</Link>
+                    <Link to="/editor" onClick={() => setUserMenuOpen(false)}
+                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                      style={{ color: 'var(--text-secondary)' }}>새 글 작성</Link>
+                    <Link to="/architectures/new" onClick={() => setUserMenuOpen(false)}
+                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                      style={{ color: 'var(--text-secondary)' }}>새 Architecture</Link>
+                    <div style={{ borderTop: '1px solid var(--border)' }} />
+                    <button
+                      onClick={() => { logout(); navigate('/'); setUserMenuOpen(false) }}
+                      className="block w-full text-left px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors"
+                    >
+                      Logout
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ) : (
             <Link
               to="/login"

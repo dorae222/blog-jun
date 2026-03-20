@@ -16,6 +16,10 @@ import About from './pages/About'
 import Editor from './pages/Editor'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
+import ArchitectureGallery from './pages/ArchitectureGallery'
+import AIEvolutionaryTree from './pages/AIEvolutionaryTree'
+import ArchitectureDetail from './pages/ArchitectureDetail'
+import ArchitectureEditor from './pages/ArchitectureEditor'
 
 export default function App() {
   const location = useLocation()
@@ -31,7 +35,12 @@ export default function App() {
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/series/:slug" element={<SeriesPage />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/architecture" element={<Navigate to="/search?type=architecture" replace />} />
+            <Route path="/architectures" element={<ArchitectureGallery />} />
+            <Route path="/architectures/tree" element={<AIEvolutionaryTree />} />
+            <Route path="/architectures/new" element={<ArchitectureEditor />} />
+            <Route path="/architectures/:slug" element={<ArchitectureDetail />} />
+            <Route path="/architectures/:slug/edit" element={<ArchitectureEditor />} />
+            <Route path="/architecture" element={<Navigate to="/architectures" replace />} />
             <Route path="/papers" element={<Navigate to="/search?type=paper_review" replace />} />
             <Route path="/about" element={<About />} />
             <Route path="/editor" element={<Editor />} />

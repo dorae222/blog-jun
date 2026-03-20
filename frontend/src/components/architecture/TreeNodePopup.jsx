@@ -1,0 +1,114 @@
+import { motion, AnimatePresence } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
+import { ExternalLink, X, ArrowRight } from 'lucide-react'
+
+const BRANCH_COLORS = {
+  encoder_only: '#60a5fa',
+  encoder_decoder: '#34d399',
+  decoder_only: '#a78bfa',
+  ssm: '#22d3ee',
+  diffusion: '#fbbf24',
+  vision: '#f472b6',
+  multimodal: '#fb7185',
+  agent: '#a3e635',
+}
+
+export default function TreeNodePopup({ node, position, onClose }) {
+  const navigate = useNavigate()
+  if (!node) return null
+
+  const data = node
+  const color = BRANCH_COLORS[data.branch_type] || '#a78bfa'
+  const year = data.release_date?.slice(0, 4) || ''
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.15 }}
+        className="fixed z-50 w-80 rounded-xl overflow-hidden shadow-2xl"
+        style={{
+          left: position?.x ?? '50%',
+          top: position?.y ?? '50%',
+          transform: 'translate(-50%, -100%) translateY(-16px)',
+          background: 'rgba(15, 23, 42, 0.95)',
+          border: `1px solid ${color}40`,
+          backdropFilter: 'blur(16px)',
+        }}
+      >
+        {/* Header */}
+        <div className="p-4 pb-3" style={{ borderBottom: `1px solid ${color}20` }}>
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-white font-bold text-base">{data.name}</h3>
+              <p className="text-gray-400 text-xs mt-0.5">
+                {data.organization} {year && `· ${year}`}
+              </p>
+            </div>
+            <button
+              onClick={onClose}
+              className="p-1 rounded hover:bg-white/10 transition-colors"
+            >
+              <X size={16} className="text-gray-400" />
+            </button>
+          </div>
+
+          {/* Specs pills */}
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {data.param_scale && (
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-gray-300">
+                {data.param_scale}
+              </span>
+            )}
+            {data.context_length && (
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-gray-300">
+                {data.context_length}
+              </span>
+            )}
+            <span
+              className="text-[10px] px-2 py-0.5 rounded-full font-medium"
+              style={{ background: `${color}20`, color }}
+            >
+              {data.architecture_category?.toUpperCase()}
+            </span>
+          </div>
+        </div>
+
+        {/* Figure preview */}
+        {data.figure_url && (
+          <div className="px-4 py-2">
+            <img
+              src={data.figure_url}
+              alt={data.name}
+              className="w-full h-32 object-contain rounded-lg"
+              style={{ background: 'rgba(255,255,255,0.05)' }}
+            />
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="px-4 py-3 flex items-center gap-2">
+          <button
+            onClick={() => navigate(`/architectures/${data.slug}`)}
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-sm font-medium transition-colors"
+            style={{ background: `${color}20`, color }}
+          >
+            자세히 보기 <ArrowRight size={14} />
+          </button>
+          {data.paper_url && (
+            <a
+              href={data.paper_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <ExternalLink size={16} className="text-gray-400" />
+            </a>
+          )}
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
