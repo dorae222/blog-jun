@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { ExternalLink, X, ArrowRight } from 'lucide-react'
 
 const BRANCH_COLORS = {
-  encoder_only: '#60a5fa',
-  encoder_decoder: '#34d399',
-  decoder_only: '#a78bfa',
+  encoder_only: '#4ade80',
+  encoder_decoder: '#86efac',
+  decoder_only: '#93c5fd',
   ssm: '#22d3ee',
-  diffusion: '#fbbf24',
+  diffusion: '#c084fc',
   vision: '#f472b6',
-  multimodal: '#fb7185',
+  multimodal: '#fb923c',
   agent: '#a3e635',
 }
 
@@ -18,7 +18,7 @@ export default function TreeNodePopup({ node, position, onClose }) {
   if (!node) return null
 
   const data = node
-  const color = BRANCH_COLORS[data.branch_type] || '#a78bfa'
+  const color = BRANCH_COLORS[data.branch_type] || '#93c5fd'
   const year = data.release_date?.slice(0, 4) || ''
 
   return (
@@ -33,7 +33,7 @@ export default function TreeNodePopup({ node, position, onClose }) {
           left: position?.x ?? '50%',
           top: position?.y ?? '50%',
           transform: 'translate(-50%, -100%) translateY(-16px)',
-          background: 'rgba(15, 23, 42, 0.95)',
+          background: 'rgba(255, 255, 255, 0.98)',
           border: `1px solid ${color}40`,
           backdropFilter: 'blur(16px)',
         }}
@@ -42,28 +42,28 @@ export default function TreeNodePopup({ node, position, onClose }) {
         <div className="p-4 pb-3" style={{ borderBottom: `1px solid ${color}20` }}>
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h3 className="text-white font-bold text-base">{data.name}</h3>
-              <p className="text-gray-400 text-xs mt-0.5">
+              <h3 className="text-slate-800 font-bold text-base">{data.name}</h3>
+              <p className="text-slate-500 text-xs mt-0.5">
                 {data.organization} {year && `· ${year}`}
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded hover:bg-white/10 transition-colors"
+              className="p-1 rounded hover:bg-slate-100 transition-colors"
             >
-              <X size={16} className="text-gray-400" />
+              <X size={16} className="text-slate-400" />
             </button>
           </div>
 
-          {/* Specs pills */}
+          {/* Spec pills */}
           <div className="flex flex-wrap gap-1.5 mt-2">
             {data.param_scale && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-gray-300">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
                 {data.param_scale}
               </span>
             )}
             {data.context_length && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-gray-300">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
                 {data.context_length}
               </span>
             )}
@@ -82,8 +82,7 @@ export default function TreeNodePopup({ node, position, onClose }) {
             <img
               src={data.figure_url}
               alt={data.name}
-              className="w-full h-32 object-contain rounded-lg"
-              style={{ background: 'rgba(255,255,255,0.05)' }}
+              className="w-full h-32 object-contain rounded-lg bg-slate-50"
             />
           </div>
         )}
@@ -92,8 +91,8 @@ export default function TreeNodePopup({ node, position, onClose }) {
         <div className="px-4 py-3 flex items-center gap-2">
           <button
             onClick={() => navigate(`/architectures/${data.slug}`)}
-            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-sm font-medium transition-colors"
-            style={{ background: `${color}20`, color }}
+            className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-sm font-medium transition-colors text-white"
+            style={{ background: color }}
           >
             자세히 보기 <ArrowRight size={14} />
           </button>
@@ -102,9 +101,9 @@ export default function TreeNodePopup({ node, position, onClose }) {
               href={data.paper_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
             >
-              <ExternalLink size={16} className="text-gray-400" />
+              <ExternalLink size={16} className="text-slate-400" />
             </a>
           )}
         </div>
