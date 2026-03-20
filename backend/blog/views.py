@@ -10,7 +10,10 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import Category, Tag, Series, Post, PostImage, PostTemplate, ArchitectureConcept, ArchitectureEntry
+from .models import (
+    Category, Tag, Series, Post, PostImage, PostTemplate,
+    ArchitectureConcept, ArchitectureEntry, ArchitectureRelation,
+)
 from .serializers import (
     CategorySerializer, TagSerializer, SeriesSerializer,
     PostListSerializer, PostDetailSerializer, PostWriteSerializer,
@@ -18,6 +21,9 @@ from .serializers import (
     ArchitectureConceptSerializer,
     ArchitectureEntryListSerializer,
     ArchitectureEntryDetailSerializer,
+    ArchitectureEntryWriteSerializer,
+    ArchitectureTreeNodeSerializer,
+    ArchitectureRelationSerializer,
 )
 
 
@@ -240,10 +246,11 @@ def audit_results(request):
         return Response({'detail': f'감사 파일 읽기 오류: {e}'}, status=500)
 
 
-class ArchitectureEntryViewSet(viewsets.ReadOnlyModelViewSet):
+class ArchitectureEntryViewSet(viewsets.ModelViewSet):
     lookup_field = 'slug'
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['decoder_type']
+    filterset_fields = ['decoder_type', 'architecture_category', 'branch_type']
 
     def get_queryset(self):
         qs = ArchitectureEntry.objects.prefetch_related('concepts', 'related_post')
@@ -253,6 +260,8 @@ class ArchitectureEntryViewSet(viewsets.ReadOnlyModelViewSet):
         return qs.distinct()
 
     def get_serializer_class(self):
+        if self.action in ('create', 'update', 'partial_update'):
+            return ArchitectureEntryWriteSerializer
         if self.action == 'retrieve':
             return ArchitectureEntryDetailSerializer
         return ArchitectureEntryListSerializer
@@ -265,7 +274,6 @@ class ArchitectureEntryViewSet(viewsets.ReadOnlyModelViewSet):
 
     @action(detail=False, methods=['get'])
     def stats(self, request):
-        from django.db.models import Count
         stats = ArchitectureEntry.objects.values('decoder_type').annotate(
             count=Count('id')
         ).order_by('decoder_type')
@@ -281,6 +289,54 @@ class ArchitectureEntryViewSet(viewsets.ReadOnlyModelViewSet):
         entry.figure_placeholder = False
         entry.save()
         return Response({'detail': 'Figure 업로드 완료', 'figure_url': request.build_absolute_uri(entry.figure.url)})
+
+    @action(detail=False, methods=['get'])
+    def tree(self, request):
+        """트리 시각화용 전체 노드 + 엣지 반환"""
+        entries = ArchitectureEntry.objects.all()
+        relations = ArchitectureRelation.objects.select_related('from_entry', 'to_entry').all()
+        return Response({
+            'nodes': ArchitectureTreeNodeSerializer(entries, many=True, context={'request': request}).data,
+            'edges': ArchitectureRelationSerializer(relations, many=True).data,
+        })
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def update_position(self, request, slug=None):
+        """트리 노드 위치 업데이트"""
+        entry = self.get_object()
+        entry.tree_x = request.data.get('x')
+        entry.tree_y = request.data.get('y')
+        entry.save(update_fields=['tree_x', 'tree_y'])
+        return Response({'status': 'ok'})
+
+    @action(detail=False, methods=['post', 'delete'], permission_classes=[IsAuthenticated])
+    def relations(self, request):
+        """관계 생성/삭제"""
+        if request.method == 'POST':
+            from_slug = request.data.get('from_slug')
+            to_slug = request.data.get('to_slug')
+            relation_type = request.data.get('relation_type', 'evolved_from')
+            description = request.data.get('description', '')
+            try:
+                from_entry = ArchitectureEntry.objects.get(slug=from_slug)
+                to_entry = ArchitectureEntry.objects.get(slug=to_slug)
+            except ArchitectureEntry.DoesNotExist:
+                return Response({'detail': 'Entry를 찾을 수 없습니다.'}, status=404)
+            relation, created = ArchitectureRelation.objects.get_or_create(
+                from_entry=from_entry, to_entry=to_entry, relation_type=relation_type,
+                defaults={'description': description}
+            )
+            return Response(
+                ArchitectureRelationSerializer(relation).data,
+                status=status.HTTP_201_CREATED if created else status.HTTP_200_OK
+            )
+        else:  # DELETE
+            from_slug = request.data.get('from_slug')
+            to_slug = request.data.get('to_slug')
+            deleted, _ = ArchitectureRelation.objects.filter(
+                from_entry__slug=from_slug, to_entry__slug=to_slug
+            ).delete()
+            return Response({'deleted': deleted})
 
 
 @api_view(['GET'])

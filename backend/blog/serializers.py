@@ -127,13 +127,24 @@ class PostTemplateSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'content_template', 'post_type', 'category']
 
 
-from .models import ArchitectureConcept, ArchitectureEntry
+from .models import ArchitectureConcept, ArchitectureEntry, ArchitectureRelation
 
 
 class ArchitectureConceptSerializer(serializers.ModelSerializer):
     class Meta:
         model = ArchitectureConcept
         fields = ['id', 'name', 'slug', 'abbreviation', 'color']
+
+
+class ArchitectureRelationSerializer(serializers.ModelSerializer):
+    from_slug = serializers.SlugRelatedField(source='from_entry', slug_field='slug', read_only=True)
+    to_slug = serializers.SlugRelatedField(source='to_entry', slug_field='slug', read_only=True)
+    from_name = serializers.CharField(source='from_entry.name', read_only=True)
+    to_name = serializers.CharField(source='to_entry.name', read_only=True)
+
+    class Meta:
+        model = ArchitectureRelation
+        fields = ['id', 'from_slug', 'to_slug', 'from_name', 'to_name', 'relation_type', 'description']
 
 
 class ArchitectureEntryListSerializer(serializers.ModelSerializer):
@@ -147,6 +158,7 @@ class ArchitectureEntryListSerializer(serializers.ModelSerializer):
             'decoder_type', 'concepts', 'param_scale', 'context_length',
             'attention_type', 'normalization', 'activation', 'key_detail',
             'figure_url', 'figure_placeholder', 'paper_url', 'license_type',
+            'architecture_category', 'branch_type', 'is_open_source',
         ]
 
     def get_figure_url(self, obj):
@@ -162,6 +174,8 @@ class ArchitectureEntryDetailSerializer(serializers.ModelSerializer):
     concepts = ArchitectureConceptSerializer(many=True, read_only=True)
     figure_url = serializers.SerializerMethodField()
     related_post = PostListSerializer(read_only=True)
+    parent_relations = ArchitectureRelationSerializer(many=True, read_only=True)
+    child_relations = ArchitectureRelationSerializer(many=True, read_only=True)
 
     class Meta:
         model = ArchitectureEntry
@@ -174,6 +188,9 @@ class ArchitectureEntryDetailSerializer(serializers.ModelSerializer):
             'description', 'key_detail', 'training_detail',
             'paper_url', 'code_url', 'license_type',
             'figure_url', 'figure_placeholder',
+            'architecture_category', 'branch_type', 'is_open_source',
+            'tree_x', 'tree_y',
+            'parent_relations', 'child_relations',
             'related_post', 'created_at', 'updated_at',
         ]
 
@@ -184,3 +201,60 @@ class ArchitectureEntryDetailSerializer(serializers.ModelSerializer):
         if request:
             return request.build_absolute_uri(obj.figure.url)
         return obj.figure.url
+
+
+class ArchitectureTreeNodeSerializer(serializers.ModelSerializer):
+    """트리 시각화용 경량 serializer"""
+    figure_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ArchitectureEntry
+        fields = [
+            'id', 'name', 'slug', 'organization', 'release_date',
+            'decoder_type', 'param_scale', 'context_length',
+            'architecture_category', 'branch_type', 'is_open_source',
+            'tree_x', 'tree_y', 'figure_url', 'paper_url',
+        ]
+
+    def get_figure_url(self, obj):
+        if not obj.figure:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.figure.url)
+        return obj.figure.url
+
+
+class ArchitectureEntryWriteSerializer(serializers.ModelSerializer):
+    concepts = serializers.SlugRelatedField(
+        many=True, slug_field='slug', queryset=ArchitectureConcept.objects.all(), required=False
+    )
+
+    class Meta:
+        model = ArchitectureEntry
+        fields = [
+            'name', 'slug', 'organization', 'release_date',
+            'decoder_type', 'param_scale', 'context_length',
+            'attention_type', 'normalization', 'activation', 'position_encoding',
+            'vocab_size', 'hidden_dim', 'num_layers', 'num_heads',
+            'num_experts', 'active_experts',
+            'description', 'key_detail', 'training_detail',
+            'paper_url', 'code_url', 'license_type',
+            'architecture_category', 'branch_type', 'is_open_source',
+            'tree_x', 'tree_y', 'concepts',
+        ]
+
+    def create(self, validated_data):
+        concepts = validated_data.pop('concepts', [])
+        entry = ArchitectureEntry.objects.create(**validated_data)
+        entry.concepts.set(concepts)
+        return entry
+
+    def update(self, instance, validated_data):
+        concepts = validated_data.pop('concepts', None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        if concepts is not None:
+            instance.concepts.set(concepts)
+        return instance
