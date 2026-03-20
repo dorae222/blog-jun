@@ -13,8 +13,12 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-# Django 설정
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'backend'))
+# Django 설정 (Docker 컨테이너: /app, 로컬: backend/)
+_backend_dir = Path(__file__).resolve().parent.parent / 'backend'
+if _backend_dir.exists():
+    sys.path.insert(0, str(_backend_dir))
+elif Path('/app/config').exists():
+    sys.path.insert(0, '/app')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 
 import django
