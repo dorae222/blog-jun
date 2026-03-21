@@ -27,6 +27,10 @@ export const getAuditResults = () => client.get('/audit/results/')
 export const mergeTags = (source, target) => client.post('/tags/merge/', { source, target })
 export const cleanupTags = () => client.post('/tags/cleanup/')
 
+// Feed API (통합 피드)
+export const getFeed = (params) => client.get('/feed/', { params })
+export const getPopularPosts = (limit = 5) => client.get('/feed/popular/', { params: { limit } })
+
 // Architecture API
 export const getArchitectures = (params) => client.get('/architectures/', { params })
 export const getArchitecture = (slug) => client.get(`/architectures/${slug}/`)

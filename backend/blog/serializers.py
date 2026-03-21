@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from .models import Category, Tag, Series, Post, PostImage, PostTemplate
+from .models import (
+    Category, Tag, Series, Post, PostImage, PostTemplate, PostLink,
+    ArchitectureConcept, ArchitectureEntry, ArchitectureRelation,
+)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -43,14 +46,63 @@ class PostListSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     tags = TagSerializer(many=True, read_only=True)
     series_name = serializers.CharField(source='series.name', read_only=True, default=None)
+    cover_image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
         fields = [
             'id', 'title', 'slug', 'summary', 'category', 'tags',
             'series_name', 'post_type', 'status', 'reading_time',
-            'view_count', 'created_at', 'published_at',
+            'view_count', 'quality_score', 'is_pinned', 'cover_image_url',
+            'created_at', 'published_at',
         ]
+
+    def get_cover_image_url(self, obj):
+        if not obj.cover_image:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.cover_image.url)
+        return obj.cover_image.url
+
+
+class PostLinkSerializer(serializers.ModelSerializer):
+    """PostLink 관계를 위한 경량 serializer."""
+    slug = serializers.CharField(source='to_post.slug', read_only=True)
+    title = serializers.CharField(source='to_post.title', read_only=True)
+
+    class Meta:
+        model = PostLink
+        fields = ['slug', 'title', 'link_text']
+
+
+class BacklinkSerializer(serializers.ModelSerializer):
+    """역참조(backlink) 표시용 serializer."""
+    slug = serializers.CharField(source='from_post.slug', read_only=True)
+    title = serializers.CharField(source='from_post.title', read_only=True)
+
+    class Meta:
+        model = PostLink
+        fields = ['slug', 'title', 'link_text']
+
+
+class ArchitectureEntryBriefSerializer(serializers.ModelSerializer):
+    """PostView에서 사용하는 아키텍처 간략 정보."""
+    parent_names = serializers.SerializerMethodField()
+    child_names = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ArchitectureEntry
+        fields = ['name', 'slug', 'organization', 'branch_type',
+                  'architecture_category', 'parent_names', 'child_names']
+
+    def get_parent_names(self, obj):
+        return [{'name': r.to_entry.name, 'slug': r.to_entry.slug}
+                for r in obj.parent_relations.select_related('to_entry').all()[:5]]
+
+    def get_child_names(self, obj):
+        return [{'name': r.from_entry.name, 'slug': r.from_entry.slug}
+                for r in obj.child_relations.select_related('from_entry').all()[:5]]
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
@@ -60,6 +112,9 @@ class PostDetailSerializer(serializers.ModelSerializer):
     images = PostImageSerializer(many=True, read_only=True)
     adjacent_posts = serializers.SerializerMethodField()
     pdf_file = serializers.SerializerMethodField()
+    outgoing_links = PostLinkSerializer(many=True, read_only=True)
+    incoming_links = BacklinkSerializer(many=True, read_only=True)
+    architecture_entries = ArchitectureEntryBriefSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
@@ -68,6 +123,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
             'series', 'series_order', 'post_type', 'status', 'quality_score',
             'reading_time', 'view_count', 'created_at', 'updated_at',
             'published_at', 'images', 'adjacent_posts', 'pdf_file',
+            'outgoing_links', 'incoming_links', 'architecture_entries',
         ]
 
     def get_pdf_file(self, obj):
@@ -127,7 +183,15 @@ class PostTemplateSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'description', 'content_template', 'post_type', 'category']
 
 
-from .models import ArchitectureConcept, ArchitectureEntry, ArchitectureRelation
+class FigureUrlMixin:
+    """figure 필드의 절대 URL을 반환하는 공통 mixin."""
+    def get_figure_url(self, obj):
+        if not obj.figure:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.figure.url)
+        return obj.figure.url
 
 
 class ArchitectureConceptSerializer(serializers.ModelSerializer):
@@ -147,7 +211,7 @@ class ArchitectureRelationSerializer(serializers.ModelSerializer):
         fields = ['id', 'from_slug', 'to_slug', 'from_name', 'to_name', 'relation_type', 'description']
 
 
-class ArchitectureEntryListSerializer(serializers.ModelSerializer):
+class ArchitectureEntryListSerializer(FigureUrlMixin, serializers.ModelSerializer):
     concepts = ArchitectureConceptSerializer(many=True, read_only=True)
     figure_url = serializers.SerializerMethodField()
 
@@ -161,16 +225,8 @@ class ArchitectureEntryListSerializer(serializers.ModelSerializer):
             'architecture_category', 'branch_type', 'is_open_source',
         ]
 
-    def get_figure_url(self, obj):
-        if not obj.figure:
-            return None
-        request = self.context.get('request')
-        if request:
-            return request.build_absolute_uri(obj.figure.url)
-        return obj.figure.url
 
-
-class ArchitectureEntryDetailSerializer(serializers.ModelSerializer):
+class ArchitectureEntryDetailSerializer(FigureUrlMixin, serializers.ModelSerializer):
     concepts = ArchitectureConceptSerializer(many=True, read_only=True)
     figure_url = serializers.SerializerMethodField()
     related_post = PostListSerializer(read_only=True)
@@ -194,16 +250,8 @@ class ArchitectureEntryDetailSerializer(serializers.ModelSerializer):
             'related_post', 'created_at', 'updated_at',
         ]
 
-    def get_figure_url(self, obj):
-        if not obj.figure:
-            return None
-        request = self.context.get('request')
-        if request:
-            return request.build_absolute_uri(obj.figure.url)
-        return obj.figure.url
 
-
-class ArchitectureTreeNodeSerializer(serializers.ModelSerializer):
+class ArchitectureTreeNodeSerializer(FigureUrlMixin, serializers.ModelSerializer):
     """트리 시각화용 경량 serializer"""
     figure_url = serializers.SerializerMethodField()
 
@@ -215,14 +263,6 @@ class ArchitectureTreeNodeSerializer(serializers.ModelSerializer):
             'architecture_category', 'branch_type', 'is_open_source',
             'tree_x', 'tree_y', 'figure_url', 'paper_url',
         ]
-
-    def get_figure_url(self, obj):
-        if not obj.figure:
-            return None
-        request = self.context.get('request')
-        if request:
-            return request.build_absolute_uri(obj.figure.url)
-        return obj.figure.url
 
 
 class ArchitectureEntryWriteSerializer(serializers.ModelSerializer):

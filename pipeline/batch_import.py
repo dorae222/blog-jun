@@ -19,7 +19,7 @@ import django
 django.setup()
 
 from django.contrib.auth.models import User
-from blog.models import Post, Category, Tag, Series
+from blog.models import Post, Category, Tag, Series, PostLink
 
 DATA_DIR = Path(__file__).parent / "data"
 BATCH_OUTPUT_FILE = DATA_DIR / "batch_output.jsonl"
@@ -156,9 +156,47 @@ def import_results():
             source_path=path,
         )
         post.tags.set(tag_objects)
+
+        # 표지 이미지 업로드 (covers/{slug}/cover.png 존재 시)
+        cover_path = DATA_DIR / "covers" / slug / "cover.png"
+        if cover_path.exists():
+            from django.core.files import File
+            with open(cover_path, "rb") as cf:
+                post.cover_image.save(f"{slug}_cover.png", File(cf), save=True)
+            print(f"  Cover image uploaded for {slug}")
+
         created += 1
 
     print(f"Imported {created} posts, skipped {skipped}")
+
+    # PostLink 생성: content_links가 있는 결과에서 관계 추출
+    links_created = 0
+    for path, result in results.items():
+        content_links = result.get('content_links', [])
+        if not content_links:
+            continue
+
+        slug = result.get("title", "").lower().replace(" ", "-")[:300]
+        slug = "".join(c for c in slug if c.isalnum() or c in "-_가-힣")
+        from_post = Post.objects.filter(slug=slug).first()
+        if not from_post:
+            continue
+
+        for link_data in content_links:
+            target = link_data.get('target', '')
+            if not target:
+                continue
+            to_post = Post.objects.filter(title__icontains=target).first()
+            if to_post and to_post != from_post:
+                _, created_link = PostLink.objects.get_or_create(
+                    from_post=from_post, to_post=to_post,
+                    defaults={'link_text': target}
+                )
+                if created_link:
+                    links_created += 1
+
+    if links_created:
+        print(f"Created {links_created} post links")
 
 
 if __name__ == "__main__":

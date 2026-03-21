@@ -10,7 +10,22 @@ from rest_framework.response import Response
 from openai import OpenAI
 
 from .models import ChatSession, ChatMessage
+from .web_search import search_web, should_search_web
 from blog.models import Post
+
+
+def get_llm_client():
+    """LLM_BASE_URL 설정 시 vLLM 사용, 없으면 OpenAI API 직접 사용."""
+    api_key = getattr(settings, 'OPENAI_API_KEY', '') or os.environ.get('OPENAI_API_KEY', '')
+    base_url = getattr(settings, 'LLM_BASE_URL', '')
+    if base_url:
+        return OpenAI(api_key=api_key or 'not-needed', base_url=base_url)
+    return OpenAI(api_key=api_key)
+
+
+def get_llm_model():
+    """설정에서 LLM 모델명 가져오기."""
+    return getattr(settings, 'LLM_MODEL', 'gpt-4o-mini')
 
 
 def get_relevant_posts(query: str, top_k: int = 5):
@@ -35,29 +50,42 @@ def get_relevant_posts(query: str, top_k: int = 5):
     ]
 
 
-def build_rag_prompt(query: str, context_posts: list) -> str:
+def build_rag_prompt(query: str, context_posts: list, web_results: list | None = None) -> str:
     """Build a RAG prompt with retrieved context."""
     context = "\n\n---\n\n".join(
         f"**{p['title']}**\n{p['content_snippet']}"
         for p in context_posts
     )
 
+    web_section = ""
+    if web_results:
+        web_items = "\n\n---\n\n".join(
+            f"**{r['title']}** ({r['url']})\n{r['snippet']}"
+            for r in web_results
+        )
+        web_section = f"""
+
+## Web Search Results:
+{web_items}
+"""
+
     return f"""You are a helpful assistant for the blog-jun tech blog. Answer the user's question based on the following blog post context.
 If the answer isn't in the context, say you don't have enough information but try to be helpful.
-Always reference which blog posts you used.
+Always reference which blog posts you used. If you use web search results, cite the source URLs.
 
 ## Blog Context:
 {context}
-
+{web_section}
 ## User Question:
 {query}"""
 
 
 def sse_stream(query: str, session_id: str):
-    """Generate SSE stream from OpenAI."""
+    """Generate SSE stream from LLM (OpenAI or vLLM)."""
     api_key = getattr(settings, 'OPENAI_API_KEY', '') or os.environ.get('OPENAI_API_KEY', '')
-    if not api_key:
-        yield f"data: {json.dumps({'error': 'OpenAI API key not configured'})}\n\n"
+    base_url = getattr(settings, 'LLM_BASE_URL', '')
+    if not api_key and not base_url:
+        yield f"data: {json.dumps({'error': 'LLM API not configured'})}\n\n"
         return
 
     # Get relevant posts
@@ -67,18 +95,27 @@ def sse_stream(query: str, session_id: str):
     # Send sources first
     yield f"data: {json.dumps({'type': 'sources', 'sources': sources})}\n\n"
 
+    # Web search if needed
+    web_results = []
+    if should_search_web(query, len(context_posts)):
+        web_results = search_web(query)
+        if web_results:
+            web_sources = [{'title': r['title'], 'url': r['url']} for r in web_results]
+            yield f"data: {json.dumps({'type': 'web_sources', 'sources': web_sources})}\n\n"
+
     # Save user message
     session, _ = ChatSession.objects.get_or_create(session_id=session_id)
     ChatMessage.objects.create(session=session, role='user', content=query)
 
-    # Stream from OpenAI
-    client = OpenAI(api_key=api_key)
-    prompt = build_rag_prompt(query, context_posts)
+    # Stream from LLM
+    client = get_llm_client()
+    model = get_llm_model()
+    prompt = build_rag_prompt(query, context_posts, web_results)
 
     full_response = ""
     try:
         stream = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=model,
             messages=[
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": query},
@@ -98,11 +135,13 @@ def sse_stream(query: str, session_id: str):
         yield f"data: {json.dumps({'type': 'error', 'content': str(e)})}\n\n"
 
     # Save assistant message
+    web_sources = [{'title': r['title'], 'url': r['url']} for r in web_results] if web_results else []
     ChatMessage.objects.create(
         session=session,
         role='assistant',
         content=full_response,
         sources=sources,
+        web_sources=web_sources,
     )
 
     yield f"data: {json.dumps({'type': 'done'})}\n\n"
@@ -132,19 +171,28 @@ def chat_sse(request):
     context_posts = get_relevant_posts(message)
     sources = [{'title': p['title'], 'slug': p['slug']} for p in context_posts]
 
+    # Web search if needed
+    web_results = []
+    if should_search_web(message, len(context_posts)):
+        web_results = search_web(message)
+    web_sources = [{'title': r['title'], 'url': r['url']} for r in web_results] if web_results else []
+
     api_key = getattr(settings, 'OPENAI_API_KEY', '') or os.environ.get('OPENAI_API_KEY', '')
-    if not api_key:
+    base_url = getattr(settings, 'LLM_BASE_URL', '')
+    if not api_key and not base_url:
         return Response({
             'session_id': session_id,
-            'message': 'Chatbot requires OpenAI API key configuration.',
+            'message': 'Chatbot requires LLM API configuration.',
             'sources': sources,
+            'web_sources': web_sources,
         })
 
-    client = OpenAI(api_key=api_key)
-    prompt = build_rag_prompt(message, context_posts)
+    client = get_llm_client()
+    model = get_llm_model()
+    prompt = build_rag_prompt(message, context_posts, web_results)
 
     response_data = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=model,
         messages=[
             {"role": "system", "content": prompt},
             {"role": "user", "content": message},
@@ -158,12 +206,16 @@ def chat_sse(request):
     # Save to DB
     session, _ = ChatSession.objects.get_or_create(session_id=session_id)
     ChatMessage.objects.create(session=session, role='user', content=message)
-    ChatMessage.objects.create(session=session, role='assistant', content=answer, sources=sources)
+    ChatMessage.objects.create(
+        session=session, role='assistant', content=answer,
+        sources=sources, web_sources=web_sources,
+    )
 
     return Response({
         'session_id': session_id,
         'message': answer,
         'sources': sources,
+        'web_sources': web_sources,
     })
 
 

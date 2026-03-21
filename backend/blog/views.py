@@ -18,6 +18,7 @@ from .serializers import (
     CategorySerializer, TagSerializer, SeriesSerializer,
     PostListSerializer, PostDetailSerializer, PostWriteSerializer,
     PostImageSerializer, PostTemplateSerializer,
+    PostLinkSerializer, BacklinkSerializer,
     ArchitectureConceptSerializer,
     ArchitectureEntryListSerializer,
     ArchitectureEntryDetailSerializer,
@@ -56,6 +57,13 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = Post.objects.select_related('category', 'series', 'author').prefetch_related('tags')
+        if self.action == 'retrieve':
+            qs = qs.prefetch_related(
+                'outgoing_links__to_post',
+                'incoming_links__from_post',
+                'architecture_entries__parent_relations__to_entry',
+                'architecture_entries__child_relations__from_entry',
+            )
         if self.request.user.is_authenticated:
             return qs
         return qs.filter(status='published')
@@ -337,6 +345,102 @@ class ArchitectureEntryViewSet(viewsets.ModelViewSet):
                 from_entry__slug=from_slug, to_entry__slug=to_slug
             ).delete()
             return Response({'deleted': deleted})
+
+
+class FeedView(generics.ListAPIView):
+    """통합 피드 엔드포인트: Post + ArchitectureEntry를 통합 조회."""
+    serializer_class = PostListSerializer
+
+    # 카테고리 slug → Category slug 매핑
+    CATEGORY_MAP = {
+        'ai': 'ai-ml',
+        'cloud': 'cloud',
+        'data': 'data-engineering',
+    }
+
+    # 서브카테고리 slug 목록 (유효성 검증용)
+    SUB_CATEGORIES = {
+        'ai': ['llm', 'ssm', 'diffusion', 'vision', 'multimodal', 'agent', 'technique'],
+        'cloud': ['aws', 'docker', 'devops'],
+        'data': ['hadoop', 'spark', 'database', 'pipeline'],
+    }
+
+    def get_queryset(self):
+        qs = Post.objects.filter(status='published').select_related(
+            'category', 'category__parent', 'series', 'author'
+        ).prefetch_related('tags')
+
+        category = self.request.query_params.get('category')
+        sub = self.request.query_params.get('sub')
+        sort = self.request.query_params.get('sort', 'newest')
+        q = self.request.query_params.get('q')
+        pinned = self.request.query_params.get('pinned')
+
+        # 카테고리 필터
+        if category and category in self.CATEGORY_MAP:
+            cat_slug = self.CATEGORY_MAP[category]
+            # 부모 카테고리 또는 자기 자신이 해당 slug인 포스트
+            qs = qs.filter(
+                Q(category__slug=cat_slug) | Q(category__parent__slug=cat_slug)
+            )
+
+        # 서브카테고리 필터
+        if sub and category and category in self.SUB_CATEGORIES:
+            qs = qs.filter(category__slug=sub)
+
+        # 검색
+        if q:
+            qs = qs.filter(
+                Q(title__icontains=q) | Q(summary__icontains=q) | Q(content__icontains=q)
+            )
+
+        # 고정글만
+        if pinned == 'true':
+            qs = qs.filter(is_pinned=True)
+
+        # 정렬
+        if sort == 'popular':
+            qs = qs.order_by('-view_count')
+        else:
+            qs = qs.order_by('-is_pinned', '-published_at', '-created_at')
+
+        return qs
+
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, *args, **kwargs)
+
+        # 카운트 정보 (include_counts=true일 때만)
+        if request.query_params.get('include_counts') == 'true':
+            published = Post.objects.filter(status='published')
+            categories_data = {}
+            for key, cat_slug in self.CATEGORY_MAP.items():
+                cat_posts = published.filter(
+                    Q(category__slug=cat_slug) | Q(category__parent__slug=cat_slug)
+                )
+                total = cat_posts.count()
+                subs = dict(
+                    cat_posts.filter(category__parent__isnull=False)
+                    .values_list('category__slug')
+                    .annotate(c=Count('id'))
+                    .values_list('category__slug', 'c')
+                )
+                categories_data[key] = {'count': total, 'subs': subs}
+            response.data['categories'] = categories_data
+
+        return response
+
+
+@api_view(['GET'])
+@cache_page(60 * 5)
+def feed_popular(request):
+    """인기글 Top N (조회수 기준)."""
+    limit = int(request.query_params.get('limit', 5))
+    limit = min(limit, 20)
+    qs = Post.objects.filter(status='published').select_related(
+        'category', 'series'
+    ).prefetch_related('tags').order_by('-view_count')[:limit]
+    serializer = PostListSerializer(qs, many=True, context={'request': request})
+    return Response(serializer.data)
 
 
 @api_view(['GET'])

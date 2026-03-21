@@ -55,10 +55,7 @@ REST_FRAMEWORK = {
     },
 }
 
-# vLLM / LLM 설정 (추후 챗봇 연동용)
-LLM_BASE_URL = os.environ.get('LLM_BASE_URL', '')
-LLM_MODEL = os.environ.get('LLM_MODEL', '')
-LLM_FALLBACK_URL = os.environ.get('LLM_FALLBACK_URL', 'https://api.openai.com/v1')
+# vLLM / LLM 설정 — base.py에서 기본값 정의, prod에서는 환경변수로 오버라이드
 
 # Logging
 LOG_DIR = BASE_DIR / 'logs'

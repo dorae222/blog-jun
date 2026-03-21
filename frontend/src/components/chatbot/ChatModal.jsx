@@ -1,7 +1,37 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { X } from 'lucide-react'
+import { X, ExternalLink, FileText } from 'lucide-react'
 import { sendMessage } from '../../api/chat'
+
+function SourcesList({ sources, webSources }) {
+  if (!sources?.length && !webSources?.length) return null
+  return (
+    <div className="mt-2 pt-2 border-t" style={{ borderColor: 'var(--border)' }}>
+      {sources?.length > 0 && (
+        <div className="space-y-0.5">
+          <span className="text-[10px] uppercase font-semibold" style={{ color: 'var(--text-secondary)' }}>Blog</span>
+          {sources.map((s, i) => (
+            <Link key={i} to={`/post/${s.slug}`} className="flex items-center gap-1 text-xs text-primary-600 hover:underline">
+              <FileText size={10} /> {s.title}
+            </Link>
+          ))}
+        </div>
+      )}
+      {webSources?.length > 0 && (
+        <div className="space-y-0.5 mt-1.5">
+          <span className="text-[10px] uppercase font-semibold" style={{ color: 'var(--text-secondary)' }}>Web</span>
+          {webSources.map((s, i) => (
+            <a key={i} href={s.url} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs text-primary-600 hover:underline truncate">
+              <ExternalLink size={10} /> {s.title}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function ChatModal({ onClose }) {
   const [messages, setMessages] = useState([
@@ -25,7 +55,12 @@ export default function ChatModal({ onClose }) {
 
     try {
       const { data } = await sendMessage(userMsg.content, sessionId)
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.message, sources: data.sources }])
+      setMessages((prev) => [...prev, {
+        role: 'assistant',
+        content: data.message,
+        sources: data.sources,
+        webSources: data.web_sources,
+      }])
     } catch {
       setMessages((prev) => [...prev, { role: 'assistant', content: 'Sorry, something went wrong.' }])
     } finally {
@@ -60,6 +95,9 @@ export default function ChatModal({ onClose }) {
               style={msg.role === 'assistant' ? { background: 'var(--bg-secondary)' } : {}}
             >
               {msg.content}
+              {msg.role === 'assistant' && (
+                <SourcesList sources={msg.sources} webSources={msg.webSources} />
+              )}
             </div>
           </div>
         ))}

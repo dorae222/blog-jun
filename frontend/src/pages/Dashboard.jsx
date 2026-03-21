@@ -537,7 +537,7 @@ export default function Dashboard() {
             <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
               {archEntries.length}개 Architecture
             </p>
-            <Link to="/architectures/new"
+            <Link to="/posts/ai"
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm hover:bg-primary-700">
               <Plus size={15} /> 새 Architecture
             </Link>
@@ -573,11 +573,11 @@ export default function Dashboard() {
                     </td>
                     <td className="px-3 py-2">
                       <div className="flex items-center gap-0.5 justify-end">
-                        <Link to={`/architectures/${entry.slug}`} title="보기"
+                        <Link to={`/post/${entry.slug}`} title="보기"
                           className="p-1.5 rounded hover:bg-gray-100" style={{ color: 'var(--text-secondary)' }}>
                           <Eye size={14} />
                         </Link>
-                        <Link to={`/architectures/${entry.slug}/edit`} title="편집"
+                        <Link to={`/post/${entry.slug}`} title="편집"
                           className="p-1.5 rounded hover:bg-blue-50 hover:text-blue-600" style={{ color: 'var(--text-secondary)' }}>
                           <Pencil size={14} />
                         </Link>

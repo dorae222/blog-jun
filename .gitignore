@@ -48,3 +48,6 @@ pipeline/archive/
 # E2E test results
 e2e/test-results/
 
+# Local backups
+backups/
+

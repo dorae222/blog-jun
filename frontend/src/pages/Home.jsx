@@ -1,27 +1,45 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FileText, FolderOpen, BookOpen, Tags, ArrowRight, ChevronRight } from 'lucide-react'
+import { FileText, ArrowRight, ChevronRight, TrendingUp, Eye } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
 import TechStack from '../components/portfolio/TechStack'
 import Timeline from '../components/portfolio/Timeline'
-import AnimatedCounter from '../components/common/AnimatedCounter'
 import ScrollReveal from '../components/common/ScrollReveal'
-import { getCategoryIcon } from '../utils/categoryIcons'
-import { getCategories, getStats, getPosts } from '../api/posts'
+import { getStats, getPosts } from '../api/posts'
 import { ACTIVITIES } from '../data/activities'
 
+const CATEGORIES = [
+  {
+    key: 'ai', label: 'AI', emoji: '🤖', color: '#FF6F00',
+    desc: 'LLM, SSM, Diffusion 등 AI 아키텍처',
+    path: '/posts/ai',
+  },
+  {
+    key: 'cloud', label: 'Cloud', emoji: '☁️', color: '#FF9900',
+    desc: 'AWS, Docker, DevOps 인프라',
+    path: '/posts/cloud',
+  },
+  {
+    key: 'data', label: 'Data Engineering', emoji: '📊', color: '#336791',
+    desc: 'Hadoop, Spark, Pipeline',
+    path: '/posts/data',
+  },
+]
+
 export default function Home() {
-  const [categories, setCategories] = useState([])
   const [stats, setStats] = useState({})
   const [recentPosts, setRecentPosts] = useState([])
+  const [popularPosts, setPopularPosts] = useState([])
 
   useEffect(() => {
-    getCategories().then(r => setCategories(r.data.results || r.data || []))
-    getStats().then(r => setStats(r.data))
+    getStats().then((r) => setStats(r.data))
     getPosts({ ordering: '-published_at', page_size: 4 })
-      .then(r => setRecentPosts(r.data.results || []))
+      .then((r) => setRecentPosts(r.data.results || []))
+      .catch(() => {})
+    getPosts({ ordering: '-view_count', page_size: 6 })
+      .then((r) => setPopularPosts(r.data.results || []))
       .catch(() => {})
   }, [])
 
@@ -34,50 +52,54 @@ export default function Home() {
     >
       <HeroSection />
 
-      {/* Blog Stats */}
-      <section className="py-12 px-4 section-gradient-blue">
-        <div className="max-w-4xl mx-auto">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-center mb-8" style={{ color: 'var(--text)' }}>Blog</h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <AnimatedCounter end={stats.total_posts || 0} label="Published Posts" icon={<FileText size={28} />} />
-            <AnimatedCounter end={stats.categories || 0} label="Categories" icon={<FolderOpen size={28} />} />
-            <AnimatedCounter end={stats.series || 0} label="Series" icon={<BookOpen size={28} />} />
-            <AnimatedCounter end={stats.tags || 0} label="Tags" icon={<Tags size={28} />} />
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
+      {/* 카테고리 섹션 */}
       <section className="py-12 md:py-16 px-4 section-gradient-purple">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <h2 className="text-2xl font-bold text-center mb-10" style={{ color: 'var(--text)' }}>
               Categories
             </h2>
           </ScrollReveal>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {categories.map((cat, i) => (
-              <ScrollReveal key={cat.id} delay={i * 0.05}>
+          <div className="grid md:grid-cols-3 gap-4">
+            {CATEGORIES.map((cat, i) => (
+              <ScrollReveal key={cat.key} delay={i * 0.08}>
                 <Link
-                  to={`/category/${cat.slug}`}
-                  className="block p-5 rounded-xl text-center transition-all hover:shadow-lg hover:-translate-y-1 glass"
+                  to={cat.path}
+                  className="block p-6 rounded-xl text-center transition-all hover:shadow-lg hover:-translate-y-1 glass"
                 >
-                  <div className="flex justify-center mb-2" style={{ color: cat.color || 'var(--text-secondary)' }}>
-                    {getCategoryIcon(cat.slug, 28)}
-                  </div>
-                  <h3 className="font-semibold text-sm" style={{ color: cat.color || 'var(--text)' }}>
-                    {cat.name}
+                  <div className="text-3xl mb-3">{cat.emoji}</div>
+                  <h3 className="font-bold text-lg mb-1" style={{ color: cat.color }}>
+                    {cat.label}
                   </h3>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-                    {cat.post_count || 0} posts
+                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                    {cat.desc}
                   </p>
                 </Link>
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Blog Stats */}
+      <section className="py-12 px-4 section-gradient-blue">
+        <div className="max-w-4xl mx-auto text-center">
+          <ScrollReveal>
+            <div className="flex justify-center gap-8">
+              <div>
+                <div className="text-3xl font-bold text-primary-600">{stats.total_posts || 0}</div>
+                <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Published Posts</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary-600">{stats.categories || 0}</div>
+                <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Categories</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary-600">{stats.tags || 0}</div>
+                <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Tags</div>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -104,8 +126,7 @@ export default function Home() {
                           color: post.category.color || '#6366f1',
                           border: `1px solid ${post.category.color || '#6366f1'}30`,
                         }}>
-                        {getCategoryIcon(post.category.slug, 12)}
-                        <span className="ml-1">{post.category.name}</span>
+                        {post.category.name}
                       </span>
                     )}
                     <h3 className="font-semibold text-sm mb-auto line-clamp-2 leading-snug"
@@ -113,10 +134,8 @@ export default function Home() {
                       {post.title}
                     </h3>
                     <div className="flex items-center justify-between mt-3">
-                      <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                        {post.published_at
-                          ? new Date(post.published_at).toLocaleDateString('ko-KR')
-                          : ''}
+                      <span className="flex items-center gap-0.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                        <Eye size={10} /> {post.view_count || 0}
                       </span>
                       <span className="flex items-center gap-0.5 text-xs font-medium"
                         style={{ color: 'var(--color-primary-500)' }}>
@@ -129,7 +148,7 @@ export default function Home() {
             </div>
             <ScrollReveal delay={0.4}>
               <div className="text-center">
-                <Link to="/search"
+                <Link to="/posts"
                   className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-lg border
                     text-sm font-medium transition-colors hover:bg-white"
                   style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
@@ -141,12 +160,48 @@ export default function Home() {
         </section>
       )}
 
+      {/* Popular Posts */}
+      {popularPosts.length > 0 && (
+        <section className="py-12 md:py-16 px-4">
+          <div className="max-w-6xl mx-auto">
+            <ScrollReveal>
+              <h2 className="text-2xl font-bold text-center mb-2" style={{ color: 'var(--text)' }}>
+                <TrendingUp size={24} className="inline mr-2 text-primary-600" />
+                Popular Posts
+              </h2>
+              <p className="text-center text-sm mb-10" style={{ color: 'var(--text-secondary)' }}>
+                Most viewed posts
+              </p>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {popularPosts.map((post, i) => (
+                <ScrollReveal key={post.slug} delay={i * 0.06}>
+                  <Link to={`/post/${post.slug}`}
+                    className="flex items-start gap-3 p-4 rounded-xl glass transition-all hover:-translate-y-0.5">
+                    <span className="text-2xl font-bold text-primary-600/30 mt-0.5">{i + 1}</span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-sm line-clamp-2" style={{ color: 'var(--text)' }}>
+                        {post.title}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-1.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                        <span className="flex items-center gap-0.5"><Eye size={10} /> {post.view_count}</span>
+                        <span>{post.reading_time}min</span>
+                      </div>
+                    </div>
+                  </Link>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Tech Stack */}
       <div className="section-gradient-cyan">
         <TechStack />
       </div>
 
-      {/* Activities Timeline (정적 데이터) */}
+      {/* Activities Timeline */}
       <Timeline items={ACTIVITIES} />
     </motion.div>
   )

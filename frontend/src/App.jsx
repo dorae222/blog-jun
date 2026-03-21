@@ -9,17 +9,11 @@ import ChatFAB from './components/layout/ChatFAB'
 
 import Home from './pages/Home'
 import PostView from './pages/PostView'
-import CategoryPage from './pages/CategoryPage'
-import SeriesPage from './pages/SeriesPage'
-import SearchPage from './pages/SearchPage'
+import PostsPage from './pages/PostsPage'
 import About from './pages/About'
 import Editor from './pages/Editor'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
-import ArchitectureGallery from './pages/ArchitectureGallery'
-import AIEvolutionaryTree from './pages/AIEvolutionaryTree'
-import ArchitectureDetail from './pages/ArchitectureDetail'
-import ArchitectureEditor from './pages/ArchitectureEditor'
 
 export default function App() {
   const location = useLocation()
@@ -31,22 +25,24 @@ export default function App() {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
+            <Route path="/posts" element={<PostsPage />} />
+            <Route path="/posts/:category" element={<PostsPage />} />
+            <Route path="/posts/:category/:sub" element={<PostsPage />} />
             <Route path="/post/:slug" element={<PostView />} />
-            <Route path="/category/:slug" element={<CategoryPage />} />
-            <Route path="/series/:slug" element={<SeriesPage />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/architectures" element={<ArchitectureGallery />} />
-            <Route path="/architectures/tree" element={<AIEvolutionaryTree />} />
-            <Route path="/architectures/new" element={<ArchitectureEditor />} />
-            <Route path="/architectures/:slug" element={<ArchitectureDetail />} />
-            <Route path="/architectures/:slug/edit" element={<ArchitectureEditor />} />
-            <Route path="/architecture" element={<Navigate to="/architectures" replace />} />
-            <Route path="/papers" element={<Navigate to="/search?type=paper_review" replace />} />
             <Route path="/about" element={<About />} />
             <Route path="/editor" element={<Editor />} />
             <Route path="/editor/:slug" element={<Editor />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
+            {/* 레거시 경로 리다이렉트 */}
+            <Route path="/explore" element={<Navigate to="/posts" replace />} />
+            <Route path="/search" element={<Navigate to="/posts" replace />} />
+            <Route path="/architectures" element={<Navigate to="/posts/ai" replace />} />
+            <Route path="/architectures/tree" element={<Navigate to="/posts/ai" replace />} />
+            <Route path="/architectures/:slug" element={<Navigate to="/posts/ai" replace />} />
+            <Route path="/papers" element={<Navigate to="/posts" replace />} />
+            <Route path="/category/:slug" element={<Navigate to="/posts" replace />} />
+            <Route path="/series/:slug" element={<Navigate to="/posts" replace />} />
           </Routes>
         </AnimatePresence>
       </main>

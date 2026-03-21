@@ -21,7 +21,8 @@ import argparse
 from pathlib import Path
 
 import anthropic
-import cairosvg
+
+from svg_utils import extract_svg, svg_to_png, save_svg, validate_png
 
 # ── 설정 ──────────────────────────────────────────────────────────────
 ARCH_DIR = Path(__file__).parent / 'data' / 'architectures_written'
@@ -515,23 +516,6 @@ def build_prompt(data: dict) -> str:
     return templates[arch_type].format(**common)
 
 
-def extract_svg(text: str) -> str | None:
-    """응답 텍스트에서 SVG 코드 추출"""
-    # ```svg ... ``` 블록
-    match = re.search(r'```(?:svg|xml)?\s*\n(.*?)```', text, re.DOTALL)
-    if match:
-        svg = match.group(1).strip()
-        if svg.startswith('<svg'):
-            return svg
-
-    # <svg ... </svg> 직접 매칭
-    match = re.search(r'(<svg[\s\S]*?</svg>)', text, re.DOTALL)
-    if match:
-        return match.group(1).strip()
-
-    return None
-
-
 def generate_figure(client, model: str, prompt: str, output_path: Path) -> bool:
     """Claude API로 SVG 생성 → PNG 변환 후 저장"""
     svg_path = output_path.with_suffix('.svg')
@@ -554,18 +538,12 @@ def generate_figure(client, model: str, prompt: str, output_path: Path) -> bool:
                     time.sleep(RETRY_DELAY)
                 continue
 
-            # SVG 저장
-            output_path.parent.mkdir(parents=True, exist_ok=True)
-            svg_path.write_text(svg_code, encoding='utf-8')
-
-            # SVG → PNG 변환
-            cairosvg.svg2png(
-                bytestring=svg_code.encode('utf-8'),
-                write_to=str(output_path),
-                output_width=OUTPUT_WIDTH,
-                background_color='white',
-            )
-            return True
+            # SVG 저장 + PNG 변환
+            save_svg(svg_code, svg_path)
+            if svg_to_png(svg_code, output_path, output_width=OUTPUT_WIDTH):
+                return True
+            else:
+                print(f"      [WARN] PNG 변환 실패 (시도 {attempt}/{MAX_RETRIES})")
 
         except anthropic.RateLimitError:
             wait = RETRY_DELAY * attempt * 2

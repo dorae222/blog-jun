@@ -1,46 +1,40 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown, User } from 'lucide-react'
+import { Menu, X, ChevronDown, User, Search } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
-
-const POSTS_MENU = [
-  { label: 'Papers',       to: '/search?type=paper_review' },
-  { label: 'Architecture', to: '/architectures' },
-  { label: 'AI Tree',      to: '/architectures/tree' },
-  { label: 'Articles',     to: '/search?type=article' },
-  { label: 'TIL',          to: '/search?type=til' },
-  { label: 'All Posts',    to: '/search' },
-]
 
 export default function Header() {
   const { user, logout } = useAuth()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [mobilePostsOpen, setMobilePostsOpen] = useState(false)
-  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
-  const hoverTimeout = useRef(null)
   const userMenuRef = useRef(null)
+  const searchInputRef = useRef(null)
 
-  // 모바일 메뉴 열릴 때 배경 스크롤 잠금
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  const closeMobile = () => {
-    setMobileOpen(false)
-    setMobilePostsOpen(false)
-  }
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus()
+    }
+  }, [searchOpen])
 
-  const handlePostsMouseEnter = () => {
-    clearTimeout(hoverTimeout.current)
-    setDesktopDropdownOpen(true)
-  }
+  const closeMobile = () => setMobileOpen(false)
 
-  const handlePostsMouseLeave = () => {
-    hoverTimeout.current = setTimeout(() => setDesktopDropdownOpen(false), 150)
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/posts?q=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchQuery('')
+      setSearchOpen(false)
+      closeMobile()
+    }
   }
 
   return (
@@ -54,57 +48,12 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           <Link
-            to="/"
+            to="/posts"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Home
+            Posts
           </Link>
-
-          {/* Posts 드롭다운 */}
-          <div
-            className="relative"
-            onMouseEnter={handlePostsMouseEnter}
-            onMouseLeave={handlePostsMouseLeave}
-          >
-            <button
-              className="flex items-center gap-1 text-sm font-medium hover:text-primary-600 transition-colors"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Posts
-              <ChevronDown
-                size={14}
-                className={`transition-transform duration-200 ${desktopDropdownOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-
-            <AnimatePresence>
-              {desktopDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute top-full left-0 mt-2 w-44 rounded-xl shadow-lg glass-nav overflow-hidden"
-                  style={{ border: '1px solid var(--border)' }}
-                  onMouseEnter={handlePostsMouseEnter}
-                  onMouseLeave={handlePostsMouseLeave}
-                >
-                  {POSTS_MENU.map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
-                      style={{ color: 'var(--text-secondary)' }}
-                      onClick={() => setDesktopDropdownOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
           <Link
             to="/about"
@@ -114,11 +63,34 @@ export default function Header() {
             About
           </Link>
 
-          {user && (
-            <Link to="/dashboard" className="text-sm font-medium hover:text-primary-600 transition-colors" style={{ color: 'var(--text-secondary)' }}>
-              Dashboard
-            </Link>
-          )}
+          {/* 검색 */}
+          <div className="relative">
+            {searchOpen ? (
+              <form onSubmit={handleSearch} className="flex items-center">
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="검색..."
+                  className="w-40 text-sm px-3 py-1 rounded-lg border outline-none focus:border-primary-400"
+                  style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
+                  onBlur={() => {
+                    if (!searchQuery) setSearchOpen(false)
+                  }}
+                />
+              </form>
+            ) : (
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="p-1.5 rounded-lg hover:text-primary-600 transition-colors"
+                style={{ color: 'var(--text-secondary)' }}
+                aria-label="Search"
+              >
+                <Search size={16} />
+              </button>
+            )}
+          </div>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -148,9 +120,6 @@ export default function Header() {
                     <Link to="/editor" onClick={() => setUserMenuOpen(false)}
                       className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
                       style={{ color: 'var(--text-secondary)' }}>새 글 작성</Link>
-                    <Link to="/architectures/new" onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
-                      style={{ color: 'var(--text-secondary)' }}>새 Architecture</Link>
                     <div style={{ borderTop: '1px solid var(--border)' }} />
                     <button
                       onClick={() => { logout(); navigate('/'); setUserMenuOpen(false) }}
@@ -171,6 +140,14 @@ export default function Header() {
             </Link>
           )}
 
+          {/* Mobile: 검색 + 햄버거 */}
+          <button
+            className="md:hidden p-2"
+            aria-label="검색"
+            onClick={() => setSearchOpen(!searchOpen)}
+          >
+            <Search size={20} />
+          </button>
           <button
             className="md:hidden p-2"
             aria-label="메뉴 열기"
@@ -180,6 +157,31 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {/* Mobile 검색바 */}
+      <AnimatePresence>
+        {searchOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: 'auto' }}
+            exit={{ height: 0 }}
+            className="md:hidden overflow-hidden border-t"
+            style={{ borderColor: 'var(--border)' }}
+          >
+            <form onSubmit={handleSearch} className="px-4 py-2">
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="검색..."
+                className="w-full text-sm px-3 py-2 rounded-lg border outline-none focus:border-primary-400"
+                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
+              />
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mobile Nav */}
       <AnimatePresence>
@@ -192,78 +194,26 @@ export default function Header() {
             style={{ borderColor: 'var(--border)' }}
           >
             <div className="px-4 py-3 space-y-1 max-h-[80vh] overflow-y-auto">
-              <Link
-                to="/"
-                onClick={closeMobile}
-                className="block py-2 text-sm"
-                style={{ color: 'var(--text-secondary)' }}
-              >
+              <Link to="/" onClick={closeMobile}
+                className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                 Home
               </Link>
-
-              {/* Posts 아코디언 */}
-              <div>
-                <button
-                  className="flex items-center gap-1 w-full py-2 text-sm text-left"
-                  style={{ color: 'var(--text-secondary)' }}
-                  onClick={() => setMobilePostsOpen(!mobilePostsOpen)}
-                >
-                  Posts
-                  <ChevronDown
-                    size={14}
-                    className={`ml-auto transition-transform duration-200 ${mobilePostsOpen ? 'rotate-180' : ''}`}
-                  />
-                </button>
-                <AnimatePresence>
-                  {mobilePostsOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="overflow-hidden pl-4"
-                    >
-                      {POSTS_MENU.map((item) => (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          onClick={closeMobile}
-                          className="block py-2 text-sm"
-                          style={{ color: 'var(--text-secondary)' }}
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <Link
-                to="/about"
-                onClick={closeMobile}
-                className="block py-2 text-sm"
-                style={{ color: 'var(--text-secondary)' }}
-              >
+              <Link to="/posts" onClick={closeMobile}
+                className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Posts
+              </Link>
+              <Link to="/about" onClick={closeMobile}
+                className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                 About
               </Link>
-
               {user && (
                 <>
-                  <Link
-                    to="/dashboard"
-                    onClick={closeMobile}
-                    className="block py-2 text-sm"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
+                  <Link to="/dashboard" onClick={closeMobile}
+                    className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                     Dashboard
                   </Link>
-                  <Link
-                    to="/editor"
-                    onClick={closeMobile}
-                    className="block py-2 text-sm"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
+                  <Link to="/editor" onClick={closeMobile}
+                    className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                     Write
                   </Link>
                 </>

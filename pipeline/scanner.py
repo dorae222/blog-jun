@@ -15,8 +15,8 @@ EXCLUDE_DIRS = {
     "50.Foundation", "70.Program",
     # AI 세부 폴더: 내용 빈약 or 이미지 의존도 높음
     "21. Math & Statistics", "22. ML", "24. NLP", "25. Vision", "27. MFU",
-    # 데이터 엔지니어링: 기초 수준 소량
-    "31.Hadoop", "32.Spark", "34.Data Pipeline",
+    # 데이터 엔지니어링: 파이프라인에 포함 (정비 후)
+    # "31.Hadoop", "32.Spark", "34.Data Pipeline",
     # 프론트엔드: 별도 검토 후 추가 가능
     "42.Frontend",
 }

@@ -108,5 +108,8 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
 
-# OpenAI
+# OpenAI / LLM
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
+LLM_MODEL = os.environ.get('LLM_MODEL', 'gpt-4o-mini')
+LLM_BASE_URL = os.environ.get('LLM_BASE_URL', '')
+LLM_FALLBACK_URL = os.environ.get('LLM_FALLBACK_URL', 'https://api.openai.com/v1')

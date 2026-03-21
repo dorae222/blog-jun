@@ -1,5 +1,9 @@
 # llm-server의 /opt/vllm/docker-compose.yml
-# 2x RTX 3090 (PCIe, NVLink 없음) + Qwen3-32B-AWQ
+# 2x RTX 3090 (PCIe, NVLink 없음) + Qwen3-30B-A3B (MoE, BF16)
+# 변경: Qwen3-32B-AWQ → Qwen3-30B-A3B
+#   - 128K 네이티브 context (SVG 생성에 필수)
+#   - 활성 파라미터 3B (빠른 추론)
+#   - 비양자화 BF16 (코드/SVG 품질 우수)
 services:
   vllm:
     image: vllm/vllm-openai:latest
@@ -14,13 +18,11 @@ services:
     ports:
       - "8080:8000"
     command: >
-      --model /models/Qwen3-32B-AWQ
-      --quantization awq
+      --model /models/Qwen3-30B-A3B
       --tensor-parallel-size 2
-      --max-model-len 8192
+      --max-model-len 32768
       --gpu-memory-utilization 0.85
-      --dtype half
-      --enforce-eager
+      --trust-remote-code
       --disable-log-requests
     deploy:
       resources:
@@ -35,7 +37,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-      start_period: 180s  # 32B 모델 로딩 시간 고려
+      start_period: 180s  # 모델 로딩 시간 고려
 
 volumes:
   huggingface_cache:

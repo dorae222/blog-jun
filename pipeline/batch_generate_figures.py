@@ -23,7 +23,8 @@ import argparse
 from pathlib import Path
 
 import anthropic
-import cairosvg
+
+from svg_utils import extract_svg, svg_to_png, save_svg
 
 # ── 설정 ──────────────────────────────────────────────────────────────
 ARCH_DIR = Path(__file__).parent / 'data' / 'architectures_written'
@@ -33,7 +34,7 @@ POLL_INTERVAL = 30  # 초
 
 # generate_arch_figures.py에서 프롬프트 재사용
 from generate_arch_figures import (
-    SYSTEM_PROMPT, build_prompt, extract_svg, classify_architecture
+    SYSTEM_PROMPT, build_prompt, classify_architecture
 )
 
 
@@ -127,24 +128,14 @@ def process_batch(client: anthropic.Anthropic, batch_id: str) -> None:
                 failed += 1
                 continue
 
-            output_dir.mkdir(parents=True, exist_ok=True)
-
-            # SVG 저장
-            svg_path.write_text(svg_code, encoding='utf-8')
-
-            # SVG → PNG 변환
-            try:
-                cairosvg.svg2png(
-                    bytestring=svg_code.encode('utf-8'),
-                    write_to=str(output_path),
-                    output_width=OUTPUT_WIDTH,
-                    background_color='white',
-                )
+            # SVG 저장 + PNG 변환
+            save_svg(svg_code, svg_path)
+            if svg_to_png(svg_code, output_path, output_width=OUTPUT_WIDTH):
                 size_kb = output_path.stat().st_size / 1024
                 print(f"  [{slug}] 생성 완료 ({size_kb:.0f}KB)")
                 generated += 1
-            except Exception as e:
-                print(f"  [{slug}] PNG 변환 실패: {e}")
+            else:
+                print(f"  [{slug}] PNG 변환 실패")
                 failed += 1
         else:
             error_type = result.result.type
