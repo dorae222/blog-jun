@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import {
   Heading1, Heading2, Heading3, Type, Quote, Minus, AlertCircle,
-  Image, Video, Table, Code, Calculator, CheckSquare
+  Image, Video, Table, Code, Calculator, CheckSquare,
+  FileCode, GitBranch, Info, AlertTriangle, Lightbulb, Terminal
 } from 'lucide-react'
 
 const SLASH_ITEMS = [
@@ -12,7 +13,11 @@ const SLASH_ITEMS = [
     { id: 'text', label: 'Text', desc: '일반 텍스트', icon: Type, command: (editor) => editor.chain().focus().setParagraph().run() },
     { id: 'quote', label: 'Quote', desc: '인용 블록', icon: Quote, command: (editor) => editor.chain().focus().toggleBlockquote().run() },
     { id: 'divider', label: 'Divider', desc: '구분선', icon: Minus, command: (editor) => editor.chain().focus().setHorizontalRule().run() },
-    { id: 'callout', label: 'Callout', desc: '콜아웃 박스', icon: AlertCircle, command: (editor) => editor.chain().focus().toggleBlockquote().run() },
+  ]},
+  { category: 'Callout', items: [
+    { id: 'callout-info', label: 'Info Callout', desc: '정보 콜아웃', icon: Info, command: null },
+    { id: 'callout-warning', label: 'Warning Callout', desc: '경고 콜아웃', icon: AlertTriangle, command: null },
+    { id: 'callout-tip', label: 'Tip Callout', desc: '팁 콜아웃', icon: Lightbulb, command: null },
   ]},
   { category: 'Media', items: [
     { id: 'image', label: 'Image', desc: '이미지 업로드', icon: Image, command: null },
@@ -21,7 +26,10 @@ const SLASH_ITEMS = [
   ]},
   { category: 'Advanced', items: [
     { id: 'code', label: 'Code Block', desc: '코드 블록', icon: Code, command: (editor) => editor.chain().focus().toggleCodeBlock().run() },
+    { id: 'codecell', label: 'Code Cell', desc: '코드 + 결과 (Jupyter)', icon: Terminal, command: null },
     { id: 'math', label: 'Math Block', desc: 'KaTeX 수식', icon: Calculator, command: null },
+    { id: 'mermaid', label: 'Mermaid Diagram', desc: '다이어그램', icon: GitBranch, command: null },
+    { id: 'notebook', label: 'Import Notebook', desc: '.ipynb 파일 임포트', icon: FileCode, command: null },
     { id: 'todo', label: 'Todo List', desc: '체크리스트', icon: CheckSquare, command: (editor) => editor.chain().focus().toggleTaskList().run() },
   ]},
 ]
@@ -31,7 +39,6 @@ export default function SlashCommandMenu({ editor, query, onSelect, onClose }) {
   const menuRef = useRef(null)
   const itemRefs = useRef([])
 
-  // query로 필터링된 아이템 목록
   const filteredGroups = useMemo(() => {
     const q = (query || '').toLowerCase()
     return SLASH_ITEMS
@@ -46,23 +53,19 @@ export default function SlashCommandMenu({ editor, query, onSelect, onClose }) {
       .filter(group => group.items.length > 0)
   }, [query])
 
-  // 전체 flat 아이템 목록 (키보드 네비게이션용)
   const allItems = useMemo(() =>
     filteredGroups.flatMap(g => g.items),
     [filteredGroups]
   )
 
-  // 필터 변경 시 선택 초기화
   useEffect(() => {
     setSelectedIndex(0)
   }, [query])
 
-  // 선택된 아이템이 보이도록 스크롤
   useEffect(() => {
     itemRefs.current[selectedIndex]?.scrollIntoView({ block: 'nearest' })
   }, [selectedIndex])
 
-  // 키보드 네비게이션
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
@@ -86,7 +89,6 @@ export default function SlashCommandMenu({ editor, query, onSelect, onClose }) {
     return () => document.removeEventListener('keydown', handleKeyDown, true)
   }, [handleKeyDown])
 
-  // 메뉴 바깥 클릭 시 닫기
   useEffect(() => {
     const handleClick = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -122,7 +124,7 @@ export default function SlashCommandMenu({ editor, query, onSelect, onClose }) {
       style={{
         background: 'var(--bg)',
         borderColor: 'var(--border)',
-        maxHeight: '320px',
+        maxHeight: '360px',
         width: '280px',
         overflowY: 'auto',
       }}

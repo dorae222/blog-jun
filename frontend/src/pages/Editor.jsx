@@ -2,7 +2,10 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
+import { Eye, Code, Columns, List } from 'lucide-react'
 import NotionEditor from '../components/editor/NotionEditor'
+import SplitEditor from '../components/editor/SplitEditor'
+import MarkdownEditor from '../components/editor/MarkdownEditor'
 import useAuth from '../hooks/useAuth'
 import { getPost, createPost, updatePost, getCategories, getTags, getSeries, getTemplates, uploadImage } from '../api/posts'
 
@@ -15,6 +18,9 @@ export default function Editor() {
   const [categories, setCategories] = useState([])
   const [allTags, setAllTags] = useState([])
   const [allSeries, setAllSeries] = useState([])
+  const [viewMode, setViewMode] = useState('wysiwyg') // wysiwyg | split | source
+  const [showToc, setShowToc] = useState(false)
+  const [headings, setHeadings] = useState([])
 
   const [form, setForm] = useState({
     title: '',
@@ -54,10 +60,8 @@ export default function Editor() {
     }
   }, [slug, user, navigate])
 
-  // 저장 상태 표시
-  const [saveStatus, setSaveStatus] = useState('saved') // saved | saving | changed
+  const [saveStatus, setSaveStatus] = useState('saved')
 
-  // Auto-save every 30 seconds
   const autoSaveRef = useRef(null)
   useEffect(() => {
     if (!form.title || !form.content) return
@@ -67,11 +71,22 @@ export default function Editor() {
     return () => clearInterval(autoSaveRef.current)
   }, [form, saveStatus])
 
-  // 폼 변경 감지
   const updateForm = (updates) => {
     setForm(prev => ({ ...prev, ...updates }))
     setSaveStatus('changed')
   }
+
+  // 콘텐츠 변경 시 헤딩 추출 (TOC용)
+  const handleContentChange = useCallback((markdown) => {
+    updateForm({ content: markdown })
+    // 헤딩 추출
+    const matches = [...(markdown || '').matchAll(/^(#{1,3})\s+(.+)$/gm)]
+    setHeadings(matches.map((m, i) => ({
+      level: m[1].length,
+      text: m[2].replace(/[*_`]/g, ''),
+      id: `heading-${i}`,
+    })))
+  }, [])
 
   const handleSave = useCallback(async (silent = false) => {
     setSaveStatus('saving')
@@ -95,7 +110,6 @@ export default function Editor() {
     }
   }, [form, slug, navigate])
 
-  // Ctrl+S 단축키
   useEffect(() => {
     const handler = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 's') {
@@ -112,12 +126,11 @@ export default function Editor() {
     setTimeout(() => handleSave(), 0)
   }
 
-  // 이미지 업로드 핸들러 (NotionEditor에서 사용)
   const handleImageUpload = useCallback(async (file) => {
     const formData = new FormData()
     formData.append('image', file)
     const { data } = await uploadImage(formData)
-    return data.image // URL 반환
+    return data.image
   }, [])
 
   const applyTemplate = (tmpl) => {
@@ -130,6 +143,12 @@ export default function Editor() {
   }
 
   if (!user) return null
+
+  const VIEW_MODES = [
+    { id: 'wysiwyg', icon: Eye, label: 'WYSIWYG' },
+    { id: 'split', icon: Columns, label: 'Split' },
+    { id: 'source', icon: Code, label: 'Source' },
+  ]
 
   return (
     <motion.div
@@ -182,6 +201,39 @@ export default function Editor() {
           {allSeries.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>
 
+        {/* View Mode Toggle */}
+        <div className="flex items-center rounded border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+          {VIEW_MODES.map(mode => (
+            <button
+              key={mode.id}
+              onClick={() => setViewMode(mode.id)}
+              className="px-2 py-1 text-xs flex items-center gap-1 transition-colors"
+              style={{
+                background: viewMode === mode.id ? 'var(--bg)' : 'transparent',
+                color: viewMode === mode.id ? 'var(--text)' : 'var(--text-secondary)',
+                fontWeight: viewMode === mode.id ? 600 : 400,
+              }}
+              title={mode.label}
+            >
+              <mode.icon size={14} />
+            </button>
+          ))}
+        </div>
+
+        {/* TOC Toggle */}
+        <button
+          onClick={() => setShowToc(prev => !prev)}
+          className="px-2 py-1 rounded border text-xs"
+          style={{
+            borderColor: 'var(--border)',
+            background: showToc ? 'var(--bg)' : 'transparent',
+            color: showToc ? 'var(--text)' : 'var(--text-secondary)',
+          }}
+          title="Table of Contents"
+        >
+          <List size={14} />
+        </button>
+
         <button
           onClick={() => setShowTemplates(true)}
           className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
@@ -205,13 +257,56 @@ export default function Editor() {
         </button>
       </div>
 
-      {/* Notion-style Editor Area */}
+      {/* Editor Area */}
       <div className="flex-1 flex overflow-hidden">
-        <NotionEditor
-          content={form.content}
-          onChange={(markdown) => updateForm({ content: markdown })}
-          onImageUpload={handleImageUpload}
-        />
+        {/* TOC Sidebar */}
+        {showToc && headings.length > 0 && (
+          <div
+            className="w-56 border-r overflow-y-auto py-4 px-3 shrink-0"
+            style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}
+          >
+            <div className="text-xs font-semibold uppercase mb-3" style={{ color: 'var(--text-secondary)' }}>
+              Contents
+            </div>
+            {headings.map((h, i) => (
+              <div
+                key={i}
+                className="text-sm py-1 cursor-pointer hover:opacity-80 truncate"
+                style={{
+                  paddingLeft: `${(h.level - 1) * 0.75}rem`,
+                  color: 'var(--text-secondary)',
+                  fontSize: h.level === 1 ? '0.875rem' : '0.8125rem',
+                  fontWeight: h.level === 1 ? 600 : 400,
+                }}
+              >
+                {h.text}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Main Editor */}
+        {viewMode === 'wysiwyg' && (
+          <NotionEditor
+            content={form.content}
+            onChange={handleContentChange}
+            onImageUpload={handleImageUpload}
+          />
+        )}
+        {viewMode === 'split' && (
+          <SplitEditor
+            content={form.content}
+            onChange={handleContentChange}
+          />
+        )}
+        {viewMode === 'source' && (
+          <div className="flex-1 overflow-hidden">
+            <MarkdownEditor
+              value={form.content}
+              onChange={(val) => handleContentChange(val)}
+            />
+          </div>
+        )}
       </div>
 
       {/* Template Modal */}
