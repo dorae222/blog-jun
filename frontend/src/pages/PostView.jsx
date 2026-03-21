@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, List, X } from 'lucide-react'
+import { BookOpen, List, X, ChevronRight } from 'lucide-react'
 import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
 import PaperSummaryBox from '../components/blog/PaperSummaryBox'
@@ -9,6 +9,8 @@ import PDFViewer from '../components/blog/PDFViewer'
 import ReadingProgress from '../components/blog/ReadingProgress'
 import TableOfContents from '../components/blog/TableOfContents'
 import TagChip from '../components/common/TagChip'
+import ArchitectureLineageCard from '../components/blog/ArchitectureLineageCard'
+import PostLinksSection from '../components/blog/PostLinksSection'
 import { getPost } from '../api/posts'
 
 export default function PostView() {
@@ -74,12 +76,29 @@ export default function PostView() {
             </button>
           </div>
 
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-1 text-xs mb-4 flex-wrap" style={{ color: 'var(--text-secondary)' }}>
+            <Link to="/" className="hover:text-primary-600 transition-colors">Home</Link>
+            <ChevronRight size={12} />
+            <Link to="/posts" className="hover:text-primary-600 transition-colors">Posts</Link>
+            {post.category && (
+              <>
+                <ChevronRight size={12} />
+                <Link to={`/posts?q=${post.category.name}`} className="hover:text-primary-600 transition-colors">
+                  {post.category.name}
+                </Link>
+              </>
+            )}
+            <ChevronRight size={12} />
+            <span className="truncate max-w-[200px]" style={{ color: 'var(--text)' }}>{post.title}</span>
+          </nav>
+
           {/* Header */}
           <header className="mb-8">
             <div className="flex items-center gap-2 mb-4">
               {post.category && (
                 <Link
-                  to={`/category/${post.category.slug}`}
+                  to={`/posts`}
                   className="text-sm font-medium px-3 py-1 rounded-full"
                   style={{
                     backgroundColor: post.category.color + '20',
@@ -94,7 +113,7 @@ export default function PostView() {
               )}
               {post.series && (
                 <Link
-                  to={`/series/${post.series.slug}`}
+                  to={`/posts`}
                   className="text-sm font-medium text-primary-600 hover:underline"
                 >
                   <BookOpen size={14} className="inline mr-1" /> {post.series.name}
@@ -121,7 +140,7 @@ export default function PostView() {
           {post.post_type === 'paper_review' && <PaperSummaryBox post={post} />}
 
           {/* Content */}
-          <MarkdownRenderer content={post.content} />
+          <MarkdownRenderer content={post.content} postLinks={post.outgoing_links || []} />
 
           {/* PDF 첨부 뷰어 */}
           {post.pdf_file && (
@@ -141,6 +160,15 @@ export default function PostView() {
               </div>
             </div>
           )}
+
+          {/* Architecture Lineage */}
+          <ArchitectureLineageCard entries={post.architecture_entries} />
+
+          {/* Post Links (outgoing + backlinks) */}
+          <PostLinksSection
+            outgoingLinks={post.outgoing_links}
+            incomingLinks={post.incoming_links}
+          />
 
           {/* Series Navigation */}
           {post.adjacent_posts && (post.adjacent_posts.prev || post.adjacent_posts.next) && (

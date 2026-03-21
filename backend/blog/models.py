@@ -88,6 +88,13 @@ class Post(models.Model):
         null=True,
         help_text="포스트에 첨부할 PDF 파일",
     )
+    cover_image = models.ImageField(
+        upload_to='posts/covers/',
+        blank=True,
+        null=True,
+        help_text="게시판 목록에 표시할 표지 이미지",
+    )
+    is_pinned = models.BooleanField(default=False, help_text="목록 상단 고정")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_at = models.DateTimeField(null=True, blank=True)
@@ -138,6 +145,21 @@ class PostTemplate(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PostLink(models.Model):
+    """Obsidian [[]] wiki-link에서 추출한 포스트 간 관계."""
+    from_post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='outgoing_links')
+    to_post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='incoming_links')
+    link_text = models.CharField(max_length=255, help_text="원본 [[텍스트]]")
+    context = models.TextField(blank=True, help_text="링크가 사용된 주변 문맥")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('from_post', 'to_post')
+
+    def __str__(self):
+        return f"{self.from_post.slug} → {self.to_post.slug}"
 
 
 class ArchitectureConcept(models.Model):

@@ -9,7 +9,7 @@ export default function TagChip({ tag, size = 'sm' }) {
 
   return (
     <Link
-      to={`/search?tag=${tag.slug}`}
+      to={`/posts?q=${tag.name}`}
       className={`inline-block rounded-full font-medium transition-all hover:scale-105 hover:shadow-sm ${sizeClasses[size]}`}
       style={{ background: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}
     >

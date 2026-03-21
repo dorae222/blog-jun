@@ -9,7 +9,7 @@ export default function SearchBar({ className = '' }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (query.trim()) {
-      navigate(`/search?q=${encodeURIComponent(query.trim())}`)
+      navigate(`/posts?q=${encodeURIComponent(query.trim())}`)
     }
   }
 

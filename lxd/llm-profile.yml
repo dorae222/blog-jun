@@ -16,7 +16,7 @@ devices:
     pci: "e1:00.0"   # RTX 3090 #2
   models:
     type: disk
-    source: /data/models   # HDD 마운트 경로 (NVMe 절약)
+    source: /opt/models    # 호스트 모델 디렉토리
     path: /models
   eth0:
     type: nic

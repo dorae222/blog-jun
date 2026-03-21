@@ -232,13 +232,30 @@ def convert_images(content: str, source_path: str, ref_map: dict, stats: Counter
     return content
 
 
+# ─── Phase E-pre: Wiki-link 추출 (PostLink 생성용) ─────────────────────
+
+def extract_wiki_links(content: str) -> list[dict]:
+    """[[]] 링크 추출 (이미지 제외). 변환 전에 호출해야 함."""
+    pattern = r'(?<!!)\[\[([^\]]+)\]\]'
+    links = []
+    seen = set()
+    for match in re.finditer(pattern, content):
+        raw = match.group(1)
+        target = raw.split('|')[0].strip()  # [[A|B]] → A
+        display = raw.split('|')[-1].strip()  # [[A|B]] → B
+        if target not in seen:
+            links.append({'target': target, 'display': display})
+            seen.add(target)
+    return links
+
+
 # ─── Phase E: Obsidian syntax ─────────────────────────────────────────
 
 def convert_obsidian_syntax(content: str, stats: Counter) -> str:
     """Obsidian 전용 문법을 표준 마크다운으로 변환."""
 
-    # E-18: [[내부 링크]] → 텍스트만
-    # [[링크|표시텍스트]] → 표시텍스트
+    # E-18: [[내부 링크]] — 추출 후 텍스트로 변환
+    # wiki-link 관계를 먼저 추출 → content_links에 저장 (batch_import에서 PostLink 생성용)
     def replace_wikilink(m):
         inner = m.group(1)
         if "|" in inner:
@@ -354,6 +371,9 @@ def preprocess_content(content: str, source_path: str = "", ref_map: dict = None
     # Phase D: 이미지 참조 표준화
     content = convert_images(content, source_path, ref_map, stats)
 
+    # Phase E-pre: wiki-link 추출 (변환 전, PostLink 생성용)
+    content_links = extract_wiki_links(content)
+
     # Phase E: Obsidian 문법
     content = convert_obsidian_syntax(content, stats)
 
@@ -366,7 +386,10 @@ def preprocess_content(content: str, source_path: str = "", ref_map: dict = None
     # Phase H: 복원
     content = restore_blocks(content, blocks)
 
-    return content.strip(), dict(stats)
+    result_stats = dict(stats)
+    result_stats['content_links'] = content_links
+
+    return content.strip(), result_stats
 
 
 def preprocess_file(file_path: Path, source_path: str = "", ref_map: dict = None) -> tuple[str, dict]:

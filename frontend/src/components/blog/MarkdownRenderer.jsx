@@ -1,4 +1,5 @@
 import { useState, useMemo, Component } from 'react'
+import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
@@ -7,21 +8,39 @@ import rehypeSlug from 'rehype-slug'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 
-// Obsidian 위키 링크 등 비표준 마크다운을 표준으로 변환
-function preprocessContent(raw) {
+// Obsidian 위키 링크를 내부 링크 또는 텍스트로 변환
+function preprocessContent(raw, postLinks = []) {
   if (!raw) return ''
+
+  // postLinks에서 title→slug 매핑 생성
+  const linkMap = {}
+  postLinks.forEach(link => {
+    linkMap[link.link_text?.toLowerCase()] = link.slug
+    linkMap[link.title?.toLowerCase()] = link.slug
+  })
+
   return raw
-    // [[[Title|Display]]] → Display
-    .replace(/\[\[\[([^\]]*?)\|([^\]]*?)\]\]\]/g, '$2')
-    // [[[Title]]] → Title
-    .replace(/\[\[\[([^\]]*?)\]\]\]/g, '$1')
-    // [[Title|Display]] → Display
-    .replace(/\[\[([^\]]*?)\|([^\]]*?)\]\]/g, '$2')
-    // [[Title]] → Title
-    .replace(/\[\[([^\]]*?)\]\]/g, '$1')
-    // CommonMark right-flanking fix:
-    // 닫는 ** 앞이 ) (구두점)이고 뒤가 한글이면 bold가 닫히지 않음 → 공백 삽입
-    // e.g. **Dual Chunk Attention(DCA)**과 → **Dual Chunk Attention(DCA)** 과
+    // [[[Title|Display]]] → 내부 링크 또는 Display
+    .replace(/\[\[\[([^\]]*?)\|([^\]]*?)\]\]\]/g, (_, target, display) => {
+      const slug = linkMap[target.toLowerCase()]
+      return slug ? `[${display}](/post/${slug})` : display
+    })
+    // [[[Title]]] → 내부 링크 또는 Title
+    .replace(/\[\[\[([^\]]*?)\]\]\]/g, (_, title) => {
+      const slug = linkMap[title.toLowerCase()]
+      return slug ? `[${title}](/post/${slug})` : title
+    })
+    // [[Title|Display]] → 내부 링크 또는 Display
+    .replace(/\[\[([^\]]*?)\|([^\]]*?)\]\]/g, (_, target, display) => {
+      const slug = linkMap[target.toLowerCase()]
+      return slug ? `[${display}](/post/${slug})` : display
+    })
+    // [[Title]] → 내부 링크 또는 Title
+    .replace(/\[\[([^\]]*?)\]\]/g, (_, title) => {
+      const slug = linkMap[title.toLowerCase()]
+      return slug ? `[${title}](/post/${slug})` : title
+    })
+    // CommonMark right-flanking fix
     .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
 }
 
@@ -137,8 +156,25 @@ function ImageWithZoom({ src, alt }) {
   )
 }
 
-export default function MarkdownRenderer({ content }) {
-  const processed = useMemo(() => preprocessContent(content), [content])
+function SmartLink({ href, children }) {
+  // 내부 링크 (/post/...) → React Router Link
+  if (href?.startsWith('/post/')) {
+    return (
+      <Link to={href} className="text-primary-600 hover:underline">
+        {children}
+      </Link>
+    )
+  }
+  // 외부 링크
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+      {children}
+    </a>
+  )
+}
+
+export default function MarkdownRenderer({ content, postLinks = [] }) {
+  const processed = useMemo(() => preprocessContent(content, postLinks), [content, postLinks])
 
   return (
     <ErrorBoundary>
@@ -150,11 +186,7 @@ export default function MarkdownRenderer({ content }) {
             pre: PreBlock,
             code: InlineCode,
             img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
-            a: ({ href, children }) => (
-              <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
-                {children}
-              </a>
-            ),
+            a: SmartLink,
             table: ({ children }) => (
               <div className="overflow-x-auto my-4">
                 <table className="min-w-full text-sm">{children}</table>

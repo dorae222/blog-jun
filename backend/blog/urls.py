@@ -12,6 +12,8 @@ router.register(r'architectures', views.ArchitectureEntryViewSet, basename='arch
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('feed/', views.FeedView.as_view(), name='feed'),
+    path('feed/popular/', views.feed_popular, name='feed-popular'),
     path('upload/', views.ImageUploadView.as_view(), name='image-upload'),
     path('dashboard/stats/', views.dashboard_stats, name='dashboard-stats'),
     path('stats/', views.public_stats, name='public-stats'),
