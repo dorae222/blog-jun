@@ -36,10 +36,10 @@ export default function PostView() {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="animate-pulse space-y-4">
-          <div className="h-8 rounded w-3/4" style={{ background: 'var(--bg-secondary)' }} />
-          <div className="h-4 rounded w-1/2" style={{ background: 'var(--bg-secondary)' }} />
-          <div className="h-96 rounded" style={{ background: 'var(--bg-secondary)' }} />
+        <div className="space-y-4">
+          <div className="h-8 rounded w-3/4 skeleton" />
+          <div className="h-4 rounded w-1/2 skeleton" />
+          <div className="h-96 rounded skeleton" />
         </div>
       </div>
     )
@@ -56,10 +56,10 @@ export default function PostView() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
     >
       <ReadingProgress />
 
@@ -161,14 +161,16 @@ export default function PostView() {
             </div>
           )}
 
-          {/* Architecture Lineage */}
-          <ArchitectureLineageCard entries={post.architecture_entries} />
-
-          {/* Post Links (outgoing + backlinks) */}
-          <PostLinksSection
-            outgoingLinks={post.outgoing_links}
-            incomingLinks={post.incoming_links}
-          />
+          {/* Related: Architecture Lineage + Post Links */}
+          {(post.architecture_entries?.length > 0 || post.outgoing_links?.length > 0 || post.incoming_links?.length > 0) && (
+            <div className="mt-8 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
+              <ArchitectureLineageCard entries={post.architecture_entries} />
+              <PostLinksSection
+                outgoingLinks={post.outgoing_links}
+                incomingLinks={post.incoming_links}
+              />
+            </div>
+          )}
 
           {/* Series Navigation */}
           {post.adjacent_posts && (post.adjacent_posts.prev || post.adjacent_posts.next) && (

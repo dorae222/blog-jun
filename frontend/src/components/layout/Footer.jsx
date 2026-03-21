@@ -3,7 +3,7 @@ import { Github, Mail } from 'lucide-react'
 export default function Footer() {
   return (
     <footer className="border-t py-8 mt-16" style={{ borderColor: 'var(--border)' }}>
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center sm:justify-between gap-3">
         <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
           &copy; {new Date().getFullYear()} HJ Tech Blog
         </p>

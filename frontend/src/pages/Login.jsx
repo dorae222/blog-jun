@@ -27,10 +27,11 @@ export default function Login() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
-      className="max-w-md mx-auto px-4 py-24"
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="max-w-md mx-auto px-4 py-12 sm:py-24"
     >
       <div className="p-8 rounded-2xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
         <h1 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text)' }}>Login</h1>

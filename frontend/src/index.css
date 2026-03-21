@@ -96,3 +96,18 @@ body {
 /* font-size: inherit는 KaTeX 내부 em 단위 계산을 깨뜨리므로 제거 */
 .prose .katex-display { overflow-x: auto; overflow-y: visible; margin: 1.5em 0; }
 .katex-display { overflow-x: auto; overflow-y: visible; }
+
+/* Smooth scroll & mobile font */
+html { scroll-behavior: smooth; }
+@media (max-width: 640px) { html { font-size: 15px; } }
+
+/* Shimmer skeleton */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, rgba(255,255,255,0.5) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}

@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Eye } from 'lucide-react'
-
-function isNew(item) {
-  const date = item.published_at || item.created_at
-  if (!date) return false
-  const diff = Date.now() - new Date(date).getTime()
-  return diff < 7 * 24 * 60 * 60 * 1000
-}
+import { isNew } from '../../utils/postUtils'
 
 export default function FeedCard({ item }) {
   const imageUrl = item.cover_image_url || item.figure_url
@@ -14,9 +9,13 @@ export default function FeedCard({ item }) {
   const categoryColor = item.category?.color || '#6366f1'
 
   return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+    >
     <Link
       to={`/post/${item.slug}`}
-      className="group block rounded-xl overflow-hidden border transition-all hover:shadow-lg hover:-translate-y-1"
+      className="group block rounded-xl overflow-hidden border transition-shadow hover:shadow-lg"
       style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
     >
       {/* 이미지 영역 */}
@@ -80,5 +79,6 @@ export default function FeedCard({ item }) {
         )}
       </div>
     </Link>
+    </motion.div>
   )
 }

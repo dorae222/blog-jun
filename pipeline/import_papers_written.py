@@ -25,35 +25,37 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.files import File
 from django.conf import settings
+from django.utils import timezone
 from blog.models import Post, Category, PostImage, ArchitectureEntry
 
 
 PAPERS_WRITTEN_DIR = Path(__file__).parent / 'data' / 'papers_written'
 
-# papers.csv category → DB slug (9개 구조)
+# papers.csv category → DB slug (7개 구조)
 CATEGORY_SLUG_MAP = {
-    'transformer':  'model-architecture',
-    'nlp':          'model-architecture',
-    'llm':          'model-architecture',
-    'vision':       'model-architecture',
-    'multimodal':   'model-architecture',
-    'ssm':          'model-architecture',
-    'moe':          'efficient-ai',
-    'scaling':      'efficient-ai',
-    'efficiency':   'efficient-ai',
-    'alignment':    'alignment-rlhf',
-    'finetuning':   'alignment-rlhf',
-    'rag':          'rag-knowledge',
-    'retrieval':    'rag-knowledge',
-    'technique':    'core-techniques',
-    'prompting':    'prompting-icl',
-    'icl':          'prompting-icl',
-    'benchmark':    'benchmark-eval',
-    'evaluation':   'benchmark-eval',
-    'agents':       'agents-tools',
-    'tools':        'agents-tools',
-    'data':         'data-security',
-    'security':     'data-security',
+    'transformer':  'llm',
+    'nlp':          'llm',
+    'llm':          'llm',
+    'vision':       'vision',
+    'multimodal':   'multimodal',
+    'ssm':          'ssm',
+    'diffusion':    'diffusion',
+    'moe':          'technique',
+    'scaling':      'technique',
+    'efficiency':   'technique',
+    'alignment':    'technique',
+    'finetuning':   'technique',
+    'rag':          'technique',
+    'retrieval':    'technique',
+    'technique':    'technique',
+    'prompting':    'technique',
+    'icl':          'technique',
+    'benchmark':    'technique',
+    'evaluation':   'technique',
+    'agents':       'agent',
+    'tools':        'agent',
+    'data':         'technique',
+    'security':     'technique',
 }
 
 
@@ -126,7 +128,7 @@ def import_papers(dry_run: bool = False):
 
         # 카테고리 결정
         cat_key = data.get('sub_category') or data.get('category', '')
-        cat_slug = CATEGORY_SLUG_MAP.get(cat_key, 'model-architecture')
+        cat_slug = CATEGORY_SLUG_MAP.get(cat_key, 'llm')
         category = categories.get(cat_slug) or categories.get('ai-ml')
 
         content = data.get('content', '')
@@ -150,6 +152,7 @@ def import_papers(dry_run: bool = False):
             author=author,
             status='published',
             post_type='paper_review',
+            published_at=timezone.now(),
         )
         created_posts += 1
         print(f"  [CREATE] Post: {title}")
