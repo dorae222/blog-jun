@@ -1,5 +1,8 @@
+use_default_settings: true
+
 search:
   formats: [html, json]
+
 server:
   secret_key: "blog-jun-searxng-key-change-in-production"
   limiter: false
