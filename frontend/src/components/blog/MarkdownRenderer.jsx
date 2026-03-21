@@ -1,4 +1,4 @@
-import { useState, useMemo, Component } from 'react'
+import { useState, useMemo, useEffect, useRef, Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
@@ -12,36 +12,47 @@ import rehypeHighlight from 'rehype-highlight'
 function preprocessContent(raw, postLinks = []) {
   if (!raw) return ''
 
-  // postLinks에서 title→slug 매핑 생성
   const linkMap = {}
   postLinks.forEach(link => {
     linkMap[link.link_text?.toLowerCase()] = link.slug
     linkMap[link.title?.toLowerCase()] = link.slug
   })
 
-  return raw
-    // [[[Title|Display]]] → 내부 링크 또는 Display
+  let processed = raw
     .replace(/\[\[\[([^\]]*?)\|([^\]]*?)\]\]\]/g, (_, target, display) => {
       const slug = linkMap[target.toLowerCase()]
       return slug ? `[${display}](/post/${slug})` : display
     })
-    // [[[Title]]] → 내부 링크 또는 Title
     .replace(/\[\[\[([^\]]*?)\]\]\]/g, (_, title) => {
       const slug = linkMap[title.toLowerCase()]
       return slug ? `[${title}](/post/${slug})` : title
     })
-    // [[Title|Display]] → 내부 링크 또는 Display
     .replace(/\[\[([^\]]*?)\|([^\]]*?)\]\]/g, (_, target, display) => {
       const slug = linkMap[target.toLowerCase()]
       return slug ? `[${display}](/post/${slug})` : display
     })
-    // [[Title]] → 내부 링크 또는 Title
     .replace(/\[\[([^\]]*?)\]\]/g, (_, title) => {
       const slug = linkMap[title.toLowerCase()]
       return slug ? `[${title}](/post/${slug})` : title
     })
-    // CommonMark right-flanking fix
     .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
+
+  // :::type ... ::: 콜아웃 블록 → HTML 변환
+  processed = processed.replace(
+    /^:::(info|warning|tip|danger)\s*\n([\s\S]*?)^:::\s*$/gm,
+    (_, type, content) => {
+      const colors = {
+        info: { icon: 'ℹ️', border: '#3b82f6', bg: 'rgba(59,130,246,0.08)' },
+        warning: { icon: '⚠️', border: '#f59e0b', bg: 'rgba(245,158,11,0.08)' },
+        tip: { icon: '💡', border: '#10b981', bg: 'rgba(16,185,129,0.08)' },
+        danger: { icon: '🚨', border: '#ef4444', bg: 'rgba(239,68,68,0.08)' },
+      }
+      const c = colors[type] || colors.info
+      return `<div class="callout callout-${type}" style="border-left:4px solid ${c.border};background:${c.bg};border-radius:8px;padding:1rem 1rem 1rem 0.75rem;margin:1rem 0">\n<span style="margin-right:0.5rem">${c.icon}</span>\n\n${content.trim()}\n\n</div>`
+    }
+  )
+
+  return processed
 }
 
 class ErrorBoundary extends Component {
@@ -64,7 +75,6 @@ class ErrorBoundary extends Component {
   }
 }
 
-// rehypeHighlight가 생성한 highlight 트리에서 plain text 재귀 추출 (복사용)
 function extractPlainText(children) {
   if (typeof children === 'string') return children
   if (Array.isArray(children)) return children.map(extractPlainText).join('')
@@ -72,14 +82,51 @@ function extractPlainText(children) {
   return ''
 }
 
-// 코드블록(block code) 전담 — pre 컴포넌트로 사용
+// Mermaid 렌더링 컴포넌트
+function MermaidDiagram({ code }) {
+  const containerRef = useRef(null)
+  const [svg, setSvg] = useState('')
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    if (!code) return
+    import('mermaid').then(({ default: mermaid }) => {
+      mermaid.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose' })
+      const id = `mermaid-view-${Date.now()}`
+      mermaid.render(id, code)
+        .then(({ svg }) => { setSvg(svg); setError(null) })
+        .catch(err => { setError(err.message); setSvg('') })
+    })
+  }, [code])
+
+  if (error) {
+    return <div className="text-red-500 text-sm p-2">Mermaid error: {error}</div>
+  }
+  if (!svg) {
+    return <div className="text-gray-400 text-sm p-2">Loading diagram...</div>
+  }
+
+  return (
+    <div
+      ref={containerRef}
+      className="my-4 flex justify-center"
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  )
+}
+
+// 코드블록 전담 — pre 컴포넌트
 function PreBlock({ children }) {
   const [copied, setCopied] = useState(false)
 
-  // children은 rehypeHighlight가 처리한 <code className="language-xxx hljs">...</code>
   const codeProps = children?.props ?? {}
   const lang = /language-(\w+)/.exec(codeProps.className || '')?.[1] || ''
   const plainText = extractPlainText(codeProps.children).trim()
+
+  // Mermaid 코드블록 → 다이어그램 렌더링
+  if (lang === 'mermaid') {
+    return <MermaidDiagram code={plainText} />
+  }
 
   const handleCopy = () => {
     navigator.clipboard.writeText(plainText)
@@ -108,10 +155,7 @@ function PreBlock({ children }) {
   )
 }
 
-// inline code 전담 — code 컴포넌트로 사용 (className 없는 <code> 요소)
 function InlineCode({ children, className, node, ...props }) {
-  // className이 있으면 rehypeHighlight가 처리한 코드블록 내 code → PreBlock이 이미 담당
-  // 여기서는 inline code만 처리
   return (
     <code
       className={className}
@@ -127,7 +171,6 @@ function ImageWithZoom({ src, alt }) {
   const [zoomed, setZoomed] = useState(false)
   const [broken, setBroken] = useState(false)
 
-  // 깨진 이미지(Pasted image 등 404)는 렌더링하지 않음
   if (broken) return null
 
   return (
@@ -157,7 +200,6 @@ function ImageWithZoom({ src, alt }) {
 }
 
 function SmartLink({ href, children }) {
-  // 내부 링크 (/post/...) → React Router Link
   if (href?.startsWith('/post/')) {
     return (
       <Link to={href} className="text-primary-600 hover:underline">
@@ -165,7 +207,6 @@ function SmartLink({ href, children }) {
       </Link>
     )
   }
-  // 외부 링크
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
       {children}

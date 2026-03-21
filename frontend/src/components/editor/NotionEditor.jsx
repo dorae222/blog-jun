@@ -1,5 +1,5 @@
 import { useEditor, EditorContent } from '@tiptap/react'
-import { BubbleMenu } from '@tiptap/extension-bubble-menu'
+import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 import Image from '@tiptap/extension-image'
@@ -20,29 +20,82 @@ import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import { TextStyle } from '@tiptap/extension-text-style'
 import Color from '@tiptap/extension-color'
 import { Markdown } from 'tiptap-markdown'
+import Mathematics from '@tiptap/extension-mathematics'
 import { common, createLowlight } from 'lowlight'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import SlashCommandMenu from './SlashCommandMenu'
 import EditorToolbar from './EditorToolbar'
 import EmbedBlock, { parseVideoUrl } from './EmbedBlock'
+import CodeCell from './extensions/CodeCell'
+import MermaidBlock from './extensions/MermaidBlock'
+import CalloutBlock from './extensions/CalloutBlock'
 import { uploadImage } from '../../api/posts'
 import './editor-styles.css'
 
 const lowlight = createLowlight(common)
 
+// .ipynb → 에디터 콘텐츠 변환
+function convertNotebookToContent(notebook) {
+  const cells = notebook.cells || []
+  const parts = []
+
+  for (const cell of cells) {
+    const source = (cell.source || []).join('')
+    if (!source.trim()) continue
+
+    if (cell.cell_type === 'markdown') {
+      parts.push(source)
+    } else if (cell.cell_type === 'code') {
+      // 매직 커맨드 필터링
+      const cleanCode = source
+        .split('\n')
+        .filter(line => !line.trim().match(/^[!%]/))
+        .join('\n')
+        .trim()
+      if (!cleanCode) continue
+
+      parts.push('```python\n' + cleanCode + '\n```')
+
+      // output 처리
+      const outputs = cell.outputs || []
+      const outputTexts = []
+      for (const out of outputs) {
+        if (out.text) {
+          outputTexts.push((Array.isArray(out.text) ? out.text.join('') : out.text).trim())
+        } else if (out.data?.['text/plain']) {
+          const txt = out.data['text/plain']
+          outputTexts.push((Array.isArray(txt) ? txt.join('') : txt).trim())
+        }
+      }
+      const outputStr = outputTexts.filter(Boolean).join('\n').trim()
+      // 프로그레스바/warning 클리닝
+      const cleanOutput = outputStr
+        .split('\n')
+        .filter(line => !line.includes('━') && !line.includes('██') && !line.match(/DeprecationWarning|FutureWarning/))
+        .join('\n')
+        .trim()
+      if (cleanOutput) {
+        parts.push('<details><summary>Output</summary>\n\n```\n' + cleanOutput + '\n```\n\n</details>')
+      }
+    }
+  }
+
+  return parts.join('\n\n')
+}
+
 export default function NotionEditor({ content, onChange, onImageUpload }) {
-  const [slashMenu, setSlashMenu] = useState(null) // { x, y, query }
+  const [slashMenu, setSlashMenu] = useState(null)
   const [showVideoEmbed, setShowVideoEmbed] = useState(false)
   const slashStartPos = useRef(null)
   const imageInputRef = useRef(null)
+  const notebookInputRef = useRef(null)
 
-  // 이미지 업로드 핸들러 (외부 prop 또는 기본 API 호출)
+  // 이미지 업로드 핸들러
   const handleImageUpload = useCallback(async (file) => {
     if (onImageUpload) {
       return await onImageUpload(file)
     }
-    // 기본: API를 통해 업로드
     const formData = new FormData()
     formData.append('image', file)
     const { data } = await uploadImage(formData)
@@ -52,7 +105,7 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        codeBlock: false, // CodeBlockLowlight로 대체
+        codeBlock: false,
       }),
       Placeholder.configure({
         placeholder: "Type '/' for commands...",
@@ -66,30 +119,26 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
         autolink: true,
       }),
       TaskList,
-      TaskItem.configure({
-        nested: true,
-      }),
-      Table.configure({
-        resizable: true,
-      }),
+      TaskItem.configure({ nested: true }),
+      Table.configure({ resizable: true }),
       TableRow,
       TableHeader,
       TableCell,
       Underline,
-      Highlight.configure({
-        multicolor: true,
-      }),
+      Highlight.configure({ multicolor: true }),
       Typography,
-      TextAlign.configure({
-        types: ['heading', 'paragraph'],
-      }),
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Superscript,
       Subscript,
-      CodeBlockLowlight.configure({
-        lowlight,
-      }),
+      CodeBlockLowlight.configure({ lowlight }),
       TextStyle,
       Color,
+      Mathematics.configure({
+        HTMLAttributes: { class: 'math-node' },
+      }),
+      CodeCell,
+      MermaidBlock,
+      CalloutBlock,
       Markdown.configure({
         html: true,
         tightLists: true,
@@ -103,9 +152,7 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
       attributes: {
         class: 'notion-editor-content',
       },
-      // 클립보드 붙여넣기 핸들링
       handlePaste: (view, event) => {
-        // 이미지 파일 붙여넣기
         const files = event.clipboardData?.files
         if (files && files.length > 0) {
           const imageFile = Array.from(files).find(f => f.type.startsWith('image/'))
@@ -121,7 +168,6 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
           }
         }
 
-        // YouTube/Vimeo URL 자동 임베드
         const text = event.clipboardData?.getData('text/plain')
         if (text) {
           const parsed = parseVideoUrl(text.trim())
@@ -135,7 +181,6 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
 
         return false
       },
-      // 드래그 앤 드롭 이미지
       handleDrop: (view, event) => {
         const files = event.dataTransfer?.files
         if (files && files.length > 0) {
@@ -144,10 +189,7 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
             event.preventDefault()
             handleImageUpload(imageFile)
               .then(url => {
-                const pos = view.posAtCoords({ left: event.clientX, top: event.clientY })
-                if (pos) {
-                  editor.chain().focus().setImage({ src: url, alt: imageFile.name }).run()
-                }
+                editor.chain().focus().setImage({ src: url, alt: imageFile.name }).run()
                 toast.success('Image uploaded!')
               })
               .catch(() => toast.error('Image upload failed'))
@@ -158,7 +200,6 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
       },
     },
     onUpdate: ({ editor }) => {
-      // Markdown으로 변환하여 부모에게 전달
       const markdown = editor.storage.markdown.getMarkdown()
       onChange?.(markdown)
     },
@@ -171,16 +212,11 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     const handleTransaction = () => {
       const { state } = editor
       const { $from } = state.selection
-
-      // 현재 커서 위치의 텍스트 노드에서 "/" 감지
       const textBefore = $from.parent.textContent.slice(0, $from.parentOffset)
-
-      // "/" 으로 시작하는 패턴 감지 (줄 시작 또는 공백 뒤)
       const slashMatch = textBefore.match(/(?:^|\s)\/([\w가-힣]*)$/)
 
       if (slashMatch) {
         const query = slashMatch[1] || ''
-        // 에디터 뷰에서 커서 위치 가져오기
         const coords = editor.view.coordsAtPos($from.pos)
         const editorRect = editor.view.dom.getBoundingClientRect()
 
@@ -204,24 +240,30 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
   const handleSlashSelect = useCallback((item) => {
     if (!editor || slashStartPos.current === null) return
 
-    // "/" 텍스트 삭제
     const { state } = editor
     const from = slashStartPos.current
     const to = state.selection.$from.pos
 
-    editor.chain()
-      .focus()
-      .deleteRange({ from, to })
-      .run()
+    editor.chain().focus().deleteRange({ from, to }).run()
 
-    // 특수 커맨드 처리
     if (item.id === 'image') {
       imageInputRef.current?.click()
     } else if (item.id === 'video') {
       setShowVideoEmbed(true)
     } else if (item.id === 'math') {
-      // KaTeX 수식 블록 (코드블록으로 대체하여 markdown에서 $$...$$ 형태로)
-      editor.chain().focus().insertContent('$$\n\n$$').run()
+      editor.commands.insertBlockMath({ latex: 'E = mc^2' })
+    } else if (item.id === 'notebook') {
+      notebookInputRef.current?.click()
+    } else if (item.id === 'mermaid') {
+      editor.commands.setMermaidBlock('graph TD\n  A[Start] --> B[Process] --> C[End]')
+    } else if (item.id === 'callout-info') {
+      editor.commands.setCallout('info')
+    } else if (item.id === 'callout-warning') {
+      editor.commands.setCallout('warning')
+    } else if (item.id === 'callout-tip') {
+      editor.commands.setCallout('tip')
+    } else if (item.id === 'codecell') {
+      editor.commands.setCodeCell({ language: 'python', code: '# code here' })
     } else if (item.command) {
       item.command(editor)
     }
@@ -230,7 +272,7 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     slashStartPos.current = null
   }, [editor])
 
-  // 이미지 파일 선택 핸들러
+  // 이미지 파일 선택
   const handleImageFileSelect = useCallback(async (e) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -241,11 +283,26 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     } catch {
       toast.error('Image upload failed')
     }
-    // input 초기화
     if (imageInputRef.current) imageInputRef.current.value = ''
   }, [editor, handleImageUpload])
 
-  // 비디오 임베드 핸들러
+  // .ipynb 파일 선택
+  const handleNotebookSelect = useCallback(async (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    try {
+      const text = await file.text()
+      const notebook = JSON.parse(text)
+      const markdown = convertNotebookToContent(notebook)
+      editor?.chain().focus().insertContent(markdown).run()
+      toast.success(`Notebook imported: ${file.name}`)
+    } catch (err) {
+      toast.error('Failed to parse notebook: ' + err.message)
+    }
+    if (notebookInputRef.current) notebookInputRef.current.value = ''
+  }, [editor])
+
+  // 비디오 임베드
   const handleVideoEmbed = useCallback((videoInfo) => {
     if (!editor) return
     const iframeHtml = `<div class="video-embed"><iframe src="${videoInfo.embedUrl}" frameborder="0" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:8px;"></iframe></div><p></p>`
@@ -257,7 +314,6 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
 
   return (
     <div className="notion-editor relative flex-1 flex flex-col overflow-hidden">
-      {/* BubbleMenu: 텍스트 선택 시 나타나는 플로팅 툴바 */}
       <BubbleMenu
         editor={editor}
         tippyOptions={{ duration: 150, placement: 'top' }}
@@ -266,18 +322,13 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
         <EditorToolbar editor={editor} />
       </BubbleMenu>
 
-      {/* 에디터 본문 */}
       <div className="flex-1 overflow-y-auto relative">
         <EditorContent editor={editor} className="notion-editor-wrapper" />
 
-        {/* Slash Command Menu */}
         {slashMenu && (
           <div
             className="absolute z-50"
-            style={{
-              left: `${slashMenu.x}px`,
-              top: `${slashMenu.y}px`,
-            }}
+            style={{ left: `${slashMenu.x}px`, top: `${slashMenu.y}px` }}
           >
             <SlashCommandMenu
               editor={editor}
@@ -292,7 +343,6 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
         )}
       </div>
 
-      {/* 비디오 임베드 UI */}
       {showVideoEmbed && (
         <div className="absolute bottom-4 left-4 right-4 z-40">
           <EmbedBlock
@@ -302,14 +352,8 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
         </div>
       )}
 
-      {/* 숨겨진 이미지 파일 input */}
-      <input
-        ref={imageInputRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
-        onChange={handleImageFileSelect}
-      />
+      <input ref={imageInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageFileSelect} />
+      <input ref={notebookInputRef} type="file" accept=".ipynb" className="hidden" onChange={handleNotebookSelect} />
     </div>
   )
 }
