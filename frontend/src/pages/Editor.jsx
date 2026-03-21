@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Eye, Code, Columns, List } from 'lucide-react'
+import { Eye, Code, Columns, List, Check, Circle } from 'lucide-react'
 import NotionEditor from '../components/editor/NotionEditor'
 import SplitEditor from '../components/editor/SplitEditor'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
@@ -158,12 +158,12 @@ export default function Editor() {
       className="h-[calc(100vh-4rem)] flex flex-col"
     >
       {/* Toolbar */}
-      <div className="flex items-center gap-3 px-4 py-2 border-b" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
+      <div className="flex items-center gap-3 px-4 py-2 border-b overflow-x-auto" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
         <input
           value={form.title}
           onChange={e => updateForm({ title: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-') })}
           placeholder="Post title..."
-          className="flex-1 text-lg font-semibold bg-transparent outline-none"
+          className="flex-1 min-w-0 text-lg font-semibold bg-transparent outline-none"
           style={{ color: 'var(--text)' }}
         />
 
@@ -242,10 +242,10 @@ export default function Editor() {
           Templates
         </button>
 
-        <span className="text-xs px-2" style={{
+        <span className="inline-flex items-center gap-1 text-xs px-2 shrink-0" style={{
           color: saveStatus === 'saved' ? '#10b981' : saveStatus === 'saving' ? '#f59e0b' : '#6366f1'
         }}>
-          {saveStatus === 'saved' ? '✓ 저장됨' : saveStatus === 'saving' ? '저장 중...' : '● 변경사항'}
+          {saveStatus === 'saved' ? <><Check size={12} /> 저장됨</> : saveStatus === 'saving' ? '저장 중...' : <><Circle size={8} className="fill-current" /> 변경사항</>}
         </span>
 
         <button onClick={() => handleSave()} className="text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300">

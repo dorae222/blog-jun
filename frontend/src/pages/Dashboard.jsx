@@ -233,9 +233,10 @@ export default function Dashboard() {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       className="max-w-7xl mx-auto px-4 py-10"
     >
       {/* 헤더 */}
@@ -294,8 +295,32 @@ export default function Dashboard() {
       {/* ─── 포스트 탭 ─── */}
       {tab === 'posts' && (
         <div className="flex gap-6">
-          {/* 사이드바 */}
-          <aside className="w-44 shrink-0">
+          {/* 모바일 필터 드롭다운 */}
+          <div className="md:hidden mb-4 flex gap-2">
+            <select
+              value={categoryFilter}
+              onChange={e => { setCategoryFilter(e.target.value); setPage(1) }}
+              className="flex-1 text-sm px-3 py-2 rounded-lg border"
+              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+            >
+              {CATEGORIES.map(cat => (
+                <option key={cat.slug} value={cat.slug}>{cat.label}</option>
+              ))}
+            </select>
+            <select
+              value={statusFilter}
+              onChange={e => { setStatusFilter(e.target.value); setPage(1) }}
+              className="flex-1 text-sm px-3 py-2 rounded-lg border"
+              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+            >
+              {STATUS_META.map(s => (
+                <option key={s.value} value={s.value}>{s.label}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* 사이드바 (데스크탑) */}
+          <aside className="hidden md:block w-44 shrink-0">
             <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>카테고리</p>
             <ul className="space-y-1">
               {CATEGORIES.map(cat => {
@@ -507,7 +532,7 @@ export default function Dashboard() {
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="p-1.5 rounded border text-xs transition-colors disabled:opacity-40"
+                    className="p-2 rounded border text-xs transition-colors disabled:opacity-40"
                     style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
                   >
                     <ChevronLeft size={14} />
@@ -518,7 +543,7 @@ export default function Dashboard() {
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="p-1.5 rounded border text-xs transition-colors disabled:opacity-40"
+                    className="p-2 rounded border text-xs transition-colors disabled:opacity-40"
                     style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
                   >
                     <ChevronRight size={14} />

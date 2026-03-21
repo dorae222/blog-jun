@@ -53,9 +53,10 @@ const AWARDS = [
 export default function About() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
     >
       {/* Intro with Profile Photo + Orbit Icons */}
       <section className="max-w-5xl mx-auto px-4 pt-16 pb-8">

@@ -1,5 +1,19 @@
 import { useState, useEffect } from 'react'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, FileText, Github, Bot } from 'lucide-react'
+
+const DOMAIN_STYLES = {
+  'github.com':       { accent: '#24292f', Icon: Github,       label: 'GitHub' },
+  'huggingface.co':   { accent: '#ffd21e', Icon: null,         label: 'Hugging Face' },
+  'arxiv.org':        { accent: '#b31b1b', Icon: FileText,     label: 'arXiv' },
+  'openai.com':       { accent: '#412991', Icon: Bot,          label: 'OpenAI' },
+}
+
+function getDomainStyle(domain) {
+  for (const [key, style] of Object.entries(DOMAIN_STYLES)) {
+    if (domain.includes(key)) return style
+  }
+  return { accent: '#6366f1', Icon: ExternalLink, label: null }
+}
 
 export default function BookmarkEmbed({ url }) {
   const [meta, setMeta] = useState(null)
@@ -7,42 +21,37 @@ export default function BookmarkEmbed({ url }) {
 
   useEffect(() => {
     if (!url) return
-    // Try to extract basic info from URL
     try {
       const u = new URL(url)
       const domain = u.hostname.replace('www.', '')
+      const style = getDomainStyle(domain)
       let title = url
       let description = ''
 
-      // arxiv
       if (domain === 'arxiv.org') {
         const id = u.pathname.split('/').pop()
         title = `arXiv: ${id}`
-        description = 'View paper on arXiv'
-      }
-      // github
-      else if (domain === 'github.com') {
+        description = 'Paper'
+      } else if (domain === 'github.com') {
         const parts = u.pathname.split('/').filter(Boolean)
         title = parts.length >= 2 ? `${parts[0]}/${parts[1]}` : u.pathname
         description = 'GitHub Repository'
-      }
-      // openai
-      else if (domain.includes('openai.com')) {
+      } else if (domain.includes('openai.com')) {
         title = 'OpenAI'
         description = u.pathname.replace(/\//g, ' ').trim() || 'OpenAI Research'
-      }
-      // huggingface
-      else if (domain.includes('huggingface.co')) {
-        title = 'Hugging Face'
-        description = u.pathname.replace(/\//g, ' ').trim() || 'Model Hub'
-      }
-      // generic
-      else {
+      } else if (domain.includes('huggingface.co')) {
+        const parts = u.pathname.split('/').filter(Boolean)
+        title = parts.length >= 2 ? `${parts[0]}/${parts[1]}` : 'Hugging Face'
+        description = parts.length >= 2 ? 'Model / Dataset / Space' : 'Model Hub'
+      } else {
         title = domain
         description = u.pathname.length > 1 ? u.pathname : ''
       }
 
-      setMeta({ title, description, domain, favicon: `https://www.google.com/s2/favicons?domain=${domain}&sz=32` })
+      setMeta({
+        title, description, domain, style,
+        favicon: `https://www.google.com/s2/favicons?domain=${domain}&sz=32`,
+      })
     } catch {
       setError(true)
     }
@@ -64,13 +73,15 @@ export default function BookmarkEmbed({ url }) {
     )
   }
 
+  const { accent, Icon } = meta.style
+
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block rounded-lg border overflow-hidden transition-shadow hover:shadow-md"
-      style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}
+      className="block rounded-lg border overflow-hidden transition-all hover:shadow-md hover:-translate-y-0.5 my-4"
+      style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)', borderLeft: `3px solid ${accent}` }}
     >
       <div className="flex items-start gap-3 p-4">
         <div className="flex-1 min-w-0">
@@ -87,7 +98,11 @@ export default function BookmarkEmbed({ url }) {
             <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{meta.domain}</span>
           </div>
         </div>
-        <ExternalLink size={14} className="flex-shrink-0 mt-1" style={{ color: 'var(--text-secondary)' }} />
+        {Icon ? (
+          <Icon size={16} className="flex-shrink-0 mt-1" style={{ color: accent }} />
+        ) : (
+          <ExternalLink size={14} className="flex-shrink-0 mt-1" style={{ color: 'var(--text-secondary)' }} />
+        )}
       </div>
     </a>
   )

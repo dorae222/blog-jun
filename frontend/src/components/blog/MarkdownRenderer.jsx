@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef, Component } from 'react'
+import React, { useState, useMemo, useEffect, useRef, Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw'
 import rehypeSlug from 'rehype-slug'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
+import BookmarkEmbed from '../common/BookmarkEmbed'
 
 // Obsidian 위키 링크를 내부 링크 또는 텍스트로 변환
 function preprocessContent(raw, postLinks = []) {
@@ -37,18 +38,25 @@ function preprocessContent(raw, postLinks = []) {
     })
     .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
 
-  // :::type ... ::: 콜아웃 블록 → HTML 변환
+  // :::type ... ::: 콜아웃 블록 → HTML 변환 (SVG 아이콘)
   processed = processed.replace(
     /^:::(info|warning|tip|danger)\s*\n([\s\S]*?)^:::\s*$/gm,
     (_, type, content) => {
+      const svgIcons = {
+        info: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+        warning: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+        tip: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>',
+        danger: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
+      }
       const colors = {
-        info: { icon: 'ℹ️', border: '#3b82f6', bg: 'rgba(59,130,246,0.08)' },
-        warning: { icon: '⚠️', border: '#f59e0b', bg: 'rgba(245,158,11,0.08)' },
-        tip: { icon: '💡', border: '#10b981', bg: 'rgba(16,185,129,0.08)' },
-        danger: { icon: '🚨', border: '#ef4444', bg: 'rgba(239,68,68,0.08)' },
+        info:    { border: '#3b82f6', bg: 'rgba(59,130,246,0.08)' },
+        warning: { border: '#f59e0b', bg: 'rgba(245,158,11,0.08)' },
+        tip:     { border: '#10b981', bg: 'rgba(16,185,129,0.08)' },
+        danger:  { border: '#ef4444', bg: 'rgba(239,68,68,0.08)' },
       }
       const c = colors[type] || colors.info
-      return `<div class="callout callout-${type}" style="border-left:4px solid ${c.border};background:${c.bg};border-radius:8px;padding:1rem 1rem 1rem 0.75rem;margin:1rem 0">\n<span style="margin-right:0.5rem">${c.icon}</span>\n\n${content.trim()}\n\n</div>`
+      const icon = svgIcons[type] || svgIcons.info
+      return `<div class="callout callout-${type}" style="border-left:4px solid ${c.border};background:${c.bg};border-radius:8px;padding:1rem 1rem 1rem 0.75rem;margin:1rem 0">\n<span style="margin-right:0.5rem;display:inline-flex;vertical-align:middle;color:${c.border}">${icon}</span>\n\n${content.trim()}\n\n</div>`
     }
   )
 
@@ -228,9 +236,20 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
             code: InlineCode,
             img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
             a: SmartLink,
+            p: ({ children }) => {
+              const arr = React.Children.toArray(children)
+              if (arr.length === 1 && arr[0]?.props?.href && !arr[0].props.href.startsWith('/')) {
+                const text = extractPlainText(arr[0].props.children)
+                if (text === arr[0].props.href || text.length < 100) {
+                  return <BookmarkEmbed url={arr[0].props.href} />
+                }
+              }
+              return <p>{children}</p>
+            },
             table: ({ children }) => (
-              <div className="overflow-x-auto my-4">
+              <div className="relative overflow-x-auto my-4">
                 <table className="min-w-full text-sm">{children}</table>
+                <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-[var(--bg)] to-transparent pointer-events-none md:hidden" />
               </div>
             ),
           }}

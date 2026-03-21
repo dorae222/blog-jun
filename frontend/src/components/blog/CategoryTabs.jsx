@@ -41,8 +41,8 @@ export default function CategoryTabs({ category, sub, counts }) {
   return (
     <div>
       {/* 메인 카테고리 탭 */}
-      <div className="flex items-center gap-1 overflow-x-auto pb-px border-b"
-        style={{ borderColor: 'var(--border)' }}>
+      <div className="relative flex items-center gap-1 overflow-x-auto pb-px border-b scroll-snap-x"
+        style={{ borderColor: 'var(--border)', scrollSnapType: 'x mandatory' }}>
         {MAIN_TABS.map((tab) => {
           const active = tab.key === (category || null)
           const count = tab.key ? counts?.[tab.key]?.count : null
@@ -70,7 +70,8 @@ export default function CategoryTabs({ category, sub, counts }) {
 
       {/* 서브카테고리 탭 */}
       {subs.length > 0 && (
-        <div className="flex items-center gap-1 overflow-x-auto py-2">
+        <div className="flex items-center gap-1 overflow-x-auto py-2"
+          style={{ scrollSnapType: 'x mandatory' }}>
           {subs.map((s) => {
             const active = s.key === (sub || null)
             const subCount = s.key ? counts?.[category]?.subs?.[s.key] : null

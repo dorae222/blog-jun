@@ -262,6 +262,11 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
       editor.commands.setCallout('warning')
     } else if (item.id === 'callout-tip') {
       editor.commands.setCallout('tip')
+    } else if (item.id === 'bookmark') {
+      const url = prompt('URL을 입력하세요:')
+      if (url?.trim()) {
+        editor.chain().focus().insertContent(`\n\n${url.trim()}\n\n`).run()
+      }
     } else if (item.id === 'codecell') {
       editor.commands.setCodeCell({ language: 'python', code: '# code here' })
     } else if (item.command) {

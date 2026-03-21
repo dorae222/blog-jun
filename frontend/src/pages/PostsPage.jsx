@@ -134,10 +134,10 @@ export default function PostsPage() {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       className="max-w-7xl mx-auto px-4 py-6"
     >
       <div className="flex gap-6">
@@ -167,7 +167,7 @@ export default function PostsPage() {
                 style={{ borderColor: 'var(--border)' }}>
                 <button
                   onClick={() => setView('card')}
-                  className="p-1.5 transition-colors"
+                  className="p-2 transition-colors"
                   style={{
                     background: viewMode === 'card' ? 'var(--text)' : 'transparent',
                     color: viewMode === 'card' ? '#fff' : 'var(--text-secondary)',
@@ -178,7 +178,7 @@ export default function PostsPage() {
                 </button>
                 <button
                   onClick={() => setView('list')}
-                  className="p-1.5 transition-colors"
+                  className="p-2 transition-colors"
                   style={{
                     background: viewMode === 'list' ? 'var(--text)' : 'transparent',
                     color: viewMode === 'list' ? '#fff' : 'var(--text-secondary)',
@@ -206,17 +206,26 @@ export default function PostsPage() {
           {loading ? (
             <div className="space-y-3">
               {[...Array(5)].map((_, i) => (
-                <div key={i} className="h-16 rounded-xl animate-pulse"
-                  style={{ background: 'var(--bg-secondary)' }} />
+                <div key={i} className="h-16 rounded-xl skeleton" />
               ))}
             </div>
           ) : viewMode === 'card' ? (
             <>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4"
+                initial="hidden"
+                animate="visible"
+                variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04 } } }}
+              >
                 {infiniteItems.map((item) => (
-                  <FeedCard key={item.slug} item={item} />
+                  <motion.div
+                    key={item.slug}
+                    variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                  >
+                    <FeedCard item={item} />
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
               {infiniteItems.length === 0 && (
                 <div className="py-12 text-center text-sm" style={{ color: 'var(--text-secondary)' }}>
                   게시글이 없습니다.
@@ -261,7 +270,7 @@ export default function PostsPage() {
                       <button
                         key={p}
                         onClick={() => goToPage(p)}
-                        className="w-8 h-8 text-xs rounded-lg border transition-colors"
+                        className="w-10 h-10 text-xs rounded-lg border transition-colors"
                         style={{
                           borderColor: p === page ? 'var(--text)' : 'var(--border)',
                           background: p === page ? 'var(--text)' : 'transparent',

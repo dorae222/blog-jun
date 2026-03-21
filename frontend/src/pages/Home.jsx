@@ -1,28 +1,30 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FileText, ArrowRight, ChevronRight, TrendingUp, Eye } from 'lucide-react'
+import { ArrowRight, ChevronRight, TrendingUp, Eye } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
 import TechStack from '../components/portfolio/TechStack'
 import Timeline from '../components/portfolio/Timeline'
 import ScrollReveal from '../components/common/ScrollReveal'
+import AnimatedCounter from '../components/common/AnimatedCounter'
+import { getCategoryIcon } from '../utils/categoryIcons'
 import { getStats, getPosts } from '../api/posts'
 import { ACTIVITIES } from '../data/activities'
 
 const CATEGORIES = [
   {
-    key: 'ai', label: 'AI', emoji: '🤖', color: '#FF6F00',
+    key: 'ai', label: 'AI', color: '#FF6F00',
     desc: 'LLM, SSM, Diffusion 등 AI 아키텍처',
     path: '/posts/ai',
   },
   {
-    key: 'cloud', label: 'Cloud', emoji: '☁️', color: '#FF9900',
+    key: 'cloud', label: 'Cloud', color: '#FF9900',
     desc: 'AWS, Docker, DevOps 인프라',
     path: '/posts/cloud',
   },
   {
-    key: 'data', label: 'Data Engineering', emoji: '📊', color: '#336791',
+    key: 'data', label: 'Data Engineering', color: '#336791',
     desc: 'Hadoop, Spark, Pipeline',
     path: '/posts/data',
   },
@@ -45,10 +47,10 @@ export default function Home() {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
     >
       <HeroSection />
 
@@ -67,7 +69,7 @@ export default function Home() {
                   to={cat.path}
                   className="block p-6 rounded-xl text-center transition-all hover:shadow-lg hover:-translate-y-1 glass"
                 >
-                  <div className="text-3xl mb-3">{cat.emoji}</div>
+                  <div className="mb-3" style={{ color: cat.color }}>{getCategoryIcon(cat.key, 28)}</div>
                   <h3 className="font-bold text-lg mb-1" style={{ color: cat.color }}>
                     {cat.label}
                   </h3>
@@ -86,18 +88,9 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <div className="flex justify-center gap-8">
-              <div>
-                <div className="text-3xl font-bold text-primary-600">{stats.total_posts || 0}</div>
-                <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Published Posts</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary-600">{stats.categories || 0}</div>
-                <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Categories</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary-600">{stats.tags || 0}</div>
-                <div className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Tags</div>
-              </div>
+              <AnimatedCounter end={stats.total_posts || 0} label="Published Posts" />
+              <AnimatedCounter end={stats.categories || 0} label="Categories" />
+              <AnimatedCounter end={stats.tags || 0} label="Tags" />
             </div>
           </ScrollReveal>
         </div>

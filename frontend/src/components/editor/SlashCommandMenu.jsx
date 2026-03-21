@@ -2,7 +2,8 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import {
   Heading1, Heading2, Heading3, Type, Quote, Minus, AlertCircle,
   Image, Video, Table, Code, Calculator, CheckSquare,
-  FileCode, GitBranch, Info, AlertTriangle, Lightbulb, Terminal
+  FileCode, GitBranch, Info, AlertTriangle, Lightbulb, Terminal,
+  Bookmark,
 } from 'lucide-react'
 
 const SLASH_ITEMS = [
@@ -22,6 +23,7 @@ const SLASH_ITEMS = [
   { category: 'Media', items: [
     { id: 'image', label: 'Image', desc: '이미지 업로드', icon: Image, command: null },
     { id: 'video', label: 'Video', desc: '비디오 임베드', icon: Video, command: null },
+    { id: 'bookmark', label: 'Bookmark', desc: '외부 링크 카드', icon: Bookmark, command: null },
     { id: 'table', label: 'Table', desc: '테이블 삽입', icon: Table, command: (editor) => editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run() },
   ]},
   { category: 'Advanced', items: [

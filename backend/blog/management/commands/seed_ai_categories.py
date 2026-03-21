@@ -1,5 +1,5 @@
 """
-20.AI 카테고리 계층 구조를 생성하는 관리 명령어 (5개 서브카테고리).
+20.AI 카테고리 계층 구조를 생성하는 관리 명령어 (7개 서브카테고리).
 사용법:
     python manage.py seed_ai_categories
 """
@@ -11,81 +11,65 @@ from blog.models import Category
 AI_CHILDREN = [
     {
         "code": "20.AI.01",
-        "name": "Model Architecture",
-        "slug": "model-architecture",
-        "icon": "🏗️",
+        "name": "LLM",
+        "slug": "llm",
+        "icon": "Brain",
         "color": "#6366F1",
-        "description": "transformer, nlp, llm, vision, multimodal, ssm",
+        "description": "transformer, nlp, llm",
     },
     {
         "code": "20.AI.02",
-        "name": "Efficient AI",
-        "slug": "efficient-ai",
-        "icon": "⚡",
+        "name": "SSM",
+        "slug": "ssm",
+        "icon": "Zap",
         "color": "#F59E0B",
-        "description": "moe, scaling, efficiency",
+        "description": "state space model, mamba, rwkv",
     },
     {
         "code": "20.AI.03",
-        "name": "Alignment & RLHF",
-        "slug": "alignment-rlhf",
-        "icon": "🎯",
-        "color": "#10B981",
-        "description": "alignment, finetuning",
+        "name": "Diffusion",
+        "slug": "diffusion",
+        "icon": "Sparkles",
+        "color": "#EC4899",
+        "description": "diffusion, image generation, video generation",
     },
     {
         "code": "20.AI.04",
-        "name": "RAG & Knowledge",
-        "slug": "rag-knowledge",
-        "icon": "🔍",
-        "color": "#3B82F6",
-        "description": "rag, retrieval",
+        "name": "Vision",
+        "slug": "vision",
+        "icon": "Eye",
+        "color": "#10B981",
+        "description": "vision transformer, detection, segmentation",
     },
     {
         "code": "20.AI.05",
-        "name": "Core Techniques",
-        "slug": "core-techniques",
-        "icon": "🔬",
+        "name": "Multimodal",
+        "slug": "multimodal",
+        "icon": "Layers",
         "color": "#8B5CF6",
-        "description": "technique, foundations",
+        "description": "vision-language, multimodal, omni",
     },
     {
         "code": "20.AI.06",
-        "name": "Prompting & ICL",
-        "slug": "prompting-icl",
-        "icon": "💬",
-        "color": "#EC4899",
-        "description": "prompting, in-context learning, instruction tuning",
+        "name": "Agent",
+        "slug": "agent",
+        "icon": "Bot",
+        "color": "#F97316",
+        "description": "agents, tool use, planning, reasoning",
     },
     {
         "code": "20.AI.07",
-        "name": "Benchmark & Evaluation",
-        "slug": "benchmark-eval",
-        "icon": "📊",
+        "name": "Technique",
+        "slug": "technique",
+        "icon": "Wrench",
         "color": "#14B8A6",
-        "description": "benchmark, evaluation, leaderboard",
-    },
-    {
-        "code": "20.AI.08",
-        "name": "Agents & Tools",
-        "slug": "agents-tools",
-        "icon": "🛠️",
-        "color": "#F97316",
-        "description": "agents, tool use, planning",
-    },
-    {
-        "code": "20.AI.09",
-        "name": "Data & Security",
-        "slug": "data-security",
-        "icon": "🔒",
-        "color": "#6B7280",
-        "description": "data, privacy, security, membership inference",
+        "description": "efficient-ai, alignment, rlhf, rag, prompting, benchmark, evaluation, data, security",
     },
 ]
 
 
 class Command(BaseCommand):
-    help = "20.AI 카테고리와 9개 하위 카테고리를 생성(upsert)합니다."
+    help = "20.AI 카테고리와 7개 하위 카테고리를 생성(upsert)합니다."
 
     def handle(self, *args, **options):
         # 부모 카테고리 upsert
@@ -94,7 +78,7 @@ class Command(BaseCommand):
             defaults={
                 "name": "AI/ML",
                 "slug": "ai-ml",
-                "icon": "🤖",
+                "icon": "Brain",
                 "color": "#FF6F00",
                 "order": 20,
             },
@@ -118,4 +102,4 @@ class Command(BaseCommand):
             status = "생성" if created else "업데이트"
             self.stdout.write(f"  {child.code} - {child.name} ({child.slug}): {status}")
 
-        self.stdout.write(self.style.SUCCESS("\nAI 카테고리 시딩 완료! (9개 구조)"))
+        self.stdout.write(self.style.SUCCESS("\nAI 카테고리 시딩 완료! (7개 구조)"))
