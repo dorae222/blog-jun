@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .mixins import ImageUrlMixin
 from .models import (
     Category, Tag, Series, Post, PostImage, PostTemplate, PostLink,
     ArchitectureConcept, ArchitectureEntry, ArchitectureRelation,
@@ -45,7 +46,7 @@ class PostImageSerializer(serializers.ModelSerializer):
         fields = ['id', 'image', 'alt_text', 'created_at']
 
 
-class PostListSerializer(serializers.ModelSerializer):
+class PostListSerializer(ImageUrlMixin, serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     tags = TagSerializer(many=True, read_only=True)
     series_name = serializers.CharField(source='series.name', read_only=True, default=None)
@@ -61,22 +62,14 @@ class PostListSerializer(serializers.ModelSerializer):
             'figure_url', 'created_at', 'published_at',
         ]
 
-    def get_cover_image_url(self, obj):
-        if not obj.cover_image:
-            return None
-        request = self.context.get('request')
-        if request:
-            return request.build_absolute_uri(obj.cover_image.url)
-        return obj.cover_image.url
+    # get_cover_image_url는 ImageUrlMixin에서 제공
 
     def get_figure_url(self, obj):
         """ArchitectureEntry의 figure를 fallback으로 제공."""
         try:
             entry = obj.architecture_entries.first()
             if entry and entry.figure:
-                request = self.context.get('request')
-                if request:
-                    return request.build_absolute_uri(entry.figure.url)
+                return self._build_url(entry.figure)
                 return entry.figure.url
         except Exception:
             pass
@@ -130,7 +123,7 @@ class ArchitectureEntryBriefSerializer(serializers.ModelSerializer):
                 for r in obj.child_relations.select_related('from_entry', 'from_entry__related_post').all()[:5]]
 
 
-class PostDetailSerializer(serializers.ModelSerializer):
+class PostDetailSerializer(ImageUrlMixin, serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
     tags = TagSerializer(many=True, read_only=True)
     series = SeriesSerializer(read_only=True)
@@ -154,31 +147,10 @@ class PostDetailSerializer(serializers.ModelSerializer):
             'architecture_entries',
         ]
 
-    def get_cover_image_url(self, obj):
-        """cover_image가 없으면 ArchitectureEntry figure를 fallback으로 제공."""
-        if obj.cover_image:
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.cover_image.url)
-            return obj.cover_image.url
-        try:
-            entry = obj.architecture_entries.first()
-            if entry and entry.figure:
-                request = self.context.get('request')
-                if request:
-                    return request.build_absolute_uri(entry.figure.url)
-                return entry.figure.url
-        except Exception:
-            pass
-        return None
+    # get_cover_image_url는 ImageUrlMixin에서 제공
 
     def get_pdf_file(self, obj):
-        if not obj.pdf_file:
-            return None
-        request = self.context.get('request')
-        if request:
-            return request.build_absolute_uri(obj.pdf_file.url)
-        return obj.pdf_file.url
+        return self._build_url(obj.pdf_file)
 
     def get_adjacent_posts(self, obj):
         result = {}
