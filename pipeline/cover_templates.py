@@ -11,6 +11,14 @@ import textwrap
 # ── AI 카테고리 목록 (paper_cover 전략 대상) ──
 AI_CATEGORIES = {'llm', 'ssm', 'diffusion', 'multimodal', 'agent', 'technique', 'vision', 'paper_review'}
 
+# ── ML 카테고리 목록 (paper_cover 전략 대상) ──
+ML_CATEGORIES = {
+    'ml-fundamentals', 'ml-supervised', 'ml-unsupervised', 'ml-optimization', 'ml-practice',
+    'fundamentals', 'math-foundations', 'preprocessing', 'supervised-regression',
+    'supervised-classification', 'ensemble', 'unsupervised', 'model-evaluation',
+    'causal-inference', 'advanced-algorithms', 'applications', 'mlops',
+}
+
 # ── 카테고리별 그라디언트/아이콘 설정 ──
 CATEGORY_STYLES = {
     'cloud':      {'from': '#3B82F6', 'to': '#06B6D4', 'icon': 'M425 400c0-88.4 71.6-160 160-160a160 160 0 0 1 155 120h5c66.3 0 120 53.7 120 120s-53.7 120-120 120H385c-55.2 0-100-44.8-100-100a100 100 0 0 1 140-100z'},
@@ -20,6 +28,23 @@ CATEGORY_STYLES = {
     'program':    {'from': '#EC4899', 'to': '#F43F5E', 'icon': 'M192 128v544h416V128H192zm48 48h320v448H240V176zm80 64l80 120-80 120h48l80-120-80-120h-48z'},
     'data':       {'from': '#14B8A6', 'to': '#0EA5E9', 'icon': 'M496 128c-176 0-320 48-320 108v328c0 60 144 108 320 108s320-48 320-108V236c0-60-144-108-320-108z'},
     'ai-ml':      {'from': '#7C3AED', 'to': '#2563EB', 'icon': 'M496 160a80 80 0 1 0 0 160 80 80 0 0 0 0-160zm-200 280a60 60 0 1 0 0 120 60 60 0 0 0 0-120zm400 0a60 60 0 1 0 0 120 60 60 0 0 0 0-120z'},
+    # AWS 서브카테고리 (seed_cloud_categories 색상 일치)
+    'aws-compute':     {'from': '#FF9900', 'to': '#EC7211', 'icon': 'M320 192h352v416H320V192zm32 32v352h288V224H352zm48 48h192v48H400zm0 96h192v48H400zm0 96h192v48H400z'},
+    'aws-storage':     {'from': '#3F8624', 'to': '#1B660F', 'icon': 'M496 160c-150 0-272 40-272 88v304c0 48 122 88 272 88s272-40 272-88V248c0-48-122-88-272-88z'},
+    'aws-database':    {'from': '#C925D1', 'to': '#9B1EA4', 'icon': 'M496 128c-150 0-272 36-272 80v384c0 44 122 80 272 80s272-36 272-80V208c0-44-122-80-272-80z'},
+    'aws-networking':  {'from': '#8C4FFF', 'to': '#6B3FA0', 'icon': 'M496 240a64 64 0 1 0 0 128 64 64 0 0 0 0-128zm-200 200a48 48 0 1 0 0 96 48 48 0 0 0 0-96zm400 0a48 48 0 1 0 0 96 48 48 0 0 0 0-96z'},
+    'aws-security':    {'from': '#DD344C', 'to': '#BD293D', 'icon': 'M496 128l-240 80v192c0 132 96 252 240 300 144-48 240-168 240-300V208L496 128z'},
+    'aws-analytics':   {'from': '#8C4FFF', 'to': '#4B27A5', 'icon': 'M224 608V320h80v288h-80zm160 0V192h80v416h-80zm160 0V384h80v224h-80zm160 0V256h80v352h-80z'},
+    'aws-ai-ml':       {'from': '#01A88D', 'to': '#006B5B', 'icon': 'M496 160a80 80 0 1 0 0 160 80 80 0 0 0 0-160zm-200 280a60 60 0 1 0 0 120 60 60 0 0 0 0-120zm400 0a60 60 0 1 0 0 120 60 60 0 0 0 0-120z'},
+    'aws-devtools':    {'from': '#C17B9E', 'to': '#9B5478', 'icon': 'M320 200l-160 280 160 280h160l-160-280 160-280H320zm352 0l160 280-160 280h160l160-280-160-280H672z'},
+    'aws-management':  {'from': '#E7157B', 'to': '#C01164', 'icon': 'M240 256h512v64H240v-64zm0 128h512v64H240v-64zm0 128h320v64H240v-64z'},
+    'aws-integration': {'from': '#E7157B', 'to': '#B01060', 'icon': 'M352 240h288v288H352V240zm32 32v224h224V272H384zm-128 64h96v160h-96zm384 0h96v160h-96z'},
+    # ML 서브카테고리
+    'ml-fundamentals':  {'from': '#7C3AED', 'to': '#5B21B6', 'icon': 'M304 160h384v480H304V160zm48 48v384h288V208H352zm48 64h192v32H400zm0 80h192v32H400zm0 80h128v32H400z'},
+    'ml-supervised':    {'from': '#2563EB', 'to': '#1D4ED8', 'icon': 'M200 560l160-200 120 80 160-240 120 160v200H200z'},
+    'ml-unsupervised':  {'from': '#059669', 'to': '#047857', 'icon': 'M320 280a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm240 40a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm-80 200a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm-200-40a40 40 0 1 0 0 80 40 40 0 0 0 0-80z'},
+    'ml-optimization':  {'from': '#D97706', 'to': '#B45309', 'icon': 'M240 560c0-240 160-400 256-400s256 160 256 400H240z'},
+    'ml-practice':      {'from': '#DC2626', 'to': '#B91C1C', 'icon': 'M496 192a64 64 0 0 1 64 64v24h24a64 64 0 0 1 0 128h-24v24a64 64 0 0 1-128 0v-24h-24a64 64 0 0 1 0-128h24v-24a64 64 0 0 1 64-64z'},
 }
 
 # paper_cover 색상 팔레트
@@ -265,8 +290,8 @@ def classify_strategy(
 
     Returns: 'paper_cover' | 'category_gradient' | 'architecture_diagram'
     """
-    # AI 관련 카테고리 → paper_cover
-    if category_slug in AI_CATEGORIES or post_type == 'paper_review':
+    # AI/ML 관련 카테고리 → paper_cover
+    if category_slug in AI_CATEGORIES or category_slug in ML_CATEGORIES or post_type == 'paper_review':
         return 'paper_cover'
     # ArchitectureEntry가 있고 figure가 없는 경우 → architecture_diagram
     if has_arch_entry:

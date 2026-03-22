@@ -36,7 +36,16 @@ const CATEGORY_TREE = [
   {
     key: 'cloud', label: 'Cloud', color: '#FF9900',
     subs: [
-      { key: 'aws', label: 'AWS' },
+      { key: 'aws-compute', label: 'Compute' },
+      { key: 'aws-storage', label: 'Storage' },
+      { key: 'aws-database', label: 'Database' },
+      { key: 'aws-networking', label: 'Network' },
+      { key: 'aws-security', label: 'Security' },
+      { key: 'aws-analytics', label: 'Analytics' },
+      { key: 'aws-ai-ml', label: 'AI/ML' },
+      { key: 'aws-devtools', label: 'DevTools' },
+      { key: 'aws-management', label: 'Mgmt' },
+      { key: 'aws-integration', label: 'Integration' },
       { key: 'docker', label: 'Docker' },
       { key: 'lxd', label: 'LXD' },
       { key: 'devops', label: 'DevOps' },

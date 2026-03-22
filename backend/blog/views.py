@@ -400,7 +400,9 @@ class FeedView(generics.ListAPIView):
     # 서브카테고리 slug 목록 (유효성 검증용)
     SUB_CATEGORIES = {
         'ai': ['llm', 'ssm', 'diffusion', 'vision', 'multimodal', 'agent', 'technique'],
-        'cloud': ['aws', 'docker', 'lxd', 'devops'],
+        'cloud': ['aws-compute', 'aws-storage', 'aws-database', 'aws-networking',
+                  'aws-security', 'aws-analytics', 'aws-ai-ml', 'aws-devtools',
+                  'aws-management', 'aws-integration', 'docker', 'lxd', 'devops'],
         'data': ['hadoop', 'spark', 'database', 'pipeline'],
         'ml': [
             'fundamentals', 'math-foundations', 'preprocessing',
