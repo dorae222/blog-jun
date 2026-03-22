@@ -1,8 +1,10 @@
 """
 커버 이미지 자동 생성 관리 명령어.
 
-paper_cover + category_gradient는 무료 (SVG 템플릿),
-architecture_diagram은 Claude API 사용 (~$2-5).
+전략:
+  1. arch_figure — ArchitectureEntry figure가 있으면 그대로 cover_image로 복사 (AI 포스트 우선)
+  2. paper_cover — AI 카테고리 포스트 중 arch figure 없는 것 (SVG 템플릿, 무료)
+  3. category_gradient — 그 외 카테고리 (SVG 템플릿, 무료)
 
 사용법:
   python manage.py generate_cover_images                    # 전체 (이미지 없는 것만)
@@ -33,10 +35,22 @@ if str(PIPELINE_DIR) not in sys.path:
 from cover_templates import (
     generate_paper_cover_svg,
     generate_category_cover_svg,
-    generate_architecture_cover_prompt,
     classify_strategy,
+    AI_CATEGORIES,
 )
 from svg_utils import svg_to_png, sanitize_svg
+
+
+def _get_arch_figure(post):
+    """포스트에 연결된 ArchitectureEntry 중 figure가 있는 첫 번째를 반환."""
+    entry = post.architecture_entries.exclude(
+        figure=''
+    ).exclude(
+        figure__isnull=True
+    ).first()
+    if entry and entry.figure:
+        return entry
+    return None
 
 
 class Command(BaseCommand):
@@ -49,8 +63,20 @@ class Command(BaseCommand):
         parser.add_argument('--dry-run', action='store_true', help='미리보기 (변경 없음)')
         parser.add_argument('--force', action='store_true', help='기존 이미지 덮어쓰기')
         parser.add_argument('--strategy', type=str,
-                            choices=['paper_cover', 'category_gradient', 'architecture_diagram'],
+                            choices=['arch_figure', 'paper_cover', 'category_gradient'],
                             help='전략 강제 지정')
+
+    def _classify(self, post, cat_slug, force_strategy=None):
+        """포스트에 적합한 전략을 결정."""
+        if force_strategy:
+            return force_strategy
+
+        # AI 카테고리이고 arch figure가 있으면 arch_figure 우선
+        arch_entry = _get_arch_figure(post)
+        if arch_entry:
+            return 'arch_figure'
+
+        return classify_strategy(cat_slug, post.post_type, has_arch_entry=False)
 
     def handle(self, *args, **options):
         qs = Post.objects.filter(status='published').select_related('category')
@@ -75,6 +101,7 @@ class Command(BaseCommand):
         self.stdout.write(f'대상 포스트: {total}개')
         self.stdout.write('=' * 60)
 
+        stats = {'arch_figure': 0, 'paper_cover': 0, 'category_gradient': 0}
         generated = 0
         skipped = 0
         failed = 0
@@ -84,16 +111,10 @@ class Command(BaseCommand):
             cat_name = post.category.name if post.category else ''
             cat_color = post.category.color if post.category else ''
 
-            # 전략 결정
-            has_arch = post.architecture_entries.exists()
-            if options['strategy']:
-                strategy = options['strategy']
-            else:
-                strategy = classify_strategy(cat_slug, post.post_type, has_arch)
+            strategy = self._classify(post, cat_slug, options.get('strategy'))
 
             # force 모드가 아니면 기존 이미지 스킵
             if post.cover_image and not options['force']:
-                self.stdout.write(f'  [{i}/{total}] [SKIP] 이미 존재: {post.slug}')
                 skipped += 1
                 continue
 
@@ -104,7 +125,33 @@ class Command(BaseCommand):
                 )
                 continue
 
-            # SVG 생성
+            # === arch_figure: 기존 architecture figure를 cover_image로 복사 ===
+            if strategy == 'arch_figure':
+                arch_entry = _get_arch_figure(post)
+                if not arch_entry:
+                    # fallback to paper_cover
+                    strategy = 'paper_cover'
+                else:
+                    try:
+                        figure_bytes = arch_entry.figure.read()
+                        arch_entry.figure.seek(0)
+                        filename = f'cover_{post.slug[:80]}.png'
+                        post.cover_image.save(filename, ContentFile(figure_bytes), save=True)
+                        size_kb = len(figure_bytes) / 1024
+                        self.stdout.write(
+                            f'  [{i}/{total}] [OK] {post.title[:40]}'
+                            f' (arch_figure from {arch_entry.name}, {size_kb:.0f}KB)'
+                        )
+                        generated += 1
+                        stats['arch_figure'] += 1
+                        continue
+                    except Exception as e:
+                        self.stdout.write(
+                            f'  [{i}/{total}] [WARN] arch_figure 실패 → paper_cover: {e}'
+                        )
+                        strategy = 'paper_cover'
+
+            # === SVG 생성 (paper_cover / category_gradient) ===
             svg_str = None
             if strategy == 'paper_cover':
                 tag_names = list(post.tags.values_list('name', flat=True)[:5])
@@ -126,14 +173,6 @@ class Command(BaseCommand):
                     category_slug=cat_slug,
                     category_color=cat_color,
                 )
-            elif strategy == 'architecture_diagram':
-                # Claude API 전략 — 별도 실행 필요
-                self.stdout.write(
-                    f'  [{i}/{total}] [SKIP-API] {post.slug}'
-                    ' (architecture_diagram은 별도 실행 필요)'
-                )
-                skipped += 1
-                continue
 
             if not svg_str:
                 self.stdout.write(f'  [{i}/{total}] [FAIL] SVG 생성 실패: {post.slug}')
@@ -166,8 +205,13 @@ class Command(BaseCommand):
                 f' ({strategy}, {size_kb:.0f}KB)'
             )
             generated += 1
+            stats[strategy] += 1
 
         self.stdout.write('=' * 60)
         self.stdout.write(
-            f'완료: 생성 {generated}개, 스킵 {skipped}개, 실패 {failed}개'
+            f'완료: 생성 {generated}개 '
+            f'(arch_figure: {stats["arch_figure"]}, '
+            f'paper_cover: {stats["paper_cover"]}, '
+            f'category_gradient: {stats["category_gradient"]}), '
+            f'스킵 {skipped}개, 실패 {failed}개'
         )
