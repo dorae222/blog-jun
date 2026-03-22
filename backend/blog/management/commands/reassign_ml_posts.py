@@ -29,7 +29,12 @@ SUB_CATEGORY_MAP = {
     "mlops": "mlops",
 }
 
-ML_WRITTEN_DIR = Path(__file__).resolve().parents[5] / "pipeline" / "data" / "ml_written"
+_cmd_file = Path(__file__).resolve()
+_candidates = [
+    _cmd_file.parents[4] / "pipeline" / "data" / "ml_written",   # 로컬 개발 (blog-jun/)
+    Path("/opt/blog-jun/pipeline/data/ml_written"),                # 서버 Docker
+]
+ML_WRITTEN_DIR = next((p for p in _candidates if p.exists()), _candidates[0])
 
 
 class Command(BaseCommand):
