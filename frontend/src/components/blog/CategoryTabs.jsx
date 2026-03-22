@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 const MAIN_TABS = [
   { key: null, label: '전체', path: '/posts' },
   { key: 'ai', label: 'AI', path: '/posts/ai' },
+  { key: 'ml', label: 'ML', path: '/posts/ml' },
   { key: 'cloud', label: 'Cloud', path: '/posts/cloud' },
   { key: 'data', label: 'Data Engineering', path: '/posts/data' },
 ]
@@ -18,6 +19,21 @@ const SUB_TABS = {
     { key: 'multimodal', label: 'Multimodal' },
     { key: 'agent', label: 'Agent' },
     { key: 'technique', label: 'Technique' },
+  ],
+  ml: [
+    { key: null, label: '전체' },
+    { key: 'fundamentals', label: '기초' },
+    { key: 'math-foundations', label: '수학' },
+    { key: 'preprocessing', label: '전처리' },
+    { key: 'supervised-regression', label: '회귀' },
+    { key: 'supervised-classification', label: '분류' },
+    { key: 'ensemble', label: '앙상블' },
+    { key: 'unsupervised', label: '비지도' },
+    { key: 'model-evaluation', label: '평가' },
+    { key: 'causal-inference', label: '인과추론' },
+    { key: 'advanced-algorithms', label: '심화' },
+    { key: 'applications', label: '응용' },
+    { key: 'mlops', label: 'MLOps' },
   ],
   cloud: [
     { key: null, label: '전체' },
