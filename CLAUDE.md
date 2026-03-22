@@ -3,17 +3,34 @@
 Personal tech blog: Django 5 + DRF backend, React 19 + Vite + Tailwind CSS frontend.
 
 ## Project Structure
-- `backend/` - Django DRF API (config/settings split: base/dev/prod)
-- `frontend/` - React SPA with Framer Motion animations
-- `pipeline/` - Data processing: scanner → preprocessor → batch API → import
-- `lxd/` - LXD container provisioning scripts
+- `backend/` — Django DRF API (config/settings split: base/dev/prod)
+  - `blog/` — 포스트, 카테고리, 태그, 시리즈, 커버 이미지
+  - `accounts/` — JWT 인증
+  - `chatbot/` — RAG + OpenAI SSE 스트리밍
+  - `operations/` — 운영 로그 (API 요청, 관리 명령어, 세션 기록)
+- `frontend/` — React SPA with Framer Motion animations
+- `pipeline/` — 데이터 처리 파이프라인
+  - `utils/` — 공통 유틸 (batch_client, svg_utils, post_factory, text_utils)
+  - `importers/` — 컨텐츠 임포트 (papers, architectures, ml, colab, data)
+  - `generators/` — 이미지/컨텐츠 생성 (cover_templates, arch_figures, paper_svgs)
+  - `batch/` — OpenAI Batch API (prepare, process, import_results)
+  - `preprocessing/` — Notion→Markdown 전처리 (scanner, preprocessor, html_parser)
+  - `useful/` — 독립 유틸리티 스크립트
+- `content/` — 소스 컨텐츠 (cloud, llm, agent 등 10개 도메인)
+- `e2e/` — Playwright E2E 테스트
+- `lxd/` — LXD container provisioning scripts
 
 ## Commands
-- `make dev` - Start dev environment (docker compose)
-- `make migrate` - Run Django migrations
-- `make seed` - Seed post templates
-- `make createsuperuser` - Create admin user
-- `make deploy` / `./deploy.sh` - 수동 배포 (서버에서 직접 빌드)
+- `make dev` — Start dev environment (docker compose)
+- `make migrate` — Run Django migrations
+- `make seed` — Seed post templates
+- `make deploy` / `./deploy.sh` — 수동 배포 (서버에서 직접 빌드)
+- `python manage.py generate_cover_images` — 커버 이미지 생성/재생성
+- `python manage.py seed_cloud_categories` — Cloud 카테고리 시딩 (AWS 10개 서브카테고리)
+- `python manage.py reclassify_cloud_posts` — Cloud 포스트 서브카테고리 재분류
+- `python manage.py fix_content --fix=emoji` — 이모지 제거
+- `python manage.py assign_series` — 시리즈 할당
+- `python manage.py review_post_quality` — 품질 검사
 
 ## Architecture
 - Backend: Django 5 + DRF + Gunicorn + PostgreSQL (pgvector) + Redis
@@ -21,21 +38,40 @@ Personal tech blog: Django 5 + DRF backend, React 19 + Vite + Tailwind CSS front
 - Auth: JWT (simplejwt)
 - Chatbot: RAG (pgvector + OpenAI SSE streaming)
 - Deploy: Docker Compose + Cloudflare Tunnel
+- Pipeline: scanner → preprocessor → batch API → import → Django DB
 
 ## Key Files
-- Models: `backend/blog/models.py` (Post, Category, Tag, Series, PostTemplate)
+- Models: `backend/blog/models.py` (Post, Category, Tag, Series + PostManager)
+- Managers: `backend/blog/managers.py` (PostQuerySet: published, with_cover, by_category)
+- Mixins: `backend/blog/mixins.py` (ImageUrlMixin)
 - API: `backend/blog/views.py`, `backend/blog/urls.py`
+- Operations: `backend/operations/` (OperationLog, SessionLog, RequestLoggingMiddleware)
 - Chatbot RAG: `backend/chatbot/views.py`
 - Frontend entry: `frontend/src/App.jsx`
-- Effects: `frontend/src/components/effects/` (ParticleBackground, TiltCard, GradientCursor)
+- Cover templates: `pipeline/cover_templates.py` (`pipeline/generators/cover_templates.py`)
+- SVG utils: `pipeline/svg_utils.py` (`pipeline/utils/svg_utils.py`)
+
+## Category Structure
+
+### Cloud (10.Cloud) — 13개 서브카테고리
+Docker, LXD, DevOps + AWS 10개 도메인:
+aws-compute, aws-storage, aws-database, aws-networking, aws-security,
+aws-analytics, aws-ai-ml, aws-devtools, aws-management, aws-integration
+
+### AI/ML (20.AI) — 7개 서브카테고리
+llm, ssm, diffusion, vision, multimodal, agent, technique
+
+### ML (40.ML) — 12개 서브카테고리
+fundamentals, math-foundations, preprocessing, supervised-regression/classification,
+ensemble, unsupervised, model-evaluation, causal-inference, advanced-algorithms,
+applications, mlops
 
 ## Deployment
 - Live: https://blog.dorae222.com
 - Infra: LXD container `blog-server` (10.10.10.30) on hj-remote
 - Tunnel: Cloudflare Tunnel `blog-jun` (079ef309)
-- Docker: docker-compose.prod.yml (db, redis, backend, frontend) — build: 지시자 사용 (서버에서 빌드)
+- Docker: docker-compose.prod.yml (db, redis, backend, frontend) — build: 지시자 사용
 - 배포: `./deploy.sh` — SSH ProxyJump(hj-remote → blog-server) + git pull + docker compose build
-- GitHub Actions 없음: 수동 배포만 사용
 
 ## CSS 주의사항
 - Tailwind CSS v4 + `@tailwindcss/vite` 플러그인 환경에서 JSX에서 import한 CSS는 번들에 포함되지 않음
