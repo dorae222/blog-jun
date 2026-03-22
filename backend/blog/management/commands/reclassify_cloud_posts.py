@@ -1,6 +1,6 @@
 """
-Cloud 부모 카테고리에 직접 할당된 포스트를 올바른 서브카테고리로 재분류.
-태그 및 제목 키워드 기반 매핑 사용.
+Cloud 포스트를 올바른 서브카테고리로 재분류.
+태그 및 제목 키워드 기반 매핑. AWS는 10개 도메인별 서브카테고리로 세분화.
 
 사용법:
     python manage.py reclassify_cloud_posts --dry-run
@@ -13,97 +13,100 @@ from django.core.management.base import BaseCommand
 from blog.models import Category, Post
 
 
-# 태그 → 서브카테고리 slug 매핑
+# 태그 → 서브카테고리 slug 매핑 (AWS 10개 도메인별 세분화)
 TAG_TO_SUBCATEGORY = {
-    'aws': 'aws',
-    'amazon': 'aws',
-    'ec2': 'aws',
-    's3': 'aws',
-    'lambda': 'aws',
-    'rds': 'aws',
-    'vpc': 'aws',
-    'iam': 'aws',
-    'cloudformation': 'aws',
-    'cloudwatch': 'aws',
-    'sagemaker': 'aws',
-    'redshift': 'aws',
-    'glue': 'aws',
-    'athena': 'aws',
-    'kinesis': 'aws',
-    'dynamodb': 'aws',
-    'aurora': 'aws',
-    'ecs': 'aws',
-    'eks': 'aws',
-    'fargate': 'aws',
-    'bedrock': 'aws',
-    'elasticache': 'aws',
-    'route53': 'aws',
-    'cloudfront': 'aws',
-    'sns': 'aws',
-    'sqs': 'aws',
-    'step-functions': 'aws',
-    'eventbridge': 'aws',
-    'cognito': 'aws',
-    'waf': 'aws',
-    'kms': 'aws',
-    'elb': 'aws',
-    'alb': 'aws',
-    'nlb': 'aws',
-    'ebs': 'aws',
-    'efs': 'aws',
-    'emr': 'aws',
-    'msk': 'aws',
-    'mwaa': 'aws',
-    'data-pipelines': 'aws',
-    'etl': 'aws',
-    'docker': 'docker',
-    'container': 'docker',
-    'dockerfile': 'docker',
+    # aws-compute
+    'ec2': 'aws-compute', 'lambda': 'aws-compute', 'ecs': 'aws-compute',
+    'eks': 'aws-compute', 'fargate': 'aws-compute', 'batch': 'aws-compute',
+    'lightsail': 'aws-compute', 'auto-scaling': 'aws-compute', 'ami': 'aws-compute',
+    # aws-storage
+    's3': 'aws-storage', 'ebs': 'aws-storage', 'efs': 'aws-storage',
+    'glacier': 'aws-storage', 'storage-gateway': 'aws-storage', 'fsx': 'aws-storage',
+    # aws-database
+    'rds': 'aws-database', 'aurora': 'aws-database', 'dynamodb': 'aws-database',
+    'elasticache': 'aws-database', 'redshift': 'aws-database', 'documentdb': 'aws-database',
+    'neptune': 'aws-database', 'memorydb': 'aws-database',
+    # aws-networking
+    'vpc': 'aws-networking', 'route53': 'aws-networking', 'cloudfront': 'aws-networking',
+    'elb': 'aws-networking', 'alb': 'aws-networking', 'nlb': 'aws-networking',
+    'api-gateway': 'aws-networking', 'direct-connect': 'aws-networking',
+    'transit-gateway': 'aws-networking', 'subnet': 'aws-networking',
+    'security-group': 'aws-networking', 'nat-gateway': 'aws-networking',
+    # aws-security
+    'iam': 'aws-security', 'kms': 'aws-security', 'waf': 'aws-security',
+    'guardduty': 'aws-security', 'security-hub': 'aws-security',
+    'cognito': 'aws-security', 'macie': 'aws-security', 'shield': 'aws-security',
+    'certificate-manager': 'aws-security', 'secrets-manager': 'aws-security',
+    # aws-analytics
+    'athena': 'aws-analytics', 'glue': 'aws-analytics', 'kinesis': 'aws-analytics',
+    'emr': 'aws-analytics', 'quicksight': 'aws-analytics',
+    'opensearch': 'aws-analytics', 'msk': 'aws-analytics',
+    'lake-formation': 'aws-analytics', 'data-pipeline': 'aws-analytics',
+    'data-pipelines': 'aws-analytics', 'etl': 'aws-analytics', 'mwaa': 'aws-analytics',
+    # aws-ai-ml
+    'sagemaker': 'aws-ai-ml', 'bedrock': 'aws-ai-ml', 'rekognition': 'aws-ai-ml',
+    'comprehend': 'aws-ai-ml', 'polly': 'aws-ai-ml', 'personalize': 'aws-ai-ml',
+    'textract': 'aws-ai-ml', 'forecast': 'aws-ai-ml', 'lex': 'aws-ai-ml',
+    # aws-devtools
+    'codebuild': 'aws-devtools', 'codepipeline': 'aws-devtools',
+    'cloudformation': 'aws-devtools', 'cdk': 'aws-devtools',
+    'codeguru': 'aws-devtools', 'codedeploy': 'aws-devtools', 'sam': 'aws-devtools',
+    # aws-management
+    'cloudwatch': 'aws-management', 'cloudtrail': 'aws-management',
+    'config': 'aws-management', 'systems-manager': 'aws-management',
+    'organizations': 'aws-management', 'trusted-advisor': 'aws-management',
+    'control-tower': 'aws-management',
+    # aws-integration
+    'sqs': 'aws-integration', 'sns': 'aws-integration',
+    'eventbridge': 'aws-integration', 'step-functions': 'aws-integration',
+    'appflow': 'aws-integration', 'mq': 'aws-integration', 'appsync': 'aws-integration',
+    # 일반 AWS (도메인 특정 안 되는 경우)
+    'aws': 'aws-compute', 'amazon': 'aws-compute',
+    # Docker / LXD / DevOps
+    'docker': 'docker', 'container': 'docker', 'dockerfile': 'docker',
     'docker-compose': 'docker',
-    'lxd': 'lxd',
-    'lxc': 'lxd',
-    'system-container': 'lxd',
-    'devops': 'devops',
-    'cicd': 'devops',
-    'ci-cd': 'devops',
-    'github-actions': 'devops',
-    'terraform': 'devops',
-    'ansible': 'devops',
-    'monitoring': 'devops',
-    'prometheus': 'devops',
-    'grafana': 'devops',
+    'lxd': 'lxd', 'lxc': 'lxd', 'system-container': 'lxd',
+    'devops': 'devops', 'cicd': 'devops', 'ci-cd': 'devops',
+    'github-actions': 'devops', 'terraform': 'devops', 'ansible': 'devops',
+    'monitoring': 'devops', 'prometheus': 'devops', 'grafana': 'devops',
 }
 
 # 제목 키워드 → 서브카테고리 (태그로 분류 안 된 경우 fallback)
 TITLE_KEYWORDS = {
-    'aws': 'aws',
-    'amazon': 'aws',
-    'sagemaker': 'aws',
-    'redshift': 'aws',
-    'cloudfront': 'aws',
-    'cloudwatch': 'aws',
-    'cloudformation': 'aws',
-    'cloudtrail': 'aws',
-    'lambda': 'aws',
-    'ec2': 'aws',
-    'iam': 'aws',
-    'vpc': 'aws',
-    'elb': 'aws',
-    'alb': 'aws',
-    'ebs': 'aws',
-    'efs': 'aws',
-    'rds': 'aws',
-    's3 ': 'aws',
-    'glue': 'aws',
-    'athena': 'aws',
-    'kinesis': 'aws',
-    'dynamodb': 'aws',
-    'aurora': 'aws',
-    'bedrock': 'aws',
-    'docker': 'docker',
-    'dockerfile': 'docker',
-    'lxd': 'lxd',
-    'lxc': 'lxd',
+    # aws-compute
+    'ec2': 'aws-compute', 'lambda': 'aws-compute', 'ecs ': 'aws-compute',
+    'eks ': 'aws-compute', 'fargate': 'aws-compute', 'lightsail': 'aws-compute',
+    # aws-storage
+    's3 ': 'aws-storage', 's3-': 'aws-storage',
+    'ebs ': 'aws-storage', 'efs ': 'aws-storage', 'glacier': 'aws-storage',
+    # aws-database
+    'rds': 'aws-database', 'aurora': 'aws-database', 'dynamodb': 'aws-database',
+    'elasticache': 'aws-database', 'redshift': 'aws-database',
+    # aws-networking
+    'vpc': 'aws-networking', 'route53': 'aws-networking', 'route 53': 'aws-networking',
+    'cloudfront': 'aws-networking', 'elb': 'aws-networking', 'alb': 'aws-networking',
+    'api gateway': 'aws-networking', '서브넷': 'aws-networking', 'subnet': 'aws-networking',
+    'nat gateway': 'aws-networking', '보안 그룹': 'aws-networking',
+    # aws-security
+    'iam': 'aws-security', 'waf': 'aws-security', 'cognito': 'aws-security',
+    'guardduty': 'aws-security', 'kms': 'aws-security',
+    # aws-analytics
+    'athena': 'aws-analytics', 'glue': 'aws-analytics', 'kinesis': 'aws-analytics',
+    'emr': 'aws-analytics', 'opensearch': 'aws-analytics',
+    # aws-ai-ml
+    'sagemaker': 'aws-ai-ml', 'bedrock': 'aws-ai-ml',
+    # aws-devtools
+    'cloudformation': 'aws-devtools', 'cdk': 'aws-devtools',
+    # aws-management
+    'cloudwatch': 'aws-management', 'cloudtrail': 'aws-management',
+    # aws-integration
+    'sqs': 'aws-integration', 'sns': 'aws-integration',
+    'eventbridge': 'aws-integration', 'step functions': 'aws-integration',
+    # 일반 AWS
+    'aws': 'aws-compute', 'amazon': 'aws-compute',
+    # Docker / LXD
+    'docker': 'docker', 'dockerfile': 'docker',
+    'lxd': 'lxd', 'lxc': 'lxd',
 }
 
 
@@ -156,8 +159,13 @@ class Command(BaseCommand):
         }
         self.stdout.write(f"서브카테고리: {list(sub_cats.keys())}")
 
-        # Cloud 부모 + 모든 하위 카테고리의 포스트 조회
+        # 기존 'aws' 카테고리 (있으면 재분류 대상)
+        old_aws = Category.objects.filter(slug='aws').first()
+
+        # Cloud 부모 + 모든 하위 카테고리 + 기존 aws 카테고리의 포스트 조회
         all_cloud_cats = [cloud_parent] + list(sub_cats.values())
+        if old_aws and old_aws not in all_cloud_cats:
+            all_cloud_cats.append(old_aws)
         posts = Post.objects.filter(
             category__in=all_cloud_cats
         ).prefetch_related('tags')
@@ -173,8 +181,10 @@ class Command(BaseCommand):
         self.stdout.write("=" * 60)
 
         for post in posts:
-            # 이미 서브카테고리에 할당된 경우
-            if post.category.slug in sub_cats and post.category != cloud_parent:
+            # 이미 새 서브카테고리에 할당된 경우 (기존 'aws' 제외)
+            if (post.category.slug in sub_cats
+                    and post.category != cloud_parent
+                    and post.category != old_aws):
                 already_correct += 1
                 continue
 
@@ -185,9 +195,9 @@ class Command(BaseCommand):
             if not target_slug:
                 target_slug = _classify_by_title(post.title, TITLE_KEYWORDS)
 
-            # 여전히 분류 안 되면 AWS로 기본 할당 (대부분 AWS 콘텐츠)
+            # 여전히 분류 안 되면 aws-compute로 기본 할당 (대부분 AWS 콘텐츠)
             if not target_slug:
-                target_slug = 'aws'
+                target_slug = 'aws-compute'
                 to_aws_default += 1
 
             target_cat = sub_cats.get(target_slug)
