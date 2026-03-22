@@ -12,11 +12,17 @@ import os
 import argparse
 from pathlib import Path
 
-BACKEND_DIR = Path(__file__).resolve().parent.parent / "backend"
-ARCH_DATA_DIR = Path(__file__).resolve().parent / "data" / "architectures_written"
+# Docker 환경: /app/config가 존재하면 backend=/app, 아니면 로컬 경로
+_docker_backend = Path("/app")
+_local_backend = Path(__file__).resolve().parent.parent / "backend"
+BACKEND_DIR = _docker_backend if (_docker_backend / "config").is_dir() else _local_backend
+
+_docker_data = Path("/pipeline/data/architectures_written")
+_local_data = Path(__file__).resolve().parent / "data" / "architectures_written"
+ARCH_DATA_DIR = _docker_data if _docker_data.is_dir() else _local_data
 
 sys.path.insert(0, str(BACKEND_DIR))
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.dev")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.dev" if BACKEND_DIR == _local_backend else "config.settings.prod")
 
 import django
 django.setup()
