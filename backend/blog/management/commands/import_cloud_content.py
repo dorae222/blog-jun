@@ -25,7 +25,7 @@ DIR_TO_CATEGORY = {
     'devops': 'devops',
 }
 
-CONTENT_BASE = Path('/opt/blog-jun/content')
+CONTENT_BASE = Path('/app/content')
 
 
 def _parse_frontmatter(text):
