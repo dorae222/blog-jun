@@ -271,6 +271,9 @@ class ArchitectureRelationSerializer(serializers.ModelSerializer):
 class ArchitectureEntryListSerializer(FigureUrlMixin, serializers.ModelSerializer):
     concepts = ArchitectureConceptSerializer(many=True, read_only=True)
     figure_url = serializers.SerializerMethodField()
+    related_post_slug = serializers.SlugRelatedField(
+        source='related_post', slug_field='slug', read_only=True
+    )
 
     class Meta:
         model = ArchitectureEntry
@@ -280,6 +283,7 @@ class ArchitectureEntryListSerializer(FigureUrlMixin, serializers.ModelSerialize
             'attention_type', 'normalization', 'activation', 'key_detail',
             'figure_url', 'figure_placeholder', 'paper_url', 'license_type',
             'architecture_category', 'branch_type', 'is_open_source',
+            'related_post_slug',
         ]
 
 

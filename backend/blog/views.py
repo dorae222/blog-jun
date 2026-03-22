@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.decorators import api_view, permission_classes, throttle_classes, action
+from rest_framework.filters import SearchFilter
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
@@ -42,7 +43,7 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
 class PostViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthorOrReadOnly]
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['status', 'post_type', 'category__slug', 'series__slug']
     search_fields = ['title', 'content', 'summary']
     ordering_fields = ['created_at', 'published_at', 'view_count']
@@ -65,6 +66,12 @@ class PostViewSet(viewsets.ModelViewSet):
                 'architecture_entries__child_relations__from_entry__related_post',
             )
         if self.request.user.is_authenticated:
+            # has_cover 필터
+            has_cover = self.request.query_params.get('has_cover')
+            if has_cover == 'true':
+                qs = qs.exclude(cover_image='').exclude(cover_image__isnull=True)
+            elif has_cover == 'false':
+                qs = qs.filter(Q(cover_image='') | Q(cover_image__isnull=True))
             return qs
         return qs.filter(status='published')
 
@@ -221,6 +228,34 @@ def dashboard_stats(request):
         .values('id', 'title', 'slug', 'status', 'updated_at')[:5]
     )
 
+    # 이미지 커버리지 통계
+    published_qs = Post.objects.filter(author=request.user, status='published')
+    with_cover = published_qs.exclude(cover_image='').exclude(cover_image__isnull=True).count()
+    with_arch_figure = published_qs.filter(
+        architecture_entries__figure__isnull=False
+    ).exclude(architecture_entries__figure='').distinct().count()
+    with_any_image = published_qs.filter(
+        Q(~Q(cover_image=''), cover_image__isnull=False) |
+        Q(architecture_entries__figure__isnull=False) & ~Q(architecture_entries__figure='')
+    ).distinct().count()
+
+    image_coverage = {
+        'total_published': published,
+        'with_cover_image': with_cover,
+        'with_any_image': with_any_image,
+        'missing_image': published - with_any_image,
+    }
+
+    image_coverage_by_category = list(
+        published_qs
+        .values('category__slug', 'category__name')
+        .annotate(
+            total=Count('id'),
+            with_cover=Count('id', filter=~Q(cover_image='') & Q(cover_image__isnull=False)),
+        )
+        .order_by('-total')
+    )
+
     return Response({
         'total_posts': total_posts,
         'published': published,
@@ -229,6 +264,8 @@ def dashboard_stats(request):
         'category_distribution': category_dist,
         'post_type_distribution': post_type_dist,
         'recent_posts': recent_posts,
+        'image_coverage': image_coverage,
+        'image_coverage_by_category': image_coverage_by_category,
     })
 
 
