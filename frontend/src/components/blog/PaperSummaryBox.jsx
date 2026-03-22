@@ -11,7 +11,7 @@ export default function PaperSummaryBox({ post }) {
       <div className="flex items-center gap-2 mb-3">
         <BookOpen size={16} className="text-primary-600" />
         <span className="text-sm font-semibold" style={{ color: 'var(--text)' }}>
-          Paper Summary
+          {post.post_type === 'paper_review' ? 'Paper Summary' : 'Architecture Info'}
         </span>
       </div>
 

@@ -59,10 +59,10 @@ class PostViewSet(viewsets.ModelViewSet):
         qs = Post.objects.select_related('category', 'series', 'author').prefetch_related('tags')
         if self.action == 'retrieve':
             qs = qs.prefetch_related(
-                'outgoing_links__to_post',
-                'incoming_links__from_post',
-                'architecture_entries__parent_relations__to_entry',
-                'architecture_entries__child_relations__from_entry',
+                'outgoing_links__to_post__category',
+                'incoming_links__from_post__category',
+                'architecture_entries__parent_relations__to_entry__related_post',
+                'architecture_entries__child_relations__from_entry__related_post',
             )
         if self.request.user.is_authenticated:
             return qs
