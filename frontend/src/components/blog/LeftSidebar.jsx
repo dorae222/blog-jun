@@ -17,6 +17,23 @@ const CATEGORY_TREE = [
     ],
   },
   {
+    key: 'ml', label: 'ML', color: '#10B981',
+    subs: [
+      { key: 'fundamentals', label: '기초' },
+      { key: 'math-foundations', label: '수학' },
+      { key: 'preprocessing', label: '전처리' },
+      { key: 'supervised-regression', label: '회귀' },
+      { key: 'supervised-classification', label: '분류' },
+      { key: 'ensemble', label: '앙상블' },
+      { key: 'unsupervised', label: '비지도' },
+      { key: 'model-evaluation', label: '평가' },
+      { key: 'causal-inference', label: '인과추론' },
+      { key: 'advanced-algorithms', label: '심화' },
+      { key: 'applications', label: '응용' },
+      { key: 'mlops', label: 'MLOps' },
+    ],
+  },
+  {
     key: 'cloud', label: 'Cloud', color: '#FF9900',
     subs: [
       { key: 'aws', label: 'AWS' },

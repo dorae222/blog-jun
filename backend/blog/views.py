@@ -394,6 +394,7 @@ class FeedView(generics.ListAPIView):
         'ai': 'ai-ml',
         'cloud': 'cloud',
         'data': 'data-engineering',
+        'ml': 'ml',
     }
 
     # 서브카테고리 slug 목록 (유효성 검증용)
@@ -401,6 +402,12 @@ class FeedView(generics.ListAPIView):
         'ai': ['llm', 'ssm', 'diffusion', 'vision', 'multimodal', 'agent', 'technique'],
         'cloud': ['aws', 'docker', 'lxd', 'devops'],
         'data': ['hadoop', 'spark', 'database', 'pipeline'],
+        'ml': [
+            'fundamentals', 'math-foundations', 'preprocessing',
+            'supervised-regression', 'supervised-classification',
+            'ensemble', 'unsupervised', 'model-evaluation',
+            'causal-inference', 'advanced-algorithms', 'applications', 'mlops',
+        ],
     }
 
     def get_queryset(self):
