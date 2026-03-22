@@ -1,0 +1,42 @@
+{
+  "name": "GPT-2",
+  "slug": "gpt-2",
+  "organization": "OpenAI",
+  "release_date": "2019-02-14",
+  "decoder_type": "dense",
+  "param_scale": "1.5B",
+  "context_length": "1024",
+  "attention_type": "MHA (Causal/Autoregressive)",
+  "normalization": "LayerNorm (Pre-Norm)",
+  "activation": "GELU",
+  "position_encoding": "Learned Absolute",
+  "vocab_size": "50257",
+  "hidden_dim": "1600",
+  "num_layers": "48",
+  "num_heads": "25",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GPT-2는 OpenAI가 2019년 2월 발표한 15억 파라미터 규모의 자기회귀 언어 모델로, 'Language Models are Unsupervised Multitask Learners'(Radford et al., 2019) 논문을 통해 소개되었다. GPT-1(1.17억)에서 10배 이상 스케일업하며 사전학습-미세조정 패러다임을 넘어, 태스크별 미세조정 없이 제로샷(zero-shot)만으로 다양한 NLP 태스크를 수행할 수 있음을 최초로 대규모 실험으로 입증했다. 핵심 통찰은 모든 NLP 태스크를 p(output|input, task) 형태의 조건부 텍스트 생성으로 재구성할 수 있다는 것이며, 이는 이후 GPT-3의 인컨텍스트 러닝과 프롬프트 엔지니어링 패러다임의 직접적 기반이 되었다. AI 안전 측면에서 '단계적 릴리스(staged release)' 전략을 최초로 채택하여 처음에는 117M 모델만 공개하고 악용 가능성 평가 후 전체 모델을 순차 공개했는데, 이는 AI 윤리 논쟁의 분수령이 되었다. WebText(40GB) 데이터셋은 Reddit에서 3 karma 이상의 외부 링크를 크롤링하여 인간이 '유용하다고 판단한' 고품질 웹 텍스트를 수집한 선구적 사례로, 이후 Common Crawl 필터링 기법의 토대가 되었다. 8개 언어 모델 벤치마크 중 7개에서 제로샷 SOTA를 달성했으며, 특히 Winograd Schema Challenge와 LAMBADA에서 큰 폭의 성능 향상을 보였다.",
+  "key_detail": "GPT-2의 가장 중요한 아키텍처 혁신은 Post-Norm에서 Pre-Norm으로의 전환이다. 기존 Transformer(Vaswani, 2017)와 GPT-1은 h = LayerNorm(x + SubLayer(x)) 구조였으나, GPT-2는 h = x + SubLayer(LayerNorm(x))로 변경하여 잔차 경로에 정규화가 개입하지 않도록 했다. 이로써 깊은 네트워크(48층)에서도 그래디언트가 잔차 스트림을 통해 직접 흐를 수 있어 학습 안정성이 크게 향상되었으며, 이 패턴은 이후 거의 모든 대형 언어 모델(GPT-3, LLaMA, PaLM 등)의 표준이 되었다. 추가로 마지막 잔차 레이어의 가중치를 1/sqrt(N)으로 스케일링하여 초기화 시 깊은 층의 기여를 점진적으로 줄였다. 컨텍스트 길이는 GPT-1의 512에서 1024 토큰으로 2배 확장되었다. 토크나이저는 기존 BPE와 달리 바이트 수준에서 작동하는 Byte-level BPE를 도입하여 어떤 유니코드 문자열이든 OOV(미등록 어휘) 없이 처리 가능하게 했으며, 50,257개의 어휘를 사용한다. 모델은 4가지 크기로 제공된다: Small(117M, 12층), Medium(345M, 24층), Large(774M, 36층), XL(1.5B, 48층). GELU 활성화 함수를 사용하며, 이는 ReLU와 달리 입력값에 따라 확률적으로 게이팅하는 부드러운 비선형 함수이다.",
+  "training_detail": "학습 데이터는 WebText(약 40GB, 800만 문서)로, Reddit에서 3 karma 이상을 받은 외부 링크의 웹페이지를 크롤링하여 구축했다. 이는 Common Crawl 같은 무차별 크롤링과 달리 '인간의 큐레이션'을 간접적으로 활용한 최초의 대규모 시도로, 이후 The Pile, RefinedWeb 등 고품질 데이터셋 구축 방법론에 큰 영향을 미쳤다. Wikipedia는 다른 데이터셋과 중복 가능성 때문에 제외했다. 토크나이저는 Byte-level BPE 50,257개 어휘를 사용하며, UTF-8 바이트 시퀀스 위에서 BPE를 수행하므로 어떤 언어든 OOV 없이 처리 가능하다. 학습은 Adam optimizer(lr=기본, weight decay 미적용)로 배치 크기 512, 시퀀스 길이 1024로 진행했다. 모든 모델은 동일한 WebText로 학습했으며, 큰 모델이 여전히 underfitting 상태였다는 점에서 스케일링 법칙의 초기 관찰이 이루어졌다. 릴리스는 단계적으로 진행되어 2019년 2월 117M, 5월 345M, 8월 774M, 11월 1.5B 전체 모델이 MIT 라이선스로 공개되었다. 이 단계적 공개 방식은 AI 안전 커뮤니티에서 '책임감 있는 공개(responsible disclosure)'의 선례가 되었다.",
+  "paper_url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf",
+  "code_url": "https://github.com/openai/gpt-2",
+  "license_type": "MIT",
+  "concepts": [
+    "Zero-Shot Learning",
+    "Byte-level BPE",
+    "Pre-Norm",
+    "WebText",
+    "Staged Release"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "gpt-1",
+      "type": "evolved_from"
+    }
+  ],
+  "related_post_slug": "gpt-2"
+}

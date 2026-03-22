@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "swin-transformer",
+  "organization": "Microsoft",
+  "release_date": "2021-03-01",
+  "architecture_category": "vision",
+  "decoder_type": "vision_encoder",
+  "param_scale": "88M",
+  "context_length": "variable",
+  "attention_type": "Shifted Window Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Relative Position Bias",
+  "vocab_size": "",
+  "hidden_dim": "1024",
+  "num_layers": "24",
+  "num_heads": "32",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Swin Transformer는 2021년 Microsoft가 발표한 계층적 비전 트랜스포머로, 컴퓨터 비전 태스크에서 범용 백본으로 활용 가능하도록 설계된 모델이다. 기존 ViT가 고정된 해상도 패치를 처리하며 전역 어텐션을 계산해 연산량이 이미지 크기에 제곱으로 증가하는 문제를 해결한다. 이동 윈도우(Shifted Window) 기반 지역 어텐션과 계층적 특징 맵 구조를 통해 선형 복잡도를 달성하며, ImageNet 분류뿐 아니라 객체 탐지, 세그멘테이션 등 다운스트림 태스크에서도 SOTA를 달성하였다.",
+  "key_detail": "Swin Transformer의 핵심은 윈도우 기반 자기 어텐션(W-MSA)과 이동 윈도우 자기 어텐션(SW-MSA)을 교대로 적용하는 구조이다. W-MSA는 각 윈도우 내부에서만 어텐션을 계산하여 계산 복잡도를 O(n²)에서 O(n)으로 낮추고, SW-MSA는 윈도우를 절반씩 이동시켜 인접 윈도우 간 정보 교류를 가능하게 한다. 또한 4단계의 계층적 구조로 특징 맵을 점진적으로 다운샘플링하여 FPN과 같은 멀티스케일 특징을 제공하며, 상대적 위치 편향(relative position bias)을 어텐션 계산에 추가한다. Swin-L 기준 ImageNet-1K top-1 정확도 87.3%, COCO mAP 58.7을 달성한다.",
+  "training_detail": "ImageNet-1K 및 ImageNet-22K 사전학습 후 파인튜닝하는 방식으로 학습한다. AdamW 옵티마이저, cosine 학습률 스케줄, 300 에폭 학습을 기본으로 한다. 강력한 데이터 증강(Rand-Augment, Mixup, CutMix, label smoothing)과 stochastic depth를 적용하며, 8개의 GPU에서 학습한다. 다운스트림 태스크별로 Mask R-CNN, UperNet 등 프레임워크와 결합하여 파인튜닝된다.",
+  "paper_url": "https://arxiv.org/abs/2103.14030",
+  "code_url": "https://github.com/microsoft/Swin-Transformer",
+  "license_type": "MIT",
+  "is_open_source": true,
+  "related_post_slug": "swin-transformer",
+  "concepts": [
+    "Hierarchical Vision",
+    "Linear Complexity Attention",
+    "Shifted Window"
+  ]
+}

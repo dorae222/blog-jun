@@ -1,0 +1,33 @@
+{
+  "name": "DINOv2",
+  "slug": "dinov2",
+  "organization": "Meta/FAIR",
+  "release_date": "2023-04-01",
+  "decoder_type": "vision_encoder",
+  "param_scale": "1.1B",
+  "context_length": "518",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": null,
+  "hidden_dim": "1536",
+  "num_layers": "40",
+  "num_heads": "24",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DINOv2는 2023년 Meta/FAIR에서 발표한 자기지도 학습 기반 비전 파운데이션 모델이다. 레이블 없이도 다양한 비전 태스크에 즉시 활용 가능한 범용 시각 특징을 학습하는 것을 목표로 한다. DINO와 iBOT의 목표 함수를 결합하고 대규모 정제 데이터셋(LVD-142M)으로 학습하여, 파인튜닝 없이 선형 프로빙만으로도 ImageNet에서 86.5%의 높은 정확도를 달성한다. 깊이 추정, 의미론적 세그멘테이션, 인스턴스 검색 등 다양한 도메인에서 레이블 데이터 없이 뛰어난 성능을 발휘한다.",
+  "key_detail": "DINOv2는 큐레이션된 142M 이미지 데이터셋(LVD-142M)을 구축하여 학습 품질을 높였다. 학습 목표로는 이미지 레벨의 자기증류(DINO)와 패치 레벨의 마스킹 이미지 모델링(iBOT)을 동시에 사용한다. 추가로 SwAV 방식의 센터링, KoLeo 정규화, 고해상도 이미지 적응을 적용한다. Flash Attention과 효율적 구현으로 대규모 ViT-g/14(1.1B) 학습을 가능하게 하였으며, 얻어진 특징은 깊이 추정, 세그멘테이션, 분류 등 다운스트림 태스크에서 파인튜닝 없이 탁월한 성능을 보인다.",
+  "training_detail": "LVD-142M 데이터셋에서 사전학습하며, 배치 크기 3072, AdamW 옵티마이저를 사용한다. 학습에 64개의 A100 GPU가 사용되며 약 2주가 소요된다. EMA(지수이동평균) 교사 모델을 사용하는 자기증류 방식으로 학습하며, 고해상도 이미지(518×518)로 추가 적응 학습을 수행한다.",
+  "paper_url": "https://arxiv.org/abs/2304.07193",
+  "code_url": "https://github.com/facebookresearch/dinov2",
+  "license_type": "Apache-2.0",
+  "concepts": ["Self-Supervised Learning", "Vision Foundation Model", "Knowledge Distillation"],
+  "architecture_category": "vision",
+  "branch_type": "vision",
+  "is_open_source": true,
+  "relations": [
+    {"to": "vit", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

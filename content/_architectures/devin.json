@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "slug": "devin",
+  "organization": "Cognition",
+  "release_date": "2024-03-12",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Devin은 Cognition이 2024년 3월 발표한 세계 최초의 \"자율 AI 소프트웨어 엔지니어\"로, 자연어 명세만으로 엔드투엔드 소프트웨어 개발 작업을 수행한다. 코드 에디터, 터미널, 웹 브라우저를 통합한 개발 환경에서 장기 계획 수립, 버그 수정, 새 기능 구현, 배포까지 전체 개발 라이프사이클을 처리할 수 있다고 주장했다. 발표 당시 SWE-bench에서 13.86%의 이슈 해결률을 기록해 기존 접근법 대비 큰 폭의 향상을 보였으며, AI 에이전트 분야에 큰 주목을 불러일으켰다.",
+  "key_detail": "Devin의 핵심 기술은 장기 계획 수립과 상태 추적이다. 복잡한 엔지니어링 작업을 여러 단계로 분해하고, 진행 중 장애물을 만나면 스스로 학습하고 전략을 조정한다. 통합 개발 환경(IDE, shell, browser)을 단일 인터페이스로 제어하며, 작업 진행 상황을 실시간으로 사용자에게 공유한다. 다만, 발표 당시의 데모와 실제 성능 사이의 간극에 대한 비판적 검토가 이후 연구자들에 의해 제기되었으며, 독립적인 재현 결과는 초기 발표 수치와 다소 차이가 있었다.",
+  "training_detail": "Devin의 기반 모델과 학습 방법론은 공개되지 않았다. 클로즈드 소스 상용 제품으로, API를 통해 팀 단위로 서비스된다. Cognition은 이후 Devin 2를 출시해 복잡한 코드베이스 탐색과 병렬 작업 처리 능력을 개선하였다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "",
+  "is_open_source": false,
+  "related_post_slug": "devin",
+  "concepts": [
+    "AI Developer",
+    "Full-Stack Agent"
+  ]
+}

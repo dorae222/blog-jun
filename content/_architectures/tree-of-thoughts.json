@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "slug": "tree-of-thoughts",
+  "organization": "Princeton",
+  "release_date": "2023-05-17",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Tree of Thoughts(ToT)는 언어 모델의 추론 과정을 선형 체인이 아닌 트리 구조로 확장하여, 복잡한 문제 해결에 탐색 알고리즘(BFS/DFS)을 결합한 기법이다. Yao et al.(Princeton, 2023)이 제안한 이 프레임워크는 각 추론 단계에서 여러 개의 '사고(thought)' 후보를 생성하고, 각 중간 상태를 평가(evaluate)하여 유망한 경로를 선택적으로 탐색한다. CoT의 단방향 추론 한계를 극복해, 창의적 글쓰기나 24-게임과 같이 계획과 되돌아가기(backtracking)가 필요한 작업에서 두드러진 성능을 보인다.",
+  "key_detail": "ToT의 핵심 구성 요소는 네 가지다. 첫째, 사고 분해(thought decomposition): 문제를 중간 사고 단위로 정의한다. 둘째, 사고 생성(thought generation): 각 상태에서 k개의 후보 사고를 샘플링하거나 propose한다. 셋째, 상태 평가(state evaluation): LLM이 스스로 각 경로의 유망성을 1~10점으로 평가한다. 넷째, 탐색 알고리즘: BFS(너비 우선) 또는 DFS(깊이 우선)로 트리를 탐색한다. Game of 24에서 CoT 4% 대비 ToT 74%의 성공률을 달성하는 등 압도적 차이를 보였다. 단, 다수의 LLM 호출이 필요해 비용이 높다는 트레이드오프가 존재한다.",
+  "training_detail": "ToT는 추론 시점에만 적용되며, 파인튜닝이 필요 없다. GPT-4를 기반으로 주로 실험되었으며, 탐색 깊이와 후보 수(k=5~10)를 조절해 비용과 성능 사이의 균형을 맞춘다.",
+  "paper_url": "https://arxiv.org/abs/2305.10601",
+  "code_url": "",
+  "license_type": "",
+  "is_open_source": true,
+  "related_post_slug": "tree-of-thoughts",
+  "concepts": [
+    "Deliberate Reasoning",
+    "Tree Search"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 38,
+  "title": "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity",
+  "title_ko": "Switch Transformers: 단순하고 효율적인 희소성으로 조 단위 파라미터 스케일링",
+  "slug": "switch-transformers",
+  "category": "ai",
+  "sub_category": "moe",
+  "year": 2022,
+  "venue": "JMLR",
+  "authors": "Fedus et al.",
+  "arxiv_url": "https://arxiv.org/abs/2101.03961",
+  "summary": "Switch Transformers는 Mixture-of-Experts(MoE)의 복잡한 설계를 단순화하여 조(兆) 단위 파라미터의 희소 언어 모델을 안정적으로 학습하는 방법을 제안한다. Top-2 라우팅을 버리고 Top-1(Switch) 라우팅을 채택하고, 보조 손실로 전문가 로드 밸런싱을 달성하며, bf16 및 선택적 정밀도 혼합으로 학습 안정성을 확보한다. T5-Base 대비 7배 빠른 사전학습 속도를 달성하며 스케일링 가능성을 입증하였다.",
+  "content": "## 논문 개요\n\nMixture-of-Experts(MoE)는 모델의 파라미터 수를 늘리되 실제 활성화되는 파라미터(computation)는 고정하는 희소(sparse) 확장 방법이다. 각 입력 토큰이 전체 전문가(expert) 중 일부만 활성화하므로, 파라미터 수가 증가해도 추론·학습 FLOPs는 크게 늘지 않는다.\n\n그러나 기존 MoE 방식(Shazeer et al., 2017)은 Top-2 라우팅, 복잡한 부하 분산, 학습 불안정성 등의 문제를 안고 있었다. Fedus et al.(2022)이 JMLR에 발표한 Switch Transformers는 이를 단순화하고 안정화하여 최초로 조 단위($10^{12}$) 파라미터의 언어 모델을 학습하는 데 성공하였다.\n\n---\n\n## 핵심 기여\n\n1. **Switch(Top-1) 라우팅**: 각 토큰을 단 하나의 전문가에게 라우팅하여 설계를 단순화하고 통신 비용을 절감한다.\n2. **보조 로드 밸런싱 손실**: 전문가가 균등하게 활용되도록 유도하는 미분 가능한 보조 손실 함수를 제안한다.\n3. **학습 안정성 기법**: 전문가별 가중치 초기화 스케일링, bf16 혼합 정밀도, 선택적 fp32 적용으로 학습 발산을 방지한다.\n4. **T5 대비 7× 속도 향상**: 동일한 학습 FLOPs에서 Switch Transformer는 T5-Base보다 7배 빠르게 같은 품질에 도달한다.\n5. **조 파라미터 모델**: Switch Transformer-1.6T (1.6조 파라미터, 2048개 전문가)를 처음으로 학습하였다.\n\n---\n\n## 방법론 상세\n\n### MoE 레이어 구조\n\nSwitch Transformer는 표준 트랜스포머의 FFN 레이어를 MoE 레이어로 교체한다. $N$개의 전문가 FFN $\\{E_1, E_2, \\ldots, E_N\\}$이 있고, 라우터 $W_r$이 각 토큰 $x$를 어느 전문가에게 보낼지 결정한다:\n\n$$h = \\sum_{i=1}^{N} g_i(x) \\cdot E_i(x)$$\n\n여기서 게이팅 함수 $g_i(x)$는 소프트맥스 기반 확률:\n$$g_i(x) = \\frac{\\exp(x \\cdot W_r^{(i)})}{\\sum_j \\exp(x \\cdot W_r^{(j)})}$$\n\n### Switch(Top-1) 라우팅\n\n기존 MoE는 $\\text{Top-}k\\ (k=2)$ 라우팅을 사용하여 각 토큰이 두 전문가의 가중 합으로 처리된다. Switch Transformer는 $k=1$로 단순화한다:\n\n$$h = E_{i^*}(x), \\quad i^* = \\arg\\max_i \\, (x \\cdot W_r^{(i)})$$\n\n이 단순화의 장점은:\n- **통신 감소**: 분산 환경에서 토큰이 이동하는 디바이스 수가 절반으로 줄어든다.\n- **연산 감소**: FFN을 하나만 실행한다.\n- **실증적 성능**: $k=1$이 $k=2$보다 종종 더 좋거나 비슷한 성능을 보였다.\n\n### 전문가 용량(Expert Capacity)\n\n각 전문가는 한 배치 내에서 처리할 수 있는 토큰 수에 **용량 제한**을 둔다:\n\n$$C = \\left\\lfloor \\frac{T}{N} \\times c \\right\\rfloor$$\n\n여기서 $T$는 배치 내 총 토큰 수, $N$은 전문가 수, $c$는 용량 계수(capacity factor, 보통 1.0~2.0)이다. 특정 전문가에 $C$를 초과하는 토큰이 할당되면 초과분은 오버플로우(overflow)되어 처리되지 않는다 (해당 토큰은 Residual Connection을 통해 전달됨).\n\n### 로드 밸런싱 보조 손실\n\n모든 토큰이 소수의 인기 전문가에게 집중되는 붕괴(collapse) 현상을 방지하기 위해, 보조 로드 밸런싱 손실을 메인 손실에 더한다:\n\n$$\\mathcal{L}_{\\text{aux}} = \\alpha \\cdot N \\cdot \\sum_{i=1}^{N} f_i \\cdot P_i$$\n\n여기서:\n- $f_i = \\frac{\\text{전문가 }i\\text{에 라우팅된 토큰 수}}{T}$: 실제 라우팅 비율\n- $P_i = \\frac{1}{T}\\sum_{x} g_i(x)$: 소프트 라우팅 확률의 평균\n- $\\alpha$: 보조 손실 가중치 (보통 $10^{-2}$)\n\n$f_i$와 $P_i$의 내적을 최소화하면 각 전문가에 균등하게 토큰이 분배된다. $f_i$는 미분 불가능하지만, $P_i$를 통해 그래디언트가 전달된다.\n\n### 학습 안정성 기법\n\n**초기화 스케일링**: 전문가 FFN의 가중치를 $\\mathcal{N}(0, \\sigma^2/N)$으로 초기화하여 전문가 수가 증가해도 분산이 일정하게 유지된다.\n\n**혼합 정밀도**: 대부분의 연산은 bf16으로 수행하되, 라우팅과 손실 계산은 fp32로 수행한다. bf16은 fp16과 같은 16비트지만 지수부가 더 넓어 오버플로우에 강하다.\n\n**소통 비용 최적화**: 분산 학습(데이터 병렬 + 전문가 병렬)에서 전문가가 서로 다른 디바이스에 배치될 때, All-to-All 통신으로 토큰을 올바른 전문가에게 전달하는 통신 패턴을 최적화한다.\n\n---\n\n## 실험 결과\n\n### T5와의 학습 속도 비교\n\n동일한 FLOPs(계산량)를 사용했을 때:\n\n| 모델 | 파라미터 | 같은 품질 도달 시간 |\n|------|---------|-------------------|\n| T5-Base | 223M | 기준 |\n| Switch-Base (128 전문가) | 7.4B | 7× 빠름 |\n| Switch-Large (128 전문가) | 26.3B | 4× 빠름 |\n\n### 다운스트림 과제 (SuperGLUE)\n\nSwitch Transformer는 T5-11B와 비슷하거나 더 나은 SuperGLUE 점수를 훨씬 적은 FLOPs로 달성하였다.\n\n### 전문가 수 스케일링\n\n전문가 수를 늘릴수록 성능이 향상되지만, 256개 이상에서는 수익 체감(diminishing returns)이 관찰되었다. 전문가 수 대비 성능은 $\\log N$에 비례하는 경향이 있다.\n\n---\n\n## 의의 및 한계\n\n### 의의\n\n- **MoE의 민주화**: 복잡했던 MoE 설계를 단순화하여 후속 연구(GLaM, Mixtral, DeepSeek-MoE 등)의 폭발적 성장을 촉발하였다.\n- **스케일링 효율**: 동일한 FLOPs로 더 많은 파라미터를 학습할 수 있어, 파라미터-효율적 스케일링의 길을 열었다.\n- **T5와의 직접 비교**: 동일한 프레임워크(T5/mesh-tensorflow)에서 비교하여 결과의 신뢰성이 높다.\n\n### 한계\n\n- **학습 불안정성**: 논문에서도 인정하듯, 특히 대규모에서 학습이 발산하는 경우가 있다. 다양한 안정화 기법이 필요하다.\n- **전문가 전문화 부족**: 이상적으로는 각 전문가가 서로 다른 유형의 입력을 처리하길 바라지만, 실제로는 전문화가 불분명한 경우가 있다.\n- **추론 시 메모리**: 활성화되는 파라미터는 적지만, 전체 전문가 가중치를 메모리에 올려야 하므로 서빙 인프라 요구사항이 크다.\n- **로드 불균형**: 보조 손실에도 불구하고 학습 중 일부 전문가에 토큰이 집중되는 현상이 완전히 해결되지 않는다.",
+  "tags": [
+    "mixture-of-experts",
+    "moe",
+    "sparse-model",
+    "scaling",
+    "switch-routing",
+    "load-balancing",
+    "t5"
+  ],
+  "related_architecture": ""
+}

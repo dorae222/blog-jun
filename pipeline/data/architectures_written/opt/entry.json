@@ -1,0 +1,33 @@
+{
+  "name": "OPT",
+  "slug": "opt",
+  "organization": "Meta",
+  "release_date": "2022-05-02",
+  "decoder_type": "dense",
+  "param_scale": "175B",
+  "context_length": "2048",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "LayerNorm",
+  "activation": "ReLU",
+  "position_encoding": "Learned Absolute Position Embedding",
+  "vocab_size": "50272",
+  "hidden_dim": "12288",
+  "num_layers": "96",
+  "num_heads": "96",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "OPT(Open Pre-trained Transformer)는 Meta AI가 2022년 공개한 1750억 파라미터의 오픈소스 대형 언어 모델이다. GPT-3와 동등한 규모의 모델을 연구 커뮤니티에 완전히 공개함으로써, 대형 언어 모델 연구의 민주화에 크게 기여하였다. 가중치, 학습 코드, 학습 로그 전체를 공개하여 재현 가능성(reproducibility) 측면에서 선례를 남겼다. 125M부터 175B까지 총 9개의 크기로 제공되어 다양한 연구 환경에서 활용 가능하며, GPT-3와 유사한 수준의 성능을 훨씬 적은 자원으로 재현할 수 있음을 보여주었다.",
+  "key_detail": "OPT는 GPT-3의 아키텍처를 충실히 따르며 Pre-LayerNorm 트랜스포머 구조를 사용한다. 학습 과정에서 발생한 불안정성 문제와 이를 해결하기 위한 다양한 시도(학습률 재설정, 그래디언트 클리핑 등)를 상세히 기록한 로그북을 함께 공개하여, 대형 모델 학습의 실용적 노하우를 커뮤니티에 공유하였다. The Pile, 공개 Reddit 데이터, 다양한 웹 코퍼스를 학습 데이터로 활용하였다. 개방성과 투명성 측면에서 이후 LLaMA, BLOOM 등 오픈소스 모델들에 큰 영향을 미쳤다.",
+  "training_detail": "약 180B 토큰 규모의 데이터셋을 활용하였으며, The Pile과 Reddit 공개 데이터를 주로 사용하였다. 992개의 A100 80GB GPU에서 최대 175B 파라미터 모델을 학습하였고, 총 학습 시간은 약 2개월이 소요되었다. Meta의 Metaseq 프레임워크를 기반으로 분산 학습이 수행되었다.",
+  "paper_url": "https://arxiv.org/abs/2205.01068",
+  "code_url": "https://github.com/facebookresearch/metaseq",
+  "license_type": "non-commercial research",
+  "concepts": ["Open Source LLM", "Reproducibility", "Scaling Laws"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {"to": "gpt-3", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

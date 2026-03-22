@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "internvl-3",
+  "organization": "Shanghai AI Lab",
+  "release_date": "2025-01-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "78B",
+  "context_length": "32768",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "7168",
+  "num_layers": "61",
+  "num_heads": "56",
+  "num_experts": "64",
+  "active_experts": "8",
+  "description": "InternVL 3는 2025년 Shanghai AI Lab이 발표한 78B 파라미터 규모의 MoE 기반 멀티모달 모델로, 네이티브 멀티모달 사전학습을 도입하여 기존 InternVL 시리즈보다 훨씬 강력한 시각-언어 통합 능력을 달성하였다. 언어 모델링과 멀티모달 학습을 처음부터 함께 수행하는 네이티브 멀티모달 사전학습 방식을 채택하여, 사후 통합 방식 대비 더욱 깊은 시각-언어 정렬이 가능하다. MoE 아키텍처를 도입하여 파라미터 효율성을 높이면서도 오픈소스 모델 최고 수준의 성능을 달성하였다.",
+  "key_detail": "InternVL 3는 네이티브 멀티모달 사전학습(Native Multimodal Pre-training)을 핵심 혁신으로 내세운다. 텍스트 전용 LLM을 사전학습한 뒤 멀티모달로 확장하는 기존 방식과 달리, 텍스트·이미지·비디오 데이터를 처음부터 혼합하여 사전학습한다. InternViT-6B 비전 인코더와 Mixture-of-Experts LLM을 결합하며, 픽셀 셔플 방식의 동적 해상도 처리를 적용한다. 수학, 과학, 코드, OCR, 차트 등 복잡한 멀티모달 추론 태스크에서 GPT-4V 및 Claude 3.5 Sonnet과 경쟁하는 성능을 달성하였다.",
+  "training_detail": "웹 스케일 멀티모달 데이터와 합성 데이터를 결합한 대규모 사전학습으로 시작하여, 멀티태스크 SFT와 RLHF 정렬을 수행한다. MoE 아키텍처를 위해 전문가 라우팅과 로드 밸런싱 손실을 적용하며, 네이티브 멀티모달 사전학습을 위한 대규모 A100 클러스터를 사용한다.",
+  "paper_url": "",
+  "code_url": "https://github.com/OpenGVLab/InternVL",
+  "license_type": "MIT",
+  "is_open_source": true,
+  "related_post_slug": "internvl-3",
+  "concepts": [
+    "High-Resolution Understanding",
+    "MoE Vision-Language",
+    "Native Multimodal Pre-training"
+  ]
+}

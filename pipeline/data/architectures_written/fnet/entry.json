@@ -1,0 +1,33 @@
+{
+  "name": "FNet",
+  "slug": "fnet",
+  "organization": "Google Research",
+  "release_date": "2021-05-09",
+  "decoder_type": "ssm",
+  "param_scale": "82M (BERT-Base 상당)",
+  "context_length": "512",
+  "attention_type": "Fourier Transform (no attention)",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned absolute",
+  "vocab_size": "32000",
+  "hidden_dim": "768",
+  "num_layers": "12",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "FNet은 2021년 Google Research가 발표한 모델로, Transformer의 self-attention을 푸리에 변환(Fourier Transform)으로 대체한 실험적 아키텍처이다. 핵심 주장은 attention이 시퀀스 믹싱을 위한 유일한 방법이 아니라는 것으로, 2D FFT를 적용하면 attention 없이도 BERT의 92~97% 성능을 유지할 수 있음을 보였다. 학습 파라미터가 없는 순수 수학적 연산인 FFT를 사용하므로 GPU/TPU에서 매우 빠르게 동작하며, BERT 대비 훈련 속도는 최대 7배, 추론 속도는 2~4배 빠르다. attention-free 모델링의 가능성을 탐색한 선구적 연구이다.",
+  "key_detail": "FNet 블록은 Multi-Head Attention을 제거하고, 2D DFT(Discrete Fourier Transform)를 시퀀스 차원과 히든 차원에 순차 적용한다. FFT는 학습 가능한 파라미터 없이 정보를 전역적으로 혼합하며, O(N log N) 복잡도를 가진다. FFT-Layer 이후 기존 Transformer와 동일한 FFN(Feed-Forward Network)을 배치한다. 복소수 출력의 실수부만 사용하며, 위치 정보는 learnable positional embedding으로 별도 처리한다. GLUE 벤치마크에서 BERT-Base 대비 평균 1~5% 낮은 성능이나 훈련 비용 대비 효율이 탁월하다.",
+  "training_detail": "C4 데이터셋으로 사전학습, BERT와 동일한 토크나이저(SentencePiece) 사용. TPUv3-8로 학습. 배치 크기 256, 최대 시퀀스 512 토큰. Adam 옵티마이저, 웜업 스텝 10,000. BERT 사전학습 절차를 최대한 준수하여 공정한 비교 진행.",
+  "paper_url": "https://arxiv.org/abs/2105.03824",
+  "code_url": "https://github.com/google-research/google-research/tree/master/f_net",
+  "license_type": "Apache-2.0",
+  "concepts": ["Fourier Transform", "FFT", "Attention-free", "Token Mixing", "Efficient Transformer", "Linear Complexity"],
+  "architecture_category": "ssm",
+  "branch_type": "ssm",
+  "is_open_source": true,
+  "relations": [
+    {"to": "transformer", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

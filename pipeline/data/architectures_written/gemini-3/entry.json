@@ -1,0 +1,33 @@
+{
+  "name": "Gemini 3",
+  "slug": "gemini-3",
+  "organization": "Google DeepMind",
+  "release_date": "2025-12-01",
+  "decoder_type": "sparse_moe",
+  "param_scale": "~1T",
+  "context_length": "2000000",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "RMSNorm",
+  "activation": "GeGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "256000",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gemini 3는 Google DeepMind가 2025년 말 출시를 목표로 개발 중인 차세대 멀티모달 모델로, 약 1조 파라미터 규모의 대형 Mixture of Experts 아키텍처를 채택한 것으로 알려져 있다. Gemini 2.5의 사고(thinking) 기능과 멀티모달 처리 능력을 계승하면서, 더욱 강력한 추론 능력과 확장된 컨텍스트 처리 능력을 목표로 한다. 최신 TPU 인프라와 개선된 MoE 라우팅 알고리즘을 통해 연산 효율성을 유지하면서 모델 용량을 대폭 확장한 것이 특징이다. 공식 기술 보고서는 아직 미공개 상태이며, 세부 사양은 출시 시 확인될 예정이다.",
+  "key_detail": "Gemini 3의 핵심은 약 1조 파라미터의 희소 MoE 아키텍처를 통한 능력 확장이다. 각 토큰 처리 시 전체 파라미터의 일부만 활성화하는 MoE 방식으로, 모델 전체 크기를 대폭 늘리면서도 추론 연산량을 효율적으로 제어할 수 있다. 200만 토큰 이상의 초장문 컨텍스트 처리와 더욱 정교해진 네이티브 멀티모달 추론 능력을 목표로 개발되고 있다. Google의 AI 에이전트 생태계(Project Astra, NotebookLM 등)와의 깊은 통합을 통해 실세계 복잡 작업 수행 능력을 강화할 것으로 예상된다.",
+  "training_detail": "공식적으로 알려진 학습 세부 정보가 없는 상태이다. Gemini 2.5와 유사한 방식으로 대규모 멀티모달 데이터 사전 학습 후 강화 학습 기반 정렬을 수행할 것으로 추정된다. Google의 최신 TPU 인프라(v6 또는 후속 세대)를 활용한 분산 학습이 예상된다. 더욱 효율적인 MoE 라우팅과 로드 밸런싱 기법이 적용될 것으로 알려져 있다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "proprietary",
+  "concepts": ["Mixture of Experts", "Long Context", "Multimodal", "Agentic AI"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {"to": "gemini-2-5", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

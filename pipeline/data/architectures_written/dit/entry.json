@@ -1,0 +1,40 @@
+{
+  "name": "DiT (Diffusion Transformers)",
+  "slug": "dit",
+  "organization": "Meta AI / UC Berkeley",
+  "release_date": "2022-12-19",
+  "decoder_type": "diffusion_dit",
+  "param_scale": "675M (DiT-XL/2)",
+  "context_length": "N/A",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "AdaLN-Zero (Adaptive Layer Normalization)",
+  "activation": "GELU",
+  "position_encoding": "Sinusoidal 2D Patch Positional Embedding",
+  "vocab_size": null,
+  "hidden_dim": "1152 (XL)",
+  "num_layers": "28 (XL)",
+  "num_heads": "16 (XL)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Scalable Diffusion Models with Transformers(DiT)는 2022년 Meta AI와 UC Berkeley의 William Peebles, Saining Xie가 발표한 연구로, 확산 모델의 백본 네트워크를 기존 U-Net에서 Vision Transformer(ViT)로 대체한 선구적 아키텍처이다. DiT는 LDM의 잠재 공간에서 동작하며, 이미지를 패치로 분할하여 Transformer로 처리한다. 핵심 발견은 Transformer 스케일링 법칙이 확산 모델에도 그대로 적용된다는 것이다: 모델 크기(파라미터 수)와 연산량(GFLOPs)이 증가할수록 FID가 체계적으로 향상된다. 네 가지 조건 주입 방법(in-context, cross-attention, adaptive layer norm zero, adaLN-Zero)을 비교한 결과, adaLN-Zero가 가장 우수하였다. adaLN-Zero는 타임스텝과 클래스 임베딩의 선형 변환으로 각 Transformer 블록의 스케일·시프트를 조절하며, 잔차 연결 게이트는 0으로 초기화하여 학습 초기 안정성을 확보한다. DiT-XL/2(675M 파라미터, 패치 크기 2)는 ImageNet 256×256에서 FID 2.27을 달성하여 LDM을 포함한 기존 클래스 조건부 모델을 능가하였다. DiT는 Sora, PixArt-Alpha, SD3, Flux 등 이후 대규모 확산 모델들이 U-Net을 버리고 Transformer 기반 아키텍처를 채택하는 계기가 된 혁신적 연구이다.",
+  "key_detail": "DiT의 파이프라인은 LDM과 동일하게 VAE 잠재 공간에서 동작한다. 잠재 맵 $z \\in \\mathbb{R}^{I \\times I \\times C}$를 크기 $p \\times p$ 패치로 분할하여 $(I/p)^2$개의 토큰 시퀀스를 구성하고, 선형 임베딩 후 2D 위치 인코딩을 더한다. 각 DiT 블록은 Multi-Head Self-Attention, Point-wise FFN, 그리고 adaLN-Zero로 구성된다. adaLN-Zero: $\\text{MLP}(\\text{emb}) \\to (\\alpha, \\beta, \\gamma)$로 스케일·시프트·게이트를 생성, $\\text{output} = x + \\alpha \\cdot \\text{block}(\\gamma \\cdot \\text{LN}(x) + \\beta)$. 디코더는 표준 선형 레이어로 각 패치의 노이즈 예측값과 대각 공분산을 출력한다. 모델 크기는 S/B/L/XL × 패치크기 2/4/8 조합으로 다양하게 실험되었다.",
+  "training_detail": "ImageNet(1000 클래스) 256×256와 512×512 해상도에서 클래스 조건부 이미지 생성으로 학습하였다. 사전학습된 VAE(Stable Diffusion VAE, KL-f8 설정)를 고정하여 잠재 공간 $4 \\times 32 \\times 32$에서 확산이 수행된다. 학습률 1e-4, Adam optimizer, EMA 0.9999. 7M 스텝 학습 시 DiT-XL/2 256×256 FID 2.27(CFG 사용 시 1.79)을 달성. 8개 A100 GPU에서 약 7일 소요된다.",
+  "paper_url": "https://arxiv.org/abs/2212.09748",
+  "code_url": "https://github.com/facebookresearch/DiT",
+  "license_type": "CC BY-NC 4.0",
+  "concepts": [
+    "DiT",
+    "Scalable Diffusion",
+    "Adaptive Layer Norm",
+    "Patch-based Diffusion",
+    "ViT for Diffusion"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "ddpm", "type": "evolved_from"},
+    {"to": "vit", "type": "technique_used"}
+  ],
+  "related_post_slug": "dit"
+}

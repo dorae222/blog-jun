@@ -1,0 +1,33 @@
+{
+  "name": "Phi-4-Multimodal",
+  "slug": "phi-4-multimodal",
+  "organization": "Microsoft",
+  "release_date": "2025-03-01",
+  "decoder_type": "multimodal",
+  "param_scale": "5.6B",
+  "context_length": "131072",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "RoPE",
+  "vocab_size": 100352,
+  "hidden_dim": "3072",
+  "num_layers": "32",
+  "num_heads": "24",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Phi-4-Multimodal은 2025년 Microsoft가 발표한 5.6B 파라미터의 경량 멀티모달 모델로, 음성·시각·텍스트 세 가지 모달리티를 단일 모델로 처리한다. Microsoft의 Phi 시리즈가 추구하는 소형 고성능 모델 철학을 멀티모달 도메인으로 확장하여, 5.6B 파라미터로 음성 인식, 이미지 이해, 텍스트 추론을 통합 처리하며 각 전문 모델과 경쟁하는 성능을 달성한다. 긴 128K 컨텍스트에서 다양한 모달리티 조합의 입력을 처리할 수 있으며, 엣지 디바이스와 온프레미스 배포에 적합하다.",
+  "key_detail": "Phi-4-Multimodal은 SigLIP 비전 인코더(이미지 처리)와 Whisper 계열 음성 인코더(오디오 처리), Phi-4 LLM을 통합한 구조를 채택한다. 각 모달리티 인코더의 출력을 MLP 프로젝터로 변환하여 동일한 언어 모델 공간에 정렬하며, 텍스트·이미지·오디오가 혼합된 시퀀스를 단일 트랜스포머로 처리한다. 128K 긴 컨텍스트에서 장문 음성 트랜스크립션과 다중 이미지 분석을 동시에 처리할 수 있으며, 수학·코드·추론 태스크에서 Phi-4의 강점을 멀티모달 환경으로 계승한다.",
+  "training_detail": "음성, 이미지, 텍스트 데이터를 포함한 대규모 합성 및 실제 데이터 혼합으로 학습한다. Phi-4 텍스트 모델에 음성 인코더와 비전 인코더를 추가하는 단계적 통합 학습을 수행하며, 각 모달리티 전문 데이터와 멀티모달 인터리브 데이터를 균형 있게 활용한다. 합성 데이터 생성에 많은 비중을 두는 Phi 시리즈의 전통을 계승한다.",
+  "paper_url": "https://arxiv.org/abs/2503.01743",
+  "code_url": "https://huggingface.co/microsoft/Phi-4-multimodal-instruct",
+  "license_type": "MIT",
+  "concepts": ["Speech+Vision+Text", "Efficient Multimodal", "Long Context Multimodal"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "phi-3", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

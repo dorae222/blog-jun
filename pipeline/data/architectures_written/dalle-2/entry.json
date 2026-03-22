@@ -1,0 +1,40 @@
+{
+  "name": "DALL·E 2",
+  "slug": "dalle-2",
+  "organization": "OpenAI",
+  "release_date": "2022-04-13",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "3.5B (prior) + 3.5B (decoder)",
+  "context_length": "77 (CLIP 텍스트 토큰)",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "Group Normalization + AdaGN",
+  "activation": "SiLU",
+  "position_encoding": "Sinusoidal",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DALL·E 2(Hierarchical Text-Conditional Image Generation with CLIP Latents)는 2022년 OpenAI가 발표한 텍스트-이미지 생성 모델로, CLIP의 이미지 임베딩 공간을 활용하는 독창적인 two-stage 파이프라인을 도입하였다. 핵심 아이디어는 텍스트에서 이미지로 직접 생성하지 않고, 텍스트 CLIP 임베딩을 이미지 CLIP 임베딩 공간으로 변환하는 'Prior' 단계와, 그 이미지 임베딩에서 실제 이미지를 생성하는 'Decoder' 단계로 나누는 것이다. Prior로는 자기회귀 모델 또는 확산 모델을 사용하고, Decoder로는 GLIDE 기반의 확산 모델을 사용한다. 이 설계 덕분에 CLIP의 풍부한 시각-언어 정렬 표현을 활용하면서도, 이미지 임베딩 공간에서의 보간을 통해 창의적이고 유연한 이미지 생성이 가능하다. 텍스트 임베딩과 이미지 임베딩 사이를 보간하면 의미 있는 시각적 변환이 이루어지는 CLIP 잠재 공간의 구조적 특성을 최대한 활용하였다. 64×64 생성 후 256×256, 1024×1024 두 단계의 업샘플링 확산 모델이 고해상도 이미지를 완성한다. DALL·E 2는 사실적 이미지 생성, 이미지 편집(DALL·E Edits), 변형(Variations) 등 다양한 기능을 제공하였으며, API를 통해 상업적 서비스로 출시되었다.",
+  "key_detail": "파이프라인은 세 단계로 구성된다. (1) Prior: CLIP 텍스트 임베딩 $z_t = \\text{CLIP}_{text}(y)$에서 CLIP 이미지 임베딩 $z_i \\approx \\text{CLIP}_{image}(x)$를 생성하는 확산 Prior $p(z_i|y)$를 학습한다. (2) Decoder: CLIP 이미지 임베딩과 텍스트 캡션을 조건으로 64×64 이미지를 생성하는 GLIDE 기반 확산 U-Net. (3) 두 단계의 업샘플러 확산 모델로 256×256→1024×1024로 점진적 고해상도화. 이미지 Variations는 Prior를 건너뛰고 실제 이미지의 CLIP 임베딩을 Decoder에 직접 입력하여 구현된다. 두 이미지 사이의 보간은 CLIP 임베딩 공간에서 선형 보간 후 디코딩하는 방식으로 수행된다.",
+  "training_detail": "250M 이미지-텍스트 쌍(DALL·E 학습 데이터 + LAION Aesthetics)으로 사전학습된 CLIP ViT-H/16을 이미지 인코더로 활용한다. Prior 확산 모델은 텍스트-이미지 쌍으로 학습되며, Decoder는 이미지 CLIP 임베딩을 조건으로 이미지를 재구성하도록 학습된다. CFG는 텍스트와 CLIP 임베딩 양쪽 조건에 독립적으로 적용된다. MS-COCO에서 FID 10.39를 달성하였다.",
+  "paper_url": "https://arxiv.org/abs/2204.06125",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "CLIP Latent Space",
+    "Diffusion Prior",
+    "Hierarchical Generation",
+    "Image Variations",
+    "Text-to-Image"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": false,
+  "relations": [
+    {"to": "glide", "type": "evolved_from"},
+    {"to": "clip", "type": "technique_used"}
+  ],
+  "related_post_slug": "dalle-2"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Qwen3-VL",
+  "slug": "qwen3-vl",
+  "organization": "Alibaba",
+  "release_date": "2025-11-01",
+  "decoder_type": "multimodal",
+  "param_scale": "72B",
+  "context_length": "32768",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "Multimodal RoPE",
+  "vocab_size": null,
+  "hidden_dim": "8192",
+  "num_layers": "80",
+  "num_heads": "64",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Qwen3-VL은 2025년 Alibaba가 발표한 Qwen2-VL의 후속 모델로, 향상된 추론 능력과 더욱 강력한 멀티모달 이해를 목표로 한다. Qwen3 언어 모델의 향상된 추론 능력을 시각 도메인으로 확장하여, 복잡한 시각적 수학 문제, 과학 다이어그램 해석, 고해상도 문서 분석 등에서 탁월한 성능을 보인다. 동적 해상도 처리와 M-RoPE를 계승하면서 비디오 이해 및 멀티이미지 추론 능력을 대폭 강화하였으며, 오픈소스 멀티모달 모델 중 최고 수준의 벤치마크 성능을 달성하였다.",
+  "key_detail": "Qwen3-VL은 Qwen2-VL의 핵심 혁신인 네이티브 동적 해상도와 M-RoPE를 계승하면서 Qwen3의 강화된 추론 능력(chain-of-thought, 장문 추론)을 통합하였다. 향상된 ViT 비전 인코더와 Qwen3 LLM의 결합으로 수학적 시각 추론과 과학 문제 해결 능력이 크게 향상되었으며, 더 긴 비디오 시퀀스와 다수 이미지를 효율적으로 처리하는 능력을 갖추었다. 복잡한 다단계 시각 추론 태스크에서 GPT-4V 및 Claude 3.5를 상회하는 성능을 달성하였다.",
+  "training_detail": "대규모 멀티모달 데이터와 수학·과학 특화 시각 추론 데이터를 혼합하여 학습한다. Qwen3 LLM의 강화된 추론 능력을 바탕으로 멀티모달 인스트럭션 튜닝과 RLHF 정렬을 수행한다. 동적 해상도 혼합 배치 학습 전략을 계승하며 개선된 데이터 큐레이션 파이프라인을 적용한다.",
+  "paper_url": "https://arxiv.org/abs/2511.21631",
+  "code_url": "https://github.com/QwenLM/Qwen3-VL",
+  "license_type": "Apache-2.0",
+  "concepts": ["Dynamic Resolution", "Enhanced Reasoning", "Video Understanding"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "qwen2-vl", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

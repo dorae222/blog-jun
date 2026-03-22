@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "internvl",
+  "organization": "Shanghai AI Lab",
+  "release_date": "2023-12-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "6B",
+  "context_length": "4096",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": "",
+  "hidden_dim": "3200",
+  "num_layers": "48",
+  "num_heads": "25",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "InternVL은 2023년 Shanghai AI Lab에서 발표한 6B 파라미터 비전 파운데이션 모델로, CLIP-ViT의 한계를 극복하기 위해 LLM 수준으로 스케일업된 비전 인코더를 제안하였다. 기존 비전 인코더가 수억 파라미터에 머물던 것과 달리, 6B 파라미터 ViT를 구축하여 풍부한 시각 표현 능력을 갖춘다. 웹 스케일 이미지-텍스트 데이터와 LLaMA 언어 모델을 결합하여 CLIP을 능가하는 제로샷 시각-언어 이해를 달성하며, 이후 InternVL 멀티모달 LLM 시리즈의 비전 백본 역할을 한다.",
+  "key_detail": "InternVL은 InternViT-6B라는 6B 파라미터 ViT와 InternLM-7B 언어 모델을 픽셀-셔플 방식으로 연결한다. 대규모 비전 언어 정렬을 위해 대조 학습(CLIP 방식), 생성 학습(캡셔닝), 매칭 학습을 단계적으로 수행하는 점진적 정렬 전략을 채택한다. InternViT-6B는 기존 ViT-L(300M) 대비 20배 크며, 고해상도 이미지에서 더욱 세밀한 시각 특징을 추출한다. 다운스트림 태스크에서 ViT-L 기반 모델 대비 높은 성능 향상을 달성하였다.",
+  "training_detail": "웹에서 수집한 수십억 이미지-텍스트 쌍으로 사전학습하며, 3단계 점진적 학습 전략을 사용한다. 1단계에서 대조 학습으로 비전-언어 정렬, 2단계에서 생성 학습으로 캡셔닝, 3단계에서 멀티태스크 파인튜닝을 수행한다. 64개의 A100 GPU로 수주간 학습된다.",
+  "paper_url": "https://arxiv.org/abs/2312.14238",
+  "code_url": "https://github.com/OpenGVLab/InternVL",
+  "license_type": "MIT",
+  "is_open_source": true,
+  "related_post_slug": "internvl",
+  "concepts": [
+    "Large-Scale Vision Encoder",
+    "Progressive Alignment",
+    "Vision Foundation Model"
+  ]
+}

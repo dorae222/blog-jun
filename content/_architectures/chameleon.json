@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "chameleon",
+  "organization": "Meta",
+  "release_date": "2024-05-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "34B",
+  "context_length": "4096",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "RMSNorm + QK-Norm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "65536",
+  "hidden_dim": "8192",
+  "num_layers": "48",
+  "num_heads": "64",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Chameleon은 2024년 Meta가 발표한 조기 융합(early-fusion) 방식의 멀티모달 모델로, 이미지와 텍스트를 별도 인코더 없이 모두 이산 토큰으로 변환하여 동일한 자기회귀 트랜스포머로 처리한다. 이미지 VQ-VAE 토크나이저로 이미지를 1024개의 이산 토큰으로 변환하고, 텍스트 토큰과 동일한 어휘 공간에서 모든 모달리티를 통합 처리한다. 이 all-token 방식은 이미지 이해와 생성을 동일한 다음 토큰 예측 프레임워크로 처리할 수 있게 하며, 인터리브된 이미지-텍스트 시퀀스를 자유롭게 생성하는 능력을 갖춘다.",
+  "key_detail": "Chameleon의 핵심 혁신은 모든 모달리티를 이산 토큰의 통합 어휘로 처리하는 조기 융합 아키텍처이다. 이미지를 VQ-VAE로 1024개의 8192개 코드북 토큰으로 변환하고, 텍스트 토큰과 합쳐 총 65536개 어휘를 가지는 단일 트랜스포머로 모든 시퀀스를 처리한다. 이 구조는 이미지와 텍스트 간 어떤 순서, 어떤 비율로도 자유롭게 생성이 가능하다. 학습 안정성을 위해 QK-Norm, 재정렬된 LayerNorm, Dropout을 적용하며, 이미지-텍스트 혼합 데이터로 통합 사전학습을 수행한다.",
+  "training_detail": "2조 토큰 이상의 텍스트와 수십억 장의 이미지를 이산 토큰으로 변환한 혼합 데이터로 사전학습한다. 이미지 토크나이저(VQ-VAE)를 먼저 학습한 뒤 통합 언어 모델을 학습하는 순서로 진행한다. 대규모 분산 학습 시 발생하는 불안정성을 해소하기 위해 QK-Norm과 Z-loss 정규화를 적용한다.",
+  "paper_url": "https://arxiv.org/abs/2405.09818",
+  "code_url": "https://github.com/facebookresearch/chameleon",
+  "license_type": "Chameleon License",
+  "is_open_source": true,
+  "related_post_slug": "chameleon",
+  "concepts": [
+    "All-Token Multimodal",
+    "Early Fusion",
+    "Unified Autoregressive"
+  ]
+}

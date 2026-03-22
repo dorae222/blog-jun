@@ -1,0 +1,33 @@
+{
+  "name": "Gated DeltaNet",
+  "slug": "gated-deltanet",
+  "organization": "Tsinghua University / Shanghai AI Lab",
+  "release_date": "2024-12-05",
+  "decoder_type": "ssm",
+  "param_scale": "340M / 1.3B / 3B / 7B",
+  "context_length": "Unlimited (linear recurrence)",
+  "attention_type": "Gated Delta Rule Linear Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "32000",
+  "hidden_dim": "1024 (340M) ~ 4096 (7B)",
+  "num_layers": "24 (340M) ~ 32 (7B)",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gated DeltaNet은 2024년 청화대학교와 상하이 AI Lab이 발표한 모델로, Delta Rule 기반 선형 어텐션에 입력 의존적 게이팅(data-dependent gating)을 결합하여 선형 복잡도 모델의 표현력 한계를 극복한 아키텍처이다. DeltaNet의 연상 기억 업데이트 규칙(delta rule)은 메모리에서 오래된 연관을 제거하는 능력이 있지만, GLA의 망각 게이트 없이는 장기 의존성 제어가 제한적이었다. Gated DeltaNet은 두 접근법을 결합하여 delta rule의 정밀한 메모리 수정과 게이팅의 선택적 망각을 함께 활용한다. 7B 파라미터 기준 RetNet, GLA, Mamba 계열 대비 여러 언어 이해 및 생성 벤치마크에서 SoTA를 달성했다.",
+  "key_detail": "Gated DeltaNet의 상태 업데이트는 S_t = G_t ⊙ S_{t-1} + β_t(v_t - S_{t-1} k_t) k_t^T 형태이다. 첫 번째 항은 GLA의 gate G_t로 이전 상태를 선택적으로 보존하고, 두 번째 항은 DeltaNet의 delta rule로 예측 오차(v_t - S_{t-1} k_t)만큼 메모리를 정밀 수정한다. β_t는 학습 속도 스케일러이다. 이 조합으로 GLA가 잘 못하는 정밀 in-context retrieval과 DeltaNet이 약한 장기 망각 제어를 동시에 개선한다. 하드웨어 효율적 청크 단위 병렬 계산(chunkwise parallelism)을 지원하며, flash-linear-attention 라이브러리에 통합되어 있다.",
+  "training_detail": "SlimPajama, RedPajama 등 공개 코퍼스로 학습. H100/A100 GPU. LLaMA 학습 설정 준수. 청크 크기 64~256으로 chunkwise parallel 학습. 3B 모델 기준 약 300B 토큰 학습. GLA, DeltaNet과 동일한 설정에서 ablation 실험 공개.",
+  "paper_url": "https://arxiv.org/abs/2412.06464",
+  "code_url": "https://github.com/fla-org/flash-linear-attention",
+  "license_type": "MIT",
+  "concepts": ["Delta Rule", "Gated Linear Attention", "Associative Memory", "Linear Attention", "Chunkwise Parallel", "Data-dependent Gating", "In-context Retrieval", "Linear Complexity"],
+  "architecture_category": "ssm",
+  "branch_type": "ssm",
+  "is_open_source": true,
+  "relations": [
+    {"to": "retnet", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

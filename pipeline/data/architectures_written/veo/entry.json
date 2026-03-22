@@ -1,0 +1,39 @@
+{
+  "name": "Veo 2",
+  "slug": "veo",
+  "organization": "Google DeepMind",
+  "release_date": "2024-05-14",
+  "decoder_type": "diffusion_dit",
+  "param_scale": "N/A (비공개)",
+  "context_length": "N/A",
+  "attention_type": "Full Self-Attention (시공간 통합)",
+  "normalization": "N/A",
+  "activation": "N/A",
+  "position_encoding": "N/A",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Veo(현재 Veo 2)는 2024년 Google DeepMind가 발표한 고해상도 텍스트/이미지-비디오 생성 모델로, 최대 4K 해상도의 장편 비디오 생성 능력을 갖춘 최고 수준의 상업 비디오 생성 시스템이다. Veo 2는 Imagen의 T5 텍스트 인코더 기반 Cascaded Diffusion 접근법을 영상으로 확장하였으며, Google DeepMind의 영상 이해·생성 연구들—Lumiere, VideoPoet, GenCast 등—의 기술적 성과를 통합한 것으로 알려져 있다. 핵심 특징으로는 시네마틱 카메라 동작(달리, 팬, 줌 등)의 자연스러운 표현, 물리적으로 그럴듯한 물체 상호작용, 사람 동작의 정확한 표현이 있다. 특히 텍스트 프롬프트에서 지정한 카메라 앵글·렌즈·움직임을 정확히 제어하는 기능은 실제 영화 제작 워크플로우에서 활용될 수 있는 수준이다. Veo 2는 YouTube Shorts 및 Google Workspace 통합, 전문 영화 제작사(예: 도널드 글로버의 Gilga 등)와의 협업을 통해 상업적 배포가 이루어졌다. ELO 기반 벤치마크에서 Sora, Kling 등과 함께 최상위 군을 형성하며, 특히 4K 해상도와 분당 단위 긴 비디오 생성에서 강점을 보인다.",
+  "key_detail": "Veo 2의 아키텍처는 공개된 정보가 제한적이나, Imagen 계열의 Cascaded Diffusion 구조(저해상도 생성 → SR)와 영상 시퀀스를 위한 시공간 Transformer(DiT)를 결합한 것으로 알려져 있다. 텍스트 인코더로 T5-XXL을 활용하며, 카메라 동작 제어를 위한 별도 조건 임베딩이 존재하는 것으로 추정된다. 긴 비디오 생성을 위한 Temporal Attention 또는 비디오 청크(chunk) 단위 처리 전략이 적용된다. 4K 해상도 지원을 위한 Super-Resolution 업샘플러 확산 모델도 포함된다.",
+  "training_detail": "학습 데이터 및 모델 파라미터는 공개되지 않았다. Google 내부 대규모 비디오 데이터셋과 외부 라이선스 데이터를 활용한 것으로 알려져 있다. VideoFeedback 등 인간 선호도 데이터로 RLHF 유사 정렬 학습이 적용된 것으로 추정된다. ELO 기반 비디오 생성 평가에서 전반적 품질, 물리 사실성, 텍스트 정렬 항목에서 최상위 수준을 기록하였다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "4K Video Generation",
+    "Camera Control",
+    "Cinematic Video",
+    "High-Resolution Video",
+    "Long-Duration Video"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": false,
+  "relations": [
+    {"to": "imagen", "type": "evolved_from"}
+  ],
+  "related_post_slug": "veo"
+}

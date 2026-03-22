@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "gpt-4o",
+  "organization": "OpenAI",
+  "release_date": "2024-05-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "unknown",
+  "context_length": "128000",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "unknown",
+  "num_layers": "unknown",
+  "num_heads": "unknown",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "GPT-4o는 2024년 OpenAI가 발표한 네이티브 멀티모달 모델로, 텍스트·이미지·오디오를 단일 엔드-투-엔드 모델로 처리하는 것이 핵심 혁신이다. 기존 GPT-4V가 별도의 비전 모듈을 연결한 방식이었다면, GPT-4o는 모든 모달리티를 처음부터 통합하여 학습한 진정한 네이티브 멀티모달 모델이다. 특히 실시간 음성 대화 능력이 크게 향상되어 320ms의 낮은 지연시간으로 자연스러운 음성-음성 대화가 가능하며, 음성의 감정과 뉘앙스를 이해하고 표현할 수 있다.",
+  "key_detail": "GPT-4o는 텍스트, 이미지, 오디오 입력을 모두 동일한 토큰 공간에서 처리하는 네이티브 멀티모달 아키텍처를 채택한다. 이전 GPT-4V 방식처럼 이미지를 별도 인코더로 처리하지 않고, 오디오·이미지·텍스트 모두 단일 트랜스포머에서 처리된다. 음성 입력을 텍스트로 변환하는 중간 단계 없이 직접 오디오 스트림을 처리하므로 감정, 웃음, 노래 등 비언어적 음성 특성을 이해하고 생성할 수 있다. 128K 컨텍스트 윈도우와 함께 시각적 이해, 코드 생성, 복잡한 추론 능력도 GPT-4 수준을 유지한다.",
+  "training_detail": "상세한 학습 방법은 공개되지 않았으나, 텍스트·이미지·오디오를 포함한 대규모 멀티모달 데이터로 사전학습하고 RLHF 기반 정렬 학습을 수행한 것으로 알려져 있다. 실시간 오디오 처리를 위한 스트리밍 추론 최적화가 포함되며, GPT-4 수준의 텍스트 추론 능력을 유지하면서 멀티모달 통합을 달성하였다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "is_open_source": false,
+  "related_post_slug": "gpt-4o",
+  "concepts": [
+    "End-to-End Multimodal",
+    "Native Multimodal",
+    "Real-Time Voice"
+  ]
+}

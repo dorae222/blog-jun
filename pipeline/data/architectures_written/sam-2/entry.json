@@ -1,0 +1,33 @@
+{
+  "name": "SAM 2",
+  "slug": "sam-2",
+  "organization": "Meta",
+  "release_date": "2024-08-01",
+  "decoder_type": "vision_encoder",
+  "param_scale": "224M",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Absolute + Relative",
+  "vocab_size": null,
+  "hidden_dim": "1024",
+  "num_layers": "24",
+  "num_heads": "16",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "SAM 2는 2024년 Meta가 발표한 이미지 및 비디오 통합 세그멘테이션 파운데이션 모델이다. 기존 SAM이 이미지 세그멘테이션에만 집중했던 것과 달리, SAM 2는 스트리밍 메모리 구조를 도입하여 비디오에서 시간적 일관성 있는 객체 추적·분할을 실현한다. 메모리 인코더, 메모리 뱅크, 메모리 어텐션 모듈을 통해 이전 프레임의 정보를 효율적으로 활용하며, 클릭·박스·마스크 프롬프트로 비디오 내 객체를 실시간에 가깝게 추적할 수 있다. SA-V 데이터셋을 함께 공개하였다.",
+  "key_detail": "SAM 2의 핵심 혁신은 스트리밍 메모리 아키텍처이다. 메모리 인코더가 각 프레임의 마스크 예측을 메모리로 인코딩하고, 메모리 뱅크가 최근 프레임과 프롬프트된 프레임의 기억을 저장하며, 메모리 어텐션 모듈이 현재 프레임을 처리할 때 저장된 메모리를 조회한다. 이를 통해 처음 프레임에 주어진 프롬프트 하나만으로 비디오 전체에서 객체를 추적·분할할 수 있다. Hiera 기반 경량 이미지 인코더를 채택하여 SAM 대비 약 6배 빠른 처리 속도를 달성한다.",
+  "training_detail": "SA-V(SA-Video) 데이터셋과 기존 비디오 세그멘테이션 데이터셋을 혼합하여 학습한다. 이미지 세그멘테이션과 비디오 추적을 통합 학습하는 방식을 사용하며, Hiera 이미지 인코더는 MAE로 사전학습된 가중치로 초기화한다. AdamW 옵티마이저, cosine 스케줄러를 사용하며 64개의 A100 GPU에서 학습된다.",
+  "paper_url": "https://arxiv.org/abs/2408.00714",
+  "code_url": "https://github.com/facebookresearch/segment-anything-2",
+  "license_type": "Apache-2.0",
+  "concepts": ["Video Segmentation", "Streaming Memory", "Promptable Segmentation"],
+  "architecture_category": "vision",
+  "branch_type": "vision",
+  "is_open_source": true,
+  "relations": [
+    {"to": "sam", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

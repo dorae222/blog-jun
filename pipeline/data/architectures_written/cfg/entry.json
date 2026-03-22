@@ -1,0 +1,39 @@
+{
+  "name": "Classifier-Free Guidance (CFG)",
+  "slug": "cfg",
+  "organization": "Google Brain",
+  "release_date": "2022-07-26",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Classifier-Free Diffusion Guidance는 2022년 Google Brain의 Jonathan Ho와 Tim Salimans가 발표한 기법으로, 별도의 분류기 모델 없이 단일 확산 모델만으로 조건부 샘플링을 강화하는 방법이다. 이전의 Classifier Guidance가 별도로 학습된 노이즈 환경 분류기를 필요로 했던 한계를 극복했다. 핵심 아이디어는 학습 시 조건을 일정 확률(10~20%)로 빈 조건(null token)으로 드롭아웃하여, 동일 모델이 조건부와 비조건부 분포를 모두 학습하게 하는 것이다. 샘플링 시에는 두 score 예측값의 선형 결합을 사용하며, 가이던스 스케일 s > 1로 조건 방향을 증폭한다. Stable Diffusion, DALL-E 3, Imagen 등 현대 텍스트-이미지 생성 모델의 표준 기법으로 자리잡았으며, Negative Prompt 기법도 CFG의 확장으로 구현된다.",
+  "key_detail": "CFG는 베이즈 정리에 기반한다. Score 관점에서 조건부 score를 분류기 없이 근사하며, 가이던스 스케일 s=1이면 표준 조건부 샘플링, s=0이면 비조건부 샘플링이 된다. 학습 시 조건 드롭아웃 확률은 일반적으로 0.1~0.2로 설정된다. ImageNet 128x128에서 FID 2.43(s=3.0)을 달성하며 Classifier Guidance(FID 2.97) 대비 우수한 성능을 보였다.",
+  "training_detail": "원논문은 클래스 조건부 이미지 생성(ImageNet 128x128)과 텍스트 조건부 이미지 생성에서 CFG를 검증하였다. 단일 U-Net 모델을 조건부/비조건부 동시 학습으로 훈련하므로 추가 파라미터 없이 구현된다.",
+  "paper_url": "https://arxiv.org/abs/2207.12598",
+  "code_url": "",
+  "license_type": "",
+  "concepts": [
+    "Classifier-Free Guidance",
+    "Unconditional/Conditional Training",
+    "Guidance Scale",
+    "Negative Prompt",
+    "Condition Dropout"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": false,
+  "relations": [
+    {"to": "classifier-guidance", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

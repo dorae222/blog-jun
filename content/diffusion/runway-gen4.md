@@ -1,0 +1,81 @@
+---
+title: "Runway Gen-4: 확산 기반 이미지 생성 모델"
+slug: "runway-gen4"
+category: diffusion
+tags: ["4K Video Generation", "Character Consistency", "Interactive Video Generation", "Multi-Shot Consistency", "Reference Image Conditioning", "Runway", "Runway Gen-4"]
+status: published
+post_type: article
+quality_score: 8.0
+created_at: "2026-03-22T10:37:37.102382+00:00"
+architecture_entry: "runway-gen4"
+---
+
+# Runway Gen-4: 캐릭터 일관성 기반 AI 비디오 생성
+
+**Runway** · **2025-03-31** · **Diffusion** · **Proprietary**
+
+## 개요
+
+Runway Gen-4(및 Gen-4.5)는 2025년 AI 영상 제작 전문 기업 Runway가 발표한 텍스트/이미지-비디오 생성 모델로, 캐릭터 일관성 유지와 4K 품질 영상 생성을 전문 영상 제작 워크플로우 수준으로 끌어올린 모델이다. Runway는 2022년 Stable Diffusion의 공동 개발사로 출발하여, Gen-1(비디오 스타일 전이), Gen-2(텍스트-비디오 생성), Gen-3 Alpha(향상된 동작 품질) 시리즈를 거치며 비디오 생성 기술을 지속적으로 발전시켜 왔다.
+
+Gen-4의 가장 핵심적인 차별화 포인트는 **멀티샷 캐릭터 일관성(Multi-Shot Character Consistency)**이다. 참조 이미지(reference image)를 조건으로 제공하면 동일한 인물, 의상, 물체가 다양한 장면과 카메라 앵글에서 일관되게 유지된다. 이전 세대의 비디오 생성 모델들은 단일 클립 내에서의 시간적 일관성은 어느 정도 달성했지만, 서로 다른 클립 간의 캐릭터 일관성은 매우 취약하였다. Gen-4는 이 문제를 참조 이미지 기반 시각적 정체성 보존으로 해결하여, 실사 광고 제작, 단편 영화 스토리보드 시각화, 캐릭터 중심 소셜 미디어 콘텐츠 제작에서 실용적으로 활용될 수 있는 수준에 도달하였다.
+
+4K 해상도 출력 지원과 함께 Gen-4.5에서는 실시간 인터랙티브 비디오 생성도 지원하여, 사용자가 실시간으로 장면과 상호작용하는 게임 및 체험형 미디어 분야로의 확장이 가능해졌다. DiT(Diffusion Transformer) 아키텍처에서 영감을 받은 Transformer 기반 비디오 생성 백본을 사용하는 것으로 알려져 있다.
+
+![Architecture](figures/architecture.svg)
+
+## 아키텍처 상세
+
+### 캐릭터 일관성 메커니즘
+
+Gen-4의 캐릭터 일관성은 참조 이미지에서 추출한 **시각적 정체성 임베딩(Visual Identity Embedding)**을 각 클립 생성 시 조건으로 주입하는 방식으로 구현된다. 정확한 아키텍처는 비공개이나, IP-Adapter 유사 메커니즘 또는 Cross-Attention 기반 참조 주입으로 추정된다.
+
+참조 이미지 $I_{\text{ref}}$에서 비전 인코더를 통해 정체성 특징 $f_{\text{id}} = E_{\text{vision}}(I_{\text{ref}})$를 추출하고, 이를 확산 과정의 Cross-Attention에 주입한다:
+
+$$\text{Attn}(Q, K_{\text{id}}, V_{\text{id}}) = \text{softmax}\left(\frac{Q \cdot K_{\text{id}}^T}{\sqrt{d_k}}\right) V_{\text{id}}$$
+
+여기서 $K_{\text{id}}$와 $V_{\text{id}}$는 정체성 특징에서 생성된 Key와 Value이다. 이 메커니즘은 텍스트 조건의 Cross-Attention과 병렬로 작동하여, 텍스트 프롬프트의 의미와 참조 이미지의 시각적 정체성을 동시에 반영한다.
+
+### 시공간 DiT 백본
+
+비디오 생성의 기본 백본은 시공간(Spatiotemporal) Full Self-Attention을 사용하는 DiT 구조이다. 비디오 프레임은 VAE를 통해 잠재 공간으로 압축된 후, 시공간 패치로 분할되어 1D 토큰 시퀀스가 된다. 확산 과정의 노이즈 예측은 다음과 같다:
+
+$$\boldsymbol{\epsilon}_\theta(\mathbf{z}_t, t, c_{\text{text}}, f_{\text{id}}) \approx \boldsymbol{\epsilon}$$
+
+여기서 $c_{\text{text}}$는 텍스트 조건, $f_{\text{id}}$는 참조 이미지의 정체성 특징이다.
+
+### Gen-4.5 실시간 인터랙티브 생성
+
+Gen-4.5의 실시간 인터랙티브 기능은 잠재 공간에서 사용자 입력을 조건으로 반복적으로 다음 프레임을 예측하는 자동회귀형 또는 스트리밍 확산 방식으로 구현되는 것으로 알려져 있다. 카메라 동작 제어(달리, 팬, 줌, 틸트), 모션 브러시(특정 영역에 독립적인 동작 지정) 등 전문적인 영상 편집 도구와의 통합도 지원한다. 이 기능은 영상 제작자가 실시간으로 장면을 조정하며 원하는 결과를 즉시 확인할 수 있게 하여, 전통적인 영상 제작 워크플로우에 자연스럽게 통합될 수 있다.
+
+## 핵심 혁신
+
+Gen-4의 핵심 혁신은 멀티샷 캐릭터 일관성을 실용적 수준으로 구현한 것이다. 참조 이미지 한 장으로 다양한 장면에서 동일한 캐릭터를 일관되게 유지할 수 있다는 것은, AI 비디오 생성이 단순한 데모에서 실제 영상 제작 도구로 전환되는 중요한 이정표이다. 4K 해상도 지원은 방송 및 영화 제작 품질 요구사항을 충족하며, Gen-4.5의 실시간 인터랙티브 생성은 게임 및 인터랙티브 미디어 분야로의 확장 가능성을 보여준다. 이러한 기능들의 조합은 Runway를 전문 영상 제작 AI 도구의 선두 주자로 자리매김하게 한다.
+
+## 벤치마크/성능
+
+| 모델 | 해상도 | 캐릭터 일관성 | 텍스트 정렬 | ELO 순위 |
+|------|--------|-------------|-----------|--------|
+| Runway Gen-4 | 4K | 상위권 | 상위권 | Top 3 |
+| Sora 2 | 1080p | 중상위 | 상위권 | Top 5 |
+| Kling 2.6 | 1080p | 중상위 | 상위권 | Top 5 |
+| Veo 2 | 4K | 상위권 | 상위권 | Top 3 |
+| HunyuanVideo | 720p | 중위 | 중상위 | Top 10 |
+
+ELO 기반 사용자 선호도 평가에서 Runway Gen-4는 Kling 2.6, Sora 2, Veo 2 등과 함께 최상위 군을 형성하였다. 특히 캐릭터 일관성과 4K 품질 측면에서 높은 평가를 받았으며, 전문 영상 제작 워크플로우와의 통합 용이성에서도 차별화된다.
+
+## 학습
+
+아키텍처 세부 사항 및 학습 데이터는 공개되지 않았다. Runway는 영상 제작 전문 기업으로서 고품질 영화, 광고, 단편 영상 데이터를 학습에 활용한 것으로 알려져 있다. 확산 모델의 학습 과정에서 표준적인 노이즈 예측 목표 함수 $\mathcal{L} = \mathbb{E}[\|\boldsymbol{\epsilon} - \boldsymbol{\epsilon}_\theta(\mathbf{z}_t, t, c)\|^2]$를 사용하되, 캐릭터 일관성을 위한 추가적인 정체성 보존 손실이 적용된 것으로 추정된다. 인간 선호도 데이터를 활용한 RLHF 또는 DPO 기반 정렬 학습도 적용되었을 가능성이 높다.
+
+## 관련 모델
+
+Runway Gen-4는 DiT에서 영감을 받았으며, Gen-1 → Gen-2 → Gen-3 Alpha → Gen-4 계열의 최신 모델이다. 경쟁 모델로는 Sora 2(OpenAI), Veo 2/3(Google DeepMind), Kling 2.6(Kuaishou) 등이 있다.
+
+## 참고 자료
+
+- [Runway 공식 사이트](https://runway.com)
+
+## 관련 문서
+
+- [[dit|DiT (Diffusion Transformers)]] — 영감

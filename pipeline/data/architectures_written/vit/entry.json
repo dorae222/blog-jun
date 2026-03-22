@@ -1,0 +1,33 @@
+{
+  "name": "ViT",
+  "slug": "vit",
+  "organization": "Google Brain",
+  "release_date": "2020-10-22",
+  "decoder_type": "vision_encoder",
+  "param_scale": "86M (Base) / 307M (Large) / 632M (Huge)",
+  "context_length": "196 (16x16 patches, 224px) / 256 (14x14 patches)",
+  "attention_type": "MHA (Patch-level Self-Attention)",
+  "normalization": "LayerNorm (Pre-Norm)",
+  "activation": "GELU",
+  "position_encoding": "Learned 1D",
+  "vocab_size": "N/A",
+  "hidden_dim": "768 (Base) / 1024 (Large) / 1280 (Huge)",
+  "num_layers": "12 (Base) / 24 (Large) / 32 (Huge)",
+  "num_heads": 12,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "ViT(Vision Transformer)는 Alexey Dosovitskiy 등이 2020년 Google Brain에서 제안한 최초의 순수 비전 트랜스포머 모델이다. 이미지를 16×16 픽셀의 패치로 분할하고 이를 1D 시퀀스로 펼쳐 NLP용 Transformer를 그대로 적용한다. CNN의 귀납적 편향(translation equivariance, locality)을 배제했음에도 JFT-300M 등 대규모 데이터로 사전 학습하면 ResNet 계열 CNN을 능가하는 성능을 보인다. 이후 멀티모달 모델의 비전 인코더로 폭넓게 채택되었다.",
+  "key_detail": "이미지 H×W×C를 N개의 패치(각 P×P)로 분할한 뒤 각 패치를 선형 투영해 D차원 임베딩 시퀀스로 변환한다. 시퀀스 앞에 학습 가능한 [CLS] 토큰을 붙이고, 위치 정보를 담은 학습 가능한 1D 포지션 임베딩을 더한다. 이후 표준 Transformer 인코더(LayerNorm → MHA → LayerNorm → FFN) 스택을 통과시키고, 최종 [CLS] 토큰 표현으로 분류를 수행한다. 헤드 차원과 레이어 수에 따라 ViT-B/16, ViT-L/16, ViT-H/14 세 규모로 구분된다. 패치 크기가 작을수록 시퀀스 길이가 길어져 표현력은 높아지지만 연산량이 증가한다.",
+  "training_detail": "JFT-300M(3억 장 내부 데이터셋)으로 사전 학습 후 ImageNet-21K 또는 ImageNet-1K로 파인튜닝한다. 사전 학습 없이 ImageNet만으로 학습하면 CNN 대비 성능이 낮아지며 이는 CNN의 귀납적 편향이 부재한 탓이다. 파인튜닝 시 해상도를 224에서 384로 늘리면 추가 성능 향상이 가능하다. 학습에는 TPU v3-512를 활용했다. CLIP 등 대조 학습 패러다임과 결합해 LLaVA, BLIP 등 비전-언어 모델의 비전 인코더로 광범위하게 재활용되고 있다.",
+  "paper_url": "https://arxiv.org/abs/2010.11929",
+  "code_url": "https://github.com/google-research/vision_transformer",
+  "license_type": "Apache-2.0",
+  "concepts": ["Patch Embedding", "CLS Token", "Vision Transformer", "Pre-training", "GELU", "Self-Attention"],
+  "architecture_category": "vision",
+  "branch_type": "vision",
+  "is_open_source": true,
+  "relations": [
+    {"to": "transformer", "type": "evolved_from"}
+  ],
+  "related_post_slug": "vit"
+}

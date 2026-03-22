@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "claude-code",
+  "organization": "Anthropic",
+  "release_date": "2025-02-24",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Claude Code는 Anthropic이 2025년 2월 공개한 에이전틱 코딩 CLI 도구로, Claude 모델을 기반으로 터미널에서 직접 실행되는 AI 소프트웨어 엔지니어링 보조도구다. 기존 Copilot류 자동완성 도구와 달리, Claude Code는 코드베이스 전체를 이해하고 파일 읽기·쓰기·생성, 명령 실행, Git 조작, 웹 검색까지 에이전틱 방식으로 수행한다. 개발자와의 자연스러운 대화를 통해 복잡한 리팩토링·버그 수정·새 기능 구현을 엔드투엔드로 처리하며, SWE-bench에서 최고 수준의 성능을 기록하였다.",
+  "key_detail": "Claude Code의 핵심 설계 원칙은 \"에이전틱 루프 + 안전한 도구 사용\"이다. Bash 실행, 파일 편집, 웹 페치 등의 도구를 MCP 기반으로 확장할 수 있으며, 민감한 작업(파일 삭제, 외부 API 호출 등)은 사용자 확인을 요청하는 신뢰 레벨 시스템을 갖춘다. 대형 코드베이스를 효율적으로 탐색하기 위해 Glob 및 Grep 기반 코드 검색을 기본 도구로 제공하며, 작업 메모리(CLAUDE.md)를 통해 프로젝트 컨텍스트를 세션 간에 유지한다. 서브에이전트(Task 도구)를 통한 병렬 작업 실행도 지원한다.",
+  "training_detail": "Claude Code는 Claude 3.5 Sonnet 및 Claude 4 시리즈를 기반으로 동작하며, 코딩 태스크에 특화된 에이전틱 파인튜닝이 적용된 것으로 알려져 있다. npm을 통해 설치되며 API 키로 Anthropic 모델에 접근한다. MCP 서버 통합을 통해 도구 생태계를 무한히 확장할 수 있다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "",
+  "is_open_source": false,
+  "related_post_slug": "claude-code",
+  "concepts": [
+    "Agentic Coding",
+    "CLI Agent",
+    "Tool Use"
+  ]
+}

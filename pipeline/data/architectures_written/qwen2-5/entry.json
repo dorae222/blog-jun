@@ -1,0 +1,29 @@
+{
+  "name": "Qwen2.5",
+  "slug": "qwen2-5",
+  "organization": "Alibaba Cloud",
+  "release_date": "2024-09-19",
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "decoder_type": "dense",
+  "param_scale": "0.5B / 1.5B / 3B / 7B / 14B / 32B / 72B",
+  "context_length": "131072",
+  "attention_type": "GQA",
+  "normalization": "RMSNorm",
+  "activation": "SiLU (SwiGLU)",
+  "position_encoding": "RoPE",
+  "vocab_size": "151936",
+  "hidden_dim": "3584 (7B) / 7168 (32B) / 8192 (72B)",
+  "num_layers": "28 (7B) / 64 (32B) / 80 (72B)",
+  "num_heads": "28 (7B) / 40 (32B) / 64 (72B)",
+  "description": "Alibaba Cloud가 2024년 9월 공개한 Qwen2의 직접 업그레이드 버전으로, 학습 토큰을 7T에서 18T로 약 2.5배 늘리고 수학·코드 데이터를 대폭 강화한 것이 핵심이다. 32B 모델이 GPT-4o에 준하는 성능을 오픈 가중치로 제공함으로써, '32B 이하 오픈 모델 중 최강'이라는 타이틀을 확보했다. Qwen2.5-Coder(코드 특화)·Qwen2.5-Math(수학 특화) 버전을 함께 출시해 도메인 특화 오픈 모델 생태계를 형성했다. 지시 따르기(instruction following) 품질과 긴 컨텍스트 처리 정확도도 Qwen2 대비 의미 있게 개선되었다.",
+  "key_detail": "Qwen2 → Qwen2.5 핵심 변화 4가지: (1) 18T 토큰으로 학습량 2.5배 증가, (2) 수학(MATH)·코드(HumanEval) 데이터 비중 대폭 향상—Qwen2.5-72B: MATH 83.1%(Qwen2-72B: 69.0%), HumanEval 86.6%, (3) 긴 컨텍스트 품질 개선(128K 처리 일관성 향상), (4) Online DPO 기반 지시 따르기 강화. 32B 모델: MMLU 83.3%(GPT-4o: 85.7% 수준에 근접), MT-Bench 9.12.",
+  "training_detail": "18T 토큰(Qwen2 7T 대비 2.5배). 2단계 학습: 대규모 일반 데이터 프리트레인 후 고품질 수학·코드·지시 데이터 집중 파인튜닝. Chat 버전은 SFT + Online DPO 정렬. 각 크기별 독립 학습 후 별도 정렬 파이프라인 적용. Flash Attention 2 사용.",
+  "paper_url": "https://arxiv.org/abs/2412.15115",
+  "concepts": ["GQA", "RoPE", "RMSNorm", "18T Tokens", "Math & Code Specialization", "SwiGLU"],
+  "relations": [
+    {"to": "qwen2", "type": "evolved_from"}
+  ],
+  "related_post_slug": "qwen2-5"
+}

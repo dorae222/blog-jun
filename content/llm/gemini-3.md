@@ -1,0 +1,144 @@
+---
+title: "Gemini 3: Google DeepMind의 차세대 에이전틱 AI 모델"
+slug: "gemini-3"
+category: llm
+tags: ["Agentic AI", "Deep Think", "Gemini 3", "Google DeepMind", "Long Context", "Mixture of Experts", "MoE", "Multimodal", "Reasoning"]
+status: published
+post_type: article
+quality_score: 8.0
+created_at: "2026-03-22T10:37:36.975223+00:00"
+architecture_entry: "gemini-3"
+---
+
+# Gemini 3: Google DeepMind의 차세대 에이전틱 AI 모델
+
+## 개요
+
+Gemini 3는 Google DeepMind가 2025년 11월 18일 발표한 차세대 AI 모델 패밀리로, Google의 가장 강력한 AI 모델이다. Pro, Flash, Deep Think 세 가지 주요 변형을 제공하며, 멀티모달 이해, 추론, 코딩, 에이전틱 기능에서 이전 세대를 크게 능가한다.
+
+Gemini 3의 핵심 발전은 세 가지 축에서 이루어졌다: (1) Gemini 2.5의 사고 기능을 더욱 심화한 Deep Think 모드, (2) 강화된 에이전틱 AI 능력, (3) 확장된 멀티모달 처리. 특히 Deep Think 모드는 GPQA Diamond에서 93.8%, Humanity's Last Exam에서 41.0%를 달성하여 인간 수준의 전문 지식에 접근하는 성능을 보여주었다.
+
+## 아키텍처 상세
+
+### 기본 구조
+
+| 구성 요소 | 추정 사양 |
+|---|---|
+| 아키텍처 | Decoder-only Transformer + Sparse MoE |
+| 추정 파라미터 | ~1T (총) |
+| 컨텍스트 길이 | 2,000,000+ |
+| Attention | Multi-Head Attention |
+| 정규화 | RMSNorm |
+| 활성화 함수 | GeGLU |
+| 위치 인코딩 | RoPE |
+| 어휘 크기 | ~256,000 |
+| 학습 인프라 | TPU v6+ |
+
+### 모델 변형
+
+| 변형 | 목적 | 강점 |
+|---|---|---|
+| Gemini 3 Pro | 범용 최고 성능 | 멀티모달 + 추론 |
+| Gemini 3 Flash | 속도 + 효율 | 대량 처리, 실시간 |
+| Gemini 3 Deep Think | 극한 추론 | 과학/수학 난제 |
+
+### Sparse MoE 아키텍처
+
+약 1조 파라미터의 대규모 MoE 아키텍처를 채택한 것으로 알려져 있다. 각 토큰 처리 시 전체 파라미터의 일부만 활성화되므로, 모델의 전체 용량은 극대화하면서도 추론 비용은 효율적으로 관리된다.
+
+$$\text{활성 FLOPs} = \frac{k}{N} \times \text{Dense 등가 FLOPs}$$
+
+개선된 MoE 라우팅 알고리즘과 로드 밸런싱 기법을 통해 전문가 활용의 균형을 최적화한 것으로 추정된다.
+
+### Deep Think 모드
+
+Gemini 3 Deep Think는 Gemini 2.5의 사고 기능을 극단적으로 확장한 모드이다. 표준 사고 모드보다 훨씬 깊고 광범위한 내부 추론을 수행하여:
+
+1. **다중 접근법 탐색**: 하나의 문제에 대해 여러 풀이 방법을 탐색
+2. **자기 검증**: 각 추론 단계의 타당성을 자체 검증
+3. **반성적 추론**: 오류를 발견하면 되돌아가 재추론
+
+## 핵심 혁신
+
+### 1. GPQA Diamond 93.8% (Deep Think)
+
+GPQA Diamond는 대학원 수준의 물리, 화학, 생물 문제로 구성된 벤치마크이다. 93.8%라는 점수는 해당 분야 전공자 수준의 과학적 추론 능력을 의미한다.
+
+### 2. Humanity's Last Exam 41.0%
+
+Humanity's Last Exam은 수백 명의 분야 전문가들이 설계한 "인류의 마지막 시험"으로, AI가 도달하기 어려운 최전선의 지식과 추론 능력을 평가한다. Gemini 3 Deep Think의 41.0%는 이 벤치마크에서의 최고 점수이다.
+
+### 3. 에이전틱 AI 기능 강화
+
+Gemini 3는 Google의 AI 에이전트 생태계와 깊이 통합된다:
+- **Project Astra**: 시각적 환경을 이해하고 상호작용하는 AI 에이전트
+- **NotebookLM**: 문서 기반 대화형 AI 연구 도구
+- **도구 사용**: 외부 API, 데이터베이스, 웹 검색을 자율적으로 활용
+
+## 벤치마크/성능
+
+| 벤치마크 | Gemini 3 Pro | Gemini 3 Deep Think | Gemini 2.5 Pro | GPT-4o |
+|---|---|---|---|---|
+| GPQA Diamond | ~88% | 93.8% | 84.0% | 53.6% |
+| Humanity's Last Exam | ~30% | 41.0% | 18.8% | 3.3% |
+| MMLU-Pro | ~85% | - | 80.4% | 72.6% |
+| SWE-bench | ~70% | - | 63.8% | 33.2% |
+| 코딩 (Codeforces) | ~2200 | - | 2071 | 1891 |
+
+## 관련 모델 비교
+
+### 프론티어 모델 비교 (2025년 말 기준)
+
+| 모델 | 개발사 | 추론 방식 | 에이전트 | 멀티모달 |
+|---|---|---|---|---|
+| Gemini 3 | Google | Deep Think | 강력 | 텍스트+이미지+오디오+비디오 |
+| GPT-4.5 | OpenAI | o3 추론 | 중간 | 텍스트+이미지+오디오 |
+| Claude 4 | Anthropic | Extended Thinking | 강력 | 텍스트+이미지 |
+| DeepSeek-V3 | DeepSeek | MoE+추론 | 제한적 | 텍스트 |
+
+### Gemini 시리즈 전체 진화
+
+| 세대 | 출시 | 핵심 혁신 | 컨텍스트 |
+|---|---|---|---|
+| Gemini 1.0 | 2023.12 | 네이티브 멀티모달 | 32K |
+| Gemini 1.5 | 2024.02 | 100만 토큰 MoE | 1M |
+| Gemini 2.0 | 2024.12 | Flash 효율 최적화 | 1M |
+| Gemini 2.5 | 2025.03 | 내장 사고 기능 | 1M |
+| Gemini 3 | 2025.11 | Deep Think + 에이전틱 | 2M+ |
+
+## 실무 활용
+
+### 활용 시나리오
+
+1. **과학 연구 보조**: Deep Think 모드로 대학원 수준의 과학 문제 해결
+2. **코딩 에이전트**: SWE-bench ~70%로 실제 소프트웨어 이슈 자동 해결
+3. **복합 문서 분석**: 2M+ 컨텍스트로 대규모 문서 세트 통합 분석
+4. **멀티모달 에이전트**: 이미지, 비디오, 오디오를 포함한 복잡한 환경 이해 및 대응
+
+### 접근 방법
+
+Gemini 3는 Google AI Studio, Vertex AI, Gemini App을 통해 접근할 수 있으며, 각 플랫폼에서 Pro/Flash/Deep Think를 선택하여 사용할 수 있다.
+
+## 한계 및 전망
+
+### 한계
+
+1. **비공개 구조**: 정확한 파라미터 수, MoE 사양, 학습 데이터 등 미공개
+2. **Deep Think 비용**: 극한 추론 모드의 높은 연산 비용과 긴 응답 시간
+3. **독점 모델**: 오픈소스가 아니어서 커스터마이징 제한 (Gemma로 일부 대응)
+4. **환각 가능성**: 깊은 추론에서도 잘못된 논리 체인이 형성될 수 있음
+
+### 전망
+
+Gemini 3는 "AI가 진정한 도구에서 자율적 에이전트로 진화하는" 전환점에 있는 모델이다. 특히 다음과 같은 방향으로의 발전이 예상된다:
+
+- **에이전틱 AI 심화**: 더 복잡하고 장기적인 작업을 자율적으로 수행
+- **도구 사용 확장**: MCP(Model Context Protocol) 등을 통한 외부 시스템 연동
+- **개인화**: 사용자별 맞춤형 AI 어시스턴트로의 진화
+- **실시간 멀티모달**: 실시간 비디오/오디오 스트림 처리
+
+Gemini 3는 Google DeepMind의 "AI로 과학적 발견을 가속화한다"는 비전의 핵심 실현 도구이며, AI 연구와 실용화의 최전선에 서 있는 모델이다.
+
+## 관련 문서
+
+- [[gemini-2-5|Gemini 2.5]] — 발전 기반

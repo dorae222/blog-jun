@@ -1,0 +1,43 @@
+{
+  "name": "GPT-Neo",
+  "slug": "gpt-neo",
+  "organization": "EleutherAI",
+  "release_date": "2021-03-21",
+  "decoder_type": "dense",
+  "param_scale": "125M / 1.3B / 2.7B",
+  "context_length": "2048",
+  "attention_type": "MHA (Local + Global Alternating)",
+  "normalization": "LayerNorm (Pre-Norm)",
+  "activation": "GELU",
+  "position_encoding": "Learned Absolute",
+  "vocab_size": "50257",
+  "hidden_dim": "2560 (2.7B)",
+  "num_layers": "32 (2.7B)",
+  "num_heads": "20 (2.7B)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GPT-Neo는 EleutherAI가 2021년 3월 공개한 오픈소스 자기회귀 언어 모델 시리즈로, OpenAI GPT-3의 독점적 성격에 대한 커뮤니티 반발 속에서 탄생한 최초의 본격적 오픈소스 대규모 언어 모델이다. 핵심 혁신은 Sparse Transformer(Child et al., 2019)에서 영감을 받은 Local + Global Attention의 교대 적용 패턴이다. 짝수 레이어에서는 256 토큰 윈도우 내에서만 어텐션을 수행하여 O(n·w) 복잡도를 달성하고, 홀수 레이어에서는 전체 시퀀스에 대한 글로벌 어텐션을 적용한다. 이 교대 방식은 GPT-2/3의 순수 글로벌 어텐션 대비 메모리 효율성을 크게 개선하면서도, Longformer처럼 완전 로컬만 사용하는 것보다 장거리 의존성을 더 잘 포착한다. The Pile(825GB, 22개 다양한 도메인) 데이터셋으로 학습했으며, 125M·1.3B·2.7B 세 가지 크기로 공개되었다. GPT-J(6B), GPT-NeoX(20B), Pythia 시리즈 등 EleutherAI 후속 모델의 아키텍처적 기반이 되었고, 오픈소스 LLM 생태계의 시발점으로 평가받는다.",
+  "key_detail": "Local + Global Attention 교대 패턴이 GPT-Neo의 핵심 혁신이다. 로컬 어텐션은 $\\text{Attention}_{\\text{local}}(Q,K,V) = \\text{softmax}\\left(\\frac{QK^T_{\\text{window}}}{\\sqrt{d_k}}\\right)V_{\\text{window}}$로, 각 토큰이 좌측 256개 토큰만 참조하며 O(n·w) 복잡도를 가진다. 글로벌 어텐션은 표준 causal mask를 적용한 O(n²) 전체 어텐션이다. 이 두 패턴을 레이어별로 번갈아 배치하면, 로컬 레이어가 인접 토큰 간 세밀한 구문적 관계를 포착하고, 글로벌 레이어가 문서 수준의 장거리 의존성과 전역적 문맥을 통합한다. GPT-2 대비 동일 파라미터 수에서 더 긴 시퀀스를 효율적으로 처리할 수 있다. 2.7B 모델 기준으로 히든 차원 2560, 어텐션 헤드 20개(d_k=128), 32개 Transformer 레이어, FFN 내부 차원 10240(4×hidden)을 사용한다. Pre-Norm(LayerNorm을 어텐션/FFN 앞에 배치)을 채택하여 깊은 네트워크에서의 학습 안정성을 확보했다.",
+  "training_detail": "학습 데이터로 The Pile(825GB, ~300B 토큰)을 사용했다. The Pile은 Wikipedia, arXiv, GitHub, PubMed, StackExchange 등 22개 도메인을 포괄하는 고품질 영문 코퍼스로, 단일 도메인 편향을 줄이기 위해 EleutherAI가 자체 구축했다. 토크나이저는 GPT-2의 BPE(50,257 어휘)를 그대로 재사용하여 GPT-2 생태계와의 호환성을 유지했다. 학습 인프라로 Google의 TPU Research Cloud(TRC) 프로그램을 통해 TPU v3-256 Pod를 사용했으며, JAX 기반 Mesh Transformer 프레임워크로 데이터 병렬화와 모델 병렬화를 구현했다. 2.7B 모델은 약 420B 토큰(The Pile 1.4 에폭)으로 학습되었고, 1.3B는 약 380B 토큰, 125M은 약 300B 토큰으로 학습했다. Apache 2.0 라이선스로 가중치·코드·데이터를 모두 공개하여 연구 재현성의 새로운 기준을 제시했으며, 이는 이후 LLaMA, Falcon 등 오픈소스 모델 공개 트렌드에 직접적인 영향을 미쳤다.",
+  "paper_url": "https://github.com/EleutherAI/gpt-neo",
+  "code_url": "https://github.com/EleutherAI/gpt-neo",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "Local Attention",
+    "Global Attention",
+    "Sparse Attention",
+    "The Pile",
+    "Open Source LLM",
+    "EleutherAI"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "gpt-2",
+      "type": "inspired_by"
+    }
+  ],
+  "related_post_slug": "gpt-neo"
+}

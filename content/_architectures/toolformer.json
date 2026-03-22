@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "toolformer",
+  "organization": "Meta",
+  "release_date": "2023-02-09",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Toolformer는 언어 모델이 어떤 API를 언제 호출하고 어떤 인수를 전달할지를 자기지도(self-supervised) 방식으로 스스로 학습하는 기법이다. Meta AI의 Schick et al.(2023)이 제안한 이 방법은 인간의 레이블링 없이도 모델이 계산기, 검색 엔진, 번역기, 위키피디아 API, 달력 등 다양한 외부 도구를 텍스트 생성 흐름 안에 자연스럽게 삽입하도록 파인튜닝한다. 도구 사용 능력을 모델 가중치에 직접 내재화한다는 점에서, 런타임 프롬프트 기반 도구 사용(ReAct 등)과 근본적으로 다르다.",
+  "key_detail": "학습 파이프라인은 세 단계로 구성된다. 첫째, 기존 텍스트 데이터에 GPT-3을 활용해 잠재적 API 호출 위치와 인수를 샘플링한다. 둘째, 실제 API를 호출해 결과를 얻고, 해당 호출이 텍스트 예측 손실을 낮추는지 필터링한다. 셋째, API 호출 마커가 삽입된 데이터로 GPT-J 6.7B를 파인튜닝한다. 추론 시 모델은 텍스트 생성 중 [API_CALL(...)] 토큰을 생성하면 실행 엔진이 이를 가로채 API를 호출하고 결과를 컨텍스트에 삽입한다. 수학 추론, 시간 질의, 사실 검색에서 기준 모델 대비 큰 향상을 달성하였다.",
+  "training_detail": "GPT-J 6.7B를 기반으로 파인튜닝. 인간 어노테이션 없이 자동 생성된 API 호출 데이터로 학습한다. 필터링 기준은 API 호출 전후의 언어 모델 손실 차이(perplexity 감소)이며, 유용한 호출만 학습 데이터로 선택된다.",
+  "paper_url": "https://arxiv.org/abs/2302.04761",
+  "code_url": "",
+  "license_type": "",
+  "is_open_source": true,
+  "related_post_slug": "toolformer",
+  "concepts": [
+    "API Calls",
+    "Self-Supervised",
+    "Tool Learning"
+  ]
+}

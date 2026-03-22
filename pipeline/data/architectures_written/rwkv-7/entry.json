@@ -1,0 +1,33 @@
+{
+  "name": "RWKV-7 (Goose)",
+  "slug": "rwkv-7",
+  "organization": "RWKV Foundation",
+  "release_date": "2025-03-21",
+  "decoder_type": "ssm",
+  "param_scale": "0.1B / 0.4B / 1.5B / 2.9B",
+  "context_length": "Unlimited (RNN recurrence)",
+  "attention_type": "Delta Rule Linear Attention",
+  "normalization": "LayerNorm",
+  "activation": "SiLU / sigmoid",
+  "position_encoding": "Learned time decay (implicit)",
+  "vocab_size": "65536",
+  "hidden_dim": "768 (0.4B) ~ 2560 (2.9B)",
+  "num_layers": "12 (0.4B) ~ 32 (2.9B)",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "RWKV-7(코드명 'Goose')는 2025년 RWKV Foundation이 발표한 RWKV 시리즈 최신 버전으로, 기존 RWKV의 WKV 연산자를 Delta Rule 기반으로 전면 재설계하여 표현력을 대폭 향상시킨 모델이다. Delta Rule은 연상 기억(associative memory) 이론에서 유래한 온라인 학습 규칙으로, 현재 키-값 쌍과 메모리에 저장된 예측값의 오차를 기반으로 상태를 업데이트한다. 2.9B 파라미터 모델이 동일 규모 Mamba-2 및 RWKV-6 대비 여러 NLP 벤치마크에서 SoTA를 달성했으며, 특히 in-context learning과 다국어 처리에서 두드러진 성능 향상을 보였다.",
+  "key_detail": "RWKV-7의 핵심 혁신은 LoRA(Low-Rank Adaptation) 스타일의 delta rule 업데이트를 순환 상태에 적용한 것이다. 상태 업데이트 식은 h_t = h_{t-1} + (v_t - h_{t-1} @ k_t^T) @ u_t^T 형태로, 이는 메모리의 예측 오차를 최소화하는 헤비안 학습 규칙과 동일하다. RWKV-6의 bonus term을 제거하고 delta rule로 대체함으로써 이론적 근거를 명확히 하면서도 실제 성능을 크게 향상시켰다. 또한 World Tokenizer v3으로 업그레이드해 100개 이상 언어 지원을 강화했다. 추론 시 O(1) 메모리를 유지하는 RNN 특성은 그대로이며, 긴 시퀀스에서 메모리 이점이 더욱 두드러진다.",
+  "training_detail": "다국어 대규모 코퍼스로 학습(영어, 중국어, 일본어 등 중심). RWKV World Tokenizer v3(65536 vocab). H100 GPU 클러스터. 2.9B 모델은 약 1.1T 토큰으로 학습. RWKV-6 대비 동일 컴퓨트에서 더 낮은 perplexity 달성.",
+  "paper_url": "https://arxiv.org/abs/2503.14456",
+  "code_url": "https://github.com/BlinkDL/RWKV-LM",
+  "license_type": "Apache-2.0",
+  "concepts": ["Delta Rule", "Associative Memory", "Linear Attention", "RNN", "Online Learning", "RWKV", "Recurrence", "World Tokenizer"],
+  "architecture_category": "ssm",
+  "branch_type": "ssm",
+  "is_open_source": true,
+  "relations": [
+    {"to": "rwkv", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

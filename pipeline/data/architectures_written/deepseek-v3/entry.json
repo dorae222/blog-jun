@@ -1,0 +1,31 @@
+{
+  "name": "DeepSeek-V3",
+  "slug": "deepseek-v3",
+  "organization": "DeepSeek AI",
+  "release_date": "2024-12-26",
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "decoder_type": "sparse_moe",
+  "param_scale": "671B total / 37B active",
+  "context_length": "128000",
+  "attention_type": "MLA (Multi-head Latent Attention)",
+  "normalization": "RMSNorm (Pre-Norm)",
+  "activation": "SiLU (SwiGLU)",
+  "position_encoding": "RoPE (decoupled)",
+  "vocab_size": "129280",
+  "hidden_dim": "7168",
+  "num_layers": "61",
+  "num_heads": "128",
+  "num_experts": "256",
+  "active_experts": "8",
+  "description": "DeepSeek AI가 2024년 12월 공개한 671B MoE 언어 모델로, 'H800 GPU 2048개로 약 278만 달러'라는 전례 없는 저비용 학습으로 Claude-3.5-Sonnet·GPT-4o에 필적하는 성능을 오픈 가중치로 달성해 AI 업계 전체에 충격을 주었다. V2의 MLA·DeepSeekMoE를 계승하면서 보조 손실 없는(auxiliary-loss-free) 부하 균형, Multi-Token Prediction(MTP), FP8 혼합 정밀도 학습이라는 3가지 신기술을 추가했다. DualPipe 파이프라인 병렬화로 학습 효율을 최대화해, 서방 메이저 모델 대비 10분의 1 수준의 비용으로 동등한 성능을 구현했다.",
+  "key_detail": "3가지 신기술: (1) Auxiliary-loss-free 부하 균형—전문가마다 편향 항(bias term)을 동적으로 조정해 보조 손실 없이도 전문가 부하 균형 달성, 성능 저하 없는 균형 확보. (2) MTP(Multi-Token Prediction)—메인 헤드가 다음 1개 토큰을 예측하는 동시에 추가 헤드로 미래 1~2개 토큰도 예측해 학습 신호 밀도를 높임. 추론 시 Speculative Decoding으로 활용 가능. (3) FP8 혼합 정밀도—마스터 가중치 BF16, 순전파 FP8로 메모리 절감 및 연산 속도 향상. Coding: LiveCodeBench 40.5%(GPT-4o: 32.9%), MATH-500 96.2%.",
+  "training_detail": "14.8T 토큰으로 사전 학습(V2 8.1T 대비 약 1.8배). H800 GPU 2048개로 약 2,664k GPU-hour(약 278만 달러 추산). FP8 혼합 정밀도 + DualPipe(파이프라인 버블 최소화) + all-to-all 통신 최적화. 배치 15,360, lr 2.2e-4, cosine decay. 8K→128K 단계적 컨텍스트 확장.",
+  "paper_url": "https://arxiv.org/abs/2412.19437",
+  "concepts": ["MLA", "MoE", "MTP", "Auxiliary-loss-free", "FP8 Training", "DualPipe"],
+  "relations": [
+    {"to": "deepseek-v2", "type": "evolved_from"}
+  ],
+  "related_post_slug": "deepseek-v3"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Gemini 2.5",
+  "slug": "gemini-2-5",
+  "organization": "Google DeepMind",
+  "release_date": "2025-03-25",
+  "decoder_type": "sparse_moe",
+  "param_scale": "",
+  "context_length": "1000000",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "RMSNorm",
+  "activation": "GeGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "256000",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gemini 2.5 Pro는 Google DeepMind가 2025년 3월 발표한 내장 사고(thinking) 기능을 탑재한 최신 멀티모달 모델이다. 응답 생성 전 복잡한 문제를 내부적으로 단계별로 추론하는 \"사고(thinking)\" 기능을 기본 내장하여, 수학·과학·코딩 분야에서 경쟁 모델 대비 최고 수준의 성능을 달성하였다. Codeforces, AIME, GPQA Diamond 등 고난도 벤치마크에서 기존 Gemini 시리즈는 물론 타사 최신 모델들을 능가하는 결과를 기록하였다. arXiv:2507.06261 기술 보고서를 통해 상세한 평가 결과가 공개되었으며, AI 추론 능력 경쟁의 새로운 기준점을 제시하였다.",
+  "key_detail": "Gemini 2.5 Pro의 핵심 혁신은 \"사고 예산(thinking budget)\" 제어 기능이다. 사용자가 모델의 내부 추론 깊이를 조절할 수 있어, 빠른 응답이 필요한 경우와 정밀한 추론이 요구되는 경우에 각각 최적화된 모드를 선택할 수 있다. 소프트웨어 엔지니어링 벤치마크 SWE-bench에서 63.8%를 달성하여 코딩 에이전트로서의 실용성도 입증하였다. 100만 토큰 컨텍스트 지원을 유지하면서 추론 품질이 대폭 향상되었으며, 멀티모달 추론(이미지·비디오·오디오 포함 복잡한 문제 해결)에서도 탁월한 성능을 보인다.",
+  "training_detail": "구체적인 학습 세부 사항은 공개되지 않았다. MoE 기반 사전 학습 이후 강화 학습 기반 추론 능력 향상(RLVR, Process Reward Model 활용)을 적용하여 사고 능력을 개발한 것으로 추정된다. Google의 최신 TPU v5p 인프라를 활용하여 대규모 분산 학습을 수행하였다.",
+  "paper_url": "https://arxiv.org/abs/2507.06261",
+  "code_url": "",
+  "license_type": "proprietary",
+  "concepts": ["Thinking Model", "Chain-of-Thought", "Long Context", "Mixture of Experts", "RLVR"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {"to": "gemini-1-5", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "siglip-2",
+  "organization": "Google",
+  "release_date": "2025-02-01",
+  "architecture_category": "vision",
+  "decoder_type": "vision_encoder",
+  "param_scale": "400M",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned 2D",
+  "vocab_size": "",
+  "hidden_dim": "1152",
+  "num_layers": "27",
+  "num_heads": "16",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "SigLIP 2는 2025년 Google이 발표한 개선된 시그모이드 손실 기반 시각-언어 사전학습 모델이다. 기존 SigLIP을 발전시켜 109개 언어에 걸친 다국어 지원과 향상된 제로샷 분류 성능을 제공한다. 소프트맥스 기반 대조 손실 대신 시그모이드 손실을 사용하여 배치 간 의존성 없이 이미지-텍스트 쌍을 독립적으로 처리하며, 다양한 해상도와 종횡비를 지원하는 유연한 입력 처리 능력을 갖춘다. 멀티모달 LLM의 비전 인코더로 널리 활용된다.",
+  "key_detail": "SigLIP 2는 시그모이드 이진 분류 손실을 기반으로 이미지-텍스트 쌍의 매칭 여부를 독립적으로 학습하여 대규모 배치에 대한 의존성을 제거한다. 109개 언어 텍스트로 학습하여 폭넓은 다국어 시각-언어 이해를 지원하며, 임의의 이미지 해상도와 종횡비를 처리하는 NaViT 스타일의 유연한 패치 처리를 도입하였다. 위치 임베딩을 2D 학습 임베딩으로 개선하고, 마스킹 예측 보조 목표를 추가하여 더욱 풍부한 시각 표현을 학습한다.",
+  "training_detail": "웹에서 수집한 수십억 이미지-텍스트 쌍으로 학습하며, 109개 언어 텍스트 데이터를 포함한다. 시그모이드 손실과 마스킹 이미지 모델링 보조 손실을 결합하여 학습한다. TPU를 사용하여 대규모 분산 학습을 수행하며, 다양한 해상도의 이미지를 혼합하여 학습한다.",
+  "paper_url": "https://arxiv.org/abs/2502.14786",
+  "code_url": "https://huggingface.co/google/siglip2-so400m-patch14-384",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "siglip-2",
+  "concepts": [
+    "Multilingual Vision-Language",
+    "Sigmoid Loss",
+    "Zero-Shot Transfer"
+  ]
+}

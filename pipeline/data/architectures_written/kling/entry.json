@@ -1,0 +1,39 @@
+{
+  "name": "Kling",
+  "slug": "kling",
+  "organization": "Kuaishou Technology",
+  "release_date": "2024-06-06",
+  "decoder_type": "diffusion_dit",
+  "param_scale": "N/A (비공개)",
+  "context_length": "N/A",
+  "attention_type": "3D Full Attention",
+  "normalization": "N/A",
+  "activation": "N/A",
+  "position_encoding": "3D RoPE",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Kling(Kling 2.6 기준)은 중국의 동영상 플랫폼 기업 Kuaishou Technology가 2024년 공개한 텍스트-비디오 및 이미지-비디오 생성 모델로, 2분 길이의 1080p 영상 생성이라는 당시 업계 최장 시간 고해상도 비디오 생성 능력으로 주목받았다. Kling은 DiT 아키텍처에서 영감을 받아 3D Full Attention을 통해 시공간 전체에서 일관성 있는 비디오를 생성하며, 3D RoPE를 통해 임의 해상도와 시간 길이를 지원한다. Kuaishou의 자체 비디오 VAE를 사용하여 효율적인 잠재 공간 인코딩이 이루어진다. 물리적 사실성, 카메라 동작 제어, 복잡한 인체 동작 표현에서 국제 수준의 경쟁력을 보여주며, 2024년 6월 중국에 우선 공개된 후 글로벌 서비스로 확장되었다. 이미지를 입력으로 받아 해당 이미지의 자연스러운 움직임을 생성하는 이미지-비디오(I2V) 기능과, 인물의 얼굴을 일관되게 유지하면서 동영상을 생성하는 기능이 특히 높은 평가를 받았다. 2024년 하반기부터 Kling 1.5, 2.0, 2.6 등 빠른 주기로 버전 업데이트가 이루어졌으며, 전문 영상 제작 시장에서도 활용 사례가 늘어났다.",
+  "key_detail": "Kling의 3D Causal VAE는 시간 방향 4배, 공간 방향 8배 다운샘플링을 수행하며 인과 합성곱(Causal Conv3D)을 사용하여 미래 프레임이 과거 프레임에만 조건화되도록 한다. 이 인과 구조는 스트리밍 비디오 생성과 점진적 연장(video extension)에 유리하다. 텍스트 인코딩은 중국어와 영어를 모두 지원하는 다국어 텍스트 인코더를 활용한다. 이미지-비디오(I2V) 모드에서는 입력 이미지를 잠재 공간에 인코딩 후 비디오 시퀀스의 첫 프레임으로 고정하여 나머지 프레임을 생성한다.",
+  "training_detail": "Kuaishou의 내부 대규모 비디오 데이터셋(Kwai 플랫폼 영상 포함)으로 학습되었다. 중국어·영어 이중 언어 텍스트 인코더를 통해 글로벌 사용자를 지원한다. Kling 1.0(2024.06) → 1.5(2024.09) → 2.0(2024.11) → 2.6(2025.02) 순으로 빠르게 발전하였다. ELO 기반 사용자 선호도 평가에서 Sora, Gen-3 등과 함께 최상위 군을 형성하였다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "Long-Duration Video",
+    "Causal 3D VAE",
+    "Image-to-Video",
+    "1080p Video Generation",
+    "Character Consistency"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": false,
+  "relations": [
+    {"to": "dit", "type": "inspired_by"}
+  ],
+  "related_post_slug": "kling"
+}

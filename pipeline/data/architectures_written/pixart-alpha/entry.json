@@ -1,0 +1,39 @@
+{
+  "name": "PixArt-α",
+  "slug": "pixart-alpha",
+  "organization": "Huawei Noah's Ark Lab",
+  "release_date": "2023-10-03",
+  "decoder_type": "diffusion_dit",
+  "param_scale": "600M",
+  "context_length": "120 (T5 텍스트 토큰)",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "AdaLN-Single (단일 임베딩 재사용)",
+  "activation": "GELU",
+  "position_encoding": "2D RoPE (패치 위치)",
+  "vocab_size": null,
+  "hidden_dim": "1152",
+  "num_layers": "28",
+  "num_heads": "16",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "PixArt-α는 2023년 Huawei Noah's Ark Lab이 발표한 텍스트-이미지 DiT 모델로, 학습 비용을 극단적으로 절감하면서도 상업 수준의 이미지 품질을 달성한 효율적 학습 전략이 핵심 기여이다. 기존 Stable Diffusion 계열이나 DALL·E 2 등 대형 텍스트-이미지 모델은 수백~수천만 달러의 학습 비용이 소요되는 반면, PixArt-α는 약 2만 8000 A100 GPU 시간(약 $320,000 수준)으로 학습 가능함을 보였다. 이는 SDXL 학습 비용의 약 1/10 수준이다. 이를 위해 세 단계 분리 학습 전략을 채택하였다: (1) ImageNet에서 클래스 조건부 이미지 생성으로 픽셀 수준 구조 학습, (2) 소규모(~300만) 고품질 이미지-텍스트 쌍으로 텍스트-이미지 정렬 학습, (3) 미적 품질 향상을 위한 고품질 데이터 미세조정. DiT 아키텍처에서 Cross-Attention 블록을 추가하여 T5-XXL 텍스트 인코더와 연동하며, AdaLN-Single 기법으로 타임스텝 임베딩을 모든 블록에서 공유하여 파라미터를 절약하였다. MS-COCO 기준 FID 7.32, Human Preference 평가에서 SDXL과 경쟁력 있는 수준을 달성하였다.",
+  "key_detail": "PixArt-α의 DiT 블록은 Self-Attention → Cross-Attention → FFN 순서로 구성되며, Cross-Attention이 T5-XXL 텍스트 임베딩을 Key·Value로 활용한다. AdaLN-Single: 기존 DiT의 adaLN은 블록마다 독립적인 선형 레이어로 스케일·시프트를 생성하지만, PixArt-α는 타임스텝 임베딩에서 공유 임베딩 $c_{shared}$를 한 번만 계산하고 각 블록의 스케일·시프트를 $c_{shared}$의 간단한 변환으로 생성한다. 이를 통해 약 30% 파라미터 절감이 이루어진다. 학습 데이터로는 JourneyDB(고품질 Midjourney 이미지 350만 장) + SAM(세그멘테이션 기반 이미지 1100만 장) + LAION(품질 필터링 후)을 활용한다. 1024×1024 고해상도 생성을 위해 NTK-aware RoPE를 적용한다.",
+  "training_detail": "3단계 학습: Stage 1 - ImageNet-1k 256×256 클래스 조건부 생성(200 에폭), Stage 2 - SAM+JourneyDB 3M 이미지 텍스트 조건부 학습(20 에폭), Stage 3 - 고품질 LAION-Aesthetics 데이터 미세조정(10 에폭). 총 학습 비용은 약 675 A100 GPU일(≈ $320K). T5-XXL(11B) 텍스트 인코더는 동결 사용. MS-COCO 256 FID 7.32, 사용자 선호도 평가에서 SDXL 대비 호환 수준을 기록하였다.",
+  "paper_url": "https://arxiv.org/abs/2310.00426",
+  "code_url": "https://github.com/PixArt-alpha/PixArt-alpha",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "Efficient DiT Training",
+    "Three-Stage Training",
+    "AdaLN-Single",
+    "Cross-Attention Text Conditioning",
+    "T5 Encoder"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "dit", "type": "evolved_from"}
+  ],
+  "related_post_slug": "pixart-alpha"
+}

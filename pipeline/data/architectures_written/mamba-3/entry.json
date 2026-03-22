@@ -1,0 +1,33 @@
+{
+  "name": "Mamba-3",
+  "slug": "mamba-3",
+  "organization": "Carnegie Mellon University / Princeton University",
+  "release_date": "2026-03-19",
+  "decoder_type": "hybrid_ssm",
+  "param_scale": "3B / 8B",
+  "context_length": "Unlimited (linear complexity)",
+  "attention_type": "Hybrid: Selective SSM + Sparse Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE (attention layers only)",
+  "vocab_size": "32000",
+  "hidden_dim": "2048 (3B) ~ 4096 (8B)",
+  "num_layers": "28 (3B) ~ 32 (8B)",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Mamba-3는 2026년 ICLR에서 발표된 Mamba 시리즈의 세 번째 버전으로, 순수 SSM과 하이브리드 아키텍처 간의 균형을 재탐색한 모델이다. Mamba-2의 SSD 프레임워크를 계승하면서도 소수의 sparse attention 레이어를 전략적으로 배치하는 하이브리드 설계를 채택했다. SSM만으로는 어려운 in-context learning과 정밀 검색 태스크에서 hybrid 구조가 더 효과적임을 보였다. 동일 규모 Llama 계열 대비 학습 효율은 유지하면서 특정 추론 태스크에서 성능이 향상되었으며, SSM 기반 모델이 실용 배포에 더 가까워진 이정표로 평가받는다.",
+  "key_detail": "Mamba-3는 전체 레이어 중 약 10~15%를 sliding window 또는 sparse attention으로 교체하는 하이브리드 전략을 사용한다. 나머지 레이어는 Mamba-2의 SSD 블록을 그대로 사용한다. 어텐션 레이어에는 RoPE를 적용해 상대적 위치 정보를 제공하고, SSM 레이어는 암묵적 위치 처리를 담당한다. 이 설계로 in-context retrieval 성능이 순수 SSM 대비 크게 향상되었다. 또한 tensor parallelism과 sequence parallelism을 완전히 지원하도록 재설계되어, 멀티-노드 학습 효율이 Mamba-2 대비 30% 이상 개선되었다.",
+  "training_detail": "ICLR 2026 발표 기준. 대규모 다국어 코퍼스로 사전학습. A100/H100 GPU 클러스터. 시퀀스 길이 8192 기본, 최대 128K까지 컨텍스트 확장 실험 진행. SSD + sparse attention 혼합 커널로 최적화.",
+  "paper_url": "https://arxiv.org/abs/2603.15569",
+  "code_url": "https://github.com/state-spaces/mamba",
+  "license_type": "Apache-2.0",
+  "concepts": ["SSM", "Hybrid Architecture", "Sparse Attention", "SSD", "In-context Learning", "RoPE", "Sequence Parallelism"],
+  "architecture_category": "ssm",
+  "branch_type": "ssm",
+  "is_open_source": true,
+  "relations": [
+    {"to": "mamba-2", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

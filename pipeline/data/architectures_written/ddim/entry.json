@@ -1,0 +1,39 @@
+{
+  "name": "DDIM",
+  "slug": "ddim",
+  "organization": "Stanford University",
+  "release_date": "2020-10-06",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "DDPM와 동일 (체크포인트 공유)",
+  "context_length": "N/A",
+  "attention_type": "Self-Attention (U-Net 내부)",
+  "normalization": "Group Normalization",
+  "activation": "SiLU / Swish",
+  "position_encoding": "Sinusoidal Timestep Embedding",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DDIM(Denoising Diffusion Implicit Models)은 2020년 Stanford의 Jiaming Song 등이 발표한 논문으로, DDPM의 느린 샘플링 속도를 근본적으로 개선한 결정론적 샘플링 방법이다. DDPM은 원본 이미지를 복원하기 위해 수백~수천 번의 역방향 디노이징 스텝을 반복해야 했으나, DDIM은 마르코프 과정(Markov chain) 가정을 제거하고 비마르코프(non-Markovian) 과정으로 재정의함으로써 동일한 DDPM 체크포인트를 재학습 없이 그대로 활용하면서 샘플링 스텝 수를 1000에서 50, 심지어 10~20 스텝으로 대폭 줄여도 비슷한 품질의 이미지를 생성할 수 있다는 사실을 증명하였다. 핵심 통찰은 forward 과정을 비마르코프적으로 재정의해도 동일한 marginal 분포를 유지할 수 있다는 점이다. 또한 DDIM은 결정론적(deterministic) 샘플러로 동작하기 때문에, 동일한 잠재 노이즈에서 항상 동일한 이미지가 생성되는 인코딩 역전(inversion) 특성을 갖는다. 이 특성 덕분에 이미지 편집, 스타일 전이, 보간(interpolation) 등 다양한 응용 작업에서 DDPM 대비 훨씬 실용적이다. DDIM은 이후 Stable Diffusion, DALL·E 2 등 거의 모든 실용적 확산 기반 생성 모델의 기본 샘플러로 채택되면서, 확산 모델의 실용화를 이끈 핵심 기여로 평가받는다.",
+  "key_detail": "DDIM은 DDPM의 forward 과정 $q(\\mathbf{x}_{1:T}|\\mathbf{x}_0)$를 마르코프 체인으로 정의하는 대신, 동일한 marginal $q(\\mathbf{x}_t|\\mathbf{x}_0)$를 만족하는 비마르코프 과정 $q_\\sigma(\\mathbf{x}_{1:T}|\\mathbf{x}_0)$로 대체한다. 역방향 샘플링은 $\\mathbf{x}_{t-1} = \\sqrt{\\bar{\\alpha}_{t-1}}\\hat{\\mathbf{x}}_0 + \\sqrt{1-\\bar{\\alpha}_{t-1}-\\sigma_t^2}\\cdot\\boldsymbol{\\epsilon}_\\theta(\\mathbf{x}_t) + \\sigma_t\\boldsymbol{\\epsilon}_t$ 형태로 정의된다. $\\sigma_t=0$으로 설정하면 결정론적 ODE 샘플러가 되어, 동일 잠재 변수에서 동일한 이미지가 재현된다. 이 결정론적 특성을 이용하면 DDIM Inversion이 가능해진다: 실제 이미지를 forward 과정으로 잠재 공간에 인코딩한 뒤, 편집 후 다시 디코딩하는 이미지 편집 파이프라인을 구성할 수 있다. 샘플링 속도는 accelerated DDIM을 통해 스텝 수를 $S \\ll T$로 줄이는 서브시퀀스 방식으로 달성하며, FID 기준으로 10~20 스텝 만으로도 DDPM 1000 스텝에 근접한 품질을 얻는다.",
+  "training_detail": "별도의 재학습 없이 DDPM 사전학습 체크포인트를 그대로 활용한다. 실험은 CIFAR-10(32×32), CelebA(64×64), LSUN(256×256) 등 표준 벤치마크에서 진행되었다. 동일한 DDPM 모델에 DDIM 샘플러를 적용하면 10~50 스텝 만에 DDPM의 1000 스텝 대비 경쟁력 있는 FID를 달성한다. CIFAR-10에서 10 스텝 기준 FID 약 13.7을 기록하였으며, 50 스텝에서는 3.17까지 낮아진다.",
+  "paper_url": "https://arxiv.org/abs/2010.02502",
+  "code_url": "https://github.com/ermongroup/ddim",
+  "license_type": "MIT",
+  "concepts": [
+    "Deterministic Sampling",
+    "Non-Markovian Process",
+    "DDIM Inversion",
+    "Accelerated Sampling",
+    "Latent Interpolation"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "ddpm", "type": "evolved_from"}
+  ],
+  "related_post_slug": "ddim"
+}

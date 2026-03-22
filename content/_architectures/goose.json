@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "slug": "goose",
+  "organization": "Block",
+  "release_date": "2025-01-01",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Goose는 Square·Cash App의 모회사 Block이 공개한 오픈소스 에이전틱 코딩 어시스턴트로, 로컬 개발 환경에서 파일 읽기·쓰기·명령 실행·코드 수정 등을 자율적으로 수행한다. Claude Code, Cursor Agent 등 상용 도구와 달리 완전한 오픈소스로 제공되어 자체 호스팅 및 커스터마이징이 가능하며, MCP를 통한 도구 생태계 확장을 기본으로 지원한다. 터미널 기반 인터페이스와 다양한 LLM 백엔드 지원을 통해 개발자가 선호하는 모델과 환경에서 에이전틱 코딩 워크플로를 구축할 수 있게 한다.",
+  "key_detail": "Goose의 핵심 강점은 MCP 통합과 오픈소스 유연성이다. MCP 서버를 익스텐션(extension)으로 연결해 데이터베이스 조회, Git 조작, Jira 연동, 컨테이너 관리 등 다양한 도구를 에이전트에 추가할 수 있다. Rust로 작성된 고성능 코어와 Python 기반 익스텐션 SDK를 조합해 성능과 확장성을 동시에 달성한다. Claude, GPT-4o, Gemini, 로컬 Ollama 모델 등 다양한 LLM 프로바이더를 설정 파일로 전환할 수 있어, 비용 최적화와 프라이버시 요구사항을 유연하게 대응한다.",
+  "training_detail": "Goose는 에이전트 프레임워크로서 별도의 모델 학습이 없다. 오픈소스로 공개되어 커뮤니티 기여를 받으며, Apache-2.0 라이선스 하에 상업적 사용도 허용된다. Block의 내부 개발 워크플로에서 실전 검증된 도구다.",
+  "paper_url": "",
+  "code_url": "https://github.com/block/goose",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "goose",
+  "concepts": [
+    "MCP Integration",
+    "Open-Source Agent"
+  ]
+}

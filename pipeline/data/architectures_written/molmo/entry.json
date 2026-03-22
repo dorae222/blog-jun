@@ -1,0 +1,33 @@
+{
+  "name": "Molmo",
+  "slug": "molmo",
+  "organization": "AI2",
+  "release_date": "2024-09-01",
+  "decoder_type": "multimodal",
+  "param_scale": "72B",
+  "context_length": "4096",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": null,
+  "hidden_dim": "8192",
+  "num_layers": "80",
+  "num_heads": "64",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Molmo는 2024년 Allen AI Institute(AI2)가 발표한 멀티모달 모델로, 이미지 내 객체를 정확히 가리키는(pointing) 능력과 이를 위해 새롭게 구축한 PixMo 데이터셋이 핵심 혁신이다. 인간 주석자가 음성으로 설명하면서 화면의 객체를 마우스로 가리키는 방식으로 수집한 고품질 데이터셋으로 학습하여, 시각적 질의에 대한 응답으로 이미지 내 특정 위치를 좌표로 지시하는 포인팅(pointing) 능력을 갖춘다. 이 능력은 로봇 조작, 인터페이스 상호작용 등 실세계 응용에서 특히 유용하다.",
+  "key_detail": "Molmo는 OpenAI CLIP ViT-L/14@336 비전 인코더와 Qwen2-72B LLM을 MLP 프로젝터로 연결하는 표준적인 VLM 구조를 기반으로 하되, PixMo 데이터셋을 통한 포인팅 능력이 핵심 차별점이다. 포인팅 좌표는 상대 좌표로 표현되어 특수 토큰 없이 텍스트 형식으로 생성된다. PixMo 데이터는 음성 캡셔닝(70만 이미지)과 포인팅(170만 이미지) 두 가지 유형으로 구성되며, 이 데이터로 학습한 Molmo는 사용자의 질문에 대해 이미지 내 위치를 정확히 지시하는 독특한 능력을 보유한다.",
+  "training_detail": "PixMo 데이터셋(음성 캡셔닝 + 포인팅 데이터)과 기존 VQA 데이터를 혼합하여 학습한다. CLIP 비전 인코더는 고정하고 MLP 프로젝터와 LLM을 파인튜닝한다. 7B, 8×7B(MoE), 72B 등 다양한 크기로 학습하며, 모든 모델 가중치와 데이터셋을 공개하는 완전 개방형 연구를 지향한다.",
+  "paper_url": "https://arxiv.org/abs/2409.17146",
+  "code_url": "https://github.com/allenai/molmo",
+  "license_type": "Apache-2.0",
+  "concepts": ["Visual Pointing", "PixMo Dataset", "Coordinate Grounding"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "llava", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "qwen3-omni",
+  "organization": "Alibaba",
+  "release_date": "2025-09-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "72B",
+  "context_length": "32768",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "Multimodal RoPE",
+  "vocab_size": "",
+  "hidden_dim": "8192",
+  "num_layers": "80",
+  "num_heads": "64",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Qwen3-Omni는 2025년 Alibaba가 발표한 옴니모달(omnimodal) 모델로, 텍스트·이미지·오디오·비디오 네 가지 모달리티를 모두 이해하고 텍스트와 음성으로 출력할 수 있는 완전한 멀티모달 시스템이다. Qwen3의 강력한 텍스트 추론 능력과 Qwen2-VL의 시각 이해, Qwen2-Audio의 음성 처리를 하나의 통합 모델로 결합하여 GPT-4o와 같은 네이티브 멀티모달 인터랙션을 실현한다. 실시간 음성 대화, 비디오 이해, 복잡한 시각적 추론을 단일 모델로 처리하는 것이 특징이다.",
+  "key_detail": "Qwen3-Omni는 텍스트·이미지·오디오·비디오 입력을 처리하는 통합 인코더와 Qwen3 디코더를 결합한 구조이다. 비전 입력은 동적 해상도 ViT로, 오디오 입력은 Whisper 계열 음성 인코더로 처리하며, 모든 모달리티의 토큰이 동일한 트랜스포머에서 처리된다. 텍스트 출력과 함께 음성 출력 기능을 갖추어 음성-음성 대화가 가능하며, 오디오 스트리밍 처리로 낮은 지연시간의 실시간 대화를 지원한다. 다중 모달리티 간 교차 추론 능력이 우수하다.",
+  "training_detail": "텍스트, 이미지-텍스트, 오디오-텍스트, 비디오-텍스트 데이터를 대규모로 혼합하여 학습한다. 각 모달리티별 사전학습 후 통합 멀티모달 파인튜닝을 수행하며, RLHF로 응답 품질과 안전성을 정렬한다. 음성 출력을 위한 TTS 모듈도 통합하여 엔드-투-엔드 학습을 수행한다.",
+  "paper_url": "https://arxiv.org/abs/2509.17765",
+  "code_url": "https://github.com/QwenLM/Qwen3-Omni",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "qwen3-omni",
+  "concepts": [
+    "Omnimodal",
+    "Real-Time Audio",
+    "Unified Multimodal"
+  ]
+}

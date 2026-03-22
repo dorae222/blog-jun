@@ -1,0 +1,33 @@
+{
+  "name": "DeBERTa",
+  "slug": "deberta",
+  "organization": "Microsoft Research",
+  "release_date": "2021-06-15",
+  "architecture_category": "llm",
+  "branch_type": "encoder_only",
+  "is_open_source": true,
+  "decoder_type": "dense",
+  "param_scale": "86M (Base) / 350M (Large) / 1.5B (XL) / 1.5B (XXL)",
+  "context_length": "512",
+  "attention_type": "Disentangled MHA",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Relative Position (Disentangled)",
+  "vocab_size": "128100",
+  "hidden_dim": "768 (Base) / 1024 (Large) / 1536 (XL)",
+  "num_layers": "12 (Base) / 24 (Large) / 24 (XL)",
+  "num_heads": "12 (Base) / 16 (Large) / 24 (XL)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DeBERTa(Decoding-enhanced BERT with Disentangled Attention)는 2021년 Microsoft Research가 발표한 모델로, BERT 계열의 위치 인코딩 방식에 근본적인 개선을 가했다. 기존 BERT는 절대 위치와 내용(content)을 더한 단일 벡터로 어텐션을 계산하지만, DeBERTa는 내용과 상대 위치를 분리된(disentangled) 행렬로 구성해 어텐션 스코어를 세 항(c2c, c2p, p2c)으로 분해한다. 이와 함께 Enhanced Mask Decoder(EMD)를 추가해 파인튜닝 시 절대 위치 정보를 복원한다. 슈퍼휴먼 성능을 SuperGLUE에서 최초 달성(90.3점, 인간 89.8)했으며, 이후 DeBERTaV3는 지금도 범용 NLU 최상위 모델로 널리 사용된다.",
+  "key_detail": "Disentangled Attention: 각 토큰은 내용 벡터(H)와 위치 벡터(P)를 별도로 유지. 어텐션 스코어 = A_{c2c} + A_{c2p} + A_{p2c} (총 3개 항 합산). 이는 같은 단어라도 위치에 따라 다른 어텐션 패턴을 학습할 수 있게 한다. Enhanced Mask Decoder(EMD): 최상위 레이어에서 절대 위치 임베딩을 주입해 실제 파인튜닝 시 문장 내 절대 위치 정보(예: 주어·목적어)를 복원. DeBERTaV3(ELECTRA 방식 사전 학습 결합)는 동일 파라미터 대비 BERT·RoBERTa 대비 대부분 태스크에서 1~3점 우위.",
+  "training_detail": "78GB 텍스트 데이터(Wikipedia, BooksCorpus, OpenWebText, CC-News, Stories). 배치 2048, Adam lr=1e-4, 500K 스텝. DeBERTaV3: ELECTRA RTD 방식 결합. XL/XXL은 64 A100 GPU로 수주 학습.",
+  "paper_url": "https://arxiv.org/abs/2006.03654",
+  "code_url": "https://github.com/microsoft/DeBERTa",
+  "license_type": "MIT",
+  "concepts": ["Disentangled Attention", "Enhanced Mask Decoder", "Relative Position Encoding", "SuperGLUE SOTA", "c2p Attention"],
+  "relations": [
+    {"to": "bert", "type": "evolved_from"}
+  ],
+  "related_post_slug": "deberta"
+}

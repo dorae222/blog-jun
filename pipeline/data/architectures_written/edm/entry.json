@@ -1,0 +1,39 @@
+{
+  "name": "EDM (Elucidating Diffusion Models)",
+  "slug": "edm",
+  "organization": "NVIDIA",
+  "release_date": "2022-06-01",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "~55M (CIFAR-10) / ~280M (ImageNet-64)",
+  "context_length": "",
+  "attention_type": "Multi-Head Self-Attention (U-Net)",
+  "normalization": "Group Normalization",
+  "activation": "SiLU",
+  "position_encoding": "Fourier Feature Embedding",
+  "vocab_size": null,
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Elucidating the Design Space of Diffusion-Based Generative Models(EDM)는 2022년 NVIDIA의 Tero Karras 등이 발표한 연구로, 기존 확산 모델들의 설계 선택들을 체계적으로 분해하고 각 구성 요소의 영향을 독립적으로 분석한 포괄적 연구이다. 핵심 기여는 Preconditioning 프레임워크로, 네트워크 입력과 출력을 노이즈 수준에 따라 스케일링하는 함수를 이론적으로 유도하여 학습 안정성과 효율을 극대화하였다. 노이즈 수준 분포를 로그-노멀 분포로 선택하고, 2차 Heun 적분기와 Stochastic Sampler를 결합한 고품질 샘플러를 제안하였다. CIFAR-10에서 FID 1.97, ImageNet-64에서 FID 2.44를 달성하여 당시 무조건부 이미지 생성 SOTA를 갱신하였다. EDM 프레임워크는 이후 Consistency Model, Flow Matching, EDM2 등 후속 연구들의 기준점이 되었다.",
+  "key_detail": "EDM의 핵심은 Preconditioning으로, c_skip, c_out, c_in, c_noise 네 가지 스케일링 함수를 이론적으로 유도한다. 학습 손실 가중치는 MSE를 정규화하며, 노이즈 수준 분포는 로그-노멀로 정의한다. 샘플러는 2차 Runge-Kutta(Heun) 방법과 확률론적 Langevin 노이즈를 결합하여, 18-40 NFE(Number of Function Evaluations)로 고품질 샘플링이 가능하다. 각 구성 요소를 직교적으로 분리하여 독립 최적화한 것이 핵심 방법론이다.",
+  "training_detail": "CIFAR-10(32x32), FFHQ(64x64), AFHQv2(64x64), ImageNet(64x64) 벤치마크에서 실험이 진행되었다. CIFAR-10 모델은 8개 A100 GPU에서 약 100M 이미지 학습에 해당하는 연산량이 소요된다. CIFAR-10 FID 1.97, FFHQ-64 FID 2.39, ImageNet-64 FID 2.44를 달성하였다. 샘플러는 18~35 NFE 기준으로 이전 방법 대비 약 2배 이상 효율적이다.",
+  "paper_url": "https://arxiv.org/abs/2206.00364",
+  "code_url": "https://github.com/NVlabs/edm",
+  "license_type": "Creative Commons BY-NC-SA 4.0",
+  "concepts": [
+    "Preconditioning",
+    "Design Space Analysis",
+    "Log-Normal Noise Distribution",
+    "Heun Sampler",
+    "Stochastic Sampler"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "ddpm", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

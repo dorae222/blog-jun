@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "bloom",
+  "organization": "BigScience",
+  "release_date": "2022-11-09",
+  "architecture_category": "llm",
+  "decoder_type": "dense",
+  "param_scale": "176B",
+  "context_length": "2048",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "LayerNorm",
+  "activation": "GeLU",
+  "position_encoding": "ALiBi",
+  "vocab_size": "250880",
+  "hidden_dim": "14336",
+  "num_layers": "70",
+  "num_heads": "112",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "BLOOM(BigScience Large Open-science Open-access Multilingual Language Model)은 전 세계 1000명 이상의 연구자가 협업하여 개발한 1760억 파라미터 규모의 완전 오픈소스 다국어 대형 언어 모델이다. 46개 자연어와 13개 프로그래밍 언어를 지원하며, 영어 중심 LLM의 한계를 극복하기 위해 다국어 데이터를 균형 있게 학습하였다. ROOTS 데이터셋(498개 Hugging Face 데이터셋 통합)을 기반으로 학습되었으며, 학습 데이터 구성부터 모델 공개까지 전 과정을 투명하게 공개하여 AI 연구의 민주화에 기여하였다. 상업적 이용 가능한 완전 개방 모델로서 큰 의미를 지닌다.",
+  "key_detail": "BLOOM은 ALiBi(Attention with Linear Biases) 위치 인코딩을 채택하여 학습 시 설정된 최대 시퀀스 길이를 넘어서는 입력에도 일반화가 가능하도록 설계되었다. 250,880개의 대규모 어휘 사전은 다국어 처리 능력의 핵심이며, BPE 토크나이저를 통해 영어 외 언어에서도 토큰 효율성을 유지하였다. 프랑스 국립 컴퓨팅 센터(Jean Zay)의 384개 A100 GPU에서 약 3.5개월간 학습되었다. Hugging Face Hub를 통해 완전 공개되어 접근성을 극대화하였으며, BLOOMZ와 mT0 등 다양한 파생 모델 개발에 기반을 제공하였다.",
+  "training_detail": "366B 토큰의 ROOTS 데이터셋으로 학습하였으며, 영어 30%, 프랑스어 13%, 스페인어, 포르투갈어, 아랍어, 중국어 등 46개 언어가 포함되었다. Jean Zay 슈퍼컴퓨터의 A100 80GB GPU 384개로 약 105일간 학습하였고, Megatron-DeepSpeed 프레임워크를 활용한 3D 병렬화(텐서, 파이프라인, 데이터 병렬화)를 적용하였다.",
+  "paper_url": "https://arxiv.org/abs/2211.05100",
+  "code_url": "https://github.com/bigscience-workshop/bigscience",
+  "license_type": "RAIL",
+  "is_open_source": true,
+  "related_post_slug": "bloom",
+  "concepts": [
+    "ALiBi Position Encoding",
+    "Multilingual LLM",
+    "Open Science"
+  ]
+}

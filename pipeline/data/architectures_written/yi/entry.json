@@ -1,0 +1,29 @@
+{
+  "name": "Yi",
+  "slug": "yi",
+  "organization": "01.AI",
+  "release_date": "2023-11-02",
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "decoder_type": "dense",
+  "param_scale": "6B / 34B",
+  "context_length": "200000",
+  "attention_type": "GQA",
+  "normalization": "RMSNorm",
+  "activation": "SiLU (SwiGLU)",
+  "position_encoding": "RoPE",
+  "vocab_size": "64000",
+  "hidden_dim": "4096 (6B) / 7168 (34B)",
+  "num_layers": "32 (6B) / 60 (34B)",
+  "num_heads": "32 (6B) / 56 (34B)",
+  "description": "전 구글 브레인 리더 이카이푸(李開複)가 설립한 01.AI가 2023년 11월 공개한 이중 언어(한중영) 고성능 LLM이다. LLaMA-2 아키텍처를 기반으로 하되 어휘를 64K로 확장해 중국어 토큰화 효율을 대폭 높이고, GQA를 도입해 추론 속도를 개선했다. 특히 Yi-34B-200K 버전은 200K 토큰이라는 당시 오픈 모델 중 최장 컨텍스트를 YARN·LongRoPE 기법으로 달성했다. 34B 모델이 Llama-2-70B에 필적하는 성능을 절반 파라미터로 달성해, LLaMA 아키텍처의 중국어 적용 가능성을 보여준 대표 사례가 되었다.",
+  "key_detail": "LLaMA-2 구조에서 3가지 변화: (1) 64K vocab—한자·한글 등 CJK 문자에 최적화된 토큰 추가로 중국어 텍스트 처리 효율 대폭 향상(LLaMA-2 32K 대비), (2) GQA 도입—KV 헤드 수 감소로 추론 KV 캐시 절감 및 처리량 향상, (3) 200K 컨텍스트—YARN(YetAnotherRoPE ExtensioN)으로 기본 4K RoPE를 200K까지 외삽. Yi-34B: MMLU 76.3%(Llama-2-70B: 68.9%), HumanEval 23.1%. Yi-6B: MMLU 61.4%(Llama-2-13B: 54.8%).",
+  "training_detail": "3T 토큰 이상(영어 약 60%, 중국어 약 40%). BPE 64K vocab(SentencePiece). AdamW, cosine lr schedule, gradient clipping. Flash Attention 2 적용. Yi-34B-200K은 YARN 방식으로 컨텍스트 외삽 후 장문 데이터로 추가 파인튜닝.",
+  "paper_url": "https://arxiv.org/abs/2403.04652",
+  "concepts": ["GQA", "RoPE", "RMSNorm", "SwiGLU", "Multilingual", "Long Context"],
+  "relations": [
+    {"to": "llama", "type": "inspired_by"}
+  ],
+  "related_post_slug": "yi"
+}

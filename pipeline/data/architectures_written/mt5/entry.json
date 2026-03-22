@@ -1,0 +1,33 @@
+{
+  "name": "mT5",
+  "slug": "mt5",
+  "organization": "Google Research",
+  "release_date": "2021-01-05",
+  "architecture_category": "llm",
+  "branch_type": "encoder_decoder",
+  "is_open_source": true,
+  "decoder_type": "dense",
+  "param_scale": "300M (Small) / 580M (Base) / 1.2B (Large) / 3.7B (XL) / 13B (XXL)",
+  "context_length": "512 (input) / 128 (output default)",
+  "attention_type": "MHA (Relative Attention Bias)",
+  "normalization": "RMSNorm (Pre-Norm)",
+  "activation": "ReLU (FFN)",
+  "position_encoding": "Relative Attention Bias",
+  "vocab_size": "250112",
+  "hidden_dim": "512 (Small) / 768 (Base) / 1024 (Large) / 2048 (XL) / 4096 (XXL)",
+  "num_layers": "8 (Small) / 12 (Base) / 24 (Large) / 24 (XL) / 24 (XXL)",
+  "num_heads": "6 (Small) / 12 (Base) / 16 (Large) / 32 (XL) / 64 (XXL)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "mT5(Multilingual T5)는 2021년 Google Research가 발표한 T5의 다국어 확장 버전으로, 영어 전용 C4 대신 101개 언어를 포함하는 mC4(Multilingual C4) 데이터셋으로 사전 학습했다. T5의 텍스트-투-텍스트 통합 프레임워크와 스팬 노이즈 제거 목표를 그대로 유지하면서, 250,112개 토큰의 대용량 SentencePiece vocab으로 다국어 토크나이징 능력을 대폭 강화했다. XTREME·XNLI·TyDi QA 등 다국어 벤치마크에서 mBERT와 XLM-R을 능가하며 당시 최고 수준의 다국어 성능을 달성했다. 비영어권 NLP 연구의 표준 베이스라인으로 널리 활용된다.",
+  "key_detail": "mC4 데이터셋: Common Crawl에서 101개 언어 텍스트를 정제한 6.4TB 규모의 다국어 코퍼스. 언어별 샘플링은 온도 기반 가중 샘플링(temperature T=1000)을 사용해 저자원 언어도 일정 비율로 학습. 어휘: SentencePiece unigram LM 250,112 vocab(T5의 32,100 대비 약 8배)으로 101개 언어의 문자 체계를 포괄. T5와 동일한 스팬 노이즈 제거 사전 학습 목표 유지. 파인튜닝 시 영어 데이터만으로 학습해도 다른 언어로 제로샷 전이가 가능한 크로스-링구얼 전이(cross-lingual transfer) 능력을 보유한다.",
+  "training_detail": "mC4(6.4TB, 101개 언어). SentencePiece unigram LM 250,112 vocab. Adafactor optimizer. 배치 1M 토큰, 1M 스텝. 온도 가중 샘플링으로 저자원 언어 과샘플링. 256~1024 TPU v3 코어. Small부터 XXL까지 5가지 크기 공개.",
+  "paper_url": "https://arxiv.org/abs/2010.11934",
+  "code_url": "https://github.com/google-research/multilingual-t5",
+  "license_type": "Apache 2.0",
+  "concepts": ["Multilingual", "mC4 Dataset", "Cross-lingual Transfer", "Temperature Sampling", "Large Vocabulary"],
+  "relations": [
+    {"to": "t5", "type": "variant_of"}
+  ],
+  "related_post_slug": "mt5"
+}

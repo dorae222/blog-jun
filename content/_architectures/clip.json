@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "clip",
+  "organization": "OpenAI",
+  "release_date": "2021-03-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "428M",
+  "context_length": "77",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": "49408",
+  "hidden_dim": "768",
+  "num_layers": "12",
+  "num_heads": "12",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "CLIP(Contrastive Language-Image Pre-training)은 2021년 OpenAI가 발표한 시각-언어 사전학습 모델로, 인터넷에서 수집한 4억 쌍의 이미지-텍스트 데이터로 대조 학습을 수행하여 이미지와 텍스트를 동일한 임베딩 공간에 정렬한다. 별도의 파인튜닝 없이 자연어 설명만으로 ImageNet 분류를 수행하는 제로샷 전이 능력이 탁월하며, ResNet이나 ViT를 이미지 인코더로, 트랜스포머를 텍스트 인코더로 사용하는 이중 인코더 구조이다. 시각-언어 표현 학습의 새 지평을 연 모델로, 이후 수많은 멀티모달 연구의 기반이 되었다.",
+  "key_detail": "CLIP은 배치 내 N개 이미지와 N개 텍스트 간의 N×N 유사도 행렬에서 대각 원소(매칭 쌍)는 최대화하고 나머지는 최소화하는 대조 손실(InfoNCE)을 사용한다. 이미지 인코더로 ViT-L/14 또는 ResNet-50x64를, 텍스트 인코더로 63M 파라미터 트랜스포머를 사용한다. 400M 이미지-텍스트 쌍(WIT)으로 학습하여 OpenAI CLIP ViT-L/14 기준 ImageNet 제로샷 76.2%를 달성한다. 임의의 자연어 설명을 분류기로 사용할 수 있어 광범위한 제로샷 태스크에 적용 가능하다.",
+  "training_detail": "400M 이미지-텍스트 쌍(WIT 데이터셋)으로 학습하며, 배치 크기 32768이라는 매우 큰 배치를 사용한다. Adam 옵티마이저와 cosine 스케줄러로 32 에폭 학습하며, 256개의 V100 GPU를 사용한다. 학습 가능한 온도 파라미터를 도입하여 대조 손실의 날카로움을 조절한다.",
+  "paper_url": "https://arxiv.org/abs/2103.00020",
+  "code_url": "https://github.com/openai/CLIP",
+  "license_type": "MIT",
+  "is_open_source": true,
+  "related_post_slug": "clip",
+  "concepts": [
+    "Contrastive Learning",
+    "Vision-Language Alignment",
+    "Zero-Shot Transfer"
+  ]
+}

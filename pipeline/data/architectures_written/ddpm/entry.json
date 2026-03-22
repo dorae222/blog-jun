@@ -1,0 +1,33 @@
+{
+  "name": "DDPM",
+  "slug": "ddpm",
+  "organization": "UC Berkeley",
+  "release_date": "2020-06-19",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "256M (UNet backbone 기준)",
+  "context_length": "N/A",
+  "attention_type": "MHA (UNet 내 중간 해상도)",
+  "normalization": "GroupNorm",
+  "activation": "SiLU / Swish",
+  "position_encoding": "Sinusoidal (timestep embedding)",
+  "vocab_size": "N/A",
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DDPM(Denoising Diffusion Probabilistic Models)은 Jonathan Ho 등이 2020년 UC Berkeley에서 제안한 확산 모델의 핵심 기반 논문이다. 데이터에 점진적으로 가우시안 노이즈를 추가하는 순전파 과정(Forward Process)과 이를 역으로 복원하는 역전파 과정(Reverse Process)을 정의하고, UNet이 각 타임스텝에서 노이즈를 예측하도록 학습한다. GAN보다 안정적인 학습과 다양성 높은 샘플 생성이 가능해 이미지 생성 연구의 패러다임을 전환시켰다.",
+  "key_detail": "순전파 과정은 T 타임스텝(보통 T=1000)에 걸쳐 데이터 x₀에 가우시안 노이즈를 추가해 순수 노이즈 xT로 변환한다. 이 과정은 닫힌 형태(closed-form)로 표현 가능해 임의 타임스텝 t의 xₜ를 직접 샘플링할 수 있다. 역전파 과정에서는 UNet 기반의 노이즈 예측 모델 εθ(xₜ, t)가 각 스텝의 노이즈를 예측하며, 손실 함수는 실제 노이즈와 예측 노이즈 사이의 MSE로 단순화된다. UNet은 타임스텝 임베딩(sinusoidal)을 조건으로 받고 중간 해상도 특징맵에 Self-Attention을 적용해 장거리 의존성을 모델링한다.",
+  "training_detail": "학습은 임의 타임스텝 t를 샘플링하고 해당 노이즈 εₜ를 예측하는 단순한 MSE 손실로 수행한다. CIFAR-10에서 Inception Score 기준 GAN을 처음으로 능가했다. DDIM, Score SDE, LDM 등 후속 연구의 직접적 기반이 되었으며, Stable Diffusion, DALL-E 2, Imagen 등 최신 이미지 생성 모델의 핵심 확산 프로세스를 정의했다. 샘플링 속도 문제(T=1000 스텝)는 이후 DDIM, DPM-Solver 등 가속 샘플러로 해결되었다.",
+  "paper_url": "https://arxiv.org/abs/2006.11239",
+  "code_url": "https://github.com/hojonathanho/diffusion",
+  "license_type": "MIT",
+  "concepts": ["Denoising Diffusion", "Forward Process", "Reverse Process", "UNet", "Score Matching", "Noise Prediction"],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "diffusion-thermo", "type": "evolved_from"}
+  ],
+  "related_post_slug": "ddpm"
+}

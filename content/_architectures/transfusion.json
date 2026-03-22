@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "transfusion",
+  "organization": "Meta",
+  "release_date": "2024-08-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "7B",
+  "context_length": "8192",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Transfusion은 2024년 Meta가 발표한 단일 모델에서 언어 모델링(다음 토큰 예측)과 확산 모델링(diffusion)을 동시에 수행하는 통합 멀티모달 생성 모델이다. 텍스트는 다음 토큰 예측으로, 이미지는 연속 벡터를 노이즈 제거하는 확산 방식으로 처리하여 두 모달리티 각각에 최적화된 생성 패러다임을 단일 트랜스포머 안에 결합하였다. 이산화(tokenization) 없이 이미지를 연속 벡터로 직접 처리하므로, 이미지 품질 손실이 없으며 텍스트 생성과 이미지 생성 모두에서 전문 모델과 경쟁하는 성능을 달성한다.",
+  "key_detail": "Transfusion은 텍스트 시퀀스 내에 이미지를 패치 벡터 시퀀스로 삽입하며, 텍스트 토큰은 언어 모델 손실(cross-entropy)로, 이미지 패치는 확산 손실(MSE)로 동시에 학습한다. 이미지 처리 시 U-Net의 로컬 어텐션 아이디어를 차용한 이미지 내 어텐션 마스크를 적용하고, 텍스트-이미지 간에는 양방향 어텐션을 사용한다. 추론 시 텍스트는 자기회귀적으로 생성하고, 이미지는 DDPM/DDIM 방식으로 반복적으로 노이즈를 제거하여 생성한다. GenEval, MS-COCO 등에서 DALL-E 3와 경쟁하는 이미지 품질을 보인다.",
+  "training_detail": "텍스트와 이미지를 인터리브한 혼합 데이터셋으로 학습한다. 이미지는 VAE로 인코딩된 연속 잠재 벡터를 사용하며, 언어 모델 손실과 확산 손실을 가중합하여 최적화한다. LLaMA 아키텍처를 기반으로 0.16B부터 7B까지 다양한 크기로 학습하였다.",
+  "paper_url": "https://arxiv.org/abs/2408.11039",
+  "code_url": "",
+  "license_type": "CC-BY-NC-4.0",
+  "is_open_source": false,
+  "related_post_slug": "transfusion",
+  "concepts": [
+    "Continuous Image Modeling",
+    "LM+Diffusion",
+    "Unified Generation"
+  ]
+}

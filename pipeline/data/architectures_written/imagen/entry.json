@@ -1,0 +1,40 @@
+{
+  "name": "Imagen",
+  "slug": "imagen",
+  "organization": "Google Brain",
+  "release_date": "2022-05-23",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "3B (텍스트 인코더 T5-XXL 포함)",
+  "context_length": "256 (T5 텍스트 토큰)",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "Group Normalization",
+  "activation": "SiLU",
+  "position_encoding": "Sinusoidal Timestep Embedding",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Imagen은 2022년 Google Brain이 발표한 텍스트-이미지 생성 모델로, 사전학습된 대형 언어 모델(T5-XXL)의 텍스트 인코더를 이미지 생성에 그대로 활용하면 CLIP보다 훨씬 우수한 텍스트 정렬을 달성할 수 있다는 핵심 발견을 제시하였다. Imagen은 텍스트 인코더로 T5-XXL(11B 파라미터)을 고정(freeze)된 상태로 활용하며, 생성 모델 자체는 Efficient U-Net 구조의 확산 모델로 구성된다. 64×64 베이스 모델에 64→256, 256→1024 두 단계의 SR 확산 모델을 연결하는 Cascaded Diffusion 구조를 채택하였다. 핵심 발견은 이미지-텍스트 쌍으로 훈련된 CLIP 인코더보다 순수 텍스트 코퍼스로 훈련된 T5-XXL이 의미론적으로 훨씬 풍부한 텍스트 표현을 제공한다는 것이다. 이는 LLM 학습 과정에서 습득한 언어적 추론 능력이 이미지 생성 조건으로도 효과적임을 시사한다. 신규 평가 벤치마크 DrawBench를 도입하여 복잡한 텍스트 지시 이해, 색상-객체 결합, 공간 관계 등 다양한 측면에서 평가하였다. MS-COCO FID 7.27, CLIP Score 0.87을 달성하여 DALL·E 2, VQ-Diffusion 등을 능가하였다.",
+  "key_detail": "Imagen의 핵심 기여는 두 가지이다. (1) 동결된 T5-XXL 텍스트 인코더: 이미지 데이터 없이 텍스트만으로 사전학습된 T5가 시각-언어 정렬에 더 효과적임을 규모별(Small, Base, Large, XL, XXL) 절제 실험으로 증명하였다. 텍스트 임베딩은 Cross-Attention으로 U-Net에 주입된다. (2) Cascaded Diffusion Models: 베이스 64×64 확산 모델 + SR 256×256 확산 모델 + SR 1024×1024 확산 모델의 3단계 파이프라인. Noise Conditioning Augmentation을 SR 모델에 적용하여 저해상도 조건 이미지에 노이즈를 추가함으로써 SR 모델이 다양한 품질 수준의 입력에 강건하게 동작하도록 한다. Efficient U-Net은 메모리 효율을 위해 저해상도 블록에 더 많은 파라미터를 할당한다.",
+  "training_detail": "LAION-400M, COCO, CC3M, CC12M, WebLI 등 860M 이미지-텍스트 쌍으로 학습되었다. T5-XXL은 학습 중 고정되므로 이미지 생성 모델(~2B 파라미터)만 업데이트된다. CFG는 각 단계의 확산 모델에 독립적으로 적용된다. MS-COCO 30k 기준 FID 7.27을 달성하여 인간 평가에서 DALL·E 2를 능가하였다. 16개 TPUv4 칩에서 학습이 진행되었다.",
+  "paper_url": "https://arxiv.org/abs/2205.11487",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "T5 Text Encoder",
+    "Cascaded Diffusion",
+    "Noise Conditioning Augmentation",
+    "DrawBench",
+    "Frozen LM Encoder"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": false,
+  "relations": [
+    {"to": "ddpm", "type": "evolved_from"},
+    {"to": "t5", "type": "technique_used"}
+  ],
+  "related_post_slug": "imagen"
+}

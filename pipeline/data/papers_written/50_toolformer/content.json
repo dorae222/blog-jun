@@ -1,0 +1,23 @@
+{
+  "id": 50,
+  "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+  "title_ko": "Toolformer: 언어 모델은 스스로 도구 사용을 배울 수 있다",
+  "slug": "toolformer",
+  "category": "ai",
+  "sub_category": "tools",
+  "year": 2023,
+  "venue": "NeurIPS",
+  "authors": "Schick et al.",
+  "arxiv_url": "https://arxiv.org/abs/2302.04761",
+  "summary": "Toolformer는 언어 모델이 외부 API를 스스로 호출하는 방법을 자기 지도 방식으로 학습할 수 있음을 보여준 연구다. 계산기, 위키피디아 검색, 번역기 등 5가지 도구를 인-컨텍스트 학습만으로 통합하며, 별도의 인간 주석 없이도 도구 호출 데이터를 자동 생성한다. GPT-J(6.7B) 수준의 모델이 훨씬 큰 모델에 필적하는 제로샷 성능을 달성했다.",
+  "content": "## 논문 개요\n\nToolformer(2023, NeurIPS)는 Meta AI의 Timo Schick 등이 발표한 논문으로, 언어 모델(LM)이 **외부 도구(API)**를 스스로 학습하여 활용할 수 있음을 최초로 체계적으로 보인 연구다. 기존 LLM은 학습 시점에 고정된 지식만 활용할 수 있어, 최신 정보 검색·수치 계산·번역 등에 근본적인 한계를 가졌다. Toolformer는 이 한계를 **자기 지도(self-supervised) 방식**으로 극복하며, 인간 주석 데이터 없이도 LLM이 도구 호출 패턴을 체득할 수 있음을 보였다.\n\n핵심 아이디어는 단순하다. LLM 자체를 이용해 텍스트 말뭉치 내 어느 위치에 어떤 API 호출을 삽입하면 언어 모델링 손실(cross-entropy loss)이 줄어드는지를 판별하고, 그런 위치에만 API 호출 애노테이션을 붙여 파인튜닝 데이터를 생성한다. 즉, **도구가 실제로 유용한 경우에만** API 호출이 학습 데이터에 포함된다.\n\n## 핵심 기여\n\n1. **자기 지도 API 데이터 생성 파이프라인**: 대형 LLM(GPT-3)을 교사 모델로 사용해 소형 모델 파인튜닝용 API 호출 데이터를 자동 생성한다. 인간 주석이 전혀 필요 없다.\n2. **5가지 도구 통합**: 계산기(Calculator), 위키피디아 검색(Wikipedia Search), BM25 문서 검색(BM25), Machine Translation(MT), 달력(Calendar)을 단일 모델에 통합한다.\n3. **작은 모델의 성능 향상**: GPT-J(6.7B)를 파인튜닝한 Toolformer가 SoTA 제로샷 성능에서 훨씬 큰 모델(OPT-66B, GPT-3 175B)에 필적하거나 초과한다.\n4. **도구 사용 타이밍 자율 결정**: 모델이 언제 도구를 호출할지, 어떤 입력을 넘길지 스스로 결정한다.\n\n## 방법론 상세\n\n### 1. API 호출 표현 방식\n\nToolformer는 도구 호출을 특수 토큰으로 텍스트 내에 삽입하는 방식으로 표현한다.\n\n$$\\text{API 호출} = [\\text{API\\_NAME}(\\text{input}) \\rightarrow \\text{output}]$$\n\n예를 들어 \"오늘은 $2023$년이다\"라는 문장에서 계산기 호출은 다음과 같이 표현된다:\n\n```\n오늘은 [Calculator(2022 + 1) → 2023]년이다\n```\n\n### 2. 데이터 생성 파이프라인\n\n**Step 1: API 호출 후보 샘플링**\n\n각 도구에 대해 소수의 in-context 예시(few-shot)를 구성하고, 원본 말뭉치의 각 문장 위치 $i$에서 API 호출 후보 $c_{i,1}, c_{i,2}, \\ldots$를 LLM으로 샘플링한다.\n\n**Step 2: 필터링 (유용성 판단)**\n\nAPI 호출이 실제로 도움이 되는지 판별하기 위해 언어 모델 손실 차이를 계산한다. 위치 $i$ 이후 토큰들의 손실을:\n- $L_i^+$: API 호출 결과 포함 시 손실\n- $L_i^-$: API 호출 없이 원문만 있을 때 손실\n- $L_i^\\emptyset$: API 호출 자리에 빈 문자열이 있을 때 손실\n\n필터링 조건:\n$$L_i^+ + \\tau < \\min(L_i^-, L_i^\\emptyset)$$\n\n여기서 $\\tau$는 임계값(논문에서 $\\tau = 1.0$ 사용). 즉 API 결과가 있을 때 손실이 충분히 줄어야만 해당 호출을 데이터셋에 포함시킨다.\n\n**Step 3: 파인튜닝**\n\n필터링된 API 호출 데이터를 포함한 증강 말뭉치로 GPT-J를 파인튜닝한다. 인퍼런스 시에는 그리디 디코딩을 사용하며, `→` 토큰이 생성되면 실제 API를 호출하여 결과를 삽입한다.\n\n### 3. 5가지 도구 상세\n\n| 도구 | API 형식 | 용도 |\n|------|----------|------|\n| Calculator | `[Calculator(expr) → result]` | 수치 계산 |\n| Wikipedia | `[Wikipedia(query) → snippet]` | 사실 검색 |\n| BM25 | `[BM25(query) → snippet]` | 문서 검색 |\n| MT | `[MT(text, lang) → translation]` | 다국어 번역 |\n| Calendar | `[Calendar() → date]` | 현재 날짜 |\n\n## 실험 결과\n\n### 제로샷 성능 비교\n\n수학 추론(SVAMP, MAWPS, ASDiv), 사실 질의응답(TriviaQA, WebQS), 상식 추론(HellaSwag) 등 다양한 벤치마크에서 평가했다.\n\n**수학 추론 (SVAMP 기준)**:\n- GPT-J (6.7B, vanilla): 약 6.2%\n- Toolformer (6.7B): 약 29.4%\n- GPT-3 (175B): 약 14.0%\n\nToolformer(6.7B)가 GPT-3(175B)를 크게 능가한다. 이는 **도구 사용이 순수 파라미터 스케일링을 압도**할 수 있음을 시사한다.\n\n**사실 질의응답 (TriviaQA)**:\n- Toolformer: 67.5%\n- OPT-66B: 54.7%\n- GPT-3 (175B): 63.9%\n\n위키피디아 검색 도구의 효과가 명확히 드러난다.\n\n### 언어 모델링 성능 유지\n\nAPI 호출 데이터로 파인튜닝하더라도 원래의 언어 모델링 성능(WikiText perplexity 등)이 거의 저하되지 않는다. 이는 Toolformer가 도구를 추가하면서도 기반 언어 능력을 잃지 않음을 보여준다.\n\n## 의의 및 한계\n\n### 의의\n\n- **자기 지도 방식의 확장성**: 새로운 도구가 추가될 때마다 인간 주석이 필요 없어, 도구 확장 비용이 낮다.\n- **도구 사용 LLM의 선구 연구**: 이후 HuggingGPT, ToolBench, ReAct 등 도구 활용 에이전트 연구의 기반이 되었다.\n- **작은 모델의 가능성**: 도구를 활용하면 모델 크기를 대폭 줄이면서도 강력한 성능을 유지할 수 있음을 보였다.\n\n### 한계\n\n- **도구 조합 불가**: 여러 도구를 순차적으로 연계하는 체인(chain) 방식이 아직 지원되지 않는다.\n- **교사 모델 의존**: 데이터 생성 단계에서 GPT-3 등 대형 모델이 필요해, 완전한 자율 학습이라 보기 어렵다.\n- **오류 전파**: API 호출 결과가 틀릴 경우 이를 감지하거나 재시도하는 메커니즘이 없다.\n- **단일 호출 구조**: 복잡한 다단계 추론에는 단일 API 호출만으로는 부족할 수 있다.\n- **도구 수 제한**: 5가지 도구 이외의 임의 API로의 일반화 여부가 아직 불명확하다.\n\n## 후속 연구와의 관계\n\nToolformer의 아이디어는 이후 다양한 방향으로 확장되었다. ReAct(Yao et al., 2022)는 도구 사용과 추론 단계를 교차하는 방식을 제안했고, ToolLLM(Qin et al., 2023)은 대규모 실세계 API 데이터셋으로 확장했다. OpenAI의 Function Calling과 Anthropic의 Tool Use도 동일한 철학을 상용 제품에 구현한 사례다. Toolformer는 \"LLM + 도구\" 패러다임의 시작점으로 평가받는다.\n\n## 관련 문서\n\n- [[react|ReAct]] — 영감\n",
+  "tags": [
+    "tool-use",
+    "api-calling",
+    "self-supervised",
+    "few-shot",
+    "GPT-J",
+    "NeurIPS2023"
+  ],
+  "related_architecture": ""
+}

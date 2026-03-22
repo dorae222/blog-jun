@@ -1,0 +1,33 @@
+{
+  "name": "PaLM",
+  "slug": "palm",
+  "organization": "Google",
+  "release_date": "2022-04-05",
+  "decoder_type": "dense",
+  "param_scale": "540B",
+  "context_length": "2048",
+  "attention_type": "Multi-Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "256000",
+  "hidden_dim": "18432",
+  "num_layers": "118",
+  "num_heads": "48",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "PaLM(Pathways Language Model)은 Google이 2022년 발표한 5400억 파라미터의 대형 언어 모델로, Google의 Pathways 시스템을 활용해 6144개의 TPU v4 칩에서 학습된 최초의 초대형 모델이다. 당시 산술 추론, 상식 추론, 코드 생성 등 수십 개의 벤치마크에서 최고 성능을 달성하였다. 특히 BIG-Bench의 여러 어려운 태스크에서 인간 평균을 초과하는 성능을 보여주어 큰 주목을 받았으며, 체인-오브-소트(Chain-of-Thought) 프롬프팅과 결합할 때 복잡한 추론 능력이 크게 향상됨을 실증하였다.",
+  "key_detail": "PaLM은 SwiGLU 활성화 함수, Multi-Query Attention, RoPE 위치 인코딩을 조합하여 품질과 효율성을 동시에 추구한 아키텍처 설계를 채택하였다. Pathways 시스템 덕분에 단일 모델이 6144개 TPU 칩에 걸쳐 효율적으로 분산 학습되었고, 이전 LLM 대비 약 2배 많은 칩을 활용하면서도 통신 병목을 최소화하였다. 782B 토큰의 고품질 웹 데이터, 소스 코드, 다국어 문서를 학습 데이터로 사용하였으며, 256,000개에 달하는 대규모 어휘 사전을 통해 다국어 처리 능력을 강화하였다. 이후 PaLM 2, Gemini로 이어지는 Google의 LLM 계보의 출발점이 되었다.",
+  "training_detail": "780B 토큰 규모의 다국어 학습 코퍼스를 사용하였으며, 영어 웹 문서 50%, 다국어 문서, GitHub 소스 코드, Wikipedia, 뉴스, 도서 등으로 구성되었다. TPU v4 Pod 2개(총 6144 칩)에서 Pathways 시스템으로 분산 학습하였으며, 학습 효율 향상을 위해 파이프라인 병렬화와 데이터 병렬화를 조합하여 적용하였다.",
+  "paper_url": "https://arxiv.org/abs/2204.02311",
+  "code_url": "",
+  "license_type": "proprietary",
+  "concepts": ["Chain-of-Thought Prompting", "Pathways System", "Scaling Laws"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {"to": "gpt-3", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

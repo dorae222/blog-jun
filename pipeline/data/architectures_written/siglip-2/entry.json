@@ -1,0 +1,33 @@
+{
+  "name": "SigLIP 2",
+  "slug": "siglip-2",
+  "organization": "Google",
+  "release_date": "2025-02-01",
+  "decoder_type": "vision_encoder",
+  "param_scale": "400M",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned 2D",
+  "vocab_size": null,
+  "hidden_dim": "1152",
+  "num_layers": "27",
+  "num_heads": "16",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "SigLIP 2는 2025년 2월 Google DeepMind가 발표한 차세대 시그모이드 손실 기반 시각-언어 사전학습 모델로, 기존 SigLIP(2023)의 핵심 아이디어를 계승하면서 다국어 확장, 학습 레시피 개선, 유연한 해상도 처리를 통합한 모델이다. CLIP(OpenAI)이 소프트맥스 기반 대조 손실로 배치 내 모든 쌍을 비교하는 것과 달리, SigLIP 2는 시그모이드 이진 분류 손실을 사용하여 각 이미지-텍스트 쌍을 독립적으로 매칭/비매칭 판별한다. 이로 인해 배치 크기에 대한 의존성이 제거되고 분산 학습 효율이 크게 향상된다. 109개 언어를 지원하는 다국어 텍스트 인코더와 NaViT(Native Resolution ViT) 스타일의 가변 해상도 패치 처리를 결합하여, 단일 모델로 다양한 언어와 이미지 종횡비를 처리할 수 있다. PaLI-3, Gemma 등 Google의 멀티모달 LLM에서 비전 인코더로 채택되어, 시각적 질의응답·문서 이해·OCR 등 다운스트림 태스크 전반에 걸쳐 CLIP·OpenCLIP 대비 일관되게 우수한 성능을 보인다.",
+  "key_detail": "SigLIP 2의 핵심 혁신은 세 가지 축에 걸쳐 있다. 첫째, 시그모이드 대조 손실은 CLIP의 소프트맥스 InfoNCE 손실과 달리 각 (이미지, 텍스트) 쌍에 대해 독립적인 이진 분류를 수행한다. 이는 log σ(z·y) 형태의 손실로, 배치 내 전체 유사도 행렬의 행/열 정규화가 불필요하여 네거티브 샘플링 없이도 안정적인 학습이 가능하다. 둘째, NaViT(Native Resolution ViT) 기반 패치 처리는 이미지를 고정 크기로 리사이즈하지 않고 원본 종횡비를 유지한 채 14×14 패치로 분할하며, 시퀀스 패킹을 통해 서로 다른 해상도의 이미지를 하나의 배치에 효율적으로 묶는다. 2D 학습 위치 임베딩은 학습 시 보지 못한 해상도에도 보간(interpolation)으로 일반화된다. 셋째, 마스킹 이미지 예측(MIM) 보조 손실을 추가하여, 대조 학습만으로는 포착하기 어려운 지역적(local) 시각 패턴까지 학습하게 하였다. 이 조합이 제로샷 ImageNet 분류에서 기존 SigLIP 대비 2-3% 정확도 향상을 달성하며, 특히 세밀한 시각 이해(fine-grained recognition)에서 두드러진 개선을 보인다.",
+  "training_detail": "SigLIP 2는 WebLI(Web Language-Image) 데이터셋 기반으로 약 100억 이미지-텍스트 쌍에서 학습되었으며, 109개 언어에 걸친 다국어 캡션을 포함한다. 학습은 다단계(multi-stage)로 진행된다: 1단계에서 저해상도(224px)로 대규모 사전학습을 수행한 후, 2단계에서 고해상도(384px)로 미세조정하며, NaViT 패킹을 활용해 가변 해상도 이미지를 혼합 학습한다. 손실 함수는 시그모이드 대조 손실을 주 목표로 하고, 마스킹 이미지 모델링(MIM) 보조 손실을 가중합으로 결합한다. MIM은 입력 패치의 일부(약 75%)를 마스킹하고 디코더 없이 인코더 출력에서 복원하는 방식이다. Google TPU v4/v5e 클러스터에서 대규모 분산 학습을 수행하며, 텍스트 인코더는 SentencePiece(250K vocab)를 사용한다. 학습된 모델은 SO400M(Shape Optimized 400M) 아키텍처로, 전통적인 ViT-L/H 대비 레이어 수와 헤드 수의 비율을 최적화하여 동일 파라미터 수에서 더 나은 성능-효율 트레이드오프를 달성한다. 특히 de-duplication과 품질 필터링을 강화한 데이터 큐레이션이 성능 향상의 핵심 요인으로 보고되었다.",
+  "paper_url": "https://arxiv.org/abs/2502.14786",
+  "code_url": "https://huggingface.co/google/siglip2-so400m-patch14-384",
+  "license_type": "Apache-2.0",
+  "concepts": ["Sigmoid Loss", "Multilingual Vision-Language", "Zero-Shot Transfer"],
+  "architecture_category": "vision",
+  "branch_type": "vision",
+  "is_open_source": true,
+  "relations": [
+    {"to": "siglip", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

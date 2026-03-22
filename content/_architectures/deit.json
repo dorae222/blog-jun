@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "deit",
+  "organization": "Meta/FAIR",
+  "release_date": "2021-01-01",
+  "architecture_category": "vision",
+  "decoder_type": "vision_encoder",
+  "param_scale": "86M",
+  "context_length": "196",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": "",
+  "hidden_dim": "768",
+  "num_layers": "12",
+  "num_heads": "12",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "DeiT(Data-efficient Image Transformers)는 2021년 Meta/FAIR에서 발표한 비전 트랜스포머로, 대규모 데이터셋 없이도 ViT를 효율적으로 학습할 수 있음을 보여준 모델이다. 기존 ViT가 JFT-300M 같은 초대규모 데이터셋에 의존했던 것과 달리, DeiT는 ImageNet-1K만으로도 경쟁력 있는 성능을 달성한다. 핵심 혁신은 지식 증류(knowledge distillation) 토큰의 도입으로, 교사 모델(CNN)로부터 귀납적 편향을 효과적으로 전달받아 데이터 효율성을 극적으로 향상시켰다.",
+  "key_detail": "DeiT는 기존 CLS 토큰 외에 증류 토큰(distillation token)을 추가로 도입한다. 이 토큰은 CNN 교사 모델의 소프트 레이블을 학습 목표로 삼아, 트랜스포머가 컨볼루션 네트워크의 귀납적 편향을 흡수할 수 있도록 한다. 하드 레이블 증류와 소프트 레이블 증류를 모두 실험하였으며, 특히 RegNetY-16GF를 교사 모델로 사용했을 때 ImageNet top-1 정확도 85.2%를 달성한다. 또한 반복적 증강(repeated augmentation), Mixup, CutMix, 랜덤 지우기 등 강력한 데이터 증강 전략을 조합하여 소규모 데이터셋에서의 정규화 효과를 극대화하였다.",
+  "training_detail": "ImageNet-1K(1.28M 이미지)만을 사용하여 300 에폭 학습한다. AdamW 옵티마이저, cosine 학습률 스케줄, 웜업을 사용하며, 배치 크기는 1024이다. 강력한 데이터 증강(Rand-Augment, Mixup, CutMix, random erasing)과 stochastic depth를 적용한다. 증류 토큰을 통해 RegNetY 교사 모델의 지식을 흡수하며, GPU 4대에서 약 3일 학습된다.",
+  "paper_url": "https://arxiv.org/abs/2012.12877",
+  "code_url": "https://github.com/facebookresearch/deit",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "deit",
+  "concepts": [
+    "Data-Efficient Training",
+    "Knowledge Distillation",
+    "Vision Transformer"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Flow Matching",
+  "slug": "flow-matching",
+  "organization": "Meta AI Research",
+  "release_date": "2022-10-06",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "N/A (프레임워크)",
+  "context_length": "N/A",
+  "attention_type": "N/A",
+  "normalization": "N/A",
+  "activation": "N/A",
+  "position_encoding": "N/A",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Flow Matching(FM)은 2022년 Meta AI의 Yaron Lipman 등이 제안한 생성 모델 프레임워크로, 연속 정규화 흐름(Continuous Normalizing Flows, CNF)을 확장성 있고 시뮬레이션 없이 학습 가능하게 만든 핵심 기법이다. 기존 CNF는 학습 시 ODE 시뮬레이션이 필요하여 계산 비용이 막대했으나, Flow Matching은 단순 회귀 손실로 벡터 필드를 직접 학습할 수 있음을 보였다. 핵심 아이디어는 데이터 분포 $p_1$과 노이즈 분포 $p_0$ 사이를 연결하는 흐름의 벡터 필드 $u_t(x)$를 직접 신경망으로 근사하는 것이다. 조건부 Flow Matching(Conditional FM)은 각 데이터 포인트 $x_1$에 대한 조건부 확률 경로 $p_t(x|x_1)$를 정의하고, 주변 흐름(marginal flow)으로부터 샘플을 뽑지 않고 조건부 경로의 벡터 필드를 직접 학습함으로써 시뮬레이션 없이 학습이 가능해진다. 최적 수송(Optimal Transport) 경로를 조건부 확률 경로로 선택하면 직선 궤적을 생성하므로, 곡선 경로를 가진 DDPM·SDE 기반 모델보다 샘플링 스텝 수가 훨씬 적게 필요하다. 이 OT-CFM은 Rectified Flow와 수학적으로 동치이다. Flow Matching은 이후 Stable Diffusion 3, Flux, SORA 등 현대 대규모 확산 모델들이 채택한 핵심 학습 기법으로 자리잡았다.",
+  "key_detail": "Flow Matching은 확률 경로 $p_t(x)$와 벡터 필드 $u_t(x)$가 연속 방정식 $\\partial_t p_t + \\nabla \\cdot (u_t p_t) = 0$을 만족한다는 사실을 활용한다. FM 목표 함수: $\\mathcal{L}_{FM} = \\mathbb{E}_{t, p_t(x)}\\|v_\\theta(x, t) - u_t(x)\\|^2$. 이를 직접 계산하기 어려우므로 CFM 목표로 변환: $\\mathcal{L}_{CFM} = \\mathbb{E}_{t, q(x_1), p_t(x|x_1)}\\|v_\\theta(x, t) - u_t(x|x_1)\\|^2$. OT-CFM에서 조건부 경로는 $x_t = (1-t)x_0 + tx_1$이고 벡터 필드는 $u_t(x|x_1) = x_1 - x_0$로 상수이다. 이 직선 궤적(straight path)은 적분 시 수치 오차가 최소화되어 4~8 NFE만으로도 고품질 샘플링이 가능하다.",
+  "training_detail": "ImageNet-1k(64×64, 256×256)와 CelebA-HQ에서 실험이 진행되었다. 표준 U-Net 아키텍처를 벡터 필드 근사기로 사용한다. OT-CFM 방식이 Diffusion(DDPM, SDE), Stochastic Interpolant 등과 비교하여 동등하거나 우수한 FID를 더 적은 NFE로 달성함을 실험적으로 보였다. ImageNet-256 FID 6.35를 100 NFE로 달성하였다(DDPM 1000 NFE 대비 10배 효율적).",
+  "paper_url": "https://arxiv.org/abs/2210.02747",
+  "code_url": "https://github.com/atong01/conditional-flow-matching",
+  "license_type": "MIT",
+  "concepts": [
+    "Optimal Transport",
+    "Flow Matching",
+    "Rectified Flow",
+    "Continuous Normalizing Flows",
+    "Straight Trajectories",
+    "Simulation-Free Training"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "score-sde", "type": "inspired_by"}
+  ],
+  "related_post_slug": "flow-matching"
+}

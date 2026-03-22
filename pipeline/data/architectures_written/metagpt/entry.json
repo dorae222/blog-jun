@@ -1,0 +1,33 @@
+{
+  "name": "MetaGPT",
+  "slug": "metagpt",
+  "organization": "DeepWisdom",
+  "release_date": "2023-08-01",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "MetaGPT는 소프트웨어 개발 조직의 표준 운영 절차(SOP, Standard Operating Procedures)를 멀티 에이전트 시스템에 적용한 프레임워크다. Hong et al.(DeepWisdom, 2023)이 제안한 이 시스템은 제품 관리자, 설계자, 엔지니어, QA 엔지니어 등 실제 소프트웨어 팀의 역할을 LLM 에이전트에 부여하고, 각 역할이 정해진 산출물(PRD, 시스템 설계서, 코드, 테스트 케이스)을 생성하며 순차적으로 작업을 진행한다. 비구조적 대화 중심의 AutoGen과 달리 체계적인 워크플로를 강조한다.",
+  "key_detail": "MetaGPT의 차별점은 구조화된 역할 분담과 공유 메시지 풀(message pool)이다. 각 에이전트는 특정 입력을 받아 표준화된 출력 문서를 생성하는 역할을 담당하며, 다른 에이전트는 필요한 문서를 메시지 풀에서 구독한다. 이 방식은 환각을 줄이고 코드 품질을 높이는 데 효과적이다. HumanEval 및 SWEBench 유사 벤치마크에서 단일 에이전트 대비 우수한 소프트웨어 완성도를 보였다. 역할 간 SOP 기반 인터페이스가 에이전트 협업의 일관성을 보장한다.",
+  "training_detail": "MetaGPT는 GPT-4를 주 백엔드로 사용하며 별도 파인튜닝은 없다. 역할별 프롬프트 설계와 출력 형식(JSON, 마크다운) 표준화가 핵심 엔지니어링 요소다. 오픈소스로 공개되어 커스텀 역할 추가가 가능하다.",
+  "paper_url": "https://arxiv.org/abs/2308.00352",
+  "code_url": "https://github.com/geekan/MetaGPT",
+  "license_type": "MIT",
+  "concepts": ["SOP", "Role-Based Agents"],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": true,
+  "relations": [
+    {"to": "autogen", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

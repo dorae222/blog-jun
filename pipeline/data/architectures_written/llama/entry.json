@@ -1,0 +1,29 @@
+{
+  "name": "LLaMA",
+  "slug": "llama",
+  "organization": "Meta AI",
+  "release_date": "2023-02-27",
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "decoder_type": "dense",
+  "param_scale": "7B / 13B / 33B / 65B",
+  "context_length": "2048",
+  "attention_type": "MHA (Causal)",
+  "normalization": "RMSNorm (Pre-Norm)",
+  "activation": "SiLU (SwiGLU)",
+  "position_encoding": "RoPE",
+  "vocab_size": "32000",
+  "hidden_dim": "4096 (7B) ~ 8192 (65B)",
+  "num_layers": "32 (7B) ~ 80 (65B)",
+  "num_heads": "32 (7B) ~ 64 (65B)",
+  "description": "Meta AI가 2023년 2월 연구자 대상으로 공개한 오픈소스 LLM 시리즈로, '공개 데이터만으로도 강력한 모델을 만들 수 있다'는 명제를 입증했다. Chinchilla 스케일링 법칙을 따라 작은 파라미터로 더 많은 토큰을 학습하는 전략을 취해, 65B LLaMA가 GPT-3(175B)에 필적하고 13B 모델이 GPT-3를 여러 벤치마크에서 능가했다. 가중치 공개로 Alpaca·Vicuna·WizardLM 등 수백 개의 파생 모델이 탄생하며 오픈소스 LLM 생태계 폭발의 기폭제가 되었다. 이후 거의 모든 오픈 LLM(LLaMA 2, Mistral, Yi, Qwen 등)이 LLaMA 아키텍처를 기반으로 삼는다.",
+  "key_detail": "GPT-2/3의 Transformer Decoder에서 3가지 핵심 개선을 적용했다: (1) RMSNorm Pre-Norm—LayerNorm에서 평균 제거를 생략한 RMSNorm($\\text{RMS}(x)=\\sqrt{\\frac{1}{n}\\sum x_i^2}$)을 어텐션 전에 적용해 안정적 학습, (2) SwiGLU 활성화($\\text{SiLU}(xW)\\otimes xV$)로 FFN 성능 향상, (3) RoPE(Rotary Position Embedding)—어텐션 내 상대적 위치를 회전 행렬로 인코딩해 시퀀스 길이 외삽 가능. BPE SentencePiece 토크나이저(32K vocab). LLaMA-65B: MMLU 63.4%, HumanEval 23.7%.",
+  "training_detail": "CommonCrawl(67%), C4(15%), GitHub(4.5%), Wikipedia(4.5%), Books(4.5%), ArXiv(2.5%), StackExchange(2%) 등 공개 데이터만 사용, 총 1.4T 토큰. AdamW β=(0.9, 0.95), lr cosine decay(최고 3e-4). 배치 4M 토큰. 2048개 A100 80GB로 학습(65B: 21일). Flash Attention 적용.",
+  "paper_url": "https://arxiv.org/abs/2302.13971",
+  "concepts": ["RMSNorm", "SwiGLU", "RoPE", "Pre-Norm", "Open Source", "Efficient Training"],
+  "relations": [
+    {"to": "chinchilla", "type": "inspired_by"}
+  ],
+  "related_post_slug": "llama"
+}
