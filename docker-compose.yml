@@ -20,6 +20,8 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./backend:/app
+      - ./pipeline:/app/pipeline:ro
+      - ./content:/app/content:ro
       - media_data:/app/media
     ports:
       - "8000:8000"
