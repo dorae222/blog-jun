@@ -14,33 +14,35 @@ REMOTE_DIR="/opt/blog-jun"
 COMPOSE_FILE="docker-compose.prod.yml"
 
 echo "▶ 1/3  서버에서 코드 pull + 이미지 빌드"
-ssh -J "${JUMP_HOST}" "${REMOTE_HOST}" bash <<REMOTE
+ssh -J "${JUMP_HOST}" "${REMOTE_HOST}" bash -s <<'REMOTE'
 set -euo pipefail
-cd ${REMOTE_DIR}
+REMOTE_DIR="/opt/blog-jun"
+COMPOSE_FILE="docker-compose.prod.yml"
+cd "${REMOTE_DIR}"
 
 echo "  git pull..."
 git pull origin main
 
 echo "  이미지 빌드..."
-docker compose -f ${COMPOSE_FILE} build --no-cache
+docker compose -f "${COMPOSE_FILE}" build --no-cache </dev/null
 
 echo "  DB / Redis 기동..."
-docker compose -f ${COMPOSE_FILE} up -d db redis
+docker compose -f "${COMPOSE_FILE}" up -d db redis </dev/null
 
 echo "  DB 준비 대기..."
-for i in \$(seq 1 30); do
-  docker compose -f ${COMPOSE_FILE} exec -T db pg_isready -U \${DB_USER:-blog_user} && break
+for i in $(seq 1 30); do
+  docker compose -f "${COMPOSE_FILE}" exec -T db pg_isready -U "${DB_USER:-blog_user}" </dev/null && break
   sleep 2
 done
 
 echo "  마이그레이션..."
-docker compose -f ${COMPOSE_FILE} run --rm backend python manage.py migrate --noinput
+docker compose -f "${COMPOSE_FILE}" run --rm backend python manage.py migrate --noinput </dev/null
 
 echo "  전체 서비스 재시작..."
-docker compose -f ${COMPOSE_FILE} up -d --force-recreate
+docker compose -f "${COMPOSE_FILE}" up -d --force-recreate </dev/null
 
 echo "  이미지 정리..."
-docker image prune -f
+docker image prune -f </dev/null
 REMOTE
 
 echo "▶ 2/3  헬스체크 대기..."
