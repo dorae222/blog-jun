@@ -196,6 +196,30 @@ def fix_dupe_title(content, title):
     return content
 
 
+_EMOJI_RE = re.compile(
+    "["
+    "\U0001F300-\U0001F9FF"  # Misc Symbols, Emoticons, etc.
+    "\U00002702-\U000027B0"  # Dingbats
+    "\U0000FE00-\U0000FE0F"  # Variation Selectors
+    "\U0000200D"             # Zero Width Joiner
+    "\U00002600-\U000026FF"  # Misc symbols
+    "\U0001FA00-\U0001FA6F"  # Chess Symbols
+    "\U0001FA70-\U0001FAFF"  # Symbols and Pictographs Extended-A
+    "]+",
+    flags=re.UNICODE,
+)
+
+
+def fix_emoji(content):
+    """노션 이모지(📌💡🔥 등) 제거"""
+    return _EMOJI_RE.sub('', content)
+
+
+def fix_emoji_title(content, title):
+    """제목과 본문 모두에서 이모지 제거"""
+    return _EMOJI_RE.sub('', content)
+
+
 # content만 받는 fix 함수
 FIX_FUNCS = {
     'html': fix_html_tags,
@@ -203,6 +227,7 @@ FIX_FUNCS = {
     'meta': fix_meta_remnants,
     'wikilink': fix_wiki_links,
     'placeholder': fix_placeholder,
+    'emoji': fix_emoji,
 }
 
 # title도 함께 받아야 하는 fix 함수 (post 객체 전달 방식)
@@ -248,13 +273,23 @@ class Command(BaseCommand):
         for post in qs.iterator(chunk_size=200):
             original = post.content or ''
             fixed = fix_func(original, post.title) if needs_title else fix_func(original)
+            update_fields = []
             if fixed != original:
+                update_fields.append('content')
+            # emoji fix도 제목에 적용
+            if fix_key == 'emoji' and post.title:
+                fixed_title = _EMOJI_RE.sub('', post.title)
+                if fixed_title != post.title:
+                    update_fields.append('title')
+                    if not dry_run:
+                        post.title = fixed_title
+            if update_fields:
                 modified += 1
                 if dry_run:
                     self.stdout.write(f'  [dry-run] {post.slug}')
                 else:
                     post.content = fixed
-                    post.save(update_fields=['content'])
+                    post.save(update_fields=update_fields)
 
         mode = '[dry-run] ' if dry_run else ''
         self.stdout.write(
