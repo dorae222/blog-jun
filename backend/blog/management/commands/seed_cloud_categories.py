@@ -62,19 +62,29 @@ class Command(BaseCommand):
         status = "생성" if created else "업데이트"
         self.stdout.write(f"부모 카테고리: {parent.name} ({parent.code}) - {status}")
 
-        # 하위 카테고리 upsert (slug 기준)
+        # 하위 카테고리 upsert (slug 기준, 명시적 get-then-update)
         for idx, child_data in enumerate(CLOUD_CHILDREN):
-            child, created = Category.objects.update_or_create(
-                slug=child_data["slug"],
-                defaults={
-                    "code": child_data["code"],
-                    "name": child_data["name"],
-                    "icon": child_data["icon"],
-                    "color": child_data["color"],
-                    "parent": parent,
-                    "order": idx + 1,
-                },
-            )
+            try:
+                child = Category.objects.get(slug=child_data["slug"])
+                child.code = child_data["code"]
+                child.name = child_data["name"]
+                child.icon = child_data["icon"]
+                child.color = child_data["color"]
+                child.parent = parent
+                child.order = idx + 1
+                child.save()
+                created = False
+            except Category.DoesNotExist:
+                child = Category.objects.create(
+                    slug=child_data["slug"],
+                    code=child_data["code"],
+                    name=child_data["name"],
+                    icon=child_data["icon"],
+                    color=child_data["color"],
+                    parent=parent,
+                    order=idx + 1,
+                )
+                created = True
             status = "생성" if created else "업데이트"
             self.stdout.write(f"  {child.code} - {child.name} ({child.slug}): {status}")
 
