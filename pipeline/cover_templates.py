@@ -29,9 +29,9 @@ PAPER_ACCENT = '#e94560'
 PAPER_TEXT = '#eaeaea'
 
 # 한글 지원 폰트 스택 (macOS + Linux Docker)
-FONT_TITLE = "'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif"
-FONT_BODY = "'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', Arial, sans-serif"
-FONT_MONO = "'D2Coding', 'Noto Sans KR', monospace"
+FONT_TITLE = "'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Noto Sans KR', 'Malgun Gothic', sans-serif"
+FONT_BODY = "'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Noto Sans KR', 'Malgun Gothic', Arial, sans-serif"
+FONT_MONO = "'D2Coding', 'Noto Sans CJK KR', monospace"
 
 
 def _escape(text: str) -> str:

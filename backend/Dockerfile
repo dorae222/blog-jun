@@ -16,9 +16,9 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONOPTIMIZE=2
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq5 curl libcairo2 fonts-noto-cjk && \
+    libpq5 curl libcairo2 fontconfig fonts-noto-cjk && \
     rm -rf /var/lib/apt/lists/* && \
-    fc-cache -f -v 2>/dev/null || true
+    fc-cache -f
 
 COPY --from=builder /install /usr/local
 
