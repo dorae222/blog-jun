@@ -13,9 +13,14 @@ import sys
 import argparse
 from pathlib import Path
 
-# Django 설정
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'backend'))
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
+# Django 설정 — 로컬(backend/)과 Docker(/app) 모두 지원
+_here = Path(__file__).resolve()
+_backend = _here.parent.parent / 'backend'
+if _backend.exists():
+    sys.path.insert(0, str(_backend))          # 로컬: pipeline/../backend/
+else:
+    sys.path.insert(0, str(_here.parent.parent))  # Docker: /app (config/ 바로 아래)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.prod')
 
 import django
 django.setup()
