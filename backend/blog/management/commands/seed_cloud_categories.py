@@ -48,12 +48,12 @@ class Command(BaseCommand):
     help = "10.Cloud 카테고리와 4개 하위 카테고리를 생성(upsert)합니다."
 
     def handle(self, *args, **options):
-        # 부모 카테고리 upsert
+        # 부모 카테고리 upsert (slug 기준)
         parent, created = Category.objects.update_or_create(
-            code="10.Cloud",
+            slug="cloud",
             defaults={
+                "code": "10.Cloud",
                 "name": "Cloud",
-                "slug": "cloud",
                 "icon": "Cloud",
                 "color": "#FF9900",
                 "order": 10,
@@ -62,13 +62,13 @@ class Command(BaseCommand):
         status = "생성" if created else "업데이트"
         self.stdout.write(f"부모 카테고리: {parent.name} ({parent.code}) - {status}")
 
-        # 하위 카테고리 upsert
+        # 하위 카테고리 upsert (slug 기준)
         for idx, child_data in enumerate(CLOUD_CHILDREN):
             child, created = Category.objects.update_or_create(
-                code=child_data["code"],
+                slug=child_data["slug"],
                 defaults={
+                    "code": child_data["code"],
                     "name": child_data["name"],
-                    "slug": child_data["slug"],
                     "icon": child_data["icon"],
                     "color": child_data["color"],
                     "parent": parent,
