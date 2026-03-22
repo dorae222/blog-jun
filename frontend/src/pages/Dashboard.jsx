@@ -12,7 +12,8 @@ import toast from 'react-hot-toast'
 import {
   FileText, CheckCircle, Clock, Eye, AlertTriangle, Pencil, Trash2,
   LayoutGrid, Cloud, Brain, Database, Code2, FolderOpen, Terminal, BookOpen,
-  Archive, Plus, Tags, ChevronLeft, ChevronRight, Cpu,
+  Archive, Plus, Tags, ChevronLeft, ChevronRight, Cpu, Search, ImageOff,
+  BarChart3, Image,
 } from 'lucide-react'
 
 // 이슈 배지 색상
@@ -58,11 +59,32 @@ const STATUS_META = [
   { value: 'archived',  label: 'Archived',  Icon: Archive,     dot: '#94a3b8' },
 ]
 
+const POST_TYPES = [
+  { value: '',              label: '전체 타입' },
+  { value: 'article',       label: 'Article' },
+  { value: 'paper_review',  label: 'Paper Review' },
+  { value: 'tutorial',      label: 'Tutorial' },
+  { value: 'til',           label: 'TIL' },
+  { value: 'project',       label: 'Project' },
+  { value: 'activity_log',  label: 'Activity Log' },
+]
+
+const ARCH_CATEGORIES = [
+  { value: '',           label: '전체' },
+  { value: 'llm',        label: 'LLM' },
+  { value: 'ssm',        label: 'SSM' },
+  { value: 'diffusion',  label: 'Diffusion' },
+  { value: 'multimodal', label: 'Multimodal' },
+  { value: 'agent',      label: 'Agent' },
+  { value: 'technique',  label: 'Technique' },
+  { value: 'vision',     label: 'Vision' },
+]
+
 export default function Dashboard() {
   const { user } = useAuth()
   const navigate = useNavigate()
 
-  // 탭: posts | tags | architectures
+  // 탭: posts | architectures | tags | overview
   const [tab, setTab] = useState('posts')
 
   // 포스트 목록 상태
@@ -72,6 +94,9 @@ export default function Dashboard() {
   const [page, setPage] = useState(1)
   const [statusFilter, setStatusFilter] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('')
+  const [postTypeFilter, setPostTypeFilter] = useState('')
+  const [noImageFilter, setNoImageFilter] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
   const [auditFilter, setAuditFilter] = useState(false)
 
   // 감사 결과
@@ -88,19 +113,23 @@ export default function Dashboard() {
 
   // 아키텍처 탭
   const [archEntries, setArchEntries] = useState([])
+  const [archCatFilter, setArchCatFilter] = useState('')
 
   // 데이터 로드
-  const loadPosts = useCallback((statusF = statusFilter, catF = categoryFilter, pageNum = page) => {
+  const loadPosts = useCallback((statusF = statusFilter, catF = categoryFilter, pageNum = page, typeF = postTypeFilter, noImg = noImageFilter, search = searchQuery) => {
     const params = { page_size: PAGE_SIZE, page: pageNum }
     if (statusF) params.status = statusF
     if (catF)    params['category__slug'] = catF
+    if (typeF)   params.post_type = typeF
+    if (noImg)   params.has_cover = 'false'
+    if (search)  params.search = search
     getPosts(params).then(r => {
       const list = r.data.results || r.data || []
       setPosts(list)
       setTotalPosts(r.data.count || 0)
       setSelected(new Set())
     }).catch(() => toast.error('포스트 로드 실패'))
-  }, [statusFilter, categoryFilter, page])
+  }, [statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery])
 
   const loadAudit = useCallback(() => {
     getAuditResults().then(r => {
@@ -115,9 +144,11 @@ export default function Dashboard() {
     getTags().then(r => setTags(r.data.results || r.data || [])).catch(() => {})
   }, [])
 
-  const loadArchitectures = useCallback(() => {
-    getArchitectures().then(r => setArchEntries(r.data.results || r.data || [])).catch(() => {})
-  }, [])
+  const loadArchitectures = useCallback((catF = archCatFilter) => {
+    const params = {}
+    if (catF) params.architecture_category = catF
+    getArchitectures(params).then(r => setArchEntries(r.data.results || r.data || [])).catch(() => {})
+  }, [archCatFilter])
 
   useEffect(() => {
     if (!user) { navigate('/login'); return }
@@ -131,8 +162,12 @@ export default function Dashboard() {
   }, [tab])
 
   useEffect(() => {
-    loadPosts(statusFilter, categoryFilter, page)
-  }, [statusFilter, categoryFilter, page])
+    loadPosts(statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery)
+  }, [statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery])
+
+  useEffect(() => {
+    loadArchitectures(archCatFilter)
+  }, [archCatFilter])
 
   // 필터링된 포스트
   const visiblePosts = auditFilter
@@ -218,13 +253,25 @@ export default function Dashboard() {
     }
   }
 
-  // Stats Bar 정의 (auditSummary 클로저 접근)
+  // 검색 디바운스
+  const [searchInput, setSearchInput] = useState('')
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearchQuery(searchInput)
+      setPage(1)
+    }, 400)
+    return () => clearTimeout(timer)
+  }, [searchInput])
+
+  // Stats Bar 정의
+  const missingImageCount = stats?.image_coverage?.missing_image ?? 0
   const STAT_DEFS = [
     { label: '총 포스트', icon: FileText,      accent: '#3b82f6', fn: s => s.total_posts  },
     { label: '발행',       icon: CheckCircle,   accent: '#10b981', fn: s => s.published   },
     { label: '초안',       icon: Clock,         accent: '#f59e0b', fn: s => s.drafts      },
     { label: '총 조회수',  icon: Eye,           accent: '#8b5cf6', fn: s => s.total_views },
     { label: '감사 이슈',  icon: AlertTriangle, accent: '#ef4444', fn: () => auditSummary.total_issues },
+    { label: '이미지 없음', icon: ImageOff,     accent: '#f97316', fn: () => missingImageCount },
   ]
 
   const totalPages = Math.ceil(totalPosts / PAGE_SIZE)
@@ -256,7 +303,7 @@ export default function Dashboard() {
 
       {/* Stats Bar */}
       {stats && (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
           {STAT_DEFS.map(({ label, icon: Icon, accent, fn }) => (
             <div key={label} className="relative p-4 rounded-xl overflow-hidden"
               style={{ background: 'var(--card-bg)', border: '1px solid var(--border)',
@@ -279,6 +326,7 @@ export default function Dashboard() {
           { id: 'posts', label: '포스트', Icon: FileText },
           { id: 'architectures', label: 'Architectures', Icon: Cpu },
           { id: 'tags',  label: '태그 관리', Icon: Tags },
+          { id: 'overview', label: '콘텐츠 현황', Icon: BarChart3 },
         ].map(t => (
           <button key={t.id} onClick={() => setTab(t.id)}
             className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
@@ -365,6 +413,29 @@ export default function Dashboard() {
             </div>
 
             <div className="mt-6 space-y-1">
+              <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>타입</p>
+              <select
+                value={postTypeFilter}
+                onChange={e => { setPostTypeFilter(e.target.value); setPage(1) }}
+                className="w-full text-sm px-3 py-1.5 rounded-lg border"
+                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+              >
+                {POST_TYPES.map(t => (
+                  <option key={t.value} value={t.value}>{t.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mt-6 space-y-1">
+              <button
+                onClick={() => { setNoImageFilter(v => !v); setPage(1) }}
+                className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                  noImageFilter ? 'bg-orange-50 text-orange-700 font-medium border border-orange-200' : 'hover:bg-gray-50'
+                }`}
+                style={!noImageFilter ? { color: 'var(--text)' } : {}}>
+                <ImageOff size={14} />
+                이미지 없음
+              </button>
               <button
                 onClick={() => setAuditFilter(v => !v)}
                 className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
@@ -386,6 +457,20 @@ export default function Dashboard() {
 
           {/* 포스트 테이블 */}
           <div className="flex-1 min-w-0">
+            {/* 검색 바 */}
+            <div className="mb-3 relative">
+              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2"
+                style={{ color: 'var(--text-secondary)' }} />
+              <input
+                type="text"
+                placeholder="포스트 검색 (제목, 내용, 요약)..."
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 rounded-lg border text-sm"
+                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+              />
+            </div>
+
             {/* 벌크 액션 바 */}
             {selected.size > 0 && (
               <div className="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-xl
@@ -458,6 +543,9 @@ export default function Dashboard() {
                           <span className="font-medium truncate block" style={{ color: 'var(--text)' }}>{post.title}</span>
                           <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
                             {new Date(post.created_at).toLocaleDateString('ko-KR')}
+                            {post.post_type !== 'article' && (
+                              <span className="ml-1.5 px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">{post.post_type}</span>
+                            )}
                           </span>
                         </td>
                         <td className="px-3 py-2 hidden md:table-cell">
@@ -559,10 +647,22 @@ export default function Dashboard() {
       {tab === 'architectures' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              {archEntries.length}개 Architecture
-            </p>
-            <Link to="/posts/ai"
+            <div className="flex items-center gap-3">
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                {archEntries.length}개 Architecture
+              </p>
+              <select
+                value={archCatFilter}
+                onChange={e => setArchCatFilter(e.target.value)}
+                className="text-sm px-3 py-1.5 rounded-lg border"
+                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+              >
+                {ARCH_CATEGORIES.map(c => (
+                  <option key={c.value} value={c.value}>{c.label}</option>
+                ))}
+              </select>
+            </div>
+            <Link to="/editor"
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm hover:bg-primary-700">
               <Plus size={15} /> 새 Architecture
             </Link>
@@ -579,6 +679,13 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody>
+                {archEntries.length === 0 && (
+                  <tr>
+                    <td colSpan={5} className="px-4 py-8 text-center" style={{ color: 'var(--text-secondary)' }}>
+                      Architecture가 없습니다.
+                    </td>
+                  </tr>
+                )}
                 {archEntries.map(entry => (
                   <tr key={entry.id} className="border-t hover:bg-gray-50 transition-colors" style={{ borderColor: 'var(--border)' }}>
                     <td className="px-3 py-2">
@@ -598,11 +705,15 @@ export default function Dashboard() {
                     </td>
                     <td className="px-3 py-2">
                       <div className="flex items-center gap-0.5 justify-end">
-                        <Link to={`/post/${entry.slug}`} title="보기"
-                          className="p-1.5 rounded hover:bg-gray-100" style={{ color: 'var(--text-secondary)' }}>
-                          <Eye size={14} />
-                        </Link>
-                        <Link to={`/post/${entry.slug}`} title="편집"
+                        {entry.related_post_slug && (
+                          <Link to={`/post/${entry.related_post_slug}`} title="포스트 보기"
+                            className="p-1.5 rounded hover:bg-gray-100" style={{ color: 'var(--text-secondary)' }}>
+                            <Eye size={14} />
+                          </Link>
+                        )}
+                        <Link
+                          to={entry.related_post_slug ? `/editor/${entry.related_post_slug}` : `/editor`}
+                          title="편집"
                           className="p-1.5 rounded hover:bg-blue-50 hover:text-blue-600" style={{ color: 'var(--text-secondary)' }}>
                           <Pencil size={14} />
                         </Link>
@@ -720,6 +831,118 @@ export default function Dashboard() {
                     </td>
                   </tr>
                 ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* ─── 콘텐츠 현황 탭 ─── */}
+      {tab === 'overview' && stats?.image_coverage && (
+        <div className="space-y-6">
+          {/* 이미지 커버리지 요약 */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
+              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>총 발행</p>
+              <p className="text-3xl font-bold" style={{ color: 'var(--text)' }}>
+                {stats.image_coverage.total_published}
+              </p>
+            </div>
+            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #10b981' }}>
+              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>이미지 있음</p>
+              <p className="text-3xl font-bold" style={{ color: '#10b981' }}>
+                {stats.image_coverage.with_any_image}
+              </p>
+            </div>
+            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #f97316' }}>
+              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>이미지 없음</p>
+              <p className="text-3xl font-bold" style={{ color: '#f97316' }}>
+                {stats.image_coverage.missing_image}
+              </p>
+            </div>
+            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #3b82f6' }}>
+              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>커버리지</p>
+              <p className="text-3xl font-bold" style={{ color: '#3b82f6' }}>
+                {stats.image_coverage.total_published > 0
+                  ? Math.round((stats.image_coverage.with_any_image / stats.image_coverage.total_published) * 100)
+                  : 0}%
+              </p>
+            </div>
+          </div>
+
+          {/* 프로그레스 바 */}
+          <div className="p-4 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium" style={{ color: 'var(--text)' }}>전체 이미지 커버리지</span>
+              <span className="text-sm font-bold" style={{ color: '#3b82f6' }}>
+                {stats.image_coverage.with_any_image} / {stats.image_coverage.total_published}
+              </span>
+            </div>
+            <div className="w-full h-3 rounded-full overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+              {/* cover_image 비율 */}
+              <div className="h-full rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all"
+                style={{ width: `${stats.image_coverage.total_published > 0
+                  ? (stats.image_coverage.with_any_image / stats.image_coverage.total_published) * 100
+                  : 0}%` }} />
+            </div>
+            <div className="flex gap-4 mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-blue-500" /> 커버 이미지: {stats.image_coverage.with_cover_image}
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" /> Arch figure 포함: {stats.image_coverage.with_any_image}
+              </span>
+            </div>
+          </div>
+
+          {/* 빠른 액션 */}
+          <button
+            onClick={() => { setTab('posts'); setNoImageFilter(true); setPage(1) }}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium hover:bg-orange-50 transition-colors"
+            style={{ borderColor: '#f97316', color: '#f97316' }}>
+            <ImageOff size={16} /> 이미지 없는 포스트 보기 →
+          </button>
+
+          {/* 카테고리별 이미지 커버리지 */}
+          <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+            <table className="w-full text-sm">
+              <thead>
+                <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
+                  <th className="px-4 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>카테고리</th>
+                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>총 포스트</th>
+                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>커버 있음</th>
+                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>없음</th>
+                  <th className="px-4 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>커버리지</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(stats.image_coverage_by_category || []).map(cat => {
+                  const missing = cat.total - cat.with_cover
+                  const pct = cat.total > 0 ? Math.round((cat.with_cover / cat.total) * 100) : 0
+                  return (
+                    <tr key={cat.category__slug || 'none'} className="border-t" style={{ borderColor: 'var(--border)' }}>
+                      <td className="px-4 py-2 font-medium" style={{ color: 'var(--text)' }}>
+                        {cat.category__name || '(없음)'}
+                      </td>
+                      <td className="px-4 py-2 text-right" style={{ color: 'var(--text)' }}>{cat.total}</td>
+                      <td className="px-4 py-2 text-right" style={{ color: '#10b981' }}>{cat.with_cover}</td>
+                      <td className="px-4 py-2 text-right" style={{ color: missing > 0 ? '#f97316' : 'var(--text-secondary)' }}>
+                        {missing}
+                      </td>
+                      <td className="px-4 py-2">
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 rounded-full overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+                            <div className="h-full rounded-full transition-all"
+                              style={{ width: `${pct}%`, background: pct >= 50 ? '#10b981' : '#f97316' }} />
+                          </div>
+                          <span className="text-xs font-medium" style={{ color: pct >= 50 ? '#10b981' : '#f97316' }}>
+                            {pct}%
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>

@@ -2,7 +2,7 @@
 FROM python:3.12-slim AS builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq-dev gcc && \
+    libpq-dev gcc libcairo2-dev pkg-config && \
     rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/
@@ -16,8 +16,9 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONOPTIMIZE=2
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq5 curl && \
-    rm -rf /var/lib/apt/lists/*
+    libpq5 curl libcairo2 fonts-noto-cjk && \
+    rm -rf /var/lib/apt/lists/* && \
+    fc-cache -f -v 2>/dev/null || true
 
 COPY --from=builder /install /usr/local
 

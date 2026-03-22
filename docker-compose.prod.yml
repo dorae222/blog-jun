@@ -52,6 +52,7 @@ services:
     volumes:
       - media_data:/app/media
       - logs:/app/logs
+      - ./pipeline:/app/pipeline:ro
     depends_on:
       db:
         condition: service_healthy
