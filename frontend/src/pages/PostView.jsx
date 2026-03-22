@@ -136,8 +136,10 @@ export default function PostView() {
             </div>
           </header>
 
-          {/* Paper Summary */}
-          {post.post_type === 'paper_review' && <PaperSummaryBox post={post} />}
+          {/* Paper Summary / Architecture Info */}
+          {(post.post_type === 'paper_review' || post.architecture_entries?.length > 0) && (
+            <PaperSummaryBox post={post} />
+          )}
 
           {/* Content */}
           <MarkdownRenderer content={post.content} postLinks={post.outgoing_links || []} />
@@ -196,6 +198,29 @@ export default function PostView() {
                 </Link>
               )}
             </nav>
+          )}
+
+          {/* Related Posts (비시리즈 포스트용) */}
+          {post.related_posts?.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-sm font-semibold mb-3" style={{ color: 'var(--text)' }}>
+                Related Posts
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {post.related_posts.map(rp => (
+                  <Link
+                    key={rp.id}
+                    to={`/post/${rp.slug}`}
+                    className="p-4 rounded-xl border hover:shadow-md transition-all"
+                    style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
+                  >
+                    <p className="text-sm font-medium line-clamp-2" style={{ color: 'var(--text)' }}>
+                      {rp.title}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
           )}
         </article>
 

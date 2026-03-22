@@ -50,6 +50,7 @@ class PostListSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
     series_name = serializers.CharField(source='series.name', read_only=True, default=None)
     cover_image_url = serializers.SerializerMethodField()
+    figure_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Post
@@ -57,7 +58,7 @@ class PostListSerializer(serializers.ModelSerializer):
             'id', 'title', 'slug', 'summary', 'category', 'tags',
             'series_name', 'post_type', 'status', 'reading_time',
             'view_count', 'quality_score', 'is_pinned', 'cover_image_url',
-            'created_at', 'published_at',
+            'figure_url', 'created_at', 'published_at',
         ]
 
     def get_cover_image_url(self, obj):
@@ -68,25 +69,42 @@ class PostListSerializer(serializers.ModelSerializer):
             return request.build_absolute_uri(obj.cover_image.url)
         return obj.cover_image.url
 
+    def get_figure_url(self, obj):
+        """ArchitectureEntry의 figure를 fallback으로 제공."""
+        try:
+            entry = obj.architecture_entries.first()
+            if entry and entry.figure:
+                request = self.context.get('request')
+                if request:
+                    return request.build_absolute_uri(entry.figure.url)
+                return entry.figure.url
+        except Exception:
+            pass
+        return None
+
 
 class PostLinkSerializer(serializers.ModelSerializer):
     """PostLink 관계를 위한 경량 serializer."""
     slug = serializers.CharField(source='to_post.slug', read_only=True)
     title = serializers.CharField(source='to_post.title', read_only=True)
+    category_name = serializers.CharField(source='to_post.category.name', read_only=True, default=None)
+    category_color = serializers.CharField(source='to_post.category.color', read_only=True, default=None)
 
     class Meta:
         model = PostLink
-        fields = ['slug', 'title', 'link_text']
+        fields = ['slug', 'title', 'link_text', 'category_name', 'category_color']
 
 
 class BacklinkSerializer(serializers.ModelSerializer):
     """역참조(backlink) 표시용 serializer."""
     slug = serializers.CharField(source='from_post.slug', read_only=True)
     title = serializers.CharField(source='from_post.title', read_only=True)
+    category_name = serializers.CharField(source='from_post.category.name', read_only=True, default=None)
+    category_color = serializers.CharField(source='from_post.category.color', read_only=True, default=None)
 
     class Meta:
         model = PostLink
-        fields = ['slug', 'title', 'link_text']
+        fields = ['slug', 'title', 'link_text', 'category_name', 'category_color']
 
 
 class ArchitectureEntryBriefSerializer(serializers.ModelSerializer):
@@ -100,12 +118,16 @@ class ArchitectureEntryBriefSerializer(serializers.ModelSerializer):
                   'architecture_category', 'parent_names', 'child_names']
 
     def get_parent_names(self, obj):
-        return [{'name': r.to_entry.name, 'slug': r.to_entry.slug}
-                for r in obj.parent_relations.select_related('to_entry').all()[:5]]
+        return [{'name': r.to_entry.name, 'slug': r.to_entry.slug,
+                 'relation_type': r.relation_type,
+                 'post_slug': r.to_entry.related_post.slug if r.to_entry.related_post_id else None}
+                for r in obj.parent_relations.select_related('to_entry', 'to_entry__related_post').all()[:5]]
 
     def get_child_names(self, obj):
-        return [{'name': r.from_entry.name, 'slug': r.from_entry.slug}
-                for r in obj.child_relations.select_related('from_entry').all()[:5]]
+        return [{'name': r.from_entry.name, 'slug': r.from_entry.slug,
+                 'relation_type': r.relation_type,
+                 'post_slug': r.from_entry.related_post.slug if r.from_entry.related_post_id else None}
+                for r in obj.child_relations.select_related('from_entry', 'from_entry__related_post').all()[:5]]
 
 
 class PostDetailSerializer(serializers.ModelSerializer):
@@ -114,7 +136,9 @@ class PostDetailSerializer(serializers.ModelSerializer):
     series = SeriesSerializer(read_only=True)
     images = PostImageSerializer(many=True, read_only=True)
     adjacent_posts = serializers.SerializerMethodField()
+    related_posts = serializers.SerializerMethodField()
     pdf_file = serializers.SerializerMethodField()
+    cover_image_url = serializers.SerializerMethodField()
     outgoing_links = PostLinkSerializer(many=True, read_only=True)
     incoming_links = BacklinkSerializer(many=True, read_only=True)
     architecture_entries = ArchitectureEntryBriefSerializer(many=True, read_only=True)
@@ -125,9 +149,28 @@ class PostDetailSerializer(serializers.ModelSerializer):
             'id', 'title', 'slug', 'content', 'summary', 'category', 'tags',
             'series', 'series_order', 'post_type', 'status', 'quality_score',
             'reading_time', 'view_count', 'created_at', 'updated_at',
-            'published_at', 'images', 'adjacent_posts', 'pdf_file',
-            'outgoing_links', 'incoming_links', 'architecture_entries',
+            'published_at', 'images', 'adjacent_posts', 'related_posts',
+            'pdf_file', 'cover_image_url', 'outgoing_links', 'incoming_links',
+            'architecture_entries',
         ]
+
+    def get_cover_image_url(self, obj):
+        """cover_image가 없으면 ArchitectureEntry figure를 fallback으로 제공."""
+        if obj.cover_image:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.cover_image.url)
+            return obj.cover_image.url
+        try:
+            entry = obj.architecture_entries.first()
+            if entry and entry.figure:
+                request = self.context.get('request')
+                if request:
+                    return request.build_absolute_uri(entry.figure.url)
+                return entry.figure.url
+        except Exception:
+            pass
+        return None
 
     def get_pdf_file(self, obj):
         if not obj.pdf_file:
@@ -149,6 +192,17 @@ class PostDetailSerializer(serializers.ModelSerializer):
             result['prev'] = prev_post
             result['next'] = next_post
         return result
+
+    def get_related_posts(self, obj):
+        """비시리즈 포스트용: 같은 카테고리의 최근 포스트 3개."""
+        if obj.series:
+            return []
+        if not obj.category_id:
+            return []
+        qs = Post.objects.filter(
+            status='published', category=obj.category
+        ).exclude(pk=obj.pk).order_by('-published_at')[:3]
+        return list(qs.values('id', 'title', 'slug'))
 
 
 class PostWriteSerializer(serializers.ModelSerializer):
