@@ -2,6 +2,7 @@ import {
   Cloud, Brain, Database, Code2, BookOpen, Folder, Inbox,
   Zap, Sparkles, Eye, Layers, Bot, Wrench,
 } from 'lucide-react'
+import { AwsIcon, DockerIcon, LxdIcon, DevOpsIcon } from '../components/icons/CategorySvgIcons'
 
 const MAP = {
   cloud: Cloud,
@@ -20,6 +21,11 @@ const MAP = {
   multimodal: Layers,
   agent: Bot,
   technique: Wrench,
+  // Cloud 서브카테고리
+  aws: AwsIcon,
+  docker: DockerIcon,
+  lxd: LxdIcon,
+  devops: DevOpsIcon,
 }
 
 export function getCategoryIcon(slug, size = 16) {

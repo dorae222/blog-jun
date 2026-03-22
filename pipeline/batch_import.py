@@ -38,6 +38,7 @@ SUB_CATEGORY_MAP = {
     "11.AWS":    ("AWS",    "aws",    "🟠", "#FF6600", "10.Cloud"),
     "12.Docker": ("Docker", "docker", "🐳", "#2496ED", "10.Cloud"),
     "13.DevOps": ("DevOps", "devops", "⚙️", "#0DB7ED", "10.Cloud"),
+    "14.LXD":    ("LXD",    "lxd",    "lxd", "#E95420", "10.Cloud"),
     # Data Engineering
     "Hadoop":           ("Hadoop",           "hadoop",         "🐘", "#FF6F00", "30.Data"),
     "Spark":            ("Spark",            "spark",          "⚡", "#E25A1C", "30.Data"),

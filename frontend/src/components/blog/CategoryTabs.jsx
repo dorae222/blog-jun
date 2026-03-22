@@ -23,6 +23,7 @@ const SUB_TABS = {
     { key: null, label: '전체' },
     { key: 'aws', label: 'AWS' },
     { key: 'docker', label: 'Docker' },
+    { key: 'lxd', label: 'LXD' },
     { key: 'devops', label: 'DevOps' },
   ],
   data: [

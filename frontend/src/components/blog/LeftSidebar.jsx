@@ -21,6 +21,7 @@ const CATEGORY_TREE = [
     subs: [
       { key: 'aws', label: 'AWS' },
       { key: 'docker', label: 'Docker' },
+      { key: 'lxd', label: 'LXD' },
       { key: 'devops', label: 'DevOps' },
     ],
   },

@@ -169,6 +169,23 @@ def fix_wiki_links(content):
     return content
 
 
+def fix_placeholder(content):
+    """플레이스홀더 텍스트 제거 (원본 노션/옵시디언 관련 안내문)"""
+    content = re.sub(
+        r'\n?\(원본 노션/옵시디언[^)]*\)',
+        '', content
+    )
+    content = re.sub(
+        r'\n?\[원본 노션/옵시디언[^\]]*\]',
+        '', content
+    )
+    content = re.sub(
+        r'\n?원본 노션/옵시디언[^\n]*빠짐없이 반영[^\n]*',
+        '', content
+    )
+    return content
+
+
 def fix_dupe_title(content, title):
     """content 첫 줄의 h1이 post.title과 동일하면 제거"""
     lines = content.split('\n')
@@ -185,6 +202,7 @@ FIX_FUNCS = {
     'jupyter': fix_jupyter,
     'meta': fix_meta_remnants,
     'wikilink': fix_wiki_links,
+    'placeholder': fix_placeholder,
 }
 
 # title도 함께 받아야 하는 fix 함수 (post 객체 전달 방식)
