@@ -42,12 +42,14 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("--dry-run", action="store_true", help="실제 변경 없이 미리보기")
+        parser.add_argument("--data-dir", default=None, help="ml_written 디렉토리 경로 (기본값 자동 감지)")
 
     def handle(self, *args, **options):
         dry_run = options["dry_run"]
+        ml_dir = Path(options["data_dir"]) if options.get("data_dir") else ML_WRITTEN_DIR
 
-        if not ML_WRITTEN_DIR.exists():
-            self.stderr.write(f"ml_written 디렉토리 없음: {ML_WRITTEN_DIR}")
+        if not ml_dir.exists():
+            self.stderr.write(f"ml_written 디렉토리 없음: {ml_dir}")
             return
 
         # 서브카테고리 Category 캐시
@@ -57,7 +59,7 @@ class Command(BaseCommand):
         skipped = 0
         errors = 0
 
-        for item_dir in sorted(ML_WRITTEN_DIR.iterdir()):
+        for item_dir in sorted(ml_dir.iterdir()):
             if not item_dir.is_dir():
                 continue
             content_json = item_dir / "content.json"
