@@ -18,6 +18,8 @@ ENV PYTHONOPTIMIZE=2
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 curl libcairo2 fontconfig fonts-noto-cjk && \
     rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /etc/fonts/conf.d && \
+    printf '<?xml version="1.0"?><!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">\n<fontconfig>\n  <alias><family>sans-serif</family><prefer><family>Noto Sans CJK KR</family></prefer></alias>\n  <alias><family>serif</family><prefer><family>Noto Serif CJK KR</family></prefer></alias>\n</fontconfig>' > /etc/fonts/conf.d/99-noto-cjk-kr.conf && \
     fc-cache -f
 
 COPY --from=builder /install /usr/local
