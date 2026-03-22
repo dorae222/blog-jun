@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "pixtral",
+  "organization": "Mistral AI",
+  "release_date": "2024-10-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "12B",
+  "context_length": "131072",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE 2D",
+  "vocab_size": "",
+  "hidden_dim": "5120",
+  "num_layers": "40",
+  "num_heads": "32",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Pixtral은 2024년 Mistral AI가 발표한 12B 파라미터 멀티모달 모델로, Mistral의 첫 번째 멀티모달 모델이자 네이티브 비전 능력을 갖춘 모델이다. 400M 파라미터의 새로운 비전 인코더를 처음부터 학습하여 임의 해상도와 종횡비의 이미지를 그대로 처리할 수 있는 능력이 특징이다. 2D RoPE를 비전 인코더에 적용하여 이미지 내 공간적 위치 정보를 정확히 인코딩하며, 128K 토큰의 긴 컨텍스트에서 다수의 이미지와 텍스트를 혼합하여 처리하는 문서 이해 능력이 탁월하다.",
+  "key_detail": "Pixtral의 비전 인코더는 ViT 구조를 기반으로 하되, 2D RoPE를 적용하여 임의 해상도의 이미지를 고정 크기로 리사이즈하지 않고 자연스럽게 처리한다. 이미지 토큰과 텍스트 토큰을 동일한 시퀀스로 처리하며, 이미지 행 구분자 특수 토큰으로 2D 구조를 보존한다. Mistral-NeMo-12B 텍스트 모델과 결합하여 128K 컨텍스트에서 여러 이미지가 포함된 긴 문서를 처리할 수 있다. OCR, 차트 이해, 도형 추론 등 다문서 이해 벤치마크에서 높은 성능을 발휘한다.",
+  "training_detail": "웹 스케일 이미지-텍스트 데이터와 문서·OCR 특화 데이터를 혼합하여 학습한다. 비전 인코더를 처음부터 학습하고 이후 언어 모델과 통합하는 2단계 학습을 수행한다. 긴 컨텍스트 학습을 위해 점진적으로 시퀀스 길이를 늘리는 전략을 적용한다.",
+  "paper_url": "https://arxiv.org/abs/2410.07073",
+  "code_url": "https://huggingface.co/mistralai/Pixtral-12B-2409",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "pixtral",
+  "concepts": [
+    "Arbitrary Resolution",
+    "Long Context Multimodal",
+    "Native Vision Encoder"
+  ]
+}

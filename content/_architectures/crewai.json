@@ -1,0 +1,32 @@
+{
+  "name": "",
+  "slug": "crewai",
+  "organization": "CrewAI Inc.",
+  "release_date": "2024-01-01",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "CrewAI는 역할 기반 멀티 에이전트 오케스트레이션 프레임워크로, AI 에이전트를 '크루(crew)' 단위로 조직하여 복잡한 작업을 분업 처리하도록 설계되었다. Agent(역할·목표·배경 정의), Task(구체적 작업 명세), Crew(에이전트와 태스크의 조합)의 세 가지 추상화를 중심으로 구성된다. AutoGen의 대화 중심 접근 방식과 달리, CrewAI는 선언적 API를 통해 에이전트 역할과 태스크를 명확히 분리하여 직관적인 워크플로 구성을 가능하게 한다. 2024년 등장 이후 빠르게 성장하여 실용적인 에이전트 개발의 표준 중 하나로 자리잡았다.",
+  "key_detail": "CrewAI의 핵심 개념은 순차적(sequential) 또는 계층적(hierarchical) 프로세스다. 순차 프로세스에서는 태스크가 정해진 순서대로 실행되며 결과가 다음 에이전트에 전달된다. 계층적 프로세스에서는 매니저 에이전트가 태스크를 위임하고 결과를 검토한다. 각 에이전트는 도구(Tool) 목록을 보유해 웹 검색, 파일 읽기, 코드 실행 등을 수행할 수 있다. LangChain 툴 생태계와의 높은 호환성 덕분에 기존 LangChain 도구를 그대로 활용할 수 있다는 점이 실용적 강점이다.",
+  "training_detail": "CrewAI는 프레임워크로서 별도의 모델 학습이 없다. OpenAI, Anthropic, Groq, Ollama 등 다양한 LLM을 에이전트별로 독립적으로 설정할 수 있어 비용과 성능을 유연하게 조절할 수 있다.",
+  "paper_url": "",
+  "code_url": "https://github.com/crewAIInc/crewAI",
+  "license_type": "MIT",
+  "is_open_source": true,
+  "related_post_slug": "crewai",
+  "concepts": [
+    "Agent Crew",
+    "Role-Based"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "whisper",
+  "organization": "OpenAI",
+  "release_date": "2022-12-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "dense",
+  "param_scale": "1.5B",
+  "context_length": "448",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Sinusoidal + Learned",
+  "vocab_size": "51865",
+  "hidden_dim": "1280",
+  "num_layers": "32",
+  "num_heads": "20",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Whisper는 2022년 OpenAI가 발표한 대규모 음성 인식 모델로, 68만 시간의 웹 스케일 약지도(weakly supervised) 음성-텍스트 데이터로 학습하였다. 기존 음성 인식 모델이 깨끗한 음성 데이터로 학습한 것과 달리, Whisper는 다양한 환경, 언어, 발화 스타일의 실제 오디오 데이터로 학습하여 노이즈, 억양, 방언에 대한 강인성이 탁월하다. 99개 언어의 음성 인식, 음성 번역(음성→영어 텍스트), 언어 감지를 단일 모델로 수행하며, 별도의 파인튜닝 없이 다양한 환경에서 높은 정확도를 보인다.",
+  "key_detail": "Whisper는 표준 인코더-디코더 트랜스포머 구조를 채택하며, 80채널 로그 멜 스펙트로그램을 입력으로 받는다. 인코더는 2개의 합성곱 층으로 오디오 특징을 처리한 뒤 트랜스포머 인코더로 컨텍스트를 추출하고, 디코더는 토큰을 자기회귀적으로 생성한다. 특수 토큰을 통해 언어, 태스크(전사/번역), 타임스탬프 예측을 하나의 시퀀스로 인코딩하는 멀티태스크 설계를 채택한다. 다국어 및 다양한 환경의 데이터로 학습하여 도메인 외 일반화 능력이 우수하다.",
+  "training_detail": "인터넷에서 수집한 680,000시간의 음성-텍스트 쌍으로 약지도 학습을 수행한다. 약 1/3은 비영어권 데이터이며 약 18%는 번역 쌍이다. 데이터 필터링 파이프라인으로 품질을 관리하고 Adam 옵티마이저와 선형 학습률 워밍업을 사용한다. Tiny(39M)부터 Large-v3(1.5B)까지 다양한 크기의 모델을 학습하였다.",
+  "paper_url": "https://arxiv.org/abs/2212.04356",
+  "code_url": "https://github.com/openai/whisper",
+  "license_type": "MIT",
+  "is_open_source": true,
+  "related_post_slug": "whisper",
+  "concepts": [
+    "Multitask Learning",
+    "Speech Recognition",
+    "Weakly Supervised"
+  ]
+}

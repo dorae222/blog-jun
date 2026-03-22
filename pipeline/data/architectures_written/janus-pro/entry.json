@@ -1,0 +1,33 @@
+{
+  "name": "Janus-Pro",
+  "slug": "janus-pro",
+  "organization": "DeepSeek",
+  "release_date": "2025-01-01",
+  "decoder_type": "multimodal",
+  "param_scale": "7B",
+  "context_length": "4096",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": null,
+  "hidden_dim": "4096",
+  "num_layers": "30",
+  "num_heads": "32",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Janus-Pro는 2025년 DeepSeek이 발표한 통합 멀티모달 이해 및 생성 모델로, 시각 이해와 이미지 생성을 위한 인코더를 분리하는 독특한 아키텍처를 제안하였다. 기존 통합 멀티모달 모델들이 이해와 생성에 동일한 비전 인코더를 사용하는 것과 달리, Janus-Pro는 이해용 인코더(SigLIP)와 생성용 인코더(VQ 기반)를 독립적으로 운영하여 각 태스크에 최적화된 시각 표현을 사용한다. 이 접근으로 이해와 생성 모두에서 높은 품질을 동시에 달성하며, 작은 모델 크기에서도 경쟁력 있는 성능을 보인다.",
+  "key_detail": "Janus-Pro의 핵심 혁신은 이해와 생성을 위한 시각 인코더를 분리하는 디커플링 아키텍처이다. 시각 이해를 위해서는 SigLIP 비전 인코더가 의미론적으로 풍부한 이미지 표현을 추출하고, 이미지 생성을 위해서는 VQVAE 기반의 이산 이미지 토크나이저가 이미지를 이산 코드로 변환하여 언어 모델이 다음 토큰 예측 방식으로 이미지를 생성한다. DeepSeek-LLM을 기반 언어 모델로 사용하며, 두 경로의 표현이 동일한 언어 모델에서 처리된다. 소형 7B 모델에서도 DALL-E 3, Stable Diffusion 3 수준의 생성 품질을 달성하였다.",
+  "training_detail": "이해 태스크와 생성 태스크를 위한 데이터를 분리하여 학습한다. 시각 이해는 LLaVA 스타일의 SFT 데이터로, 이미지 생성은 고품질 텍스트-이미지 쌍으로 학습하며, 두 태스크를 균형 있게 배합하는 멀티태스크 학습을 수행한다. 3단계 학습으로 인코더 정렬, 통합 SFT, 생성 품질 향상 순으로 진행한다.",
+  "paper_url": "https://arxiv.org/abs/2501.17811",
+  "code_url": "https://github.com/deepseek-ai/Janus",
+  "license_type": "DeepSeek License",
+  "concepts": ["Decoupled Vision Encoder", "Unified Understanding-Generation", "Discrete Image Tokenization"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "deepseek-vl2", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

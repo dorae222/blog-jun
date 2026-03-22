@@ -1,0 +1,33 @@
+{
+  "name": "GPT-5 (Updated)",
+  "slug": "gpt-5-2",
+  "organization": "OpenAI",
+  "release_date": "2025-07-10",
+  "decoder_type": "dense",
+  "param_scale": "",
+  "context_length": "1000000",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "LayerNorm",
+  "activation": "GeLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GPT-5의 업데이트 버전은 OpenAI가 2025년 7월 시스템 카드 갱신과 함께 배포한 개선 모델이다. 초기 GPT-5 출시 이후 수집된 사용자 피드백과 안전성 평가 결과를 바탕으로 명령어 수행 능력, 사실 정확성, 환각(hallucination) 감소에 집중적으로 개선이 이루어졌다. 특히 복잡한 다단계 추론 태스크에서의 일관성이 향상되었으며, 도구 호출 및 에이전트 실행 안정성이 강화되었다. 업데이트된 시스템 카드를 통해 추가적인 안전성 테스트 결과와 새롭게 발견된 위험 요소 및 완화 조치를 투명하게 공개하였다.",
+  "key_detail": "이 업데이트의 핵심은 실사용 피드백 루프를 통한 지속적 개선이다. 초기 배포 이후 발견된 엣지 케이스와 실패 패턴을 분석하여 RLHF 및 RLAIF 기반의 추가 정렬 학습을 수행하였다. 수학·코딩·과학 추론에서의 정확도가 개선되었으며, 다국어 처리 품질도 향상되었다. 특히 장기 에이전트 작업에서의 목표 유지 능력과 도구 사용 정확성이 강화되어 실용적인 AI 에이전트 플랫폼으로서의 완성도가 높아졌다. API를 통한 새로운 스트리밍 기능과 구조화된 출력 형식도 추가되었다.",
+  "training_detail": "초기 GPT-5 모델을 기반으로 한 지속 학습(continual learning) 방식으로 업데이트되었다. 실제 사용 데이터에서 수집한 선호도 데이터와 안전성 관련 레이블을 활용한 추가 RLHF를 적용하였다. 아키텍처 변경 없이 파인튜닝 방식으로 개선이 이루어진 것으로 알려져 있다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "proprietary",
+  "concepts": ["Continual Learning", "Safety Alignment", "Agentic AI", "RLHF"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {"to": "gpt-5", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

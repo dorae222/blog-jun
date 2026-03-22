@@ -1,0 +1,33 @@
+{
+  "name": "DETR",
+  "slug": "detr",
+  "organization": "Meta/FAIR",
+  "release_date": "2020-05-01",
+  "decoder_type": "vision_encoder",
+  "param_scale": "41M",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "LayerNorm",
+  "activation": "ReLU",
+  "position_encoding": "Sinusoidal 2D",
+  "vocab_size": null,
+  "hidden_dim": "256",
+  "num_layers": "6",
+  "num_heads": "8",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DETR(DEtection TRansformer)는 2020년 Meta/FAIR에서 발표한 종단간(end-to-end) 객체 탐지 트랜스포머 모델이다. NMS(Non-Maximum Suppression), 앵커 박스, 복잡한 후처리 파이프라인이 필요했던 기존 탐지 방식을 혁신하여, 이분 매칭(bipartite matching) 기반의 집합 예측 손실로 완전히 단순화된 객체 탐지를 실현하였다. CNN 백본으로 이미지 특징을 추출하고, 트랜스포머 인코더-디코더가 학습 가능한 객체 쿼리를 통해 직접 객체 집합을 예측한다. 탐지 분야의 패러다임 전환을 이끈 선구적 연구이다.",
+  "key_detail": "DETR의 핵심은 이분 매칭(Hungarian algorithm)을 사용한 집합 예측 손실이다. N개의 학습 가능한 객체 쿼리가 트랜스포머 디코더에서 이미지 특징과 교차 어텐션을 수행하여 N개의 박스·클래스 예측을 생성하고, 헝가리안 알고리즘으로 예측-정답 쌍을 최적 매칭하여 손실을 계산한다. 이 구조 덕분에 NMS나 앵커가 전혀 필요 없는 완전한 종단간 탐지가 가능하다. 전역 어텐션을 통해 객체 간 관계를 명시적으로 모델링하며, 파노라마 세그멘테이션으로도 쉽게 확장된다.",
+  "training_detail": "COCO 2017 탐지 데이터셋으로 300 에폭 학습한다. ResNet-50/101 백본을 ImageNet 사전학습 가중치로 초기화한다. AdamW 옵티마이저, 학습률 1e-4, 백본 학습률 1e-5를 사용하며, 배치 크기 64로 8개의 V100 GPU에서 학습한다. 기존 Faster R-CNN 대비 더 긴 학습(300 에폭)이 필요하지만, 동등한 COCO AP를 달성한다.",
+  "paper_url": "https://arxiv.org/abs/2005.12872",
+  "code_url": "https://github.com/facebookresearch/detr",
+  "license_type": "Apache-2.0",
+  "concepts": ["End-to-End Detection", "Bipartite Matching", "Set Prediction"],
+  "architecture_category": "vision",
+  "branch_type": "vision",
+  "is_open_source": true,
+  "relations": [
+    {"to": "transformer", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

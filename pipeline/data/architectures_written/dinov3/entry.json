@@ -1,0 +1,33 @@
+{
+  "name": "DINOv3",
+  "slug": "dinov3",
+  "organization": "Meta",
+  "release_date": "2025-08-01",
+  "decoder_type": "vision_encoder",
+  "param_scale": "7B",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": null,
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DINOv3는 2025년 Meta FAIR에서 발표한 7B 파라미터 규모의 비전 파운데이션 모델로, DINOv1(2021)→DINOv2(2023)로 이어지는 자기지도 비전 학습 계보의 최신작이다. 기존 DINOv2가 ViT-g(1.1B)까지 스케일링한 반면, DINOv3는 ViT-giant2 아키텍처를 채택해 7B까지 확장하며 비전 인코더의 스케일링 법칙(scaling law)이 언어 모델과 유사하게 작동함을 실증했다. 1.7B 규모의 정제된 대규모 이미지 데이터셋(LVD-1.7B)에서 레이블 없이 자기지도 학습을 수행하여, 의료 영상(병리 슬라이드, X-ray), 위성/항공 이미지, 과학 현미경 이미지 등 전문 도메인에서도 기존 지도 학습 모델을 능가하는 범용 시각 표현을 획득한다. 특히 LLaVA, Cambrian 등 멀티모달 LLM의 비전 백본으로 활용 시 기존 CLIP 대비 우수한 시각 이해 능력을 제공한다.",
+  "key_detail": "DINOv3는 48개 Transformer 레이어, 32개 어텐션 헤드, hidden dim 4,544의 ViT-giant2 아키텍처를 기반으로 한다. FFN은 SwiGLU 활성화 함수를 사용하며 중간 차원은 12,288이다. DINOv2에서 도입된 register token(4개의 학습 가능한 추가 토큰)을 계승하여 어텐션 맵의 아티팩트를 제거한다. 14×14 패치 크기로 518×518 입력을 처리하면 1,369개 패치 토큰 + 1개 [CLS] 토큰 + 4개 레지스터 토큰 = 총 1,374개 토큰이 된다. 파인튜닝 없는 선형 프로빙(frozen backbone + linear classifier)만으로 ImageNet-1K에서 최고 수준의 정확도를 기록하며, 이는 기존 CLIP ViT-L/14나 SigLIP 등 대조 학습 모델을 파인튜닝한 결과보다 우수하다. k-NN 분류, 세그멘테이션, 깊이 추정, 인스턴스 검색 등 다양한 비전 벤치마크에서 단일 모델로 최고 성능을 달성한다.",
+  "training_detail": "1.7B 이미지로 구성된 LVD-1.7B 데이터셋에서 자기지도 방식으로 학습된다. 학습 프레임워크는 DINO의 자기증류(self-distillation)와 iBOT의 마스킹 이미지 모델링(MIM)을 결합한 DINOv2 방식을 계승한다. Teacher 네트워크는 Student의 EMA(Exponential Moving Average)로 업데이트되며, centering과 sharpening을 적용하여 모드 붕괴를 방지한다. 학습 목표는 이미지 수준의 DINO 손실([CLS] 토큰 간 교차 엔트로피)과 패치 수준의 iBOT 손실(마스킹된 패치 토큰 예측)의 가중합이다. 멀티크롭 전략으로 2개의 글로벌 뷰(518²)와 다수의 로컬 뷰(98²)를 동시에 사용하여 다중 스케일 표현을 학습한다. 대규모 분산 학습 인프라(수천 개의 GPU)를 활용하며, Stochastic Depth(DropPath)와 높은 마스킹 비율을 적용하여 7B 규모 모델의 안정적 수렴을 달성했다.",
+  "paper_url": "https://arxiv.org/abs/2508.10104",
+  "code_url": "",
+  "license_type": "CC-BY-NC-4.0",
+  "concepts": ["Self-Supervised Learning", "Vision Foundation Model", "Billion-Scale Training"],
+  "architecture_category": "vision",
+  "branch_type": "vision",
+  "is_open_source": false,
+  "relations": [
+    {"to": "dinov2", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

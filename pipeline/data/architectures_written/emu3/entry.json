@@ -1,0 +1,33 @@
+{
+  "name": "Emu3",
+  "slug": "emu3",
+  "organization": "BAAI",
+  "release_date": "2024-09-01",
+  "decoder_type": "multimodal",
+  "param_scale": "8B",
+  "context_length": "8192",
+  "attention_type": "Grouped Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": 184622,
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Emu3는 2024년 BAAI(북경인공지능연구원)가 발표한 통합 멀티모달 모델로, 확산 모델이나 CLIP 등 전문 컴포넌트 없이 오직 다음 토큰 예측만으로 이미지 이해, 이미지 생성, 비디오 생성을 모두 수행할 수 있음을 보여준 모델이다. 이미지와 비디오를 VQ-VAE로 이산 토큰으로 변환하여 텍스트와 동일한 자기회귀 모델링 프레임워크에서 처리함으로써, 단일하고 단순한 다음 토큰 예측 패러다임의 멀티모달 확장 가능성을 실증하였다.",
+  "key_detail": "Emu3는 이미지와 비디오를 모두 이산 토큰으로 변환하는 SBER-VQGAN 토크나이저를 사용하며, 텍스트·이미지·비디오 토큰을 동일한 어휘 공간에서 통합 처리한다. 이미지 생성 품질을 향상하기 위해 DPO(Direct Preference Optimization) 기반 정렬을 이미지 생성에 적용하며, 클래스프리 가이던스(CFG) 없이도 안정적인 이미지 생성이 가능하다. 다음 토큰 예측만으로 텍스트-이미지 생성에서 SDXL, LlamaGen과 경쟁하는 품질을 달성하고, MMBench, VQAv2 등 이해 벤치마크에서도 경쟁력 있는 성능을 보인다.",
+  "training_detail": "약 600B 멀티모달 토큰으로 사전학습하며, 이미지·비디오·텍스트 데이터를 균형 있게 혼합한다. VQ-VAE 토크나이저를 먼저 학습한 뒤 통합 자기회귀 모델을 학습한다. AdamW 옵티마이저, cosine 스케줄러를 사용하며, 멀티모달 인스트럭션 튜닝 후 DPO로 생성 품질을 향상시킨다.",
+  "paper_url": "https://arxiv.org/abs/2409.18869",
+  "code_url": "https://github.com/baaivision/Emu3",
+  "license_type": "Apache-2.0",
+  "concepts": ["Next-Token Prediction Only", "Unified Multimodal", "Discrete Tokenization"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "chameleon", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

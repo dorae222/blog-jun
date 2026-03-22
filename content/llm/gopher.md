@@ -1,0 +1,164 @@
+---
+title: "Gopher: 대규모 언어 모델"
+slug: gopher
+category: llm
+tags: ["DeepMind", "Gopher", "Retrieval Augmentation", "Scaling Laws"]
+status: published
+post_type: article
+quality_score: 8.0
+created_at: "2026-03-22T10:37:37.635247+00:00"
+architecture_entry: gopher
+---
+
+# Gopher: 스케일링 법칙 실증과 대형 언어 모델의 한계 탐색
+
+## 개요
+
+**Gopher**는 DeepMind가 2021년 12월 발표한 280B 파라미터 규모의 대형 언어 모델이다. "Scaling Language Models: Methods, Analysis & Insights from Training Gopher" (Rae et al., 2021) 논문을 통해 소개되었으며, 모델 크기가 성능에 미치는 영향을 **124개의 다양한 태스크에서 체계적으로 분석**한 것이 핵심 기여이다.
+
+Gopher 프로젝트의 가장 중요한 발견은, 모델 스케일링이 모든 태스크에 균등하게 도움이 되지 않는다는 것이다. 상식 추론, 독해, 사실 확인 등에서는 크기에 비례하여 성능이 향상되었지만, **수학적 추론과 논리적 추론에서는 크기 증가만으로 한계**가 있음을 보였다. 이 관찰은 이후 Chinchilla의 효율적 스케일링 연구와 Chain-of-Thought 추론 연구를 촉발시킨 중요한 기여이다.
+
+**참고 논문**: [Scaling Language Models](https://arxiv.org/abs/2112.11446) (Rae et al., 2021)
+
+## 아키텍처 상세
+
+### 기본 구조
+
+Gopher는 Pre-norm Transformer Decoder 아키텍처를 기반으로 한다.
+
+| 구성 요소 | 사양 |
+|-----------|------|
+| **파라미터** | 280B |
+| **레이어** | 80 |
+| **히든 차원** | 16,384 |
+| **어텐션 헤드** | 128 |
+| **FFN 차원** | 65,536 |
+| **컨텍스트** | 2,048 |
+| **어휘** | 32,000 (SentencePiece) |
+
+### RMSNorm
+
+Gopher는 LayerNorm 대신 **RMSNorm**(Root Mean Square Normalization)을 채택했다:
+
+$$\text{RMSNorm}(x) = \frac{x}{\sqrt{\frac{1}{d} \sum_{i=1}^{d} x_i^2 + \epsilon}} \cdot \gamma$$
+
+RMSNorm은 평균을 계산하지 않으므로 LayerNorm 대비 약 10-15% 빠르며, 대규모 모델에서 학습 안정성도 우수하다. 이후 LLaMA, Mistral 등 현대 LLM의 표준이 되었다.
+
+### Relative Position Encoding
+
+Gopher는 Learned Absolute Position Embedding 대신 **상대적 위치 인코딩(Relative Position Encoding)**을 사용한다. 이는 각 어텐션 연산에서 토큰 간 상대적 거리를 기반으로 위치 정보를 제공하여, 학습 시 보지 못한 더 긴 시퀀스에 대한 일반화 능력을 향상시킨다.
+
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T + B}{\sqrt{d_k}}\right)V$$
+
+여기서 $B$는 상대 위치에 따른 학습 가능한 편향(bias) 행렬이다.
+
+### 모델 크기별 변형
+
+Gopher 프로젝트는 6가지 크기의 모델을 동시에 학습하여 스케일링 효과를 체계적으로 비교했다:
+
+| 모델 | 파라미터 | 레이어 | 히든 | 헤드 |
+|------|---------|--------|------|------|
+| 44M | 44M | 8 | 512 | 8 |
+| 117M | 117M | 12 | 768 | 12 |
+| 417M | 417M | 12 | 1,536 | 12 |
+| 1.4B | 1.4B | 24 | 2,048 | 16 |
+| 7.1B | 7.1B | 32 | 4,096 | 32 |
+| **280B** | **280B** | **80** | **16,384** | **128** |
+
+## 핵심 혁신
+
+### 1. 태스크별 스케일링 효과의 체계적 분석
+
+124개 태스크를 분석한 결과, 스케일링 효과는 태스크 유형에 따라 크게 달랐다:
+
+- **큰 향상**: 독해(+15%), 상식 추론(+12%), 사실 확인(+10%)
+- **중간 향상**: 자연어 추론(+7%), 감성 분석(+5%)
+- **제한적 향상**: 수학적 추론(+3%), 논리 퍼즐(+2%)
+
+이 발견은 "크기만 키우면 모든 것이 해결된다"는 당시의 통념에 의문을 제기하며, 데이터 효율성(Chinchilla)과 추론 특화 학습(Chain-of-Thought)이라는 두 가지 연구 방향을 촉발했다.
+
+### 2. MassiveText 데이터셋
+
+44TB 규모의 고품질 다중 도메인 데이터셋을 구축했다:
+
+| 도메인 | 비율 | 토큰 수 |
+|--------|------|--------|
+| **웹 (MassiveWeb)** | 48% | 약 144B |
+| **책** | 27% | 약 81B |
+| **뉴스** | 10% | 약 30B |
+| **GitHub** | 10% | 약 30B |
+| **Wikipedia** | 2% | 약 6B |
+| **C4** | 3% | 약 9B |
+
+실제 학습에는 약 300B 토큰이 사용되었다.
+
+### 3. 책임 있는 AI 분석
+
+Gopher 논문은 성능 분석과 함께 독성(toxicity), 편향(bias), 개인정보 노출 위험에 대한 종합적인 안전성 평가를 포함했다. 이는 대형 모델의 사회적 영향을 체계적으로 분석한 초기 사례 중 하나이다.
+
+## 벤치마크/성능
+
+| 벤치마크 | GPT-3 (175B) | Gopher (280B) | 개선폭 |
+|---------|-------------|--------------|--------|
+| **MMLU** | 43.9% | **60.0%** | +16.1%p |
+| **HellaSwag** | 78.9% | **79.2%** | +0.3%p |
+| **LAMBADA** | 76.2% | **74.5%** | -1.7%p |
+| **BoolQ** | 60.5% | **79.3%** | +18.8%p |
+| **TriviaQA** | 71.2% | **73.5%** | +2.3%p |
+
+Gopher는 특히 MMLU(+16.1%p)와 BoolQ(+18.8%p) 같은 지식 집약적 태스크에서 GPT-3를 크게 앞질렀다.
+
+## 관련 모델 비교
+
+| 특성 | GPT-3 | Gopher | Chinchilla | PaLM |
+|------|-------|--------|-----------|------|
+| **파라미터** | 175B | 280B | 70B | 540B |
+| **학습 토큰** | 300B | 300B | **1.4T** | 780B |
+| **MMLU** | 43.9% | 60.0% | **67.5%** | 69.3% |
+| **정규화** | LayerNorm | **RMSNorm** | LayerNorm | LayerNorm |
+| **위치 인코딩** | Learned | **Relative** | Learned | RoPE |
+| **스케일링 법칙** | Kaplan | Kaplan | **Chinchilla** | Chinchilla |
+
+## 학습 상세
+
+- **데이터**: MassiveText에서 300B 토큰 (44TB 전체 중 일부)
+- **하드웨어**: TPU v3 Pod (구체적 수치 미공개)
+- **옵티마이저**: Adam, 그래디언트 클리핑 적용
+- **학습률**: 웜업 후 코사인 감쇠
+- **학습 안정성**: 그래디언트 클리핑과 RMSNorm으로 대규모 학습 안정화
+- **6개 모델 동시 학습**: 44M~280B 범위에서 스케일링 분석
+
+## 실무 활용
+
+### 1. 스케일링 연구 참조
+
+Gopher의 태스크별 스케일링 분석은 새로운 모델을 설계할 때 "어떤 태스크에서 크기가 도움이 되는가?"에 대한 실증적 가이드를 제공한다.
+
+### 2. 안전성 평가 프레임워크
+
+독성, 편향, 개인정보 평가 방법론은 이후 GPT-4, LLaMA 등의 안전성 평가에서 참조되었다.
+
+### 3. 데이터 큐레이션 전략
+
+MassiveText의 다중 도메인 데이터 구성과 품질 필터링 전략은 이후 Pile, Dolma 등 고품질 데이터셋 구축에 영감을 주었다.
+
+## 한계 및 전망
+
+### 한계
+
+1. **비효율적 스케일링**: Chinchilla가 이후 증명했듯이, 280B 파라미터에 300B 토큰은 최적 비율(20:1)보다 훨씬 적은 데이터로 학습한 것이다.
+2. **모델 비공개**: 가중치와 학습 코드가 공개되지 않아 재현이 불가능하다.
+3. **수학/추론 한계**: 크기 확장만으로는 수학적 추론이 제한적이라는 발견은 동시에 한계이기도 하다.
+
+### 전망
+
+Gopher는 "크기가 전부가 아니다"라는 메시지로 이후 AI 연구의 방향을 크게 전환시킨 모델이다. Chinchilla(데이터 효율성), Flamingo(멀티모달), Gemini(통합 모델)로 이어지는 DeepMind의 연구 계보에서 중요한 실증적 기반을 제공했다.
+
+---
+
+**참고 논문**: [Scaling Language Models: Methods, Analysis & Insights from Training Gopher](https://arxiv.org/abs/2112.11446) (Rae et al., 2021)
+
+## 관련 문서
+
+- [[chinchilla|Training Compute-Optimal Large Language Models (Chinchilla)]] — 후속 모델
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 영감

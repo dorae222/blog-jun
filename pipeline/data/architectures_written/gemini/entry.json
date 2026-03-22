@@ -1,0 +1,33 @@
+{
+  "name": "Gemini",
+  "slug": "gemini",
+  "organization": "Google DeepMind",
+  "release_date": "2023-12-06",
+  "decoder_type": "dense",
+  "param_scale": "",
+  "context_length": "32000",
+  "attention_type": "Multi-Query Attention",
+  "normalization": "RMSNorm",
+  "activation": "GeGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "256000",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gemini 1.0은 Google DeepMind가 2023년 12월 발표한 멀티모달 대형 언어 모델로, Ultra·Pro·Nano 세 가지 크기로 제공된다. 텍스트, 이미지, 오디오, 비디오를 네이티브로 처리할 수 있는 진정한 멀티모달 아키텍처를 채택하였으며, 이는 별도 인코더를 결합한 방식과 차별화된다. Gemini Ultra는 MMLU에서 90.0%를 달성하여 인간 전문가(89.8%)를 처음으로 넘어선 모델이 되었다. PaLM 2의 후속으로서 Google의 TPU v5e/v5p 인프라를 활용하여 효율적으로 학습 및 추론이 가능하도록 설계되었으며, 이후 Gemini 1.5와 2.x 시리즈로 이어지는 Google DeepMind의 통합 AI 플랫폼의 기반이 되었다.",
+  "key_detail": "Gemini의 가장 큰 기술적 특징은 처음부터 멀티모달로 설계된 아키텍처이다. 텍스트, 이미지, 오디오, 비디오 각각에 대해 별도의 전처리 없이 단일 트랜스포머 모델이 모든 모달리티를 처리한다. 효율적인 어텐션 메커니즘(Multi-Query Attention)과 GeGLU 활성화 함수를 결합하여 품질과 처리 속도를 최적화하였다. Nano 버전은 4-bit 양자화를 통해 온디바이스 실행이 가능하도록 설계되었으며, Pixel 8 Pro 스마트폰에 탑재되었다. 코드 이해와 생성, 수학 문제 풀이에서도 뛰어난 성능을 보여 범용 AI 플랫폼으로서의 잠재력을 입증하였다.",
+  "training_detail": "Google의 Tensor Processing Unit(TPU v5e/v5p)를 활용한 대규모 분산 학습을 수행하였다. 웹 문서, 코드, 이미지-텍스트 페어, 오디오, 비디오 등 다양한 멀티모달 데이터를 학습하였으며, 구체적인 토큰 수는 공개되지 않았다. SFT(Supervised Fine-Tuning)와 RLHF를 통해 명령어 수행 능력을 향상시켰다.",
+  "paper_url": "https://arxiv.org/abs/2312.11805",
+  "code_url": "",
+  "license_type": "proprietary",
+  "concepts": ["Multimodal", "Native Multimodal Architecture", "On-device AI", "MMLU"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {"to": "palm", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

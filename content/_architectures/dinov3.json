@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "dinov3",
+  "organization": "Meta",
+  "release_date": "2025-08-01",
+  "architecture_category": "vision",
+  "decoder_type": "vision_encoder",
+  "param_scale": "7B",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": "",
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "DINOv3는 2025년 Meta에서 발표한 7B 파라미터 규모의 비전 파운데이션 모델로, DINOv2의 스케일업 버전이다. 1.7B 규모의 대규모 이미지 데이터셋으로 자기지도 학습을 수행하여 레이블 없이도 범용 시각 특징을 학습한다. 7B 규모의 ViT 아키텍처를 채택하여 기존 비전 인코더 대비 훨씬 풍부하고 세밀한 표현을 획득하며, 의료 영상, 위성 이미지, 과학 이미지 등 다양한 전문 도메인에서도 뛰어난 전이 학습 성능을 보인다.",
+  "key_detail": "DINOv3는 7B 파라미터의 초대형 ViT 아키텍처를 기반으로 하며, 1.7B 이미지로 구성된 대규모 정제 데이터셋에서 자기지도 학습을 수행한다. DINOv2의 자기증류 및 마스킹 이미지 모델링 학습 방식을 계승하면서 모델 규모와 데이터 규모를 대폭 확장하였다. 파인튜닝 없는 선형 프로빙에서 최고 수준의 ImageNet 정확도를 기록하며, 세분화된 시각적 특징 덕분에 고해상도 이해 태스크에서 탁월한 성능을 발휘한다.",
+  "training_detail": "1.7B 이미지로 구성된 정제된 대규모 데이터셋에서 자기지도 방식으로 학습된다. 대규모 분산 학습 인프라를 활용하며, EMA 기반 자기증류 학습을 사용한다. 높은 마스킹 비율과 다양한 스케일의 뷰를 사용하는 멀티크롭 전략을 적용한다.",
+  "paper_url": "https://arxiv.org/abs/2508.10104",
+  "code_url": "",
+  "license_type": "CC-BY-NC-4.0",
+  "is_open_source": false,
+  "related_post_slug": "dinov3",
+  "concepts": [
+    "Billion-Scale Training",
+    "Self-Supervised Learning",
+    "Vision Foundation Model"
+  ]
+}

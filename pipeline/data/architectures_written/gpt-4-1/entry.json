@@ -1,0 +1,33 @@
+{
+  "name": "GPT-4.1",
+  "slug": "gpt-4-1",
+  "organization": "OpenAI",
+  "release_date": "2025-04-14",
+  "decoder_type": "dense",
+  "param_scale": "",
+  "context_length": "1000000",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "LayerNorm",
+  "activation": "GeLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GPT-4.1은 OpenAI가 2025년 4월 API를 통해 공개한 GPT-4 패밀리의 최신 업데이트 모델이다. 코딩 능력과 명령어 수행(instruction following) 능력의 대폭 향상에 초점을 맞추었으며, SWE-bench Verified에서 54.6%라는 당시 최고 수준의 성능을 달성하였다. 최대 100만 토큰의 컨텍스트 윈도우를 지원하여 대규모 코드베이스 전체를 한 번에 처리할 수 있다. GPT-4o 대비 더 저렴한 가격으로 제공되며, mini와 nano 변형도 함께 출시되어 비용 대비 성능을 다양한 애플리케이션에 최적화할 수 있게 하였다. 복잡한 멀티턴 대화와 긴 맥락을 요구하는 에이전트 작업에 특화되어 있다.",
+  "key_detail": "GPT-4.1의 핵심 강점은 코딩 에이전트 시나리오에 특화된 명령어 수행 능력이다. 구조화된 출력 형식 준수, 롤플레이 유지, 복잡한 도구 호출 체인 실행 등에서 이전 모델 대비 뚜렷한 개선을 보인다. 100만 토큰 컨텍스트는 대형 코드 저장소, 긴 법적 문서, 장시간 대화 이력 처리를 가능하게 한다. 실제 소프트웨어 엔지니어링 태스크를 평가하는 SWE-bench에서의 높은 성능은 실용적인 코딩 보조 도구로서의 역할을 입증하였다. API 전용 모델로 출시되어 개발자 생태계 중심의 배포 전략을 취하였다.",
+  "training_detail": "아키텍처 세부 사항과 학습 데이터는 공개되지 않았다. GPT-4 계열의 RLHF 기반 정렬 방법론을 계승하되, 코딩 및 명령어 수행에 특화된 추가 파인튜닝을 적용한 것으로 알려져 있다. 100만 토큰 컨텍스트 지원을 위한 위치 인코딩 확장 기법이 적용되었을 것으로 추정된다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "proprietary",
+  "concepts": ["Long Context", "Coding Agent", "Instruction Following", "SWE-bench"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {"to": "gpt-4", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

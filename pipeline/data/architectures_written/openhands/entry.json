@@ -1,0 +1,33 @@
+{
+  "name": "OpenHands",
+  "slug": "openhands",
+  "organization": "UIUC",
+  "release_date": "2024-07-23",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "OpenHands(구 OpenDevin)는 AI 소프트웨어 엔지니어가 인간 개발자와 동일한 방식으로 코드를 작성하고, 명령을 실행하고, 웹을 탐색하고, API를 호출할 수 있는 오픈소스 AI 에이전트 플랫폼이다. Wang et al.(UIUC, 2024)이 개발한 이 플랫폼은 단일 에이전트부터 멀티 에이전트 파이프라인까지 다양한 아키텍처를 지원하며, 격리된 샌드박스 환경에서 안전한 코드 실행을 보장한다. Devin 등 상용 SWE 에이전트에 대응하는 오픈소스 대안으로 널리 사용된다.",
+  "key_detail": "OpenHands의 핵심은 확장 가능한 에이전트 런타임이다. Docker 기반 샌드박스에서 bash, Python, 브라우저 등 다양한 실행 환경을 제공하며, CodeActAgent(코드 실행 중심), BrowsingAgent(웹 브라우징), MicroAgent(특화 서브에이전트) 등 다양한 에이전트 구현을 포함한다. EventStream 아키텍처를 통해 에이전트 행동과 관찰을 구조화된 이벤트로 관리하며, 인간 개입(Human-in-the-loop) 모드도 지원한다. SWE-bench Verified에서 Claude 3.5 Sonnet 기반으로 50% 이상의 이슈 해결률을 달성하는 등 지속적인 성능 향상을 보이고 있다.",
+  "training_detail": "OpenHands는 GPT-4, Claude 3.5, Gemini 등 다양한 LLM을 백엔드로 지원하며, 모델 자체의 파인튜닝 없이 프롬프팅과 도구 설계로 성능을 달성한다. MIT 라이선스로 공개되어 있으며 활발한 오픈소스 커뮤니티가 형성되어 있다.",
+  "paper_url": "https://arxiv.org/abs/2407.16741",
+  "code_url": "https://github.com/All-Hands-AI/OpenHands",
+  "license_type": "MIT",
+  "concepts": ["Open-Source Agent", "Code Agent"],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": true,
+  "relations": [
+    {"to": "swe-agent", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

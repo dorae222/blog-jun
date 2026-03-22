@@ -1,0 +1,33 @@
+{
+  "name": "Self-Consistency",
+  "slug": "self-consistency",
+  "organization": "Google",
+  "release_date": "2022-03-21",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Self-Consistency는 CoT 프롬프팅의 한계인 단일 추론 경로의 불안정성을 극복하기 위해 제안된 디코딩 전략이다. 동일한 문제에 대해 다양한 CoT 추론 경로를 다수 샘플링한 뒤, 최종 답안에 대해 다수결(majority vote)을 적용해 가장 일관성 있는 답을 선택한다. Wang et al.(Google, 2022)이 제안한 이 방법은 탐욕적 디코딩(greedy decoding) 대신 고온(temperature) 샘플링을 사용해 답의 다양성을 확보하고, 앙상블 효과를 통해 추론 정확도를 대폭 향상시킨다.",
+  "key_detail": "핵심 메커니즘은 세 단계로 구성된다. 첫째, few-shot CoT 프롬프트로 언어 모델에서 다수의 추론 경로를 독립적으로 샘플링한다. 둘째, 각 경로에서 최종 답안을 추출한다. 셋째, 답안 집합에서 다수결로 최종 정답을 결정한다. GSM8K에서 CoT 단독 대비 최대 17.9%p 향상을 달성했으며, 샘플 수가 늘수록 성능이 안정적으로 개선된다. 모델이 다양한 방식으로 같은 결론에 도달한다면 그 답이 옳을 가능성이 높다는 직관에 기반한다.",
+  "training_detail": "파인튜닝 없이 inference 시점에만 적용되며, 샘플링 횟수(일반적으로 10~40회)만큼 LLM 호출 비용이 증가한다. temperature를 0.5~0.8로 설정해 다양한 경로를 생성하고, greedy decoding의 단일 경로 의존성을 앙상블로 대체한다.",
+  "paper_url": "https://arxiv.org/abs/2203.11171",
+  "code_url": "",
+  "license_type": "",
+  "concepts": ["Self-Consistency", "Sampling", "Majority Vote"],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": true,
+  "relations": [
+    {"to": "cot", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

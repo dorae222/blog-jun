@@ -1,0 +1,33 @@
+{
+  "name": "Reflexion",
+  "slug": "reflexion",
+  "organization": "Northeastern/MIT",
+  "release_date": "2023-03-20",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Reflexion은 언어 에이전트가 과거 시행착오를 언어적 반성(verbal reflection)으로 전환해 컨텍스트에 저장하고, 다음 시도에서 이를 활용해 자기 개선하는 프레임워크다. Shinn et al.(Northeastern/MIT, 2023)이 제안한 이 기법은 기울기 기반 학습(gradient update) 없이도 에이전트가 실패 원인을 분석하고 전략을 수정할 수 있게 한다. ReAct의 단일 시도 한계를 극복해, 복잡한 시퀀셜 의사결정·코드 생성·질의응답 과제에서 반복 시도를 통한 지속적 성능 향상을 실현한다.",
+  "key_detail": "Reflexion의 핵심 구조는 세 컴포넌트로 이루어진다. 첫째, Actor: ReAct 루프를 실행해 환경과 상호작용하는 에이전트. 둘째, Evaluator: 시도 결과를 평가해 성공/실패 신호를 생성. 셋째, Self-Reflection: 실패한 경우 LLM이 \"왜 실패했는가, 어떻게 개선할까\"를 언어로 기술하는 모듈. 이 반성 텍스트는 에피소드 메모리(episodic memory)에 저장되어 다음 시도의 컨텍스트로 주입된다. HotpotQA, AlfWorld, HumanEval(코드) 등에서 ReAct 단독 대비 10~20%p 성능 향상을 보였다. 컨텍스트 길이 제한으로 인해 메모리 누적에 한계가 있다는 점이 주요 제약이다.",
+  "training_detail": "Reflexion은 파인튜닝 없이 GPT-3.5/GPT-4, Claude 등 강력한 기반 모델 위에서 프롬프팅으로 구현된다. 반성 횟수(보통 3~5회)와 메모리 저장 방식(슬라이딩 윈도우)을 설계자가 조정한다.",
+  "paper_url": "https://arxiv.org/abs/2303.11366",
+  "code_url": "",
+  "license_type": "",
+  "concepts": ["Self-Reflection", "Verbal Memory", "Iterative Improvement"],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": true,
+  "relations": [
+    {"to": "react", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

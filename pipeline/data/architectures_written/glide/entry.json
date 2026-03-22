@@ -1,0 +1,39 @@
+{
+  "name": "GLIDE",
+  "slug": "glide",
+  "organization": "OpenAI",
+  "release_date": "2021-12-20",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "3.5B (full) / 300M (filtered, 공개)",
+  "context_length": "128 (텍스트)",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "Group Normalization + AdaGN",
+  "activation": "SiLU",
+  "position_encoding": "Sinusoidal Timestep Embedding",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GLIDE(Guided Language to Image Diffusion for Generation and Editing)는 2021년 OpenAI가 발표한 텍스트 조건부 이미지 생성 모델로, 텍스트 가이던스를 확산 모델에 통합하는 두 가지 방법—Classifier Guidance와 Classifier-Free Guidance(CFG)—을 비교하고 CFG가 더 우월함을 실증한 중요한 연구이다. GLIDE는 35억 파라미터 규모의 ADM U-Net에 텍스트 인코더(Transformer)를 결합하였다. 텍스트 토큰의 최종 임베딩은 어텐션 레이어에서 Cross-Attention으로 사용되고, 별도의 토큰을 AdaGN에 주입하여 각 U-Net 레이어가 텍스트 정보를 풍부하게 활용하도록 설계하였다. CLIP 기반 Classifier Guidance와 CFG를 동일한 모델에 적용해 비교한 결과, 인간 평가자들이 CFG를 2:1 비율로 선호한다는 결과를 얻었다. 이는 CLIP 공간의 방향이 지각적 품질 방향과 일치하지 않음을 시사하며, 내부 조건부 정보만으로 가이던스를 수행하는 CFG의 우월성을 확인하였다. 또한 GLIDE는 인페인팅(inpainting) 파이프라인도 제공하여, 기존 이미지에 마스크를 적용하고 텍스트에 따라 해당 영역을 새롭게 생성하는 편집 기능을 시연하였다. 공개 버전은 3억 파라미터로 축소되고 안전 필터가 적용된 형태이다.",
+  "key_detail": "GLIDE의 텍스트 인코딩은 Transformer 기반 언어 모델로 텍스트를 처리하며, K 토큰의 임베딩 시퀀스를 생성한다. 이 임베딩은 두 경로로 활용된다: (1) U-Net의 각 어텐션 레이어에서 Key·Value로 사용되는 Cross-Attention, (2) 최종 토큰 임베딩을 AdaGN에 투영하는 경로. CFG는 빈 텍스트 조건 $p_\\theta(\\mathbf{x}_t|\\emptyset)$과 실제 텍스트 조건 $p_\\theta(\\mathbf{x}_t|c)$를 모두 학습하고, 샘플링 시 $\\tilde{\\epsilon} = \\epsilon_\\theta(\\mathbf{x}_t,\\emptyset) + s(\\epsilon_\\theta(\\mathbf{x}_t,c) - \\epsilon_\\theta(\\mathbf{x}_t,\\emptyset))$로 예측값을 보간한다. 인페인팅은 마스크된 이미지를 노이즈와 결합해 U-Net에 입력하는 방식으로 구현된다. 두 번째 단계로 업샘플러 확산 모델이 64×64 출력을 256×256으로 개선한다.",
+  "training_detail": "인터넷에서 수집된 대규모 이미지-텍스트 쌍 데이터셋으로 학습되었다(내부 데이터셋, 정확한 규모 비공개). CLIP Guidance 실험에서는 별도로 학습된 noisy CLIP 모델을 활용한다. FID·CLIP Score·인간 평가 세 가지 지표에서 CFG 버전이 CLIP Guidance 버전보다 일관되게 우수하였다. 256×256 해상도에서 최종 이미지를 생성하며, 안전 필터를 통과한 데이터만으로 공개 모델을 미세조정하였다.",
+  "paper_url": "https://arxiv.org/abs/2112.10741",
+  "code_url": "https://github.com/openai/glide-text2im",
+  "license_type": "MIT (filtered version)",
+  "concepts": [
+    "Text-Guided Diffusion",
+    "Classifier-Free Guidance",
+    "Cross-Attention",
+    "Inpainting",
+    "Text-to-Image"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "classifier-guidance", "type": "evolved_from"}
+  ],
+  "related_post_slug": "glide"
+}

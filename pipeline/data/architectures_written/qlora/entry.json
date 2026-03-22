@@ -1,0 +1,33 @@
+{
+  "name": "QLoRA",
+  "slug": "qlora",
+  "organization": "University of Washington",
+  "release_date": "2023-05-23",
+  "decoder_type": "technique",
+  "param_scale": "N/A",
+  "context_length": "N/A",
+  "attention_type": "N/A",
+  "normalization": "N/A",
+  "activation": "N/A",
+  "position_encoding": "N/A",
+  "vocab_size": "N/A",
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "QLoRA(Quantized LoRA)는 Tim Dettmers 등이 2023년 워싱턴대에서 제안한 기법으로, 4비트 양자화와 LoRA를 결합해 65B 규모의 대형 언어 모델을 단일 48GB GPU에서 파인튜닝할 수 있게 한다. NF4(NormalFloat 4-bit), Double Quantization, Paged Optimizers라는 세 가지 혁신으로 메모리를 극적으로 절감하면서도 16비트 풀 파인튜닝과 동등한 성능을 보존한다. Guanaco-33B 모델은 단일 GPU에서 12시간 학습만으로 ChatGPT와 동등한 수준에 도달했다.",
+  "key_detail": "세 가지 핵심 혁신을 도입했다. 첫째, NF4(NormalFloat 4-bit)는 사전 학습된 LLM 가중치가 정규 분포를 따른다는 가정 하에 정보 이론적으로 최적인 4비트 데이터 타입으로, 기존 INT4보다 정보 손실이 적다. 둘째, Double Quantization은 양자화 상수 자체를 다시 8비트로 양자화해 파라미터당 약 0.5비트의 추가 메모리를 절감한다. 셋째, Paged Optimizers는 GPU 메모리 부족(OOM) 발생 시 옵티마이저 상태를 CPU RAM으로 자동 페이징해 안정적인 학습을 보장한다. 역전파 시에는 NF4를 BF16으로 디퀀타이즈해 그래디언트를 정밀하게 계산한다.",
+  "training_detail": "LLaMA 65B 기준 표준 16비트 파인튜닝에는 780GB GPU 메모리가 필요하지만, QLoRA는 단일 48GB GPU(A6000)로 학습이 가능하다. NF4는 FP32 대비 약 0~1%의 성능 손실만 발생한다. Guanaco-65B는 A100 40GB 1장에서 40시간 학습으로 완성되었다. bitsandbytes 라이브러리와 HuggingFace PEFT를 통해 구현되며, 현재 소비자용 GPU에서의 대형 모델 파인튜닝의 표준 방법론으로 자리 잡았다.",
+  "paper_url": "https://arxiv.org/abs/2305.14314",
+  "code_url": "https://github.com/artidoro/qlora",
+  "license_type": "MIT",
+  "concepts": ["NF4 Quantization", "Double Quantization", "Paged Optimizers", "PEFT", "LoRA", "4-bit Training"],
+  "architecture_category": "technique",
+  "branch_type": "",
+  "is_open_source": true,
+  "relations": [
+    {"to": "lora", "type": "evolved_from"}
+  ],
+  "related_post_slug": "qlora"
+}

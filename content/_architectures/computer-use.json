@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "computer-use",
+  "organization": "Anthropic",
+  "release_date": "2024-10-22",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Claude Computer Use는 Claude가 스크린샷을 입력으로 받아 마우스 클릭, 키보드 입력, 스크롤 등 GUI 조작 명령을 출력함으로써 컴퓨터를 직접 제어하는 능력이다. Anthropic이 2024년 10월 Claude 3.5 Sonnet과 함께 공개(베타)한 이 기능은 자연어 지시만으로 웹 브라우저·스프레드시트·IDE 등 임의의 GUI 애플리케이션을 조작할 수 있게 한다. 기존 RPA(로봇 프로세스 자동화) 도구와 달리 미리 정의된 스크립트 없이 시각적 이해를 기반으로 동적으로 인터페이스를 탐색한다는 점이 핵심 혁신이다.",
+  "key_detail": "Computer Use는 screenshot 도구, mouse_move/left_click/type 등의 컴퓨터 조작 도구를 Claude의 tool use 기능과 결합한 형태로 구현된다. Claude는 스크린샷을 보고 현재 상태를 파악한 뒤, 목표 달성을 위한 다음 GUI 조작 액션을 결정한다. 이 과정이 반복되어 복잡한 멀티스텝 작업을 자율적으로 수행한다. OSWorld 등 GUI 벤치마크에서 당시 최고 수준의 성능을 기록했으나, 정밀한 클릭 위치 파악, 화면 콘텐츠 렌더링 지연 등의 한계도 함께 보고되었다.",
+  "training_detail": "Computer Use는 Claude 3.5 Sonnet 모델에 멀티모달 입력(스크린샷)과 GUI 조작 도구를 결합해 구현된다. 별도의 아키텍처 변경 없이 Claude의 기존 비전 및 tool use 능력을 확장한 형태다. Anthropic은 API를 통해 개발자에게 베타 접근을 제공하며, 안전한 샌드박스 환경(Docker 컨테이너)에서 사용을 권장한다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "",
+  "is_open_source": false,
+  "related_post_slug": "computer-use",
+  "concepts": [
+    "Computer Use",
+    "GUI Automation",
+    "Screenshot Understanding"
+  ]
+}

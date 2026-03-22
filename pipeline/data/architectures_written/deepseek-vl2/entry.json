@@ -1,0 +1,33 @@
+{
+  "name": "DeepSeek-VL2",
+  "slug": "deepseek-vl2",
+  "organization": "DeepSeek",
+  "release_date": "2024-12-01",
+  "decoder_type": "multimodal",
+  "param_scale": "27B",
+  "context_length": "4096",
+  "attention_type": "Multi-Head Latent Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": null,
+  "hidden_dim": "5120",
+  "num_layers": "60",
+  "num_heads": "128",
+  "num_experts": 64,
+  "active_experts": 6,
+  "description": "DeepSeek-VL2는 2024년 DeepSeek이 발표한 MoE 기반 멀티모달 모델로, 동적 타일링(dynamic tiling) 방식의 고해상도 이미지 처리와 DeepSeekMoE 아키텍처를 결합하여 탁월한 파라미터 효율성을 달성하였다. 3B(소형), 16B(중형), 27B(대형) 세 가지 크기로 제공되며, 각각 유사 크기의 밀집 모델 대비 훨씬 적은 활성화 파라미터로 경쟁력 있는 성능을 달성한다. OCR, 문서 이해, 시각적 추론, 수학 문제 해결 등 다양한 멀티모달 태스크에서 오픈소스 SOTA 수준을 기록하였다.",
+  "key_detail": "DeepSeek-VL2의 핵심은 동적 타일링 이미지 처리와 DeepSeekMoE 아키텍처의 결합이다. 동적 타일링은 이미지를 내용과 해상도에 따라 최적 개수의 448×448 타일로 분할하여 처리하며, 각 타일에 대한 로컬 특징과 전체 이미지에 대한 글로벌 특징을 함께 제공한다. DeepSeekMoE는 세밀하게 분리된 전문가(fine-grained experts)와 공유 전문가를 결합하여 높은 파라미터 효율성을 달성한다. SigLIP-L 비전 인코더를 사용하며, MLA(Multi-head Latent Attention)로 KV 캐시를 압축하여 추론 효율성을 높인다.",
+  "training_detail": "DeepSeek-VL 데이터셋을 기반으로 웹 이미지-텍스트, OCR, 수학, 과학 도메인 데이터를 혼합하여 학습한다. DeepSeekMoE 언어 모델을 기반으로 비전 인코더와 동적 타일링 프로젝터를 통합하여 학습하며, 2단계 학습(비전-언어 정렬 후 통합 파인튜닝)을 수행한다.",
+  "paper_url": "https://arxiv.org/abs/2412.10302",
+  "code_url": "https://github.com/deepseek-ai/DeepSeek-VL2",
+  "license_type": "DeepSeek License",
+  "concepts": ["Dynamic Tiling", "MoE VLM", "Parameter Efficiency"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "deepseek-v2", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

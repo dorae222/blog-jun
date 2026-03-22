@@ -1,0 +1,33 @@
+{
+  "name": "Manus",
+  "slug": "manus",
+  "organization": "Manus AI",
+  "release_date": "2025-03-06",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Manus는 중국 스타트업 Manus AI(Monica.im 팀 출신)가 2025년 3월 공개한 범용 AI 에이전트로, 단일 LLM 챗봇의 한계를 넘어 브라우저 조작·코드 실행·파일 관리·API 호출을 자율적으로 수행해 복잡한 실세계 작업을 엔드투엔드로 처리한다. 기존 AI 어시스턴트가 텍스트 응답에 머무르는 반면, Manus는 여행 일정 수립(항공편·호텔 실시간 검색 포함), 시장 조사 보고서 작성(웹 크롤링→분석→PDF 생성), 코드베이스 리팩터링, 데이터 수집·정제·시각화 등 10단계 이상의 다단계 작업을 사용자 개입 없이 완수한다. 출시 직후 GAIA 벤치마크에서 기존 1위였던 OpenAI Deep Research를 제치고 최고 점수를 기록해 AI 에이전트 커뮤니티에서 폭발적 관심을 받았으며, AutoGPT·BabyAGI 등 초기 에이전트 프레임워크가 보여준 비전을 실용 수준에서 최초로 구현한 사례로 평가된다. 초대 기반 베타로 출시되어 대기자가 수십만 명에 달했고, 이후 오픈소스 대안 OpenManus가 등장하는 계기가 되었다.",
+  "key_detail": "Manus의 핵심 혁신은 Observe-Think-Act 루프 기반의 계층적 멀티 에이전트 아키텍처에 있다. 최상위 오케스트레이터 에이전트가 사용자 요청을 분석·분해하고, 브라우저 에이전트(Chromium CDP 프로토콜 기반 웹 탐색·폼 입력·스크린샷 캡처), 코딩 에이전트(Python·JS 등 다국어 코드 작성·실행·디버깅), 파일 에이전트(PDF·DOCX·XLSX 생성·편집) 등 특화 서브에이전트에 작업을 위임한다. Anthropic의 Computer Use가 단일 에이전트의 GUI 조작에 집중하는 것과 달리, Manus는 GUI 자동화와 프로그래매틱 API 호출을 이중으로 활용하며 서브에이전트 간 비동기 협업을 지원한다. 클라우드 기반 가상 머신(풀 OS·브라우저·터미널 포함)에서 실행되어 수 시간 단위의 장시간 작업도 사용자 PC 부담 없이 처리하고, SSE(Server-Sent Events)를 통해 각 에이전트의 추론 과정·중간 결과·스크린샷을 실시간 스트리밍한다. 메모리 시스템은 작업 히스토리·파일 시스템 상태·컨텍스트 윈도우를 관리하는 단기 메모리와 장기 검색 기반 메모리로 이원화되어, 복잡한 멀티스텝 작업에서도 일관된 맥락을 유지한다.",
+  "training_detail": "Manus의 기반 모델과 학습 파이프라인은 비공개이나, 커뮤니티 분석과 유출 프롬프트를 통해 상당 부분이 추정되었다. 내부적으로 Claude 3.5 Sonnet, GPT-4o 등 복수의 상용 LLM을 작업 유형에 따라 라우팅하여 사용하는 것으로 알려졌으며, 오케스트레이터와 서브에이전트가 서로 다른 모델을 활용하는 MoA(Mixture of Agents) 패턴을 따르는 것으로 추정된다. 2025년 3월 유출된 시스템 프롬프트에서는 todo.md 기반 작업 관리, 단계별 계획 수립, 도구 호출 프로토콜 등 정교한 프롬프트 엔지니어링이 확인되었다. Monica.im에서 브라우저 확장 프로그램을 개발하던 팀이 에이전트로 피벗한 배경이 있어, 브라우저 자동화 노하우가 핵심 경쟁력으로 작용했다. 초대 기반 클라우드 서비스로만 제공되며, 출시 후 수일 내 오픈소스 커뮤니티에서 OpenManus·OWL 등 대안 프로젝트가 등장해 에이전트 생태계 확장을 촉진했다. 모델 자체의 파인튜닝보다는 에이전트 오케스트레이션·도구 통합·프롬프트 설계에 핵심 기술력이 집중되어 있다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "",
+  "concepts": ["General Agent", "Task Execution"],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": false,
+  "relations": [
+    {"to": "computer-use", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

@@ -40,8 +40,21 @@ Thumbs.db
 # Claude Code
 .claude/
 
-# Pipeline data (전처리 데이터)
-pipeline/data/
+# Pipeline data — 중간 산출물만 무시
+pipeline/data/batch_*.jsonl
+pipeline/data/batch_id.txt
+pipeline/data/fixstyle/
+pipeline/data/parsed/
+pipeline/data/preprocessed/
+pipeline/data/archive/
+pipeline/data/*.json
+pipeline/data/*.jsonl
+pipeline/data/.DS_Store
+
+# Pipeline generated output
+pipeline/expanded_content/
+
+# Pipeline backups (git history에 존재)
 pipeline/backup_*/
 pipeline/archive/
 
@@ -50,4 +63,8 @@ e2e/test-results/
 
 # Local backups
 backups/
+
+# Backup files
+*.backup.*
+*.backup.jsx
 

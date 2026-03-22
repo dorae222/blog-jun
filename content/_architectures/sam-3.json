@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "sam-3",
+  "organization": "Meta",
+  "release_date": "2025-11-01",
+  "architecture_category": "vision",
+  "decoder_type": "vision_encoder",
+  "param_scale": "variable",
+  "context_length": "variable",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Absolute + Relative",
+  "vocab_size": "",
+  "hidden_dim": "1024",
+  "num_layers": "24",
+  "num_heads": "16",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "SAM 3는 2025년 Meta가 발표한 프롬프트 기반 개념 세그멘테이션 모델로, SAM 시리즈의 세 번째 버전이다. 기존 SAM과 SAM 2가 사용자가 지정한 픽셀 위치나 박스로 객체를 분할하는 데 초점을 맞췄다면, SAM 3는 의미적 개념(concept) 기반 세그멘테이션으로 패러다임을 확장한다. 자연어로 표현된 추상적 개념, 예를 들어 '모든 빨간 물체', '유리로 된 것' 같은 속성 기반 쿼리에 따라 이미지와 비디오에서 해당 개념에 부합하는 모든 영역을 분할할 수 있다.",
+  "key_detail": "SAM 3는 프롬프트 가능한 개념 세그멘테이션(Promptable Concept Segmentation)이라는 새로운 태스크를 정의하고 해결한다. 시각적 프롬프트(점, 박스, 마스크)와 언어적 프롬프트(텍스트 개념)를 모두 지원하며, 멀티모달 프롬프트를 통해 이미지 내 동일 카테고리에 속하는 모든 인스턴스를 동시에 분할할 수 있다. SAM 2의 스트리밍 메모리 구조를 계승하여 비디오에서도 개념 기반 추적이 가능하며, 오픈 세트 세그멘테이션 능력이 크게 향상되었다.",
+  "training_detail": "대규모 이미지·비디오 세그멘테이션 데이터셋과 개념-마스크 쌍 데이터로 학습된다. SAM 2 아키텍처를 기반으로 언어 인코더를 통합하여 멀티모달 프롬프트를 처리할 수 있도록 확장하였다. 개념 정렬을 위한 대조 학습과 마스크 예측 손실을 결합하여 학습한다.",
+  "paper_url": "https://arxiv.org/abs/2511.16719",
+  "code_url": "",
+  "license_type": "Apache-2.0",
+  "is_open_source": false,
+  "related_post_slug": "sam-3",
+  "concepts": [
+    "Open-Set Segmentation",
+    "Promptable Concept Segmentation",
+    "Video Understanding"
+  ]
+}

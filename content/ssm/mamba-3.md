@@ -1,0 +1,135 @@
+---
+title: "Mamba-3: 상태 공간 기반 시퀀스 모델"
+slug: "mamba-3"
+category: ssm
+tags: ["Carnegie Mellon University", "Hybrid Architecture", "In-context Learning", "Mamba-3", "RoPE", "Sequence Parallelism", "Sparse Attention", "ssd", "ssm"]
+status: published
+post_type: article
+quality_score: 8.0
+created_at: "2026-03-22T10:37:36.935231+00:00"
+architecture_entry: "mamba-3"
+---
+
+# Mamba-3: SSM과 Sparse Attention의 전략적 하이브리드
+
+**Carnegie Mellon University / Princeton University** · **2026-03-19** · **Hybrid SSM** · **Apache-2.0**
+
+## 개요
+
+Mamba-3는 2026년 ICLR에서 발표된 Mamba 시리즈의 세 번째 버전으로, 순수 SSM과 하이브리드 아키텍처 간의 균형을 재탐색한 모델이다. Mamba-1과 Mamba-2가 "SSM만으로 Transformer를 대체할 수 있는가"라는 질문에 도전했다면, Mamba-3는 "SSM과 어텐션의 최적 조합은 무엇인가"라는 더 실용적인 질문에 답한다.
+
+Mamba-2의 SSD(Structured State Space Duality) 프레임워크를 계승하면서도 소수의 sparse attention 레이어를 전략적으로 배치하는 하이브리드 설계를 채택했다. SSM만으로는 어려운 in-context learning과 정밀 검색 태스크에서 hybrid 구조가 더 효과적임을 대규모 실험으로 입증했다. 동일 규모 Llama 계열 대비 학습 효율은 유지하면서 특정 추론 태스크에서 성능이 향상되었다.
+
+Mamba-3는 SSM 기반 모델의 실용 배포에 가장 가까워진 이정표로 평가받는다. 순수 SSM의 $O(1)$ 메모리 장점을 대부분 유지하면서, 소수의 어텐션 레이어로 in-context retrieval 능력을 크게 보완한 절충안을 제시한다.
+
+![Architecture](figures/architecture.svg)
+
+## 아키텍처 상세
+
+Mamba-3의 아키텍처는 두 가지 유형의 레이어를 전략적으로 교차 배치한다.
+
+### SSD 블록 (85~90%)
+
+전체 레이어의 대다수를 차지하며, Mamba-2의 Structured State Space Duality 블록을 그대로 사용한다. 각 SSD 블록은 멀티-헤드 선택적 SSM으로, 입력 의존적인 $B$, $C$, $\Delta$ 파라미터를 통해 시퀀스를 처리한다.
+
+$$h_t = \bar{A}_t h_{t-1} + \bar{B}_t x_t, \quad y_t = C_t h_t$$
+
+여기서 $\bar{A}_t = \exp(\Delta_t A)$이며, $\Delta_t$는 입력에 의존적으로 계산된다. SSM 레이어는 명시적 위치 인코딩 없이 순환 구조를 통해 암묵적으로 위치를 처리한다.
+
+SSD 프레임워크의 이중성에 따라, 이 연산은 다음과 같은 구조화된 마스크 어텐션으로도 표현할 수 있다.
+
+$$Y = (L \odot QK^T) \cdot V$$
+
+학습 시에는 행렬 곱셈 관점(어텐션 모드)으로, 추론 시에는 순환 관점(SSM 모드)으로 동작한다.
+
+### Sparse Attention 블록 (10~15%)
+
+전체 레이어 중 소수를 차지하며, sliding window 또는 sparse attention을 수행한다. 이 레이어에는 RoPE(Rotary Position Embedding)를 적용해 상대적 위치 정보를 명시적으로 제공한다.
+
+$$\text{Attn}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}} \odot W\right) V$$
+
+여기서 $W$는 sliding window 마스크로, 윈도우 크기 내의 토큰만 참조한다. Multi-Query Attention(MQA) 방식을 사용하여 KV 캐시 메모리를 최소화한다.
+
+### 레이어 배치 전략
+
+어텐션 레이어의 배치 위치가 핵심이다. 단순히 균등 간격으로 배치하는 것이 아니라, 네트워크의 특정 깊이에 집중 배치하는 것이 더 효과적임을 실험적으로 확인했다. 8B 모델(32 레이어) 기준 최적 배치는 다음과 같다.
+
+| 영역 | 레이어 번호 | 유형 | 역할 |
+|------|-----------|------|------|
+| 초기 | 2, 4 | Sparse Attn | 기본 패턴 인식 |
+| 중간 | 15, 16 | Sparse Attn | 중거리 의존성 |
+| 후기 | 30 | Sparse Attn | 최종 정보 통합 |
+| 나머지 | 그 외 27개 | SSD | 장거리 + 일반 처리 |
+
+## 핵심 혁신
+
+Mamba-3의 핵심 혁신은 세 가지이다.
+
+첫째, **전략적 하이브리드 레시피**이다. 어텐션 레이어의 비율(10~15%)과 배치 위치를 광범위한 ablation을 통해 최적화했다. 이 레시피는 "어디에 어텐션을 넣어야 최대 효과를 얻는가"라는 실용적 질문에 대한 답을 제공한다.
+
+둘째, **완전한 병렬화 지원**이다. Tensor parallelism과 sequence parallelism을 완전히 지원하도록 재설계되어, 멀티-노드 학습 효율이 Mamba-2 대비 30% 이상 개선되었다.
+
+셋째, **장거리 컨텍스트 확장**이다. 기본 시퀀스 길이 8192에서 최대 128K까지 컨텍스트 확장 실험을 진행하여, SSM의 선형 복잡도 이점이 긴 컨텍스트에서 더욱 두드러짐을 보였다.
+
+## 벤치마크/성능
+
+| 모델 | 파라미터 | HellaSwag | PIQA | MMLU | In-context Retrieval |
+|------|---------|-----------|------|------|---------------------|
+| Mamba-3 | 8B | 79.2 | 81.5 | 58.3 | 92.1% |
+| Mamba-2 | 2.7B | 68.8 | 78.1 | 45.2 | 78.5% |
+| Llama-3 | 8B | 79.8 | 80.9 | 62.1 | 98.2% |
+| Mamba-3 (SSM only) | 8B | 77.1 | 80.2 | 54.8 | 71.3% |
+
+Sparse attention 레이어 추가의 효과가 특히 in-context retrieval에서 두드러진다(71.3% → 92.1%). 일반 벤치마크에서도 SSM-only 대비 향상이 관찰된다.
+
+| 모델 | SSM 비율 | 어텐션 비율 | 어텐션 유형 | 최대 컨텍스트 |
+|------|---------|-----------|-----------|-------------|
+| Mamba-3 | 85~90% | 10~15% | Sparse/SW | 128K |
+| Griffin | ~67% | ~33% | Local MQA | 2K (window) |
+| Jamba | ~50% | ~50% | Full + MoE | 256K |
+| Mamba-2 | 100% | 0% | 없음 | Unlimited |
+
+## 학습
+
+ICLR 2026 발표 기준으로, 대규모 다국어 코퍼스로 사전학습했다. A100/H100 GPU 클러스터에서 시퀀스 길이 8192를 기본으로 학습하며, 최대 128K까지 컨텍스트 확장 실험을 진행했다. SSD + sparse attention 혼합 커널로 연산을 최적화했다.
+
+다음은 Mamba-3의 하이브리드 레이어 구성을 보여주는 예시 코드이다.
+
+```python
+import torch.nn as nn
+
+def build_mamba3_layers(n_layers=32, attn_positions=[2, 4, 15, 16, 30]):
+    """Mamba-3 하이브리드 레이어 스택 구성"""
+    layers = []
+    for i in range(n_layers):
+        if i in attn_positions:
+            # Sparse Attention 레이어 (RoPE 포함)
+            layers.append(SparseAttentionBlock(
+                d_model=4096,
+                n_heads=32,
+                window_size=2048,
+                use_rope=True,
+            ))
+        else:
+            # SSD 블록 (Mamba-2 계승)
+            layers.append(SSDBlock(
+                d_model=4096,
+                d_state=128,
+                n_heads=32,
+                chunk_size=256,
+            ))
+    return nn.ModuleList(layers)
+```
+
+## 관련 모델
+
+Mamba-3는 하이브리드 접근법을 채택함으로써 순수 SSM의 "어텐션 없이도 가능하다"는 철학에서 한 걸음 물러섰다. 이는 현재 SSM 기술의 한계를 솔직하게 인정한 것이기도 하다. Sparse attention 레이어로 인해 해당 레이어에서는 KV 캐시가 필요하며, 순수 SSM의 $O(1)$ 메모리 장점을 일부 희석시킨다. 그러나 전체 레이어의 10~15%만 어텐션을 사용하므로 영향은 제한적이며, SSM 기반 모델의 실용 배포를 향한 중요한 진전이다. Griffin(Google DeepMind)이나 Jamba(AI21)보다 적은 어텐션 비율로 경쟁적 성능을 달성했다.
+
+## 참고 자료
+
+- 논문: [Mamba-3: Hybrid State Space Models with Strategic Sparse Attention](https://arxiv.org/abs/2603.15569)
+- 코드: [state-spaces/mamba](https://github.com/state-spaces/mamba)
+
+## 관련 문서
+
+- [[mamba-2|Mamba-2]] — 발전 기반

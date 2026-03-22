@@ -1,0 +1,33 @@
+{
+  "name": "CogVLM",
+  "slug": "cogvlm",
+  "organization": "Tsinghua/Zhipu AI",
+  "release_date": "2023-11-01",
+  "decoder_type": "multimodal",
+  "param_scale": "17B",
+  "context_length": "2048",
+  "attention_type": "Multi-Head Self-Attention + Cross-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "RoPE",
+  "vocab_size": null,
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "CogVLM은 2023년 Tsinghua 대학과 Zhipu AI가 공동으로 발표한 시각-언어 모델로, 각 트랜스포머 레이어에 시각 전문가(visual expert)를 추가하는 독특한 아키텍처를 제안하였다. 기존 모델들이 텍스트 처리 레이어를 그대로 유지하며 시각 정보를 어댑터나 프로젝션으로 처리하는 것과 달리, CogVLM은 LLM의 각 레이어에 시각 전용 QKV 및 FFN 파라미터를 독립적으로 추가하여 시각 토큰과 텍스트 토큰이 각자 최적화된 변환을 받도록 한다. 이 접근으로 시각 이해 능력이 크게 향상되며 NoCaps, VQAv2 등에서 SOTA를 달성하였다.",
+  "key_detail": "CogVLM의 핵심 혁신은 시각 전문가(visual expert) 모듈이다. 기존 LLM의 각 트랜스포머 레이어에 시각 토큰 전용 QKV 행렬과 FFN을 독립적으로 추가하여, 텍스트 토큰과 시각 토큰이 같은 레이어 내에서 서로 다른 선형 변환을 받도록 한다. 텍스트 토큰은 원래 LLM 파라미터로, 시각 토큰은 시각 전문가 파라미터로 처리되어 깊은 시각-언어 표현 정렬이 가능해진다. EVA2-CLIP-E를 비전 인코더로, Vicuna-7B를 LLM으로 사용한다.",
+  "training_detail": "1.5B 규모의 이미지-텍스트 데이터로 사전학습하며, Vicuna-7B를 기반 LLM으로 고정하고 시각 전문가 파라미터와 비전 인코더 어댑터만 학습한다. 2단계 학습으로 먼저 이미지 캡셔닝 데이터로 사전학습하고 이후 멀티태스크 데이터로 인스트럭션 튜닝한다. 8개의 A100 80GB GPU로 학습한다.",
+  "paper_url": "https://arxiv.org/abs/2311.03079",
+  "code_url": "https://github.com/THUDM/CogVLM",
+  "license_type": "Apache-2.0",
+  "concepts": ["Visual Expert", "Deep Fusion", "Vision-Language Alignment"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "llava", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

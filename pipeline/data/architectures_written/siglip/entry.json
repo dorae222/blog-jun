@@ -1,0 +1,33 @@
+{
+  "name": "SigLIP",
+  "slug": "siglip",
+  "organization": "Google",
+  "release_date": "2023-03-01",
+  "decoder_type": "multimodal",
+  "param_scale": "400M",
+  "context_length": "64",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned",
+  "vocab_size": null,
+  "hidden_dim": "1152",
+  "num_layers": "27",
+  "num_heads": "16",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "SigLIP(Sigmoid Loss for Language-Image Pre-training)은 2023년 Google이 발표한 CLIP 개선 모델로, 소프트맥스 기반 대조 손실을 시그모이드 이진 분류 손실로 대체한 것이 핵심 혁신이다. CLIP의 대조 손실은 배치 내 모든 쌍을 비교하므로 대규모 배치에 의존하는 반면, SigLIP의 시그모이드 손실은 각 이미지-텍스트 쌍을 독립적인 이진 분류 문제로 처리하여 배치 크기 의존성을 크게 줄인다. 작은 배치에서도 효율적으로 학습 가능하며, 동일한 배치 크기에서 CLIP보다 우수한 제로샷 성능을 달성한다.",
+  "key_detail": "SigLIP은 각 이미지-텍스트 쌍의 유사도를 시그모이드 함수를 통해 이진 레이블(매칭=1, 비매칭=-1)로 분류하는 방식으로 학습한다. 소프트맥스 대조 손실과 달리 배치 전체에서 정규화가 필요 없어 통신 비용이 적고 분산 학습 효율이 높다. 또한 짧은 텍스트 시퀀스(64 토큰)를 사용하여 처리 속도를 높이며, ViT-SO400M 이미지 인코더를 기본으로 사용한다. 배치 크기가 작은 환경에서도 안정적으로 학습되어 학술 연구 환경에서도 재현 가능하다.",
+  "training_detail": "LAION-400M 및 웹 크롤 이미지-텍스트 데이터로 학습하며, 배치 크기를 기존 CLIP 대비 훨씬 작게 설정할 수 있다. TPU를 활용한 분산 학습으로 다양한 모델 크기(ViT-B/16, ViT-L/16, ViT-SO400M)를 학습하였다. 짧은 텍스트(최대 64 토큰)를 사용하여 처리 속도를 높이는 설계를 채택하였다.",
+  "paper_url": "https://arxiv.org/abs/2303.15343",
+  "code_url": "https://huggingface.co/google/siglip-so400m-patch14-384",
+  "license_type": "Apache-2.0",
+  "concepts": ["Sigmoid Loss", "Efficient Contrastive Learning", "Zero-Shot Transfer"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "clip", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

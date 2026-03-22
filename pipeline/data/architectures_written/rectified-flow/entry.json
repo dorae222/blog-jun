@@ -1,0 +1,39 @@
+{
+  "name": "Rectified Flow",
+  "slug": "rectified-flow",
+  "organization": "UT Austin / Peking University",
+  "release_date": "2022-09-07",
+  "decoder_type": "technique",
+  "param_scale": "N/A (프레임워크)",
+  "context_length": "N/A",
+  "attention_type": "N/A",
+  "normalization": "N/A",
+  "activation": "N/A",
+  "position_encoding": "N/A",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Rectified Flow는 2022년 Xingchao Liu 등이 제안한 생성 모델 프레임워크로, 데이터 분포 $\\pi_0$(노이즈)와 $\\pi_1$(데이터) 사이의 전송 경로를 직선화(rectification)하여 최적 수송(Optimal Transport) 경로에 근사하는 방법이다. 핵심 아이디어는 매우 단순하다: 독립적으로 샘플링된 노이즈 $X_0 \\sim \\pi_0$와 데이터 $X_1 \\sim \\pi_1$ 쌍을 선분으로 연결하는 직선 보간 경로 $X_t = (1-t)X_0 + tX_1$를 학습 목표로 삼고, 벡터 필드 $v(X_t, t) = X_1 - X_0$를 근사하는 신경망을 학습한다. 이 직선 경로는 ODE 적분 시 수치 오차가 최소화되므로, 이론적으로는 단 1 스텝 만에 정확한 샘플링이 가능하다. 실제로는 커플링이 독립적이므로 완벽한 직선이 되지 않지만, Reflow 과정—현재 모델로 커플링을 재생성 후 재학습—을 반복하면 경로가 점점 직선에 수렴한다. Rectified Flow는 수학적으로 Flow Matching의 OT-CFM과 동치이며, Stable Diffusion 3와 Flux 등 현대 대규모 모델들이 채택한 Flow Matching의 이론적 기반이다. Reflow를 활용한 일관성 증류는 Consistency Model과 유사한 빠른 샘플링을 달성한다.",
+  "key_detail": "Rectified Flow의 학습 목표: $\\min_v \\int_0^1 \\mathbb{E}[\\|v(X_t, t) - (X_1 - X_0)\\|^2]dt$. 학습된 흐름 $Z_t = Z_0 + tv(Z_0, 0)$은 경로가 교차하지 않도록 제약되며(non-crossing property), 이는 자연스럽게 수송 비용을 줄이는 방향으로 최적화된다. Reflow 알고리즘: (1) 현재 흐름 $v_\\theta$로 커플링 $(Z_0, Z_1)$을 재생성, (2) 이 커플링으로 새로운 흐름 $v_{\\theta'}$를 학습. 이를 반복하면 경로의 곡률이 줄어들어 단일 스텝 생성이 가능해진다. 1-Rectified Flow로 CIFAR-10 FID 2.58, 2-Rectified Flow + 증류로 단일 스텝 FID 4.85를 달성하였다.",
+  "training_detail": "CIFAR-10(32×32)와 LSUN-Bedroom(256×256)에서 실험이 진행되었다. 가우시안 노이즈 $\\pi_0 = \\mathcal{N}(0,I)$와 데이터 분포 $\\pi_1$ 사이의 독립 커플링을 사용하며, U-Net 아키텍처로 벡터 필드를 근사한다. 동일한 NFE 예산에서 Rectified Flow가 DDIM보다 일관되게 낮은 FID를 달성함을 실험적으로 증명하였다. Flow Matching 논문과 동시 발표되었으며, 두 방법이 수학적으로 동치임이 이후 연구에서 확인되었다.",
+  "paper_url": "https://arxiv.org/abs/2209.03003",
+  "code_url": "https://github.com/gnobitab/RectifiedFlow",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "Straight Trajectories",
+    "Optimal Transport",
+    "Reflow",
+    "One-Step Generation",
+    "Flow Rectification"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "flow-matching", "type": "variant_of"}
+  ],
+  "related_post_slug": "rectified-flow"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Mamba-2",
+  "slug": "mamba-2",
+  "organization": "Carnegie Mellon University / Princeton University",
+  "release_date": "2024-05-31",
+  "decoder_type": "ssm",
+  "param_scale": "130M / 370M / 780M / 1.3B / 2.7B",
+  "context_length": "Unlimited (linear complexity)",
+  "attention_type": "SSD (Structured State Space Duality)",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "None (implicit via SSM)",
+  "vocab_size": "50280",
+  "hidden_dim": "768 (130M) ~ 2560 (2.7B)",
+  "num_layers": "24 (130M) ~ 64 (2.7B)",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Mamba-2는 2024년 Albert Gu와 Tri Dao가 발표한 후속 연구로, SSM과 Attention 간의 수학적 동치성을 발견한 SSD(Structured State Space Duality) 프레임워크를 기반으로 한다. Mamba-1의 선택적 SSM을 상태 확장 차원 N이 헤드 차원과 분리된 구조로 재설계하여, SSD 알고리즘으로 더 빠르고 효율적인 학습이 가능해졌다. SSM을 구조화된 마스크 어텐션(Structured Masked Attention)의 특수 케이스로 볼 수 있다는 이론적 통찰로, FlashAttention 스타일의 타일링 알고리즘을 SSM에 적용할 수 있게 되었다. 동일 규모 Mamba-1 대비 훈련 효율 2~8배 향상을 달성했다.",
+  "key_detail": "SSD 프레임워크는 선택적 SSM을 1-세미분리(1-semiseparable) 행렬 곱셈으로 표현한다. 이 행렬은 구조화된 마스크 어텐션과 동일한 연산 구조를 가지므로, 두 패러다임을 단일 프레임워크로 통합할 수 있다. Mamba-2 블록은 상태 차원 N을 헤드 수 H로 나누어 멀티-헤드 구조를 가지며, 각 헤드가 독립적인 SSM을 수행한다. 이 설계로 텐서 병렬화와 시퀀스 병렬화가 Transformer처럼 자연스럽게 적용된다. 상태 크기를 Mamba-1 대비 8~16배 확장해도 효율적으로 동작하며, 상태 크기 증가가 성능 향상으로 이어짐을 확인했다.",
+  "training_detail": "Pile 데이터셋으로 학습, GPT-NeoX 토크나이저 사용. A100 80GB GPU 클러스터. SSD CUDA 커널로 메모리 효율 최적화. Mamba-1과 동일한 학습 설정에서 2.7B 기준 훈련 속도 약 50% 향상. 상태 확장 크기 N=64 기본값 사용.",
+  "paper_url": "https://arxiv.org/abs/2405.21060",
+  "code_url": "https://github.com/state-spaces/mamba",
+  "license_type": "Apache-2.0",
+  "concepts": ["SSD", "Structured State Space Duality", "SSM", "Selective SSM", "Structured Masked Attention", "Multi-head SSM", "Linear Complexity", "Tiling Algorithm"],
+  "architecture_category": "ssm",
+  "branch_type": "ssm",
+  "is_open_source": true,
+  "relations": [
+    {"to": "mamba", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

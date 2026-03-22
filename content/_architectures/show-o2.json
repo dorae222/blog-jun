@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "show-o2",
+  "organization": "NUS/ByteDance",
+  "release_date": "2025-01-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "7B",
+  "context_length": "8192",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "Show-o2는 멀티모달 이해와 생성을 단일 모델로 통합하는 통합 멀티모달 프레임워크로, Chameleon 계열의 all-token 방식에서 영감을 받아 이미지 이해와 이미지 생성을 자기회귀 다음 토큰 예측 프레임워크 안에서 동시에 처리한다. 텍스트-이미지 이해(VQA, 캡셔닝), 텍스트-이미지 생성, 혼합 이미지-텍스트 생성을 단일 파이프라인으로 통합하며, 소형 모델에서도 각 전문 모델과 경쟁하는 성능을 달성하는 것이 목표이다. 별도의 확산 디코더나 GAN 없이 순수 자기회귀 생성만으로 고품질 이미지를 생성할 수 있다.",
+  "key_detail": "Show-o2는 이미지를 이산 VQ 토큰으로 변환하여 텍스트와 동일한 어휘 공간에서 처리하는 통합 토크나이제이션 방식을 채택한다. 이미지 이해와 생성을 단일 자기회귀 모델로 처리하는 통합 구조에서 이해 태스크와 생성 태스크의 균형 있는 학습을 위한 다단계 학습 전략을 사용한다. 마스킹 언어 모델링을 이미지 생성 보조 목표로 활용하여 이산 이미지 토큰 예측의 품질을 높이며, 텍스트 지시에 따른 이미지 편집과 생성을 통합적으로 수행할 수 있다.",
+  "training_detail": "이미지-텍스트 이해 데이터와 텍스트-이미지 생성 데이터를 혼합하여 학습한다. VQ 이미지 토크나이저를 먼저 학습한 뒤 통합 자기회귀 모델을 학습하며, SFT와 DPO를 통해 생성 품질과 이해 정확도를 향상시킨다. 혼합 마스킹 전략으로 이해와 생성 성능을 동시에 최적화한다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "show-o2",
+  "concepts": [
+    "Autoregressive Image Generation",
+    "Understanding+Generation",
+    "Unified Multimodal Generation"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "MiniCPM-V",
+  "slug": "minicpm-v",
+  "organization": "Tsinghua/OpenBMB",
+  "release_date": "2024-08-01",
+  "decoder_type": "multimodal",
+  "param_scale": "8B",
+  "context_length": "32768",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": null,
+  "hidden_dim": "4096",
+  "num_layers": "32",
+  "num_heads": "32",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "MiniCPM-V는 2024년 Tsinghua 대학과 OpenBMB가 발표한 효율적인 멀티모달 모델로, 8B 파라미터로 GPT-4V 수준의 멀티모달 이해 능력을 달성하며 스마트폰을 포함한 엣지 디바이스에서의 배포를 목표로 한다. 고해상도 이미지 처리, 신뢰할 수 있는 OCR 능력, 다국어 지원을 갖추면서도 소형 모델로 모바일 배포가 가능한 점이 핵심 차별점이다. 스마트폰에서 실시간으로 동작하는 최초의 GPT-4V 급 멀티모달 모델 중 하나로, 실용적인 온디바이스 AI를 실현하였다.",
+  "key_detail": "MiniCPM-V는 SigLIP-SO400M 비전 인코더와 MiniCPM-3B/Llama-3-8B LLM을 적응적 시각 인코딩(Adaptive Visual Encoding)으로 연결한다. 임의 종횡비의 고해상도 이미지를 슬라이싱하여 처리하는 AnyRes 방식을 채택하며, 2D RoPE를 시각 토큰에 적용하여 위치 정보를 정확히 전달한다. RLAIF-V를 사용하여 환각(hallucination)을 줄이는 정렬 학습을 수행한다. int4 양자화를 통해 스마트폰 NPU에서 실시간 추론이 가능하도록 최적화하였다.",
+  "training_detail": "고품질 멀티모달 인스트럭션 튜닝 데이터와 OCR, 차트, 수학 문제 등 전문 도메인 데이터를 혼합하여 학습한다. SFT 후 RLAIF-V로 환각 감소 정렬을 수행한다. Llama-3-8B를 LLM 백본으로 사용하며, 고해상도 이미지 처리를 위한 단계적 학습 과정을 채택한다.",
+  "paper_url": "https://arxiv.org/abs/2408.01800",
+  "code_url": "https://github.com/OpenBMB/MiniCPM-V",
+  "license_type": "Apache-2.0",
+  "concepts": ["Edge Deployment", "High-Resolution OCR", "Mobile VLM"],
+  "architecture_category": "multimodal",
+  "branch_type": "multimodal",
+  "is_open_source": true,
+  "relations": [
+    {"to": "llava", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

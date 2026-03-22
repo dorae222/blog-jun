@@ -1,0 +1,33 @@
+{
+  "name": "ALBERT",
+  "slug": "albert",
+  "organization": "Google Research / Toyota Technological Institute at Chicago",
+  "release_date": "2019-09-26",
+  "architecture_category": "llm",
+  "branch_type": "encoder_only",
+  "is_open_source": true,
+  "decoder_type": "dense",
+  "param_scale": "12M (Base) / 18M (Large) / 60M (XLarge) / 235M (XXLarge)",
+  "context_length": "512",
+  "attention_type": "MHA (Bidirectional)",
+  "normalization": "LayerNorm",
+  "activation": "GELU",
+  "position_encoding": "Learned Absolute",
+  "vocab_size": "30000",
+  "hidden_dim": "768 (Base) / 1024 (Large) / 2048 (XLarge) / 4096 (XXLarge)",
+  "num_layers": "12 (Base) / 24 (Large) / 24 (XLarge) / 12 (XXLarge)",
+  "num_heads": "12 (Base) / 16 (Large) / 16 (XLarge) / 64 (XXLarge)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "ALBERT(A Lite BERT)는 2019년 Google과 TTIC이 공동 발표한 모델로, BERT의 두 가지 근본적인 메모리 비효율 문제를 해결해 파라미터 수를 대폭 줄이면서도 성능을 향상시켰다. 임베딩 행렬 분해(Factorized Embedding Parameterization)로 어휘 임베딩 크기와 숨겨진 차원을 분리하고, 레이어 간 파라미터 공유(Cross-Layer Parameter Sharing)로 중복 학습을 제거했다. BERT-Large 대비 18배 적은 파라미터로 GLUE 89.4점, SQuAD 2.0 90.9 F1을 기록하며 당시 SOTA를 달성했다. 모델 크기와 성능 트레이드오프 연구에 중요한 이정표가 된 작업이다.",
+  "key_detail": "핵심 기법은 두 가지다. 첫째, 임베딩 행렬 분해: V×H 행렬을 V×E + E×H 두 행렬로 분리(E≪H)해 파라미터 수를 V×E + E×H로 줄인다(V=30000, H=4096, E=128 시 BERT 대비 80% 절감). 둘째, 레이어 간 파라미터 공유: Attention과 FFN 가중치를 모든 레이어가 공유해 메모리 풋프린트를 레이어 수에 무관하게 고정. NSP 대신 SOP(Sentence Order Prediction): 두 연속 문장의 순서가 맞는지/바뀐지 예측해 문장 간 일관성을 더 정확히 모델링한다.",
+  "training_detail": "BERT와 동일한 BooksCorpus + Wikipedia(16GB). SOP 사전 학습 태스크. 배치 4096, LAMB 옵티마이저. 학습률 0.00176, 1M 스텝. 64~1024 TPU v3 칩 활용. XXLarge 모델이 12레이어로 24레이어 BERT-Large 성능 초과.",
+  "paper_url": "https://arxiv.org/abs/1909.11942",
+  "code_url": "https://github.com/google-research/albert",
+  "license_type": "Apache 2.0",
+  "concepts": ["Parameter Sharing", "Factorized Embedding", "SOP", "Cross-Layer Parameter Sharing", "Lite BERT"],
+  "relations": [
+    {"to": "bert", "type": "evolved_from"}
+  ],
+  "related_post_slug": "albert"
+}

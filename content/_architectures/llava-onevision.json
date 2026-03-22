@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "llava-onevision",
+  "organization": "ByteDance/UW",
+  "release_date": "2024-08-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "72B",
+  "context_length": "32768",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "RMSNorm",
+  "activation": "SiLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "",
+  "hidden_dim": "8192",
+  "num_layers": "80",
+  "num_heads": "64",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "LLaVA-OneVision은 2024년 ByteDance와 UW(워싱턴대학교)가 공동으로 발표한 통합 멀티모달 모델로, 단일 이미지, 다중 이미지, 비디오 이해를 하나의 모델로 처리하는 것이 핵심 혁신이다. LLaVA 시리즈의 최신작으로 고해상도 이미지 처리를 위한 AnyRes 기법과 비디오 프레임 처리를 통합하여, 단일 모델로 다양한 시각적 입력 형태를 유연하게 다룬다. 0.5B부터 72B까지 다양한 크기로 제공되며, Qwen2 LLM을 기반으로 시각 이해 성능에서 오픈소스 최고 수준을 달성하였다.",
+  "key_detail": "LLaVA-OneVision은 SigLIP-SO400M 비전 인코더와 AnyRes 고해상도 처리, MLP 프로젝터를 결합하여 이미지와 비디오를 처리한다. AnyRes는 임의 해상도의 이미지를 그리드 방식으로 분할하여 고해상도 세부 정보를 보존한다. 비디오는 균일 샘플링된 프레임 시퀀스로 처리되며, 다중 이미지를 시간 순서에 따라 나열하여 비디오처럼 처리하는 방식으로 단일·다중 이미지·비디오 이해를 통합한다. MMBench, MMMU, VideoMME 등 주요 벤치마크에서 오픈소스 1위를 달성하였다.",
+  "training_detail": "LLaVA-OneVision 데이터 혼합(이미지 캡셔닝, VQA, OCR, 차트·다이어그램, 비디오 데이터)으로 3단계 학습을 수행한다. 1단계에서 MLP 프로젝터만 학습하고, 2단계에서 고해상도 단일 이미지로 전체 모델 파인튜닝, 3단계에서 다중 이미지·비디오 데이터로 파인튜닝한다. LLM은 Qwen2-7B/72B를 사용하며 A100 클러스터에서 학습된다.",
+  "paper_url": "https://arxiv.org/abs/2408.03326",
+  "code_url": "https://github.com/LLaVA-VL/LLaVA-NeXT",
+  "license_type": "Apache-2.0",
+  "is_open_source": true,
+  "related_post_slug": "llava-onevision",
+  "concepts": [
+    "AnyRes",
+    "Multi-Image Understanding",
+    "Unified VLM"
+  ]
+}

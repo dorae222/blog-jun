@@ -1,0 +1,39 @@
+{
+  "name": "Classifier Guidance (ADM)",
+  "slug": "classifier-guidance",
+  "organization": "OpenAI",
+  "release_date": "2021-05-11",
+  "decoder_type": "diffusion_unet",
+  "param_scale": "554M (ADM, ImageNet 256×256)",
+  "context_length": "N/A",
+  "attention_type": "Multi-Head Self-Attention (U-Net 내부)",
+  "normalization": "Group Normalization + AdaGN",
+  "activation": "SiLU",
+  "position_encoding": "Sinusoidal Timestep Embedding",
+  "vocab_size": null,
+  "hidden_dim": "N/A",
+  "num_layers": "N/A",
+  "num_heads": "N/A",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Diffusion Models Beat GANs on Image Synthesis는 2021년 OpenAI의 Prafulla Dhariwal과 Alex Nichol이 발표한 논문으로, Ablated Diffusion Model(ADM)과 Classifier Guidance 기법을 통해 확산 모델이 FID 기준으로 GAN을 최초로 능가함을 보인 역사적 연구이다. 이 논문은 두 가지 핵심 기여를 담고 있다. 첫째, U-Net 아키텍처 자체를 체계적으로 개선한 ADM 아키텍처를 제안하였다: 어텐션 헤드 수와 어텐션 해상도 확장, Adaptive Group Normalization(AdaGN), 상향 샘플링 시 BigGAN 잔차 블록 사용 등이다. 둘째, 사전학습된 분류기(classifier)의 그래디언트를 샘플링 과정에 주입하는 Classifier Guidance를 도입하였다. 분류기의 로그 확률 그래디언트에 가이던스 스케일 $s$를 곱하여 score에 더하면, $s$ 값을 높일수록 특정 클래스를 강하게 조건부로 생성한다. 이를 통해 FID와 IS(Inception Score) 사이의 트레이드오프를 샘플링 시간에 조절할 수 있다. ImageNet 256×256에서 FID 4.59, 512×512에서 FID 7.72를 달성하여 BigGAN-deep을 능가하였다. 이 연구는 확산 모델의 품질이 GAN을 능가할 수 있음을 처음 입증했으며, 이후 DALL·E 2와 Imagen 등 텍스트-이미지 생성 모델들의 개발을 촉진하였다.",
+  "key_detail": "Classifier Guidance는 클래스 $y$가 주어졌을 때 score를 $\\nabla_\\mathbf{x}\\log p(\\mathbf{x}_t|y) = \\nabla_\\mathbf{x}\\log p(\\mathbf{x}_t) + s\\cdot\\nabla_\\mathbf{x}\\log p_\\phi(y|\\mathbf{x}_t)$로 분해하는 것에 기반한다. 여기서 $s > 1$로 설정하면 분류기 그래디언트를 과도하게 증폭해 특정 클래스에 대한 샘플 품질(IS)을 높이는 대신 다양성(FID)을 희생한다. ADM U-Net은 기존 DDPM 구조에서 어텐션 해상도를 8,16,32픽셀 레이어까지 확장하고, 헤드당 채널 수를 64로 고정하였다. AdaGN은 레이어 정규화의 스케일과 바이어스를 타임스텝 임베딩과 클래스 임베딩의 선형 변환으로 대체하는 기법으로, 조건부 정보를 모든 레이어에 효과적으로 주입한다. 별도로 학습된 노이즈 예측기(Noisy Classifier)가 각 타임스텝 $t$에서 그래디언트를 제공한다.",
+  "training_detail": "ImageNet 128×128, 256×256, 512×512 해상도에서 실험이 진행되었다. ADM 모델은 100만~150만 스텝 학습되었으며, 분류기도 동일한 노이즈 수준에서 사전학습된다. 학습 데이터는 ImageNet 전체(1,281,167 이미지, 1000 클래스)를 사용한다. 256×256 ADM+CG는 FID 4.59, IS 186.7을 기록하며 BigGAN-deep(FID 6.95)을 능가하였다. 샘플링 스텝은 250 스텝을 기본으로 사용한다.",
+  "paper_url": "https://arxiv.org/abs/2105.05233",
+  "code_url": "https://github.com/openai/guided-diffusion",
+  "license_type": "MIT",
+  "concepts": [
+    "Classifier Guidance",
+    "ADM",
+    "Adaptive Group Normalization",
+    "FID vs IS Tradeoff",
+    "Conditional Generation"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "ddpm", "type": "evolved_from"}
+  ],
+  "related_post_slug": "classifier-guidance"
+}

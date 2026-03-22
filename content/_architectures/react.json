@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "react",
+  "organization": "Princeton/Google",
+  "release_date": "2022-10-06",
+  "architecture_category": "agent",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": "",
+  "hidden_dim": "",
+  "num_layers": "",
+  "num_heads": "",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "ReAct(Reasoning + Acting)는 언어 모델이 추론(Reasoning)과 행동(Acting)을 교차 반복하는 패러다임으로, AI 에이전트 분야의 핵심 기반 기법이다. Yao et al.(Princeton/Google, 2022)이 제안한 이 프레임워크에서 모델은 Thought→Action→Observation 사이클을 반복하며 외부 환경(검색 엔진, 계산기, API 등)과 상호작용한다. 순수 CoT가 내부 추론만 활용하는 한계를 극복하고, 외부 도구와의 연동을 통해 지식 환각(hallucination)을 줄이고 동적 정보에 접근할 수 있게 한다.",
+  "key_detail": "ReAct의 루프는 세 요소로 구성된다. Thought: 현재 상황을 분석하고 다음 행동을 계획하는 언어적 추론. Action: 외부 도구(위키피디아 검색, API 호출 등)를 실행하는 구체적 행동. Observation: 행동 결과를 환경으로부터 수신. 이 사이클은 최종 답을 도출할 때까지 반복된다. HotpotQA(다중 홉 추론), Fever(사실 검증), ALFWorld(텍스트 게임) 등에서 CoT 단독 및 행동 전용 기준 대비 일관된 성능 향상을 보였다. 이후 LangChain, AutoGen 등 모든 주요 에이전트 프레임워크가 ReAct 패턴을 기본 추론 루프로 채택하였다.",
+  "training_detail": "few-shot CoT 예시와 동일한 방식으로 Thought-Action-Observation 트리플을 few-shot 예시로 제공한다. PaLM-540B, GPT-3 등을 기반으로 실험되었으며, 별도 파인튜닝 없이 프롬프트 엔지니어링만으로 구현 가능하다.",
+  "paper_url": "https://arxiv.org/abs/2210.03629",
+  "code_url": "",
+  "license_type": "",
+  "is_open_source": true,
+  "related_post_slug": "react",
+  "concepts": [
+    "ReAct",
+    "Reasoning-Acting Loop",
+    "Tool Use"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "GPT-J",
+  "slug": "gpt-j",
+  "organization": "EleutherAI",
+  "release_date": "2021-06-04",
+  "decoder_type": "dense",
+  "param_scale": "6B",
+  "context_length": "2048",
+  "attention_type": "MHA (Causal)",
+  "normalization": "LayerNorm (Pre-Norm)",
+  "activation": "GELU",
+  "position_encoding": "RoPE",
+  "vocab_size": "50257",
+  "hidden_dim": "4096",
+  "num_layers": "28",
+  "num_heads": "16",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GPT-J-6B는 EleutherAI가 2021년 공개한 6B 파라미터 오픈소스 자기회귀 언어 모델로, 당시 공개된 모델 중 GPT-3 6.7B에 가장 근접한 성능을 보인 모델이다. GPT-J의 가장 중요한 기여는 두 가지다. 첫째, RoPE(Rotary Position Embedding)를 대규모 모델에 처음으로 적용하여, 이후 LLaMA, PaLM 등이 채택하는 위치 인코딩 표준을 선도했다. 둘째, Attention과 FFN을 순차적이 아닌 병렬로 계산하는 Parallel Transformer Block 구조를 도입하여, 동일 품질에서 약 15%의 학습 속도 향상을 달성했다. 이 구조는 이후 PaLM에서도 채택되었다. The Pile 데이터셋 402B 토큰으로 학습되었으며, TPU v3-256에서 약 5주간 학습이 진행되었다. 코드 생성, 번역 등에서 GPT-3 수준의 성능을 보여, 오픈소스 LLM 생태계의 초기 이정표가 되었다.",
+  "key_detail": "GPT-J는 28개 Transformer 디코더 레이어로 구성되며, hidden dimension 4096, 16개 어텐션 헤드를 사용한다. 핵심 아키텍처 혁신은 Parallel Transformer Block으로, 기존의 Sequential 구조(Attention → LayerNorm → FFN)를 Parallel 구조(Attention + FFN 동시 계산 → 합산)로 변경했다. 이를 통해 GPU utilization을 개선하고 통신 오버헤드를 줄였다. RoPE는 절대 위치 임베딩 대신 상대적 위치 정보를 회전 행렬로 인코딩하여, 학습 시보다 긴 시퀀스에 대한 일반화 능력을 제공한다. BPE 토크나이저(GPT-2 기반, 50257 어휘)를 사용한다.",
+  "training_detail": "The Pile(825GB, 22개 소스 혼합 코퍼스)에서 약 402B 토큰을 학습했다. Google Cloud TPU v3-256(v3 칩 256개)에서 약 5주간 학습이 진행되었다. JAX/Haiku 프레임워크와 mesh-transformer-jax 라이브러리를 사용했으며, 학습 비용은 약 $15,000~$20,000으로 추정된다. Adam optimizer, learning rate 6e-4, warmup 3000 steps, cosine decay schedule을 사용했다.",
+  "paper_url": "https://github.com/kingoflolz/mesh-transformer-jax",
+  "code_url": "https://github.com/kingoflolz/mesh-transformer-jax",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "RoPE",
+    "Parallel Transformer Block",
+    "The Pile",
+    "Open-Source LLM"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {"to": "gpt-neo", "type": "evolved_from"}
+  ],
+  "related_post_slug": ""
+}

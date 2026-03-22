@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "slug": "paligemma-2",
+  "organization": "Google",
+  "release_date": "2024-12-01",
+  "architecture_category": "multimodal",
+  "decoder_type": "multimodal",
+  "param_scale": "28B",
+  "context_length": "8192",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "RMSNorm",
+  "activation": "GELU",
+  "position_encoding": "RoPE",
+  "vocab_size": "257152",
+  "hidden_dim": "4608",
+  "num_layers": "46",
+  "num_heads": "32",
+  "num_experts": "",
+  "active_experts": "",
+  "description": "PaliGemma 2는 2024년 Google이 발표한 멀티모달 모델로, SigLIP-So400M 비전 인코더와 Gemma 2 언어 모델을 결합한 구조이다. PaliGemma의 후속작으로, Gemma 2의 향상된 언어 모델 능력과 SigLIP의 강력한 시각 인코더를 결합하여 이미지 이해, 문서 분석, OCR, 시각적 질의응답 등에서 전작 대비 크게 향상된 성능을 달성한다. 3B, 10B, 28B 세 가지 크기로 제공되며, 연구 및 산업용 파인튜닝 기반 모델로 널리 활용된다.",
+  "key_detail": "PaliGemma 2는 SigLIP-So400M 비전 인코더가 이미지를 14×14 패치로 처리하고, 선형 프로젝터를 통해 Gemma 2 LLM의 입력 공간으로 변환하는 간결한 구조를 채택한다. 고해상도 이미지 처리를 위해 224, 448, 896px 세 가지 해상도를 지원하며, 해상도에 따라 시각 토큰 수가 조정된다. Gemma 2의 슬라이딩 윈도우 어텐션과 로컬-글로벌 어텐션 교차 방식이 긴 시퀀스 처리 효율성을 높인다. 다양한 시각적 질의응답, OCR, 캡셔닝, 공간 추론 태스크에서 강력한 파인튜닝 성능을 발휘한다.",
+  "training_detail": "웹 스케일 이미지-텍스트 데이터와 문서, OCR, 과학 이미지 등 전문 도메인 데이터로 사전학습한다. 먼저 비전 인코더와 LLM을 연결하는 정렬 학습(stage 1)을 수행하고, 이후 고해상도 이미지와 다양한 태스크 혼합 데이터로 미세조정(stage 2)을 진행한다. TPU v5를 사용하여 학습되며 모든 크기의 모델 가중치가 공개된다.",
+  "paper_url": "https://arxiv.org/abs/2412.03555",
+  "code_url": "https://huggingface.co/google/paligemma2-28b-pt-896",
+  "license_type": "Gemma Terms",
+  "is_open_source": true,
+  "related_post_slug": "paligemma-2",
+  "concepts": [
+    "Fine-Tuning Base Model",
+    "Multi-Resolution",
+    "SigLIP+Gemma"
+  ]
+}

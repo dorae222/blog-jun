@@ -1,0 +1,33 @@
+{
+  "name": "Phi",
+  "slug": "phi",
+  "organization": "Microsoft",
+  "release_date": "2023-06-20",
+  "decoder_type": "dense",
+  "param_scale": "1.3B",
+  "context_length": "2048",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "LayerNorm",
+  "activation": "GeLU",
+  "position_encoding": "Learned Absolute Position Embedding",
+  "vocab_size": "50257",
+  "hidden_dim": "2048",
+  "num_layers": "24",
+  "num_heads": "32",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Phi는 Microsoft Research가 2023년 발표한 소형 언어 모델(SLM) 시리즈로, phi-1(1.3B)과 phi-1.5(1.3B), phi-2(2.7B)로 구성된다. 핵심 철학은 \"교과서 수준의 고품질 데이터(Textbook Quality Data)\"로, 수십억 파라미터 규모 모델에 필적하는 성능을 단 10억~30억 파라미터로 달성하였다. 코드 생성과 수학 추론 분야에서 특히 뛰어난 성능을 보이며, 모델 크기 대비 성능 효율(parameter efficiency)의 중요성을 강조한 연구이다. 이 시리즈는 소형 모델도 충분한 데이터 품질을 갖추면 대형 모델에 근접할 수 있다는 패러다임을 제시하였다.",
+  "key_detail": "Phi 시리즈는 GPT-4로 생성한 합성 교과서 데이터(약 1B 토큰)와 엄선된 고품질 웹 코드를 학습 데이터로 활용하는 것이 핵심이다. phi-1은 Python 코드 생성에 특화되어 HumanEval에서 50.6%를 달성하며, 당시 같은 크기 모델 대비 압도적인 성능을 보였다. phi-1.5는 상식 추론과 언어 이해로 범위를 확장하였고, phi-2(2.7B)는 오픈소스 7B·13B 모델들과 견줄 만한 성능을 발휘하였다. 이 연구는 스케일보다 데이터 품질이 성능에 더 결정적일 수 있다는 점을 실증하여 이후 소형 언어 모델 연구 붐을 이끌었다.",
+  "training_detail": "phi-1은 약 7B 토큰의 교과서 품질 데이터(합성 데이터 1B + 웹 코드 6B)로 학습하였다. phi-2는 250B 토큰 규모로 확장하여 학습하였으며, 합성 NLP 데이터와 필터링된 웹 데이터를 혼합하였다. 학습에는 A100 GPU 96개가 사용되었고, phi-2 기준 약 14일의 학습 시간이 소요되었다.",
+  "paper_url": "https://arxiv.org/abs/2306.11644",
+  "code_url": "https://huggingface.co/microsoft/phi-2",
+  "license_type": "MIT",
+  "concepts": ["Textbook Quality Data", "Small Language Models", "Synthetic Data", "Parameter Efficiency"],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {"to": "gpt-3", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}

@@ -1,0 +1,42 @@
+{
+  "name": "FLUX.1",
+  "slug": "flux",
+  "organization": "Black Forest Labs",
+  "release_date": "2024-08-01",
+  "decoder_type": "diffusion_dit",
+  "param_scale": "12B",
+  "context_length": "77 (CLIP-L) + 256 (T5-XXL)",
+  "attention_type": "Multi-Head Self-Attention (Parallel Attention)",
+  "normalization": "AdaRMSNorm",
+  "activation": "GELU",
+  "position_encoding": "RoPE (이미지), Absolute (텍스트)",
+  "vocab_size": null,
+  "hidden_dim": "3072",
+  "num_layers": "19 (이중 스트림) + 38 (단일 스트림)",
+  "num_heads": "24",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "FLUX.1은 2024년 Black Forest Labs(Stable Diffusion 원작자 그룹)가 공개한 12B 파라미터 규모의 텍스트-이미지 생성 모델로, Flow Matching 학습과 Hybrid MMDiT 아키텍처를 통해 기존 오픈소스 모델 중 최고 수준의 이미지 품질과 텍스트 충실도를 달성하였다. FLUX.1은 SD3의 MMDiT를 발전시켜 이중 스트림(double-stream) 블록과 단일 스트림(single-stream) 블록을 혼합한 하이브리드 아키텍처를 채택하였다. 초반 19개 이중 스트림 블록에서 이미지와 텍스트 토큰이 각자 독립적인 파라미터로 어텐션을 계산하며 양방향 상호작용을 수행하고, 후반 38개 단일 스트림 블록에서 두 스트림이 하나로 통합되어 효율적인 처리가 이루어진다. Rotary Position Embedding(RoPE)을 이미지 패치에 적용하여 임의 해상도 및 종횡비(Any Aspect Ratio) 생성을 지원하며, Parallel Attention으로 Self-Attention과 FFN을 동시에 계산하여 연산 효율을 높인다. 세 가지 버전이 공개되었다: FLUX.1-pro(최고 품질, API 전용), FLUX.1-dev(가이던스 증류 적용, 연구용 공개), FLUX.1-schnell(8스텝 일관성 증류, Apache 2.0 오픈소스). 텍스트 렌더링, 다양한 종횡비, 인체 표현 정확도 등에서 Midjourney v6, DALL·E 3를 능가하는 성능을 보였다.",
+  "key_detail": "FLUX.1의 하이브리드 DiT는 두 단계로 구성된다. (1) Double-stream 블록(19개): 이미지 시퀀스 $h^x$와 텍스트 시퀀스 $h^y$가 각자 $W_Q^x, W_K^x, W_V^x$와 $W_Q^y, W_K^y, W_V^y$를 사용하고 결합 시퀀스 $[h^x; h^y]$로 어텐션을 계산한 후 분리. (2) Single-stream 블록(38개): 이미지+텍스트 시퀀스가 하나로 합쳐진 후 공유 파라미터로 처리. Parallel Attention: $h \\leftarrow h + \\text{Attn}(h) + \\text{FFN}(h)$ (두 연산을 KV 캐시 공유로 병렬 수행). RoPE는 2D 패치 좌표에 적용하여 길이 외삽이 가능하며, 임의 해상도 생성이 가능하다. Flow Matching 학습으로 직선 궤적을 사용하며 약 28 NFE로 고품질 이미지를 생성한다.",
+  "training_detail": "수억 장 규모의 이미지-텍스트 쌍으로 학습되었다(구체적 데이터 비공개). T5-XXL(11B)과 CLIP-L 텍스트 인코더를 동결하여 사용한다. FLUX.1-dev는 가이던스 증류(guidance distillation)를 통해 단일 패스로 CFG 효과를 내장하였다. FLUX.1-schnell은 일관성 증류(consistency distillation)로 4~8 스텝 생성을 지원한다. ELO 기반 이미지 생성 평가에서 Midjourney v6.0, DALL·E 3, Ideogram 2.0 대비 최상위 성능을 기록하였다.",
+  "paper_url": "",
+  "code_url": "https://github.com/black-forest-labs/flux",
+  "license_type": "Apache 2.0 (schnell) / FLUX.1-dev Non-Commercial License",
+  "concepts": [
+    "Hybrid MMDiT",
+    "Double-Stream Attention",
+    "Single-Stream Attention",
+    "RoPE for Images",
+    "Parallel Attention",
+    "Flow Matching",
+    "Guidance Distillation"
+  ],
+  "architecture_category": "diffusion",
+  "branch_type": "diffusion",
+  "is_open_source": true,
+  "relations": [
+    {"to": "sd3", "type": "evolved_from"},
+    {"to": "flow-matching", "type": "technique_used"}
+  ],
+  "related_post_slug": "flux"
+}

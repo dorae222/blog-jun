@@ -1,0 +1,33 @@
+{
+  "name": "RetNet",
+  "slug": "retnet",
+  "organization": "Microsoft Research",
+  "release_date": "2023-07-17",
+  "decoder_type": "ssm",
+  "param_scale": "1.3B / 2.7B / 6.7B",
+  "context_length": "Unlimited (recurrent mode)",
+  "attention_type": "Retention (Multi-Scale Retention)",
+  "normalization": "LayerNorm",
+  "activation": "SiLU",
+  "position_encoding": "xPos (exponential decay positional encoding)",
+  "vocab_size": "32000",
+  "hidden_dim": "2048 (1.3B) ~ 4096 (6.7B)",
+  "num_layers": "24 (1.3B) ~ 32 (6.7B)",
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "RetNet(Retentive Network)은 2023년 Microsoft Research가 발표한 모델로, 학습 병렬화, O(1) 추론 메모리, 선형 복잡도의 세 가지 목표를 동시에 달성하는 Retention 메커니즘을 제안했다. 기존 Transformer는 학습은 효율적이나 추론 시 KV 캐시가 O(N)으로 증가하고, RNN/SSM은 추론은 효율적이나 학습 병렬화가 제한적이다. RetNet은 이 트릴레마를 해결하기 위해 retention 연산을 병렬 모드(학습), 순환 모드(추론), 청크 순환 모드(청크 단위 추론) 세 가지로 등가 변환하여 사용 목적에 맞게 전환 가능하게 했다. GPT-3 수준 크기에서 추론 메모리를 8배, 처리량을 8.4배 향상시켰다.",
+  "key_detail": "Retention 연산의 수식은 Ret(X) = (Q⊙Θ)(K⊙Θ̄)^T ⊙ D V 형태로, D는 지수 감쇠 마스크이다. 이 구조는 softmax를 제거하고 지수 감쇠 가중합으로 대체한 것으로 볼 수 있다. xPos는 외삽에 강한 위치 인코딩으로, 감쇠와 위치 정보를 결합한다. Multi-Scale Retention은 각 헤드마다 다른 감쇠율 γ를 사용해 다양한 시간 스케일의 의존성을 포착한다. 청크 순환 모드는 배치 추론 시 처리량을 높이기 위한 중간 단계로, 청크 단위 KV 상태를 유지한다. Transformer 대비 동등한 perplexity에서 추론 지연 시간 3.5배 단축을 달성했다.",
+  "training_detail": "The Pile 및 내부 Microsoft 데이터셋으로 학습. A100 80GB GPU. Llama와 유사한 학습 설정. SentencePiece 토크나이저. 병렬 학습은 표준 Transformer와 동일한 방식. 6.7B 모델은 약 150B 토큰으로 학습.",
+  "paper_url": "https://arxiv.org/abs/2307.08621",
+  "code_url": "https://github.com/microsoft/torchscale",
+  "license_type": "MIT",
+  "concepts": ["Retention", "Multi-Scale Retention", "xPos", "Recurrence", "Parallel Mode", "Chunkwise Recurrence", "Linear Complexity", "KV-free Inference"],
+  "architecture_category": "ssm",
+  "branch_type": "ssm",
+  "is_open_source": true,
+  "relations": [
+    {"to": "transformer", "type": "inspired_by"}
+  ],
+  "related_post_slug": ""
+}
