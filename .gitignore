@@ -37,8 +37,12 @@ Thumbs.db
 # Docker
 *.log
 
-# Claude Code
-.claude/
+# Claude Code (대화 기록 등은 무시, 설정/스킬/에이전트는 추적)
+.claude/*
+!.claude/skills/
+!.claude/agents/
+!.claude/rules/
+!.claude/settings.json
 
 # Pipeline data — 중간 산출물만 무시
 pipeline/data/batch_*.jsonl
