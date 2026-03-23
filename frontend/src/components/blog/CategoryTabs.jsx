@@ -68,7 +68,7 @@ export default function CategoryTabs({ category, sub, counts }) {
     <div>
       {/* 메인 카테고리 탭 */}
       <div className="relative flex items-center gap-1 overflow-x-auto pb-px border-b scroll-snap-x"
-        style={{ borderColor: 'var(--border)', scrollSnapType: 'x mandatory' }}>
+        style={{ borderColor: 'var(--border)', scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}>
         {MAIN_TABS.map((tab) => {
           const active = tab.key === (category || null)
           const count = tab.key ? counts?.[tab.key]?.count : null
@@ -76,7 +76,7 @@ export default function CategoryTabs({ category, sub, counts }) {
             <button
               key={tab.key || 'all'}
               onClick={() => navigate(tab.path)}
-              className="relative px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-colors shrink-0"
+              className="relative px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap transition-colors shrink-0"
               style={{ color: active ? 'var(--text)' : 'var(--text-secondary)' }}
             >
               {tab.label}

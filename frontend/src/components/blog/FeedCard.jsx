@@ -25,7 +25,7 @@ export default function FeedCard({ item }) {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-4xl opacity-20" style={{ color: categoryColor }}>
+            <span className="text-2xl sm:text-4xl opacity-20" style={{ color: categoryColor }}>
               {categoryName?.[0] || '?'}
             </span>
           </div>
@@ -33,7 +33,7 @@ export default function FeedCard({ item }) {
       </div>
 
       {/* 텍스트 영역 */}
-      <div className="p-4">
+      <div className="p-3 sm:p-4">
         <h3 className="font-semibold text-sm line-clamp-2 mb-1.5 group-hover:text-primary-600 transition-colors"
           style={{ color: 'var(--text)' }}>
           {item.title}
