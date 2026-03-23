@@ -7,7 +7,7 @@
   "sub_category": "diffusion",
   "year": 2023,
   "venue": "ICLR 2023",
-  "authors": "Xingchao Liu, Chengyue Gong, Qiang Liu",
+  "authors": "Liu et al.",
   "arxiv_url": "https://arxiv.org/abs/2209.03003",
   "summary": "Rectified Flow는 노이즈와 데이터 사이의 직선 ODE 경로를 학습하는 플로우 기반 생성 모델이다. Reflow 절차를 반복하면 궤적이 점진적으로 직선화되어 단일 스텝 생성이 가능하다. InstaFlow(1-step image generation)와 Stable Diffusion 3의 핵심 아키텍처로 채택되었다.",
   "tags": ["rectified-flow", "flow-matching", "ot", "single-step", "reflow", "generative-model"],
