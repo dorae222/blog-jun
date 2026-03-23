@@ -162,8 +162,12 @@ def import_papers(dry_run: bool = False, force_images: bool = False):
                             figure_url_map[fig_file.name] = url
                             created_images += 1
 
-                # content 보존: 이미지 없으면 기존 content 유지 (상대경로 덮어쓰기 방지)
-                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else existing.content
+                # content 갱신: 이미지 없으면 기존 PostImage에서 URL 맵 재구성
+                if not figure_url_map:
+                    for img in PostImage.objects.filter(post=existing):
+                        if img.original_path:
+                            figure_url_map[Path(img.original_path).name] = img.image.url
+                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else content
                 existing.content = updated_content
                 existing.summary = summary
                 existing.category = category
