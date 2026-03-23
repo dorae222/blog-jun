@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   GitBranch, ArrowRight, ArrowLeft, Layers,
-  FileText, Code2, BookOpen, Calendar, Cpu,
+  FileText, Code2, BookOpen, Calendar, Cpu, ExternalLink,
 } from 'lucide-react'
 
 const RELATION_LABELS = {
@@ -25,29 +25,31 @@ function LineageChip({ item, direction }) {
   const inner = (
     <>
       {direction === 'in' && <ArrowLeft size={10} className="text-primary-600" />}
-      {item.name}
+      <span className="font-medium">{item.name}</span>
       {direction === 'out' && <ArrowRight size={10} className="text-primary-600" />}
     </>
   )
 
-  const className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all"
+  const baseClass = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium transition-all"
 
   if (item.post_slug) {
     return (
       <Link
         to={`/post/${item.post_slug}`}
-        className={`${className} hover:shadow-sm hover:-translate-y-0.5`}
+        className={`${baseClass} hover:shadow-sm hover:-translate-y-0.5`}
         style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
       >
         {inner}
+        <ExternalLink size={9} className="opacity-40" />
       </Link>
     )
   }
 
   return (
     <span
-      className={`${className} opacity-60 cursor-default`}
-      style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+      className={`${baseClass} cursor-default`}
+      style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)', opacity: 0.75 }}
+      title="관련 포스트 없음"
     >
       {inner}
     </span>

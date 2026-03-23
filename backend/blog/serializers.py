@@ -188,7 +188,8 @@ class PostDetailSerializer(ImageUrlMixin, serializers.ModelSerializer):
         fields = [
             'id', 'title', 'slug', 'content', 'summary', 'category', 'tags',
             'series', 'series_order', 'post_type', 'status', 'quality_score',
-            'reading_time', 'view_count', 'created_at', 'updated_at',
+            'reading_time', 'view_count', 'arxiv_url', 'venue', 'paper_year',
+            'paper_authors', 'created_at', 'updated_at',
             'published_at', 'images', 'adjacent_posts', 'related_posts',
             'pdf_file', 'cover_image_url', 'outgoing_links', 'incoming_links',
             'architecture_entries',
@@ -234,6 +235,7 @@ class PostWriteSerializer(serializers.ModelSerializer):
         fields = [
             'title', 'slug', 'content', 'summary', 'category', 'tags',
             'series', 'series_order', 'post_type', 'status', 'published_at',
+            'arxiv_url', 'venue', 'paper_year', 'paper_authors',
         ]
 
     def create(self, validated_data):

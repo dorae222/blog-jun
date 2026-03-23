@@ -269,6 +269,31 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
       }
     } else if (item.id === 'codecell') {
       editor.commands.setCodeCell({ language: 'python', code: '# code here' })
+    } else if (item.id === 'paper-link') {
+      const url = prompt('arXiv URL을 입력하세요:')
+      if (url?.trim()) {
+        const arxivId = url.match(/(\d{4}\.\d{4,5})/)?.[1] || ''
+        editor.chain().focus().insertContent(
+          `[arXiv:${arxivId}](${url.trim()})`
+        ).run()
+      }
+    } else if (item.id === 'attribution') {
+      editor.chain().focus().insertContent(
+        '\n\n*출처: [논문 제목](URL) — 저자 (연도), 학회*\n\n'
+      ).run()
+    } else if (item.id === 'requirements') {
+      editor.chain().focus().insertContent(
+        '\n\n### 필요 패키지\n```\nnumpy>=1.24\nscikit-learn>=1.2\nmatplotlib>=3.6\n```\n\n'
+      ).run()
+    } else if (item.id === 'figure-caption') {
+      imageInputRef.current?.click()
+    } else if (item.id === 'hf-model') {
+      const model = prompt('HuggingFace 모델명 (예: bert-base-uncased):')
+      if (model?.trim()) {
+        editor.chain().focus().insertContent(
+          `[${model.trim()}](https://huggingface.co/${model.trim()})`
+        ).run()
+      }
     } else if (item.command) {
       item.command(editor)
     }
