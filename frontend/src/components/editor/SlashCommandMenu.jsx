@@ -3,7 +3,7 @@ import {
   Heading1, Heading2, Heading3, Type, Quote, Minus, AlertCircle,
   Image, Video, Table, Code, Calculator, CheckSquare,
   FileCode, GitBranch, Info, AlertTriangle, Lightbulb, Terminal,
-  Bookmark,
+  Bookmark, FileText, Link, Package, ImagePlus, Cpu,
 } from 'lucide-react'
 
 const SLASH_ITEMS = [
@@ -33,6 +33,13 @@ const SLASH_ITEMS = [
     { id: 'mermaid', label: 'Mermaid Diagram', desc: '다이어그램', icon: GitBranch, command: null },
     { id: 'notebook', label: 'Import Notebook', desc: '.ipynb 파일 임포트', icon: FileCode, command: null },
     { id: 'todo', label: 'Todo List', desc: '체크리스트', icon: CheckSquare, command: (editor) => editor.chain().focus().toggleTaskList().run() },
+  ]},
+  { category: 'Paper & ML', items: [
+    { id: 'paper-link', label: 'Paper Link', desc: 'arXiv 논문 링크 삽입', icon: FileText, command: null },
+    { id: 'attribution', label: 'Attribution', desc: '출처 표기 블록', icon: Link, command: null },
+    { id: 'requirements', label: 'Requirements', desc: '코드 의존성 블록', icon: Package, command: null },
+    { id: 'figure-caption', label: 'Figure + Caption', desc: '이미지 + 캡션 + 출처', icon: ImagePlus, command: null },
+    { id: 'hf-model', label: 'HuggingFace Model', desc: 'HF 모델 카드 참조', icon: Cpu, command: null },
   ]},
 ]
 

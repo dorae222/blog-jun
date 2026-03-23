@@ -90,7 +90,7 @@ def replace_figure_paths(content: str, figure_url_map: dict) -> str:
     return content
 
 
-def import_papers(dry_run: bool = False):
+def import_papers(dry_run: bool = False, force_images: bool = False):
     if not PAPERS_WRITTEN_DIR.exists():
         print(f"papers_written 디렉토리 없음: {PAPERS_WRITTEN_DIR}")
         sys.exit(1)
@@ -141,6 +141,12 @@ def import_papers(dry_run: bool = False):
                 new_len = len(content)
                 print(f"  [DRY-RUN UPDATE] {slug}: {old_len} → {new_len} chars")
             else:
+                # --force-images: 기존 PostImage 삭제 후 재업로드
+                if force_images:
+                    deleted_count = PostImage.objects.filter(post=existing).delete()[0]
+                    if deleted_count:
+                        print(f"    [FORCE] 기존 이미지 {deleted_count}개 삭제")
+
                 # figures 업로드 및 URL 치환
                 figures_dir = paper_dir / 'figures'
                 figure_url_map = {}
@@ -148,7 +154,7 @@ def import_papers(dry_run: bool = False):
                     for fig_file in sorted(figures_dir.iterdir()):
                         if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
                             continue
-                        # 이미 업로드된 figure 스킵
+                        # 이미 업로드된 figure 스킵 (force_images 시 이미 삭제됨)
                         if PostImage.objects.filter(post=existing, alt_text=fig_file.stem).exists():
                             continue
                         url = upload_figure(existing, fig_file, dry_run=False)
@@ -156,8 +162,8 @@ def import_papers(dry_run: bool = False):
                             figure_url_map[fig_file.name] = url
                             created_images += 1
 
-                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else content
-                existing.content = updated_content
+                # content 보존: 이미지 없으면 기존 content 유지 (상대경로 덮어쓰기 방지)
+                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else existing.content
                 existing.summary = summary
                 existing.category = category
                 existing.save(update_fields=['content', 'summary', 'category'])
@@ -207,5 +213,6 @@ def import_papers(dry_run: bool = False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='papers_written → Post + PostImage import')
     parser.add_argument('--dry-run', action='store_true', help='변경 없이 미리보기')
+    parser.add_argument('--force-images', action='store_true', help='기존 PostImage 삭제 후 재업로드')
     args = parser.parse_args()
-    import_papers(dry_run=args.dry_run)
+    import_papers(dry_run=args.dry_run, force_images=args.force_images)

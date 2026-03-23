@@ -35,6 +35,10 @@ export default function Editor() {
     series_order: 0,
     post_type: 'article',
     status: 'draft',
+    arxiv_url: '',
+    venue: '',
+    paper_year: null,
+    paper_authors: '',
   })
 
   useEffect(() => {
@@ -57,6 +61,10 @@ export default function Editor() {
           series_order: p.series_order || 0,
           post_type: p.post_type,
           status: p.status,
+          arxiv_url: p.arxiv_url || '',
+          venue: p.venue || '',
+          paper_year: p.paper_year || null,
+          paper_authors: p.paper_authors || '',
         })
       })
     }
@@ -210,6 +218,34 @@ export default function Editor() {
           <option value="">Series</option>
           {allSeries.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>
+
+        {/* Paper Review 메타데이터 (post_type 선택 시 표시) */}
+        {form.post_type === 'paper_review' && (
+          <>
+            <input
+              value={form.arxiv_url}
+              onChange={e => updateForm({ arxiv_url: e.target.value })}
+              placeholder="arXiv URL"
+              className="text-sm px-2 py-1 rounded border w-40"
+              style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
+            />
+            <input
+              value={form.venue}
+              onChange={e => updateForm({ venue: e.target.value })}
+              placeholder="학회 (NeurIPS, ICML...)"
+              className="text-sm px-2 py-1 rounded border w-32"
+              style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
+            />
+            <input
+              type="number"
+              value={form.paper_year || ''}
+              onChange={e => updateForm({ paper_year: e.target.value ? parseInt(e.target.value) : null })}
+              placeholder="연도"
+              className="text-sm px-2 py-1 rounded border w-20"
+              style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
+            />
+          </>
+        )}
 
         {/* View Mode Toggle */}
         <div className="flex items-center rounded border overflow-hidden" style={{ borderColor: 'var(--border)' }}>

@@ -80,6 +80,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.DRAFT)
     post_type = models.CharField(max_length=20, choices=PostType.choices, default=PostType.ARTICLE)
+    # 논문 리뷰 메타데이터 (post_type='paper_review'에서 사용)
+    arxiv_url = models.URLField(blank=True, help_text="arXiv 논문 URL")
+    venue = models.CharField(max_length=100, blank=True, help_text="학회/저널명 (NeurIPS, ICML 등)")
+    paper_year = models.IntegerField(null=True, blank=True, help_text="논문 발표 연도")
+    paper_authors = models.TextField(blank=True, help_text="저자 목록")
+
     quality_score = models.FloatField(default=0.0, help_text="AI-assessed quality 0-10")
     source_path = models.CharField(max_length=500, blank=True, help_text="Original file path")
     reading_time = models.IntegerField(default=0, help_text="Estimated reading time in minutes")
