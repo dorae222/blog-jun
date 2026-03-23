@@ -85,6 +85,19 @@ def classify_block(code: str) -> str:
     return 'no_output'
 
 
+FONT_PREAMBLE = """\
+import matplotlib
+matplotlib.rcParams['font.family'] = 'Noto Sans CJK JP'
+matplotlib.rcParams['axes.unicode_minus'] = False
+"""
+
+def _sanitize_font(code: str) -> str:
+    """macOS 전용 폰트를 Linux 호환 폰트로 치환."""
+    code = code.replace("AppleGothic", "Noto Sans CJK JP")
+    code = code.replace("Malgun Gothic", "Noto Sans CJK JP")
+    return code
+
+
 def execute_block(
     code: str,
     namespace: dict,
@@ -97,11 +110,15 @@ def execute_block(
     stdout_capture = io.StringIO()
     figures_saved = []
 
+    # 한글 폰트 강제 설정 + macOS 폰트 치환
+    code = _sanitize_font(code)
+
     # matplotlib figure 자동 저장 설정
     plt.close('all')
 
     try:
         with redirect_stdout(stdout_capture), redirect_stderr(io.StringIO()):
+            exec(FONT_PREAMBLE, namespace)
             exec(code, namespace)
 
         # 열린 figure 저장
@@ -210,7 +227,7 @@ def process_module(slug: str, execute: bool = False, dry_run: bool = False) -> d
         if cls['type'] == 'no_output':
             # setup 코드도 namespace에 실행 (변수 공유)
             try:
-                exec(block['code'], namespace)
+                exec(_sanitize_font(block['code']), namespace)
             except Exception:
                 pass
             results.append(None)
