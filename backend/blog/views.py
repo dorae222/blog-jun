@@ -110,6 +110,22 @@ class PostViewSet(viewsets.ModelViewSet):
         deleted, _ = Post.objects.filter(slug__in=slugs, author=request.user).delete()
         return Response({'deleted': deleted})
 
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def generate_cover(self, request, slug=None):
+        """커버 이미지 생성/재생성."""
+        from django.core.management import call_command
+        post = self.get_object()
+        try:
+            call_command('generate_cover_images', slugs=slug, verbosity=0)
+            post.refresh_from_db()
+            cover_url = request.build_absolute_uri(post.cover_image.url) if post.cover_image else None
+            return Response({
+                'detail': '커버 이미지 생성 완료',
+                'cover_image_url': cover_url,
+            })
+        except Exception as e:
+            return Response({'detail': f'커버 생성 실패: {e}'}, status=500)
+
     @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
     def bulk_update_status(self, request):
         slugs = request.data.get('slugs', [])
@@ -488,6 +504,18 @@ def feed_popular(request):
     ).prefetch_related('tags').order_by('-view_count')[:limit]
     serializer = PostListSerializer(qs, many=True, context={'request': request})
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def cover_template_list(request):
+    """사용 가능한 커버 템플릿 목록 반환."""
+    templates = [
+        {'id': 'paper_cover', 'name': 'Paper Cover', 'description': '논문 리뷰용 다크 학술 스타일'},
+        {'id': 'category_gradient', 'name': 'Category Gradient', 'description': '카테고리 색상 그라디언트 + 아이콘'},
+        {'id': 'architecture_diagram', 'name': 'Architecture Diagram', 'description': 'AI 아키텍처 다이어그램'},
+    ]
+    return Response(templates)
 
 
 @api_view(['GET'])

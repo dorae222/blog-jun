@@ -2,7 +2,8 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { Eye, Code, Columns, List, Check, Circle } from 'lucide-react'
+import { Eye, Code, Columns, List, Check, Circle, Link2 } from 'lucide-react'
+import PostLinkModal from '../components/editor/PostLinkModal'
 import NotionEditor from '../components/editor/NotionEditor'
 import SplitEditor from '../components/editor/SplitEditor'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
@@ -14,6 +15,7 @@ export default function Editor() {
   const navigate = useNavigate()
   const { user } = useAuth()
   const [showTemplates, setShowTemplates] = useState(false)
+  const [showLinkModal, setShowLinkModal] = useState(false)
   const [templates, setTemplates] = useState([])
   const [categories, setCategories] = useState([])
   const [allTags, setAllTags] = useState([])
@@ -116,6 +118,10 @@ export default function Editor() {
         e.preventDefault()
         handleSave()
       }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault()
+        setShowLinkModal(true)
+      }
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
@@ -141,6 +147,10 @@ export default function Editor() {
     }))
     setShowTemplates(false)
   }
+
+  const handleInsertLink = useCallback((linkText) => {
+    updateForm({ content: form.content + '\n' + linkText })
+  }, [form.content])
 
   if (!user) return null
 
@@ -232,6 +242,15 @@ export default function Editor() {
           title="Table of Contents"
         >
           <List size={14} />
+        </button>
+
+        <button
+          onClick={() => setShowLinkModal(true)}
+          className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
+          style={{ borderColor: 'var(--border)' }}
+          title="Insert post link (Ctrl+K)"
+        >
+          <Link2 size={14} />
         </button>
 
         <button
@@ -334,6 +353,9 @@ export default function Editor() {
           </div>
         </div>
       )}
+
+      {/* Post Link Modal */}
+      <PostLinkModal isOpen={showLinkModal} onClose={() => setShowLinkModal(false)} onInsert={handleInsertLink} />
     </motion.div>
   )
 }

@@ -10,22 +10,16 @@ import {
 } from '../api/posts'
 import toast from 'react-hot-toast'
 import {
-  FileText, CheckCircle, Clock, Eye, AlertTriangle, Pencil, Trash2,
+  FileText, CheckCircle, Clock,
   LayoutGrid, Cloud, Brain, Database, Code2, FolderOpen, Terminal, BookOpen,
-  Archive, Plus, Tags, ChevronLeft, ChevronRight, Cpu, Search, ImageOff,
-  BarChart3, Image,
+  Archive, Plus, Tags, Cpu,
+  BarChart3,
 } from 'lucide-react'
-
-// 이슈 배지 색상
-const ISSUE_COLORS = {
-  HTML_TAG:     'bg-orange-100 text-orange-700',
-  JUPYTER:      'bg-purple-100 text-purple-700',
-  SHORT:        'bg-gray-100 text-gray-500',
-  META_REMNANT: 'bg-yellow-100 text-yellow-700',
-  ENCODING:     'bg-red-100 text-red-700',
-}
-
-const STATUS_DOT = { published: '#10b981', draft: '#f59e0b', archived: '#94a3b8' }
+import StatsBar from '../components/dashboard/StatsBar'
+import PostsTab from '../components/dashboard/PostsTab'
+import ArchitecturesTab from '../components/dashboard/ArchitecturesTab'
+import TagsTab from '../components/dashboard/TagsTab'
+import OverviewTab from '../components/dashboard/OverviewTab'
 
 const PAGE_SIZE = 10
 
@@ -263,17 +257,7 @@ export default function Dashboard() {
     return () => clearTimeout(timer)
   }, [searchInput])
 
-  // Stats Bar 정의
   const missingImageCount = stats?.image_coverage?.missing_image ?? 0
-  const STAT_DEFS = [
-    { label: '총 포스트', icon: FileText,      accent: '#3b82f6', fn: s => s.total_posts  },
-    { label: '발행',       icon: CheckCircle,   accent: '#10b981', fn: s => s.published   },
-    { label: '초안',       icon: Clock,         accent: '#f59e0b', fn: s => s.drafts      },
-    { label: '총 조회수',  icon: Eye,           accent: '#8b5cf6', fn: s => s.total_views },
-    { label: '감사 이슈',  icon: AlertTriangle, accent: '#ef4444', fn: () => auditSummary.total_issues },
-    { label: '이미지 없음', icon: ImageOff,     accent: '#f97316', fn: () => missingImageCount },
-  ]
-
   const totalPages = Math.ceil(totalPosts / PAGE_SIZE)
 
   if (!user) return null
@@ -302,22 +286,11 @@ export default function Dashboard() {
       </div>
 
       {/* Stats Bar */}
-      {stats && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
-          {STAT_DEFS.map(({ label, icon: Icon, accent, fn }) => (
-            <div key={label} className="relative p-4 rounded-xl overflow-hidden"
-              style={{ background: 'var(--card-bg)', border: '1px solid var(--border)',
-                       borderLeft: `4px solid ${accent}` }}>
-              <Icon size={32} className="absolute right-3 top-3"
-                style={{ color: accent, opacity: 0.12 }} />
-              <p className="text-2xl font-bold" style={{ color: accent }}>
-                {(fn(stats) ?? 0).toLocaleString()}
-              </p>
-              <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{label}</p>
-            </div>
-          ))}
-        </div>
-      )}
+      <StatsBar
+        stats={stats}
+        auditTotalIssues={auditSummary.total_issues}
+        missingImageCount={missingImageCount}
+      />
 
       {/* 탭 (세그먼트 컨트롤) */}
       <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit"
@@ -342,611 +315,52 @@ export default function Dashboard() {
 
       {/* ─── 포스트 탭 ─── */}
       {tab === 'posts' && (
-        <div className="flex gap-6">
-          {/* 모바일 필터 드롭다운 */}
-          <div className="md:hidden mb-4 flex gap-2">
-            <select
-              value={categoryFilter}
-              onChange={e => { setCategoryFilter(e.target.value); setPage(1) }}
-              className="flex-1 text-sm px-3 py-2 rounded-lg border"
-              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-            >
-              {CATEGORIES.map(cat => (
-                <option key={cat.slug} value={cat.slug}>{cat.label}</option>
-              ))}
-            </select>
-            <select
-              value={statusFilter}
-              onChange={e => { setStatusFilter(e.target.value); setPage(1) }}
-              className="flex-1 text-sm px-3 py-2 rounded-lg border"
-              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-            >
-              {STATUS_META.map(s => (
-                <option key={s.value} value={s.value}>{s.label}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* 사이드바 (데스크탑) */}
-          <aside className="hidden md:block w-44 shrink-0">
-            <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>카테고리</p>
-            <ul className="space-y-1">
-              {CATEGORIES.map(cat => {
-                const CatIcon = CAT_ICONS[cat.slug] || LayoutGrid
-                return (
-                  <li key={cat.slug}>
-                    <button
-                      onClick={() => { setCategoryFilter(cat.slug); setPage(1) }}
-                      className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                        categoryFilter === cat.slug
-                          ? 'bg-primary-50 text-primary-700 font-semibold border border-primary-200'
-                          : 'hover:bg-gray-50'
-                      }`}
-                      style={categoryFilter !== cat.slug ? { color: 'var(--text)' } : {}}>
-                      <CatIcon size={14} style={{ flexShrink: 0 }} />
-                      {cat.label}
-                    </button>
-                  </li>
-                )
-              })}
-            </ul>
-
-            <div className="mt-6 space-y-1">
-              <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>상태</p>
-              {STATUS_META.map(({ value, label, Icon, dot }) => (
-                <button
-                  key={value}
-                  onClick={() => { setStatusFilter(value); setPage(1) }}
-                  className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                    statusFilter === value
-                      ? 'bg-primary-50 text-primary-700 font-semibold border border-primary-200'
-                      : 'hover:bg-gray-50'
-                  }`}
-                  style={statusFilter !== value ? { color: 'var(--text)' } : {}}>
-                  {dot
-                    ? <span style={{ width: 8, height: 8, borderRadius: '50%', background: dot, flexShrink: 0 }} />
-                    : <Icon size={14} style={{ flexShrink: 0 }} />
-                  }
-                  {label}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-6 space-y-1">
-              <p className="text-xs font-semibold mb-2 uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>타입</p>
-              <select
-                value={postTypeFilter}
-                onChange={e => { setPostTypeFilter(e.target.value); setPage(1) }}
-                className="w-full text-sm px-3 py-1.5 rounded-lg border"
-                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-              >
-                {POST_TYPES.map(t => (
-                  <option key={t.value} value={t.value}>{t.label}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="mt-6 space-y-1">
-              <button
-                onClick={() => { setNoImageFilter(v => !v); setPage(1) }}
-                className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                  noImageFilter ? 'bg-orange-50 text-orange-700 font-medium border border-orange-200' : 'hover:bg-gray-50'
-                }`}
-                style={!noImageFilter ? { color: 'var(--text)' } : {}}>
-                <ImageOff size={14} />
-                이미지 없음
-              </button>
-              <button
-                onClick={() => setAuditFilter(v => !v)}
-                className={`w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
-                  auditFilter ? 'bg-red-50 text-red-700 font-medium border border-red-200' : 'hover:bg-gray-50'
-                }`}
-                style={!auditFilter ? { color: 'var(--text)' } : {}}>
-                <AlertTriangle size={14} />
-                이슈 있는 것만
-              </button>
-              <button
-                onClick={loadAudit}
-                className="w-full text-left px-3 py-1.5 rounded-lg text-xs hover:bg-gray-100"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                ↻ 감사 새로고침
-              </button>
-            </div>
-          </aside>
-
-          {/* 포스트 테이블 */}
-          <div className="flex-1 min-w-0">
-            {/* 검색 바 */}
-            <div className="mb-3 relative">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2"
-                style={{ color: 'var(--text-secondary)' }} />
-              <input
-                type="text"
-                placeholder="포스트 검색 (제목, 내용, 요약)..."
-                value={searchInput}
-                onChange={e => setSearchInput(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-lg border text-sm"
-                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-              />
-            </div>
-
-            {/* 벌크 액션 바 */}
-            {selected.size > 0 && (
-              <div className="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-xl
-                bg-primary-50 border border-primary-200">
-                <span className="text-sm font-semibold text-primary-700">{selected.size}개 선택</span>
-                <div className="flex gap-2 ml-auto">
-                  <button onClick={() => handleBulkStatus('published')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-600 text-white text-xs font-medium hover:bg-green-700">
-                    <CheckCircle size={12} /> 발행
-                  </button>
-                  <button onClick={() => handleBulkStatus('archived')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-xs font-medium hover:bg-white transition-colors"
-                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
-                    <Archive size={12} /> 보관
-                  </button>
-                  <button onClick={handleBulkDelete}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-xs font-medium hover:bg-red-700">
-                    <Trash2 size={12} /> 삭제
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* 테이블 */}
-            <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
-              <table className="w-full text-sm">
-                <thead>
-                  <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
-                    <th className="w-8 px-3 py-2 text-left">
-                      <input
-                        type="checkbox"
-                        checked={selected.size === visiblePosts.length && visiblePosts.length > 0}
-                        onChange={toggleAll}
-                        className="rounded"
-                      />
-                    </th>
-                    <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>제목</th>
-                    <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>카테고리</th>
-                    <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>이슈</th>
-                    <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>상태</th>
-                    <th className="px-3 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>액션</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {visiblePosts.length === 0 && (
-                    <tr>
-                      <td colSpan={6} className="px-4 py-8 text-center" style={{ color: 'var(--text-secondary)' }}>
-                        포스트가 없습니다.
-                      </td>
-                    </tr>
-                  )}
-                  {visiblePosts.map(post => {
-                    const issues = auditMap[post.slug] || []
-                    const isSelected = selected.has(post.slug)
-                    return (
-                      <tr
-                        key={post.id}
-                        className="border-t transition-colors hover:bg-gray-50"
-                        style={{ borderColor: 'var(--border)', background: isSelected ? 'var(--bg-secondary)' : undefined }}
-                      >
-                        <td className="px-3 py-2">
-                          <input
-                            type="checkbox"
-                            checked={isSelected}
-                            onChange={() => toggleSelect(post.slug)}
-                            className="rounded"
-                          />
-                        </td>
-                        <td className="px-3 py-2 max-w-xs">
-                          <span className="font-medium truncate block" style={{ color: 'var(--text)' }}>{post.title}</span>
-                          <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                            {new Date(post.created_at).toLocaleDateString('ko-KR')}
-                            {post.post_type !== 'article' && (
-                              <span className="ml-1.5 px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">{post.post_type}</span>
-                            )}
-                          </span>
-                        </td>
-                        <td className="px-3 py-2 hidden md:table-cell">
-                          {post.category ? (
-                            <span className="text-xs px-2 py-0.5 rounded-full font-medium"
-                              style={{
-                                background: `${post.category.color || '#6366f1'}15`,
-                                color: post.category.color || '#6366f1',
-                              }}>
-                              {post.category.name}
-                            </span>
-                          ) : <span style={{ color: 'var(--text-secondary)' }}>—</span>}
-                        </td>
-                        <td className="px-3 py-2">
-                          {issues.length > 0 ? (
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-xs font-bold text-red-600">{issues.length}</span>
-                              <span className={`text-xs px-1.5 py-0.5 rounded-full font-medium
-                                ${ISSUE_COLORS[issues[0]] || 'bg-gray-100 text-gray-600'}`}>
-                                {issues[0]}
-                              </span>
-                              {issues.length > 1 &&
-                                <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                                  +{issues.length - 1}
-                                </span>
-                              }
-                            </div>
-                          ) : <span style={{ color: 'var(--border)' }}>—</span>}
-                        </td>
-                        <td className="px-3 py-2">
-                          <span className="inline-flex items-center gap-1.5 text-xs px-2 py-0.5 rounded-full"
-                            style={{
-                              background: `${STATUS_DOT[post.status] || '#94a3b8'}15`,
-                              color: STATUS_DOT[post.status] || '#94a3b8',
-                            }}>
-                            <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'currentColor' }} />
-                            {post.status}
-                          </span>
-                        </td>
-                        <td className="px-3 py-2">
-                          <div className="flex items-center gap-0.5 justify-end">
-                            <Link to={`/post/${post.slug}`} target="_blank" title="보기"
-                              className="p-1.5 rounded transition-colors hover:bg-gray-100"
-                              style={{ color: 'var(--text-secondary)' }}>
-                              <Eye size={14} />
-                            </Link>
-                            <Link to={`/editor/${post.slug}`} title="편집"
-                              className="p-1.5 rounded transition-colors hover:bg-blue-50 hover:text-blue-600"
-                              style={{ color: 'var(--text-secondary)' }}>
-                              <Pencil size={14} />
-                            </Link>
-                            <button onClick={() => handleDelete(post.slug)} title="삭제"
-                              className="p-1.5 rounded transition-colors hover:bg-red-50 hover:text-red-600"
-                              style={{ color: 'var(--text-secondary)' }}>
-                              <Trash2 size={14} />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="mt-3 flex items-center justify-between">
-              <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                {visiblePosts.length}개 표시 / 전체 {totalPosts}개
-              </p>
-              {totalPages > 1 && (
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setPage(p => Math.max(1, p - 1))}
-                    disabled={page === 1}
-                    className="p-2 rounded border text-xs transition-colors disabled:opacity-40"
-                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
-                  >
-                    <ChevronLeft size={14} />
-                  </button>
-                  <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                    {page} / {totalPages}
-                  </span>
-                  <button
-                    onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                    disabled={page === totalPages}
-                    className="p-2 rounded border text-xs transition-colors disabled:opacity-40"
-                    style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
-                  >
-                    <ChevronRight size={14} />
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <PostsTab
+          categoryFilter={categoryFilter} setCategoryFilter={setCategoryFilter}
+          statusFilter={statusFilter} setStatusFilter={setStatusFilter}
+          postTypeFilter={postTypeFilter} setPostTypeFilter={setPostTypeFilter}
+          noImageFilter={noImageFilter} setNoImageFilter={setNoImageFilter}
+          auditFilter={auditFilter} setAuditFilter={setAuditFilter}
+          searchInput={searchInput} setSearchInput={setSearchInput}
+          setPage={setPage}
+          visiblePosts={visiblePosts} totalPosts={totalPosts}
+          page={page} totalPages={totalPages}
+          auditMap={auditMap} selected={selected}
+          toggleSelect={toggleSelect} toggleAll={toggleAll}
+          handleDelete={handleDelete} handleBulkDelete={handleBulkDelete}
+          handleBulkStatus={handleBulkStatus} loadAudit={loadAudit}
+          CATEGORIES={CATEGORIES} STATUS_META={STATUS_META}
+          POST_TYPES={POST_TYPES} CAT_ICONS={CAT_ICONS}
+        />
       )}
 
       {/* ─── Architectures 탭 ─── */}
       {tab === 'architectures' && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                {archEntries.length}개 Architecture
-              </p>
-              <select
-                value={archCatFilter}
-                onChange={e => setArchCatFilter(e.target.value)}
-                className="text-sm px-3 py-1.5 rounded-lg border"
-                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-              >
-                {ARCH_CATEGORIES.map(c => (
-                  <option key={c.value} value={c.value}>{c.label}</option>
-                ))}
-              </select>
-            </div>
-            <Link to="/editor"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white text-sm hover:bg-primary-700">
-              <Plus size={15} /> 새 Architecture
-            </Link>
-          </div>
-          <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
-            <table className="w-full text-sm">
-              <thead>
-                <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
-                  <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>Name</th>
-                  <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>Category</th>
-                  <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>Branch</th>
-                  <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>Org</th>
-                  <th className="px-3 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>액션</th>
-                </tr>
-              </thead>
-              <tbody>
-                {archEntries.length === 0 && (
-                  <tr>
-                    <td colSpan={5} className="px-4 py-8 text-center" style={{ color: 'var(--text-secondary)' }}>
-                      Architecture가 없습니다.
-                    </td>
-                  </tr>
-                )}
-                {archEntries.map(entry => (
-                  <tr key={entry.id} className="border-t hover:bg-gray-50 transition-colors" style={{ borderColor: 'var(--border)' }}>
-                    <td className="px-3 py-2">
-                      <span className="font-medium" style={{ color: 'var(--text)' }}>{entry.name}</span>
-                      <span className="text-xs ml-1" style={{ color: 'var(--text-secondary)' }}>
-                        {entry.release_date?.slice(0, 4)}
-                      </span>
-                    </td>
-                    <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
-                      {entry.architecture_category?.toUpperCase()}
-                    </td>
-                    <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
-                      {entry.branch_type}
-                    </td>
-                    <td className="px-3 py-2 hidden md:table-cell text-xs" style={{ color: 'var(--text-secondary)' }}>
-                      {entry.organization}
-                    </td>
-                    <td className="px-3 py-2">
-                      <div className="flex items-center gap-0.5 justify-end">
-                        {entry.related_post_slug && (
-                          <Link to={`/post/${entry.related_post_slug}`} title="포스트 보기"
-                            className="p-1.5 rounded hover:bg-gray-100" style={{ color: 'var(--text-secondary)' }}>
-                            <Eye size={14} />
-                          </Link>
-                        )}
-                        <Link
-                          to={entry.related_post_slug ? `/editor/${entry.related_post_slug}` : `/editor`}
-                          title="편집"
-                          className="p-1.5 rounded hover:bg-blue-50 hover:text-blue-600" style={{ color: 'var(--text-secondary)' }}>
-                          <Pencil size={14} />
-                        </Link>
-                        <button
-                          onClick={async () => {
-                            if (!confirm(`"${entry.name}" 삭제?`)) return
-                            try {
-                              await deleteArchitecture(entry.slug)
-                              toast.success('삭제 완료')
-                              loadArchitectures()
-                            } catch { toast.error('삭제 실패') }
-                          }}
-                          title="삭제"
-                          className="p-1.5 rounded hover:bg-red-50 hover:text-red-600"
-                          style={{ color: 'var(--text-secondary)' }}>
-                          <Trash2 size={14} />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <ArchitecturesTab
+          archEntries={archEntries}
+          archCatFilter={archCatFilter} setArchCatFilter={setArchCatFilter}
+          loadArchitectures={loadArchitectures}
+          deleteArchitecture={deleteArchitecture}
+          ARCH_CATEGORIES={ARCH_CATEGORIES}
+        />
       )}
 
       {/* ─── 태그 탭 ─── */}
       {tab === 'tags' && (
-        <div className="space-y-6">
-          {/* 병합 */}
-          <div className="p-4 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
-            <h3 className="font-semibold mb-3" style={{ color: 'var(--text)' }}>태그 병합</h3>
-            <div className="flex flex-wrap gap-3 items-end">
-              <div>
-                <label className="block text-xs mb-1" style={{ color: 'var(--text-secondary)' }}>소스 태그 (삭제됨)</label>
-                <select
-                  value={mergeSrc}
-                  onChange={e => setMergeSrc(e.target.value)}
-                  className="border rounded px-2 py-1 text-sm"
-                  style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-                >
-                  <option value="">선택</option>
-                  {tags.map(t => <option key={t.slug} value={t.slug}>{t.name} ({t.post_count})</option>)}
-                </select>
-              </div>
-              <span className="text-gray-400">→</span>
-              <div>
-                <label className="block text-xs mb-1" style={{ color: 'var(--text-secondary)' }}>대상 태그 (유지됨)</label>
-                <select
-                  value={mergeDst}
-                  onChange={e => setMergeDst(e.target.value)}
-                  className="border rounded px-2 py-1 text-sm"
-                  style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
-                >
-                  <option value="">선택</option>
-                  {tags.map(t => <option key={t.slug} value={t.slug}>{t.name} ({t.post_count})</option>)}
-                </select>
-              </div>
-              <button
-                onClick={handleMerge}
-                className="px-4 py-1.5 rounded bg-primary-600 text-white text-sm hover:bg-primary-700"
-              >
-                병합
-              </button>
-            </div>
-          </div>
-
-          {/* 고아 태그 삭제 */}
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handleCleanup}
-              className="px-4 py-2 rounded border text-sm text-red-600 hover:bg-red-50"
-              style={{ borderColor: 'var(--border)' }}
-            >
-              고아 태그 일괄 삭제
-            </button>
-            <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              포스트 0개인 태그를 모두 제거합니다.
-            </span>
-          </div>
-
-          {/* 태그 목록 */}
-          <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
-            <table className="w-full text-sm">
-              <thead>
-                <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
-                  <th className="px-4 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>태그</th>
-                  <th className="px-4 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>슬러그</th>
-                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>포스트 수</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tags.length === 0 && (
-                  <tr>
-                    <td colSpan={3} className="px-4 py-8 text-center" style={{ color: 'var(--text-secondary)' }}>
-                      태그가 없습니다.
-                    </td>
-                  </tr>
-                )}
-                {tags.map(tag => (
-                  <tr key={tag.slug} className="border-t"
-                    style={{ borderColor: 'var(--border)', opacity: tag.post_count === 0 ? 0.45 : 1 }}>
-                    <td className="px-4 py-2">
-                      <span className="inline-flex items-center gap-1.5 text-sm font-medium"
-                        style={{ color: 'var(--text)' }}>
-                        <span className="w-2 h-2 rounded-full flex-shrink-0"
-                          style={{ background: `hsl(${(tag.name.charCodeAt(0) * 37) % 360},55%,60%)` }} />
-                        {tag.name}
-                      </span>
-                    </td>
-                    <td className="px-4 py-2 text-xs font-mono" style={{ color: 'var(--text-secondary)' }}>{tag.slug}</td>
-                    <td className="px-4 py-2 text-right" style={{ color: tag.post_count === 0 ? 'var(--text-secondary)' : 'var(--text)' }}>
-                      {tag.post_count}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <TagsTab
+          tags={tags}
+          mergeSrc={mergeSrc} setMergeSrc={setMergeSrc}
+          mergeDst={mergeDst} setMergeDst={setMergeDst}
+          handleMerge={handleMerge} handleCleanup={handleCleanup}
+        />
       )}
 
       {/* ─── 콘텐츠 현황 탭 ─── */}
-      {tab === 'overview' && stats?.image_coverage && (
-        <div className="space-y-6">
-          {/* 이미지 커버리지 요약 */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
-              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>총 발행</p>
-              <p className="text-3xl font-bold" style={{ color: 'var(--text)' }}>
-                {stats.image_coverage.total_published}
-              </p>
-            </div>
-            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #10b981' }}>
-              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>이미지 있음</p>
-              <p className="text-3xl font-bold" style={{ color: '#10b981' }}>
-                {stats.image_coverage.with_any_image}
-              </p>
-            </div>
-            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #f97316' }}>
-              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>이미지 없음</p>
-              <p className="text-3xl font-bold" style={{ color: '#f97316' }}>
-                {stats.image_coverage.missing_image}
-              </p>
-            </div>
-            <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #3b82f6' }}>
-              <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>커버리지</p>
-              <p className="text-3xl font-bold" style={{ color: '#3b82f6' }}>
-                {stats.image_coverage.total_published > 0
-                  ? Math.round((stats.image_coverage.with_any_image / stats.image_coverage.total_published) * 100)
-                  : 0}%
-              </p>
-            </div>
-          </div>
-
-          {/* 프로그레스 바 */}
-          <div className="p-4 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium" style={{ color: 'var(--text)' }}>전체 이미지 커버리지</span>
-              <span className="text-sm font-bold" style={{ color: '#3b82f6' }}>
-                {stats.image_coverage.with_any_image} / {stats.image_coverage.total_published}
-              </span>
-            </div>
-            <div className="w-full h-3 rounded-full overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
-              {/* cover_image 비율 */}
-              <div className="h-full rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all"
-                style={{ width: `${stats.image_coverage.total_published > 0
-                  ? (stats.image_coverage.with_any_image / stats.image_coverage.total_published) * 100
-                  : 0}%` }} />
-            </div>
-            <div className="flex gap-4 mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-blue-500" /> 커버 이미지: {stats.image_coverage.with_cover_image}
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-500" /> Arch figure 포함: {stats.image_coverage.with_any_image}
-              </span>
-            </div>
-          </div>
-
-          {/* 빠른 액션 */}
-          <button
-            onClick={() => { setTab('posts'); setNoImageFilter(true); setPage(1) }}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium hover:bg-orange-50 transition-colors"
-            style={{ borderColor: '#f97316', color: '#f97316' }}>
-            <ImageOff size={16} /> 이미지 없는 포스트 보기 →
-          </button>
-
-          {/* 카테고리별 이미지 커버리지 */}
-          <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
-            <table className="w-full text-sm">
-              <thead>
-                <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
-                  <th className="px-4 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>카테고리</th>
-                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>총 포스트</th>
-                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>커버 있음</th>
-                  <th className="px-4 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>없음</th>
-                  <th className="px-4 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>커버리지</th>
-                </tr>
-              </thead>
-              <tbody>
-                {(stats.image_coverage_by_category || []).map(cat => {
-                  const missing = cat.total - cat.with_cover
-                  const pct = cat.total > 0 ? Math.round((cat.with_cover / cat.total) * 100) : 0
-                  return (
-                    <tr key={cat.category__slug || 'none'} className="border-t" style={{ borderColor: 'var(--border)' }}>
-                      <td className="px-4 py-2 font-medium" style={{ color: 'var(--text)' }}>
-                        {cat.category__name || '(없음)'}
-                      </td>
-                      <td className="px-4 py-2 text-right" style={{ color: 'var(--text)' }}>{cat.total}</td>
-                      <td className="px-4 py-2 text-right" style={{ color: '#10b981' }}>{cat.with_cover}</td>
-                      <td className="px-4 py-2 text-right" style={{ color: missing > 0 ? '#f97316' : 'var(--text-secondary)' }}>
-                        {missing}
-                      </td>
-                      <td className="px-4 py-2">
-                        <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 rounded-full overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
-                            <div className="h-full rounded-full transition-all"
-                              style={{ width: `${pct}%`, background: pct >= 50 ? '#10b981' : '#f97316' }} />
-                          </div>
-                          <span className="text-xs font-medium" style={{ color: pct >= 50 ? '#10b981' : '#f97316' }}>
-                            {pct}%
-                          </span>
-                        </div>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
+      {tab === 'overview' && (
+        <OverviewTab
+          stats={stats}
+          onShowMissingImages={() => { setTab('posts'); setNoImageFilter(true); setPage(1) }}
+        />
       )}
     </motion.div>
   )

@@ -6,6 +6,7 @@
 svg_utils.py의 svg_to_png() 재사용.
 """
 import html
+import re
 import textwrap
 
 # ── AI 카테고리 목록 (paper_cover 전략 대상) ──
@@ -34,9 +35,24 @@ FONT_BODY = "'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Noto Sans KR', 'Malgun 
 FONT_MONO = "'D2Coding', 'Noto Sans CJK KR', monospace"
 
 
+_EMOJI_RE = re.compile(
+    "["
+    "\U0001F300-\U0001F9FF"
+    "\U00002702-\U000027B0"
+    "\U0000FE00-\U0000FE0F"
+    "\U0000200D"
+    "\U00002600-\U000026FF"
+    "\U0001FA00-\U0001FA6F"
+    "\U0001FA70-\U0001FAFF"
+    "]+",
+    flags=re.UNICODE,
+)
+
+
 def _escape(text: str) -> str:
-    """SVG 텍스트용 HTML 이스케이프."""
-    return html.escape(str(text), quote=True)
+    """SVG 텍스트용 HTML 이스케이프 (이모지 제거 포함)."""
+    cleaned = _EMOJI_RE.sub('', str(text)).strip()
+    return html.escape(cleaned, quote=True)
 
 
 def _wrap_title(title: str, max_chars: int = 45) -> list[str]:

@@ -50,3 +50,7 @@ export const uploadArchitectureFigure = (slug, formData) =>
   client.post(`/architectures/${slug}/upload_figure/`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
+
+// Cover Image API
+export const generateCover = (slug) => client.post(`/posts/${slug}/generate_cover/`)
+export const getCoverTemplates = () => client.get('/cover-templates/')
