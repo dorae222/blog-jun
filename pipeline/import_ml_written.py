@@ -43,7 +43,7 @@ def get_or_create_tag(name: str) -> Tag:
     return tag
 
 
-def import_ml(dry_run: bool = False, reset: bool = False):
+def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
     if not ML_WRITTEN_DIR.exists():
         print(f"ml_written 디렉토리 없음: {ML_WRITTEN_DIR}")
         sys.exit(1)
@@ -67,6 +67,7 @@ def import_ml(dry_run: bool = False, reset: bool = False):
 
     dirs = sorted(ML_WRITTEN_DIR.iterdir())
     created_posts = 0
+    updated_posts = 0
     skipped = 0
 
     for item_dir in dirs:
@@ -90,9 +91,19 @@ def import_ml(dry_run: bool = False, reset: bool = False):
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
 
-        if Post.objects.filter(slug=slug).exists():
+        existing = Post.objects.filter(slug=slug).first()
+        if existing and not update:
             print(f"  [SKIP] 이미 존재: {display_title}")
             skipped += 1
+            continue
+        if existing and update:
+            if not dry_run:
+                existing.content = content
+                existing.save(update_fields=['content'])
+                print(f"  [UPDATE] content 업데이트: {display_title}")
+            else:
+                print(f"  [DRY-RUN] 업데이트 예정: {display_title}")
+            updated_posts += 1
             continue
 
         content = data.get('content', '')
@@ -138,7 +149,7 @@ def import_ml(dry_run: bool = False, reset: bool = False):
                 print(f"    [WARN] PDF 파일 없음: {pdf_path}")
 
     if not dry_run:
-        print(f"\n완료: Post {created_posts}개 생성, {skipped}개 스킵")
+        print(f"\n완료: Post {created_posts}개 생성, {updated_posts}개 업데이트, {skipped}개 스킵")
     else:
         print(f"\n[DRY-RUN 완료] 실제 변경 없음.")
 
@@ -147,5 +158,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='ml_written → Post import')
     parser.add_argument('--dry-run', action='store_true', help='변경 없이 미리보기')
     parser.add_argument('--reset', action='store_true', help='기존 ML 포스트 삭제 후 재임포트')
+    parser.add_argument('--update', action='store_true', help='기존 포스트 content 업데이트')
     args = parser.parse_args()
-    import_ml(dry_run=args.dry_run, reset=args.reset)
+    import_ml(dry_run=args.dry_run, reset=args.reset, update=args.update)
