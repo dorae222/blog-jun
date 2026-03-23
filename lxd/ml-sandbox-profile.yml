@@ -1,0 +1,19 @@
+# ml-sandbox LXD 프로파일
+# ML 코드 격리 실행용 (matplotlib, scikit-learn 등)
+# 사용법: lxc profile create ml-sandbox < lxd/ml-sandbox-profile.yml
+name: ml-sandbox
+description: ML code sandbox (4 CPU, 16GB RAM) for isolated code execution
+config:
+  limits.cpu: "4"
+  limits.memory: 16GB
+  security.nesting: "false"
+devices:
+  root:
+    type: disk
+    pool: default
+    path: /
+    size: 50GB
+  eth0:
+    type: nic
+    network: lxdbr0
+    ipv4.address: 10.10.10.32
