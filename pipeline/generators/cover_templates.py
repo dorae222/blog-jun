@@ -21,7 +21,29 @@ CATEGORY_STYLES = {
     'program':    {'from': '#EC4899', 'to': '#F43F5E', 'icon': 'M192 128v544h416V128H192zm48 48h320v448H240V176zm80 64l80 120-80 120h48l80-120-80-120h-48z'},
     'data':       {'from': '#14B8A6', 'to': '#0EA5E9', 'icon': 'M496 128c-176 0-320 48-320 108v328c0 60 144 108 320 108s320-48 320-108V236c0-60-144-108-320-108z'},
     'ai-ml':      {'from': '#7C3AED', 'to': '#2563EB', 'icon': 'M496 160a80 80 0 1 0 0 160 80 80 0 0 0 0-160zm-200 280a60 60 0 1 0 0 120 60 60 0 0 0 0-120zm400 0a60 60 0 1 0 0 120 60 60 0 0 0 0-120z'},
+    'docker':     {'from': '#2496ED', 'to': '#1D76C7', 'icon': 'M425 400c0-88.4 71.6-160 160-160a160 160 0 0 1 155 120h5c66.3 0 120 53.7 120 120s-53.7 120-120 120H385c-55.2 0-100-44.8-100-100a100 100 0 0 1 140-100z'},
+    'lxd':        {'from': '#E95420', 'to': '#C7361D', 'icon': 'M425 400c0-88.4 71.6-160 160-160a160 160 0 0 1 155 120h5c66.3 0 120 53.7 120 120s-53.7 120-120 120H385c-55.2 0-100-44.8-100-100a100 100 0 0 1 140-100z'},
+    'devops':     {'from': '#059669', 'to': '#10B981', 'icon': 'M320 200l-160 280 160 280h160l-160-280 160-280H320zm352 0l160 280-160 280h160l160-280-160-280H672z'},
 }
+
+# AWS 서브카테고리 → cloud 스타일, ML 서브카테고리 → ai-ml 스타일 매핑
+_CATEGORY_ALIAS = {}
+for _prefix, _target in [('aws-', 'cloud'), ('data-engineering', 'data')]:
+    _CATEGORY_ALIAS[_prefix] = _target
+_ML_SUBS = {'fundamentals', 'math-foundations', 'preprocessing', 'supervised-regression',
+            'supervised-classification', 'ensemble', 'unsupervised', 'model-evaluation',
+            'causal-inference', 'advanced-algorithms', 'applications', 'mlops'}
+
+
+def _resolve_category_style(category_slug: str) -> dict:
+    """카테고리 slug → CATEGORY_STYLES 항목으로 해석. 서브카테고리 자동 매핑."""
+    if category_slug in CATEGORY_STYLES:
+        return CATEGORY_STYLES[category_slug]
+    if category_slug.startswith('aws-'):
+        return CATEGORY_STYLES['cloud']
+    if category_slug in _ML_SUBS:
+        return CATEGORY_STYLES['ai-ml']
+    return CATEGORY_STYLES.get('dev')
 
 # paper_cover 색상 팔레트
 PAPER_BG_FROM = '#1a1a2e'
@@ -186,7 +208,7 @@ def generate_category_cover_svg(
     category_color: str = '',
 ) -> str:
     """카테고리별 그라디언트 + 아이콘 오버레이 커버 이미지 SVG 생성."""
-    style = CATEGORY_STYLES.get(category_slug, CATEGORY_STYLES.get('dev'))
+    style = _resolve_category_style(category_slug)
     color_from = category_color or style['from']
     color_to = style['to']
     icon_path = style.get('icon', '')
