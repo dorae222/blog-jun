@@ -243,7 +243,18 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
           components={{
             pre: PreBlock,
             code: InlineCode,
-            img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
+            img: ({ src, alt }) => {
+              // Figure N: 캡션 패턴 → <figure> + <figcaption> 렌더링
+              const figMatch = alt?.match(/^Figure\s+(\d+):\s*(.+)$/)
+              if (figMatch) {
+                return (
+                  <figure className="my-6 text-center">
+                    <ImageWithZoom src={src} alt={alt} />
+                  </figure>
+                )
+              }
+              return <ImageWithZoom src={src} alt={alt} />
+            },
             a: ({ href, children }) => {
               if (href?.startsWith('/post/')) {
                 const slug = href.replace('/post/', '')

@@ -76,6 +76,16 @@ def classify_block(code: str) -> str:
     if any(m in code for m in std_metrics) and any(ds in code for ds in STANDARD_DATASETS):
         return 'precompute'
 
+    # HuggingFace 모델 로드 패턴 감지
+    if any(p in code for p in HF_LOAD_PATTERNS):
+        model_lower = code.lower()
+        if any(m in model_lower for m in HF_HUGE_MODELS):
+            return 'hf_api'       # API 호출 전용 (실행 불가)
+        elif any(m in model_lower for m in HF_LARGE_MODELS):
+            return 'hf_quantized' # 4-bit/8-bit quantization 필요
+        else:
+            return 'hf_gpu'       # fp16, GPU 직접 실행
+
     # Import, fit, setup만 → 출력 없음
     if all(line.strip().startswith(('import ', 'from ', '#', '')) or
            '.fit(' in line or '= ' in line
@@ -91,10 +101,33 @@ matplotlib.rcParams['font.family'] = 'Noto Sans CJK JP'
 matplotlib.rcParams['axes.unicode_minus'] = False
 """
 
+GPU_PREAMBLE = """\
+import torch as _torch
+_device = 'cuda' if _torch.cuda.is_available() else 'cpu'
+"""
+
+# HuggingFace 모델 크기 분류 (RTX 3090 24GB 기준)
+HF_HUGE_MODELS = ['llama-65b', 'llama-70b', 'gpt-4', 'palm', 'gemini', 'falcon-180b']
+HF_LARGE_MODELS = ['llama-13b', 'llama-30b', 'falcon-40b', 'llama2-13b', 'llama-2-13b']
+HF_MEDIUM_MODELS = ['llama-7b', 'llama2-7b', 'llama-2-7b', 'mistral-7b', 'falcon-7b', 'gpt-neox']
+HF_LOAD_PATTERNS = ['from_pretrained', 'AutoModel', 'AutoTokenizer', 'pipeline(']
+
+
 def _sanitize_font(code: str) -> str:
     """macOS 전용 폰트를 Linux 호환 폰트로 치환."""
     code = code.replace("AppleGothic", "Noto Sans CJK JP")
     code = code.replace("Malgun Gothic", "Noto Sans CJK JP")
+    return code
+
+
+def _sanitize_api(code: str) -> str:
+    """deprecated sklearn/HuggingFace API를 현재 버전 호환 코드로 치환."""
+    # sklearn 1.4: mean_squared_error(squared=False) 제거 → np.sqrt(mse)
+    code = re.sub(
+        r'mean_squared_error\(([^,)]+,\s*[^,)]+),\s*squared=False\)',
+        r'np.sqrt(mean_squared_error(\1))',
+        code
+    )
     return code
 
 
@@ -110,8 +143,9 @@ def execute_block(
     stdout_capture = io.StringIO()
     figures_saved = []
 
-    # 한글 폰트 강제 설정 + macOS 폰트 치환
+    # 한글 폰트 강제 설정 + macOS 폰트 치환 + deprecated API 치환
     code = _sanitize_font(code)
+    code = _sanitize_api(code)
 
     # matplotlib figure 자동 저장 설정
     plt.close('all')
@@ -119,6 +153,10 @@ def execute_block(
     try:
         with redirect_stdout(stdout_capture), redirect_stderr(io.StringIO()):
             exec(FONT_PREAMBLE, namespace)
+            try:
+                exec(GPU_PREAMBLE, namespace)
+            except Exception:
+                pass  # torch 미설치 환경에서는 GPU_PREAMBLE 스킵
             exec(code, namespace)
 
         # 열린 figure 저장
@@ -146,29 +184,43 @@ def execute_block(
 
 
 def inject_outputs(content: str, blocks: list[dict], results: list[dict], slug: str) -> str:
-    """코드 블록 뒤에 출력 블록/figure 이미지를 삽입."""
-    # 뒤에서부터 삽입 (offset 유지)
-    for block, result in reversed(list(zip(blocks, results))):
+    """코드 블록 주변에 출력 블록/figure 이미지를 삽입.
+
+    배치 원칙:
+    - Figure → 코드 앞 (결과 먼저 보여주기, Figure N 캡션 포함)
+    - stdout/error → 코드 뒤 (실행 결과)
+    """
+    # 1st pass: figure 번호 사전 계산
+    fig_counter = 1
+    fig_starts = []
+    for result in results:
+        figs = result.get('figures', []) if result else []
+        fig_starts.append(fig_counter)
+        fig_counter += len(figs)
+
+    # 2nd pass: 역순 삽입 (offset 안전)
+    for block, result, fig_start in reversed(list(zip(blocks, results, fig_starts))):
         if not result:
             continue
 
-        insert_text = ""
-
-        # stdout → ```output 블록
+        # stdout/error → 코드 뒤
+        after_text = ""
         if result.get('stdout'):
-            insert_text += f"\n\n```output\n{result['stdout']}\n```"
-
-        # figure → 이미지 참조
-        for fig_name in result.get('figures', []):
-            caption = fig_name.replace('.png', '').replace('_', ' ').title()
-            insert_text += f"\n\n![{caption}](/media/figures/outputs/{slug}/{fig_name})"
-
-        # error → 주석
+            after_text += f"\n\n```output\n{result['stdout']}\n```"
         if result.get('error'):
-            insert_text += f"\n\n<!-- Execution error: {result['error']} -->"
+            after_text += f"\n\n<!-- Execution error: {result['error']} -->"
 
-        if insert_text:
-            content = content[:block['end']] + insert_text + content[block['end']:]
+        # figure → 코드 앞 (Figure N 캡션)
+        before_text = ""
+        for i, fig_name in enumerate(result.get('figures', [])):
+            n = fig_start + i
+            caption = fig_name.replace('.png', '').replace('_', ' ').title()
+            before_text += f"\n\n**Figure {n}.** {caption}\n\n![Figure {n}: {caption}](/media/figures/outputs/{slug}/{fig_name})"
+
+        if after_text:
+            content = content[:block['end']] + after_text + content[block['end']:]
+        if before_text:
+            content = content[:block['start']] + before_text + "\n\n" + content[block['start']:]
 
     return content
 
@@ -227,7 +279,8 @@ def process_module(slug: str, execute: bool = False, dry_run: bool = False) -> d
         if cls['type'] == 'no_output':
             # setup 코드도 namespace에 실행 (변수 공유)
             try:
-                exec(_sanitize_font(block['code']), namespace)
+                sanitized = _sanitize_api(_sanitize_font(block['code']))
+                exec(sanitized, namespace)
             except Exception:
                 pass
             results.append(None)
@@ -251,6 +304,34 @@ def process_module(slug: str, execute: bool = False, dry_run: bool = False) -> d
             else:
                 fig_counter += len(result.get('figures', []))
                 results.append(result)
+        elif cls['type'] == 'hf_gpu':
+            # HuggingFace GPU 실행 (fp16)
+            result = execute_block(
+                block['code'], namespace, output_dir,
+                slug, fig_counter,
+            )
+            fig_counter += len(result.get('figures', []))
+            results.append(result)
+        elif cls['type'] == 'hf_quantized':
+            # 4-bit/8-bit quantization 필요 → 실행 시도, 실패 허용
+            result = execute_block(
+                block['code'], namespace, output_dir,
+                slug, fig_counter,
+            )
+            if result.get('error'):
+                results.append({
+                    'stdout': '<!-- HuggingFace 대규모 모델: int8/int4 quantization 필요 -->',
+                    'figures': [], 'error': None,
+                })
+            else:
+                fig_counter += len(result.get('figures', []))
+                results.append(result)
+        elif cls['type'] == 'hf_api':
+            # API 전용 모델 → 실행 스킵
+            results.append({
+                'stdout': '<!-- API 모델: OpenAI/Anthropic API 직접 호출 필요 (VRAM 초과) -->',
+                'figures': [], 'error': None,
+            })
         else:
             results.append(None)
 

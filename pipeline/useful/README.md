@@ -11,3 +11,5 @@
 | `generate_figures_vllm.py` | vLLM 로컬 모델로 figure 생성 |
 | `pdf_import.py` | PDF 파일을 포스트로 임포트 |
 | `playwright_check.py` | Playwright 기반 렌더링 검증 |
+| `annotate_figures.py` | Claude API로 ML figure 캡션 자동 개선 |
+| `add_figure_attribution.py` | papers/architectures figure 출처 표기 추가 |
