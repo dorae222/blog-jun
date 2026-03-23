@@ -100,7 +100,11 @@ body {
 
 /* Smooth scroll & mobile font */
 html { scroll-behavior: smooth; }
-@media (max-width: 640px) { html { font-size: 15px; } }
+@media (max-width: 640px) {
+  html { font-size: 15px; }
+  .article-content { padding: 0 0.5rem; }
+  pre, code { font-size: 0.8rem; }
+}
 
 /* Shimmer skeleton */
 @keyframes shimmer {

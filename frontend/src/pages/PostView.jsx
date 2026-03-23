@@ -63,7 +63,7 @@ export default function PostView() {
     >
       <ReadingProgress />
 
-      <div className="max-w-7xl mx-auto px-4 py-12 flex gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12 flex gap-8">
         <article className="flex-1 max-w-4xl">
           {/* 모바일 목차 버튼 (xl 미만에서만 표시) */}
           <div className="xl:hidden mb-4">

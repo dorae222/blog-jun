@@ -99,11 +99,11 @@ function ExternalLinkButton({ href, icon: Icon, label }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
+      className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full
         border hover:shadow-sm transition-all hover:-translate-y-0.5"
       style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)', background: 'var(--card-bg)' }}
     >
-      <Icon size={12} />
+      <Icon size={11} />
       {label}
     </a>
   )
@@ -135,10 +135,9 @@ export default function ArchitectureLineageCard({ entries }) {
             style={{
               background: 'var(--bg-secondary)',
               border: '1px solid var(--border)',
-              borderLeft: `4px solid ${catColor}`,
             }}
           >
-            {/* Header: figure + name + badges + org/year */}
+            {/* Header: figure + name + badges + 링크 버튼 우측 */}
             <div className="flex items-start gap-3 mb-3">
               {/* Figure thumbnail */}
               <div
@@ -158,41 +157,70 @@ export default function ArchitectureLineageCard({ entries }) {
               </div>
 
               <div className="flex-1 min-w-0">
-                {/* Name + category/branch badges */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span
-                    className="font-semibold text-sm"
-                    style={{ color: 'var(--text)' }}
-                  >
-                    {entry.name}
-                  </span>
-                  {entry.architecture_category && (
+                {/* Name + category/branch badges + 링크 버튼 (우측 정렬) */}
+                <div className="flex items-start justify-between gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span
-                      className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-                      style={{ background: `${catColor}20`, color: catColor }}
+                      className="font-semibold text-sm"
+                      style={{ color: 'var(--text)' }}
                     >
-                      {entry.architecture_category.toUpperCase()}
+                      {entry.name}
                     </span>
-                  )}
-                  {entry.branch_type && (
-                    <span
-                      className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-                      style={{ background: 'var(--color-primary-500)', color: '#fff' }}
-                    >
-                      {entry.branch_type?.replace('_', ' ')}
-                    </span>
+                    {entry.architecture_category && (
+                      <span
+                        className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                        style={{ background: `${catColor}20`, color: catColor }}
+                      >
+                        {entry.architecture_category.toUpperCase()}
+                      </span>
+                    )}
+                    {entry.branch_type && (
+                      <span
+                        className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                        style={{ background: 'var(--color-primary-500)', color: '#fff' }}
+                      >
+                        {entry.branch_type?.replace('_', ' ')}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* 링크 버튼 — 상단 우측 */}
+                  {hasLinks && (
+                    <div className="flex gap-1 shrink-0">
+                      <ExternalLinkButton href={entry.paper_url} icon={FileText} label="Paper" />
+                      <ExternalLinkButton href={entry.code_url} icon={Code2} label="Code" />
+                      {entry.related_post_slug && (
+                        <Link
+                          to={`/post/${entry.related_post_slug}`}
+                          className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full
+                            border hover:shadow-sm transition-all hover:-translate-y-0.5"
+                          style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)', background: 'var(--card-bg)' }}
+                        >
+                          <BookOpen size={11} />
+                          Post
+                        </Link>
+                      )}
+                    </div>
                   )}
                 </div>
 
-                {/* Organization + release year */}
-                <div className="flex items-center gap-1.5 mt-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
-                  {entry.organization && <span>{entry.organization}</span>}
-                  {entry.organization && releaseYear && <span>·</span>}
+                {/* Organization + release year + spec badges 인라인 */}
+                <div className="flex items-center flex-wrap gap-2 mt-1">
+                  {entry.organization && (
+                    <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{entry.organization}</span>
+                  )}
                   {releaseYear && (
-                    <span className="inline-flex items-center gap-0.5">
+                    <span className="inline-flex items-center gap-0.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
                       <Calendar size={10} />
                       {releaseYear}
                     </span>
+                  )}
+                  {hasSpecs && (
+                    <>
+                      <SpecBadge icon={Cpu} label={entry.param_scale} />
+                      <SpecBadge icon={Layers} label={entry.context_length} />
+                      <SpecBadge icon={GitBranch} label={entry.attention_type} />
+                    </>
                   )}
                 </div>
               </div>
@@ -208,15 +236,6 @@ export default function ArchitectureLineageCard({ entries }) {
               </p>
             )}
 
-            {/* Spec badges */}
-            {hasSpecs && (
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                <SpecBadge icon={Cpu} label={entry.param_scale} />
-                <SpecBadge icon={Layers} label={entry.context_length} />
-                <SpecBadge icon={GitBranch} label={entry.attention_type} />
-              </div>
-            )}
-
             {/* Concept tags */}
             {hasConcepts && (
               <div className="flex flex-wrap gap-1.5 mb-4">
@@ -228,11 +247,11 @@ export default function ArchitectureLineageCard({ entries }) {
 
             {/* Lineage: Parents and Children */}
             {(hasParents || hasChildren) && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs mb-4">
-                {/* Influenced by */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                {/* ← 이 모델의 기반 */}
                 <div>
                   <div className="flex items-center gap-1 mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
-                    <ArrowLeft size={12} /> Influenced by
+                    <ArrowLeft size={12} /> 이 모델의 기반
                   </div>
                   {hasParents ? (
                     <div className="space-y-2">
@@ -257,15 +276,15 @@ export default function ArchitectureLineageCard({ entries }) {
                       className="px-3 py-2 rounded-lg border border-dashed text-center"
                       style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
                     >
-                      No known parents
+                      알려진 기반 없음
                     </div>
                   )}
                 </div>
 
-                {/* Influenced */}
+                {/* 이 모델에서 발전 → */}
                 <div>
                   <div className="flex items-center gap-1 mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
-                    Influenced <ArrowRight size={12} />
+                    이 모델에서 발전 <ArrowRight size={12} />
                   </div>
                   {hasChildren ? (
                     <div className="space-y-2">
@@ -290,29 +309,10 @@ export default function ArchitectureLineageCard({ entries }) {
                       className="px-3 py-2 rounded-lg border border-dashed text-center"
                       style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
                     >
-                      No known descendants
+                      알려진 후속 없음
                     </div>
                   )}
                 </div>
-              </div>
-            )}
-
-            {/* External links */}
-            {hasLinks && (
-              <div className="flex flex-wrap gap-2 pt-3" style={{ borderTop: '1px solid var(--border)' }}>
-                <ExternalLinkButton href={entry.paper_url} icon={FileText} label="Paper" />
-                <ExternalLinkButton href={entry.code_url} icon={Code2} label="Code" />
-                {entry.related_post_slug && (
-                  <Link
-                    to={`/post/${entry.related_post_slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
-                      border hover:shadow-sm transition-all hover:-translate-y-0.5"
-                    style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)', background: 'var(--card-bg)' }}
-                  >
-                    <BookOpen size={12} />
-                    Post
-                  </Link>
-                )}
               </div>
             )}
           </div>
