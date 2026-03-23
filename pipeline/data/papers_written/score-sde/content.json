@@ -7,7 +7,7 @@
   "sub_category": "diffusion",
   "year": 2021,
   "venue": "ICLR 2021",
-  "authors": "Yang Song, Jascha Sohl-Dickstein, Diederik P. Kingma, Abhishek Kumar, Stefano Ermon, Ben Poole",
+  "authors": "Song et al.",
   "arxiv_url": "https://arxiv.org/abs/2011.13456",
   "summary": "Score SDE는 SMLD(NCSN)와 DDPM을 연속 SDE 프레임워크로 통합한다. 순방향 SDE가 데이터를 점진적으로 파괴하고, 역방향 SDE가 스코어 함수를 사용해 데이터를 복원한다. VE-SDE=SMLD, VP-SDE=DDPM으로 기존 방법들의 통합적 이해와 Probability Flow ODE를 통한 결정론적 샘플링을 제공한다.",
   "tags": ["score-sde", "sde", "score-based", "generative-model", "ve-sde", "vp-sde"],

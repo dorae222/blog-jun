@@ -7,7 +7,7 @@
   "sub_category": "diffusion",
   "year": 2022,
   "venue": "CVPR 2022",
-  "authors": "Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer",
+  "authors": "Rombach et al.",
   "arxiv_url": "https://arxiv.org/abs/2112.10752",
   "summary": "LDM(Latent Diffusion Model)은 학습된 오토인코더의 잠재 공간에서 확산 과정을 수행하여 고해상도 이미지 합성의 계산 비용을 대폭 절감한다. Cross-Attention 기반 조건부 생성으로 텍스트, 레이아웃, 의미 맵 등 다양한 조건을 지원하며, Stable Diffusion의 기반 아키텍처로 이미지 생성 AI 대중화를 이끌었다.",
   "tags": ["diffusion", "ldm", "stable-diffusion", "latent-diffusion", "cross-attention", "text-to-image"],
