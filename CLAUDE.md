@@ -72,6 +72,15 @@ applications, mlops
 - Tunnel: Cloudflare Tunnel `blog-jun` (079ef309)
 - Docker: docker-compose.prod.yml (db, redis, backend, frontend) — build: 지시자 사용
 - 배포: `./deploy.sh` — SSH ProxyJump(hj-remote → blog-server) + git pull + docker compose build
+- **Git LFS**: pipeline/data/ 하위 PNG/SVG/PDF는 LFS 관리. push 후 반드시 `git lfs push origin main --all` 실행
+
+## ML Sandbox
+- LXD container `ml-sandbox` (10.10.10.32) on hj-remote
+- 용도: ML 코드 격리 실행 (matplotlib, scikit-learn 시각화)
+- 스펙: 4 CPU, 16GB RAM, Ubuntu 24.04
+- 접속: `ssh ml-sandbox` (ProxyJump hj-remote)
+- Python 3.12 + numpy, scipy, scikit-learn, pandas, matplotlib, seaborn
+- 작업 디렉토리: /workspace
 
 ## CSS 주의사항
 - Tailwind CSS v4 + `@tailwindcss/vite` 플러그인 환경에서 JSX에서 import한 CSS는 번들에 포함되지 않음
