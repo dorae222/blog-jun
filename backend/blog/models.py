@@ -124,12 +124,35 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
 
+def dynamic_upload_path(instance, filename):
+    slug = instance.post.slug if instance.post else 'orphan'
+    type_map = {
+        'paper_figure': f'figures/papers/{slug}/{filename}',
+        'code_output': f'figures/outputs/{slug}/{filename}',
+        'diagram': f'figures/diagrams/{slug}/{filename}',
+    }
+    return type_map.get(instance.image_type, f'posts/{slug}/{filename}')
+
+
 class PostImage(models.Model):
+    IMAGE_TYPES = [
+        ('general', '일반'),
+        ('paper_figure', '논문 Figure'),
+        ('code_output', '코드 실행 결과'),
+        ('diagram', '다이어그램'),
+    ]
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images', null=True, blank=True)
-    image = models.ImageField(upload_to='posts/%Y/%m/')
+    image = models.ImageField(upload_to=dynamic_upload_path)
+    image_type = models.CharField(max_length=20, choices=IMAGE_TYPES, default='general')
+    caption = models.TextField(blank=True)
+    source_ref = models.CharField(max_length=200, blank=True, help_text="e.g. Figure 3 from [Paper]")
+    order = models.IntegerField(default=0)
     alt_text = models.CharField(max_length=300, blank=True)
     original_path = models.CharField(max_length=500, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'created_at']
 
     def __str__(self):
         return self.alt_text or self.image.name

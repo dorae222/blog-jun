@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef, Component } from 'react'
-import { Link } from 'react-router-dom'
+
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
@@ -8,6 +8,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 import BookmarkEmbed from '../common/BookmarkEmbed'
+import PostLinkTooltip from './PostLinkTooltip'
 
 // Obsidian 위키 링크를 내부 링크 또는 텍스트로 변환
 function preprocessContent(raw, postLinks = []) {
@@ -131,15 +132,38 @@ function PreBlock({ children }) {
   const lang = /language-(\w+)/.exec(codeProps.className || '')?.[1] || ''
   const plainText = extractPlainText(codeProps.children).trim()
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(plainText)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   // Mermaid 코드블록 → 다이어그램 렌더링
   if (lang === 'mermaid') {
     return <MermaidDiagram code={plainText} />
   }
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(plainText)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  // Output 블록 — 코드 실행 결과 표시용
+  if (lang === 'output') {
+    return (
+      <div className="relative group rounded-lg overflow-hidden my-2 -mt-4" style={{
+        background: 'var(--output-bg)',
+        borderLeft: '3px solid var(--text-secondary)'
+      }}>
+        <div className="flex items-center justify-between px-4 py-1.5 text-xs"
+          style={{ color: 'var(--text-secondary)' }}>
+          <span className="font-mono opacity-60">Output</span>
+          <button onClick={handleCopy}
+            className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1 rounded hover:bg-gray-200">
+            {copied ? 'Copied!' : 'Copy'}
+          </button>
+        </div>
+        <pre className="px-4 pb-3 pt-1 overflow-x-auto m-0 rounded-none"
+          style={{ fontSize: '0.85em', lineHeight: '1.6' }}>
+          {children}
+        </pre>
+      </div>
+    )
   }
 
   return (
@@ -207,21 +231,6 @@ function ImageWithZoom({ src, alt }) {
   )
 }
 
-function SmartLink({ href, children }) {
-  if (href?.startsWith('/post/')) {
-    return (
-      <Link to={href} className="text-primary-600 hover:underline">
-        {children}
-      </Link>
-    )
-  }
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
-      {children}
-    </a>
-  )
-}
-
 export default function MarkdownRenderer({ content, postLinks = [] }) {
   const processed = useMemo(() => preprocessContent(content, postLinks), [content, postLinks])
 
@@ -235,7 +244,18 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
             pre: PreBlock,
             code: InlineCode,
             img: ({ src, alt }) => <ImageWithZoom src={src} alt={alt} />,
-            a: SmartLink,
+            a: ({ href, children }) => {
+              if (href?.startsWith('/post/')) {
+                const slug = href.replace('/post/', '')
+                const linkData = postLinks.find(l => l.slug === slug)
+                return <PostLinkTooltip href={href} linkData={linkData}>{children}</PostLinkTooltip>
+              }
+              return (
+                <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                  {children}
+                </a>
+              )
+            },
             p: ({ children }) => {
               const arr = React.Children.toArray(children)
               if (arr.length === 1 && arr[0]?.props?.href && !arr[0].props.href.startsWith('/')) {

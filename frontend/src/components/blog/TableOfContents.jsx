@@ -5,7 +5,11 @@ export default function TableOfContents({ content }) {
   const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
-    const matches = content.match(/^#{1,3}\s.+$/gm) || []
+    // 코드 펜스 및 테이블 행 제거 후 헤딩 추출
+    const cleanContent = content
+      .replace(/```[\s\S]*?```/g, '')
+      .replace(/^\|.+\|$/gm, '')
+    const matches = cleanContent.match(/^#{1,3}\s.+$/gm) || []
     const parsed = matches.map((h, i) => {
       const level = h.match(/^#+/)[0].length
       const text = h.replace(/^#+\s/, '')

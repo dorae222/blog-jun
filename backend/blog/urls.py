@@ -19,4 +19,5 @@ urlpatterns = [
     path('stats/', views.public_stats, name='public-stats'),
     path('health/', views.health_check, name='health-check'),
     path('audit/results/', views.audit_results, name='audit-results'),
+    path('cover-templates/', views.cover_template_list, name='cover-template-list'),
 ]

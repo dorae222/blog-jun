@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
-import { GitBranch, ArrowRight, ArrowLeft, ExternalLink, Layers } from 'lucide-react'
+import {
+  GitBranch, ArrowRight, ArrowLeft, Layers,
+  FileText, Code2, BookOpen, Calendar, Cpu,
+} from 'lucide-react'
 
 const RELATION_LABELS = {
   evolved_from: '발전 기반',
@@ -61,6 +64,49 @@ function groupByRelationType(items) {
   return groups
 }
 
+function SpecBadge({ icon: Icon, label }) {
+  if (!label) return null
+  return (
+    <span
+      className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium"
+      style={{ background: 'var(--card-bg)', color: 'var(--text-secondary)', border: '1px solid var(--border)' }}
+    >
+      <Icon size={11} className="shrink-0" />
+      {label}
+    </span>
+  )
+}
+
+function ConceptTag({ concept }) {
+  const bgColor = concept.color ? `${concept.color}18` : 'var(--card-bg)'
+  const textColor = concept.color || 'var(--text-secondary)'
+  return (
+    <span
+      className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold"
+      style={{ background: bgColor, color: textColor, border: `1px solid ${concept.color || 'var(--border)'}40` }}
+    >
+      {concept.abbreviation || concept.name}
+    </span>
+  )
+}
+
+function ExternalLinkButton({ href, icon: Icon, label }) {
+  if (!href) return null
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
+        border hover:shadow-sm transition-all hover:-translate-y-0.5"
+      style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)', background: 'var(--card-bg)' }}
+    >
+      <Icon size={12} />
+      {label}
+    </a>
+  )
+}
+
 export default function ArchitectureLineageCard({ entries }) {
   if (!entries?.length) return null
 
@@ -73,6 +119,12 @@ export default function ArchitectureLineageCard({ entries }) {
 
       {entries.map(entry => {
         const catColor = ARCH_CATEGORY_COLORS[entry.architecture_category] || 'var(--color-primary-500)'
+        const releaseYear = entry.release_date ? new Date(entry.release_date).getFullYear() : null
+        const hasSpecs = entry.param_scale || entry.context_length || entry.attention_type
+        const hasConcepts = entry.concepts?.length > 0
+        const hasLinks = entry.paper_url || entry.code_url || entry.related_post_slug
+        const hasParents = entry.parent_names?.length > 0
+        const hasChildren = entry.child_names?.length > 0
 
         return (
           <div
@@ -84,113 +136,183 @@ export default function ArchitectureLineageCard({ entries }) {
               borderLeft: `4px solid ${catColor}`,
             }}
           >
-            {/* Entry header */}
-            <div className="flex items-center gap-2 mb-4">
-              <GitBranch size={16} className="text-primary-600 shrink-0" />
-              <span
-                className="font-semibold text-sm"
-                style={{ color: 'var(--text)' }}
+            {/* Header: figure + name + badges + org/year */}
+            <div className="flex items-start gap-3 mb-3">
+              {/* Figure thumbnail */}
+              <div
+                className="w-12 h-12 rounded-lg shrink-0 flex items-center justify-center overflow-hidden"
+                style={{ background: 'var(--card-bg)', border: '1px solid var(--border)' }}
               >
-                {entry.name}
-              </span>
-              {entry.branch_type && (
-                <span
-                  className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-                  style={{ background: 'var(--color-primary-500)', color: '#fff' }}
-                >
-                  {entry.branch_type?.replace('_', ' ')}
-                </span>
-              )}
-              {entry.architecture_category && (
-                <span
-                  className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-                  style={{ background: `${catColor}20`, color: catColor }}
-                >
-                  {entry.architecture_category}
-                </span>
-              )}
-            </div>
-
-            {/* Parents and Children */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              {/* Influenced by */}
-              <div>
-                <div className="flex items-center gap-1 mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
-                  <ArrowLeft size={12} /> Influenced by
-                </div>
-                {entry.parent_names?.length > 0 ? (
-                  <div className="space-y-2">
-                    {Object.entries(groupByRelationType(entry.parent_names)).map(([type, items]) => (
-                      <div key={type}>
-                        <span
-                          className="text-[10px] font-medium mb-1 block"
-                          style={{ color: 'var(--text-secondary)' }}
-                        >
-                          {RELATION_LABELS[type] || type}
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {items.map(p => (
-                            <LineageChip key={p.slug} item={p} direction="in" />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                {entry.figure_url ? (
+                  <img
+                    src={entry.figure_url}
+                    alt={entry.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 ) : (
-                  <div
-                    className="px-3 py-2 rounded-lg border border-dashed text-center"
-                    style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
-                  >
-                    No known parents
-                  </div>
+                  <Cpu size={20} style={{ color: catColor }} />
                 )}
               </div>
 
-              {/* Influenced */}
-              <div>
-                <div className="flex items-center gap-1 mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
-                  Influenced <ArrowRight size={12} />
-                </div>
-                {entry.child_names?.length > 0 ? (
-                  <div className="space-y-2">
-                    {Object.entries(groupByRelationType(entry.child_names)).map(([type, items]) => (
-                      <div key={type}>
-                        <span
-                          className="text-[10px] font-medium mb-1 block"
-                          style={{ color: 'var(--text-secondary)' }}
-                        >
-                          {RELATION_LABELS[type] || type}
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {items.map(c => (
-                            <LineageChip key={c.slug} item={c} direction="out" />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div
-                    className="px-3 py-2 rounded-lg border border-dashed text-center"
-                    style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+              <div className="flex-1 min-w-0">
+                {/* Name + category/branch badges */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span
+                    className="font-semibold text-sm"
+                    style={{ color: 'var(--text)' }}
                   >
-                    No known descendants
-                  </div>
-                )}
+                    {entry.name}
+                  </span>
+                  {entry.architecture_category && (
+                    <span
+                      className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                      style={{ background: `${catColor}20`, color: catColor }}
+                    >
+                      {entry.architecture_category.toUpperCase()}
+                    </span>
+                  )}
+                  {entry.branch_type && (
+                    <span
+                      className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                      style={{ background: 'var(--color-primary-500)', color: '#fff' }}
+                    >
+                      {entry.branch_type?.replace('_', ' ')}
+                    </span>
+                  )}
+                </div>
+
+                {/* Organization + release year */}
+                <div className="flex items-center gap-1.5 mt-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                  {entry.organization && <span>{entry.organization}</span>}
+                  {entry.organization && releaseYear && <span>·</span>}
+                  {releaseYear && (
+                    <span className="inline-flex items-center gap-0.5">
+                      <Calendar size={10} />
+                      {releaseYear}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Action buttons */}
-            <div className="mt-4 flex gap-2">
-              <Link
-                to={`/posts/ai`}
-                className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
-                  border hover:bg-gray-50 transition-colors"
-                style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+            {/* Key detail summary */}
+            {entry.key_detail && (
+              <p
+                className="text-xs leading-relaxed mb-3 line-clamp-2"
+                style={{ color: 'var(--text-secondary)' }}
               >
-                <Layers size={11} /> AI Posts
-              </Link>
-            </div>
+                {entry.key_detail}
+              </p>
+            )}
+
+            {/* Spec badges */}
+            {hasSpecs && (
+              <div className="flex flex-wrap gap-1.5 mb-3">
+                <SpecBadge icon={Cpu} label={entry.param_scale} />
+                <SpecBadge icon={Layers} label={entry.context_length} />
+                <SpecBadge icon={GitBranch} label={entry.attention_type} />
+              </div>
+            )}
+
+            {/* Concept tags */}
+            {hasConcepts && (
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {entry.concepts.slice(0, 6).map(concept => (
+                  <ConceptTag key={concept.id || concept.slug} concept={concept} />
+                ))}
+              </div>
+            )}
+
+            {/* Lineage: Parents and Children */}
+            {(hasParents || hasChildren) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs mb-4">
+                {/* Influenced by */}
+                <div>
+                  <div className="flex items-center gap-1 mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                    <ArrowLeft size={12} /> Influenced by
+                  </div>
+                  {hasParents ? (
+                    <div className="space-y-2">
+                      {Object.entries(groupByRelationType(entry.parent_names)).map(([type, items]) => (
+                        <div key={type}>
+                          <span
+                            className="text-[10px] font-medium mb-1 block"
+                            style={{ color: 'var(--text-secondary)' }}
+                          >
+                            {RELATION_LABELS[type] || type}
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {items.map(p => (
+                              <LineageChip key={p.slug} item={p} direction="in" />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      className="px-3 py-2 rounded-lg border border-dashed text-center"
+                      style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+                    >
+                      No known parents
+                    </div>
+                  )}
+                </div>
+
+                {/* Influenced */}
+                <div>
+                  <div className="flex items-center gap-1 mb-2 font-medium" style={{ color: 'var(--text-secondary)' }}>
+                    Influenced <ArrowRight size={12} />
+                  </div>
+                  {hasChildren ? (
+                    <div className="space-y-2">
+                      {Object.entries(groupByRelationType(entry.child_names)).map(([type, items]) => (
+                        <div key={type}>
+                          <span
+                            className="text-[10px] font-medium mb-1 block"
+                            style={{ color: 'var(--text-secondary)' }}
+                          >
+                            {RELATION_LABELS[type] || type}
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {items.map(c => (
+                              <LineageChip key={c.slug} item={c} direction="out" />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      className="px-3 py-2 rounded-lg border border-dashed text-center"
+                      style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+                    >
+                      No known descendants
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* External links */}
+            {hasLinks && (
+              <div className="flex flex-wrap gap-2 pt-3" style={{ borderTop: '1px solid var(--border)' }}>
+                <ExternalLinkButton href={entry.paper_url} icon={FileText} label="Paper" />
+                <ExternalLinkButton href={entry.code_url} icon={Code2} label="Code" />
+                {entry.related_post_slug && (
+                  <Link
+                    to={`/post/${entry.related_post_slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full
+                      border hover:shadow-sm transition-all hover:-translate-y-0.5"
+                    style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)', background: 'var(--card-bg)' }}
+                  >
+                    <BookOpen size={12} />
+                    Post
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
         )
       })}

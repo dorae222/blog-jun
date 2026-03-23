@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Eye } from 'lucide-react'
-import { isNew } from '../../utils/postUtils'
 
 export default function FeedCard({ item }) {
   const imageUrl = item.cover_image_url || item.figure_url
@@ -30,11 +29,6 @@ export default function FeedCard({ item }) {
               {categoryName?.[0] || '?'}
             </span>
           </div>
-        )}
-        {isNew(item) && (
-          <span className="absolute top-2 right-2 px-2 py-0.5 text-[10px] font-bold rounded-full bg-red-500 text-white">
-            NEW
-          </span>
         )}
       </div>
 

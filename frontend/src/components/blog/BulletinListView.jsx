@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { Eye, Pin } from 'lucide-react'
-import { isNew } from '../../utils/postUtils'
 
 function Row({ item, index, isPinned }) {
   const categoryName = item.category?.name
@@ -28,11 +27,6 @@ function Row({ item, index, isPinned }) {
             style={{ color: 'var(--text)' }}>
             {item.title}
           </h3>
-          {isNew(item) && (
-            <span className="px-1.5 py-0.5 text-[9px] font-bold rounded bg-red-500 text-white shrink-0">
-              NEW
-            </span>
-          )}
         </div>
       </div>
 

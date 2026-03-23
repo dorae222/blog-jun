@@ -43,7 +43,7 @@ class SeriesSerializer(serializers.ModelSerializer):
 class PostImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostImage
-        fields = ['id', 'image', 'alt_text', 'created_at']
+        fields = ['id', 'image', 'image_type', 'caption', 'source_ref', 'order', 'alt_text', 'created_at']
 
 
 class PostListSerializer(ImageUrlMixin, serializers.ModelSerializer):
@@ -80,35 +80,82 @@ class PostLinkSerializer(serializers.ModelSerializer):
     """PostLink 관계를 위한 경량 serializer."""
     slug = serializers.CharField(source='to_post.slug', read_only=True)
     title = serializers.CharField(source='to_post.title', read_only=True)
+    summary = serializers.CharField(source='to_post.summary', read_only=True, default='')
     category_name = serializers.CharField(source='to_post.category.name', read_only=True, default=None)
     category_color = serializers.CharField(source='to_post.category.color', read_only=True, default=None)
+    cover_image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = PostLink
-        fields = ['slug', 'title', 'link_text', 'category_name', 'category_color']
+        fields = ['slug', 'title', 'summary', 'link_text', 'category_name', 'category_color', 'cover_image_url']
+
+    def get_cover_image_url(self, obj):
+        if obj.to_post.cover_image:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.to_post.cover_image.url)
+            return obj.to_post.cover_image.url
+        return None
 
 
 class BacklinkSerializer(serializers.ModelSerializer):
     """역참조(backlink) 표시용 serializer."""
     slug = serializers.CharField(source='from_post.slug', read_only=True)
     title = serializers.CharField(source='from_post.title', read_only=True)
+    summary = serializers.CharField(source='from_post.summary', read_only=True, default='')
     category_name = serializers.CharField(source='from_post.category.name', read_only=True, default=None)
     category_color = serializers.CharField(source='from_post.category.color', read_only=True, default=None)
+    cover_image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = PostLink
-        fields = ['slug', 'title', 'link_text', 'category_name', 'category_color']
+        fields = ['slug', 'title', 'summary', 'link_text', 'category_name', 'category_color', 'cover_image_url']
+
+    def get_cover_image_url(self, obj):
+        if obj.from_post.cover_image:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.from_post.cover_image.url)
+            return obj.from_post.cover_image.url
+        return None
 
 
-class ArchitectureEntryBriefSerializer(serializers.ModelSerializer):
-    """PostView에서 사용하는 아키텍처 간략 정보."""
+class FigureUrlMixin:
+    """figure 필드의 절대 URL을 반환하는 공통 mixin."""
+    def get_figure_url(self, obj):
+        if not obj.figure:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.figure.url)
+        return obj.figure.url
+
+
+class ArchitectureConceptSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArchitectureConcept
+        fields = ['id', 'name', 'slug', 'abbreviation', 'color']
+
+
+class ArchitectureEntryBriefSerializer(FigureUrlMixin, serializers.ModelSerializer):
+    """PostView에서 사용하는 아키텍처 간략 정보 (Lineage Card용)."""
     parent_names = serializers.SerializerMethodField()
     child_names = serializers.SerializerMethodField()
+    concepts = ArchitectureConceptSerializer(many=True, read_only=True)
+    figure_url = serializers.SerializerMethodField()
+    related_post_slug = serializers.SlugRelatedField(
+        source='related_post', slug_field='slug', read_only=True
+    )
 
     class Meta:
         model = ArchitectureEntry
-        fields = ['name', 'slug', 'organization', 'branch_type',
-                  'architecture_category', 'parent_names', 'child_names']
+        fields = [
+            'name', 'slug', 'organization', 'branch_type',
+            'architecture_category', 'key_detail', 'param_scale',
+            'context_length', 'attention_type', 'concepts',
+            'paper_url', 'code_url', 'figure_url', 'release_date',
+            'related_post_slug', 'parent_names', 'child_names',
+        ]
 
     def get_parent_names(self, obj):
         return [{'name': r.to_entry.name, 'slug': r.to_entry.slug,
@@ -210,23 +257,6 @@ class PostTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostTemplate
         fields = ['id', 'name', 'description', 'content_template', 'post_type', 'category']
-
-
-class FigureUrlMixin:
-    """figure 필드의 절대 URL을 반환하는 공통 mixin."""
-    def get_figure_url(self, obj):
-        if not obj.figure:
-            return None
-        request = self.context.get('request')
-        if request:
-            return request.build_absolute_uri(obj.figure.url)
-        return obj.figure.url
-
-
-class ArchitectureConceptSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ArchitectureConcept
-        fields = ['id', 'name', 'slug', 'abbreviation', 'color']
 
 
 class ArchitectureRelationSerializer(serializers.ModelSerializer):
