@@ -22,7 +22,8 @@ import shutil
 from pathlib import Path
 
 PAPERS_DIR = Path("pipeline/data/papers_written")
-MEDIA_DIR = Path("backend/media")
+# Docker: /app/media, 로컬: backend/media
+MEDIA_DIR = Path("media") if Path("media").exists() else Path("backend/media")
 
 
 def find_paper_dirs() -> list[Path]:
