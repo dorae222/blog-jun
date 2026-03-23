@@ -7,7 +7,7 @@
   "sub_category": "diffusion",
   "year": 2023,
   "venue": "ICLR 2023",
-  "authors": "Yaron Lipman, Ricky T. Q. Chen, Heli Ben-Hamu, Maximilian Nickel, Matthew Le",
+  "authors": "Lipman et al.",
   "arxiv_url": "https://arxiv.org/abs/2210.02747",
   "summary": "Flow Matching은 연속 정규화 플로우(CNF)를 시뮬레이션 없이 학습하는 방법이다. 조건부 확률 경로와 벡터 필드를 활용한 Conditional Flow Matching(CFM)은 주변 벡터 필드와 동일한 기울기를 가지면서도 학습이 용이하다. 최적 수송(OT) 경로를 사용하면 직선 궤적으로 NFE를 최소화할 수 있으며, SD3, Flux 등 최신 이미지 생성 모델의 기반이 된다.",
   "tags": ["flow-matching", "normalizing-flow", "ot", "continuous-normalizing-flow", "generative-model"],
