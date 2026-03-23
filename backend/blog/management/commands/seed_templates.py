@@ -5,35 +5,80 @@ from blog.models import PostTemplate
 TEMPLATES = [
     {
         'name': 'AI 논문 리뷰',
-        'description': 'AI/ML 논문 리뷰 템플릿',
+        'description': 'AI/ML 논문 리뷰 종합 템플릿',
         'post_type': 'paper_review',
-        'content_template': """# {논문 제목}
-
-## 메타 정보
+        'content_template': """## 논문 정보
+- **제목**:
 - **저자**:
-- **학회/저널**:
-- **년도**:
-- **링크**:
+- **학회/저널**: NeurIPS 2024
+- **arXiv**: [arXiv:XXXX.XXXXX](https://arxiv.org/abs/XXXX.XXXXX)
+- **코드**: [GitHub](https://github.com/...)
 
-## Abstract 요약
+## 개요
+[1-2 문단 요약]
 
+![Architecture Diagram](figures/architecture.png)
+*Figure 1: 아키텍처 다이어그램 — [논문제목](arxiv_url)*
 
-## 핵심 기여 (Key Contributions)
+## 핵심 기여
 1.
 2.
 3.
 
-## 방법론 (Methodology)
+## 수학적 배경
+$$
+\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V
+$$
 
+## 아키텍처 상세
+### [컴포넌트 1]
+### [컴포넌트 2]
 
 ## 실험 결과
+| 모델 | 데이터셋 | 지표 | 값 |
+|-----|---------|-----|---|
+|     |         |     |   |
 
+## 강점 / 한계
+**강점**:
+**한계**:
 
-## 한계점 및 향후 연구
+## 관련 논문
+- [[related-paper|관련 논문]] — 한 줄 설명
+""",
+    },
+    {
+        'name': 'ML 튜토리얼',
+        'description': 'ML 알고리즘/기법 튜토리얼 템플릿',
+        'post_type': 'tutorial',
+        'content_template': """## 개요
+[알고리즘 한 줄 설명]
 
+## 수학적 배경
+$$[핵심 수식]$$
 
-## 개인 의견
+## 알고리즘
+1.
+2.
 
+## Python 구현
+
+### 필요 패키지
+```
+numpy>=1.24
+scikit-learn>=1.2
+matplotlib>=3.6
+```
+
+```python
+# 구현 코드
+```
+
+## 시각화 결과
+[Figure 자동 삽입 위치]
+
+## 실전 팁
+-
 """,
     },
     {
@@ -189,14 +234,25 @@ TEMPLATES = [
 class Command(BaseCommand):
     help = 'Seed post templates'
 
+    def add_arguments(self, parser):
+        parser.add_argument('--update', action='store_true', help='기존 템플릿도 업데이트')
+
     def handle(self, *args, **options):
         created = 0
+        updated = 0
         for tmpl in TEMPLATES:
-            _, was_created = PostTemplate.objects.get_or_create(
+            obj, was_created = PostTemplate.objects.get_or_create(
                 name=tmpl['name'],
                 defaults=tmpl,
             )
             if was_created:
                 created += 1
+            elif options.get('update'):
+                for key, val in tmpl.items():
+                    setattr(obj, key, val)
+                obj.save()
+                updated += 1
 
-        self.stdout.write(self.style.SUCCESS(f'Created {created} templates (total: {len(TEMPLATES)})'))
+        self.stdout.write(self.style.SUCCESS(
+            f'Created {created}, updated {updated} templates (total: {len(TEMPLATES)})'
+        ))
