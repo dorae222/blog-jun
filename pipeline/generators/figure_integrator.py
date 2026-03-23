@@ -127,10 +127,9 @@ def process_paper(slug: str, dry_run: bool = False, verbose: bool = True) -> dic
     # 논문 디렉토리 찾기 (접두사 번호 포함)
     paper_dir = None
     for d in PAPERS_DIR.iterdir():
-        if d.is_dir() and d.name.endswith(f"_{slug}"):
-            paper_dir = d
-            break
-        if d.is_dir() and d.name == slug:
+        if not d.is_dir() or not (d / "content.json").exists():
+            continue
+        if d.name.endswith(f"_{slug}") or d.name == slug:
             paper_dir = d
             break
 
