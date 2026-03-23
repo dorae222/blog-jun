@@ -15,7 +15,7 @@ import shutil
 from pathlib import Path
 
 # Django 설정
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'backend'))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / 'backend'))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 
 import django
@@ -29,7 +29,7 @@ from django.utils import timezone
 from blog.models import Post, Category, PostImage, ArchitectureEntry
 
 
-PAPERS_WRITTEN_DIR = Path(__file__).parent / 'data' / 'papers_written'
+PAPERS_WRITTEN_DIR = Path(__file__).resolve().parent.parent / 'data' / 'papers_written'
 
 # papers.csv category / sub_category → DB slug (7개 서브카테고리)
 CATEGORY_SLUG_MAP = {
@@ -104,6 +104,7 @@ def import_papers(dry_run: bool = False):
 
     dirs = sorted(PAPERS_WRITTEN_DIR.iterdir())
     created_posts = 0
+    updated_posts = 0
     created_images = 0
     skipped = 0
 
@@ -113,7 +114,6 @@ def import_papers(dry_run: bool = False):
 
         content_json = paper_dir / 'content.json'
         if not content_json.exists():
-            print(f"[SKIP] content.json 없음: {paper_dir.name}")
             continue
 
         with open(content_json, encoding='utf-8') as f:
@@ -121,15 +121,9 @@ def import_papers(dry_run: bool = False):
 
         title = data.get('title', '').strip()
         if not title:
-            print(f"[SKIP] title 없음: {paper_dir.name}")
             continue
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
-
-        if Post.objects.filter(slug=slug).exists():
-            print(f"  [SKIP] Post 이미 존재: {title}")
-            skipped += 1
-            continue
 
         # 카테고리 결정
         cat_key = data.get('sub_category') or data.get('category', '')
@@ -138,63 +132,76 @@ def import_papers(dry_run: bool = False):
 
         content = data.get('content', '')
         summary = data.get('summary', '')
-        tags_raw = data.get('tags', [])
 
-        if dry_run:
-            print(f"  [DRY-RUN] Post 생성 예정: {title} → {cat_slug}")
+        existing = Post.objects.filter(slug=slug).first()
+
+        if existing:
+            if dry_run:
+                old_len = len(existing.content or '')
+                new_len = len(content)
+                print(f"  [DRY-RUN UPDATE] {slug}: {old_len} → {new_len} chars")
+            else:
+                # figures 업로드 및 URL 치환
+                figures_dir = paper_dir / 'figures'
+                figure_url_map = {}
+                if figures_dir.exists():
+                    for fig_file in sorted(figures_dir.iterdir()):
+                        if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                            continue
+                        # 이미 업로드된 figure 스킵
+                        if PostImage.objects.filter(post=existing, alt_text=fig_file.stem).exists():
+                            continue
+                        url = upload_figure(existing, fig_file, dry_run=False)
+                        if url:
+                            figure_url_map[fig_file.name] = url
+                            created_images += 1
+
+                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else content
+                existing.content = updated_content
+                existing.summary = summary
+                existing.category = category
+                existing.save(update_fields=['content', 'summary', 'category'])
+                fig_count = PostImage.objects.filter(post=existing).count()
+                print(f"  [UPDATE] {slug} ({fig_count} figs)")
+            updated_posts += 1
+        else:
+            if dry_run:
+                print(f"  [DRY-RUN CREATE] {slug} → {cat_slug}")
+                continue
+
+            post = Post.objects.create(
+                title=title,
+                slug=slug,
+                content=content,
+                summary=summary,
+                category=category,
+                author=author,
+                status='published',
+                post_type='paper_review',
+                published_at=timezone.now(),
+            )
+            created_posts += 1
+
+            # figures 업로드 및 URL 치환
             figures_dir = paper_dir / 'figures'
+            figure_url_map = {}
             if figures_dir.exists():
-                figs = list(figures_dir.iterdir())
-                print(f"    figures: {len(figs)}개")
-            continue
+                for fig_file in sorted(figures_dir.iterdir()):
+                    if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                        continue
+                    url = upload_figure(post, fig_file, dry_run=False)
+                    if url:
+                        figure_url_map[fig_file.name] = url
+                        created_images += 1
 
-        post = Post.objects.create(
-            title=title,
-            slug=slug,
-            content=content,
-            summary=summary,
-            category=category,
-            author=author,
-            status='published',
-            post_type='paper_review',
-            published_at=timezone.now(),
-        )
-        created_posts += 1
-        print(f"  [CREATE] Post: {title}")
+            if figure_url_map:
+                post.content = replace_figure_paths(content, figure_url_map)
+                post.save(update_fields=['content'])
 
-        # figures 업로드 및 URL 치환
-        figures_dir = paper_dir / 'figures'
-        figure_url_map = {}
-        if figures_dir.exists():
-            for fig_file in sorted(figures_dir.iterdir()):
-                if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
-                    continue
-                url = upload_figure(post, fig_file, dry_run=False)
-                if url:
-                    figure_url_map[fig_file.name] = url
-                    created_images += 1
-                    print(f"    [IMG] {fig_file.name} → {url}")
+            print(f"  [CREATE] {slug} ({len(figure_url_map)} figs)")
 
-        # 마크다운 내 figure 경로 치환 후 저장
-        if figure_url_map:
-            post.content = replace_figure_paths(content, figure_url_map)
-            post.save(update_fields=['content'])
-
-        # related_architecture 연결
-        arch_slug = data.get('related_architecture', '').strip()
-        if arch_slug:
-            try:
-                arch = ArchitectureEntry.objects.get(slug=arch_slug)
-                arch.related_post = post
-                arch.save(update_fields=['related_post'])
-                print(f"    [LINK] ArchitectureEntry 연결: {arch_slug}")
-            except ArchitectureEntry.DoesNotExist:
-                print(f"    [WARN] ArchitectureEntry 없음: {arch_slug}")
-
-    if not dry_run:
-        print(f"\n완료: Post {created_posts}개 생성, PostImage {created_images}개 업로드, {skipped}개 스킵")
-    else:
-        print(f"\n[DRY-RUN 완료] 실제 변경 없음.")
+    prefix = "[DRY-RUN] " if dry_run else ""
+    print(f"\n{prefix}완료: 생성 {created_posts}개, 업데이트 {updated_posts}개, 이미지 {created_images}개, 스킵 {skipped}개")
 
 
 if __name__ == '__main__':
