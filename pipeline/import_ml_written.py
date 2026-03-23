@@ -90,6 +90,7 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
             continue
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
+        content = data.get('content', '')
 
         existing = Post.objects.filter(slug=slug).first()
         if existing and not update:
@@ -105,8 +106,6 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
                 print(f"  [DRY-RUN] 업데이트 예정: {display_title}")
             updated_posts += 1
             continue
-
-        content = data.get('content', '')
         summary = data.get('summary', '')
         tags_raw = data.get('tags', [])
         pdf_attachment = data.get('pdf_attachment')
