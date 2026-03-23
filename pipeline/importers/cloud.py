@@ -92,7 +92,7 @@ def import_cloud(dry_run: bool = False):
                     if not tag_slug_val:
                         continue
                     tag, _ = Tag.objects.get_or_create(
-                        slug=tag_slug_val, defaults={'name': tag_name}
+                        name=tag_name, defaults={'slug': tag_slug_val}
                     )
                     existing.tags.add(tag)
                 print(f"  [UPDATE] {slug} ({cat_slug})")
@@ -119,7 +119,7 @@ def import_cloud(dry_run: bool = False):
                     if not tag_slug_val:
                         continue
                     tag, _ = Tag.objects.get_or_create(
-                        slug=tag_slug_val, defaults={'name': tag_name}
+                        name=tag_name, defaults={'slug': tag_slug_val}
                     )
                     post.tags.add(tag)
                 print(f"  [CREATE] {slug} ({cat_slug})")
