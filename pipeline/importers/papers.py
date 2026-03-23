@@ -164,6 +164,7 @@ def import_papers(dry_run: bool = False, force_images: bool = False):
 
                 # content 보존: 이미지 없으면 기존 content 유지 (상대경로 덮어쓰기 방지)
                 updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else existing.content
+                existing.content = updated_content
                 existing.summary = summary
                 existing.category = category
                 existing.save(update_fields=['content', 'summary', 'category'])
