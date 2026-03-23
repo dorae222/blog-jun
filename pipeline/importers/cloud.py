@@ -29,6 +29,17 @@ from blog.models import Post, Category, Tag
 DATA_DIR = Path(__file__).resolve().parent.parent / 'data' / 'cloud_written'
 
 
+def _get_or_create_tag(name: str, slug: str):
+    """Tag를 name 또는 slug로 찾고, 없으면 생성."""
+    tag = Tag.objects.filter(name=name).first()
+    if tag:
+        return tag
+    tag = Tag.objects.filter(slug=slug).first()
+    if tag:
+        return tag
+    return Tag.objects.create(name=name, slug=slug)
+
+
 def import_cloud(dry_run: bool = False):
     if not DATA_DIR.exists():
         print(f"cloud_written 디렉토리 없음: {DATA_DIR}")
@@ -91,9 +102,7 @@ def import_cloud(dry_run: bool = False):
                     tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
                     if not tag_slug_val:
                         continue
-                    tag, _ = Tag.objects.get_or_create(
-                        name=tag_name, defaults={'slug': tag_slug_val}
-                    )
+                    tag = _get_or_create_tag(tag_name, tag_slug_val)
                     existing.tags.add(tag)
                 print(f"  [UPDATE] {slug} ({cat_slug})")
             updated += 1
@@ -118,9 +127,7 @@ def import_cloud(dry_run: bool = False):
                     tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
                     if not tag_slug_val:
                         continue
-                    tag, _ = Tag.objects.get_or_create(
-                        name=tag_name, defaults={'slug': tag_slug_val}
-                    )
+                    tag = _get_or_create_tag(tag_name, tag_slug_val)
                     post.tags.add(tag)
                 print(f"  [CREATE] {slug} ({cat_slug})")
             created += 1
