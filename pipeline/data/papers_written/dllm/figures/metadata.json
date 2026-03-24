@@ -1,0 +1,86 @@
+[
+  {
+    "filename": "fig_7_1.png",
+    "caption": "Figure 3: Terminal Visualizer showing transition from masked to decoded tokens.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x4.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "Figure 3: Terminal Visualizer showing transition from masked to decoded tokens.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x5.png"
+  },
+  {
+    "filename": "fig_7_3.png",
+    "caption": "Figure 3: Terminal Visualizer showing transition from masked to decoded tokens.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x6.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "(a) LLaDA-Instruct.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x7.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "(a) LLaDA-Instruct.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(a) LLaDA-Instruct.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x7.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(b) Dream-Base.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x8.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "(a) LLaDA-Instruct",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x9.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "(a) LLaDA-Instruct",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(a) LLaDA-Instruct",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x9.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(b) Dream-Instruct",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x10.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 6: Training loss for finetuning open-weight DLMs to reason (Section 4.1 ).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x16.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 7: Training loss for finetuning BERT to chat (Section 4.2.1 ).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x17.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 8: Training loss for finetuning autoregressive LMs to be DLMs (Section 4.2.2 ).",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2602.22661/assets/x18.png"
+  }
+]

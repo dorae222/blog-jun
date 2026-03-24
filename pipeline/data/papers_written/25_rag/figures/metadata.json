@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Overview of our approach. We combine a pre-trained retriever ( Query Encoder + Document Index ) with a pre-trained seq2seq model ( Generator ) and fine-tune end-to-end. For query x 𝑥 x , we use Maximum Inner Product Search (MIPS) to find the top-K documents z i subscript 𝑧 𝑖 z_{i} . For final prediction y 𝑦 y , we treat z 𝑧 z as a latent variable and marginalize over seq2seq predictions given different documents.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.11401/assets/x1.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2: RAG-Token document posterior p ​ ( z i | x , y i , y − i ) 𝑝 conditional subscript 𝑧 𝑖 𝑥 subscript 𝑦 𝑖 subscript 𝑦 𝑖 p(z_{i}|x,y_{i},y_{-i}) for each generated token for input “Hemingway\" for Jeopardy generation with 5 retrieved documents. The posterior for document 1 is high when generating “A Farewell to Arms\" and for document 2 when generating “The Sun Also Rises\".",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.11401/assets/x2.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 3: Left: NQ performance as more documents are retrieved. Center:\nRetrieval recall performance in NQ.\nRight: MS-MARCO Bleu-1 and Rouge-L as more documents are retrieved.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.11401/assets/x3.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 4: Annotation interface for human evaluation of factuality. A pop-out for detailed instructions and a worked example appear when clicking \"view tool guide\".",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.11401/assets/images/annotation_interface.png"
+  }
+]

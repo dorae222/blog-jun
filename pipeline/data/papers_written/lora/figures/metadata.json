@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Our reparametrization. We only train A 𝐴 A and B 𝐵 B .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: GPT-3 175B validation accuracy vs. number of trainable parameters of several adaptation methods on WikiSQL and MNLI-matched. LoRA exhibits better scalability and task performance. See Section F.2 for more details on the plotted data points.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Subspace similarity between column vectors of A r = 8 subscript 𝐴 𝑟 8 A_{r=8} and A r = 64 subscript 𝐴 𝑟 64 A_{r=64} for both Δ ​ W q Δ subscript 𝑊 𝑞 \\Delta W_{q} and Δ ​ W v Δ subscript 𝑊 𝑣 \\Delta W_{v} . The third and the fourth figures zoom in on the lower-left triangle in the first two figures. The top directions in r = 8 𝑟 8 r=8 are included in r = 64 𝑟 64 r=64 , and vice versa.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Left and Middle: Normalized subspace similarity between the column vectors of A r = 64 subscript 𝐴 𝑟 64 A_{r=64} from two random seeds, for both Δ ​ W q Δ subscript 𝑊 𝑞 \\Delta W_{q} and Δ ​ W v Δ subscript 𝑊 𝑣 \\Delta W_{v} in the 48-th layer. Right: the same heat-map between the column vectors of two random Gaussian matrices. See Section H.1 for other layers.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Percentage slow-down of inference latency compared to the no-adapter ( r = 0 𝑟 0 r=0 ) baseline. The top row shows the result for Adapter H superscript Adapter H \\text{Adapter}^{\\text{H}} and the bottom row Adapter L superscript Adapter L \\text{Adapter}^{\\text{L}} . Larger batch size and sequence length help to mitigate the latency, but the slow-down can be as high as over 30% in an online, short-sequence-length scenario. We tweak the colormap for better visibility.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Normalized subspace similarity between the column vectors of A r = 8 subscript 𝐴 𝑟 8 A_{r=8} and A r = 64 subscript 𝐴 𝑟 64 A_{r=64} for both Δ ​ W q Δ subscript 𝑊 𝑞 \\Delta W_{q} and Δ ​ W v Δ subscript 𝑊 𝑣 \\Delta W_{v} from the 1st, 32nd, 64th, and 96th layers in a 96-layer Transformer.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Normalized subspace similarity between the column vectors of A r = 64 subscript 𝐴 𝑟 64 A_{r=64} from two randomly seeded runs, for both Δ ​ W q Δ subscript 𝑊 𝑞 \\Delta W_{q} and Δ ​ W v Δ subscript 𝑊 𝑣 \\Delta W_{v} from the 1st, 32nd, 64th, and 96th layers in a 96-layer Transformer.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Normalized subspace similarity between the singular directions of W q subscript 𝑊 𝑞 W_{q} and those of Δ ​ W q Δ subscript 𝑊 𝑞 \\Delta W_{q} with varying r 𝑟 r and a random baseline. Δ ​ W q Δ subscript 𝑊 𝑞 \\Delta W_{q} amplifies directions that are important but not emphasized in W 𝑊 W . Δ ​ W Δ 𝑊 \\Delta W with a larger r 𝑟 r tends to pick up more directions that are already emphasized in W 𝑊 W .",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2106.09685/assets/x8.png"
+  }
+]

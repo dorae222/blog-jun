@@ -1,0 +1,68 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: The demonstration of unconditional, classifier-guided, and classifier-free diffusion models.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: The diffusion process of our conditional diffusion language model DiffuSeq . Given the source 𝐰 x superscript 𝐰 𝑥 \\mathbf{w}^{x} and the target 𝐰 y superscript 𝐰 𝑦 \\mathbf{w}^{y} , we pair-wisely transform them into continuous space 𝐳 0 subscript 𝐳 0 \\mathbf{z}_{0} . The partial Gaussian noise is iteratively added on the target space of 𝐳 t subscript 𝐳 𝑡 \\mathbf{z}_{t} .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: The increase of BLEU score with different candidate sizes | 𝒮 | 𝒮 |\\mathcal{S}| .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: The increase of BLEU score with different candidate sizes | 𝒮 | 𝒮 |\\mathcal{S}| .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x4.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3: The increase of BLEU score with different candidate sizes | 𝒮 | 𝒮 |\\mathcal{S}| .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 4: Trade-off between quality and diversity (details in Appendix D.3 ).",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x4.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "Figure 5: The curve of BLEU/div-4 score along with generation process (percentage of steps).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x5.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "Figure 5: The curve of BLEU/div-4 score along with generation process (percentage of steps).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5: The curve of BLEU/div-4 score along with generation process (percentage of steps).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6: The BLEU and inference speed of DiffuSeq and GPT2-large.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x6.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7: Graphical Models of AR, Fully NAR, iterative NAR and DiffuSeq models. For simplicity, we omit source node 𝐰 x superscript 𝐰 𝑥 \\mathbf{w}^{x} . Gray nodes indicate dependency on the source node while white nodes are independent to the source node.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.08933/assets/x7.png"
+  }
+]

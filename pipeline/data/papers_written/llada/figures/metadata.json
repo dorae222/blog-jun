@@ -1,0 +1,56 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Zero/Few-Shot Benchmarks. We scale LLaDA to an unprecedented size of 8B parameters from scratch, achieving competitive performance with strong LLMs (Dubey et al., 2024 ) .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : A Conceptual Overview of LLaDA. (a) Pre-training. LLaDA is trained on text with random masks applied independently to all tokens at the same ratio t ∼ U ​ [ 0 , 1 ] t\\sim U[0,1] . (b) SFT. Only response tokens are possibly masked. (c) Sampling. LLaDA simulates a diffusion process from t = 1 t=1 (fully masked) to t = 0 t=0 (unmasked), predicting all masks simultaneously at each step with flexible remask strategies.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Table 4 : Visualization of the Sampling Process and a Generated Multi-round Dialogue. In the response of LLaDA, darker colors indicate tokens predicted in the later stages of sampling, while lighter colors correspond to earlier predictions.",
+    "figure_number": "Table 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/imgs/visualization/diff_math.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 8 : A Conceptual Overview of the Semi-autoregressive Sampling.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/x3.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "Figure 9 : Analysis of Sampling Steps.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/x4.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "Figure 9 : Analysis of Sampling Steps.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "Table 10 : Visualization of the Semi-Autoregressive Sampling Process. In the response of LLaDA, darker colors\nindicate tokens predicted in the later stages of sampling, while lighter colors correspond to earlier predictions.",
+    "figure_number": "Table 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/imgs/visualization/sar.jpg"
+  },
+  {
+    "filename": "fig_8_1.jpg",
+    "caption": "Table 11 : Visualization of the Multi-turn Dialogue. We employ random remasking strategy. In the response of LLaDA, darker colors indicate tokens predicted in the later stages of sampling, while lighter colors correspond to earlier predictions.",
+    "figure_number": "Table 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/imgs/visualization/multi0.jpg"
+  },
+  {
+    "filename": "fig_8_2.jpg",
+    "caption": "Table 11 : Visualization of the Multi-turn Dialogue. We employ random remasking strategy. In the response of LLaDA, darker colors indicate tokens predicted in the later stages of sampling, while lighter colors correspond to earlier predictions.",
+    "figure_number": "Table 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.09992/assets/imgs/visualization/multi1.jpg"
+  }
+]
