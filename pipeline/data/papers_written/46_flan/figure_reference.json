@@ -1,0 +1,159 @@
+{
+  "slug": "flan",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Top: overview of instruction tuning and FLAN. Instruction tuning finetunes a pretrained language model on a mixture of tasks phrased as instructions.\nAt inference time, we evaluate on an unseen task type; for instance, we could evaluate the model on natural language inference (NLI) when no NLI tasks were seen during instruction tuning.\nBottom: performance of zero-shot FLAN, compared with zero-shot and few-shot GPT-3, on three unseen task types where instruction tuning improved performance substantially out of ten we evaluate.\nNLI datasets: ANLI R1–R3, CB, RTE. Reading comprehension datasets: BoolQ, MultiRC, OBQA. Closed-book QA datasets: ARC-easy, ARC-challenge, NQ, TriviaQA.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: Comparing instruction tuning with pretrain–finetune and prompting.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "Figure 3: Datasets and task clusters used in this paper (NLU tasks in blue; NLG tasks in teal).",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 4: Multiple instruction templates describing a natural language inference task.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 5: Zero-shot performance of FLAN compared to LaMDA-PT 137B, GPT-3 175B, and GLaM 64B/64E on natural language inference, reading comprehension, closed-book QA, and translation.\nPerformance of FLAN is the mean of up to 10 instructional templates per task.\nSupervised models were either T5, BERT, or translation models (specified in Table 2 and Table 1 in the Appendix).",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "Figure 6: Adding additional task clusters to instruction tuning improves zero-shot performance on held-out task clusters.\nThe evaluation tasks are the following.\nCommonsense: CoPA, HellaSwag, PiQA, and StoryCloze. NLI: ANLI R1–R3, QNLI, RTE, SNLI, and WNLI. Closed-book QA: ARC easy, ARC challenge, Natural Questions, and TriviaQA.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 7: Whereas instruction tuning helps large models generalize to new tasks, for small models it actually hurts generalization to unseen tasks, potentially because all model capacity is used to learn the mixture of instruction tuning tasks.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "Figure 8: Ablation study result using models with instructions removed from finetuning (FT).",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "Figure 9: Adding few-shot exemplars to FLAN is a complementary method for improving the performance of instruction-tuned models.\nThe orange bars indicate standard deviation among templates, averaged at the dataset level for each task cluster.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "Figure 10: Instruction-tuned models respond better to continuous inputs from prompt tuning.\nWhen prompt tuning on a given dataset, no tasks from the same cluster as that dataset were seen during instruction tuning.\nPerformance shown is the average on the SuperGLUE dev set.",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "Figure 11: Effect of datasets per task cluster and templates per dataset on performance on three held-out clusters: NLI, commonsense reasoning, and closed-book QA.\nAdding more datasets per task cluster substantially improves performance.\nUsing more templates per dataset, however, only had a very small effect on performance, which disappeared when there were sufficient dataset per task cluster.",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 12: Like GPT-3, we also measured performance on cleaned versions of our datasets, which had high confidence to be unseen in the pretraining data of FLAN.\nWe do not see a correlation that FLAN performed better on evaluation sets for which examples occurred more often in the pretraining data.\nWhen the percent of clean data is very small, there are fewer examples for computing the clean performance, which leads to high variance.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "Figure 13: For sentiment analysis, FLAN changes the answer appropriately when the question is flipped.",
+      "figure_number": "Figure 13",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "Figure 14: For question answering, FLAN can answer a question in another language when instructed to do so. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 14",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "Figure 15: FLAN can perform zero-shot rule-based manipulations.",
+      "figure_number": "Figure 15",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "Figure 16: FLAN can make zero-shot recommendations. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 16",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "Figure 17: FLAN can be used in a zero-shot fashion to generate data, such as utterances that are consistent with a given intent. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 17",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "Figure 18: FLAN can be used for zero-shot query expansion. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 18",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_19.png",
+      "caption": "Figure 19: FLAN can perform zero-shot tasks relevant to assisted-writing applications. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 19",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_20.png",
+      "caption": "Figure 20: FLAN can be used for zero-shot word formation. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 20",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_21.png",
+      "caption": "Figure 21: Open-ended generation tasks by FLAN. The carrot story was from sampling sixteen outputs with a minimum length of 150 and choosing the highest probability output.",
+      "figure_number": "Figure 21",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_22.png",
+      "caption": "Figure 22: Example failure cases for FLAN. Left: FLAN fails to perform a simple task of returning the n 𝑛 n th word. Right: FLAN translates a question instead of answering it. Multiple FLAN outputs are generated via random sampling with a temperature of 0.9 and top k 𝑘 k of 40.",
+      "figure_number": "Figure 22",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "FLAN vs GPT-3 Prompting vs BERT/T5 파인튜닝 세 가지 패러다임 비교"
+    },
+    {
+      "filename": "fig_2.png",
+      "section": "## 방법론",
+      "alt": "FLAN 인스트럭션 튜닝이 보이지 않은 태스크로 일반화하는 구조"
+    }
+  ],
+  "total_figures": 22,
+  "total_existing_refs": 2
+}

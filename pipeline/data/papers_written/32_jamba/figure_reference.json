@@ -1,0 +1,92 @@
+{
+  "slug": "jamba",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 코드 예제",
+    "## Jamba-1.5 및 후속 발전",
+    "## 의의 및 한계",
+    "## 결론",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "Jamba 블록 구조: Mamba MoE 레이어와 Transformer 레이어, Attention MoE 레이어의 교차 배치를 보여주는 다이어그램"
+    }
+  ],
+  "total_figures": 11,
+  "total_existing_refs": 1
+}

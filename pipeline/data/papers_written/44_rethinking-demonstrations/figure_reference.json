@@ -1,0 +1,143 @@
+{
+  "slug": "rethinking-demonstrations",
+  "figures": [
+    {
+      "filename": "fig_1_1.png",
+      "caption": "Figure 1: Results in classification (top) and multi-choice tasks (bottom), using three LMs with varying size.\nReported on six datasets on which GPT-3 is evaluated; the channel method is used.\nSee Section 4 for the full results.\nIn-context learning performance drops only marginally when labels in the demonstrations are replaced by random labels.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_1_2.png",
+      "caption": "Figure 1: Results in classification (top) and multi-choice tasks (bottom), using three LMs with varying size.\nReported on six datasets on which GPT-3 is evaluated; the channel method is used.\nSee Section 4 for the full results.\nIn-context learning performance drops only marginally when labels in the demonstrations are replaced by random labels.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: An overview of in-context learning. The demonstrations consist of k 𝑘 k input-label pairs from the training data ( k = 3 𝑘 3 k=3 in the figure).",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3_1.png",
+      "caption": "Figure 3: Results when using no-demonstrations, demonstrations with gold labels, and demonstrations with random labels in classification (top) and multi-choice tasks (bottom).\nThe first eight models are evaluated on 16 classification and 10 multi-choice datasets, and the last four models are evaluated on 3 classification and 3 multi-choice datasets. See Figure 11 for numbers comparable across all models. Model performance with random labels is very close to performance with gold labels (more discussion in Section 4.1 ).",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5_1.png",
+      "caption": "Figure 5: Ablations on varying numbers of examples in the demonstrations ( k 𝑘 k ). Models that are the best under 13B in each task category (Channel MetaICL and Direct GPT-J, respectively) are used.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5_2.png",
+      "caption": "Figure 5: Ablations on varying numbers of examples in the demonstrations ( k 𝑘 k ). Models that are the best under 13B in each task category (Channel MetaICL and Direct GPT-J, respectively) are used.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "Figure 6: Results with minimal templates and manual templates. ‘+T’ indicates that manual templates are used. Channel and Direct used for classification and multi-choice, respectively.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 7: Four different aspects in the demonstrations: the input-label mapping,\nthe distribution of the input text, the label space, and the use of input-label pairing as the format of the demonstrations.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_1.png",
+      "caption": "Figure 8: Impact of the distribution of the inputs.\nEvaluated in classification (top) and multi-choice (bottom).\nThe impact of the distribution of the input text can be measured by comparing ■ ■ \\blacksquare and ■ ■ \\blacksquare .\nThe gap is substantial, with an exception in Direct MetaICL\n(discussion in Section 5.1 ).",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_2.png",
+      "caption": "Figure 8: Impact of the distribution of the inputs.\nEvaluated in classification (top) and multi-choice (bottom).\nThe impact of the distribution of the input text can be measured by comparing ■ ■ \\blacksquare and ■ ■ \\blacksquare .\nThe gap is substantial, with an exception in Direct MetaICL\n(discussion in Section 5.1 ).",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9_1.png",
+      "caption": "Figure 9: Impact of the label space.\nEvaluated in classification (top) and multi-choice (bottom).\nThe impact of the label space can be measured by comparing ■ ■ \\blacksquare and ■ ■ \\blacksquare . The gap is significant in the direct models but not in the channel models (discussion in Section 5.2 ).",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9_2.png",
+      "caption": "Figure 9: Impact of the label space.\nEvaluated in classification (top) and multi-choice (bottom).\nThe impact of the label space can be measured by comparing ■ ■ \\blacksquare and ■ ■ \\blacksquare . The gap is significant in the direct models but not in the channel models (discussion in Section 5.2 ).",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10_1.png",
+      "caption": "Figure 10: Impact of the format, i.e., the use of the input-label pairs.\nEvaluated in classification (top) and multi-choice (bottom).\nVariants of demonstrations without keeping the format ( ■ ■ \\blacksquare and ■ ■ \\blacksquare ) are overall not better than no demonstrations ( ■ ■ \\blacksquare ).\nKeeping the format is especially significant when it is possible to achieve substantial gains with the label space but without the inputs ( ■ ■ \\blacksquare vs. ■ ■ \\blacksquare in Direct MetaICL), or with the input distribution but without the labels ( ■ ■ \\blacksquare vs. ■ ■ \\blacksquare in Channel MetaICL and Channel GPT-J).\nMore discussion in Section 5.3 .",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10_2.png",
+      "caption": "Figure 10: Impact of the format, i.e., the use of the input-label pairs.\nEvaluated in classification (top) and multi-choice (bottom).\nVariants of demonstrations without keeping the format ( ■ ■ \\blacksquare and ■ ■ \\blacksquare ) are overall not better than no demonstrations ( ■ ■ \\blacksquare ).\nKeeping the format is especially significant when it is possible to achieve substantial gains with the label space but without the inputs ( ■ ■ \\blacksquare vs. ■ ■ \\blacksquare in Direct MetaICL), or with the input distribution but without the labels ( ■ ■ \\blacksquare vs. ■ ■ \\blacksquare in Channel MetaICL and Channel GPT-J).\nMore discussion in Section 5.3 .",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11_1.png",
+      "caption": "Figure 11: Results of No-demonstration, Gold demonstration and Random demonstration on 3 classification datasets (top) and 3 multi-choice datasets (bottom).\nDetails in Section 4.1 .\nThis figure is for providing numbers that are comparable across models—full results with more datasets are reported in Figure 3 .",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11_2.png",
+      "caption": "Figure 11: Results of No-demonstration, Gold demonstration and Random demonstration on 3 classification datasets (top) and 3 multi-choice datasets (bottom).\nDetails in Section 4.1 .\nThis figure is for providing numbers that are comparable across models—full results with more datasets are reported in Figure 3 .",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12_1.png",
+      "caption": "Figure 12: Performance gap from using the demonstrations with gold labels to using the demonstrations with random labels.\nDatasets are sorted in descending order.\nThe top two figures use random labels that are sampled at uniform, with Channel MetaICL and Channel GPT-J, respectively.\nThe bottom two figures use random labels that are sampled from a true distribution of labels on the training data, with Channel MetaICL and Channel GPT-J, respectively.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12_2.png",
+      "caption": "Figure 12: Performance gap from using the demonstrations with gold labels to using the demonstrations with random labels.\nDatasets are sorted in descending order.\nThe top two figures use random labels that are sampled at uniform, with Channel MetaICL and Channel GPT-J, respectively.\nThe bottom two figures use random labels that are sampled from a true distribution of labels on the training data, with Channel MetaICL and Channel GPT-J, respectively.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12_3.png",
+      "caption": "Figure 12: Performance gap from using the demonstrations with gold labels to using the demonstrations with random labels.\nDatasets are sorted in descending order.\nThe top two figures use random labels that are sampled at uniform, with Channel MetaICL and Channel GPT-J, respectively.\nThe bottom two figures use random labels that are sampled from a true distribution of labels on the training data, with Channel MetaICL and Channel GPT-J, respectively.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12_4.png",
+      "caption": "Figure 12: Performance gap from using the demonstrations with gold labels to using the demonstrations with random labels.\nDatasets are sorted in descending order.\nThe top two figures use random labels that are sampled at uniform, with Channel MetaICL and Channel GPT-J, respectively.\nThe bottom two figures use random labels that are sampled from a true distribution of labels on the training data, with Channel MetaICL and Channel GPT-J, respectively.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 결론"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1_1.png",
+      "section": "## 방법론",
+      "alt": "데모 유형별 분류 성능 비교 (No Demos / Gold Labels / Random Labels)"
+    }
+  ],
+  "total_figures": 20,
+  "total_existing_refs": 1
+}

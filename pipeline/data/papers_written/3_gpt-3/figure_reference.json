@@ -1,0 +1,540 @@
+{
+  "slug": "gpt-3",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_23.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_24.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_25.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_26.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_11.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_79_9.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_80_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_80_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_80_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_81.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_82_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_82_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_11.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_83_9.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_84_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_84_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_84_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_85_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_85_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_85_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_86_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_86_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_86_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_87_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_87_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_87_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_87_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_87_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_87_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_88_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_88_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_88_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_89_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_89_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_89_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_89_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_89_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_89_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_11.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_12.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_90_9.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "GPT-3 메타 학습 구조: outer loop(사전학습)와 inner loop(in-context learning)"
+    }
+  ],
+  "total_figures": 86,
+  "total_existing_refs": 1
+}

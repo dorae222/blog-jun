@@ -1,0 +1,40 @@
+{
+  "slug": "gqa",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Overview of conversion from multi-head to multi-query attention. Key and value projection matrices from all heads are mean pooled into a single head.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: Overview of grouped-query method. Multi-head attention has H query, key, and value heads. Multi-query attention shares single key and value heads across all query heads. Grouped-query attention instead shares single key and value heads for each group of query heads, interpolating between multi-head and multi-query attention.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어 (Grouped-Query Attention)",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_2.png",
+      "section": "## 핵심 아이디어 (Grouped-Query Attention)",
+      "alt": "Multi-head, Grouped-query, Multi-query 어텐션 구조 비교"
+    },
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "GQA 업트레이닝: MHA KV 헤드를 그룹별 평균 풀링으로 변환하는 과정"
+    }
+  ],
+  "total_figures": 2,
+  "total_existing_refs": 2
+}

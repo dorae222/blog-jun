@@ -1,0 +1,252 @@
+{
+  "slug": "flash-attention-2",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_11_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_11_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_11_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_11_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_16_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_16_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_16_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_16_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_19.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_20.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_21_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_21_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_21_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_21_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_22.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_23.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_24.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_25.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "FlashAttention-2 순전파 타일링 구조: Q 블록을 SRAM에 고정하고 K/V 블록을 순회하며 온라인 소프트맥스로 누적 계산하는 과정"
+    }
+  ],
+  "total_figures": 38,
+  "total_existing_refs": 1
+}

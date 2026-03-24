@@ -1,0 +1,160 @@
+{
+  "slug": "megaverse",
+  "figures": [
+    {
+      "filename": "fig_11.png",
+      "caption": "Figure 11: Results for XNLI across all languages and models for monolingual prompting",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 12: Results for Indic-XNLI across all languages for monolingual prompting",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "Figure 13: Results for PAWSX across all languages and models for monolingual prompting",
+      "figure_number": "Figure 13",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "Figure 14: Results for XCOPA across all languages and models for monolingual prompting",
+      "figure_number": "Figure 14",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "Figure 15: Results for XStoryCloze across all languages and models for monolingual prompting",
+      "figure_number": "Figure 15",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "Figure 16: Results for TyDiQA across all languages and models for monolingual prompting",
+      "figure_number": "Figure 16",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "Figure 17: Results for MLQA across all languages and models for monolingual prompting",
+      "figure_number": "Figure 17",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "Figure 18: Results for XQUAD across all languages and models for zero-shot cross-lingual prompting",
+      "figure_number": "Figure 18",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_19.png",
+      "caption": "Figure 19: Results for IndicQA across all languages with zero-shot cross-lingual prompting",
+      "figure_number": "Figure 19",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_20.png",
+      "caption": "Figure 20: Results for PAN-X across all languages with monolingual prompting",
+      "figure_number": "Figure 20",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_21.png",
+      "caption": "Figure 21: Results for UDPOS across all languages with monolingual prompting",
+      "figure_number": "Figure 21",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_22.png",
+      "caption": "Figure 22: Results for Jigsaw across models and languages",
+      "figure_number": "Figure 22",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_23.png",
+      "caption": "Figure 23: Results for WinoMT across languages",
+      "figure_number": "Figure 23",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_24.png",
+      "caption": "Figure 24: Results for XLSum across all languages and models for monolingual prompting",
+      "figure_number": "Figure 24",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_25.png",
+      "caption": "Figure 25: Results for Belebele across all languages with monolingual prompting without few-shot examples",
+      "figure_number": "Figure 25",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_26.png",
+      "caption": "Figure 26: Results for AfriQA across all languages with monolingual prompting",
+      "figure_number": "Figure 26",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_27_1.png",
+      "caption": "((a)) Indic-En",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_27_2.png",
+      "caption": "((a)) Indic-En",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_28.png",
+      "caption": "((a)) Indic-En",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_29.png",
+      "caption": "((b)) En-Indic",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_30.png",
+      "caption": "Figure 28: Average Success Rate for XRiSAWOZ across models and languages",
+      "figure_number": "Figure 28",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_31.png",
+      "caption": "Figure 29: F1 scores for the Llava model on MaRVL. We used two prompting strategies, monolingual and translate-test.",
+      "figure_number": "Figure 29",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_32.png",
+      "caption": "Figure 30: chrF++ scores for the Llava model on XM-3600. We use monolingual prompting as the prompting strategy.",
+      "figure_number": "Figure 30",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_11.png",
+      "section": "## 방법론",
+      "alt": "MEGAVERSE 단일언어 평가: 15개 언어에 걸친 GPT-3.5-Turbo, GPT-4, PaLM2, LLaMA-2 성능 비교"
+    }
+  ],
+  "total_figures": 23,
+  "total_existing_refs": 1
+}

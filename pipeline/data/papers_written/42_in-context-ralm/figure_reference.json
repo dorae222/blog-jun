@@ -1,0 +1,100 @@
+{
+  "slug": "in-context-ralm",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1 : Our framework, dubbed In-Context RALM , provides large language modeling gains on the test set of WikiText-103, without modifying the LM .\nAdapting the use of a BM25 retriever Robertson and Zaragoza ( 2009 ) to the LM task (§ 5 ) yields significant gains, and choosing the grounding documents via our new class of Predictive Rerankers (§ 6 ) provides a further boost.\nSee Table 1 for the full results on five diverse corpora.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2 : An example of In-Context RALM : we simply prepend the retrieved document before the input prefix.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "Figure 3 : The performance of four off-the-shelf retrievers used for In-Context RALM on the development set of WikiText-103. All RALMs are run with s = 4 𝑠 4 s=4 ( i.e. , retrieval is applied every four tokens). For each RALM, we report the result of the best query length ℓ ℓ \\ell (see Figures 6 , 9 , 10 ).",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4_1.png",
+      "caption": "(a)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4_2.png",
+      "caption": "(a)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "(a)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "(b)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 5 : An analysis of perplexity as a function of s 𝑠 s , the retrieval stride , i.e. , the number of tokens between consecutive retrieval operations, on the development set of WikiText-103. Throughout the paper, we use s = 4 𝑠 4 s=4 to balance perplexity and runtime.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "Figure 6 : An analysis of perplexity as a function of the number of tokens in the query ℓ ℓ \\ell for BM25 on the development set of WikiText-103.\nIn the appendix, we show similar trade-offs for dense retrievers within WikiText-103.\nThroughout the paper, we use a query length of ℓ = 32 ℓ 32 \\ell=32 tokens.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "Figure 7 : Potential for gains from reranking: perplexity improvement (on the development set of WikiText-103) from an oracle that takes the best of the top-16 documents retrieved by BM25 rather than the first.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "Figure 8 : Zero-shot performance of In-Context RALM on the development set of Natural Questions and TriviaQA, when varying the number of documents (retrieved by DPR) shown in-context.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "Figure 9 : An analysis of perplexity as a function of the number of tokens in the query for an off-the-shelf BERT retriever on the development set of WikiText-103.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 10 : An analysis of perplexity as a function of the number of tokens in the query for Contriever on the development set of WikiText-103.",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "In-Context RALM 검색 방법별 Perplexity 비교"
+    }
+  ],
+  "total_figures": 13,
+  "total_existing_refs": 1
+}

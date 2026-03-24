@@ -1,0 +1,168 @@
+{
+  "slug": "scalable-extraction",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: We scalably test for memorization in large language models.\nModels emit more memorized training data as they get larger.\nThe aligned ChatGPT ( gpt-3.5-turbo ) appears 50 × 50\\times more private than any prior model, but we develop an attack that shows it is not.\nUsing our attack, ChatGPT emits training data 150 × 150\\times more frequently than with prior attacks,\nand 3 × 3\\times more frequently than the base model.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: As we query models more, they emit more unique memorized data. This rate of extraction differs between models and can also change. For example, though Pythia-1.4B initially emits more unique training data than Neo-6B, after 60B queries the model has a more rapid decay leading to a lower total memorization.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "Figure 3: Number of unique extracted 50-grams versus the number of total extracted 50-grams (generated and memorized).\nThe rate of observing unique 50-token sequences\nfrom GPT-Neo 6B always dominates the rate of observing unique\n50-token sequences from Pythia-1.4B.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 4: With sufficient data, a Good-Turing estimator can extrapolate the number of uniquely memorized examples. With too little data, it consistently underestimates this value.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 5: Extracting pre-training data from ChatGPT. We discover a prompting strategy that causes LLMs to diverge and emit verbatim pre-training examples. Above we show an example of ChatGPT revealing a person’s email signature which includes their personal contact information.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "Figure 6: A cumulative histogram showing the number of extracted strings greater than each length.\nWe were able to extract thousands of short unique training examples from ChatGPT, hundreds of training examples with over 1000 characters.\nThe longest extracted example contained over 4000 characters (a website’s terms of service agreement). Appendix E show the 100 longest memorized sequences that we extract.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 7: When running our divergence attack that asks the model to\nrepeat a word forever,\nsome words (like “company”) cause the model to emit training over 164 × 164\\times more often than other words (like “know”). Each word is one token.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "Figure 8: The rate of extracting unique 50-grams is similar for gpt-3.5-turbo and gpt-3.5-turbo-instruct , and both are higher than any other model.\nMoreover, there is very little curvature, suggesting that the total quantity\nof memorization for this family of models is much larger than any other model we study.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9_1.png",
+      "caption": "Figure 9: Estimates for how much total data is actually memorized by ChatGPT. Left: As an adversary spends more money to query the ChatGPT API, they are able to extract more data. We use a budget of $200 USD to extract over 10,000 unique examples, however, an extrapolation based on Good–Turing frequency estimation shows that using larger budgets could allow significantly more extraction. Right: To identify memorized sequences, we cross reference ChatGPT’s generations with a large auxiliary corpus. As we scale the size of the auxiliary corpus, we can identify more memorized examples.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9_2.png",
+      "caption": "Figure 9: Estimates for how much total data is actually memorized by ChatGPT. Left: As an adversary spends more money to query the ChatGPT API, they are able to extract more data. We use a budget of $200 USD to extract over 10,000 unique examples, however, an extrapolation based on Good–Turing frequency estimation shows that using larger budgets could allow significantly more extraction. Right: To identify memorized sequences, we cross reference ChatGPT’s generations with a large auxiliary corpus. As we scale the size of the auxiliary corpus, we can identify more memorized examples.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 10: Out of 494 examples, the number we identify as having memorization via manual web search vs. checking whether at least 80% of the tokens are in 50-grams found in AuxDataset . Our automatic method underestimates memorization compared to doing manual assessment using a search engine.",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "Figure 11: The fraction of a model’s dataset extracted by our attack scales with the number of epochs. These models are trained in [ 34 ] for Chinchilla optimal token counts.",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "Figure 12: gpt-3.5-turbo-instruct can repeat two- or three-tokens words thousands of times without causing\nany divergence; but one token words can only be repeated a few hundred times before\nthe probability of divergence rapidly approaches near-certainty. Solid lines show medians over 40 different word choices, shaded regions show the 10%–90% quantile ranges.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "Figure 13: Cosine similarity of last-layer attention query of the BOS token and tokens at other positions for LLaMA 7B.\nSolid line shows the median out of 100 samples and the shaded region shows the 10%–90% quantile range.\n“Random sample” represents text naturally sampled from the model.",
+      "figure_number": "Figure 13",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "Figure 14: The suffix length threshold k 𝑘 k significantly impacts the rate of data determined to be memorized. We set k = 50 𝑘 50 k=50 .",
+      "figure_number": "Figure 14",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "Figure 15: Percentage of tokens generated that are a direct 50-token copy from their respective training datasets out of a sample of 1B generations. Results across four model families. Above each bar is the number of unique memorized examples.\nModel details are in Section 3.3 .",
+      "figure_number": "Figure 15",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "Figure 16: Number of examples recovered from each constituent of our auxiliary dataset.\nWhile there is some correlation between size and number of memorized examples identified,\nthe 1TB RefinedWeb dataset reveals less memorized data than\nthe 400GB Pile.\nAnd even though RedPajama identifies the second most memorized examples in total,\nit finds the least unique examples because this dataset is well covered\nby a combination of The Pile and Dolma.",
+      "figure_number": "Figure 16",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_19_1.png",
+      "caption": "Figure 17: Model size versus # 50-grams extracted out of one billion tokens generations (top: data from Table 1 , bottom: data from Table 2 ). A we can see, we are able to extract more as model size increases for a given model family.",
+      "figure_number": "Figure 17",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_19_2.png",
+      "caption": "Figure 17: Model size versus # 50-grams extracted out of one billion tokens generations (top: data from Table 1 , bottom: data from Table 2 ). A we can see, we are able to extract more as model size increases for a given model family.",
+      "figure_number": "Figure 17",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_20.png",
+      "caption": "Figure 18: # unique 50-grams extracted from each model (data from Table 1 ) versus model performance on each of the listed benchmark tasks.\nThere is not a strong correlation between # unique 50-grams extracted and model performance.\nExtractable memorization is a different quality of a model than model performance on benchmark tasks.",
+      "figure_number": "Figure 18",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_21.png",
+      "caption": "Figure 19: Sequences that have more duplicates in the Pile are both easier to extract and discover.\nAdditionally, duplicated examples are more easily discoverable than extractable.",
+      "figure_number": "Figure 19",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_22.png",
+      "caption": "Figure 20: For each extracted, memorized generation from ChatGPT, we investigated how many duplicates of it occurred in the AuxDataset .",
+      "figure_number": "Figure 20",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 후속 연구 및 영향"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "모델별 학습 데이터 방출율 비교"
+    }
+  ],
+  "total_figures": 24,
+  "total_existing_refs": 1
+}
