@@ -1,0 +1,52 @@
+{
+  "slug": "roformer-rope",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Implementation of Rotary Position Embedding(RoPE).",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: Long-term decay of RoPE.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3_1.png",
+      "caption": "Figure 3: Evaluation of RoPE in language modeling pre-training. Left : training loss for BERT and RoFormer. Right : training loss for PerFormer with and without RoPE.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3_2.png",
+      "caption": "Figure 3: Evaluation of RoPE in language modeling pre-training. Left : training loss for BERT and RoFormer. Right : training loss for PerFormer with and without RoPE.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어 (Rotary Position Embedding)",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "RoPE 회전 위치 임베딩 시각화"
+    },
+    {
+      "filename": "fig_2.png",
+      "section": "## 방법론",
+      "alt": "RoPE 거리 감쇠 특성"
+    }
+  ],
+  "total_figures": 4,
+  "total_existing_refs": 2
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "mamba",
+  "figures": [],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 코드 예제",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 후속 연구",
+    "## 결론",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "architecture.png",
+      "section": "## 방법론",
+      "alt": "Mamba Block Architecture"
+    }
+  ],
+  "total_figures": 0,
+  "total_existing_refs": 1
+}

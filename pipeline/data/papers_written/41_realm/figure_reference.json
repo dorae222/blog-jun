@@ -1,0 +1,42 @@
+{
+  "slug": "realm",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: REALM augments language model pre-training with a neural knowledge retriever that retrieves knowledge from a textual knowledge corpus , 𝒵 𝒵 \\mathcal{Z} (e.g., all of Wikipedia). Signal from the language modeling objective backpropagates all the way through the retriever, which must consider millions of documents in 𝒵 𝒵 \\mathcal{Z} —a significant computational challenge that we address.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: The overall framework of REALM. Left: Unsupervised pre-training. The knowledge retriever and knowledge-augmented encoder are jointly pre-trained on the unsupervised language modeling task. Right: Supervised fine-tuning. After the parameters of the retriever ( θ 𝜃 \\theta ) and encoder ( ϕ italic-ϕ \\phi ) have been pre-trained, they are then fine-tuned on a task of primary interest, using supervised examples.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "Figure 3: REALM pre-training with asynchronous MIPS refreshes.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 후속 연구와의 관계"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "REALM end-to-end 검색 증강 사전학습 구조"
+    }
+  ],
+  "total_figures": 3,
+  "total_existing_refs": 1
+}
