@@ -1,0 +1,108 @@
+{
+  "slug": "sheared-llama",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Our Sheared-LLaMA-2.7B surpasses a series of open-source models at a similar scale and\nonly requires 1/32 (3%) of budget to achieve on-par performance with OpenLLaMA-3B-v2.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: Targeted structured pruning produces a compact and dense model of a pre-specified shape. Light colors indicate pruned substructures. Masking variables z 𝑧 z are learned to control whether a substructure is pruned ( z = 0 𝑧 0 z=0 ) or retained ( z = 1 𝑧 1 z=1 ).",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 3: Sheared-LLaMAs outperform Pythia-1.4B, INCITE-Base-3B, OpenLLaMA-3B-v1 and OpenLLaMA-3B-v2 in instruction tuning.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 4: Average downstream performance of continuing pre-training Sheared-LLaMA vs INCITE-Base-3B.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6_1.png",
+      "caption": "Figure 5: Loss difference between the pruned model (1.3B) and estimated reference loss, with original vs. dynamic batch loading.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6_2.png",
+      "caption": "Figure 5: Loss difference between the pruned model (1.3B) and estimated reference loss, with original vs. dynamic batch loading.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 5: Loss difference between the pruned model (1.3B) and estimated reference loss, with original vs. dynamic batch loading.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "Figure 6: Downstream task performance of Sheared-LLaMA-1.3B with original data proportion and dynamic batch loading.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "Figure 7: Data weight of each batch during the continued pre-training stage.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "Figure 8: The loss of the 1.3B model with original loading and dynamic loading and the downstream trajectory.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11_1.png",
+      "caption": "Figure 9: Average downstream peformance of Sheared-LLaMA with the scaling reference and the source reference.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11_2.png",
+      "caption": "Figure 9: Average downstream peformance of Sheared-LLaMA with the scaling reference and the source reference.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 9: Average downstream peformance of Sheared-LLaMA with the scaling reference and the source reference.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "Figure 10: A comparison between pruning from LLaMA1 and LLaMA2 with dynamic loading to match the source reference loss.",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 연구와의 비교"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "Sheared-LLaMA 학습 효율성 비교"
+    }
+  ],
+  "total_figures": 14,
+  "total_existing_refs": 1
+}

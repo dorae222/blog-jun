@@ -1,0 +1,36 @@
+{
+  "slug": "llama",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Training loss over train tokens for the 7B, 13B, 33B, and 65 models. LLaMA-33B and LLaMA-65B were trained on 1.4T tokens. The smaller models were trained on 1.0T tokens. All models are trained with a batch size of 4M tokens.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: Evolution of performance on question answering and common sense reasoning during training.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "LLaMA 모델 크기별 학습 손실 곡선"
+    }
+  ],
+  "total_figures": 2,
+  "total_existing_refs": 1
+}

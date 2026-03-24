@@ -1,0 +1,148 @@
+{
+  "slug": "scaling-data-constrained",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Return and Allocation when repeating data. (Left): Loss of LLMs (4.2B parameters) scaled on repeated data decays predictably ( §6 ). (Right): To maximize performance when repeating, our data-constrained scaling laws and empirical data suggest training smaller models for more epochs in contrast to what assuming Chinchilla scaling laws [ 42 ] hold for repeated data would predict ( §5 ).",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: Dataset setup. We ensure that runs using less data (more epochs) always use a subset of the data used in runs with more data (fewer epochs).",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "Figure 3: IsoLoss contours for 100 million unique tokens. (Left): 93 models trained with varying parameters and epochs on a fixed dataset. Contours show an interpolation of results with the same final test loss. (Right): Comparison with the loss predictions from our proposed scaling laws for the same budget of 100 million unique tokens and the predicted efficient frontier. The diminishing returns from training on repeated data can be seen in the increase in distance of the contour curves.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 4: Validation Loss for Different Data Constraints (IsoFLOP). Each curve represents the same number of FLOPs spent on an equal size model. Colors represent different numbers of epochs due to repeating because of data constraints. Parameters and training tokens are set to match the single-epoch compute-optimal configurations for the given FLOPs. Models trained on data that is repeated for multiple epochs have consistently worse loss and diverge if too many epochs are used.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 5: Empirical and Extrapolated loss with constrained data. (Left): Loss as a function of repeated tokens for three different training budgets each with fixed number of parameters. Loss curves predicted by our data-constrained scaling laws are shifted to exactly match the loss at 100% unique data. Return on FLOPs decays with repeated data in a regular pattern. (Right): Extrapolating from the proposed data-constrained scaling law shows that\nat small numbers epochs are benign, but at large number of epochs loss stops improving.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6_1.png",
+      "caption": "Figure 6: Strategies for data-constrained settings and their downstream performance. (Left): Schematic showing alternative data use strategies of code filling and filtering. (Right): N = 4.2 𝑁 4.2 N=4.2 billion parameter models trained for a total of D = 84 𝐷 84 D=84 billion tokens with varying budgets D C subscript 𝐷 𝐶 D_{C} . For repeating and filling with code, five models with different seeds are trained for each dot and the standard deviation is visualized as the shaded area.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6_2.png",
+      "caption": "Figure 6: Strategies for data-constrained settings and their downstream performance. (Left): Schematic showing alternative data use strategies of code filling and filtering. (Right): N = 4.2 𝑁 4.2 N=4.2 billion parameter models trained for a total of D = 84 𝐷 84 D=84 billion tokens with varying budgets D C subscript 𝐷 𝐶 D_{C} . For repeating and filling with code, five models with different seeds are trained for each dot and the standard deviation is visualized as the shaded area.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 7: A cartoon of how the compute-optimal tradeoff deviates from Chinchilla as we increase the number of epochs. Initially the model size and tokens processed grow proportionally ( R N = R D subscript 𝑅 𝑁 subscript 𝑅 𝐷 R_{N}=R_{D} ) but since R N ∗ < R D ∗ subscript superscript 𝑅 𝑁 subscript superscript 𝑅 𝐷 R^{*}_{N}<R^{*}_{D} , at some point adding parameters offers worse returns compared to increasing the number of tokens processed, and hence we deviate from the Chinchilla curve.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "Figure 8: Empirical isoLoss curves for 400 million and 1.5 billion unique tokens. 34 models trained on 400 million unique tokens and 37 models trained on 1.5 billion unique tokens with varying parameters and epochs.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "Figure 9: Double descent. Each dot is a model trained on 100 million unique tokens. Loss initially increases at 200 epochs and then decreases again; this is known as epoch-wise double descent [ 75 ] .",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "Figure 10: Optimal loss on deduplicated data. 146 million parameter models trained on 100 million unique tokens that are either directly from C4 or undergo additional deduplication. Each dot is a single model. While deduplication results in a higher test loss, the optimal number of epochs remains the same whether or not deduplication is performed (see also Figure 3 ).",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "Figure 11: Empirical and predicted losses of LLMs trained on 100 million tokens for a single epoch. Excess parameters empirically hurt performance, but this may be due to a lack of regularization. Thus, our scaling formula predicts loss to plateau, while Chinchilla predicts loss to improve. By decaying the exponent α 𝛼 \\alpha (and β 𝛽 \\beta ) instead, one can allow excess parameters to hurt.",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 12: IsoLoss contours for 100 million unique tokens with contours predicted by parametric decay of alpha and beta. The same models from Figure 3 with the contour predictions being done by the alpha-beta decay formulation introduced in Appendix F .",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "Figure 13: Optimal compute allocation for Galactica. Efficient frontier assuming repeated data is worth the same as new data (Chinchilla scaling laws) and data-constrained efficient frontier assuming a unique token budget of 106 billion tokens like for the Galactica models [ 108 ] . For optimal compute allocation according to our proposed data-constrained scaling laws, the 120 billion Galactica model should have been significantly smaller and trained for more epochs.",
+      "figure_number": "Figure 13",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "Figure 14: Training loss smoothed with exponential moving average smoothing and a weight of 0.999. Models trained on fewer unique tokens (more epochs) have better training loss as they overfit.",
+      "figure_number": "Figure 14",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "Figure 15: Validation loss during training for models trained on OSCAR. Models trained on tokens that are repeated for multiple epochs have consistently worse loss.",
+      "figure_number": "Figure 15",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "Figure 16: Training loss for models trained on OSCAR smoothed with exponential moving average smoothing and a weight of 0.999. Models trained on fewer unique tokens (more epochs) have better training loss as they overfit.",
+      "figure_number": "Figure 16",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "Figure 17: Validation loss during training visualized by epochs. Loss progresses smoothly throughout training. There are temporary spikes for 8.7 billion parameter models, commonly at the start of a new epoch.",
+      "figure_number": "Figure 17",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "Figure 18: Perplexity histograms for respective datasets. For demonstration purposes, we use 100,000 random samples of each dataset.",
+      "figure_number": "Figure 18",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_19.png",
+      "caption": "Figure 19: Validation loss of models trained on a mix of natural language (C4) and Python data.",
+      "figure_number": "Figure 19",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_20.png",
+      "caption": "Figure 20: Validation and training loss of models trained with different data strategies. Training loss is smoothed with exponential moving average smoothing and a weight of 0.999. Downstream performance of the models is in Figure 6 .",
+      "figure_number": "Figure 20",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "데이터 제약 스케일링 법칙 그래프"
+    }
+  ],
+  "total_figures": 21,
+  "total_existing_refs": 1
+}

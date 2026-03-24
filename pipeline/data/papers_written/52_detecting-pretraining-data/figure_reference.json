@@ -1,0 +1,131 @@
+{
+  "slug": "detecting-pretraining-data",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Overview of Min-k% Prob . To determine whether a text X 𝑋 X is in the pretraining data of a LLM such as GPT, Min-k% Prob first gets the probability for each token in X 𝑋 X , selects the k 𝑘 k % tokens with minimum probabilities and calculates their average log likelihood. If the average log likelihood is high, the text is likely in the pretraining data.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2_1.png",
+      "caption": "(a) AUC score vs. model size",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2_2.png",
+      "caption": "(a) AUC score vs. model size",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "(a) AUC score vs. model size",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "(b) AUC score vs. text length",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 3: AUC scores for detecting the validation set of copyrighted books on GPT-3.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 4: Distribution of detected contamination rate of 100 copyrighted books.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_1.png",
+      "caption": "(a) Outlier contaminants, e.g., downstream examples, become easier to detect as dataset size increases.",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_2.png",
+      "caption": "(a) Outlier contaminants, e.g., downstream examples, become easier to detect as dataset size increases.",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_3.png",
+      "caption": "(a) Outlier contaminants, e.g., downstream examples, become easier to detect as dataset size increases.",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "(a) Outlier contaminants, e.g., downstream examples, become easier to detect as dataset size increases.",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "(b) In-distribution contaminants, e.g., news articles, are harder to detect as dataset size increases.",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "(c) Contaminants that occur more frequently in the dataset are easier to detect.",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "Figure 6: Auditing machine unlearning with Min-k% Prob . Machine unlearning methods are designed to remove copyrighted and personal data from large language models. We use Min-k% Prob to audit an unlearned LLM that has been trained to forget copyrighted books. However, we find that such a model can still output related copyrighted content.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13_1.png",
+      "caption": "(a) SimCSE score",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13_2.png",
+      "caption": "(a) SimCSE score",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "(a) SimCSE score",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "(b) GPT-scored similarity",
+      "figure_number": "",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "MIN-K% PROB 알고리즘 개요 — 토큰 확률 분포에서 최소 k% 토큰의 평균 로그 확률로 멤버십 판별"
+    }
+  ],
+  "total_figures": 18,
+  "total_existing_refs": 1
+}

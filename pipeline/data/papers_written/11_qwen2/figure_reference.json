@@ -1,0 +1,30 @@
+{
+  "slug": "qwen2",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Performance of Qwen2 instruction-tuned models on Needle in A Haystack Test. All models that supports context lengths above 32k tokens integrates the YARN mechanism.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "Needle-in-a-Haystack 긴 컨텍스트 검색 성능"
+    }
+  ],
+  "total_figures": 1,
+  "total_existing_refs": 1
+}

@@ -1,0 +1,191 @@
+{
+  "slug": "layer-norm-transformer",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: (a) Post-LN Transformer layer; (b) Pre-LN Transformer layer.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2_1.png",
+      "caption": "(a) Loss/BLEU on the IWSLT14 De-En task (Adam)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2_2.png",
+      "caption": "(a) Loss/BLEU on the IWSLT14 De-En task (Adam)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "(a) Loss/BLEU on the IWSLT14 De-En task (Adam)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "(b) Loss/BLEU on the IWSLT14 De-En task (SGD)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5_1.png",
+      "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5_2.png",
+      "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5_3.png",
+      "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5_4.png",
+      "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "(b) W 2 superscript 𝑊 2 W^{2} in the FFN sub-layers",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "(c) Pre-LN Transformer",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "(d) Post-LN Transformer",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10_1.png",
+      "caption": "(a) Validation Loss (IWSLT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10_2.png",
+      "caption": "(a) Validation Loss (IWSLT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10_3.png",
+      "caption": "(a) Validation Loss (IWSLT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10_4.png",
+      "caption": "(a) Validation Loss (IWSLT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "(a) Validation Loss (IWSLT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12.png",
+      "caption": "(b) BLEU (IWSLT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "(c) Validation Loss (WMT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "(d) BLEU (WMT)",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15_1.png",
+      "caption": "(a) Validation Loss on BERT",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15_2.png",
+      "caption": "(a) Validation Loss on BERT",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_15_3.png",
+      "caption": "(a) Validation Loss on BERT",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "(a) Validation Loss on BERT",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_17.png",
+      "caption": "(b) Accuracy on MRPC",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "(c) Accuracy on RTE",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_19.png",
+      "caption": "Figure 6: Performances of the models on the IWSLT14 De-En task.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어 (Pre-LN vs Post-LN)",
+    "## 방법론 (gradient flow analysis, training stability)",
+    "## 실험 결과 (tables)",
+    "## 의의 및 한계",
+    "## 코드 예제"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론 (gradient flow analysis, training stability)",
+      "alt": "Pre-LN vs Post-LN Transformer 구조 비교"
+    }
+  ],
+  "total_figures": 28,
+  "total_existing_refs": 1
+}
