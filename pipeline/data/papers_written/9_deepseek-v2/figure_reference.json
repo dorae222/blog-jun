@@ -1,0 +1,66 @@
+{
+  "slug": "deepseek-v2",
+  "figures": [
+    {
+      "filename": "fig_1_1.png",
+      "caption": "Figure 1: (a) MMLU accuracy vs. activated parameters, among different open-source models.\n(b) Training costs and inference efficiency of DeepSeek 67B (Dense) and DeepSeek-V2.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_1_2.png",
+      "caption": "Figure 1: (a) MMLU accuracy vs. activated parameters, among different open-source models.\n(b) Training costs and inference efficiency of DeepSeek 67B (Dense) and DeepSeek-V2.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 2: Illustration of the architecture of DeepSeek-V2.\nMLA ensures efficient inference by significantly reducing the KV cache for generation, and DeepSeekMoE enables training strong models at an economical cost through the sparse architecture.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 3: Simplified illustration of Multi-Head Attention (MHA), Grouped-Query Attention (GQA), Multi-Query Attention (MQA), and Multi-head Latent Attention (MLA).\nThrough jointly compressing the keys and values into a latent vector, MLA significantly reduces the KV cache during inference.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 5: Evaluation results on HumanEval and LiveCodeBench. The questions of LiveCodeBench are selected from the period between September 1st, 2023 and April 1st, 2024.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1_1.png",
+      "section": "## 방법론",
+      "alt": "DeepSeek-V2 성능-파라미터 효율 비교"
+    }
+  ],
+  "total_figures": 7,
+  "total_existing_refs": 1
+}

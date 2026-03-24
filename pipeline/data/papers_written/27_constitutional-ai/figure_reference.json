@@ -1,0 +1,113 @@
+{
+  "slug": "constitutional-ai",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: We show the basic steps of our Constitutional AI (CAI) process, which consists of both a supervised learning (SL) stage, consisting of the steps at the top, and a Reinforcement Learning (RL) stage, shown as the sequence of steps at the bottom of the figure. Both the critiques and the AI feedback are steered by a small set of principles drawn from a ‘constitution’. The supervised stage significantly improves the initial model, and gives some control over the initial behavior at the start of the RL phase, addressing potential exploration problems. The RL stage significantly improves performance and reliability.",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: We show harmlessness versus helpfulness Elo scores (higher is better, only differences are meaningful) computed from crowdworkers’ model comparisons for all 52B RL runs. Points further to the right are later steps in RL training. The Helpful and HH models were trained with human feedback as in [ Bai et al., 2022 ] , and exhibit a tradeoff between helpfulness and harmlessness. The RL-CAI models trained with AI feedback learn to be less harmful at a given level of helpfulness. The crowdworkers evaluating these models were instructed to prefer less evasive responses when both responses were equally harmless; this is why the human feedback-trained Helpful and HH models do not differ more in their harmlessness scores. Error bars are visible in Figure 3 but are suppressed here for clarity.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3_1.png",
+      "caption": "Figure 3: This figure shows helpfulness and harmlessness Elo scores for models of varying sizes, as determined from comparison tests of crowdworker preferences in open-ended conversation. Helpful (H) RLHF and helpful & harmless (HH) RLHF are similar to prior work [ Bai et al., 2022 ] . SL-CAI, RL-CAI, and RL-CAI w/ CoT models are trained with our new constitutional method.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3_2.png",
+      "caption": "Figure 3: This figure shows helpfulness and harmlessness Elo scores for models of varying sizes, as determined from comparison tests of crowdworker preferences in open-ended conversation. Helpful (H) RLHF and helpful & harmless (HH) RLHF are similar to prior work [ Bai et al., 2022 ] . SL-CAI, RL-CAI, and RL-CAI w/ CoT models are trained with our new constitutional method.",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 4: We show performance on 438 binary comparison questions intended to evaluate helpfulness, honesty, and harmlessness. We compare the performance of a preference model, trained on human feedback data, to pretrained language models, which evaluate the comparisons as multiple choice questions. We see that chain of thought reasoning significantly improves the performance at this task. The trends suggest that models larger than 52B will be competitive with human feedback-trained preference models.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 5: Preference Model scores of responses and revisions from helpful RLHF models, evaluated on a set of red team prompts. The scores are evaluated on a 52B preference model trained on (left) harmlessness comparisons, (center) helpfulness comparisons, and (right) a mixture of all the combined helpful and harmless comparisons. The preference models used for evaluation here were trained exclusively using human feedback. We find that harmlessness and HH scores improve monotonically with respect to number of revisions, where revision 0 refers to the initial response, but pure helpfulness scores decrease.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "Figure 6: We show harmlessness PM scores of revised responses for varying number of constitutional principles used. Increasing the number of principles does not improve these PM scores, but we have found that it improves the diversity of revised responses, which improves exploration during the RL phase of CAI training.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 7: Comparison of preference model scores (all on the same 52B PM trained on harmlessness) for critiqued and direct revisions. We find that for smaller models, critiqued revisions generally achieve higher harmlessness scores (higher is more harmless), while for larger models they perform similarly, though critiques are always slightly better.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_1.png",
+      "caption": "Figure 8: These figures show the helpfulness (left) and harmlessness (right) Elo scores as a function of the total number of RL training sequences, as judged by crowdworkers via comparison tests. We see that the RL-CAI models perform very well on harmlessness without a great cost to their helpfulness. The initial snapshot for the RL-CAI models is SL-CAI, where we set the Elos to be zero; while the initial snapshot for the RLHF models is a pre-trained LM. Note that the crowdworkers were instructed that among harmless samples, they should prefer those that were not evasive and instead explained the nature of the harm.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8_2.png",
+      "caption": "Figure 8: These figures show the helpfulness (left) and harmlessness (right) Elo scores as a function of the total number of RL training sequences, as judged by crowdworkers via comparison tests. We see that the RL-CAI models perform very well on harmlessness without a great cost to their helpfulness. The initial snapshot for the RL-CAI models is SL-CAI, where we set the Elos to be zero; while the initial snapshot for the RLHF models is a pre-trained LM. Note that the crowdworkers were instructed that among harmless samples, they should prefer those that were not evasive and instead explained the nature of the harm.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_9.png",
+      "caption": "Figure 9: Calibration of 52B RL-CAI labels on our HHH evaluation questions. Dashed diagonal line represents perfect calibration.",
+      "figure_number": "Figure 9",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_10.png",
+      "caption": "Figure 10: Absolute harmfulness score for various 52B RL snapshots, on a scale from 0 to 4, where higher is more harmful. Solid lines are sampled at T = 1 𝑇 1 T=1 , and dashed lines at T = 0 𝑇 0 T=0 . The RLHF models are initialized on pre-trained LMs, while the RL-CAI models are initialized on SL-CAI.",
+      "figure_number": "Figure 10",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "Figure 11: Results on the original HHH evaluations developed in [ Askell et al., 2021 ] and available on BIG Bench [ Srivastava et al., 2022 ] .",
+      "figure_number": "Figure 11",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12_1.png",
+      "caption": "Figure 12: Here we show results on identifying and classifying harmful behaviors, without any task specific training or human feedback. (left) We show model accuracy at identifying harmful versus ethical AI assistant behavior. (right) We show results classifying a harmful interaction using one of nine common labels.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_12_2.png",
+      "caption": "Figure 12: Here we show results on identifying and classifying harmful behaviors, without any task specific training or human feedback. (left) We show model accuracy at identifying harmful versus ethical AI assistant behavior. (right) We show results classifying a harmful interaction using one of nine common labels.",
+      "figure_number": "Figure 12",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "Constitutional AI 전체 학습 파이프라인: Helpful RLHF 모델에서 시작해 SL-CAI(비판-수정 루프 + SFT)와 RL-CAI(RLAIF + PPO) 두 단계를 거쳐 최종 무해하고 유용한 모델을 생성하는 흐름"
+    }
+  ],
+  "total_figures": 15,
+  "total_existing_refs": 1
+}

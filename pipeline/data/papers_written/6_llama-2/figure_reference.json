@@ -1,0 +1,312 @@
+{
+  "slug": "llama-2",
+  "figures": [
+    {
+      "filename": "fig_10_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_10_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_11.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_12_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_12_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_13.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_14.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_15.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_16.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_17_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_17_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_18.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_19.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_1_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_1_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_20_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_20_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_21.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_22.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_23.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_24.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_25.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_26.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_27_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_27_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_27_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_28.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_29.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_30.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_31.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_32.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_33_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_33_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_34.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_35_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_35_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_36_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_36_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_37.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_38.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_9_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_9_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1_1.png",
+      "section": "## 방법론",
+      "alt": "Llama 2-Chat vs 주요 챗 모델 승률 비교"
+    }
+  ],
+  "total_figures": 48,
+  "total_existing_refs": 1
+}

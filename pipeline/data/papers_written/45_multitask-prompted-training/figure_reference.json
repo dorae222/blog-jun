@@ -1,0 +1,70 @@
+{
+  "slug": "multitask-prompted-training",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "Figure 1: Our model and prompt format. T0 is an encoder-decoder model that consumes textual inputs and produces target responses. It is trained on a multitask mixture of NLP datasets partitioned into different tasks. Each dataset is associated with multiple prompt templates that are used to format example instances to input and target pairs. Italics indicate the inserted fields from the raw example data. After training on a diverse mixture of tasks (top), our model is evaluated on zero-shot generalization to tasks that are not seen during training (bottom).",
+      "figure_number": "Figure 1",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "Figure 2: T0 datasets and task taxonomy.\n(T0+ and T0++ are trained on additional datasets. See Table 5 for the full list.)\nColor represents the level of supervision.\nYellow datasets are in the training mixture.\nGreen datasets are held out and represent tasks that were not\nseen during training.\nHotpot QA is recast as closed-book QA due to long input length.",
+      "figure_number": "Figure 2",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "Figure 3: Prompt templates from the P3 prompt collection. Each dataset has multiple prompt templates consisting of an input and a target template.\nThese use the fields of the raw data examples as well as template metadata, e.g., the left paraphrasing identification prompts use Choices , a template-level list variable ['Not duplicates', 'Duplicates'] . These templates are materialized to produce the prompted instance shown in Figure 1 .\nThe complete set of prompt templates used in T0 is given in Appendix G .",
+      "figure_number": "Figure 3",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "Figure 4: Results for T0 task generalization experiments compared to GPT-3 (Brown et al., 2020 ) . Each dot is the performance of one evaluation prompt. The baseline T5+LM model is the same as T0 except without multitask prompted training. GPT-3 only reports a single prompt for each dataset.",
+      "figure_number": "Figure 4",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "Figure 5: Results for a subset of BIG-bench which has available baselines. The baseline models are Transformer-based language models provided by BIG-bench maintainers, who also provide one prompt per dataset. T0, T0+ and T0++ are identical except for increasing the number of training datasets (§ 5 ). BIG-bench Tasks are all zero-shot for all the reported models.",
+      "figure_number": "Figure 5",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "Figure 6: Effect of more prompts per dataset. Zero-shot performance of T0 and T5+LM when increasing number of training prompts per dataset. Each dot is the performance of one evaluation prompt. The main T0 model ( p = 8.03 𝑝 8.03 p=8.03 ) includes non-original-task prompts (see Section 3 ). Adding more training prompts consistently leads to higher median performance and generally lower interquartile range for held-out tasks.",
+      "figure_number": "Figure 6",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_7.png",
+      "caption": "Figure 7: Effect of prompts from more datasets. Zero-shot performance of three models with varying number of datasets (T0, T0+, T0++). Adding more datasets consistently leads to higher median performance but does not always reduce interquartile range for held-out tasks.",
+      "figure_number": "Figure 7",
+      "has_caption": true
+    },
+    {
+      "filename": "fig_8.png",
+      "caption": "Figure 8: Effect of the size of the pretrained model: comparison of T0 3B against T0 11B.",
+      "figure_number": "Figure 8",
+      "has_caption": true
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "T0 멀티태스크 프롬프트 학습 개요 — 다양한 태스크와 프롬프트로 학습하여 제로샷 일반화 달성"
+    }
+  ],
+  "total_figures": 8,
+  "total_existing_refs": 1
+}

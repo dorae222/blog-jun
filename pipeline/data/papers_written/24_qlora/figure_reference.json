@@ -1,0 +1,60 @@
+{
+  "slug": "qlora",
+  "figures": [
+    {
+      "filename": "fig_1.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_2.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_3.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_4.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_5.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    },
+    {
+      "filename": "fig_6.png",
+      "caption": "",
+      "figure_number": "",
+      "has_caption": false
+    }
+  ],
+  "sections": [
+    "## 개요",
+    "## 배경 및 문제",
+    "## 핵심 아이디어",
+    "## 방법론",
+    "## 실험 결과",
+    "## 의의 및 한계",
+    "## 코드 예제",
+    "## 관련 문서"
+  ],
+  "existing_refs": [
+    {
+      "filename": "fig_1.png",
+      "section": "## 방법론",
+      "alt": "Full Finetuning vs LoRA vs QLoRA 메모리 구성 비교: Optimizer State(32bit), Adapters(16bit), Base Model 계층별 차이와 QLoRA의 4-bit 양자화 및 CPU Paging 흐름"
+    }
+  ],
+  "total_figures": 6,
+  "total_existing_refs": 1
+}
