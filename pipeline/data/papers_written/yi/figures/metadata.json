@@ -1,0 +1,62 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Yi’s pretraining data cleaning pipeline.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Yi’s pre-training data mixture. Overall our data consist of 3.1T high-quality tokens in Both English and Chinese, and come from various sources. Our major differences from existing known mixtures like LLaMA [ 76 ] and Falcon [ 56 ] are that we are bilingual, and of higher quality due to our more rigorous cleaning pipeline.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Evaluating language model’s in-context learning capability by inferring the linear coefficients of a weighted sum.\nConsidering the discussions of whether emergent ability is an artifact of measurement [ 65 ] , we use\ndifference to the target (target number - model prediction) as a continuous measure,\nand exact match (target number == model prediction) as a discontinuous measure.\nA: when there is two linear coefficients, Yi-34B performs the best when measuring by the difference to the target number.\nB: increasing the number of linear coefficients to 5, only models that are large enough (LLaMA2 70B and Mixtral 8x7B) can achieve meaningful exact match, showing that in-context learning complex functions is an emergent ability.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Yi’s result of Hungarian mathematics exam.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: SFT data scaling curve. Compared with UltraChat and its cleaned version UltraChat 200K, our SFT data demonstrates clear scaling advantages. We attribute its steep slope to the data quality.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Needle-in-a-Haystack performance of Yi-34B-200K.\nX-axis means length of the document, and Y-axis means the depth of the needle sentence within the document.\nWe continue pretrain the model on 5B tokens long-context data mixture and demonstrates a near-all-green performance.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x6.png"
+  },
+  {
+    "filename": "fig_7_1.png",
+    "caption": "Figure 7: Architecture of Yi-VL models. Symbols are used to denote the training status of various modules at three training stages: a fire icon ( ) indicates the parameters of the module are trainable, while a snowflake icon ( ) signifies that parameters are frozen. The image resolution used in ViT at each stage, either 224 2 superscript 224 2 224^{2} or 448 2 superscript 448 2 448^{2} , is also marked.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x7.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "Figure 7: Architecture of Yi-VL models. Symbols are used to denote the training status of various modules at three training stages: a fire icon ( ) indicates the parameters of the module are trainable, while a snowflake icon ( ) signifies that parameters are frozen. The image resolution used in ViT at each stage, either 224 2 superscript 224 2 224^{2} or 448 2 superscript 448 2 448^{2} , is also marked.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/images/fire.png"
+  },
+  {
+    "filename": "fig_7_3.png",
+    "caption": "Figure 7: Architecture of Yi-VL models. Symbols are used to denote the training status of various modules at three training stages: a fire icon ( ) indicates the parameters of the module are trainable, while a snowflake icon ( ) signifies that parameters are frozen. The image resolution used in ViT at each stage, either 224 2 superscript 224 2 224^{2} or 448 2 superscript 448 2 448^{2} , is also marked.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/images/snow.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Input/output cosine similarity score of each token per layer for text \"Write a quiz about bits\". The cosine similarity scores of the 16 newly added layers(layers 28-44), as depicted in the lower figure, are observed to be nearly 1.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04652/assets/x8.png"
+  }
+]

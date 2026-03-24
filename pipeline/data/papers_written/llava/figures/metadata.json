@@ -1,0 +1,74 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : LLaVA network architecture.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Table 3 : Example prompt from GPT-4 paper [ 36 ] to compare visual reasoning and chat capabilities. Compared to BLIP-2 [ 28 ] and OpenFlamingo [ 5 ] , LLaVA accurately follows the user’s instructions, instead of simply describing the scene. LLaVA offers a more comprehensive response than GPT-4. Even when merely asked to describe the image, LLaVA identifies atypical aspects of the image.",
+    "figure_number": "Table 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/figures/img_extreme_ironing.png"
+  },
+  {
+    "filename": "fig_3_1.jpg",
+    "caption": "Table 6 : Challenging examples from LLaVA-Bench (In-the-Wild), we provide extremely-detailed annotation for each image for an accurate evaluation. Some questions require the model to extract details from high resolution image and to have a broad knowledge coverage.",
+    "figure_number": "Table 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/figures/sample_bench_ramen.jpg"
+  },
+  {
+    "filename": "fig_3_2.jpg",
+    "caption": "Table 6 : Challenging examples from LLaVA-Bench (In-the-Wild), we provide extremely-detailed annotation for each image for an accurate evaluation. Some questions require the model to extract details from high resolution image and to have a broad knowledge coverage.",
+    "figure_number": "Table 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/figures/sample_bench_fridge.jpg"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Table 9 : Example prompt comparing LLaVA, GPT-4, BLIP-2, and OpenFlamingo’s visual reasoning capabilities in understanding the humor. BLIP-2 and OpenFlamingo fail to follow the user’s instructions. LLaVA and GPT-4 both explain the meme and its humor, while GPT-4 produces a more concise answer.",
+    "figure_number": "Table 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/figures/chicken_nugget.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 2 : LLaVA generates HTML/JS code for an interactive website based on user sketch inputs. The interactive interface works after fixing a minor error ( in red ) in the generated output. There is room for improvement in LLaVA’s output, such as splitting the joke and punchline into two rows, and only revealing the punchline upon button click, to better reflect the user’s intent.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x2.png"
+  },
+  {
+    "filename": "fig_7_1.png",
+    "caption": "Figure 3 : LLaVA is capable of recognizing the visual content following the user’s intent, without directly prompting for visual recognition. It also provides a detailed response when prompted with a follow-up request, and the generated response is closely related to the provided visual content.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x3.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "Figure 3 : LLaVA is capable of recognizing the visual content following the user’s intent, without directly prompting for visual recognition. It also provides a detailed response when prompted with a follow-up request, and the generated response is closely related to the provided visual content.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x4.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 4 : LLaVA relates the movie scenes to the textual knowledge from the pretrained LLM.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x5.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 5 : LLaVA recognizes the famous art work, Mona Lisa, by Leonardo da Vinci. When we start a new conversation, it also explains the humourous artwork created on the web, mimicking the Mona Lisa.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x6.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 6 : An interesting emergent behavior of LLaVA is its ability to recognize Elon Musk both in a headshot and in a humorous meme where he is dressed as a doge.\nThis implies that the pre-trained CLIP vision encoder may have seen images of Elon Musk. However, it is still surprising because Elon Musk never appears in the training data for either the visual feature alignment or visual instruction tuning stages of LLaVA, which indicates that the base language model generalizes to unseen visual concepts.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x7.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 7 : Comparison of noun-phrase statistics before and after filtering CC3M. The total number of unique noun-phrases are reported in the legend.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.08485/assets/x8.png"
+  }
+]

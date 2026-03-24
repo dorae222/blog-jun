@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Examples of Chinese hateful slang understanding analysis with LLM. The hateful slang terms and texts appear in black, ShieldGemma-v3 explanations are in green , DeepSeek-v3 explanations are in red , and human annotator explanations are in blue .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.15451/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Examples of annotated Chinese hateful slang, including Term , Groups and Definition .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.15451/assets/Figs/lexicon.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Illustration of the basic prompt and the version with 2 examples.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.15451/assets/x2.png"
+  }
+]

@@ -1,0 +1,8 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Overview of ARES :\nAs inputs, the ARES pipeline requires an in-domain passage set, a human preference validation set of 150 annotated datapoints or more, and five few-shot examples of in-domain queries and answers, which are used for prompting LLMs in synthetic data generation.\nTo prepare our LLM judges for evaluation, we first generate synthetic queries and answers from the corpus passages.\nUsing our generated training triples and a constrastive learning framework, we fine-tune an LLM to classify query–passage–answer triples across three criteria: context relevance, answer faithfulness, and answer relevance.\nFinally, we use the LLM judge to evaluate RAG systems and generate confidence bounds for the ranking using PPI and the human preference validation set.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.09476/assets/Tables/Headline_Figure_V1.png"
+  }
+]

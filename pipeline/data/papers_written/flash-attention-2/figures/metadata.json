@@ -1,0 +1,230 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Diagram of how FlashAttention forward\npass is performed, when the key 𝐊 𝐊 \\mathbf{K} is partitioned into two blocks and the\nvalue 𝐕 𝐕 \\mathbf{V} is also partitioned into two blocks.\nBy computing attention with respect to each block and rescaling the output,\nwe get the right answer at the end, while avoiding expensive memory\nreads/writes of the intermediate matrices 𝐒 𝐒 \\mathbf{S} and 𝐏 𝐏 \\mathbf{P} .\nWe simplify the diagram, omitting the step in softmax that subtracts each\nelement by the row-wise max.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/figs/flash_attention_diagram.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : In the forward pass (left), we parallelize the\nworkers (thread blocks) where each worker takes care of a block of rows of\nthe attention matrix.\nIn the backward pass (right), each worker takes care of a block of columns\nof the attention matrix.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/figs/flashattention_fwd_bwd_parallel.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "(a) FlashAttention",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/figs/flash_partitioning.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "(a) FlashAttention",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/figs/flash2_partitioning.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(a) FlashAttention",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/figs/flash_partitioning.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(b) FlashAttention-2",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/figs/flash2_partitioning.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x1.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x2.png"
+  },
+  {
+    "filename": "fig_6_3.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x3.png"
+  },
+  {
+    "filename": "fig_6_4.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x1.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(b) Without causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x2.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(c) With causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x3.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(d) With causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x4.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x5.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x6.png"
+  },
+  {
+    "filename": "fig_11_3.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x7.png"
+  },
+  {
+    "filename": "fig_11_4.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x8.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x5.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(b) Without causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x6.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(c) With causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x7.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(d) With causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x8.png"
+  },
+  {
+    "filename": "fig_16_1.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x9.png"
+  },
+  {
+    "filename": "fig_16_2.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x10.png"
+  },
+  {
+    "filename": "fig_16_3.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x11.png"
+  },
+  {
+    "filename": "fig_16_4.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x12.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x9.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "(b) Without causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x10.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(c) With causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x11.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(d) With causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x12.png"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x13.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x14.png"
+  },
+  {
+    "filename": "fig_21_3.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x15.png"
+  },
+  {
+    "filename": "fig_21_4.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x16.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "(a) Without causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x13.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "(b) Without causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x14.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "(c) With causal mask, head dimension 64",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x15.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "(d) With causal mask, head dimension 128",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08691/assets/x16.png"
+  }
+]

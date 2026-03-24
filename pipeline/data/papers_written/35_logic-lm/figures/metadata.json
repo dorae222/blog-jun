@@ -1,0 +1,38 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Overview of our Logic-LM framework.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.12295/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Overview of our Logic-LM model, which consists of three modules: ( 1 ) Problem Formulator generates a symbolic representation for the input problem with LLMs via in-context learning ( 2 ) Symbolic Reasoner performs logical inference on the formulated problem, and ( 3 ) Result Interpreter interprets the symbolic answer.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.12295/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Accuracy of different models for increasing size of reasoning depth on the ProofWriter dataset.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.12295/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: The accuracy for different rounds of self-refinement, with the corresponding executable rates.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.12295/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: An example of the generated symbolic representation and the predicted answer by Logic-LM .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.12295/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Examples of generated symbolic representations and predicted answers. The incorrect segment(s) and their correspondence in the problem are marked in red , and the correct revisions are marked in green .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.12295/assets/x6.png"
+  }
+]
