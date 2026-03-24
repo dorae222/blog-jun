@@ -1,0 +1,62 @@
+[
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 1: Mixture of Experts Layer. Each input vector is assigned to 2 of the 8 experts by a router. The layer’s output is the weighted sum of the outputs of the two selected experts.\nIn Mixtral, an expert is a standard feedforward block as in a vanilla transformer architecture.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/smoe.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 2: Performance of Mixtral and different Llama models on a wide range of benchmarks . All models were re-evaluated on all metrics with our evaluation pipeline for accurate comparison. Mixtral outperforms or matches Llama 2 70B on all benchmarks. In particular, it is vastly superior in mathematics and code generation.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/231209_bench_combined.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3: Results on MMLU, commonsense reasoning, world knowledge and reading comprehension, math and code for Mistral (7B/8x7B) vs Llama 2 (7B/13B/70B) .\nMixtral largely outperforms Llama 2 70B on all benchmarks, except on reading comprehension benchmarks while using 5x lower active parameters.\nIt is also vastly superior to Llama 2 70B on code and math.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/231209_scaling.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "Figure 4: Long range performance of Mixtral. (Left) Mixtral has 100% retrieval accuracy of the Passkey task regardless of the location of the passkey and length of the input sequence. (Right) The perplexity of Mixtral on the proof-pile dataset decreases monotonically as the context length increases.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/passkey.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "Figure 4: Long range performance of Mixtral. (Left) Mixtral has 100% retrieval accuracy of the Passkey task regardless of the location of the passkey and length of the input sequence. (Right) The perplexity of Mixtral on the proof-pile dataset decreases monotonically as the context length increases.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/perplexity.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 6: LMSys Leaderboard. (Screenshot from Dec 22, 2023) Mixtral 8x7B Instruct v0.1 achieves an Arena Elo rating of 1121 outperforming Claude-2.1 (1117), all versions of GPT-3.5-Turbo (1117 best), Gemini Pro (1111), and Llama-2-70b-chat (1077). Mixtral is currently the best open-weights model by a large margin.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/lmsys_231222.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 7: Proportion of tokens assigned to each expert on different domains from The Pile dataset for layers 0, 15, and 31. The gray dashed vertical line marks 1 / 8 1 8 1/8 , i.e. the proportion expected with uniform sampling.\nHere, we consider experts that are either selected as a first or second choice by the router.\nA breakdown of the proportion of assignments done in each case cane be seen in Figure 9 in the Appendix.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/x1.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 8: Text samples where each token is colored with the first expert choice. The selection of experts appears to be more aligned with the syntax rather than the domain, especially at the initial and final layers.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/images/routing-sample.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 9: Proportion of tokens assigned to each expert on different subsets from The Pile dataset, separated by whether the expert was selected as first or second choice, or either. The “Either choice” case is equivalent to Figure 7 .\nThe gray dashed vertical line marks 1 8 1 8 \\frac{1}{8} , i.e. the proportion expected with uniform sampling.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/x2.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 10: Repeated consecutive assignments per MoE layer. Repeated assignments occur a lot more often than they would with uniform assignments (materialized by the dashed lines). Patterns are similar across datasets with less repetitions for DM Mathematics.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2401.04088/assets/x3.png"
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: (a) Post-LN Transformer layer; (b) Pre-LN Transformer layer.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "(a) Loss/BLEU on the IWSLT14 De-En task (Adam)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "(a) Loss/BLEU on the IWSLT14 De-En task (Adam)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x3.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "(a) Loss/BLEU on the IWSLT14 De-En task (Adam)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(b) Loss/BLEU on the IWSLT14 De-En task (SGD)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x3.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x6.png"
+  },
+  {
+    "filename": "fig_5_4.png",
+    "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x7.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) W 1 superscript 𝑊 1 W^{1} in the FFN sub-layers",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) W 2 superscript 𝑊 2 W^{2} in the FFN sub-layers",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(c) Pre-LN Transformer",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x6.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(d) Post-LN Transformer",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x7.png"
+  },
+  {
+    "filename": "fig_10_1.png",
+    "caption": "(a) Validation Loss (IWSLT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x8.png"
+  },
+  {
+    "filename": "fig_10_2.png",
+    "caption": "(a) Validation Loss (IWSLT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x9.png"
+  },
+  {
+    "filename": "fig_10_3.png",
+    "caption": "(a) Validation Loss (IWSLT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x10.png"
+  },
+  {
+    "filename": "fig_10_4.png",
+    "caption": "(a) Validation Loss (IWSLT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x11.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(a) Validation Loss (IWSLT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x8.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(b) BLEU (IWSLT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x9.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(c) Validation Loss (WMT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x10.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(d) BLEU (WMT)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x11.png"
+  },
+  {
+    "filename": "fig_15_1.png",
+    "caption": "(a) Validation Loss on BERT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x12.png"
+  },
+  {
+    "filename": "fig_15_2.png",
+    "caption": "(a) Validation Loss on BERT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x13.png"
+  },
+  {
+    "filename": "fig_15_3.png",
+    "caption": "(a) Validation Loss on BERT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x14.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "(a) Validation Loss on BERT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x12.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "(b) Accuracy on MRPC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x13.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "(c) Accuracy on RTE",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x14.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 6: Performances of the models on the IWSLT14 De-En task.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2002.04745/assets/x15.png"
+  }
+]

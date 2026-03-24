@@ -1,0 +1,98 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Benchmark performance of DeepSeek-V3 and its counterparts.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Illustration of the basic architecture of DeepSeek-V3.\nFollowing DeepSeek-V2, we adopt MLA and DeepSeekMoE for efficient inference and economical training.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Illustration of our Multi-Token Prediction (MTP) implementation.\nWe keep the complete causal chain for the prediction of each token at each depth.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Overlapping strategy for a pair of individual forward and backward chunks (the boundaries of the transformer blocks are not aligned).\nOrange denotes forward, green denotes \"backward for input\", blue denotes \"backward for weights\", purple denotes PP communication, and red denotes barriers.\nBoth all-to-all and PP communication can be fully hidden.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Example DualPipe scheduling for 8 PP ranks and 20 micro-batches in two directions.\nThe micro-batches in the reverse direction are symmetric to those in the forward direction, so we omit their batch ID for illustration simplicity.\nTwo cells enclosed by a shared black border have mutually overlapped computation and communication.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: The overall mixed precision framework with FP8 data format. For clarification, only the Linear operator is illustrated.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: (a) We propose a fine-grained quantization method to mitigate quantization errors caused by feature outliers; for illustration simplicity, only Fprop is illustrated.\n(b) In conjunction with our quantization strategy, we improve the FP8 GEMM precision by promoting to CUDA Cores at an interval of N C = 128 N_{C}=128 elements MMA for the high-precision accumulation.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Evaluation results on the ”Needle In A Haystack” (NIAH) tests.\nDeepSeek-V3 performs well across all context window lengths up to 128K.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: Expert load of auxiliary-loss-free and auxiliary-loss-based models on three domains in the Pile test set.\nThe auxiliary-loss-free model shows greater expert specialization patterns than the auxiliary-loss-based one.\nThe relative expert load denotes the ratio between the actual expert load and the theoretically balanced expert load.\nDue to space constraints, we only present the results of two layers as an example, with the results of all layers provided in Appendix C .",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: Loss curves comparison between BF16 and FP8 training.\nResults are smoothed by Exponential Moving Average (EMA) with a coefficient of 0.9.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(a) Layers 1-7",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(b) Layers 7-13",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(c) Layers 13-19",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(d) Layers 19-25",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x14.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(e) Layers 25-27",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x15.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "(e) Layers 25-27",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.19437/assets/x15.png"
+  }
+]

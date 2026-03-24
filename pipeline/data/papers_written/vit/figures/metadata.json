@@ -1,0 +1,134 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Model overview. We split an image into fixed-size patches, linearly embed each of them, add position embeddings, and feed the resulting sequence of vectors to a standard Transformer encoder. In order to perform classification, we use the standard approach of adding an extra learnable “classification token” to the sequence. The illustration of the Transformer encoder was inspired by Vaswani et al. ( 2017 ) .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Breakdown of VTAB performance in Natural , Specialized , and Structured task groups.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: Transfer to ImageNet. While large ViT models perform worse than BiT ResNets (shaded area) when pre-trained on small datasets, they shine when pre-trained on larger datasets. Similarly, larger ViT variants overtake smaller ones as the dataset grows.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: Transfer to ImageNet. While large ViT models perform worse than BiT ResNets (shaded area) when pre-trained on small datasets, they shine when pre-trained on larger datasets. Similarly, larger ViT variants overtake smaller ones as the dataset grows.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/images/dataset_analysis/imagenet_5shot.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3: Transfer to ImageNet. While large ViT models perform worse than BiT ResNets (shaded area) when pre-trained on small datasets, they shine when pre-trained on larger datasets. Similarly, larger ViT variants overtake smaller ones as the dataset grows.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 4: Linear few-shot evaluation on ImageNet versus pre-training size.\nResNets perform better with smaller pre-training datasets but plateau sooner than ViT, which performs better with larger pre-training. ViT-b is ViT-B with all hidden dimensions halved.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/images/dataset_analysis/imagenet_5shot.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 5: Performance versus pre-training compute for different architectures: Vision Transformers, ResNets, and hybrids. Vision Transformers generally outperform ResNets with the same computational budget. Hybrids improve upon pure Transformers for smaller model sizes, but the gap vanishes for larger models.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 6: Representative examples of attention from the output token to the input space. See Appendix D.7 for details.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x5.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 7: Left: Filters of the initial linear embedding of RGB values of ViT-L/32. Center: Similarity of position embeddings of ViT-L/32. Tiles show the cosine similarity between the position embedding of the patch with the indicated row and column and the position embeddings of all other patches. Right: Size of attended area by head and network depth. Each dot shows the mean attention distance across images for one of 16 heads at one layer. See Appendix D.7 for details.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x6.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 7: Left: Filters of the initial linear embedding of RGB values of ViT-L/32. Center: Similarity of position embeddings of ViT-L/32. Tiles show the cosine similarity between the position embedding of the patch with the indicated row and column and the position embeddings of all other patches. Right: Size of attended area by head and network depth. Each dot shows the mean attention distance across images for one of 16 heads at one layer. See Appendix D.7 for details.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x7.png"
+  },
+  {
+    "filename": "fig_8_3.png",
+    "caption": "Figure 7: Left: Filters of the initial linear embedding of RGB values of ViT-L/32. Center: Similarity of position embeddings of ViT-L/32. Tiles show the cosine similarity between the position embedding of the patch with the indicated row and column and the position embeddings of all other patches. Right: Size of attended area by head and network depth. Each dot shows the mean attention distance across images for one of 16 heads at one layer. See Appendix D.7 for details.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x8.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 8: Scaling different model dimensions of the Vision Transformer.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x9.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "Figure 8: Scaling different model dimensions of the Vision Transformer.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x10.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 9: Comparison of class-token and global average pooling classifiers. Both work similarly well, but require different learning-rates.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x11.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "Figure 10: Position embeddings of models trained with different hyperparameters.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x12.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "Figure 10: Position embeddings of models trained with different hyperparameters.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x13.png"
+  },
+  {
+    "filename": "fig_11_3.png",
+    "caption": "Figure 10: Position embeddings of models trained with different hyperparameters.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x14.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 11: Size of attended area by head and network depth. Attention distance was computed for 128 example images by averaging the distance between the query pixel and all other pixels, weighted by the attention weight. Each dot shows the mean attention distance across images for one of 16 heads at one layer. Image width is 224 pixels.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x15.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 12: Left: Real wall-clock timings of various architectures across input sizes. ViT models have speed comparable to similar ResNets. Right : Largest per-core batch-size fitting on device with various architectures across input sizes. ViT models are clearly more memory-efficient.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x16.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 13: Performance of Axial-Attention based models, in terms of top-1 accuracy on ImageNet 5-shot linear, versus their speed in terms of number of FLOPs ( left ) and inference time ( left ).",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x17.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 13: Performance of Axial-Attention based models, in terms of top-1 accuracy on ImageNet 5-shot linear, versus their speed in terms of number of FLOPs ( left ) and inference time ( left ).",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x18.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 14: Further example attention maps as in Figure 6 (random selection).",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11929/assets/x19.png"
+  }
+]
