@@ -1,0 +1,140 @@
+[
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11: Results for XNLI across all languages and models for monolingual prompting",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xnli_all.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: Results for Indic-XNLI across all languages for monolingual prompting",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/indicxnli.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13: Results for PAWSX across all languages and models for monolingual prompting",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/pawsx.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 14: Results for XCOPA across all languages and models for monolingual prompting",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xcopa.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 15: Results for XStoryCloze across all languages and models for monolingual prompting",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xstorycloze.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 16: Results for TyDiQA across all languages and models for monolingual prompting",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/tydiqa.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 17: Results for MLQA across all languages and models for monolingual prompting",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/mlqa.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 18: Results for XQUAD across all languages and models for zero-shot cross-lingual prompting",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xquad.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 19: Results for IndicQA across all languages with zero-shot cross-lingual prompting",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/indicqa.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Figure 20: Results for PAN-X across all languages with monolingual prompting",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/panx.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 21: Results for UDPOS across all languages with monolingual prompting",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/udpos.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 22: Results for Jigsaw across models and languages",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/jigsaw.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 23: Results for WinoMT across languages",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/winomt.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 24: Results for XLSum across all languages and models for monolingual prompting",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xlsum.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 25: Results for Belebele across all languages with monolingual prompting without few-shot examples",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/belebele.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "Figure 26: Results for AfriQA across all languages with monolingual prompting",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/afriqa.png"
+  },
+  {
+    "filename": "fig_27_1.png",
+    "caption": "((a)) Indic-En",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/x1.png"
+  },
+  {
+    "filename": "fig_27_2.png",
+    "caption": "((a)) Indic-En",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/x2.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "((a)) Indic-En",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/x1.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "((b)) En-Indic",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/x2.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "Figure 28: Average Success Rate for XRiSAWOZ across models and languages",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xrisawoz.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "Figure 29: F1 scores for the Llava model on MaRVL. We used two prompting strategies, monolingual and translate-test.",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/marvl.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure 30: chrF++ scores for the Llava model on XM-3600. We use monolingual prompting as the prompting strategy.",
+    "figure_number": "Figure 30",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.07463/assets/xm3600.png"
+  }
+]

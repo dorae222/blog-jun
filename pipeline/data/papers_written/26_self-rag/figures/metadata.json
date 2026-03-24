@@ -1,0 +1,92 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Overview of Self-Rag . Self-Rag learns to retrieve, critique, and generate text passages to enhance overall generation quality, factuality, and verifiability.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Self-Rag training examples. The left example does not require retrieval while the right one requires retrieval; thus, passages are inserted. More examples are in Appendix Table 4 .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "(a) Ablation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "(a) Ablation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x4.png"
+  },
+  {
+    "filename": "fig_3_3.png",
+    "caption": "(a) Ablation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x5.png"
+  },
+  {
+    "filename": "fig_3_4.png",
+    "caption": "(a) Ablation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x6.png"
+  },
+  {
+    "filename": "fig_3_5.png",
+    "caption": "(a) Ablation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x7.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(b) Customization",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(c) Retrieval",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x4.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "(e) PopQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x5.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "(e) PopQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x6.png"
+  },
+  {
+    "filename": "fig_6_3.png",
+    "caption": "(e) PopQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x7.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(e) PopQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(f) PubHealth",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x6.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(g) ASQA (prec)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.11511/assets/x7.png"
+  }
+]

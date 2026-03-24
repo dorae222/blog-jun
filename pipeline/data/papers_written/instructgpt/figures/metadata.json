@@ -1,0 +1,158 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Human evaluations of various models on our API prompt distribution, evaluated by how often outputs from each model were preferred to those from the 175B SFT model.\nOur InstructGPT models (PPO-ptx) as well as its variant trained without pretraining mix (PPO) significantly outperform the GPT-3 baselines (GPT, GPT prompted); outputs from our 1.3B PPO-ptx model are preferred to those from the 175B GPT-3. Error bars throughout the paper are 95% confidence intervals.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : A diagram illustrating the three steps of our method: (1) supervised fine-tuning (SFT), (2) reward model (RM) training, and (3) reinforcement learning via proximal policy optimization (PPO) on this reward model. Blue arrows indicate that this data is used to train one of our models. In Step 2, boxes A-D are samples from our models that get ranked by labelers. See Section 3 for more details on our method.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x2.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3 : Preference results of our models, measured by winrate against the 175B SFT model. Left: results on prompts submitted to GPT models on the API; Right: results on prompts submitted to InstructGPT models on the API; Top: results from held-out labelers; Bottom: results from training labelers. We omit GPT (prompted) from the evals on prompts submitted to GPT-3 models (left) as these prompts are already designed to perform well for GPT-3, as opposed to prompts submitted to InstructGPT models (right).",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x3.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4 : Metadata results on the API distribution. Note that, due to dataset sizes, these results are collapsed across model sizes. See Appendix E.2 for analysis that includes model size. Compared to GPT-3, the PPO models are more appropriate in the context of a customer assistant, are better at following explicit constraints in the instruction and attempting the correct instruction, and less likely to ‘hallucinate’ (meaning, making up information on closed domain tasks like summarization).",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5 : Comparing our models with FLAN and T0 in terms of Likert scores on a 1-7 scale, on the InstructGPT prompt distribution. FLAN and T0 perform better than default GPT-3, and comparably with a few-shot GPT-3 model placed into ‘instruction-following’ mode.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6 : Results on the TruthfulQA dataset. Gray bars indicate ratings of truthfulness; colored bars indicate ratings of truthfulness and informativeness.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x6.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7 : Comparing human evaluations and automatic evaluations (Perspective API scores) on RealToxicityPrompts. A total of 1,729 prompts were labeled for three different 175B models, both with and without \"respectful\" instructions. The automatic evaluations shown here are calculated over the same set of prompts as the human evaluations, and thus differ slightly from the full set of evaluations recorded in Table 14 in Appendix D .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x7.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/figs/labelserver_likert.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/figs/labelserver_ranking.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/figs/labelserver_likert.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "(b)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/figs/labelserver_ranking.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 13 : Tuning FLAN and T0 based on reward model scores",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x8.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure 28 : Zero-shot performance of our models on various public NLP datasets. The 175B PPO models consistently show performance regressions, which is mitigated by adding updates on the pretraining data during fine-tuning. Few-shot performance is shown in Figure 29 . Error bars for translation are not available because we use a software package that does not report them.",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x9.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "Figure 29 : Few-shot performance of our models on various public NLP datasets (compare to zero-shot performance shown in Figure 28",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x10.png"
+  },
+  {
+    "filename": "fig_34.png",
+    "caption": "Figure 30 : Metadata ratings as a function of model type and model size",
+    "figure_number": "Figure 30",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x11.png"
+  },
+  {
+    "filename": "fig_35.png",
+    "caption": "Figure 31 : Likert scores for each of our models",
+    "figure_number": "Figure 31",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x12.png"
+  },
+  {
+    "filename": "fig_36.png",
+    "caption": "Figure 32 : Bias results on Winogender and CrowS-Pairs.",
+    "figure_number": "Figure 32",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x13.png"
+  },
+  {
+    "filename": "fig_37.png",
+    "caption": "Figure 33 : Evaluation on public NLP datasets as a function of pretraining loss coefficient. There is a pretraining coefficient that leads to a significant improvement on DROP and SQuAD and not much regression on validatoin reward.",
+    "figure_number": "Figure 33",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x14.png"
+  },
+  {
+    "filename": "fig_38.png",
+    "caption": "Figure 34 : Evaluation on public NLP datasets as a function of KL reward coefficient. Increasing the KL coefficient does not fully mitigate the regressions on DROP and SQuAD.",
+    "figure_number": "Figure 34",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x15.png"
+  },
+  {
+    "filename": "fig_39.png",
+    "caption": "Figure 35 : Evaluation on public NLP datasets as a function of training episodes",
+    "figure_number": "Figure 35",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x16.png"
+  },
+  {
+    "filename": "fig_40.png",
+    "caption": "Figure 36 : Likert scores as a function of KL reward coefficient. The blue line indicates the reward value when the coefficient is zero (not shown on the rest of the graph due to log scale of the x axis).",
+    "figure_number": "Figure 36",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x17.png"
+  },
+  {
+    "filename": "fig_41.png",
+    "caption": "Figure 37 : Human likert scores for PPO with different init models.",
+    "figure_number": "Figure 37",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x18.png"
+  },
+  {
+    "filename": "fig_42.png",
+    "caption": "Figure 38 : Human evaluation metrics as a function of learning rates.",
+    "figure_number": "Figure 38",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x19.png"
+  },
+  {
+    "filename": "fig_43.png",
+    "caption": "Figure 39 : Toxicity scores on RealToxicityPrompts as a function of input prompt toxicity. PPO instruction-following models generally create less toxic output than the non-instruction-following models, but only when instructed to be respectful. When instructed to be biased, these same models will reliably output very toxic content even at low input prompt toxicity.",
+    "figure_number": "Figure 39",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x20.png"
+  },
+  {
+    "filename": "fig_44.png",
+    "caption": "Figure 40 : Continuity and relative toxicity ratings for the RealToxicityPrompts experiment.",
+    "figure_number": "Figure 40",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x21.png"
+  },
+  {
+    "filename": "fig_45.png",
+    "caption": "Figure 41 : Win rates of PPO-ptx and SFT against 175B GPT-3 in RealToxicityPrompts.",
+    "figure_number": "Figure 41",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.02155/assets/x22.png"
+  }
+]

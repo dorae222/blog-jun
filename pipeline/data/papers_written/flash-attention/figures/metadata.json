@@ -1,0 +1,56 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Left: FlashAttention uses tiling to prevent materialization of the large N × N 𝑁 𝑁 N\\times N attention matrix (dotted box) on (relatively) slow GPU HBM. In the outer loop (red arrows), FlashAttention loops through blocks of the 𝐊 𝐊 \\mathbf{K} and 𝐕 𝐕 \\mathbf{V} matrices and loads them to fast on-chip SRAM.\nIn each block, FlashAttention loops over blocks of 𝐐 𝐐 \\mathbf{Q} matrix (blue arrows), loading them to SRAM, and writing the output of the attention computation back to HBM. Right: Speedup over the PyTorch implementation of attention on GPT-2. FlashAttention does not read and write the large N × N 𝑁 𝑁 N\\times N attention matrix to HBM, resulting in an 7.6 × \\times speedup on the attention computation.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Left : Forward + backward runtime of\nstandard attention and FlashAttention for GPT-2 medium\n(seq. length 1024, head dim. 64, 16 heads, batch size 64) on\nA100 GPU.\nHBM access is the primary factor affecting runtime. Middle : Forward runtime of FlashAttention (seq. length 1024, head\ndim. 64, 16 heads, batch size 64)\non A100 GPU. Fewer HBM accesses result in faster runtime, up to a point. Right : The runtime (for seq. length 4K) of\nblock-sparse FlashAttention is faster than FlashAttention by a factor proportional\nto the sparsity.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/x2.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3 : Left: runtime of forward pass + backward pass. Right: attention memory usage.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/x3.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4 : Validation perplexity of GPT-2\nsmall/medium using two implementations.\nWe confirm that FlashAttention yields the same validation curves as the baseline\nimplementation from HuggingFace.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "Figure 5 : Speedup over standard PyTorch attention at different sequence lengths, on A100.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/figs/flashattn_speedup.jpg"
+  },
+  {
+    "filename": "fig_8.jpg",
+    "caption": "Figure 6 : Speedup over standard PyTorch attention at different sequence lengths, on A100, with head dimension 128.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/figs/flashattn_speedup_a100_d128.jpg"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "Figure 7 : Speedup over standard PyTorch attention at different sequence lengths, on RTX 3090.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/figs/flashattn_speedup_3090.jpg"
+  },
+  {
+    "filename": "fig_10_1.jpg",
+    "caption": "Figure 8 : Speedup over standard PyTorch attention at different sequence lengths, on T4. Top: Combined forward pass + backward pass. Bottom: Forward pass only.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/figs/flashattn_speedup_t4.jpg"
+  },
+  {
+    "filename": "fig_10_2.jpg",
+    "caption": "Figure 8 : Speedup over standard PyTorch attention at different sequence lengths, on T4. Top: Combined forward pass + backward pass. Bottom: Forward pass only.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14135/assets/figs/flashattn_speedup_t4_fwd.jpg"
+  }
+]

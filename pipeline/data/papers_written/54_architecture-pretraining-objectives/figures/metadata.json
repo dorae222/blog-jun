@@ -1,0 +1,68 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: We perform an extensive study of architecture, objective, adaptation, and finetuning impact on zero-shot generalization. With 6 pre-trained models of over 5 billion parameters each trained on 168 billion tokens, adaptations on up to 100 billion tokens, multi-task finetuning on 13 billion tokens, and evaluation on 30 tasks from 2 different benchmarks with varied prompts, our study is the largest to date on the influence of modeling decisions on zero-shot generalization.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Attention patterns in a causal decoder, non-causal decoder, and encoder-decoder architecture . In a causal decoder, each token attends to the previous tokens only. In both non-causal decoder and encoder-decoder, attention is allowed to be bidirectional on any conditioning information. For the encoder-decoder, that conditioning is fed into the encoder part of the model.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Input and targets tokens in full, prefix, and masked language modeling training objectives. For full language modeling, all tokens in a sequence are used during training. For prefix language modeling, we randomly select a prefix size, and hence only half of the tokens are used on average to derive the loss. At inference time, the prefix would be over the input/conditioning information. Finally, for masked language modeling, we mask 15% of the tokens, in spans of 3 tokens on average. We use sentinel tokens to replace spans (not represented here), and the model outputs subsequently each sentinel followed by its prediction of the content masked by the sentinel.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: When considering multitask finetuning, the encoder-decoder pretrained with MLM significantly outperforms other models, with the non-causal decoder pretrained with MLM a close second on EAI-Eval. Detailed mean performance and spread compared to baselines on T0-Eval (left) and EAI-Eval (right) after multitask finetuning on T0 training set. The T5-LM and T0 results are taken from Sanh et al. ( 2021 ) and utilize the original T5.1.1-XXL model, which was pretrained for 7.6 × \\times the number of tokens used in this study. Other models are evaluated after pretraining with 168B tokens and multitask finetuning on T0 training set for 13B tokens.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Decoder-only models perform better on EAI-Eval because of specific tasks, not because of differences in prompts used. Zero-shot performance on T0-Eval tasks (left) and non-T0-Eval tasks (right), both using EAI-Eval prompts to control for the influence of T0-Eval prompts.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x5.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "Figure 6: Adaptation can efficiently convert non-causal decoder-only models pretrained with MLM into causal decoder-only models with FLM (left), and vice-versa (right). Validation loss when adapting decoder-only models to different architecture/objectives following pretraining. Left: A causal decoder-only pretrained with FLM from scratch (Causal FLM) compared to a model being adapted with FLM following 168B pretraining tokens as a non-causal masked language model (LM-adapted Non-causal MLM). The adaptation requires 63 % percent 63 63\\% of the tokens (1.6 × \\times speedup) versus training from scratch. Right: Causal and non-causal decoder-only masked language models (Causal MLM, Non-causal MLM) trained from scratch compared to a model being adapted to a non-causal MLM following 168B pretraining tokens as a causal FLM (MLM-adapted Causal FLM). The adaptation requires 30 % percent 30 30\\% of the tokens (3.3 × \\times speedup) versus training the non-causal MLM from scratch.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x6.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "Figure 6: Adaptation can efficiently convert non-causal decoder-only models pretrained with MLM into causal decoder-only models with FLM (left), and vice-versa (right). Validation loss when adapting decoder-only models to different architecture/objectives following pretraining. Left: A causal decoder-only pretrained with FLM from scratch (Causal FLM) compared to a model being adapted with FLM following 168B pretraining tokens as a non-causal masked language model (LM-adapted Non-causal MLM). The adaptation requires 63 % percent 63 63\\% of the tokens (1.6 × \\times speedup) versus training from scratch. Right: Causal and non-causal decoder-only masked language models (Causal MLM, Non-causal MLM) trained from scratch compared to a model being adapted to a non-causal MLM following 168B pretraining tokens as a causal FLM (MLM-adapted Causal FLM). The adaptation requires 30 % percent 30 30\\% of the tokens (3.3 × \\times speedup) versus training the non-causal MLM from scratch.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x7.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Applying non-causal MLM adaptation to a causal decoder-only FLM before multitask finetuning improves zero-shot performance, even when controlling for additional LM pretraining for the same number of tokens. Zero-shot generalization on T0-Eval (left) and EAI-Eval (right), for the T5-LM and T0 baselines (grey), and for models from our study. Converting the model into a non-causal decoder for multitask finetuning only does not improve performance on T0-Eval. Results after adaptation are in line with non-causal decoder-only pretrained with MLM in Figure 4 .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x8.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Performance on T0-Eval after multitask finetuning for increasing amounts of pretraining (measured in tokens). Our best model, an encoder-decoder trained with masked language modeling, is already above the final performance of the other configurations with only a quarter of the pretraining tokens. Note that the ordering does not change significantly throughout pretraining.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x9.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: Using dropout during multitask finetuning improves zero-shot generalization. Performance on T0-Eval with and without dropout. The impact of dropout is proportionally similar across architecture and objectives, not benefitting any specific configuration more.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x10.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: Converting an encoder-decoder pretrained with MLM to a causal decoder-only using FLM leads to worse performance compared to training from scratch. Validation loss when adapting an encoder-decoder pretrained with MLM to a causal decoder-only using FLM. We adapted a pretrained (for 168B tokens) encoder-decoder model to decoder-only by feeding an empty input into the encoder and causally training with a FLM objective on the decoder. We stopped this adaptation once it was clear the performance would not match that of a causal FLM trained from scratch, in contrast with the other adaptations we studied.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.05832/assets/x11.png"
+  }
+]

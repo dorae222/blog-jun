@@ -1,0 +1,224 @@
+[
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1 . Left: Memory layout when serving an LLM with 13B parameters on NVIDIA A100. The parameters (gray) persist in GPU memory throughout serving. The memory for the KV cache (red) is (de)allocated per serving request. A small amount of memory (yellow) is used ephemerally for activation. Right: vLLM smooths out the rapid growth curve of KV cache memory seen in existing systems (NVIDIA, 2023a ; Yu et al . , 2022 ) , leading to a notable boost in serving throughput.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2 . Average percentage of memory wastes in different LLM serving systems during the experiment in § 6.2 .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3 . KV cache memory management in existing systems. Three types of memory wastes – reserved, internal fragmentation, and external fragmentation – exist that prevent other requests from fitting into the memory. The token in each memory slot represents its KV cache. Note the same tokens can have different KV cache when at different positions.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4 . vLLM system overview.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5 . Illustration of the PagedAttention algorithm, where the attention key and values vectors are stored as non-contiguous blocks in the memory.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x6.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6 . Block table translation in vLLM.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x7.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7 . Storing the KV cache of two requests at the same time in vLLM.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x8.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 8 . Parallel sampling example.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x9.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 9 . Beam search example.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 10 . Shared prompt example for machine translation. The examples are adopted from (Brown et al . , 2020 ) .",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x11.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "(a) ShareGPT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x12.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "(a) ShareGPT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(a) ShareGPT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x12.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(b) Alpaca",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x13.png"
+  },
+  {
+    "filename": "fig_16_1.png",
+    "caption": "Figure 12 . Single sequence generation with OPT models on the ShareGPT and Alpaca dataset",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x14.png"
+  },
+  {
+    "filename": "fig_16_2.png",
+    "caption": "Figure 12 . Single sequence generation with OPT models on the ShareGPT and Alpaca dataset",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x15.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "(a) ShareGPT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x16.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "(a) ShareGPT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x17.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "(a) ShareGPT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x16.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(b) Alpaca",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x17.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "Figure 14 . Parallel generation and beam search with OPT-13B on the Alpaca dataset.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x18.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "Figure 14 . Parallel generation and beam search with OPT-13B on the Alpaca dataset.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x19.png"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "(a) Parallel sampling",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x20.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "(a) Parallel sampling",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x21.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "(a) Parallel sampling",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x20.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "(b) Beam search",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x21.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 16 . Translation workload where the input prompts share a common prefix. The prefix includes (a) 1 example with 80 tokens or (b) 5 examples with 341 tokens.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x22.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 17 . Performance on chatbot workload.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x23.png"
+  },
+  {
+    "filename": "fig_26_1.png",
+    "caption": "(a) Latency of attention kernels.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x24.png"
+  },
+  {
+    "filename": "fig_26_2.png",
+    "caption": "(a) Latency of attention kernels.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x25.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "(a) Latency of attention kernels.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x24.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "(b) End-to-end latency with different block sizes.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x25.png"
+  },
+  {
+    "filename": "fig_29_1.png",
+    "caption": "(a) Microbenchmark",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x26.png"
+  },
+  {
+    "filename": "fig_29_2.png",
+    "caption": "(a) Microbenchmark",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x27.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "(a) Microbenchmark",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x26.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "(b) End-to-end performance",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2309.06180/assets/x27.png"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Classification of LLM benchmarks: We categorize along two dimensions: whether the questions are from a static dataset or a live, fresh source, and whether the evaluation metric relies on ground truth or (approximated) human preferences. MMLU (Hendrycks et al., 2020 ) , HellaSwag (Zellers et al., 2019 ) , GSM-8K (Cobbe et al., 2021 ) , MT-Bench (Zheng et al., 2023b ) , and AlpacaEval (Li et al., 2023 ) are common examples of static benchmarks. Chatbot Arena is the platform introduced in this paper.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: Win-rate (left) and battle count (right) between a subset of models in Chatbot Arena.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: Win-rate (left) and battle count (right) between a subset of models in Chatbot Arena.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x3.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Similarity matrix of top-16 topic clusters. The number followed by the topic label represents the cluster size in percentage. Note that similarity is computed by cluster’s centroid embeddings, hence diagonals are always one.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x4.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Model’s performance between Arena Bench and MT-Bench, showing an increased gap between open and proprietary models. Both uses GPT-4 as judge.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x5.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Intervals for the BT coefficients with and without multiplicity correction. The multiplicity correction, in this case a chi-square CLT interval, is technically required for the purpose of calculating the ranking, because it ensures all scores are simultaneously contained in their intervals (and the ranking is a function of all the scores). However, it induces extra conservatism, so we report both intervals.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x6.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Intervals for the BT coefficients as a function of the number of samples and the number of models M 𝑀 M .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x7.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Interval widths on the win matrix (upper figure) and on the BT coefficients (lower figure) as a function of the number of samples, for random sampling and also adaptive sampling. Improvements from adaptive sampling can be seen in both cases, although they are more subtle on the scale of the score.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x8.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Screenshot of Chatbot Arena.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/figures/arena_screenshot_full.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: The number of votes over time",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: The number of votes per model.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11: Similarity matrix of top-64 topic clusters.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: Top-64 clusters visualized in hierarchy. x-axis represents the cosine similarity distance. y-axis shows the topic title per cluster summarized by gpt-4-turbo.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13: Replay experiment showing the intervals, coverage, and average interval sizes of the bootstrap and of the sandwich intervals. The sandwich intervals, though larger in small samples, are more stable, and in large samples, they actually become smaller. We use the multiplicity corrected version of both intervals, so they both have a coverage of 1. (Coverage here is calculated with respect to the BT coefficient solution on the full dataset, so it is not as meaningful as in the simulation plot below.)",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 14: Synthetic experiment. Coefficients are drawn from the BT-coefficient distribution x 𝑥 x on the left. Coverage of the uncorrected intervals is shown in the middle. Line plots of set width are shown on the right, and they almost perfectly match.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.04132/assets/x14.png"
+  }
+]

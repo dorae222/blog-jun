@@ -1,0 +1,518 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1.1: Language model meta-learning. During unsupervised pre-training, a language model develops a broad set of skills and pattern recognition abilities. It then uses these abilities at inference time to rapidly adapt to or recognize the desired task. We use the term “in-context learning” to describe the inner loop of this process, which occurs within the forward-pass upon each sequence. The sequences in this diagram are not intended to be representative of the data a model would see during pre-training, but are intended to show that there are sometimes repeated sub-tasks embedded within a single sequence.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/figures/metalearning.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 1.2: Larger models make increasingly efficient use of in-context information. We show in-context learning performance on a simple task requiring the model to remove random symbols from a word, both with and without a natural language task description (see Sec. 3.9.2 ). The steeper “in-context learning curves” for large models demonstrate improved ability to learn a task from contextual information. We see qualitatively similar behavior across a wide range of tasks.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/img/in_context_learning.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 1.3: Aggregate performance for all 42 accuracy-denominated benchmarks While zero-shot performance improves steadily with model size, few-shot performance increases more rapidly, demonstrating that larger models are more proficient at in-context learning. See Figure 3.8 for a more detailed analysis on SuperGLUE, a standard NLP benchmark suite.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/aggregate_performance.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2.1: Zero-shot, one-shot and few-shot, contrasted with traditional fine-tuning . The panels above show four methods for performing a task with a language model – fine-tuning is the traditional method, whereas zero-, one-, and few-shot, which we study in this work, require the model to perform the task with only forward passes at test time. We typically present the model with a few dozen examples in the few shot setting. Exact phrasings for all task descriptions, examples and prompts can be found in Appendix G .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/figures/eval_strategies.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 2.2: Total compute used during training . Based on the analysis in Scaling Laws For Neural Language Models [ 57 ] we train much larger models on many fewer tokens than is typical. As a consequence, although GPT-3 3B is almost 10x larger than RoBERTa-Large (355M params), both models took roughly 50 petaflop/s-days of compute during pre-training. Methodology for these calculations can be found in Appendix D .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/figures/training_flops.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 3.1: Smooth scaling of performance with compute. Performance (measured in terms of cross-entropy validation loss) follows a power-law trend with the amount of compute used for training. The power-law behavior observed in [ 57 ] continues for an additional two orders of magnitude with only small deviations from the predicted curve. For this figure, we exclude embedding parameters from compute and parameter counts.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/img/LanguageModelingComputePareto.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 3.2: On LAMBADA, the few-shot capability of language models results in a strong boost to accuracy. GPT-3 2.7B outperforms the SOTA 17B parameter Turing-NLG [ 132 ] in this setting, and GPT-3 175B advances the state of the art by 18%. Note zero-shot uses a different format from one-shot and few-shot as described in the text.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/lambada_acc_test.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 3.3: On TriviaQA GPT3’s performance grows smoothly with model size, suggesting that language models continue to absorb knowledge as their capacity increases. One-shot and few-shot performance make significant gains over zero-shot behavior, matching and exceeding the performance of the SOTA fine-tuned open-domain model, RAG [ 75 ]",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/triviaqa-wiki.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 3.4: Few-shot translation performance on 6 language pairs as model capacity increases. There is a consistent trend of improvement across all datasets as the model scales, and as well as tendency for translation into English to be stronger than translation from English.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 3.5: Zero-, one-, and few-shot performance on the adversarial Winogrande dataset as model capacity scales. Scaling is relatively smooth with the gains to few-shot learning increasing with model size, and few-shot GPT-3 175B is competitive with a fine-tuned RoBERTA-large.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/winogrande.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 3.6: GPT-3 results on PIQA in the zero-shot, one-shot, and few-shot settings. The largest model achieves a score on the development set in all three conditions that exceeds the best recorded score on the task.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/piqa.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 3.7: GPT-3 results on CoQA reading comprehension task. GPT-3 175B achieves 85 F1 in the few-shot setting, only a few points behind measured human performance and state-of-the-art fine-tuned models. Zero-shot and one-shot performance is a few points behind, with the gains to few-shot being largest for bigger models.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/coqa.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 3.8: Performance on SuperGLUE increases with model size and number of examples in context. A value of K = 32 𝐾 32 K=32 means that our model was shown 32 examples per task, for 256 examples total divided across the 8 tasks in SuperGLUE. We report GPT-3 values on the dev set, so our numbers are not directly comparable to the dotted reference lines (our test set results are in Table 3.8 ). The BERT-Large reference model was fine-tuned on the SuperGLUE training set (125K examples), whereas BERT++ was first fine-tuned on MultiNLI (392K examples) and SWAG (113K examples) before further fine-tuning on the SuperGLUE training set (for a total of 630K fine-tuning examples). We find the difference in performance between the BERT-Large and BERT++ to be roughly equivalent to the difference between GPT-3 with one example per context versus eight examples per context.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/figures/superglue_analysis.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 3.9: Performance of GPT-3 on ANLI Round 3. Results are on the dev-set, which has only 1500 examples and therefore has high variance (we estimate a standard deviation of 1.2%). We find that smaller models hover around random chance, while few-shot GPT-3 175B closes almost half the gap from random chance to SOTA. Results for ANLI rounds 1 and 2 are shown in the appendix.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/anli_r3_test.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 3.10: Results on all 10 arithmetic tasks in the few-shot settings for models of different sizes. There is a significant jump from the second largest model (GPT-3 13B) to the largest model (GPT-3 175), with the latter being able to reliably accurate 2 digit arithmetic, usually accurate 3 digit arithmetic, and correct answers a significant fraction of the time on 4-5 digit arithmetic, 2 digit multiplication, and compound operations. Results for one-shot and zero-shot are shown in the appendix.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/arithmetic.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 3.11: Few-shot performance on the five word scrambling tasks for different sizes of model. There is generally smooth improvement with model size although the random insertion task shows an upward slope of improvement with the 175B model solving the task the majority of the time. Scaling of one-shot and zero-shot performance is shown in the appendix. All tasks are done with K = 100 𝐾 100 K=100 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_fewshot.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 3.12: Zero-, one-,and few-shot performance on SAT analogy tasks, for different sizes of model. The largest model achieves 65% accuracy in the few-shot setting, and also demonstrates significant gains to in-context learning which are not present in smaller models.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/sat_analogies.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 3.13: People’s ability to identify whether news articles are model-generated (measured by the ratio of correct assignments to non-neutral assignments) decreases as model size increases. Accuracy on the outputs on the deliberately-bad control model (an unconditioned GPT-3 Small model with higher output randomness) is indicated with the dashed line at the top, and the random chance (50%) is indicated with the dashed line at the bottom. Line of best fit is a power law with 95% confidence intervals.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/img/generation_plot.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 4.1: GPT-3 Training Curves We measure model performance during training on a deduplicated validation split of our training distribution. Though there is some gap between training and validation performance, the gap grows only minimally with model size and training time, suggesting that most of the gap comes from a difference in difficulty rather than overfitting.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/figures/training_curves.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 4.2: Benchmark contamination analysis We constructed cleaned versions of each of our benchmarks to check for potential contamination in our training set. The x-axis is a conservative lower bound for how much of the dataset is known with high confidence to be clean, and the y-axis shows the difference in performance when evaluating only on the verified clean subset. Performance on most benchmarks changed negligibly, but some were flagged for further review. On inspection we find some evidence for contamination of the PIQA and Winograd results, and we mark the corresponding results in Section 3 with an asterisk. We find no evidence that other benchmarks are affected.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/figures/contamination_graph.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 6.1: Racial Sentiment Across Models",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/race_co_occur.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "Figure E.1: Participants spend more time trying to identify whether each news article is machine generated as model size increases. Duration on the control model is indicated with the dashed line. Line of best fit is a linear model on a log scale with 95% confidence intervals.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/img/newsduration.png"
+  },
+  {
+    "filename": "fig_79_1.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_boolq.png"
+  },
+  {
+    "filename": "fig_79_2.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_cb_acc.png"
+  },
+  {
+    "filename": "fig_79_3.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_cb_f1.png"
+  },
+  {
+    "filename": "fig_79_4.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_copa.png"
+  },
+  {
+    "filename": "fig_79_5.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_rte.png"
+  },
+  {
+    "filename": "fig_79_6.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_wic.png"
+  },
+  {
+    "filename": "fig_79_7.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_wsc.png"
+  },
+  {
+    "filename": "fig_79_8.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_multirc_EM.png"
+  },
+  {
+    "filename": "fig_79_9.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_multirc_F1a.png"
+  },
+  {
+    "filename": "fig_79_10.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_record_acc.png"
+  },
+  {
+    "filename": "fig_79_11.png",
+    "caption": "Figure H.1: All results for all SuperGLUE tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/superglue_--_record_f1.png"
+  },
+  {
+    "filename": "fig_80_1.png",
+    "caption": "Figure H.2: Results for SAT task.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/sat_analogies.png"
+  },
+  {
+    "filename": "fig_80_2.png",
+    "caption": "Figure H.2: Results for SAT task.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/winogrande.png"
+  },
+  {
+    "filename": "fig_80_3.png",
+    "caption": "Figure H.2: Results for SAT task.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/winograd.png"
+  },
+  {
+    "filename": "fig_81.png",
+    "caption": "Figure H.2: Results for SAT task.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/sat_analogies.png"
+  },
+  {
+    "filename": "fig_82_1.png",
+    "caption": "Figure H.3: All results for all Winograd tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/winogrande.png"
+  },
+  {
+    "filename": "fig_82_2.png",
+    "caption": "Figure H.3: All results for all Winograd tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/winograd.png"
+  },
+  {
+    "filename": "fig_83_1.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/arithmetic.png"
+  },
+  {
+    "filename": "fig_83_2.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/two_digit_addition.png"
+  },
+  {
+    "filename": "fig_83_3.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/two_digit_multiplication.png"
+  },
+  {
+    "filename": "fig_83_4.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/two_digit_subtraction.png"
+  },
+  {
+    "filename": "fig_83_5.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/three_digit_addition.png"
+  },
+  {
+    "filename": "fig_83_6.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/three_digit_subtraction.png"
+  },
+  {
+    "filename": "fig_83_7.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/four_digit_addition.png"
+  },
+  {
+    "filename": "fig_83_8.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/four_digit_subtraction.png"
+  },
+  {
+    "filename": "fig_83_9.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/five_digit_addition.png"
+  },
+  {
+    "filename": "fig_83_10.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/five_digit_subtraction.png"
+  },
+  {
+    "filename": "fig_83_11.png",
+    "caption": "Figure H.4: All results for all Arithmetic tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/single_digit_three_ops.png"
+  },
+  {
+    "filename": "fig_84_1.png",
+    "caption": "Figure H.5: All results for all Cloze and Completion tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/hellaswag.png"
+  },
+  {
+    "filename": "fig_84_2.png",
+    "caption": "Figure H.5: All results for all Cloze and Completion tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/lambada_acc_test.png"
+  },
+  {
+    "filename": "fig_84_3.png",
+    "caption": "Figure H.5: All results for all Cloze and Completion tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/storycloze_test.png"
+  },
+  {
+    "filename": "fig_85_1.png",
+    "caption": "Figure H.6: All results for all Common Sense Reasoning tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/piqa.png"
+  },
+  {
+    "filename": "fig_85_2.png",
+    "caption": "Figure H.6: All results for all Common Sense Reasoning tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/arc_challenge_test.png"
+  },
+  {
+    "filename": "fig_85_3.png",
+    "caption": "Figure H.6: All results for all Common Sense Reasoning tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/openbook_qa_test.png"
+  },
+  {
+    "filename": "fig_86_1.png",
+    "caption": "Figure H.7: All results for all QA tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/naturalqs_--_open_domain_test.png"
+  },
+  {
+    "filename": "fig_86_2.png",
+    "caption": "Figure H.7: All results for all QA tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/triviaqa-wiki.png"
+  },
+  {
+    "filename": "fig_86_3.png",
+    "caption": "Figure H.7: All results for all QA tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/webqs_test.png"
+  },
+  {
+    "filename": "fig_87_1.png",
+    "caption": "Figure H.8: All results for all Reading Comprehension tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/quac.png"
+  },
+  {
+    "filename": "fig_87_2.png",
+    "caption": "Figure H.8: All results for all Reading Comprehension tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/race-h_test.png"
+  },
+  {
+    "filename": "fig_87_3.png",
+    "caption": "Figure H.8: All results for all Reading Comprehension tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/race-m_test.png"
+  },
+  {
+    "filename": "fig_87_4.png",
+    "caption": "Figure H.8: All results for all Reading Comprehension tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/squad_f1_Squad_2_0.png"
+  },
+  {
+    "filename": "fig_87_5.png",
+    "caption": "Figure H.8: All results for all Reading Comprehension tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/coqa.png"
+  },
+  {
+    "filename": "fig_87_6.png",
+    "caption": "Figure H.8: All results for all Reading Comprehension tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/drop.png"
+  },
+  {
+    "filename": "fig_88_1.png",
+    "caption": "Figure H.9: All results for all ANLI rounds.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/anli_r1_test.png"
+  },
+  {
+    "filename": "fig_88_2.png",
+    "caption": "Figure H.9: All results for all ANLI rounds.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/anli_r2_test.png"
+  },
+  {
+    "filename": "fig_88_3.png",
+    "caption": "Figure H.9: All results for all ANLI rounds.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/anli_r3_test.png"
+  },
+  {
+    "filename": "fig_89_1.png",
+    "caption": "Figure H.10: All results for all Scramble tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_cycle_letters.png"
+  },
+  {
+    "filename": "fig_89_2.png",
+    "caption": "Figure H.10: All results for all Scramble tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_fewshot.png"
+  },
+  {
+    "filename": "fig_89_3.png",
+    "caption": "Figure H.10: All results for all Scramble tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_mid_word_1_anagrams.png"
+  },
+  {
+    "filename": "fig_89_4.png",
+    "caption": "Figure H.10: All results for all Scramble tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_mid_word_2_anagrams.png"
+  },
+  {
+    "filename": "fig_89_5.png",
+    "caption": "Figure H.10: All results for all Scramble tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_random_insertion_in_word.png"
+  },
+  {
+    "filename": "fig_89_6.png",
+    "caption": "Figure H.10: All results for all Scramble tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/wordscramble_reversed_words.png"
+  },
+  {
+    "filename": "fig_90_1.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_sacrebleu_detoen16_test.png"
+  },
+  {
+    "filename": "fig_90_2.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_sacrebleu_entode16_test.png"
+  },
+  {
+    "filename": "fig_90_3.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_sacrebleu_entofr14_test.png"
+  },
+  {
+    "filename": "fig_90_4.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_sacrebleu_frtoen14_test.png"
+  },
+  {
+    "filename": "fig_90_5.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_sacrebleu_entoro16_test.png"
+  },
+  {
+    "filename": "fig_90_6.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_sacrebleu_rotoen16_test.png"
+  },
+  {
+    "filename": "fig_90_7.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_multi-bleu_detoen16_test.png"
+  },
+  {
+    "filename": "fig_90_8.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_multi-bleu_entode16_test.png"
+  },
+  {
+    "filename": "fig_90_9.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_multi-bleu_entofr14_test.png"
+  },
+  {
+    "filename": "fig_90_10.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_multi-bleu_frtoen14_test.png"
+  },
+  {
+    "filename": "fig_90_11.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_multi-bleu_entoro16_test.png"
+  },
+  {
+    "filename": "fig_90_12.png",
+    "caption": "Figure H.11: All results for all Translation tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.14165/assets/graphs/scale_plots/translation_multi-bleu_rotoen16_test.png"
+  }
+]
