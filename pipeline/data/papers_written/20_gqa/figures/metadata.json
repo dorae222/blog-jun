@@ -1,0 +1,14 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Overview of conversion from multi-head to multi-query attention. Key and value projection matrices from all heads are mean pooled into a single head.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13245/assets/images/recycling.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Overview of grouped-query method. Multi-head attention has H query, key, and value heads. Multi-query attention shares single key and value heads across all query heads. Grouped-query attention instead shares single key and value heads for each group of query heads, interpolating between multi-head and multi-query attention.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13245/assets/images/gmq_architecture.png"
+  }
+]
