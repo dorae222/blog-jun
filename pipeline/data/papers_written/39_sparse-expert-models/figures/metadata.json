@@ -1,0 +1,62 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Comparing a dense and sparse expert Transformer. A dense model (left) sends both input tokens to the same feed-forward network parameters (FFN). A sparse expert model (right) routes each input token independently among its four experts (FFN1 ⋯ ⋯ \\cdots FFN4). In this diagram, each model uses a similar amount of computation, but the sparse model has more unique parameters.\nNote while this figure showcases a specific and common approach of sparse feed-forward network layers in a Transformer (Vaswani et al., 2017 ) , the technique is more general.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Schematic of top- k 𝑘 k routing . We visualize an example of the top- k 𝑘 k token routing scheme over five experts and three input tokens. Each expert and token is color-coded and the router weights ( W r subscript 𝑊 𝑟 W_{r} ) have a representation for each expert (color matched). To determine the routing, the router weight performs a dot product with each token embedding ( x 𝑥 x ) to produce the router scores ( h ​ ( x ) ℎ 𝑥 h(x) ). These scores are then normalized to sum to one ( p ( x p(x )).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: Sparse scaling plots with expert count . The cross-entropy scaling plots as a function of the number of experts are shown from Fedus et al. ( 2021 ) (left) and the three sparse variants from Clark et al. ( 2022 ) , S-Base, RL-R, Hash (right) . The top left-most point in both plots is an approximately compute-matched dense model. As the expert count increases, the models become increasingly sparse and yield lower validation losses.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: Sparse scaling plots with expert count . The cross-entropy scaling plots as a function of the number of experts are shown from Fedus et al. ( 2021 ) (left) and the three sparse variants from Clark et al. ( 2022 ) , S-Base, RL-R, Hash (right) . The top left-most point in both plots is an approximately compute-matched dense model. As the expert count increases, the models become increasingly sparse and yield lower validation losses.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: Sparse scaling for few-shot inference . Left: Du et al. ( 2021 ) measures the few-shot inference performance on TriviaQA, demonstrating consistent gains of sparse MoE models over dense models up to 137B parameters. Each label, such as 8B/64E, says how many parameters per input are used (8B) and how many experts (64E). Right: BigBench (Srivastava et al., 2022 ) studied the few-shot scaling properties on a larger set of 161 contributed JSON tasks to confirm improvements of sparse expert models over their FLOP-matched dense counterparts.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x5.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4: Sparse scaling for few-shot inference . Left: Du et al. ( 2021 ) measures the few-shot inference performance on TriviaQA, demonstrating consistent gains of sparse MoE models over dense models up to 137B parameters. Each label, such as 8B/64E, says how many parameters per input are used (8B) and how many experts (64E). Right: BigBench (Srivastava et al., 2022 ) studied the few-shot scaling properties on a larger set of 161 contributed JSON tasks to confirm improvements of sparse expert models over their FLOP-matched dense counterparts.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x6.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Sparse model calibration . The Expected Calibration Error improves with scale for both dense and spare models. However, sparse models exhibit significantly better calibration and roughly match the calibration of a 10 × \\times larger dense model. Figure is reproduced from Srivastava et al. ( 2022 ) .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x7.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Three common classes of routing algorithms . We illustrate three methods with an Experts × \\times Tokens activation matrix obtained through the process explained in Figure 2 . Left: “Choose Top- k 𝑘 k ” along the Experts axis includes the standard top- k 𝑘 k routing algorithm (Shazeer et al., 2017 ; Lepikhin et al., 2020 ) . Center: “Choose Top- k 𝑘 k ” along the Tokens axis are routing algorithms such as Zhou et al. ( 2022 ) . Right: “Globally Decide Expert Assignment” routing algorithms such as BASE layer (Lewis et al., 2021 ; Clark et al., 2022 ) .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x8.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Visualization of six different routing algorithms. Each diagram is of a Transformer sparse expert model with four experts (feed-forward networks) routing two tokens: “The” and “Dog”.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/x9.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Visual\nexpert specialization in LIMoE . We reproduce a figure from Mustafa et al. ( 2022 ) which finds expert specialize in patches of textures (solid and striped), natural objects (plants, hands, eyes), and man-made objects (wheels, door handles, words).",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.01667/assets/figures/expert_patches.png"
+  }
+]

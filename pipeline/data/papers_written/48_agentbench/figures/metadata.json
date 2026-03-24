@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: An overview of LLMs on AgentBench . While LLMs begin to manifest their proficiency in LLM-as-Agent, gaps between models and the distance toward practical usability are significant.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: AgentBench is the first systematic benchmark to evaluate LLM-as-Agent on a wide array of real-world challenges and 8 distinct environments. In total, 27 LLMs are examined in this edition.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Table 4: Portions of different types of execution outcomes in 8 tasks. (CLE: Context Limit Exceeded , TLE: Task Limit Exceeded ).",
+    "figure_number": "Table 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3: AgentBench OA scores with regard to all tested OSS LLMs.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x3.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/os-demo.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/db-demo.png"
+  },
+  {
+    "filename": "fig_6_3.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/kg-demo.png"
+  },
+  {
+    "filename": "fig_6_4.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/dcg-demo.png"
+  },
+  {
+    "filename": "fig_6_5.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/ltp-demo.png"
+  },
+  {
+    "filename": "fig_6_6.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/hh-demo.png"
+  },
+  {
+    "filename": "fig_6_7.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/ws-demo.png"
+  },
+  {
+    "filename": "fig_6_8.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/wb-demo.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(a) Operating System (OS) Task: “Find the total number of non-empty directories inside the ‘/etc’ directory.” Action Space: Any valid bash commands Observation: System standard output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/os-demo.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(b) Database (DB) Task: “What was the total number of medals won by United States?”, given the table ‘Olympic Medals’ Action space: Any valid SQL commands Observation: MySQL CLI interface output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/db-demo.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(c) Knowledge Graph (KG) Task: “Find tropical cyclones that are similar to Hurricane Marie and affected Eastern North America.” Action space: Basic KG-querying tools Observation: Query results",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/kg-demo.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(d) Digital Card Game (DCG) Task: “Compete against another player using four ‘fish’ cards in ‘Aquawar’ game.” Action space: Four ‘fish’ cards and Assertion Observation: Battle process, status of ‘fish’",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/dcg-demo.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(e) Lateral Thinking Puzzles (LTP) Task: “A man sleeps with the lights off, and the next morning he suicides after opening windows. Why?” Action Space: Any binary questions Observation: ‘Yes’, ‘No’, or ‘Irrelevant’",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/ltp-demo.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(f) House-holding (HH) Task: “Clean some soapbar and put it in coutertop” Action space: A list of allowed actions in the room, or other accessible rooms Observation: Results after the action.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/hh-demo.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(g) Web Shopping (WS) Task: “Looking for a queen size bedspread set in the color redwood, and price lower than 70.” Action space: Search (generate keywords) and Click (choose from all clickable buttons) Observation: Products’ descriptions; the webpage",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/ws-demo.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(h) Web Browsing (WB) Task: “Find a latest post with more than 10k upvotes in r/announcements community and upvote it.” Action space: 1) Choose one out of all HTML elements in the webpage; 2) Click, Type, or Select Options Observation: Page HTML (optional: screenshot)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/demo/wb-demo.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 5: The toolkit of AgentBench is meticulously crafted for the seamless deployment of tasks and agents, coupled with an efficient evaluation assignment system. Agent servers (left) manifest in diverse forms, enabling us to deploy a model server and expose an accessible API through the HTTP protocol. Task servers (right) are composed of a task controller and several task workers, whose environment is within an isolated environment, ensuring freedom from conflicts and optimal task execution. Evaluation client (center) establishes an agent-task graph and employs the max-flow algorithm to optimize interactions. This optimization results in client workers seamlessly engaging with agent and task servers, facilitating the smooth execution of tasks and evaluations.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/figs/framework.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 6: Validity analysis of models. Invalid Format , Invalid Action , and Text Limit Exceeded are common errors. Context Limit Exceeded errors only appear in text-davinci models.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x4.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 7: The thought and plan of gpt-4",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x5.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 8: Averaged sample validity ratio of webshop",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.03688/assets/x6.png"
+  }
+]

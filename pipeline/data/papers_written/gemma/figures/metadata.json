@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Language understanding and generation performance of Gemma 7B across\ndifferent capabilities compared to similarly sized open models. We group together standard academic benchmark evaluations by capability and average the respective scores; see Table 6 for a detailed breakdown of performance.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.08295/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Comparing average memorization rates across model families. We compare the Gemma pretrained models to PaLM and PaLM 2 models of comparable size and find similarly low rates of memorization.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.08295/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Measuring personal and sensitive data memorization rates. No sensitive data was memorized, hence it is omitted from the figure .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.08295/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Comparing exact and approximate memorization.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.08295/assets/x4.png"
+  }
+]
