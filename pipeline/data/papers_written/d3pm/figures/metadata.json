@@ -1,0 +1,98 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : D3PM forward and (learned) reverse process applied to a quantized swiss roll. Each dot represents a 2D categorical variable. Top: samples from the uniform, discretized Gaussian, and absorbing state D3PM model forward processes, along with corresponding transition matrices 𝑸 𝑸 \\bm{Q} . Bottom: samples from a learned discretized Gaussian reverse process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/final.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Left: perplexity v.s. sampling iterations for LM1B. Right: Using a trained D3PM absorbing model for LM1B to (top) generate new sentences and (bottom) reconstruct corrupted examples.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/perplexity3.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3 : Left: progressive sampling at t = 1000 , 900 , 800 , … , 0 fragments t 1000 , 900 , 800 , … , 0 t=1000,900,800,...,0 for D3PM absorbing (top) and D3PM Gauss + logistic (bottom), trained with L λ fragments L 𝜆 L_{\\lambda} loss on CIFAR-10. These samples were cherry picked. Right: (non cherry picked) samples from the D3PM Gauss + logistic model.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/progressive_samples_mask_hybrid.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3 : Left: progressive sampling at t = 1000 , 900 , 800 , … , 0 fragments t 1000 , 900 , 800 , … , 0 t=1000,900,800,...,0 for D3PM absorbing (top) and D3PM Gauss + logistic (bottom), trained with L λ fragments L 𝜆 L_{\\lambda} loss on CIFAR-10. These samples were cherry picked. Right: (non cherry picked) samples from the D3PM Gauss + logistic model.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/progressive_samples_gauss_logistic_hybrid.png"
+  },
+  {
+    "filename": "fig_3_3.png",
+    "caption": "Figure 3 : Left: progressive sampling at t = 1000 , 900 , 800 , … , 0 fragments t 1000 , 900 , 800 , … , 0 t=1000,900,800,...,0 for D3PM absorbing (top) and D3PM Gauss + logistic (bottom), trained with L λ fragments L 𝜆 L_{\\lambda} loss on CIFAR-10. These samples were cherry picked. Right: (non cherry picked) samples from the D3PM Gauss + logistic model.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/cifar10_samples_cropped.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/progressive_samples_mask_hybrid.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/progressive_samples_gauss_logistic_hybrid.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/cifar10_samples_cropped.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4 : Two examples of noise schedules transforming text data. The top is a BERT-like absorbing + uniform diffusion which replaces tokens with [MASK] tokens (and occasionally with any other token, in black). The bottom is nearest-neighbor diffusion in embedding space. At left represents a possible column in the transition matrix.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/text_diffusion.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5 : The character-level symmetrized 5-NN graph.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/char_nn.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6 : Plot of the probabilities of having k 𝑘 k tokens masked out of a length-50 sequence under a D3PM absorbing schedule with T = 50 fragments T 50 T=50 steps, which is very similar to the uniform weighting used by Ghazvininejad et al. [ 14 ] .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/mask_weighting.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 7 : Samples from the D3PM uniform model trained with L vb fragments L vb L_{\\mathrm{vb}} (top), the D3PM absorb model trained with L λ = 0.001 fragments L fragments λ 0.001 L_{\\lambda=0.001} (middle), and the D3PM Gauss + logistic model trained with L λ = 0.001 fragments L fragments λ 0.001 L_{\\lambda=0.001} (bottom). These samples were not cherry picked.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/cifar10_samples_uniform_row.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "Figure 7 : Samples from the D3PM uniform model trained with L vb fragments L vb L_{\\mathrm{vb}} (top), the D3PM absorb model trained with L λ = 0.001 fragments L fragments λ 0.001 L_{\\lambda=0.001} (middle), and the D3PM Gauss + logistic model trained with L λ = 0.001 fragments L fragments λ 0.001 L_{\\lambda=0.001} (bottom). These samples were not cherry picked.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/cifar10_samples_mask_row.png"
+  },
+  {
+    "filename": "fig_9_3.png",
+    "caption": "Figure 7 : Samples from the D3PM uniform model trained with L vb fragments L vb L_{\\mathrm{vb}} (top), the D3PM absorb model trained with L λ = 0.001 fragments L fragments λ 0.001 L_{\\lambda=0.001} (middle), and the D3PM Gauss + logistic model trained with L λ = 0.001 fragments L fragments λ 0.001 L_{\\lambda=0.001} (bottom). These samples were not cherry picked.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/cifar10_samples_gausslogistic_row.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 8 : Scaling of text8 bits/dim with inference steps. “mask” denotes D3PM absorbing.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/text8_elbo_scaling.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 9 : Inference time for a D3PM absorbing model (‘mask’) on text8 in seconds as a function of iterations, compared to an autoregressive model.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2107.03006/assets/figures/inference-time.png"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: Throughput and accuracy on Imagenet of our methods compared to EfficientNets, trained on Imagenet1k only. The throughput is measured as the number of images processed per second on a V100 GPU. DeiT-B is identical to VIT-B, but the training is more adapted to a data-starving regime. It is learned in a few days on one machine. The symbol refers to models trained with our transformer-specific distillation.\nSee Table 5 for details and more models.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2012.12877/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: Throughput and accuracy on Imagenet of our methods compared to EfficientNets, trained on Imagenet1k only. The throughput is measured as the number of images processed per second on a V100 GPU. DeiT-B is identical to VIT-B, but the training is more adapted to a data-starving regime. It is learned in a few days on one machine. The symbol refers to models trained with our transformer-specific distillation.\nSee Table 5 for details and more models.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2012.12877/assets/x3.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Our distillation procedure:\nwe simply include a new distillation token . It interacts with the class and patch tokens through the self-attention layers. This distillation token is employed in a similar fashion as the class token, except that on output of the network its objective is to reproduce the (hard) label predicted by the teacher, instead of true label. Both the class and distillation tokens input to the transformers are learned by back-propagation.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2012.12877/assets/x5.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Distillation on ImageNet [ 42 ] with DeiT-B: performance as a function of the number of training epochs. We provide the performance without distillation (horizontal dotted line) as it saturates after 400 epochs.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2012.12877/assets/x18.png"
+  }
+]

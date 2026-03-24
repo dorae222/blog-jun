@@ -1,0 +1,80 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Model behaviors illustrated on a two-dimensional coordinate system, where the horizontal axis stands for the position and the vertical axis represents the diffusion timestep.\nIn the inference stage, different models will behave differently.\n(a) For the typical Diffusion-LM (Li et al., 2022a ) , each token share the identical movement speed v ​ ( n 1 , t i , t i + 1 ) = v ​ ( n 2 , t i , t i + 1 ) = | t i + 1 − t i | 𝑣 subscript 𝑛 1 subscript 𝑡 𝑖 subscript 𝑡 𝑖 1 𝑣 subscript 𝑛 2 subscript 𝑡 𝑖 subscript 𝑡 𝑖 1 subscript 𝑡 𝑖 1 subscript 𝑡 𝑖 v(n_{1},t_{i},t_{i+1})=v(n_{2},t_{i},t_{i+1})=|t_{i+1}-t_{i}| .\n(b) For AR from the perspective of diffusion models, the tokens have two states based on the degree of interpolation between the original tokens and Gaussian noise: to be decoded (at timestep t = T 𝑡 𝑇 t=T ) and already decoded (at timestep t = 0 𝑡 0 t=0 ). Specifically, we have v ​ ( n 1 , t i , t i + 1 ) = 0 𝑣 subscript 𝑛 1 subscript 𝑡 𝑖 subscript 𝑡 𝑖 1 0 v(n_{1},t_{i},t_{i+1})=0 and v ​ ( n 2 , t i , t i + 1 ) = T 𝑣 subscript 𝑛 2 subscript 𝑡 𝑖 subscript 𝑡 𝑖 1 𝑇 v(n_{2},t_{i},t_{i+1})=T .\n(c) In AR-Diffusion , ( n e , t e ) subscript 𝑛 𝑒 subscript 𝑡 𝑒 (n_{e},t_{e}) is the coordinate of anchor point. Tokens in different positions exhibit varying movement speeds, such as v ​ ( n 1 , t i , t i + 1 ) > v ​ ( n 2 , t i , t i + 1 ) 𝑣 subscript 𝑛 1 subscript 𝑡 𝑖 subscript 𝑡 𝑖 1 𝑣 subscript 𝑛 2 subscript 𝑡 𝑖 subscript 𝑡 𝑖 1 v(n_{1},t_{i},t_{i+1})>v(n_{2},t_{i},t_{i+1}) when n 1 < n 2 subscript 𝑛 1 subscript 𝑛 2 n_{1}<n_{2} .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: Ablation experiments on XSum test set and taking k 𝑘 k = 5. The horizontal axis is the number of inference steps and the vertical axis is AVG-ROUGE = ( ROUGE-1 + ROUGE-2 + ROUGE-L ) / 3.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: Ablation experiments on XSum test set and taking k 𝑘 k = 5. The horizontal axis is the number of inference steps and the vertical axis is AVG-ROUGE = ( ROUGE-1 + ROUGE-2 + ROUGE-L ) / 3.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x3.png"
+  },
+  {
+    "filename": "fig_2_3.png",
+    "caption": "Figure 2: Ablation experiments on XSum test set and taking k 𝑘 k = 5. The horizontal axis is the number of inference steps and the vertical axis is AVG-ROUGE = ( ROUGE-1 + ROUGE-2 + ROUGE-L ) / 3.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x4.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 3: The intermediate state of AR-Diffusion gradually generating real text from a standard Gaussian noise through 20 steps. The brightness of the color represents the magnitude of the logits, with darker colors indicating larger logits. More cases are shown in the supplementary materials B .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 4: Relationship between the number of candidate samples for applying MBR and SacreBLEU on IWSLT14 De → En test set.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x6.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 4: Relationship between the number of candidate samples for applying MBR and SacreBLEU on IWSLT14 De → En test set.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x6.png"
+  },
+  {
+    "filename": "fig_10_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x7.png"
+  },
+  {
+    "filename": "fig_10_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x8.png"
+  },
+  {
+    "filename": "fig_10_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.09515/assets/x9.png"
+  }
+]

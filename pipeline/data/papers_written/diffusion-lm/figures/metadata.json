@@ -1,0 +1,56 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Diffusion-LM iteratively denoises a sequence of Gaussian vectors into word vectors, yielding a intermediate latent variables of decreasing noise level 𝐱 T ​ ⋯ ​ 𝐱 0 subscript 𝐱 𝑇 ⋯ subscript 𝐱 0 \\mathbf{x}_{T}\\cdots\\mathbf{x}_{0} . For controllable generation, we iteratively perform gradient updates on these continuous latents to optimize for fluency (parametrized by Diffusion-LM) and satisfy control requirements (parametrized by a classifier).",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: A graphical model representing the forward and reverse diffusion processes. In addition to the original diffusion models [ 12 ] , we add a Markov transition between 𝐱 0 subscript 𝐱 0 \\mathbf{x}_{0} and 𝐰 𝐰 \\mathbf{w} , and propose the embedding § 4.1 and rounding § 4.2 techniques.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: A t-SNE [ 41 ] plot of the learned word embeddings. Each word is colored by its POS.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: We measure the impact of our proposed design choices through lm-score. We find both learned embeddings and reparametrization substantially improves sample quality.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4: We measure the impact of our proposed design choices through lm-score. We find both learned embeddings and reparametrization substantially improves sample quality.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x5.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Visualizing the noise schedule 1 − α ¯ t 1 subscript ¯ 𝛼 𝑡 \\sqrt{1-\\bar{\\alpha}_{t}} .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x6.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "Figure 6: Additional ablation results. The first row shows Diffusion-LM with trainable embeddings outperform random embeddings on both datasets ( § 4.1 ). The second row demonstrates that sqrt schedule attains consistently good and stable performance across all dimension and parametrization choices. The last row shows that Transformer architecture outperforms U-Net architecture for language modeling.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x7.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "Figure 6: Additional ablation results. The first row shows Diffusion-LM with trainable embeddings outperform random embeddings on both datasets ( § 4.1 ). The second row demonstrates that sqrt schedule attains consistently good and stable performance across all dimension and parametrization choices. The last row shows that Transformer architecture outperforms U-Net architecture for language modeling.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x8.png"
+  },
+  {
+    "filename": "fig_6_3.png",
+    "caption": "Figure 6: Additional ablation results. The first row shows Diffusion-LM with trainable embeddings outperform random embeddings on both datasets ( § 4.1 ). The second row demonstrates that sqrt schedule attains consistently good and stable performance across all dimension and parametrization choices. The last row shows that Transformer architecture outperforms U-Net architecture for language modeling.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.14217/assets/x9.png"
+  }
+]

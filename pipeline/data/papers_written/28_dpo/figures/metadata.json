@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: DPO optimizes for human preferences while avoiding reinforcement learning. Existing methods for fine-tuning language models with human feedback first fit a reward model to a dataset of prompts and human preferences over pairs of responses, and then use RL to find a policy that maximizes the learned reward. In contrast, DPO directly optimizes for the policy best satisfying the preferences with a simple classification objective, fitting an implicit reward model whose corresponding optimal policy can be extracted in closed form.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/figures/diagrams/teaser.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: Left. The frontier of expected reward vs KL to the reference policy. DPO provides the highest expected reward for all KL values, demonstrating the quality of the optimization. Right. TL;DR summarization win rates vs. human-written summaries, using GPT-4 as evaluator. DPO exceeds PPO’s best-case performance on summarization, while being more robust to changes in the sampling temperature.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: Left. The frontier of expected reward vs KL to the reference policy. DPO provides the highest expected reward for all KL values, demonstrating the quality of the optimization. Right. TL;DR summarization win rates vs. human-written summaries, using GPT-4 as evaluator. DPO exceeds PPO’s best-case performance on summarization, while being more robust to changes in the sampling temperature.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: Left. Win rates computed by GPT-4 for Anthropic-HH one-step dialogue; DPO is the only method that improves over chosen summaries in the Anthropic-HH test set. Right. Win rates for different sampling temperatures over the course of training. DPO’s improvement over the dataset labels is fairly stable over the course of training for different sampling temperatures.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: Left. Win rates computed by GPT-4 for Anthropic-HH one-step dialogue; DPO is the only method that improves over chosen summaries in the Anthropic-HH test set. Right. Win rates for different sampling temperatures over the course of training. DPO’s improvement over the dataset labels is fairly stable over the course of training for different sampling temperatures.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: Best of N 𝑁 N baseline for N = { 1 , 4 , 16 , 64 , 128 } 𝑁 1 4 16 64 128 N=\\{1,4,16,64,128\\} . Performance plateaus after roughly 64-128 samples.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/x5.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4: Best of N 𝑁 N baseline for N = { 1 , 4 , 16 , 64 , 128 } 𝑁 1 4 16 64 128 N=\\{1,4,16,64,128\\} . Performance plateaus after roughly 64-128 samples.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/x6.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Layout of the survey in SurveyMonkey. Each respondent completed 25 similarly-formatted judgments.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.18290/assets/figures/results/survey.png"
+  }
+]

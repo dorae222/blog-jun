@@ -1,0 +1,38 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: The graphs of ℒ CSM subscript ℒ CSM \\mathcal{L}_{\\rm CSM} versus ℒ SE subscript ℒ SE \\mathcal{L}_{\\rm SE} for a ground truth score of 0.2 0.2 0.2 . The score entropy loss respects nonnegativity.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16834/assets/imgs/img_loss.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "(a) Generative Perplexity vs. Sampling Iterations.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16834/assets/imgs/img_perplexity.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "(a) Generative Perplexity vs. Sampling Iterations.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16834/assets/imgs/img_perplexity.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3: Score Parameterization vs Mean Parameterization. We train absorbing diffusion models with the score and mean parameterization. We see that the mean parameterization drastically underperforms, which results in around a ≈ 65 % absent percent 65 \\approx 65\\% increase in perplexity scores in practice.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16834/assets/imgs/score_vs_mean.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4: Generative Perplexity for SEDD absorbing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16834/assets/imgs/img_perplexity_large_absorb.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5: Generative Perplexity for SEDD uniform.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16834/assets/imgs/img_perplexity_large_uniform.png"
+  }
+]

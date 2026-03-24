@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : (Left) Our proposed masked diffusion language model (MDLM) is trained using a weighted average of masked cross entropy losses.\n( Top Right ) In comparison to masked language models (MLM), MDLM’s objective\ncorrespond to a principled variational lower bound, and supports generation via ancestral sampling.\n( Bottom Right ) Perplexity (PPL) on One Billion Words benchmark.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2406.07524/assets/figures/graphical_abstract_updated_2.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Generative perplexities across wall clock time for generating 64 samples on OWT using a single 32GB A5000 GPU are compared by varying T ∈ { 100 , 500 , 1000 , 5000 , 10000 } 𝑇 100 500 1000 5000 10000 T\\in\\{100,500,1000,5000,10000\\} in the reverse diffusion process. The samples are generated in mini-batches with a batch size of 16 for AR, SEDD, and MDLM without caching, as it is the largest batch size that fits on this GPU. For MDLM with caching, we vary the batch size.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2406.07524/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Train negative log-likelihood (NLL) curves across 1M gradient steps (524B tokens) on OpenWebText [ 13 ] . NLL is logged every 1K steps without value smoothing.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2406.07524/assets/x2.png"
+  }
+]

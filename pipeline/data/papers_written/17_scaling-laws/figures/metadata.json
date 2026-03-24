@@ -1,0 +1,218 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Language modeling performance improves smoothly as we increase the model size, datasetset size, and amount of compute 1 1 1 Here we display predicted compute when using a sufficiently small batch size. See Figure 13 for comparison to the purely empirical data. used for training. For optimal performance all three factors must be scaled up in tandem. Empirical performance has a power-law relationship with each individual factor when not bottlenecked by the other two.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: We show a series of language model training runs, with models ranging in size from 10 3 superscript 10 3 10^{3} to 10 9 superscript 10 9 10^{9} parameters (excluding embeddings).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: As more compute becomes available, we can choose how much to allocate towards training larger models, using larger batches, and training for more steps. We illustrate this for a billion-fold increase in compute. For optimally compute-efficient training, most of the increase should go towards increased model size. A relatively small increase in data is needed to avoid reuse. Of the increase in data, most can be used to increase parallelism through larger batch sizes, with only a very small increase in serial training time required.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: Left : The early-stopped test loss L ​ ( N , D ) 𝐿 𝑁 𝐷 L(N,D) varies predictably with the dataset size D 𝐷 D and model size N 𝑁 N according to Equation ( 1.5 ). Right : After an initial transient period, learning curves for all model sizes N 𝑁 N can be fit with Equation ( 1.6 ), which is parameterized in terms of S min subscript 𝑆 min S_{\\rm min} , the number of steps when training at large batch size (details in Section 5.1 ).",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4: Left : The early-stopped test loss L ​ ( N , D ) 𝐿 𝑁 𝐷 L(N,D) varies predictably with the dataset size D 𝐷 D and model size N 𝑁 N according to Equation ( 1.5 ). Right : After an initial transient period, learning curves for all model sizes N 𝑁 N can be fit with Equation ( 1.6 ), which is parameterized in terms of S min subscript 𝑆 min S_{\\rm min} , the number of steps when training at large batch size (details in Section 5.1 ).",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x5.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Performance depends very mildly on model shape when the total number of non-embedding parameters N 𝑁 N is held fixed. The loss varies only a few percent over a wide range of shapes. Small differences in parameter counts are compensated for by using the fit to L ​ ( N ) 𝐿 𝑁 L(N) as a baseline. Aspect ratio in particular can vary by a factor of 40 while only slightly impacting performance; an ( n layer , d model ) = ( 6 , 4288 ) subscript 𝑛 layer subscript 𝑑 model 6 4288 (n_{\\mathrm{layer}},d_{\\mathrm{model}})=(6,4288) reaches a loss within 3% of the ( 48 , 1600 ) 48 1600 (48,1600) model used in [ RWC + 19 ] .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x6.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "Figure 6: Left: When we include embedding parameters, performance appears to depend strongly on the number of layers in addition to the number of parameters. Right: When we exclude embedding parameters, the performance of models with different depths converge to a single trend. Only models with fewer than 2 layers or with extreme depth-to-width ratios deviate significantly from the trend.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x7.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "Figure 6: Left: When we include embedding parameters, performance appears to depend strongly on the number of layers in addition to the number of parameters. Right: When we exclude embedding parameters, the performance of models with different depths converge to a single trend. Only models with fewer than 2 layers or with extreme depth-to-width ratios deviate significantly from the trend.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x8.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7:",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x9.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 8: Left: Generalization performance to other data distributions improves smoothly with model size, with only a small and very slowly growing offset from the WebText2 training distribution. Right: Generalization performance depends only on training distribution performance, and not on the phase of training. We compare generalization of converged models (points) to that of a single large model (dashed curves) as it trains.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x10.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 8: Left: Generalization performance to other data distributions improves smoothly with model size, with only a small and very slowly growing offset from the WebText2 training distribution. Right: Generalization performance depends only on training distribution performance, and not on the phase of training. We compare generalization of converged models (points) to that of a single large model (dashed curves) as it trains.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x11.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 9: The early-stopped test loss L ​ ( N , D ) 𝐿 𝑁 𝐷 L(N,D) depends predictably on the dataset size D 𝐷 D and model size N 𝑁 N according to Equation ( 1.5 ). Left :\nFor large D 𝐷 D , performance is a straight power law in N 𝑁 N . For a smaller fixed D 𝐷 D , performance stops improving as N 𝑁 N increases and the model begins to overfit. (The reverse is also true, see Figure 4 .) Right : The extent of overfitting depends predominantly on the ratio N α N α D / D superscript 𝑁 subscript 𝛼 𝑁 subscript 𝛼 𝐷 𝐷 N^{\\frac{\\alpha_{N}}{\\alpha_{D}}}/D , as predicted in equation ( 4.3 ). The line is our fit to that equation.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x12.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "Figure 9: The early-stopped test loss L ​ ( N , D ) 𝐿 𝑁 𝐷 L(N,D) depends predictably on the dataset size D 𝐷 D and model size N 𝑁 N according to Equation ( 1.5 ). Left :\nFor large D 𝐷 D , performance is a straight power law in N 𝑁 N . For a smaller fixed D 𝐷 D , performance stops improving as N 𝑁 N increases and the model begins to overfit. (The reverse is also true, see Figure 4 .) Right : The extent of overfitting depends predominantly on the ratio N α N α D / D superscript 𝑁 subscript 𝛼 𝑁 subscript 𝛼 𝐷 𝐷 N^{\\frac{\\alpha_{N}}{\\alpha_{D}}}/D , as predicted in equation ( 4.3 ). The line is our fit to that equation.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x13.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: The critical batch size B crit subscript 𝐵 crit B_{\\rm crit} follows a power law in the loss as performance increase, and does not depend directly on the model size. We find that the critical batch size approximately doubles for every 13 % percent 13 13\\% decrease in loss. B crit subscript 𝐵 crit B_{\\rm crit} is measured empirically from the data shown in Figure 18 , but it is also roughly predicted by the gradient noise scale, as in [ MKAT18 ] .",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x14.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "Figure 11: When we hold either total compute or number of training steps fixed, performance follows L ​ ( N , S ) 𝐿 𝑁 𝑆 L(N,S) from Equation ( 5.6 ). Each value of compute budget has an associated optimal model size that maximizes performance. Mediocre fits at small S 𝑆 S are unsurprising, as the power-law equation for the learning curves breaks down very early in training.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x15.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "Figure 11: When we hold either total compute or number of training steps fixed, performance follows L ​ ( N , S ) 𝐿 𝑁 𝑆 L(N,S) from Equation ( 5.6 ). Each value of compute budget has an associated optimal model size that maximizes performance. Mediocre fits at small S 𝑆 S are unsurprising, as the power-law equation for the learning curves breaks down very early in training.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x16.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: Left: Given a fixed compute budget, a particular model size is optimal, though somewhat larger or smaller models can be trained with minimal additional compute. Right: Models larger than the compute-efficient size require fewer steps to train, allowing for potentially faster training if sufficient additional parallelism is possible. Note that this equation should not be trusted for very large models, as it is only valid in the power-law region of the learning curve, after initial transient effects.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x17.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13: When adjusting performance to simulate training far below the critical batch size, we find a somewhat altered power law for L ​ ( C min ) 𝐿 subscript 𝐶 min L(C_{\\rm min}) when compared with the fully empirical results. The conspicuous lump at 10 − 5 superscript 10 5 10^{-5} PF-days marks the transition from 1-layer to 2-layer networks; we exclude 1-layer networks in the power-law fits. It is the L ​ ( C min ) 𝐿 subscript 𝐶 min L(C_{\\rm min}) trend that we expect to provide a reliable extrapolation for larger compute.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x18.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 14: Left: Each value of the compute budget C min subscript 𝐶 min C_{\\rm min} has an associated optimal model size N 𝑁 N . Optimal model size grows very rapidly with C min subscript 𝐶 min C_{\\rm min} , increasing by 5x for each 10x increase in compute. The number of data examples processed makes up the remainder of the increase, growing relatively modestly by only 2x. Right: The batch-adjusted number of optimization steps also grows very slowly, if at all, meaning that most of the growth in data examples processed can be used for increased batch sizes.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x19.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 14: Left: Each value of the compute budget C min subscript 𝐶 min C_{\\rm min} has an associated optimal model size N 𝑁 N . Optimal model size grows very rapidly with C min subscript 𝐶 min C_{\\rm min} , increasing by 5x for each 10x increase in compute. The number of data examples processed makes up the remainder of the increase, growing relatively modestly by only 2x. Right: The batch-adjusted number of optimization steps also grows very slowly, if at all, meaning that most of the growth in data examples processed can be used for increased batch sizes.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x20.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 15: Far beyond the model sizes we study empirically, we find a contradiction between our equations for L ​ ( C min ) 𝐿 subscript 𝐶 min L(C_{\\rm min}) and L ​ ( D ) 𝐿 𝐷 L(D) due to the slow growth of data needed for compute-efficient training. The intersection marks the point before which we expect our predictions to break down. The location of this point is highly sensitive to the precise exponents from our power-law fits.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x21.png"
+  },
+  {
+    "filename": "fig_16_1.png",
+    "caption": "Figure 16: Left: We characterize the step on which early stopping occurs, as a function of the extent of overfitting. The red line indicates a lower bound for early stopping that is derived in Section 5.3 . Right: We display train and test loss for a series of 300M parameter models trained on different sized dataset sub-samples. The test loss typically follows that of a run done with unrestricted data until diverging. Note that the degree of overfitting (as compared to the infinite data limit) is significantly overestimated by L test − L train subscript 𝐿 test subscript 𝐿 train L_{\\rm test}-L_{\\rm train} (denoted by a black bar for each run).",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x22.png"
+  },
+  {
+    "filename": "fig_16_2.png",
+    "caption": "Figure 16: Left: We characterize the step on which early stopping occurs, as a function of the extent of overfitting. The red line indicates a lower bound for early stopping that is derived in Section 5.3 . Right: We display train and test loss for a series of 300M parameter models trained on different sized dataset sub-samples. The test loss typically follows that of a run done with unrestricted data until diverging. Note that the degree of overfitting (as compared to the infinite data limit) is significantly overestimated by L test − L train subscript 𝐿 test subscript 𝐿 train L_{\\rm test}-L_{\\rm train} (denoted by a black bar for each run).",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x23.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "Figure 17: We compare recurrent Transformers [ DGV + 18 ] , which re-use parameters, to standard Transformers. Recurrent Transformers perform slightly better when comparing models with equal parameter count, but slightly worse when accounting for reuse and comparing per FLOP.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x24.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "Figure 17: We compare recurrent Transformers [ DGV + 18 ] , which re-use parameters, to standard Transformers. Recurrent Transformers perform slightly better when comparing models with equal parameter count, but slightly worse when accounting for reuse and comparing per FLOP.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x25.png"
+  },
+  {
+    "filename": "fig_18_1.png",
+    "caption": "Figure 18: These figures demonstrate fits to Equation ( 5.1 ) for a large number of values of the loss L 𝐿 L , and for two different Transformer model sizes. These fits were used to measure B crit ​ ( L ) subscript 𝐵 crit 𝐿 B_{\\rm crit}(L) for Figure 10 .",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x26.png"
+  },
+  {
+    "filename": "fig_18_2.png",
+    "caption": "Figure 18: These figures demonstrate fits to Equation ( 5.1 ) for a large number of values of the loss L 𝐿 L , and for two different Transformer model sizes. These fits were used to measure B crit ​ ( L ) subscript 𝐵 crit 𝐿 B_{\\rm crit}(L) for Figure 10 .",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x27.png"
+  },
+  {
+    "filename": "fig_19_1.png",
+    "caption": "Figure 19: The number of minimum serial steps needed to reach any fixed value of the test loss decreases precipitously with model size. Sample efficiency (show here for training far below the critical batch size) improves greatly as well, improving by a factor of almost 100 when comparing the smallest possible model to a very large one.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x28.png"
+  },
+  {
+    "filename": "fig_19_2.png",
+    "caption": "Figure 19: The number of minimum serial steps needed to reach any fixed value of the test loss decreases precipitously with model size. Sample efficiency (show here for training far below the critical batch size) improves greatly as well, improving by a factor of almost 100 when comparing the smallest possible model to a very large one.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x29.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "Figure 20: This figure provides information about the performance per token as a function of model size and training time. Left: Loss per token as a function of its position T 𝑇 T in the 1024-token context. Loss scales predictably as a power-law in T 𝑇 T . Right: Test loss per token as a function of training step.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x30.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "Figure 20: This figure provides information about the performance per token as a function of model size and training time. Left: Loss per token as a function of its position T 𝑇 T in the 1024-token context. Loss scales predictably as a power-law in T 𝑇 T . Right: Test loss per token as a function of training step.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x31.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 21: In addition to the averaged loss, individual tokens within the 1024-token context also improve smoothly as model size increases. Training runs with shorter context n ctx = 8 subscript 𝑛 ctx 8 n_{\\rm ctx}=8 (dashed lines) perform better on early tokens, since they can allocate all of their capacity to them.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x32.png"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "Figure 22: We test a variety of learning rate schedules including cosine decay, linear decay, as well as other faster/slower decays schedules on a 3 million parameter model, shown on the left.\nFor these experiments we do not decay to zero, since we find that this tends to give a fixed improvement close to the end of training.\nWe find that, as long as the learning rate is not too small and does not decay too quickly, performance does not depend strongly on learning rate.\nRun-to-run variation is at the level of  0.05 in the loss, so averaging multiple runs is necessary to validate performance changes smaller than this level.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x33.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "Figure 22: We test a variety of learning rate schedules including cosine decay, linear decay, as well as other faster/slower decays schedules on a 3 million parameter model, shown on the left.\nFor these experiments we do not decay to zero, since we find that this tends to give a fixed improvement close to the end of training.\nWe find that, as long as the learning rate is not too small and does not decay too quickly, performance does not depend strongly on learning rate.\nRun-to-run variation is at the level of  0.05 in the loss, so averaging multiple runs is necessary to validate performance changes smaller than this level.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x34.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 23: The trend for performance as a function of parameter count, L ​ ( N ) 𝐿 𝑁 L(N) , is fit better by a power law than by other functions such as a logarithm at a qualitative level.",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x35.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 24: We show evaluations on a series of datasets for models with approximately 1.5 Billion parameters. We observe no effect of depth on generalization; generalization performance depends primarily on training distribution performance. The 12-layer model overfit the Internet Books dataset and we show the early-stopped performance; we have not seen this surprising result in other experiments.",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2001.08361/assets/x36.png"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Chain-of-thought prompting enables large language models to tackle complex arithmetic, commonsense, and symbolic reasoning tasks.\nChain-of-thought reasoning processes are highlighted.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2201.11903/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Examples of ⟨ ⟨ \\langle input, chain of thought, output ⟩ ⟩ \\rangle triples for arithmetic, commonsense, and symbolic reasoning benchmarks. Chains of thought are highlighted.\nFull prompts in Appendix G .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2201.11903/assets/x2.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: Error analysis of 45 problems that PaLM 62B got incorrect.\nThese errors were categorized that semantic understanding, one step missing, and other. The other category includes hallucinations, repetitive outputs, and symbol mapping errors.\nScaling PaLM to 540B fixed a substantial portion of errors in all categories.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2201.11903/assets/x3.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: Examples of semantic understanding and one-step missing errors that were fixed by scaling PaLM from 62B to 540B.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2201.11903/assets/x4.png"
+  }
+]
