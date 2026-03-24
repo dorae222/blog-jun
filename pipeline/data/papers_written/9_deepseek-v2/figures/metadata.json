@@ -1,0 +1,44 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: (a) MMLU accuracy vs. activated parameters, among different open-source models.\n(b) Training costs and inference efficiency of DeepSeek 67B (Dense) and DeepSeek-V2.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: (a) MMLU accuracy vs. activated parameters, among different open-source models.\n(b) Training costs and inference efficiency of DeepSeek 67B (Dense) and DeepSeek-V2.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x2.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2: Illustration of the architecture of DeepSeek-V2.\nMLA ensures efficient inference by significantly reducing the KV cache for generation, and DeepSeekMoE enables training strong models at an economical cost through the sparse architecture.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3: Simplified illustration of Multi-Head Attention (MHA), Grouped-Query Attention (GQA), Multi-Query Attention (MQA), and Multi-head Latent Attention (MLA).\nThrough jointly compressing the keys and values into a latent vector, MLA significantly reduces the KV cache during inference.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5: Evaluation results on HumanEval and LiveCodeBench. The questions of LiveCodeBench are selected from the period between September 1st, 2023 and April 1st, 2024.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.04434/assets/x6.png"
+  }
+]
