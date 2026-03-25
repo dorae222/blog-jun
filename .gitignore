@@ -52,6 +52,7 @@ pipeline/data/parsed/
 pipeline/data/preprocessed/
 pipeline/data/archive/
 pipeline/data/*.json
+!pipeline/data/content_index.json
 pipeline/data/*.jsonl
 pipeline/data/.DS_Store
 
