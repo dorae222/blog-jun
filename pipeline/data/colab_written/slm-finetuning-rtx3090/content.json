@@ -1,0 +1,20 @@
+{
+  "slug": "slm-finetuning-rtx3090",
+  "title": "Fine-Tuning SLM on RTX 3090: Practical Guide",
+  "title_ko": "RTX 3090에서 SLM 파인튜닝 실전 가이드",
+  "category_slug": "training",
+  "summary": "RTX 3090 24GB VRAM 환경에서 7B~13B 모델을 LoRA/QLoRA로 파인튜닝하는 실전 가이드입니다. 메모리 예산 산정, 하이퍼파라미터 선정, Unsloth를 활용한 빠른 학습, 그리고 흔한 실수와 해결법을 다룹니다.",
+  "tags": [
+    "fine-tuning",
+    "lora",
+    "qlora",
+    "rtx-3090",
+    "vram",
+    "unsloth",
+    "peft",
+    "transformers",
+    "slm",
+    "practical-guide"
+  ],
+  "is_pinned": false
+}

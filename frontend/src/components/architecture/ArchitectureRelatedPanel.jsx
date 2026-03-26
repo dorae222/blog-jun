@@ -12,6 +12,7 @@ const RELATION_LABELS = {
 function RelatedItem({ item, nodeMap, onNodeFocus }) {
   const meta = nodeMap.get(item.slug)
   const color = CATEGORY_COLORS[meta?.architecture_category] || '#8895A7'
+  const displayName = item.name || meta?.name || item.slug
   const org = meta?.organization
   const year = meta?.release_date?.slice(0, 4)
 
@@ -20,31 +21,35 @@ function RelatedItem({ item, nodeMap, onNodeFocus }) {
       onClick={() => onNodeFocus(item.slug)}
       className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-50/5 transition-colors group"
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-start gap-2">
         <span
-          className="w-2 h-2 rounded-full shrink-0"
+          className="w-2 h-2 rounded-full shrink-0 mt-1.5"
           style={{ background: color }}
         />
-        <span
-          className="text-sm font-medium truncate flex-1"
-          style={{ color: 'var(--text)' }}
-        >
-          {item.name}
-        </span>
-        <span
-          className="text-[10px] px-1.5 py-0.5 rounded shrink-0"
-          style={{ background: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}
-        >
-          {RELATION_LABELS[item.type] || item.type}
-        </span>
-      </div>
-      {(org || year) && (
-        <div className="flex items-center gap-1.5 ml-4 mt-0.5 text-[11px]" style={{ color: 'var(--text-secondary)' }}>
-          {org && <span>{org}</span>}
-          {org && year && <span>·</span>}
-          {year && <span>{year}</span>}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span
+              className="text-sm font-medium truncate"
+              style={{ color: 'var(--text)' }}
+            >
+              {displayName}
+            </span>
+            <span
+              className="text-[10px] px-1.5 py-0.5 rounded shrink-0"
+              style={{ background: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}
+            >
+              {RELATION_LABELS[item.type] || item.type}
+            </span>
+          </div>
+          {(org || year) && (
+            <div className="flex items-center gap-1.5 mt-0.5 text-[11px]" style={{ color: 'var(--text-secondary)' }}>
+              {org && <span>{org}</span>}
+              {org && year && <span>·</span>}
+              {year && <span>{year}</span>}
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </button>
   )
 }
