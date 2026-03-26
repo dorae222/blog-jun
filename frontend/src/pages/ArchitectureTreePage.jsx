@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText } from 'lucide-react'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ArchitectureNodeDetail from '../components/architecture/ArchitectureNodeDetail'
+import ArchitectureRelatedPanel from '../components/architecture/ArchitectureRelatedPanel'
 import { getArchitectureTree } from '../api/posts'
 import { CATEGORY_COLORS, CATEGORIES } from '../data/architectureConstants'
 
@@ -105,8 +106,18 @@ export default function ArchitectureTreePage() {
   const [category, setCategory] = useState(searchParams.get('category') || 'all')
   const [mobileView, setMobileView] = useState('graph')
   const [matchIndex, setMatchIndex] = useState(0)
+  const [isLgScreen, setIsLgScreen] = useState(
+    typeof window !== 'undefined' ? window.innerWidth >= 1024 : true
+  )
 
   const graphRef = useRef(null)
+
+  // 화면 크기 감지 (좌측 패널 표시 여부)
+  useEffect(() => {
+    const handler = () => setIsLgScreen(window.innerWidth >= 1024)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
 
   // 검색 매칭 slug 배열
   const matchedSlugs = useMemo(() => {
@@ -344,9 +355,31 @@ export default function ArchitectureTreePage() {
           </div>
         ) : (
           <>
-            {/* 데스크탑: 그래프 + 사이드 패널 */}
+            {/* 데스크탑: 좌측 패널 + 그래프 + 우측 패널 */}
             <div className="hidden md:flex flex-1">
-              <div className={`relative ${selectedNode ? 'flex-1' : 'w-full'} transition-all`}>
+              {/* 좌측 관련 모델 패널 — lg+ 에서만 */}
+              <AnimatePresence>
+                {isLgScreen && selectedNode && (
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 260, opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
+                    transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                    className="shrink-0 overflow-hidden border-r"
+                    style={{ borderColor: 'var(--border)' }}
+                  >
+                    <ArchitectureRelatedPanel
+                      node={selectedNode}
+                      edges={edges}
+                      nodes={nodes}
+                      onNodeFocus={handleNodeFocus}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* 그래프 */}
+              <div className="relative flex-1">
                 <ArchitectureGraph
                   ref={graphRef}
                   nodes={nodes}
@@ -357,7 +390,8 @@ export default function ArchitectureTreePage() {
                   searchQuery={searchQuery}
                 />
               </div>
-              {/* 사이드 패널 (데스크탑) */}
+
+              {/* 우측 상세 패널 */}
               <AnimatePresence>
                 {selectedNode && (
                   <motion.div
@@ -374,6 +408,7 @@ export default function ArchitectureTreePage() {
                       onClose={() => setSelectedNode(null)}
                       onNodeFocus={handleNodeFocus}
                       layout="side"
+                      hideRelations={isLgScreen}
                     />
                   </motion.div>
                 )}
