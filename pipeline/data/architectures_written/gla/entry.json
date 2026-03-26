@@ -22,12 +22,24 @@
   "paper_url": "https://arxiv.org/abs/2312.06635",
   "code_url": "https://github.com/fla-org/flash-linear-attention",
   "license_type": "MIT",
-  "concepts": ["Gated Linear Attention", "Linear Attention", "Data-dependent Gating", "KV State", "Chunkwise Recurrence", "Forget Gate", "Linear Complexity"],
+  "concepts": [
+    "Gated Linear Attention",
+    "Linear Attention",
+    "Data-dependent Gating",
+    "KV State",
+    "Chunkwise Recurrence",
+    "Forget Gate",
+    "Linear Complexity"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "retnet", "type": "inspired_by"}
+    {
+      "to": "retnet",
+      "type": "inspired_by",
+      "description": "GLA은(는) RetNet의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

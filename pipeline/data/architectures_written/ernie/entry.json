@@ -25,9 +25,19 @@
   "paper_url": "https://arxiv.org/abs/1904.09223",
   "code_url": "https://github.com/PaddlePaddle/ERNIE",
   "license_type": "Apache 2.0",
-  "concepts": ["Knowledge Graph", "Entity Masking", "Phrase Masking", "Knowledge-Enhanced Pre-Training", "Dialogue LM"],
+  "concepts": [
+    "Knowledge Graph",
+    "Entity Masking",
+    "Phrase Masking",
+    "Knowledge-Enhanced Pre-Training",
+    "Dialogue LM"
+  ],
   "relations": [
-    {"to": "bert", "type": "inspired_by"}
+    {
+      "to": "bert",
+      "type": "inspired_by",
+      "description": "ERNIE은(는) BERT의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "ernie"
 }

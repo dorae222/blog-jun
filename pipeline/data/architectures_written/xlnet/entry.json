@@ -25,10 +25,24 @@
   "paper_url": "https://arxiv.org/abs/1906.08237",
   "code_url": "https://github.com/zihangdai/xlnet",
   "license_type": "Apache 2.0",
-  "concepts": ["Permutation LM", "Two-Stream Attention", "Transformer-XL", "AR + Bidirectional", "Segment Recurrence"],
+  "concepts": [
+    "Permutation LM",
+    "Two-Stream Attention",
+    "Transformer-XL",
+    "AR + Bidirectional",
+    "Segment Recurrence"
+  ],
   "relations": [
-    {"to": "bert", "type": "inspired_by"},
-    {"to": "transformer", "type": "evolved_from"}
+    {
+      "to": "bert",
+      "type": "inspired_by",
+      "description": "XLNet은(는) BERT의 핵심 아이디어에서 영감을 받았다."
+    },
+    {
+      "to": "transformer",
+      "type": "evolved_from",
+      "description": "XLNet은(는) Transformer의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "xlnet"
 }

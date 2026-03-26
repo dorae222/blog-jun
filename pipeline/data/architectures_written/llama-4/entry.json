@@ -22,10 +22,22 @@
   "paper_url": "https://ai.meta.com/research/publications/the-llama-4-herd/",
   "code_url": "https://github.com/meta-llama/llama-models",
   "license_type": "Meta LLaMA 4 Community License",
-  "concepts": ["Mixture of Experts", "MoE", "Native Multimodal", "Long Context", "iRoPE"],
+  "concepts": [
+    "Mixture of Experts",
+    "MoE",
+    "Native Multimodal",
+    "Long Context",
+    "iRoPE"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
-  "relations": [{"to": "llama-3", "type": "evolved_from"}],
+  "relations": [
+    {
+      "to": "llama-3",
+      "type": "evolved_from",
+      "description": "LLaMA 4 (Scout / Maverick / Behemoth)은(는) LLaMA 3의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

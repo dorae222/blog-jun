@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2405.09818",
   "code_url": "https://github.com/facebookresearch/chameleon",
   "license_type": "Chameleon License",
-  "concepts": ["Early Fusion", "All-Token Multimodal", "Unified Autoregressive"],
+  "concepts": [
+    "Early Fusion",
+    "All-Token Multimodal",
+    "Unified Autoregressive"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "llama", "type": "evolved_from"}
+    {
+      "to": "llama",
+      "type": "evolved_from",
+      "description": "Chameleon은(는) LLaMA의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

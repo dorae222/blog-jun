@@ -22,12 +22,19 @@
   "paper_url": "",
   "code_url": "",
   "license_type": "",
-  "concepts": ["AI Developer", "Full-Stack Agent"],
+  "concepts": [
+    "AI Developer",
+    "Full-Stack Agent"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": false,
   "relations": [
-    {"to": "swe-agent", "type": "inspired_by"}
+    {
+      "to": "swe-agent",
+      "type": "inspired_by",
+      "description": "Devin은(는) SWE-agent의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

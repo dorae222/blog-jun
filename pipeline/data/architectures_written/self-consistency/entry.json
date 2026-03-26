@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2203.11171",
   "code_url": "",
   "license_type": "",
-  "concepts": ["Self-Consistency", "Sampling", "Majority Vote"],
+  "concepts": [
+    "Self-Consistency",
+    "Sampling",
+    "Majority Vote"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "cot", "type": "evolved_from"}
+    {
+      "to": "cot",
+      "type": "evolved_from",
+      "description": "Self-Consistency은(는) Chain-of-Thought Prompting의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2204.14198",
   "code_url": "",
   "license_type": "Proprietary",
-  "concepts": ["Few-Shot VLM", "Perceiver Resampler", "Interleaved Multimodal"],
+  "concepts": [
+    "Few-Shot VLM",
+    "Perceiver Resampler",
+    "Interleaved Multimodal"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": false,
   "relations": [
-    {"to": "clip", "type": "inspired_by"}
+    {
+      "to": "clip",
+      "type": "inspired_by",
+      "description": "Flamingo은(는) CLIP의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

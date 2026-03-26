@@ -22,12 +22,19 @@
   "paper_url": "https://arxiv.org/abs/2308.00352",
   "code_url": "https://github.com/geekan/MetaGPT",
   "license_type": "MIT",
-  "concepts": ["SOP", "Role-Based Agents"],
+  "concepts": [
+    "SOP",
+    "Role-Based Agents"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "autogen", "type": "inspired_by"}
+    {
+      "to": "autogen",
+      "type": "inspired_by",
+      "description": "MetaGPT은(는) AutoGen의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

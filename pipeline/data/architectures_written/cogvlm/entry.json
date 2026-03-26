@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2311.03079",
   "code_url": "https://github.com/THUDM/CogVLM",
   "license_type": "Apache-2.0",
-  "concepts": ["Visual Expert", "Deep Fusion", "Vision-Language Alignment"],
+  "concepts": [
+    "Visual Expert",
+    "Deep Fusion",
+    "Vision-Language Alignment"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "llava", "type": "inspired_by"}
+    {
+      "to": "llava",
+      "type": "inspired_by",
+      "description": "CogVLM은(는) LLaVA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

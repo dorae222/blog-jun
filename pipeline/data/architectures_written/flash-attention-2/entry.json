@@ -22,12 +22,23 @@
   "paper_url": "https://arxiv.org/abs/2307.08691",
   "code_url": "https://github.com/Dao-AILab/flash-attention",
   "license_type": "BSD-3-Clause",
-  "concepts": ["IO-Aware Computing", "GQA Support", "Warp Parallelism", "CUDA Optimization", "Non-matmul Reduction", "Triton"],
+  "concepts": [
+    "IO-Aware Computing",
+    "GQA Support",
+    "Warp Parallelism",
+    "CUDA Optimization",
+    "Non-matmul Reduction",
+    "Triton"
+  ],
   "architecture_category": "technique",
   "branch_type": "",
   "is_open_source": true,
   "relations": [
-    {"to": "flash-attention", "type": "evolved_from"}
+    {
+      "to": "flash-attention",
+      "type": "evolved_from",
+      "description": "FlashAttention-2은(는) FlashAttention의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "flash-attention-2"
 }

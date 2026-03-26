@@ -105,7 +105,12 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
             if not dry_run:
                 existing.content = content
                 existing.summary = summary
-                existing.save(update_fields=['content', 'summary'])
+                update_fields = ['content', 'summary']
+                is_pinned = data.get('is_pinned', False)
+                if is_pinned != existing.is_pinned:
+                    existing.is_pinned = is_pinned
+                    update_fields.append('is_pinned')
+                existing.save(update_fields=update_fields)
                 # 태그 갱신
                 existing.tags.clear()
                 for tag_name in tags_raw:
@@ -136,6 +141,7 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
             post_type='article',
             published_at=timezone.now(),
             source_path=str(content_json),
+            is_pinned=data.get('is_pinned', False),
         )
         created_posts += 1
         print(f"  [CREATE] {display_title}")

@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2201.11903",
   "code_url": "",
   "license_type": "",
-  "concepts": ["Chain-of-Thought", "Few-Shot Reasoning", "Emergent Ability"],
+  "concepts": [
+    "Chain-of-Thought",
+    "Few-Shot Reasoning",
+    "Emergent Ability"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "gpt-3", "type": "technique_used"}
+    {
+      "to": "gpt-3",
+      "type": "technique_used",
+      "description": "Chain-of-Thought Prompting은(는) GPT-3 기법을 적용했다."
+    }
   ],
   "related_post_slug": ""
 }

@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2302.04761",
   "code_url": "",
   "license_type": "",
-  "concepts": ["Tool Learning", "API Calls", "Self-Supervised"],
+  "concepts": [
+    "Tool Learning",
+    "API Calls",
+    "Self-Supervised"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "react", "type": "inspired_by"}
+    {
+      "to": "react",
+      "type": "inspired_by",
+      "description": "Toolformer은(는) ReAct의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

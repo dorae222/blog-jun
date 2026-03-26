@@ -25,9 +25,20 @@
   "paper_url": "https://arxiv.org/abs/2205.05131",
   "code_url": "https://github.com/google-research/google-research/tree/master/ul2",
   "license_type": "Apache 2.0",
-  "concepts": ["Mixture of Denoisers", "Unified LM", "R-Denoiser", "S-Denoiser", "X-Denoiser", "Mode Token"],
+  "concepts": [
+    "Mixture of Denoisers",
+    "Unified LM",
+    "R-Denoiser",
+    "S-Denoiser",
+    "X-Denoiser",
+    "Mode Token"
+  ],
   "relations": [
-    {"to": "t5", "type": "evolved_from"}
+    {
+      "to": "t5",
+      "type": "evolved_from",
+      "description": "UL2은(는) T5의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "ul2"
 }

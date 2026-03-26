@@ -22,12 +22,23 @@
   "paper_url": "https://arxiv.org/abs/2205.14135",
   "code_url": "https://github.com/Dao-AILab/flash-attention",
   "license_type": "BSD-3-Clause",
-  "concepts": ["IO-Aware Computing", "Tiling", "Online Softmax", "Recomputation", "CUDA", "Memory Efficient Attention"],
+  "concepts": [
+    "IO-Aware Computing",
+    "Tiling",
+    "Online Softmax",
+    "Recomputation",
+    "CUDA",
+    "Memory Efficient Attention"
+  ],
   "architecture_category": "technique",
   "branch_type": "",
   "is_open_source": true,
   "relations": [
-    {"to": "transformer", "type": "technique_used"}
+    {
+      "to": "transformer",
+      "type": "technique_used",
+      "description": "FlashAttention은(는) Transformer 기법을 적용했다."
+    }
   ],
   "related_post_slug": "flash-attention"
 }
