@@ -6,6 +6,14 @@ DeepSeek-V2는 DeepSeek AI가 2024년 5월 7일 공개한 236B MoE(Mixture of Ex
 
 이 모델은 MLA(Multi-head Latent Attention)로 KV 캐시를 93.3% 절감하고, DeepSeekMoE(공유 전문가 + 세분화된 라우팅 전문가)로 전문성과 공유 지식을 분리하여, **21B 활성 파라미터만으로 GPT-4 수준의 성능**을 달성했다. 이전 DeepSeek 67B 대비 42.5% 낮은 학습 비용이라는 놀라운 효율성으로, 중국 AI 스타트업의 기술 경쟁력을 전 세계에 알렸다.
 
+다음 두 그래프는 DeepSeek-V2의 효율성을 보여준다. 활성 파라미터 대비 MMLU 정확도와, DeepSeek 67B 대비 학습 비용 및 추론 효율 개선을 나타낸다.
+
+![MMLU 정확도 vs 활성 파라미터 — 다양한 오픈소스 모델 비교](figures/fig_1_1.png)
+*Figure 1a: MMLU 정확도 vs 활성 파라미터 — DeepSeek-V2는 21B 활성 파라미터로 70B급 Dense 모델에 근접하는 성능을 달성한다. (Source: DeepSeek AI, 2024)*
+
+![학습 비용과 추론 효율 비교 — DeepSeek 67B vs DeepSeek-V2](figures/fig_1_2.png)
+*Figure 1b: 학습 비용과 추론 효율 — DeepSeek-V2는 DeepSeek 67B 대비 학습 비용 42.5% 절감, KV 캐시 93.3% 절감, 생성 처리량 5.76배 향상을 달성한다. (Source: DeepSeek AI, 2024)*
+
 ## 아키텍처 상세
 
 ### 기본 구조
@@ -23,12 +31,22 @@ DeepSeek-V2는 DeepSeek AI가 2024년 5월 7일 공개한 236B MoE(Mixture of Ex
 | **컨텍스트 길이** | 128K |
 | **위치 인코딩** | Decoupled RoPE |
 
+아래 그림은 DeepSeek-V2의 전체 아키텍처로, 트랜스포머 블록 내 MLA와 DeepSeekMoE의 구조를 상세히 보여준다.
+
+![DeepSeek-V2 아키텍처 — MLA와 DeepSeekMoE 구조](figures/fig_4.png)
+*Figure 2: DeepSeek-V2 아키텍처 — MLA는 KV를 저차원 잠재 벡터로 압축하여 캐시 효율을 극대화하고, DeepSeekMoE는 공유 전문가와 세분화된 라우팅 전문가로 구성된다. (Source: DeepSeek AI, 2024)*
+
 ### MLA (Multi-head Latent Attention)
 
 MLA는 DeepSeek-V2의 가장 핵심적인 아키텍처 혁신으로, 표준 Multi-Head Attention(MHA)의 KV 캐시 문제를 근본적으로 해결한다.
 
 **기존 MHA의 문제:**
 표준 MHA에서 KV 캐시의 크기는 $O(n_h \cdot d_h \cdot l)$로, 어텐션 헤드 수 $n_h$, 헤드 차원 $d_h$, 시퀀스 길이 $l$에 비례한다. 128K 같은 장문 컨텍스트에서 이 메모리 비용은 치명적이다.
+
+다음 그림은 MHA, GQA, MQA, MLA의 어텐션 구조를 비교한 것으로, MLA가 KV를 잠재 벡터로 압축하여 캐시 효율을 극대화하는 방식을 직관적으로 보여준다.
+
+![어텐션 방식 비교 — MHA, GQA, MQA, MLA의 구조적 차이](figures/fig_5.png)
+*Figure 3: 어텐션 방식 비교 — MHA는 모든 헤드에 KV를 저장하고, GQA/MQA는 그룹/단일 공유하며, MLA는 KV를 저차원 잠재 벡터로 압축하여 캐시를 최소화한다. (Source: DeepSeek AI, 2024)*
 
 **MLA의 해결책:**
 Key와 Value를 저차원 잠재 벡터(latent vector)로 압축한 뒤 업프로젝션하는 **Low-Rank Key-Value Joint Compression**을 사용한다:
@@ -104,6 +122,11 @@ DeepSeek-V2는 21B 활성 파라미터만으로 70B Dense 모델에 근접하는
 GRPO는 DeepSeek가 자체 개발한 강화학습 알고리즘으로, PPO 대비 메모리 효율이 높다:
 
 $$\mathcal{L}_{\text{GRPO}} = -\mathbb{E}_{(x,y)\sim\pi_{\text{old}}} \left[ \frac{\pi_\theta(y|x)}{\pi_{\text{old}}(y|x)} \cdot \hat{A}_{\text{group}}(x,y) \right]$$
+
+아래 그래프는 HumanEval과 LiveCodeBench에서의 코드 생성 성능을 비교한 것으로, DeepSeek-V2 Chat이 GPT-4급 모델과 경쟁하는 수준을 보여준다.
+
+![HumanEval 및 LiveCodeBench 코드 생성 성능 비교](figures/fig_7.png)
+*Figure 5: 코드 생성 성능 — HumanEval(Pass@1)과 LiveCodeBench(Pass@1)에서 DeepSeek-V2 Chat이 LLaMA-3 70B, Claude 3 Sonnet 등과 경쟁하는 성능을 달성한다. (Source: DeepSeek AI, 2024)*
 
 ## 실무 활용
 

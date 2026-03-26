@@ -10,6 +10,11 @@ FlashAttention은 완전히 다른 접근법을 취한다. **수학적으로 표
 
 ![Architecture](figures/architecture.svg)
 
+FlashAttention의 타일링 전략과 속도 향상 효과를 아래 그림에서 확인할 수 있다.
+
+![FlashAttention 타일링 전략 — HBM과 SRAM 사이의 블록 단위 데이터 이동과 GPT-2에서의 속도 향상](figures/fig_1.png)
+*Figure 1: FlashAttention 타일링 전략 — (좌) K, V 블록을 외부 루프(빨간 화살표)로, Q 블록을 내부 루프(파란 화살표)로 순회하여 N x N 어텐션 행렬의 HBM 실체화를 방지한다. (우) GPT-2에서 표준 어텐션 대비 최대 7.6배 속도 향상. (Source: Dao et al., 2022)*
+
 ## 기법 상세
 
 ### GPU 메모리 계층 구조의 이해
@@ -75,6 +80,11 @@ for j in range(num_kv_blocks):
 
 재계산에 의한 추가 FLOP은 있지만, HBM 접근을 크게 줄이므로 **총 wall-clock 시간은 오히려 감소**한다. 이는 현대 GPU에서 연산이 메모리 접근보다 훨씬 빠르기 때문이다. 메모리 복잡도는 O(N²)에서 **O(N)**으로 줄어든다.
 
+HBM 접근 횟수와 블록 크기, 그리고 희소성에 따른 추가 속도 향상 효과를 아래 그래프에서 확인할 수 있다.
+
+![블록 크기에 따른 HBM 접근 횟수와 실행 시간, 희소 FlashAttention의 속도 향상](figures/fig_2.png)
+*Figure 2: (좌) 블록 크기 증가 시 HBM 접근 횟수가 줄어들며 실행 시간이 단축된다. (우) Block-Sparse FlashAttention은 희소성 비율에 비례하여 Dense FlashAttention보다 추가적인 속도 향상을 달성한다. (Source: Dao et al., 2022)*
+
 ## 핵심 혁신
 
 | 혁신 | 설명 | 효과 |
@@ -107,6 +117,16 @@ for j in range(num_kv_blocks):
 | 16K | OOM | 정상 동작 |
 
 A100 GPU에서 이론 최대 TFLOPS의 **70~75%**를 달성하며, 이는 메모리 효율적 어텐션 구현체 중 가장 높은 하드웨어 활용률이다.
+
+시퀀스 길이에 따른 실행 시간과 메모리 사용량 비교는 아래 그래프에서 확인할 수 있다.
+
+![시퀀스 길이별 어텐션 실행 시간과 메모리 사용량 비교](figures/fig_5.png)
+*Figure 3: (좌) 시퀀스 길이별 순전파+역전파 실행 시간 비교 — FlashAttention이 표준 어텐션과 PyTorch 구현 대비 일관되게 빠르다. (우) 메모리 사용량 비교 — FlashAttention은 시퀀스 길이 증가에 따라 선형적으로만 메모리가 증가한다. (Source: Dao et al., 2022)*
+
+다양한 시퀀스 길이에서의 A100 GPU 속도 향상 배율은 다음과 같다.
+
+![A100 GPU에서 시퀀스 길이별 FlashAttention 속도 향상 — 최대 4배 이상](figures/fig_7.jpg)
+*Figure 4: A100 GPU에서의 FlashAttention 속도 향상 — Dropout+Masking 포함 시 최대 4.2배, 순수 어텐션에서도 2배 이상의 속도 향상을 시퀀스 길이 128~4096 범위에서 달성한다. (Source: Dao et al., 2022)*
 
 ## 관련 기법 비교
 

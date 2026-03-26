@@ -12,6 +12,11 @@ A100 GPU의 이론 최대 연산량은 312 TFLOPS(FP16)이지만, FlashAttention
 
 ## 기법 상세
 
+FlashAttention의 핵심 아이디어는 어텐션 행렬을 블록 단위로 나누어 SRAM에서 계산하고, 중간 결과를 HBM에 기록하지 않는 것이다. 다음 다이어그램은 이 타일링 기반 포워드 패스의 전체 흐름을 보여준다.
+
+![FlashAttention 포워드 패스 타일링 다이어그램](figures/fig_1.png)
+*Figure 1: FlashAttention 포워드 패스 다이어그램 — K, V를 블록으로 분할하여 SRAM에서 계산 후 rescaling으로 정확한 결과를 얻으며, 중간 행렬 S, P의 HBM 접근을 회피한다. (Source: Dao, 2023)*
+
 ### 개선 1: Non-matmul FLOP 최소화
 
 GPU에서 행렬 곱셈(matmul)은 텐서 코어를 통해 매우 높은 처리량을 보이지만, 그 외 연산(rescaling, 비교, 지수 함수 등)은 일반 CUDA 코어에서 처리되어 **16배 이상 느리다**. FlashAttention-1에서는 온라인 소프트맥스 과정에서 각 블록마다 이전 출력을 rescale하는 연산이 발생했다.
@@ -31,7 +36,10 @@ FlashAttention-2는 **rescaling을 루프 종료 후 한 번만 수행**하도�
 
 FlashAttention-1에서는 K, V 블록을 외부 루프, Q 블록을 내부 루프로 처리했다. 이 방식에서는 하나의 스레드 블록 내의 여러 워프(warp)가 K, V를 공유 메모리에서 읽고, 각 워프가 Q의 서로 다른 부분을 담당하여 출력의 서로 다른 조각을 계산한 뒤 결과를 합산해야 했다. 이 합산 과정에서 **워프 간 동기화(shared memory reduction)**가 필요했다.
 
-FlashAttention-2는 **루프 구조를 뒤집었다**: Q 블록을 외부 루프로, K/V 블록을 내부 루프로 변경했다.
+FlashAttention-2는 **루프 구조를 뒤집었다**: Q 블록을 외부 루프로, K/V 블록을 내부 루프로 변경했다. 이에 따라 포워드/백워드 패스에서 워커(스레드 블록)의 병렬화 방식도 달라진다.
+
+![포워드 및 백워드 패스에서의 워커 병렬화 방식](figures/fig_2.png)
+*Figure 2: 포워드/백워드 패스 병렬화 전략 — 포워드 패스에서는 각 워커가 어텐션 행렬의 행 블록을 담당하고, 백워드 패스에서는 열 블록을 담당한다. (Source: Dao, 2023)*
 
 ```
 FlashAttention-1:
@@ -45,7 +53,13 @@ FlashAttention-2:
       각 워프가 Q_i의 자기 행만 전담 → 합산 불필요 (독립 실행)
 ```
 
-이 변경으로 각 워프가 **독립적으로 자신의 출력 행을 계산**할 수 있게 되어, 워프 간 공유 메모리 통신과 동기화가 **완전히 제거**되었다. 이는 전체 성능의 핵심적인 향상 요소다.
+이 변경으로 각 워프가 **독립적으로 자신의 출력 행을 계산**할 수 있게 되어, 워프 간 공유 메모리 통신과 동기화가 **완전히 제거**되었다. 이는 전체 성능의 핵심적인 향상 요소다. 아래 그림은 FA1과 FA2의 워프 파티셔닝 차이를 명확히 보여준다.
+
+![FlashAttention-1의 워프 파티셔닝 — K를 워프 간 분할](figures/fig_3_1.png)
+*Figure 3a: FlashAttention-1 워프 파티셔닝 — K를 워프 간에 분할하여 결과를 합산(reduction)해야 하므로 워프 간 동기화가 필요하다. (Source: Dao, 2023)*
+
+![FlashAttention-2의 워프 파티셔닝 — Q를 워프 간 분할](figures/fig_3_2.png)
+*Figure 3b: FlashAttention-2 워프 파티셔닝 — Q를 워프 간에 분할하여 각 워프가 독립적으로 출력 행을 계산하므로, 워프 간 통신 없이 병렬 실행이 가능하다. (Source: Dao, 2023)*
 
 ### 개선 3: GQA/MQA 네이티브 지원
 
@@ -70,6 +84,11 @@ FlashAttention-1에서 GQA를 사용하려면 KV 텐서를 쿼리 헤드 수만�
 | GPU 활용률 | ~35% | ~72% | 2배 향상 |
 
 ## 벤치마크/성능
+
+다음 벤치마크는 A100 80GB에서 다양한 시퀀스 길이에 따른 FlashAttention-2의 속도 우위를 보여준다.
+
+![A100 GPU에서의 어텐션 구현별 속도 비교 벤치마크](figures/fig_7.png)
+*Figure 4: A100 80GB에서 시퀀스 길이별 어텐션 속도 비교 (head_dim=64, causal mask 없음) — FlashAttention-2가 PyTorch, xFormers, FA1, Triton 구현을 모두 압도하며, 16K 시퀀스에서 176 TFLOPS/s를 달성한다. (Source: Dao, 2023)*
 
 ### A100 80GB SXM5 기준 처리량
 

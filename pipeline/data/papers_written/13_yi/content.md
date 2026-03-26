@@ -8,6 +8,11 @@ Yi의 가장 핵심적인 차별점은 **"데이터 품질이 데이터 양보�
 
 Yi 모델 패밀리는 기본 사전학습 모델뿐 아니라 Chat 버전(SFT + RLHF), Vision-Language 확장(Yi-VL), 그리고 경량화 버전까지 다양한 변형을 포함하며, 오픈소스 LLM 생태계에서 데이터 품질 중심 접근법의 유효성을 실증적으로 보여준 중요한 사례로 평가받고 있다.
 
+Yi-VL은 Vision Transformer를 통해 이미지 특징을 추출하고 Projection 레이어를 거쳐 LLM에 연결하는 멀티모달 아키텍처를 채택하고 있다.
+
+![Yi-VL 비전-언어 모델 아키텍처](figures/fig_7_1.png)
+*Figure 7-1: Yi-VL의 멀티모달 아키텍처. Vision Transformer로 이미지 특징을 추출하고 Projection 레이어를 통해 Large Language Model에 연결하는 구조를 보여준다. (Young et al., 2024)*
+
 ---
 
 ## 배경 및 문제
@@ -283,6 +288,16 @@ Yi-Chat 모델의 성능은 SFT 데이터의 양과 품질에 따라 어떻게 �
 
 ![Yi-34B-Chat MT-Bench 점수 대 데이터 크기](figures/fig_7.png)
 *Yi-34B-Chat의 MT-Bench 총점과 SFT 학습 데이터 크기의 관계. Yi-34B-Chat(파란색)은 소량의 고품질 데이터로도 20점 이상을 달성하며, 데이터를 늘릴수록 성능이 꾸준히 향상된다. GPT-3.5-turbo(점선, ~10점)와 GPT-4(점선, ~23점)의 기준선이 함께 표시되어 있다. 반면 Ultrachat 기반 변형(빨간색, 녹색)은 데이터 양을 늘려도 상대적으로 낮은 성능에 머무르며, SFT 데이터의 품질이 양보다 중요하다는 Yi 팀의 철학이 정렬 단계에서도 동일하게 적용됨을 보여준다.*
+
+아래 그림은 Yi-34B-Chat의 MT-Bench 7점대 성능을 GPT-4 및 GPT-3.5와 비교한 결과이다.
+
+![Yi-34B-Chat MT-Bench 점수 비교](figures/fig_8.png)
+*Figure 8: Yi-34B-Chat의 MT-Bench 7점대 성능. GPT-4(9.0)와 GPT-3.5(8.3) 사이에 위치하며, Ultrachat 데이터셋 변형들의 성능 추이를 함께 보여준다. (Young et al., 2024)*
+
+다음은 부정 형식에서의 응답 길이 분포를 비교한 결과로, Yi-34B가 반복 없이 깔끔한 응답을 생성하는 패턴을 보여준다.
+
+![부정 형식 응답 길이 분포 비교](figures/fig_3.png)
+*Figure 3: 부정 형식(1, -1)에서 다양한 모델들의 응답 길이(res) 분포 비교. Yi-34B(빨간색)가 반복이 가장 적은 깔끔한 응답 생성 패턴을 보여준다. (Young et al., 2024)*
 
 ### 이중 언어 성능 (영어 + 중국어)
 

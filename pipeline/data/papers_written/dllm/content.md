@@ -139,6 +139,11 @@ dLLM은 여러 가지 추론 가속 전략을 지원한다:
 ![디코딩 전략별 정확도 비교 (LLaDA-Instruct)](figures/fig_8_1.png)
 *Figure 4. 다양한 디코딩 전략(Random, Cache, Parallel, Cache & Parallel)에 따른 벤치마크 정확도 비교. Parallel 디코딩은 생성 속도를 높이면서도 정확도 손실을 최소화하며, Cache와 결합 시 속도와 품질의 최적 균형을 달성한다.*
 
+속도와 정확도 사이의 trade-off를 더 상세히 분석한 결과는 아래와 같다. 각 디코딩 전략에 따른 속도 배수(Speedup)와 벤치마크 정확도의 관계를 산점도로 보여준다.
+
+![디코딩 전략별 속도-정확도 trade-off 산점도](figures/fig_8_2.png)
+*Figure 4-1: Dream 모델에서 디코딩 전략별 속도(Speedup) 대비 정확도. 각 벤치마크(HellaSwag, PIQA, ARC 등)에 대해 Cache, Parallel, Cache & Parallel 전략의 Pareto 프론티어가 나타난다. Parallel 전략은 최대 4배 속도 향상을 달성하면서도 정확도 하락을 5% 이내로 유지한다. (Zhou et al., 2026)*
+
 ### 노이즈 스케줄
 
 dLLM은 코사인 노이즈 스케줄을 채택한다:
@@ -194,6 +199,11 @@ dLLM은 동일 규모의 GPT-2를 퍼플렉시티에서 능가하며, 기존 마
 ![다양한 추론 전략에 따른 벤치마크 성능 레이더 차트 (LLaDA-Instruct)](figures/fig_11_1.png)
 *Figure 5. LLaDA-Instruct 모델에서 추론 전략별 벤치마크 성능 비교. Baseline(녹색)은 표준 디코딩, Parallel@4(청색)는 4-way 병렬 디코딩, Suppress(보라)는 low-confidence 토큰 억제, CFG(주황)는 Classifier-Free Guidance를 적용한 결과다. CFG는 HumanEval, MBPP 등 코드 생성 벤치마크에서 특히 강한 성능 향상을 보이며, Suppress 전략은 전반적으로 안정적인 성능을 유지한다.*
 
+Dream-Instruct 모델에서도 유사한 패턴이 관찰되며, 특히 Suppress 전략이 코드 생성 및 수학 벤치마크에서 안정적인 성능을 보인다.
+
+![Dream-Instruct 모델에서의 추론 전략별 벤치마크 성능 레이더 차트](figures/fig_11_2.png)
+*Figure 5-1: Dream-Instruct 모델에서 추론 전략별 벤치마크 성능 비교. Baseline(녹색) 대비 Parallel@4(청색)는 속도를 높이지만 일부 벤치마크에서 성능 하락이 있으며, Temp@0(보라)은 결정론적 생성으로 GSM8K와 Minerva에서 강한 성능을 보인다. (Zhou et al., 2026)*
+
 Classifier-Free Guidance(CFG)는 확산 이미지 모델에서 입증된 기법으로, 조건부 생성과 비조건부 생성의 차이를 증폭시켜 생성 품질을 높인다. dLLM에서는 다음과 같이 적용된다:
 
 $$\tilde{p}_\theta(x_0 \mid x_t, t, c) = (1 + \lambda) \cdot p_\theta(x_0 \mid x_t, t, c) - \lambda \cdot p_\theta(x_0 \mid x_t, t)$$
@@ -229,6 +239,16 @@ $$\tilde{p}_\theta(x_0 \mid x_t, t, c) = (1 + \lambda) \cdot p_\theta(x_0 \mid x
 *Figure 6. 오픈소스 확산 언어 모델(LLaDA-Base/Instruct, Dream-Base/Instruct)을 추론 태스크에 파인튜닝할 때의 Train loss(좌)와 Eval loss(우). Dream 계열 모델은 안정적으로 학습이 수렴하는 반면, LLaDA 계열은 학습 손실의 변동이 크다. 특히 LLaDA-Instruct의 Eval loss가 초반에 급증 후 감소하는 패턴은 Instruct 튜닝과 추론 파인튜닝 간의 분포 차이를 시사한다.*
 
 이 결과는 확산 언어 모델의 파인튜닝 가능성을 보여주면서도, 모델 아키텍처와 사전학습 방식에 따라 파인튜닝 안정성이 크게 달라질 수 있음을 시사한다. AR 모델에서는 RLHF와 SFT가 이미 성숙한 기술이지만, 확산 LM에서는 아직 최적의 파인튜닝 전략이 확립되지 않았다.
+
+흥미로운 실험으로, 기존 BERT 모델을 채팅용으로 파인튜닝하는 시도도 보고된다. 이는 마스크 언어 모델이 확산 생성 모델로 전환될 수 있는지를 검증한다.
+
+![BERT 모델을 채팅용으로 파인튜닝할 때의 학습 곡선](figures/fig_15.png)
+*Figure 7: ModernBERT(base, large)를 채팅 데이터로 파인튜닝할 때의 Train loss(좌)와 Eval loss(우). 두 모델 모두 안정적으로 수렴하며, 이는 BERT 계열 마스크 모델이 생성 태스크로 전환 가능함을 보여준다. (Zhou et al., 2026)*
+
+더 나아가, 기존 AR 모델을 확산 언어 모델로 변환하는 실험도 수행되었다.
+
+![AR 언어 모델을 확산 언어 모델로 변환하는 파인튜닝 학습 곡선](figures/fig_16.png)
+*Figure 8: Qwen 기반 AR 모델을 확산 LM(bd3lm, mdlm)으로 변환하는 파인튜닝 학습 곡선. bdlm 방식이 mdlm보다 더 빠르게 수렴하며, Eval loss도 더 낮은 수준에 도달한다. 이는 기존 AR 모델의 사전학습 지식을 확산 모델로 전이할 수 있는 가능성을 시사한다. (Zhou et al., 2026)*
 
 ## 의의 및 한계
 

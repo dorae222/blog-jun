@@ -10,6 +10,16 @@
 
 ## 아키텍처 상세
 
+다음 다이어그램은 LLaMA 3의 전체 아키텍처와 GQA 구조, 핵심 혁신을 보여준다.
+
+![LLaMA 3 전체 아키텍처 — 8B/70B/405B Dense Decoder-Only Transformer with GQA](figures/architecture.png)
+*Figure 1: LLaMA 3 아키텍처 — GQA를 전 모델에 적용하고, 128K 어휘, 128K 컨텍스트, SwiGLU 활성화, RoPE 위치 인코딩을 사용하는 Dense Decoder-Only 구조. (Source: LLaMA 3 논문)*
+
+아래 그림은 논문에서 제시한 LLaMA 3의 전체 학습 파이프라인을 보여준다. 텍스트 토큰 입력부터 Self-Attention과 FFN을 반복하여 다음 토큰을 예측하는 자기회귀 디코딩 과정이다.
+
+![LLaMA 3 전체 학습 파이프라인 — 텍스트 토큰 입력부터 자기회귀 디코딩까지](figures/fig_1.png)
+*Figure 2: LLaMA 3 학습 파이프라인 — Token Embedding, Self-Attention, FFN 블록이 반복되는 표준 Transformer 구조. 자기회귀 방식으로 다음 토큰을 예측한다. (Source: LLaMA 3 논문)*
+
 ### LLaMA 2 대비 핵심 변화
 
 #### 1. GQA 전면 도입
@@ -48,6 +58,11 @@ LLaMA 3의 가장 중요한 혁신은 아키텍처가 아니라 **데이터 규�
 
 이 전략은 추론 시 더 작은 모델을 사용할 수 있게 해, 추론 비용 최적화에 유리하다.
 
+다음 그래프는 LLaMA 3 학습에 활용된 IsoFLOPs 스케일링 법칙 곡선이다. 각 컴퓨트 예산에서 최적의 학습 토큰 수를 결정하는 데 사용되었다.
+
+![IsoFLOPs 스케일링 법칙 곡선 — 컴퓨트 예산별 학습 토큰 수와 검증 손실의 관계](figures/fig_3.png)
+*Figure 3: IsoFLOPs 스케일링 법칙 — 각 곡선은 고정된 컴퓨트 예산(6e18~1e22 FLOPs)에서 학습 토큰 수에 따른 검증 손실을 보여준다. 곡선의 최소점(분홍 다이아몬드)이 해당 컴퓨트에서의 최적 토큰 수이다. (Source: LLaMA 3 논문)*
+
 ## 핵심 혁신
 
 ### 1. 405B: 오픈소스 최초의 Frontier급 모델
@@ -74,6 +89,11 @@ Chinchilla 법칙을 의도적으로 초과하여 학습함으로써, 8B 같은 
 
 8B 모델이 LLaMA 2-70B를 MMLU에서 비슷하게 따라잡고, GSM8K에서는 크게 능가한다.
 
+아래 그래프는 LLaMA 3 8B가 유사 규모 경쟁 모델들과 비교했을 때 카테고리별 성능을 보여준다.
+
+![LLaMA 3 8B vs LLaMA 2 7B, Mistral 7B, Gemma 7B 카테고리별 성능 비교](figures/fig_13_1.png)
+*Figure 5: 사전 학습 벤치마크 성능 — LLaMA 3 8B(파란색)가 General, Knowledge, Math & Reasoning, Code 등 대부분 카테고리에서 LLaMA 2 7B를 크게 앞서며, Mistral 7B와 Gemma 7B와도 경쟁력 있는 성능을 보인다. (Source: LLaMA 3 논문)*
+
 ## 관련 모델 비교
 
 | 특성 | LLaMA 2 | LLaMA 3 | Mistral 7B | GPT-4 |
@@ -93,6 +113,11 @@ Chinchilla 법칙을 의도적으로 초과하여 학습함으로써, 8B 같은 
 - **배치**: 8B: 4M 토큰, 405B: 16M 토큰
 - **하드웨어**: 16,384개 H100 GPU (405B 기준)
 - **정렬**: SFT + RLHF (DPO 포함) + Rejection Sampling
+
+다음 그림은 LLaMA 3의 사후 학습(post-training) 접근법을 보여준다. Rejection Sampling, SFT, DPO를 조합한 정렬 파이프라인이다.
+
+![LLaMA 3 사후 학습 파이프라인 — Rejection Sampling, SFT, DPO의 조합](figures/fig_8.png)
+*Figure 4: LLaMA 3 Post-Training — 사전 학습된 모델에 Rejection Sampling, SFT, DPO를 순차적으로 적용하여 정렬을 수행한다. (Source: LLaMA 3 논문)*
 - **멀티모달**: LLaMA 3.2에서 비전·음성 확장
 
 ## 실무 활용

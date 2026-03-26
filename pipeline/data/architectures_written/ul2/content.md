@@ -17,6 +17,11 @@ UL2는 이 세 가지를 **하나의 통합 프레임워크**로 결합하여, 2
 
 ## 아키텍처 상세
 
+다음 그림은 UL2의 사전학습 패러다임 전체 개요를 보여준다. Decoder-only 또는 Encoder-Decoder 구조에서 X-denoiser, R-denoiser, S-denoiser를 혼합한 Mixture-of-Denoisers가 다양한 학습 패러다임과 태스크에 대응하는 구조이다.
+
+![UL2 사전학습 패러다임 개요 — Mixture-of-Denoisers와 다양한 학습/태스크 패러다임](figures/fig_2.png)
+*Figure 1: UL2 사전학습 패러다임 개요 — Decoder-only(PrefixLM) 또는 Encoder-Decoder 구조에서 X-denoiser(극단적 노이즈 제거), R-denoiser(일반 스팬 복원), S-denoiser(순차적/자기회귀) 세 가지를 혼합하여, 지도학습/인컨텍스트/제로샷 학습과 생성/이해/추론 등 다양한 태스크를 통합적으로 처리한다. (Source: Tay et al., 2022)*
+
 UL2는 T5 아키텍처를 기반으로 한 인코더-디코더 구조이다:
 
 | 구성 요소 | 값 |
@@ -60,6 +65,11 @@ GPT 방식의 접두사-완성(prefix-to-suffix) 자기회귀 생성이다:
 - 스팬 길이: 매우 길음
 - **긴 문맥 이해와 생성 모두에 유리**
 
+다음 그림은 세 가지 denoiser의 구체적인 동작 방식을 보여준다. 회색 영역이 마스킹되어 타겟으로 이동하는 토큰이며, 각 denoiser의 마스킹 패턴 차이가 명확하게 드러난다.
+
+![Mixture of Denoisers의 세 가지 노이즈 제거 방식 — X-Denoising, S-Denoising, R-Denoising](figures/fig_3.png)
+*Figure 2: Mixture of Denoisers 상세 — (좌) X-Denoising: 긴 스팬/높은 마스킹 비율, (중) S-Denoising: 순차적 접두사-완성 방식, (우) R-Denoising: 짧은 스팬/낮은 마스킹 비율. 회색 영역은 마스킹되어 예측 타겟으로 사용되는 토큰이다. (Source: Tay et al., 2022)*
+
 ### Mode Token
 
 각 노이즈 유형을 구분하기 위해 입력 앞에 **모드 토큰**을 삽입한다:
@@ -91,6 +101,11 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
 ## 벤치마크/성능
+
+다음 그래프는 UL2의 파인튜닝 성능과 1-shot 생성 성능 간의 균형을 보여준다. UL2(EncDec)는 두 축 모두에서 기존 모델들을 크게 능가하는 최적의 균형을 달성했다.
+
+![UL2의 파인튜닝 vs 1-shot 생성 성능 트레이드오프 — 기존 모델 대비 균형 잡힌 성능](figures/fig_1.png)
+*Figure 3: 파인튜닝-생성 성능 트레이드오프 — UL2(EncDec)는 파인튜닝 판별 태스크(x축)와 1-shot 텍스트 생성(y축) 모두에서 기존 모델(T5, GPT, PrefixLM, SpanCorr 등)을 상회하는 균형 잡힌 성능을 달성했다. (Source: Tay et al., 2022)*
 
 UL2(20B)는 훨씬 큰 모델들을 능가하는 놀라운 효율성을 보여주었다:
 

@@ -74,6 +74,11 @@ sentence_embedding = embeddings[:, 0, :]  # CLS 토큰
 print(f"임베딩 차원: {sentence_embedding.shape}")
 ```
 
+다음 그림은 DistilBERT가 등장한 시점의 사전학습 언어 모델 파라미터 규모 추세를 보여준다. 모델 크기가 급격히 증가하는 가운데 DistilBERT(66M)는 경량화의 필요성을 실증한 대표 사례이다.
+
+![사전학습 언어 모델의 파라미터 수 변화 추세](figures/fig_1.png)
+*Figure 2: 사전학습 언어 모델의 파라미터 규모 추이 — ELMo(94M)부터 MegatronLM(8.3B)까지 급격한 증가세를 보이는 가운데, DistilBERT(66M)은 BERT-Base 대비 40% 파라미터 감소로 97% 성능을 유지하는 효율적 경량화를 달성했다. (Source: Sanh et al., 2019)*
+
 ## 핵심 혁신
 
 ### 1. Knowledge Distillation

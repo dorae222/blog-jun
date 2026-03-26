@@ -12,11 +12,21 @@ RetNet의 삼중 모드 전환 아이디어는 SSM/선형 어텐션 연구에서
 
 ![Architecture](figures/architecture.svg)
 
+RetNet은 기존 접근법들이 해결하지 못했던 "불가능한 삼각형"을 달성한다. 아래 그림은 Transformer, Linear Transformer, RNN 각각이 삼각형의 한 변씩만 달성하는 반면, RetNet은 세 꼭짓점을 모두 달성함을 보여준다.
+
+![RetNet의 불가능한 삼각형 — 학습 병렬화, 강한 성능, 저비용 추론을 동시에 달성](figures/fig_2.png)
+*Figure 1: 불가능한 삼각형 — Transformer는 학습 병렬화와 강한 성능을, RNN은 저비용 추론과 강한 성능을, Linear Transformer는 학습 병렬화와 저비용 추론을 각각 달성하지만, RetNet은 세 가지를 모두 달성한다. (Source: arXiv 2307.08621)*
+
 ## 아키텍처 상세
 
 RetNet의 핵심은 Retention 연산이다. 이 연산은 세 가지 수학적으로 동치인 형태로 표현된다.
 
 ### 병렬 모드 (학습)
+
+아래 그림은 병렬 모드에서의 Retention 연산 구조를 보여준다. Q, K, V로부터 행렬 연산을 통해 한 번에 출력을 계산하는 방식이다.
+
+![Retention 병렬 표현 — Q, K, V 행렬 연산과 감쇠 마스크 D를 통한 병렬 계산](figures/fig_4.png)
+*Figure 2: Retention 병렬 표현 — 입력 X에서 Q, K, V를 추출하고, 감쇠 마스크 D와 함께 $(QK^T \odot D)V$ 행렬 연산으로 출력 O를 계산한다. (Source: arXiv 2307.08621)*
 
 전체 시퀀스에 대해 행렬 연산으로 한 번에 계산한다.
 
@@ -25,6 +35,11 @@ $$\text{Ret}(X) = (Q \odot \Theta)(K \odot \bar{\Theta})^T \odot D \cdot V$$
 여기서 $\Theta$는 xPos 위치 인코딩, $D$는 지수 감쇠 마스크 행렬이다. $D_{nm} = \gamma^{n-m}$ (단, $n \geq m$, 아니면 0)으로, 먼 거리의 토큰일수록 기하급수적으로 감소하는 가중치를 부여한다. 이 형태는 softmax를 사용하지 않는 점을 제외하면 어텐션과 매우 유사하며, GPU에서 완전 병렬화된다.
 
 ### 순환 모드 (추론)
+
+다음 그림은 순환 모드에서의 Retention 연산을 보여준다. 이전 상태 $S_{n-1}$에 감쇠율 $\gamma$를 적용하며 고정 크기 상태만으로 효율적인 추론이 가능하다.
+
+![Retention 순환 표현 — 고정 크기 상태를 유지하며 한 토큰씩 처리하는 구조](figures/fig_5.png)
+*Figure 3: Retention 순환 표현 — 상태 $S_n$은 이전 상태에 감쇠율 $\gamma$를 곱하고 새로운 키-값 외적을 더하여 갱신된다. 추론 시 $O(1)$ 메모리로 동작한다. (Source: arXiv 2307.08621)*
 
 한 토큰씩 순차적으로 처리하며, 고정 크기 상태만 유지한다.
 
@@ -62,6 +77,14 @@ RetNet의 핵심 혁신은 세 가지이다.
 셋째, **다중 스케일 의존성 포착**이다. 헤드별로 다른 감쇠율을 사용하여, 단거리부터 장거리까지 다양한 시간 스케일의 패턴을 동시에 포착한다.
 
 ## 벤치마크/성능
+
+아래 그래프들은 RetNet의 핵심 성능 지표를 보여준다. 모델 크기가 커질수록 Transformer 대비 RetNet의 이점이 두드러지며, GPU 메모리 사용량과 추론 처리량에서 압도적인 차이를 보인다.
+
+![RetNet vs Transformer 스케일링 곡선 — 모델 크기 증가에 따른 Perplexity 비교](figures/fig_7.png)
+*Figure 4: 스케일링 곡선 — 모델 크기가 2B를 넘으면 RetNet이 Transformer보다 낮은 Perplexity를 달성한다. 크기가 커질수록 RetNet의 이점이 확대되는 경향을 보인다. (Source: arXiv 2307.08621)*
+
+![RetNet vs Transformer GPU 메모리 사용량 — 시퀀스 길이에 따른 메모리 비교](figures/fig_9.png)
+*Figure 5: GPU 메모리 비교 — Transformer는 시퀀스 길이가 증가할수록 KV 캐시로 인해 메모리가 선형 증가하지만, RetNet은 고정 크기 상태만 유지하므로 시퀀스 길이에 무관하게 일정한 메모리를 사용한다. (Source: arXiv 2307.08621)*
 
 | 모델 | 파라미터 | PPL↓ | 추론 메모리 | 처리량 |
 |------|---------|------|-----------|--------|

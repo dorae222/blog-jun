@@ -330,6 +330,12 @@ TruthfulQA에서 71.8%를 기록하여 비교 모델들 대비 높은 진실성�
 ![안전성 사후 학습 전후 유해 응답 비율 비교](figures/fig_3.png)
 *안전성 사후 학습 전(파란색)과 후(주황색)의 해악 영역별 유해 응답 비율. current_events, cyber, fairness_bias, hate_speech, model_identity, political_misinfo, sexual, violence 등 8개 범주 모두에서 유해 응답이 크게 감소했다. 특히 cyber(44%->12%), hate_speech(56%->10%), sexual(65%->10%) 영역에서 감소폭이 두드러지며, 안전성 정렬 학습과 레드팀 반복 피드백의 효과를 정량적으로 보여준다.*
 
+![Phi-3 상세 여행 일정 계획 생성 결과](figures/fig_4_1.png)
+*Figure 4-1: Phi-3-mini가 생성한 Alaska Skagway 당일 여행 상세 일정. 오전 8시부터 오후 9시까지 시간별로 구체적인 활동을 제안하며, 실용적인 메모와 함께 고품질의 구조화된 응답을 보여준다. (Abdin et al., 2024)*
+
+![Phi-3 웹 검색 통합 여행 계획 결과](figures/fig_4_2.png)
+*Figure 4-2: 웹 검색 기능을 활용한 Phi-3의 Alaska Skagway 여행 계획 생성. Web Search 도구를 활용해 최신 정보를 기반으로 오전-오후-저녁으로 구조화된 여행 일정을 생성하는 도구 사용 능력을 보여준다. (Abdin et al., 2024)*
+
 ### 추론 속도 및 디바이스별 성능
 
 | 디바이스 | 양자화 | 속도 (tok/s) | 메모리 사용 |

@@ -10,6 +10,11 @@ PaLM(Pathways Language Model)은 2022년 4월 Google이 발표한 **540B 파라�
 
 PaLM은 29개 NLP 태스크 중 28개에서 기존 SOTA를 능가하고, BIG-Bench의 65%에서 인간 평균을 초과하며 LLM의 가능성을 새로운 차원으로 끌어올렸다.
 
+다음은 PaLM이 Chain-of-Thought 프롬프팅을 통해 농담 설명과 논리적 추론을 수행하는 예시이다.
+
+![PaLM의 Chain-of-Thought 프롬프팅 예시 — 농담 설명과 논리적 추론](figures/fig_1.png)
+*Figure 1: PaLM 540B의 Chain-of-Thought 프롬프팅 예시 — 2-shot 프롬프트로 농담 설명과 논리적 추론을 수행한다. (Source: Chowdhery et al., 2022)*
+
 - **논문**: [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311)
 - **라이선스**: Proprietary (비공개)
 
@@ -81,6 +86,11 @@ class PaLMBlock(nn.Module):
 
 기존 LLM은 데이터 병렬화 + 모델 병렬화의 조합으로 학습했지만, Pathways는 **이기종 하드웨어에서 단일 모델을 효율적으로 학습**하는 새로운 패러다임이다:
 
+아래 다이어그램은 Pathways 시스템이 두 개의 TPU v4 Pod에서 교차 그래디언트 전송을 통해 분산 학습을 수행하는 구조를 보여준다.
+
+![Pathways 시스템 분산 학습 구조 다이어그램](figures/fig_2_1.png)
+*Figure 2: Pathways 시스템의 2-way 데이터 병렬화 — 두 TPU v4 Pod 간 교차 그래디언트 전송으로 6,144개 칩에서 효율적 분산 학습을 수행한다. (Source: Chowdhery et al., 2022)*
+
 - **6,144개 TPU v4** 칩에서 단일 모델 학습
 - 이전 LLM 대비 **약 2배** 많은 칩 활용
 - 통신 병목 최소화
@@ -88,7 +98,10 @@ class PaLMBlock(nn.Module):
 
 ### Chain-of-Thought (CoT) 프롬프팅
 
-PaLM은 CoT 프롬프팅과 결합했을 때 **비약적인 추론 능력 향상**을 보여주었다:
+PaLM은 CoT 프롬프팅과 결합했을 때 **비약적인 추론 능력 향상**을 보여주었다. 아래 그림은 표준 프롬프팅과 CoT 프롬프팅의 차이를 명확히 보여준다.
+
+![표준 프롬프팅과 Chain-of-Thought 프롬프팅 비교](figures/fig_10.png)
+*Figure 3: 표준 프롬프팅 vs Chain-of-Thought 프롬프팅 — CoT는 중간 추론 단계를 명시적으로 생성하여 수학 문제 같은 다단계 추론 정확도를 크게 향상시킨다. (Source: Chowdhery et al., 2022)*
 
 $$P(\text{answer} | \text{question}) \rightarrow P(\text{answer} | \text{question}, \text{reasoning steps})$$
 
@@ -102,6 +115,16 @@ $$P(\text{answer} | \text{question}) \rightarrow P(\text{answer} | \text{questio
 | MMLU (5-shot) | **69.3%** | 43.9% | 60.0% | 67.5% |
 | HellaSwag | **83.6%** | ~79% | ~80% | - |
 | WinoGrande | **85.1%** | ~77% | - | - |
+
+다음은 BIG-bench 58개 공통 태스크에서 PaLM과 기존 모델들의 성능 비교이다.
+
+![BIG-bench 58개 태스크에서의 모델 스케일별 성능 비교](figures/fig_3_1.png)
+*Figure 4: BIG-bench 58개 공통 태스크 성능 비교 — PaLM 540B가 GPT-3, Gopher, Chinchilla를 모든 스케일에서 압도하며, 파라미터 수 증가에 따른 명확한 성능 향상을 보인다. (Source: Chowdhery et al., 2022)*
+
+CoT 프롬프팅을 적용한 추론 태스크에서도 PaLM은 광범위한 벤치마크에서 새로운 SOTA를 달성했다.
+
+![CoT 프롬프팅 기반 산술 및 상식 추론 태스크 성능](figures/fig_12.png)
+*Figure 5: Chain-of-Thought 프롬프팅 기반 추론 성능 — GSM8K, SVAMP, StrategyQA 등에서 새로운 SOTA를 기록하며, 모델 스케일 증가에 따라 추론 능력이 비약적으로 향상됨을 보여준다. (Source: Chowdhery et al., 2022)*
 
 ### 핵심 결과
 - 29개 NLP 태스크 중 **28개에서 SOTA**

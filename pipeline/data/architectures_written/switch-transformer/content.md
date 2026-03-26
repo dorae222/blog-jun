@@ -10,6 +10,11 @@
 
 ## 아키텍처 상세
 
+다음 다이어그램은 Switch Transformer의 전체 아키텍처와 Top-1 MoE 라우팅 메커니즘을 보여준다.
+
+![Switch Transformer 전체 아키텍처 — Top-1 MoE 라우팅, Expert FFN, 보조 로드 밸런싱 손실](figures/architecture.png)
+*Figure 1: Switch Transformer 아키텍처 — T5 기반 인코더-디코더 구조에서 FFN을 다수의 Expert로 교체하고, Switch Router가 각 토큰을 Top-1 Expert에 할당한다. (Source: Switch Transformer 논문)*
+
 ### Top-1 Switch Routing
 
 기존 MoE(Shazeer et al., 2017)는 Top-2 전문가를 선택했지만, Switch Transformer는 **Top-1만 선택**한다:
@@ -30,6 +35,11 @@ Top-1 선택의 장점:
 | Switch-XXL | 64 | 395B | ~11B |
 | **Switch-C** | **2,048** | **1.6T** | ~11B |
 
+아래 그림은 Switch Transformer 인코더 블록의 동작을 구체적으로 보여준다. 각 토큰이 라우터에 의해 독립적으로 하나의 FFN Expert에 할당되는 과정이 시각화되어 있다.
+
+![Switch Transformer 인코더 블록 — 토큰별 독립 라우팅으로 4개 Expert 중 하나를 선택](figures/fig_2.png)
+*Figure 2: Switch FFN 레이어 — "More"와 "Parameters" 토큰이 각각 다른 Expert로 라우팅되는 과정. 라우터가 각 토큰에 대해 가장 높은 확률의 Expert를 선택하고, 게이트 값을 곱하여 출력한다. (Source: Switch Transformer 논문)*
+
 ### Expert Capacity Buffer
 
 전문가당 처리 가능한 최대 토큰 수를 설정한다:
@@ -37,6 +47,11 @@ Top-1 선택의 장점:
 $$\text{Expert Capacity} = \left(\frac{n}{e}\right) \times \text{capacity\_factor}$$
 
 여기서 $n$은 배치 내 토큰 수, $e$는 전문가 수이다. capacity_factor $\geq 1.0$으로 설정하여 약간의 여유를 확보하며, 용량을 초과하는 토큰은 **잔차 연결(residual connection)으로 패스스루**된다.
+
+다음 그림은 토큰 라우팅 동학과 capacity factor의 역할을 시각화한 것이다. 전문가 간 부하가 불균등할 때 오버플로가 발생하는 문제와 capacity factor로 이를 완화하는 방식을 보여준다.
+
+![토큰 라우팅 동학 — Capacity Factor에 따른 오버플로 처리 방식 비교](figures/fig_3.png)
+*Figure 3: 토큰 라우팅과 Capacity Factor — (좌) 기본 설정, (중앙) Capacity Factor 1.0에서 오버플로 발생(빨간 점선), (우) Capacity Factor 1.5에서 여유 슬롯으로 오버플로 완화. (Source: Switch Transformer 논문)*
 
 ### 보조 로드 밸런싱 손실
 
@@ -59,6 +74,11 @@ Top-2에서 Top-1으로의 전환은 단순한 변경처럼 보이지만, MoE �
 ### 3. T5 프레임워크 활용
 
 기존 T5 아키텍처의 FFN만 전문가로 교체하여, 검증된 인코더-디코더 프레임워크 위에서 MoE를 적용했다.
+
+다음 그래프는 Switch Transformer의 학습 속도 이점을 보여준다. 동일 FLOP 예산에서 Switch-Base 64 Expert 모델이 T5-Base 대비 7배 빠르게 동일 품질에 도달한다.
+
+![Switch Transformer의 학습 속도 이점 — T5 대비 7배 빠른 수렴](figures/fig_5.png)
+*Figure 4: 학습 속도 비교 — Switch-Base 64 Expert 모델(녹색)이 T5-Base(보라색) 대비 동일 퍼플렉서티를 1/7 시간에 달성한다. 32개 TPUv3 코어, 동일 FLOP 기준. (Source: Switch Transformer 논문)*
 
 ## 벤치마크/성능
 
@@ -94,6 +114,11 @@ Top-2에서 Top-1으로의 전환은 단순한 변경처럼 보이지만, MoE �
 
 ### 2. MoE 연구 기반
 Top-1 라우팅, 전문가 용량 관리, 부하 균형 등 이후 MoE 연구의 기본 프레임워크를 제공했다.
+
+다국어 사전 학습에서도 Switch Transformer는 강력한 성능을 보인다. 아래 그래프는 101개 언어에 대한 Switch Transformer와 Dense Baseline의 퍼플렉서티 비교이다.
+
+![101개 언어에서 Switch Transformer vs Dense Baseline 퍼플렉서티 비교](figures/fig_7.png)
+*Figure 5: 다국어 사전 학습 결과 — 101개 언어 전체에서 Switch Transformer(파란색)가 Dense Baseline(주황색) 대비 일관되게 낮은 퍼플렉서티를 달성한다. (Source: Switch Transformer 논문)*
 
 ### 3. 추론 효율화
 활성 파라미터가 전체의 일부이므로, 적절한 전문가 병렬화로 추론 비용을 관리할 수 있다.

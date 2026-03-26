@@ -8,6 +8,9 @@
 
 **참고 논문**: [Llama 2: Open Foundation and Fine-Tuned Chat Models](https://arxiv.org/abs/2307.09288) (Touvron et al., 2023)
 
+![LLaMA 2-Chat 학습 파이프라인 — 사전학습에서 SFT, RLHF(Rejection Sampling + PPO)까지의 전체 과정](figures/fig_5.jpg)
+*Figure 1: LLaMA 2-Chat 학습 파이프라인 — 사전학습 데이터로 Llama 2를 학습한 후, SFT와 RLHF(Rejection Sampling + PPO)를 반복 적용하여 Chat 모델을 완성한다. Safety/Helpful 보상 모델이 병렬로 활용된다. (Source: Touvron et al., 2023)*
+
 ## 아키텍처 상세
 
 ### LLaMA 대비 3대 변화
@@ -28,6 +31,12 @@ $$\text{GQA}: Q \in \mathbb{R}^{n_h \times d_h}, \quad K, V \in \mathbb{R}^{n_g 
 
 멀티턴 대화에서 시스템 프롬프트를 일관되게 유지하기 위한 기법이다. SFT 데이터 구성 시 시스템 메시지를 **모든 대화 턴에 가상으로 삽입**하여, 모델이 장기 대화에서도 초기 지시를 잊지 않도록 한다.
 
+![Ghost Attention 적용 전후 비교 — GAtt 없이 시스템 지시를 잊는 문제가 해결됨](figures/fig_10_1.png)
+*Figure 2: Ghost Attention 효과 — GAtt 적용 전(좌)에는 멀티턴 대화에서 시스템 프롬프트 지시(이모지로 답변)를 잊지만, GAtt 적용 후(우)에는 일관되게 유지한다. (Source: Touvron et al., 2023)*
+
+![GAtt 적용 전후 어텐션 패턴 시각화 — 시스템 프롬프트에 대한 어텐션이 유지됨](figures/fig_11.png)
+*Figure 3: GAtt 어텐션 시각화 — GAtt 적용 전(좌)에는 후반 턴에서 시스템 메시지 어텐션이 약화되지만, 적용 후(우)에는 전체 대화에 걸쳐 시스템 메시지에 대한 강한 어텐션이 유지된다. (Source: Touvron et al., 2023)*
+
 ### 모델 사양
 
 | 모델 | 파라미터 | 레이어 | 히든 | 어텐션 |
@@ -45,6 +54,9 @@ LLaMA-2-Chat은 RLHF(Rejection Sampling + PPO)가 적용된 완성된 Chat 모�
 
 ### 2. Rejection Sampling + PPO
 
+![LLaMA 2-Chat의 RLHF 반복 학습에 따른 유용성-무해성 진화 — SFT에서 RLHF-v5까지](figures/fig_12_1.png)
+*Figure 5: LLaMA 2-Chat의 반복 정렬 진화 — SFT-v1에서 RLHF-v5(with PPO)까지 반복 학습을 거치며 유용성(Helpfulness)과 무해성(Harmlessness)이 동시에 향상되는 과정. (Source: Touvron et al., 2023)*
+
 InstructGPT의 PPO만 사용하는 방식에서 한 단계 진화하여, 여러 응답을 생성한 후 보상 모델로 최상위 응답을 선택하는 **Rejection Sampling**을 PPO 전에 적용했다.
 
 ### 3. Safety RLHF
@@ -52,6 +64,9 @@ InstructGPT의 PPO만 사용하는 방식에서 한 단계 진화하여, 여러 
 안전성을 별도 축으로 최적화하여, 유용성과 안전성을 동시에 달성하는 멀티-목표 정렬을 구현했다.
 
 ## 벤치마크/성능
+
+![LLaMA 2-Chat 유용성 인간 평가 결과 — 다양한 오픈소스 및 상업 모델 대비 Win Rate 비교](figures/fig_1_1.png)
+*Figure 4: 유용성 인간 평가 — LLaMA 2-Chat이 PaLM-Bison, Falcon, Vicuna, MPT 등 오픈소스 모델 대비 높은 Win Rate를 기록하고, ChatGPT와도 경쟁력 있는 수준을 달성하였다. (Source: Touvron et al., 2023)*
 
 | 벤치마크 | LLaMA-2-7B | LLaMA-2-70B | LLaMA-1-65B |
 |---------|-----------|------------|------------|

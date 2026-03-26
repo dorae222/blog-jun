@@ -12,6 +12,11 @@ Janus-Pro의 핵심 통찰은 이해와 생성이 **근본적으로 다른 시�
 
 ### 전체 구조
 
+아래 그림은 Janus-Pro의 디커플링 아키텍처를 보여준다. 이해용(Und. Encoder)과 생성용(Gen. Encoder/Decoder) 비전 인코더가 분리되어 하나의 Auto-Regressive Transformer를 공유하는 구조이다.
+
+![Janus-Pro 아키텍처 — 이해용과 생성용 비전 인코더가 분리된 구조](figures/fig_5.png)
+*Figure 3: Janus-Pro 아키텍처 — 이해 경로에서는 Und. Encoder(SigLIP)가 시각 특징을 추출하고, 생성 경로에서는 Gen. Encoder/Decoder(VQVAE)가 이미지 토큰을 처리한다. 두 경로가 동일한 Auto-Regressive Transformer를 공유한다. (Source: Chen et al., 2025)*
+
 Janus-Pro는 네 가지 핵심 컴포넌트로 구성된다:
 
 1. **이해용 비전 인코더**: SigLIP-L (400M params) — 의미론적 시각 표현 추출
@@ -64,6 +69,14 @@ SigLIP은 이미지의 의미(고양이, 개, 풍경 등)를 잘 포착하지만
 
 ## 벤치마크/성능
 
+아래 두 그래프는 멀티모달 이해 벤치마크와 이미지 생성 벤치마크에서의 성능을 비교한 것이다.
+
+![멀티모달 이해 벤치마크 성능 — LLM 파라미터 대비 평균 성능](figures/fig_1_1.png)
+*Figure 1a: 멀티모달 이해 성능 — 4개 벤치마크 평균 성능에서 Janus-Pro-7B가 동급 모델 대비 우수한 성능을 달성한다. (Source: Chen et al., 2025)*
+
+![이미지 생성 벤치마크 성능 — GenEval, DPG-Bench 비교](figures/fig_3.png)
+*Figure 1b: 이미지 생성 성능 — GenEval과 DPG-Bench에서 Janus-Pro가 SDXL, DALL-E 3 등 전문 생성 모델과 경쟁하는 수준을 보여준다. (Source: Chen et al., 2025)*
+
 ### 이해 성능
 
 | 벤치마크 | Janus-Pro-7B | LLaVA-v1.5-7B | Chameleon-7B |
@@ -89,6 +102,11 @@ SigLIP은 이미지의 의미(고양이, 개, 풍경 등)를 잘 포착하지만
 | 이해 성능 | 높음 | 보통 | 보통 | 보통 |
 | 생성 품질 | 높음 | 보통 | 높음 | 보통 |
 | 모델 크기 | 7B | 34B | 8B | 7B |
+
+다음은 Janus와 Janus-Pro의 이미지 생성 결과를 비교한 것으로, Janus-Pro가 더 안정적이고 디테일한 이미지를 생성하며 간단한 텍스트 렌더링도 가능함을 보여준다.
+
+![Janus vs Janus-Pro 생성 품질 비교 — 동일 프롬프트에서의 품질 차이](figures/fig_4.png)
+*Figure 2: Janus vs Janus-Pro 생성 비교 — Janus-Pro는 짧은 프롬프트에서도 안정적인 출력, 향상된 시각적 품질, 풍부한 디테일, 간단한 텍스트 생성 능력을 보여준다. (Source: Chen et al., 2025)*
 
 ## 학습 상세
 
@@ -132,6 +150,11 @@ image = model.generate(
 )
 image.save("generated.png")
 ```
+
+아래는 Janus-Pro-7B의 멀티모달 이해(이미지 캡셔닝, 랜드마크 인식, 텍스트 인식)와 이미지 생성 결과를 종합적으로 보여주는 정성적 결과이다.
+
+![Janus-Pro-7B 정성적 결과 — 이미지 이해와 생성 능력 시연](figures/fig_6.png)
+*Figure 4: Janus-Pro-7B 정성적 결과 — 상세 이미지 설명, 랜드마크 인식(중국어 포함), 일반 지식, 텍스트 인식, 그리고 다양한 스타일의 고품질 이미지 생성을 시연한다. (Source: Chen et al., 2025)*
 
 ## 한계 및 전망
 

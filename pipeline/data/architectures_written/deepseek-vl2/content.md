@@ -8,9 +8,19 @@ DeepSeek-VL2의 핵심 가치는 **파라미터 효율성**이다. 27B 모델의
 
 논문: [DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding](https://arxiv.org/abs/2412.10302)
 
+DeepSeek-VL2의 파라미터 효율성은 아래 그래프에서 명확히 드러난다.
+
+![활성 파라미터 대비 평균 성능 비교 — DeepSeek-VL2가 적은 활성 파라미터로 높은 성능 달성](figures/fig_1.png)
+*Figure 1: 오픈소스 모델의 활성 파라미터 대비 평균 성능 비교 — DeepSeek-VL2는 4.5B의 활성 파라미터만으로 72B급 밀집 모델과 경쟁하는 성능을 달성한다. (Source: Wu et al., 2024)*
+
 ## 아키텍처 상세
 
 ### 전체 구조
+
+아래 그림은 DeepSeek-VL2의 LLaVA 스타일 전체 아키텍처를 보여준다.
+
+![DeepSeek-VL2 아키텍처 개요 — 비전 인코더, VL 어댑터, MoE 기반 LLM으로 구성](figures/fig_2.png)
+*Figure 2: DeepSeek-VL2 전체 구조 — 비전 인코더(SigLIP), VL 어댑터, DeepSeekMoE LLM으로 구성되며, 동적 타일링을 통해 다양한 해상도의 이미지를 효율적으로 처리한다. (Source: Wu et al., 2024)*
 
 DeepSeek-VL2는 세 가지 핵심 컴포넌트로 구성된다:
 
@@ -29,6 +39,11 @@ $$I \in \mathbb{R}^{H \times W \times 3} \rightarrow \{T_1, T_2, ..., T_n, T_{\t
 - 고해상도 이미지: 최대 12개 타일 → 많은 토큰 (세밀한 정보 보존)
 
 이미지 본래의 종횡비를 유지하면서 해상도에 비례한 토큰 수를 사용하므로, 고해상도 OCR이나 문서 이해에서 탁월한 성능을 보인다.
+
+동적 타일링 전략의 구체적인 동작 과정은 아래 그림에서 확인할 수 있다.
+
+![동적 타일링 전략 — 이미지를 내용과 해상도에 따라 최적 타일로 분할](figures/fig_3.png)
+*Figure 3: DeepSeek-VL2의 동적 타일링 전략 — 입력 이미지를 해상도에 따라 로컬 타일과 글로벌 타일로 분할하여, 세밀한 디테일과 전체 맥락을 동시에 포착한다. (Source: Wu et al., 2024)*
 
 ### DeepSeekMoE 아키텍처
 
@@ -130,6 +145,11 @@ inputs = processor(
 ).to("cuda")
 output = model.generate(**inputs, max_new_tokens=512)
 ```
+
+DeepSeek-VL2는 시각적 그라운딩 능력에서도 뛰어난 성능을 보여준다.
+
+![DeepSeek-VL2의 시각적 그라운딩 — 카테고리, 설명, 추상적 개념 기반 객체 위치 파악](figures/fig_8.png)
+*Figure 4: DeepSeek-VL2의 시각적 그라운딩 — 자연 장면, 웹 UI/스크린샷, 밈/애니메이션 등 다양한 도메인에서 카테고리명, 설명, 추상적 개념을 기반으로 객체를 정확히 위치시킨다. (Source: Wu et al., 2024)*
 
 ## 한계 및 전망
 

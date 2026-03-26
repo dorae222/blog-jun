@@ -10,6 +10,11 @@ ReAct의 핵심 통찰은 **"추론만으로는 불완전하고, 행동만으로
 
 ReAct가 AI 에이전트 분야에 미친 영향은 절대적이다. 이후 LangChain의 AgentExecutor, AutoGen의 ConversableAgent, Claude의 tool use, LangGraph의 에이전트 노드 등 **사실상 모든 에이전트 시스템이 ReAct 패턴을 기본 추론 루프로 채택**했다. ReAct는 현대 AI 에이전트의 "hello world"에 해당하는 기초 패러다임이다.
 
+아래 그림은 Standard, CoT, Act-only, ReAct 네 가지 프롬프팅 방법을 HotpotQA와 ALFWorld 태스크에서 비교한 것이다.
+
+![네 가지 프롬프팅 방법(Standard, CoT, Act-only, ReAct) 비교 — HotpotQA 및 ALFWorld 태스크](figures/fig_1.png)
+*Figure 1: 네 가지 프롬프팅 방법 비교 — (1a) Standard, (1b) CoT(추론만), (1c) Act-only, (1d) ReAct(추론+행동)로 HotpotQA 문제를 해결하는 과정과, ALFWorld 게임에서의 Act-only vs ReAct 비교. (Source: Yao et al., 2022)*
+
 ![Architecture](figures/architecture.svg)
 
 ## 아키텍처 상세
@@ -77,7 +82,10 @@ ReAct는 CoT와 동일하게 few-shot 예시를 통해 구현된다. Thought-Act
 
 2. **외부 지식 접근**: 모델 내부 지식에만 의존하는 CoT의 환각 문제를 외부 도구 활용으로 해결했다. 검색 엔진으로 최신 정보를 확인하고, 계산기로 정확한 연산을 수행할 수 있다.
 
-3. **해석 가능한 에이전트 행동**: Thought 단계가 에이전트의 추론 과정을 명시적으로 드러내므로, 왜 특정 행동을 선택했는지 이해하고 디버깅할 수 있다.
+3. **해석 가능한 에이전트 행동**: Thought 단계가 에이전트의 추론 과정을 명시적으로 드러내므로, 왜 특정 행동을 선택했는지 이해하고 디버깅할 수 있다. 아래 예시는 ReAct가 외부 검색을 통해 오래된 정답 라벨을 극복하고 최신 정보를 얻는 과정을 보여준다.
+
+![ReAct가 외부 검색으로 최신 정보를 획득하여 오래된 라벨을 극복하는 예시](figures/fig_8.png)
+*Figure 5: 외부 지식 접근의 강점 — HotpotQA에서 정답 라벨이 구식(outdated)인 경우, ReAct만이 실시간 웹 검색과 추론을 결합하여 최신 정보를 획득한다. (Source: Yao et al., 2022)*
 
 4. **범용 에이전트 패러다임**: 지식 추론(HotpotQA), 사실 검증(Fever), 대화형 게임(ALFWorld), 웹 탐색(WebShop) 등 다양한 도메인에 동일한 패러다임이 적용 가능함을 입증했다.
 
@@ -91,6 +99,19 @@ ReAct는 CoT와 동일하게 few-shot 예시를 통해 구현된다. Thought-Act
 | WebShop | Score | - | 62.4% | **66.6%** | +4.2%p |
 
 특히 ALFWorld에서 26%p의 향상은 추론이 행동 기반 에이전트의 효율을 크게 높일 수 있음을 보여준다.
+
+CoT-SC(Self-Consistency) 샘플 수에 따른 성능 변화를 살펴보면, ReAct와 CoT-SC를 결합했을 때 각각 단독 사용 대비 더 높은 성능을 달성한다.
+
+![HotpotQA에서 CoT-SC 샘플 수에 따른 성능 비교 그래프](figures/fig_3_1.png)
+*Figure 2: HotpotQA에서 CoT-SC 샘플 수에 따른 PaLM-540B 프롬프팅 성능 — CoT-SC→ReAct 결합이 가장 높은 EM 점수를 달성한다. (Source: Yao et al., 2022)*
+
+![Fever에서 CoT-SC 샘플 수에 따른 성능 비교 그래프](figures/fig_3_2.png)
+*Figure 3: Fever에서 CoT-SC 샘플 수에 따른 PaLM-540B 프롬프팅 성능 — CoT-SC→ReAct 결합이 최고 정확도를 달성하며, ReAct→CoT-SC도 강력한 성능을 보인다. (Source: Yao et al., 2022)*
+
+모델 스케일 측면에서도 ReAct의 우위가 확인된다. 아래 그래프는 모델 크기(8B→62B→540B)에 따른 프롬프팅과 파인튜닝 결과를 보여준다.
+
+![HotpotQA에서 모델 크기별 프롬프팅 및 파인튜닝 성능 비교](figures/fig_5.png)
+*Figure 4: HotpotQA 스케일링 실험 결과 — 프롬프팅(좌)과 파인튜닝(우) 모두에서 ReAct가 모델 크기 증가에 따라 일관된 성능 향상을 보인다. (Source: Yao et al., 2022)*
 
 ## 학습
 

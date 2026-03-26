@@ -46,6 +46,14 @@ $$h^{(l+1)} = f_\theta(h^{(l)}), \quad l = 0, 1, \ldots, L-1$$
 
 전체 공유 시 성능 하락이 1점 내외로 미미한 반면, 파라미터 절감 효과는 압도적이다. 이는 Transformer의 각 레이어가 유사한 변환을 수행하며, 깊이보다는 **표현 공간의 폭(width)**이 더 중요할 수 있음을 시사한다.
 
+파라미터 공유가 레이어 간 표현에 미치는 영향은 아래 그래프에서 확인할 수 있다.
+
+![BERT-large와 ALBERT-large의 레이어별 L2 거리 비교](figures/fig_1_1.png)
+*Figure 1: BERT-large vs ALBERT-large의 레이어별 입출력 L2 거리 — BERT는 레이어가 깊어질수록 L2 거리가 불규칙하게 변동하지만, ALBERT는 파라미터 공유로 인해 안정적인 패턴을 보인다. (Source: Lan et al., 2019)*
+
+![BERT-large와 ALBERT-large의 레이어별 코사인 유사도 비교](figures/fig_1_2.png)
+*Figure 2: BERT-large vs ALBERT-large의 레이어별 입출력 코사인 유사도 — ALBERT의 파라미터 공유 레이어는 레이어 간 표현 변화가 더 안정적이며, 수렴하는 경향을 보인다. (Source: Lan et al., 2019)*
+
 ### SOP (Sentence Order Prediction)
 
 BERT의 NSP(Next Sentence Prediction)를 **SOP(Sentence Order Prediction)**로 대체한다:
@@ -134,6 +142,14 @@ NSP 대비 SOP가 다운스트림 태스크에서 일관되게 더 나은 성능
 | SuperGLUE | - | **87.7** | 84.6 | SOTA |
 
 ALBERT-XXLarge는 BERT-Large 대비 **파라미터 약 31% 절감**하면서 모든 벤치마크에서 크게 앞서며, 특히 RACE(+17.4)에서 압도적 우위를 보인다.
+
+ALBERT의 성능은 추가 데이터와 드롭아웃 제거를 통해 더욱 개선된다.
+
+![추가 데이터를 포함한 ALBERT의 MNLI 학습 곡선 — 데이터 추가로 성능이 향상](figures/fig_5.png)
+*Figure 3: 추가 데이터 효과 — ALBERT에 추가 학습 데이터를 제공하면 MNLI 성능이 지속적으로 향상되며, 파라미터 공유 구조가 더 많은 데이터를 효과적으로 활용함을 보여준다. (Source: Lan et al., 2019)*
+
+![드롭아웃 제거 시 ALBERT의 MNLI 학습 곡선 — 드롭아웃 없이도 성능 향상](figures/fig_6.png)
+*Figure 4: 드롭아웃 제거 효과 — ALBERT는 파라미터 공유 자체가 정규화 역할을 하므로, 드롭아웃을 제거하면 오히려 MNLI 성능이 개선되는 흥미로운 결과를 보인다. (Source: Lan et al., 2019)*
 
 ## 학습
 

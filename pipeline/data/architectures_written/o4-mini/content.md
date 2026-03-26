@@ -71,6 +71,11 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
+다음 그림은 o4-mini의 테스트 시간 컴퓨트 스케일링과 내부 추론 흐름을 보여준다.
+
+![o4-mini의 추론 흐름과 테스트 시간 컴퓨트 스케일링 비교](figures/detail.png)
+*Figure 2: o4-mini 추론 흐름 — 내부 Chain-of-Thought 단계(문제 분해, 전략 탐색, 검증)를 거쳐 최종 답변만 반환하며, 전통적 스케일링과 테스트 시간 스케일링 패러다임의 차이를 보여준다. (Source: OpenAI System Card)*
+
 ## 핵심 혁신
 
 ### 1. Test-Time Compute

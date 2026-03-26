@@ -8,6 +8,11 @@ Microsoft가 2024년 4월 공개한 소형 언어 모델(SLM) 시리즈로, '아
 
 ![Architecture](figures/architecture.svg)
 
+다음은 4비트 양자화된 Phi-3-mini가 iPhone A16 Bionic 칩에서 네이티브로 실행되는 모습으로, 초당 12토큰 이상을 생성하며 엣지 AI의 가능성을 보여준다.
+
+![Phi-3-mini iPhone 네이티브 실행 — 4비트 양자화로 초당 12토큰 이상 생성](figures/fig_1_1.png)
+*Figure 1: Phi-3-mini 모바일 실행 — 4비트 양자화된 Phi-3-mini가 iPhone A16 Bionic에서 네이티브로 실행되어, 시 생성 태스크를 처리하는 모습. (Source: Abdin et al., 2024)*
+
 ## 아키텍처 상세
 
 핵심 혁신은 아키텍처가 아니라 데이터 큐레이션이다. Phi-1에서 시작된 '교과서 품질(textbook quality)' 합성 데이터 전략을 Phi-3에서 완성: (1) GPT-4로 생성한 교과서·문제집 형태 합성 데이터, (2) 고품질 필터링된 웹 데이터, (3) 코드 데이터 강화. 3.3T 토큰 학습. 아키텍처는 LLaMA-2와 유사한 Decoder-only Transformer에 LongRoPE(위치 인코딩을 점진적으로 외삽)로 128K 컨텍스트 달성. Phi-3-mini: MMLU 68.8%(Mistral-7B: 61.7%), GSM8K 82.0%.
@@ -69,6 +74,11 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 ## 핵심 혁신
 
+아래 그래프는 Phi 시리즈와 LLaMA-2 시리즈의 스케일링 법칙을 비교한 것으로, 동일 데이터에서 학습된 LLaMA-2 대비 데이터 최적 체제(Data Optimal Regime)에서 Phi 시리즈가 훨씬 낮은 MMLU 오류율을 달성함을 보여준다.
+
+![데이터 최적 스케일링 법칙 — Phi vs LLaMA-2 모델 크기 대비 MMLU 오류율](figures/fig_2.png)
+*Figure 2: 데이터 최적 스케일링 법칙 — Phi 시리즈(파란색/빨간색)가 동일 데이터의 LLaMA-2(보라색/초록색) 대비 모든 규모에서 낮은 MMLU 오류율을 달성하여, 데이터 품질의 중요성을 입증한다. (Source: Abdin et al., 2024)*
+
 ### 1. Data Quality
 
 데이터 품질은 모델 성능에 있어 데이터 양이나 모델 크기보다 더 결정적인 요소임이 Phi 시리즈를 통해 실증되었다. 고품질 합성 데이터, 체계적 필터링, 도메인별 데이터 믹싱 비율 조정이 핵심이며, 'Textbooks Are All You Need'라는 슬로건이 이 철학을 대표한다.
@@ -104,6 +114,16 @@ Phi-3은 다양한 추론 프레임워크(vLLM, TGI, ONNX Runtime 등)에서 지
 
 ### 3. 연구 베이스라인
 Phi-3은 Data Quality, Synthetic Data 연구의 표준 베이스라인으로 활용된다.
+
+아래는 Phi-3-mini가 검색 없이 사용자의 질문에 직접 응답하는 모습으로, 3.8B 소형 모델임에도 상세한 일정 계획 등 실용적인 태스크를 처리하는 능력을 보여준다.
+
+![Phi-3-mini 응답 예시 — 검색 없이 상세한 여행 일정 생성](figures/fig_4_1.png)
+*Figure 4: Phi-3-mini 응답 품질 — 3.8B 파라미터의 소형 모델이 검색 없이도 Alaska Skagway 일일 여행 일정을 상세하게 생성하는 모습. (Source: Abdin et al., 2024)*
+
+다음 그래프는 안전성 정렬(safety alignment) 전후의 유해 응답 비율을 비교한 것으로, 안전성 학습이 다양한 유해 카테고리에서 효과적으로 작동함을 보여준다.
+
+![안전성 정렬 전후 유해 응답 비율 비교 — 카테고리별 개선](figures/fig_3.png)
+*Figure 3: 안전성 정렬 효과 — 안전성 학습 전(파란색) 대비 후(주황색)로 모든 유해 카테고리에서 유해 응답 비율이 크게 감소한다. (Source: Abdin et al., 2024)*
 
 ## 한계 및 전망
 

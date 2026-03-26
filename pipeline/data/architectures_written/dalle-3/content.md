@@ -8,6 +8,9 @@ DALL·E 3는 2023년 OpenAI가 발표한 텍스트-이미지 생성 모델로, �
 - **발표**: 2023년 10월, OpenAI
 - **라이선스**: Proprietary
 
+![DALL-E 3 전체 아키텍처 — 합성 캡션 파이프라인, U-Net Denoiser, 텍스트 인코딩, 추론 구조](figures/architecture.png)
+*Figure 1: DALL-E 3 전체 아키텍처 — Image Captioner가 Long/Short 합성 캡션을 생성하고, 원본 ALT Text와 95:5 비율로 혼합하여 학습한다. T5-XXL과 CLIP 이중 텍스트 인코더를 사용하며, CFG와 Cascaded Super-Resolution으로 고해상도 이미지를 생성한다. (Source: Betker et al., 2023)*
+
 ## 아키텍처 상세
 
 ### Descriptive Synthetic Caption 파이프라인
@@ -25,6 +28,9 @@ DALL·E 3의 핵심 기여는 학습 이미지마다 세 종류의 합성 캡션
 - 원본 ALT 텍스트: **5%**
 
 이 비율 설계가 중요한 이유는, 합성 캡션만으로 학습하면 추론 시 사용자의 자연어 프롬프트 스타일과 괴리가 생기므로 소량의 원본 캡션을 혼합하여 다양한 프롬프트 스타일에 대한 강건성을 확보한다.
+
+![원본 ALT Text vs 합성 캡션 비교 — 캡션 품질이 생성 품질에 미치는 영향](figures/fig_14.png)
+*Figure 2: 원본 vs BLIP-2 생성 캡션 비교 — LAION-2B 이미지에 대해 원본 ALT Text는 이미지 내용을 부정확하게 설명하지만, 합성 캡션은 이미지의 실제 내용과 정확히 일치하는 상세 설명을 제공한다. (Source: Betker et al., 2023)*
 
 ### 캡션 품질이 생성 품질에 미치는 영향
 
@@ -67,6 +73,9 @@ DALL·E 3는 ChatGPT와 통합되어 자연어 대화 인터페이스를 제공�
 3. **텍스트 렌더링 해결**: 이전 모델들의 가장 큰 약점이었던 이미지 내 텍스트 렌더링 문제를 실용적 수준으로 해결하였다.
 4. **ChatGPT 통합**: 대화형 인터페이스를 통한 이미지 생성·수정 워크플로우를 대중화하였다.
 
+![합성 캡션으로 학습한 모델의 생성 결과 비교](figures/fig_1_1.png)
+*Figure 3: 합성 캡션 학습 효과 — 합성 캡션 접근법을 사용하면 전체 학습 데이터의 3% 미만으로도 SD2-base와 비슷한 정성적 성능을 달성할 수 있음을 보여준다. 데이터 품질이 데이터 양보다 중요하다는 핵심 발견. (Source: Betker et al., 2023)*
+
 ## 벤치마크/성능
 
 | 평가 항목 | DALL·E 3 | DALL·E 2 | SDXL | Midjourney v5.1 |
@@ -88,6 +97,9 @@ Human Preference 평가에서 DALL·E 2, Midjourney v5.1, SDXL 대비 텍스트 
 | 텍스트 렌더링 | 우수 | 보통 | 보통 | 낮음 |
 | 오픈소스 | 아니오 | 아니오 | 아니오 | 예 |
 | ChatGPT 통합 | 예 | 아니오 | 아니오 | 아니오 |
+
+![사용자 선호도 평가 — Parti 프롬프트를 사용한 모델 비교](figures/fig_17.png)
+*Figure 4: 사용자 선호도 평가 — Parti 프롬프트를 사용한 비교에서 합성 캡션(LNC: Long Non-Commercial)으로 학습한 모델이 가장 높은 선호도를 기록하여, 상세한 합성 캡션의 효과를 정량적으로 입증한다. (Source: Betker et al., 2023)*
 
 ## 학습 상세
 
