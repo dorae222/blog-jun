@@ -1,0 +1,19 @@
+{
+  "slug": "model-merging-mergekit",
+  "title": "Model Merging with mergekit: Combining Multiple Models",
+  "title_ko": "Model Merging 실전: mergekit으로 모델 합성하기",
+  "category_slug": "training",
+  "summary": "여러 파인튜닝 모델의 가중치를 결합하여 새로운 모델을 만드는 Model Merging 기법을 다룹니다. SLERP, TIES, DARE 등 주요 병합 알고리즘의 원리와 mergekit을 사용한 실전 병합 과정을 설명합니다.",
+  "tags": [
+    "model-merging",
+    "mergekit",
+    "slerp",
+    "ties",
+    "dare",
+    "weight-averaging",
+    "fine-tuning",
+    "open-source",
+    "llm"
+  ],
+  "is_pinned": false
+}
