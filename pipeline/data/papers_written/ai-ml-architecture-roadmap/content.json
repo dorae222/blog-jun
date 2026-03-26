@@ -1,0 +1,24 @@
+{
+  "title": "AI/ML Architecture Roadmap: From Transformer to Agent",
+  "title_ko": "AI/ML 아키텍처 로드맵: Transformer에서 Agent까지",
+  "slug": "ai-ml-architecture-roadmap",
+  "category": "ai",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "AI/ML 분야의 전체 지형도를 조망합니다. Transformer 아키텍처를 기반으로 LLM, Diffusion, Vision, SSM, Multimodal, Agent, Technique 등 7개 핵심 영역의 발전 흐름과 상호 관계를 정리하고, 각 분야별 학습 경로를 제시합니다.",
+  "tags": [
+    "ai-overview",
+    "roadmap",
+    "transformer",
+    "llm",
+    "diffusion",
+    "vision",
+    "ssm",
+    "multimodal",
+    "agent",
+    "technique"
+  ],
+  "is_pinned": true
+}

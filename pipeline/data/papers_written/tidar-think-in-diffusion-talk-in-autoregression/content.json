@@ -1,0 +1,21 @@
+{
+  "title": "TiDAR: Think in Diffusion, Talk in Autoregression",
+  "title_ko": "TiDAR: Diffusion으로 사고하고 Autoregression으로 말하는 하이브리드 텍스트 생성",
+  "slug": "tidar-think-in-diffusion-talk-in-autoregression",
+  "category": "multimodal",
+  "sub_category": "",
+  "year": 2025,
+  "venue": "",
+  "authors": "Jingyu Liu et al.",
+  "arxiv_url": "https://arxiv.org/abs/2511.08923",
+  "summary": "AR 모델의 높은 생성 품질과 Diffusion 모델의 병렬 생성 속도를 단일 forward pass에서 결합하여, Block-Causal Attention Mask 기반 self-speculative decoding으로 8B 스케일에서 5.91배 throughput 가속을 AR 수준 품질과 함께 달성한 하이브리드 아키텍처.",
+  "tags": [
+    "artificial-intelligence",
+    "diffusion",
+    "nlp",
+    "autoregressive",
+    "speculative-decoding",
+    "multimodal-llm"
+  ],
+  "related_architecture": ""
+}

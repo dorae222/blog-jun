@@ -1,0 +1,22 @@
+{
+  "title": "Computer Vision Deep Learning Roadmap",
+  "title_ko": "컴퓨터 비전 딥러닝 로드맵",
+  "slug": "computer-vision-dl-roadmap",
+  "category": "vision",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "딥러닝 기반 컴퓨터 비전의 핵심 모델과 기법을 정리합니다. ViT, DeiT, Swin Transformer 등 Vision Transformer 계열부터 SAM, DETR, Grounding DINO 등 Object Detection/Segmentation, 그리고 CLIP, SigLIP 등 Vision-Language 모델까지 체계적으로 다룹니다.",
+  "tags": [
+    "computer-vision",
+    "vit",
+    "object-detection",
+    "segmentation",
+    "vision-transformer",
+    "clip",
+    "sam",
+    "roadmap"
+  ],
+  "is_pinned": true
+}
