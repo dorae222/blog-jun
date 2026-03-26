@@ -36,7 +36,8 @@
   "relations": [
     {
       "to": "diffusion-thermo",
-      "type": "inspired_by"
+      "type": "inspired_by",
+      "description": "Score-based Generative Model은(는) Diffusion (Thermodynamics)의 핵심 아이디어에서 영감을 받았다."
     }
   ],
   "related_post_slug": "score-matching"

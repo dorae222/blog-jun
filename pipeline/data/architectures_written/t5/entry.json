@@ -25,9 +25,20 @@
   "paper_url": "https://arxiv.org/abs/1910.10683",
   "code_url": "https://github.com/google-research/text-to-text-transfer-transformer",
   "license_type": "Apache 2.0",
-  "concepts": ["Text-to-Text", "Unified Framework", "C4 Dataset", "Span Corruption", "Relative Attention Bias", "Multitask Learning"],
+  "concepts": [
+    "Text-to-Text",
+    "Unified Framework",
+    "C4 Dataset",
+    "Span Corruption",
+    "Relative Attention Bias",
+    "Multitask Learning"
+  ],
   "relations": [
-    {"to": "transformer", "type": "evolved_from"}
+    {
+      "to": "transformer",
+      "type": "evolved_from",
+      "description": "T5은(는) Transformer의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "t5"
 }

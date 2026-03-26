@@ -22,10 +22,22 @@
   "paper_url": "https://arxiv.org/abs/2504.21318",
   "code_url": "https://huggingface.co/microsoft/Phi-4-reasoning",
   "license_type": "MIT",
-  "concepts": ["Reasoning", "Chain-of-Thought", "Synthetic Data", "GRPO", "Small Language Model"],
+  "concepts": [
+    "Reasoning",
+    "Chain-of-Thought",
+    "Synthetic Data",
+    "GRPO",
+    "Small Language Model"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
-  "relations": [{"to": "phi-3", "type": "evolved_from"}],
+  "relations": [
+    {
+      "to": "phi-3",
+      "type": "evolved_from",
+      "description": "Phi-4 Reasoning은(는) Phi-3의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

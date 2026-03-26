@@ -21,9 +21,20 @@
   "key_detail": "GPT-2 아키텍처에서 Pre-Norm(LayerNorm을 서브레이어 입력 전에 적용)으로 전환해 175B 규모에서 학습 안정성을 확보했다. 헤드 수 96개, 레이어 96개, hidden dim 12288로 GPT-2(1.5B) 대비 약 117배 확장. Alternating Dense/Sparse Attention(Sparse Transformer 변형)을 일부 레이어에 적용했다고 알려졌다. Few-shot(예시 수십 개)·One-shot(예시 1개)·Zero-shot(예시 없음) 설정에서 모두 경쟁력 있는 성능을 보였으며, LAMBADA 언어 모델링 정확도 86.4%, SuperGLUE 71.8점(파인튜닝 없이) 달성.",
   "training_detail": "Common Crawl(필터링, 410B 토큰), WebText2(19B), Books1(12B), Books2(55B), Wikipedia(3B) 등 총 300B 토큰 학습. Adam optimizer(β₁=0.9, β₂=0.95, ε=1e-8). 배치 32,768 토큰, cosine lr decay. V100 GPU 1024개(약 3.14×10²³ FLOPs). 그래디언트 클리핑 1.0.",
   "paper_url": "https://arxiv.org/abs/2005.14165",
-  "concepts": ["In-Context Learning", "Few-Shot", "Zero-Shot", "Autoregressive LM", "Pre-Norm", "Scaling"],
+  "concepts": [
+    "In-Context Learning",
+    "Few-Shot",
+    "Zero-Shot",
+    "Autoregressive LM",
+    "Pre-Norm",
+    "Scaling"
+  ],
   "relations": [
-    {"to": "gpt-2", "type": "evolved_from"}
+    {
+      "to": "gpt-2",
+      "type": "evolved_from",
+      "description": "GPT-3은(는) GPT-2의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "gpt-3"
 }

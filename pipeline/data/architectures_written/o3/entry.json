@@ -22,10 +22,22 @@
   "paper_url": "https://openai.com/index/openai-o3-system-card/",
   "code_url": "",
   "license_type": "Proprietary",
-  "concepts": ["Test-Time Compute", "Reasoning", "CoT", "ARC-AGI", "Adaptive Compute"],
+  "concepts": [
+    "Test-Time Compute",
+    "Reasoning",
+    "CoT",
+    "ARC-AGI",
+    "Adaptive Compute"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
-  "relations": [{"to": "o1", "type": "evolved_from"}],
+  "relations": [
+    {
+      "to": "o1",
+      "type": "evolved_from",
+      "description": "OpenAI o3은(는) OpenAI o1의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

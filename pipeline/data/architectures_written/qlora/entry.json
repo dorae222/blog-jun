@@ -22,12 +22,23 @@
   "paper_url": "https://arxiv.org/abs/2305.14314",
   "code_url": "https://github.com/artidoro/qlora",
   "license_type": "MIT",
-  "concepts": ["NF4 Quantization", "Double Quantization", "Paged Optimizers", "PEFT", "LoRA", "4-bit Training"],
+  "concepts": [
+    "NF4 Quantization",
+    "Double Quantization",
+    "Paged Optimizers",
+    "PEFT",
+    "LoRA",
+    "4-bit Training"
+  ],
   "architecture_category": "technique",
   "branch_type": "",
   "is_open_source": true,
   "relations": [
-    {"to": "lora", "type": "evolved_from"}
+    {
+      "to": "lora",
+      "type": "evolved_from",
+      "description": "QLoRA은(는) LoRA의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "qlora"
 }

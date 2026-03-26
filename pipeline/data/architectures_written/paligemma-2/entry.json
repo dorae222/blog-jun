@@ -22,13 +22,25 @@
   "paper_url": "https://arxiv.org/abs/2412.03555",
   "code_url": "https://huggingface.co/google/paligemma2-28b-pt-896",
   "license_type": "Gemma Terms",
-  "concepts": ["SigLIP+Gemma", "Multi-Resolution", "Fine-Tuning Base Model"],
+  "concepts": [
+    "SigLIP+Gemma",
+    "Multi-Resolution",
+    "Fine-Tuning Base Model"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "siglip", "type": "technique_used"},
-    {"to": "gemma", "type": "evolved_from"}
+    {
+      "to": "siglip",
+      "type": "technique_used",
+      "description": "PaliGemma 2은(는) SigLIP 기법을 적용했다."
+    },
+    {
+      "to": "gemma",
+      "type": "evolved_from",
+      "description": "PaliGemma 2은(는) Gemma의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

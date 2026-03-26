@@ -22,12 +22,20 @@
   "paper_url": "",
   "code_url": "",
   "license_type": "Apache-2.0",
-  "concepts": ["Unified Multimodal Generation", "Autoregressive Image Generation", "Understanding+Generation"],
+  "concepts": [
+    "Unified Multimodal Generation",
+    "Autoregressive Image Generation",
+    "Understanding+Generation"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "chameleon", "type": "inspired_by"}
+    {
+      "to": "chameleon",
+      "type": "inspired_by",
+      "description": "Show-o2은(는) Chameleon의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

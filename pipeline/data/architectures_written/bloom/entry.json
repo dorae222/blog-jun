@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2211.05100",
   "code_url": "https://github.com/bigscience-workshop/bigscience",
   "license_type": "RAIL",
-  "concepts": ["Multilingual LLM", "Open Science", "ALiBi Position Encoding"],
+  "concepts": [
+    "Multilingual LLM",
+    "Open Science",
+    "ALiBi Position Encoding"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
   "relations": [
-    {"to": "gpt-3", "type": "inspired_by"}
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "BLOOM은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

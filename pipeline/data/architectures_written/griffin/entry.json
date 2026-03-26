@@ -22,12 +22,24 @@
   "paper_url": "https://arxiv.org/abs/2402.19427",
   "code_url": "https://github.com/google-deepmind/recurrentgemma",
   "license_type": "Apache-2.0",
-  "concepts": ["RG-LRU", "Real-Gated Linear Recurrent Unit", "Local Attention", "Hybrid Architecture", "Sliding Window Attention", "Linear Recurrence", "Hawk"],
+  "concepts": [
+    "RG-LRU",
+    "Real-Gated Linear Recurrent Unit",
+    "Local Attention",
+    "Hybrid Architecture",
+    "Sliding Window Attention",
+    "Linear Recurrence",
+    "Hawk"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "mamba", "type": "inspired_by"}
+    {
+      "to": "mamba",
+      "type": "inspired_by",
+      "description": "Griffin은(는) Mamba의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

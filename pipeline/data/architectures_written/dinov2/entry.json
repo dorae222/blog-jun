@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2304.07193",
   "code_url": "https://github.com/facebookresearch/dinov2",
   "license_type": "Apache-2.0",
-  "concepts": ["Self-Supervised Learning", "Vision Foundation Model", "Knowledge Distillation"],
+  "concepts": [
+    "Self-Supervised Learning",
+    "Vision Foundation Model",
+    "Knowledge Distillation"
+  ],
   "architecture_category": "vision",
   "branch_type": "vision",
   "is_open_source": true,
   "relations": [
-    {"to": "vit", "type": "evolved_from"}
+    {
+      "to": "vit",
+      "type": "evolved_from",
+      "description": "DINOv2은(는) ViT의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

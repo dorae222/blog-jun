@@ -22,12 +22,24 @@
   "paper_url": "https://arxiv.org/abs/2302.10866",
   "code_url": "https://github.com/HazyResearch/safari",
   "license_type": "Apache-2.0",
-  "concepts": ["Implicit Convolution", "Sub-quadratic", "Attention-free", "Long Convolution", "Hyena Operator", "DNA Modeling", "FlashFFTConv"],
+  "concepts": [
+    "Implicit Convolution",
+    "Sub-quadratic",
+    "Attention-free",
+    "Long Convolution",
+    "Hyena Operator",
+    "DNA Modeling",
+    "FlashFFTConv"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "h3", "type": "evolved_from"}
+    {
+      "to": "h3",
+      "type": "evolved_from",
+      "description": "Hyena은(는) H3의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

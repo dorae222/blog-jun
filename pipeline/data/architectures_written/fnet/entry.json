@@ -22,12 +22,23 @@
   "paper_url": "https://arxiv.org/abs/2105.03824",
   "code_url": "https://github.com/google-research/google-research/tree/master/f_net",
   "license_type": "Apache-2.0",
-  "concepts": ["Fourier Transform", "FFT", "Attention-free", "Token Mixing", "Efficient Transformer", "Linear Complexity"],
+  "concepts": [
+    "Fourier Transform",
+    "FFT",
+    "Attention-free",
+    "Token Mixing",
+    "Efficient Transformer",
+    "Linear Complexity"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "transformer", "type": "inspired_by"}
+    {
+      "to": "transformer",
+      "type": "inspired_by",
+      "description": "FNet은(는) Transformer의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

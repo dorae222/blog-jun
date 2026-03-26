@@ -36,7 +36,8 @@
   "relations": [
     {
       "to": "gpt-2",
-      "type": "inspired_by"
+      "type": "inspired_by",
+      "description": "GPT-Neo은(는) GPT-2의 핵심 아이디어에서 영감을 받았다."
     }
   ],
   "related_post_slug": "gpt-neo"

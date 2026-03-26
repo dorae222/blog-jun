@@ -22,12 +22,19 @@
   "paper_url": "https://arxiv.org/abs/2305.10601",
   "code_url": "",
   "license_type": "",
-  "concepts": ["Tree Search", "Deliberate Reasoning"],
+  "concepts": [
+    "Tree Search",
+    "Deliberate Reasoning"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "cot", "type": "evolved_from"}
+    {
+      "to": "cot",
+      "type": "evolved_from",
+      "description": "Tree of Thoughts은(는) Chain-of-Thought Prompting의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

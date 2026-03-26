@@ -22,12 +22,25 @@
   "paper_url": "https://arxiv.org/abs/2405.04517",
   "code_url": "https://github.com/NX-AI/xlstm",
   "license_type": "NXAI Open License (비상업적 오픈소스)",
-  "concepts": ["LSTM", "mLSTM", "sLSTM", "Matrix Memory", "Exponential Gating", "Linear Complexity", "Recurrence", "Associative Memory"],
+  "concepts": [
+    "LSTM",
+    "mLSTM",
+    "sLSTM",
+    "Matrix Memory",
+    "Exponential Gating",
+    "Linear Complexity",
+    "Recurrence",
+    "Associative Memory"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "s4", "type": "inspired_by"}
+    {
+      "to": "s4",
+      "type": "inspired_by",
+      "description": "xLSTM은(는) S4의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

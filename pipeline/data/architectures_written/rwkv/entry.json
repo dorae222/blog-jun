@@ -22,12 +22,25 @@
   "paper_url": "https://arxiv.org/abs/2305.13048",
   "code_url": "https://github.com/BlinkDL/RWKV-LM",
   "license_type": "Apache-2.0",
-  "concepts": ["RNN", "Linear Attention", "WKV Operator", "Time Mixing", "Channel Mixing", "Recurrence", "Parallel Training", "Token Shift"],
+  "concepts": [
+    "RNN",
+    "Linear Attention",
+    "WKV Operator",
+    "Time Mixing",
+    "Channel Mixing",
+    "Recurrence",
+    "Parallel Training",
+    "Token Shift"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "transformer", "type": "inspired_by"}
+    {
+      "to": "transformer",
+      "type": "inspired_by",
+      "description": "RWKV은(는) Transformer의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

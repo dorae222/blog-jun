@@ -34,7 +34,11 @@
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "score-sde", "type": "inspired_by"}
+    {
+      "to": "score-sde",
+      "type": "inspired_by",
+      "description": "Flow Matching은(는) Score-based SDE의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "flow-matching"
 }

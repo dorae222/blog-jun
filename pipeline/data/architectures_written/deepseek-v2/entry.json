@@ -23,9 +23,20 @@
   "key_detail": "2가지 핵심 혁신: (1) MLA—KQ/KV를 저차원 잠재 벡터(c^{KV} ∈ ℝ^{512}, c^Q ∈ ℝ^{1536})로 압축 후 업프로젝션하는 Low-Rank Key-Value Joint Compression, 표준 MHA 대비 KV 캐시 93.3% 감소. 분리된 RoPE(decoupled RoPE): 위치 인코딩을 별도 행렬에 적용해 MLA 안정성 확보. (2) DeepSeekMoE—공유 전문가 2개(항상 활성) + 라우팅 전문가 160개(6개 선택), 전문가를 세분화(fine-grained)해 각 전문가의 전문화를 극대화. 총 236B에서 21B만 활성. MMLU 78.5%, HumanEval 81.1%.",
   "training_detail": "8.1T 토큰으로 사전 학습(DeepSeek-V2-Base). SFT + GRPO(Group Relative Policy Optimization) 기반 RLHF로 Chat 버전. ZeRO-2 병렬화 + Expert Parallelism + Pipeline Parallelism. H800 GPU 클러스터 사용. DeepSeek-V2-Chat는 SFT(1.5M 예시) 후 GRPO 강화학습.",
   "paper_url": "https://arxiv.org/abs/2405.04434",
-  "concepts": ["MLA", "MoE", "DeepSeekMoE", "KV Cache Compression", "RoPE", "128K Context"],
+  "concepts": [
+    "MLA",
+    "MoE",
+    "DeepSeekMoE",
+    "KV Cache Compression",
+    "RoPE",
+    "128K Context"
+  ],
   "relations": [
-    {"to": "mixtral", "type": "inspired_by"}
+    {
+      "to": "mixtral",
+      "type": "inspired_by",
+      "description": "DeepSeek-V2은(는) Mixtral 8x7B의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "deepseek-v2"
 }

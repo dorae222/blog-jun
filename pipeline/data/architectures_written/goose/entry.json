@@ -22,13 +22,24 @@
   "paper_url": "",
   "code_url": "https://github.com/block/goose",
   "license_type": "Apache-2.0",
-  "concepts": ["Open-Source Agent", "MCP Integration"],
+  "concepts": [
+    "Open-Source Agent",
+    "MCP Integration"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "swe-agent", "type": "inspired_by"},
-    {"to": "mcp", "type": "technique_used"}
+    {
+      "to": "swe-agent",
+      "type": "inspired_by",
+      "description": "Goose은(는) SWE-agent의 핵심 아이디어에서 영감을 받았다."
+    },
+    {
+      "to": "mcp",
+      "type": "technique_used",
+      "description": "Goose은(는) Model Context Protocol 기법을 적용했다."
+    }
   ],
   "related_post_slug": ""
 }

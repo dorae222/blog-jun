@@ -22,12 +22,20 @@
   "paper_url": "",
   "code_url": "https://github.com/OpenGVLab/InternVL",
   "license_type": "MIT",
-  "concepts": ["Native Multimodal Pre-training", "MoE Vision-Language", "High-Resolution Understanding"],
+  "concepts": [
+    "Native Multimodal Pre-training",
+    "MoE Vision-Language",
+    "High-Resolution Understanding"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "internvl", "type": "evolved_from"}
+    {
+      "to": "internvl",
+      "type": "evolved_from",
+      "description": "InternVL 3은(는) InternVL의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

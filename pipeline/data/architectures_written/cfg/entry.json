@@ -33,7 +33,11 @@
   "branch_type": "diffusion",
   "is_open_source": false,
   "relations": [
-    {"to": "classifier-guidance", "type": "evolved_from"}
+    {
+      "to": "classifier-guidance",
+      "type": "evolved_from",
+      "description": "Classifier-Free Guidance (CFG)은(는) Classifier Guidance (ADM)의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

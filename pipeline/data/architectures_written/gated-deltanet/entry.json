@@ -22,12 +22,25 @@
   "paper_url": "https://arxiv.org/abs/2412.06464",
   "code_url": "https://github.com/fla-org/flash-linear-attention",
   "license_type": "MIT",
-  "concepts": ["Delta Rule", "Gated Linear Attention", "Associative Memory", "Linear Attention", "Chunkwise Parallel", "Data-dependent Gating", "In-context Retrieval", "Linear Complexity"],
+  "concepts": [
+    "Delta Rule",
+    "Gated Linear Attention",
+    "Associative Memory",
+    "Linear Attention",
+    "Chunkwise Parallel",
+    "Data-dependent Gating",
+    "In-context Retrieval",
+    "Linear Complexity"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "retnet", "type": "inspired_by"}
+    {
+      "to": "retnet",
+      "type": "inspired_by",
+      "description": "Gated DeltaNet은(는) RetNet의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

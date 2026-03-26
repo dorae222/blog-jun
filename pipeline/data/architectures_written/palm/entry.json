@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2204.02311",
   "code_url": "",
   "license_type": "proprietary",
-  "concepts": ["Chain-of-Thought Prompting", "Pathways System", "Scaling Laws"],
+  "concepts": [
+    "Chain-of-Thought Prompting",
+    "Pathways System",
+    "Scaling Laws"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
   "relations": [
-    {"to": "gpt-3", "type": "inspired_by"}
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "PaLM은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

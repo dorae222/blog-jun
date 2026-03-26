@@ -25,9 +25,19 @@
   "paper_url": "https://arxiv.org/abs/1910.01108",
   "code_url": "https://github.com/huggingface/transformers",
   "license_type": "Apache 2.0",
-  "concepts": ["Knowledge Distillation", "Model Compression", "Soft Labels", "Attention Transfer", "Efficient Inference"],
+  "concepts": [
+    "Knowledge Distillation",
+    "Model Compression",
+    "Soft Labels",
+    "Attention Transfer",
+    "Efficient Inference"
+  ],
   "relations": [
-    {"to": "bert", "type": "variant_of"}
+    {
+      "to": "bert",
+      "type": "variant_of",
+      "description": "DistilBERT은(는) BERT의 변형 모델이다."
+    }
   ],
   "related_post_slug": "distilbert"
 }

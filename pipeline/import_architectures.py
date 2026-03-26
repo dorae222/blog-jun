@@ -294,7 +294,7 @@ def import_architectures(dry_run: bool = False, update: bool = False):
                 except ArchitectureEntry.DoesNotExist:
                     print(f"    [WARN] relation target 없음: {to_slug}")
                     continue
-                _, was_created = ArchitectureRelation.objects.get_or_create(
+                obj, was_created = ArchitectureRelation.objects.get_or_create(
                     from_entry=from_entry,
                     to_entry=to_entry,
                     relation_type=rel_type,
@@ -302,6 +302,9 @@ def import_architectures(dry_run: bool = False, update: bool = False):
                 )
                 if was_created:
                     rel_created += 1
+                elif rel.get('description') and not obj.description:
+                    obj.description = rel['description']
+                    obj.save(update_fields=['description'])
         print(f"  Relations: {rel_created}개 생성")
 
     if not dry_run:

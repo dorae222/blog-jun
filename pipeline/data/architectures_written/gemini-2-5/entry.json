@@ -22,12 +22,22 @@
   "paper_url": "https://arxiv.org/abs/2507.06261",
   "code_url": "",
   "license_type": "proprietary",
-  "concepts": ["Thinking Model", "Chain-of-Thought", "Long Context", "Mixture of Experts", "RLVR"],
+  "concepts": [
+    "Thinking Model",
+    "Chain-of-Thought",
+    "Long Context",
+    "Mixture of Experts",
+    "RLVR"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
   "relations": [
-    {"to": "gemini-1-5", "type": "evolved_from"}
+    {
+      "to": "gemini-1-5",
+      "type": "evolved_from",
+      "description": "Gemini 2.5은(는) Gemini 1.5의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

@@ -22,13 +22,25 @@
   "paper_url": "https://arxiv.org/abs/2408.11039",
   "code_url": "",
   "license_type": "CC-BY-NC-4.0",
-  "concepts": ["Unified Generation", "LM+Diffusion", "Continuous Image Modeling"],
+  "concepts": [
+    "Unified Generation",
+    "LM+Diffusion",
+    "Continuous Image Modeling"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": false,
   "relations": [
-    {"to": "dit", "type": "inspired_by"},
-    {"to": "llama", "type": "inspired_by"}
+    {
+      "to": "dit",
+      "type": "inspired_by",
+      "description": "Transfusion은(는) DiT (Diffusion Transformers)의 핵심 아이디어에서 영감을 받았다."
+    },
+    {
+      "to": "llama",
+      "type": "inspired_by",
+      "description": "Transfusion은(는) LLaMA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }
