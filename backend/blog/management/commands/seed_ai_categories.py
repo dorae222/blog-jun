@@ -1,5 +1,5 @@
 """
-20.AI 카테고리 계층 구조를 생성하는 관리 명령어 (7개 서브카테고리).
+20.AI 카테고리 계층 구조를 생성하는 관리 명령어 (12개 서브카테고리).
 사용법:
     python manage.py seed_ai_categories
 """
@@ -63,13 +63,53 @@ AI_CHILDREN = [
         "slug": "technique",
         "icon": "Wrench",
         "color": "#14B8A6",
-        "description": "efficient-ai, alignment, rlhf, rag, prompting, benchmark, evaluation, data, security",
+        "description": "prompting, ICL, few-shot, SLM, long context, structured output",
+    },
+    {
+        "code": "20.AI.08",
+        "name": "Efficiency",
+        "slug": "efficiency",
+        "icon": "Gauge",
+        "color": "#EF4444",
+        "description": "양자화, 프루닝, 증류, MFU, 추론 최적화, ONNX, 서빙, NVLink",
+    },
+    {
+        "code": "20.AI.09",
+        "name": "Reasoning",
+        "slug": "reasoning",
+        "icon": "Lightbulb",
+        "color": "#FBBF24",
+        "description": "CoT, test-time compute, reasoning 모델(o1/R1), evaluation, benchmark",
+    },
+    {
+        "code": "20.AI.10",
+        "name": "Training",
+        "slug": "training",
+        "icon": "GraduationCap",
+        "color": "#3B82F6",
+        "description": "파인튜닝, RLHF/DPO/IPO, 합성 데이터, distillation, model merging",
+    },
+    {
+        "code": "20.AI.11",
+        "name": "RAG",
+        "slug": "rag",
+        "icon": "Search",
+        "color": "#8B5CF6",
+        "description": "RAG, GraphRAG, knowledge graph, hybrid search, dense retrieval",
+    },
+    {
+        "code": "20.AI.12",
+        "name": "Code",
+        "slug": "code",
+        "icon": "Code",
+        "color": "#06B6D4",
+        "description": "코드 생성 모델, CodeLlama, StarCoder, code evaluation",
     },
 ]
 
 
 class Command(BaseCommand):
-    help = "20.AI 카테고리와 7개 하위 카테고리를 생성(upsert)합니다."
+    help = "20.AI 카테고리와 12개 하위 카테고리를 생성(upsert)합니다."
 
     def handle(self, *args, **options):
         # 부모 카테고리 upsert
@@ -102,4 +142,4 @@ class Command(BaseCommand):
             status = "생성" if created else "업데이트"
             self.stdout.write(f"  {child.code} - {child.name} ({child.slug}): {status}")
 
-        self.stdout.write(self.style.SUCCESS("\nAI 카테고리 시딩 완료! (7개 구조)"))
+        self.stdout.write(self.style.SUCCESS(f"\nAI 카테고리 시딩 완료! ({len(AI_CHILDREN)}개 구조)"))

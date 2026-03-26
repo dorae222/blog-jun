@@ -8,7 +8,7 @@
   "year": 2005,
   "venue": "JMLR 2005",
   "authors": "Hyvärinen",
-  "arxiv_url": "",
+  "arxiv_url": "https://jmlr.org/papers/v6/hyvarinen05a.html",
   "summary": "Hyvärinen(2005)는 분배 함수(partition function) Z를 계산하지 않고도 비정규화 확률 모델의 파라미터를 추정할 수 있는 스코어 매칭(Score Matching) 방법을 제안했습니다. 스코어 함수 ∇_x log p(x)의 차이를 최소화하는 방식으로 학습하며, 이 방법은 이후 Score-Based Generative Modeling, DDPM, Score-SDE 등 현대 확산 모델들의 이론적 기반이 되었습니다.",
   "tags": [
     "score-matching",

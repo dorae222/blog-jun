@@ -26,6 +26,11 @@ from blog.models import Post, Category, Tag, PostImage
 
 COLAB_DIR = Path(__file__).parent / 'data' / 'colab_written'
 
+# 통합 카테고리 매퍼 사용
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from utils.category_mapper import CategoryMapper
+_mapper = CategoryMapper()
+
 
 def upload_figure(post, fig_path: Path, dry_run: bool) -> str | None:
     """figure 파일을 PostImage로 업로드하고 media URL을 반환."""
@@ -52,7 +57,7 @@ def replace_figure_paths(content: str, figure_url_map: dict) -> str:
 
 
 CATEGORY_SLUG_MAP = {
-    'efficient-ai': 'technique',
+    'efficient-ai': 'efficiency',
     'core-techniques': 'technique',
 }
 
@@ -97,8 +102,8 @@ def import_colab(dry_run: bool = False, update: bool = False):
             skipped += 1
             continue
 
-        cat_slug = data.get('category_slug', 'efficient-ai')
-        cat_slug = CATEGORY_SLUG_MAP.get(cat_slug, cat_slug)
+        raw_cat = data.get('category_slug', 'efficient-ai')
+        cat_slug = _mapper.resolve(raw_cat, 'tutorial')
         category = categories.get(cat_slug) or categories.get('ai-ml')
 
         # content.md 우선, 없으면 content.json의 content 필드 폴백
