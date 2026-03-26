@@ -22,12 +22,19 @@
   "paper_url": "https://arxiv.org/abs/2308.08155",
   "code_url": "https://github.com/microsoft/autogen",
   "license_type": "MIT",
-  "concepts": ["Multi-Agent", "Conversable Agent"],
+  "concepts": [
+    "Multi-Agent",
+    "Conversable Agent"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "react", "type": "inspired_by"}
+    {
+      "to": "react",
+      "type": "inspired_by",
+      "description": "AutoGen은(는) ReAct의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

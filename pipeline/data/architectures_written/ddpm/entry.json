@@ -22,12 +22,23 @@
   "paper_url": "https://arxiv.org/abs/2006.11239",
   "code_url": "https://github.com/hojonathanho/diffusion",
   "license_type": "MIT",
-  "concepts": ["Denoising Diffusion", "Forward Process", "Reverse Process", "UNet", "Score Matching", "Noise Prediction"],
+  "concepts": [
+    "Denoising Diffusion",
+    "Forward Process",
+    "Reverse Process",
+    "UNet",
+    "Score Matching",
+    "Noise Prediction"
+  ],
   "architecture_category": "diffusion",
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "diffusion-thermo", "type": "evolved_from"}
+    {
+      "to": "diffusion-thermo",
+      "type": "evolved_from",
+      "description": "DDPM은(는) Diffusion (Thermodynamics)의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "ddpm"
 }

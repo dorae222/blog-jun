@@ -21,9 +21,20 @@
   "key_detail": "2가지 효율성 혁신: (1) GQA—Q 헤드 32개, KV 헤드 8개로 KV 캐시 4배 감소, 동일 품질 유지하며 추론 처리량 향상, (2) SWA(Sliding Window Attention)—각 레이어에서 현재 위치 기준 W=4096 윈도우 내 토큰만 어텐션해 O(W·n) 복잡도 달성, 여러 레이어를 통해 간접적으로 32K 문맥 접근 가능(receptive field 확장). Rolling Buffer KV 캐시(용량 W로 고정)로 메모리 사용량 상수화. Llama-2-7B 대비 MMLU +7%p, HumanEval +14%p, GSM8K +27%p.",
   "training_detail": "학습 데이터와 하이퍼파라미터는 미공개. 고품질 필터링된 내부 웹 데이터로 학습 추정. SWA 구현에 xFormers 라이브러리 활용. Instruct 버전(Mistral-7B-Instruct)은 공개된 지시 튜닝 데이터셋으로 SFT 학습, 별도의 RLHF 미적용.",
   "paper_url": "https://arxiv.org/abs/2310.06825",
-  "concepts": ["GQA", "Sliding Window Attention", "RoPE", "RMSNorm", "SwiGLU", "Efficient Inference"],
+  "concepts": [
+    "GQA",
+    "Sliding Window Attention",
+    "RoPE",
+    "RMSNorm",
+    "SwiGLU",
+    "Efficient Inference"
+  ],
   "relations": [
-    {"to": "llama", "type": "inspired_by"}
+    {
+      "to": "llama",
+      "type": "inspired_by",
+      "description": "Mistral 7B은(는) LLaMA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "mistral-7b"
 }

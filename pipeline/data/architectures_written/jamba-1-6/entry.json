@@ -22,10 +22,23 @@
   "paper_url": "https://www.ai21.com/blog/jamba-1-6",
   "code_url": "",
   "license_type": "Jamba Open Model License (연구/상업용 제한)",
-  "concepts": ["SSM", "Mamba", "Hybrid Architecture", "Long Context", "MoE", "State Space Model"],
+  "concepts": [
+    "SSM",
+    "Mamba",
+    "Hybrid Architecture",
+    "Long Context",
+    "MoE",
+    "State Space Model"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
-  "relations": [{"to": "jamba", "type": "evolved_from"}],
+  "relations": [
+    {
+      "to": "jamba",
+      "type": "evolved_from",
+      "description": "Jamba 1.6은(는) Jamba의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

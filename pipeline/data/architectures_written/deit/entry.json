@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2012.12877",
   "code_url": "https://github.com/facebookresearch/deit",
   "license_type": "Apache-2.0",
-  "concepts": ["Knowledge Distillation", "Data-Efficient Training", "Vision Transformer"],
+  "concepts": [
+    "Knowledge Distillation",
+    "Data-Efficient Training",
+    "Vision Transformer"
+  ],
   "architecture_category": "vision",
   "branch_type": "vision",
   "is_open_source": true,
   "relations": [
-    {"to": "vit", "type": "evolved_from"}
+    {
+      "to": "vit",
+      "type": "evolved_from",
+      "description": "DeiT은(는) ViT의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

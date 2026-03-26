@@ -22,10 +22,21 @@
   "paper_url": "",
   "code_url": "",
   "license_type": "Proprietary",
-  "concepts": ["Large-Scale Training", "Reasoning", "Chain-of-Thought", "Real-time Data"],
+  "concepts": [
+    "Large-Scale Training",
+    "Reasoning",
+    "Chain-of-Thought",
+    "Real-time Data"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
-  "relations": [{"to": "gpt-4", "type": "inspired_by"}],
+  "relations": [
+    {
+      "to": "gpt-4",
+      "type": "inspired_by",
+      "description": "Grok 3은(는) GPT-4의 핵심 아이디어에서 영감을 받았다."
+    }
+  ],
   "related_post_slug": ""
 }

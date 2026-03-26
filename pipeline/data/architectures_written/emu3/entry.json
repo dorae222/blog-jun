@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2409.18869",
   "code_url": "https://github.com/baaivision/Emu3",
   "license_type": "Apache-2.0",
-  "concepts": ["Next-Token Prediction Only", "Unified Multimodal", "Discrete Tokenization"],
+  "concepts": [
+    "Next-Token Prediction Only",
+    "Unified Multimodal",
+    "Discrete Tokenization"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "chameleon", "type": "inspired_by"}
+    {
+      "to": "chameleon",
+      "type": "inspired_by",
+      "description": "Emu3은(는) Chameleon의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

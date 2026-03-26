@@ -22,10 +22,22 @@
   "paper_url": "https://storage.googleapis.com/deepmind-media/gemma/gemma-3-report.pdf",
   "code_url": "https://github.com/google-deepmind/gemma",
   "license_type": "Gemma Terms of Use",
-  "concepts": ["Knowledge Distillation", "Multimodal", "Local-Global Attention", "Multilingual", "On-device AI"],
+  "concepts": [
+    "Knowledge Distillation",
+    "Multimodal",
+    "Local-Global Attention",
+    "Multilingual",
+    "On-device AI"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
-  "relations": [{"to": "gemma", "type": "evolved_from"}],
+  "relations": [
+    {
+      "to": "gemma",
+      "type": "evolved_from",
+      "description": "Gemma 3은(는) Gemma의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

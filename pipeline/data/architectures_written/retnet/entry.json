@@ -22,12 +22,25 @@
   "paper_url": "https://arxiv.org/abs/2307.08621",
   "code_url": "https://github.com/microsoft/torchscale",
   "license_type": "MIT",
-  "concepts": ["Retention", "Multi-Scale Retention", "xPos", "Recurrence", "Parallel Mode", "Chunkwise Recurrence", "Linear Complexity", "KV-free Inference"],
+  "concepts": [
+    "Retention",
+    "Multi-Scale Retention",
+    "xPos",
+    "Recurrence",
+    "Parallel Mode",
+    "Chunkwise Recurrence",
+    "Linear Complexity",
+    "KV-free Inference"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "transformer", "type": "inspired_by"}
+    {
+      "to": "transformer",
+      "type": "inspired_by",
+      "description": "RetNet은(는) Transformer의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

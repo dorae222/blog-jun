@@ -35,8 +35,16 @@
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "sd3", "type": "evolved_from"},
-    {"to": "flow-matching", "type": "technique_used"}
+    {
+      "to": "sd3",
+      "type": "evolved_from",
+      "description": "FLUX.1은(는) Stable Diffusion 3의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "flow-matching",
+      "type": "technique_used",
+      "description": "FLUX.1은(는) Flow Matching 기법을 적용했다."
+    }
   ],
   "related_post_slug": "flux"
 }

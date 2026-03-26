@@ -25,9 +25,19 @@
   "paper_url": "https://arxiv.org/abs/2010.11934",
   "code_url": "https://github.com/google-research/multilingual-t5",
   "license_type": "Apache 2.0",
-  "concepts": ["Multilingual", "mC4 Dataset", "Cross-lingual Transfer", "Temperature Sampling", "Large Vocabulary"],
+  "concepts": [
+    "Multilingual",
+    "mC4 Dataset",
+    "Cross-lingual Transfer",
+    "Temperature Sampling",
+    "Large Vocabulary"
+  ],
   "relations": [
-    {"to": "t5", "type": "variant_of"}
+    {
+      "to": "t5",
+      "type": "variant_of",
+      "description": "mT5은(는) T5의 변형 모델이다."
+    }
   ],
   "related_post_slug": "mt5"
 }

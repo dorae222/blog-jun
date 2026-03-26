@@ -22,13 +22,26 @@
   "paper_url": "https://arxiv.org/abs/2311.16867",
   "code_url": "https://huggingface.co/tiiuae",
   "license_type": "Apache 2.0",
-  "concepts": ["Multi-Query Attention", "RefinedWeb", "Data Quality", "FlashAttention"],
+  "concepts": [
+    "Multi-Query Attention",
+    "RefinedWeb",
+    "Data Quality",
+    "FlashAttention"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
   "relations": [
-    {"to": "gpt-3", "type": "inspired_by"},
-    {"to": "flash-attention", "type": "technique_used"}
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "Falcon은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    },
+    {
+      "to": "flash-attention",
+      "type": "technique_used",
+      "description": "Falcon은(는) FlashAttention 기법을 적용했다."
+    }
   ],
   "related_post_slug": ""
 }

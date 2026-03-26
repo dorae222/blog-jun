@@ -22,12 +22,19 @@
   "paper_url": "https://arxiv.org/abs/2407.16741",
   "code_url": "https://github.com/All-Hands-AI/OpenHands",
   "license_type": "MIT",
-  "concepts": ["Open-Source Agent", "Code Agent"],
+  "concepts": [
+    "Open-Source Agent",
+    "Code Agent"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "swe-agent", "type": "inspired_by"}
+    {
+      "to": "swe-agent",
+      "type": "inspired_by",
+      "description": "OpenHands은(는) SWE-agent의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

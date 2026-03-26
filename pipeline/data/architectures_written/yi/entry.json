@@ -21,9 +21,20 @@
   "key_detail": "LLaMA-2 구조에서 3가지 변화: (1) 64K vocab—한자·한글 등 CJK 문자에 최적화된 토큰 추가로 중국어 텍스트 처리 효율 대폭 향상(LLaMA-2 32K 대비), (2) GQA 도입—KV 헤드 수 감소로 추론 KV 캐시 절감 및 처리량 향상, (3) 200K 컨텍스트—YARN(YetAnotherRoPE ExtensioN)으로 기본 4K RoPE를 200K까지 외삽. Yi-34B: MMLU 76.3%(Llama-2-70B: 68.9%), HumanEval 23.1%. Yi-6B: MMLU 61.4%(Llama-2-13B: 54.8%).",
   "training_detail": "3T 토큰 이상(영어 약 60%, 중국어 약 40%). BPE 64K vocab(SentencePiece). AdamW, cosine lr schedule, gradient clipping. Flash Attention 2 적용. Yi-34B-200K은 YARN 방식으로 컨텍스트 외삽 후 장문 데이터로 추가 파인튜닝.",
   "paper_url": "https://arxiv.org/abs/2403.04652",
-  "concepts": ["GQA", "RoPE", "RMSNorm", "SwiGLU", "Multilingual", "Long Context"],
+  "concepts": [
+    "GQA",
+    "RoPE",
+    "RMSNorm",
+    "SwiGLU",
+    "Multilingual",
+    "Long Context"
+  ],
   "relations": [
-    {"to": "llama", "type": "inspired_by"}
+    {
+      "to": "llama",
+      "type": "inspired_by",
+      "description": "Yi은(는) LLaMA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "yi"
 }

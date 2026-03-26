@@ -33,7 +33,11 @@
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "ddpm", "type": "evolved_from"}
+    {
+      "to": "ddpm",
+      "type": "evolved_from",
+      "description": "EDM (Elucidating Diffusion Models)은(는) DDPM의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

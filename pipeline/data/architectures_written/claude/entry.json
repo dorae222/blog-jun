@@ -22,10 +22,22 @@
   "paper_url": "https://arxiv.org/abs/2212.08073",
   "code_url": "",
   "license_type": "Proprietary",
-  "concepts": ["Constitutional AI", "RLHF", "Harmless AI", "RLAIF", "Multimodal"],
+  "concepts": [
+    "Constitutional AI",
+    "RLHF",
+    "Harmless AI",
+    "RLAIF",
+    "Multimodal"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
-  "relations": [{"to": "gpt-3", "type": "inspired_by"}],
+  "relations": [
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "Claude (1–3.5 Series)은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    }
+  ],
   "related_post_slug": ""
 }

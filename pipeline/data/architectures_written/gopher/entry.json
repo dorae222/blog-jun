@@ -22,12 +22,19 @@
   "paper_url": "https://arxiv.org/abs/2112.11446",
   "code_url": "",
   "license_type": "proprietary",
-  "concepts": ["Scaling Laws", "Retrieval Augmentation"],
+  "concepts": [
+    "Scaling Laws",
+    "Retrieval Augmentation"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
   "relations": [
-    {"to": "gpt-3", "type": "inspired_by"}
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "Gopher은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

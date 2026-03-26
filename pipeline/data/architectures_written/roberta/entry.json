@@ -25,9 +25,19 @@
   "paper_url": "https://arxiv.org/abs/1907.11692",
   "code_url": "https://github.com/facebookresearch/fairseq",
   "license_type": "MIT",
-  "concepts": ["Dynamic Masking", "Robust Pre-Training", "Byte-level BPE", "No NSP", "Large Batch Training"],
+  "concepts": [
+    "Dynamic Masking",
+    "Robust Pre-Training",
+    "Byte-level BPE",
+    "No NSP",
+    "Large Batch Training"
+  ],
   "relations": [
-    {"to": "bert", "type": "evolved_from"}
+    {
+      "to": "bert",
+      "type": "evolved_from",
+      "description": "RoBERTa은(는) BERT의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "roberta"
 }

@@ -143,7 +143,12 @@ def import_papers(dry_run: bool = False, update: bool = False):
             if not dry_run:
                 existing.content = content
                 existing.summary = summary
-                existing.save(update_fields=['content', 'summary'])
+                update_fields = ['content', 'summary']
+                is_pinned = data.get('is_pinned', False)
+                if is_pinned != existing.is_pinned:
+                    existing.is_pinned = is_pinned
+                    update_fields.append('is_pinned')
+                existing.save(update_fields=update_fields)
                 # 태그 갱신
                 existing.tags.clear()
                 for tag_name in tags_raw:
@@ -179,8 +184,13 @@ def import_papers(dry_run: bool = False, update: bool = False):
             category=category,
             author=author,
             status='published',
-            post_type='paper_review',
+            post_type=data.get('post_type', 'paper_review'),
             published_at=timezone.now(),
+            is_pinned=data.get('is_pinned', False),
+            arxiv_url=data.get('arxiv_url', ''),
+            paper_year=data.get('year') if data.get('year') else None,
+            paper_authors=data.get('authors', ''),
+            venue=data.get('venue', ''),
         )
         created_posts += 1
         print(f"  [CREATE] Post: {title}")

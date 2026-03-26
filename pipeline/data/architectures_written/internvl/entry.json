@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2312.14238",
   "code_url": "https://github.com/OpenGVLab/InternVL",
   "license_type": "MIT",
-  "concepts": ["Large-Scale Vision Encoder", "Progressive Alignment", "Vision Foundation Model"],
+  "concepts": [
+    "Large-Scale Vision Encoder",
+    "Progressive Alignment",
+    "Vision Foundation Model"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "clip", "type": "evolved_from"}
+    {
+      "to": "clip",
+      "type": "evolved_from",
+      "description": "InternVL은(는) CLIP의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

@@ -21,9 +21,20 @@
   "key_detail": "GPT-2/3의 Transformer Decoder에서 3가지 핵심 개선을 적용했다: (1) RMSNorm Pre-Norm—LayerNorm에서 평균 제거를 생략한 RMSNorm($\\text{RMS}(x)=\\sqrt{\\frac{1}{n}\\sum x_i^2}$)을 어텐션 전에 적용해 안정적 학습, (2) SwiGLU 활성화($\\text{SiLU}(xW)\\otimes xV$)로 FFN 성능 향상, (3) RoPE(Rotary Position Embedding)—어텐션 내 상대적 위치를 회전 행렬로 인코딩해 시퀀스 길이 외삽 가능. BPE SentencePiece 토크나이저(32K vocab). LLaMA-65B: MMLU 63.4%, HumanEval 23.7%.",
   "training_detail": "CommonCrawl(67%), C4(15%), GitHub(4.5%), Wikipedia(4.5%), Books(4.5%), ArXiv(2.5%), StackExchange(2%) 등 공개 데이터만 사용, 총 1.4T 토큰. AdamW β=(0.9, 0.95), lr cosine decay(최고 3e-4). 배치 4M 토큰. 2048개 A100 80GB로 학습(65B: 21일). Flash Attention 적용.",
   "paper_url": "https://arxiv.org/abs/2302.13971",
-  "concepts": ["RMSNorm", "SwiGLU", "RoPE", "Pre-Norm", "Open Source", "Efficient Training"],
+  "concepts": [
+    "RMSNorm",
+    "SwiGLU",
+    "RoPE",
+    "Pre-Norm",
+    "Open Source",
+    "Efficient Training"
+  ],
   "relations": [
-    {"to": "chinchilla", "type": "inspired_by"}
+    {
+      "to": "chinchilla",
+      "type": "inspired_by",
+      "description": "LLaMA은(는) Chinchilla의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "llama"
 }

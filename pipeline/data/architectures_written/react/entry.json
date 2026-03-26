@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2210.03629",
   "code_url": "",
   "license_type": "",
-  "concepts": ["ReAct", "Reasoning-Acting Loop", "Tool Use"],
+  "concepts": [
+    "ReAct",
+    "Reasoning-Acting Loop",
+    "Tool Use"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "cot", "type": "evolved_from"}
+    {
+      "to": "cot",
+      "type": "evolved_from",
+      "description": "ReAct은(는) Chain-of-Thought Prompting의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

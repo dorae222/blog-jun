@@ -22,12 +22,19 @@
   "paper_url": "",
   "code_url": "https://github.com/crewAIInc/crewAI",
   "license_type": "MIT",
-  "concepts": ["Role-Based", "Agent Crew"],
+  "concepts": [
+    "Role-Based",
+    "Agent Crew"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "autogen", "type": "inspired_by"}
+    {
+      "to": "autogen",
+      "type": "inspired_by",
+      "description": "CrewAI은(는) AutoGen의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

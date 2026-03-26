@@ -32,7 +32,11 @@
   "branch_type": "decoder_only",
   "is_open_source": true,
   "relations": [
-    {"to": "gpt-neo", "type": "evolved_from"}
+    {
+      "to": "gpt-neo",
+      "type": "evolved_from",
+      "description": "GPT-J은(는) GPT-Neo의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

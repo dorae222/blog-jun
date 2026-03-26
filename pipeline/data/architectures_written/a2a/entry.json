@@ -22,12 +22,20 @@
   "paper_url": "",
   "code_url": "https://github.com/google/A2A",
   "license_type": "Apache-2.0",
-  "concepts": ["Agent Communication", "Protocol", "Interoperability"],
+  "concepts": [
+    "Agent Communication",
+    "Protocol",
+    "Interoperability"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
   "relations": [
-    {"to": "mcp", "type": "inspired_by"}
+    {
+      "to": "mcp",
+      "type": "inspired_by",
+      "description": "Agent-to-Agent Protocol은(는) Model Context Protocol의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

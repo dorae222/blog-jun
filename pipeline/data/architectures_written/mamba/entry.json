@@ -22,13 +22,30 @@
   "paper_url": "https://arxiv.org/abs/2312.00752",
   "code_url": "https://github.com/state-spaces/mamba",
   "license_type": "Apache-2.0",
-  "concepts": ["SSM", "Selective Mechanism", "Selective SSM", "Linear Complexity", "Hardware-aware", "Parallel Scan", "Recurrence", "Content-based Reasoning"],
+  "concepts": [
+    "SSM",
+    "Selective Mechanism",
+    "Selective SSM",
+    "Linear Complexity",
+    "Hardware-aware",
+    "Parallel Scan",
+    "Recurrence",
+    "Content-based Reasoning"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "s4", "type": "evolved_from"},
-    {"to": "h3", "type": "inspired_by"}
+    {
+      "to": "s4",
+      "type": "evolved_from",
+      "description": "Mamba은(는) S4의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "h3",
+      "type": "inspired_by",
+      "description": "Mamba은(는) H3의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "mamba"
 }

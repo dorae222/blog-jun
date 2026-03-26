@@ -25,10 +25,24 @@
   "paper_url": "https://arxiv.org/abs/1910.13461",
   "code_url": "https://github.com/facebookresearch/fairseq",
   "license_type": "Apache 2.0",
-  "concepts": ["Denoising Autoencoder", "Seq2Seq", "Text Infilling", "Token Deletion", "Bidirectional Encoder"],
+  "concepts": [
+    "Denoising Autoencoder",
+    "Seq2Seq",
+    "Text Infilling",
+    "Token Deletion",
+    "Bidirectional Encoder"
+  ],
   "relations": [
-    {"to": "transformer", "type": "evolved_from"},
-    {"to": "bert", "type": "inspired_by"}
+    {
+      "to": "transformer",
+      "type": "evolved_from",
+      "description": "BART은(는) Transformer의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "bert",
+      "type": "inspired_by",
+      "description": "BART은(는) BERT의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "bart"
 }

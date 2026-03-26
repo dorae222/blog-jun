@@ -22,10 +22,22 @@
   "paper_url": "https://arxiv.org/abs/2407.21783",
   "code_url": "https://github.com/meta-llama/llama3",
   "license_type": "Meta LLaMA 3 Community License",
-  "concepts": ["GQA", "Grouped Query Attention", "Instruction Tuning", "RLHF", "Open Source LLM"],
+  "concepts": [
+    "GQA",
+    "Grouped Query Attention",
+    "Instruction Tuning",
+    "RLHF",
+    "Open Source LLM"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
-  "relations": [{"to": "llama-2", "type": "evolved_from"}],
+  "relations": [
+    {
+      "to": "llama-2",
+      "type": "evolved_from",
+      "description": "LLaMA 3은(는) LLaMA 2의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

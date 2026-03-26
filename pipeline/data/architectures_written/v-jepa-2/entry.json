@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2506.09985",
   "code_url": "https://github.com/facebookresearch/vjepa2",
   "license_type": "CC-BY-NC-4.0",
-  "concepts": ["World Model", "Joint Embedding", "Video Understanding"],
+  "concepts": [
+    "World Model",
+    "Joint Embedding",
+    "Video Understanding"
+  ],
   "architecture_category": "vision",
   "branch_type": "vision",
   "is_open_source": true,
   "relations": [
-    {"to": "mae", "type": "inspired_by"}
+    {
+      "to": "mae",
+      "type": "inspired_by",
+      "description": "V-JEPA 2은(는) MAE의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

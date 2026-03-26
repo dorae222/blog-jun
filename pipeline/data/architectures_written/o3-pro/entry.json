@@ -22,10 +22,22 @@
   "paper_url": "https://openai.com/index/openai-o3-pro/",
   "code_url": "",
   "license_type": "Proprietary",
-  "concepts": ["Test-Time Compute", "Reasoning", "CoT", "Expert-Level AI", "Compute Scaling"],
+  "concepts": [
+    "Test-Time Compute",
+    "Reasoning",
+    "CoT",
+    "Expert-Level AI",
+    "Compute Scaling"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": false,
-  "relations": [{"to": "o3", "type": "variant_of"}],
+  "relations": [
+    {
+      "to": "o3",
+      "type": "variant_of",
+      "description": "OpenAI o3-pro은(는) OpenAI o3의 변형 모델이다."
+    }
+  ],
   "related_post_slug": ""
 }

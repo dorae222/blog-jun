@@ -22,10 +22,22 @@
   "paper_url": "https://arxiv.org/abs/2507.20534",
   "code_url": "https://github.com/MoonshotAI/Kimi-K2",
   "license_type": "Apache 2.0 (가중치: Modified Apache 2.0)",
-  "concepts": ["MoE", "MuonClip Optimizer", "Agentic AI", "Tool Use", "MLA"],
+  "concepts": [
+    "MoE",
+    "MuonClip Optimizer",
+    "Agentic AI",
+    "Tool Use",
+    "MLA"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
-  "relations": [{"to": "deepseek-v3", "type": "inspired_by"}],
+  "relations": [
+    {
+      "to": "deepseek-v3",
+      "type": "inspired_by",
+      "description": "Kimi K2은(는) DeepSeek-V3의 핵심 아이디어에서 영감을 받았다."
+    }
+  ],
   "related_post_slug": ""
 }

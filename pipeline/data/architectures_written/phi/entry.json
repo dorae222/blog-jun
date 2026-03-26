@@ -22,12 +22,21 @@
   "paper_url": "https://arxiv.org/abs/2306.11644",
   "code_url": "https://huggingface.co/microsoft/phi-2",
   "license_type": "MIT",
-  "concepts": ["Textbook Quality Data", "Small Language Models", "Synthetic Data", "Parameter Efficiency"],
+  "concepts": [
+    "Textbook Quality Data",
+    "Small Language Models",
+    "Synthetic Data",
+    "Parameter Efficiency"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
   "relations": [
-    {"to": "gpt-3", "type": "inspired_by"}
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "Phi은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }
