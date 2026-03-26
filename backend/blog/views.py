@@ -1,5 +1,6 @@
 import json
 import os
+from django.conf import settings
 from django.db.models import Count, Q, F, Sum
 from django.utils import timezone
 from django.utils.decorators import method_decorator
@@ -217,12 +218,17 @@ def dashboard_stats(request):
     if not request.user.is_authenticated:
         return Response({'detail': 'Authentication required'}, status=401)
 
-    total_posts = Post.objects.filter(author=request.user).count()
-    published = Post.objects.filter(author=request.user, status='published').count()
-    drafts = Post.objects.filter(author=request.user, status='draft').count()
-    total_views = Post.objects.filter(author=request.user).aggregate(
-        total=Sum('view_count')
-    )['total'] or 0
+    base_qs = Post.objects.filter(author=request.user)
+    stats = base_qs.aggregate(
+        total_posts=Count('id'),
+        published=Count('id', filter=Q(status='published')),
+        drafts=Count('id', filter=Q(status='draft')),
+        total_views=Sum('view_count'),
+    )
+    total_posts = stats['total_posts']
+    published = stats['published']
+    drafts = stats['drafts']
+    total_views = stats['total_views'] or 0
 
     category_dist = list(
         Post.objects.filter(author=request.user, status='published')
@@ -291,7 +297,7 @@ def health_check(request):
     return Response({'status': 'ok'})
 
 
-AUDIT_FILE = '/tmp/audit.json'
+AUDIT_FILE = os.environ.get('AUDIT_FILE_PATH', os.path.join(settings.BASE_DIR, 'data', 'audit.json'))
 
 
 @api_view(['GET'])
@@ -354,9 +360,18 @@ class ArchitectureEntryViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def tree(self, request):
-        """트리 시각화용 전체 노드 + 엣지 반환"""
-        entries = ArchitectureEntry.objects.all()
+        """트리 시각화용 노드 + 엣지 반환. ?category=llm 으로 필터 가능"""
+        entries = ArchitectureEntry.objects.select_related('related_post').all()
         relations = ArchitectureRelation.objects.select_related('from_entry', 'to_entry').all()
+
+        category = request.query_params.get('category')
+        if category:
+            entries = entries.filter(architecture_category=category)
+            slugs = set(entries.values_list('slug', flat=True))
+            relations = relations.filter(
+                Q(from_entry__slug__in=slugs) | Q(to_entry__slug__in=slugs)
+            )
+
         return Response({
             'nodes': ArchitectureTreeNodeSerializer(entries, many=True, context={'request': request}).data,
             'edges': ArchitectureRelationSerializer(relations, many=True).data,

@@ -51,11 +51,8 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/hour',
         'user': '1000/hour',
-        'chatbot_anon': '5/hour',
     },
 }
-
-# vLLM / LLM 설정 — base.py에서 기본값 정의, prod에서는 환경변수로 오버라이드
 
 # Logging
 LOG_DIR = BASE_DIR / 'logs'
