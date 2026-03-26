@@ -1,0 +1,19 @@
+{
+  "slug": "process-reward-models",
+  "title": "Process Reward Models: Step-by-Step Verification for Better Reasoning",
+  "title_ko": "Process Reward Models: 단계별 검증으로 추론 향상하기",
+  "category_slug": "reasoning",
+  "summary": "최종 답만 평가하는 ORM과 달리, 추론의 각 단계를 검증하는 Process Reward Model(PRM)의 원리를 분석합니다. Let's Verify Step by Step(OpenAI, 2023)의 핵심 발견을 중심으로, PRM이 test-time compute scaling과 reasoning 모델에서 어떤 역할을 하는지 설명합니다.",
+  "tags": [
+    "process-reward-model",
+    "outcome-reward-model",
+    "reasoning",
+    "verification",
+    "test-time-compute",
+    "math-reasoning",
+    "reinforcement-learning",
+    "best-of-n",
+    "beam-search"
+  ],
+  "is_pinned": false
+}
