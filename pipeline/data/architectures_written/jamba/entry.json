@@ -23,10 +23,25 @@
   "key_detail": "Attention:Mamba = 1:7 비율(32개 레이어 중 8개 Attention, 24개 Mamba). Mamba 레이어는 선택적 상태 공간 모델(Selective SSM, S6)로 시퀀스 길이에 선형적으로 스케일하며, 길이가 길어질수록 Attention 대비 연산·메모리 우위가 급증. MoE(16 전문가, 2 활성)를 Mamba 레이어에 적용해 파라미터 효율화—52B 전체 중 12B만 활성. 256K 컨텍스트 처리 시 A100 80GB 1장으로 가능(Llama-2-70B는 8장 필요). Jamba: HellaSwag 87.1%, Arc-C 59.4%.",
   "training_detail": "내부 데이터셋으로 학습(구성 미공개). 추정 1T 토큰 이상. Jamba-Instruct는 SFT + DPO로 정렬. 모델 가중치 Hugging Face에 공개(Apache 2.0). Mamba 레이어의 256K 컨텍스트는 슬라이딩 윈도우 없이 전체 SSM 상태로 처리—메모리 사용량 상수.",
   "paper_url": "https://arxiv.org/abs/2403.19887",
-  "concepts": ["Hybrid Architecture", "SSM", "Mamba", "MoE", "256K Context", "Attention+SSM"],
+  "concepts": [
+    "Hybrid Architecture",
+    "SSM",
+    "Mamba",
+    "MoE",
+    "256K Context",
+    "Attention+SSM"
+  ],
   "relations": [
-    {"to": "mamba", "type": "inspired_by"},
-    {"to": "mixtral", "type": "inspired_by"}
+    {
+      "to": "mamba",
+      "type": "inspired_by",
+      "description": "Jamba은(는) Mamba의 핵심 아이디어에서 영감을 받았다."
+    },
+    {
+      "to": "mixtral",
+      "type": "inspired_by",
+      "description": "Jamba은(는) Mixtral 8x7B의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "jamba"
 }

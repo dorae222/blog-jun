@@ -22,12 +22,19 @@
   "paper_url": "",
   "code_url": "",
   "license_type": "",
-  "concepts": ["General Agent", "Task Execution"],
+  "concepts": [
+    "General Agent",
+    "Task Execution"
+  ],
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": false,
   "relations": [
-    {"to": "computer-use", "type": "inspired_by"}
+    {
+      "to": "computer-use",
+      "type": "inspired_by",
+      "description": "Manus은(는) Claude Computer Use의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

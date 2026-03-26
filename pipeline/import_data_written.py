@@ -79,7 +79,12 @@ def import_data(dry_run: bool = False, update: bool = False):
             if not dry_run:
                 existing.content = content
                 existing.summary = summary
-                existing.save(update_fields=['content', 'summary'])
+                update_fields = ['content', 'summary']
+                is_pinned = data.get('is_pinned', False)
+                if is_pinned != existing.is_pinned:
+                    existing.is_pinned = is_pinned
+                    update_fields.append('is_pinned')
+                existing.save(update_fields=update_fields)
                 existing.tags.clear()
                 for tag_name in tags_raw:
                     tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
@@ -108,6 +113,7 @@ def import_data(dry_run: bool = False, update: bool = False):
             status='published',
             post_type='article',
             published_at=timezone.now(),
+            is_pinned=data.get('is_pinned', False),
         )
 
         for tag_name in tags_raw:

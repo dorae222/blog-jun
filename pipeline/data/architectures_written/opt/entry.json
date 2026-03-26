@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2205.01068",
   "code_url": "https://github.com/facebookresearch/metaseq",
   "license_type": "non-commercial research",
-  "concepts": ["Open Source LLM", "Reproducibility", "Scaling Laws"],
+  "concepts": [
+    "Open Source LLM",
+    "Reproducibility",
+    "Scaling Laws"
+  ],
   "architecture_category": "llm",
   "branch_type": "decoder_only",
   "is_open_source": true,
   "relations": [
-    {"to": "gpt-3", "type": "inspired_by"}
+    {
+      "to": "gpt-3",
+      "type": "inspired_by",
+      "description": "OPT은(는) GPT-3의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

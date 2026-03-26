@@ -33,8 +33,16 @@
   "branch_type": "diffusion",
   "is_open_source": false,
   "relations": [
-    {"to": "ddpm", "type": "evolved_from"},
-    {"to": "t5", "type": "technique_used"}
+    {
+      "to": "ddpm",
+      "type": "evolved_from",
+      "description": "Imagen은(는) DDPM의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "t5",
+      "type": "technique_used",
+      "description": "Imagen은(는) T5 기법을 적용했다."
+    }
   ],
   "related_post_slug": "imagen"
 }

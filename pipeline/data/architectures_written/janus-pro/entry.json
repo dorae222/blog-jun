@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2501.17811",
   "code_url": "https://github.com/deepseek-ai/Janus",
   "license_type": "DeepSeek License",
-  "concepts": ["Decoupled Vision Encoder", "Unified Understanding-Generation", "Discrete Image Tokenization"],
+  "concepts": [
+    "Decoupled Vision Encoder",
+    "Unified Understanding-Generation",
+    "Discrete Image Tokenization"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "deepseek-vl2", "type": "evolved_from"}
+    {
+      "to": "deepseek-vl2",
+      "type": "evolved_from",
+      "description": "Janus-Pro은(는) DeepSeek-VL2의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

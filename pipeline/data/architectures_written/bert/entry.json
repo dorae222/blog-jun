@@ -21,10 +21,25 @@
   "key_detail": "MLM: 입력 토큰의 15% 중 80%를 [MASK]로, 10%는 랜덤 토큰, 10%는 원본 그대로 유지 후 원래 토큰 예측. NSP(Next Sentence Prediction): 두 문장이 실제로 연속되는지 이진 분류—[CLS] 토큰 임베딩을 분류에 활용. WordPiece 토크나이저(30522 vocab), [SEP]로 두 세그먼트 구분, Segment Embedding으로 문장 구분 인코딩. GELU 활성화 함수가 ReLU 대비 부드러운 기울기로 파인튜닝 안정성에 기여. BERT-Large(24레이어, 16헤드, hidden=1024)로 SQUAD 2.0 89.1 F1 달성.",
   "training_detail": "BooksCorpus(800M 단어) + Wikipedia(2500M 단어) 총 3.3B 단어로 사전 학습. 배치 256 시퀀스(최대 512토큰), Adam lr=1e-4, β=(0.9, 0.999), warmup 10,000 스텝. 40 에포크(1M 스텝). 64개 TPU v3(Base: 4일, Large: 4일). Dropout 0.1, 가중치 감쇠 0.01.",
   "paper_url": "https://arxiv.org/abs/1810.04805",
-  "concepts": ["MLM", "Bidirectional Attention", "GELU", "Learned Position Embedding", "Pre-training & Fine-tuning", "NSP"],
+  "concepts": [
+    "MLM",
+    "Bidirectional Attention",
+    "GELU",
+    "Learned Position Embedding",
+    "Pre-training & Fine-tuning",
+    "NSP"
+  ],
   "relations": [
-    {"to": "transformer", "type": "evolved_from"},
-    {"to": "elmo", "type": "inspired_by"}
+    {
+      "to": "transformer",
+      "type": "evolved_from",
+      "description": "BERT은(는) Transformer의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "elmo",
+      "type": "inspired_by",
+      "description": "BERT은(는) ELMo의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "bert"
 }

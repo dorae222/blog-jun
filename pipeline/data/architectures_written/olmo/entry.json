@@ -21,9 +21,20 @@
   "key_detail": "완전 개방성(Full Openness): 가중치·Dolma 학습 데이터(3T 토큰)·학습 코드(OLMo Python 패키지)·평가 코드(Catwalk)·텐서보드 로그·2000개 이상 중간 체크포인트 모두 Apache 2.0으로 공개. 아키텍처 특이점: 비파라메트릭 LayerNorm(bias=False, affine=False)과 QK-norm으로 학습 안정성 강화. Rotary Position Embedding(RoPE). OLMo-7B: MMLU 52.0%, HellaSwag 78.4%(LLaMA-7B: 76.1%). ALLMo 평가 프레임워크로 재현 가능한 벤치마크 제공.",
   "training_detail": "Dolma v1.6—C4, Pile, Reddit, StackExchange, Wikipedia, Common Crawl 등 조합, 총 3T 토큰. BPE 50,280 vocab(GPT-NeoX 토크나이저 기반). AdamW lr=4e-4, cosine decay to 1e-5, warmup 5000 스텝. 7B: A100 80GB 4096개, 학습 시간 약 25일. 배치 2M 토큰.",
   "paper_url": "https://arxiv.org/abs/2402.00838",
-  "concepts": ["Open Science", "Dolma Dataset", "RoPE", "SwiGLU", "Full Transparency", "Reproducibility"],
+  "concepts": [
+    "Open Science",
+    "Dolma Dataset",
+    "RoPE",
+    "SwiGLU",
+    "Full Transparency",
+    "Reproducibility"
+  ],
   "relations": [
-    {"to": "llama", "type": "inspired_by"}
+    {
+      "to": "llama",
+      "type": "inspired_by",
+      "description": "OLMo은(는) LLaMA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "olmo"
 }

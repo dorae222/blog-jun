@@ -21,9 +21,20 @@
   "key_detail": "Qwen2 → Qwen2.5 핵심 변화 4가지: (1) 18T 토큰으로 학습량 2.5배 증가, (2) 수학(MATH)·코드(HumanEval) 데이터 비중 대폭 향상—Qwen2.5-72B: MATH 83.1%(Qwen2-72B: 69.0%), HumanEval 86.6%, (3) 긴 컨텍스트 품질 개선(128K 처리 일관성 향상), (4) Online DPO 기반 지시 따르기 강화. 32B 모델: MMLU 83.3%(GPT-4o: 85.7% 수준에 근접), MT-Bench 9.12.",
   "training_detail": "18T 토큰(Qwen2 7T 대비 2.5배). 2단계 학습: 대규모 일반 데이터 프리트레인 후 고품질 수학·코드·지시 데이터 집중 파인튜닝. Chat 버전은 SFT + Online DPO 정렬. 각 크기별 독립 학습 후 별도 정렬 파이프라인 적용. Flash Attention 2 사용.",
   "paper_url": "https://arxiv.org/abs/2412.15115",
-  "concepts": ["GQA", "RoPE", "RMSNorm", "18T Tokens", "Math & Code Specialization", "SwiGLU"],
+  "concepts": [
+    "GQA",
+    "RoPE",
+    "RMSNorm",
+    "18T Tokens",
+    "Math & Code Specialization",
+    "SwiGLU"
+  ],
   "relations": [
-    {"to": "qwen2", "type": "evolved_from"}
+    {
+      "to": "qwen2",
+      "type": "evolved_from",
+      "description": "Qwen2.5은(는) Qwen2의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "qwen2-5"
 }

@@ -35,8 +35,16 @@
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "score-matching", "type": "evolved_from"},
-    {"to": "ddpm", "type": "inspired_by"}
+    {
+      "to": "score-matching",
+      "type": "evolved_from",
+      "description": "Score-based SDE은(는) Score-based Generative Model의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "ddpm",
+      "type": "inspired_by",
+      "description": "Score-based SDE은(는) DDPM의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "score-sde"
 }

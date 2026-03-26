@@ -33,7 +33,11 @@
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "flow-matching", "type": "variant_of"}
+    {
+      "to": "flow-matching",
+      "type": "variant_of",
+      "description": "Rectified Flow은(는) Flow Matching의 변형 모델이다."
+    }
   ],
   "related_post_slug": "rectified-flow"
 }

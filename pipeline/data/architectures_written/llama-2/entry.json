@@ -21,9 +21,21 @@
   "key_detail": "LLaMA 대비 3가지 주요 변화: (1) 컨텍스트 4096—2T 토큰(LLaMA의 약 1.4배) 학습 데이터 확대와 함께 긴 문서 처리 능력 강화, (2) GQA(Grouped Query Attention)—34B/70B에서 KV 헤드 수를 Q 헤드의 1/8로 줄여(예: 70B: Q 64헤드 / KV 8헤드) KV 캐시 8배 감소 및 추론 처리량 향상, (3) Ghost Attention(GAtt)—SFT 데이터에서 시스템 메시지를 모든 대화 턴에 가상으로 삽입해 멀티턴 일관성 개선. LLaMA-2-Chat-70B: MT-Bench 6.27, Helpful Harmless Benchmark에서 Claude와 근접.",
   "training_detail": "사전 학습: 2T 토큰(LLaMA 대비 40% 증가, 공개 데이터). Chat 버전: 27,540개 SFT 어노테이션(Meta 내부 품질 선별) + RLHF(Rejection Sampling + PPO). 배치 4M 토큰. 2000개 A100 80GB GPU. Reward Model은 70B 기반으로 별도 학습.",
   "paper_url": "https://arxiv.org/abs/2307.09288",
-  "concepts": ["GQA", "RLHF", "Ghost Attention", "RMSNorm", "RoPE", "SwiGLU", "Chat Model"],
+  "concepts": [
+    "GQA",
+    "RLHF",
+    "Ghost Attention",
+    "RMSNorm",
+    "RoPE",
+    "SwiGLU",
+    "Chat Model"
+  ],
   "relations": [
-    {"to": "llama", "type": "evolved_from"}
+    {
+      "to": "llama",
+      "type": "evolved_from",
+      "description": "LLaMA 2은(는) LLaMA의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "llama-2"
 }

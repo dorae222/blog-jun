@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2409.12191",
   "code_url": "https://github.com/QwenLM/Qwen2-VL",
   "license_type": "Apache-2.0",
-  "concepts": ["Naive Dynamic Resolution", "Multimodal RoPE", "Video Understanding"],
+  "concepts": [
+    "Naive Dynamic Resolution",
+    "Multimodal RoPE",
+    "Video Understanding"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "qwen2", "type": "evolved_from"}
+    {
+      "to": "qwen2",
+      "type": "evolved_from",
+      "description": "Qwen2-VL은(는) Qwen2의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": ""
 }

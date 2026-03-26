@@ -22,12 +22,23 @@
   "paper_url": "https://arxiv.org/abs/2010.11929",
   "code_url": "https://github.com/google-research/vision_transformer",
   "license_type": "Apache-2.0",
-  "concepts": ["Patch Embedding", "CLS Token", "Vision Transformer", "Pre-training", "GELU", "Self-Attention"],
+  "concepts": [
+    "Patch Embedding",
+    "CLS Token",
+    "Vision Transformer",
+    "Pre-training",
+    "GELU",
+    "Self-Attention"
+  ],
   "architecture_category": "vision",
   "branch_type": "vision",
   "is_open_source": true,
   "relations": [
-    {"to": "transformer", "type": "evolved_from"}
+    {
+      "to": "transformer",
+      "type": "evolved_from",
+      "description": "ViT은(는) Transformer의 아키텍처를 기반으로 발전시킨 모델이다."
+    }
   ],
   "related_post_slug": "vit"
 }

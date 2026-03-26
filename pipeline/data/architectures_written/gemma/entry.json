@@ -21,9 +21,20 @@
   "key_detail": "256K 초대형 vocab의 SentencePiece BPE로 다국어·코드 토큰화 효율 극대화(GPT 계열 50K, LLaMA 32K 대비). 7B 모델에 MQA(KV 헤드=1) 적용으로 추론 KV 캐시 대폭 감소. 활성화 함수로 GeGLU(GELU 기반 Gated Linear Unit) 사용. Pre-Norm RMSNorm으로 안정적 학습. Responsible AI 원칙에 따라 안전성 평가(독성, 편향)를 사전 학습 단계부터 반영. 7B: MMLU 64.3%, HumanEval 32.3%(Mistral-7B: 26.2%).",
   "training_detail": "6T 토큰(웹 문서 중심, 코드·수학 데이터 포함). SentencePiece BPE 256K vocab. TPU v5p 대규모 클러스터 사용. Instruction-tuned 버전(Gemma-IT)은 SFT + RLHF 정렬. 학습 데이터 구성과 하이퍼파라미터 상세는 미공개.",
   "paper_url": "https://arxiv.org/abs/2403.08295",
-  "concepts": ["MQA", "RoPE", "RMSNorm", "GeGLU", "Large Vocabulary", "Efficient LLM"],
+  "concepts": [
+    "MQA",
+    "RoPE",
+    "RMSNorm",
+    "GeGLU",
+    "Large Vocabulary",
+    "Efficient LLM"
+  ],
   "relations": [
-    {"to": "gemini", "type": "inspired_by"}
+    {
+      "to": "gemini",
+      "type": "inspired_by",
+      "description": "Gemma은(는) Gemini의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "gemma"
 }

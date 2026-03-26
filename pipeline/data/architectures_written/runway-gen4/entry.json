@@ -33,7 +33,11 @@
   "branch_type": "diffusion",
   "is_open_source": false,
   "relations": [
-    {"to": "dit", "type": "inspired_by"}
+    {
+      "to": "dit",
+      "type": "inspired_by",
+      "description": "Runway Gen-4은(는) DiT (Diffusion Transformers)의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "runway-gen4"
 }

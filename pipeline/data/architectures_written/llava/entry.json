@@ -22,13 +22,28 @@
   "paper_url": "https://arxiv.org/abs/2304.08485",
   "code_url": "https://github.com/haotian-liu/LLaVA",
   "license_type": "Apache-2.0",
-  "concepts": ["CLIP", "Visual Instruction Tuning", "Multimodal LLM", "Projection Layer", "GPT-4 Distillation", "LLaMA"],
+  "concepts": [
+    "CLIP",
+    "Visual Instruction Tuning",
+    "Multimodal LLM",
+    "Projection Layer",
+    "GPT-4 Distillation",
+    "LLaMA"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "vit", "type": "inspired_by"},
-    {"to": "llama", "type": "inspired_by"}
+    {
+      "to": "vit",
+      "type": "inspired_by",
+      "description": "LLaVA은(는) ViT의 핵심 아이디어에서 영감을 받았다."
+    },
+    {
+      "to": "llama",
+      "type": "inspired_by",
+      "description": "LLaVA은(는) LLaMA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": "llava"
 }

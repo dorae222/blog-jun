@@ -22,12 +22,20 @@
   "paper_url": "https://arxiv.org/abs/2408.01800",
   "code_url": "https://github.com/OpenBMB/MiniCPM-V",
   "license_type": "Apache-2.0",
-  "concepts": ["Edge Deployment", "High-Resolution OCR", "Mobile VLM"],
+  "concepts": [
+    "Edge Deployment",
+    "High-Resolution OCR",
+    "Mobile VLM"
+  ],
   "architecture_category": "multimodal",
   "branch_type": "multimodal",
   "is_open_source": true,
   "relations": [
-    {"to": "llava", "type": "inspired_by"}
+    {
+      "to": "llava",
+      "type": "inspired_by",
+      "description": "MiniCPM-V은(는) LLaVA의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

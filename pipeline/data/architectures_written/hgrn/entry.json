@@ -22,12 +22,24 @@
   "paper_url": "https://arxiv.org/abs/2311.04823",
   "code_url": "https://github.com/fla-org/flash-linear-attention",
   "license_type": "MIT",
-  "concepts": ["Hierarchical Gating", "Forget Gate", "Linear RNN", "Recurrence", "Multi-scale Dependencies", "Complex State", "Chunkwise Parallel"],
+  "concepts": [
+    "Hierarchical Gating",
+    "Forget Gate",
+    "Linear RNN",
+    "Recurrence",
+    "Multi-scale Dependencies",
+    "Complex State",
+    "Chunkwise Parallel"
+  ],
   "architecture_category": "ssm",
   "branch_type": "ssm",
   "is_open_source": true,
   "relations": [
-    {"to": "s4", "type": "inspired_by"}
+    {
+      "to": "s4",
+      "type": "inspired_by",
+      "description": "HGRN은(는) S4의 핵심 아이디어에서 영감을 받았다."
+    }
   ],
   "related_post_slug": ""
 }

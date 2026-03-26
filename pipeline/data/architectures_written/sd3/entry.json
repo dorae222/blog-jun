@@ -34,8 +34,16 @@
   "branch_type": "diffusion",
   "is_open_source": true,
   "relations": [
-    {"to": "sdxl", "type": "evolved_from"},
-    {"to": "dit", "type": "technique_used"}
+    {
+      "to": "sdxl",
+      "type": "evolved_from",
+      "description": "Stable Diffusion 3은(는) SDXL (Stable Diffusion XL)의 아키텍처를 기반으로 발전시킨 모델이다."
+    },
+    {
+      "to": "dit",
+      "type": "technique_used",
+      "description": "Stable Diffusion 3은(는) DiT (Diffusion Transformers) 기법을 적용했다."
+    }
   ],
   "related_post_slug": "sd3"
 }
