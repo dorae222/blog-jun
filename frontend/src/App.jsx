@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Toaster } from 'react-hot-toast'
+import { lazy, Suspense } from 'react'
 
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
@@ -14,6 +15,8 @@ import About from './pages/About'
 import Editor from './pages/Editor'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
+
+const ArchitectureTreePage = lazy(() => import('./pages/ArchitectureTreePage'))
 
 export default function App() {
   const location = useLocation()
@@ -34,11 +37,11 @@ export default function App() {
             <Route path="/editor/:slug" element={<Editor />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/architectures/tree" element={<Suspense fallback={<div className="flex-1 flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>Loading...</div>}><ArchitectureTreePage /></Suspense>} />
             {/* 레거시 경로 리다이렉트 */}
             <Route path="/explore" element={<Navigate to="/posts" replace />} />
             <Route path="/search" element={<Navigate to="/posts" replace />} />
             <Route path="/architectures" element={<Navigate to="/posts/ai" replace />} />
-            <Route path="/architectures/tree" element={<Navigate to="/posts/ai" replace />} />
             <Route path="/architectures/:slug" element={<Navigate to="/posts/ai" replace />} />
             <Route path="/papers" element={<Navigate to="/posts" replace />} />
             <Route path="/category/:slug" element={<Navigate to="/posts" replace />} />

@@ -9,10 +9,13 @@ HTML 렌더링 페이지에서 figure/table 이미지를 다운로드합니다.
   python pipeline/scrape_arxiv_figures.py --missing-only        # figure 0인 논문만
   python pipeline/scrape_arxiv_figures.py --all                 # 전체 재크롤링
   python pipeline/scrape_arxiv_figures.py --slug bert --tables  # 테이블도 추출
+  python pipeline/scrape_arxiv_figures.py --architectures --missing-only  # 아키텍처 figure 없는 것만
+  python pipeline/scrape_arxiv_figures.py --architectures --all           # 아키텍처 전체
 
 출력:
   pipeline/data/papers_written/{slug}/figures/fig_{idx}.png
   pipeline/data/papers_written/{slug}/figures/metadata.json
+  pipeline/data/architectures_written/{slug}/figures/fig_{idx}.png  (--architectures)
 """
 import argparse
 import json
@@ -197,11 +200,79 @@ def get_slugs_missing_figures() -> list[str]:
     return sorted(set(missing))
 
 
+def get_all_arch_slugs() -> list[str]:
+    """architectures_written 내 arxiv paper_url이 있는 모든 slug를 반환한다."""
+    slugs = []
+    if not ARCH_DIR.exists():
+        return slugs
+    for arch_dir in sorted(ARCH_DIR.iterdir()):
+        if not arch_dir.is_dir():
+            continue
+        entry_path = arch_dir / "entry.json"
+        if not entry_path.exists():
+            continue
+        try:
+            data = json.loads(entry_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        paper_url = data.get("paper_url", "")
+        if "arxiv.org" in paper_url:
+            slugs.append(arch_dir.name)
+    return slugs
+
+
+def get_arch_slugs_missing_figures() -> list[str]:
+    """arXiv URL이 있지만 실제 논문 figure가 없는 아키텍처 slug를 반환한다.
+
+    figures/ 디렉토리 내에서 architecture.png, architecture.svg는 제외하고
+    실제 논문 figure 이미지가 있는지 확인한다.
+    """
+    # 제외할 파일명 (아키텍처 다이어그램 등)
+    exclude_names = {"architecture.png", "architecture.svg"}
+    image_exts = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"}
+
+    missing = []
+    if not ARCH_DIR.exists():
+        return missing
+
+    for arch_dir in sorted(ARCH_DIR.iterdir()):
+        if not arch_dir.is_dir():
+            continue
+        entry_path = arch_dir / "entry.json"
+        if not entry_path.exists():
+            continue
+        try:
+            data = json.loads(entry_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        paper_url = data.get("paper_url", "")
+        if "arxiv.org" not in paper_url:
+            continue
+
+        # figures 디렉토리 확인
+        figures_dir = arch_dir / "figures"
+        if not figures_dir.exists():
+            missing.append(arch_dir.name)
+            continue
+
+        # 실제 논문 figure 이미지 존재 여부 확인 (architecture.png/svg 제외)
+        has_real_figures = any(
+            f.suffix.lower() in image_exts
+            for f in figures_dir.iterdir()
+            if f.is_file() and f.name.lower() not in exclude_names
+        )
+        if not has_real_figures:
+            missing.append(arch_dir.name)
+
+    return sorted(missing)
+
+
 # ── ar5iv 크롤링 ──────────────────────────────────────────────────────
 def scrape_figures(
     arxiv_id: str,
     slug: str,
     include_tables: bool = False,
+    arch_mode: bool = False,
 ) -> dict:
     """ar5iv HTML에서 figure (및 선택적으로 table) 이미지를 크롤링한다.
 
@@ -271,7 +342,7 @@ def scrape_figures(
 
     # 4. 출력 디렉토리 생성
     # slug에 해당하는 디렉토리 찾기 (번호 접두사 포함 가능)
-    figures_dir = _resolve_figures_dir(slug)
+    figures_dir = _resolve_figures_dir(slug, arch_mode=arch_mode)
     figures_dir.mkdir(parents=True, exist_ok=True)
 
     # 5. 각 figure에서 이미지 추출 및 다운로드
@@ -376,13 +447,21 @@ def scrape_figures(
     return result
 
 
-def _resolve_figures_dir(slug: str) -> Path:
+def _resolve_figures_dir(slug: str, arch_mode: bool = False) -> Path:
     """slug에 해당하는 figures 디렉토리 경로를 반환한다.
+
+    Args:
+        slug: 논문/아키텍처 slug
+        arch_mode: True이면 architectures_written/{slug}/figures/ 사용
 
     번호 없는 디렉토리(예: papers_written/bert/)를 우선하고,
     없으면 번호 있는 디렉토리(예: papers_written/2_bert/)를 사용.
     둘 다 없으면 slug 이름으로 새로 생성.
     """
+    # 아키텍처 모드: ARCH_DIR 직접 사용
+    if arch_mode:
+        return ARCH_DIR / slug / "figures"
+
     # 1. 번호 없는 디렉토리
     plain_dir = PAPERS_DIR / slug / "figures"
     if (PAPERS_DIR / slug).exists():
@@ -404,12 +483,14 @@ def _resolve_figures_dir(slug: str) -> Path:
 def process_slugs(
     slugs: list[str],
     include_tables: bool = False,
+    arch_mode: bool = False,
 ) -> list[dict]:
     """slug 목록을 순회하며 ar5iv에서 figure를 크롤링한다.
 
     Args:
         slugs: 처리할 slug 목록
         include_tables: True이면 테이블도 추출
+        arch_mode: True이면 architectures_written에 저장
 
     Returns:
         결과 리스트
@@ -439,6 +520,7 @@ def process_slugs(
             arxiv_id=arxiv_id,
             slug=slug,
             include_tables=include_tables,
+            arch_mode=arch_mode,
         )
         results.append(result)
 
@@ -506,6 +588,8 @@ def main():
   python pipeline/scrape_arxiv_figures.py --missing-only        # figure 0인 논문만
   python pipeline/scrape_arxiv_figures.py --all                 # 전체 재크롤링
   python pipeline/scrape_arxiv_figures.py --slug bert --tables  # 테이블도 추출
+  python pipeline/scrape_arxiv_figures.py --architectures --missing-only  # 아키텍처
+  python pipeline/scrape_arxiv_figures.py --architectures --all           # 아키텍처 전체
         """,
     )
 
@@ -529,6 +613,11 @@ def main():
 
     # 추가 옵션
     parser.add_argument(
+        "--architectures",
+        action="store_true",
+        help="architectures_written 대상으로 figure 크롤링 (--missing-only 또는 --all과 함께 사용)",
+    )
+    parser.add_argument(
         "--tables",
         action="store_true",
         help="테이블(ltx_table)도 함께 추출",
@@ -545,15 +634,26 @@ def main():
     print("ar5iv Figure 크롤러")
     print("=" * 60)
 
+    # 아키텍처 모드 여부
+    arch_mode = args.architectures
+
     # 대상 slug 결정
     if args.slug:
         slugs = [args.slug]
     elif args.missing_only:
-        slugs = get_slugs_missing_figures()
-        print(f"\nfigure 0개인 논문: {len(slugs)}건")
+        if arch_mode:
+            slugs = get_arch_slugs_missing_figures()
+            print(f"\nfigure 없는 아키텍처 (arXiv): {len(slugs)}건")
+        else:
+            slugs = get_slugs_missing_figures()
+            print(f"\nfigure 0개인 논문: {len(slugs)}건")
     else:  # --all
-        slugs = get_all_slugs()
-        print(f"\n전체 논문: {len(slugs)}건")
+        if arch_mode:
+            slugs = get_all_arch_slugs()
+            print(f"\n전체 아키텍처 (arXiv): {len(slugs)}건")
+        else:
+            slugs = get_all_slugs()
+            print(f"\n전체 논문: {len(slugs)}건")
 
     if not slugs:
         print("\n[INFO] 처리할 논문이 없습니다.")
@@ -571,7 +671,7 @@ def main():
         return
 
     # 크롤링 실행
-    results = process_slugs(slugs, include_tables=args.tables)
+    results = process_slugs(slugs, include_tables=args.tables, arch_mode=arch_mode)
 
     # 결과 요약
     print_summary(results)

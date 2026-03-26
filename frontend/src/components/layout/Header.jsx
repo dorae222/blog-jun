@@ -56,6 +56,14 @@ export default function Header() {
           </Link>
 
           <Link
+            to="/architectures/tree"
+            className="text-sm font-medium hover:text-primary-600 transition-colors"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            Architecture
+          </Link>
+
+          <Link
             to="/about"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
             style={{ color: 'var(--text-secondary)' }}
@@ -201,6 +209,10 @@ export default function Header() {
               <Link to="/posts" onClick={closeMobile}
                 className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                 Posts
+              </Link>
+              <Link to="/architectures/tree" onClick={closeMobile}
+                className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                Architecture
               </Link>
               <Link to="/about" onClick={closeMobile}
                 className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>

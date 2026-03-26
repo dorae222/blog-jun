@@ -70,7 +70,6 @@ class PostListSerializer(ImageUrlMixin, serializers.ModelSerializer):
             entry = obj.architecture_entries.first()
             if entry and entry.figure:
                 return self._build_url(entry.figure)
-                return entry.figure.url
         except Exception:
             pass
         return None
@@ -317,8 +316,11 @@ class ArchitectureEntryDetailSerializer(FigureUrlMixin, serializers.ModelSeriali
 
 
 class ArchitectureTreeNodeSerializer(FigureUrlMixin, serializers.ModelSerializer):
-    """트리 시각화용 경량 serializer"""
+    """트리 시각화용 경량 serializer — D3.js 그래프에서 사용"""
     figure_url = serializers.SerializerMethodField()
+    related_post_slug = serializers.SlugRelatedField(
+        source='related_post', slug_field='slug', read_only=True
+    )
 
     class Meta:
         model = ArchitectureEntry
@@ -327,6 +329,7 @@ class ArchitectureTreeNodeSerializer(FigureUrlMixin, serializers.ModelSerializer
             'decoder_type', 'param_scale', 'context_length',
             'architecture_category', 'branch_type', 'is_open_source',
             'tree_x', 'tree_y', 'figure_url', 'paper_url',
+            'related_post_slug', 'key_detail',
         ]
 
 
