@@ -2,12 +2,14 @@ import { useEffect, useState, useCallback, useRef } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LayoutGrid, List, ChevronLeft, ChevronRight, SlidersHorizontal, X } from 'lucide-react'
+import { Helmet } from 'react-helmet-async'
 
 import CategoryTabs from '../components/blog/CategoryTabs'
 import LeftSidebar from '../components/blog/LeftSidebar'
 import FeedCard from '../components/blog/FeedCard'
 import BulletinListView from '../components/blog/BulletinListView'
 import { getFeed } from '../api/posts'
+import { CATEGORY_TREE } from '../data/categories'
 
 // 탭별 기본 뷰 모드
 const DEFAULT_VIEW = { ai: 'card', cloud: 'list', data: 'list' }
@@ -142,7 +144,19 @@ export default function PostsPage() {
     setSearchParams(params)
   }
 
+  const catNode = CATEGORY_TREE.find((c) => c.key === category)
+  const subNode = catNode?.subs?.find((s) => s.key === sub)
+  const pageTitle = subNode
+    ? `${catNode.label} / ${subNode.label} | HJ Tech Blog`
+    : catNode
+    ? `${catNode.label} | HJ Tech Blog`
+    : '포스트 | HJ Tech Blog'
+
   return (
+    <>
+    <Helmet>
+      <title>{pageTitle}</title>
+    </Helmet>
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
@@ -366,5 +380,6 @@ export default function PostsPage() {
         </div>
       </div>
     </motion.div>
+    </>
   )
 }
