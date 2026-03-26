@@ -21,13 +21,13 @@ PAPER_CATEGORY_MAP = {
     'moe': 'efficiency', 'scaling': 'efficiency',
     'efficiency': 'efficiency', 'efficient-training': 'efficiency',
     # Training (신규)
-    'alignment': 'training', 'finetuning': 'training', 'data': 'training',
+    'training': 'training', 'alignment': 'training', 'finetuning': 'training', 'data': 'training',
     # RAG (신규)
     'rag': 'rag', 'retrieval': 'rag',
     # Reasoning (신규)
-    'benchmark': 'reasoning', 'evaluation': 'reasoning',
+    'reasoning': 'reasoning', 'benchmark': 'reasoning', 'evaluation': 'reasoning',
     # Agent
-    'agents': 'agent', 'tools': 'agent',
+    'agent': 'agent', 'agents': 'agent', 'tools': 'agent',
     # Technique (나머지)
     'technique': 'technique', 'attention-mechanism': 'technique',
     'prompting': 'technique', 'icl': 'technique',
