@@ -16,10 +16,10 @@ export default function Login() {
     setLoading(true)
     try {
       await login(username, password)
-      toast.success('Logged in!')
+      toast.success('로그인 성공')
       navigate('/dashboard')
     } catch {
-      toast.error('Invalid credentials')
+      toast.error('로그인 실패')
     } finally {
       setLoading(false)
     }

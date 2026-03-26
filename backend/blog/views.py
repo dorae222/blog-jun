@@ -1,7 +1,7 @@
 import json
 import os
 from django.conf import settings
-from django.db.models import Count, Q, F, Sum
+from django.db.models import Count, Q, F, Sum, Case, When, Value, IntegerField
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
@@ -98,8 +98,15 @@ class PostViewSet(viewsets.ModelViewSet):
         if not q:
             return Response([])
         qs = self.get_queryset().filter(
-            Q(title__icontains=q) | Q(content__icontains=q) | Q(summary__icontains=q)
-        )[:20]
+            Q(title__icontains=q) | Q(summary__icontains=q) | Q(content__icontains=q)
+        ).annotate(
+            relevance=Case(
+                When(title__icontains=q, then=Value(3)),
+                When(summary__icontains=q, then=Value(2)),
+                default=Value(1),
+                output_field=IntegerField(),
+            )
+        ).order_by('-relevance', '-view_count')[:20]
         serializer = PostListSerializer(qs, many=True)
         return Response(serializer.data)
 
@@ -452,6 +459,7 @@ class FeedView(generics.ListAPIView):
         sub = self.request.query_params.get('sub')
         sort = self.request.query_params.get('sort', 'newest')
         q = self.request.query_params.get('q')
+        tag = self.request.query_params.get('tag')
         pinned = self.request.query_params.get('pinned')
 
         # 카테고리 필터
@@ -466,10 +474,21 @@ class FeedView(generics.ListAPIView):
         if sub and category and category in self.SUB_CATEGORIES:
             qs = qs.filter(category__slug=sub)
 
+        # 태그 필터
+        if tag:
+            qs = qs.filter(tags__slug=tag)
+
         # 검색
         if q:
             qs = qs.filter(
                 Q(title__icontains=q) | Q(summary__icontains=q) | Q(content__icontains=q)
+            ).annotate(
+                relevance=Case(
+                    When(title__icontains=q, then=Value(3)),
+                    When(summary__icontains=q, then=Value(2)),
+                    default=Value(1),
+                    output_field=IntegerField(),
+                )
             )
 
         # 고정글만
@@ -477,7 +496,9 @@ class FeedView(generics.ListAPIView):
             qs = qs.filter(is_pinned=True)
 
         # 정렬
-        if sort == 'popular':
+        if q:
+            qs = qs.order_by('-relevance', '-view_count')
+        elif sort == 'popular':
             qs = qs.order_by('-view_count')
         else:
             qs = qs.order_by('-is_pinned', '-published_at', '-created_at')

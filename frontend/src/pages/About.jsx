@@ -3,6 +3,7 @@ import { Github, Mail, Linkedin, GraduationCap, Award, Users, Trophy, MapPin, Br
 import ScrollReveal from '../components/common/ScrollReveal'
 import TechStack from '../components/portfolio/TechStack'
 import TechIcon from '../components/icons/TechIcon'
+import { ACTIVITIES } from '../data/activities'
 
 const ORBIT_TECHS = [
   { name: 'PyTorch', angle: 0 },
@@ -36,12 +37,7 @@ const EXPERIENCE = [
   },
 ]
 
-const ACTIVITIES = [
-  { period: '2025.12 ~ 2026.02', name: '멋쟁이 사자처럼 NLP 트랙 3기', desc: '금융 학습 컨텐츠 생성 및 챗봇 시스템' },
-  { period: '2025.06 ~ 2025.12', name: 'AICA 인공지능사관학교 6기 NLP 트랙', desc: '광주광역시 플리마켓 챗봇 플랫폼' },
-  { period: '2023.07 ~ 2024.06', name: '투빅스 (Tobigs)', desc: '학석사 연합 AI 동아리' },
-  { period: '2023.03 ~ 2024.02', name: 'HAI', desc: '교내 AI 동아리' },
-]
+const ABOUT_ACTIVITIES = ACTIVITIES.filter(a => a.type === 'activity')
 
 const AWARDS = [
   { year: '2025', name: '인공지능사관학교 온라인 해커톤 1위', org: 'AICA' },
@@ -95,12 +91,8 @@ export default function About() {
                   return (
                     <motion.div
                       key={tech.name}
-                      className="absolute w-9 h-9 rounded-full flex items-center justify-center shadow-md z-20"
+                      className="absolute w-9 h-9 rounded-full flex items-center justify-center shadow-md z-20 glass"
                       style={{
-                        background: 'rgba(255,255,255,0.45)',
-                        backdropFilter: 'blur(12px) saturate(180%)',
-                        WebkitBackdropFilter: 'blur(12px) saturate(180%)',
-                        border: '1px solid rgba(255,255,255,0.3)',
                         left: '50%',
                         top: '50%',
                         marginLeft: -18,
@@ -307,15 +299,15 @@ export default function About() {
         </ScrollReveal>
 
         <div className="space-y-3">
-          {ACTIVITIES.map((act, i) => (
-            <ScrollReveal key={act.name} delay={i * 0.05}>
+          {ABOUT_ACTIVITIES.map((act, i) => (
+            <ScrollReveal key={act.id} delay={i * 0.05}>
               <div className="flex items-start gap-4 p-4 rounded-xl glass hover:shadow-md transition-all">
                 <span className="text-xs font-mono whitespace-nowrap mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-                  {act.period}
+                  {act.date}
                 </span>
                 <div>
-                  <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{act.name}</p>
-                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{act.desc}</p>
+                  <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{act.title}</p>
+                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{act.description}</p>
                 </div>
               </div>
             </ScrollReveal>

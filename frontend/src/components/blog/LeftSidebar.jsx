@@ -2,67 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ChevronRight, ChevronDown, Flame, TagIcon, Eye } from 'lucide-react'
 import { getPopularPosts, getTags } from '../../api/posts'
+import { CATEGORY_TREE } from '../../data/categories'
 
-const CATEGORY_TREE = [
-  {
-    key: 'ai', label: 'AI', color: '#FF6F00',
-    subs: [
-      { key: 'llm', label: 'LLM' },
-      { key: 'ssm', label: 'SSM' },
-      { key: 'diffusion', label: 'Diffusion' },
-      { key: 'vision', label: 'Vision' },
-      { key: 'multimodal', label: 'Multimodal' },
-      { key: 'agent', label: 'Agent' },
-      { key: 'technique', label: 'Technique' },
-    ],
-  },
-  {
-    key: 'ml', label: 'ML', color: '#10B981',
-    subs: [
-      { key: 'fundamentals', label: '기초' },
-      { key: 'math-foundations', label: '수학' },
-      { key: 'preprocessing', label: '전처리' },
-      { key: 'supervised-regression', label: '회귀' },
-      { key: 'supervised-classification', label: '분류' },
-      { key: 'ensemble', label: '앙상블' },
-      { key: 'unsupervised', label: '비지도' },
-      { key: 'model-evaluation', label: '평가' },
-      { key: 'causal-inference', label: '인과추론' },
-      { key: 'advanced-algorithms', label: '심화' },
-      { key: 'applications', label: '응용' },
-      { key: 'mlops', label: 'MLOps' },
-    ],
-  },
-  {
-    key: 'cloud', label: 'Cloud', color: '#FF9900',
-    subs: [
-      { key: 'aws-compute', label: 'Compute' },
-      { key: 'aws-storage', label: 'Storage' },
-      { key: 'aws-database', label: 'Database' },
-      { key: 'aws-networking', label: 'Network' },
-      { key: 'aws-security', label: 'Security' },
-      { key: 'aws-analytics', label: 'Analytics' },
-      { key: 'aws-ai-ml', label: 'AI/ML' },
-      { key: 'aws-devtools', label: 'DevTools' },
-      { key: 'aws-management', label: 'Mgmt' },
-      { key: 'aws-integration', label: 'Integration' },
-      { key: 'docker', label: 'Docker' },
-      { key: 'lxd', label: 'LXD' },
-      { key: 'devops', label: 'DevOps' },
-    ],
-  },
-  {
-    key: 'data', label: 'Data Engineering', color: '#336791',
-    subs: [
-      { key: 'hadoop', label: 'Hadoop' },
-      { key: 'spark', label: 'Spark' },
-      { key: 'database', label: 'Database' },
-      { key: 'pipeline', label: 'Pipeline' },
-    ],
-  },
-]
-
-export default function LeftSidebar({ category, sub, counts }) {
+export default function LeftSidebar({ category, sub, counts, mobile, onNavigate }) {
   const navigate = useNavigate()
   const [expanded, setExpanded] = useState(category || null)
   const [popular, setPopular] = useState([])
@@ -81,7 +23,7 @@ export default function LeftSidebar({ category, sub, counts }) {
   }, [category])
 
   return (
-    <aside className="hidden lg:block w-56 shrink-0 sticky top-20 self-start space-y-6 pr-4">
+    <aside className={mobile ? 'space-y-6' : 'hidden lg:block w-56 shrink-0 sticky top-20 self-start space-y-6 pr-4'}>
       {/* 카테고리 트리 */}
       <div>
         <h3 className="text-xs font-semibold uppercase tracking-wider mb-3"
@@ -98,6 +40,7 @@ export default function LeftSidebar({ category, sub, counts }) {
                   onClick={() => {
                     setExpanded(isExpanded ? null : cat.key)
                     navigate(`/posts/${cat.key}`)
+                    onNavigate?.()
                   }}
                   className="flex items-center gap-1.5 w-full px-2 py-1.5 text-sm rounded-lg transition-colors hover:bg-gray-50"
                   style={{
@@ -107,7 +50,7 @@ export default function LeftSidebar({ category, sub, counts }) {
                 >
                   {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                   <span className="flex-1 text-left">{cat.label}</span>
-                  <span className="text-[11px] opacity-50">{catCount}</span>
+                  <span className="text-xs opacity-50">{catCount}</span>
                 </button>
                 {isExpanded && (
                   <div className="ml-5 space-y-0.5 mt-0.5">
@@ -117,7 +60,7 @@ export default function LeftSidebar({ category, sub, counts }) {
                       return (
                         <button
                           key={s.key}
-                          onClick={() => navigate(`/posts/${cat.key}/${s.key}`)}
+                          onClick={() => { navigate(`/posts/${cat.key}/${s.key}`); onNavigate?.() }}
                           className="flex items-center gap-1 w-full px-2 py-1 text-xs rounded-lg transition-colors hover:bg-gray-50"
                           style={{
                             color: isActive ? cat.color : 'var(--text-secondary)',
@@ -127,7 +70,7 @@ export default function LeftSidebar({ category, sub, counts }) {
                           <span className="w-1 h-1 rounded-full shrink-0"
                             style={{ background: isActive ? cat.color : 'var(--border)' }} />
                           <span className="flex-1 text-left">{s.label}</span>
-                          <span className="text-[10px] opacity-50">{subCount}</span>
+                          <span className="text-[11px] opacity-50">{subCount}</span>
                         </button>
                       )
                     })}
@@ -178,8 +121,8 @@ export default function LeftSidebar({ category, sub, counts }) {
             {tags.map((tag) => (
               <Link
                 key={tag.id}
-                to={`/posts?q=${tag.name}`}
-                className="text-[11px] px-2 py-0.5 rounded-full border transition-colors hover:bg-gray-50"
+                to={`/posts?tag=${tag.slug}`}
+                className="text-xs px-2 py-0.5 rounded-full border transition-colors hover:bg-gray-50"
                 style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
               >
                 {tag.name}

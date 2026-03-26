@@ -1,7 +1,8 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   GitBranch, ArrowRight, ArrowLeft, Layers,
-  FileText, Code2, BookOpen, Calendar, Cpu, ExternalLink,
+  FileText, Code2, BookOpen, Calendar, Cpu, ExternalLink, ChevronDown,
 } from 'lucide-react'
 
 const RELATION_LABELS = {
@@ -92,6 +93,31 @@ function ConceptTag({ concept }) {
   )
 }
 
+function ExpandableConcepts({ concepts }) {
+  const [expanded, setExpanded] = useState(false)
+  const LIMIT = 6
+  const showToggle = concepts.length > LIMIT
+  const visible = expanded ? concepts : concepts.slice(0, LIMIT)
+
+  return (
+    <div className="flex flex-wrap gap-1.5 mb-4 items-center">
+      {visible.map(concept => (
+        <ConceptTag key={concept.id || concept.slug} concept={concept} />
+      ))}
+      {showToggle && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-full border transition-colors hover:bg-gray-50"
+          style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+        >
+          {expanded ? '접기' : `+${concepts.length - LIMIT}개`}
+          <ChevronDown size={10} className={`transition-transform ${expanded ? 'rotate-180' : ''}`} />
+        </button>
+      )}
+    </div>
+  )
+}
+
 function ExternalLinkButton({ href, icon: Icon, label }) {
   if (!href) return null
   return (
@@ -137,24 +163,32 @@ export default function ArchitectureLineageCard({ entries }) {
               border: '1px solid var(--border)',
             }}
           >
-            {/* Header: figure + name + badges + 링크 버튼 우측 */}
-            <div className="flex items-start gap-3 mb-3">
-              {/* Figure thumbnail */}
+            {/* Figure (전체 폭) */}
+            {entry.figure_url && (
               <div
-                className="w-12 h-12 rounded-lg shrink-0 flex items-center justify-center overflow-hidden"
-                style={{ background: 'var(--card-bg)', border: '1px solid var(--border)' }}
+                className="rounded-xl overflow-hidden mb-3 flex items-center justify-center"
+                style={{ background: 'var(--card-bg)', maxHeight: '200px' }}
               >
-                {entry.figure_url ? (
-                  <img
-                    src={entry.figure_url}
-                    alt={entry.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                ) : (
-                  <Cpu size={20} style={{ color: catColor }} />
-                )}
+                <img
+                  src={entry.figure_url}
+                  alt={entry.name}
+                  className="max-w-full max-h-[200px] object-contain"
+                  loading="lazy"
+                />
               </div>
+            )}
+
+            {/* Header: name + badges + 링크 버튼 우측 */}
+            <div className="flex items-start gap-3 mb-3">
+              {/* 아이콘 (figure 없을 때만) */}
+              {!entry.figure_url && (
+                <div
+                  className="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center"
+                  style={{ background: catColor + '12' }}
+                >
+                  <Cpu size={18} style={{ color: catColor }} />
+                </div>
+              )}
 
               <div className="flex-1 min-w-0">
                 {/* Name + category/branch badges + 링크 버튼 (우측 정렬) */}
@@ -236,13 +270,9 @@ export default function ArchitectureLineageCard({ entries }) {
               </p>
             )}
 
-            {/* Concept tags */}
+            {/* Concept tags (접이식) */}
             {hasConcepts && (
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {entry.concepts.slice(0, 6).map(concept => (
-                  <ConceptTag key={concept.id || concept.slug} concept={concept} />
-                ))}
-              </div>
+              <ExpandableConcepts concepts={entry.concepts} />
             )}
 
             {/* Lineage: Parents and Children */}

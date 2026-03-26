@@ -32,11 +32,17 @@ function Row({ item, index, isPinned }) {
 
       {/* 서브카테고리 (Desktop) */}
       {categoryName && (
-        <span className="hidden md:inline-block text-[11px] font-medium px-2 py-0.5 rounded-full shrink-0"
-          style={{ background: `${categoryColor}15`, color: categoryColor }}>
+        <span className="hidden md:inline-block text-xs font-medium px-2 py-0.5 rounded-full shrink-0"
+          style={{ background: `${categoryColor}12`, color: categoryColor }}>
           {categoryName}
         </span>
       )}
+
+      {/* 날짜 (Desktop lg+) */}
+      <span className="hidden lg:inline-block text-xs shrink-0 w-24 text-center"
+        style={{ color: 'var(--text-secondary)' }}>
+        {item.published_at ? new Date(item.published_at).toLocaleDateString('ko-KR', { year: '2-digit', month: 'short', day: 'numeric' }) : ''}
+      </span>
 
       {/* 조회수 */}
       <div className="flex items-center gap-1 text-xs shrink-0 w-16 justify-end"
@@ -58,6 +64,7 @@ export default function BulletinListView({ items, totalCount, pinnedItems = [] }
         <div className="w-8 text-center">#</div>
         <div className="flex-1">제목</div>
         <div className="w-20 text-center">카테고리</div>
+        <div className="w-24 text-center hidden lg:block">날짜</div>
         <div className="w-16 text-right">조회수</div>
       </div>
 
