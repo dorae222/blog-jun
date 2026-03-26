@@ -11,6 +11,9 @@ RAG(Retrieval-Augmented Generation)는 2020년 NeurIPS에서 Meta AI(당시 Face
 3. 오픈 도메인 QA, 자유 형식 생성, 팩트 검증 등 다양한 지식 집약적 태스크에서의 범용성 입증
 4. 문서 저장소 교체만으로 지식을 업데이트할 수 있는 실용적 아키텍처 제시
 
+![RAG 아키텍처 파이프라인 개요](figures/architecture.png)
+*RAG의 전체 처리 흐름. 입력 질문이 DPR(Dense Passage Retriever)을 통해 FAISS 인덱스에서 관련 패시지를 검색하고, BART-Large 생성기가 질문과 검색된 문서를 함께 입력받아 최종 답변을 생성한다. 검색기와 생성기는 end-to-end로 공동 학습된다.*
+
 ## 배경 및 문제
 
 ### 파라미터 기억의 한계
@@ -19,7 +22,7 @@ RAG(Retrieval-Augmented Generation)는 2020년 NeurIPS에서 Meta AI(당시 Face
 
 1. **지식의 정적성**: 학습 이후 새로운 사실을 반영하려면 전체 모델을 재학습해야 한다. 2020년에 학습된 모델은 2021년의 사건을 알 수 없다. 이는 실시간 정보가 필요한 응용에서 치명적인 제약이 된다.
 2. **불투명성**: 모델이 어떤 근거로 답변을 생성하는지 추적하기 어렵다. 내부 파라미터의 어떤 부분이 특정 사실을 인코딩하는지 알 수 없으므로, 답변의 신뢰성을 검증할 방법이 없다.
-3. **롱테일 지식 취약**: 학습 데이터에 적게 등장하는 희귀한 사실에 대한 답변 정확도가 낮다. 이는 모델이 빈도 기반으로 지식을 저장하기 때문이며, Roberts et al.(2020)이 T5 모델로 보인 것처럼 모델 크기를 늘려도 롱테일 지식의 정확도 개선에는 한계가 있다.
+3. **롱테일 지식 취약**: 학습 데이터에 적게 등장하는 희귀한 사실에 대한 답변 정확도가 낮다. 모델이 빈도 기반으로 지식을 저장하기 때문이며, Roberts et al.(2020)이 T5 모델로 보인 것처럼 모델 크기를 늘려도 롱테일 지식의 정확도 개선에는 한계가 있다.
 4. **환각(hallucination)**: 정확한 사실 근거 없이 그럴듯한 내용을 생성하는 경향이 있다. 모델이 "모른다"고 답하지 못하고 자신감 있게 잘못된 정보를 생성한다. 이는 의료, 법률, 금융 등 사실 정확성이 중요한 도메인에서 심각한 위험 요인이 된다.
 5. **확장성 문제**: 더 많은 지식을 저장하려면 모델 파라미터를 늘려야 하며, 이는 학습 비용과 추론 비용의 기하급수적 증가를 초래한다. GPT-3(175B)가 모든 세계 지식을 저장하기에는 여전히 부족하다.
 
@@ -65,11 +68,6 @@ $$p_{\text{RAG-Token}}(y|x) \approx \prod_{i=1}^{N} \sum_{z \in \text{top-k}} p_
 
 각 토큰 $y_i$를 생성할 때마다 모든 top-k 문서에 대한 가중 합산을 수행하므로, 토큰별로 가장 적합한 문서의 영향을 받을 수 있다. 예를 들어, "아인슈타인의 출생지와 사망년도는?"이라는 질문에서 출생지 토큰은 전기 문서를, 사망년도 토큰은 연표 문서를 주로 참조할 수 있다.
 
-![RAG-Token 모델의 토큰별 문서 사후 확률 히트맵](figures/fig_4.png)
-*Figure 2: Hemingway 입력에 대한 Jeopardy 생성 시 RAG-Token의 토큰별 문서 사후 확률 p(z_i|x, y_i, y_{-i}). "A Farewell to Arms" 생성 시 문서 1의 확률이, "The Sun Also Rises" 생성 시 문서 2의 확률이 높아지며, 토큰 수준 주변화가 서로 다른 문서의 정보를 세밀하게 조합하는 과정을 보여준다.*
-
-이 히트맵은 RAG-Token의 핵심 메커니즘을 직관적으로 보여준다. 동일한 답변 시퀀스 내에서도 생성되는 토큰에 따라 참조하는 문서가 동적으로 전환된다. "A Farewell to Arms"라는 작품명을 생성할 때는 해당 작품을 언급하는 문서 1이 지배적이고, "The Sun Also Rises"를 생성할 때는 문서 2로 전환된다. 이는 RAG-Sequence에서는 불가능한 방식의 정보 조합이다.
-
 두 변형의 차이를 정리하면:
 
 | 특성 | RAG-Sequence | RAG-Token |
@@ -86,8 +84,8 @@ RAG-Sequence는 답변의 일관성이 중요한 단답형 QA에서 유리하고
 
 ### 구성 요소
 
-![RAG 전체 아키텍처: DPR 검색기와 BART 생성기의 end-to-end 연결 구조](figures/fig_1.png)
-*Figure 1: RAG의 end-to-end 아키텍처. 질문 x를 Query Encoder가 벡터로 인코딩하여 MIPS(Maximum Inner Product Search)로 문서 인덱스에서 top-k 패시지를 검색하고, Generator(BART)가 질문과 검색 문서를 입력으로 답변 y를 생성한다. 검색 문서 z는 잠재 변수로 취급되어 주변화된다.*
+![RAG의 end-to-end 아키텍처 다이어그램](figures/fig_1.png)
+*RAG의 end-to-end 아키텍처 (논문 Figure 1). 질문 x를 Query Encoder가 벡터로 인코딩하여 MIPS(Maximum Inner Product Search)로 문서 인덱스에서 top-k 패시지를 검색하고, Generator(BART)가 질문과 검색 문서를 결합하여 답변 y를 생성한다. 검색 문서 z는 잠재 변수로 취급되어 주변화된다.*
 
 RAG는 두 개의 주요 컴포넌트로 구성된다:
 
@@ -196,6 +194,9 @@ RAG의 생성 능력을 평가하기 위해, 엔티티를 입력으로 받아 Je
 
 RAG가 생성한 질문이 BART 단독 생성 대비 **더 사실적이고 구체적**이라는 평가를 받았다. 특히 RAG-Token 변형이 Jeopardy 스타일 질문 생성에서 가장 높은 인간 선호도를 기록했다. 이는 Jeopardy 질문이 여러 사실을 조합하여 구성되므로, 토큰별로 다른 문서를 참조하는 RAG-Token의 특성이 유리하게 작용한 것이다.
 
+![RAG-Token의 토큰별 문서 참조 히트맵](figures/fig_4.png)
+*RAG-Token 모델의 토큰별 문서 사후 확률 (논문 Figure 2). "Hemingway" 입력에 대한 Jeopardy 질문 생성 시, "A Farewell to Arms" 생성 구간에서는 문서 1의 사후 확률이 높아지고, "The Sun Also Rises" 생성 구간에서는 문서 2로 전환된다. 토큰 수준 주변화가 서로 다른 문서의 정보를 동적으로 조합하는 과정을 시각적으로 보여준다.*
+
 ### FEVER 팩트 검증
 
 FEVER(Fact Extraction and VERification) 벤치마크에서 RAG는 3-class 분류(SUPPORTS / REFUTES / NOT ENOUGH INFO)를 수행했다. 자연어 생성 방식으로 라벨을 생성하되, 별도의 IR(Information Retrieval) 파이프라인 없이 RAG 내부의 DPR이 검색을 담당한다:
@@ -209,8 +210,8 @@ RAG는 전용 IR 시스템(TF-IDF + 문서 선택기) 없이도 기존 SOTA와 �
 
 ### 검색 문서 수(k)에 따른 영향
 
-![검색 문서 수(k) 변화에 따른 성능 추이 그래프](figures/fig_7.png)
-*Figure 3: top-k 문서 수에 따른 성능 분석. 왼쪽: NaturalQuestions EM 스코어, 가운데: NQ 검색 재현율, 오른쪽: MS-MARCO Bleu-1 및 Rouge-L. RAG 모델들은 k=5 부근에서 최적 성능을 보이며, 검색 문서가 과다하면 노이즈로 인해 성능이 정체 또는 하락한다.*
+![검색 문서 수에 따른 성능 변화 그래프](figures/fig_7.png)
+*top-k 문서 수에 따른 성능 분석 (논문 Figure 3). 왼쪽: NaturalQuestions EM 스코어, 가운데: NQ 검색 재현율(recall), 오른쪽: MS-MARCO Bleu-1 및 Rouge-L. 검색 재현율은 k 증가에 따라 단조 상승하지만, QA 및 생성 성능은 k=5 부근에서 최적을 보이며 그 이후 정체 또는 소폭 하락한다.*
 
 논문은 top-k 문서 수에 따른 성능 변화도 분석했다. NaturalQuestions에서 $k$를 1에서 10까지 변화시킨 결과, $k=5$에서 최적 성능을 보였고, 그 이후로는 소폭 감소하거나 정체되었다. 이 결과에서 두 가지 중요한 통찰을 얻을 수 있다:
 
