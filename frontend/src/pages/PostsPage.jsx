@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { LayoutGrid, List, ChevronLeft, ChevronRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { LayoutGrid, List, ChevronLeft, ChevronRight, SlidersHorizontal, X } from 'lucide-react'
 
 import CategoryTabs from '../components/blog/CategoryTabs'
 import LeftSidebar from '../components/blog/LeftSidebar'
@@ -20,6 +20,7 @@ export default function PostsPage() {
   const viewParam = searchParams.get('view')
   const page = parseInt(searchParams.get('page') || '1', 10)
   const q = searchParams.get('q') || ''
+  const tag = searchParams.get('tag') || ''
 
   // 뷰 모드: URL 파라미터 > 탭 기본값
   const viewMode = viewParam || DEFAULT_VIEW[category] || 'list'
@@ -30,6 +31,7 @@ export default function PostsPage() {
   const [totalPages, setTotalPages] = useState(1)
   const [counts, setCounts] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   // 무한스크롤용
   const [infiniteItems, setInfiniteItems] = useState([])
@@ -37,6 +39,12 @@ export default function PostsPage() {
   const [hasMore, setHasMore] = useState(true)
   const [loadingMore, setLoadingMore] = useState(false)
   const observerRef = useRef(null)
+
+  // Sidebar drawer body scroll lock
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [sidebarOpen])
 
   const PAGE_SIZE = 20
 
@@ -49,6 +57,7 @@ export default function PostsPage() {
       if (category) params.category = category
       if (sub) params.sub = sub
       if (q) params.q = q
+      if (tag) params.tag = tag
       // 첫 요청 시 카운트 포함
       if (!counts) params.include_counts = 'true'
 
@@ -77,21 +86,22 @@ export default function PostsPage() {
 
       setTotalCount(count)
       setTotalPages(Math.ceil(count / PAGE_SIZE))
-    } catch (e) {
-      console.error('Feed fetch error:', e)
+    } catch {
+      // Silently handled — loading state will clear
     } finally {
       setLoading(false)
       setLoadingMore(false)
     }
-  }, [category, sub, sort, q, viewMode, counts])
+  }, [category, sub, sort, q, tag, viewMode, counts])
 
   // 카테고리/서브/정렬/검색 변경 시 리셋
   useEffect(() => {
+    window.scrollTo(0, 0)
     setInfinitePage(1)
     setInfiniteItems([])
     setHasMore(true)
     fetchFeed(viewMode === 'card' ? 1 : page)
-  }, [category, sub, sort, q, page, viewMode])
+  }, [category, sub, sort, q, tag, page, viewMode])
 
   // 무한스크롤 observer
   useEffect(() => {
@@ -144,6 +154,44 @@ export default function PostsPage() {
         <LeftSidebar category={category} sub={sub} counts={counts} />
 
         <div className="flex-1 min-w-0">
+          {/* 모바일 필터 버튼 */}
+          <div className="lg:hidden mb-3">
+            <button onClick={() => setSidebarOpen(true)}
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-sm min-h-[44px]"
+              style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
+              <SlidersHorizontal size={16} /> 필터
+            </button>
+          </div>
+
+          {/* 모바일 사이드바 드로어 */}
+          <AnimatePresence>
+            {sidebarOpen && (
+              <>
+                <motion.div
+                  className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  onClick={() => setSidebarOpen(false)}
+                />
+                <motion.div
+                  className="fixed top-0 left-0 h-full w-72 z-50 lg:hidden overflow-y-auto border-r"
+                  style={{ background: 'var(--bg)', borderColor: 'var(--border)' }}
+                  initial={{ x: -288 }} animate={{ x: 0 }} exit={{ x: -288 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                >
+                  <div className="flex items-center justify-between p-4 border-b" style={{ borderColor: 'var(--border)' }}>
+                    <span className="font-semibold text-sm" style={{ color: 'var(--text)' }}>카테고리</span>
+                    <button onClick={() => setSidebarOpen(false)} className="p-1 rounded-lg hover:bg-gray-50">
+                      <X size={18} style={{ color: 'var(--text-secondary)' }} />
+                    </button>
+                  </div>
+                  <div className="p-4">
+                    <LeftSidebar category={category} sub={sub} counts={counts} mobile onNavigate={() => setSidebarOpen(false)} />
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
+
           {/* 탭 */}
           <CategoryTabs category={category} sub={sub} counts={counts} />
 
@@ -195,10 +243,24 @@ export default function PostsPage() {
             </div>
           </div>
 
-          {/* 검색 중 표시 */}
-          {q && (
-            <div className="mb-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
-              &quot;{q}&quot; 검색 결과
+          {/* 검색/태그 필터 표시 */}
+          {(q || tag) && (
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                {q ? `"${q}" 검색 결과` : `#${tag} 태그`} — {totalCount}건
+              </span>
+              <button
+                onClick={() => {
+                  const params = new URLSearchParams(searchParams)
+                  params.delete('q')
+                  params.delete('tag')
+                  setSearchParams(params)
+                }}
+                className="text-xs px-2 py-0.5 rounded-full border"
+                style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+              >
+                초기화
+              </button>
             </div>
           )}
 
@@ -259,28 +321,36 @@ export default function PostsPage() {
                   >
                     <ChevronLeft size={16} />
                   </button>
-                  {Array.from({ length: Math.min(totalPages, 10) }, (_, i) => {
-                    // 페이지 번호 계산 (현재 페이지 중심)
-                    let start = Math.max(1, page - 4)
-                    let end = Math.min(totalPages, start + 9)
-                    start = Math.max(1, end - 9)
-                    const p = start + i
-                    if (p > totalPages) return null
-                    return (
-                      <button
-                        key={p}
-                        onClick={() => goToPage(p)}
-                        className="w-10 h-10 text-xs rounded-lg border transition-colors"
-                        style={{
-                          borderColor: p === page ? 'var(--text)' : 'var(--border)',
-                          background: p === page ? 'var(--text)' : 'transparent',
-                          color: p === page ? '#fff' : 'var(--text-secondary)',
-                        }}
-                      >
-                        {p}
-                      </button>
+                  {(() => {
+                    const pages = new Set([1, totalPages])
+                    for (let i = Math.max(2, page - 1); i <= Math.min(totalPages - 1, page + 1); i++) pages.add(i)
+                    const sorted = [...pages].sort((a, b) => a - b)
+                    const result = []
+                    let prev = 0
+                    for (const p of sorted) {
+                      if (p - prev > 1) result.push('...')
+                      result.push(p)
+                      prev = p
+                    }
+                    return result.map((p, i) =>
+                      p === '...' ? (
+                        <span key={`ellipsis-${i}`} className="px-1 text-xs" style={{ color: 'var(--text-secondary)' }}>...</span>
+                      ) : (
+                        <button
+                          key={p}
+                          onClick={() => goToPage(p)}
+                          className="min-w-[44px] min-h-[44px] text-xs rounded-lg border transition-colors"
+                          style={{
+                            borderColor: p === page ? 'var(--text)' : 'var(--border)',
+                            background: p === page ? 'var(--text)' : 'transparent',
+                            color: p === page ? '#fff' : 'var(--text-secondary)',
+                          }}
+                        >
+                          {p}
+                        </button>
+                      )
                     )
-                  })}
+                  })()}
                   <button
                     onClick={() => goToPage(Math.min(totalPages, page + 1))}
                     disabled={page >= totalPages}

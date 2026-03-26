@@ -1,5 +1,6 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import * as d3 from 'd3'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 
 const CATEGORY_COLORS = {
   llm: '#3B82F6',
@@ -328,54 +329,54 @@ export default function ArchitectureGraph({
       .style('opacity', lowerQuery ? 0.08 : 0.5)
   }, [selectedSlug, searchQuery])
 
+  const [legendOpen, setLegendOpen] = useState(false)
+
   return (
     <div ref={containerRef} className="relative w-full h-full">
       <svg
         ref={svgRef}
         className="w-full h-full"
-        style={{ background: 'transparent' }}
+        style={{ background: 'transparent', touchAction: 'none' }}
       />
-      {/* 범례 */}
+      {/* 접이식 범례 */}
       <div
-        className="absolute bottom-3 left-3 rounded-xl px-3 py-2 text-xs"
+        className="absolute bottom-3 left-3 rounded-xl text-xs"
         style={{
           background: 'var(--card-bg)',
           border: '1px solid var(--border)',
           opacity: 0.9,
         }}
       >
-        <div className="font-semibold mb-1.5" style={{ color: 'var(--text)' }}>
-          Categories
-        </div>
-        <div className="flex flex-wrap gap-x-3 gap-y-1">
-          {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
-            <span key={cat} className="flex items-center gap-1">
-              <span
-                className="inline-block w-2.5 h-2.5 rounded-full"
-                style={{ background: color }}
-              />
-              <span style={{ color: 'var(--text-secondary)' }}>{cat.toUpperCase()}</span>
-            </span>
-          ))}
-        </div>
-        <div className="font-semibold mt-2 mb-1" style={{ color: 'var(--text)' }}>
-          Relations
-        </div>
-        <div className="flex flex-wrap gap-x-3 gap-y-1">
-          {Object.entries(EDGE_STYLES).map(([type, style]) => (
-            <span key={type} className="flex items-center gap-1">
-              <svg width="20" height="8">
-                <line
-                  x1="0" y1="4" x2="20" y2="4"
-                  stroke={style.stroke}
-                  strokeWidth={style.width}
-                  strokeDasharray={style.dasharray || undefined}
-                />
-              </svg>
-              <span style={{ color: 'var(--text-secondary)' }}>{style.label}</span>
-            </span>
-          ))}
-        </div>
+        <button
+          onClick={() => setLegendOpen(!legendOpen)}
+          className="flex items-center gap-1.5 px-3 py-2 w-full font-semibold"
+          style={{ color: 'var(--text)' }}
+        >
+          범례
+          {legendOpen ? <ChevronDown size={12} /> : <ChevronUp size={12} />}
+        </button>
+        {legendOpen && (
+          <div className="px-3 pb-2 space-y-2">
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
+                <span key={cat} className="flex items-center gap-1">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: color }} />
+                  <span style={{ color: 'var(--text-secondary)' }}>{cat.toUpperCase()}</span>
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-x-3 gap-y-1">
+              {Object.entries(EDGE_STYLES).map(([type, style]) => (
+                <span key={type} className="flex items-center gap-1">
+                  <svg width="20" height="8">
+                    <line x1="0" y1="4" x2="20" y2="4" stroke={style.stroke} strokeWidth={style.width} strokeDasharray={style.dasharray || undefined} />
+                  </svg>
+                  <span style={{ color: 'var(--text-secondary)' }}>{style.label}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

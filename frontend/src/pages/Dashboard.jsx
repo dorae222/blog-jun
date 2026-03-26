@@ -21,7 +21,7 @@ import ArchitecturesTab from '../components/dashboard/ArchitecturesTab'
 import TagsTab from '../components/dashboard/TagsTab'
 import OverviewTab from '../components/dashboard/OverviewTab'
 
-const PAGE_SIZE = 10
+const DEFAULT_PAGE_SIZE = 10
 
 // 사이드바 카테고리 목록
 const CATEGORIES = [
@@ -86,6 +86,7 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([])
   const [totalPosts, setTotalPosts] = useState(0)
   const [page, setPage] = useState(1)
+  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE)
   const [statusFilter, setStatusFilter] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('')
   const [postTypeFilter, setPostTypeFilter] = useState('')
@@ -111,7 +112,7 @@ export default function Dashboard() {
 
   // 데이터 로드
   const loadPosts = useCallback((statusF = statusFilter, catF = categoryFilter, pageNum = page, typeF = postTypeFilter, noImg = noImageFilter, search = searchQuery) => {
-    const params = { page_size: PAGE_SIZE, page: pageNum }
+    const params = { page_size: pageSize, page: pageNum }
     if (statusF) params.status = statusF
     if (catF)    params['category__slug'] = catF
     if (typeF)   params.post_type = typeF
@@ -123,7 +124,7 @@ export default function Dashboard() {
       setTotalPosts(r.data.count || 0)
       setSelected(new Set())
     }).catch(() => toast.error('포스트 로드 실패'))
-  }, [statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery])
+  }, [statusFilter, categoryFilter, page, pageSize, postTypeFilter, noImageFilter, searchQuery])
 
   const loadAudit = useCallback(() => {
     getAuditResults().then(r => {
@@ -157,7 +158,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadPosts(statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery)
-  }, [statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery])
+  }, [statusFilter, categoryFilter, page, pageSize, postTypeFilter, noImageFilter, searchQuery])
 
   useEffect(() => {
     loadArchitectures(archCatFilter)
@@ -258,7 +259,7 @@ export default function Dashboard() {
   }, [searchInput])
 
   const missingImageCount = stats?.image_coverage?.missing_image ?? 0
-  const totalPages = Math.ceil(totalPosts / PAGE_SIZE)
+  const totalPages = Math.ceil(totalPosts / pageSize)
 
   if (!user) return null
 
@@ -325,6 +326,7 @@ export default function Dashboard() {
           setPage={setPage}
           visiblePosts={visiblePosts} totalPosts={totalPosts}
           page={page} totalPages={totalPages}
+          pageSize={pageSize} setPageSize={(size) => { setPageSize(size); setPage(1) }}
           auditMap={auditMap} selected={selected}
           toggleSelect={toggleSelect} toggleAll={toggleAll}
           handleDelete={handleDelete} handleBulkDelete={handleBulkDelete}

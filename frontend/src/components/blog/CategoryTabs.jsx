@@ -1,64 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-
-const MAIN_TABS = [
-  { key: null, label: '전체', path: '/posts' },
-  { key: 'ai', label: 'AI', path: '/posts/ai' },
-  { key: 'ml', label: 'ML', path: '/posts/ml' },
-  { key: 'cloud', label: 'Cloud', path: '/posts/cloud' },
-  { key: 'data', label: 'Data Engineering', path: '/posts/data' },
-]
-
-const SUB_TABS = {
-  ai: [
-    { key: null, label: '전체' },
-    { key: 'llm', label: 'LLM' },
-    { key: 'ssm', label: 'SSM' },
-    { key: 'diffusion', label: 'Diffusion' },
-    { key: 'vision', label: 'Vision' },
-    { key: 'multimodal', label: 'Multimodal' },
-    { key: 'agent', label: 'Agent' },
-    { key: 'technique', label: 'Technique' },
-  ],
-  ml: [
-    { key: null, label: '전체' },
-    { key: 'fundamentals', label: '기초' },
-    { key: 'math-foundations', label: '수학' },
-    { key: 'preprocessing', label: '전처리' },
-    { key: 'supervised-regression', label: '회귀' },
-    { key: 'supervised-classification', label: '분류' },
-    { key: 'ensemble', label: '앙상블' },
-    { key: 'unsupervised', label: '비지도' },
-    { key: 'model-evaluation', label: '평가' },
-    { key: 'causal-inference', label: '인과추론' },
-    { key: 'advanced-algorithms', label: '심화' },
-    { key: 'applications', label: '응용' },
-    { key: 'mlops', label: 'MLOps' },
-  ],
-  cloud: [
-    { key: null, label: '전체' },
-    { key: 'aws-compute', label: 'Compute' },
-    { key: 'aws-storage', label: 'Storage' },
-    { key: 'aws-database', label: 'Database' },
-    { key: 'aws-networking', label: 'Network' },
-    { key: 'aws-security', label: 'Security' },
-    { key: 'aws-analytics', label: 'Analytics' },
-    { key: 'aws-ai-ml', label: 'AI/ML' },
-    { key: 'aws-devtools', label: 'DevTools' },
-    { key: 'aws-management', label: 'Mgmt' },
-    { key: 'aws-integration', label: 'Integration' },
-    { key: 'docker', label: 'Docker' },
-    { key: 'lxd', label: 'LXD' },
-    { key: 'devops', label: 'DevOps' },
-  ],
-  data: [
-    { key: null, label: '전체' },
-    { key: 'hadoop', label: 'Hadoop' },
-    { key: 'spark', label: 'Spark' },
-    { key: 'database', label: 'Database' },
-    { key: 'pipeline', label: 'Pipeline' },
-  ],
-}
+import { MAIN_TABS, SUB_TABS } from '../../data/categories'
 
 export default function CategoryTabs({ category, sub, counts }) {
   const navigate = useNavigate()
@@ -96,31 +38,35 @@ export default function CategoryTabs({ category, sub, counts }) {
 
       {/* 서브카테고리 탭 */}
       {subs.length > 0 && (
-        <div className="flex items-center gap-1 overflow-x-auto py-2"
-          style={{ scrollSnapType: 'x mandatory' }}>
-          {subs.map((s) => {
-            const active = s.key === (sub || null)
-            const subCount = s.key ? counts?.[category]?.subs?.[s.key] : null
-            return (
-              <button
-                key={s.key || 'all'}
-                onClick={() => {
-                  const path = s.key ? `/posts/${category}/${s.key}` : `/posts/${category}`
-                  navigate(path)
-                }}
-                className="px-3 py-1 text-xs font-medium rounded-full whitespace-nowrap transition-colors shrink-0"
-                style={{
-                  background: active ? 'var(--text)' : 'transparent',
-                  color: active ? '#fff' : 'var(--text-secondary)',
-                }}
-              >
-                {s.label}
-                {subCount != null && (
-                  <span className="ml-1 opacity-70">{subCount}</span>
-                )}
-              </button>
-            )
-          })}
+        <div className="relative">
+          <div className="flex items-center gap-1 overflow-x-auto py-2 scrollbar-hide"
+            style={{ scrollSnapType: 'x mandatory' }}>
+            {subs.map((s) => {
+              const active = s.key === (sub || null)
+              const subCount = s.key ? counts?.[category]?.subs?.[s.key] : null
+              return (
+                <button
+                  key={s.key || 'all'}
+                  onClick={() => {
+                    const path = s.key ? `/posts/${category}/${s.key}` : `/posts/${category}`
+                    navigate(path)
+                  }}
+                  className="px-3 py-2 sm:py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-colors shrink-0"
+                  style={{
+                    background: active ? 'var(--text)' : 'transparent',
+                    color: active ? '#fff' : 'var(--text-secondary)',
+                  }}
+                >
+                  {s.label}
+                  {subCount != null && (
+                    <span className="ml-1 opacity-70">{subCount}</span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+          <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none"
+            style={{ background: 'linear-gradient(to left, var(--bg), transparent)' }} />
         </div>
       )}
     </div>

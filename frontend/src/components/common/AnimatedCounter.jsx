@@ -7,19 +7,21 @@ export default function AnimatedCounter({ end, duration = 2, label, icon }) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
-    if (!inView) return
-    let start = 0
-    const step = end / (duration * 60)
-    const timer = setInterval(() => {
-      start += step
-      if (start >= end) {
-        setCount(end)
-        clearInterval(timer)
+    if (!inView || !end) return
+    let startTime = null
+    let rafId = null
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1)
+      setCount(Math.floor(progress * end))
+      if (progress < 1) {
+        rafId = requestAnimationFrame(animate)
       } else {
-        setCount(Math.floor(start))
+        setCount(end)
       }
-    }, 1000 / 60)
-    return () => clearInterval(timer)
+    }
+    rafId = requestAnimationFrame(animate)
+    return () => { if (rafId) cancelAnimationFrame(rafId) }
   }, [inView, end, duration])
 
   return (

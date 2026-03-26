@@ -1,9 +1,10 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function PostLinkTooltip({ href, linkData, children }) {
   const [show, setShow] = useState(false)
   const timeoutRef = useRef(null)
+  const wrapperRef = useRef(null)
 
   const handleEnter = () => {
     clearTimeout(timeoutRef.current)
@@ -15,13 +16,29 @@ export default function PostLinkTooltip({ href, linkData, children }) {
     setShow(false)
   }
 
+  const handleClick = (e) => {
+    if ('ontouchstart' in window && !show) {
+      e.preventDefault()
+      setShow(true)
+    }
+  }
+
+  useEffect(() => {
+    if (!show) return
+    const handleOutside = (e) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) setShow(false)
+    }
+    document.addEventListener('click', handleOutside)
+    return () => document.removeEventListener('click', handleOutside)
+  }, [show])
+
   if (!linkData) {
     return <Link to={href} className="text-primary-600 hover:underline">{children}</Link>
   }
 
   return (
-    <span className="relative inline" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
-      <Link to={href} className="text-primary-600 hover:underline">
+    <span ref={wrapperRef} className="relative inline" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
+      <Link to={href} className="text-primary-600 hover:underline" onClick={handleClick}>
         {children}
       </Link>
       {show && (
@@ -50,7 +67,7 @@ export default function PostLinkTooltip({ href, linkData, children }) {
                 <span
                   className="text-[10px] font-medium px-1.5 py-0.5 rounded mt-1 inline-block"
                   style={{
-                    background: `${linkData.category_color || '#6366f1'}15`,
+                    background: `${linkData.category_color || '#6366f1'}12`,
                     color: linkData.category_color || '#6366f1',
                   }}
                 >

@@ -15,6 +15,7 @@ export default function ArchitectureNodeDetail({
   edges,
   onClose,
   onNodeFocus,
+  layout = 'bottom', // 'bottom' | 'side'
 }) {
   const navigate = useNavigate()
   if (!node) return null
@@ -40,24 +41,36 @@ export default function ArchitectureNodeDetail({
     { label: 'Branch', value: node.branch_type },
   ].filter(s => s.value)
 
+  const isSide = layout === 'side'
+
+  const motionProps = isSide
+    ? { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } }
+    : { initial: { y: '100%', opacity: 0 }, animate: { y: 0, opacity: 1 }, exit: { y: '100%', opacity: 0 } }
+
+  const containerClass = isSide
+    ? 'h-full overflow-hidden flex flex-col'
+    : 'absolute bottom-0 left-0 right-0 z-30 rounded-t-2xl shadow-2xl overflow-hidden'
+
+  const containerStyle = isSide
+    ? { background: 'var(--card-bg)', borderLeft: `3px solid ${color}` }
+    : { background: 'var(--card-bg)', borderTop: `3px solid ${color}`, maxHeight: '50vh' }
+
+  const scrollStyle = isSide
+    ? { flex: 1, overflowY: 'auto' }
+    : { maxHeight: 'calc(50vh - 70px)', overflowY: 'auto' }
+
   return (
     <motion.div
-      initial={{ y: '100%', opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: '100%', opacity: 0 }}
+      {...motionProps}
       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-      className="absolute bottom-0 left-0 right-0 z-30 rounded-t-2xl shadow-2xl overflow-hidden"
-      style={{
-        background: 'var(--card-bg)',
-        borderTop: `3px solid ${color}`,
-        maxHeight: '55vh',
-      }}
+      className={containerClass}
+      style={containerStyle}
     >
       {/* 헤더 */}
-      <div className="flex items-start justify-between px-5 pt-4 pb-2">
+      <div className="flex items-start justify-between px-4 pt-3 pb-2 shrink-0">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <h3 className="text-lg font-bold truncate" style={{ color: 'var(--text)' }}>
+            <h3 className={`${isSide ? 'text-base' : 'text-lg'} font-bold truncate`} style={{ color: 'var(--text)' }}>
               {node.name}
             </h3>
             <span
@@ -95,23 +108,23 @@ export default function ArchitectureNodeDetail({
           onClick={onClose}
           className="p-1.5 rounded-lg hover:bg-gray-100/10 transition-colors shrink-0 ml-2"
           style={{ color: 'var(--text-secondary)' }}
-          aria-label="Close"
+          aria-label="닫기"
         >
           <X size={18} />
         </button>
       </div>
 
-      <div className="px-5 pb-5 overflow-y-auto" style={{ maxHeight: 'calc(55vh - 70px)' }}>
+      <div className="px-4 pb-4" style={scrollStyle}>
         {/* Figure 썸네일 */}
         {node.figure_url && (
           <div
-            className="rounded-xl overflow-hidden mb-4 flex items-center justify-center"
-            style={{ background: 'var(--bg)', maxHeight: '160px' }}
+            className="rounded-xl overflow-hidden mb-3 flex items-center justify-center"
+            style={{ background: 'var(--bg)', maxHeight: isSide ? '200px' : '160px' }}
           >
             <img
               src={node.figure_url}
               alt={node.name}
-              className="max-w-full max-h-[160px] object-contain p-2"
+              className={`max-w-full ${isSide ? 'max-h-[200px]' : 'max-h-[160px]'} object-contain p-2`}
               loading="lazy"
             />
           </div>
@@ -119,7 +132,7 @@ export default function ArchitectureNodeDetail({
 
         {/* Specs 그리드 */}
         {specs.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+          <div className={`grid ${isSide ? 'grid-cols-2' : 'grid-cols-2 sm:grid-cols-4'} gap-2 mb-3`}>
             {specs.map(s => (
               <div
                 key={s.label}
@@ -140,7 +153,7 @@ export default function ArchitectureNodeDetail({
         {/* Key Detail */}
         {node.key_detail && (
           <p
-            className="text-sm leading-relaxed mb-4"
+            className="text-sm leading-relaxed mb-3"
             style={{ color: 'var(--text-secondary)' }}
           >
             {node.key_detail}
@@ -149,7 +162,7 @@ export default function ArchitectureNodeDetail({
 
         {/* 관계 (부모/자식) */}
         {(parents.length > 0 || children.length > 0) && (
-          <div className="mb-4 space-y-2">
+          <div className="mb-3 space-y-2">
             {parents.length > 0 && (
               <div>
                 <div
