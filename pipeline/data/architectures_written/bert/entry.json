@@ -23,7 +23,8 @@
   "paper_url": "https://arxiv.org/abs/1810.04805",
   "concepts": ["MLM", "Bidirectional Attention", "GELU", "Learned Position Embedding", "Pre-training & Fine-tuning", "NSP"],
   "relations": [
-    {"to": "transformer", "type": "evolved_from"}
+    {"to": "transformer", "type": "evolved_from"},
+    {"to": "elmo", "type": "inspired_by"}
   ],
   "related_post_slug": "bert"
 }

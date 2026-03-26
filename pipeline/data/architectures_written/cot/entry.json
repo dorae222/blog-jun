@@ -26,6 +26,8 @@
   "architecture_category": "agent",
   "branch_type": "agent",
   "is_open_source": true,
-  "relations": [],
+  "relations": [
+    {"to": "gpt-3", "type": "technique_used"}
+  ],
   "related_post_slug": ""
 }
