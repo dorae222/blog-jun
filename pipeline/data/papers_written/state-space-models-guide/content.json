@@ -1,0 +1,22 @@
+{
+  "title": "State Space Models: From S4 to Mamba",
+  "title_ko": "State Space Models: S4에서 Mamba까지",
+  "slug": "state-space-models-guide",
+  "category": "ssm",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "Transformer의 이차 복잡도 한계를 극복하기 위한 State Space Models(SSM)의 발전 과정을 정리합니다. S4의 이론적 기초부터 Mamba의 선택적 메커니즘, 그리고 Jamba, RWKV 등 하이브리드 아키텍처까지 선형 복잡도 모델의 전체 지형도를 제시합니다.",
+  "tags": [
+    "ssm",
+    "state-space-model",
+    "mamba",
+    "s4",
+    "linear-attention",
+    "rwkv",
+    "jamba",
+    "roadmap"
+  ],
+  "is_pinned": true
+}

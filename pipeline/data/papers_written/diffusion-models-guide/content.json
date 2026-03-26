@@ -1,0 +1,22 @@
+{
+  "title": "Complete Guide to Diffusion Models: From DDPM to Stable Diffusion",
+  "title_ko": "Diffusion Models 완전 정복: DDPM에서 Stable Diffusion까지",
+  "slug": "diffusion-models-guide",
+  "category": "diffusion",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "확산 모델(Diffusion Models)의 수학적 기초부터 최신 응용까지 전체 흐름을 정리합니다. Score Matching, DDPM, DDIM, LDM(Stable Diffusion), DALL-E, Flow Matching 등 핵심 모델의 발전 과정과 이미지/비디오/텍스트 생성으로의 확장을 다룹니다.",
+  "tags": [
+    "diffusion",
+    "ddpm",
+    "stable-diffusion",
+    "score-matching",
+    "flow-matching",
+    "generative-model",
+    "image-generation",
+    "roadmap"
+  ],
+  "is_pinned": true
+}

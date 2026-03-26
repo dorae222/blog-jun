@@ -1,0 +1,22 @@
+{
+  "title": "AI Agent Technology Map: From ReAct to Multi-Agent",
+  "title_ko": "AI Agent 기술 지도: ReAct에서 멀티에이전트까지",
+  "slug": "ai-agent-technology-guide",
+  "category": "agent",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "AI Agent 기술의 전체 지형도를 정리합니다. ReAct, Reflexion 등 추론 프레임워크부터 Toolformer, SWE-Agent 등 도구 활용, AutoGen, CrewAI, MetaGPT 등 멀티에이전트 시스템, 그리고 A2A, MCP 등 에이전트 간 통신 프로토콜까지 다룹니다.",
+  "tags": [
+    "agent",
+    "react",
+    "multi-agent",
+    "tool-use",
+    "reasoning",
+    "autogen",
+    "mcp",
+    "roadmap"
+  ],
+  "is_pinned": true
+}
