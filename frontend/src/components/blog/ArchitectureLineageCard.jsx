@@ -2,24 +2,15 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   GitBranch, ArrowRight, ArrowLeft, Layers,
-  FileText, Code2, BookOpen, Calendar, Cpu, ExternalLink, ChevronDown,
+  FileText, Code2, BookOpen, Calendar, Cpu, ExternalLink, ChevronDown, Network,
 } from 'lucide-react'
+import { CATEGORY_COLORS } from '../../data/architectureConstants'
 
 const RELATION_LABELS = {
   evolved_from: '발전 기반',
   inspired_by: '영감',
   variant_of: '변형',
   technique_used: '기법 적용',
-}
-
-const ARCH_CATEGORY_COLORS = {
-  llm: '#3B82F6',
-  ssm: '#10B981',
-  diffusion: '#F59E0B',
-  multimodal: '#8B5CF6',
-  agent: '#EF4444',
-  technique: '#6B7280',
-  vision: '#EC4899',
 }
 
 function LineageChip({ item, direction }) {
@@ -146,7 +137,7 @@ export default function ArchitectureLineageCard({ entries }) {
       </div>
 
       {entries.map(entry => {
-        const catColor = ARCH_CATEGORY_COLORS[entry.architecture_category] || 'var(--color-primary-500)'
+        const catColor = CATEGORY_COLORS[entry.architecture_category] || 'var(--color-primary-500)'
         const releaseYear = entry.release_date ? new Date(entry.release_date).getFullYear() : null
         const hasSpecs = entry.param_scale || entry.context_length || entry.attention_type
         const hasConcepts = entry.concepts?.length > 0
@@ -234,6 +225,15 @@ export default function ArchitectureLineageCard({ entries }) {
                           Post
                         </Link>
                       )}
+                      <Link
+                        to={`/architectures/tree?selected=${entry.slug}`}
+                        className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full
+                          border hover:shadow-sm transition-all hover:-translate-y-0.5"
+                        style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)', background: 'var(--card-bg)' }}
+                      >
+                        <Network size={11} />
+                        Tree
+                      </Link>
                     </div>
                   )}
                 </div>

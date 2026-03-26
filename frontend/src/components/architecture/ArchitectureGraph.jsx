@@ -1,56 +1,164 @@
-import { useRef, useEffect, useCallback, useState } from 'react'
+import { useRef, useEffect, useCallback, useState, forwardRef, useImperativeHandle } from 'react'
 import * as d3 from 'd3'
 import { ChevronDown, ChevronUp } from 'lucide-react'
-
-const CATEGORY_COLORS = {
-  llm: '#3B82F6',
-  ssm: '#10B981',
-  diffusion: '#F59E0B',
-  multimodal: '#8B5CF6',
-  agent: '#EF4444',
-  technique: '#6B7280',
-  vision: '#EC4899',
-}
-
-const EDGE_STYLES = {
-  evolved_from: { stroke: '#3B82F6', dasharray: null, width: 1.8, label: 'evolved' },
-  inspired_by: { stroke: '#8B5CF6', dasharray: '6,3', width: 1.4, label: 'inspired' },
-  variant_of: { stroke: '#10B981', dasharray: '8,3,2,3', width: 1.4, label: 'variant' },
-  technique_used: { stroke: '#9CA3AF', dasharray: '2,3', width: 1, label: 'technique' },
-}
+import { updateArchitecturePosition } from '../../api/posts'
+import { CATEGORY_COLORS, EDGE_STYLES } from '../../data/architectureConstants'
 
 function getNodeRadius(paramScale) {
   if (!paramScale) return 8
   const s = paramScale.toLowerCase()
   if (s.includes('b') || s.includes('billion')) {
     const num = parseFloat(s)
-    if (num >= 100) return 18
-    if (num >= 10) return 14
-    return 11
+    if (num >= 100) return 22
+    if (num >= 10) return 16
+    return 12
   }
-  if (s.includes('m') || s.includes('million')) return 7
+  if (s.includes('m') || s.includes('million')) return 6
   return 8
 }
 
-export default function ArchitectureGraph({
+// 하이라이트 상태 통합 처리
+function applyHighlightState(svg, { selectedSlug, searchQuery, baseEdgeOpacity, edgeData }) {
+  const lowerQuery = (searchQuery || '').toLowerCase()
+
+  // 선택 노드에 연결된 slug 셋 계산
+  const connectedSlugs = new Set()
+  if (selectedSlug) {
+    for (const e of edgeData) {
+      const src = typeof e.source === 'object' ? e.source.slug : e.source
+      const tgt = typeof e.target === 'object' ? e.target.slug : e.target
+      if (src === selectedSlug) connectedSlugs.add(tgt)
+      if (tgt === selectedSlug) connectedSlugs.add(src)
+    }
+  }
+
+  svg.selectAll('.node-group').each(function (d) {
+    const circle = d3.select(this).select('circle')
+    const label = d3.select(this).select('.node-label')
+    const isSelected = d.slug === selectedSlug
+    const isSearchMatch = lowerQuery && d.name.toLowerCase().includes(lowerQuery)
+    const dimmed = lowerQuery && !isSearchMatch
+    const isConnected = connectedSlugs.has(d.slug)
+    const catColor = CATEGORY_COLORS[d.architecture_category] || '#8895A7'
+
+    if (isSelected) {
+      circle
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 3)
+        .attr('stroke-opacity', 1)
+        .attr('fill-opacity', 1)
+        .style('opacity', 1)
+        .attr('filter', 'url(#glow)')
+      label.style('opacity', 1).style('font-weight', '700')
+    } else if (dimmed) {
+      circle
+        .attr('stroke', catColor)
+        .attr('stroke-width', 2)
+        .attr('stroke-opacity', 0.1)
+        .attr('fill-opacity', 0.15)
+        .style('opacity', 0.15)
+        .attr('filter', null)
+      label.style('opacity', 0.08).style('font-weight', '500')
+    } else if (selectedSlug && !isConnected) {
+      circle
+        .attr('stroke', catColor)
+        .attr('stroke-width', 2)
+        .attr('stroke-opacity', 0.1)
+        .attr('fill-opacity', 0.12)
+        .style('opacity', 0.15)
+        .attr('filter', null)
+      label.style('opacity', 0.08).style('font-weight', '500')
+    } else if (isSearchMatch) {
+      circle
+        .attr('stroke', '#FBBF24')
+        .attr('stroke-width', 3)
+        .attr('stroke-opacity', 0.9)
+        .attr('fill-opacity', 1)
+        .style('opacity', 1)
+        .attr('filter', 'url(#glow)')
+      label.style('opacity', 1).style('font-weight', '600')
+    } else if (isConnected) {
+      circle
+        .attr('stroke', catColor)
+        .attr('stroke-width', 2.5)
+        .attr('stroke-opacity', 0.6)
+        .attr('fill-opacity', 1)
+        .style('opacity', 1)
+        .attr('filter', null)
+      label.style('opacity', 1).style('font-weight', '500')
+    } else {
+      // 기본 상태
+      circle
+        .attr('stroke', catColor)
+        .attr('stroke-width', 2)
+        .attr('stroke-opacity', 0.3)
+        .attr('fill-opacity', 0.85)
+        .style('opacity', 1)
+        .attr('filter', null)
+      label.style('opacity', 1).style('font-weight', '500')
+    }
+  })
+
+  // 엣지 처리
+  svg.selectAll('.links line').each(function (d) {
+    const src = typeof d.source === 'object' ? d.source.slug : d.source
+    const tgt = typeof d.target === 'object' ? d.target.slug : d.target
+    const isConnected = selectedSlug && (src === selectedSlug || tgt === selectedSlug)
+    const style = EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from
+
+    if (lowerQuery) {
+      d3.select(this).style('opacity', 0.04).attr('stroke-width', style.width)
+    } else if (selectedSlug) {
+      d3.select(this)
+        .style('opacity', isConnected ? 0.8 : 0.04)
+        .attr('stroke-width', isConnected ? style.width * 1.5 : style.width)
+    } else {
+      d3.select(this).style('opacity', baseEdgeOpacity ?? style.opacity).attr('stroke-width', style.width)
+    }
+  })
+}
+
+const ArchitectureGraph = forwardRef(function ArchitectureGraph({
   nodes,
   edges,
   onNodeClick,
   onNodeDoubleClick,
   selectedSlug,
   searchQuery,
-}) {
+}, ref) {
   const containerRef = useRef(null)
   const svgRef = useRef(null)
   const simulationRef = useRef(null)
   const saveTimerRef = useRef(null)
+  const initialZoomTimerRef = useRef(null)
+  const zoomRef = useRef(null)
+  const nodeDataRef = useRef([])
+  const edgeDataRef = useRef([])
+  const baseEdgeOpacityRef = useRef(0.5)
+
+  // focusOnNode API 노출
+  useImperativeHandle(ref, () => ({
+    focusOnNode(slug) {
+      const node = nodeDataRef.current.find(n => n.slug === slug)
+      if (!node || !svgRef.current || !zoomRef.current) return
+      const svg = d3.select(svgRef.current)
+      const container = containerRef.current
+      if (!container) return
+      const width = container.clientWidth
+      const height = container.clientHeight
+      const scale = 1.5
+      const tx = width / 2 - node.x * scale
+      const ty = height / 2 - node.y * scale
+      svg.transition().duration(500)
+        .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+    },
+  }), [])
 
   // 디바운스된 위치 저장
   const debouncedSavePosition = useCallback((slug, x, y) => {
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
     saveTimerRef.current = setTimeout(async () => {
       try {
-        const { updateArchitecturePosition } = await import('../../api/posts')
         await updateArchitecturePosition(slug, Math.round(x), Math.round(y))
       } catch { /* 위치 저장 실패는 무시 */ }
     }, 500)
@@ -70,6 +178,7 @@ export default function ArchitectureGraph({
       y: n.tree_y || undefined,
       radius: getNodeRadius(n.param_scale),
     }))
+    nodeDataRef.current = nodeData
 
     const edgeData = edges
       .filter(e => {
@@ -82,6 +191,7 @@ export default function ArchitectureGraph({
         source: e.from_slug,
         target: e.to_slug,
       }))
+    edgeDataRef.current = edgeData
 
     const svg = d3.select(svgRef.current)
     svg.selectAll('*').remove()
@@ -94,17 +204,35 @@ export default function ArchitectureGraph({
       .scaleExtent([0.1, 4])
       .on('zoom', (event) => {
         g.attr('transform', event.transform)
-        // 줌 레벨에 따라 레이블 표시
         const scale = event.transform.k
+        // 줌 레벨에 따라 레이블 표시
         g.selectAll('.node-label')
-          .style('display', scale > 0.5 ? 'block' : 'none')
+          .style('display', scale > 0.4 ? 'block' : 'none')
           .style('font-size', `${Math.min(12, 11 / scale)}px`)
+        // 줌 레벨에 따른 엣지 투명도
+        baseEdgeOpacityRef.current = Math.max(0.15, Math.min(0.6, scale * 0.35))
       })
 
     svg.call(zoom)
+    zoomRef.current = zoom
 
-    // 화살표 마커 정의
+    // SVG defs: 화살표 + 글로우 필터
     const defs = svg.append('defs')
+
+    // 글로우 필터
+    const filter = defs.append('filter')
+      .attr('id', 'glow')
+      .attr('x', '-50%').attr('y', '-50%')
+      .attr('width', '200%').attr('height', '200%')
+    filter.append('feGaussianBlur')
+      .attr('in', 'SourceGraphic')
+      .attr('stdDeviation', '4')
+      .attr('result', 'blur')
+    const feMerge = filter.append('feMerge')
+    feMerge.append('feMergeNode').attr('in', 'blur')
+    feMerge.append('feMergeNode').attr('in', 'SourceGraphic')
+
+    // 화살표 마커
     Object.entries(EDGE_STYLES).forEach(([type, style]) => {
       defs.append('marker')
         .attr('id', `arrow-${type}`)
@@ -117,7 +245,7 @@ export default function ArchitectureGraph({
         .append('path')
         .attr('d', 'M0,-4L8,0L0,4')
         .attr('fill', style.stroke)
-        .style('opacity', 0.7)
+        .style('opacity', 0.6)
     })
 
     // 엣지 렌더링
@@ -129,7 +257,7 @@ export default function ArchitectureGraph({
       .attr('stroke-width', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).width)
       .attr('stroke-dasharray', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).dasharray)
       .attr('marker-end', d => `url(#arrow-${d.relation_type || 'evolved_from'})`)
-      .style('opacity', 0.5)
+      .style('opacity', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).opacity)
 
     // 노드 그룹
     const nodeGroup = g.append('g').attr('class', 'nodes')
@@ -139,13 +267,14 @@ export default function ArchitectureGraph({
       .attr('class', 'node-group')
       .style('cursor', 'pointer')
 
-    // 노드 원
+    // 노드 원 — 개선된 렌더링
     nodeGs.append('circle')
       .attr('r', d => d.radius)
-      .attr('fill', d => CATEGORY_COLORS[d.architecture_category] || '#6B7280')
-      .attr('stroke', 'transparent')
-      .attr('stroke-width', 3)
-      .style('transition', 'stroke 0.2s, stroke-width 0.2s')
+      .attr('fill', d => CATEGORY_COLORS[d.architecture_category] || '#8895A7')
+      .attr('fill-opacity', 0.85)
+      .attr('stroke', d => CATEGORY_COLORS[d.architecture_category] || '#8895A7')
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.3)
 
     // 노드 레이블
     nodeGs.append('text')
@@ -167,46 +296,93 @@ export default function ArchitectureGraph({
       .style('pointer-events', 'none')
       .style('background', 'var(--card-bg)')
       .style('border', '1px solid var(--border)')
-      .style('border-radius', '8px')
-      .style('padding', '8px 12px')
+      .style('border-radius', '10px')
+      .style('padding', '10px 14px')
       .style('font-size', '12px')
       .style('color', 'var(--text)')
-      .style('box-shadow', '0 4px 12px rgba(0,0,0,0.15)')
+      .style('box-shadow', '0 8px 24px rgba(0,0,0,0.12)')
       .style('opacity', 0)
       .style('z-index', 50)
-      .style('max-width', '260px')
+      .style('max-width', '280px')
       .style('transition', 'opacity 0.15s')
+      .style('backdrop-filter', 'blur(8px)')
 
-    // 인터랙션
+    // 호버 인터랙션 — 연결 노드/엣지 하이라이트
     nodeGs
       .on('mouseenter', (event, d) => {
-        d3.select(event.currentTarget).select('circle')
-          .attr('stroke', CATEGORY_COLORS[d.architecture_category] || '#6B7280')
-          .attr('stroke-width', 3)
-          .attr('stroke-opacity', 0.4)
+        const catColor = CATEGORY_COLORS[d.architecture_category] || '#8895A7'
 
-        const snippet = d.key_detail
-          ? d.key_detail.slice(0, 100) + (d.key_detail.length > 100 ? '...' : '')
+        // 호버된 노드에 글로우
+        d3.select(event.currentTarget).select('circle')
+          .attr('filter', 'url(#glow)')
+          .attr('stroke', catColor)
+          .attr('stroke-width', 3)
+          .attr('stroke-opacity', 0.7)
+          .attr('fill-opacity', 1)
+
+        // 연결된 노드/엣지 하이라이트
+        const connectedSlugs = new Set()
+        edgeData.forEach(e => {
+          const src = typeof e.source === 'object' ? e.source.slug : e.source
+          const tgt = typeof e.target === 'object' ? e.target.slug : e.target
+          if (src === d.slug) connectedSlugs.add(tgt)
+          if (tgt === d.slug) connectedSlugs.add(src)
+        })
+
+        // 다른 노드 dimming
+        svg.selectAll('.node-group').each(function (nd) {
+          if (nd.slug === d.slug) return
+          const isConn = connectedSlugs.has(nd.slug)
+          d3.select(this).select('circle')
+            .style('opacity', isConn ? 1 : 0.12)
+            .attr('fill-opacity', isConn ? 0.9 : 0.12)
+          d3.select(this).select('.node-label')
+            .style('opacity', isConn ? 1 : 0.06)
+        })
+
+        // 엣지 dimming
+        svg.selectAll('.links line').each(function (e) {
+          const src = typeof e.source === 'object' ? e.source.slug : e.source
+          const tgt = typeof e.target === 'object' ? e.target.slug : e.target
+          const isConn = src === d.slug || tgt === d.slug
+          d3.select(this)
+            .style('opacity', isConn ? 0.8 : 0.03)
+            .attr('stroke-width', isConn
+              ? (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width * 1.5
+              : (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width
+            )
+        })
+
+        // 툴팁
+        const catBadge = d.architecture_category
+          ? `<span style="display:inline-block;background:${catColor}20;color:${catColor};font-size:10px;padding:1px 6px;border-radius:9px;margin-left:6px;font-weight:600">${d.architecture_category.toUpperCase()}</span>`
           : ''
-        const org = d.organization ? `<div style="color:var(--text-secondary);margin-bottom:2px">${d.organization}</div>` : ''
+        const org = d.organization
+          ? `<div style="color:var(--text-secondary);margin-top:2px;font-size:11px">${d.organization}${d.release_date ? ` (${d.release_date.slice(0, 4)})` : ''}</div>`
+          : ''
+        const snippet = d.key_detail
+          ? `<div style="margin-top:4px;color:var(--text-secondary);font-size:11px;line-height:1.4">${d.key_detail.slice(0, 120)}${d.key_detail.length > 120 ? '...' : ''}</div>`
+          : ''
 
         tooltip
-          .html(`<strong>${d.name}</strong>${org}${snippet ? `<div style="margin-top:4px;color:var(--text-secondary)">${snippet}</div>` : ''}`)
+          .html(`<strong>${d.name}</strong>${catBadge}${org}${snippet}`)
           .style('opacity', 1)
       })
       .on('mousemove', (event) => {
         const rect = container.getBoundingClientRect()
         tooltip
-          .style('left', `${event.clientX - rect.left + 12}px`)
-          .style('top', `${event.clientY - rect.top - 10}px`)
+          .style('left', `${event.clientX - rect.left + 14}px`)
+          .style('top', `${event.clientY - rect.top - 12}px`)
       })
-      .on('mouseleave', (event, d) => {
-        const isSelected = d.slug === selectedSlug
-        d3.select(event.currentTarget).select('circle')
-          .attr('stroke', isSelected ? '#fff' : 'transparent')
-          .attr('stroke-width', isSelected ? 3 : 3)
-          .attr('stroke-opacity', 1)
+      .on('mouseleave', () => {
         tooltip.style('opacity', 0)
+        // 선택/검색 상태에 따라 복원
+        applyHighlightState(svg, {
+          selectedSlug,
+          searchQuery,
+          baseEdgeOpacity: baseEdgeOpacityRef.current,
+          edgeData,
+        })
       })
       .on('click', (event, d) => {
         event.stopPropagation()
@@ -278,7 +454,7 @@ export default function ArchitectureGraph({
     }
 
     // 초기 줌 — 모든 노드가 보이게
-    setTimeout(() => {
+    initialZoomTimerRef.current = setTimeout(() => {
       if (!nodeData.length) return
       const xs = nodeData.map(n => n.x || width / 2)
       const ys = nodeData.map(n => n.y || height / 2)
@@ -300,6 +476,7 @@ export default function ArchitectureGraph({
       simulation.stop()
       tooltip.remove()
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
+      if (initialZoomTimerRef.current) clearTimeout(initialZoomTimerRef.current)
     }
   }, [nodes, edges, onNodeClick, onNodeDoubleClick, debouncedSavePosition])
 
@@ -307,26 +484,12 @@ export default function ArchitectureGraph({
   useEffect(() => {
     if (!svgRef.current) return
     const svg = d3.select(svgRef.current)
-
-    const lowerQuery = (searchQuery || '').toLowerCase()
-
-    svg.selectAll('.node-group').each(function (d) {
-      const circle = d3.select(this).select('circle')
-      const label = d3.select(this).select('.node-label')
-      const isSelected = d.slug === selectedSlug
-      const isSearchMatch = lowerQuery && d.name.toLowerCase().includes(lowerQuery)
-      const dimmed = lowerQuery && !isSearchMatch
-
-      circle
-        .attr('stroke', isSelected ? '#fff' : isSearchMatch ? '#FBBF24' : 'transparent')
-        .attr('stroke-width', isSelected ? 3 : isSearchMatch ? 2.5 : 3)
-        .style('opacity', dimmed ? 0.15 : 1)
-
-      label.style('opacity', dimmed ? 0.1 : 1)
+    applyHighlightState(svg, {
+      selectedSlug,
+      searchQuery,
+      baseEdgeOpacity: baseEdgeOpacityRef.current,
+      edgeData: edgeDataRef.current,
     })
-
-    svg.selectAll('.links line')
-      .style('opacity', lowerQuery ? 0.08 : 0.5)
   }, [selectedSlug, searchQuery])
 
   const [legendOpen, setLegendOpen] = useState(false)
@@ -344,7 +507,8 @@ export default function ArchitectureGraph({
         style={{
           background: 'var(--card-bg)',
           border: '1px solid var(--border)',
-          opacity: 0.9,
+          opacity: 0.92,
+          backdropFilter: 'blur(8px)',
         }}
       >
         <button
@@ -352,24 +516,24 @@ export default function ArchitectureGraph({
           className="flex items-center gap-1.5 px-3 py-2 w-full font-semibold"
           style={{ color: 'var(--text)' }}
         >
-          범례
+          Legend
           {legendOpen ? <ChevronDown size={12} /> : <ChevronUp size={12} />}
         </button>
         {legendOpen && (
-          <div className="px-3 pb-2 space-y-2">
-            <div className="flex flex-wrap gap-x-3 gap-y-1">
+          <div className="px-3 pb-2.5 space-y-2.5">
+            <div className="flex flex-wrap gap-x-3 gap-y-1.5">
               {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
-                <span key={cat} className="flex items-center gap-1">
+                <span key={cat} className="flex items-center gap-1.5">
                   <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: color }} />
                   <span style={{ color: 'var(--text-secondary)' }}>{cat.toUpperCase()}</span>
                 </span>
               ))}
             </div>
-            <div className="flex flex-wrap gap-x-3 gap-y-1">
+            <div className="flex flex-wrap gap-x-3 gap-y-1.5">
               {Object.entries(EDGE_STYLES).map(([type, style]) => (
-                <span key={type} className="flex items-center gap-1">
-                  <svg width="20" height="8">
-                    <line x1="0" y1="4" x2="20" y2="4" stroke={style.stroke} strokeWidth={style.width} strokeDasharray={style.dasharray || undefined} />
+                <span key={type} className="flex items-center gap-1.5">
+                  <svg width="22" height="8">
+                    <line x1="0" y1="4" x2="22" y2="4" stroke={style.stroke} strokeWidth={style.width} strokeDasharray={style.dasharray || undefined} opacity={style.opacity} />
                   </svg>
                   <span style={{ color: 'var(--text-secondary)' }}>{style.label}</span>
                 </span>
@@ -380,4 +544,6 @@ export default function ArchitectureGraph({
       </div>
     </div>
   )
-}
+})
+
+export default ArchitectureGraph

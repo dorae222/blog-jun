@@ -1,29 +1,14 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
-import { useNavigate, useSearchParams, Link } from 'react-router-dom'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText } from 'lucide-react'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ArchitectureNodeDetail from '../components/architecture/ArchitectureNodeDetail'
 import { getArchitectureTree } from '../api/posts'
-
-const CATEGORIES = [
-  { key: 'all', label: 'All', color: '#6B7280' },
-  { key: 'llm', label: 'LLM', color: '#3B82F6' },
-  { key: 'ssm', label: 'SSM', color: '#10B981' },
-  { key: 'diffusion', label: 'Diffusion', color: '#F59E0B' },
-  { key: 'vision', label: 'Vision', color: '#EC4899' },
-  { key: 'multimodal', label: 'Multimodal', color: '#8B5CF6' },
-  { key: 'agent', label: 'Agent', color: '#EF4444' },
-  { key: 'technique', label: 'Technique', color: '#6B7280' },
-]
-
-const CATEGORY_COLORS = {
-  llm: '#3B82F6', ssm: '#10B981', diffusion: '#F59E0B',
-  multimodal: '#8B5CF6', agent: '#EF4444', technique: '#6B7280', vision: '#EC4899',
-}
+import { CATEGORY_COLORS, CATEGORIES } from '../data/architectureConstants'
 
 // 모바일 카드 뷰 컴포넌트
-function MobileCardView({ nodes, edges, searchQuery, onNodeClick, selectedNode }) {
+function MobileCardView({ nodes, searchQuery, onNodeClick, selectedNode }) {
   const lowerQuery = (searchQuery || '').toLowerCase()
   const filtered = lowerQuery
     ? nodes.filter(n => n.name.toLowerCase().includes(lowerQuery) || n.organization?.toLowerCase().includes(lowerQuery))
@@ -37,14 +22,11 @@ function MobileCardView({ nodes, edges, searchQuery, onNodeClick, selectedNode }
       if (!groups[cat]) groups[cat] = []
       groups[cat].push(node)
     }
-    // 각 그룹 내에서 release_date 역순 정렬
     for (const cat of Object.keys(groups)) {
       groups[cat].sort((a, b) => (b.release_date || '').localeCompare(a.release_date || ''))
     }
     return groups
   }, [filtered])
-
-  const navigate = useNavigate()
 
   if (filtered.length === 0) {
     return (
@@ -59,14 +41,14 @@ function MobileCardView({ nodes, edges, searchQuery, onNodeClick, selectedNode }
       {Object.entries(grouped).map(([cat, catNodes]) => (
         <div key={cat}>
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: CATEGORY_COLORS[cat] || '#6B7280' }} />
+            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: CATEGORY_COLORS[cat] || '#8895A7' }} />
             <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: CATEGORY_COLORS[cat] || 'var(--text-secondary)' }}>
               {cat} ({catNodes.length})
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {catNodes.map(node => {
-              const color = CATEGORY_COLORS[node.architecture_category] || '#6B7280'
+              const color = CATEGORY_COLORS[node.architecture_category] || '#8895A7'
               const isSelected = selectedNode?.slug === node.slug
               return (
                 <button
@@ -121,7 +103,17 @@ export default function ArchitectureTreePage() {
   const [selectedNode, setSelectedNode] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [category, setCategory] = useState(searchParams.get('category') || 'all')
-  const [mobileView, setMobileView] = useState('graph') // 'graph' | 'list'
+  const [mobileView, setMobileView] = useState('graph')
+  const [matchIndex, setMatchIndex] = useState(0)
+
+  const graphRef = useRef(null)
+
+  // 검색 매칭 slug 배열
+  const matchedSlugs = useMemo(() => {
+    if (!searchQuery) return []
+    const q = searchQuery.toLowerCase()
+    return nodes.filter(n => n.name.toLowerCase().includes(q)).map(n => n.slug)
+  }, [nodes, searchQuery])
 
   // 데이터 로드
   const fetchTree = useCallback(async (cat) => {
@@ -142,6 +134,26 @@ export default function ArchitectureTreePage() {
   useEffect(() => {
     fetchTree(category)
   }, [category, fetchTree])
+
+  // URL ?selected= 파라미터로 초기 선택 복구
+  useEffect(() => {
+    if (!loading && nodes.length > 0) {
+      const selectedSlug = searchParams.get('selected')
+      if (selectedSlug && !selectedNode) {
+        const target = nodes.find(n => n.slug === selectedSlug)
+        if (target) setSelectedNode(target)
+      }
+    }
+  }, [loading, nodes, searchParams])
+
+  // Escape 키로 패널 닫기
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === 'Escape' && selectedNode) setSelectedNode(null)
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [selectedNode])
 
   // 카테고리 변경
   const handleCategoryChange = useCallback((key) => {
@@ -167,8 +179,26 @@ export default function ArchitectureTreePage() {
     const target = nodes.find(n => n.slug === slug)
     if (target) {
       setSelectedNode(target)
+      graphRef.current?.focusOnNode(slug)
     }
   }, [nodes])
+
+  // 검색 Enter → 다음 매칭 포커스 이동
+  const handleSearchKeyDown = useCallback((e) => {
+    if (e.key === 'Enter' && matchedSlugs.length > 0) {
+      const nextIdx = (matchIndex + 1) % matchedSlugs.length
+      setMatchIndex(nextIdx)
+      const slug = matchedSlugs[nextIdx]
+      graphRef.current?.focusOnNode(slug)
+      const target = nodes.find(n => n.slug === slug)
+      if (target) setSelectedNode(target)
+    }
+  }, [matchedSlugs, matchIndex, nodes])
+
+  // matchIndex 리셋 when search changes
+  useEffect(() => {
+    setMatchIndex(0)
+  }, [searchQuery])
 
   const nodeCount = nodes.length
   const edgeCount = edges.length
@@ -255,23 +285,34 @@ export default function ArchitectureTreePage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearchKeyDown}
                 placeholder="모델 검색..."
-                className="w-full text-sm pl-8 pr-8 py-1.5 rounded-lg border outline-none focus:border-primary-400"
+                className="w-full text-sm pl-8 pr-16 py-1.5 rounded-lg border outline-none focus:border-primary-400"
                 style={{
                   borderColor: 'var(--border)',
                   background: 'var(--bg)',
                   color: 'var(--text)',
                 }}
               />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded hover:bg-gray-200/20"
-                  style={{ color: 'var(--text-secondary)' }}
-                >
-                  <X size={13} />
-                </button>
-              )}
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                {searchQuery && matchedSlugs.length > 0 && (
+                  <span
+                    className="text-[10px] px-1.5 py-0.5 rounded-md font-mono"
+                    style={{ background: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}
+                  >
+                    {matchIndex + 1}/{matchedSlugs.length}
+                  </span>
+                )}
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="p-0.5 rounded hover:bg-gray-200/20"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    <X size={13} />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -307,13 +348,13 @@ export default function ArchitectureTreePage() {
             <div className="hidden md:flex flex-1">
               <div className={`relative ${selectedNode ? 'flex-1' : 'w-full'} transition-all`}>
                 <ArchitectureGraph
+                  ref={graphRef}
                   nodes={nodes}
                   edges={edges}
                   onNodeClick={handleNodeClick}
                   onNodeDoubleClick={handleNodeDoubleClick}
                   selectedSlug={selectedNode?.slug}
                   searchQuery={searchQuery}
-                  category={category}
                 />
               </div>
               {/* 사이드 패널 (데스크탑) */}
@@ -349,12 +390,10 @@ export default function ArchitectureTreePage() {
                   onNodeDoubleClick={handleNodeDoubleClick}
                   selectedSlug={selectedNode?.slug}
                   searchQuery={searchQuery}
-                  category={category}
                 />
               ) : (
                 <MobileCardView
                   nodes={nodes}
-                  edges={edges}
                   searchQuery={searchQuery}
                   onNodeClick={handleNodeClick}
                   selectedNode={selectedNode}
