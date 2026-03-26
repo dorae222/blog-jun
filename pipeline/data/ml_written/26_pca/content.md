@@ -12,6 +12,9 @@
 
 ---
 
+![PCA 2D 투영: 고차원 데이터를 상위 2개 주성분으로 투영한 산점도](figures/pca_2d_projection.png)
+*PCA 2D 투영: 고차원 데이터를 상위 2개 주성분 축으로 투영하여 클래스 간 분리와 데이터 구조를 시각화한다.*
+
 ## PCA의 직관: 분산이 정보다
 
 PCA의 핵심 아이디어는 놀랍도록 단순합니다. **데이터가 가장 넓게 퍼져 있는 방향이 가장 많은 정보를 담고 있는 방향**이라는 것입니다.
@@ -75,6 +78,9 @@ $$\hat{\mathbf{x}} = Q_k \mathbf{z} + \bar{\mathbf{x}} = Q_k Q_k^T \tilde{\mathb
 $k < d$이면 일부 정보가 손실되며, 이 손실이 **재구성 오차(Reconstruction Error)**입니다. PCA는 이 재구성 오차를 최소화하는 동시에 투영된 데이터의 분산을 최대화하는 기법입니다. 이 두 목적함수는 수학적으로 동치입니다.
 
 ---
+
+![분산 설명률: 각 주성분의 분산 설명 비율과 누적 분산 설명률](figures/explained_variance_ratio.png)
+*분산 설명률: Scree Plot과 누적 EVR 곡선으로 상위 주성분이 전체 분산의 대부분을 설명하는 것을 확인할 수 있다.*
 
 ## 분산 설명률 (Explained Variance Ratio)
 

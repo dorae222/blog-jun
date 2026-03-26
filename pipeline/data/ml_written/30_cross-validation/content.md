@@ -43,6 +43,9 @@ $$\text{CV Score} = \frac{1}{K} \sum_{k=1}^{K} \mathcal{L}(f^{(-k)}, D_k)$$
 
 ---
 
+![K-Fold 교차 검증 시각화: 데이터를 K개 폴드로 나누어 순환적으로 검증하는 과정](figures/kfold_visualization.png)
+*K-Fold 교차 검증 시각화: 각 반복에서 서로 다른 폴드를 검증 세트로 사용하여 모든 데이터가 한 번씩 검증에 참여한다.*
+
 ## 3. K-Fold 교차 검증의 다양한 변형
 
 ### Stratified K-Fold (층화 K-겹 교차 검증)
@@ -117,6 +120,9 @@ for train_idx, val_idx in gkf.split(X, y, groups=patient_ids):
 외부 루프의 각 테스트 폴드 성능을 평균하면 **하이퍼파라미터 튜닝 과정까지 포함한 진정한 일반화 성능 추정치**를 얻는다. 계산 비용은 $O(K_{out} \times K_{in})$배로 높아지지만, 모델 선택의 신뢰도가 가장 높은 방법이다.
 
 ---
+
+![검증 곡선: 하이퍼파라미터 변화에 따른 학습-검증 성능 추이](figures/validation_curve.png)
+*검증 곡선: 하이퍼파라미터 값에 따른 학습 점수와 검증 점수의 변화를 통해 과적합-과소적합 구간을 파악한다.*
 
 ## 5. 하이퍼파라미터 탐색 방법
 

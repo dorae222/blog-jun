@@ -116,6 +116,9 @@ plt.show()
 
 ## 결측치(Missing Values) 처리
 
+![결측치 처리 방법 비교: 삭제, 단순 대체, 예측 기반 대체의 효과](figures/missing_value_handling.png)
+*결측치 처리 전략: MCAR/MAR/MNAR 유형에 따른 삭제, 단순 대체, 예측 기반 대체 방법의 적용 기준과 효과를 비교한다.*
+
 결측치를 무조건 평균으로 채우거나 해당 행을 삭제하는 것은 위험할 수 있습니다. 결측치의 **발생 메커니즘**을 먼저 이해해야 올바른 처리 전략을 선택할 수 있습니다.
 
 ### MCAR / MAR / MNAR 구분
@@ -369,6 +372,9 @@ X_test_scaled = scaler.transform(X_test)         # 테스트 데이터는 transf
 ```
 
 ---
+
+![스케일링 방법 비교: StandardScaler, MinMaxScaler, RobustScaler의 변환 결과](figures/scaling_comparison.png)
+*스케일링 비교: 동일한 데이터에 StandardScaler, MinMaxScaler, RobustScaler를 적용한 결과를 비교하여 이상치가 있을 때의 차이를 보여준다.*
 
 ## Python 전처리 파이프라인
 

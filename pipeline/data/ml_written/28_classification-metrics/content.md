@@ -10,6 +10,9 @@
 
 ---
 
+![혼동 행렬과 ROC 곡선: 분류 모델의 핵심 평가 도구](figures/confusion_matrix_roc.png)
+*혼동 행렬과 ROC 곡선: 혼동 행렬은 TP, TN, FP, FN의 분포를 보여주고, ROC 곡선은 임계값 변화에 따른 TPR-FPR 관계를 시각화한다.*
+
 ## 2. 혼동 행렬(Confusion Matrix)
 
 모든 분류 지표의 출발점은 혼동 행렬이다. 이진 분류(Positive/Negative)에서 모델의 예측 결과는 네 가지 경우로 나뉜다.
@@ -127,6 +130,9 @@ AUC의 확률론적 해석: "임의의 Positive 샘플이 임의의 Negative 샘
 **한계**: 클래스 불균형 데이터에서 FPR이 낮은 값에서도 AUC가 높게 나올 수 있어 실제 성능을 과대평가할 수 있다.
 
 ---
+
+![Precision-Recall 곡선: 불균형 데이터에서의 정밀도-재현율 트레이드오프](figures/precision_recall_curve.png)
+*Precision-Recall 곡선: 불균형 데이터에서 ROC 곡선보다 더 정직하게 소수 클래스에 대한 모델 성능을 보여준다.*
 
 ## 6. PR Curve (Precision-Recall Curve)
 

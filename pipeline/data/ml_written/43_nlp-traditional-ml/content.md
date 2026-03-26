@@ -46,6 +46,9 @@ $$\cos(\mathbf{u}, \mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}
 
 ---
 
+![TF-IDF 시각화: 문서-단어 TF-IDF 가중치 행렬의 히트맵 표현](figures/tfidf_visualization.png)
+*TF-IDF 시각화: 각 문서에서 단어의 TF-IDF 가중치를 히트맵으로 표현하면 문서별 핵심 키워드를 직관적으로 파악할 수 있다.*
+
 ## 알고리즘
 
 ### 1. Bag-of-Words (BoW)
@@ -225,6 +228,9 @@ print("W2V 파이프라인 정확도:", w2v_pipeline.score(X_test, y_test))
 <!-- Execution error: NameError: name 'model' is not defined -->
 
 ---
+
+![Zipf 법칙: 자연어 텍스트에서 단어 빈도와 순위의 멱법칙 관계](figures/zipf_law.png)
+*Zipf 법칙: 소수의 단어가 전체 텍스트의 대부분을 차지하고, 대다수의 단어는 극히 드물게 등장하는 멱법칙 분포를 따른다.*
 
 ## 시각화
 

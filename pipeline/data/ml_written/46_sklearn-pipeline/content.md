@@ -49,6 +49,9 @@ sklearn Pipeline은 이 세 문제를 단번에 해결한다.
 
 ---
 
+![sklearn Pipeline 다이어그램: 전처리부터 모델 학습까지의 파이프라인 구조 시각화](figures/sklearn_pipeline_diagram.png)
+*sklearn Pipeline 다이어그램: 데이터 전처리, 특성 변환, 모델 학습이 하나의 파이프라인으로 연결되어 일관된 워크플로를 보장한다.*
+
 ## 2. sklearn Pipeline 기본
 
 `Pipeline`은 여러 변환 단계(Transformer)와 최종 추정기(Estimator)를 순서대로 연결한 하나의 객체다. 마지막 단계를 제외한 모든 단계는 `fit`과 `transform` 메서드를 모두 가진 Transformer여야 한다.
@@ -146,6 +149,9 @@ print(f"Val AUC:   {results['test_roc_auc'].mean():.4f}")
 <!-- Execution error: NameError: name 'X' is not defined -->
 
 ---
+
+![Pipeline 장점: Pipeline 사용 전후의 코드 복잡도와 Data Leakage 방지 효과 비교](figures/pipeline_benefit.png)
+*Pipeline 장점: Pipeline을 사용하면 교차 검증 시 Data Leakage를 자동으로 방지하고, 배포 시 전처리 코드 불일치 문제를 해결한다.*
 
 ## 4. ColumnTransformer: 특성 유형별 다른 전처리
 

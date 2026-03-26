@@ -57,6 +57,9 @@ Ward 기준은 두 군집을 합칠 때 증가하는 총 분산(SSE)을 최소�
 
 ---
 
+![DBSCAN과 계층적 클러스터링 비교: 밀도 기반과 계층 기반 군집화의 결과 차이](figures/dbscan_vs_hierarchical.png)
+*DBSCAN과 계층적 클러스터링 비교: DBSCAN은 임의 형태의 군집과 노이즈를 탐지하고, 계층적 클러스터링은 덴드로그램으로 데이터의 계층 구조를 파악한다.*
+
 ## 알고리즘
 
 ### DBSCAN 알고리즘
@@ -225,6 +228,9 @@ optimal_k = find_optimal_clusters(Z)
 ```
 
 ---
+
+![DBSCAN eps 파라미터 효과: 엡실론 값에 따른 군집 결과 변화](figures/dbscan_eps_effect.png)
+*DBSCAN eps 파라미터 효과: eps 값이 작으면 군집이 세분화되고 노이즈가 많아지며, 크면 군집이 병합되는 과정을 보여준다.*
 
 ## 시각화
 
