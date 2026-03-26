@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Exemplary predictions of Toolformer. The model autonomously decides to call different APIs (from top to bottom: a question answering system, a calculator, a machine translation system, and a Wikipedia search engine) to obtain information that is useful for completing a piece of text.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.04761/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Key steps in our approach, illustrated for a question answering tool: Given an input text 𝐱 𝐱 \\mathbf{x} , we first sample a position i 𝑖 i and corresponding API call candidates c i 1 , c i 2 , … , c i k superscript subscript 𝑐 𝑖 1 superscript subscript 𝑐 𝑖 2 … superscript subscript 𝑐 𝑖 𝑘 c_{i}^{1},c_{i}^{2},\\ldots,c_{i}^{k} . We then execute these API calls and filter out all calls which do not reduce the loss L i subscript 𝐿 𝑖 L_{i} over the next tokens. All remaining API calls are interleaved with the original text, resulting in a new text 𝐱 ∗ superscript 𝐱 \\mathbf{x}^{*} .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.04761/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: An exemplary prompt P ​ ( 𝐱 ) 𝑃 𝐱 P(\\mathbf{x}) used to generate API calls for the question answering tool.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.04761/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Average performance on LAMA, our math benchmarks and our QA benchmarks for GPT-2 models of different sizes and GPT-J finetuned with our approach, both with and without API calls. While API calls are not helpful to the smallest models, larger models learn how to make good use of them. Even for bigger models, the gap between model predictions with and without API calls remains high.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.04761/assets/x4.png"
+  }
+]

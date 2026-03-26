@@ -1,0 +1,86 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1 : Pixtral Performance. Pixtral outperforms all open-models within its weight class on multimodal tasks by a substantial margin. Left: Performance on MM-MT-Bench, a new multimodal, multiturn, instruction following benchmark designed to reflect real world usage of multimodal language models. Right: Performance on the public LMSys leaderboard (Vision arena, October 2024).",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/pareto_mm_mt_bench_oct.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1 : Pixtral Performance. Pixtral outperforms all open-models within its weight class on multimodal tasks by a substantial margin. Left: Performance on MM-MT-Bench, a new multimodal, multiturn, instruction following benchmark designed to reflect real world usage of multimodal language models. Right: Performance on the public LMSys leaderboard (Vision arena, October 2024).",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/pareto_lmsys_oct.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 2 : Pixtral Vision Encoder. Pixtral uses a new vision encoder, which is trained from scratch to natively support variable image sizes and aspect ratios.\nBlock-diagonal attention masks enable sequence packing for batching, while RoPE-2D encodings facilitate variable image sizes.\nNote that the attention mask and position encodings are fed to the vision transformer as additional input, and utilized only in the self-attention layers.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/pixtral_vit.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3 : Complete Pixtral Architecture. Pixtral has two components: a vision encoder , which tokenizes images, and a multimodal decoder , which predicts the next text token given a sequence of text and images. Pixtral can take an arbitrary number of images as input, provided they fit within its 128K context window.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/full_arch.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 4 : MM-MT-Bench: We open-source a new instruction following benchmark for multimodal models, which correlates highly with LMSys ELO ratings.\nGiven an input image, reference answer and model response, an independent LLM judge is instructed to grade the model’s response on a scale of 1 through 10.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/x1.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 5 : Effect of ‘Naive’ vs. ‘Explicit’ prompts on leading models. Leading models benefit greatly from ‘Explicit’ prompts which provide details about the output format.\nThis makes sense, as otherwise substantively correct responses are marked as incorrect during evaluation (top row, right).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/x2.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 6 : Vision encoder ablations: When leveraged for visual instruction tuning, our encoder substantially outperforms a strong CLIPA [ 10 ] baseline for tasks requiring fine-grained document understanding, while maintaining parity for natural images.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/vit_ablation.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 7 : Reasoning over complex figures. An example showcasing Pixtral’s capabilities to understand and reason over complex figures. Pixtral correctly identifies that the green boxes represent the European countries and then reads and sorts the GDP of all the European countries to list the top 5 with accurate GDP numbers.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/gdp.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 7 : Reasoning over complex figures. An example showcasing Pixtral’s capabilities to understand and reason over complex figures. Pixtral correctly identifies that the green boxes represent the European countries and then reads and sorts the GDP of all the European countries to list the top 5 with accurate GDP numbers.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/lechat_gdp.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 8 : Multi-image instruction following. Pixtral can process arbitrary number of images in its context window. The example shows that Pixtral can successfully combine the information from both images into a single markdown table.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/lechat_multi_image_oct.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 9 : Chart Understanding and Analysis. Pixtral demonstrates the capability to interpret and analyze intricate charts with high accuracy. In this instance, Pixtral correctly identifies that \"dark-dragon\" corresponds to the red line. Furthermore, it recognizes that the training loss is expected to decrease smoothly and notes that the training run became unstable around the 10K step mark due to a significant spike in loss.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/lechat_chart.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 10 : Image to Code. This demonstration illustrates Pixtral’s capability to convert hand-drawn website interfaces into executable HTML code, bringing hand-drawn designs to life as fully functional websites.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/images/lechat_website.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 11 : Examples of model responses from Pixral-12B, QwenVL-7B and Gemini-1.5 Flash-8B (0827) LLM-as-a-judge scores. Pixtral’s response is complete and accurate, hence getting a rating of 8, while Gemini-Flash-8B extracts wrong information, and QwenVL does not elaborate on trends.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/x3.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 12 : Example images from MM-MT-Bench",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2410.07073/assets/x4.png"
+  }
+]

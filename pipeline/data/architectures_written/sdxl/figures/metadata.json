@@ -1,0 +1,344 @@
+[
+  {
+    "filename": "fig_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cherries/teaserblock001.jpg"
+  },
+  {
+    "filename": "fig_2_1.jpg",
+    "caption": "Figure 1 : Left: Comparing user preferences between SDXL and Stable Diffusion 1.5 & 2.1. While SDXL already clearly outperforms Stable Diffusion 1.5 & 2.1, adding the additional refinement stage boosts performance. Right: Visualization of the two-stage pipeline: We generate initial latents of size 128 × 128 128 128 128\\times 128 using SDXL . Afterwards, we utilize a specialized high-resolution refinement model and apply SDEdit [ 28 ] on the latents generated in the first step, using the same prompt. SDXL and the refinement model use the same autoencoder.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sd-xl-vs.jpg"
+  },
+  {
+    "filename": "fig_2_2.jpg",
+    "caption": "Figure 1 : Left: Comparing user preferences between SDXL and Stable Diffusion 1.5 & 2.1. While SDXL already clearly outperforms Stable Diffusion 1.5 & 2.1, adding the additional refinement stage boosts performance. Right: Visualization of the two-stage pipeline: We generate initial latents of size 128 × 128 128 128 128\\times 128 using SDXL . Afterwards, we utilize a specialized high-resolution refinement model and apply SDEdit [ 28 ] on the latents generated in the first step, using the same prompt. SDXL and the refinement model use the same autoencoder.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sdxl_pipeline.jpg"
+  },
+  {
+    "filename": "fig_3.jpg",
+    "caption": "Figure 2 : Height-vs-Width distribution of our pre-training dataset. Without the proposed size-conditioning, 39% of the data would be discarded due to edge lengths smaller than 256 pixels as visualized by the dashed black lines. Color intensity in each visualized cell is proportional to the number of samples.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/size-dist.jpg"
+  },
+  {
+    "filename": "fig_4_1.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/64_robot_2.jpg"
+  },
+  {
+    "filename": "fig_4_2.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/128_robot_2.jpg"
+  },
+  {
+    "filename": "fig_4_3.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/256_robot_2.jpg"
+  },
+  {
+    "filename": "fig_4_4.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/512_robot_2.jpg"
+  },
+  {
+    "filename": "fig_4_5.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/64.jpg"
+  },
+  {
+    "filename": "fig_4_6.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/128.jpg"
+  },
+  {
+    "filename": "fig_4_7.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/256.jpg"
+  },
+  {
+    "filename": "fig_4_8.jpg",
+    "caption": "Figure 3 : The effects of varying the size-conditioning: We show draw 4 samples with the same random seed from SDXL and vary the size-conditioning as depicted above each column. The image quality clearly increases when conditioning on larger image sizes. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 . Note: For this visualization, we use the 512 × 512 512 512 512\\times 512 pixel base model (see Sec. 2.5 ), since the effect of size conditioning is more clearly visible before 1024 × 1024 1024 1024 1024\\times 1024 finetuning. Best viewed zoomed in.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/sizecondv3/512.jpg"
+  },
+  {
+    "filename": "fig_5_1.jpg",
+    "caption": "Figure 4 : Comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] . Additional samples in Fig. 14 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/catpoleon_row.jpg"
+  },
+  {
+    "filename": "fig_5_2.jpg",
+    "caption": "Figure 4 : Comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] . Additional samples in Fig. 14 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/dragon_row.jpg"
+  },
+  {
+    "filename": "fig_5_3.jpg",
+    "caption": "Figure 4 : Comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] . Additional samples in Fig. 14 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/catpoleon_row.jpg"
+  },
+  {
+    "filename": "fig_5_4.jpg",
+    "caption": "Figure 4 : Comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] . Additional samples in Fig. 14 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/dragon_row.jpg"
+  },
+  {
+    "filename": "fig_5_5.jpg",
+    "caption": "Figure 4 : Comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] . Additional samples in Fig. 14 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/catpoleon_row.jpg"
+  },
+  {
+    "filename": "fig_5_6.jpg",
+    "caption": "Figure 4 : Comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] . Additional samples in Fig. 14 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/dragon_row.jpg"
+  },
+  {
+    "filename": "fig_6_1.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/0-0/0-0.jpg"
+  },
+  {
+    "filename": "fig_6_2.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/0-256/0-256-2.jpg"
+  },
+  {
+    "filename": "fig_6_3.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/256-0/256-0.jpg"
+  },
+  {
+    "filename": "fig_6_4.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/512-512/512-512.jpg"
+  },
+  {
+    "filename": "fig_6_5.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/0-0/capybara-0-0.jpg"
+  },
+  {
+    "filename": "fig_6_6.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/0-256/capybara-0-256.jpg"
+  },
+  {
+    "filename": "fig_6_7.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/256-0/capybara-256-0.jpg"
+  },
+  {
+    "filename": "fig_6_8.jpg",
+    "caption": "Figure 5 : Varying the crop conditioning as discussed in Sec. 2.2 . See Fig. 4 and Fig. 14 for samples from SD 1.5 and SD 2.1 which provide no explicit control of this parameter and thus introduce cropping artifacts. Samples from the 512 2 superscript 512 2 512^{2} model, see Sec. 2.5 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/cropcondv2/512-512/capybara-512-512.jpg"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "Figure 6 : 1024 2 superscript 1024 2 1024^{2} samples (with zoom-ins) from SDXL without (left) and with (right) the refinement model discussed. Prompt: “Epic long distance cityscape photo of New York City flooded by the ocean and overgrown buildings and jungle ruins in rainforest, at sunset, cinematic shot, highly detailed, 8k, golden light”. See Fig. 13 for additional samples.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/refiner_magic/magic2_combined.jpeg"
+  },
+  {
+    "filename": "fig_8_1.jpg",
+    "caption": "Figure 7 : Failure cases of SDXL despite large improvements compared to previous versions of Stable Diffusion , the model sometimes still struggles with very complex prompts involving detailed spatial arrangements and detailed descriptions (e.g. top left example). Moreover, hands are not yet always correctly generated (e.g. top left) and the model sometimes suffers from two concepts bleeding into one another (e.g. bottom right example). All examples are random samples generated with 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/failure/leave_handpalm.jpg"
+  },
+  {
+    "filename": "fig_8_2.jpg",
+    "caption": "Figure 7 : Failure cases of SDXL despite large improvements compared to previous versions of Stable Diffusion , the model sometimes still struggles with very complex prompts involving detailed spatial arrangements and detailed descriptions (e.g. top left example). Moreover, hands are not yet always correctly generated (e.g. top left) and the model sometimes suffers from two concepts bleeding into one another (e.g. bottom right example). All examples are random samples generated with 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/failure/lion_giraffe.jpg"
+  },
+  {
+    "filename": "fig_8_3.jpg",
+    "caption": "Figure 7 : Failure cases of SDXL despite large improvements compared to previous versions of Stable Diffusion , the model sometimes still struggles with very complex prompts involving detailed spatial arrangements and detailed descriptions (e.g. top left example). Moreover, hands are not yet always correctly generated (e.g. top left) and the model sometimes suffers from two concepts bleeding into one another (e.g. bottom right example). All examples are random samples generated with 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/failure/piano.jpg"
+  },
+  {
+    "filename": "fig_8_4.jpg",
+    "caption": "Figure 7 : Failure cases of SDXL despite large improvements compared to previous versions of Stable Diffusion , the model sometimes still struggles with very complex prompts involving detailed spatial arrangements and detailed descriptions (e.g. top left example). Moreover, hands are not yet always correctly generated (e.g. top left) and the model sometimes suffers from two concepts bleeding into one another (e.g. bottom right example). All examples are random samples generated with 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/failure/truck.jpg"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "Figure 8 : Qualitative comparison of SDXL with DeepFloyd IF, DALLE-2, Bing Image Creator, and Midjourney v5.2. To mitigate any bias arising from cherry-picking, Parti (P2) prompts were randomly selected. Seed 3 3 3 was uniformly applied across all models in which such a parameter could be designated. For models without a seed-setting feature, the first generated image is included.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/SDXLcompsv5.jpeg"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 9 : Results from 17,153 user preference comparisons between SDXL v0.9 and Midjourney v5.1 , which was the latest version available at the time. The comparisons span all “categories” and “challenges” in the PartiPrompts (P2) benchmark. Notably, SDXL was favored 54.9% of the time over Midjourney V5.1 . Preliminary testing indicates that the recently-released Midjourney V5.2 has lower prompt comprehension than its predecessor, but the laborious process of generating multiple prompts hampers the speed of conducting broader tests.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/x1.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 10 : User preference comparison of SDXL (without refinement model) and Midjourney V5.1 across particular text categories. SDXL outperforms Midjourney V5.1 in all but two categories.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/x2.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 11 : Preference comparisons of SDXL (with refinement model) to Midjourney V5.1 on complex prompts. SDXL either outperforms or is statistically equal to Midjourney V5.1 in 7 out of 10 categories.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/x3.png"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "Figure 12 : Plotting FID vs CLIP score for different cfg scales. SDXL shows only slightly improved text-alignment, as measured by CLIP-score, compared to previous versions that do not align with the judgement of human evaluators. Even further and similar as in [ 23 ] , FID are worse than for both SD-1.5 and SD-2.1 , while human evaluators clearly prefer the generations of SD-XL over those of these previous models.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/quant_eval/fidvsclip40-more.jpg"
+  },
+  {
+    "filename": "fig_13_2.jpg",
+    "caption": "Figure 12 : Plotting FID vs CLIP score for different cfg scales. SDXL shows only slightly improved text-alignment, as measured by CLIP-score, compared to previous versions that do not align with the judgement of human evaluators. Even further and similar as in [ 23 ] , FID are worse than for both SD-1.5 and SD-2.1 , while human evaluators clearly prefer the generations of SD-XL over those of these previous models.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/quant_eval/fidvsclip50-more.jpg"
+  },
+  {
+    "filename": "fig_14_1.jpg",
+    "caption": "Figure 13 : SDXL samples (with zoom-ins) without (left) and with (right) the refinement model discussed. Prompt: ( top ) “close up headshot, futuristic young woman, wild hair sly smile in front of gigantic UFO, dslr, sharp focus, dynamic composition” ( bottom ) “Three people having dinner at a table at new years eve, cinematic shot, 8k”. Zoom-in for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/refiner_magic/magic3_combined.jpeg"
+  },
+  {
+    "filename": "fig_14_2.jpg",
+    "caption": "Figure 13 : SDXL samples (with zoom-ins) without (left) and with (right) the refinement model discussed. Prompt: ( top ) “close up headshot, futuristic young woman, wild hair sly smile in front of gigantic UFO, dslr, sharp focus, dynamic composition” ( bottom ) “Three people having dinner at a table at new years eve, cinematic shot, 8k”. Zoom-in for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/refiner_magic/magic4_combined.jpeg"
+  },
+  {
+    "filename": "fig_15_1.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/dali_row.jpg"
+  },
+  {
+    "filename": "fig_15_2.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/capybara_row.jpg"
+  },
+  {
+    "filename": "fig_15_3.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/dali_row.jpg"
+  },
+  {
+    "filename": "fig_15_4.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/capybara_row.jpg"
+  },
+  {
+    "filename": "fig_15_5.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/dali_row.jpg"
+  },
+  {
+    "filename": "fig_15_6.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/capybara_row.jpg"
+  },
+  {
+    "filename": "fig_15_7.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/goat_row.jpg"
+  },
+  {
+    "filename": "fig_15_8.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/cangaroo_row.jpg"
+  },
+  {
+    "filename": "fig_15_9.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/goat_row.jpg"
+  },
+  {
+    "filename": "fig_15_10.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/cangaroo_row.jpg"
+  },
+  {
+    "filename": "fig_15_11.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/goat_row.jpg"
+  },
+  {
+    "filename": "fig_15_12.jpg",
+    "caption": "Figure 14 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ]",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/cangaroo_row.jpg"
+  },
+  {
+    "filename": "fig_16_1.jpg",
+    "caption": "Figure 15 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/baba_row.jpg"
+  },
+  {
+    "filename": "fig_16_2.jpg",
+    "caption": "Figure 15 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd1-5/badger_row.jpg"
+  },
+  {
+    "filename": "fig_16_3.jpg",
+    "caption": "Figure 15 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/baba_row.jpg"
+  },
+  {
+    "filename": "fig_16_4.jpg",
+    "caption": "Figure 15 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sd2-1/badger_row.jpg"
+  },
+  {
+    "filename": "fig_16_5.jpg",
+    "caption": "Figure 15 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/baba_row.jpg"
+  },
+  {
+    "filename": "fig_16_6.jpg",
+    "caption": "Figure 15 : Additional results for the comparison of the output of SDXL with previous versions of Stable Diffusion . For each prompt, we show 3 random samples of the respective model for 50 steps of the DDIM sampler [ 46 ] and cfg-scale 8.0 8.0 8.0 [ 13 ] .",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.01952/assets/img/comp_old_model/sdxl/badger_row.jpg"
+  }
+]

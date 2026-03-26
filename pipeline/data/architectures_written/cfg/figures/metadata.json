@@ -1,0 +1,92 @@
+[
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: The effect of guidance on a mixture of three Gaussians, each mixture component representing data conditioned on a class. The leftmost plot is the non-guided marginal density. Left to right are densities of mixtures of normalized guided conditionals with increasing guidance strength.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guided_gaussian_mixture.png"
+  },
+  {
+    "filename": "fig_3.jpg",
+    "caption": "Figure 3: Classifier-free guidance on 128x128 ImageNet. Left: non-guided samples, right: classifier-free guided samples with w = 3.0 𝑤 3.0 w=3.0 . Interestingly, strongly guided samples such as these display saturated colors. See Fig. 8 for more.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_guidance_2.jpg"
+  },
+  {
+    "filename": "fig_6_1.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=1.80, IS=53.71",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guidance_figure_1_minus0.jpg"
+  },
+  {
+    "filename": "fig_6_2.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=1.80, IS=53.71",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guidance_figure_2_minus1.jpg"
+  },
+  {
+    "filename": "fig_6_3.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=1.80, IS=53.71",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guidance_figure_4_minus3.jpg"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=1.80, IS=53.71",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guidance_figure_1_minus0.jpg"
+  },
+  {
+    "filename": "fig_8.jpg",
+    "caption": "(b) Classifier-free guidance with w = 1.0 𝑤 1.0 w=1.0 : FID=12.6, IS=170.1",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guidance_figure_2_minus1.jpg"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "(c) Classifier-free guidance with w = 3.0 𝑤 3.0 w=3.0 : FID=24.83, IS=250.4",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/guidance_figure_4_minus3.jpg"
+  },
+  {
+    "filename": "fig_10_1.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=7.27, IS=82.45",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_samples_0.jpg"
+  },
+  {
+    "filename": "fig_10_2.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=7.27, IS=82.45",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_samples_10.jpg"
+  },
+  {
+    "filename": "fig_10_3.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=7.27, IS=82.45",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_samples_40.jpg"
+  },
+  {
+    "filename": "fig_11.jpg",
+    "caption": "(a) Non-guided conditional sampling: FID=7.27, IS=82.45",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_samples_0.jpg"
+  },
+  {
+    "filename": "fig_12.jpg",
+    "caption": "(b) Classifier-free guidance with w = 1.0 𝑤 1.0 w=1.0 : FID=7.86, IS=297.98",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_samples_10.jpg"
+  },
+  {
+    "filename": "fig_13.jpg",
+    "caption": "(c) Classifier-free guidance with w = 4.0 𝑤 4.0 w=4.0 : FID=21.53, IS=421.03",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_samples_40.jpg"
+  },
+  {
+    "filename": "fig_14.jpg",
+    "caption": "Figure 8: More examples of classifier-free guidance on 128x128 ImageNet. Left: non-guided samples, right: classifier-free guided samples with w = 3.0 𝑤 3.0 w=3.0 .",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2207.12598/assets/images/i128_more_samples.jpg"
+  }
+]

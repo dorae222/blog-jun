@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Left: H3 stacks two discrete SSMs with shift and diagonal matrices and uses multiplicative interactions between input projections and their outputs to model comparisons between points in a sequence.\nMiddle: H3 can perform associative recall—which is easy for attention, but not existing SSMs.\nRight: FlashConv uses a new state-passing algorithm over fused block FFTConv to increase hardware efficiency of SSMs, allowing H3 to scale to billion-parameter models.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.14052/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: We compare the speed of different algorithms to perform FFT-based\nconvolution, along with FlashAttention [ 15 ] (the fastest attention\nimplementation we know of).\nWe use batch size 8, hidden dimension 1024, and varying sequence length\nfrom 256 to 32k, and measure on an A100-SMX4-40GB GPU.\nWe see that kernel fusion gives up to 3.4 × \\times speedup over naive FFTConv\nfor short sequences (up to 512), block FFT gives up to 2 × \\times speedup for\nmedium length sequences (1k - 8k), and state-passing allows 2.3 × \\times faster\nFFTConv for long sequences (16k and above).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.14052/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Upstream mean absolute error ( L r ​ e ​ c subscript 𝐿 𝑟 𝑒 𝑐 L_{rec} ) in training and evaluation datasets over the course of model training.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.14052/assets/figs/fmri_upstream-error.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Mean absolute error ( L r ​ e ​ c subscript 𝐿 𝑟 𝑒 𝑐 L_{rec} ) of the final pre-trained models for each voxel of the brain projected onto the inflated cortical surface of the FsAverage template [ 19 ] .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.14052/assets/figs/fmri_upstream-error-brain.png"
+  }
+]

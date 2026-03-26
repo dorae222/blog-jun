@@ -1,0 +1,1094 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/hedgehog.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/corgi.png"
+  },
+  {
+    "filename": "fig_1_3.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/robots.jpg"
+  },
+  {
+    "filename": "fig_1_4.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/landscape.jpg"
+  },
+  {
+    "filename": "fig_1_5.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/checkers.jpg"
+  },
+  {
+    "filename": "fig_1_6.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/grandcanyon.jpg"
+  },
+  {
+    "filename": "fig_1_7.png",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/hamster.png"
+  },
+  {
+    "filename": "fig_1_8.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/einstein.jpg"
+  },
+  {
+    "filename": "fig_1_9.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/venice.jpg"
+  },
+  {
+    "filename": "fig_1_10.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/fox.jpg"
+  },
+  {
+    "filename": "fig_1_11.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/cubes.jpg"
+  },
+  {
+    "filename": "fig_1_12.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/panda.jpg"
+  },
+  {
+    "filename": "fig_1_13.png",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/space_elev.png"
+  },
+  {
+    "filename": "fig_1_14.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/synthwave.jpg"
+  },
+  {
+    "filename": "fig_1_15.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/corgipizza.jpg"
+  },
+  {
+    "filename": "fig_1_16.jpg",
+    "caption": "Figure 1: Selected samples from GLIDE using classifier-free guidance. We observe that our model can produce photorealistic images with shadows and reflections, can compose multiple concepts in the correct way, and can produce artistic renderings of novel concepts. For random sample grids, see Figure 17 and 18 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/banner_samples/nyc.jpg"
+  },
+  {
+    "filename": "fig_2_1.jpg",
+    "caption": "Figure 2: Text-conditional image inpainting examples from GLIDE. The green region is erased, and the model fills it in conditioned on the given prompt. Our model is able to match the style and lighting of the surrounding context to produce a realistic completion.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/inpaint_samples/field.jpg"
+  },
+  {
+    "filename": "fig_2_2.jpg",
+    "caption": "Figure 2: Text-conditional image inpainting examples from GLIDE. The green region is erased, and the model fills it in conditioned on the given prompt. Our model is able to match the style and lighting of the surrounding context to produce a realistic completion.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/inpaint_samples/corgi.jpg"
+  },
+  {
+    "filename": "fig_2_3.jpg",
+    "caption": "Figure 2: Text-conditional image inpainting examples from GLIDE. The green region is erased, and the model fills it in conditioned on the given prompt. Our model is able to match the style and lighting of the surrounding context to produce a realistic completion.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/inpaint_samples/hair.jpg"
+  },
+  {
+    "filename": "fig_2_4.jpg",
+    "caption": "Figure 2: Text-conditional image inpainting examples from GLIDE. The green region is erased, and the model fills it in conditioned on the given prompt. Our model is able to match the style and lighting of the surrounding context to produce a realistic completion.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/inpaint_samples/vase.jpg"
+  },
+  {
+    "filename": "fig_2_5.jpg",
+    "caption": "Figure 2: Text-conditional image inpainting examples from GLIDE. The green region is erased, and the model fills it in conditioned on the given prompt. Our model is able to match the style and lighting of the surrounding context to produce a realistic completion.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/inpaint_samples/car.jpg"
+  },
+  {
+    "filename": "fig_2_6.jpg",
+    "caption": "Figure 2: Text-conditional image inpainting examples from GLIDE. The green region is erased, and the model fills it in conditioned on the given prompt. Our model is able to match the style and lighting of the surrounding context to produce a realistic completion.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/inpaint_samples/hat.jpg"
+  },
+  {
+    "filename": "fig_3_1.jpg",
+    "caption": "Figure 3: Iteratively creating a complex scene using GLIDE. First, we generate an image for the prompt “a cozy living room”, then use the shown inpainting masks and follow-up text prompts to add a painting to the wall, a coffee table, and a vase of flowers on the coffee table, and finally to move the wall up to the couch.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/iterative_inpaint/0.jpg"
+  },
+  {
+    "filename": "fig_3_2.jpg",
+    "caption": "Figure 3: Iteratively creating a complex scene using GLIDE. First, we generate an image for the prompt “a cozy living room”, then use the shown inpainting masks and follow-up text prompts to add a painting to the wall, a coffee table, and a vase of flowers on the coffee table, and finally to move the wall up to the couch.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/iterative_inpaint/1.jpg"
+  },
+  {
+    "filename": "fig_3_3.jpg",
+    "caption": "Figure 3: Iteratively creating a complex scene using GLIDE. First, we generate an image for the prompt “a cozy living room”, then use the shown inpainting masks and follow-up text prompts to add a painting to the wall, a coffee table, and a vase of flowers on the coffee table, and finally to move the wall up to the couch.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/iterative_inpaint/2.jpg"
+  },
+  {
+    "filename": "fig_3_4.jpg",
+    "caption": "Figure 3: Iteratively creating a complex scene using GLIDE. First, we generate an image for the prompt “a cozy living room”, then use the shown inpainting masks and follow-up text prompts to add a painting to the wall, a coffee table, and a vase of flowers on the coffee table, and finally to move the wall up to the couch.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/iterative_inpaint/3.jpg"
+  },
+  {
+    "filename": "fig_3_5.jpg",
+    "caption": "Figure 3: Iteratively creating a complex scene using GLIDE. First, we generate an image for the prompt “a cozy living room”, then use the shown inpainting masks and follow-up text prompts to add a painting to the wall, a coffee table, and a vase of flowers on the coffee table, and finally to move the wall up to the couch.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/iterative_inpaint/4.jpg"
+  },
+  {
+    "filename": "fig_4_1.jpg",
+    "caption": "Figure 4: Examples of text-conditional SDEdit (Meng et al., 2021 ) with GLIDE, where the user combines a sketch with a text caption to do more controlled modifications to an image.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/sdedit_samples/corgi.jpg"
+  },
+  {
+    "filename": "fig_4_2.jpg",
+    "caption": "Figure 4: Examples of text-conditional SDEdit (Meng et al., 2021 ) with GLIDE, where the user combines a sketch with a text caption to do more controlled modifications to an image.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/sdedit_samples/fire.jpg"
+  },
+  {
+    "filename": "fig_4_3.jpg",
+    "caption": "Figure 4: Examples of text-conditional SDEdit (Meng et al., 2021 ) with GLIDE, where the user combines a sketch with a text caption to do more controlled modifications to an image.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/sdedit_samples/mountains.jpg"
+  },
+  {
+    "filename": "fig_5_1.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/original/0.jpg"
+  },
+  {
+    "filename": "fig_5_2.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/original/1.jpg"
+  },
+  {
+    "filename": "fig_5_3.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/original/2.jpg"
+  },
+  {
+    "filename": "fig_5_4.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/original/3.jpg"
+  },
+  {
+    "filename": "fig_5_5.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/original/4.jpg"
+  },
+  {
+    "filename": "fig_5_6.png",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/xmcgan/0.png"
+  },
+  {
+    "filename": "fig_5_7.png",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/xmcgan/1.png"
+  },
+  {
+    "filename": "fig_5_8.png",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/xmcgan/2.png"
+  },
+  {
+    "filename": "fig_5_9.png",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/xmcgan/3.png"
+  },
+  {
+    "filename": "fig_5_10.png",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/xmcgan/4.png"
+  },
+  {
+    "filename": "fig_5_11.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/dalle/0.jpg"
+  },
+  {
+    "filename": "fig_5_12.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/dalle/1.jpg"
+  },
+  {
+    "filename": "fig_5_13.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/dalle/2.jpg"
+  },
+  {
+    "filename": "fig_5_14.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/dalle/3.jpg"
+  },
+  {
+    "filename": "fig_5_15.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/dalle/4.jpg"
+  },
+  {
+    "filename": "fig_5_16.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours_clip/0.jpg"
+  },
+  {
+    "filename": "fig_5_17.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours_clip/1.jpg"
+  },
+  {
+    "filename": "fig_5_18.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours_clip/2.jpg"
+  },
+  {
+    "filename": "fig_5_19.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours_clip/3.jpg"
+  },
+  {
+    "filename": "fig_5_20.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours_clip/4.jpg"
+  },
+  {
+    "filename": "fig_5_21.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours/0.jpg"
+  },
+  {
+    "filename": "fig_5_22.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours/1.jpg"
+  },
+  {
+    "filename": "fig_5_23.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours/2.jpg"
+  },
+  {
+    "filename": "fig_5_24.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours/3.jpg"
+  },
+  {
+    "filename": "fig_5_25.jpg",
+    "caption": "Figure 5: Random image samples on MS-COCO prompts. For XMC-GAN, we take samples from Zhang et al. ( 2021 ) . For DALL-E, we generate samples at temperature 0.85 and select the best of 256 using CLIP reranking. For GLIDE, we use CLIP guidance with scale 2.0 and classifier-free guidance with scale 3.0. We do not perform any CLIP reranking or cherry-picking for GLIDE.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/xmcgan_mscoco/ours/4.jpg"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "(a) Precision/Recall",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x1.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "(a) Precision/Recall",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x2.png"
+  },
+  {
+    "filename": "fig_6_3.png",
+    "caption": "(a) Precision/Recall",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x3.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(a) Precision/Recall",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x1.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(b) IS/FID",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x2.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(c) CLIP score/FID",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x3.png"
+  },
+  {
+    "filename": "fig_10_1.png",
+    "caption": "(a) Photorealism",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x4.png"
+  },
+  {
+    "filename": "fig_10_2.png",
+    "caption": "(a) Photorealism",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x5.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(a) Photorealism",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x4.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(b) Caption Similarity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/x5.png"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "Figure 8: Failure cases of GLIDE when prompted for certain unusual objects or scenarios.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/failure_cases/cat.jpg"
+  },
+  {
+    "filename": "fig_13_2.jpg",
+    "caption": "Figure 8: Failure cases of GLIDE when prompted for certain unusual objects or scenarios.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/failure_cases/bicycle.jpg"
+  },
+  {
+    "filename": "fig_13_3.jpg",
+    "caption": "Figure 8: Failure cases of GLIDE when prompted for certain unusual objects or scenarios.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/failure_cases/lion.jpg"
+  },
+  {
+    "filename": "fig_13_4.jpg",
+    "caption": "Figure 8: Failure cases of GLIDE when prompted for certain unusual objects or scenarios.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/failure_cases/triangular.jpg"
+  },
+  {
+    "filename": "fig_14_1.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/large_hedgehog.jpg"
+  },
+  {
+    "filename": "fig_14_2.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/large_corgi.jpg"
+  },
+  {
+    "filename": "fig_14_3.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/large_cube.jpg"
+  },
+  {
+    "filename": "fig_14_4.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/large_hamster.jpg"
+  },
+  {
+    "filename": "fig_14_5.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/small_hedgehog.jpg"
+  },
+  {
+    "filename": "fig_14_6.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/small_corgi.jpg"
+  },
+  {
+    "filename": "fig_14_7.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/small_cube.jpg"
+  },
+  {
+    "filename": "fig_14_8.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/small_hamster.jpg"
+  },
+  {
+    "filename": "fig_14_9.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/safe_hedgehog.jpg"
+  },
+  {
+    "filename": "fig_14_10.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/safe_corgi.jpg"
+  },
+  {
+    "filename": "fig_14_11.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/safe_cube.jpg"
+  },
+  {
+    "filename": "fig_14_12.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/safe_hamster.jpg"
+  },
+  {
+    "filename": "fig_14_13.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/clip_guided/safe_hedgehog.jpg"
+  },
+  {
+    "filename": "fig_14_14.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/clip_guided/safe_corgi.jpg"
+  },
+  {
+    "filename": "fig_14_15.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/clip_guided/safe_cube.jpg"
+  },
+  {
+    "filename": "fig_14_16.jpg",
+    "caption": "Figure 9: Comparing classifier-free guided samples from our large model (first row), a small version trained on the same data (second row), and our released small model trained on a smaller, filtered dataset. In the final row, we show samples using our small model guided by a CLIP model trained on filtered data. Samples are not cherry-picked.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/size_comparison/clip_guided/safe_hamster.jpg"
+  },
+  {
+    "filename": "fig_15_1.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/corgi_notebook.jpg"
+  },
+  {
+    "filename": "fig_15_2.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/corgi_noised.jpg"
+  },
+  {
+    "filename": "fig_15_3.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/corgi_ours.jpg"
+  },
+  {
+    "filename": "fig_15_4.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/dumpster_notebook.jpg"
+  },
+  {
+    "filename": "fig_15_5.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/dumpster_noised.jpg"
+  },
+  {
+    "filename": "fig_15_6.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/dumpster_ours.jpg"
+  },
+  {
+    "filename": "fig_15_7.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/monkey_notebook.jpg"
+  },
+  {
+    "filename": "fig_15_8.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/monkey_noised.jpg"
+  },
+  {
+    "filename": "fig_15_9.jpg",
+    "caption": "Figure 10: Comparison of GLIDE to two CLIP guidance strategies applied to pre-trained ImageNet diffusion models. On the left, we use a vanilla CLIP model to guide the 256 × 256 256 256 256\\times 256 diffusion model from Dhariwal & Nichol ( 2021 ) , using a combination of engineered perceptual losses and data augmentations (Crowson, 2021a ) . In the middle, we use our noised ViT-B CLIP model to guide the ImageNet 64 × 64 64 64 64\\times 64 diffusion model from Dhariwal & Nichol ( 2021 ) , then apply a diffusion upsampler. On the right, we show random samples from GLIDE with classifier-free guidance scale 3.0.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/notebook_comp/monkey_ours.jpg"
+  },
+  {
+    "filename": "fig_16_1.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay1.jpg"
+  },
+  {
+    "filename": "fig_16_2.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay2.jpg"
+  },
+  {
+    "filename": "fig_16_3.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay3.jpg"
+  },
+  {
+    "filename": "fig_16_4.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay4.jpg"
+  },
+  {
+    "filename": "fig_16_5.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay5.jpg"
+  },
+  {
+    "filename": "fig_16_6.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay6.jpg"
+  },
+  {
+    "filename": "fig_16_7.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay7.jpg"
+  },
+  {
+    "filename": "fig_16_8.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/mask_overlay8.jpg"
+  },
+  {
+    "filename": "fig_16_9.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff1.jpg"
+  },
+  {
+    "filename": "fig_16_10.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff2.jpg"
+  },
+  {
+    "filename": "fig_16_11.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff3.jpg"
+  },
+  {
+    "filename": "fig_16_12.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff4.jpg"
+  },
+  {
+    "filename": "fig_16_13.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff5.jpg"
+  },
+  {
+    "filename": "fig_16_14.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff6.jpg"
+  },
+  {
+    "filename": "fig_16_15.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff7.jpg"
+  },
+  {
+    "filename": "fig_16_16.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/region_diff8.jpg"
+  },
+  {
+    "filename": "fig_16_17.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint1.jpg"
+  },
+  {
+    "filename": "fig_16_18.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint2.jpg"
+  },
+  {
+    "filename": "fig_16_19.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint3.jpg"
+  },
+  {
+    "filename": "fig_16_20.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint4.jpg"
+  },
+  {
+    "filename": "fig_16_21.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint5.jpg"
+  },
+  {
+    "filename": "fig_16_22.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint6.jpg"
+  },
+  {
+    "filename": "fig_16_23.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint7.jpg"
+  },
+  {
+    "filename": "fig_16_24.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/paint8.jpg"
+  },
+  {
+    "filename": "fig_16_25.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our1.jpg"
+  },
+  {
+    "filename": "fig_16_26.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our2.jpg"
+  },
+  {
+    "filename": "fig_16_27.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our3.jpg"
+  },
+  {
+    "filename": "fig_16_28.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our4.jpg"
+  },
+  {
+    "filename": "fig_16_29.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our5.jpg"
+  },
+  {
+    "filename": "fig_16_30.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our6.jpg"
+  },
+  {
+    "filename": "fig_16_31.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our7.jpg"
+  },
+  {
+    "filename": "fig_16_32.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/our8.jpg"
+  },
+  {
+    "filename": "fig_16_33.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_1_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_34.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_2_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_35.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_3_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_36.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_4_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_37.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_5_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_38.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_6_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_39.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_7_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_40.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/context_nc/prompt_8_wc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_41.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_1_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_42.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_2_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_43.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_3_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_44.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_4_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_45.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_5_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_46.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_6_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_47.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_7_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_16_48.jpg",
+    "caption": "Figure 11: Comparison of image inpainting quality on real images. (1) Local CLIP-guided diffusion (Crowson, 2021a ) , (2) PaintByWord++ (Bau et al., 2021 ; Avrahami et al., 2021 ) , (3) Blended Diffusion (Avrahami et al., 2021 ) . For our results, we follow Avrahami et al. ( 2021 ) and use CLIP to select the best of 64 samples. Our fine-tuned samples have more realistic lighting, shadows and textures, but sometimes don’t focus on the prompt (eg. golden necklace), whereas implicit samples capture the prompt better.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/blended_comp/no_context_nc/prompt_8_woc_nc.jpg"
+  },
+  {
+    "filename": "fig_17_1.jpg",
+    "caption": "(a) “toys for boys”",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/boy_toy.jpg"
+  },
+  {
+    "filename": "fig_17_2.jpg",
+    "caption": "(a) “toys for boys”",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/girl_toy.jpg"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "(a) “toys for boys”",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/boy_toy.jpg"
+  },
+  {
+    "filename": "fig_19.jpg",
+    "caption": "(b) “toys for girls”",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/girl_toy.jpg"
+  },
+  {
+    "filename": "fig_20_1.jpg",
+    "caption": "(a) Unguided",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/religion_scale_1.jpg"
+  },
+  {
+    "filename": "fig_20_2.jpg",
+    "caption": "(a) Unguided",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/religion_scale_3.jpg"
+  },
+  {
+    "filename": "fig_21.jpg",
+    "caption": "(a) Unguided",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/religion_scale_1.jpg"
+  },
+  {
+    "filename": "fig_22.jpg",
+    "caption": "(b) Classifier-free guidance (scale 3.0)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/safe_model/religion_scale_3.jpg"
+  },
+  {
+    "filename": "fig_23_1.jpg",
+    "caption": "Figure 14: Comparison of GLIDE (filtered) and GLIDE (small) samples for the prompt “orange triangle” (left) and “recycling symbol” (right). Even though these symbols were not filtered from the model, the filtered model generates less faithful renditions, likely due to the smaller dataset available.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/other_symbols/triangle/filtered.jpg"
+  },
+  {
+    "filename": "fig_23_2.jpg",
+    "caption": "Figure 14: Comparison of GLIDE (filtered) and GLIDE (small) samples for the prompt “orange triangle” (left) and “recycling symbol” (right). Even though these symbols were not filtered from the model, the filtered model generates less faithful renditions, likely due to the smaller dataset available.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/other_symbols/triangle/small.jpg"
+  },
+  {
+    "filename": "fig_23_3.jpg",
+    "caption": "Figure 14: Comparison of GLIDE (filtered) and GLIDE (small) samples for the prompt “orange triangle” (left) and “recycling symbol” (right). Even though these symbols were not filtered from the model, the filtered model generates less faithful renditions, likely due to the smaller dataset available.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/other_symbols/recycling/filtered.jpg"
+  },
+  {
+    "filename": "fig_23_4.jpg",
+    "caption": "Figure 14: Comparison of GLIDE (filtered) and GLIDE (small) samples for the prompt “orange triangle” (left) and “recycling symbol” (right). Even though these symbols were not filtered from the model, the filtered model generates less faithful renditions, likely due to the smaller dataset available.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/other_symbols/recycling/small.jpg"
+  },
+  {
+    "filename": "fig_24_1.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/happy_person/baseline_safe.jpg"
+  },
+  {
+    "filename": "fig_24_2.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/happy_person/guided_safe.jpg"
+  },
+  {
+    "filename": "fig_24_3.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/happy_person/guided_public.jpg"
+  },
+  {
+    "filename": "fig_25.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/happy_person/baseline_safe.jpg"
+  },
+  {
+    "filename": "fig_26.jpg",
+    "caption": "(b) GLIDE (filtered) + unfiltered public CLIP",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/happy_person/guided_safe.jpg"
+  },
+  {
+    "filename": "fig_27.jpg",
+    "caption": "(c) Baseline (publicly-available models)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/happy_person/guided_public.jpg"
+  },
+  {
+    "filename": "fig_28_1.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/worship/baseline_safe.jpg"
+  },
+  {
+    "filename": "fig_28_2.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/worship/guided_safe.jpg"
+  },
+  {
+    "filename": "fig_28_3.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/worship/guided_public.jpg"
+  },
+  {
+    "filename": "fig_29.jpg",
+    "caption": "(a) GLIDE (filtered)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/worship/baseline_safe.jpg"
+  },
+  {
+    "filename": "fig_30.jpg",
+    "caption": "(b) GLIDE (filtered) + unfiltered public CLIP",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/worship/guided_safe.jpg"
+  },
+  {
+    "filename": "fig_31.jpg",
+    "caption": "(c) Baseline (publicly-available models)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/public_guided_safe/worship/guided_public.jpg"
+  },
+  {
+    "filename": "fig_32_1.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_dalle.jpg"
+  },
+  {
+    "filename": "fig_32_2.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_unguided.jpg"
+  },
+  {
+    "filename": "fig_32_3.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_clip.jpg"
+  },
+  {
+    "filename": "fig_32_4.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_uncond.jpg"
+  },
+  {
+    "filename": "fig_33.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_dalle.jpg"
+  },
+  {
+    "filename": "fig_34.jpg",
+    "caption": "(b) GLIDE (Unguided)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_unguided.jpg"
+  },
+  {
+    "filename": "fig_35.jpg",
+    "caption": "(c) GLIDE (CLIP guidance, scale 2.0)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_clip.jpg"
+  },
+  {
+    "filename": "fig_36.jpg",
+    "caption": "(d) GLIDE (Classifier-free guidance, scale 3.0)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/bamboo_uncond.jpg"
+  },
+  {
+    "filename": "fig_37_1.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_dalle.jpg"
+  },
+  {
+    "filename": "fig_37_2.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_unguided.jpg"
+  },
+  {
+    "filename": "fig_37_3.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_clip.jpg"
+  },
+  {
+    "filename": "fig_37_4.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_uncond.jpg"
+  },
+  {
+    "filename": "fig_38.jpg",
+    "caption": "(a) DALL-E (Temp 0.85, CLIP reranked top 16 out of 512)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_dalle.jpg"
+  },
+  {
+    "filename": "fig_39.jpg",
+    "caption": "(b) GLIDE (Unguided)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_unguided.jpg"
+  },
+  {
+    "filename": "fig_40.jpg",
+    "caption": "(c) GLIDE (CLIP guidance, scale 2.0)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_clip.jpg"
+  },
+  {
+    "filename": "fig_41.jpg",
+    "caption": "(d) GLIDE (Classifier-free guidance, scale 3.0)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.10741/assets/figures/guidance_comp_grids/living_uncond.jpg"
+  }
+]

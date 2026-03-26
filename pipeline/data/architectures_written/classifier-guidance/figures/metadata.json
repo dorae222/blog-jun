@@ -1,0 +1,386 @@
+[
+  {
+    "filename": "fig_1.jpg",
+    "caption": "Figure 1 : Selected samples from our best ImageNet 512 × \\times 512 model (FID 3.85)",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet512-cp.jpg"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2 : Ablation of various architecture changes, showing FID as a function of wall-clock time. FID evaluated over 10k samples instead of 50k for efficiency.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2 : Ablation of various architecture changes, showing FID as a function of wall-clock time. FID evaluated over 10k samples instead of 50k for efficiency.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x1.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x2.png"
+  },
+  {
+    "filename": "fig_5_1.jpg",
+    "caption": "Figure 3 : Samples from an unconditional diffusion model with classifier guidance to condition on the class \"Pembroke Welsh corgi\". Using classifier scale 1.0 (left; FID: 33.0) does not produce convincing samples in this class, whereas classifier scale 10.0 (right; FID: 12.0) produces much more class-consistent images.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/uncond_scale1_corgi_v2.jpg"
+  },
+  {
+    "filename": "fig_5_2.jpg",
+    "caption": "Figure 3 : Samples from an unconditional diffusion model with classifier guidance to condition on the class \"Pembroke Welsh corgi\". Using classifier scale 1.0 (left; FID: 33.0) does not produce convincing samples in this class, whereas classifier scale 10.0 (right; FID: 12.0) produces much more class-consistent images.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/uncond_scale10_corgi_v2.jpg"
+  },
+  {
+    "filename": "fig_6.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/uncond_scale1_corgi_v2.jpg"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/uncond_scale10_corgi_v2.jpg"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 4 : Change in sample quality as we vary scale of the classifier gradients for a class-conditional ImageNet 128 × \\times 128 model.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x3.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 4 : Change in sample quality as we vary scale of the classifier gradients for a class-conditional ImageNet 128 × \\times 128 model.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x4.png"
+  },
+  {
+    "filename": "fig_8_3.png",
+    "caption": "Figure 4 : Change in sample quality as we vary scale of the classifier gradients for a class-conditional ImageNet 128 × \\times 128 model.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x5.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x3.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x4.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x5.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "Figure 5 : Trade-offs when varying truncation for BigGAN-deep and gradient scale for classifier guidance. Models are evaluated on ImageNet 128 × \\times 128. The BigGAN-deep results were produced using the TFHub model DeepMind ( 2018 ) at truncation levels [ 0.1 , 0.2 , 0.3 , … , 1.0 ] 0.1 0.2 0.3 … 1.0 [0.1,0.2,0.3,...,1.0] .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x6.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "Figure 5 : Trade-offs when varying truncation for BigGAN-deep and gradient scale for classifier guidance. Models are evaluated on ImageNet 128 × \\times 128. The BigGAN-deep results were produced using the TFHub model DeepMind ( 2018 ) at truncation levels [ 0.1 , 0.2 , 0.3 , … , 1.0 ] 0.1 0.2 0.3 … 1.0 [0.1,0.2,0.3,...,1.0] .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x7.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x6.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x7.png"
+  },
+  {
+    "filename": "fig_15_1.jpg",
+    "caption": "Figure 6 : Samples from BigGAN-deep with truncation 1.0 (FID 6.95, left) vs samples from our diffusion model with guidance (FID 4.59, middle) and samples from the training set (right).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_biggan-deep-256-t1.jpg"
+  },
+  {
+    "filename": "fig_15_2.jpg",
+    "caption": "Figure 6 : Samples from BigGAN-deep with truncation 1.0 (FID 6.95, left) vs samples from our diffusion model with guidance (FID 4.59, middle) and samples from the training set (right).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_imagenet256-guided-250step.jpg"
+  },
+  {
+    "filename": "fig_15_3.jpg",
+    "caption": "Figure 6 : Samples from BigGAN-deep with truncation 1.0 (FID 6.95, left) vs samples from our diffusion model with guidance (FID 4.59, middle) and samples from the training set (right).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_real.jpg"
+  },
+  {
+    "filename": "fig_16.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_biggan-deep-256-t1.jpg"
+  },
+  {
+    "filename": "fig_17.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_imagenet256-guided-250step.jpg"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_real.jpg"
+  },
+  {
+    "filename": "fig_19_1.jpg",
+    "caption": "Figure 7 : Nearest neighbors for samples from a classifier guided model on ImageNet 256 × \\times 256. For each image, the top row is a sample, and the remaining rows are the top 3 nearest neighbors from the dataset. The top samples were generated with classifier scale 1 and 250 diffusion sampling steps (FID 4.59). The bottom samples were generated with classifier scale 2.5 and 25 DDIM steps (FID 5.44).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/nn_250step.jpg"
+  },
+  {
+    "filename": "fig_19_2.jpg",
+    "caption": "Figure 7 : Nearest neighbors for samples from a classifier guided model on ImageNet 256 × \\times 256. For each image, the top row is a sample, and the remaining rows are the top 3 nearest neighbors from the dataset. The top samples were generated with classifier scale 1 and 250 diffusion sampling steps (FID 4.59). The bottom samples were generated with classifier scale 2.5 and 25 DDIM steps (FID 5.44).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/nn_ddim_25step.jpg"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "Figure 8 : Samples when increasing the classifier scale from 0.0 (left) to 5.5 (right). Each row corresponds to a fixed noise seed. We observe that the classifier drastically changes some images, while leaving others relatively unaffected.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet256_guided_sc_interp.jpg"
+  },
+  {
+    "filename": "fig_21_1.jpg",
+    "caption": "Figure 9 : Samples from StyleGAN2 (or StyleGAN for bedrooms) with truncation 1.0 (left) vs samples from our diffusion models (middle) and samples from the training set (right).",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_stylegan_lsun.jpg"
+  },
+  {
+    "filename": "fig_21_2.jpg",
+    "caption": "Figure 9 : Samples from StyleGAN2 (or StyleGAN for bedrooms) with truncation 1.0 (left) vs samples from our diffusion models (middle) and samples from the training set (right).",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_diff_lsun.jpg"
+  },
+  {
+    "filename": "fig_21_3.jpg",
+    "caption": "Figure 9 : Samples from StyleGAN2 (or StyleGAN for bedrooms) with truncation 1.0 (left) vs samples from our diffusion models (middle) and samples from the training set (right).",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_real_lsun.jpg"
+  },
+  {
+    "filename": "fig_22.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_stylegan_lsun.jpg"
+  },
+  {
+    "filename": "fig_23.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_diff_lsun.jpg"
+  },
+  {
+    "filename": "fig_24.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/reflow_real_lsun.jpg"
+  },
+  {
+    "filename": "fig_25.jpg",
+    "caption": "(a) DDIM latent reconstructions and interpolations on real images with no classifier guidance.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/interp0.jpg"
+  },
+  {
+    "filename": "fig_26_1.jpg",
+    "caption": "(a) DDIM latent reconstructions and interpolations on real images with classifier scale 1.0.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/interp1.jpg"
+  },
+  {
+    "filename": "fig_26_2.jpg",
+    "caption": "(a) DDIM latent reconstructions and interpolations on real images with classifier scale 1.0.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/interp2p5.jpg"
+  },
+  {
+    "filename": "fig_27.jpg",
+    "caption": "(a) DDIM latent reconstructions and interpolations on real images with classifier scale 1.0.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/interp1.jpg"
+  },
+  {
+    "filename": "fig_28.jpg",
+    "caption": "(b) DDIM latent reconstructions and interpolations on real images with classifier scale 2.5.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/interp2p5.jpg"
+  },
+  {
+    "filename": "fig_29_1.png",
+    "caption": "Figure 12 : The effect of changing temperature for an ImageNet 128 × \\times 128 model.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x8.png"
+  },
+  {
+    "filename": "fig_29_2.png",
+    "caption": "Figure 12 : The effect of changing temperature for an ImageNet 128 × \\times 128 model.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x9.png"
+  },
+  {
+    "filename": "fig_29_3.png",
+    "caption": "Figure 12 : The effect of changing temperature for an ImageNet 128 × \\times 128 model.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x10.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x8.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x9.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/x10.png"
+  },
+  {
+    "filename": "fig_33_1.jpg",
+    "caption": "Figure 13 : Samples at temperature 0.98 with epsilon scaling (left) and noise scaling (right).",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/temp_eps_98.jpg"
+  },
+  {
+    "filename": "fig_33_2.jpg",
+    "caption": "Figure 13 : Samples at temperature 0.98 with epsilon scaling (left) and noise scaling (right).",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/temp_noise_98.jpg"
+  },
+  {
+    "filename": "fig_34.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/temp_eps_98.jpg"
+  },
+  {
+    "filename": "fig_35.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/temp_noise_98.jpg"
+  },
+  {
+    "filename": "fig_36.jpg",
+    "caption": "Figure 14 : Samples from our best 512 × \\times 512 model (FID: 3.85). Classes are 1: goldfish, 279: arctic fox, 323: monarch butterfly, 386: african elephant, 130: flamingo, 852: tennis ball.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet512-upsample-250step-first.jpg"
+  },
+  {
+    "filename": "fig_37.jpg",
+    "caption": "Figure 15 : Samples from our best 512 × \\times 512 model (FID: 3.85). Classes are 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet512-upsample-250step-second.jpg"
+  },
+  {
+    "filename": "fig_38.jpg",
+    "caption": "Figure 16 : Difficult class samples from our best 512 × \\times 512 model (FID: 3.85). Classes are 432: bassoon, 468: cab, 424: barbershop, 444: bicycle-built-for-two, 981: ballplayer, 550: espresso maker.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet512-upsample-250step-hard.jpg"
+  },
+  {
+    "filename": "fig_39.jpg",
+    "caption": "Figure 17 : Samples from our guided 512 × \\times 512 model using 250 steps with classifier scale 4.0 (FID 7.72). Classes are 1: goldfish, 279: arctic fox, 323: monarch butterfly, 386: african elephant, 130: flamingo, 852: tennis ball.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet512-guided-250step-first.jpg"
+  },
+  {
+    "filename": "fig_40.jpg",
+    "caption": "Figure 18 : Samples from our guided 512 × \\times 512 model using 250 steps with classifier scale 4.0 (FID 7.72). Classes are 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet512-guided-250step-second.jpg"
+  },
+  {
+    "filename": "fig_41.jpg",
+    "caption": "Figure 19 : Random samples from our best ImageNet 512 × \\times 512 model (FID 3.85).",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet_512_upsample_random.jpg"
+  },
+  {
+    "filename": "fig_42.jpg",
+    "caption": "Figure 20 : Random samples from our guided 512 × \\times 512 model using 250 steps with classifier scale 4.0 (FID 7.72).",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet_512_random.jpg"
+  },
+  {
+    "filename": "fig_43.jpg",
+    "caption": "Figure 21 : Samples using our best 256 × \\times 256 model (FID 3.94). Classes are 1: goldfish, 279: arctic fox, 323: monarch butterfly, 386: african elephant, 130: flamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet256-guided-upsampled-250steps.jpg"
+  },
+  {
+    "filename": "fig_44.jpg",
+    "caption": "Figure 22 : Samples from our guided 256 × \\times 256 model using 250 steps with classifier scale 1.0 (FID 4.59). Classes are 1: goldfish, 279: arctic fox, 323: monarch butterfly, 386: african elephant, 130: flamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet256-guided-250step-v2.jpg"
+  },
+  {
+    "filename": "fig_45.jpg",
+    "caption": "Figure 23 : Samples from our guided 256 × \\times 256 model using 25 DDIM steps with classifier scale 2.5 (FID 5.44). Classes are 1: goldfish, 279: arctic fox, 323: monarch butterfly, 386: african elephant, 130: flamingo, 852: tennis ball, 933: cheeseburger, 562: fountain, 417: balloon, 281: tabby cat, 90: lorikeet, 992: agaric",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet256-guided-25step-ddim-correct-v2.jpg"
+  },
+  {
+    "filename": "fig_46.jpg",
+    "caption": "Figure 24 : Random samples from our best 256 × \\times 256 model (FID 3.94).",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet_256_upsample_random.jpg"
+  },
+  {
+    "filename": "fig_47.jpg",
+    "caption": "Figure 25 : Random samples from our guided 256 × \\times 256 model using 250 steps with classifier scale 1.0 (FID 4.59).",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/imagenet_256_random.jpg"
+  },
+  {
+    "filename": "fig_48.jpg",
+    "caption": "Figure 26 : Random samples from our LSUN bedroom model using 1000 sampling steps. (FID 1.90)",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/lsun_bedroom_500k.jpg"
+  },
+  {
+    "filename": "fig_49.jpg",
+    "caption": "Figure 27 : Random samples from our LSUN horse model using 1000 sampling steps. (FID 2.57)",
+    "figure_number": "Figure 27",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/lsun_horse_250k.jpg"
+  },
+  {
+    "filename": "fig_50.jpg",
+    "caption": "Figure 28 : Random samples from our LSUN cat model using 1000 sampling steps. (FID 5.57)",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.05233/assets/samples/lsun_cat_200k.jpg"
+  }
+]

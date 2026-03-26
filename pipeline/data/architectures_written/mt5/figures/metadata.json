@@ -1,0 +1,44 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Рис. 1: Page counts per language in mC4 (left axis), and percentage of mT5 training examples coming from each language, for different language sampling exponents α 𝛼 \\alpha (right axis). Our final model uses α 𝛼 \\alpha =0.3.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Рис. 2: Average F1 on the TyDi QA GoldP task across languages. Performance improves with increasing model capacity. The importance of in-language training data (whether gold In-Lanugage Multitask or synthetic Translate-Train) decreases with model scale, as seen by Zero-Shot closing the quality gap.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "(a) mT5-Small",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x4.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "(a) mT5-Small",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x5.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(a) mT5-Small",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(b) mT5-XXL",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Рис. 4: Error rates of mT5 on XQuAD zero-shot. Baseline : Fine-tuning on XQuAD alone. Domain Preserving Training (DPT) : Mixing in the unsupervised mC4 task with fine-tuning.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.11934/assets/x6.png"
+  }
+]
