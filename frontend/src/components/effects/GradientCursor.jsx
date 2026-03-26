@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 export default function GradientCursor() {
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const [visible, setVisible] = useState(false)
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => { setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0) }, [])
 
   useEffect(() => {
     const move = (e) => {
@@ -19,6 +22,7 @@ export default function GradientCursor() {
     }
   }, [])
 
+  if (isTouch) return null
   if (!visible) return null
 
   return (

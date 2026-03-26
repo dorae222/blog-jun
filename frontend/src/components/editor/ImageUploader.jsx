@@ -20,7 +20,7 @@ export default function ImageUploader({ onInsert }) {
 
   const handleUpload = async (file) => {
     if (!file || !file.type.startsWith('image/')) {
-      toast.error('Please select an image file')
+      toast.error('이미지 파일을 선택하세요')
       return
     }
 
@@ -36,7 +36,7 @@ export default function ImageUploader({ onInsert }) {
       setImageType('general')
       setShowDialog(true)
     } catch {
-      toast.error('Upload failed')
+      toast.error('업로드 실패')
     }
   }
 
@@ -58,7 +58,7 @@ export default function ImageUploader({ onInsert }) {
     onInsert(markdown)
     setShowDialog(false)
     setPending(null)
-    toast.success('Image inserted!')
+    toast.success('이미지 삽입됨')
   }
 
   const handleSkip = () => {
@@ -66,7 +66,7 @@ export default function ImageUploader({ onInsert }) {
     onInsert(`![${pending.name}](${pending.url})`)
     setShowDialog(false)
     setPending(null)
-    toast.success('Image uploaded!')
+    toast.success('이미지 업로드됨')
   }
 
   return (

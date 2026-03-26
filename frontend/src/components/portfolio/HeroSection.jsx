@@ -19,7 +19,7 @@ const ORBIT_TECHS = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden">
       <ParticleBackground count={40} />
       <GradientCursor />
 
@@ -53,12 +53,8 @@ export default function HeroSection() {
               return (
                 <motion.div
                   key={tech.name}
-                  className="absolute w-10 h-10 rounded-full flex items-center justify-center shadow-md z-20"
+                  className="absolute w-10 h-10 rounded-full flex items-center justify-center shadow-md z-20 glass"
                   style={{
-                    background: 'rgba(255,255,255,0.45)',
-                    backdropFilter: 'blur(12px) saturate(180%)',
-                    WebkitBackdropFilter: 'blur(12px) saturate(180%)',
-                    border: '1px solid rgba(255,255,255,0.3)',
                     left: '50%',
                     top: '50%',
                     marginLeft: -20,

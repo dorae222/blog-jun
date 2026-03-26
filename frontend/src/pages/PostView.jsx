@@ -12,6 +12,7 @@ import TagChip from '../components/common/TagChip'
 import ArchitectureLineageCard from '../components/blog/ArchitectureLineageCard'
 import PostLinksSection from '../components/blog/PostLinksSection'
 import { getPost } from '../api/posts'
+import { CATEGORY_ROUTE_MAP } from '../data/categories'
 
 export default function PostView() {
   const { slug } = useParams()
@@ -29,7 +30,7 @@ export default function PostView() {
     setLoading(true)
     getPost(slug)
       .then((r) => setPost(r.data))
-      .catch(console.error)
+      .catch(() => {})
       .finally(() => setLoading(false))
   }, [slug])
 
@@ -53,6 +54,8 @@ export default function PostView() {
       </div>
     )
   }
+
+  const catRouteKey = CATEGORY_ROUTE_MAP[post.category?.parent?.slug] || CATEGORY_ROUTE_MAP[post.category?.slug] || ''
 
   return (
     <motion.div
@@ -84,7 +87,7 @@ export default function PostView() {
             {post.category && (
               <>
                 <ChevronRight size={12} />
-                <Link to={`/posts?q=${post.category.name}`} className="hover:text-primary-600 transition-colors">
+                <Link to={`/posts/${catRouteKey}`} className="hover:text-primary-600 transition-colors">
                   {post.category.name}
                 </Link>
               </>
@@ -98,10 +101,10 @@ export default function PostView() {
             <div className="flex items-center gap-2 mb-4">
               {post.category && (
                 <Link
-                  to={`/posts`}
+                  to={`/posts/${catRouteKey}`}
                   className="text-sm font-medium px-3 py-1 rounded-full"
                   style={{
-                    backgroundColor: post.category.color + '20',
+                    backgroundColor: post.category.color + '12',
                     color: post.category.color,
                   }}
                 >

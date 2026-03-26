@@ -1,41 +1,41 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, User, Search } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
+import SearchModal from '../common/SearchModal'
+
+const isMac = typeof navigator !== 'undefined' && navigator.platform?.includes('Mac')
 
 export default function Header() {
   const { user, logout } = useAuth()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchModalOpen, setSearchModalOpen] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
   const userMenuRef = useRef(null)
-  const searchInputRef = useRef(null)
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  // Cmd+K / Ctrl+K 키보드 단축키
   useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus()
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        // Editor에서는 PostLinkModal용으로 사용하므로 가로채지 않음
+        if (location.pathname.startsWith('/editor')) return
+        e.preventDefault()
+        setSearchModalOpen((prev) => !prev)
+      }
     }
-  }, [searchOpen])
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [location.pathname])
 
   const closeMobile = () => setMobileOpen(false)
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      navigate(`/posts?q=${encodeURIComponent(searchQuery.trim())}`)
-      setSearchQuery('')
-      setSearchOpen(false)
-      closeMobile()
-    }
-  }
 
   return (
     <header className="sticky top-0 z-40 glass-nav">
@@ -50,7 +50,10 @@ export default function Header() {
           <Link
             to="/posts"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
-            style={{ color: 'var(--text-secondary)' }}
+            style={{
+              color: location.pathname.startsWith('/posts') ? 'var(--color-primary-600)' : 'var(--text-secondary)',
+              fontWeight: location.pathname.startsWith('/posts') ? 600 : 500,
+            }}
           >
             Posts
           </Link>
@@ -58,7 +61,10 @@ export default function Header() {
           <Link
             to="/architectures/tree"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
-            style={{ color: 'var(--text-secondary)' }}
+            style={{
+              color: location.pathname.startsWith('/architectures') ? 'var(--color-primary-600)' : 'var(--text-secondary)',
+              fontWeight: location.pathname.startsWith('/architectures') ? 600 : 500,
+            }}
           >
             Architecture
           </Link>
@@ -66,39 +72,26 @@ export default function Header() {
           <Link
             to="/about"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
-            style={{ color: 'var(--text-secondary)' }}
+            style={{
+              color: location.pathname === '/about' ? 'var(--color-primary-600)' : 'var(--text-secondary)',
+              fontWeight: location.pathname === '/about' ? 600 : 500,
+            }}
           >
             About
           </Link>
 
-          {/* 검색 */}
-          <div className="relative">
-            {searchOpen ? (
-              <form onSubmit={handleSearch} className="flex items-center">
-                <input
-                  ref={searchInputRef}
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="검색..."
-                  className="w-40 text-sm px-3 py-1 rounded-lg border outline-none focus:border-primary-400"
-                  style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
-                  onBlur={() => {
-                    if (!searchQuery) setSearchOpen(false)
-                  }}
-                />
-              </form>
-            ) : (
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="p-1.5 rounded-lg hover:text-primary-600 transition-colors"
-                style={{ color: 'var(--text-secondary)' }}
-                aria-label="Search"
-              >
-                <Search size={16} />
-              </button>
-            )}
-          </div>
+          {/* 검색 버튼 */}
+          <button
+            onClick={() => setSearchModalOpen(true)}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm transition-colors hover:bg-gray-50"
+            style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
+          >
+            <Search size={14} /> 검색
+            <kbd className="ml-2 text-[10px] px-1.5 py-0.5 rounded border"
+              style={{ borderColor: 'var(--border)' }}>
+              {isMac ? '⌘K' : 'Ctrl+K'}
+            </kbd>
+          </button>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -152,7 +145,7 @@ export default function Header() {
           <button
             className="md:hidden p-2"
             aria-label="검색"
-            onClick={() => setSearchOpen(!searchOpen)}
+            onClick={() => setSearchModalOpen(true)}
           >
             <Search size={20} />
           </button>
@@ -165,31 +158,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-
-      {/* Mobile 검색바 */}
-      <AnimatePresence>
-        {searchOpen && (
-          <motion.div
-            initial={{ height: 0 }}
-            animate={{ height: 'auto' }}
-            exit={{ height: 0 }}
-            className="md:hidden overflow-hidden border-t"
-            style={{ borderColor: 'var(--border)' }}
-          >
-            <form onSubmit={handleSearch} className="px-4 py-2">
-              <input
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="검색..."
-                className="w-full text-sm px-3 py-2 rounded-lg border outline-none focus:border-primary-400"
-                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
-              />
-            </form>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Mobile Nav */}
       <AnimatePresence>
@@ -234,6 +202,9 @@ export default function Header() {
           </motion.nav>
         )}
       </AnimatePresence>
+
+      {/* Search Modal */}
+      <SearchModal isOpen={searchModalOpen} onClose={() => setSearchModalOpen(false)} />
     </header>
   )
 }

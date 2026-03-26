@@ -161,9 +161,9 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
             handleImageUpload(imageFile)
               .then(url => {
                 editor.chain().focus().setImage({ src: url, alt: imageFile.name }).run()
-                toast.success('Image uploaded!')
+                toast.success('이미지 업로드됨')
               })
-              .catch(() => toast.error('Image upload failed'))
+              .catch(() => toast.error('이미지 업로드 실패'))
             return true
           }
         }
@@ -190,9 +190,9 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
             handleImageUpload(imageFile)
               .then(url => {
                 editor.chain().focus().setImage({ src: url, alt: imageFile.name }).run()
-                toast.success('Image uploaded!')
+                toast.success('이미지 업로드됨')
               })
-              .catch(() => toast.error('Image upload failed'))
+              .catch(() => toast.error('이미지 업로드 실패'))
             return true
           }
         }
@@ -309,9 +309,9 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     try {
       const url = await handleImageUpload(file)
       editor?.chain().focus().setImage({ src: url, alt: file.name }).run()
-      toast.success('Image uploaded!')
+      toast.success('이미지 업로드됨')
     } catch {
-      toast.error('Image upload failed')
+      toast.error('이미지 업로드 실패')
     }
     if (imageInputRef.current) imageInputRef.current.value = ''
   }, [editor, handleImageUpload])
@@ -325,9 +325,9 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
       const notebook = JSON.parse(text)
       const markdown = convertNotebookToContent(notebook)
       editor?.chain().focus().insertContent(markdown).run()
-      toast.success(`Notebook imported: ${file.name}`)
+      toast.success(`노트북 임포트됨: ${file.name}`)
     } catch (err) {
-      toast.error('Failed to parse notebook: ' + err.message)
+      toast.error('노트북 파싱 실패: ' + err.message)
     }
     if (notebookInputRef.current) notebookInputRef.current.value = ''
   }, [editor])
