@@ -1,0 +1,21 @@
+{
+  "slug": "inference-optimization-mfu",
+  "title": "LLM Inference Optimization: From MFU to Production Serving",
+  "title_ko": "LLM 추론 최적화: MFU부터 프로덕션 서빙까지",
+  "category_slug": "efficient-ai",
+  "summary": "LLM 추론 파이프라인(Prefill→Decode)의 각 단계를 분석하고, KV-Cache 관리, Continuous Batching, Speculative Decoding, Flash Attention 등 핵심 최적화 기법의 원리와 효과를 정리합니다. MFU 관점에서 각 최적화가 GPU 활용률에 미치는 영향을 분석합니다.",
+  "tags": [
+    "inference-optimization",
+    "KV-cache",
+    "continuous-batching",
+    "speculative-decoding",
+    "flash-attention",
+    "PagedAttention",
+    "vLLM",
+    "MFU",
+    "prefill",
+    "decode",
+    "serving"
+  ],
+  "is_pinned": false
+}

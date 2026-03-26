@@ -1,0 +1,21 @@
+{
+  "slug": "multi-gpu-parallel-pytorch",
+  "title": "Multi-GPU Parallel Processing: DDP, FSDP, and Tensor Parallelism",
+  "title_ko": "Multi-GPU 병렬 처리 실전: DDP, FSDP, Tensor Parallelism",
+  "category_slug": "efficient-ai",
+  "summary": "다중 GPU 환경에서의 병렬 처리 전략을 비교 분석합니다. 데이터 병렬(DDP), 완전 분산 데이터 병렬(FSDP), 텐서 병렬의 원리와 트레이드오프를 정리하고, vLLM/Ollama에서의 Multi-GPU 추론과 2x RTX 3090 기준 실전 팁을 제공합니다.",
+  "tags": [
+    "multi-gpu",
+    "DDP",
+    "FSDP",
+    "tensor-parallelism",
+    "pipeline-parallelism",
+    "data-parallelism",
+    "PyTorch",
+    "distributed-training",
+    "inference",
+    "vLLM",
+    "NVLink"
+  ],
+  "is_pinned": false
+}

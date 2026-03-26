@@ -1,0 +1,21 @@
+{
+  "slug": "nvfp4-quantization-concepts",
+  "title": "NVFP4 and Modern Quantization Formats: FP4, FP8, INT4, INT8 Compared",
+  "title_ko": "NVFP4와 현대 양자화 포맷 비교: FP4·FP8·INT4·INT8의 이해",
+  "category_slug": "efficient-ai",
+  "summary": "LLM 추론에 사용되는 현대 양자화 포맷(INT8, INT4, FP8, FP4/NVFP4)의 수치 표현 원리를 비교 분석합니다. 각 포맷의 표현 범위, 정밀도 트레이드오프, 하드웨어 지원 현황을 정리하고, Blackwell GPU의 NVFP4가 가져올 변화를 전망합니다.",
+  "tags": [
+    "quantization",
+    "NVFP4",
+    "FP8",
+    "FP4",
+    "INT4",
+    "INT8",
+    "NF4",
+    "Blackwell",
+    "inference-optimization",
+    "model-compression",
+    "GPU"
+  ],
+  "is_pinned": false
+}

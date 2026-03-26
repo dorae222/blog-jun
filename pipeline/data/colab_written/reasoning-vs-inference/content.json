@@ -1,0 +1,19 @@
+{
+  "slug": "reasoning-vs-inference",
+  "title": "Reasoning vs Inference: Two Axes of AI Efficiency",
+  "title_ko": "Reasoning vs Inference: AI 효율성의 두 축",
+  "category_slug": "efficient-ai",
+  "summary": "AI 효율성을 SW(Reasoning)와 HW(Inference) 두 축으로 구분하여 전체 지형도를 제시합니다. CoT·추론 모델·증류(SW)와 양자화·KV-Cache·멀티GPU·서빙(HW)의 핵심 기술을 정리하고, 두 축이 만나는 교차점과 후속 시리즈로의 로드맵을 안내합니다.",
+  "tags": [
+    "reasoning",
+    "inference-optimization",
+    "efficiency",
+    "chain-of-thought",
+    "quantization",
+    "KV-cache",
+    "speculative-decoding",
+    "serving",
+    "overview"
+  ],
+  "is_pinned": true
+}
