@@ -10,6 +10,11 @@
 
 ## 아키텍처 상세
 
+다음 다이어그램은 Chinchilla의 전체 아키텍처와 스케일링 법칙의 핵심을 보여준다.
+
+![Chinchilla 전체 아키텍처 및 스케일링 법칙 — 70B Dense Decoder-Only Transformer](figures/architecture.png)
+*Figure 1: Chinchilla 아키텍처 및 스케일링 법칙 — 70B 파라미터의 표준 Decoder-Only Transformer에 1.4T 토큰을 학습한 컴퓨트 최적 모델. 핵심은 아키텍처가 아니라 N*=D*/20 스케일링 법칙이다. (Source: Chinchilla 논문)*
+
 Chinchilla의 아키텍처 자체는 Gopher와 거의 동일한 표준 decoder-only Transformer이다. 핵심은 아키텍처가 아니라 **스케일링 법칙**에 있다.
 
 ### 모델 사양
@@ -52,6 +57,16 @@ $$L(N, D) = \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}} + E$$
 
 세 방법 모두 $D^* \approx 20N^*$라는 일관된 결론을 지지했다.
 
+다음 그래프는 세 가지 분석 방법의 예측을 겹쳐 보여준다. Kaplan et al.의 예측과 비교하면, 기존 대형 모델들이 상당히 과대 설계(overparameterized)되어 있음을 알 수 있다.
+
+![세 가지 분석 방법의 최적 토큰/파라미터 예측 — Kaplan 법칙과의 비교](figures/fig_1.png)
+*Figure 2: 최적 모델 크기 예측 — 세 가지 독립적 방법(Approach 1-3)과 Kaplan et al. 예측을 겹쳐 보여준다. 기존 대형 모델(Gopher, GPT-3)이 최적 대비 크게 과대 설계되어 있음을 보여준다. (Source: Chinchilla 논문)*
+
+아래 그림은 파라메트릭 손실 함수 L(N,D)의 피팅 결과를 IsoLoss 등고선과 IsoFLOP 곡선으로 시각화한 것이다.
+
+![IsoLoss 등고선과 IsoFLOP 곡선 — 파라메트릭 손실 함수 피팅 결과](figures/fig_4.png)
+*Figure 3: 파라메트릭 피팅 — (좌) IsoLoss 등고선과 효율 프론티어(파란선). Gopher 예산에서 최적 모델은 40B로 예측된다. (우) IsoFLOP 곡선에서 각 연산 예산별 최적 모델 크기를 보여준다. (Source: Chinchilla 논문)*
+
 ## 핵심 혁신
 
 ### 1. 컴퓨트 최적(Compute-Optimal) 학습
@@ -70,6 +85,11 @@ $$L(N, D) = \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}} + E$$
 
 70B 모델은 280B 대비 추론 시 약 4배 적은 메모리와 연산을 요구하므로, 동일 성능을 더 적은 비용으로 서빙할 수 있다. 이는 상용 배포에서 특히 중요한 장점이다.
 
+다음 그래프는 The Pile의 모든 서브셋에서 Chinchilla가 Gopher 대비 일관되게 낮은 bits-per-byte를 달성하는 것을 보여준다.
+
+![Pile 평가 — Chinchilla vs Gopher의 서브셋별 bpb 개선량](figures/fig_5.png)
+*Figure 4: Pile 서브셋별 성능 — 모든 서브셋에서 Chinchilla가 Gopher 대비 bpb 개선을 보인다. 특히 gutenberg_pg_19, europarl 등 긴 텍스트 도메인에서 큰 개선을 달성했다. (Source: Chinchilla 논문)*
+
 ## 벤치마크/성능
 
 | 벤치마크 | Gopher (280B) | Chinchilla (70B) | 차이 |
@@ -79,6 +99,11 @@ $$L(N, D) = \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}} + E$$
 | **HellaSwag** | 79.2% | **80.8%** | +1.6%p |
 | **LAMBADA** | 74.5% | **77.4%** | +2.9%p |
 | **WinoGrande** | 70.1% | **73.7%** | +3.6%p |
+
+MMLU에서도 Chinchilla는 57개 과목 중 51개에서 Gopher를 앞서며, 평균 7.5%p 향상을 달성했다.
+
+![MMLU 과목별 Chinchilla vs Gopher 상대 성능 비교](figures/fig_6.png)
+*Figure 5: MMLU 과목별 성능 — Chinchilla가 57개 과목 중 51개에서 Gopher를 능가(파란색)하고, 4개에서만 열세(주황색)를 보인다. conceptual_physics, college_physics 등에서 최대 35%p 향상을 달성했다. (Source: Chinchilla 논문)*
 
 ## 관련 모델 비교
 

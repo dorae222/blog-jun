@@ -6,6 +6,9 @@
 
 GPT-5는 GPQA Diamond, MMMU, MathBench 등 고난도 추론 벤치마크에서 전작 대비 큰 폭의 성능 향상을 기록했으며, 환각(hallucination)을 GPT-4o 대비 **45% 감소**시키는 데 성공했다.
 
+![GPT-5 아키텍처 개요 — Dense Transformer with Native Reasoning](figures/architecture.png)
+*Figure 1: GPT-5 아키텍처 개요 — Pre-Norm Transformer 기반 디코더 전용 구조에 내장 추론, 100만 토큰 컨텍스트, 도구 통합을 결합한 설계. (Source: OpenAI System Card)*
+
 ## 아키텍처 상세
 
 ### 내장 추론(Native Reasoning)
@@ -64,12 +67,21 @@ GPT-5는 **실시간 인터넷 검색과 코드 실행 도구를 기본 통합**
 
 ### 2. 대폭 감소한 환각
 
+![ChatGPT 프로덕션 트래픽에서의 사실성 비교 — 브라우징 활성화 상태](figures/fig_1.png)
+*Figure 2: ChatGPT 프로덕션 트래픽에서의 사실성 평가 — GPT-5 thinking 모드가 모든 이전 모델 대비 가장 높은 사실성을 달성. (Source: OpenAI System Card)*
+
 GPT-5는 환각률을 **9.6%**로 낮추었다(GPT-4o: 12.9%). 특히:
 - 웹 검색 활성화 시: 팩트 오류 **45% 감소** (GPT-4o 대비)
 - Thinking 모드 시: 팩트 오류 **80% 감소** (o3 대비)
 - LongFact-Concepts: 환각률 **1.0%** (o3: 5.2%)
 
+![브라우징 비활성화 시 평균 환각률 비교](figures/fig_3.png)
+*Figure 3: 브라우징 비활성화 시 환각률 — GPT-5 thinking 모드는 웹 검색 없이도 FActScore에서 7.8%로 GPT-4o(37.7%) 대비 대폭 개선. (Source: OpenAI System Card)*
+
 ### 3. 안전성 강화
+
+![HealthBench에서의 건강 관련 성능 및 안전성 평가](figures/fig_6.png)
+*Figure 4: HealthBench 성능 — GPT-5 thinking이 모든 이전 모델을 상회하며, 특히 도전적인 의료 대화(Hard)에서 46.2%로 압도적 성능을 기록. (Source: OpenAI System Card)*
 
 시스템 카드(arXiv:2601.03267)를 통해 안전성 평가를 투명하게 공개했다:
 - 생물학, 화학, 사이버 보안 등 고위험 영역 별도 안전장치
@@ -87,6 +99,9 @@ GPT-5는 환각률을 **9.6%**로 낮추었다(GPT-4o: 12.9%). 특히:
 | FActScore 환각 | - | 23.5% | **2.8%** | - |
 
 GPT-5 with thinking은 **o3 대비 50-80% 적은 출력 토큰**으로 동등하거나 더 나은 성능을 달성했다.
+
+![SWE-bench에서의 코드 생성 능력 평가](figures/fig_18.png)
+*Figure 5: SWE-bench 코드 생성 평가 — GPT-5가 실제 소프트웨어 이슈 해결에서 PR 생성 및 유닛 테스트 통과까지 수행하는 에이전트 능력을 보여줌. (Source: OpenAI System Card)*
 
 ## 관련 모델 비교
 

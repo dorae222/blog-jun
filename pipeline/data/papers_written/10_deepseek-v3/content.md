@@ -5,7 +5,7 @@ DeepSeek-V3는 2024년 12월 DeepSeek AI가 공개한 671B 파라미터 MoE 언�
 아래 그림은 DeepSeek-V3가 6개 핵심 벤치마크에서 주요 경쟁 모델들을 압도하는 성능을 보여준다.
 
 ![DeepSeek-V3 주요 벤치마크 비교](figures/fig_1.png)
-*DeepSeek-V3와 주요 경쟁 모델들의 벤치마크 성능 비교. MMLU-Pro, GPQA-Diamond, MATH 500, AIME 2024, Codeforces, SWE-bench Verified 6개 지표에서 DeepSeek-V3가 GPT-4o, Claude-3.5-Sonnet 등 클로즈드 모델을 포함한 전 모델 대비 전반적 우위를 보인다.*
+*Figure 1: DeepSeek-V3와 주요 경쟁 모델들의 벤치마크 성능 비교. MMLU-Pro, GPQA-Diamond, MATH 500, AIME 2024, Codeforces, SWE-bench Verified 6개 지표에서 DeepSeek-V3가 GPT-4o, Claude-3.5-Sonnet 등 클로즈드 모델을 포함한 전 모델 대비 전반적 우위를 보인다. (DeepSeek-AI, 2024)*
 
 발표 직후 오픈소스 LLM의 새로운 기준점을 제시한 것으로 평가받으며, GPT-4o, Claude-3.5-Sonnet 등 최상위 클로즈드 모델과 비견되는 성능으로 업계에 큰 충격을 주었다. 이후 DeepSeek-R1의 추론 모델 기반 아키텍처로 직접 이어졌으며, DeepSeek-V3.1, V3.2 등 지속적으로 업데이트가 이루어지고 있다.
 
@@ -34,7 +34,7 @@ Llama-3.1-405B의 훈련에 약 3,080만 H100 GPU-시간이 소요된 것으로 
 DeepSeek-V3의 전체 아키텍처는 아래 그림에서 확인할 수 있다. 왼쪽의 Transformer 블록 내부에는 MLA 어텐션이, 오른쪽 상단에는 DeepSeekMoE 기반 피드포워드 네트워크가 배치된다.
 
 ![MLA와 DeepSeekMoE 아키텍처 구조](figures/fig_2.png)
-*DeepSeek-V3의 핵심 아키텍처. 왼쪽은 MLA(Multi-head Latent Attention)의 저차원 잠재 압축 구조이며, 오른쪽은 DeepSeekMoE의 라우팅 전문가(Routed Expert)와 공유 전문가(Shared Expert)로 구성된 MoE 레이어를 보여준다. MLA에서는 Key-Value를 저차원 잠재 벡터 $c_t^{KV}$로 압축하여 추론 시 캐시 효율을 극적으로 개선한다.*
+*Figure 2: DeepSeek-V3의 핵심 아키텍처. 왼쪽은 MLA(Multi-head Latent Attention)의 저차원 잠재 압축 구조이며, 오른쪽은 DeepSeekMoE의 라우팅 전문가(Routed Expert)와 공유 전문가(Shared Expert)로 구성된 MoE 레이어를 보여준다. MLA에서는 Key-Value를 저차원 잠재 벡터 $c_t^{KV}$로 압축하여 추론 시 캐시 효율을 극적으로 개선한다. (DeepSeek-AI, 2024)*
 
 ### 보조 손실 없는 부하 균형 (Auxiliary-Loss-Free Load Balancing)
 
@@ -60,7 +60,7 @@ $$b_i \leftarrow b_i - \gamma \cdot \text{sign}(\text{load}_i - \text{target\_lo
 아래 히트맵은 이 접근법의 효과를 시각적으로 보여준다. 보조 손실 기반 방식에서는 전문가 부하가 전 도메인에 걸쳐 균일하게 분포하는 반면, 보조 손실 없는 방식에서는 특정 도메인(예: DM Mathematics)에 특화된 전문가가 자연스럽게 출현한다.
 
 ![Aux-Loss-Based vs Aux-Loss-Free 전문가 부하 히트맵](figures/fig_9.png)
-*보조 손실 기반(Aux-Loss-Based, 상단)과 보조 손실 없는(Aux-Loss-Free, 하단) 방식의 전문가별 상대 부하 히트맵 비교. Aux-Loss-Free 방식에서 도메인별 전문가 특화가 뚜렷하게 형성되며, 이는 보조 손실이 강제하는 인위적 균일 분포 대신 자연스러운 전문화가 이루어짐을 의미한다.*
+*Figure 9: 보조 손실 기반(Aux-Loss-Based, 상단)과 보조 손실 없는(Aux-Loss-Free, 하단) 방식의 전문가별 상대 부하 히트맵 비교. Aux-Loss-Free 방식에서 도메인별 전문가 특화가 뚜렷하게 형성되며, 이는 보조 손실이 강제하는 인위적 균일 분포 대신 자연스러운 전문화가 이루어짐을 의미한다. (DeepSeek-AI, 2024)*
 
 추가로 **보완적 시퀀스 단위 보조 손실(Complementary Sequence-Wise Auxiliary Loss)**을 사용하여 배치 전체가 아닌 시퀀스 단위에서도 균형을 유지한다:
 
@@ -75,7 +75,12 @@ H800 GPU의 FP8 텐서 코어를 활용하여 선형 레이어의 GEMM 연산을
 단순히 텐서 전체에 하나의 스케일링 팩터를 적용하는 per-tensor 양자화는 이상치(outlier)에 취약하다. DeepSeek-V3는 이를 해결하기 위해 보다 세밀한 타일 단위 양자화 전략을 도입했다. 아래 그림은 이 전략의 세부 구조를 보여준다.
 
 ![세밀한 FP8 양자화와 누적 정밀도 향상](figures/fig_7.png)
-*세밀한 양자화(Fine-grained Quantization) 전략과 고정밀 누적(Increasing Accumulation Precision) 방식. (a) 활성화는 1x128 per-token 타일, 가중치는 128x128 per-block 타일 단위로 개별 스케일링 팩터를 적용하여 FP8의 제한된 동적 범위 문제를 극복한다. (b) WGMMA 명령어의 누적 결과를 주기적으로 FP32 레지스터에 저장하여 누적 오차를 방지한다.*
+*Figure 7: 세밀한 양자화(Fine-grained Quantization) 전략과 고정밀 누적(Increasing Accumulation Precision) 방식. (a) 활성화는 1x128 per-token 타일, 가중치는 128x128 per-block 타일 단위로 개별 스케일링 팩터를 적용하여 FP8의 제한된 동적 범위 문제를 극복한다. (b) WGMMA 명령어의 누적 결과를 주기적으로 FP32 레지스터에 저장하여 누적 오차를 방지한다. (DeepSeek-AI, 2024)*
+
+전체 FP8 훈련의 데이터플로우는 아래 그림에서 확인할 수 있다. Forward 연산과 Weight 그래디언트 연산은 FP8로 수행하고, 마스터 가중치와 옵티마이저 상태는 BF16/FP32로 유지하는 하이브리드 구조이다.
+
+![FP8 혼합 정밀도 훈련 데이터플로우](figures/fig_6.png)
+*Figure 6: FP8 혼합 정밀도 훈련의 데이터플로우. Forward(Fprop)와 Weight 그래디언트(Wgrad) GEMM은 FP8 텐서 코어로 가속하고, 마스터 가중치와 옵티마이저 상태는 BF16/FP32로 유지하여 훈련 안정성과 연산 효율을 동시에 확보한다. (DeepSeek-AI, 2024)*
 
 구체적인 양자화 전략은 다음과 같다:
 - **활성화(Activation)**: 1x128 per-token tile 양자화 -- 토큰별로 독립적인 스케일링 팩터 적용
@@ -92,7 +97,15 @@ H800 GPU의 FP8 텐서 코어를 활용하여 선형 레이어의 GEMM 연산을
 - 파이프라인 버블(idle 시간)을 기존 대비 50% 감소
 - 통신 전용 SM을 20개로 제한하여 나머지 SM을 계산에 할당
 
-이를 통해 모델 규모가 커져도 계산-통신 비율이 일정하게 유지되면 전문가 병렬화의 오버헤드가 거의 제로에 수렴한다.
+이를 통해 모델 규모가 커져도 계산-통신 비율이 일정하게 유지되면 전문가 병렬화의 오버헤드가 거의 제로에 수렴한다. 아래 그림은 DualPipe의 단일 마이크로배치에서 계산과 통신이 어떻게 중첩되는지를 보여준다.
+
+![DualPipe 계산-통신 오버랩 타임라인](figures/fig_4.png)
+*Figure 4: DualPipe 알고리즘의 계산-통신 오버랩 타임라인. Forward 청크(삼각형)와 Backward 청크(삼각형) 실행 중에 MoE DISPATCH/COMBINE 통신이 동시에 수행되어, GPU idle 시간을 최소화한다. (DeepSeek-AI, 2024)*
+
+이 설계를 8개 디바이스에 걸친 파이프라인으로 확장하면 아래와 같은 스케줄이 형성된다. Forward, Backward, 그리고 이들이 겹쳐 실행되는 구간이 색상으로 구분되어 있다.
+
+![8-디바이스 파이프라인 병렬화 스케줄](figures/fig_5.png)
+*Figure 5: 8개 디바이스에 걸친 DualPipe 파이프라인 스케줄. Forward(주황), Backward for input(녹색), Backward for weights(하늘), Forward+Backward 겹침(청록)이 색상으로 구분되며, 기존 방식 대비 파이프라인 버블이 크게 감소했음을 확인할 수 있다. (DeepSeek-AI, 2024)*
 
 ## 방법론
 
@@ -121,7 +134,7 @@ $$h_t' = \text{FFN}_{\text{shared}}(h_t) + \sum_{i \in \text{TopK}} g'_{i,t} \cd
 MTP는 각 위치에서 다음 1개 토큰이 아닌 $D$개의 연속 토큰을 동시에 예측하도록 한다. DeepSeek-V3에서는 $D=1$ (1개의 추가 토큰 예측 모듈)을 사용한다. 아래 그림은 MTP 모듈이 메인 모델과 어떻게 연결되는지를 보여준다.
 
 ![Multi-Token Prediction 모듈 아키텍처](figures/fig_3.png)
-*Multi-Token Prediction(MTP) 모듈 구조. 메인 모델(왼쪽)의 히든 스테이트와 미래 토큰 임베딩을 결합하여 MTP Module 1(중간)이 두 번째 미래 토큰을, MTP Module 2(오른쪽)가 세 번째 미래 토큰을 순차적으로 예측한다. 임베딩 레이어와 출력 헤드를 메인 모델과 공유하여 파라미터 효율성을 유지하면서 추가 학습 신호를 생성한다.*
+*Figure 3: Multi-Token Prediction(MTP) 모듈 구조. 메인 모델(왼쪽)의 히든 스테이트와 미래 토큰 임베딩을 결합하여 MTP Module 1(중간)이 두 번째 미래 토큰을, MTP Module 2(오른쪽)가 세 번째 미래 토큰을 순차적으로 예측한다. 임베딩 레이어와 출력 헤드를 메인 모델과 공유하여 파라미터 효율성을 유지하면서 추가 학습 신호를 생성한다. (DeepSeek-AI, 2024)*
 
 #### MTP 모듈 아키텍처
 
@@ -196,6 +209,13 @@ DeepSeek-V3는 특히 다음 영역에서 두드러진 성능을 보인다:
 - **코딩**: LiveCodeBench (43.4%), Codeforces (1996)에서 SOTA. Codeforces 레이팅 1996은 상위 약 4%에 해당하는 수준이다.
 - **중국어**: C-Eval (86.5%)에서 최상위 수준으로, 중국어 데이터에 대한 충실한 사전 훈련의 효과를 보여준다.
 
+### 128K 컨텍스트 능력 검증
+
+DeepSeek-V3는 128K 토큰까지 확장된 컨텍스트 윈도우를 지원한다. 아래 Needle-in-a-Haystack 테스트에서 전 구간에 걸쳐 완벽한 점수를 기록하여, 초장문 컨텍스트에서도 정보 검색 능력이 저하되지 않음을 입증했다.
+
+![128K 컨텍스트 Needle-in-a-Haystack 평가](figures/fig_8.png)
+*Figure 8: DeepSeek-V3의 128K 컨텍스트 Needle-in-a-Haystack 압박 테스트 결과. 컨텍스트 길이(2K~128K)와 문서 깊이(0%~100%) 전 구간에서 10점 만점을 기록하여, YaRN 기반 컨텍스트 확장의 효과를 확인한다. (DeepSeek-AI, 2024)*
+
 ### 훈련 비용 효율성
 
 | 모델 | 훈련 비용 (추정) | 성능 수준 |
@@ -209,6 +229,11 @@ DeepSeek-V3는 특히 다음 영역에서 두드러진 성능을 보인다:
 ### 훈련 안정성
 
 14.8T 토큰 훈련 전반에 걸쳐 **손실 스파이크(loss spike) 없이 안정적인 수렴**을 달성했다. 이는 MoE 대규모 모델에서 매우 이례적인 결과로, 보조 손실 제거와 FP8 양자화 전략의 안정성을 동시에 입증한다. 전체 훈련 과정에서 롤백(rollback)이 한 번도 발생하지 않았다는 점은 특히 주목할 만하다.
+
+아래 그림은 FP8과 BF16 정밀도의 사전학습 perplexity 수렴 곡선을 비교한 것이다. 100B 토큰과 1T 토큰 규모 모두에서 두 정밀도의 수렴 특성이 사실상 동일함을 확인할 수 있다.
+
+![FP8 vs BF16 사전학습 perplexity 비교](figures/fig_10.png)
+*Figure 10: FP8(파란색)과 BF16(빨간색)의 사전학습 PPL 수렴 곡선 비교. 100B 토큰(왼쪽)과 1T 토큰(오른쪽) 규모 모두에서 FP8 훈련이 BF16과 동등한 수렴 특성을 보이며, 671B 규모 FP8 훈련의 실용성을 뒷받침한다. (DeepSeek-AI, 2024)*
 
 ### Ablation Study: 핵심 기법의 기여도
 

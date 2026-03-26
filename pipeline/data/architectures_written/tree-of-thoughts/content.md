@@ -12,6 +12,11 @@ ToT의 핵심 비유는 인간의 문제 해결 과정이다. 인간은 어려�
 
 ![Architecture](figures/architecture.svg)
 
+아래 그림은 기존 추론 방식과 ToT의 차이를 시각적으로 비교한다. 입출력(IO), Chain-of-Thought, Self-Consistency, Tree of Thoughts의 구조적 차이를 확인할 수 있다.
+
+![추론 방식 비교 — IO, CoT, CoT-SC, ToT의 구조적 차이](figures/fig_1.png)
+*Figure 1: 추론 방식 비교 — (a) IO는 직접 입출력, (b) CoT는 단일 선형 경로, (c) Self-Consistency는 여러 경로의 병렬 샘플링, (d) ToT는 트리 구조의 체계적 탐색으로 각 단계에서 평가와 가지치기를 수행한다. (Source: arXiv 2305.10601)*
+
 ## 아키텍처 상세
 
 ToT의 아키텍처는 네 가지 핵심 구성 요소로 이루어진다.
@@ -65,6 +70,11 @@ $$\text{DFS}(s) = \begin{cases} s & \text{if terminal}(s) \\ \text{DFS}(\arg\max
 
 ### 실행 예시: Game of 24
 
+다음은 Game of 24에서 ToT가 사고를 생성하고 평가하는 실제 프롬프트 예시이다.
+
+![Game of 24에서의 ToT — 사고 생성 프롬프트와 상태 평가 프롬프트](figures/fig_3.png)
+*Figure 2: Game of 24에서의 ToT — (a) Propose 전략으로 가능한 다음 연산을 생성하고, (b) Value 평가로 각 상태가 24에 도달할 가능성을 "sure/maybe/impossible"로 판단한다. (Source: arXiv 2305.10601)*
+
 Game of 24는 4개의 숫자와 사칙연산으로 24를 만드는 문제다. 이 문제는 계획, 시행착오, 백트래킹이 필수적으로 요구되어 ToT의 강점이 극대화된다.
 
 ```
@@ -98,6 +108,11 @@ Game of 24는 4개의 숫자와 사칙연산으로 24를 만드는 문제다. �
 
 4. **자기 평가(Self-Evaluation)**: LLM이 자신의 추론 과정을 평가하는 메타인지(metacognition) 능력을 활용한다. 이 자기 평가가 탐색의 가이드 역할을 하여, 무작위 탐색 대비 효율을 크게 높인다.
 
+아래는 Creative Writing 태스크에서 ToT의 의도적 탐색 과정을 보여준다. 5개의 계획을 샘플링한 후 투표로 최선의 계획을 선택한다.
+
+![Creative Writing에서의 ToT 의도적 탐색 — 5개 계획 샘플링과 투표 기반 선택](figures/fig_7.png)
+*Figure 3: Creative Writing 의도적 탐색 — (a) 입력에서 (b) 5개의 서로 다른 글쓰기 계획을 생성하고, (c) LLM 투표로 가장 일관성 있는 계획(Plan 2)을 선택한다. (Source: arXiv 2305.10601)*
+
 ## 벤치마크/성능
 
 | 과제 | CoT | Self-Consistency (k=100) | ToT (b=5) | 향상 (CoT 대비) |
@@ -107,6 +122,11 @@ Game of 24는 4개의 숫자와 사칙연산으로 24를 만드는 문제다. �
 | Crossword (5x5) | 16% | - | **60%** | +44%p |
 
 Game of 24에서 CoT 4% vs ToT 74%의 압도적 차이는 ToT의 위력을 극적으로 보여준다. 이 과제는 여러 숫자 조합을 시도하고, 잘못된 경로를 포기하는 백트래킹이 필수적인데, 이는 정확히 ToT가 제공하는 기능이다. Self-Consistency(k=100)도 9%에 불과하여, **"여러 번 풀어서 다수결"로는 해결할 수 없는 문제 유형**이 존재함을 실증한다. Crossword에서도 16% $\rightarrow$ 60%로 크게 향상되어, 제약 조건 만족(constraint satisfaction) 문제에서의 효과를 입증했다.
+
+다음은 Mini Crosswords에서의 DFS 탐색과 가지치기 과정이다. 제약 조건을 만족하지 못하는 경로는 즉시 가지치기되어 백트래킹한다.
+
+![Mini Crosswords에서의 ToT DFS — 사고 제안, 우선순위 큐, 상태 평가 및 가지치기](figures/fig_11.png)
+*Figure 4: Mini Crosswords DFS 탐색 — (a) 단어 단서에 대한 사고를 제안하고 우선순위 큐로 관리하며, (b) 남은 단서의 충족 가능성을 평가하여 불가능한 상태는 가지치기하고 부모 상태로 백트래킹한다. (Source: arXiv 2305.10601)*
 
 ## 학습
 

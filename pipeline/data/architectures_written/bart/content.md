@@ -12,6 +12,11 @@ BART 이전에는 BERT(양방향 인코더)와 GPT(자기회귀 디코더)가 �
 
 ## 아키텍처 상세
 
+다음 다이어그램은 BART의 전체 아키텍처를 상세히 보여준다. Bidirectional Encoder와 Autoregressive Decoder의 구조, Cross-Attention 연결, 5가지 노이즈 함수를 확인할 수 있다.
+
+![BART 전체 아키텍처 다이어그램 — Bidirectional Encoder, Autoregressive Decoder, Cross-Attention 구조](figures/architecture.png)
+*Figure 1: BART 아키텍처 개요 — 양방향 인코더가 손상된 텍스트를 인코딩하고, 자기회귀 디코더가 Cross-Attention을 통해 원본을 복원한다. 하단에 5가지 사전학습 노이즈 함수가 표시되어 있다. (Source: Meta AI)*
+
 ### 전체 구조
 
 BART는 표준 Transformer 인코더-디코더 구조를 따른다:
@@ -27,6 +32,11 @@ $$\text{BART} = \text{Bidirectional Encoder} + \text{Autoregressive Decoder}$$
 | Attention Heads | 12 | 16 |
 | Vocab Size | 50,265 | 50,265 |
 | Context Length | 1024 | 1024 |
+
+아래 그림은 BART의 핵심 구조를 간결하게 보여준다. 손상된 입력을 양방향 인코더가 처리하고, 자기회귀 디코더가 원본 시퀀스를 복원한다.
+
+![BART 인코더-디코더 구조 — 양방향 인코더로 손상 텍스트를 인코딩, 자기회귀 디코더로 복원](figures/fig_4.png)
+*Figure 2: BART 구조 — 손상된 텍스트(A \_ B \_ E)를 양방향 인코더가 인코딩하고, 자기회귀 디코더가 원본 시퀀스(A B C D E)를 순차적으로 복원한다. BERT의 양방향 문맥과 GPT의 생성 능력을 결합한 구조이다. (Source: arXiv 1910.13461)*
 
 ### 인코더
 
@@ -44,7 +54,10 @@ BART는 **Learned Absolute Position Embedding**을 사용한다. 최대 1024개 
 
 ## 핵심 혁신: 5가지 노이즈 함수
 
-BART의 진정한 혁신은 사전 학습에 사용되는 **5가지 노이즈 함수(Noise Function)**에 있다:
+BART의 진정한 혁신은 사전 학습에 사용되는 **5가지 노이즈 함수(Noise Function)**에 있다. 아래 그림은 이 다섯 가지 변환을 시각적으로 보여준다.
+
+![BART 5가지 노이즈 변환 — Token Deletion, Sentence Permutation, Document Rotation, Text Infilling](figures/fig_5.png)
+*Figure 3: BART 노이즈 변환 — Token Deletion(토큰 삭제), Sentence Permutation(문장 순서 변경), Document Rotation(문서 회전), Text Infilling(스팬 마스킹) 등 다양한 손상 방식을 조합하여 사전학습한다. (Source: arXiv 1910.13461)*
 
 ### 1. Token Masking
 BERT와 동일하게 임의 토큰을 `[MASK]`로 대체한다.
@@ -140,6 +153,14 @@ BART는 BERT와 GPT의 장점을 결합하면서도 T5보다 더 유연한 노�
 - 요약 파인튜닝 시 label smoothing 0.1 적용
 
 ## 실무 활용
+
+BART는 다양한 다운스트림 태스크에 유연하게 적응할 수 있다. 아래 그림들은 분류와 번역 태스크에 대한 파인튜닝 구조를 보여준다.
+
+![BART 분류 태스크 적용 — 동일 입력을 인코더와 디코더에 전달하여 최종 표현으로 분류](figures/fig_7.png)
+*Figure 4: BART 분류 파인튜닝 — 동일한 입력을 인코더와 디코더에 전달하고, 디코더의 최종 출력 표현을 사용하여 분류 레이블을 예측한다. (Source: arXiv 1910.13461)*
+
+![BART 기계 번역 적용 — 새로운 인코더를 추가하여 소스 언어를 처리](figures/fig_8.png)
+*Figure 5: BART 기계 번역 파인튜닝 — 소스 언어를 위한 새로운 인코더를 추가하고, 사전학습된 BART 인코더-디코더를 타깃 언어 생성에 활용한다. (Source: arXiv 1910.13461)*
 
 ### 1. 텍스트 요약
 BART의 가장 대표적인 활용처이다. `facebook/bart-large-cnn`은 Hugging Face에서 가장 많이 다운로드되는 요약 모델 중 하나이다.

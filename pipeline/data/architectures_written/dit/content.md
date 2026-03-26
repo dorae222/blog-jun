@@ -11,6 +11,11 @@ Scalable Diffusion Models with Transformers(DiT)는 2022년 Meta AI와 UC Berkel
 
 ## 아키텍처 상세
 
+다음 다이어그램은 DiT의 전체 구조와 네 가지 조건 주입 블록 변형을 보여준다.
+
+![DiT 아키텍처 — 전체 파이프라인과 DiT 블록 변형](figures/fig_3.png)
+*Figure 1: DiT 아키텍처 — 왼쪽: 노이즈된 잠재 맵을 패치화하여 DiT 블록으로 처리하는 전체 파이프라인. 오른쪽: adaLN-Zero, Cross-Attention, In-Context 세 가지 조건 주입 블록 변형. adaLN-Zero가 가장 높은 성능을 달성한다. (Source: Peebles & Xie, 2022)*
+
 ### 전체 파이프라인
 
 DiT는 LDM과 동일하게 VAE 잠재 공간에서 동작한다:
@@ -45,6 +50,11 @@ DiT는 LDM과 동일하게 VAE 잠재 공간에서 동작한다:
 | Adaptive LN (adaLN) | 조건으로 LN 스케일·시프트 생성 | 2.85 |
 | **adaLN-Zero** | adaLN + 게이트 0 초기화 | **2.27** |
 
+다음 그래프는 네 가지 조건 주입 방법의 학습 전 과정에서의 FID 비교이다.
+
+![네 가지 조건 주입 전략의 FID 비교](figures/fig_5.png)
+*Figure 2: 조건 주입 전략 비교 — adaLN-Zero가 모든 학습 단계에서 Cross-Attention, In-Context, adaLN보다 일관되게 낮은 FID를 달성한다. (Source: Peebles & Xie, 2022)*
+
 ### adaLN-Zero 블록
 
 adaLN-Zero는 DiT의 핵심 설계 선택이다:
@@ -71,6 +81,16 @@ DiT는 네 가지 크기(S/B/L/XL)와 세 가지 패치 크기(2/4/8) 조합을 
 
 핵심 발견: **GFLOPs가 증가할수록 FID가 체계적으로 감소**한다. 패치 크기를 줄이는 것(시퀀스 길이 증가)이 모델 크기를 키우는 것만큼이나 효과적이다.
 
+아래 그래프는 모델 크기와 패치 크기의 12가지 조합에서 학습에 따른 FID 변화를 보여준다.
+
+![12가지 DiT 변형의 학습에 따른 FID 스케일링 거동](figures/fig_6.png)
+*Figure 3: DiT 스케일링 거동 — 상단: 패치 크기 고정 시 모델 크기에 따른 FID 변화. 하단: 모델 크기 고정 시 패치 크기에 따른 FID 변화. 두 축 모두에서 GFLOPs 증가가 성능 향상을 가져온다. (Source: Peebles & Xie, 2022)*
+
+특히 Transformer GFLOPs와 FID 간에는 -0.93의 강한 음의 상관관계가 존재한다.
+
+![Transformer GFLOPs와 FID-50K 간의 상관관계](figures/fig_8.png)
+*Figure 4: GFLOPs-FID 상관관계 — 12개 DiT 변형에서 Transformer GFLOPs와 FID 사이에 -0.93의 강한 음의 상관관계가 관찰되어, 확산 모델에서도 스케일링 법칙이 성립함을 입증한다. (Source: Peebles & Xie, 2022)*
+
 ## 핵심 혁신
 
 1. **U-Net → Transformer 전환**: 확산 모델의 백본을 Transformer로 대체할 수 있음을 증명하여, 이후 Sora, SD3, Flux 등의 방향을 제시하였다.
@@ -88,7 +108,10 @@ DiT는 네 가지 크기(S/B/L/XL)와 세 가지 패치 크기(2/4/8) 조합을 
 | ADM (CFG) | 4.59 | 186.7 | ImageNet 256 |
 | BigGAN-deep | 6.95 | 198.2 | ImageNet 256 |
 
-DiT-XL/2는 CFG 적용 시 FID 2.27로 기존 모든 클래스 조건부 모델을 능가하였다.
+DiT-XL/2는 CFG 적용 시 FID 2.27로 기존 모든 클래스 조건부 모델을 능가하였다. 다음은 기존 확산 모델과의 FID-GFLOPs 비교이다.
+
+![DiT와 기존 확산 모델의 FID-GFLOPs 비교](figures/fig_2.png)
+*Figure 5: DiT vs 기존 확산 모델 — 왼쪽: DiT 스케일링 곡선. 오른쪽: DiT-XL/2가 ADM, LDM 등 U-Net 기반 모델 대비 더 적은 GFLOPs로 더 낮은 FID를 달성하여 계산 효율성에서도 우위를 보인다. (Source: Peebles & Xie, 2022)*
 
 ## 관련 모델 비교
 

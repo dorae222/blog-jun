@@ -69,6 +69,11 @@ outputs = model.generate(inputs, max_new_tokens=500, temperature=0.7)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
+다음 그림은 Qwen3.5의 핵심인 Gated DeltaNet과 GQA의 3:1 하이브리드 어텐션 인터리빙 구조를 상세히 보여준다.
+
+![Qwen3.5 하이브리드 어텐션 아키텍처 상세도](figures/detail.png)
+*Figure 2: Qwen3.5 하이브리드 어텐션 상세 — Gated DeltaNet 선형 어텐션(좌)과 GQA 풀 어텐션(우)이 3:1 비율로 교차 배치되어, 선형 복잡도의 효율성과 장거리 의존성 포착을 동시에 달성한다. (Source: Alibaba Cloud)*
+
 ## 핵심 혁신
 
 ### 1. Gated DeltaNet

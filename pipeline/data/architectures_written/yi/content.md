@@ -38,6 +38,16 @@ LLaMA-2 구조에서 3가지 변화: (1) 64K vocab—한자·한글 등 CJK 문�
 
 ## 학습
 
+Yi의 학습 데이터 품질은 엄격한 전처리 파이프라인을 통해 확보된다.
+
+![Yi의 사전학습 데이터 클리닝 파이프라인 — 다단계 필터링과 품질 관리](figures/fig_1.png)
+*Figure 1: Yi 사전학습 데이터 클리닝 파이프라인 — 웹 데이터부터 고품질 코퍼스까지 다단계 필터링, 중복 제거, 품질 점수화를 거쳐 학습 데이터를 구성한다. (Source: Young et al., 2024)*
+
+아래 차트는 3.1T 토큰으로 구성된 이중 언어 데이터의 소스별 비율을 보여준다.
+
+![Yi 사전학습 데이터 구성 — 영어와 중국어 이중 언어 데이터 혼합 비율](figures/fig_2.png)
+*Figure 2: Yi 사전학습 데이터 구성 — 3.1T 토큰의 고품질 영어/중국어 이중 언어 데이터로, LLaMA와 Falcon 대비 더 엄격한 클리닝 파이프라인을 통해 구축되었다. (Source: Young et al., 2024)*
+
 3T 토큰 이상(영어 약 60%, 중국어 약 40%). BPE 64K vocab(SentencePiece). AdamW, cosine lr schedule, gradient clipping. Flash Attention 2 적용. Yi-34B-200K은 YARN 방식으로 컨텍스트 외삽 후 장문 데이터로 추가 파인튜닝.
 
 ### 관련 모델
@@ -86,6 +96,11 @@ RMSNorm은 LayerNorm에서 평균 계산을 생략한 정규화 기법으로, $\
 SwiGLU는 SiLU 활성화와 게이트 메커니즘을 결합한 FFN 활성화 함수이다. $\text{SwiGLU}(x) = \text{SiLU}(xW_1) \otimes (xW_2)$ 형태로, GELU/ReLU 대비 동일 파라미터에서 더 나은 성능을 제공한다. FFN 차원을 $\frac{2}{3} \times 4d$로 조정하여 파라미터 수를 유지한다.
 
 
+SFT 데이터의 품질이 스케일링에 미치는 영향은 아래 그래프에서 확인할 수 있다.
+
+![SFT 데이터 스케일링 곡선 — Yi의 고품질 SFT 데이터가 UltraChat 대비 가파른 성능 향상을 보임](figures/fig_5.png)
+*Figure 3: SFT 데이터 스케일링 곡선 — Yi의 SFT 데이터(주황색)는 UltraChat(파란색) 대비 가파른 스케일링 기울기를 보이며, 데이터 품질의 중요성을 입증한다. (Source: Young et al., 2024)*
+
 ## 벤치마크/성능
 
 | 벤치마크 | Yi | 비교 모델 |
@@ -104,6 +119,11 @@ Yi은 다양한 추론 프레임워크(vLLM, TGI, ONNX Runtime 등)에서 지원
 
 ### 3. 연구 베이스라인
 Yi은 GQA, RoPE 연구의 표준 베이스라인으로 활용된다.
+
+Yi-34B-200K의 200K 컨텍스트 성능은 Needle-in-a-Haystack 평가에서 확인된다.
+
+![Yi-34B-200K Needle-in-a-Haystack 평가 — 200K 토큰까지 거의 완벽한 검색 성능](figures/fig_6.png)
+*Figure 4: Yi-34B-200K Needle-in-a-Haystack 평가 — 200K 토큰 길이까지 거의 전체 영역에서 녹색(성공)을 보이며, YARN 기반 컨텍스트 외삽의 효과를 입증한다. (Source: Young et al., 2024)*
 
 ## 한계 및 전망
 

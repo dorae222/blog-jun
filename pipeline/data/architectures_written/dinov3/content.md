@@ -10,7 +10,10 @@ DINOv3는 2025년 Meta FAIR에서 발표한 7B 파라미터 규모의 비전 파
 
 특히 LLaVA, Cambrian 등 멀티모달 LLM의 비전 백본으로 CLIP ViT-L/14를 DINOv3로 교체했을 때 시각적 그라운딩, 공간 추론, 세밀한 시각 인식 능력이 일관되게 향상되었으며, 이는 비전 인코더의 스케일 업이 멀티모달 AI 시스템 전체의 성능 향상으로 직결됨을 보여주었다. DINOv3는 비전 표현 학습의 규모와 품질 모두에서 새로운 기준을 수립한 모델이다.
 
-![Architecture](figures/architecture.svg)
+아래 다이어그램은 DINOv3의 ViT-giant2 아키텍처와 자기증류 프레임워크의 전체 구조를 보여준다.
+
+![DINOv3 ViT-giant2 아키텍처 — 7B 파라미터 비전 트랜스포머 전체 구조](figures/architecture.png)
+*Figure 1: DINOv3 ViT-giant2 아키텍처 — 48개 레이어, 4,544 히든 차원, SwiGLU FFN, Register Token을 포함한 7B 규모 비전 파운데이션 모델 구조와 자기증류 프레임워크. (Meta FAIR)*
 
 ## 아키텍처 상세
 
@@ -52,6 +55,11 @@ DINOv2의 학습 목표를 계승하여, 이미지 수준 DINO 자기증류 손�
 $$\mathcal{L} = \alpha \cdot \mathcal{L}_\text{DINO} + \beta \cdot \mathcal{L}_\text{iBOT} + \gamma \cdot \mathcal{L}_\text{KoLeo}$$
 
 Teacher 네트워크는 Student의 EMA로 업데이트되며($\text{momentum}: 0.994 \to 1.0$, cosine 스케줄), centering과 sharpening을 적용하여 모드 붕괴(mode collapse)를 방지한다. 멀티크롭 전략으로 2개의 글로벌 뷰(518²)와 다수의 로컬 뷰(98²)를 동시에 사용하여 다중 스케일 표현을 학습한다.
+
+아래 다이어그램은 DINO 계열의 자기증류+마스크 이미지 모델링 학습 프레임워크와 비전 스케일링 법칙의 핵심을 상세히 보여준다.
+
+![DINOv3 자기증류 및 마스크 이미지 모델링 학습 프레임워크 상세](figures/detail.png)
+*Figure 2: DINOv3 학습 프레임워크 — Teacher-Student 자기증류와 DINO+iBOT 결합 손실, 멀티크롭 전략, 그리고 DINO 계열의 스케일링 진화 과정(86M→1.1B→7B). (Meta FAIR)*
 
 ## 핵심 혁신
 

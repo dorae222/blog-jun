@@ -110,7 +110,10 @@ $$q_{t,i}^{C\top} k_{j,i}^C = q_{t,i}^{C\top} W_i^{UK} c_j^{KV} = \tilde{q}_{t,i
 
 ### DeepSeekMoE
 
-DeepSeekMoE는 두 가지 전략을 결합하여 전통적 MoE의 한계를 극복한다.
+DeepSeekMoE는 두 가지 전략을 결합하여 전통적 MoE의 한계를 극복한다. 다음 그림은 DeepSeekMoE의 전체 처리 흐름을 개략적으로 보여준다. 입력 토큰이 Self-Attention을 거친 후, Router(게이팅 네트워크)가 160개의 세분화된 전문가 중 Top-6을 동적으로 선택하고, 선택된 전문가의 가중 출력을 합산하여 최종 결과를 생성한다.
+
+![DeepSeekMoE의 전체 처리 흐름과 라우팅 구조](figures/architecture.png)
+*Figure 6: DeepSeekMoE 아키텍처 개요. 입력 토큰이 Self-Attention Layer를 거친 후 Router/Gating Network를 통해 Top-K 전문가가 선택되며, 선택된 전문가들의 가중합으로 출력이 생성된다. 236B 총 파라미터 중 토큰당 21B만 활성화하는 희소 구조의 핵심 원리를 보여준다. (DeepSeek AI, 2024)*
 
 **세분화된 전문가(Fine-grained Experts)**: 전통적 MoE가 $N$개의 전문가에서 $K$개를 활성화한다면, DeepSeekMoE는 전문가의 FFN 차원을 $1/m$로 줄이고 전문가 수를 $m$배 늘려 $mN$개의 더 작은 전문가에서 $mK$개를 활성화한다. 이를 통해 동일한 활성화 파라미터 수를 유지하면서 전문가 조합의 가짓수가 $\binom{mN}{mK}$로 기하급수적으로 증가하여, 더 정밀한 지식 분할과 유연한 전문가 조합이 가능해진다.
 

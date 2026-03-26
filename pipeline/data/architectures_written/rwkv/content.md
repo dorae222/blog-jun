@@ -14,6 +14,9 @@ RWKV는 학술 연구실이 아닌 오픈소스 커뮤니티에서 시작하여 
 
 ## 아키텍처 상세
 
+![RWKV 블록 내부 구성요소 — Time Mixing과 Channel Mixing 모듈의 R, W, K, V 연산 흐름](figures/fig_2_1.png)
+*Figure 1: RWKV 블록 내부 구조 — 하단의 Time Mixing 모듈(WKV 연산자, Receptance 게이트)과 상단의 Channel Mixing 모듈(FFN 대체)로 구성된다. (Source: Peng et al., 2023)*
+
 RWKV 블록은 두 가지 핵심 모듈로 구성된다.
 
 ### Time Mixing (시퀀스 방향 정보 혼합)
@@ -49,6 +52,9 @@ Transformer의 FFN에 해당하는 모듈이다. Token Shift를 적용한 뒤, S
 
 $$o_t = \sigma(r'_t) \odot (W_v' \cdot \max(k'_t, 0)^2)$$
 
+![RWKV 언어 모델링 아키텍처 — 토큰별 Time Mix와 Channel Mix 처리 및 Token Shift 연결 구조](figures/fig_3.png)
+*Figure 2: RWKV 언어 모델링 전체 아키텍처 — 각 토큰이 Layer Norm, Time Mix, Channel Mix를 거치며 Token Shift로 인접 토큰 정보를 전달한다. 학습 시 병렬, 추론 시 순환으로 동작한다. (Source: Peng et al., 2023)*
+
 ## 핵심 혁신
 
 RWKV의 핵심 혁신은 세 가지이다.
@@ -74,6 +80,9 @@ RWKV의 핵심 혁신은 세 가지이다.
 | Mamba | 선택적 SSM | Parallel scan | $O(1)$ 메모리 | GPT-NeoX |
 | RetNet | Retention | 완전 병렬 | $O(1)$ 메모리 | SentencePiece |
 | Transformer | Self-Attention | 완전 병렬 | $O(N)$ KV cache | 다양 |
+
+![RWKV Time-Mixing 블록의 RNN 셀 형태 — Token Shift, WKV 순환 계산, Receptance 게이트 연산 흐름](figures/fig_14.png)
+*Figure 3: Time-Mixing 블록의 RNN 셀 표현 — Token Shift(노란색), 분모 계산(빨간색 1), 분자 계산(파란색 2), 분수 계산(분홍색 3)으로 구성된 순환 연산 구조. 추론 시 O(1) 메모리로 동작한다. (Source: Peng et al., 2023)*
 
 ## 학습
 
@@ -117,6 +126,9 @@ class RWKVTimeMixing(nn.Module):
         out = torch.sigmoid(r) * wkv
         return self.W_o(out), new_a, new_b
 ```
+
+![RWKV와 Transformer의 텍스트 생성 누적 시간 비교 — RWKV는 선형, Transformer는 초선형 증가](figures/fig_13.png)
+*Figure 4: 추론 시간 비교 — RWKV는 토큰 수에 대해 선형적으로 증가하는 반면, Transformer 기반 모델들은 KV 캐시로 인해 초선형 증가를 보인다. (Source: Peng et al., 2023)*
 
 ## 관련 모델
 

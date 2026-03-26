@@ -104,6 +104,11 @@ $$P(x_{t'} \mid \mathcal{D}_t, x_{<t'})$$
 ![검색 stride 크기에 따른 Perplexity 변화 분석](figures/fig_7.png)
 *Figure 5: WikiText-103 개발 세트에서 검색 stride s(연속 검색 사이의 토큰 수)에 따른 Perplexity. s=4에서 성능과 런타임의 최적 균형점이 형성되며, 이 값을 논문 전체에서 기본 설정으로 사용한다 (Ram et al., 2023).*
 
+쿼리 길이 $\ell$ 또한 성능에 큰 영향을 미치는 하이퍼파라미터입니다. 아래 그래프는 BM25에서 쿼리 토큰 수에 따른 perplexity 변화를 보여줍니다.
+
+![BM25 쿼리 길이에 따른 Perplexity 변화 분석](figures/fig_8.png)
+*Figure 6: WikiText-103 개발 세트에서 BM25를 사용할 때 쿼리 토큰 수 l에 따른 Perplexity. 모델 규모에 관계없이 l=32 부근에서 최적 성능이 형성되며, 이 값을 논문 전체에서 기본 쿼리 길이로 사용한다 (Ram et al., 2023).*
+
 Stride 크기 $s$는 검색 빈도와 계산 비용 사이의 트레이드오프를 결정하는 핵심 하이퍼파라미터입니다.
 
 | Stride $s$ | 검색 빈도 | 문서 신선도 | 계산 비용 | 적합한 시나리오 |
@@ -182,6 +187,11 @@ $$\text{PPL}(X) = \exp\left(-\frac{1}{T}\sum_{t=1}^{T} \log P(x_t \mid x_{<t})\r
 
 ### WikiText-103 결과
 
+아래 그래프는 다양한 규모의 GPT-2 모델에서 검색 증강(BM25) 적용 전후의 perplexity를 비교합니다. 모든 모델 규모에서 일관된 성능 향상이 관찰됩니다.
+
+![다양한 규모의 GPT-2 모델에서 In-Context RALM 성능 비교](figures/fig_4_1.png)
+*Figure 4: WikiText-103 테스트 세트에서 GPT-2 계열 모델의 검색 증강 전후 Perplexity 비교. 117M부터 1.5B까지 모든 규모에서 BM25 기반 In-Context RALM이 baseline 대비 일관된 성능 향상을 달성한다 (Ram et al., 2023).*
+
 WikiText-103에서의 perplexity 비교 결과는 다음과 같습니다.
 
 | 모델 | 파라미터 수 | Baseline PPL | + BM25 PPL | + BM25 + LM Rerank PPL | PPL 감소율 |
@@ -251,6 +261,15 @@ Stride가 작아질수록 perplexity가 감소하지만, 한계 효용(marginal 
 반면 대규모 모델(GPT-J, 6B)은 풍부한 attention head와 깊은 레이어를 통해 검색 문서에서 태스크 관련 정보를 정교하게 추출하고 통합할 수 있습니다. 이는 few-shot in-context learning에서도 관찰되는 패턴으로, 모델 규모가 클수록 프롬프트에 포함된 정보를 더 잘 활용합니다.
 
 이 관찰은 중요한 실용적 함의를 가집니다. GPT-4, Claude, LLaMA-3 등 수십~수백 B 규모의 현대 모델에서는 In-Context RALM의 효과가 논문에서 보고된 것보다 훨씬 더 클 수 있음을 시사합니다.
+
+### 다운스트림 태스크에서의 효과
+
+In-Context RALM은 언어 모델링(perplexity) 개선뿐 아니라, open-domain QA 등 다운스트림 태스크에서도 효과를 검증합니다. 아래 그래프는 Natural Questions와 TriviaQA에서 컨텍스트 내 문서 수를 변화시키며 제로샷 성능을 측정한 결과입니다.
+
+![Natural Questions와 TriviaQA에서 In-Context RALM 제로샷 성능](figures/fig_10.png)
+*Figure 8: Natural Questions 및 TriviaQA 개발 세트에서 In-Context RALM의 제로샷 성능. DPR로 검색된 문서 수를 변화시키며 LLaMA 7B/13B 모델에서 EM(Exact Match) 성능을 측정한다. 문서 수가 증가할수록 성능이 향상되며, 모델 규모가 클수록 검색 문서를 더 효과적으로 활용한다 (Ram et al., 2023).*
+
+이 결과는 In-Context RALM이 perplexity 감소를 넘어 실제 태스크에서도 유의미한 성능 향상을 가져옴을 보여주며, 특히 파인튜닝 없이도 제로샷 설정에서 효과적이라는 점이 주목할 만합니다.
 
 ## 의의 및 한계
 

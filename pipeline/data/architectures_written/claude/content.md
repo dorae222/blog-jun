@@ -8,6 +8,11 @@ Anthropic은 OpenAI 출신 연구자들이 설립한 AI 안전 연구 기업으�
 
 ## 아키텍처 상세
 
+다음 다이어그램은 Claude 시리즈의 추정 아키텍처와 Constitutional AI 학습 파이프라인을 보여준다.
+
+![Claude 1-3.5 시리즈 전체 아키텍처 — Dense Transformer + CAI 학습 파이프라인 + 멀티모달 구조](figures/architecture.png)
+*Figure 1: Claude 아키텍처 개요 — RoPE 위치 인코딩, SwiGLU 활성화, RMSNorm 정규화를 적용한 Decoder-Only Transformer. Constitutional AI(CAI)의 2단계 학습 과정과 Claude 3의 멀티모달 기능을 함께 보여준다. (Source: Claude 아키텍처 다이어그램)*
+
 ### 기본 구조
 
 Claude 시리즈는 **Decoder-only Transformer** 구조를 기반으로 하며, 추정되는 주요 구성 요소는 다음과 같다:
@@ -34,6 +39,11 @@ Claude 3는 세 가지 티어로 구성된다:
 
 ### 1. Constitutional AI (CAI)
 
+다음 그림은 CAI의 전체 프로세스를 보여준다. 지도 학습(SL) 단계에서 자기 비판과 수정을 수행하고, 강화 학습(RL) 단계에서 AI 피드백 기반으로 최적화한다.
+
+![Constitutional AI 프로세스 — SL 단계(자기 비판 및 수정)와 RL 단계(RLAIF)](figures/fig_1.png)
+*Figure 2: Constitutional AI 프로세스 — (상단) SL 단계: 모델이 헌법적 원칙에 따라 자기 출력을 비판하고 수정. (하단) RL 단계: AI가 헌법 기반으로 선호도 피드백을 생성하여 강화학습 수행. (Source: Constitutional AI 논문)*
+
 CAI는 Claude의 정렬(alignment) 방법론의 핵심이다. 기존 RLHF가 인간 라벨러의 직접적 피드백에 의존하는 반면, CAI는 다음과 같은 2단계 프로세스를 따른다:
 
 **1단계 - 자기 비판 (Self-Critique):**
@@ -45,6 +55,11 @@ CAI는 Claude의 정렬(alignment) 방법론의 핵심이다. 기존 RLHF가 인
 이 접근법의 수학적 핵심은 보상 함수 $R(x, y)$를 인간 라벨러가 아닌 AI 모델이 생성한다는 점이다:
 
 $$R_{\text{RLAIF}}(x, y) = \mathbb{E}_{\text{AI}}[\text{preference}(y | x, \text{constitution})]$$
+
+아래 그래프는 CAI 방식이 기존 RLHF 대비 유해성(harmlessness)과 유용성(helpfulness) 사이의 트레이드오프를 어떻게 개선하는지 보여준다.
+
+![Harmlessness vs Helpfulness Elo 점수 — RL-CAI vs RLHF 비교](figures/fig_2.png)
+*Figure 3: 유해성-유용성 트레이드오프 — RLHF 모델(Helpful, HH)은 유용성과 무해성 사이에 트레이드오프가 존재하지만, RL-CAI 모델은 동일 유용성 수준에서 더 낮은 유해성을 달성한다. (Source: Constitutional AI 논문)*
 
 ### 2. 200K 토큰 초장문 컨텍스트
 
@@ -79,6 +94,16 @@ Claude 3.5 Sonnet은 코딩(HumanEval 92.0%)과 일반 지식(MMLU 88.7%)에서 
 | **정렬 방법** | CAI + RLAIF | RLHF | RLHF |
 | **오픈소스** | ❌ | ❌ | ❌ |
 | **안전 접근법** | Constitutional AI | 안전 팀 + RLHF | 안전 필터링 |
+
+다음 그래프는 자기 비판을 통한 수정(revision) 횟수가 증가할수록 무해성(harmlessness) 점수와 HH 점수가 단조 증가하는 것을 보여준다.
+
+![헌법적 수정 횟수에 따른 Preference Model 점수 변화 — Harmlessness, Helpfulness, HH](figures/fig_5.png)
+*Figure 4: 수정 횟수별 PM 점수 — 수정(revision) 횟수가 증가할수록 무해성 점수(좌)와 HH 점수(우)가 단조 증가하지만, 순수 유용성 점수(중)는 소폭 감소한다. 수정 0은 최초 응답을 의미한다. (Source: Constitutional AI 논문)*
+
+또한 Chain-of-Thought 추론이 AI 피드백의 품질에 미치는 영향도 주목할 만하다.
+
+![CoT 추론의 HHH 평가 성능 향상 효과 — Preference Model vs LM 기반 평가](figures/fig_4.png)
+*Figure 5: CoT 추론의 효과 — 438개 HHH 비교 질문에서 Chain-of-Thought 추론(녹색)이 일반 LM 평가(빨간색) 대비 크게 향상된 정확도를 보이며, 인간 피드백 기반 PM(파란색)에 근접한다. (Source: Constitutional AI 논문)*
 
 ## 훈련 파이프라인
 

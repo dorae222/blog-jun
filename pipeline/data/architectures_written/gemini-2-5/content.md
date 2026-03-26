@@ -6,6 +6,11 @@ Gemini 2.5 Pro는 Google DeepMind가 2025년 3월 25일 발표한 최신 멀티�
 
 OpenAI의 o1/o3가 추론 시 별도의 "생각" 과정을 거치는 것과 유사하지만, Gemini 2.5 Pro는 사용자가 "사고 예산(thinking budget)"을 직접 조절할 수 있다는 차별점을 가진다. 빠른 응답이 필요한 경우와 정밀한 추론이 요구되는 경우에 각각 최적화된 모드를 선택할 수 있다.
 
+아래 다이어그램은 Gemini 2.5 Pro의 MoE 기반 전체 아키텍처와 Thinking Budget Control 메커니즘을 보여준다.
+
+![Gemini 2.5 Pro MoE 아키텍처 — 내장 사고 기능과 MoE FFN 구조](figures/architecture.png)
+*Figure 1: Gemini 2.5 Pro 메인 아키텍처 — MoE(Mixture-of-Experts) 기반 디코더 스택, GeGLU 활성화의 Sparse MoE FFN 블록, 그리고 사고 예산(Thinking Budget) 제어 메커니즘. (Google DeepMind)*
+
 ## 아키텍처 상세
 
 ### 기본 구조
@@ -58,6 +63,11 @@ $$P(\text{answer} | \text{question}) = \sum_{\text{thought}} P(\text{answer} | \
 ### 3. 코딩 에이전트로서의 실용성
 
 SWE-bench Verified에서 63.8%를 달성하여, 실제 GitHub 이슈를 자동으로 해결하는 코딩 에이전트로서의 실용성을 입증했다.
+
+다음 그래프는 LLM 모델들의 비용 대비 성능(LMArena 점수)을 비교한 것으로, Gemini 2.5 Pro가 Gemini 1.5 Pro 대비 120점 이상 향상된 성능을 달성했음을 보여준다.
+
+![LLM 모델별 비용-성능 비교 차트](figures/fig_1.png)
+*Figure 2: 비용-성능 비교 — 백만 토큰당 가격 대비 LMArena 점수. Gemini 2.5 Pro가 비용 효율과 성능 모두에서 최상위에 위치한다. (Source: LMArena, 2025-06-16)*
 
 ## 벤치마크/성능
 

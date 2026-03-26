@@ -67,6 +67,11 @@ outputs = model.generate(inputs, max_new_tokens=500, temperature=0.7)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
+다음 그림은 데이터 품질이 모델 성능에 미치는 영향을 HumanEval 벤치마크로 비교한 결과이다.
+
+![Phi 모델의 HumanEval 코드 생성 성능 비교](figures/fig_1.png)
+*Figure 2: 데이터 품질에 따른 HumanEval Pass@1 정확도 비교 — The Stack(주황), CodeTextbook(연한 파랑), CodeTextbook+CodeExercises(진한 파랑) 순으로, 교과서 품질 데이터가 모델 크기와 무관하게 성능을 극적으로 향상시킨다. (Source: Gunasekar et al., 2023)*
+
 ## 핵심 혁신
 
 ### 1. Textbook Quality Data

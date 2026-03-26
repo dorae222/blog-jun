@@ -8,6 +8,9 @@ Imagen은 2022년 Google Brain이 발표한 텍스트-이미지 생성 모델로
 - **발표**: 2022년 5월, Google Brain
 - **라이선스**: Proprietary
 
+![Imagen 전체 아키텍처 — Cascaded Diffusion Pipeline, Efficient U-Net, 조건화 메커니즘 개요](figures/architecture.png)
+*Figure 1: Imagen 아키텍처 전체 구조 — T5-XXL 텍스트 인코더, 3단계 Cascaded Diffusion Pipeline, Efficient U-Net 상세 구조, 그리고 Cross-Attention 기반 조건화 메커니즘. (Source: Saharia et al., 2022)*
+
 ## 아키텍처 상세
 
 ### Cascaded Diffusion Pipeline
@@ -57,7 +60,13 @@ $$x_{low}^{aug} = \sqrt{\bar{\alpha}_s} x_{low} + \sqrt{1 - \bar{\alpha}_s} \eps
 
 ### DrawBench 벤치마크
 
+![DrawBench 평가 샘플 — 갈색 새와 파란 곰 인형의 속성 결합 테스트](figures/fig_11_1.jpg)
+*Figure 2: DrawBench 평가 샘플 — "A brown bird and a blue bear" 프롬프트에 대한 생성 결과. 색상-객체 속성 결합(attribute binding)의 정확성을 평가한다. (Source: Saharia et al., 2022)*
+
 Imagen은 기존 FID/CLIP Score 외에 DrawBench라는 새로운 평가 벤치마크를 도입하였다. DrawBench는 11개 카테고리(색상, 개수, 공간 관계, 텍스트 렌더링 등)의 200개 프롬프트로 구성되며, 인간 평가자가 텍스트 충실도와 이미지 품질을 판정한다.
+
+![Imagen 생성 샘플 — 텍스트 렌더링 능력 시연](figures/fig_1_1.jpg)
+*Figure 3: Imagen 생성 샘플 — "Sprouts in the shape of text 'Imagen' coming out of a fairytale book" 프롬프트에 대한 결과. 복잡한 텍스트 지시를 정확히 반영하는 생성 품질을 보여준다. (Source: Saharia et al., 2022)*
 
 ## 핵심 혁신
 
@@ -93,6 +102,9 @@ Imagen은 기존 FID/CLIP Score 외에 DrawBench라는 새로운 평가 벤치�
 - **이미지 생성 모델**: ~2B 파라미터 (업데이트 대상)
 - **CFG**: 각 단계에 독립적으로 적용
 - **하드웨어**: 16× TPUv4
+
+![복잡한 텍스트 조건을 정확히 반영한 Imagen 생성 결과](figures/fig_1_2.jpg)
+*Figure 4: 복잡한 텍스트 조건 이해 — "A photo of a Shiba Inu dog with a backpack riding a bike, wearing sunglasses and a beach hat" 프롬프트에 대한 생성 결과. 다수의 속성과 객체를 동시에 정확히 조합하는 T5-XXL의 텍스트 이해 능력을 시연한다. (Source: Saharia et al., 2022)*
 
 ## 실무 활용
 

@@ -12,9 +12,15 @@ ReAct는 Thought-Action-Observation의 단일 시도에서 최선의 답을 구�
 
 ![Architecture](figures/architecture.svg)
 
+![Reflexion 개요 — 의사결정, 프로그래밍, 추론 태스크에서의 적용](figures/fig_1.png)
+*Figure 1: Reflexion 작동 과정 — (a) 태스크 수행, (b) 궤적 기록, (c) 평가, (d) 자기 반성, (e) 개선된 다음 시도. 의사결정, 코드 생성, 추론 세 도메인에서 동일 프레임워크 적용. (Source: arXiv 2303.11366)*
+
 ## 아키텍처 상세
 
 Reflexion의 아키텍처는 세 개의 핵심 컴포넌트와 하나의 메모리 시스템으로 구성된다.
+
+![Reflexion 에이전트 아키텍처 — Actor, Evaluator, Self-Reflection, 메모리 구조](figures/fig_2.png)
+*Figure 2: Reflexion 에이전트 구조 — Actor가 환경과 상호작용하고, Evaluator가 내부/외부 피드백을 생성하며, Self-Reflection이 반성 텍스트를 장기 메모리에 저장하여 다음 시도에 활용. (Source: arXiv 2303.11366)*
 
 ### Actor-Evaluator-Self-Reflection 삼중 구조
 
@@ -114,6 +120,12 @@ def is_palindrome(s: str) -> bool:
 | ALFWorld | 의사결정 | 71% | **90%** | +19.0%p |
 | HumanEval | 코드 생성 | 67.0% | **91.0%** | +24.0%p |
 | Fever | 사실 검증 | 64.6% | **77.3%** | +12.7%p |
+
+![ALFWorld에서의 반복 시도에 따른 성공률 향상](figures/fig_4.png)
+*Figure 3: ALFWorld 성공률 — ReAct + Reflexion(파란색)이 시도 횟수 증가에 따라 ReAct 단독(회색) 대비 약 20%p 이상 성공률 향상. 반복 반성의 누적 효과를 시각적으로 확인. (Source: arXiv 2303.11366)*
+
+![HotpotQA에서의 Reflexion 성능 향상](figures/fig_6_1.png)
+*Figure 4: HotpotQA 성공률 — ReAct + Reflexion(파란색)이 6회 시도 시 55%로, ReAct 단독(회색, 34%) 대비 21%p 향상. CoT + Reflexion(빨간색)도 일관된 향상을 보임. (Source: arXiv 2303.11366)*
 
 특히 HumanEval에서 91%의 성공률은 Reflexion의 자기 수정 루프가 코드 생성에서 매우 효과적임을 보여준다. 테스트 실패 메시지가 명확한 오류 정보를 제공하므로, Self-Reflection 모듈이 구체적이고 실행 가능한 개선 방향을 생성할 수 있기 때문이다. ALFWorld에서의 19%p 향상은 시퀀셜 의사결정에서도 반복 시도와 반성이 효과적임을 입증한다.
 

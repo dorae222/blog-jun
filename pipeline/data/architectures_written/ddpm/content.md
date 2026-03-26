@@ -6,6 +6,9 @@ DDPM(Denoising Diffusion Probabilistic Models)은 2020년 UC Berkeley의 Jonatha
 
 DDPM 이전에는 GAN(Generative Adversarial Networks)이 이미지 생성의 주류 방법이었으나, 학습 불안정성과 mode collapse 문제가 있었다. DDPM은 이러한 한계를 극복하며 확산 기반 생성 모델의 시대를 열었고, 이후 Stable Diffusion, DALL-E 2, Imagen 등 현대 이미지 생성 모델의 이론적 토대가 되었다.
 
+![DDPM 아키텍처 개요 — 순전파/역전파 과정과 UNet 백본](figures/architecture.png)
+*Figure 1: DDPM 아키텍처 개요 — 순전파 과정에서 데이터에 가우시안 노이즈를 점진적으로 추가하고, 역전파 과정에서 UNet이 노이즈를 예측하여 복원하는 구조. (Source: Ho et al., 2020)*
+
 ## 아키텍처 상세
 
 ### 순전파 과정 (Forward Process)
@@ -19,6 +22,9 @@ $$q(\mathbf{x}_t | \mathbf{x}_{t-1}) = \mathcal{N}(\mathbf{x}_t; \sqrt{1-\beta_t
 $$q(\mathbf{x}_t | \mathbf{x}_0) = \mathcal{N}(\mathbf{x}_t; \sqrt{\bar{\alpha}_t}\mathbf{x}_0, (1-\bar{\alpha}_t)\mathbf{I})$$
 
 여기서 $\bar{\alpha}_t = \prod_{s=1}^{t}(1-\beta_s)$이다.
+
+![DDPM의 방향성 그래프 모델 — 순전파와 역전파 마르코프 체인](figures/fig_2.png)
+*Figure 2: DDPM의 방향성 그래프 모델 — 순전파 $q(\mathbf{x}_t|\mathbf{x}_{t-1})$로 노이즈를 추가하고, 역전파 $p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t)$로 노이즈를 제거하는 마르코프 체인 구조. (Source: arXiv 2006.11239)*
 
 ### 역전파 과정 (Reverse Process)
 
@@ -59,6 +65,9 @@ $$\mathcal{L}_{\text{simple}} = \mathbb{E}_{t, \mathbf{x}_0, \boldsymbol{\epsilo
 | DDPM | LSUN Bedroom | 4.89 | - | 256x256 |
 
 DDPM은 CIFAR-10에서 Inception Score 기준 GAN을 처음으로 능가하였으며, FID 3.17이라는 경쟁력 있는 수치를 달성했다.
+
+![CelebA-HQ 256x256에서 DDPM이 생성한 고품질 얼굴 이미지](figures/fig_1_1.png)
+*Figure 3: DDPM 생성 샘플 — CelebA-HQ 256x256에서의 무조건부 생성 결과. GAN 수준의 고품질 이미지를 mode collapse 없이 다양하게 생성. (Source: arXiv 2006.11239)*
 
 ## 관련 모델 비교
 
@@ -116,6 +125,12 @@ class SimpleDDPM:
                 x += torch.sqrt(self.betas[t]) * torch.randn_like(x)
         return x
 ```
+
+![CIFAR-10에서의 점진적 생성 과정 — 노이즈에서 이미지로의 디노이징](figures/fig_12.jpg)
+*Figure 4: 점진적 생성 과정 — CIFAR-10에서 순수 노이즈($\mathbf{x}_T$)에서 시작하여 시간에 따라 $\hat{\mathbf{x}}_0$가 점진적으로 선명해지는 역전파 과정. (Source: arXiv 2006.11239)*
+
+![CelebA-HQ 잠재 공간 보간 — 확산 과정을 활용한 의미적 이미지 변환](figures/fig_14.jpg)
+*Figure 5: 잠재 공간 보간 — 500 타임스텝 확산 후 잠재 표현을 보간하면 픽셀 공간 보간과 달리 이미지 매니폴드 위에서 자연스러운 의미적 전환이 가능. (Source: arXiv 2006.11239)*
 
 ### 주요 활용 분야
 

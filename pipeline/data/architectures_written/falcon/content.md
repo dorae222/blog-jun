@@ -10,6 +10,11 @@ Falcon의 핵심 철학은 명확하다: **"더 큰 모델보다 더 좋은 데�
 - **모델**: [Hugging Face - tiiuae](https://huggingface.co/tiiuae)
 - **라이선스**: Apache 2.0
 
+Falcon-180B의 PaLM 시리즈와의 성능 비교는 아래 그래프에서 확인할 수 있다.
+
+![Falcon-180B와 PaLM 시리즈의 1-shot 성능 비교 — PaLM-2 Large에 근접하는 성능](figures/fig_1.png)
+*Figure 1: Falcon-180B와 PaLM 시리즈의 1-shot 성능 비교 — Falcon-180B(보라색)는 PaLM-2 Large에 거의 근접하는 성능을 달성하며, PaLM-2 Medium을 상회한다. (Source: Almazrouei et al., 2023)*
+
 ## 아키텍처 상세
 
 ### Falcon-180B 주요 사양
@@ -72,7 +77,10 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 ## 핵심 혁신: RefinedWeb 데이터셋
 
-Falcon의 진정한 혁신은 아키텍처가 아닌 **데이터**에 있다.
+Falcon의 진정한 혁신은 아키텍처가 아닌 **데이터**에 있다. 아래 그림은 모델 스케일링에서 데이터 스케일링으로의 패러다임 전환을 보여준다.
+
+![사전학습 패러다임 변화 — 모델 크기만 키우던 시대에서 데이터도 함께 스케일링하는 시대로 전환](figures/fig_3.png)
+*Figure 2: 사전학습 패러다임의 변화 — Chinchilla(2022) 이전에는 모델 크기만 증가시키고 데이터셋 크기는 약 300B 토큰으로 고정했으나, 이후 모델과 데이터를 함께 스케일링하는 방향으로 전환되었다. (Source: Almazrouei et al., 2023)*
 
 ### RefinedWeb
 - CommonCrawl을 **엄격하게 필터링·중복 제거**
@@ -82,6 +90,16 @@ Falcon의 진정한 혁신은 아키텍처가 아닌 **데이터**에 있다.
 
 ### 데이터 품질 우선 전략
 Falcon은 "적은 데이터라도 고품질이면 더 좋은 모델이 나온다"는 가설을 실증했다. 이 전략은 이후 Mistral, LLaMA 2 등 다수의 오픈소스 모델에 영향을 미쳤다.
+
+흥미롭게도, 고품질 웹 데이터만으로도 큐레이팅된 데이터와 동등한 성능을 달성할 수 있다.
+
+![웹 데이터 vs 큐레이팅된 데이터 비교 — RefinedWeb 단독으로도 경쟁력 있는 제로샷 성능](figures/fig_4.png)
+*Figure 3: 데이터 혼합 비율에 따른 제로샷 성능 — RefinedWeb(웹 데이터) 단독 학습이 대화, 서적, 기술 데이터를 혼합한 것과 동등하거나 더 나은 성능을 보이며, 특정 큐레이팅된 데이터에 대한 과도한 의존은 오히려 성능을 저하시킨다. (Source: Almazrouei et al., 2023)*
+
+RefinedWeb의 Macrodata Refinement 파이프라인은 CommonCrawl의 약 90%를 제거하여 고품질 데이터를 확보한다.
+
+![Macrodata Refinement 파이프라인 — CommonCrawl에서 약 90%의 문서를 필터링하여 고품질 데이터 추출](figures/fig_6.png)
+*Figure 4: Macrodata Refinement 파이프라인 단계별 데이터 제거 비율 — URL 필터링, 텍스트 추출, 언어 식별, 반복 제거, 품질 필터링, 중복 제거를 거치며 원본의 약 10%만 최종 학습 데이터로 남는다. (Source: Penedo et al., 2023)*
 
 ## 벤치마크/성능
 
@@ -140,6 +158,11 @@ RefinedWeb에 포함된 코드 데이터 덕분에 코드 생성 태스크에서
 
 ### 4. 데이터 품질 연구
 RefinedWeb의 방법론은 자체 데이터 파이프라인 구축의 참고 사례가 된다.
+
+Falcon 시리즈의 스케일별 성능은 다른 모델들과 비교했을 때 일관되게 우수하다.
+
+![Falcon 시리즈의 스케일별 성능 — 모든 규모에서 기존 모델 대비 강력한 성능 향상](figures/fig_14.png)
+*Figure 5: Falcon 시리즈의 스케일별 제로샷 성능 — HellaSwag, LAMBADA, Winogrande 등 6개 벤치마크 종합 정확도에서 Falcon(분홍색)이 모든 스케일에서 기존 모델을 상회하며, RefinedWeb만으로 학습한 모델도 GPT-3 시리즈에 준하는 성능을 보인다. (Source: Almazrouei et al., 2023)*
 
 ## 한계 및 전망
 

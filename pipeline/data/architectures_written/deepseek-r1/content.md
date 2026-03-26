@@ -54,6 +54,16 @@ $$R(x, y) = R_{\text{correct}}(x, y) + R_{\text{format}}(x, y)$$
 
 ### 3. 자기 검증(Self-Verification)의 창발
 
+다음 그래프는 R1-Zero의 RL 훈련 과정에서 AIME 정확도가 점진적으로 향상되는 모습을 보여준다. cons@16(16개 응답 중 다수결)이 pass@1보다 빠르게 향상되며, 최종적으로 o1-0912의 pass@1 수준에 도달한다.
+
+![DeepSeek-R1-Zero의 RL 학습 중 AIME 정확도 변화](figures/fig_2.png)
+*Figure 2: R1-Zero AIME 학습 곡선 — RL 학습 스텝에 따른 AIME 정확도 변화. pass@1(파란색)과 cons@16(빨간색) 모두 지속적으로 향상되며, cons@16은 OpenAI o1-0912의 cons@64(분홍 점선) 수준에 도달한다. (Source: DeepSeek, 2025)*
+
+동시에 모델의 응답 길이도 학습 과정에서 자연스럽게 증가하는데, 이는 모델이 더 깊은 추론을 수행하도록 자발적으로 학습하고 있음을 보여준다.
+
+![DeepSeek-R1-Zero의 RL 학습 중 평균 응답 길이 변화](figures/fig_3.png)
+*Figure 3: R1-Zero 응답 길이 증가 — RL 학습이 진행됨에 따라 평균 응답 길이가 수백 토큰에서 약 10,000 토큰까지 자연스럽게 증가한다. 모델이 더 많은 "사고 시간"을 할당하는 법을 자율적으로 학습한다. (Source: DeepSeek, 2025)*
+
 순수 RL 훈련 과정에서 모델은 자연스럽게 다음과 같은 추론 전략을 **자기 발현(emerge)**시켰다:
 
 - **Chain-of-Thought**: 수천 토큰에 달하는 상세한 사고 과정
@@ -75,6 +85,11 @@ R1의 추론 능력을 소형 모델로 증류하여 다양한 크기의 모델�
 | R1-Distill-LLaMA-70B | LLaMA 3.1 | 70B |
 
 ## 벤치마크/성능
+
+다음 그래프는 DeepSeek-R1의 주요 벤치마크 성능을 OpenAI o1, o1-mini, DeepSeek-V3 등과 비교한 결과이다. R1은 AIME 2024, Codeforces, MATH-500 등 추론 벤치마크에서 o1에 필적하거나 우세한 성능을 보인다.
+
+![DeepSeek-R1 벤치마크 성능 비교 — AIME, Codeforces, GPQA, MATH-500, MMLU, SWE-bench](figures/fig_1.png)
+*Figure 1: DeepSeek-R1 벤치마크 성능 — AIME 2024(79.8%), Codeforces(96.3 백분위), MATH-500(97.3%)에서 OpenAI o1과 동등하거나 우세한 성능을 달성. 671B MoE 모델의 추론 능력이 상용 모델에 필적함을 입증했다. (Source: DeepSeek, 2025)*
 
 ### R1 vs o1 핵심 비교
 

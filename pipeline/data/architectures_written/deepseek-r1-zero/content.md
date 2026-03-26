@@ -27,6 +27,11 @@ R1-Zero는 DeepSeek-V3의 아키텍처를 그대로 사용한다:
 
 ## 핵심 혁신
 
+다음 그래프는 R1-Zero의 RL 학습 과정에서 AIME 정확도가 점진적으로 향상되는 모습을 보여준다. SFT 없이 순수 RL만으로도 o1-0912의 pass@1 수준에 도달하는 것이 핵심 발견이다.
+
+![DeepSeek-R1-Zero의 RL 학습 중 AIME 정확도 변화](figures/fig_2.png)
+*Figure 1: R1-Zero AIME 학습 곡선 — RL 학습 스텝에 따른 AIME 정확도 변화. pass@1(파란색)은 약 71%까지, cons@16(빨간색)은 약 86%까지 향상되어 OpenAI o1-0912의 pass@1(초록 점선) 수준을 넘어선다. SFT 없이 순수 RL만으로 달성한 결과이다. (Source: DeepSeek, 2025)*
+
 ### 1. 순수 강화학습 (Zero SFT)
 
 R1-Zero의 가장 근본적인 혁신은 훈련 파이프라인에서 SFT 단계를 **완전히 제거**한 것이다:
@@ -52,6 +57,11 @@ R1-Zero 훈련 과정에서 관찰된 가장 인상적인 현상은 '아하 모�
 
 ### 3. 사고 과정 길이의 자기 조절
 
+아래 그래프는 RL 학습이 진행됨에 따라 R1-Zero의 평균 응답 길이가 자연스럽게 증가하는 현상을 보여준다. 이는 모델이 더 복잡한 추론을 수행하기 위해 "사고 시간"을 자율적으로 늘리고 있음을 의미한다.
+
+![DeepSeek-R1-Zero의 RL 학습 중 평균 응답 길이 변화](figures/fig_3.png)
+*Figure 2: R1-Zero 응답 길이의 자기 조절 — RL 학습 초기 수백 토큰에서 시작하여 약 10,000 토큰까지 자연스럽게 증가한다. 모델이 더 많은 사고 시간을 할당하는 법을 강화학습만으로 자율적으로 학습한 결과이다. (Source: DeepSeek, 2025)*
+
 R1-Zero는 문제의 난이도에 따라 **사고 과정의 길이를 자동으로 조절**한다:
 
 - 간단한 문제: 짧은 CoT (수백 토큰)
@@ -71,6 +81,11 @@ $$R(x, y) = R_{\text{correct}}(x, y) + R_{\text{format}}(x, y)$$
 **과정 보상(Process Reward Model, PRM)은 사용하지 않는다.** 중간 추론 단계의 정확성을 직접 평가하지 않고, 최종 결과만으로 학습하는데도 정교한 추론 과정이 창발한다.
 
 ## 벤치마크/성능
+
+다음 그래프는 DeepSeek-R1, R1-32B, DeepSeek-V3와 OpenAI o1 모델들의 주요 벤치마크 성능을 비교한다. R1-Zero의 기반이 되는 이 벤치마크 결과는 RL 기반 추론 학습의 효과를 보여준다.
+
+![DeepSeek-R1 벤치마크 성능 비교 — AIME, Codeforces, GPQA, MATH-500, MMLU, SWE-bench](figures/fig_1.png)
+*Figure 3: DeepSeek-R1 계열 벤치마크 성능 — R1-Zero의 최종 발전형인 R1은 AIME 2024(79.8%), MATH-500(97.3%)에서 OpenAI o1에 필적하는 성능을 달성했다. R1-Zero의 순수 RL 발견이 R1의 성공의 기반이 되었다. (Source: DeepSeek, 2025)*
 
 ### AIME 2024 성능 변화
 

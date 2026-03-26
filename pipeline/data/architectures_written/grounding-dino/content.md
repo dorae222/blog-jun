@@ -12,9 +12,19 @@ COCO 제로샷 탐지에서 52.5 AP를 달성하여 당시 SOTA를 기록하였�
 
 ![Architecture](figures/architecture.svg)
 
+다음 그림은 기존 닫힌 집합 탐지기를 오픈셋 시나리오로 확장하는 기존 접근법들을 비교한 것이다.
+
+![기존 오픈셋 탐지 접근법 비교 — 닫힌 집합 탐지기 확장 방식의 차이](figures/fig_2.png)
+*Figure 2: 기존 오픈셋 탐지 접근법 비교 — 닫힌 집합 탐지기를 오픈셋으로 확장하는 다양한 방식을 보여준다. (Source: Liu et al., 2023)*
+
 ## 아키텍처 상세
 
 Grounding DINO의 아키텍처는 세 단계의 시각-언어 융합(tight fusion) 구조로 설계되어 있다. 기존 오픈 어휘 탐지 모델(OWL-ViT, GLIP)이 각 모달리티를 독립적으로 인코딩한 후 출력만 결합하는 얕은 융합(late fusion)을 사용한 것과 달리, Grounding DINO는 인코더 단계부터 양방향 교차 어텐션으로 깊은 융합(deep fusion)을 수행하여, 더 정밀한 텍스트-이미지 정렬을 달성한다.
+
+아래 그림은 Grounding DINO의 전체 프레임워크를 세부적으로 나타낸 것으로, Feature Enhancer 레이어와 디코더 레이어의 내부 구조를 함께 보여준다.
+
+![Grounding DINO 전체 프레임워크 — Feature Enhancer, Language-Guided Query Selection, Cross-Modality Decoder의 세부 구조](figures/fig_3.png)
+*Figure 3: Grounding DINO 프레임워크 상세도 — 전체 파이프라인(블록 1), Feature Enhancer 레이어(블록 2), 디코더 레이어(블록 3)의 내부 구조를 보여준다. (Source: Liu et al., 2023)*
 
 ### 1단계: 이중 인코더 특징 추출
 
@@ -50,6 +60,11 @@ $$\text{score}(i) = \max_j \left(\mathbf{F}_\text{img}^{(i)} \cdot \mathbf{F}_\t
 상위 $N$개(기본 900) 위치가 쿼리로 선택되며, 이 쿼리들은 이미 텍스트와 관련된 위치에서 초기화되므로 수렴이 빠르고 불필요한 예측이 줄어든다.
 
 **교차 모달 디코더(Cross-Modality Decoder)**: 선택된 쿼리가 이미지 특징과 텍스트 특징 양쪽에 교차 어텐션을 수행하여, 텍스트 조건부 객체 탐지를 완성한다. 각 쿼리의 최종 출력은 바운딩 박스 좌표 $(c_x, c_y, w, h)$와 텍스트 토큰별 유사도 벡터를 생성하며, 이 유사도가 클래스 확률을 대체한다. 따라서 고정된 클래스 집합이 아니라 임의의 텍스트에 대한 탐지가 가능해진다.
+
+다음 그림은 기존 DINO 탐지기와 Grounding DINO의 구조적 차이를 비교한 것으로, 파란색으로 표시된 부분이 Grounding DINO에서 추가된 언어 융합 모듈이다.
+
+![DINO와 Grounding DINO 구조 비교 — 언어 융합 모듈이 파란색으로 표시](figures/fig_6.png)
+*Figure 6: DINO와 Grounding DINO 비교 — 파란색 부분이 Grounding DINO에서 추가된 텍스트 융합 구성요소를 나타낸다. (Source: Liu et al., 2023)*
 
 ## 핵심 혁신
 
@@ -92,7 +107,12 @@ Grounding DINO는 다양한 탐지 및 그라운딩 데이터셋을 혼합하여
 
 ## 관련 모델
 
-Grounding DINO는 DETR → DINO-DETR의 종단간 탐지 계보에 언어 이해를 결합한 모델이다. SAM과 결합한 "Grounded SAM" 파이프라인은 텍스트만으로 객체 탐지+세그멘테이션을 수행하는 강력한 도구로, 자동 데이터 어노테이션, 이미지 편집(인페인팅 마스크 생성), 로보틱스(파지 대상 식별)에 널리 사용된다. 후속 모델인 Grounding DINO 1.5/2.0에서 추론 속도와 정확도가 개선되었다.
+Grounding DINO는 DETR → DINO-DETR의 종단간 탐지 계보에 언어 이해를 결합한 모델이다. SAM과 결합한 "Grounded SAM" 파이프라인은 텍스트만으로 객체 탐지+세그멘테이션을 수행하는 강력한 도구로, 자동 데이터 어노테이션, 이미지 편집(인페인팅 마스크 생성), 로보틱스(파지 대상 식별)에 널리 사용된다.
+
+다음은 Grounding DINO와 Stable Diffusion을 결합한 실제 응용 사례로, 텍스트 프롬프트로 객체를 탐지한 후 이미지 인페인팅을 수행하는 과정을 보여준다.
+
+![Grounding DINO와 Stable Diffusion 결합 응용 — 텍스트 기반 객체 탐지 후 이미지 인페인팅](figures/fig_8.png)
+*Figure 8: Grounding DINO + Stable Diffusion 응용 — 텍스트로 객체를 탐지(Detection Prompt)한 뒤 Stable Diffusion으로 이미지를 편집(Generation Prompt)하는 파이프라인. (Source: Liu et al., 2023)* 후속 모델인 Grounding DINO 1.5/2.0에서 추론 속도와 정확도가 개선되었다.
 
 ## 참고 자료
 
