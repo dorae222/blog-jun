@@ -26,6 +26,8 @@
   "architecture_category": "technique",
   "branch_type": "",
   "is_open_source": true,
-  "relations": [],
+  "relations": [
+    {"to": "transformer", "type": "technique_used"}
+  ],
   "related_post_slug": "flash-attention"
 }

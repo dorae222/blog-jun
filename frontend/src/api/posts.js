@@ -39,7 +39,7 @@ export const updateArchitecture = (slug, data) => client.patch(`/architectures/$
 export const deleteArchitecture = (slug) => client.delete(`/architectures/${slug}/`)
 export const getArchitectureConcepts = () => client.get('/architectures/concepts/')
 export const getArchitectureStats = () => client.get('/architectures/stats/')
-export const getArchitectureTree = () => client.get('/architectures/tree/')
+export const getArchitectureTree = (params) => client.get('/architectures/tree/', { params })
 export const updateArchitecturePosition = (slug, x, y) =>
   client.post(`/architectures/${slug}/update_position/`, { x, y })
 export const createArchitectureRelation = (data) =>

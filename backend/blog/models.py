@@ -116,6 +116,8 @@ class Post(models.Model):
             models.Index(fields=['category', 'status']),
             models.Index(fields=['post_type']),
             models.Index(fields=['slug']),
+            models.Index(fields=['author', 'status']),
+            models.Index(fields=['is_pinned', '-published_at']),
         ]
 
     def __str__(self):
