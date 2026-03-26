@@ -141,7 +141,34 @@ def import_papers(dry_run: bool = False, update: bool = False):
             continue
         if existing and update:
             if not dry_run:
-                existing.content = content
+                # figure 업로드 + 경로 치환 (update 시에도 필요)
+                figures_dir = paper_dir / 'figures'
+                figure_url_map = {}
+                if figures_dir.exists():
+                    # 이미 업로드된 figure 파일명 세트
+                    existing_figs = set(
+                        pi.image.name.split('/')[-1]
+                        for pi in existing.images.all()
+                        if pi.image
+                    )
+                    for fig_file in sorted(figures_dir.iterdir()):
+                        if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                            continue
+                        if fig_file.name in existing_figs:
+                            # 이미 업로드된 figure → 기존 URL 사용
+                            pi = existing.images.filter(image__endswith=fig_file.name).first()
+                            if pi:
+                                figure_url_map[fig_file.name] = pi.image.url
+                            continue
+                        url = upload_figure(existing, fig_file, dry_run=False)
+                        if url:
+                            figure_url_map[fig_file.name] = url
+                            created_images += 1
+                            print(f"    [IMG] {fig_file.name} → {url}")
+
+                # content 내 figures/ 경로 → media URL 치환
+                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else content
+                existing.content = updated_content
                 existing.summary = summary
                 update_fields = ['content', 'summary']
                 is_pinned = data.get('is_pinned', False)
