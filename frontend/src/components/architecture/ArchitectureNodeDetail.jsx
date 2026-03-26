@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { CATEGORY_COLORS } from '../../data/architectureConstants'
+import MarkdownRenderer from '../blog/MarkdownRenderer'
 
 export default function ArchitectureNodeDetail({
   node,
@@ -12,19 +13,19 @@ export default function ArchitectureNodeDetail({
   onClose,
   onNodeFocus,
   layout = 'bottom', // 'bottom' | 'side'
+  hideRelations = false,
 }) {
   const navigate = useNavigate()
   if (!node) return null
 
   const color = CATEGORY_COLORS[node.architecture_category] || '#6B7280'
 
-  // 부모: 이 노드를 가리키는 엣지 (to_slug === node.slug)
-  const parents = edges
+  // 부모/자식 — hideRelations 시 빈 배열 (좌측 패널에서 대신 표시)
+  const parents = hideRelations ? [] : edges
     .filter(e => e.to_slug === node.slug)
     .map(e => ({ slug: e.from_slug, name: e.from_name, type: e.relation_type }))
 
-  // 자식: 이 노드에서 출발하는 엣지 (from_slug === node.slug)
-  const children = edges
+  const children = hideRelations ? [] : edges
     .filter(e => e.from_slug === node.slug)
     .map(e => ({ slug: e.to_slug, name: e.to_name, type: e.relation_type }))
 
@@ -146,14 +147,14 @@ export default function ArchitectureNodeDetail({
           </div>
         )}
 
-        {/* Key Detail */}
+        {/* Key Detail (마크다운 + 수식 지원) */}
         {node.key_detail && (
-          <p
-            className="text-sm leading-relaxed mb-3"
+          <div
+            className="text-sm leading-relaxed mb-3 [&_p]:m-0 [&_.katex]:text-[0.9em]"
             style={{ color: 'var(--text-secondary)' }}
           >
-            {node.key_detail}
-          </p>
+            <MarkdownRenderer content={node.key_detail} />
+          </div>
         )}
 
         {/* 관계 (부모/자식) */}
