@@ -6,16 +6,14 @@ Personal tech blog: Django 5 + DRF backend, React 19 + Vite + Tailwind CSS front
 - `backend/` — Django DRF API (config/settings split: base/dev/prod)
   - `blog/` — 포스트, 카테고리, 태그, 시리즈, 커버 이미지
   - `accounts/` — JWT 인증
-  - `chatbot/` — RAG + OpenAI SSE 스트리밍
   - `operations/` — 운영 로그 (API 요청, 관리 명령어, 세션 기록)
 - `frontend/` — React SPA with Framer Motion animations
 - `pipeline/` — 데이터 처리 파이프라인
-  - `utils/` — 공통 유틸 (batch_client, svg_utils, post_factory, text_utils)
+  - `data/` — 컨텐츠 데이터 (아래 "컨텐츠 데이터 구조" 참조)
+  - `useful/` — 독립 유틸리티 스크립트 (split, build_index, improvement_plan 등)
   - `importers/` — 컨텐츠 임포트 (papers, architectures, ml, colab, data)
   - `generators/` — 이미지/컨텐츠 생성 (cover_templates, arch_figures, paper_svgs)
-  - `batch/` — OpenAI Batch API (prepare, process, import_results)
   - `preprocessing/` — Notion→Markdown 전처리 (scanner, preprocessor, html_parser)
-  - `useful/` — 독립 유틸리티 스크립트
 - `content/` — 소스 컨텐츠 (cloud, llm, agent 등 10개 도메인)
 - `e2e/` — Playwright E2E 테스트
 - `lxd/` — LXD container provisioning scripts
@@ -32,13 +30,71 @@ Personal tech blog: Django 5 + DRF backend, React 19 + Vite + Tailwind CSS front
 - `python manage.py assign_series` — 시리즈 할당
 - `python manage.py review_post_quality` — 품질 검사
 
+## 컨텐츠 데이터 구조
+
+### 디렉토리 레이아웃 (pipeline/data/)
+```
+pipeline/data/
+├── blog-jun-content.json          ← 중앙 인덱스 (621개 엔트리)
+├── papers_written/                 ← 논문 리뷰 (201개)
+│   └── {slug}/
+│       ├── content.md              ← 마크다운 본문 (편집 대상)
+│       ├── content.json            ← 메타데이터 (title, tags, arxiv_url 등)
+│       ├── figures/                ← 이미지 파일
+│       │   ├── *.png
+│       │   └── metadata.json       ← ar5iv 크롤링 figure 메타데이터
+│       └── figure_reference.json   ← 영문 캡션 (있는 경우)
+├── architectures_written/          ← 아키텍처 (182개)
+│   └── {slug}/
+│       ├── content.md
+│       ├── content.json
+│       ├── entry.json              ← ArchitectureEntry 모델 데이터
+│       └── figures/
+├── cloud_written/                  ← 클라우드/AWS (166개)
+├── ml_written/                     ← 머신러닝 (51개)
+├── data_written/                   ← 데이터 엔지니어링 (13개)
+└── colab_written/                  ← 튜토리얼 (8개)
+```
+
+### blog-jun-content.json 중앙 인덱스
+- 621개 전체 컨텐츠의 메타데이터 + improvement_plan
+- 섹션: `papers`, `architectures`, `cloud`, `ml`, `data`, `colab`
+- papers는 상세 (figures items, improvement_plan.figure_insertions 포함)
+- 비-papers는 경량 (slug, title, sections, improvement_plan 요약만)
+- 재생성: `python3 pipeline/useful/build_content_index.py`
+
+### 컨텐츠 개선 워크플로우
+1. `blog-jun-content.json`에서 `improvement_plan.priority` 순으로 대상 선택
+2. Claude Code가 content.md + figures를 직접 검토 (멀티모달)
+3. 개선된 content.md 작성 (figure 삽입 + 텍스트 품질 개선)
+4. `improvement_plan.status` → `"completed"` 업데이트
+5. import 스크립트 `--update` 실행 → Django DB 반영
+6. 배포
+
+### 유틸리티 스크립트 (pipeline/useful/)
+| 스크립트 | 역할 |
+|----------|------|
+| `split_content_json.py` | content.json → content.md 분리 (전체 카테고리) |
+| `build_content_index.py` | blog-jun-content.json 재생성 |
+| `generate_improvement_plans.py` | papers별 improvement_plan 생성 |
+| `enrich_figure_metadata.py` | ar5iv 크롤링으로 figure 메타데이터 보강 |
+| `insert_figures.py` | content.md에 figure 마크다운 삽입 |
+
+### Import 스크립트
+| 스크립트 | 대상 | `--update` |
+|----------|------|------------|
+| `import_papers_written.py` | papers → Post(paper_review) | ✓ |
+| `import_architectures.py` | architectures → ArchitectureEntry + Post | ✓ |
+| `import_ml_written.py` | ml → Post(article) | ✓ |
+| `import_data_written.py` | data → Post(article) | ✓ |
+| `import_colab_written.py` | colab → Post(tutorial) | ✓ |
+
 ## Architecture
 - Backend: Django 5 + DRF + Gunicorn + PostgreSQL (pgvector) + Redis
 - Frontend: React 19 + Vite + Tailwind CSS v4 + Framer Motion
 - Auth: JWT (simplejwt)
-- Chatbot: RAG (pgvector + OpenAI SSE streaming)
 - Deploy: Docker Compose + Cloudflare Tunnel
-- Pipeline: scanner → preprocessor → batch API → import → Django DB
+- Pipeline: content.md 편집 → import --update → deploy
 
 ## Key Files
 - Models: `backend/blog/models.py` (Post, Category, Tag, Series + PostManager)
@@ -46,7 +102,6 @@ Personal tech blog: Django 5 + DRF backend, React 19 + Vite + Tailwind CSS front
 - Mixins: `backend/blog/mixins.py` (ImageUrlMixin)
 - API: `backend/blog/views.py`, `backend/blog/urls.py`
 - Operations: `backend/operations/` (OperationLog, SessionLog, RequestLoggingMiddleware)
-- Chatbot RAG: `backend/chatbot/views.py`
 - Frontend entry: `frontend/src/App.jsx`
 - Cover templates: `pipeline/cover_templates.py` (`pipeline/generators/cover_templates.py`)
 - SVG utils: `pipeline/svg_utils.py` (`pipeline/utils/svg_utils.py`)

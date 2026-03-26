@@ -1,0 +1,411 @@
+## 개요
+
+트랜스포머의 셀프 어텐션은 시퀀스 길이 $N$에 대해 $O(N^2)$의 시간 및 공간 복잡도를 가집니다. 이는 긴 시퀀스 처리를 어렵게 만드는 근본적 제약이었습니다. FlashAttention은 이 문제를 알고리즘의 계산 복잡도를 바꾸지 않고, **GPU 메모리 계층 구조를 활용**하여 실질적인 속도와 메모리 효율을 크게 향상시킵니다.
+
+Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Re가 NeurIPS 2022에서 발표한 이 논문은 Semantic Scholar 기준 **3,800회 이상 인용**되어, 최근 5년간 가장 영향력 있는 시스템 논문 중 하나로 평가받습니다. FlashAttention은 PyTorch 2.0에 `torch.nn.functional.scaled_dot_product_attention`으로 공식 통합되었으며, 사실상 모든 현대 LLM의 학습과 추론에 활용되고 있습니다.
+
+핵심 통찰은 다음과 같습니다: GPU의 연산 속도(312 TFLOPS on A100)가 메모리 대역폭(2 TB/s)보다 훨씬 빠르기 때문에, **실제 병목은 계산량이 아니라 HBM(High Bandwidth Memory)과 SRAM(온칩 캐시) 간의 데이터 이동량**이라는 점입니다. 이 관찰로부터 FlashAttention은 "같은 양의 계산을 수행하되, 데이터 이동을 최소화한다"는 IO 인식(IO-aware) 설계 원칙을 도출합니다.
+
+아래 그림은 FlashAttention의 전체 구조를 한눈에 보여줍니다. 좌측의 GPU 메모리 계층 구조, 중앙의 타일링 기반 어텐션 계산 방식, 우측의 GPT-2 학습 벤치마크를 통해 핵심 아이디어와 실질적 효과를 파악할 수 있습니다.
+
+![FlashAttention의 GPU 메모리 계층 구조와 타일링 기반 어텐션 계산 개요](figures/fig_1.png)
+*Figure 1: (좌) GPU 메모리 계층 구조 -- SRAM(20MB, ~19TB/s)과 HBM(40GB, ~2TB/s) 사이의 극단적인 용량-대역폭 트레이드오프. (중) FlashAttention의 타일링 방식 -- Q, K, V를 블록 단위로 SRAM에 로드하여 어텐션을 계산하고, $N \times N$ 어텐션 행렬을 HBM에 구체화하지 않는다. (우) GPT-2 학습 시 표준 어텐션 대비 HBM 메모리 사용량 최대 20배 절감 및 2-4배 속도 향상 (Dao et al., 2022)*
+
+## 배경 및 문제
+
+### GPU 메모리 계층 구조
+
+FlashAttention을 이해하려면 GPU의 메모리 계층을 먼저 이해해야 합니다. 현대 GPU는 여러 단계의 메모리 계층을 가지며, 각 계층은 용량과 대역폭 사이에 극심한 트레이드오프가 존재합니다.
+
+| 메모리 | 용량 | 대역폭 | 특징 |
+|---|---|---|---|
+| SRAM (온칩) | ~20 MB (A100) | ~19 TB/s | 매우 빠름, 매우 작음 |
+| HBM (GPU DRAM) | 40-80 GB | ~2 TB/s | 크지만 느림 |
+| CPU DRAM | 수백 GB | ~12.8 GB/s | 크지만 매우 느림 |
+
+SRAM은 HBM보다 **약 10배 빠르지만 용량이 약 4,000배 작습니다**. A100 GPU의 SRAM은 총 약 20MB(108개 SM x 192KB/SM)에 불과합니다. 이 극단적인 비대칭이 FlashAttention의 설계 동기입니다.
+
+GPU 프로그래밍에서 SRAM은 흔히 "공유 메모리(shared memory)"라고 불리며, 같은 SM(Streaming Multiprocessor) 내의 스레드들이 공유하는 빠른 스크래치패드 메모리입니다. 일반적인 CUDA 프로그래밍에서는 프로그래머가 HBM과 SRAM 사이의 데이터 이동을 명시적으로 관리해야 하지만, PyTorch 같은 프레임워크의 표준 연산자들은 이러한 최적화를 수행하지 않습니다.
+
+### Quadratic Memory 문제
+
+표준 어텐션의 계산 과정에서 핵심 문제는 $N \times N$ 크기의 중간 행렬이 생성된다는 점입니다:
+
+1. $S = QK^T$ 계산 -- $N \times N$ 행렬을 **HBM에 저장**
+2. $P = \text{softmax}(S)$ -- $S$를 HBM에서 읽고, $P$를 HBM에 저장
+3. $O = PV$ -- $P$를 HBM에서 읽고, $O$를 HBM에 저장
+
+시퀀스 길이 $N$, 헤드 차원 $d$일 때 HBM 접근 총량:
+
+$$\text{IO}_{\text{standard}} = \Theta(Nd + N^2)$$
+
+$N$이 커질수록 $N^2$ 항이 지배적이 됩니다. 구체적인 수치로 이 문제의 심각성을 살펴보겠습니다. $N = 4096$, $d = 128$일 때:
+- 계산: $\Theta(N^2 d) \approx 2 \times 10^9$ FLOPs
+- IO: $\Theta(N^2) \approx 1.7 \times 10^7$ floats x 2 bytes = 34 MB
+
+A100에서 계산은 ~6$\mu$s, 메모리 전송은 ~17$\mu$s로, **실행 시간의 ~74%가 메모리 접근 대기**입니다. 이를 **메모리 대역폭 제한(memory-bound)** 연산이라 합니다.
+
+더 구체적으로, 연산 강도(arithmetic intensity)를 계산하면:
+
+$$\text{연산 강도} = \frac{\text{FLOPs}}{\text{Bytes}} = \frac{O(N^2 d)}{O(N^2)} = O(d)$$
+
+A100의 연산 강도 균형점(compute-memory balance point)은 약 $312 \text{ TFLOPS} / 2 \text{ TB/s} = 156$입니다. 즉, $d < 156$인 대부분의 현실적 설정에서 표준 어텐션은 메모리 대역폭에 의해 제한됩니다. 이는 GPU의 연산 능력 중 상당 부분이 HBM 접근 대기에 낭비되고 있음을 의미합니다.
+
+멀티헤드 어텐션에서 헤드당 차원이 $d = 64$인 경우, 연산 강도는 약 64로, 이론적 최대 처리량의 약 41%만 활용할 수 있습니다.
+
+### 기존 근사 어텐션의 한계
+
+$O(N^2)$ 문제를 해결하기 위해 다양한 근사 어텐션 방법이 제안되었습니다:
+
+| 방법 | 복잡도 | 접근법 | 한계 |
+|------|--------|--------|------|
+| Linformer (2020) | $O(N)$ | 키/값을 저차원 투영 | 투영 손실, 인과적 마스킹 어려움 |
+| Performer (2021) | $O(N)$ | 커널 근사 소프트맥스 | 근사 품질 불안정 |
+| Linear Attention | $O(N)$ | 소프트맥스 제거 | 표현력 저하 |
+| Sparse Transformer (2019) | $O(N\sqrt{N})$ | 희소 어텐션 패턴 | 패턴 설계 필요 |
+| Longformer (2020) | $O(N)$ | 로컬 + 글로벌 어텐션 | 글로벌 토큰 제한 |
+
+이들 방법의 공통적인 문제점은 다음과 같습니다:
+- 수치적으로 표준 어텐션과 다른 결과를 생성
+- 실제 wall-clock 시간에서는 IO 비효율로 이론적 속도 향상을 달성하지 못하는 경우가 많음
+- 특정 태스크에서 품질 저하가 관찰됨
+- 대부분 FLOP 수를 줄이는 데 집중했지, IO를 줄이는 데 집중하지 않음
+
+FlashAttention의 핵심 통찰은 **FLOP 수가 아니라 IO가 실제 병목**이라는 점입니다. 따라서 같은 FLOP을 수행하더라도 IO를 줄이면 실질적인 속도 향상을 얻을 수 있습니다.
+
+## 핵심 아이디어
+
+### 타일링 (Tiling)
+
+FlashAttention의 핵심은 $Q$, $K$, $V$ 행렬을 **블록(타일)**으로 나누어 SRAM에 순차적으로 로드하고, 어텐션 결과를 점진적으로 누적하는 것입니다. **$N \times N$ 어텐션 행렬 $S$를 HBM에 절대 구체화(materialize)하지 않습니다.**
+
+타일링의 핵심 제약 조건은 SRAM 용량 $M$에 의해 결정됩니다. 각 타일에는 $Q$ 블록($B_r \times d$), $K$ 블록($B_c \times d$), $V$ 블록($B_c \times d$), 그리고 중간 결과($B_r \times B_c$)가 동시에 SRAM에 존재해야 합니다. 이 조건에서 최대 블록 크기를 산출하면:
+
+$$B_c = \left\lceil \frac{M}{4d} \right\rceil, \quad B_r = \min\left(\left\lceil \frac{M}{4d} \right\rceil, d\right)$$
+
+예를 들어, $M = 100\text{KB}$ (50K floats), $d = 64$일 때 $B_c \approx 195$, $B_r = 64$로 설정됩니다.
+
+이 블록 크기 설정이 실제 성능에 미치는 영향은 아래 그림에서 실험적으로 확인할 수 있습니다. 블록 크기가 커질수록 HBM 접근 횟수가 줄어들고, 이에 비례하여 실행 시간도 감소합니다.
+
+![블록 크기에 따른 HBM 접근 횟수 및 실행 시간, Block-Sparse FlashAttention의 희소성 대비 속도 향상](figures/fig_2.png)
+*Figure 2: (좌) 블록 크기에 따른 HBM 접근 횟수와 순전파 실행 시간 -- 블록이 클수록 HBM 접근이 감소하여 실행 시간이 단축되며, 이론적 IO 복잡도 분석과 정확히 일치한다. (우) Block-Sparse FlashAttention의 희소 블록 비율에 따른 속도 향상 -- Non-Zero 블록이 줄수록 Dense FlashAttention 대비 속도가 비례적으로 증가하여, 희소 어텐션 패턴과의 자연스러운 결합 가능성을 보여준다 (Dao et al., 2022)*
+
+### 온라인 소프트맥스 (Online Softmax)
+
+타일 단위 계산의 핵심 난제는 소프트맥스입니다. 표준 소프트맥스는 행 전체의 최대값과 합이 필요합니다:
+
+$$\text{softmax}(x_i) = \frac{e^{x_i - m}}{\sum_j e^{x_j - m}}, \quad m = \max_j x_j$$
+
+행 전체를 한 번에 볼 수 없는 타일링 환경에서, FlashAttention은 **온라인 소프트맥스(Milakov & Gimelshein, 2018)**를 활용하여 블록을 순차적으로 처리하면서 정확한 소프트맥스를 계산합니다. 각 블록 $j$를 처리할 때:
+
+$$m^{\text{new}} = \max(m^{\text{old}}, m_j)$$
+
+$$\ell^{\text{new}} = e^{m^{\text{old}} - m^{\text{new}}} \cdot \ell^{\text{old}} + e^{m_j - m^{\text{new}}} \cdot \ell_j$$
+
+$$O^{\text{new}} = \frac{e^{m^{\text{old}} - m^{\text{new}}} \cdot \ell^{\text{old}} \cdot O^{\text{old}} + e^{m_j - m^{\text{new}}} \cdot P_j V_j}{\ell^{\text{new}}}$$
+
+여기서 $m$은 현재까지의 행 최대값, $\ell$은 지수합입니다. 이 업데이트 규칙이 **어소시에이티브(associative)**하다는 것이 핵심으로, 블록 순서에 관계없이 최종 결과가 정확합니다.
+
+온라인 소프트맥스의 정확성을 직관적으로 이해하면: 새로운 블록이 들어올 때마다 기존 누적값을 새로운 최대값 기준으로 "재스케일링"하는 것입니다. 이전 블록의 최대값이 $m^{\text{old}}$이고 새 블록의 최대값이 $m_j$일 때, 두 블록을 합친 글로벌 최대값 $m^{\text{new}}$ 기준으로 양쪽 지수를 보정합니다. 이 보정이 정확히 수학적으로 성립하기 때문에, 최종 결과는 전체 행을 한 번에 계산한 것과 동일합니다.
+
+### IO 복잡도 분석 및 최적성 증명
+
+FlashAttention의 IO 복잡도는 다음과 같습니다:
+
+$$\text{IO}_{\text{flash}} = \Theta\left(\frac{N^2 d^2}{M}\right)$$
+
+여기서 $M$은 SRAM 크기입니다. $d \ll M \ll N^2$인 일반적인 조건($d = 64\text{-}128$, $M \approx 100\text{KB}$, $N \geq 1024$)에서:
+
+$$\frac{N^2 d^2}{M} \ll N^2 + Nd$$
+
+즉, 표준 어텐션보다 IO가 크게 감소합니다.
+
+논문의 **Theorem 2**에서는 이 IO 복잡도의 최적성을 증명합니다. 어텐션 계산에 필요한 HBM 접근의 하한(lower bound)을 다음과 같이 유도합니다:
+
+$$\Omega\left(\frac{N^2 d^2}{M}\right)$$
+
+증명의 핵심은 레드-블루 페블링(red-blue pebble game) 기법을 사용합니다. 이는 Aggarwal과 Vitter(1988)가 제안한 외부 메모리 알고리즘의 IO 하한 증명 프레임워크입니다. 행렬곱 $S = QK^T$의 IO 하한이 $\Omega(N^2 d^2 / M)$이고, FlashAttention의 IO가 이 하한과 일치하므로, FlashAttention은 IO 최적(IO-optimal)입니다.
+
+구체적으로, 표준 어텐션 대비 IO 절감 비율을 계산하면:
+
+$$\frac{\text{IO}_{\text{flash}}}{\text{IO}_{\text{standard}}} = \frac{N^2 d^2 / M}{N^2 + Nd} \approx \frac{d^2}{M}$$
+
+$d = 128$, $M = 100\text{KB} = 50\text{K floats}$일 때, 이 비율은 $128^2 / 50000 \approx 0.33$으로, 약 **3배의 IO 절감**을 예측합니다.
+
+## 방법론
+
+### 순전파 (Forward Pass) 타일링 알고리즘
+
+```
+Algorithm: FlashAttention Forward
+입력: Q, K, V in R^(N x d), SRAM 크기 M
+
+1. 블록 크기 설정: B_c = ceil(M / (4d)), B_r = min(ceil(M / (4d)), d)
+2. Q를 T_r = ceil(N / B_r) 블록으로, K/V를 T_c = ceil(N / B_c) 블록으로 분할
+3. 초기화: O = 0, l = 0, m = -inf (행별)
+
+4. for j = 1 to T_c:        # K, V 블록 순회 (외부 루프)
+     K_j, V_j를 HBM -> SRAM 로드
+     for i = 1 to T_r:      # Q 블록 순회 (내부 루프)
+       Q_i를 HBM -> SRAM 로드
+       S_ij = Q_i x K_j^T / sqrt(d)     # SRAM 내에서 계산!
+       m_ij = rowmax(S_ij)               # 블록 내 최대값
+       P_ij = exp(S_ij - m_ij)           # 지수
+       l_ij = rowsum(P_ij)               # 블록 내 합
+
+       # 온라인 소프트맥스 업데이트
+       m_new = max(m_i, m_ij)
+       l_new = exp(m_i - m_new) x l_i + exp(m_ij - m_new) x l_ij
+       O_i = (exp(m_i - m_new) x l_i x O_i + exp(m_ij - m_new) x P_ij x V_j) / l_new
+
+       m_i = m_new, l_i = l_new
+       O_i를 SRAM -> HBM 기록
+
+출력: O, (m, l)  # m, l은 역전파에 사용
+```
+
+**핵심**: $S_{ij}$ ($N \times N$ 어텐션 행렬의 블록)이 SRAM 내에서만 존재하고 HBM에 절대 저장되지 않습니다.
+
+이 알고리즘의 IO 비용을 단계별로 분석하면:
+- K, V 블록 로드: 각 $B_c \times d$ 크기를 $T_c$번 = $Nd$ floats
+- Q 블록 로드: 각 $B_r \times d$ 크기를 $T_r \times T_c$번 = $Nd \cdot T_c$ floats
+- O 블록 기록: 각 $B_r \times d$ 크기를 $T_r \times T_c$번 = $Nd \cdot T_c$ floats
+- 전체: $\Theta(Nd \cdot T_c) = \Theta(Nd \cdot N/B_c) = \Theta(N^2 d^2 / M)$
+
+### 인과적 마스킹 (Causal Masking) 지원
+
+자기 회귀(autoregressive) 모델에서는 인과적 마스킹이 필수적입니다. FlashAttention은 타일 단위로 마스킹을 효율적으로 적용합니다:
+
+- 완전히 마스킹되는 블록 ($i \cdot B_r < j \cdot B_c$): 계산을 **건너뜀** (연산량과 IO 모두 절약)
+- 부분적으로 마스킹되는 블록: 블록 내에서 마스크 적용 후 계산
+- 마스킹 없는 블록: 일반적으로 계산
+
+인과적 마스킹에서는 어텐션 행렬의 상삼각 부분이 모두 마스킹되므로, 전체 블록 중 약 절반을 건너뛸 수 있습니다. 이로 인해 인과적 어텐션에서는 추가적인 약 2배의 속도 향상이 가능합니다.
+
+### 역전파 (Backward Pass) - 재계산 전략
+
+일반적인 어텐션 역전파는 $N \times N$ 어텐션 행렬 $P$를 저장해야 합니다. FlashAttention은 이를 **저장하지 않고, 역전파 시 재계산(recomputation)**합니다.
+
+순전파에서 저장한 것은 **소프트맥스 통계값 ($m$, $\ell$)**과 출력 $O$뿐입니다. 역전파 시:
+
+1. Q, K, V 블록을 SRAM에 로드
+2. $S_{ij} = Q_i K_j^T / \sqrt{d}$를 **다시 계산**
+3. 저장된 $m$, $\ell$로 $P_{ij}$를 복원: $P_{ij} = \text{diag}(\ell_i)^{-1} \cdot \exp(S_{ij} - m_i)$
+4. $dV_j = P_{ij}^T \cdot dO_i$, $dP_{ij} = dO_i \cdot V_j^T$ 계산
+5. $dS_{ij} = P_{ij} \odot (dP_{ij} - D_i)$ 계산, 여기서 $D_i = \text{rowsum}(dO_i \odot O_i)$
+6. $dQ_i = dS_{ij} \cdot K_j / \sqrt{d}$, $dK_j = dS_{ij}^T \cdot Q_i / \sqrt{d}$ 계산
+
+이 전략의 트레이드오프:
+- **추가 계산**: 어텐션 행렬 재계산 1회 (순전파 FLOPs의 ~100% 추가)
+- **메모리 절약**: $O(N^2) \to O(N)$ (소프트맥스 통계값만 저장)
+- **순이익**: 메모리 절약으로 인한 HBM 접근 감소가 재계산 비용을 상쇄하고도 남음
+
+시퀀스 길이 $N = 4096$에서:
+- 표준 어텐션 메모리: $N^2 \times 2$ bytes = 32 MB (블록당)
+- FlashAttention 메모리: $N \times 2$ bytes = 8 KB (통계값만)
+- **메모리 절감: ~4,000배**
+
+재계산 전략은 gradient checkpointing의 일종으로 볼 수 있지만, FlashAttention의 재계산은 IO 관점에서도 이점이 있다는 점이 차별화됩니다. 어텐션 행렬을 HBM에서 읽는 것보다, Q, K, V로부터 SRAM 내에서 재계산하는 것이 IO 비용이 더 낮기 때문입니다.
+
+## 실험 결과
+
+### 학습 속도 향상
+
+다음 그림은 FlashAttention의 실행 시간과 메모리 사용량을 기존 어텐션 구현들과 직접 비교한 결과입니다. 특히 시퀀스 길이가 증가할수록 FlashAttention의 우위가 극적으로 커지며, 기존 구현이 OOM으로 실패하는 구간에서도 안정적으로 동작합니다.
+
+![시퀀스 길이별 어텐션 실행 시간 및 메모리 사용량 비교](figures/fig_5.png)
+*Figure 5: (좌) 시퀀스 길이에 따른 어텐션 순전파+역전파 실행 시간 -- FlashAttention은 PyTorch 표준 구현, Megatron-LM, Linformer, Sparse Attention 대비 전 구간에서 가장 빠르며, 표준 어텐션이 OOM에 빠지는 긴 시퀀스 구간에서도 동작한다. (우) 메모리 사용량 -- FlashAttention은 시퀀스 길이에 대해 $O(N)$으로 증가하여, $O(N^2)$인 표준 어텐션 대비 20배 이상의 메모리를 절감한다 (Dao et al., 2022)*
+
+| 모델/태스크 | 시퀀스 길이 | 표준 어텐션 | FlashAttention | 속도 향상 |
+|-----------|-----------|-----------|--------------|--------|
+| BERT-large | 512 | 기준 | 15% 빠름 | 1.15x |
+| GPT-2 | 1024 | 기준 | 2.4x | 2.4x |
+| GPT-2 | 4096 | OOM | **가능** | - |
+| Long-range Arena | 1K~4K | 기준 | 2~4x | 2~4x |
+| Long-range Arena | 16K | OOM | **가능** | - |
+
+속도 향상의 원인을 분해하면, 시퀀스 길이가 길어질수록 FlashAttention의 이점이 극적으로 증가하는 것을 확인할 수 있습니다. 이는 표준 어텐션의 IO가 $O(N^2)$으로 증가하는 반면, FlashAttention의 IO는 $O(N^2 d^2 / M)$으로 $d^2/M$ 계수만큼 줄어들기 때문입니다.
+
+### 메모리 복잡도 비교
+
+| 어텐션 종류 | 메모리 복잡도 | N=1K | N=4K | N=16K |
+|-----------|------------|------|------|-------|
+| 표준 어텐션 | $O(N^2)$ | 2 MB | 32 MB | 512 MB |
+| FlashAttention | $O(N)$ | 2 KB | 8 KB | 32 KB |
+| 절감 비율 | | 1,000x | 4,000x | 16,000x |
+
+이 표에서 주목할 점은 시퀀스 길이가 4배 증가할 때, 표준 어텐션의 메모리는 16배 증가하지만 FlashAttention의 메모리는 4배만 증가한다는 것입니다. 이는 각각 $O(N^2)$과 $O(N)$ 복잡도를 직접적으로 반영합니다.
+
+### 근사 어텐션 대비 wall-clock 비교
+
+논문은 IO를 줄이는 것이 FLOP을 줄이는 것보다 효과적임을 실험적으로도 입증합니다:
+
+| 방법 | 복잡도 | 실제 속도 (N=1K) | 실제 속도 (N=4K) |
+|------|--------|-----------------|------------------|
+| 표준 어텐션 | $O(N^2)$ | 1.0x | OOM |
+| Linformer | $O(N)$ | 0.7x (더 느림) | 1.0x |
+| Performer | $O(N)$ | 0.8x (더 느림) | 1.2x |
+| **FlashAttention** | $O(N^2)$ FLOP, $O(N)$ IO | **2.4x** | **2.4x** |
+
+이 결과는 매우 의미심장합니다. 이론적 FLOP 복잡도가 $O(N)$인 Linformer와 Performer가 실제로는 표준 어텐션보다 느린 반면, FLOP 복잡도는 동일한 $O(N^2)$인 FlashAttention이 2배 이상 빠릅니다. 이는 실제 하드웨어에서 IO 비용이 계산 비용보다 더 중요하다는 핵심 주장을 실증적으로 뒷받침합니다.
+
+### 수치적 등가성 검증
+
+FlashAttention은 근사 어텐션이 아닌 정확한(exact) 어텐션을 계산합니다. 아래 그림은 GPT-2 학습 과정에서 FlashAttention과 HuggingFace 표준 어텐션 구현의 검증 퍼플렉시티를 비교한 것으로, 두 구현이 학습 전 과정에서 동일한 수렴 곡선을 따르는 것을 확인할 수 있습니다.
+
+![GPT-2 학습 시 FlashAttention과 HuggingFace 표준 구현의 검증 퍼플렉시티 비교](figures/fig_6.png)
+*Figure 6: GPT-2-small 및 GPT-2-medium의 학습 단계별 검증 퍼플렉시티 -- FlashAttention과 HuggingFace 표준 어텐션이 동일한 수렴 곡선을 추적하여, FlashAttention이 속도와 메모리 효율을 개선하면서도 수치적으로 정확한 결과를 출력함을 실증한다 (Dao et al., 2022)*
+
+### 긴 시퀀스 벤치마크
+
+FlashAttention은 최초로 Path-X (시퀀스 길이 16K)와 Path-256 (시퀀스 길이 64K) 벤치마크에서 **랜덤 이상의 성능**을 달성했습니다:
+- Path-X: 61.4% 정확도 (기존 최고: 랜덤 수준 ~50%)
+- Path-256: 63.1% 정확도
+
+A100 80GB GPU에서 최대 64K 토큰까지 처리 가능하며, 표준 어텐션의 OOM 한계(~16K)를 크게 넘어섭니다.
+
+Path-X와 Path-256은 Long Range Arena(LRA) 벤치마크의 일부로, 매우 긴 시퀀스에서의 의존성 학습 능력을 평가합니다. 이 벤치마크에서 랜덤 이상의 성능을 달성한 것은 FlashAttention이 최초이며, 이는 더 긴 시퀀스에서의 학습이 실질적으로 모델 품질을 향상시킬 수 있음을 보여줍니다.
+
+### 실제 모델 학습 성능
+
+| 모델 | 데이터셋 | 성능 향상 |
+|------|---------|--------|
+| BERT-large | Wikipedia + BookCorpus | 15% 학습 속도 향상 |
+| GPT-2 1.5B | OpenWebText | 3x 학습 속도 향상 |
+| Long Document Classification | MIMIC-III | perplexity 0.7 감소 |
+
+특히 GPT-2 학습에서 FlashAttention은 시퀀스 길이를 1K에서 4K로 늘려 학습함으로써, 동일 학습 시간 내에 더 좋은 perplexity를 달성할 수 있었습니다. 이는 FlashAttention이 단순히 같은 모델을 더 빠르게 학습하는 것을 넘어, **더 긴 컨텍스트로 학습할 수 있게 하여 모델 품질 자체를 향상**시킨다는 중요한 시사점을 제공합니다.
+
+## 의의 및 한계
+
+### 의의
+
+- **정확성**: 근사가 아닌 **정확한(exact)** 어텐션을 보장합니다. 표준 어텐션과 비트 단위(bit-for-bit)로 동일한 결과를 출력합니다 (부동소수점 연산 순서 차이로 인한 미세한 수치 오차 제외).
+- **범용성**: 인과적(causal) 마스킹, 드롭아웃, 패딩 마스크 등 표준 어텐션의 모든 기능을 지원합니다.
+- **산업 표준**: PyTorch 2.0에 공식 통합되어 `F.scaled_dot_product_attention()`으로 즉시 사용 가능합니다.
+- **긴 컨텍스트의 기반**: GPT-4(128K), Claude(200K+), Gemini(1M+) 등 긴 컨텍스트 모델의 실질적 기반 기술입니다.
+- **후속 연구의 토대**: FlashAttention-2(2023), FlashAttention-3(2024), PagedAttention(vLLM), RingAttention 등 핵심 후속 연구의 기반이 되었습니다.
+- **IO 인식 패러다임**: "알고리즘 설계 시 하드웨어의 IO 특성을 고려해야 한다"는 새로운 설계 철학을 확립했습니다. 이 원칙은 어텐션뿐 아니라 LayerNorm, Dropout, 활성화 함수 등 다른 연산에도 적용되어 커널 퓨전(kernel fusion)의 이론적 기반을 제공합니다.
+
+### FlashAttention 후속 발전
+
+| 버전 | 연도 | 핵심 개선 |
+|------|------|--------|
+| FlashAttention | 2022 | IO 인식 타일링, 온라인 소프트맥스 |
+| FlashAttention-2 | 2023 | SM 간 병렬화 개선, 워프 수준 최적화, 2x 추가 속도 향상 |
+| FlashAttention-3 | 2024 | H100 비동기 실행, FP8 지원, warp-specialization |
+| FlashDecoding | 2023 | 추론 시 KV 캐시 차원 병렬화, 배치 크기 1 최적화 |
+
+### 한계
+
+- **하드웨어 특화 구현**: Triton/CUDA 커널 수준의 구현이 필요하여 다른 하드웨어(TPU, AMD GPU, 모바일)로의 이식이 복잡합니다. 다만 이후 AMD(ROCm), Apple(Metal), Intel 등으로 포팅이 진행되었습니다.
+- **SRAM 크기 의존성**: 타일 크기가 SRAM 용량에 맞춰 조정되어야 하므로 GPU 아키텍처별 최적화가 필요합니다. 새로운 GPU가 출시될 때마다 최적 파라미터를 재탐색해야 합니다.
+- **재계산 오버헤드**: 역전파에서 어텐션 행렬을 재계산하므로 순수 FLOPs 관점에서는 추가 비용이 발생합니다 (그러나 IO 감소 효과가 이를 상쇄).
+- **짧은 시퀀스 효과**: 시퀀스 길이가 매우 짧은 경우(256 이하) 커널 런칭 오버헤드 대비 이점이 줄어듭니다.
+- **커스텀 어텐션 패턴**: 비표준 어텐션 마스크(예: 복잡한 희소 패턴)를 지원하려면 별도의 커널 수정이 필요합니다. FlashAttention-2에서 일부 개선되었지만, 임의의 마스크 패턴에 대한 완전한 지원은 여전히 과제입니다.
+- **멀티 GPU 확장**: 단일 GPU 내의 IO 최적화에 집중하며, 다중 GPU 간의 통신 최적화는 별도의 연구(RingAttention 등)에서 다루어야 합니다.
+
+## 코드 예제
+
+### FlashAttention 핵심 알고리즘 및 PyTorch 활용
+
+```python
+import torch
+import torch.nn.functional as F
+import math
+
+# ========== 1. 온라인 소프트맥스 알고리즘 (FlashAttention의 핵심) ==========
+def online_softmax_attention(Q, K, V, block_size=64):
+    """FlashAttention의 핵심 아이디어를 Python으로 구현.
+    실제 FlashAttention은 CUDA/Triton으로 구현되지만,
+    온라인 소프트맥스의 동작 원리를 이해하기 위한 참고용 코드.
+    """
+    B, H, N, D = Q.shape
+    O = torch.zeros_like(Q)       # 출력 누적
+    l = torch.zeros(B, H, N, 1, device=Q.device)  # 지수합
+    m = torch.full((B, H, N, 1), float('-inf'), device=Q.device)  # 행 최대값
+
+    num_blocks = math.ceil(N / block_size)
+    scale = 1.0 / math.sqrt(D)
+
+    # K, V를 블록 단위로 순회 (HBM -> SRAM 시뮬레이션)
+    for j in range(num_blocks):
+        j_start = j * block_size
+        j_end = min(j_start + block_size, N)
+
+        K_j = K[:, :, j_start:j_end]  # (B, H, block, D) - SRAM에 로드
+        V_j = V[:, :, j_start:j_end]  # (B, H, block, D) - SRAM에 로드
+
+        # SRAM 내에서 어텐션 스코어 계산 (N^2 행렬을 HBM에 저장하지 않음)
+        S_j = torch.matmul(Q, K_j.transpose(-2, -1)) * scale  # (B, H, N, block)
+
+        # 온라인 소프트맥스 업데이트
+        m_j = S_j.max(dim=-1, keepdim=True).values     # 블록 최대값
+        m_new = torch.maximum(m, m_j)                   # 글로벌 최대값 업데이트
+
+        # 이전 누적값 재스케일링 + 새 블록 추가
+        exp_old = torch.exp(m - m_new)
+        exp_new = torch.exp(m_j - m_new)
+        P_j = torch.exp(S_j - m_new)                    # 새 블록의 어텐션 가중치
+
+        l_new = exp_old * l + P_j.sum(dim=-1, keepdim=True)
+        O = (exp_old * l * O + torch.matmul(P_j, V_j)) / l_new
+
+        m = m_new
+        l = l_new
+
+    return O  # 표준 어텐션과 수치적으로 동일한 결과
+
+
+# ========== 2. 검증: 온라인 소프트맥스 vs 표준 어텐션 ==========
+B, H, N, D = 2, 4, 128, 64
+Q = torch.randn(B, H, N, D)
+K = torch.randn(B, H, N, D)
+V = torch.randn(B, H, N, D)
+
+# 표준 어텐션
+scale = 1.0 / math.sqrt(D)
+S = torch.matmul(Q, K.transpose(-2, -1)) * scale  # O(N^2) 메모리
+P = F.softmax(S, dim=-1)
+O_standard = torch.matmul(P, V)
+
+# 온라인 소프트맥스 (FlashAttention 방식)
+O_flash = online_softmax_attention(Q, K, V, block_size=32)
+
+# 결과 비교
+max_diff = (O_standard - O_flash).abs().max().item()
+print(f"표준 어텐션 vs FlashAttention 최대 차이: {max_diff:.2e}")
+print(f"수치적으로 동일: {max_diff < 1e-5}")
+
+# ========== 3. PyTorch 2.0 FlashAttention 사용 ==========
+def pytorch_flash_attention(Q, K, V, is_causal=True):
+    """PyTorch 2.0+ 내장 FlashAttention.
+    내부적으로 CUDA FlashAttention 커널을 자동 선택.
+    """
+    return F.scaled_dot_product_attention(Q, K, V, is_causal=is_causal)
+
+# ========== 4. 메모리/속도 비교 시뮬레이션 ==========
+def io_comparison(seq_lengths, d=128, M_sram=100*1024):  # M_sram in floats
+    print("\n=== IO 복잡도 비교 ===")
+    print(f"{'N':>8} | {'Standard IO':>14} | {'Flash IO':>14} | {'Ratio':>8}")
+    print("-" * 52)
+    for N in seq_lengths:
+        standard_io = N * d + N * N  # O(Nd + N^2)
+        flash_io = N * N * d * d / M_sram  # O(N^2 d^2 / M)
+        ratio = 1 - flash_io / standard_io
+        print(f"{N:>8} | {standard_io:>14,} | {flash_io:>14,.0f} | {ratio:>7.1%}")
+
+io_comparison([512, 1024, 2048, 4096, 8192, 16384])
+
+print(f"\n=== 메모리 비교 (어텐션 행렬) ===")
+for N in [1024, 4096, 16384, 65536]:
+    standard_mem = N * N * 2  # FP16 bytes
+    flash_mem = N * 2 * 2     # 통계값만 (m, l)
+    print(f"N={N:>6}: 표준={standard_mem/1024**2:.1f}MB, Flash={flash_mem/1024:.1f}KB, "
+          f"절감={standard_mem/flash_mem:.0f}x")
+```
+
+## 관련 문서
+
+- [[flash-attention-2|FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning]] -- 후속 모델
+- [[falcon|Falcon]] -- 적용 모델

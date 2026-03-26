@@ -1,0 +1,87 @@
+# VDM: 변분 확산 모델과 학습 가능한 노이즈 스케줄
+
+**Google Brain** · **2021-07-01** · **Diffusion** · **Apache 2.0**
+
+## 개요
+
+Variational Diffusion Models(VDM)는 2021년 Google Brain의 Diederik Kingma, Tim Salimans 등이 발표한 연구로, 확산 모델을 변분 추론(Variational Inference) 관점에서 통일적으로 분석하고 노이즈 스케줄을 **학습 가능한 파라미터**로 확장한 이론적으로 중요한 기여이다.
+
+확산 모델의 성능은 노이즈 스케줄에 크게 의존한다. 노이즈 스케줄은 forward 과정에서 각 타임스텝 $t$에 얼마나 많은 노이즈를 추가할지를 결정하며, 이는 역방향 디노이징 과정의 난이도에 직접 영향을 미친다. 기존 DDPM은 선형 스케줄 $\beta_t = \beta_{\text{min}} + (\beta_{\text{max}} - \beta_{\text{min}}) \cdot t/T$을 사용하였고, Improved DDPM은 코사인 스케줄 $\bar{\alpha}_t = \cos^2(\frac{t/T + s}{1+s} \cdot \frac{\pi}{2})$을 제안하였다. 그러나 이러한 고정 스케줄이 모든 데이터셋에 최적인지는 불분명하였다.
+
+VDM은 이 문제에 대한 이론적 해답을 제시하였다. 핵심 기여는 세 가지이다: (1) 노이즈 스케줄을 **신호 대 잡음비(SNR, Signal-to-Noise Ratio)**로 재파라미터화하고, 이를 학습 가능한 단조감소 신경망 $\gamma_\eta(t)$로 모델링, (2) 연속 시간 극한에서 ELBO(Evidence Lower Bound)가 닫힌 형식으로 표현됨을 증명, (3) 확산 손실이 SNR 가중 denoising score matching과 동치임을 보여 기존 DDPM의 학습 목표에 대한 수학적 근거를 제공. VDM은 CIFAR-10에서 BPD(Bits Per Dimension) 2.65를 달성하며 당시 DDPM(3.75 BPD)보다 크게 향상된 가능도를 기록하였다. 이 연구는 이후 EDM의 설계 공간 분석, SD3의 로짓-정규 타임스텝 샘플링 등 노이즈 스케줄 최적화 연구의 선행 연구가 되었다.
+
+![Architecture](figures/architecture.svg)
+
+## 아키텍처 상세
+
+### SNR 기반 노이즈 스케줄 재파라미터화
+
+VDM의 핵심은 노이즈 스케줄을 신호 대 잡음비(SNR)로 표현하는 것이다. Forward 과정에서 $\mathbf{z}_t = \alpha_t \mathbf{x} + \sigma_t \boldsymbol{\epsilon}$일 때, SNR은 다음과 같이 정의된다:
+
+$$\text{SNR}(t) = \frac{\alpha_t^2}{\sigma_t^2}$$
+
+로그 SNR $\lambda_t = \log[\alpha_t^2 / \sigma_t^2]$를 사용하면, 노이즈 스케줄은 단조감소 함수 $\lambda(t)$로 완전히 결정된다. VDM은 이 함수를 단조감소 신경망 $\gamma_\eta(t)$로 파라미터화한다:
+
+$$\lambda(t) = \gamma_\eta(t), \quad \gamma_\eta(0) = +\infty \text{ (무노이즈)}, \quad \gamma_\eta(1) = -\infty \text{ (순수 노이즈)}$$
+
+### ELBO의 SNR 기반 분해
+
+VDM은 이산 시간 ELBO를 다음 세 항으로 분해한다:
+
+$$-\log p(\mathbf{x}) \leq \underbrace{\mathcal{L}_0}_{\text{재구성 항}} + \underbrace{\mathcal{L}_T}_{\text{확산 손실}} + \underbrace{\mathcal{L}_\infty}_{\text{Prior 일치 항}}$$
+
+확산 손실은 SNR 변화량으로 표현된다:
+
+$$\mathcal{L}_T = \frac{1}{2}\sum_{t=1}^{T} (\text{SNR}(t-1) - \text{SNR}(t)) \cdot \mathbb{E}\left[\|\hat{\mathbf{x}}_\theta(\mathbf{z}_t) - \mathbf{x}\|^2\right]$$
+
+이 분해의 핵심 통찰은 확산 손실의 가중치가 인접 타임스텝 간의 SNR 차이 $\Delta\text{SNR}(t)$에 의해 결정된다는 것이다. 노이즈 스케줄이 고노이즈 구간에서 SNR이 급격히 변하면 해당 구간의 학습 가중치가 높아지고, 저노이즈 구간에서 완만히 변하면 가중치가 낮아진다.
+
+### 연속 시간 극한과 Score Matching 연결
+
+$T \to \infty$의 연속 시간 극한에서 확산 손실은 적분으로 수렴한다:
+
+$$\mathcal{L}_\infty = \frac{1}{2}\int_0^1 \left|\frac{d\lambda(t)}{dt}\right| \cdot \mathbb{E}\left[\|\hat{\mathbf{x}}_\theta(\mathbf{z}_t) - \mathbf{x}\|^2\right] dt$$
+
+이는 Score-SDE의 가중 score matching 목표와 동치이며, $\epsilon$-예측으로 재작성하면:
+
+$$\mathcal{L}_\infty = \frac{1}{2}\int_0^1 \left|\frac{d\lambda(t)}{dt}\right| \cdot \mathbb{E}\left[\|\boldsymbol{\epsilon}_\theta(\mathbf{z}_t) - \boldsymbol{\epsilon}\|^2\right] dt$$
+
+이 결과는 DDPM의 $\epsilon$-예측 학습 목표가 왜 효과적인지에 대한 수학적 근거를 제공한다.
+
+### 학습 가능한 노이즈 스케줄의 최적화
+
+노이즈 스케줄 $\gamma_\eta(t)$는 ELBO를 최대화하는 방향으로 denoiser 신경망 $\hat{\mathbf{x}}_\theta$와 함께 공동 최적화된다. 단조감소 제약은 단조 신경망(monotonic network) 구조로 보장한다. 실험적으로 학습된 노이즈 스케줄은 코사인 스케줄과 유사하지만, 데이터셋에 따라 미세하게 다른 형태를 보이며, 최적의 스케줄이 데이터 특성에 의존함을 확인하였다.
+
+## 핵심 혁신
+
+VDM의 핵심 혁신은 확산 모델의 이론적 기반을 변분 추론 관점에서 통일적으로 정립한 것이다. 노이즈 스케줄의 학습 가능성은 고정 스케줄의 임의적 설계 문제를 데이터 기반 최적화로 전환하였다. 연속 시간 ELBO의 닫힌 형식 표현은 Score-SDE와의 이론적 연결을 명확히 하여, 확산 모델과 점수 기반 모델이 같은 프레임워크의 다른 관점임을 증명하였다. SNR 기반 가중치 분석은 이후 EDM의 설계 공간 탐색, SD3의 logit-normal 샘플링, v-prediction 등 다양한 노이즈 스케줄 최적화 연구의 이론적 출발점이 되었다.
+
+## 벤치마크/성능
+
+| 모델 | 데이터셋 | BPD (↓) | FID (↓) | 비고 |
+|------|---------|---------|---------|------|
+| VDM | CIFAR-10 | 2.65 | - | 학습 가능 스케줄 |
+| DDPM | CIFAR-10 | 3.75 | 3.17 | 선형 스케줄 |
+| Improved DDPM | CIFAR-10 | 2.94 | - | 코사인 스케줄 |
+| Score-SDE (VP) | CIFAR-10 | 2.99 | 2.20 | 연속 시간 |
+| VDM | ImageNet 64x64 | 3.40 | - | 학습 가능 스케줄 |
+| ADM | ImageNet 64x64 | 3.94 | 2.07 | 코사인 스케줄 |
+
+VDM은 가능도(BPD) 측면에서 CIFAR-10에서 2.65 BPD를 달성하며 기존 DDPM(3.75 BPD)을 크게 능가한다. 이는 학습 가능한 노이즈 스케줄이 ELBO 최적화에 효과적임을 실증한다. FID 측면에서는 Score-SDE와 유사한 수준이다.
+
+## 학습
+
+CIFAR-10(32x32)과 ImageNet(64x64)에서 실험이 수행되었다. 연속 시간 ELBO를 최대화하는 방식으로 학습 가능한 노이즈 스케줄 $\gamma_\eta$와 denoiser 신경망 $\hat{\mathbf{x}}_\theta$를 공동 최적화한다. 학습 시 $t \sim \mathcal{U}[0,1]$에서 균일 샘플링하며, 몬테카를로 추정으로 연속 시간 ELBO의 기울기를 계산한다. 백본은 U-Net 기반이며, Group Normalization과 SiLU 활성화를 사용한다.
+
+## 관련 모델
+
+VDM은 DDPM에서 발전하였으며, 이후 EDM(Karras et al., 2022)의 프리컨디셔닝 및 노이즈 스케줄 분석, SD3의 logit-normal 타임스텝 샘플링, v-prediction(Salimans & Ho, 2022) 등의 이론적 기반이 되었다.
+
+## 참고 자료
+
+- [논문: Variational Diffusion Models](https://arxiv.org/abs/2107.00630)
+- [코드](https://github.com/google-research/vdm)
+
+## 관련 문서
+
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 발전 기반

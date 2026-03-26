@@ -90,7 +90,9 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
             continue
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
-        content = data.get('content', '')
+        # content.md 우선, 없으면 content.json의 content 필드 폴백
+        content_md = item_dir / 'content.md'
+        content = content_md.read_text(encoding='utf-8') if content_md.exists() else data.get('content', '')
 
         existing = Post.objects.filter(slug=slug).first()
         if existing and not update:
@@ -101,7 +103,12 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
             if not dry_run:
                 existing.content = content
                 existing.save(update_fields=['content'])
-                print(f"  [UPDATE] content 업데이트: {display_title}")
+                # 태그 갱신
+                existing.tags.clear()
+                for tag_name in tags_raw:
+                    tag = get_or_create_tag(tag_name)
+                    existing.tags.add(tag)
+                print(f"  [UPDATE] content + tags 업데이트: {display_title}")
             else:
                 print(f"  [DRY-RUN] 업데이트 예정: {display_title}")
             updated_posts += 1

@@ -32,7 +32,6 @@ services:
       - DB_USER=blog_user
       - DB_PASSWORD=blog_password
       - REDIS_URL=redis://redis:6379/0
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
     depends_on:
       - db
       - redis

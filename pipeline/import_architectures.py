@@ -24,12 +24,23 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 import django
 django.setup()
 
+from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.files import File
-from blog.models import ArchitectureEntry, ArchitectureConcept, ArchitectureRelation, Post
+from blog.models import ArchitectureEntry, ArchitectureConcept, ArchitectureRelation, Post, Category, Tag
 
 
 ARCH_WRITTEN_DIR = Path(__file__).parent / 'data' / 'architectures_written'
+
+# architecture_category → Blog Category slug 매핑
+ARCH_CATEGORY_MAP = {
+    'llm': 'llm',
+    'vision': 'vision',
+    'multimodal': 'multimodal',
+    'ssm': 'ssm',
+    'diffusion': 'diffusion',
+    'agent': 'agent',
+}
 
 
 def get_or_create_concept(name: str) -> ArchitectureConcept:
@@ -44,7 +55,7 @@ def get_or_create_concept(name: str) -> ArchitectureConcept:
     return concept
 
 
-def import_architectures(dry_run: bool = False):
+def import_architectures(dry_run: bool = False, update: bool = False):
     if not ARCH_WRITTEN_DIR.exists():
         print(f"architectures_written 디렉토리 없음: {ARCH_WRITTEN_DIR}")
         sys.exit(1)
@@ -53,6 +64,8 @@ def import_architectures(dry_run: bool = False):
     created = 0
     updated = 0
     skipped = 0
+    post_created = 0
+    post_updated = 0
 
     for arch_dir in dirs:
         if not arch_dir.is_dir():
@@ -79,6 +92,10 @@ def import_architectures(dry_run: bool = False):
             fig_path = arch_dir / data.get('figure', 'figures/architecture.png')
             if fig_path.exists():
                 print(f"    figure: {fig_path.name}")
+            content_md = arch_dir / 'content.md'
+            if content_md.exists():
+                post_exists = Post.objects.filter(slug=slug).exists()
+                print(f"    content.md: {len(content_md.read_text(encoding='utf-8'))} chars (Post {'exists' if post_exists else 'new'})")
             continue
 
         # release_date 파싱
@@ -171,16 +188,84 @@ def import_architectures(dry_run: bool = False):
         else:
             print(f"    [WARN] figure 없음: {fig_path}")
 
-        # related_post 연결 (slug 기준)
-        related_slug = data.get('related_post_slug', '')
-        if related_slug:
-            try:
-                post = Post.objects.get(slug=related_slug)
-                entry.related_post = post
+        # content.md → Post 생성/업데이트 + ArchitectureEntry 연결
+        content_md = arch_dir / 'content.md'
+        content_json = arch_dir / 'content.json'
+        if content_md.exists():
+            content_text = content_md.read_text(encoding='utf-8')
+            # content.json에서 메타데이터 읽기
+            content_meta = {}
+            if content_json.exists():
+                with open(content_json, encoding='utf-8') as f:
+                    content_meta = json.load(f)
+
+            post_title = content_meta.get('title_ko') or content_meta.get('title') or name
+            post_slug = content_meta.get('slug') or slug
+            post_summary = content_meta.get('summary', '')
+            post_tags = content_meta.get('tags', [])
+
+            # 카테고리 결정
+            cat_slug = ARCH_CATEGORY_MAP.get(data.get('architecture_category', ''), 'llm')
+            categories = {c.slug: c for c in Category.objects.all()}
+            post_category = categories.get(cat_slug) or categories.get('ai-ml')
+
+            author = User.objects.first()
+            existing_post = Post.objects.filter(slug=post_slug).first()
+
+            if existing_post:
+                if update:
+                    existing_post.content = content_text
+                    existing_post.summary = post_summary
+                    existing_post.save(update_fields=['content', 'summary'])
+                    existing_post.tags.clear()
+                    for tag_name in post_tags:
+                        tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
+                        if tag_slug_val:
+                            tag, _ = Tag.objects.get_or_create(slug=tag_slug_val, defaults={'name': tag_name})
+                            existing_post.tags.add(tag)
+                    entry.related_post = existing_post
+                    entry.save(update_fields=['related_post'])
+                    post_updated += 1
+                    print(f"    [POST-UPDATE] {post_title}")
+                else:
+                    # 연결만
+                    if not entry.related_post:
+                        entry.related_post = existing_post
+                        entry.save(update_fields=['related_post'])
+                    print(f"    [POST-SKIP] 이미 존재: {post_slug}")
+            elif author:
+                from django.utils import timezone as tz
+                new_post = Post.objects.create(
+                    title=post_title,
+                    slug=post_slug,
+                    content=content_text,
+                    summary=post_summary,
+                    category=post_category,
+                    author=author,
+                    status='published',
+                    post_type='paper_review',
+                    published_at=tz.now(),
+                )
+                for tag_name in post_tags:
+                    tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
+                    if tag_slug_val:
+                        tag, _ = Tag.objects.get_or_create(slug=tag_slug_val, defaults={'name': tag_name})
+                        new_post.tags.add(tag)
+                entry.related_post = new_post
                 entry.save(update_fields=['related_post'])
-                print(f"    [LINK] Post 연결: {related_slug}")
-            except Post.DoesNotExist:
-                print(f"    [WARN] Post 없음: {related_slug}")
+                post_created += 1
+                print(f"    [POST-CREATE] {post_title}")
+        else:
+            # content.md 없는 경우 기존 related_post_slug 연결 시도
+            related_slug = data.get('related_post_slug', '')
+            if related_slug:
+                try:
+                    post = Post.objects.get(slug=related_slug)
+                    entry.related_post = post
+                    entry.save(update_fields=['related_post'])
+                    print(f"    [LINK] Post 연결: {related_slug}")
+                except Post.DoesNotExist:
+                    print(f"    [WARN] Post 없음: {related_slug}")
 
     # 2차 패스: relations 처리 (모든 entry가 생성된 후)
     if not dry_run:
@@ -221,6 +306,7 @@ def import_architectures(dry_run: bool = False):
 
     if not dry_run:
         print(f"\n완료: ArchitectureEntry {created}개 생성, {updated}개 업데이트, {skipped}개 스킵")
+        print(f"  Post {post_created}개 생성, {post_updated}개 업데이트")
     else:
         print(f"\n[DRY-RUN 완료] 실제 변경 없음.")
 
@@ -228,5 +314,6 @@ def import_architectures(dry_run: bool = False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='architectures_written → ArchitectureEntry import')
     parser.add_argument('--dry-run', action='store_true', help='변경 없이 미리보기')
+    parser.add_argument('--update', action='store_true', help='기존 Post content + tags 업데이트')
     args = parser.parse_args()
-    import_architectures(dry_run=args.dry_run)
+    import_architectures(dry_run=args.dry_run, update=args.update)
