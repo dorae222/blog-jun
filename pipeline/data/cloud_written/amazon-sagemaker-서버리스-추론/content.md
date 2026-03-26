@@ -1,0 +1,374 @@
+# Amazon SageMaker 서버리스 추론: 트래픽 패턴에 최적화된 ML 모델 배포 전략
+
+## 개요
+
+머신러닝 모델을 운영 환경에 배포할 때 가장 큰 고민 중 하나는 인프라 사이징입니다. 트래픽이 일정하다면 고정 크기의 인스턴스를 프로비저닝하면 되지만, 현실의 추론 트래픽은 시간대별, 요일별, 이벤트별로 극심하게 변동합니다. 피크 시간에 맞춰 인스턴스를 프로비저닝하면 유휴 시간에 비용이 낭비되고, 최소 사양으로 맞추면 트래픽 급증 시 성능이 저하됩니다.
+
+Amazon SageMaker Serverless Inference는 이 문제를 근본적으로 해결합니다. 추론 요청이 없을 때는 컴퓨팅 리소스가 완전히 해제(Scale to Zero)되어 비용이 발생하지 않으며, 요청이 들어오면 자동으로 리소스가 할당되어 추론이 수행됩니다. AWS Lambda와 유사한 서버리스 패러다임을 ML 추론에 적용한 것입니다.
+
+이 서비스는 트래픽이 간헐적이거나 예측 불가능한 워크로드에 특히 적합합니다. 내부 분석 도구, 개발/스테이징 환경, MVP(Minimum Viable Product) 단계의 서비스, 비즈니스 시간에만 사용되는 추론 서비스 등이 대표적인 활용 사례입니다.
+
+## 핵심 기능
+
+### 서버리스 엔드포인트 구성 요소
+
+SageMaker Serverless Inference 엔드포인트는 다음 요소로 구성됩니다.
+
+| 구성 요소 | 설명 | 설정 범위 |
+|-----------|------|----------|
+| Memory Size | 추론 컨테이너에 할당되는 메모리 | 1024MB ~ 6144MB (1GB 단위) |
+| Max Concurrency | 동시에 처리 가능한 최대 요청 수 | 1 ~ 200 |
+| Provisioned Concurrency | 사전 프로비저닝된 동시성 (Cold Start 방지) | 1 ~ Max Concurrency |
+| Model | S3에 저장된 모델 아티팩트 | model.tar.gz 형식 |
+| Container Image | 추론 코드가 포함된 Docker 이미지 | SageMaker 내장 또는 커스텀 |
+
+메모리 크기는 모델 크기와 추론 시 필요한 메모리에 따라 결정됩니다. vCPU는 메모리 크기에 비례하여 자동 할당됩니다.
+
+### 서버리스 엔드포인트 생성
+
+```bash
+# 1. 모델 등록
+aws sagemaker create-model \
+  --model-name "sklearn-serverless-model" \
+  --primary-container '{
+    "Image": "366743142698.dkr.ecr.ap-northeast-2.amazonaws.com/sagemaker-scikit-learn:1.2-1-cpu-py3",
+    "ModelDataUrl": "s3://my-model-bucket/sklearn-model/model.tar.gz"
+  }' \
+  --execution-role-arn "arn:aws:iam::123456789012:role/SageMakerExecutionRole" \
+  --region ap-northeast-2
+
+# 2. 서버리스 엔드포인트 설정 생성
+aws sagemaker create-endpoint-config \
+  --endpoint-config-name "sklearn-serverless-config" \
+  --production-variants '[{
+    "VariantName": "AllTraffic",
+    "ModelName": "sklearn-serverless-model",
+    "ServerlessConfig": {
+      "MemorySizeInMB": 2048,
+      "MaxConcurrency": 10
+    }
+  }]' \
+  --region ap-northeast-2
+
+# 3. 엔드포인트 생성
+aws sagemaker create-endpoint \
+  --endpoint-name "sklearn-serverless-endpoint" \
+  --endpoint-config-name "sklearn-serverless-config" \
+  --region ap-northeast-2
+
+# 4. 엔드포인트 상태 확인
+aws sagemaker describe-endpoint \
+  --endpoint-name "sklearn-serverless-endpoint" \
+  --query 'EndpointStatus' \
+  --region ap-northeast-2
+```
+
+### Provisioned Concurrency
+
+Cold Start 문제를 완화하기 위해 Provisioned Concurrency를 설정할 수 있습니다. 이는 Lambda의 Provisioned Concurrency와 동일한 개념으로, 지정된 수만큼의 추론 환경을 사전에 준비해 둡니다.
+
+```bash
+# Provisioned Concurrency가 적용된 엔드포인트 설정
+aws sagemaker create-endpoint-config \
+  --endpoint-config-name "sklearn-serverless-provisioned-config" \
+  --production-variants '[{
+    "VariantName": "AllTraffic",
+    "ModelName": "sklearn-serverless-model",
+    "ServerlessConfig": {
+      "MemorySizeInMB": 4096,
+      "MaxConcurrency": 20,
+      "ProvisionedConcurrency": 5
+    }
+  }]' \
+  --region ap-northeast-2
+```
+
+Provisioned Concurrency를 사용하면 해당 수만큼의 환경이 항상 Warm 상태로 유지되므로 Cold Start가 발생하지 않습니다. 다만 Provisioned Concurrency 분에 대해서는 유휴 상태에서도 비용이 발생합니다.
+
+### Python SDK를 활용한 배포
+
+```python
+import sagemaker
+from sagemaker.serverless import ServerlessInferenceConfig
+from sagemaker.sklearn.model import SKLearnModel
+
+sagemaker_session = sagemaker.Session()
+role = sagemaker.get_execution_role()
+
+# 모델 정의
+sklearn_model = SKLearnModel(
+    model_data='s3://my-model-bucket/sklearn-model/model.tar.gz',
+    role=role,
+    entry_point='inference.py',
+    framework_version='1.2-1',
+    sagemaker_session=sagemaker_session
+)
+
+# 서버리스 설정
+serverless_config = ServerlessInferenceConfig(
+    memory_size_in_mb=2048,
+    max_concurrency=10,
+    provisioned_concurrency=3  # 선택적
+)
+
+# 서버리스 엔드포인트 배포
+predictor = sklearn_model.deploy(
+    serverless_inference_config=serverless_config,
+    endpoint_name='sklearn-serverless-endpoint'
+)
+
+# 추론 실행
+import json
+result = predictor.predict([[5.1, 3.5, 1.4, 0.2]])
+print(f"예측 결과: {result}")
+```
+
+## 아키텍처/동작 원리
+
+### 내부 아키텍처
+
+SageMaker Serverless Inference의 내부 동작은 다음과 같습니다.
+
+```
++------------------------------------------------------------------+
+|                    추론 요청 흐름                                   |
++------------------------------------------------------------------+
+|                                                                  |
+|  Client --> SageMaker Endpoint (HTTPS)                           |
+|                    |                                              |
+|              +-----+------+                                      |
+|              |            |                                      |
+|         Warm Container  No Warm Container                        |
+|         (즉시 처리)     (Cold Start)                              |
+|              |            |                                      |
+|              |     1. 컨테이너 프로비저닝                          |
+|              |     2. 모델 로딩 (S3 -> Container)                  |
+|              |     3. 추론 서버 초기화                             |
+|              |            |                                      |
+|              +-----+------+                                      |
+|                    |                                              |
+|              추론 실행 (model_fn -> input_fn ->                   |
+|              predict_fn -> output_fn)                             |
+|                    |                                              |
+|              응답 반환                                            |
+|                    |                                              |
+|           [유휴 시간 경과 후 컨테이너 자동 해제]                    |
++------------------------------------------------------------------+
+```
+
+### Cold Start 메커니즘
+
+Cold Start는 서버리스 추론의 가장 중요한 특성입니다. 다음과 같은 상황에서 발생합니다.
+
+1. **최초 요청**: 엔드포인트 생성 후 첫 번째 요청 시
+2. **유휴 후 요청**: 일정 시간 동안 요청이 없어 컨테이너가 해제된 후 다시 요청이 들어올 때
+3. **동시성 초과**: 현재 Warm 상태인 컨테이너 수를 초과하는 동시 요청이 들어올 때
+
+Cold Start 시간은 다음 요소에 따라 달라집니다.
+
+| 요소 | 영향 | 최적화 방법 |
+|------|------|------------|
+| 모델 크기 | S3에서 다운로드 시간에 비례 | 모델 압축, 양자화 적용 |
+| 컨테이너 이미지 크기 | 이미지 풀링 시간에 비례 | 불필요한 패키지 제거, 경량 이미지 사용 |
+| 초기화 코드 | model_fn 실행 시간 | 초기화 로직 최적화 |
+| 메모리 설정 | vCPU 할당에 영향 | 충분한 메모리 할당 |
+
+일반적으로 Cold Start 시간은 수 초에서 수십 초 사이입니다. scikit-learn과 같은 경량 모델은 2-5초, PyTorch/TensorFlow 대형 모델은 30초 이상 소요될 수 있습니다.
+
+### 과금 구조
+
+```
+[서버리스 추론 비용]
+= (추론 요청 처리 시간 x 메모리 크기 기반 단가)
++ (Provisioned Concurrency 유지 비용, 설정 시)
+
+[실시간 추론 비용 (비교)]
+= (인스턴스 가동 시간 x 인스턴스 유형 단가)
+  - 유휴 시간에도 과금
+```
+
+서버리스 추론은 실제 추론이 실행된 시간에 대해서만 과금됩니다. 추론 시간은 밀리초 단위로 측정되며, 최소 과금 단위는 1ms입니다. 이 덕분에 트래픽이 간헐적인 워크로드에서 실시간 추론 대비 최대 90%까지 비용을 절감할 수 있습니다.
+
+## 실전 활용
+
+### 1. 추론 스크립트 작성
+
+서버리스 엔드포인트에서 사용할 추론 스크립트의 표준 구조입니다.
+
+```python
+# inference.py
+import joblib
+import numpy as np
+import json
+import os
+
+def model_fn(model_dir):
+    """모델 로딩 - Cold Start 시 한 번 실행됩니다."""
+    model_path = os.path.join(model_dir, 'model.joblib')
+    model = joblib.load(model_path)
+    return model
+
+def input_fn(request_body, request_content_type):
+    """입력 데이터 전처리"""
+    if request_content_type == 'application/json':
+        data = json.loads(request_body)
+        return np.array(data['instances'])
+    elif request_content_type == 'text/csv':
+        lines = request_body.strip().split('\n')
+        return np.array([[float(x) for x in line.split(',')] for line in lines])
+    else:
+        raise ValueError(f"Unsupported content type: {request_content_type}")
+
+def predict_fn(input_data, model):
+    """추론 실행"""
+    predictions = model.predict(input_data)
+    probabilities = model.predict_proba(input_data) if hasattr(model, 'predict_proba') else None
+    return {
+        'predictions': predictions.tolist(),
+        'probabilities': probabilities.tolist() if probabilities is not None else None
+    }
+
+def output_fn(prediction, accept):
+    """출력 형식 변환"""
+    if accept == 'application/json':
+        return json.dumps(prediction), 'application/json'
+    raise ValueError(f"Unsupported accept type: {accept}")
+```
+
+### 2. 엔드포인트 모니터링
+
+```bash
+# 엔드포인트 호출 메트릭 조회
+aws cloudwatch get-metric-statistics \
+  --namespace "AWS/SageMaker" \
+  --metric-name "Invocations" \
+  --dimensions Name=EndpointName,Value=sklearn-serverless-endpoint \
+  --start-time "2024-01-01T00:00:00Z" \
+  --end-time "2024-01-02T00:00:00Z" \
+  --period 3600 \
+  --statistics Sum \
+  --region ap-northeast-2
+
+# Cold Start 관련 메트릭 조회
+aws cloudwatch get-metric-statistics \
+  --namespace "AWS/SageMaker" \
+  --metric-name "ModelSetupTime" \
+  --dimensions Name=EndpointName,Value=sklearn-serverless-endpoint \
+  --start-time "2024-01-01T00:00:00Z" \
+  --end-time "2024-01-02T00:00:00Z" \
+  --period 3600 \
+  --statistics Average \
+  --region ap-northeast-2
+```
+
+### 3. 비용 추정 스크립트
+
+```python
+def estimate_serverless_cost(
+    daily_requests: int,
+    avg_inference_time_ms: float,
+    memory_size_mb: int,
+    provisioned_concurrency: int = 0
+):
+    """서버리스 추론 월간 비용 추정 (ap-northeast-2 기준)"""
+    # 서울 리전 기준 단가 (예시)
+    price_per_ms_per_mb = 0.0000000200  # USD
+    provisioned_price_per_hour = 0.00012 * (memory_size_mb / 1024)  # USD
+
+    # 추론 비용
+    monthly_requests = daily_requests * 30
+    inference_cost = (
+        monthly_requests * avg_inference_time_ms
+        * memory_size_mb * price_per_ms_per_mb
+    )
+
+    # Provisioned Concurrency 비용
+    provisioned_cost = provisioned_concurrency * provisioned_price_per_hour * 24 * 30
+
+    total = inference_cost + provisioned_cost
+
+    print(f"월간 요청 수: {monthly_requests:,}")
+    print(f"추론 비용: ${inference_cost:.2f}")
+    print(f"Provisioned Concurrency 비용: ${provisioned_cost:.2f}")
+    print(f"총 예상 비용: ${total:.2f}")
+    return total
+
+# 예시: 하루 1,000건, 평균 추론 100ms, 2GB 메모리
+estimate_serverless_cost(
+    daily_requests=1000,
+    avg_inference_time_ms=100,
+    memory_size_mb=2048,
+    provisioned_concurrency=2
+)
+```
+
+## 모범 사례/보안
+
+### Cold Start 최소화 전략
+
+1. **모델 크기 최적화**: 모델 양자화(Quantization), 가지치기(Pruning)를 적용하여 모델 파일 크기를 줄입니다.
+2. **경량 컨테이너 이미지**: 추론에 필요하지 않은 훈련 라이브러리를 제거한 커스텀 이미지를 사용합니다.
+3. **Provisioned Concurrency 활용**: 비즈니스 시간에는 Provisioned Concurrency를 설정하고, 야간에는 해제하는 스케줄링을 적용합니다.
+4. **주기적 Warm-up 호출**: EventBridge 규칙으로 주기적으로 더미 요청을 보내 컨테이너를 Warm 상태로 유지합니다.
+
+### 보안 설정
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "sagemaker:InvokeEndpoint"
+      ],
+      "Resource": "arn:aws:sagemaker:ap-northeast-2:123456789012:endpoint/sklearn-serverless-endpoint"
+    }
+  ]
+}
+```
+
+- VPC 엔드포인트를 통해 프라이빗 네트워크에서만 엔드포인트에 접근하도록 제한할 수 있습니다.
+- 모델 아티팩트는 SSE-KMS로 암호화된 S3 버킷에 저장합니다.
+- IAM 역할에는 최소 권한 원칙을 적용하여 `sagemaker:InvokeEndpoint` 권한만 부여합니다.
+
+### 제한사항 인지
+
+- 최대 메모리: 6,144MB (6GB)
+- 최대 동시 호출: 200
+- 최대 페이로드 크기: 6MB
+- 최대 추론 시간: 60초
+- GPU 미지원 (CPU 전용)
+
+이러한 제한사항으로 인해 대형 딥러닝 모델(LLM, 대규모 이미지 모델 등)에는 적합하지 않습니다.
+
+## 관련 서비스 비교
+
+| 항목 | Serverless Inference | Real-time Inference | Async Inference | Batch Transform |
+|------|---------------------|--------------------|-----------------|-----------------|
+| 응답 시간 | ms ~ 초 (Cold Start 포함 시 수십 초) | ms ~ 초 | 초 ~ 분 | 분 ~ 시간 |
+| 최소 비용 | $0 (Scale to Zero) | 인스턴스 상시 가동 비용 | 인스턴스 상시 가동 비용 | 작업 실행 시만 |
+| GPU 지원 | 미지원 | 지원 | 지원 | 지원 |
+| 최대 페이로드 | 6MB | 6MB | 1GB (S3 경유) | 제한 없음 (S3) |
+| Auto Scaling | 자동 (0까지) | 수동 설정 필요 | 수동 설정 필요 | 해당 없음 |
+| 적합한 워크로드 | 간헐적/예측 불가 트래픽 | 안정적 트래픽, 저지연 | 대용량 요청, 긴 처리 | 대량 일괄 처리 |
+| 비용 효율성 (낮은 트래픽) | 매우 높음 | 낮음 | 낮음 | 보통 |
+| 비용 효율성 (높은 트래픽) | 보통 | 높음 | 높음 | 높음 |
+
+### 서버리스 추론 vs Lambda 커스텀 추론
+
+SageMaker Serverless Inference 대신 Lambda에 직접 모델을 배포하는 방법도 있습니다.
+
+- **SageMaker Serverless**: 모델 프레임워크 내장 지원, SageMaker 에코시스템 통합, 최대 6GB 메모리
+- **Lambda**: 최대 10GB 메모리, 컨테이너 이미지 지원, 더 유연한 트리거 연동
+- 단순한 경량 모델이면 Lambda가 적합하고, SageMaker의 모델 레지스트리/모니터링/A/B 테스트 기능이 필요하면 Serverless Inference가 적합합니다.
+
+## 요약
+
+Amazon SageMaker Serverless Inference는 간헐적이고 예측 불가능한 추론 트래픽을 처리하기 위한 비용 효율적인 배포 옵션입니다.
+
+- **Scale to Zero** 기능으로 요청이 없을 때 비용이 발생하지 않습니다.
+- **Cold Start**는 서버리스 추론의 주요 트레이드오프이며, Provisioned Concurrency와 모델 최적화를 통해 완화할 수 있습니다.
+- CPU 전용이며 최대 6GB 메모리로 제한되므로, 대형 딥러닝 모델에는 적합하지 않습니다.
+- 실시간 추론 엔드포인트 대비 비용을 최대 90%까지 절감할 수 있으며, 개발/스테이징 환경이나 MVP 단계에서 특히 유용합니다.
+- 트래픽 패턴에 따라 서버리스, 실시간, 비동기, 배치 추론 중 적절한 옵션을 선택하는 것이 중요합니다.

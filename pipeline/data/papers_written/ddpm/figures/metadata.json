@@ -1,0 +1,152 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1 : Generated samples on CelebA-HQ 256 × 256 256 256 256\\times 256 (left) and unconditional CIFAR10 (right)",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/celebahq256_header_image_4x4.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : The directed graphical model considered in this work.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/x2.png"
+  },
+  {
+    "filename": "fig_7_1.jpg",
+    "caption": "Figure 3 : LSUN Church samples. FID= 7.89 7.89 7.89",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_church_layout.jpg"
+  },
+  {
+    "filename": "fig_7_2.jpg",
+    "caption": "Figure 3 : LSUN Church samples. FID= 7.89 7.89 7.89",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_bedroom_layout_l192_step155600.jpg"
+  },
+  {
+    "filename": "fig_8.jpg",
+    "caption": "Figure 3 : LSUN Church samples. FID= 7.89 7.89 7.89",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_church_layout.jpg"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "Figure 4 : LSUN Bedroom samples. FID= 4.90 4.90 4.90",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_bedroom_layout_l192_step155600.jpg"
+  },
+  {
+    "filename": "fig_12.jpg",
+    "caption": "Figure 6 : Unconditional CIFAR10 progressive generation ( 𝐱 ^ 0 subscript ^ 𝐱 0 \\hat{\\mathbf{x}}_{0} over time, from left to right). Extended samples and sample quality metrics over time in the appendix ( Figs. 14 and 10 ).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/x3.jpg"
+  },
+  {
+    "filename": "fig_13.jpg",
+    "caption": "Figure 7 : When conditioned on the same latent, CelebA-HQ 256 × 256 256 256 256\\times 256 samples share high-level attributes. Bottom-right quadrants are 𝐱 t subscript 𝐱 𝑡 \\mathbf{x}_{t} , and other quadrants are samples from p θ ​ ( 𝐱 0 | 𝐱 t ) subscript 𝑝 𝜃 conditional subscript 𝐱 0 subscript 𝐱 𝑡 p_{\\theta}(\\mathbf{x}_{0}|\\mathbf{x}_{t}) .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/stochastic_decoding.jpg"
+  },
+  {
+    "filename": "fig_14.jpg",
+    "caption": "Figure 8 : Interpolations of CelebA-HQ 256x256 images with 500 timesteps of diffusion.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/interp_with_diagram.jpg"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 9 : Coarse-to-fine interpolations that vary the number of diffusion steps prior to latent mixing.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/x4.png"
+  },
+  {
+    "filename": "fig_17.jpg",
+    "caption": "Figure 11 : CelebA-HQ 256 × 256 256 256 256\\times 256 generated samples",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/celebahq256_extended_samples_jpg.jpg"
+  },
+  {
+    "filename": "fig_18_1.jpg",
+    "caption": "(a) Pixel space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/celebahq256_more_nnpixelspace.jpg"
+  },
+  {
+    "filename": "fig_18_2.jpg",
+    "caption": "(a) Pixel space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/celebahq256_more_nninception.jpg"
+  },
+  {
+    "filename": "fig_19.jpg",
+    "caption": "(a) Pixel space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/celebahq256_more_nnpixelspace.jpg"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "(b) Inception feature space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/celebahq256_more_nninception.jpg"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 13 : Unconditional CIFAR10 generated samples",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/cifar10_eps-fixedlarge-mse_20x20.png"
+  },
+  {
+    "filename": "fig_22.jpg",
+    "caption": "Figure 14 : Unconditional CIFAR10 progressive generation",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/cifar10_eps-fixedlarge-mse_20_progressive.jpg"
+  },
+  {
+    "filename": "fig_23_1.jpg",
+    "caption": "(a) Pixel space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/cifar10_eps-fixedlarge-mse_20_nn.jpg"
+  },
+  {
+    "filename": "fig_23_2.jpg",
+    "caption": "(a) Pixel space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/cifar10_eps-fixedlarge-mse_20_nninception.jpg"
+  },
+  {
+    "filename": "fig_24.jpg",
+    "caption": "(a) Pixel space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/cifar10_eps-fixedlarge-mse_20_nn.jpg"
+  },
+  {
+    "filename": "fig_25.jpg",
+    "caption": "(b) Inception feature space nearest neighbors",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/cifar10_eps-fixedlarge-mse_20_nninception.jpg"
+  },
+  {
+    "filename": "fig_26.jpg",
+    "caption": "Figure 16 : LSUN Church generated samples. FID= 7.89 7.89 7.89",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_church_samples_10x10_highlight_step1152000_small.jpg"
+  },
+  {
+    "filename": "fig_27.jpg",
+    "caption": "Figure 17 : LSUN Bedroom generated samples, large model. FID= 4.90 4.90 4.90",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_bedroom_10x10_highlight_l192_step155600_small.jpg"
+  },
+  {
+    "filename": "fig_28.jpg",
+    "caption": "Figure 18 : LSUN Bedroom generated samples, small model. FID= 6.36 6.36 6.36",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_bedroom_10x10_highlight_step2388000_smallest.jpg"
+  },
+  {
+    "filename": "fig_29.jpg",
+    "caption": "Figure 19 : LSUN Cat generated samples. FID= 19.75 19.75 19.75",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2006.11239/assets/images/lsun_cat_10x10_highlight_step1761000_fid19point75_smallest.jpg"
+  }
+]

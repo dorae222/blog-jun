@@ -6,6 +6,12 @@
       "caption": "Figure 1: Performance of Qwen2 instruction-tuned models on Needle in A Haystack Test. All models that supports context lengths above 32k tokens integrates the YARN mechanism.",
       "figure_number": "Figure 1",
       "has_caption": true
+    },
+    {
+      "filename": "architecture.png",
+      "caption": "Qwen2 Transformer decoder architecture diagram showing GQA, Pre-RMSNorm, SwiGLU FFN, and DCA+YARN components.",
+      "figure_number": "Architecture",
+      "has_caption": false
     }
   ],
   "sections": [
@@ -20,11 +26,16 @@
   ],
   "existing_refs": [
     {
-      "filename": "fig_1.png",
+      "filename": "architecture.png",
       "section": "## 방법론",
-      "alt": "Needle-in-a-Haystack 긴 컨텍스트 검색 성능"
+      "alt": "Qwen2 Transformer 디코더 아키텍처 다이어그램"
+    },
+    {
+      "filename": "fig_1.png",
+      "section": "## 실험 결과",
+      "alt": "Qwen2 Instruct 모델들의 Needle-in-a-Haystack 테스트 결과"
     }
   ],
-  "total_figures": 1,
-  "total_existing_refs": 1
+  "total_figures": 2,
+  "total_existing_refs": 2
 }
