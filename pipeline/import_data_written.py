@@ -26,7 +26,7 @@ from blog.models import Post, Category, Tag
 DATA_DIR = Path(__file__).parent / 'data' / 'data_written'
 
 
-def import_data(dry_run: bool = False):
+def import_data(dry_run: bool = False, update: bool = False):
     if not DATA_DIR.exists():
         print(f"data_written 디렉토리 없음: {DATA_DIR}")
         sys.exit(1)
@@ -38,6 +38,7 @@ def import_data(dry_run: bool = False):
 
     categories = {cat.slug: cat for cat in Category.objects.all()}
     created = 0
+    updated = 0
     skipped = 0
 
     for data_dir in sorted(DATA_DIR.iterdir()):
@@ -59,7 +60,8 @@ def import_data(dry_run: bool = False):
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
 
-        if Post.objects.filter(slug=slug).exists():
+        existing = Post.objects.filter(slug=slug).first()
+        if existing and not update:
             print(f"  [SKIP] Post 이미 존재: {slug}")
             skipped += 1
             continue
@@ -67,9 +69,29 @@ def import_data(dry_run: bool = False):
         cat_slug = data.get('category_slug', 'data-engineering')
         category = categories.get(cat_slug) or categories.get('ai-ml')
 
-        content = data.get('content', '')
+        # content.md 우선, 없으면 content.json의 content 필드 폴백
+        content_md = data_dir / 'content.md'
+        content = content_md.read_text(encoding='utf-8') if content_md.exists() else data.get('content', '')
         summary = data.get('summary', '')
         tags_raw = data.get('tags', [])
+
+        if existing and update:
+            if not dry_run:
+                existing.content = content
+                existing.summary = summary
+                existing.save(update_fields=['content', 'summary'])
+                existing.tags.clear()
+                for tag_name in tags_raw:
+                    tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
+                    if not tag_slug_val:
+                        continue
+                    tag, _ = Tag.objects.get_or_create(slug=tag_slug_val, defaults={'name': tag_name})
+                    existing.tags.add(tag)
+                print(f"  [UPDATE] content + tags 업데이트: {slug}")
+            else:
+                print(f"  [DRY-RUN] 업데이트 예정: {slug}")
+            updated += 1
+            continue
 
         if dry_run:
             words = len(content.split())
@@ -102,7 +124,7 @@ def import_data(dry_run: bool = False):
         print(f"  [CREATE] Post: {slug}")
 
     if not dry_run:
-        print(f"\n완료: Post {created}개 생성, {skipped}개 스킵")
+        print(f"\n완료: Post {created}개 생성, {updated}개 업데이트, {skipped}개 스킵")
     else:
         print(f"\n[DRY-RUN 완료] 실제 변경 없음.")
 
@@ -110,5 +132,6 @@ def import_data(dry_run: bool = False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='data_written → Post import')
     parser.add_argument('--dry-run', action='store_true', help='변경 없이 미리보기')
+    parser.add_argument('--update', action='store_true', help='기존 포스트 content + tags 업데이트')
     args = parser.parse_args()
-    import_data(dry_run=args.dry_run)
+    import_data(dry_run=args.dry_run, update=args.update)

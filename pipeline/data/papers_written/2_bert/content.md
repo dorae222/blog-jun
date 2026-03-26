@@ -1,0 +1,531 @@
+## 개요
+
+**BERT(Bidirectional Encoder Representations from Transformers)**는 Google AI Language 팀의 Devlin et al.(2018)이 발표한 사전 학습 언어 모델로, NLP의 패러다임을 근본적으로 바꾼 논문입니다. 기존의 단방향 언어 모델(GPT)이나 얕은 양방향 모델(ELMo)과 달리, Transformer 인코더의 Self-Attention을 활용해 **모든 레이어에서 좌우 문맥을 동시에** 학습합니다. GLUE, SQuAD, SWAG 등 11개 NLP 벤치마크에서 당시 SOTA를 달성했으며, "Pre-train then Fine-tune" 패러다임을 NLP의 표준으로 확립한 핵심 논문입니다.
+
+2025년 기준 Google Scholar 인용 수 약 100,000회 이상으로, NLP 분야에서 가장 영향력 있는 논문 중 하나입니다. RoBERTa, ALBERT, DistilBERT, DeBERTa 등 수십 가지 후속 모델의 기반이 되었습니다.
+
+BERT의 핵심 기여는 다음 세 가지로 요약됩니다:
+
+1. **양방향 사전학습**: Masked Language Modeling(MLM)을 통해 Transformer 인코더에서 진정한 양방향 문맥 학습을 최초로 실현
+2. **범용 언어 표현**: 하나의 사전학습 모델로 다양한 NLP 태스크에 최소한의 구조 변경만으로 적용 가능
+3. **대규모 벤치마크 지배**: 11개 NLP 벤치마크에서 동시에 SOTA 달성, SQuAD 2.0에서 이전 SOTA 대비 16.8% F1 향상
+
+## 배경 및 문제
+
+### 사전 학습 언어 표현의 역사
+
+NLP에서 사전 학습된 언어 표현의 활용은 크게 세 시기로 나눌 수 있습니다.
+
+**1세대 -- 정적 임베딩(2013-2017)**: Word2Vec(Mikolov et al., 2013), GloVe(Pennington et al., 2014), FastText(Bojanowski et al., 2017) 등 단어 수준의 정적 벡터 표현입니다. 근본적 한계는 동음이의어를 구분하지 못한다는 것으로, "bank"가 은행인지 강둑인지 문맥에 관계없이 동일한 벡터로 표현됩니다.
+
+**2세대 -- 문맥적 임베딩(2018)**: ELMo(Peters et al., 2018)가 양방향 LSTM을 사용하여 문맥에 따라 달라지는 동적 표현을 학습했습니다. 그러나 ELMo는 좌측 문맥과 우측 문맥을 독립적으로 학습한 후 연결(concatenation)하는 "shallow bidirectional" 방식이었습니다:
+
+$$h_i^{\text{ELMo}} = [\overrightarrow{h}_i; \overleftarrow{h}_i]$$
+
+여기서 $\overrightarrow{h}_i$는 좌측 LSTM의 출력, $\overleftarrow{h}_i$는 우측 LSTM의 출력입니다. 두 방향의 LSTM이 서로의 정보를 공유하지 않으므로, 각 방향의 표현은 반대쪽 문맥을 완전히 활용하지 못합니다.
+
+**3세대 -- 깊은 양방향 사전학습(2018-)**: BERT가 시작한 패러다임으로, 모든 레이어에서 양방향 문맥을 동시에 학습합니다. Self-Attention의 특성상, 각 토큰은 시퀀스 내 모든 다른 토큰과 직접 상호작용합니다.
+
+### 기존 사전 학습 방식의 한계
+
+BERT 이전의 사전 학습 방식은 크게 두 갈래였습니다:
+
+1. **특성 기반(Feature-based) 방식**: ELMo처럼 사전 학습된 표현을 다운스트림 태스크의 입력 특성으로 사용합니다. 사전학습 모델의 파라미터는 고정하고 출력 벡터를 태스크별 모델에 전달하는 방식으로, 태스크별 아키텍처를 자유롭게 설계할 수 있지만 사전학습 모델과의 상호작용이 제한적입니다.
+
+2. **Fine-tuning 방식**: GPT(Radford et al., 2018)처럼 사전 학습 파라미터를 다운스트림 태스크에 맞게 미세 조정합니다. GPT는 12개 Transformer 디코더 레이어로 좌측에서 우측으로의 자동회귀 언어 모델링을 수행했는데, 핵심 한계는 각 토큰이 이전 토큰만 볼 수 있는 단방향 구조입니다:
+
+$$\mathcal{L}_{\text{AR}} = -\sum_{t=1}^{T} \log P(x_t \mid x_1, \ldots, x_{t-1})$$
+
+이 목적함수에서 각 토큰 $x_t$는 오직 이전 토큰 $x_1, \ldots, x_{t-1}$만 조건으로 사용하므로, 질의응답이나 자연어 추론처럼 양방향 문맥 이해가 필수적인 태스크에 한계가 있었습니다.
+
+### "깊은 양방향"의 필요성
+
+단방향 모델의 한계를 구체적으로 살펴보겠습니다. "The animal didn't cross the street because it was too tired"라는 문장에서 "it"이 무엇을 가리키는지 이해하려면, "it" 이전의 문맥("The animal")뿐만 아니라 이후의 문맥("was too tired")도 함께 봐야 합니다. 좌측에서 우측으로만 읽는 모델은 "too tired"를 볼 수 없어 이 상호참조(coreference) 관계를 파악하기 어렵습니다.
+
+그렇다면 "양방향"을 단순히 구현하면 되지 않을까? 문제는 양방향 Self-Attention에서 토큰 $x_i$가 자신을 포함한 전체 시퀀스를 볼 수 있다면, $P(x_i \mid x_1, \ldots, x_n) = 1$이 되어 아무것도 학습하지 못한다는 점입니다. BERT는 이를 **Masked Language Modeling**으로 우아하게 해결합니다.
+
+![BERT, GPT, ELMo의 사전학습 아키텍처 비교](figures/fig_3.png)
+*Figure 3: 사전학습 모델 아키텍처 비교. BERT는 양방향 Transformer 인코더를 사용하고, GPT는 좌에서 우로의 단방향 Transformer 디코더를 사용한다. ELMo는 독립적으로 학습된 좌-우 LSTM과 우-좌 LSTM을 연결(concatenation)하여 특성을 생성한다. 세 모델 중 BERT만이 모든 레이어에서 좌우 문맥을 동시에 조건으로 사용한다. (Devlin et al., 2019)*
+
+| 모델 | 구조 | 문맥 방향 | 사전학습 목표 | 양방향성 |
+|------|------|----------|-------------|--------|
+| Word2Vec | Shallow | 윈도우 기반 | CBOW/Skip-gram | 얕은 양방향 |
+| ELMo | biLSTM | 좌/우 독립 | 양방향 LM | 얕은 양방향 |
+| GPT | Transformer 디코더 | 좌측만 | 자동회귀 LM | 단방향 |
+| **BERT** | **Transformer 인코더** | **양방향 동시** | **MLM + NSP** | **깊은 양방향** |
+
+## 핵심 아이디어
+
+BERT의 핵심 혁신은 양방향 사전학습(bidirectional pretraining)을 가능하게 하는 두 가지 비지도 학습 태스크에 있습니다.
+
+### 1. Masked Language Modeling (MLM)
+
+입력 토큰의 15%를 무작위로 마스킹하고, 마스킹된 토큰을 예측하도록 모델을 훈련합니다:
+
+$$\mathcal{L}_{\text{MLM}} = -\mathbb{E}_{x \sim \mathcal{D}} \sum_{i \in \mathcal{M}} \log P(x_i \mid \hat{x})$$
+
+여기서 $\mathcal{M}$은 마스킹된 위치의 집합, $\hat{x}$는 마스킹된 입력입니다. 마스킹된 위치 $i$에서의 예측 확률은 다음과 같이 계산됩니다:
+
+$$P(x_i \mid \hat{x}) = \text{softmax}(W \cdot h_i + b)$$
+
+여기서 $h_i \in \mathbb{R}^H$는 위치 $i$에서의 최종 히든 상태, $W \in \mathbb{R}^{V \times H}$는 출력 가중치 행렬(어휘 크기 $V = 30,000$), $b$는 편향 벡터입니다.
+
+MLM의 핵심은 **자기 자신을 직접 보지 않으면서도 양방향 문맥을 활용**할 수 있다는 점입니다. 마스킹된 토큰의 위치에서는 해당 토큰이 보이지 않으므로, 모델은 주변 문맥만을 사용하여 원래 토큰을 예측해야 합니다. 이는 Cloze test(Taylor, 1953)에서 영감을 받은 것으로, 빈칸 채우기 문제를 대규모 신경망에 적용한 것입니다.
+
+마스킹 전략 (15%에 해당하는 토큰 중):
+- 80%: `[MASK]` 토큰으로 교체 -- 모델이 마스킹된 위치를 예측하도록 유도
+- 10%: 랜덤 토큰으로 교체 -- 모델이 모든 위치에서 올바른 표현을 유지하도록 강제
+- 10%: 원래 토큰 유지 -- 실제 관찰된 단어에 대한 표현도 편향 없이 학습
+
+이 전략의 목적은 **train-test 불일치를 완화**하는 것입니다. 파인튜닝 시에는 `[MASK]` 토큰이 없으므로, 모든 경우에 `[MASK]`를 사용하면 사전학습과 파인튜닝 사이의 괴리가 커집니다. 10%를 원래 토큰으로 유지하면 모델은 어떤 토큰이 마스킹되었는지 알 수 없어, 모든 토큰의 문맥적 표현을 학습하게 됩니다.
+
+**마스킹 비율의 영향**: 논문에서는 15%가 최적이라고 보고합니다. 비율이 너무 낮으면(예: 5%) 학습 신호가 부족하여 수렴이 느리고, 너무 높으면(예: 30%) 문맥 정보가 부족해져 예측 품질이 저하됩니다.
+
+| 특성 | 자동회귀 LM (GPT) | MLM (BERT) |
+|------|------------------|------------|
+| 문맥 방향 | 좌측만 참조 (단방향) | 양방향 동시 참조 |
+| 학습 효율 | 모든 토큰 예측 (100%) | 마스킹된 토큰만 예측 (15%) |
+| 수렴 속도 | 상대적으로 빠름 | 더 많은 스텝 필요 |
+| 생성 능력 | 자연스러운 텍스트 생성 | 직접 생성 불가 |
+| 이해 태스크 | 제한적 | 우수 |
+
+### 2. Next Sentence Prediction (NSP)
+
+두 문장 A, B가 주어졌을 때 B가 A의 실제 다음 문장인지 이진 분류합니다:
+
+- **IsNext**: 50% 확률로 실제 다음 문장
+- **NotNext**: 50% 확률로 코퍼스에서 랜덤 추출한 문장
+
+$$\mathcal{L}_{\text{NSP}} = -\left[y\log P(\text{IsNext}) + (1-y)\log P(\text{NotNext})\right]$$
+
+NSP의 예측은 `[CLS]` 토큰의 최종 히든 상태에 분류 레이어를 적용하여 수행됩니다:
+
+$$P(\text{IsNext}) = \sigma(W_{\text{NSP}} \cdot h_{[CLS]} + b_{\text{NSP}})$$
+
+이 태스크는 질의응답, 자연어 추론처럼 두 문장 간의 관계를 이해해야 하는 태스크를 위해 설계되었습니다. 다만 이후 RoBERTa(Liu et al., 2019)에서는 NSP가 성능에 실질적으로 기여하지 않거나 오히려 해로울 수 있다는 것을 보였습니다. 랜덤으로 추출된 NotNext 문장이 주제 자체가 다른 경우가 대부분이라, 문장 관계 학습이 아닌 토픽 분류로 쉽게 풀리기 때문입니다. ALBERT(Lan et al., 2019)는 이를 개선하여 동일 문서 내에서 문장 순서만 바꾸는 SOP(Sentence Order Prediction)를 제안했습니다.
+
+**총 사전학습 손실:**
+
+$$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{MLM}} + \mathcal{L}_{\text{NSP}}$$
+
+### 입력 표현
+
+![BERT 입력 표현 구조 -- 토큰, 세그먼트, 위치 임베딩의 합산](figures/fig_2.png)
+*Figure 2: BERT 입력 표현. 입력 임베딩은 토큰 임베딩(Token Embedding), 세그먼트 임베딩(Segmentation Embedding), 위치 임베딩(Position Embedding)의 합으로 구성된다. (Devlin et al., 2019)*
+
+BERT의 입력은 세 가지 임베딩의 합으로 구성됩니다:
+
+$$E_{\text{input}} = E_{\text{token}} + E_{\text{segment}} + E_{\text{position}}$$
+
+- **Token Embedding**: WordPiece 토크나이저(30,000 vocabulary)로 분리된 서브워드 임베딩. WordPiece는 BPE(Byte Pair Encoding)의 변형으로, 빈도가 높은 서브워드 단위로 텍스트를 분할합니다. 예를 들어, "unaffable"은 "un", "##aff", "##able"로 분리됩니다.
+- **Segment Embedding**: 문장 A/B 구분 ($E_A$ 또는 $E_B$). 단일 문장 태스크에서는 모든 토큰이 $E_A$ 세그먼트에 속합니다.
+- **Position Embedding**: 위치 정보 (학습된 파라미터, 최대 512 위치). [[transformer|Transformer]] 원본 논문의 사인/코사인 위치 인코딩과 달리, BERT는 학습 가능한 위치 임베딩을 사용합니다.
+
+특수 토큰:
+- `[CLS]`: 입력 시퀀스의 시작, 분류 태스크의 집약 표현으로 사용
+- `[SEP]`: 문장 구분자
+- `[PAD]`: 배치 내 시퀀스 길이 통일을 위한 패딩
+
+입력 구성 예시:
+```
+[CLS] the dog is hairy [SEP] it likes playing [SEP]
+  A    A   A   A  A      B   B   B     B       B    <- Segment
+  0    1   2   3  4      5   6   7     8       9    <- Position
+```
+
+`[CLS]` 토큰은 Self-Attention을 통해 전체 시퀀스의 정보를 집약하며, 분류 태스크에서 이 토큰의 최종 히든 상태 $h_{[CLS]}$에 분류 레이어를 추가합니다.
+
+## 방법론
+
+### 사전학습과 파인튜닝의 통합 프레임워크
+
+![BERT의 사전학습과 파인튜닝 전체 절차 개요](figures/fig_1.png)
+*Figure 1: BERT의 사전학습(Pre-training)과 파인튜닝(Fine-Tuning) 절차. 왼쪽은 MLM과 NSP로 사전학습하는 단계, 오른쪽은 MNLI, NER, SQuAD 등 다양한 다운스트림 태스크에 파인튜닝하는 단계를 보여준다. 사전학습과 파인튜닝 모두 동일한 Transformer 인코더 아키텍처를 공유하고, 파인튜닝 시에는 태스크별로 최소한의 출력 레이어만 추가한다. (Devlin et al., 2019)*
+
+BERT의 프레임워크는 명확히 두 단계로 구분됩니다. **사전학습** 단계에서는 레이블이 없는 대규모 텍스트로 MLM과 NSP를 학습하고, **파인튜닝** 단계에서는 동일한 아키텍처에 태스크별 출력 레이어만 추가하여 레이블 데이터로 전체 파라미터를 미세 조정합니다. 이 통합 프레임워크의 장점은 사전학습된 하나의 모델이 분류, 추론, 질의응답, 시퀀스 태깅 등 본질적으로 다른 태스크들에 모두 적용된다는 것입니다.
+
+### Transformer 인코더 아키텍처
+
+BERT는 [[transformer|Transformer]]의 인코더 부분만을 사용합니다. 각 레이어는 다음 두 가지 서브레이어로 구성됩니다:
+
+1. **Multi-Head Self-Attention**: 입력 시퀀스의 각 토큰이 다른 모든 토큰과 상호작용
+2. **Position-wise Feed-Forward Network (FFN)**: 각 위치에 독립적으로 적용되는 2층 FFN
+
+$$\text{FFN}(x) = \text{GELU}(xW_1 + b_1)W_2 + b_2$$
+
+여기서 GELU(Gaussian Error Linear Unit)는 ReLU 대신 사용된 활성화 함수로, 원본 [[transformer|Transformer]]와 다른 점 중 하나입니다. FFN의 중간 차원은 히든 크기의 4배($4H$)입니다.
+
+각 서브레이어에는 잔차 연결(residual connection)과 Layer Normalization이 적용됩니다:
+
+$$\text{output} = \text{LayerNorm}(x + \text{SubLayer}(x))$$
+
+### 모델 사양
+
+두 가지 크기의 모델을 제안합니다:
+
+| 사양 | BERT-Base | BERT-Large |
+|------|-----------|------------|
+| 레이어 수 ($L$) | 12 | 24 |
+| 히든 크기 ($H$) | 768 | 1024 |
+| 어텐션 헤드 ($A$) | 12 | 16 |
+| FFN 중간 차원 | 3072 | 4096 |
+| 총 파라미터 수 | 110M | 340M |
+| 어텐션 헤드당 차원 ($H/A$) | 64 | 64 |
+
+BERT-Base는 GPT와 동일한 파라미터 수(110M)로 설계되어 **공정한 비교**가 가능하도록 했습니다. 두 모델의 차이는 순전히 아키텍처(단방향 vs 양방향)에서 기인합니다.
+
+### 사전학습 설정
+
+- **데이터**: BooksCorpus(8억 단어) + English Wikipedia(25억 단어) = 총 약 33억 단어(16GB)
+- 문서 수준의 코퍼스를 사용한 것이 중요한데, NSP 태스크를 위해 연속된 긴 문장 쌍이 필요하기 때문입니다.
+
+| 하이퍼파라미터 | 값 |
+|--------------|----|
+| 배치 크기 | 256 시퀀스 |
+| 시퀀스 길이 | 512 토큰 (처음 90% 스텝은 128) |
+| 학습 스텝 | 1,000,000 |
+| 옵티마이저 | Adam (lr = 1e-4, $\beta_1=0.9$, $\beta_2=0.999$) |
+| 웜업 스텝 | 10,000 |
+| L2 가중치 감쇠 | 0.01 |
+| 드롭아웃 | 0.1 (모든 레이어) |
+| 활성화 함수 | GELU |
+| 학습 하드웨어 | Cloud TPU v3 (Base: 4개, Large: 16개) |
+| 학습 소요 시간 | 약 4일 |
+
+시퀀스 길이를 처음 90%는 128로 짧게 사용하고 마지막 10%에서 512로 늘린 것은 학습 효율성을 높이기 위한 전략입니다. 짧은 시퀀스에서는 배치당 더 많은 예제를 처리할 수 있어 초기 학습이 빠르게 진행됩니다.
+
+### 다운스트림 태스크 파인튜닝
+
+BERT의 핵심 장점은 **최소한의 수정으로 다양한 태스크에 적용** 가능하다는 점입니다. 사전학습된 Transformer 인코더 위에 하나의 출력 레이어만 추가하면 됩니다:
+
+![다양한 다운스트림 태스크에 대한 BERT 파인튜닝 구조](figures/fig_4.png)
+*Figure 4: 다양한 태스크에 대한 BERT 파인튜닝 구조. (a) 문장 쌍 분류(MNLI 등), (b) 단일 문장 분류(SST-2 등), (c) 질의응답(SQuAD), (d) 단일 문장 태깅(NER). 모든 태스크에서 동일한 사전학습 모델을 사용하고 최소한의 출력 레이어만 추가한다. (Devlin et al., 2019)*
+
+- **문장 분류 (SST-2, CoLA)**: `[CLS]` 토큰 위에 분류 레이어 $W \in \mathbb{R}^{K \times H}$ 추가. 예측: $\hat{y} = \text{softmax}(W \cdot h_{[CLS]})$
+- **문장 쌍 분류 (MNLI, QNLI, RTE)**: 두 문장을 `[SEP]`로 연결 후 `[CLS]` 분류
+- **토큰 분류 (NER, POS)**: 각 토큰 출력 $h_i$ 위에 레이어 추가. $\hat{y}_i = \text{softmax}(W \cdot h_i)$
+- **질의응답 (SQuAD)**: 시작/끝 위치 예측 레이어 추가. 각 토큰 $i$에 대해 시작 확률 $P_i^{\text{start}} = \frac{e^{S \cdot h_i}}{\sum_j e^{S \cdot h_j}}$, 끝 확률 $P_j^{\text{end}} = \frac{e^{E \cdot h_j}}{\sum_k e^{E \cdot h_k}}$ 계산. 학습 가능 파라미터는 시작 벡터 $S \in \mathbb{R}^H$와 끝 벡터 $E \in \mathbb{R}^H$ 뿐입니다.
+
+파인튜닝 하이퍼파라미터는 대부분의 태스크에서 동일합니다:
+
+| 하이퍼파라미터 | 권장 범위 |
+|--------------|----------|
+| 학습률 | {2e-5, 3e-5, 5e-5} |
+| 배치 크기 | {16, 32} |
+| 에폭 수 | 3 ~ 4 |
+| 드롭아웃 | 0.1 |
+| 웜업 비율 | 학습 스텝의 10% |
+
+소규모 데이터셋에서는 파인튜닝 결과의 분산이 클 수 있어, 저자들은 여러 랜덤 시드로 실험한 후 최적 결과를 보고할 것을 권장합니다.
+
+### Feature-based 접근법
+
+BERT는 파인튜닝뿐 아니라 Feature-based 방식으로도 사용할 수 있습니다. 사전학습된 BERT의 히든 상태를 고정하고, 이를 다운스트림 모델의 입력 특성으로 활용합니다. 논문에서는 NER 태스크에서 마지막 4개 레이어의 히든 상태를 연결하여 사용했을 때 파인튜닝 방식과 유사한 성능(96.1 vs 96.4 F1)을 달성했다고 보고합니다. 이는 Transformer의 히든 상태에 풍부한 언어 정보가 인코딩되어 있음을 시사합니다.
+
+## 실험 결과
+
+### GLUE 벤치마크
+
+GLUE(General Language Understanding Evaluation)는 9개의 자연어 이해 태스크로 구성된 벤치마크입니다:
+
+| 태스크 | 유형 | 데이터 크기 | 평가 지표 |
+|--------|------|-----------|----------|
+| MNLI | 자연어 추론 (3-class) | 393K | Accuracy |
+| QQP | 패러프레이즈 탐지 | 364K | F1/Accuracy |
+| QNLI | 질의-문장 추론 | 105K | Accuracy |
+| SST-2 | 감성 분석 | 67K | Accuracy |
+| CoLA | 문법성 판단 | 8.5K | Matthews Corr. |
+| STS-B | 의미 유사도 | 5.7K | Pearson/Spearman |
+| MRPC | 패러프레이즈 탐지 | 3.7K | F1/Accuracy |
+| RTE | 자연어 추론 (2-class) | 2.5K | Accuracy |
+
+**GLUE 결과:**
+
+| 모델 | MNLI(m/mm) | QQP | QNLI | SST-2 | CoLA | STS-B | MRPC | RTE | **평균** |
+|------|-----------|-----|------|-------|------|-------|------|-----|--------|
+| ELMo | 76.4/76.1 | 64.8 | 79.8 | 90.4 | 36.0 | 73.3 | 84.4 | 56.8 | 70.0 |
+| GPT | 82.1/81.4 | 70.3 | 87.4 | 91.3 | 45.4 | 80.0 | 82.3 | 56.0 | 72.8 |
+| BERT-Base | 84.6/83.4 | 71.2 | 90.5 | 93.5 | 52.1 | 85.8 | 88.9 | 66.4 | 79.6 |
+| **BERT-Large** | **86.7/85.9** | **72.1** | **92.7** | **94.9** | **60.5** | **86.5** | **89.3** | **70.1** | **82.1** |
+
+BERT-Large는 GPT 대비 평균 9.3% 포인트 향상, ELMo 대비 12.1% 포인트 향상을 달성했습니다. 특히 소규모 데이터셋인 CoLA(8.5K)와 RTE(2.5K)에서의 향상이 두드러지는데, 양방향 사전학습이 데이터가 부족한 상황에서 특히 효과적임을 시사합니다.
+
+### SQuAD (질의응답)
+
+SQuAD(Stanford Question Answering Dataset)는 위키피디아 문서에서 질문의 답에 해당하는 텍스트 구간(span)을 찾는 태스크입니다.
+
+| 모델 | SQuAD 1.1 (EM/F1) | SQuAD 2.0 (EM/F1) |
+|------|-------------------|-------------------|
+| Human Performance | 82.3/91.2 | 86.8/89.5 |
+| 이전 SOTA | 84.4/91.7 (앙상블) | 60.0/66.3 |
+| BERT-Base | 80.8/88.5 | 71.2/74.8 |
+| BERT-Large (단일) | 84.1/90.9 | 78.7/81.9 |
+| **BERT-Large (앙상블)** | **87.4/93.2** | **80.0/83.1** |
+
+SQuAD 1.1에서는 인간 수준을 2.0% F1 넘어섰고, SQuAD 2.0에서는 이전 SOTA 대비 16.8% F1 향상이라는 놀라운 결과를 보여주었습니다. SQuAD 2.0이 특히 주목할만한 것은, 답이 없는 질문도 포함되어 있어 모델이 "답을 찾을 수 없다"고 판단하는 능력까지 요구하기 때문입니다.
+
+### SWAG (상식 추론)
+
+SWAG(Situations With Adversarial Generations)는 주어진 문장의 다음으로 가장 자연스러운 문장을 4개 보기 중 선택하는 태스크입니다.
+
+| 모델 | 정확도 |
+|------|-------|
+| Human Performance | 88.0 |
+| ESIM + ELMo | 59.1 |
+| GPT | 78.0 |
+| BERT-Base | 81.6 |
+| **BERT-Large** | **86.3** |
+
+BERT-Large는 GPT 대비 8.3% 포인트 향상을 달성하며 인간 수준(88.0%)에 근접했습니다.
+
+### Ablation Study: 양방향성의 중요성
+
+논문에서는 BERT의 각 구성 요소의 기여도를 분석하기 위한 체계적인 ablation study를 수행했습니다.
+
+**사전학습 태스크 ablation:**
+
+| 모델 | MNLI | QNLI | MRPC | SST-2 | SQuAD (F1) |
+|------|------|------|------|-------|------------|
+| BERT-Base (MLM + NSP) | 84.6 | 90.5 | 88.9 | 93.5 | 88.5 |
+| - NSP 제거 | 83.9 | 90.0 | 86.5 | 92.6 | 88.0 |
+| - MLM을 좌측 LM으로 교체 | 82.1 | 87.4 | 84.7 | 91.3 | 84.3 |
+| - MLM을 좌측 LM으로 + BiLSTM 추가 | 82.1 | 87.4 | 85.1 | 91.6 | 84.9 |
+
+MLM을 좌측 LM으로 교체하면 MNLI에서 2.5% 포인트, SQuAD에서 4.2% 포인트 하락하여, **양방향 학습의 결정적 중요성**을 입증했습니다. BiLSTM을 추가해도 성능이 거의 회복되지 않는 점은, 파인튜닝 시 추가되는 양방향성이 사전학습 단계의 깊은 양방향성을 대체할 수 없음을 보여줍니다.
+
+**모델 크기 ablation:**
+
+| 히든 크기 | 레이어 수 | 어텐션 헤드 | 파라미터 수 | MNLI | MRPC |
+|----------|----------|-----------|-----------|------|------|
+| 768 | 12 | 12 | 110M | 84.6 | 88.9 |
+| 768 | 6 | 12 | 67M | 83.4 | 87.3 |
+| 512 | 12 | 8 | 54M | 82.7 | 86.1 |
+| 256 | 12 | 4 | 22M | 79.8 | 83.9 |
+
+모델 크기가 커질수록 성능이 단조 증가하며, 사전학습 모델에서 스케일의 중요성을 보여줍니다.
+
+## 의의 및 한계
+
+### 의의
+
+- **사전 학습 + 파인튜닝 패러다임 확립**: 레이블 데이터 없이 강력한 범용 표현을 학습하고, 소량의 레이블 데이터로 파인튜닝하는 방식을 NLP 표준으로 만들었습니다. 이 패러다임은 컴퓨터 비전(MAE, BEiT)과 음성(wav2vec 2.0) 등 다른 분야로도 확산되었습니다
+- **양방향 문맥 학습**: 모든 레이어에서 양방향 Attention을 활용해 문장 내 단어들의 풍부한 문맥적 의미를 포착합니다. 동일한 단어도 문맥에 따라 다른 표현을 가지게 됩니다 ("bank"의 은행 vs 강둑)
+- **NLP 민주화**: 사전학습 모델을 공개함으로써, 대규모 컴퓨팅 자원이 없는 연구자들도 파인튜닝만으로 SOTA 성능을 달성 가능하게 했습니다. Hugging Face 생태계의 성장과 함께 모델 공유 문화를 정착시켰습니다
+- **Probing 연구의 촉발**: BERT의 성공은 "사전학습 모델이 무엇을 학습하는가?"에 대한 probing/분석 연구를 촉발했습니다. Clark et al.(2019)은 BERT의 특정 어텐션 헤드가 구문 관계(주어-동사, 관사-명사 등)를 포착한다는 것을 발견했고, Tenney et al.(2019)은 BERT의 레이어가 전통적 NLP 파이프라인(POS tagging, Parsing, NER, SRL)의 순서를 재현한다는 것을 보였습니다
+- **광범위한 후속 연구**: RoBERTa(MLM만 사용, 더 큰 데이터), ALBERT(파라미터 공유로 경량화), DistilBERT(지식 증류), SpanBERT(스팬 마스킹), DeBERTa(분리된 Attention), XLNet(순열 기반 학습) 등
+
+### 한계
+
+- **[MASK] 토큰 불일치**: 사전 학습 시 사용한 `[MASK]` 토큰이 파인튜닝 시에는 등장하지 않아 train-test mismatch가 발생합니다. 80/10/10 전략으로 완화했으나 근본적 해결은 아닙니다. [[electra|ELECTRA]]는 마스킹 대신 Replaced Token Detection으로 이 문제를 해결했습니다
+- **NSP의 효과 논란**: [[roberta|RoBERTa]](2019)에서 NSP가 실제로는 성능에 큰 도움이 안 될 수 있음을 보였습니다. 이후 모델들은 NSP를 제거하거나 SOP(Sentence Order Prediction, [[albert|ALBERT]])로 대체했습니다
+- **단방향 생성 불가**: 인코더 구조이므로 텍스트 생성(번역, 요약, 대화)에 직접 활용하기 어렵습니다. 이는 GPT 계열이 이후 LLM 시대를 주도하게 된 이유 중 하나입니다. [[bart|BART]]와 T5는 인코더-디코더 구조로 이해와 생성을 모두 수행합니다
+- **[MASK] 위치 독립 가정**: MLM은 마스킹된 토큰들이 서로 독립적이라 가정하여 토큰 간 상관관계를 완전히 포착하지 못합니다. 예를 들어, "New York"에서 두 토큰이 동시에 마스킹되면 각각 독립적으로 예측합니다. [[xlnet|XLNet]]이 순열 기반 자동회귀로 이를 해결했습니다
+- **고정 길이 제약**: 최대 512 토큰으로 긴 문서 처리에 제한됩니다. Longformer(sparse attention), BigBird(block sparse attention) 등이 이를 해결했습니다
+- **학습 효율성**: 15%의 토큰만 예측하므로, 같은 데이터량 대비 자동회귀 모델보다 학습 효율이 낮습니다. [[electra|ELECTRA]](Clark et al., 2020)는 Replaced Token Detection으로 모든 토큰에 대해 학습 신호를 생성하여, BERT 대비 동일 컴퓨팅으로 더 높은 성능을 달성했습니다
+- **다국어 한계**: 원본 BERT는 영어 전용이며, 이후 mBERT(104개 언어), XLM-R 등 다국어 변형이 등장했습니다. 한국어의 경우 ETRI의 KoBERT, SKT의 KoGPT 등이 개발되었습니다
+
+### BERT의 현재 위치
+
+2020년 이후 GPT-3의 등장으로 "Pre-train + Prompt" 패러다임이 부상하면서 BERT의 "Pre-train + Fine-tune" 방식은 상대적으로 주목을 덜 받게 되었습니다. 그러나 BERT 계열 모델(특히 [[deberta|DeBERTa]]-v3)은 여전히 분류, NER, 의미 유사도 등의 이해 태스크에서 실용적이며, 추론 비용이 LLM 대비 매우 낮아 프로덕션 환경에서 널리 사용됩니다.
+
+| 관점 | BERT 계열 | LLM (GPT-4 등) |
+|------|----------|----------------|
+| 추론 속도 | 매우 빠름 (수 ms) | 느림 (수 초) |
+| 추론 비용 | 매우 낮음 | 높음 |
+| 분류 정확도 | 태스크별 파인튜닝으로 높음 | 프롬프트에 의존 |
+| 배치 처리 | 수천 건/초 가능 | 제한적 |
+| 온프레미스 배포 | 단일 GPU로 충분 | 대규모 인프라 필요 |
+| 생성 능력 | 없음 | 매우 우수 |
+
+## 코드 예제
+
+### 1. BERT 파인튜닝 -- 감성 분류 (Hugging Face Transformers)
+
+```python
+import torch
+import torch.nn as nn
+from transformers import BertTokenizer, BertForSequenceClassification
+from torch.optim import AdamW
+from transformers import get_linear_schedule_with_warmup
+
+# BERT 토크나이저 & 모델 로드
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained(
+    'bert-base-uncased', num_labels=2
+)
+
+def tokenize(texts, max_length=128):
+    """텍스트를 BERT 입력 형식으로 변환."""
+    return tokenizer(
+        texts, padding='max_length', truncation=True,
+        max_length=max_length, return_tensors='pt'
+    )
+
+# 예시 데이터
+texts = ["I love this movie!", "This film was terrible."]
+labels = torch.tensor([1, 0])  # 1: positive, 0: negative
+
+# 토크나이징 -- WordPiece 서브워드 분할 확인
+inputs = tokenize(texts)
+print("input_ids shape:", inputs['input_ids'].shape)  # (2, 128)
+print("attention_mask shape:", inputs['attention_mask'].shape)  # (2, 128)
+# [CLS]=101이 시작, [SEP]=102가 끝, [PAD]=0이 나머지
+print("첫 번째 시퀀스:", tokenizer.decode(inputs['input_ids'][0][:10]))
+
+# 옵티마이저 + 스케줄러 설정
+optimizer = AdamW(model.parameters(), lr=2e-5, weight_decay=0.01)
+scheduler = get_linear_schedule_with_warmup(
+    optimizer, num_warmup_steps=100, num_training_steps=1000
+)
+
+# 학습 루프
+model.train()
+for epoch in range(3):
+    outputs = model(**inputs, labels=labels)
+    loss = outputs.loss
+    logits = outputs.logits  # (batch_size, num_labels)
+
+    loss.backward()
+    torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+    optimizer.step()
+    scheduler.step()
+    optimizer.zero_grad()
+
+    preds = logits.argmax(dim=-1)
+    acc = (preds == labels).float().mean()
+    print(f"Epoch {epoch+1} | Loss: {loss.item():.4f} | Acc: {acc.item():.4f}")
+
+# 추론
+model.eval()
+with torch.no_grad():
+    test_inputs = tokenize(["An excellent performance!", "Worst movie ever."])
+    logits = model(**test_inputs).logits
+    probs = torch.softmax(logits, dim=-1)
+    preds = logits.argmax(dim=-1)
+    for i, (pred, prob) in enumerate(zip(preds, probs)):
+        label = "positive" if pred.item() == 1 else "negative"
+        print(f"입력 {i+1}: {label} (확률: {prob[pred].item():.4f})")
+```
+
+### 2. Masked Language Modeling -- 빈칸 예측
+
+```python
+from transformers import BertTokenizer, BertForMaskedLM
+import torch
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForMaskedLM.from_pretrained('bert-base-uncased')
+model.eval()
+
+def predict_masked(text, top_k=5):
+    """[MASK] 위치의 토큰을 예측합니다."""
+    inputs = tokenizer(text, return_tensors='pt')
+    mask_positions = (inputs['input_ids'] == tokenizer.mask_token_id)
+    mask_indices = mask_positions.nonzero(as_tuple=True)[1]
+
+    with torch.no_grad():
+        outputs = model(**inputs)
+        logits = outputs.logits  # (1, seq_len, vocab_size)
+
+    results = []
+    for idx in mask_indices:
+        probs = torch.softmax(logits[0, idx], dim=-1)
+        top_probs, top_ids = torch.topk(probs, top_k)
+        predictions = [
+            (tokenizer.decode([tid.item()]).strip(), p.item())
+            for tid, p in zip(top_ids, top_probs)
+        ]
+        results.append(predictions)
+    return results
+
+# 단일 [MASK] 예측
+print("=== 단일 마스크 ===")
+text = "The capital of France is [MASK]."
+for token, prob in predict_masked(text)[0]:
+    print(f"  {token:>12s}  ({prob:.4f})")
+# 출력 예: paris (0.8734), lyon (0.0213), ...
+
+# 다중 [MASK] 예측 -- 독립 가정의 한계 확인
+print("\n=== 다중 마스크 (독립 예측) ===")
+text = "[MASK] [MASK] is the largest city in Japan."
+results = predict_masked(text)
+for i, preds in enumerate(results):
+    print(f"  [MASK] {i+1}: {', '.join(f'{t}({p:.3f})' for t, p in preds[:3])}")
+# 각 [MASK]가 독립적으로 예측됨 -- BERT MLM의 한계
+```
+
+### 3. Feature Extraction -- 문장 임베딩 활용
+
+```python
+from transformers import BertTokenizer, BertModel
+import torch
+import torch.nn.functional as F
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertModel.from_pretrained('bert-base-uncased')
+model.eval()
+
+def get_sentence_embedding(text, pooling='cls'):
+    """문장 임베딩을 추출합니다.
+
+    Args:
+        text: 입력 텍스트
+        pooling: 'cls' ([CLS] 토큰) 또는 'mean' (평균 풀링)
+    """
+    inputs = tokenizer(text, return_tensors='pt', truncation=True, max_length=512)
+    with torch.no_grad():
+        outputs = model(**inputs)
+
+    if pooling == 'cls':
+        # [CLS] 토큰의 히든 상태
+        return outputs.last_hidden_state[:, 0, :]  # (1, 768)
+    elif pooling == 'mean':
+        # attention_mask를 고려한 평균 풀링
+        mask = inputs['attention_mask'].unsqueeze(-1)  # (1, seq_len, 1)
+        hidden = outputs.last_hidden_state * mask      # 패딩 위치 제거
+        return hidden.sum(dim=1) / mask.sum(dim=1)     # (1, 768)
+
+def cosine_similarity(emb1, emb2):
+    return F.cosine_similarity(emb1, emb2).item()
+
+# 의미 유사도 비교
+sentences = [
+    "The cat sat on the mat.",
+    "A kitten was sitting on a rug.",
+    "The stock market crashed yesterday.",
+]
+
+embeddings = [get_sentence_embedding(s, pooling='mean') for s in sentences]
+
+print("문장 간 코사인 유사도:")
+for i in range(len(sentences)):
+    for j in range(i + 1, len(sentences)):
+        sim = cosine_similarity(embeddings[i], embeddings[j])
+        print(f"  '{sentences[i][:30]}...' vs '{sentences[j][:30]}...': {sim:.4f}")
+# 유사한 의미의 문장(0,1)이 무관한 문장(0,2)보다 높은 유사도
+
+# 히든 상태 레이어별 분석
+inputs = tokenizer("The bank by the river.", return_tensors='pt')
+with torch.no_grad():
+    outputs = model(**inputs, output_hidden_states=True)
+
+print(f"\n레이어 수: {len(outputs.hidden_states)}")  # 13 (임베딩 + 12 레이어)
+print(f"각 레이어 shape: {outputs.hidden_states[0].shape}")  # (1, seq_len, 768)
+# 하위 레이어: 표면적 특성 (POS, 형태소)
+# 상위 레이어: 의미적 특성 (NER, 상호참조)
+```
+
+> **핵심 통찰**: `[CLS]` 토큰의 최종 히든 상태가 분류 헤드의 입력으로 사용됩니다. 그러나 문장 임베딩 용도로는 `[CLS]` 토큰보다 평균 풀링이 더 나은 성능을 보이는 경우가 많습니다(Sentence-BERT, Reimers et al., 2019). BERT의 진정한 혁신은 MLM이라는 학습 목표를 통해 양방향 문맥을 자연스럽게 학습할 수 있게 한 것이며, 이 아이디어는 이후 [[electra|ELECTRA]], [[deberta|DeBERTa]] 등으로 발전하였습니다. 또한 "사전학습 모델을 공개하여 커뮤니티가 파인튜닝만으로 활용"하는 오픈소스 모델 생태계의 시초가 되었습니다.
+
+## 관련 문서
+
+- [[transformer|Transformer]] -- 발전 기반
+- [[albert|ALBERT]] -- 후속 모델
+- [[deberta|DeBERTa]] -- 후속 모델
+- [[electra|ELECTRA]] -- 후속 모델
+- [[roberta|RoBERTa]] -- 후속 모델
+- [[bart|BART]] -- 영감을 줌
+- [[ernie|ERNIE]] -- 영감을 줌
+- [[mae|MAE]] -- 영감을 줌
+- [[xlnet|XLNet]] -- 영감을 줌
+- [[distilbert|DistilBERT]] -- 변형 모델

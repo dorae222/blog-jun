@@ -1,0 +1,257 @@
+## 1. 개요: 왜 Feature Engineering인가?
+
+Machine Learning 실무에서 흔히 듣는 말이 있다. "Garbage in, garbage out." 아무리 정교한 모델을 사용해도 입력 데이터의 품질이 낮으면 좋은 결과를 기대할 수 없다. 실제로 Kaggle 대회 상위 입상자들의 인터뷰를 보면 공통된 패턴이 있다. 모델 튜닝에 20%의 시간을 쓰고, 나머지 80%는 데이터를 이해하고 Feature를 설계하는 데 투자한다는 것이다.
+
+**Feature Engineering**이란 원시 데이터(raw data)로부터 모델이 학습하기 좋은 형태의 입력 변수를 만들어내는 과정이다. 단순히 결측치를 채우거나 이상치를 제거하는 전처리(Preprocessing)를 넘어, 도메인 지식을 수식으로 표현하고, 숨겨진 패턴을 새로운 변수로 구체화하는 작업이다.
+
+**Feature Selection**은 반대로 "빼는" 작업이다. 수십, 수백 개의 Feature 중에서 모델의 예측에 실질적으로 기여하는 변수만을 골라내어 모델을 단순하고 강건하게 만든다. 불필요한 Feature는 모델 복잡도를 높이고, 과적합(Overfitting)을 유발하며, 학습 속도를 저하시킨다.
+
+이 글에서는 Feature Engineering과 Feature Selection의 핵심 기법들을 체계적으로 정리하고, 각 기법이 어떤 상황에 적합한지 구체적인 Python 코드와 함께 살펴본다.
+
+---
+
+## 2. Feature Scaling (스케일링)
+
+### 왜 스케일링이 필요한가?
+
+현실 데이터에서 각 Feature의 값 범위는 천차만별이다. 예를 들어 집값 예측 모델에서 "방의 개수"는 1~10 범위지만, "면적(㎡)"은 20~300, "가격"은 수천만~수십억 원 범위를 가진다. 이런 상태로 모델을 학습하면, 절댓값이 큰 Feature가 손실 함수(Loss Function)에 과도하게 영향을 미쳐 학습이 불안정해진다.
+
+### 표준화 (Standardization, Z-score Normalization)
+
+$$z = \frac{x - \mu}{\sigma}$$
+
+데이터에서 평균($\mu$)을 빼고 표준편차($\sigma$)로 나누어 평균 0, 분산 1인 분포로 변환한다. 데이터가 정규분포를 따른다고 가정할 때 가장 효과적이다. 이상치(Outlier)가 존재할 경우 평균과 표준편차가 왜곡될 수 있다는 단점이 있다.
+
+### 정규화 (Min-Max Normalization)
+
+$$x' = \frac{x - x_{min}}{x_{max} - x_{min}}$$
+
+모든 값을 [0, 1] 범위로 압축한다. 이미지 픽셀값(0~255)처럼 값의 범위가 명확하게 정해진 경우에 유용하다. 그러나 이상치에 민감하다. 단 하나의 극단값이 존재하면 나머지 값들이 좁은 범위에 몰리는 문제가 생긴다.
+
+### RobustScaler: 이상치에 강건한 스케일링
+
+$$x' = \frac{x - \text{median}}{IQR}$$
+
+평균 대신 중앙값(Median), 표준편차 대신 IQR(Interquartile Range, Q3 - Q1)을 사용한다. 이상치의 영향을 크게 받지 않아 실제 데이터에서 자주 활용된다.
+
+### 언제 스케일링이 필요한가?
+
+| 알고리즘 | 스케일링 필요 여부 | 이유 |
+|---|---|---|
+| SVM | 필요 | 거리 기반 커널 계산 |
+| KNN | 필요 | 유클리드 거리 의존 |
+| 신경망 (Neural Network) | 필요 | Gradient Descent 안정화 |
+| 선형 회귀 (계수 해석 목적) | 권장 | 계수 크기 비교 |
+| 결정 트리 (Decision Tree) | 불필요 | 분기 기준이 상대적 비교 |
+| 랜덤 포레스트 / XGBoost | 불필요 | 트리 기반 앙상블 |
+
+---
+
+## 3. 범주형 인코딩 (Categorical Encoding)
+
+대부분의 ML 모델은 숫자만을 입력으로 받는다. 따라서 문자열이나 카테고리 형태의 데이터를 수치로 변환하는 인코딩 과정이 필수적이다.
+
+### Label Encoding
+
+각 카테고리에 0, 1, 2, ... 순으로 정수를 할당한다. "소", "중", "대"처럼 **순서 관계가 명확한 순서형(Ordinal) 변수**에 적합하다. 순서가 없는 명목형(Nominal) 변수에 적용하면 모델이 존재하지 않는 크기 관계를 학습할 수 있어 주의가 필요하다.
+
+### One-Hot Encoding
+
+카테고리 수만큼 이진(0/1) 열을 생성한다. 예를 들어 "색상" 변수에 빨강, 파랑, 초록이 있다면 `color_red`, `color_blue`, `color_green` 세 개의 열로 변환된다. **명목형 변수**에 가장 기본적으로 사용되지만, 카테고리 수가 많으면(High Cardinality) 차원이 폭발적으로 증가한다. 또한 선형 모델에서는 **다중공선성(Multicollinearity)** 문제가 생기므로 열 하나를 제거하는 `drop='first'` 옵션을 사용해야 한다.
+
+### Target Encoding
+
+각 카테고리를 해당 카테고리에 속하는 샘플들의 **목표 변수 평균값**으로 대체한다. High Cardinality 문제를 해결하면서도 목표 변수와의 관계를 담을 수 있어 강력하다. 단, 훈련 데이터의 레이블 정보를 직접 사용하므로 교차 검증(Cross-Validation) 없이 학습 전체 데이터에 적용하면 **Data Leakage**가 발생한다. 반드시 Fold 안에서 인코딩을 계산하거나, smoothing 기법을 함께 사용해야 한다.
+
+### Frequency Encoding
+
+카테고리를 해당 카테고리의 **출현 빈도**로 대체한다. 구현이 간단하고 High Cardinality에도 강건하다. 빈도 자체가 의미 있는 정보를 담을 때 효과적이다.
+
+### Binary Encoding
+
+Label Encoding 후 이진수로 변환하여 열로 표현한다. One-Hot Encoding보다 훨씬 적은 열(log₂(n)개)을 사용하면서 카테고리 정보를 유지할 수 있어 High Cardinality 상황에서 유용하다.
+
+---
+
+## 4. 파생 변수 생성 (Feature Creation)
+
+기존 Feature들을 조합하거나 변환하여 새로운 정보를 담은 Feature를 만드는 과정이다. 이 단계에서 도메인 지식이 가장 큰 역할을 한다.
+
+### 상호작용 특성 (Interaction Features)
+
+두 Feature의 곱($x_1 \times x_2$)이나 비율($x_1 / x_2$)로 새로운 Feature를 생성한다. 예를 들어 집값 모델에서 "면적"과 "층수"를 따로 넣는 것보다 "면적 × 층수"라는 상호작용 항이 더 많은 정보를 줄 수 있다. 선형 모델은 Feature 간 상호작용을 자체적으로 포착하지 못하므로 이 기법이 특히 유효하다.
+
+### 다항 특성 (Polynomial Features)
+
+$x$, $x^2$, $x^3$ 등 고차항을 자동으로 생성하여 비선형 관계를 선형 모델로 표현할 수 있게 한다. sklearn의 `PolynomialFeatures`가 대표적인 도구다. 차수가 높아질수록 Feature 수가 기하급수적으로 증가하므로 과적합 위험에 주의해야 한다.
+
+### 날짜/시간 특성 분해
+
+날짜/시간 데이터는 단일 timestamp 값보다 분해된 형태가 훨씬 유용하다.
+- **요일(day of week)**: 주말/주중 패턴
+- **시간대(hour)**: 오전/오후/심야 패턴
+- **월(month)**: 계절성
+- **공휴일 여부**: 이진 Feature
+- **마지막 구매로부터 경과 일수**: 시간 간격(elapsed time)
+
+### 도메인 지식 기반 특성
+
+의료 데이터에서 BMI(몸무게/키²), 금융 데이터에서 부채비율(부채/자산), 커머스에서 ARPU(매출/사용자 수)처럼 해당 도메인에서 이미 의미 있다고 알려진 파생 지표를 직접 계산하여 Feature로 추가하는 방식이다. 이런 Feature들은 모델이 학습해야 할 복잡한 비선형 관계를 미리 명시적으로 표현해 준다.
+
+---
+
+## 5. Feature Selection 방법론
+
+Feature가 많다고 항상 좋은 것은 아니다. 불필요한 Feature는 모델에 노이즈를 추가하고, 학습 시간을 늘리며, 해석을 어렵게 만든다. Feature Selection은 크게 Filter, Wrapper, Embedded 세 가지 방법으로 분류된다.
+
+### Filter 방법
+
+모델 학습 전에 통계적 지표로 Feature를 평가하고 선택한다. 계산이 빠르고 모델에 독립적이다.
+
+- **분산 기반(Variance Threshold)**: 분산이 거의 0에 가까운 Feature는 정보가 없으므로 제거한다.
+- **상관관계(Correlation)**: 목표 변수와 상관관계가 낮은 Feature를 제거하거나, Feature 간 상관관계가 높은 경우(다중공선성) 하나를 제거한다.
+- **카이제곱 검정(Chi-squared Test)**: 범주형 변수와 목표 변수 간의 독립성을 검정한다. p-value가 낮을수록 통계적으로 유의미한 관계다.
+- **ANOVA F-test**: 연속형 Feature와 범주형 목표 변수 간의 관계를 검정한다.
+
+### Wrapper 방법
+
+실제 모델을 사용하여 Feature 부분집합의 성능을 직접 평가한다. 정확도가 높지만 계산 비용이 크다.
+
+- **RFE (Recursive Feature Elimination)**: 모델을 학습하고 가장 중요도가 낮은 Feature를 하나씩 제거하는 과정을 반복한다. sklearn의 `RFE`, `RFECV` 클래스가 이를 구현한다.
+- **순방향 선택(Forward Selection)**: Feature를 하나도 없는 상태에서 시작하여 성능을 가장 많이 향상시키는 Feature를 하나씩 추가한다.
+- **후방 제거(Backward Elimination)**: 모든 Feature로 시작하여 성능 저하가 가장 적은 Feature를 하나씩 제거한다.
+
+### Embedded 방법
+
+모델 학습 과정 자체에 Feature Selection이 내장된 방법으로, Wrapper보다 빠르고 Filter보다 정확하다.
+
+- **L1 정규화 (Lasso)**: 손실 함수에 $\lambda \sum |w_i|$ 페널티를 추가한다. 중요하지 않은 Feature의 계수를 정확히 0으로 만들어 자동으로 Feature를 선택하는 효과를 낸다.
+- **Tree Feature Importance**: 결정 트리 기반 모델(Random Forest, XGBoost 등)은 각 Feature가 분기(Split)에 얼마나 기여했는지를 `feature_importances_` 속성으로 제공한다. 이를 기준으로 중요도가 낮은 Feature를 제거할 수 있다.
+
+### 방법론 비교
+
+| 방법 | 계산 속도 | 정확도 | 과적합 위험 | 대표 기법 |
+|---|---|---|---|---|
+| Filter | 빠름 | 낮음 | 낮음 | Correlation, Chi-squared |
+| Wrapper | 느림 | 높음 | 높음 | RFE, Forward/Backward Selection |
+| Embedded | 중간 | 중간~높음 | 중간 | Lasso, Tree Importance |
+
+실무에서는 세 방법을 조합하는 것이 일반적이다. Filter로 명백히 불필요한 Feature를 빠르게 제거한 후, Embedded나 Wrapper 방법으로 정밀하게 최종 Feature를 선택한다.
+
+---
+
+## 6. Python 코드 예시
+
+```python
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_breast_cancer
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, PolynomialFeatures
+from sklearn.feature_selection import SelectKBest, chi2, f_classif, RFE
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+
+# 데이터 로드
+data = load_breast_cancer()
+X, y = data.data, data.target
+feature_names = data.feature_names
+
+# ─── 1. 스케일링 비교 ───────────────────────────────────────
+scalers = {
+    'StandardScaler': StandardScaler(),
+    'MinMaxScaler': MinMaxScaler(),
+    'RobustScaler': RobustScaler(),
+}
+
+for name, scaler in scalers.items():
+    X_scaled = scaler.fit_transform(X)
+    print(f"{name}: mean={X_scaled.mean():.3f}, std={X_scaled.std():.3f}")
+
+# ─── 2. 다항 특성 생성 (PolynomialFeatures) ─────────────────
+poly = PolynomialFeatures(degree=2, include_bias=False, interaction_only=False)
+X_poly = poly.fit_transform(X[:, :5])  # 첫 5개 Feature만 사용 (예시)
+print(f"원래 Feature 수: {X[:, :5].shape[1]}")
+print(f"Polynomial 후 Feature 수: {X_poly.shape[1]}")
+# 원래: 5개 → Polynomial(degree=2): 5 + 5 + C(5,2) = 20개
+
+# ─── 3. Filter: SelectKBest (F-test) ────────────────────────
+# 연속형 Feature → f_classif (ANOVA F-test)
+selector_kbest = SelectKBest(score_func=f_classif, k=10)
+X_kbest = selector_kbest.fit_transform(X, y)
+selected_mask = selector_kbest.get_support()
+selected_features = feature_names[selected_mask]
+print(f"SelectKBest 선택 Feature:\n{selected_features}")
+
+# ─── 4. Wrapper: RFE (Recursive Feature Elimination) ────────
+lr = LogisticRegression(max_iter=10000, random_state=42)
+rfe = RFE(estimator=lr, n_features_to_select=10, step=1)
+rfe.fit(StandardScaler().fit_transform(X), y)
+rfe_selected = feature_names[rfe.support_]
+print(f"RFE 선택 Feature:\n{rfe_selected}")
+print(f"Feature 순위 (낮을수록 중요):\n{rfe.ranking_}")
+
+# ─── 5. Embedded: RandomForest Feature Importance ───────────
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X, y)
+importances = pd.Series(rf.feature_importances_, index=feature_names)
+top10 = importances.nlargest(10)
+print(f"RandomForest 상위 10개 Feature:\n{top10}")
+
+# ─── 6. Pipeline으로 통합 ────────────────────────────────────
+pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('poly', PolynomialFeatures(degree=2, include_bias=False)),
+    ('selector', SelectKBest(score_func=f_classif, k=20)),
+    ('model', LogisticRegression(max_iter=10000, random_state=42)),
+])
+pipeline.fit(X, y)
+print(f"Pipeline 학습 완료. Train accuracy: {pipeline.score(X, y):.4f}")
+```
+
+```output
+StandardScaler: mean=-0.000, std=1.000
+MinMaxScaler: mean=0.239, std=0.173
+RobustScaler: mean=0.205, std=0.933
+원래 Feature 수: 5
+Polynomial 후 Feature 수: 20
+SelectKBest 선택 Feature:
+['mean radius' 'mean perimeter' 'mean area' 'mean concavity'
+ 'mean concave points' 'worst radius' 'worst perimeter' 'worst area'
+ 'worst concavity' 'worst concave points']
+RFE 선택 Feature:
+['mean concave points' 'radius error' 'area error' 'compactness error'
+ 'worst radius' 'worst texture' 'worst perimeter' 'worst area'
+ 'worst concavity' 'worst concave points']
+Feature 순위 (낮을수록 중요):
+[ 7  9 10  3 18  5  8  1 20 15  1 17  4  1 13  1 19 16 12 11  1  1  1  1
+  2 21  1  1  6 14]
+RandomForest 상위 10개 Feature:
+worst area              0.139357
+worst concave points    0.132225
+mean concave points     0.107046
+worst radius            0.082848
+worst perimeter         0.080850
+mean perimeter          0.067990
+mean concavity          0.066917
+mean area               0.060462
+worst concavity         0.037339
+mean radius             0.034843
+dtype: float64
+Pipeline 학습 완료. Train accuracy: 0.9859
+```
+
+---
+
+## 7. 실무 Tips & 정리
+
+**Feature Engineering은 반복적인 과정이다.** EDA(탐색적 데이터 분석) → Feature 생성 → 모델 학습 → 오류 분석 → 다시 Feature 수정의 사이클을 여러 번 반복한다.
+
+**주요 체크리스트**:
+- 수치형 Feature에 스케일링을 적용했는가? (트리 기반 제외)
+- 범주형 변수의 Cardinality를 파악하고 적절한 인코딩을 선택했는가?
+- Target Encoding 시 Data Leakage를 방지했는가?
+- Feature Selection 이후 검증 세트 성능이 향상되었는가?
+- 생성한 파생 변수에 도메인적 해석이 가능한가?
+
+좋은 Feature는 좋은 모델보다 강력하다. 단순한 Logistic Regression에 정교하게 설계된 Feature를 넣는 것이, 복잡한 딥러닝 모델에 원시 데이터를 그대로 넣는 것보다 더 나은 결과를 내는 경우가 많다. Feature Engineering에 투자하는 시간은 항상 가치 있다.

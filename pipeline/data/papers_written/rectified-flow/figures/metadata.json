@@ -1,0 +1,512 @@
+[
+  {
+    "filename": "fig_1.jpg",
+    "caption": "Figure 1: The trajectories of rectified flows for\nimage generation\n( π 0 subscript 𝜋 0 {\\pi}_{0} : standard Gaussian noise, π 1 subscript 𝜋 1 {\\pi}_{1} : cat faces, top two rows),\nand image transfer between human and cat faces ( π 0 subscript 𝜋 0 {\\pi}_{0} : human faces, π 1 subscript 𝜋 1 {\\pi}_{1} : cat faces, bottom two rows),\nwhen simulated using Euler method with step size 1 / N 1 𝑁 1/N for N 𝑁 N steps.\nThe first rectified flow induced from the training data ( 1-rectified flow ) yields good results with a very small number (e.g., ≥ 2 absent 2 \\geq 2 ) of steps;\nthe straightened reflow induced from 1-rectified flow (denoted as 2-rectified flow )\nhas nearly straight line trajectories and yield good results even with one discretization step.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cat_triangle_new_2_cy.pptx.jpeg"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: (a) Linear interpolation of data input ( X 0 , X 1 ) ∼ π 0 × π 1 similar-to subscript 𝑋 0 subscript 𝑋 1 subscript 𝜋 0 subscript 𝜋 1 (X_{0},X_{1})\\sim{\\pi}_{0}\\times{\\pi}_{1} .\n(b) The rectified flow Z t subscript 𝑍 𝑡 Z_{t} induced by ( X 0 , X 1 ) subscript 𝑋 0 subscript 𝑋 1 (X_{0},X_{1}) ;\nthe trajectories are “rewired” at the intersection points\nto avoid the crossing.\n(c) The linear interpolation of the end points ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) of flow Z t subscript 𝑍 𝑡 Z_{t} .\n(d) The rectified flow induced from ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) , which follows straight paths.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cross22_dash.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: (a) Linear interpolation of data input ( X 0 , X 1 ) ∼ π 0 × π 1 similar-to subscript 𝑋 0 subscript 𝑋 1 subscript 𝜋 0 subscript 𝜋 1 (X_{0},X_{1})\\sim{\\pi}_{0}\\times{\\pi}_{1} .\n(b) The rectified flow Z t subscript 𝑍 𝑡 Z_{t} induced by ( X 0 , X 1 ) subscript 𝑋 0 subscript 𝑋 1 (X_{0},X_{1}) ;\nthe trajectories are “rewired” at the intersection points\nto avoid the crossing.\n(c) The linear interpolation of the end points ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) of flow Z t subscript 𝑍 𝑡 Z_{t} .\n(d) The rectified flow induced from ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) , which follows straight paths.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cross12.png"
+  },
+  {
+    "filename": "fig_2_3.png",
+    "caption": "Figure 2: (a) Linear interpolation of data input ( X 0 , X 1 ) ∼ π 0 × π 1 similar-to subscript 𝑋 0 subscript 𝑋 1 subscript 𝜋 0 subscript 𝜋 1 (X_{0},X_{1})\\sim{\\pi}_{0}\\times{\\pi}_{1} .\n(b) The rectified flow Z t subscript 𝑍 𝑡 Z_{t} induced by ( X 0 , X 1 ) subscript 𝑋 0 subscript 𝑋 1 (X_{0},X_{1}) ;\nthe trajectories are “rewired” at the intersection points\nto avoid the crossing.\n(c) The linear interpolation of the end points ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) of flow Z t subscript 𝑍 𝑡 Z_{t} .\n(d) The rectified flow induced from ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) , which follows straight paths.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/arrowsdfd.png"
+  },
+  {
+    "filename": "fig_2_4.png",
+    "caption": "Figure 2: (a) Linear interpolation of data input ( X 0 , X 1 ) ∼ π 0 × π 1 similar-to subscript 𝑋 0 subscript 𝑋 1 subscript 𝜋 0 subscript 𝜋 1 (X_{0},X_{1})\\sim{\\pi}_{0}\\times{\\pi}_{1} .\n(b) The rectified flow Z t subscript 𝑍 𝑡 Z_{t} induced by ( X 0 , X 1 ) subscript 𝑋 0 subscript 𝑋 1 (X_{0},X_{1}) ;\nthe trajectories are “rewired” at the intersection points\nto avoid the crossing.\n(c) The linear interpolation of the end points ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) of flow Z t subscript 𝑍 𝑡 Z_{t} .\n(d) The rectified flow induced from ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) , which follows straight paths.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cross32_dash.png"
+  },
+  {
+    "filename": "fig_2_5.png",
+    "caption": "Figure 2: (a) Linear interpolation of data input ( X 0 , X 1 ) ∼ π 0 × π 1 similar-to subscript 𝑋 0 subscript 𝑋 1 subscript 𝜋 0 subscript 𝜋 1 (X_{0},X_{1})\\sim{\\pi}_{0}\\times{\\pi}_{1} .\n(b) The rectified flow Z t subscript 𝑍 𝑡 Z_{t} induced by ( X 0 , X 1 ) subscript 𝑋 0 subscript 𝑋 1 (X_{0},X_{1}) ;\nthe trajectories are “rewired” at the intersection points\nto avoid the crossing.\n(c) The linear interpolation of the end points ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) of flow Z t subscript 𝑍 𝑡 Z_{t} .\n(d) The rectified flow induced from ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) , which follows straight paths.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cross42.png"
+  },
+  {
+    "filename": "fig_2_6.png",
+    "caption": "Figure 2: (a) Linear interpolation of data input ( X 0 , X 1 ) ∼ π 0 × π 1 similar-to subscript 𝑋 0 subscript 𝑋 1 subscript 𝜋 0 subscript 𝜋 1 (X_{0},X_{1})\\sim{\\pi}_{0}\\times{\\pi}_{1} .\n(b) The rectified flow Z t subscript 𝑍 𝑡 Z_{t} induced by ( X 0 , X 1 ) subscript 𝑋 0 subscript 𝑋 1 (X_{0},X_{1}) ;\nthe trajectories are “rewired” at the intersection points\nto avoid the crossing.\n(c) The linear interpolation of the end points ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) of flow Z t subscript 𝑍 𝑡 Z_{t} .\n(d) The rectified flow induced from ( Z 0 , Z 1 ) subscript 𝑍 0 subscript 𝑍 1 (Z_{0},Z_{1}) , which follows straight paths.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cross_legend.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: (a)-(c) Samples of trajectories drawn from the reflows on a toy example ( π 0 subscript 𝜋 0 {\\pi}_{0} : purple dots , π 1 subscript 𝜋 1 {\\pi}_{1} : red dots ;\nthe green and blue lines are trajectories connecting different modes of π 0 , π 1 subscript 𝜋 0 subscript 𝜋 1 {\\pi}_{0},{\\pi}_{1} ).\n(d) The\nstraightness and the relative L2 transport cost v.s.\nthe reflow steps; the values are scaled into [ 0 , 1 ] 0 1 [0,1] , so 0 corresponds to straight lines and L 2 subscript 𝐿 2 L_{2} optimal transport; see Section 5.1 for more information. We use the non-parametric model in ( 5 ) with bandwidth h = 0.1 ℎ 0.1 h=0.1 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/circle06h0p1_v2_0.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: (a)-(c) Samples of trajectories drawn from the reflows on a toy example ( π 0 subscript 𝜋 0 {\\pi}_{0} : purple dots , π 1 subscript 𝜋 1 {\\pi}_{1} : red dots ;\nthe green and blue lines are trajectories connecting different modes of π 0 , π 1 subscript 𝜋 0 subscript 𝜋 1 {\\pi}_{0},{\\pi}_{1} ).\n(d) The\nstraightness and the relative L2 transport cost v.s.\nthe reflow steps; the values are scaled into [ 0 , 1 ] 0 1 [0,1] , so 0 corresponds to straight lines and L 2 subscript 𝐿 2 L_{2} optimal transport; see Section 5.1 for more information. We use the non-parametric model in ( 5 ) with bandwidth h = 0.1 ℎ 0.1 h=0.1 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/circle06h0p1_v2_1.png"
+  },
+  {
+    "filename": "fig_3_3.png",
+    "caption": "Figure 3: (a)-(c) Samples of trajectories drawn from the reflows on a toy example ( π 0 subscript 𝜋 0 {\\pi}_{0} : purple dots , π 1 subscript 𝜋 1 {\\pi}_{1} : red dots ;\nthe green and blue lines are trajectories connecting different modes of π 0 , π 1 subscript 𝜋 0 subscript 𝜋 1 {\\pi}_{0},{\\pi}_{1} ).\n(d) The\nstraightness and the relative L2 transport cost v.s.\nthe reflow steps; the values are scaled into [ 0 , 1 ] 0 1 [0,1] , so 0 corresponds to straight lines and L 2 subscript 𝐿 2 L_{2} optimal transport; see Section 5.1 for more information. We use the non-parametric model in ( 5 ) with bandwidth h = 0.1 ℎ 0.1 h=0.1 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/circle06h0p1_v2_2.png"
+  },
+  {
+    "filename": "fig_3_4.png",
+    "caption": "Figure 3: (a)-(c) Samples of trajectories drawn from the reflows on a toy example ( π 0 subscript 𝜋 0 {\\pi}_{0} : purple dots , π 1 subscript 𝜋 1 {\\pi}_{1} : red dots ;\nthe green and blue lines are trajectories connecting different modes of π 0 , π 1 subscript 𝜋 0 subscript 𝜋 1 {\\pi}_{0},{\\pi}_{1} ).\n(d) The\nstraightness and the relative L2 transport cost v.s.\nthe reflow steps; the values are scaled into [ 0 , 1 ] 0 1 [0,1] , so 0 corresponds to straight lines and L 2 subscript 𝐿 2 L_{2} optimal transport; see Section 5.1 for more information. We use the non-parametric model in ( 5 ) with bandwidth h = 0.1 ℎ 0.1 h=0.1 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/circle06h0p1_v2_loss.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: Comparing rectified flow with VP ODE and sub-VP ODE when π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) (purple dots) and π 1 subscript 𝜋 1 {\\pi}_{1} is a low variance Gaussian mixture shown as the red dots.\nThe linear rectified flow yields nearly straight trajectories with one step of reflow. But the trajectories of VP ODE and sub-VP ODE are curved and can not be straightened by reflowing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/stdGauss_cycle2_6_linear_rect_0_steps.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4: Comparing rectified flow with VP ODE and sub-VP ODE when π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) (purple dots) and π 1 subscript 𝜋 1 {\\pi}_{1} is a low variance Gaussian mixture shown as the red dots.\nThe linear rectified flow yields nearly straight trajectories with one step of reflow. But the trajectories of VP ODE and sub-VP ODE are curved and can not be straightened by reflowing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/stdGauss_cycle2_6_linear_rect_1_steps.png"
+  },
+  {
+    "filename": "fig_4_3.png",
+    "caption": "Figure 4: Comparing rectified flow with VP ODE and sub-VP ODE when π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) (purple dots) and π 1 subscript 𝜋 1 {\\pi}_{1} is a low variance Gaussian mixture shown as the red dots.\nThe linear rectified flow yields nearly straight trajectories with one step of reflow. But the trajectories of VP ODE and sub-VP ODE are curved and can not be straightened by reflowing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/stdGauss_cycle2_6_vpsde_rect_0_steps.png"
+  },
+  {
+    "filename": "fig_4_4.png",
+    "caption": "Figure 4: Comparing rectified flow with VP ODE and sub-VP ODE when π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) (purple dots) and π 1 subscript 𝜋 1 {\\pi}_{1} is a low variance Gaussian mixture shown as the red dots.\nThe linear rectified flow yields nearly straight trajectories with one step of reflow. But the trajectories of VP ODE and sub-VP ODE are curved and can not be straightened by reflowing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/stdGauss_cycle2_6_vpsde_rect_1_steps.png"
+  },
+  {
+    "filename": "fig_4_5.png",
+    "caption": "Figure 4: Comparing rectified flow with VP ODE and sub-VP ODE when π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) (purple dots) and π 1 subscript 𝜋 1 {\\pi}_{1} is a low variance Gaussian mixture shown as the red dots.\nThe linear rectified flow yields nearly straight trajectories with one step of reflow. But the trajectories of VP ODE and sub-VP ODE are curved and can not be straightened by reflowing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/stdGauss_cycle2_6_sub_vpsde_rect_0_steps.png"
+  },
+  {
+    "filename": "fig_4_6.png",
+    "caption": "Figure 4: Comparing rectified flow with VP ODE and sub-VP ODE when π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) (purple dots) and π 1 subscript 𝜋 1 {\\pi}_{1} is a low variance Gaussian mixture shown as the red dots.\nThe linear rectified flow yields nearly straight trajectories with one step of reflow. But the trajectories of VP ODE and sub-VP ODE are curved and can not be straightened by reflowing.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/stdGauss_cycle2_6_sub_vpsde_rect_1_steps.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x1.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x2.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x3.png"
+  },
+  {
+    "filename": "fig_5_4.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_5.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_6.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x6.png"
+  },
+  {
+    "filename": "fig_5_7.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x7.png"
+  },
+  {
+    "filename": "fig_5_8.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x8.png"
+  },
+  {
+    "filename": "fig_5_9.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x9.png"
+  },
+  {
+    "filename": "fig_5_10.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x10.png"
+  },
+  {
+    "filename": "fig_5_11.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x11.png"
+  },
+  {
+    "filename": "fig_5_12.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x12.png"
+  },
+  {
+    "filename": "fig_5_13.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x13.png"
+  },
+  {
+    "filename": "fig_5_14.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x14.png"
+  },
+  {
+    "filename": "fig_5_15.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x15.png"
+  },
+  {
+    "filename": "fig_5_16.png",
+    "caption": "Figure 5: Trajectories of different methods when varying the number of discretization steps N 𝑁 N (purple dots: π 0 subscript 𝜋 0 {\\pi}_{0} ; red dots: π 1 subscript 𝜋 1 {\\pi}_{1} ; orangle dots: intermediate steps; blue curves: flow trajectories).\nThe rectified flow travels in straight lines and progresses uniformly in time;\nit generates the mean of π 1 subscript 𝜋 1 {\\pi}_{1} when simulated with a single Euler step, and quickly covers the whole distribution π 1 subscript 𝜋 1 {\\pi}_{1} with more steps (in this case N = 2 𝑁 2 N=2 is sufficient). In comparison,\nVP ODE and sub-VP ODE travel in curves with non-uniform speed: they tend to be slow in the beginning and speed up in the later phase (much of the update happens when t ⪆ 0.5 greater-than-or-approximately-equals 𝑡 0.5 t{\\scriptstyle\\gtrapprox}0.5 ). The non-uniform speed can be avoided by setting α t = t subscript 𝛼 𝑡 𝑡 \\alpha_{t}=t (see the last column).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x16.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: t 𝑡 t vs. α t , β t subscript 𝛼 𝑡 subscript 𝛽 𝑡 \\alpha_{t},\\beta_{t} of different methods.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/alpha_beta.png"
+  },
+  {
+    "filename": "fig_7_1.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x17.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x18.png"
+  },
+  {
+    "filename": "fig_7_3.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x19.png"
+  },
+  {
+    "filename": "fig_7_4.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x20.png"
+  },
+  {
+    "filename": "fig_7_5.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x21.png"
+  },
+  {
+    "filename": "fig_7_6.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x22.png"
+  },
+  {
+    "filename": "fig_7_7.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x23.png"
+  },
+  {
+    "filename": "fig_7_8.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x24.png"
+  },
+  {
+    "filename": "fig_7_9.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x25.png"
+  },
+  {
+    "filename": "fig_7_10.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x26.png"
+  },
+  {
+    "filename": "fig_7_11.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x27.png"
+  },
+  {
+    "filename": "fig_7_12.png",
+    "caption": "Figure 7: Rectified flows\nfitted with\nneural networks trained with different L2 penalty (left), and kernel estimator with different bandwidth h ℎ h (right). π 0 subscript 𝜋 0 {\\pi}_{0} : red dots; π 1 subscript 𝜋 1 {\\pi}_{1} : purple dots.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x28.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 8: (a) Results of rectified flows and (sub-)VP ODE on CIFAR10\nwith different number N 𝑁 N of Euler discretization steps.\n(b) The FID and recall during different reflow and training steps.\nIn (a), k 𝑘 k -Distilled refers to the one-step model distilled from k 𝑘 k -Rectified Flow for k = 1 , 2 , 3 𝑘 1 2 3 k=1,2,3 .",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x29.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 8: (a) Results of rectified flows and (sub-)VP ODE on CIFAR10\nwith different number N 𝑁 N of Euler discretization steps.\n(b) The FID and recall during different reflow and training steps.\nIn (a), k 𝑘 k -Distilled refers to the one-step model distilled from k 𝑘 k -Rectified Flow for k = 1 , 2 , 3 𝑘 1 2 3 k=1,2,3 .",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x30.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: The straightening effect on CIFAR10.\nLeft: the straightness measure on different reflow steps and training iterations.\nRight: trajectories of randomly sampled pixels following 1- and 2-rectified flow.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x31.png"
+  },
+  {
+    "filename": "fig_10.jpg",
+    "caption": "Figure 10: Sample trajectories z t subscript 𝑧 𝑡 z_{t} of different flows on the AFHQ Cat dataset, and the extrapolation z ^ 1 t = z t + ( 1 − t ) ​ v ​ ( z t , t ) superscript subscript ^ 𝑧 1 𝑡 subscript 𝑧 𝑡 1 𝑡 𝑣 subscript 𝑧 𝑡 𝑡 \\hat{z}_{1}^{t}=z_{t}+(1-t)v(z_{t},t) from different z t subscript 𝑧 𝑡 z_{t} . The same random seed is adopted for all three methods. The z ^ 1 t superscript subscript ^ 𝑧 1 𝑡 \\hat{z}_{1}^{t} of 2-rectified flow is almost independent with t 𝑡 t , indicating that its trajectory is almost straight.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/cat_target_new.jpeg"
+  },
+  {
+    "filename": "fig_11.jpg",
+    "caption": "Figure 11: Examples of 256 × 256 256 256 256\\times 256 images generated by 1-rectified flow.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/highres.jpeg"
+  },
+  {
+    "filename": "fig_12.jpg",
+    "caption": "Figure 12: An example of image editing using 1-rectified flow.\nHere, we stitch the images of a white cat and a black cat into an unnatural image (denoted as z 1 subscript 𝑧 1 z_{1} ).\nWe simulate the ODE reversely from z 1 subscript 𝑧 1 z_{1} to get the latent code z 0 subscript 𝑧 0 z_{0} . Because z 1 subscript 𝑧 1 z_{1} is not a natural image, z 0 subscript 𝑧 0 z_{0} should have low likelihood under π 0 = 𝒩 ​ ( 0 , I ) subscript 𝜋 0 𝒩 0 𝐼 {\\pi}_{0}=\\mathcal{N}(0,I) .\nHence, we move z 0 subscript 𝑧 0 z_{0} towards the high probability region of π 0 subscript 𝜋 0 {\\pi}_{0} to get z 0 ′ superscript subscript 𝑧 0 ′ z_{0}^{\\prime} and solve the ODE forwardly to get a more realistically looking image z 1 ′ superscript subscript 𝑧 1 ′ z_{1}^{\\prime} .\nThe modification can be done deterministically by improving the π 0 subscript 𝜋 0 {\\pi}_{0} -likelihood via z 0 ′ = α ​ z 0 superscript subscript 𝑧 0 ′ 𝛼 subscript 𝑧 0 z_{0}^{\\prime}=\\alpha z_{0} with α ∈ ( 0 , 1 ) 𝛼 0 1 \\alpha\\in(0,1) , or\nstochastically by Langevin dynamics,\nwhich yields a formula of z 0 ′ = α ​ z 0 + 1 − α 2 ​ ξ subscript superscript 𝑧 ′ 0 𝛼 subscript 𝑧 0 1 superscript 𝛼 2 𝜉 z^{\\prime}_{0}=\\alpha z_{0}+\\sqrt{1-\\alpha^{2}}\\xi with ξ ∼ 𝒩 ​ ( 0 , I ) similar-to 𝜉 𝒩 0 𝐼 \\xi\\sim\\mathcal{N}(0,I) .",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/image_editing.jpeg"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 13: Samples of 1-rectified flow simulated with N = 100 𝑁 100 N=100 Euler steps between different domains.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_transfer/image_1.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 13: Samples of 1-rectified flow simulated with N = 100 𝑁 100 N=100 Euler steps between different domains.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_transfer/image_3.png"
+  },
+  {
+    "filename": "fig_13_3.png",
+    "caption": "Figure 13: Samples of 1-rectified flow simulated with N = 100 𝑁 100 N=100 Euler steps between different domains.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_transfer/image_2.png"
+  },
+  {
+    "filename": "fig_13_4.png",
+    "caption": "Figure 13: Samples of 1-rectified flow simulated with N = 100 𝑁 100 N=100 Euler steps between different domains.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_transfer/image_4.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_1_1.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_1_2.png"
+  },
+  {
+    "filename": "fig_14_3.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_1_3.png"
+  },
+  {
+    "filename": "fig_14_4.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_1_4.png"
+  },
+  {
+    "filename": "fig_14_5.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_1_5.png"
+  },
+  {
+    "filename": "fig_14_6.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_2_1.png"
+  },
+  {
+    "filename": "fig_14_7.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_2_2.png"
+  },
+  {
+    "filename": "fig_14_8.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_2_3.png"
+  },
+  {
+    "filename": "fig_14_9.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_2_4.png"
+  },
+  {
+    "filename": "fig_14_10.png",
+    "caption": "Figure 14: Samples of results of 1- and 2-rectified flow simulated with N = 1 𝑁 1 N=1 and N = 100 𝑁 100 N=100 Euler steps.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/translation_nfe/image_2_5.png"
+  },
+  {
+    "filename": "fig_15_1.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_1.png"
+  },
+  {
+    "filename": "fig_15_2.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_5.png"
+  },
+  {
+    "filename": "fig_15_3.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_2.png"
+  },
+  {
+    "filename": "fig_15_4.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_6.png"
+  },
+  {
+    "filename": "fig_15_5.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_3.png"
+  },
+  {
+    "filename": "fig_15_6.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_7.png"
+  },
+  {
+    "filename": "fig_15_7.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_4.png"
+  },
+  {
+    "filename": "fig_15_8.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/image_8.png"
+  },
+  {
+    "filename": "fig_15_9.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/axis.png"
+  },
+  {
+    "filename": "fig_15_10.png",
+    "caption": "Figure 15: (a) Samples of trajectories z t subscript 𝑧 𝑡 z_{t} of 1- and 2-rectified flow for transferring between different domains.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/trajectory/axis.png"
+  },
+  {
+    "filename": "fig_16_1.png",
+    "caption": "Figure 16: Few-step generation with different ODEs. Compared with VE,VP,sub-VP ODE, 1-rectified flow can generate blurry images using only 1,2,3 steps. After one time of rectification, 2-rectified flow can generate clear images with 1,2,3 steps.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/flow_triangle_flatten/image_1.png"
+  },
+  {
+    "filename": "fig_16_2.png",
+    "caption": "Figure 16: Few-step generation with different ODEs. Compared with VE,VP,sub-VP ODE, 1-rectified flow can generate blurry images using only 1,2,3 steps. After one time of rectification, 2-rectified flow can generate clear images with 1,2,3 steps.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/flow_triangle_flatten/image_2.png"
+  },
+  {
+    "filename": "fig_17.jpg",
+    "caption": "Figure 17: To visualize the latent space, we randomly sample z 0 subscript 𝑧 0 z_{0} and z 1 subscript 𝑧 1 z_{1} from 𝒩 ​ ( 0 , I ) 𝒩 0 𝐼 \\mathcal{N}(0,I) , and show the generated images of α ​ z 0 + 1 − α ​ z 1 𝛼 subscript 𝑧 0 1 𝛼 subscript 𝑧 1 \\sqrt{\\alpha}z_{0}+\\sqrt{1-\\alpha}z_{1} for α ∈ [ 0 , 1 ] 𝛼 0 1 \\alpha\\in[0,1] .",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/latent_space_interp.jpeg"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "Figure 18: (a) We compare the latent space between Rectified Flow (0) and (1) using different sampling strategies with the same random seeds. We observe that (i) both 1-Rectified Flow and 2-Rectified Flow can provide a smooth latent interpolation, and their latent spaces look similar; (ii) when using one-step sampling ( N = 1 𝑁 1 N=1 ), 2-Rectified Flow can still provide visually recognizable interpolation, while 1-Rectified Flow cannot; (iii) Distilled one-step models can also continuously interpolate between the images, and their latent spaces have little difference with the original flow.\n(b) We composite the latent codes of two images by replacing the boundary of a black cat with a white cat, then visualize the variation along the trajectory. The black cat turns into a grey cat at first, then a cat with mixing colors, and finally a white cat.\n(c) We randomly sample ξ ∼ 𝒩 ​ ( 0 , I ) similar-to 𝜉 𝒩 0 𝐼 \\xi\\sim\\mathcal{N}(0,I) , then generate images with α ​ ξ 𝛼 𝜉 \\alpha\\xi to examine the influence of α 𝛼 \\alpha on the generated images. We find α < 1 𝛼 1 \\alpha<1 results in overly smooth images, while α > 1 𝛼 1 \\alpha>1 leads to noisy images.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/latent_interp_combine.jpeg"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 19: Sample trajectories z t subscript 𝑧 𝑡 z_{t} of different flows on the CIFAR10 dataset, and the extrapolation z ^ 1 t = z t + ( 1 − t ) ​ v ​ ( z t , t ) superscript subscript ^ 𝑧 1 𝑡 subscript 𝑧 𝑡 1 𝑡 𝑣 subscript 𝑧 𝑡 𝑡 \\hat{z}_{1}^{t}=z_{t}+(1-t)v(z_{t},t) from different z t subscript 𝑧 𝑡 z_{t} . The same random seed is adopted for all three methods. The z ^ 1 t superscript subscript ^ 𝑧 1 𝑡 \\hat{z}_{1}^{t} of 2-rectified flow is almost independent with t 𝑡 t , indicating that its trajectory is almost straight.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x32.png"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "Figure 20: We perform latent space embedding / image reconstruction here. Given an image z 1 subscript 𝑧 1 z_{1} , we use an reverse ODE solver to get a latent code z ^ 0 subscript ^ 𝑧 0 \\hat{z}_{0} , then use a forward ODE solver to get a reconstruction z ^ 1 subscript ^ 𝑧 1 \\hat{z}_{1} of the image. The columns in the figure are reverse ODE solver (forward ODE solver) . (i) Thanks to the‘straightening’ effect, 2-rectified flow can get meaningful latent code with only one reverse step. It can also generate recognizable images using one forward step.\n(ii) With the help of distilled models, one-step embedding and reconstruction is significantly improved.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/arxiv_figures/image_reconstruction_new.jpeg"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 21: More results for image-to-image translation between different domains.\nThe images in each row are time-uniformly sampled from the trajectory of 1-rectified flow solved N = 100 𝑁 100 N=100 Euler steps with constant step size.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x33.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "Figure 21: More results for image-to-image translation between different domains.\nThe images in each row are time-uniformly sampled from the trajectory of 1-rectified flow solved N = 100 𝑁 100 N=100 Euler steps with constant step size.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x34.png"
+  },
+  {
+    "filename": "fig_21_3.png",
+    "caption": "Figure 21: More results for image-to-image translation between different domains.\nThe images in each row are time-uniformly sampled from the trajectory of 1-rectified flow solved N = 100 𝑁 100 N=100 Euler steps with constant step size.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2209.03003/assets/x35.png"
+  }
+]

@@ -45,10 +45,6 @@ services:
       - REDIS_URL=redis://redis:6379/0
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - LLM_BASE_URL=${LLM_BASE_URL:-}
-      - LLM_MODEL=${LLM_MODEL:-}
-      - SEARXNG_URL=http://blog-jun-searxng:8080
     volumes:
       - media_data:/app/media
       - logs:/app/logs
