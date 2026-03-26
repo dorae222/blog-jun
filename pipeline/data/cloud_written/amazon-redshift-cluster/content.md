@@ -1,0 +1,392 @@
+## 개요
+
+Amazon Redshift Cluster는 Redshift 데이터 웨어하우스의 기본 배포 단위입니다. 하나의 클러스터는 Leader Node와 하나 이상의 Compute Node로 구성되며, 이 노드들이 협력하여 대규모 병렬 처리(MPP)를 수행합니다.
+
+클러스터의 올바른 구성은 Redshift 성능과 비용 모두에 직접적인 영향을 미칩니다. 노드 유형 선택, 노드 수 결정, 리사이즈 전략, 스냅샷 관리, 보안 설정 등 클러스터 운영에 관한 모든 핵심 사항을 이 글에서 다룹니다.
+
+---
+
+## 핵심 기능
+
+### 1. 노드 유형
+
+Redshift는 세 가지 노드 유형 패밀리를 제공합니다.
+
+**RA3 노드 (권장)**
+
+| 유형 | vCPU | 메모리 | Managed Storage | Slice 수 |
+|------|------|--------|----------------|----------|
+| ra3.xlplus | 4 | 32 GiB | 32 TB | 2 |
+| ra3.4xlarge | 12 | 96 GiB | 128 TB | 4 |
+| ra3.16xlarge | 48 | 384 GiB | 128 TB | 16 |
+
+RA3 노드는 컴퓨팅과 스토리지가 분리되어 있습니다. 데이터는 Redshift Managed Storage(RMS)에 저장되며, 자주 접근하는 데이터는 자동으로 로컬 NVMe SSD에 캐시됩니다. 스토리지를 독립적으로 확장할 수 있어, 현재 AWS가 가장 권장하는 노드 유형입니다.
+
+**DC2 노드 (Dense Compute)**
+
+| 유형 | vCPU | 메모리 | 스토리지 | Slice 수 |
+|------|------|--------|---------|----------|
+| dc2.large | 2 | 15 GiB | 160 GB NVMe SSD | 2 |
+| dc2.8xlarge | 32 | 244 GiB | 2.56 TB NVMe SSD | 16 |
+
+DC2 노드는 로컬 SSD에 데이터를 저장합니다. 스토리지가 노드에 종속되어 있어, 데이터 규모가 작고(500GB 미만) 최고의 쿼리 성능이 필요한 경우에 적합합니다.
+
+**DS2 노드 (Dense Storage) - 레거시**
+
+DS2 노드는 HDD 기반으로, 현재는 RA3 노드로의 마이그레이션이 권장됩니다.
+
+```bash
+# 사용 가능한 노드 유형 및 가격 확인
+aws redshift describe-orderable-cluster-options \
+  --query "OrderableClusterOptions[?NodeType=='ra3.xlplus']" \
+  --output table \
+  --region ap-northeast-2
+```
+
+### 2. 단일 노드 vs 멀티 노드
+
+**단일 노드 클러스터**
+- Leader 기능과 Compute 기능이 하나의 노드에서 수행됩니다.
+- 개발/테스트 환경에 적합합니다.
+- Multi-AZ 배포가 불가능합니다.
+
+**멀티 노드 클러스터**
+- 별도의 Leader Node와 1개 이상의 Compute Node로 구성됩니다.
+- Leader Node 비용은 별도 과금되지 않습니다.
+- 최대 128개의 Compute Node까지 확장할 수 있습니다.
+- 프로덕션 환경의 표준 구성입니다.
+
+```bash
+# 멀티 노드 클러스터 생성
+aws redshift create-cluster \
+  --cluster-identifier prod-analytics \
+  --node-type ra3.xlplus \
+  --number-of-nodes 4 \
+  --master-username admin \
+  --master-user-password "SecurePass123!" \
+  --db-name analytics \
+  --vpc-security-group-ids sg-0123456789abcdef0 \
+  --cluster-subnet-group-name my-redshift-subnet-group \
+  --iam-roles arn:aws:iam::123456789012:role/RedshiftRole \
+  --encrypted \
+  --kms-key-id arn:aws:kms:ap-northeast-2:123456789012:key/my-key \
+  --enhanced-vpc-routing \
+  --region ap-northeast-2
+```
+
+### 3. Elastic Resize vs Classic Resize
+
+클러스터의 노드 수나 유형을 변경하는 리사이즈는 두 가지 방식이 있습니다.
+
+**Elastic Resize**
+- 노드 수 변경에 적합합니다 (같은 노드 유형 내).
+- 기존 데이터를 이동하지 않고, 새 노드를 추가/제거합니다.
+- 소요 시간: 10~15분 (클러스터 크기에 따라 다름).
+- 리사이즈 중에도 쿼리 실행이 가능합니다 (읽기 전용).
+
+**Classic Resize**
+- 노드 유형 변경에 사용합니다 (예: dc2 → ra3).
+- 새 클러스터를 생성하고 데이터를 마이그레이션합니다.
+- 소요 시간: 수 시간~수 일 (데이터 크기에 따라 다름).
+- 리사이즈 중 클러스터가 읽기 전용으로 전환됩니다.
+
+```bash
+# Elastic Resize (노드 수 변경)
+aws redshift resize-cluster \
+  --cluster-identifier prod-analytics \
+  --number-of-nodes 6 \
+  --region ap-northeast-2
+
+# Classic Resize (노드 유형 변경)
+aws redshift resize-cluster \
+  --cluster-identifier prod-analytics \
+  --cluster-type multi-node \
+  --node-type ra3.4xlarge \
+  --number-of-nodes 2 \
+  --classic \
+  --region ap-northeast-2
+
+# 리사이즈 상태 확인
+aws redshift describe-clusters \
+  --cluster-identifier prod-analytics \
+  --query "Clusters[0].{Status:ClusterStatus,ResizeInfo:ResizeInfo}" \
+  --region ap-northeast-2
+```
+
+### 4. Concurrency Scaling
+
+Concurrency Scaling은 쿼리 부하가 급증할 때 자동으로 추가 클러스터 용량을 프로비저닝하는 기능입니다.
+
+- 활성 클러스터당 최대 10개의 Concurrency Scaling 클러스터가 추가될 수 있습니다.
+- 매일 1시간의 무료 크레딧이 제공됩니다.
+- 읽기 쿼리와 쓰기 쿼리(COPY, INSERT) 모두 지원합니다.
+
+```bash
+# Concurrency Scaling 사용량 확인
+aws redshift-data execute-statement \
+  --cluster-identifier prod-analytics \
+  --database analytics \
+  --db-user admin \
+  --sql "SELECT * FROM stl_concurrency_scaling_usage WHERE start_time >= DATEADD(day, -7, GETDATE()) ORDER BY start_time DESC;" \
+  --region ap-northeast-2
+```
+
+### 5. Multi-AZ 배포 (Preview)
+
+Redshift Multi-AZ는 두 개의 AZ에 걸쳐 클러스터를 배포하여, AZ 수준의 장애에 대한 고가용성을 제공합니다. Recovery Point Objective(RPO)는 0이며, Recovery Time Objective(RTO)는 수 분 이내입니다.
+
+---
+
+## 아키텍처/동작 원리
+
+### 클러스터 내부 아키텍처
+
+```
+[Client / BI Tool]
+       |
+       v
+[VPC Endpoint / Public Endpoint]
+       |
+       v
++-------------------------------+
+|       Leader Node             |
+|  - SQL Parser                 |
+|  - Query Optimizer            |
+|  - Query Compiler             |
+|  - Result Aggregator          |
++-------------------------------+
+       |
+       +--- Interconnect (10 GbE / 25 GbE) ---+
+       |                |                      |
++-------------+  +-------------+  +-------------+
+| Compute     |  | Compute     |  | Compute     |
+| Node 1      |  | Node 2      |  | Node N      |
+| +--------+  |  | +--------+  |  | +--------+  |
+| | Slice 1|  |  | | Slice 1|  |  | | Slice 1|  |
+| +--------+  |  | +--------+  |  | +--------+  |
+| | Slice 2|  |  | | Slice 2|  |  | | Slice 2|  |
+| +--------+  |  | +--------+  |  | +--------+  |
++------+------+  +------+------+  +------+------+
+       |                |                |  
+       v                v                v
++---------------------------------------------------+
+|           Redshift Managed Storage (RMS)           |
+|     (Hot: Local NVMe SSD / Cold: Amazon S3)       |
++---------------------------------------------------+
+```
+
+### 데이터 분배 메커니즘
+
+데이터가 클러스터에 로드되면 분산 스타일에 따라 각 Slice에 배치됩니다.
+
+1. **DISTKEY 기반**: 지정된 컬럼의 해시값을 계산하여 특정 Slice에 할당합니다.
+2. **EVEN**: 라운드 로빈으로 Slice에 균등 분배합니다.
+3. **ALL**: 모든 Slice에 전체 데이터를 복사합니다.
+
+노드 수가 변경되면(Elastic Resize) Slice 수도 변경되므로, 데이터 재분배가 발생합니다.
+
+### Snapshot 메커니즘
+
+Redshift 스냅샷은 증분 방식(Incremental)으로 동작합니다.
+
+1. 첫 번째 스냅샷은 전체 데이터의 사본을 S3에 저장합니다.
+2. 이후 스냅샷은 변경된 블록만 저장합니다.
+3. 각 스냅샷은 독립적으로 복원 가능한 전체 사본입니다.
+
+```bash
+# 수동 스냅샷 생성
+aws redshift create-cluster-snapshot \
+  --cluster-identifier prod-analytics \
+  --snapshot-identifier prod-analytics-20240115 \
+  --region ap-northeast-2
+
+# 자동 스냅샷 보존 기간 설정
+aws redshift modify-cluster \
+  --cluster-identifier prod-analytics \
+  --automated-snapshot-retention-period 14 \
+  --region ap-northeast-2
+
+# 스냅샷을 다른 리전에 복사 (DR)
+aws redshift copy-cluster-snapshot \
+  --source-snapshot-identifier prod-analytics-20240115 \
+  --target-snapshot-identifier prod-analytics-dr-20240115 \
+  --region us-west-2 \
+  --source-region ap-northeast-2
+
+# 스냅샷에서 클러스터 복원
+aws redshift restore-from-cluster-snapshot \
+  --cluster-identifier prod-analytics-restored \
+  --snapshot-identifier prod-analytics-20240115 \
+  --node-type ra3.xlplus \
+  --number-of-nodes 4 \
+  --region ap-northeast-2
+```
+
+---
+
+## 실전 활용
+
+### 1. 클러스터 사이징 가이드
+
+적절한 클러스터 크기를 결정하는 기본 공식은 다음과 같습니다.
+
+```
+필요 스토리지 = 원본 데이터 크기 x 압축률(보통 3~4배 압축) x 작업 공간 여유(1.5배)
+필요 Slice 수 = 동시 쿼리 수 x 쿼리당 필요 병렬도
+```
+
+예시: 원본 데이터 2TB, 동시 쿼리 20개인 경우
+- 스토리지: 2TB / 3.5(압축) x 1.5 = 약 860GB
+- ra3.xlplus(32TB, 2 slices)를 4개 노드로 구성: 8 slices, 128TB 스토리지
+
+```bash
+# 현재 클러스터의 스토리지 사용량 확인
+aws redshift-data execute-statement \
+  --cluster-identifier prod-analytics \
+  --database analytics \
+  --db-user admin \
+  --sql "SELECT owner, host, diskno, used, capacity, used::float/capacity::float as pct_used FROM stv_partitions WHERE type = 0 ORDER BY pct_used DESC;" \
+  --region ap-northeast-2
+```
+
+### 2. 스케줄 기반 리사이즈
+
+업무 시간에는 노드를 늘리고, 비업무 시간에는 줄이는 전략으로 비용을 최적화할 수 있습니다.
+
+```bash
+# 스케줄 기반 Elastic Resize 설정
+# 월~금 09:00에 6노드로 확장
+aws redshift create-scheduled-action \
+  --scheduled-action-name scale-up-weekday \
+  --target-action '{"ResizeCluster":{"ClusterIdentifier":"prod-analytics","NumberOfNodes":6}}' \
+  --schedule "cron(0 0 ? * MON-FRI *)" \
+  --iam-role arn:aws:iam::123456789012:role/RedshiftSchedulerRole \
+  --region ap-northeast-2
+
+# 월~금 20:00에 2노드로 축소
+aws redshift create-scheduled-action \
+  --scheduled-action-name scale-down-weekday \
+  --target-action '{"ResizeCluster":{"ClusterIdentifier":"prod-analytics","NumberOfNodes":2}}' \
+  --schedule "cron(0 11 ? * MON-FRI *)" \
+  --iam-role arn:aws:iam::123456789012:role/RedshiftSchedulerRole \
+  --region ap-northeast-2
+```
+
+### 3. 클러스터 모니터링
+
+```bash
+# 클러스터 상태 확인
+aws redshift describe-clusters \
+  --cluster-identifier prod-analytics \
+  --query "Clusters[0].{Status:ClusterStatus,Nodes:NumberOfNodes,NodeType:NodeType,Encrypted:Encrypted,Enhanced:EnhancedVpcRouting}" \
+  --output table \
+  --region ap-northeast-2
+
+# CloudWatch 메트릭 조회 (CPU 사용률)
+aws cloudwatch get-metric-statistics \
+  --namespace AWS/Redshift \
+  --metric-name CPUUtilization \
+  --dimensions Name=ClusterIdentifier,Value=prod-analytics \
+  --start-time "$(date -u -v-1d +%Y-%m-%dT%H:%M:%SZ)" \
+  --end-time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  --period 3600 \
+  --statistics Average Maximum \
+  --region ap-northeast-2
+
+# 디스크 사용량 메트릭
+aws cloudwatch get-metric-statistics \
+  --namespace AWS/Redshift \
+  --metric-name PercentageDiskSpaceUsed \
+  --dimensions Name=ClusterIdentifier,Value=prod-analytics \
+  --start-time "$(date -u -v-1d +%Y-%m-%dT%H:%M:%SZ)" \
+  --end-time "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  --period 3600 \
+  --statistics Average \
+  --region ap-northeast-2
+```
+
+### 4. 클러스터 Pause/Resume
+
+비업무 시간에 클러스터를 일시 중지하여 비용을 절감할 수 있습니다. 일시 중지된 클러스터는 컴퓨팅 비용이 발생하지 않습니다 (스토리지 비용만 과금).
+
+```bash
+# 클러스터 일시 중지
+aws redshift pause-cluster \
+  --cluster-identifier dev-analytics \
+  --region ap-northeast-2
+
+# 클러스터 재개
+aws redshift resume-cluster \
+  --cluster-identifier dev-analytics \
+  --region ap-northeast-2
+
+# 스케줄 기반 Pause/Resume
+aws redshift create-scheduled-action \
+  --scheduled-action-name pause-dev-nightly \
+  --target-action '{"PauseCluster":{"ClusterIdentifier":"dev-analytics"}}' \
+  --schedule "cron(0 11 ? * MON-FRI *)" \
+  --iam-role arn:aws:iam::123456789012:role/RedshiftSchedulerRole \
+  --region ap-northeast-2
+```
+
+---
+
+## 모범 사례/보안
+
+### 네트워크 보안
+
+1. **Enhanced VPC Routing**: 활성화하면 COPY/UNLOAD 등의 데이터 전송이 VPC 내부 네트워크를 통해 이루어집니다. 비활성화 시 인터넷을 통해 S3에 접근합니다.
+2. **Private Subnet 배치**: 클러스터를 Private Subnet에 배치하고 Public Accessibility를 비활성화합니다.
+3. **보안 그룹**: 데이터베이스 포트(기본 5439)에 대한 접근을 최소화합니다.
+
+```bash
+# Enhanced VPC Routing 활성화
+aws redshift modify-cluster \
+  --cluster-identifier prod-analytics \
+  --enhanced-vpc-routing \
+  --region ap-northeast-2
+```
+
+### 데이터 암호화
+
+- **저장 데이터**: KMS 또는 CloudHSM을 사용한 AES-256 암호화. 클러스터 생성 시 설정하며, 이후 변경 시 스냅샷 복원이 필요합니다.
+- **전송 데이터**: SSL/TLS 연결 강제.
+- **키 로테이션**: KMS 키의 자동 로테이션을 활성화합니다.
+
+### 운영 모범 사례
+
+1. **Reserved Instances 활용**: 1년/3년 예약 인스턴스로 최대 75% 비용 절감이 가능합니다.
+2. **태깅 전략**: 비용 추적을 위한 일관된 태그를 적용합니다.
+3. **Cross-Region 스냅샷**: DR을 위해 다른 리전에 스냅샷을 자동 복사합니다.
+4. **유지 관리 윈도우**: 트래픽이 적은 시간대로 설정합니다.
+5. **정기적 VACUUM/ANALYZE**: 자동 VACUUM이 있지만, 대규모 로드 후에는 수동 실행을 권장합니다.
+
+---
+
+## 관련 서비스 비교
+
+| 항목 | Redshift Provisioned | Redshift Serverless | Amazon Athena |
+|------|---------------------|--------------------|--------------|
+| 관리 수준 | 클러스터 직접 관리 | 완전 서버리스 | 완전 서버리스 |
+| 과금 방식 | 노드 시간 | RPU (초 단위) | 스캔 데이터량 |
+| 성능 | 예측 가능한 고성능 | 워크로드에 따라 자동 조정 | 쿼리별 변동 |
+| 데이터 로딩 | COPY 명령 | COPY 명령 | 불필요 (S3 직접 쿼리) |
+| 동시성 | WLM + Concurrency Scaling | 자동 관리 | 높음 (쿼리별 독립) |
+| 적합 시나리오 | 대규모 정형 분석, BI | 간헐적 분석, 개발/테스트 | Ad-hoc, 데이터 레이크 쿼리 |
+| 초기 비용 | 높음 (항상 실행) | 없음 (사용 시만 과금) | 없음 |
+
+---
+
+## 요약
+
+Amazon Redshift Cluster는 데이터 웨어하우스 워크로드의 기반이 되는 핵심 인프라입니다.
+
+1. **RA3 노드를 기본 선택**으로 컴퓨팅과 스토리지를 독립적으로 확장합니다.
+2. **Elastic Resize**를 활용하여 워크로드 변화에 신속하게 대응합니다.
+3. **Concurrency Scaling**으로 피크 시간대 동시 쿼리 요구를 자동 처리합니다.
+4. **스케줄 기반 Resize/Pause**로 비업무 시간의 비용을 절감합니다.
+5. **증분 스냅샷 + Cross-Region 복사**로 DR 전략을 수립합니다.
+6. **Enhanced VPC Routing + KMS 암호화 + SSL**로 보안을 강화합니다.
+7. **Reserved Instances**로 장기 운영 비용을 최대 75% 절감합니다.
+
+클러스터 사이징은 워크로드 특성에 따라 달라지므로, 초기에는 보수적으로 시작하고 모니터링 결과에 따라 점진적으로 조정하는 것을 권장합니다.

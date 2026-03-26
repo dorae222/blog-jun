@@ -1,0 +1,299 @@
+## 개요
+
+회귀 모델(Regression Model)은 연속적인 수치를 예측하는 지도 학습의 대표적인 방법입니다. 분류 문제와 달리 회귀에서는 예측값이 정확히 맞거나 틀리는 이분법이 아니라, **얼마나 가까운가**가 핵심입니다. 이 때문에 회귀 모델의 성능을 측정하는 지표는 다양하며, 각각 서로 다른 관점에서 오차를 바라봅니다.
+
+예를 들어, 집값을 예측하는 모델이 있다고 가정해봅시다. 어떤 샘플에서는 100만 원 차이, 다른 샘플에서는 5000만 원 차이가 날 수 있습니다. MSE는 큰 오차에 더 큰 패널티를 부여하고, MAE는 모든 오차를 동등하게 취급하며, MAPE는 상대적 비율로 오차를 측정합니다. 올바른 지표 선택은 모델 개선 방향과 비즈니스 의사결정에 직접적인 영향을 줍니다.
+
+이 글에서는 주요 회귀 평가 지표의 수식, 특성, Python 구현, 시각화 방법, 그리고 실전에서의 선택 기준을 체계적으로 정리합니다.
+
+---
+
+## 수학적 배경
+
+### MSE (Mean Squared Error, 평균 제곱 오차)
+
+$$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$$
+
+실제값 $y_i$와 예측값 $\hat{y}_i$의 차이를 제곱하여 평균낸 값입니다. 제곱을 취하기 때문에 **큰 오차에 더 강한 패널티**를 부여합니다. 단위는 원래 값의 제곱이므로 직관적 해석이 어렵습니다.
+
+### RMSE (Root Mean Squared Error, 평균 제곱근 오차)
+
+$$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$$
+
+MSE에 제곱근을 취한 값으로, **원래 데이터와 동일한 단위**를 가집니다. 해석이 직관적이며 실무에서 가장 널리 사용됩니다.
+
+### MAE (Mean Absolute Error, 평균 절대 오차)
+
+$$MAE = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|$$
+
+오차의 절댓값 평균입니다. 제곱을 사용하지 않으므로 **이상치(outlier)에 덜 민감**합니다. 해석이 간단하고 robust한 특성을 가집니다.
+
+### R² (결정계수, Coefficient of Determination)
+
+$$R^2 = 1 - \frac{SS_{res}}{SS_{tot}} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$$
+
+$SS_{res}$는 잔차 제곱합, $SS_{tot}$은 전체 변동의 제곱합입니다. R²는 **모델이 데이터의 분산을 얼마나 설명하는가**를 0~1 범위로 나타냅니다. 1에 가까울수록 좋은 모델입니다.
+
+### Adjusted R² (수정 결정계수)
+
+$$\bar{R}^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - p - 1}$$
+
+$n$은 샘플 수, $p$는 독립변수 수입니다. 변수가 늘어나면 R²는 항상 증가하는 문제를 보정합니다. **변수 선택 시 기준 지표**로 활용됩니다.
+
+### MAPE (Mean Absolute Percentage Error, 평균 절대 백분율 오차)
+
+$$MAPE = \frac{1}{n}\sum_{i=1}^{n}\left|\frac{y_i - \hat{y}_i}{y_i}\right| \times 100$$
+
+오차를 실제값으로 나눈 비율의 평균입니다. **스케일에 무관**하게 상대적 오차를 측정하므로 서로 다른 데이터셋의 모델 성능을 비교할 때 유용합니다. 단, $y_i = 0$인 경우 정의되지 않습니다.
+
+### SMAPE (Symmetric MAPE)
+
+$$SMAPE = \frac{1}{n}\sum_{i=1}^{n}\frac{|y_i - \hat{y}_i|}{(|y_i| + |\hat{y}_i|)/2} \times 100$$
+
+MAPE의 비대칭성 문제를 보완한 지표입니다. 분모에 실제값과 예측값의 평균을 사용해 **과대예측과 과소예측에 동등한 패널티**를 부여합니다.
+
+---
+
+## 알고리즘/방법론: 각 지표의 특성 비교
+
+| 지표 | 단위 | 이상치 민감도 | 스케일 독립 | 해석 용이성 |
+|------|------|-------------|------------|------------|
+| MSE | 제곱 단위 | 높음 | X | 낮음 |
+| RMSE | 원래 단위 | 높음 | X | 중간 |
+| MAE | 원래 단위 | 낮음 | X | 높음 |
+| R² | 없음 (0~1) | 중간 | O | 높음 |
+| MAPE | % | 낮음 | O | 높음 |
+| SMAPE | % | 낮음 | O | 높음 |
+
+### 지표 선택 가이드
+
+**이상치가 많은 데이터**: MAE 또는 SMAPE를 사용하세요. MSE/RMSE는 이상치의 오차를 제곱하여 과대평가합니다.
+
+**비즈니스 리포팅**: RMSE나 MAE처럼 원래 단위를 유지하는 지표가 직관적입니다. "평균적으로 N원 오차"처럼 설명할 수 있습니다.
+
+**다른 스케일의 데이터 비교**: MAPE나 SMAPE를 사용하세요. 예측 대상의 절댓값 크기가 달라도 공정한 비교가 가능합니다.
+
+**변수 선택/모델 복잡도 조절**: Adjusted R²를 사용하세요. 변수를 추가할수록 R²가 증가하는 문제를 방지합니다.
+
+**음수 R² 해석**: R²가 음수라는 것은 모델이 단순히 평균값을 예측하는 것보다도 나쁘다는 의미입니다. 모델에 심각한 문제가 있음을 나타냅니다.
+
+---
+
+## Python 구현
+
+### sklearn.metrics를 활용한 기본 지표 계산
+
+```python
+import numpy as np
+from sklearn.metrics import (
+    mean_squared_error,
+    mean_absolute_error,
+    r2_score
+)
+
+# 예시 데이터
+y_true = np.array([3.0, 5.5, 2.0, 8.0, 4.5, 6.0, 7.5, 1.0])
+y_pred = np.array([2.8, 5.0, 2.3, 7.5, 4.8, 6.5, 7.0, 1.5])
+
+# MSE
+mse = mean_squared_error(y_true, y_pred)
+print(f"MSE:  {mse:.4f}")
+
+# RMSE (squared=False는 sklearn 0.22.2+)
+rmse = mean_squared_error(y_true, y_pred, squared=False)
+print(f"RMSE: {rmse:.4f}")
+
+# MAE
+mae = mean_absolute_error(y_true, y_pred)
+print(f"MAE:  {mae:.4f}")
+
+# R²
+r2 = r2_score(y_true, y_pred)
+print(f"R²:   {r2:.4f}")
+```
+
+<!-- Execution error: TypeError: got an unexpected keyword argument 'squared' -->
+
+### 커스텀 MAPE 및 SMAPE 구현
+
+```python
+def mape(y_true, y_pred, eps=1e-8):
+    """MAPE: y_true=0인 경우 eps로 분모 보정"""
+    y_true = np.array(y_true, dtype=float)
+    y_pred = np.array(y_pred, dtype=float)
+    mask = np.abs(y_true) > eps
+    return np.mean(np.abs((y_true[mask] - y_pred[mask]) / y_true[mask])) * 100
+
+def smape(y_true, y_pred, eps=1e-8):
+    """SMAPE: 대칭 평균 절대 백분율 오차"""
+    y_true = np.array(y_true, dtype=float)
+    y_pred = np.array(y_pred, dtype=float)
+    denominator = (np.abs(y_true) + np.abs(y_pred)) / 2 + eps
+    return np.mean(np.abs(y_true - y_pred) / denominator) * 100
+
+def adjusted_r2(y_true, y_pred, n_features):
+    """Adjusted R²: 독립변수 수(n_features)를 고려한 보정 R²"""
+    n = len(y_true)
+    r2 = r2_score(y_true, y_pred)
+    return 1 - (1 - r2) * (n - 1) / (n - n_features - 1)
+
+print(f"MAPE:        {mape(y_true, y_pred):.2f}%")
+print(f"SMAPE:       {smape(y_true, y_pred):.2f}%")
+print(f"Adjusted R²: {adjusted_r2(y_true, y_pred, n_features=3):.4f}")
+```
+
+```output
+MAPE:        13.58%
+SMAPE:       12.27%
+Adjusted R²: 0.9428
+```
+
+### 회귀 모델 평가 파이프라인
+
+```python
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
+
+# 데이터 로드
+housing = fetch_california_housing()
+X, y = housing.data, housing.target
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+def evaluate_regression(name, model, X_train, X_test, y_train, y_test):
+    """회귀 모델 학습 및 전체 지표 평가"""
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    n_features = X_train.shape[1]
+
+    results = {
+        "Model": name,
+        "MSE":   round(mean_squared_error(y_test, y_pred), 4),
+        "RMSE":  round(mean_squared_error(y_test, y_pred, squared=False), 4),
+        "MAE":   round(mean_absolute_error(y_test, y_pred), 4),
+        "R²":    round(r2_score(y_test, y_pred), 4),
+        "Adj_R²":round(adjusted_r2(y_test, y_pred, n_features), 4),
+        "MAPE":  round(mape(y_test, y_pred), 2),
+        "SMAPE": round(smape(y_test, y_pred), 2)
+    }
+    return results, y_pred
+
+models = [
+    ("LinearRegression", LinearRegression()),
+    ("RandomForest",     RandomForestRegressor(n_estimators=100, random_state=42))
+]
+
+result_rows = []
+for name, model in models:
+    row, _ = evaluate_regression(name, model, X_train, X_test, y_train, y_test)
+    result_rows.append(row)
+
+df_results = pd.DataFrame(result_rows).set_index("Model")
+print(df_results.to_string())
+```
+
+```output
+<!-- Pre-computed result needed -->
+```
+
+---
+
+## 시각화
+
+```python
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.rcParams["font.family"] = "AppleGothic"  # macOS 한글 폰트
+matplotlib.rcParams["axes.unicode_minus"] = False
+
+# 마지막 모델 예측값 사용 (RandomForest)
+_, y_pred_rf = evaluate_regression(
+    "RandomForest",
+    RandomForestRegressor(n_estimators=100, random_state=42),
+    X_train, X_test, y_train, y_test
+)
+residuals = y_test - y_pred_rf
+
+fig, axes = plt.subplots(1, 3, figsize=(16, 5))
+fig.suptitle("회귀 모델 평가 시각화 (Random Forest)", fontsize=14, fontweight="bold")
+
+# 1. 실제값 vs 예측값 산점도
+axes[0].scatter(y_test, y_pred_rf, alpha=0.4, s=10, color="steelblue")
+min_val, max_val = y_test.min(), y_test.max()
+axes[0].plot([min_val, max_val], [min_val, max_val], "r--", lw=1.5, label="완벽한 예측")
+axes[0].set_xlabel("실제값")
+axes[0].set_ylabel("예측값")
+axes[0].set_title("실제값 vs 예측값")
+axes[0].legend()
+
+# 2. 잔차 플롯 (예측값 vs 잔차)
+axes[1].scatter(y_pred_rf, residuals, alpha=0.4, s=10, color="orange")
+axes[1].axhline(0, color="red", linestyle="--", lw=1.5)
+axes[1].set_xlabel("예측값")
+axes[1].set_ylabel("잔차 (실제 - 예측)")
+axes[1].set_title("잔차 플롯")
+
+# 3. 잔차 히스토그램
+axes[2].hist(residuals, bins=50, color="mediumseagreen", edgecolor="white", alpha=0.8)
+axes[2].axvline(0, color="red", linestyle="--", lw=1.5)
+axes[2].set_xlabel("잔차")
+axes[2].set_ylabel("빈도")
+axes[2].set_title("잔차 분포")
+
+plt.tight_layout()
+plt.savefig("regression_metrics_visualization.png", dpi=150, bbox_inches="tight")
+plt.show()
+```
+
+<!-- Execution error: TypeError: got an unexpected keyword argument 'squared' -->
+
+잔차 플롯에서 **패턴 없이 0 주변에 무작위로 분포**해야 이상적입니다. 패턴이 보인다면 모델이 데이터의 구조를 완전히 학습하지 못했다는 신호입니다.
+
+---
+
+## 실전 팁
+
+### 이상치가 있을 때는 MAE
+
+이상치가 포함된 데이터에서 MSE/RMSE를 최소화하는 방향으로 학습하면 이상치에 과하게 맞춰지는 경향이 있습니다. 이런 경우 **MAE 기반 손실함수 (Huber Loss 등)를 사용**하고 평가도 MAE로 하는 것이 일관성 있습니다.
+
+### 스케일이 다른 데이터를 비교할 때는 MAPE
+
+"이 모델은 집값 예측에서 RMSE 500만 원, 월세 예측에서 RMSE 10만 원"처럼 절대적 오차로는 직접 비교가 불가능합니다. MAPE를 쓰면 "집값 3%, 월세 5%" 같이 동일 기준으로 비교 가능합니다. 단, 실제값이 0에 가까운 경우 SMAPE가 더 안전합니다.
+
+### 음수 R² 해석
+
+R²가 음수이면 모델이 **단순 평균 예측보다 나쁜 성능**임을 의미합니다. 이는 대부분 다음 원인 중 하나입니다:
+- 학습 데이터와 테스트 데이터의 분포가 크게 다른 경우
+- 모델이 완전히 잘못된 방향으로 학습된 경우
+- 데이터 전처리 파이프라인 오류 (예: 스케일러를 학습 데이터로만 fit)
+
+### Adjusted R²를 사용해야 하는 경우
+
+변수를 하나 추가할 때마다 R²는 거의 반드시 증가합니다. 따라서 **여러 변수 조합을 비교하거나 Feature Selection을 수행할 때**는 반드시 Adjusted R²를 사용해야 과적합 위험을 낮출 수 있습니다. 단, 변수 수가 고정된 단일 모델 평가에는 일반 R²로도 충분합니다.
+
+### 비즈니스 문맥에서의 지표 선택
+
+- **물류/재고 예측**: MAPE 또는 SMAPE (상대적 오차가 의미 있음)
+- **금융 예측**: RMSE (큰 오차는 더 큰 손실을 의미, 패널티 강조)
+- **의료 예측**: MAE (이상치에 robust, 과대/과소 예측 모두 동등하게 취급)
+- **부동산 가격**: RMSE + MAPE 병행 (절대 오차와 상대 오차 모두 중요)
+
+---
+
+## 요약
+
+| 상황 | 권장 지표 |
+|------|----------|
+| 이상치 존재 | MAE, SMAPE |
+| 큰 오차에 패널티 필요 | RMSE, MSE |
+| 다른 스케일 모델 비교 | MAPE, SMAPE |
+| 변수 선택/모델 복잡도 조절 | Adjusted R² |
+| 일반적인 모델 설명력 확인 | R² |
+| 비즈니스 리포팅 | RMSE 또는 MAE |
+
+회귀 평가 지표는 단일 지표만으로 모델을 판단하기보다, **여러 지표를 함께 살펴보며 데이터와 비즈니스 맥락에 맞는 지표에 초점**을 맞추는 것이 중요합니다. 각 지표가 어떤 종류의 오차를 강조하는지 이해하면, 모델 개선 방향을 훨씬 명확하게 설정할 수 있습니다.

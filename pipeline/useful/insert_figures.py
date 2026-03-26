@@ -101,7 +101,14 @@ def main():
     with open(insertions_path, 'r', encoding='utf-8') as f:
         insertions = json.load(f)
 
-    content = data['content']
+    # content.md 우선, 없으면 content.json['content'] 폴백
+    content_md_path = os.path.join(os.path.dirname(content_path), 'content.md')
+    use_md = os.path.exists(content_md_path)
+    if use_md:
+        with open(content_md_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    else:
+        content = data['content']
     inserted = 0
 
     for item in insertions:
@@ -124,16 +131,17 @@ def main():
             else:
                 print(f"  [FAIL] {filename} 삽입 실패")
 
-    data['content'] = content
-
-    # JSON 유효성 검증
-    test = json.loads(json.dumps(data))
-    assert test['content'] == content, "JSON 인코딩 오류"
-
-    with open(content_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-    print(f"\n완료: {inserted}/{len(insertions)}개 figure 삽입 → {content_path}")
+    if use_md:
+        with open(content_md_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        print(f"\n완료: {inserted}/{len(insertions)}개 figure 삽입 → {content_md_path}")
+    else:
+        data['content'] = content
+        test = json.loads(json.dumps(data))
+        assert test['content'] == content, "JSON 인코딩 오류"
+        with open(content_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"\n완료: {inserted}/{len(insertions)}개 figure 삽입 → {content_path}")
 
 
 if __name__ == '__main__':

@@ -1,0 +1,2804 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Unconditional ImageNet-128 samples of a CNF trained using Flow Matching with Optimal Transport probability paths.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/imagenet128_curated_.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/plots/2d_vf_reference.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_3.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_4.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x3.png"
+  },
+  {
+    "filename": "fig_2_5.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x4.png"
+  },
+  {
+    "filename": "fig_2_6.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x5.png"
+  },
+  {
+    "filename": "fig_2_7.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x6.png"
+  },
+  {
+    "filename": "fig_2_8.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x7.png"
+  },
+  {
+    "filename": "fig_2_9.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x8.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/plots/2d_vf_reference.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x1.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x2.png"
+  },
+  {
+    "filename": "fig_4_3.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_4.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x1.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "t = 1 / 3 𝑡 1 3 t=\\nicefrac{{1}}{{3}}",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x2.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "t = 2 / 3 𝑡 2 3 t=\\nicefrac{{2}}{{3}}",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x3.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "t = 1.0 𝑡 1.0 t=1.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x4.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x5.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x6.png"
+  },
+  {
+    "filename": "fig_9_3.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x7.png"
+  },
+  {
+    "filename": "fig_9_4.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x8.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x5.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "t = 1 / 3 𝑡 1 3 t=\\nicefrac{{1}}{{3}}",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x6.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "t = 2 / 3 𝑡 2 3 t=\\nicefrac{{2}}{{3}}",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x7.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "t = 1.0 𝑡 1.0 t=1.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x8.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 3: Diffusion and OT trajectories.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_traj/2d_traj_diff.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 3: Diffusion and OT trajectories.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_traj/2d_traj_ot.png"
+  },
+  {
+    "filename": "fig_15_1.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_checker/2d_checkerboard_score_dif.png"
+  },
+  {
+    "filename": "fig_15_2.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/score_dif_ss_0_5.png"
+  },
+  {
+    "filename": "fig_15_3.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/score_dif_ss_0_25.png"
+  },
+  {
+    "filename": "fig_15_4.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/score_dif_ss_0_2.png"
+  },
+  {
+    "filename": "fig_15_5.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/score_dif_ss_0_1.png"
+  },
+  {
+    "filename": "fig_15_6.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_checker/2d_checkerboard_flow_match_dif.png"
+  },
+  {
+    "filename": "fig_15_7.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_dif_ss_0_5.png"
+  },
+  {
+    "filename": "fig_15_8.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_dif_ss_0_25.png"
+  },
+  {
+    "filename": "fig_15_9.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_dif_ss_0_2.png"
+  },
+  {
+    "filename": "fig_15_10.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_dif_ss_0_1.png"
+  },
+  {
+    "filename": "fig_15_11.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_checker/2d_checkerboard_flow_match_ot.png"
+  },
+  {
+    "filename": "fig_15_12.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_ot_ss_0_5.png"
+  },
+  {
+    "filename": "fig_15_13.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_ot_ss_0_25.png"
+  },
+  {
+    "filename": "fig_15_14.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_ot_ss_0_2.png"
+  },
+  {
+    "filename": "fig_15_15.png",
+    "caption": "Figure 4: ( left ) Trajectories of CNFs trained with different objectives on 2D checkerboard data.\nThe OT path introduces the checkerboard pattern much earlier, while FM results in more stable training.\n( right ) FM with OT results in more efficient sampling, solved using the midpoint scheme.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_ode/flow_match_ot_ss_0_1.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 5: Image quality during training, ImageNet 64 × \\times 64.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x9.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "Score Matching w/ Diffusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_sm_difv2.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "Score Matching w/ Diffusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_fm_difv2.png"
+  },
+  {
+    "filename": "fig_17_3.png",
+    "caption": "Score Matching w/ Diffusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_fm_otv2.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Score Matching w/ Diffusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_sm_difv2.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Flow Matching w/ Diffusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_fm_difv2.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Flow Matching w/ OT",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_fm_otv2.png"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 7: Flow Matching, especially when using OT paths, allows us to use fewer evaluations for sampling while retaining similar numerical error (left) and sample quality (right). Results are shown for models trained on ImageNet 32 × \\times 32, and numerical errors are for the midpoint scheme.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x10.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "Figure 7: Flow Matching, especially when using OT paths, allows us to use fewer evaluations for sampling while retaining similar numerical error (left) and sample quality (right). Results are shown for models trained on ImageNet 32 × \\times 32, and numerical errors are for the midpoint scheme.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x11.png"
+  },
+  {
+    "filename": "fig_21_3.png",
+    "caption": "Figure 7: Flow Matching, especially when using OT paths, allows us to use fewer evaluations for sampling while retaining similar numerical error (left) and sample quality (right). Results are shown for models trained on ImageNet 32 × \\times 32, and numerical errors are for the midpoint scheme.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x12.png"
+  },
+  {
+    "filename": "fig_21_4.png",
+    "caption": "Figure 7: Flow Matching, especially when using OT paths, allows us to use fewer evaluations for sampling while retaining similar numerical error (left) and sample quality (right). Results are shown for models trained on ImageNet 32 × \\times 32, and numerical errors are for the midpoint scheme.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x13.png"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/plots/2d_vf_reference.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x14.png"
+  },
+  {
+    "filename": "fig_22_3.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x15.png"
+  },
+  {
+    "filename": "fig_22_4.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x16.png"
+  },
+  {
+    "filename": "fig_22_5.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x17.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/plots/2d_vf_reference.png"
+  },
+  {
+    "filename": "fig_24_1.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x14.png"
+  },
+  {
+    "filename": "fig_24_2.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x15.png"
+  },
+  {
+    "filename": "fig_24_3.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x16.png"
+  },
+  {
+    "filename": "fig_24_4.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x17.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "t = 0.0 𝑡 0.0 t=0.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x14.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "t = 1 / 3 𝑡 1 3 t=\\nicefrac{{1}}{{3}}",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x15.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "t = 2 / 3 𝑡 2 3 t=\\nicefrac{{2}}{{3}}",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x16.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "t = 1.0 𝑡 1.0 t=1.0",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x17.png"
+  },
+  {
+    "filename": "fig_29_1.png",
+    "caption": "Figure 9: Trajectories of CNFs trained with ScoreFlow (Song et al., 2021 ) and DDPM (Ho et al., 2020 ) losses on 2D checkerboard data, using the same learning rate and other hyperparameters as Figure 4 .",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_checker/2d_checkerboard_scoreflow_dif.png"
+  },
+  {
+    "filename": "fig_29_2.png",
+    "caption": "Figure 9: Trajectories of CNFs trained with ScoreFlow (Song et al., 2021 ) and DDPM (Ho et al., 2020 ) losses on 2D checkerboard data, using the same learning rate and other hyperparameters as Figure 4 .",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/2d_checker/2d_checkerboard_noise_dif.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "Figure 10: Function evaluations for sampling during training, for models trained on CIFAR-10 using dopri5 solver with tolerance 1 ​ e − 5 1 superscript 𝑒 5 1e^{-5} .",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/x18.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "Figure 11: Non-curated unconditional ImageNet-32 generated images of a CNF trained with FM-OT.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet32/imagenet32_samples.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure 12: Non-curated unconditional ImageNet-64 generated images of a CNF trained with FM-OT.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet64/imagenet64_samples.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "Figure 13: Non-curated unconditional ImageNet-128 generated images of a CNF trained with FM-OT.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/imagenet128_samples_.png"
+  },
+  {
+    "filename": "fig_34_1.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_8.png"
+  },
+  {
+    "filename": "fig_34_2.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_10.png"
+  },
+  {
+    "filename": "fig_34_3.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_11.png"
+  },
+  {
+    "filename": "fig_34_4.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_17.png"
+  },
+  {
+    "filename": "fig_34_5.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_19.png"
+  },
+  {
+    "filename": "fig_34_6.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_23.png"
+  },
+  {
+    "filename": "fig_34_7.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_38.png"
+  },
+  {
+    "filename": "fig_34_8.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_39.png"
+  },
+  {
+    "filename": "fig_34_9.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_40.png"
+  },
+  {
+    "filename": "fig_34_10.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_102.png"
+  },
+  {
+    "filename": "fig_34_11.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_106.png"
+  },
+  {
+    "filename": "fig_34_12.png",
+    "caption": "Figure 14: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsample_107.png"
+  },
+  {
+    "filename": "fig_35_1.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_47.png"
+  },
+  {
+    "filename": "fig_35_2.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_51.png"
+  },
+  {
+    "filename": "fig_35_3.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_59.png"
+  },
+  {
+    "filename": "fig_35_4.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_61.png"
+  },
+  {
+    "filename": "fig_35_5.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_62.png"
+  },
+  {
+    "filename": "fig_35_6.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_67.png"
+  },
+  {
+    "filename": "fig_35_7.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_70.png"
+  },
+  {
+    "filename": "fig_35_8.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_72.png"
+  },
+  {
+    "filename": "fig_35_9.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_77.png"
+  },
+  {
+    "filename": "fig_35_10.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_80.png"
+  },
+  {
+    "filename": "fig_35_11.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_95.png"
+  },
+  {
+    "filename": "fig_35_12.png",
+    "caption": "Figure 15: Conditional generation 64 × \\times 64 → → \\rightarrow 256 × \\times 256. Flow Matching OT upsampled images from validation set.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/upsampled/upsampled2/upsample_113.png"
+  },
+  {
+    "filename": "fig_36_1.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_05.png"
+  },
+  {
+    "filename": "fig_36_2.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_10.png"
+  },
+  {
+    "filename": "fig_36_3.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_20.png"
+  },
+  {
+    "filename": "fig_36_4.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_50.png"
+  },
+  {
+    "filename": "fig_36_5.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_05.png"
+  },
+  {
+    "filename": "fig_36_6.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_10.png"
+  },
+  {
+    "filename": "fig_36_7.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_20.png"
+  },
+  {
+    "filename": "fig_36_8.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_50.png"
+  },
+  {
+    "filename": "fig_36_9.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_05.png"
+  },
+  {
+    "filename": "fig_36_10.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_10.png"
+  },
+  {
+    "filename": "fig_36_11.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_20.png"
+  },
+  {
+    "filename": "fig_36_12.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_50.png"
+  },
+  {
+    "filename": "fig_36_13.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_05.png"
+  },
+  {
+    "filename": "fig_36_14.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_10.png"
+  },
+  {
+    "filename": "fig_36_15.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_20.png"
+  },
+  {
+    "filename": "fig_36_16.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_50.png"
+  },
+  {
+    "filename": "fig_36_17.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_05.png"
+  },
+  {
+    "filename": "fig_36_18.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_10.png"
+  },
+  {
+    "filename": "fig_36_19.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_20.png"
+  },
+  {
+    "filename": "fig_36_20.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_50.png"
+  },
+  {
+    "filename": "fig_36_21.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_05.png"
+  },
+  {
+    "filename": "fig_36_22.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_10.png"
+  },
+  {
+    "filename": "fig_36_23.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_20.png"
+  },
+  {
+    "filename": "fig_36_24.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_50.png"
+  },
+  {
+    "filename": "fig_36_25.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_05.png"
+  },
+  {
+    "filename": "fig_36_26.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_10.png"
+  },
+  {
+    "filename": "fig_36_27.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_20.png"
+  },
+  {
+    "filename": "fig_36_28.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_50.png"
+  },
+  {
+    "filename": "fig_36_29.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_05.png"
+  },
+  {
+    "filename": "fig_36_30.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_10.png"
+  },
+  {
+    "filename": "fig_36_31.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_20.png"
+  },
+  {
+    "filename": "fig_36_32.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_50.png"
+  },
+  {
+    "filename": "fig_36_33.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_05.png"
+  },
+  {
+    "filename": "fig_36_34.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_10.png"
+  },
+  {
+    "filename": "fig_36_35.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_20.png"
+  },
+  {
+    "filename": "fig_36_36.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_50.png"
+  },
+  {
+    "filename": "fig_36_37.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_05.png"
+  },
+  {
+    "filename": "fig_36_38.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_10.png"
+  },
+  {
+    "filename": "fig_36_39.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_20.png"
+  },
+  {
+    "filename": "fig_36_40.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_50.png"
+  },
+  {
+    "filename": "fig_36_41.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_05.png"
+  },
+  {
+    "filename": "fig_36_42.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_10.png"
+  },
+  {
+    "filename": "fig_36_43.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_20.png"
+  },
+  {
+    "filename": "fig_36_44.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_50.png"
+  },
+  {
+    "filename": "fig_36_45.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_05.png"
+  },
+  {
+    "filename": "fig_36_46.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_10.png"
+  },
+  {
+    "filename": "fig_36_47.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_20.png"
+  },
+  {
+    "filename": "fig_36_48.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_50.png"
+  },
+  {
+    "filename": "fig_36_49.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_05.png"
+  },
+  {
+    "filename": "fig_36_50.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_10.png"
+  },
+  {
+    "filename": "fig_36_51.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_20.png"
+  },
+  {
+    "filename": "fig_36_52.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_50.png"
+  },
+  {
+    "filename": "fig_36_53.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_05.png"
+  },
+  {
+    "filename": "fig_36_54.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_10.png"
+  },
+  {
+    "filename": "fig_36_55.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_20.png"
+  },
+  {
+    "filename": "fig_36_56.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_50.png"
+  },
+  {
+    "filename": "fig_36_57.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_05.png"
+  },
+  {
+    "filename": "fig_36_58.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_10.png"
+  },
+  {
+    "filename": "fig_36_59.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_20.png"
+  },
+  {
+    "filename": "fig_36_60.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_50.png"
+  },
+  {
+    "filename": "fig_36_61.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_05.png"
+  },
+  {
+    "filename": "fig_36_62.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_10.png"
+  },
+  {
+    "filename": "fig_36_63.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_20.png"
+  },
+  {
+    "filename": "fig_36_64.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_50.png"
+  },
+  {
+    "filename": "fig_36_65.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_05.png"
+  },
+  {
+    "filename": "fig_36_66.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_10.png"
+  },
+  {
+    "filename": "fig_36_67.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_20.png"
+  },
+  {
+    "filename": "fig_36_68.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_50.png"
+  },
+  {
+    "filename": "fig_36_69.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_05.png"
+  },
+  {
+    "filename": "fig_36_70.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_10.png"
+  },
+  {
+    "filename": "fig_36_71.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_20.png"
+  },
+  {
+    "filename": "fig_36_72.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_50.png"
+  },
+  {
+    "filename": "fig_36_73.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_05.png"
+  },
+  {
+    "filename": "fig_36_74.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_10.png"
+  },
+  {
+    "filename": "fig_36_75.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_20.png"
+  },
+  {
+    "filename": "fig_36_76.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_50.png"
+  },
+  {
+    "filename": "fig_36_77.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_05.png"
+  },
+  {
+    "filename": "fig_36_78.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_10.png"
+  },
+  {
+    "filename": "fig_36_79.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_20.png"
+  },
+  {
+    "filename": "fig_36_80.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_50.png"
+  },
+  {
+    "filename": "fig_36_81.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_05.png"
+  },
+  {
+    "filename": "fig_36_82.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_10.png"
+  },
+  {
+    "filename": "fig_36_83.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_20.png"
+  },
+  {
+    "filename": "fig_36_84.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_50.png"
+  },
+  {
+    "filename": "fig_36_85.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_05.png"
+  },
+  {
+    "filename": "fig_36_86.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_10.png"
+  },
+  {
+    "filename": "fig_36_87.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_20.png"
+  },
+  {
+    "filename": "fig_36_88.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_50.png"
+  },
+  {
+    "filename": "fig_36_89.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_05.png"
+  },
+  {
+    "filename": "fig_36_90.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_10.png"
+  },
+  {
+    "filename": "fig_36_91.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_20.png"
+  },
+  {
+    "filename": "fig_36_92.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_50.png"
+  },
+  {
+    "filename": "fig_36_93.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_05.png"
+  },
+  {
+    "filename": "fig_36_94.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_10.png"
+  },
+  {
+    "filename": "fig_36_95.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_20.png"
+  },
+  {
+    "filename": "fig_36_96.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_50.png"
+  },
+  {
+    "filename": "fig_37_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_05.png"
+  },
+  {
+    "filename": "fig_37_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_10.png"
+  },
+  {
+    "filename": "fig_37_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_20.png"
+  },
+  {
+    "filename": "fig_37_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_50.png"
+  },
+  {
+    "filename": "fig_38.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_05.png"
+  },
+  {
+    "filename": "fig_39.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_10.png"
+  },
+  {
+    "filename": "fig_40.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_20.png"
+  },
+  {
+    "filename": "fig_41.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_17_50.png"
+  },
+  {
+    "filename": "fig_42_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_05.png"
+  },
+  {
+    "filename": "fig_42_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_10.png"
+  },
+  {
+    "filename": "fig_42_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_20.png"
+  },
+  {
+    "filename": "fig_42_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_50.png"
+  },
+  {
+    "filename": "fig_43.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_05.png"
+  },
+  {
+    "filename": "fig_44.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_10.png"
+  },
+  {
+    "filename": "fig_45.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_20.png"
+  },
+  {
+    "filename": "fig_46.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_46_50.png"
+  },
+  {
+    "filename": "fig_47_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_05.png"
+  },
+  {
+    "filename": "fig_47_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_10.png"
+  },
+  {
+    "filename": "fig_47_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_20.png"
+  },
+  {
+    "filename": "fig_47_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_50.png"
+  },
+  {
+    "filename": "fig_48.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_05.png"
+  },
+  {
+    "filename": "fig_49.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_10.png"
+  },
+  {
+    "filename": "fig_50.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_20.png"
+  },
+  {
+    "filename": "fig_51.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_50_50.png"
+  },
+  {
+    "filename": "fig_52_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_05.png"
+  },
+  {
+    "filename": "fig_52_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_10.png"
+  },
+  {
+    "filename": "fig_52_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_20.png"
+  },
+  {
+    "filename": "fig_52_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_50.png"
+  },
+  {
+    "filename": "fig_53.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_05.png"
+  },
+  {
+    "filename": "fig_54.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_10.png"
+  },
+  {
+    "filename": "fig_55.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_20.png"
+  },
+  {
+    "filename": "fig_56.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_51_50.png"
+  },
+  {
+    "filename": "fig_57_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_05.png"
+  },
+  {
+    "filename": "fig_57_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_10.png"
+  },
+  {
+    "filename": "fig_57_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_20.png"
+  },
+  {
+    "filename": "fig_57_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_50.png"
+  },
+  {
+    "filename": "fig_58.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_05.png"
+  },
+  {
+    "filename": "fig_59.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_10.png"
+  },
+  {
+    "filename": "fig_60.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_20.png"
+  },
+  {
+    "filename": "fig_61.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_52_50.png"
+  },
+  {
+    "filename": "fig_62_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_05.png"
+  },
+  {
+    "filename": "fig_62_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_10.png"
+  },
+  {
+    "filename": "fig_62_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_20.png"
+  },
+  {
+    "filename": "fig_62_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_50.png"
+  },
+  {
+    "filename": "fig_63.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_05.png"
+  },
+  {
+    "filename": "fig_64.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_10.png"
+  },
+  {
+    "filename": "fig_65.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_20.png"
+  },
+  {
+    "filename": "fig_66.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_53_50.png"
+  },
+  {
+    "filename": "fig_67_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_05.png"
+  },
+  {
+    "filename": "fig_67_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_10.png"
+  },
+  {
+    "filename": "fig_67_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_20.png"
+  },
+  {
+    "filename": "fig_67_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_50.png"
+  },
+  {
+    "filename": "fig_68.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_05.png"
+  },
+  {
+    "filename": "fig_69.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_10.png"
+  },
+  {
+    "filename": "fig_70.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_20.png"
+  },
+  {
+    "filename": "fig_71.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_54_50.png"
+  },
+  {
+    "filename": "fig_72_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_05.png"
+  },
+  {
+    "filename": "fig_72_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_10.png"
+  },
+  {
+    "filename": "fig_72_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_20.png"
+  },
+  {
+    "filename": "fig_72_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_50.png"
+  },
+  {
+    "filename": "fig_73.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_05.png"
+  },
+  {
+    "filename": "fig_74.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_10.png"
+  },
+  {
+    "filename": "fig_75.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_20.png"
+  },
+  {
+    "filename": "fig_76.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_59_50.png"
+  },
+  {
+    "filename": "fig_77_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_05.png"
+  },
+  {
+    "filename": "fig_77_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_10.png"
+  },
+  {
+    "filename": "fig_77_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_20.png"
+  },
+  {
+    "filename": "fig_77_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_50.png"
+  },
+  {
+    "filename": "fig_78.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_05.png"
+  },
+  {
+    "filename": "fig_79.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_10.png"
+  },
+  {
+    "filename": "fig_80.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_20.png"
+  },
+  {
+    "filename": "fig_81.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_67_50.png"
+  },
+  {
+    "filename": "fig_82_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_05.png"
+  },
+  {
+    "filename": "fig_82_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_10.png"
+  },
+  {
+    "filename": "fig_82_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_20.png"
+  },
+  {
+    "filename": "fig_82_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_50.png"
+  },
+  {
+    "filename": "fig_83.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_05.png"
+  },
+  {
+    "filename": "fig_84.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_10.png"
+  },
+  {
+    "filename": "fig_85.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_20.png"
+  },
+  {
+    "filename": "fig_86.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_72_50.png"
+  },
+  {
+    "filename": "fig_87_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_05.png"
+  },
+  {
+    "filename": "fig_87_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_10.png"
+  },
+  {
+    "filename": "fig_87_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_20.png"
+  },
+  {
+    "filename": "fig_87_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_50.png"
+  },
+  {
+    "filename": "fig_88.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_05.png"
+  },
+  {
+    "filename": "fig_89.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_10.png"
+  },
+  {
+    "filename": "fig_90.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_20.png"
+  },
+  {
+    "filename": "fig_91.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_99_50.png"
+  },
+  {
+    "filename": "fig_92_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_05.png"
+  },
+  {
+    "filename": "fig_92_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_10.png"
+  },
+  {
+    "filename": "fig_92_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_20.png"
+  },
+  {
+    "filename": "fig_92_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_50.png"
+  },
+  {
+    "filename": "fig_93.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_05.png"
+  },
+  {
+    "filename": "fig_94.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_10.png"
+  },
+  {
+    "filename": "fig_95.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_20.png"
+  },
+  {
+    "filename": "fig_96.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_101_50.png"
+  },
+  {
+    "filename": "fig_97_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_05.png"
+  },
+  {
+    "filename": "fig_97_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_10.png"
+  },
+  {
+    "filename": "fig_97_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_20.png"
+  },
+  {
+    "filename": "fig_97_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_50.png"
+  },
+  {
+    "filename": "fig_98.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_05.png"
+  },
+  {
+    "filename": "fig_99.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_10.png"
+  },
+  {
+    "filename": "fig_100.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_20.png"
+  },
+  {
+    "filename": "fig_101.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_159_50.png"
+  },
+  {
+    "filename": "fig_102_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_05.png"
+  },
+  {
+    "filename": "fig_102_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_10.png"
+  },
+  {
+    "filename": "fig_102_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_20.png"
+  },
+  {
+    "filename": "fig_102_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_50.png"
+  },
+  {
+    "filename": "fig_103.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_05.png"
+  },
+  {
+    "filename": "fig_104.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_10.png"
+  },
+  {
+    "filename": "fig_105.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_20.png"
+  },
+  {
+    "filename": "fig_106.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_203_50.png"
+  },
+  {
+    "filename": "fig_107_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_05.png"
+  },
+  {
+    "filename": "fig_107_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_10.png"
+  },
+  {
+    "filename": "fig_107_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_20.png"
+  },
+  {
+    "filename": "fig_107_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_50.png"
+  },
+  {
+    "filename": "fig_108.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_05.png"
+  },
+  {
+    "filename": "fig_109.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_10.png"
+  },
+  {
+    "filename": "fig_110.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_20.png"
+  },
+  {
+    "filename": "fig_111.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_204_50.png"
+  },
+  {
+    "filename": "fig_112_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_05.png"
+  },
+  {
+    "filename": "fig_112_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_10.png"
+  },
+  {
+    "filename": "fig_112_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_20.png"
+  },
+  {
+    "filename": "fig_112_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_50.png"
+  },
+  {
+    "filename": "fig_113.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_05.png"
+  },
+  {
+    "filename": "fig_114.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_10.png"
+  },
+  {
+    "filename": "fig_115.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_20.png"
+  },
+  {
+    "filename": "fig_116.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_214_50.png"
+  },
+  {
+    "filename": "fig_117_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_05.png"
+  },
+  {
+    "filename": "fig_117_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_10.png"
+  },
+  {
+    "filename": "fig_117_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_20.png"
+  },
+  {
+    "filename": "fig_117_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_50.png"
+  },
+  {
+    "filename": "fig_118.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_05.png"
+  },
+  {
+    "filename": "fig_119.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_10.png"
+  },
+  {
+    "filename": "fig_120.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_20.png"
+  },
+  {
+    "filename": "fig_121.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_247_50.png"
+  },
+  {
+    "filename": "fig_122_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_05.png"
+  },
+  {
+    "filename": "fig_122_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_10.png"
+  },
+  {
+    "filename": "fig_122_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_20.png"
+  },
+  {
+    "filename": "fig_122_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_50.png"
+  },
+  {
+    "filename": "fig_123.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_05.png"
+  },
+  {
+    "filename": "fig_124.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_10.png"
+  },
+  {
+    "filename": "fig_125.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_20.png"
+  },
+  {
+    "filename": "fig_126.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_273_50.png"
+  },
+  {
+    "filename": "fig_127_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_05.png"
+  },
+  {
+    "filename": "fig_127_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_10.png"
+  },
+  {
+    "filename": "fig_127_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_20.png"
+  },
+  {
+    "filename": "fig_127_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_50.png"
+  },
+  {
+    "filename": "fig_128.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_05.png"
+  },
+  {
+    "filename": "fig_129.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_10.png"
+  },
+  {
+    "filename": "fig_130.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_20.png"
+  },
+  {
+    "filename": "fig_131.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_281_50.png"
+  },
+  {
+    "filename": "fig_132_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_05.png"
+  },
+  {
+    "filename": "fig_132_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_10.png"
+  },
+  {
+    "filename": "fig_132_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_20.png"
+  },
+  {
+    "filename": "fig_132_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_50.png"
+  },
+  {
+    "filename": "fig_133.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_05.png"
+  },
+  {
+    "filename": "fig_134.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_10.png"
+  },
+  {
+    "filename": "fig_135.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_20.png"
+  },
+  {
+    "filename": "fig_136.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_319_50.png"
+  },
+  {
+    "filename": "fig_137_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_05.png"
+  },
+  {
+    "filename": "fig_137_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_10.png"
+  },
+  {
+    "filename": "fig_137_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_20.png"
+  },
+  {
+    "filename": "fig_137_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_50.png"
+  },
+  {
+    "filename": "fig_138.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_05.png"
+  },
+  {
+    "filename": "fig_139.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_10.png"
+  },
+  {
+    "filename": "fig_140.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_20.png"
+  },
+  {
+    "filename": "fig_141.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_330_50.png"
+  },
+  {
+    "filename": "fig_142_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_05.png"
+  },
+  {
+    "filename": "fig_142_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_10.png"
+  },
+  {
+    "filename": "fig_142_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_20.png"
+  },
+  {
+    "filename": "fig_142_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_50.png"
+  },
+  {
+    "filename": "fig_143.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_05.png"
+  },
+  {
+    "filename": "fig_144.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_10.png"
+  },
+  {
+    "filename": "fig_145.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_20.png"
+  },
+  {
+    "filename": "fig_146.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_355_50.png"
+  },
+  {
+    "filename": "fig_147_1.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_05.png"
+  },
+  {
+    "filename": "fig_147_2.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_10.png"
+  },
+  {
+    "filename": "fig_147_3.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_20.png"
+  },
+  {
+    "filename": "fig_147_4.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_50.png"
+  },
+  {
+    "filename": "fig_148.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_05.png"
+  },
+  {
+    "filename": "fig_149.png",
+    "caption": "NFE=20",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_10.png"
+  },
+  {
+    "filename": "fig_150.png",
+    "caption": "NFE=40",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_20.png"
+  },
+  {
+    "filename": "fig_151.png",
+    "caption": "NFE=100",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_374_50.png"
+  },
+  {
+    "filename": "fig_152_1.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_05.png"
+  },
+  {
+    "filename": "fig_152_2.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_10.png"
+  },
+  {
+    "filename": "fig_152_3.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_20.png"
+  },
+  {
+    "filename": "fig_152_4.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_50.png"
+  },
+  {
+    "filename": "fig_153.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_05.png"
+  },
+  {
+    "filename": "fig_154.png",
+    "caption": "NFE=20",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_10.png"
+  },
+  {
+    "filename": "fig_155.png",
+    "caption": "NFE=40",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_20.png"
+  },
+  {
+    "filename": "fig_156.png",
+    "caption": "NFE=100",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet128/solver_samples/imagenet128_fm_ot_395_50.png"
+  },
+  {
+    "filename": "fig_157_1.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_05.png"
+  },
+  {
+    "filename": "fig_157_2.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_10.png"
+  },
+  {
+    "filename": "fig_157_3.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_20.png"
+  },
+  {
+    "filename": "fig_157_4.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_30.png"
+  },
+  {
+    "filename": "fig_157_5.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_50.png"
+  },
+  {
+    "filename": "fig_157_6.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_05.png"
+  },
+  {
+    "filename": "fig_157_7.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_10.png"
+  },
+  {
+    "filename": "fig_157_8.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_20.png"
+  },
+  {
+    "filename": "fig_157_9.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_30.png"
+  },
+  {
+    "filename": "fig_157_10.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_50.png"
+  },
+  {
+    "filename": "fig_157_11.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_05.png"
+  },
+  {
+    "filename": "fig_157_12.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_10.png"
+  },
+  {
+    "filename": "fig_157_13.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_20.png"
+  },
+  {
+    "filename": "fig_157_14.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_30.png"
+  },
+  {
+    "filename": "fig_157_15.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_50.png"
+  },
+  {
+    "filename": "fig_157_16.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_05.png"
+  },
+  {
+    "filename": "fig_157_17.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_10.png"
+  },
+  {
+    "filename": "fig_157_18.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_20.png"
+  },
+  {
+    "filename": "fig_157_19.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_30.png"
+  },
+  {
+    "filename": "fig_157_20.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_50.png"
+  },
+  {
+    "filename": "fig_157_21.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_05.png"
+  },
+  {
+    "filename": "fig_157_22.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_10.png"
+  },
+  {
+    "filename": "fig_157_23.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_20.png"
+  },
+  {
+    "filename": "fig_157_24.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_30.png"
+  },
+  {
+    "filename": "fig_157_25.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_50.png"
+  },
+  {
+    "filename": "fig_157_26.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_05.png"
+  },
+  {
+    "filename": "fig_157_27.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_10.png"
+  },
+  {
+    "filename": "fig_157_28.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_20.png"
+  },
+  {
+    "filename": "fig_157_29.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_30.png"
+  },
+  {
+    "filename": "fig_157_30.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_50.png"
+  },
+  {
+    "filename": "fig_157_31.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_05.png"
+  },
+  {
+    "filename": "fig_157_32.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_10.png"
+  },
+  {
+    "filename": "fig_157_33.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_20.png"
+  },
+  {
+    "filename": "fig_157_34.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_30.png"
+  },
+  {
+    "filename": "fig_157_35.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_50.png"
+  },
+  {
+    "filename": "fig_157_36.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_05.png"
+  },
+  {
+    "filename": "fig_157_37.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_10.png"
+  },
+  {
+    "filename": "fig_157_38.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_20.png"
+  },
+  {
+    "filename": "fig_157_39.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_30.png"
+  },
+  {
+    "filename": "fig_157_40.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_50.png"
+  },
+  {
+    "filename": "fig_158.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_05.png"
+  },
+  {
+    "filename": "fig_159.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_10.png"
+  },
+  {
+    "filename": "fig_160.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_20.png"
+  },
+  {
+    "filename": "fig_161.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_30.png"
+  },
+  {
+    "filename": "fig_162.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_11_50.png"
+  },
+  {
+    "filename": "fig_163.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_05.png"
+  },
+  {
+    "filename": "fig_164.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_10.png"
+  },
+  {
+    "filename": "fig_165.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_20.png"
+  },
+  {
+    "filename": "fig_166.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_30.png"
+  },
+  {
+    "filename": "fig_167.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_04_50.png"
+  },
+  {
+    "filename": "fig_168.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_05.png"
+  },
+  {
+    "filename": "fig_169.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_10.png"
+  },
+  {
+    "filename": "fig_170.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_20.png"
+  },
+  {
+    "filename": "fig_171.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_30.png"
+  },
+  {
+    "filename": "fig_172.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_05_50.png"
+  },
+  {
+    "filename": "fig_173.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_05.png"
+  },
+  {
+    "filename": "fig_174.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_10.png"
+  },
+  {
+    "filename": "fig_175.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_20.png"
+  },
+  {
+    "filename": "fig_176.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_30.png"
+  },
+  {
+    "filename": "fig_177.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_06_50.png"
+  },
+  {
+    "filename": "fig_178.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_05.png"
+  },
+  {
+    "filename": "fig_179.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_10.png"
+  },
+  {
+    "filename": "fig_180.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_20.png"
+  },
+  {
+    "filename": "fig_181.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_30.png"
+  },
+  {
+    "filename": "fig_182.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_08_50.png"
+  },
+  {
+    "filename": "fig_183.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_05.png"
+  },
+  {
+    "filename": "fig_184.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_10.png"
+  },
+  {
+    "filename": "fig_185.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_20.png"
+  },
+  {
+    "filename": "fig_186.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_30.png"
+  },
+  {
+    "filename": "fig_187.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_14_50.png"
+  },
+  {
+    "filename": "fig_188.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_05.png"
+  },
+  {
+    "filename": "fig_189.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_10.png"
+  },
+  {
+    "filename": "fig_190.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_20.png"
+  },
+  {
+    "filename": "fig_191.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_30.png"
+  },
+  {
+    "filename": "fig_192.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_16_50.png"
+  },
+  {
+    "filename": "fig_193.png",
+    "caption": "NFE=10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_05.png"
+  },
+  {
+    "filename": "fig_194.png",
+    "caption": "NFE=20",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_10.png"
+  },
+  {
+    "filename": "fig_195.png",
+    "caption": "NFE=40",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_20.png"
+  },
+  {
+    "filename": "fig_196.png",
+    "caption": "NFE=60",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_30.png"
+  },
+  {
+    "filename": "fig_197.png",
+    "caption": "NFE=100",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2210.02747/assets/figures/imagenet256/solver_samples/imagenet256_fm_ot_17_50.png"
+  }
+]

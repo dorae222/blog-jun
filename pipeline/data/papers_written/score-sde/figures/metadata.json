@@ -1,0 +1,332 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Solving a reverse-time SDE yields a score-based generative model. Transforming data to a simple noise distribution can be accomplished with a continuous-time SDE. This SDE can be reversed if we know the score of the distribution at each intermediate time step, ∇ 𝐱 log ⁡ p t ​ ( 𝐱 ) subscript ∇ 𝐱 subscript 𝑝 𝑡 𝐱 \\nabla_{\\mathbf{x}}\\log p_{t}(\\mathbf{x}) .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Overview of score-based generative modeling through SDEs . We can map data to a noise distribution (the prior) with an SDE ( Section 3.1 ), and reverse this SDE for generative modeling ( Section 3.2 ). We can also reverse the associated probability flow ODE ( Section 4.3 ), which yields a deterministic process that samples from the same distribution as the SDE. Both the reverse-time SDE and probability flow ODE can be obtained by estimating the score ∇ 𝐱 log ⁡ p t ​ ( 𝐱 ) subscript ∇ 𝐱 subscript 𝑝 𝑡 𝐱 \\nabla_{\\mathbf{x}}\\log p_{t}(\\mathbf{x}) ( Section 3.3 ).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Probability flow ODE enables fast sampling with adaptive stepsizes as the numerical precision is varied ( left ), and reduces the number of score function evaluations (NFE) without harming quality ( middle ). The invertible mapping from latents to images allows for interpolations ( right ).",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: Left : Class-conditional samples on 32 × 32 32 32 32\\times 32 CIFAR-10. Top four rows are automobiles and bottom four rows are horses. Right: Inpainting (top two rows) and colorization (bottom two rows) results on 256 × 256 256 256 256\\times 256 LSUN. First column is the original image, second column is the masked/gray-scale image, remaining columns are sampled image completions or colorizations.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_2.jpg",
+    "caption": "Figure 4: Left : Class-conditional samples on 32 × 32 32 32 32\\times 32 CIFAR-10. Top four rows are automobiles and bottom four rows are horses. Right: Inpainting (top two rows) and colorization (bottom two rows) results on 256 × 256 256 256 256\\times 256 LSUN. First column is the original image, second column is the masked/gray-scale image, remaining columns are sampled image completions or colorizations.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/inpaint_colorization.jpg"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) SMLD",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) SMLD",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x6.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "(a) SMLD",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x7.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) SMLD",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) DDPM (mean)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x6.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(c) DDPM (variance)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x7.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 6: Samples from the probability flow ODE for VP SDE on 256 × 256 256 256 256\\times 256 CelebA-HQ. Top: spherical interpolations between random samples. Bottom: temperature rescaling (reducing norm of embedding).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/celeba_interp.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "Figure 6: Samples from the probability flow ODE for VP SDE on 256 × 256 256 256 256\\times 256 CelebA-HQ. Top: spherical interpolations between random samples. Bottom: temperature rescaling (reducing norm of embedding).",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/celeba_temp.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 7: Comparing the first 100 dimensions of the latent code obtained for a random CIFAR-10 image. “Model A” and “Model B” are separately trained with different architectures.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x8.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "Figure 8: Left : The dimension-wise difference between encodings obtained by Model A and B. As a baseline, we also report the difference between shuffled representations of these two models. Right : The dimension-wise correlation coefficients of encodings obtained by Model A and Model B.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x9.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "Figure 8: Left : The dimension-wise difference between encodings obtained by Model A and B. As a baseline, we also report the difference between shuffled representations of these two models. Right : The dimension-wise correlation coefficients of encodings obtained by Model A and Model B.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Algorithm 2 PC sampling (VE SDE)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/pc_boxes2.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 9: PC sampling for LSUN bedroom and church. The vertical axis corresponds to the total computation, and the horizontal axis represents the amount of computation allocated to the corrector. Samples are the best when computation is split between the predictor and corrector.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x11.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 9: PC sampling for LSUN bedroom and church. The vertical axis corresponds to the total computation, and the horizontal axis represents the amount of computation allocated to the corrector. Samples are the best when computation is split between the predictor and corrector.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x12.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 10: The effects of different architecture components for score-based models trained with VE perturbations.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x14.png"
+  },
+  {
+    "filename": "fig_14_3.png",
+    "caption": "Figure 10: The effects of different architecture components for score-based models trained with VE perturbations.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x15.png"
+  },
+  {
+    "filename": "fig_14_4.png",
+    "caption": "Figure 10: The effects of different architecture components for score-based models trained with VE perturbations.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x16.png"
+  },
+  {
+    "filename": "fig_14_5.png",
+    "caption": "Figure 10: The effects of different architecture components for score-based models trained with VE perturbations.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x17.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x14.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x15.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x16.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x17.png"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "Figure 11: Unconditional CIFAR-10 samples from NCSN++ cont. (deep, VE).",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/cifar_samples.jpg"
+  },
+  {
+    "filename": "fig_21.jpg",
+    "caption": "Figure 12: Samples on 1024 × 1024 1024 1024 1024\\times 1024 CelebA-HQ from a modified NCSN++ model trained with the VE SDE.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/combine.jpg"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_0.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_1.png"
+  },
+  {
+    "filename": "fig_22_3.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_2.png"
+  },
+  {
+    "filename": "fig_22_4.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_3.png"
+  },
+  {
+    "filename": "fig_22_5.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_4.png"
+  },
+  {
+    "filename": "fig_22_6.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_5.png"
+  },
+  {
+    "filename": "fig_22_7.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_6.png"
+  },
+  {
+    "filename": "fig_22_8.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_7.png"
+  },
+  {
+    "filename": "fig_22_9.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_8.png"
+  },
+  {
+    "filename": "fig_22_10.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_9.png"
+  },
+  {
+    "filename": "fig_22_11.png",
+    "caption": "Figure 13: Class-conditional image generation by solving the conditional reverse-time SDE with PC. The curve shows the accuracy of our noise-conditional classifier over different noise scales.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x18.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_0.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_1.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_2.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_3.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_4.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_5.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_6.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_7.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_8.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/conditional_shallow_9.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/x18.png"
+  },
+  {
+    "filename": "fig_34.jpg",
+    "caption": "Figure 14: Extended inpainting results for 256 × 256 256 256 256\\times 256 bedroom images.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/bedroom_inpainting.jpg"
+  },
+  {
+    "filename": "fig_35.jpg",
+    "caption": "Figure 15: Extended inpainting results for 256 × 256 256 256 256\\times 256 church images.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/church_inpainting.jpg"
+  },
+  {
+    "filename": "fig_36.jpg",
+    "caption": "Figure 16: Extended colorization results for 256 × 256 256 256 256\\times 256 bedroom images.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/bedroom_colorization.jpg"
+  },
+  {
+    "filename": "fig_37.jpg",
+    "caption": "Figure 17: Extended colorization results for 256 × 256 256 256 256\\times 256 church images.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2011.13456/assets/figures/church_colorization.jpg"
+  }
+]

@@ -26,7 +26,8 @@ from django.utils.text import slugify
 from django.core.files import File
 from django.conf import settings
 from django.utils import timezone
-from blog.models import Post, Category, PostImage, ArchitectureEntry
+from django.utils.text import slugify as django_slugify
+from blog.models import Post, Category, PostImage, ArchitectureEntry, Tag
 
 
 PAPERS_WRITTEN_DIR = Path(__file__).parent / 'data' / 'papers_written'
@@ -90,7 +91,7 @@ def replace_figure_paths(content: str, figure_url_map: dict) -> str:
     return content
 
 
-def import_papers(dry_run: bool = False):
+def import_papers(dry_run: bool = False, update: bool = False):
     if not PAPERS_WRITTEN_DIR.exists():
         print(f"papers_written 디렉토리 없음: {PAPERS_WRITTEN_DIR}")
         sys.exit(1)
@@ -105,6 +106,7 @@ def import_papers(dry_run: bool = False):
     dirs = sorted(PAPERS_WRITTEN_DIR.iterdir())
     created_posts = 0
     created_images = 0
+    updated_posts = 0
     skipped = 0
 
     for paper_dir in dirs:
@@ -126,9 +128,28 @@ def import_papers(dry_run: bool = False):
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
 
-        if Post.objects.filter(slug=slug).exists():
+        existing = Post.objects.filter(slug=slug).first()
+        if existing and not update:
             print(f"  [SKIP] Post 이미 존재: {title}")
             skipped += 1
+            continue
+        if existing and update:
+            if not dry_run:
+                existing.content = content
+                existing.summary = summary
+                existing.save(update_fields=['content', 'summary'])
+                # 태그 갱신
+                existing.tags.clear()
+                for tag_name in tags_raw:
+                    tag_slug = slugify(tag_name, allow_unicode=True)[:100]
+                    if not tag_slug:
+                        continue
+                    tag, _ = Tag.objects.get_or_create(slug=tag_slug, defaults={'name': tag_name})
+                    existing.tags.add(tag)
+                print(f"  [UPDATE] content + tags 업데이트: {title}")
+            else:
+                print(f"  [DRY-RUN] 업데이트 예정: {title}")
+            updated_posts += 1
             continue
 
         # 카테고리 결정
@@ -136,7 +157,9 @@ def import_papers(dry_run: bool = False):
         cat_slug = CATEGORY_SLUG_MAP.get(cat_key, 'llm')
         category = categories.get(cat_slug) or categories.get('ai-ml')
 
-        content = data.get('content', '')
+        # content.md 우선, 없으면 content.json의 content 필드 폴백
+        content_md = paper_dir / 'content.md'
+        content = content_md.read_text(encoding='utf-8') if content_md.exists() else data.get('content', '')
         summary = data.get('summary', '')
         tags_raw = data.get('tags', [])
 
@@ -161,6 +184,14 @@ def import_papers(dry_run: bool = False):
         )
         created_posts += 1
         print(f"  [CREATE] Post: {title}")
+
+        # 태그 연결
+        for tag_name in tags_raw:
+            tag_slug = slugify(tag_name, allow_unicode=True)[:100]
+            if not tag_slug:
+                continue
+            tag, _ = Tag.objects.get_or_create(slug=tag_slug, defaults={'name': tag_name})
+            post.tags.add(tag)
 
         # figures 업로드 및 URL 치환
         figures_dir = paper_dir / 'figures'
@@ -192,7 +223,7 @@ def import_papers(dry_run: bool = False):
                 print(f"    [WARN] ArchitectureEntry 없음: {arch_slug}")
 
     if not dry_run:
-        print(f"\n완료: Post {created_posts}개 생성, PostImage {created_images}개 업로드, {skipped}개 스킵")
+        print(f"\n완료: Post {created_posts}개 생성, {updated_posts}개 업데이트, PostImage {created_images}개 업로드, {skipped}개 스킵")
     else:
         print(f"\n[DRY-RUN 완료] 실제 변경 없음.")
 
@@ -200,5 +231,6 @@ def import_papers(dry_run: bool = False):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='papers_written → Post + PostImage import')
     parser.add_argument('--dry-run', action='store_true', help='변경 없이 미리보기')
+    parser.add_argument('--update', action='store_true', help='기존 포스트 content + tags 업데이트')
     args = parser.parse_args()
-    import_papers(dry_run=args.dry_run)
+    import_papers(dry_run=args.dry_run, update=args.update)
