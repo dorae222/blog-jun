@@ -205,10 +205,11 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       .on('zoom', (event) => {
         g.attr('transform', event.transform)
         const scale = event.transform.k
-        // 줌 레벨에 따라 레이블 표시
+        // 라벨 항상 표시, 축소 시 크기만 줄임
         g.selectAll('.node-label')
-          .style('display', scale > 0.4 ? 'block' : 'none')
-          .style('font-size', `${Math.min(12, 11 / scale)}px`)
+          .style('display', 'block')
+          .style('font-size', `${Math.max(8, Math.min(12, 11 / scale))}px`)
+          .style('opacity', scale > 0.3 ? 1 : Math.max(0.4, scale * 2))
         // 줌 레벨에 따른 엣지 투명도
         baseEdgeOpacityRef.current = Math.max(0.15, Math.min(0.6, scale * 0.35))
       })
