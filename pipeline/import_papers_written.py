@@ -32,37 +32,10 @@ from blog.models import Post, Category, PostImage, ArchitectureEntry, Tag
 
 PAPERS_WRITTEN_DIR = Path(__file__).parent / 'data' / 'papers_written'
 
-# papers.csv category / sub_category → DB slug (7개 서브카테고리)
-CATEGORY_SLUG_MAP = {
-    'transformer':        'llm',
-    'nlp':                'llm',
-    'llm':                'llm',
-    'llm-architecture':   'llm',
-    'pretraining':        'llm',
-    'vision':             'vision',
-    'multimodal':         'multimodal',
-    'ssm':                'ssm',
-    'diffusion':          'diffusion',
-    'moe':                'technique',
-    'scaling':            'technique',
-    'efficiency':         'technique',
-    'efficient-training': 'technique',
-    'alignment':          'technique',
-    'finetuning':         'technique',
-    'rag':                'technique',
-    'retrieval':          'technique',
-    'technique':          'technique',
-    'attention-mechanism':'technique',
-    'prompting':          'technique',
-    'icl':                'technique',
-    'few-shot-learning':  'technique',
-    'benchmark':          'technique',
-    'evaluation':         'technique',
-    'agents':             'agent',
-    'tools':              'agent',
-    'data':               'technique',
-    'security':           'technique',
-}
+# 통합 카테고리 매퍼 사용
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from utils.category_mapper import CategoryMapper
+_mapper = CategoryMapper()
 
 
 def upload_figure(post, fig_path: Path, dry_run: bool) -> str | None:
@@ -190,9 +163,9 @@ def import_papers(dry_run: bool = False, update: bool = False):
             updated_posts += 1
             continue
 
-        # 카테고리 결정
-        cat_key = data.get('sub_category') or data.get('category', '')
-        cat_slug = CATEGORY_SLUG_MAP.get(cat_key, 'llm')
+        # 카테고리 결정 (통합 매퍼 사용)
+        cat_key = data.get('category_slug') or data.get('sub_category') or data.get('category', '')
+        cat_slug = _mapper.resolve(cat_key, 'paper_review')
         category = categories.get(cat_slug) or categories.get('ai-ml')
 
         if dry_run:
