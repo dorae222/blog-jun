@@ -1,0 +1,18 @@
+{
+  "slug": "openthoughts3-dataset",
+  "title": "OpenThoughts3-1.2M: Data Recipes for Reasoning Models",
+  "title_ko": "OpenThoughts3-1.2M: 추론 모델을 위한 데이터 레시피",
+  "category_slug": "technique",
+  "summary": "OpenThoughts3-1.2M은 수학·코드·과학 도메인의 합성 추론 데이터 120만개를 포함한 오픈소스 데이터셋입니다. 1,000회 이상의 ablation을 통해 최적화된 6단계 파이프라인으로 구축되었으며, SFT만으로 7B 규모 SOTA를 달성한 핵심 레시피를 분석합니다.",
+  "tags": [
+    "reasoning",
+    "synthetic-data",
+    "SFT",
+    "data-curation",
+    "QwQ",
+    "OpenThinker",
+    "open-source",
+    "distillation"
+  ],
+  "is_pinned": false
+}

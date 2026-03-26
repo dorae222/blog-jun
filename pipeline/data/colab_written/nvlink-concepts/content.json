@@ -1,0 +1,20 @@
+{
+  "slug": "nvlink-concepts",
+  "title": "NVLink Deep Dive: GPU Interconnect for AI Workloads",
+  "title_ko": "NVLink 완전 이해: GPU 인터커넥트의 모든 것",
+  "category_slug": "efficient-ai",
+  "summary": "GPU 간 통신 기술 NVLink의 원리, 세대별 발전, NVSwitch 아키텍처를 분석합니다. PCIe와의 성능 차이가 Multi-GPU 학습·추론에 미치는 영향을 정량적으로 비교하고, NVLink 없이 효율적으로 Multi-GPU를 활용하는 전략을 제시합니다.",
+  "tags": [
+    "NVLink",
+    "NVSwitch",
+    "PCIe",
+    "GPU-interconnect",
+    "multi-gpu",
+    "tensor-parallelism",
+    "FSDP",
+    "bandwidth",
+    "NVIDIA",
+    "infrastructure"
+  ],
+  "is_pinned": false
+}
