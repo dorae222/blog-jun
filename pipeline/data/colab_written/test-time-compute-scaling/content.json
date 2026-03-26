@@ -2,7 +2,7 @@
   "slug": "test-time-compute-scaling",
   "title": "Test-Time Compute Scaling: Think More at Inference",
   "title_ko": "Test-Time Compute Scaling: 추론 시간에 더 생각하기",
-  "category_slug": "efficient-ai",
+  "category_slug": "reasoning",
   "summary": "학습 시간의 연산을 추론 시간으로 이동시켜 작은 모델로도 큰 모델의 성능에 도달하는 test-time compute scaling의 원리를 분석합니다. Best-of-N, beam search, 적응적 연산 할당 전략과 Process Reward Model의 역할을 다루며, o1/R1 추론 모델의 이론적 기반을 설명합니다.",
   "tags": [
     "test-time-compute",
