@@ -93,6 +93,8 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
         # content.md 우선, 없으면 content.json의 content 필드 폴백
         content_md = item_dir / 'content.md'
         content = content_md.read_text(encoding='utf-8') if content_md.exists() else data.get('content', '')
+        summary = data.get('summary', '')
+        tags_raw = data.get('tags', [])
 
         existing = Post.objects.filter(slug=slug).first()
         if existing and not update:
@@ -102,7 +104,8 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
         if existing and update:
             if not dry_run:
                 existing.content = content
-                existing.save(update_fields=['content'])
+                existing.summary = summary
+                existing.save(update_fields=['content', 'summary'])
                 # 태그 갱신
                 existing.tags.clear()
                 for tag_name in tags_raw:
@@ -113,8 +116,6 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
                 print(f"  [DRY-RUN] 업데이트 예정: {display_title}")
             updated_posts += 1
             continue
-        summary = data.get('summary', '')
-        tags_raw = data.get('tags', [])
         pdf_attachment = data.get('pdf_attachment')
 
         if dry_run:
