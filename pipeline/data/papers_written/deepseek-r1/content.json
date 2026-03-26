@@ -1,0 +1,28 @@
+{
+  "id": "59",
+  "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+  "title_ko": "DeepSeek-R1: 강화학습으로 LLM의 추론 능력을 이끌어내다",
+  "slug": "deepseek-r1",
+  "category": "reasoning",
+  "sub_category": "reasoning",
+  "category_slug": "reasoning",
+  "year": 2025,
+  "venue": "arXiv preprint",
+  "authors": "DeepSeek-AI",
+  "arxiv_url": "https://arxiv.org/abs/2501.12948",
+  "summary": "순수 강화학습(GRPO)만으로 LLM에서 추론 능력의 창발을 달성한 DeepSeek-R1의 학습 방법론을 분석합니다. SFT 없이 RL만으로 CoT가 자발적으로 출현하는 R1-Zero의 발견, 4단계 학습 파이프라인, 1.5B~70B 증류 모델의 성공, 그리고 오픈소스 공개가 가져온 추론 AI 민주화의 의미를 다룹니다.",
+  "tags": [
+    "reasoning",
+    "reinforcement-learning",
+    "GRPO",
+    "chain-of-thought",
+    "distillation",
+    "open-source",
+    "MoE",
+    "DeepSeek",
+    "o1",
+    "emergent-reasoning"
+  ],
+  "related_architecture": "deepseek-r1",
+  "is_pinned": true
+}
