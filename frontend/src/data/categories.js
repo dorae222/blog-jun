@@ -12,6 +12,11 @@ export const CATEGORY_TREE = [
       { key: 'multimodal', label: 'Multimodal' },
       { key: 'agent', label: 'Agent' },
       { key: 'technique', label: 'Technique' },
+      { key: 'efficiency', label: 'Efficiency' },
+      { key: 'reasoning', label: 'Reasoning' },
+      { key: 'training', label: 'Training' },
+      { key: 'rag', label: 'RAG' },
+      { key: 'code', label: 'Code' },
     ],
   },
   {
@@ -58,8 +63,7 @@ export const CATEGORY_TREE = [
     desc: 'Hadoop, Spark, Pipeline',
     path: '/posts/data',
     subs: [
-      { key: 'hadoop', label: 'Hadoop' },
-      { key: 'spark', label: 'Spark' },
+      { key: 'big-data', label: 'Big Data' },
       { key: 'database', label: 'Database' },
       { key: 'pipeline', label: 'Pipeline' },
     ],

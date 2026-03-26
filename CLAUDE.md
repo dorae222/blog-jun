@@ -103,8 +103,8 @@ pipeline/data/
 - API: `backend/blog/views.py`, `backend/blog/urls.py`
 - Operations: `backend/operations/` (OperationLog, SessionLog, RequestLoggingMiddleware)
 - Frontend entry: `frontend/src/App.jsx`
-- Cover templates: `pipeline/cover_templates.py` (`pipeline/generators/cover_templates.py`)
-- SVG utils: `pipeline/svg_utils.py` (`pipeline/utils/svg_utils.py`)
+- Cover templates: `pipeline/generators/cover_templates.py`
+- SVG utils: `pipeline/utils/svg_utils.py`
 
 ## Category Structure
 
@@ -113,8 +113,12 @@ Docker, LXD, DevOps + AWS 10개 도메인:
 aws-compute, aws-storage, aws-database, aws-networking, aws-security,
 aws-analytics, aws-ai-ml, aws-devtools, aws-management, aws-integration
 
-### AI/ML (20.AI) — 7개 서브카테고리
-llm, ssm, diffusion, vision, multimodal, agent, technique
+### AI/ML (20.AI) — 12개 서브카테고리
+llm, ssm, diffusion, vision, multimodal, agent, technique,
+efficiency, reasoning, training, rag, code
+
+### Data Engineering (30.Data) — 3개 서브카테고리
+big-data, database, pipeline
 
 ### ML (40.ML) — 12개 서브카테고리
 fundamentals, math-foundations, preprocessing, supervised-regression/classification,
@@ -140,6 +144,39 @@ applications, mlops
 ## CSS 주의사항
 - Tailwind CSS v4 + `@tailwindcss/vite` 플러그인 환경에서 JSX에서 import한 CSS는 번들에 포함되지 않음
 - highlight.js 등 외부 CSS는 반드시 `index.css`의 `@import`로 추가해야 함
+
+## 컨텐츠 작성 규약
+
+### 포스트 타입
+- `paper_review`: 논문 리뷰 (arxiv_url, venue, paper_year, paper_authors 필드 사용)
+- `tutorial`: 실습 가이드 (코드 블록 + 실행 결과)
+- `article`: 개념 설명, 트렌드 분석
+- `til`: Today I Learned
+- `project`: 프로젝트 문서
+- `activity_log`: 활동 기록
+
+### Figure 형식 표준
+```markdown
+![한국어 alt text](figures/filename.png)
+
+*Figure N: 한국어 캡션. (Author, Year)*
+```
+
+### MarkdownRenderer 지원 기능
+callout (`:::info/warning/tip/danger`), KaTeX 수식, wiki-link (`[[slug]]`),
+코드 블록 (syntax highlight + 복사), output 블록, BookmarkEmbed, figure zoom.
+**Mermaid 사용 지양** — 텍스트 설명 또는 figure 이미지 사용.
+
+### Post 모델 필드 (paper_review용)
+- `arxiv_url`: arXiv 논문 URL
+- `venue`: 학회/저널명 (NeurIPS, ICML 등)
+- `paper_year`: 논문 발표 연도
+- `paper_authors`: 저자 목록
+
+### 아키텍처 vs 논문 리뷰
+- 아키텍처 = 모델 스펙 카드 (1-2쪽, 핵심 구조/계보/관계)
+- 논문 리뷰 = 심층 분석 (3-8쪽, 방법론/실험/한계)
+- `related_post` 필드로 아키텍처↔논문 쌍방 연결
 
 ## Git Sync
 | Location | Path | Purpose |

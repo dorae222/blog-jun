@@ -48,6 +48,7 @@ class PostImageSerializer(serializers.ModelSerializer):
 
 class PostListSerializer(ImageUrlMixin, serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
+    categories = CategorySerializer(many=True, read_only=True)
     tags = TagSerializer(many=True, read_only=True)
     series_name = serializers.CharField(source='series.name', read_only=True, default=None)
     cover_image_url = serializers.SerializerMethodField()
@@ -56,7 +57,7 @@ class PostListSerializer(ImageUrlMixin, serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
-            'id', 'title', 'slug', 'summary', 'category', 'tags',
+            'id', 'title', 'slug', 'summary', 'category', 'categories', 'tags',
             'series_name', 'post_type', 'status', 'reading_time',
             'view_count', 'quality_score', 'is_pinned', 'cover_image_url',
             'figure_url', 'created_at', 'published_at',

@@ -73,6 +73,10 @@ class Post(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='posts'
     )
     tags = models.ManyToManyField(Tag, blank=True, related_name='posts')
+    categories = models.ManyToManyField(
+        Category, blank=True, related_name='cross_posts',
+        help_text="추가 카테고리 (다중 분류)"
+    )
     series = models.ForeignKey(
         Series, on_delete=models.SET_NULL, null=True, blank=True, related_name='posts'
     )
