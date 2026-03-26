@@ -10,6 +10,9 @@
 
 ---
 
+![해석 가능성 개요: 모델 해석 기법의 분류와 적용 범위](figures/interpretability_overview.png)
+*해석 가능성 개요: PDP, LIME, SHAP 등 주요 해석 기법의 범위(전역/로컬)와 모델 의존성을 체계적으로 분류한다.*
+
 ## 2. Feature Importance의 한계
 
 ### 트리 기반 Feature Importance
@@ -69,6 +72,9 @@ $$\xi(x) = \arg\min_{g \in G} \mathcal{L}(f, g, \pi_x) + \Omega(g)$$
 - **이웃 정의 문제**: 커널 폭 $\sigma$의 선택이 결과에 크게 영향을 미친다.
 
 ---
+
+![SHAP Summary Plot: 전체 데이터셋에 걸친 피처별 SHAP 값 분포](figures/shap_summary_plot.png)
+*SHAP Summary Plot: 각 피처의 SHAP 값 분포를 보여주며, 피처 값의 크기(색상)와 예측에 대한 기여 방향(양/음)을 동시에 파악할 수 있다.*
 
 ## 5. SHAP (SHapley Additive exPlanations)
 

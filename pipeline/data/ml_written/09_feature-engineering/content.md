@@ -73,6 +73,9 @@ Label Encoding 후 이진수로 변환하여 열로 표현한다. One-Hot Encodi
 
 ---
 
+![다항 특성 시각화: PolynomialFeatures로 생성된 비선형 특성의 효과](figures/polynomial_features.png)
+*다항 특성 생성: 원래 특성에 다항 변환을 적용하여 비선형 관계를 선형 모델로 포착할 수 있게 하는 과정을 보여준다.*
+
 ## 4. 파생 변수 생성 (Feature Creation)
 
 기존 Feature들을 조합하거나 변환하여 새로운 정보를 담은 Feature를 만드는 과정이다. 이 단계에서 도메인 지식이 가장 큰 역할을 한다.
@@ -99,6 +102,9 @@ $x$, $x^2$, $x^3$ 등 고차항을 자동으로 생성하여 비선형 관계를
 의료 데이터에서 BMI(몸무게/키²), 금융 데이터에서 부채비율(부채/자산), 커머스에서 ARPU(매출/사용자 수)처럼 해당 도메인에서 이미 의미 있다고 알려진 파생 지표를 직접 계산하여 Feature로 추가하는 방식이다. 이런 Feature들은 모델이 학습해야 할 복잡한 비선형 관계를 미리 명시적으로 표현해 준다.
 
 ---
+
+![피처 중요도 시각화: RandomForest의 feature_importances_ 결과](figures/feature_importance.png)
+*피처 중요도: RandomForest 모델이 각 특성이 분류에 기여하는 정도를 측정한 결과로, 중요도가 낮은 특성을 제거하는 기준으로 활용된다.*
 
 ## 5. Feature Selection 방법론
 

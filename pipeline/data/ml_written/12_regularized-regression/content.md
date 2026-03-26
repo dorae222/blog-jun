@@ -85,6 +85,9 @@ $$
 
 ---
 
+![정규화 효과 시각화: Ridge와 Lasso가 계수를 수축시키는 과정](figures/regularization_effect.png)
+*정규화 효과: 정규화 강도(lambda)가 증가할수록 Ridge는 계수를 0에 가깝게 수축시키고, Lasso는 일부 계수를 정확히 0으로 만든다.*
+
 ## 4. 기하학적 해석
 
 정규화 회귀를 **제약 최적화(Constrained Optimization)** 관점으로 보면 기하학적 직관을 얻을 수 있다.
@@ -186,6 +189,9 @@ MAP 추정은 Lasso 회귀와 동일하다. 라플라스 분포는 가우시안�
 이 베이지안 해석은 정규화의 통계적 근거를 제공하고, 불확실성 정량화를 위한 완전 베이지안 추론(Full Bayesian Inference)으로 자연스럽게 확장된다.
 
 ---
+
+![L1/L2 계수 경로: 정규화 강도에 따른 계수 변화 추이](figures/l1_l2_coefficient_paths.png)
+*L1/L2 정규화 경로: Lasso(L1)는 계수들이 차례로 0이 되는 명확한 패턴을 보이고, Ridge(L2)는 모든 계수가 부드럽게 0에 수렴한다.*
 
 ## 7. 하이퍼파라미터 $\lambda$ 튜닝
 

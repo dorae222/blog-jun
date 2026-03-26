@@ -44,6 +44,9 @@ $$k(x, x') = \tanh(\alpha x^T x' + \beta)$$
 
 ---
 
+![커널 변환: 저차원에서 비선형 분리 불가능한 데이터가 고차원 특성 공간에서 선형 분리 가능해지는 과정](figures/kernel_transformation.png)
+*커널 변환: 원래 입력 공간에서 분리할 수 없는 데이터를 커널 함수를 통해 고차원으로 매핑하면 선형 결정 경계로 분류할 수 있다.*
+
 ## 알고리즘
 
 ### RKHS (재현 커널 힐베르트 공간)
@@ -188,6 +191,9 @@ RBF  SVM 정확도: 1.0000
 ![Kernel-Methods Fig 3](/media/figures/outputs/kernel-methods/kernel-methods_fig_3.png)
 
 ---
+
+![커널 비교: 선형, 다항식, RBF 커널의 결정 경계 차이 비교](figures/kernel_comparison.png)
+*커널 비교: 동일한 데이터에 선형, 다항식, RBF 커널을 적용했을 때 생성되는 결정 경계의 복잡도와 유연성이 뚜렷하게 달라진다.*
 
 ## 시각화 해석
 

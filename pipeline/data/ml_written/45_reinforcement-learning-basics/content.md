@@ -42,6 +42,9 @@ $$Q^\pi(s,a) = R(s,a) + \gamma \sum_{s'} P(s'|s,a) \sum_{a'} \pi(a'|s')\,Q^\pi(s
 
 ---
 
+![에이전트-환경 상호작용: 에이전트가 환경과 상태-행동-보상 루프를 통해 학습하는 과정](figures/agent_environment_interaction.png)
+*에이전트-환경 상호작용: 에이전트는 현재 상태를 관찰하고, 행동을 선택하며, 환경으로부터 보상과 다음 상태를 받는 순환 과정을 반복한다.*
+
 ## 핵심 알고리즘
 
 ### 1. Q-Learning (Off-Policy TD)
@@ -167,6 +170,9 @@ env.close()
 <!-- Execution error: ModuleNotFoundError: No module named 'gym' -->
 
 ---
+
+![Q-value 그리드월드: 4x4 그리드 환경에서 학습된 Q-value와 최적 정책 시각화](figures/q_value_gridworld.png)
+*Q-value 그리드월드: 각 셀의 Q-value 크기와 화살표 방향을 통해 에이전트가 학습한 최적 정책을 직관적으로 파악할 수 있다.*
 
 ## 시각화: 학습 보상 곡선 & 탐색률 감소
 
