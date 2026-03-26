@@ -119,7 +119,7 @@ def import_colab(dry_run: bool = False, update: bool = False):
                         if pi.image
                     )
                     for fig_file in sorted(figures_dir.iterdir()):
-                        if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                        if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'}:
                             continue
                         if fig_file.name in existing_figs:
                             pi = existing.images.filter(image__endswith=fig_file.name).first()
@@ -187,7 +187,7 @@ def import_colab(dry_run: bool = False, update: bool = False):
         figure_url_map = {}
         if figures_dir.exists():
             for fig_file in sorted(figures_dir.iterdir()):
-                if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'}:
                     continue
                 url = upload_figure(post, fig_file, dry_run=False)
                 if url:
