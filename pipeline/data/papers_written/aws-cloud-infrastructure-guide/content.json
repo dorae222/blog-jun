@@ -1,0 +1,22 @@
+{
+  "title": "AWS & Cloud Infrastructure Learning Guide",
+  "title_ko": "AWS & Cloud 인프라 학습 가이드",
+  "slug": "aws-cloud-infrastructure-guide",
+  "category": "cloud",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "AWS 클라우드 인프라의 핵심 서비스를 10개 도메인(Compute, Storage, Database, Networking, Security, Analytics, AI/ML, DevTools, Management, Integration)별로 정리합니다. 각 서비스의 역할과 상호 관계를 파악하고, 체계적인 학습 경로를 제시합니다.",
+  "tags": [
+    "aws",
+    "cloud",
+    "infrastructure",
+    "compute",
+    "storage",
+    "networking",
+    "security",
+    "roadmap"
+  ],
+  "is_pinned": true
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Towards a Science of Scaling Agent Systems",
+  "title_ko": "에이전트 시스템 스케일링의 과학을 향하여",
+  "slug": "towards-a-science-of-scaling-agent-systems",
+  "category": "agent",
+  "sub_category": "",
+  "year": 2025,
+  "venue": "",
+  "authors": "Yubin Kim et al.",
+  "arxiv_url": "https://arxiv.org/abs/2512.08296",
+  "summary": "3개 LLM 제품군과 4개 벤치마크에 걸쳐 멀티 에이전트 시스템의 스케일링 법칙을 체계적으로 분석한 연구. 태스크 분해 가능성이 MAS 효과의 핵심 결정 요인이며, 에이전트 수/아키텍처/모델 이질성에 따른 조건적 스케일링 관계를 발견했다.",
+  "tags": [
+    "agent",
+    "multi-agent",
+    "scaling-law",
+    "artificial-intelligence",
+    "scaling",
+    "benchmark",
+    "cost-performance"
+  ],
+  "related_architecture": ""
+}

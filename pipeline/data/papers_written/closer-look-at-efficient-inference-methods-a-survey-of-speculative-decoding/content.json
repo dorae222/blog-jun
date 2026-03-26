@@ -1,0 +1,23 @@
+{
+  "title": "Closer Look at Efficient Inference Methods: A Survey of Speculative Decoding",
+  "title_ko": "효율적 추론 방법론 심층 분석: Speculative Decoding 서베이",
+  "slug": "closer-look-at-efficient-inference-methods-a-survey-of-speculative-decoding",
+  "category": "technique",
+  "sub_category": "",
+  "year": 2024,
+  "venue": "",
+  "authors": "Hyun Ryu, Eric Kim",
+  "arxiv_url": "https://arxiv.org/abs/2411.13157",
+  "summary": "LLM 추론 가속을 위한 speculative decoding 기법들을 Draft-Centric(초안 중심)과 Model-Centric(모델 중심)으로 분류하고, 2018년부터 2024년까지의 30개 이상 방법론을 체계적으로 비교 분석한 종합 서베이입니다.",
+  "tags": [
+    "speculative-decoding",
+    "inference-optimization",
+    "llm",
+    "survey",
+    "artificial-intelligence",
+    "efficiency",
+    "machine-learning",
+    "nlp"
+  ],
+  "related_architecture": ""
+}

@@ -1,0 +1,22 @@
+{
+  "title": "LLM Core Paper Guide: Evolution of Language Models",
+  "title_ko": "LLM 핵심 논문 가이드: 언어 모델의 진화",
+  "slug": "llm-paper-guide",
+  "category": "llm",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "Transformer의 등장부터 GPT, BERT, LLaMA, Mixtral, DeepSeek에 이르기까지 대규모 언어 모델(LLM)의 핵심 논문과 아키텍처를 시간순으로 정리합니다. 각 모델의 핵심 기여와 상호 영향 관계를 파악하고, 체계적인 학습 경로를 제시합니다.",
+  "tags": [
+    "llm",
+    "transformer",
+    "gpt",
+    "bert",
+    "llama",
+    "scaling-laws",
+    "language-model",
+    "roadmap"
+  ],
+  "is_pinned": true
+}
