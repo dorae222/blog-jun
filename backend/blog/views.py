@@ -427,7 +427,7 @@ class FeedView(generics.ListAPIView):
     """통합 피드 엔드포인트: Post + ArchitectureEntry를 통합 조회."""
     serializer_class = PostListSerializer
 
-    # 카테고리 slug → Category slug 매핑
+    # 프론트엔드 route key → DB Category slug 매핑
     CATEGORY_MAP = {
         'ai': 'ai-ml',
         'cloud': 'cloud',
@@ -435,20 +435,12 @@ class FeedView(generics.ListAPIView):
         'ml': 'ml',
     }
 
-    # 서브카테고리 slug 목록 (유효성 검증용)
-    SUB_CATEGORIES = {
-        'ai': ['llm', 'ssm', 'diffusion', 'vision', 'multimodal', 'agent', 'technique'],
-        'cloud': ['aws-compute', 'aws-storage', 'aws-database', 'aws-networking',
-                  'aws-security', 'aws-analytics', 'aws-ai-ml', 'aws-devtools',
-                  'aws-management', 'aws-integration', 'docker', 'lxd', 'devops'],
-        'data': ['hadoop', 'spark', 'database', 'pipeline'],
-        'ml': [
-            'fundamentals', 'math-foundations', 'preprocessing',
-            'supervised-regression', 'supervised-classification',
-            'ensemble', 'unsupervised', 'model-evaluation',
-            'causal-inference', 'advanced-algorithms', 'applications', 'mlops',
-        ],
-    }
+    def _get_sub_slugs(self, cat_slug):
+        """DB에서 해당 카테고리의 서브카테고리 slug 목록을 동적 조회."""
+        parent = Category.objects.filter(slug=cat_slug).first()
+        if parent:
+            return list(parent.children.values_list('slug', flat=True))
+        return []
 
     def get_queryset(self):
         qs = Post.objects.filter(status='published').select_related(
@@ -462,17 +454,22 @@ class FeedView(generics.ListAPIView):
         tag = self.request.query_params.get('tag')
         pinned = self.request.query_params.get('pinned')
 
-        # 카테고리 필터
+        # 카테고리 필터 (primary + secondary 모두 포함)
         if category and category in self.CATEGORY_MAP:
             cat_slug = self.CATEGORY_MAP[category]
-            # 부모 카테고리 또는 자기 자신이 해당 slug인 포스트
             qs = qs.filter(
                 Q(category__slug=cat_slug) | Q(category__parent__slug=cat_slug)
-            )
+                | Q(categories__slug=cat_slug) | Q(categories__parent__slug=cat_slug)
+            ).distinct()
 
-        # 서브카테고리 필터
-        if sub and category and category in self.SUB_CATEGORIES:
-            qs = qs.filter(category__slug=sub)
+        # 서브카테고리 필터 (DB에서 유효성 검증, primary + secondary)
+        if sub and category and category in self.CATEGORY_MAP:
+            cat_slug = self.CATEGORY_MAP[category]
+            sub_slugs = self._get_sub_slugs(cat_slug)
+            if sub in sub_slugs:
+                qs = qs.filter(
+                    Q(category__slug=sub) | Q(categories__slug=sub)
+                ).distinct()
 
         # 태그 필터
         if tag:
@@ -517,12 +514,16 @@ class FeedView(generics.ListAPIView):
                     Q(category__slug=cat_slug) | Q(category__parent__slug=cat_slug)
                 )
                 total = cat_posts.count()
-                subs = dict(
-                    cat_posts.filter(category__parent__isnull=False)
-                    .values_list('category__slug')
-                    .annotate(c=Count('id'))
-                    .values_list('category__slug', 'c')
-                )
+                # DB에서 서브카테고리 동적 조회 후 카운트
+                sub_slugs = self._get_sub_slugs(cat_slug)
+                subs = {}
+                if sub_slugs:
+                    subs = dict(
+                        cat_posts.filter(category__slug__in=sub_slugs)
+                        .values_list('category__slug')
+                        .annotate(c=Count('id'))
+                        .values_list('category__slug', 'c')
+                    )
                 categories_data[key] = {'count': total, 'subs': subs}
             response.data['categories'] = categories_data
 
