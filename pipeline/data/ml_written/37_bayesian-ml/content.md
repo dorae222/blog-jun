@@ -10,6 +10,9 @@
 
 ---
 
+![사전 분포에서 사후 분포로의 업데이트: 데이터가 추가됨에 따라 분포가 좁아지는 과정](figures/prior_posterior_update.png)
+*사전 분포에서 사후 분포로의 업데이트: 데이터가 관측될수록 사후 분포가 점점 좁아지며 특정 파라미터 값에 집중된다.*
+
 ## 수학적 배경
 
 ### 베이즈 정리
@@ -166,6 +169,9 @@ Log-Marginal-Likelihood: -17.783
 ```
 
 ---
+
+![베이지안 회귀 불확실성: Gaussian Process를 활용한 예측 구간 시각화](figures/bayesian_regression_uncertainty.png)
+*베이지안 회귀 불확실성: 관측 데이터가 밀집된 영역에서는 신뢰 구간이 좁고, 데이터가 없는 영역에서는 넓어진다.*
 
 ## 시각화: Gaussian Process 예측 구간
 

@@ -62,6 +62,9 @@ MSE는 단위가 타깃의 제곱이므로, 해석 편의를 위해 RMSE(Root MS
 
 ## 파라미터 추정 방법
 
+![OLS 시각화: 최소제곱법으로 데이터에 가장 잘 맞는 직선 찾기](figures/ols_visualization.png)
+*OLS(최소제곱법): 데이터 포인트들과 회귀 직선 사이의 잔차 제곱합을 최소화하는 최적의 파라미터를 찾는 과정을 보여준다.*
+
 ### 방법 1: OLS 해석적 해 (정규방정식)
 
 $\mathcal{L}_{\text{RSS}} = \|\mathbf{y} - X\mathbf{w}\|_2^2$를 $\mathbf{w}$에 대해 미분하고 0으로 놓으면:
@@ -105,6 +108,9 @@ $$\mathbf{w} \leftarrow \mathbf{w} - \alpha \frac{\partial \mathcal{L}}{\partial
 | 다중공선성 | 역행렬 불가 | 여전히 작동하나 불안정 |
 
 ---
+
+![선형 회귀 잔차 분석: 잔차 패턴을 통한 모델 진단](figures/linear_regression_residual.png)
+*잔차 분석: 잔차 vs 예측값 플롯에서 패턴이 없으면 선형성과 등분산성 가정이 충족되며, 패턴이 보이면 모델 개선이 필요하다.*
 
 ## 선형 회귀의 5가지 가정 (Gauss-Markov 조건)
 

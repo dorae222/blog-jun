@@ -74,6 +74,9 @@ print(f"\n불균형 비율: {majority // minority}:1")
 
 ## 오버샘플링 (Over-sampling)
 
+![리샘플링 방법 비교: 오버샘플링, 언더샘플링, 결합 방법의 효과](figures/resampling_comparison.png)
+*리샘플링 비교: 원본 데이터, 랜덤 오버샘플링, SMOTE, 랜덤 언더샘플링 적용 후의 클래스 분포 변화를 시각적으로 비교한다.*
+
 소수 클래스의 샘플 수를 인위적으로 늘려서 균형을 맞추는 방법입니다.
 
 ### 단순 복제 (Random Oversampling)
@@ -86,6 +89,9 @@ from imblearn.over_sampling import RandomOverSampler
 ros = RandomOverSampler(random_state=42)
 X_resampled, y_resampled = ros.fit_resample(X_train, y_train)
 ```
+
+![SMOTE 동작 시각화: 소수 클래스 사이에 합성 샘플을 생성하는 과정](figures/smote_visualization.png)
+*SMOTE 알고리즘: 소수 클래스의 기존 샘플 사이에 보간점을 생성하여 합성 샘플을 만드는 과정을 2D 공간에서 보여준다.*
 
 ### SMOTE: Synthetic Minority Over-sampling Technique
 

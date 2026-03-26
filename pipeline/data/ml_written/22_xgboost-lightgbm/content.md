@@ -64,6 +64,9 @@ XGBoost는 **Column Subsampling(colsample_bytree)**을 지원하여 트리마다
 
 ---
 
+![트리 성장 전략: Level-wise vs Leaf-wise 성장 방식의 구조적 차이](figures/tree_growth_strategy.png)
+*트리 성장 전략: Level-wise는 같은 깊이의 모든 노드를 동시에 분기하고, Leaf-wise는 손실 감소가 가장 큰 리프를 우선 분기하여 더 효율적인 학습을 달성한다.*
+
 ## 3. LightGBM: 속도와 효율의 혁신
 
 Microsoft가 2017년 공개한 LightGBM은 XGBoost보다 최대 20배 빠른 학습 속도와 더 낮은 메모리 사용량을 달성하였다. 핵심은 두 가지 알고리즘 혁신에 있다.
@@ -139,6 +142,9 @@ $$\hat{x}_i^k = \frac{\sum_{j < i} [x_j^k = x_i^k] \cdot y_j + \alpha \cdot P}{\
 CatBoost는 **대칭 트리(Oblivious Decision Tree)** 구조를 사용한다. 같은 깊이의 모든 노드가 동일한 특성과 분기점을 사용한다. 이 구조는 더 단순하여 과적합에 강하고, 예측 시 룩업 테이블(lookup table)로 구현 가능해 추론 속도가 빠르다. 다만 XGBoost, LightGBM 대비 표현력이 일부 제한된다.
 
 ---
+
+![부스팅 프레임워크 비교: XGBoost, LightGBM, CatBoost의 핵심 특성 비교](figures/framework_comparison.png)
+*부스팅 프레임워크 비교: XGBoost, LightGBM, CatBoost 세 프레임워크의 학습 속도, 메모리 효율, 범주형 처리 등 핵심 특성을 비교한다.*
 
 ## 5. 3대장 비교 표
 

@@ -29,6 +29,9 @@
 
 머신러닝은 학습 데이터에 레이블(Label)이 존재하는지, 환경과 상호작용하는지에 따라 크게 네 가지 유형으로 분류됩니다.
 
+![머신러닝 유형 벤 다이어그램: AI, ML, DL의 포함 관계와 학습 유형 분류](figures/ml_types_venn.png)
+*머신러닝 유형 분류: AI, ML, DL의 포함 관계와 지도학습, 비지도학습, 강화학습, 자기지도학습의 위치를 보여준다.*
+
 ### 1. 지도학습 (Supervised Learning)
 
 입력 $\mathbf{x}$와 정답 레이블 $y$의 쌍 $\{(\mathbf{x}_i, y_i)\}_{i=1}^{N}$으로부터 매핑 함수 $f: \mathbf{x} \rightarrow y$를 학습합니다.
@@ -143,6 +146,9 @@ Wolpert(1996)의 **No Free Lunch (NFL) 정리**는, 모든 가능한 문제에 �
 ---
 
 ## DL과의 차이점: 전통 ML vs 딥러닝
+
+![모델 복잡도와 오차의 관계: 과소적합에서 과적합까지의 U자형 곡선](figures/complexity_vs_error.png)
+*모델 복잡도에 따른 오차 변화: 복잡도가 너무 낮으면 과소적합, 너무 높으면 과적합이 발생하며, 최적 지점에서 일반화 성능이 가장 좋다.*
 
 ### Feature Engineering vs Feature Learning
 

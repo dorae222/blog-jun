@@ -41,6 +41,9 @@ $$r_{im} = y_i - p_{m-1}(x_i)$$
 
 ---
 
+![순차적 잔차 학습: 그래디언트 부스팅의 단계별 잔차 보정 과정](figures/sequential_residual_fitting.png)
+*순차적 잔차 학습: 이전 모델의 잔차를 다음 모델이 학습하면서 전체 앙상블의 예측이 점차 정교해지는 과정을 보여준다.*
+
 ## 알고리즘 단계별 설명
 
 ### GBM 알고리즘 (Friedman, 2001)
@@ -196,6 +199,9 @@ print(f"최적 트리 수: {np.argmin(test_errors) + 1}")
 ![Gradient-Boosting Fig 1](/media/figures/outputs/gradient-boosting/gradient-boosting_fig_1.png)
 
 ---
+
+![학습률 효과: 학습률에 따른 모델 수렴 속도와 과적합 양상 비교](figures/learning_rate_effect.png)
+*학습률 효과: 학습률이 낮을수록 수렴이 느리지만 일반화 성능이 좋고, 높을수록 빠르게 수렴하지만 과적합 위험이 증가한다.*
 
 ## 시각화
 

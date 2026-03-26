@@ -57,6 +57,9 @@ $$a^* = \arg\max_{a \in \mathcal{A}}\ \text{val\_acc}(a)$$
 
 ---
 
+![탐색 공간: 하이퍼파라미터 탐색 공간에서 Grid, Random, Bayesian 탐색 전략 비교](figures/search_space.png)
+*탐색 공간: Grid Search는 균일하게, Random Search는 무작위로, Bayesian Optimization은 이전 결과를 활용하여 효율적으로 탐색한다.*
+
 ## 주요 알고리즘과 라이브러리
 
 ### HPO 라이브러리
@@ -174,6 +177,9 @@ print(automl.leaderboard())
 ```
 
 ---
+
+![베이지안 최적화: 대리 모델과 획득 함수를 활용한 반복적 탐색 과정 시각화](figures/bayesian_optimization.png)
+*베이지안 최적화: 가우시안 프로세스 대리 모델이 목적 함수를 근사하고, 획득 함수가 탐색과 활용의 균형을 맞추며 최적점을 찾아간다.*
 
 ## 시각화
 

@@ -8,6 +8,9 @@
 
 ---
 
+![SVM 마진과 서포트 벡터: 최대 마진 초평면과 경계를 결정하는 서포트 벡터](figures/svm_margin_support_vectors.png)
+*SVM 마진과 서포트 벡터: 두 클래스 사이의 마진을 최대화하는 초평면과, 마진 경계에 위치한 서포트 벡터를 보여준다.*
+
 ## 2. 하드 마진 SVM
 
 ### 결정 초평면
@@ -57,6 +60,9 @@ $$\text{subject to} \quad y_i(\mathbf{w}^T\mathbf{x}_i + b) \geq 1 - \xi_i, \qua
 이 관계를 요약하면: $C \uparrow \Rightarrow$ 편향 감소, 분산 증가 / $C \downarrow \Rightarrow$ 편향 증가, 분산 감소.
 
 ---
+
+![커널 트릭 시각화: 비선형 데이터를 고차원 공간으로 매핑하여 선형 분리](figures/kernel_trick.png)
+*커널 트릭: 원래 공간에서 선형 분리가 불가능한 데이터를 커널 함수를 통해 고차원 공간에 매핑하면 선형 초평면으로 분류할 수 있다.*
 
 ## 4. 커널 트릭(Kernel Trick)
 

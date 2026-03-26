@@ -55,6 +55,9 @@ $$\min_{W, H \geq 0} \| V - WH \|_F^2$$
 
 ---
 
+![토픽-단어 히트맵: 각 토픽별 주요 단어의 확률 분포를 히트맵으로 시각화](figures/topic_word_heatmap.png)
+*토픽-단어 히트맵: 각 토픽이 어떤 단어들로 구성되어 있는지 한눈에 파악할 수 있으며, 토픽 간 차별화된 단어 분포를 보여준다.*
+
 ## 알고리즘 상세
 
 ### LDA 학습 알고리즘
@@ -221,6 +224,9 @@ print(f"최소 perplexity: {min(perplexities):.2f} (K={topic_range[np.argmin(per
 ![Topic-Modeling Fig 1](/media/figures/outputs/topic-modeling/topic-modeling_fig_1.png)
 
 ---
+
+![문서-토픽 분포: 각 문서가 어떤 토픽들의 혼합으로 구성되어 있는지 시각화](figures/document_topic_distribution.png)
+*문서-토픽 분포: 각 문서는 여러 토픽의 혼합으로 표현되며, 문서별 토픽 비중 차이를 통해 문서 간 유사성과 차이를 파악할 수 있다.*
 
 ## 시각화
 

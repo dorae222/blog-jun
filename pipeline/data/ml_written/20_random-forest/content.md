@@ -77,6 +77,9 @@ $B \to \infty$이더라도 $\rho \cdot \sigma^2$이 남기 때문에, **트리 �
 
 ---
 
+![OOB 오차 수렴: 트리 수 증가에 따른 OOB 오류율의 변화](figures/oob_error_vs_n_estimators.png)
+*OOB 오차 수렴: 트리 수가 증가할수록 OOB 오류율이 감소하다가 일정 수준에서 수렴하는 과정을 보여준다.*
+
 ## 4. OOB (Out-Of-Bag) 오차
 
 Random Forest의 실용적인 장점 중 하나는 **별도의 검증 세트 없이도 모델 성능을 추정**할 수 있다는 것입니다.
@@ -95,6 +98,9 @@ $$
 각 샘플은 평균적으로 약 $B \times 0.368$개의 트리에서 OOB 샘플이 되므로, 충분한 수의 트리로 안정적인 추정이 가능합니다. 실제로 OOB 오차는 $k$-폴드 교차 검증과 유사한 수준의 추정 정확도를 보이면서도, 계산 비용은 훨씬 적습니다.
 
 ---
+
+![Random Forest 특성 중요도: Gini Importance와 Permutation Importance 비교](figures/rf_feature_importance.png)
+*Random Forest 특성 중요도: Gini 기반 중요도와 Permutation 기반 중요도를 비교하여 각 특성의 예측 기여도를 시각화한다.*
 
 ## 5. Feature Importance
 

@@ -8,6 +8,9 @@
 
 ---
 
+![회귀 평가 지표 비교: MSE, RMSE, MAE, R 등 주요 지표의 특성과 차이](figures/regression_metrics_comparison.png)
+*회귀 평가 지표 비교: 각 지표가 이상치, 스케일, 해석 용이성 측면에서 서로 다른 특성을 가지며, 상황에 따라 적절한 지표를 선택해야 한다.*
+
 ## 수학적 배경
 
 ### MSE (Mean Squared Error, 평균 제곱 오차)
@@ -201,6 +204,9 @@ print(df_results.to_string())
 ```
 
 ---
+
+![실제값 vs 예측값: 회귀 모델의 예측 정확도를 산점도로 시각화](figures/actual_vs_predicted.png)
+*실제값 vs 예측값: 대각선에 가까울수록 예측이 정확하며, 대각선에서 벗어난 점들이 모델의 오차 패턴을 드러낸다.*
 
 ## 시각화
 

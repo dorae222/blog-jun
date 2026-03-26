@@ -10,6 +10,9 @@ PCA(주성분 분석)는 선형 변환으로 분산이 큰 방향을 순서대�
 
 ---
 
+![t-SNE perplexity 비교: 다양한 perplexity 값에 따른 임베딩 결과 차이](figures/tsne_perplexity_comparison.png)
+*t-SNE perplexity 비교: perplexity가 작으면 국소 구조에 집중하여 파편화되고, 크면 전역 구조를 강조하여 클러스터 경계가 흐려진다.*
+
 ## 수학적 배경
 
 ### t-SNE: KL Divergence 최소화
@@ -175,6 +178,9 @@ X_iris_umap = umap.UMAP(n_neighbors=10, min_dist=0.3, random_state=42).fit_trans
 ```
 
 ---
+
+![t-SNE 숫자 데이터 시각화: MNIST 숫자 데이터셋의 t-SNE 2D 임베딩](figures/tsne_digits.png)
+*t-SNE 숫자 데이터 시각화: MNIST 숫자 데이터셋을 t-SNE로 2D 투영하면 각 숫자 클래스가 조밀하고 분리된 클러스터로 나타난다.*
 
 ## 시각화 비교
 
