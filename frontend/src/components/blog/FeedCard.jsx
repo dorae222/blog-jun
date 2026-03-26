@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Eye } from 'lucide-react'
+import { getCategoryIcon } from '../../utils/categoryIcons'
 
 export default function FeedCard({ item }) {
   const imageUrl = item.cover_image_url || item.figure_url
@@ -19,14 +20,14 @@ export default function FeedCard({ item }) {
     >
       {/* 이미지 영역 */}
       <div className="relative aspect-[16/10] overflow-hidden"
-        style={{ background: imageUrl ? undefined : `linear-gradient(135deg, ${categoryColor}20, ${categoryColor}08)` }}>
+        style={{ background: imageUrl ? undefined : `linear-gradient(135deg, ${categoryColor}12, ${categoryColor}08)` }}>
         {imageUrl ? (
-          <img src={imageUrl} alt={item.title}
+          <img src={imageUrl} alt={item.title} loading="lazy"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <span className="text-2xl sm:text-4xl opacity-20" style={{ color: categoryColor }}>
-              {categoryName?.[0] || '?'}
+            <span style={{ color: categoryColor, opacity: 0.25 }}>
+              {getCategoryIcon(item.category?.slug, 48)}
             </span>
           </div>
         )}
@@ -34,13 +35,13 @@ export default function FeedCard({ item }) {
 
       {/* 텍스트 영역 */}
       <div className="p-3 sm:p-4">
-        <h3 className="font-semibold text-sm line-clamp-2 mb-1.5 group-hover:text-primary-600 transition-colors"
+        <h3 className="font-semibold text-sm sm:text-base line-clamp-2 mb-1.5 group-hover:text-primary-600 transition-colors"
           style={{ color: 'var(--text)' }}>
           {item.title}
         </h3>
 
         {item.summary && (
-          <p className="text-xs line-clamp-2 mb-3" style={{ color: 'var(--text-secondary)' }}>
+          <p className="text-xs sm:text-sm line-clamp-2 mb-3" style={{ color: 'var(--text-secondary)' }}>
             {item.summary}
           </p>
         )}
@@ -48,13 +49,13 @@ export default function FeedCard({ item }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             {categoryName && (
-              <span className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-                style={{ background: `${categoryColor}15`, color: categoryColor }}>
+              <span className="text-xs font-medium px-2 py-0.5 rounded-full"
+                style={{ background: `${categoryColor}12`, color: categoryColor }}>
                 {categoryName}
               </span>
             )}
           </div>
-          <div className="flex items-center gap-1 text-[11px]" style={{ color: 'var(--text-secondary)' }}>
+          <div className="flex items-center gap-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
             <Eye size={11} />
             <span>{item.view_count || 0}</span>
           </div>
@@ -64,7 +65,7 @@ export default function FeedCard({ item }) {
         {item.tags?.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-2">
             {item.tags.slice(0, 3).map((tag) => (
-              <span key={tag.id} className="text-[10px] px-1.5 py-0.5 rounded"
+              <span key={tag.id} className="text-[11px] px-1.5 py-0.5 rounded"
                 style={{ background: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}>
                 {tag.name}
               </span>

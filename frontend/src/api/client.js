@@ -5,6 +5,7 @@ const API_BASE = import.meta.env.VITE_API_URL || '/api'
 const client = axios.create({
   baseURL: API_BASE,
   headers: { 'Content-Type': 'application/json' },
+  timeout: 30000,
 })
 
 client.interceptors.request.use((config) => {
@@ -35,6 +36,13 @@ client.interceptors.response.use(
           window.location.href = '/login'
         }
       }
+    }
+    // Retry on network errors or 5xx (except 401 which is handled above)
+    if (!original._retryNetwork && error.response?.status !== 401 &&
+      (error.code === 'ECONNABORTED' || !error.response || error.response.status >= 500)) {
+      original._retryNetwork = true
+      await new Promise(r => setTimeout(r, 1000))
+      return client(original)
     }
     return Promise.reject(error)
   }

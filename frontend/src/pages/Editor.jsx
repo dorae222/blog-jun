@@ -23,6 +23,7 @@ export default function Editor() {
   const [viewMode, setViewMode] = useState('wysiwyg') // wysiwyg | split | source
   const [showToc, setShowToc] = useState(false)
   const [headings, setHeadings] = useState([])
+  const [errors, setErrors] = useState({})
 
   const [form, setForm] = useState({
     title: '',
@@ -84,6 +85,12 @@ export default function Editor() {
   const updateForm = (updates) => {
     setForm(prev => ({ ...prev, ...updates }))
     setSaveStatus('changed')
+    // Clear validation errors for changed fields
+    setErrors(prev => {
+      const next = { ...prev }
+      Object.keys(updates).forEach(key => delete next[key])
+      return next
+    })
   }
 
   // 콘텐츠 변경 시 헤딩 추출 (TOC용)
@@ -98,25 +105,41 @@ export default function Editor() {
     })))
   }, [])
 
-  const handleSave = useCallback(async (silent = false) => {
+  const validateForm = () => {
+    const errs = {}
+    if (!form.title.trim()) errs.title = '제목을 입력하세요'
+    if (!form.content.trim()) errs.content = '내용을 입력하세요'
+    if (!form.category) errs.category = '카테고리를 선택하세요'
+    return errs
+  }
+
+  const handleSave = useCallback(async (silent = false, overrides = {}) => {
+    if (!silent) {
+      const validationErrors = validateForm()
+      if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors)
+        toast.error('필수 항목을 확인하세요')
+        return
+      }
+    }
     setSaveStatus('saving')
     try {
-      const data = { ...form }
+      const data = { ...form, ...overrides }
       if (!data.category) delete data.category
       if (!data.series) delete data.series
 
       if (slug) {
         await updatePost(slug, data)
-        if (!silent) toast.success('Saved!')
+        if (!silent) toast.success('저장됨')
       } else {
         const r = await createPost(data)
-        if (!silent) toast.success('Created!')
+        if (!silent) toast.success('생성됨')
         navigate(`/editor/${r.data.slug}`, { replace: true })
       }
       setSaveStatus('saved')
     } catch (err) {
       setSaveStatus('changed')
-      toast.error('Save failed')
+      toast.error('저장 실패')
     }
   }, [form, slug, navigate])
 
@@ -135,10 +158,13 @@ export default function Editor() {
     return () => window.removeEventListener('keydown', handler)
   }, [handleSave])
 
-  const handlePublish = async () => {
-    setForm(prev => ({ ...prev, status: 'published' }))
-    setTimeout(() => handleSave(), 0)
-  }
+  useEffect(() => {
+    const handler = (e) => { if (saveStatus === 'changed') { e.preventDefault(); e.returnValue = '' } }
+    window.addEventListener('beforeunload', handler)
+    return () => window.removeEventListener('beforeunload', handler)
+  }, [saveStatus])
+
+  const handlePublish = () => handleSave(false, { status: 'published' })
 
   const handleImageUpload = useCallback(async (file) => {
     const formData = new FormData()
@@ -182,7 +208,7 @@ export default function Editor() {
           onChange={e => updateForm({ title: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-') })}
           placeholder="Post title..."
           className="flex-1 min-w-0 text-lg font-semibold bg-transparent outline-none"
-          style={{ color: 'var(--text)' }}
+          style={{ color: 'var(--text)', borderBottom: errors.title ? '2px solid #ef4444' : undefined }}
         />
 
         <select
@@ -203,7 +229,7 @@ export default function Editor() {
           value={form.category}
           onChange={e => updateForm({ category: e.target.value })}
           className="text-sm px-2 py-1 rounded border"
-          style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
+          style={{ borderColor: errors.category ? '#ef4444' : 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="">Category</option>
           {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -297,18 +323,33 @@ export default function Editor() {
           Templates
         </button>
 
+        <span className="text-xs shrink-0" style={{ color: 'var(--text-secondary)' }}>
+          {(() => {
+            const chars = form.content.trim().length
+            return `${chars}자 · ${Math.max(1, Math.ceil(chars / 500))}분`
+          })()}
+        </span>
+
         <span className="inline-flex items-center gap-1 text-xs px-2 shrink-0" style={{
           color: saveStatus === 'saved' ? '#10b981' : saveStatus === 'saving' ? '#f59e0b' : '#6366f1'
         }}>
           {saveStatus === 'saved' ? <><Check size={12} /> 저장됨</> : saveStatus === 'saving' ? '저장 중...' : <><Circle size={8} className="fill-current" /> 변경사항</>}
         </span>
 
-        <button onClick={() => handleSave()} className="text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300">
-          Save
+        <button
+          onClick={() => handleSave()}
+          disabled={saveStatus === 'saving'}
+          className="text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {saveStatus === 'saving' ? '저장 중...' : 'Save'}
         </button>
 
-        <button onClick={handlePublish} className="text-sm px-4 py-1.5 rounded bg-primary-600 text-white hover:bg-primary-700">
-          Publish
+        <button
+          onClick={handlePublish}
+          disabled={saveStatus === 'saving'}
+          className="text-sm px-4 py-1.5 rounded bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {saveStatus === 'saving' ? '저장 중...' : 'Publish'}
         </button>
       </div>
 

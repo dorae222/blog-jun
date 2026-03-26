@@ -1,10 +1,13 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 export default function TiltCard({ children, className = '', glowColor = 'rgba(59,130,246,0.3)' }) {
   const ref = useRef(null)
   const [transform, setTransform] = useState('')
   const [glowPos, setGlowPos] = useState({ x: 50, y: 50 })
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => { setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0) }, [])
 
   const handleMouseMove = (e) => {
     const rect = ref.current.getBoundingClientRect()
@@ -34,8 +37,8 @@ export default function TiltCard({ children, className = '', glowColor = 'rgba(5
         border: '1px solid rgba(255,255,255,0.3)',
         boxShadow: '0 8px 32px rgba(31,38,135,0.08), inset 0 1px 0 rgba(255,255,255,0.4)',
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={isTouch ? undefined : handleMouseMove}
+      onMouseLeave={isTouch ? undefined : handleMouseLeave}
       whileHover={{ boxShadow: `0 20px 40px -12px ${glowColor}` }}
     >
       <div

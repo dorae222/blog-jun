@@ -27,6 +27,7 @@ export default function PostsTab({
   setPage,
   // 데이터
   visiblePosts, totalPosts, page, totalPages,
+  pageSize, setPageSize,
   auditMap, selected,
   // 콜백
   toggleSelect, toggleAll,
@@ -204,6 +205,7 @@ export default function PostsTab({
                 <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>제목</th>
                 <th className="px-3 py-2 text-left font-medium hidden md:table-cell" style={{ color: 'var(--text-secondary)' }}>카테고리</th>
                 <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>이슈</th>
+                <th className="px-3 py-2 text-left font-medium hidden lg:table-cell" style={{ color: 'var(--text-secondary)' }}>조회</th>
                 <th className="px-3 py-2 text-left font-medium" style={{ color: 'var(--text-secondary)' }}>상태</th>
                 <th className="px-3 py-2 text-right font-medium" style={{ color: 'var(--text-secondary)' }}>액션</th>
               </tr>
@@ -211,7 +213,7 @@ export default function PostsTab({
             <tbody>
               {visiblePosts.length === 0 && (
                 <tr>
-                  <td colSpan={6} className="px-4 py-8 text-center" style={{ color: 'var(--text-secondary)' }}>
+                  <td colSpan={7} className="px-4 py-8 text-center" style={{ color: 'var(--text-secondary)' }}>
                     포스트가 없습니다.
                   </td>
                 </tr>
@@ -269,6 +271,11 @@ export default function PostsTab({
                         </div>
                       ) : <span style={{ color: 'var(--border)' }}>-</span>}
                     </td>
+                    <td className="px-3 py-2 hidden lg:table-cell">
+                      <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+                        {post.view_count || 0}
+                      </span>
+                    </td>
                     <td className="px-3 py-2">
                       <span className="inline-flex items-center gap-1.5 text-xs px-2 py-0.5 rounded-full"
                         style={{
@@ -306,9 +313,23 @@ export default function PostsTab({
         </div>
 
         <div className="mt-3 flex items-center justify-between">
-          <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-            {visiblePosts.length}개 표시 / 전체 {totalPosts}개
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
+              {visiblePosts.length}개 표시 / 전체 {totalPosts}개
+            </p>
+            {setPageSize && (
+              <select
+                value={pageSize}
+                onChange={e => setPageSize(Number(e.target.value))}
+                className="text-xs px-2 py-1 rounded border"
+                style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text-secondary)' }}
+              >
+                {[10, 25, 50].map(n => (
+                  <option key={n} value={n}>{n}개씩</option>
+                ))}
+              </select>
+            )}
+          </div>
           {totalPages > 1 && (
             <div className="flex items-center gap-2">
               <button

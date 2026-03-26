@@ -100,7 +100,7 @@ function MermaidDiagram({ code }) {
   useEffect(() => {
     if (!code) return
     import('mermaid').then(({ default: mermaid }) => {
-      mermaid.initialize({ startOnLoad: false, theme: 'dark', securityLevel: 'loose' })
+      mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' })
       const id = `mermaid-view-${Date.now()}`
       mermaid.render(id, code)
         .then(({ svg }) => { setSvg(svg); setError(null) })
@@ -203,6 +203,13 @@ function ImageWithZoom({ src, alt }) {
   const [zoomed, setZoomed] = useState(false)
   const [broken, setBroken] = useState(false)
 
+  useEffect(() => {
+    if (!zoomed) return
+    const handleEsc = (e) => { if (e.key === 'Escape') setZoomed(false) }
+    window.addEventListener('keydown', handleEsc)
+    return () => window.removeEventListener('keydown', handleEsc)
+  }, [zoomed])
+
   if (broken) return null
 
   return (
@@ -214,6 +221,7 @@ function ImageWithZoom({ src, alt }) {
         onClick={() => setZoomed(true)}
         onError={() => setBroken(true)}
         className="rounded-lg cursor-zoom-in max-w-full mx-auto hover:shadow-lg transition-shadow"
+        style={{ maxHeight: '70vh' }}
       />
       {zoomed && (
         <div
@@ -223,7 +231,8 @@ function ImageWithZoom({ src, alt }) {
           <img
             src={src}
             alt={alt || ''}
-            className="max-w-full max-h-full object-contain rounded-lg"
+            className="object-contain rounded-lg"
+            style={{ maxWidth: '90vw', maxHeight: '90vh' }}
           />
         </div>
       )}
@@ -250,6 +259,10 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
                 return (
                   <figure className="my-6 text-center">
                     <ImageWithZoom src={src} alt={alt} />
+                    <figcaption className="mt-2 text-xs italic"
+                      style={{ color: 'var(--text-secondary)' }}>
+                      {alt}
+                    </figcaption>
                   </figure>
                 )
               }
