@@ -1,0 +1,44 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "(a) Average performance on four multimodal understanding benchmarks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x2.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "(a) Average performance on four multimodal understanding benchmarks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x3.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "(a) Average performance on four multimodal understanding benchmarks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "(b) Performance on instruction-following benchmarks for text-to-image generation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2: Comparison of text-to-image generation between Janus-Pro and its predecessor, Janus. Janus-Pro delivers more stable outputs for short prompts, with improved visual quality, richer details, and the ability to generate simple text. The image resolution is 384 × 384 384\\times 384 . Best viewed on screen.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3: Architecture of our Janus-Pro. We decouple visual encoding for multimodal understanding and visual generation. “Und. Encoder” and “Gen. Encoder” are abbreviations for “Understanding Encoder” and “Generation Encoder”, respectively. Best viewed on screen.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4: Qualitative results of multimodal understanding and visual generation capability . The model is Janus-Pro-7B and the image output resolution of visual generation is 384 × 384 384\\times 384 . Best viewed on screen.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.17811/assets/x6.png"
+  }
+]

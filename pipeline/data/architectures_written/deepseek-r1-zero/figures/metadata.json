@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Benchmark performance of DeepSeek-R1.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.12948/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: AIME accuracy of DeepSeek-R1-Zero during training. For each question, we sample 16 responses and calculate the overall average accuracy to ensure a stable evaluation.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.12948/assets/figures/plot_aime_with_maj.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: The average response length of DeepSeek-R1-Zero on the training set during the RL process. DeepSeek-R1-Zero naturally learns to solve reasoning tasks with more thinking time.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2501.12948/assets/figures/plot_length.png"
+  }
+]

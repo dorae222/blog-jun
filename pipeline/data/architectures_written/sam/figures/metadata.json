@@ -1,0 +1,1316 @@
+[
+  {
+    "filename": "fig_2_1.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/9_sa_1192782.jpg"
+  },
+  {
+    "filename": "fig_2_2.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/25_sa_864082.jpg"
+  },
+  {
+    "filename": "fig_2_3.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/32_sa_8234897.jpg"
+  },
+  {
+    "filename": "fig_2_4.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/45_sa_4298678.jpg"
+  },
+  {
+    "filename": "fig_2_5.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/67_sa_1468983.jpg"
+  },
+  {
+    "filename": "fig_2_6.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/61_sa_2146330.jpg"
+  },
+  {
+    "filename": "fig_2_7.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/66_sa_9307564.jpg"
+  },
+  {
+    "filename": "fig_2_8.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/65_sa_2889438.jpg"
+  },
+  {
+    "filename": "fig_2_9.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/187_sa_7694512.jpg"
+  },
+  {
+    "filename": "fig_2_10.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/145_sa_3647402.jpg"
+  },
+  {
+    "filename": "fig_2_11.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/116_sa_6137832.jpg"
+  },
+  {
+    "filename": "fig_2_12.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/154_sa_2945741.jpg"
+  },
+  {
+    "filename": "fig_2_13.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/208_sa_6808005.jpg"
+  },
+  {
+    "filename": "fig_2_14.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/230_sa_6506882.jpg"
+  },
+  {
+    "filename": "fig_2_15.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/250_sa_9338205.jpg"
+  },
+  {
+    "filename": "fig_2_16.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/221_sa_9820072.jpg"
+  },
+  {
+    "filename": "fig_2_17.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/360_sa_5537747.jpg"
+  },
+  {
+    "filename": "fig_2_18.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/318_sa_7769360.jpg"
+  },
+  {
+    "filename": "fig_2_19.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/304_sa_1437195.jpg"
+  },
+  {
+    "filename": "fig_2_20.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/317_sa_7651290.jpg"
+  },
+  {
+    "filename": "fig_2_21.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/456_sa_11107398.jpg"
+  },
+  {
+    "filename": "fig_2_22.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/452_sa_10129735.jpg"
+  },
+  {
+    "filename": "fig_2_23.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/438_sa_1596486.jpg"
+  },
+  {
+    "filename": "fig_2_24.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/401_sa_10771020.jpg"
+  },
+  {
+    "filename": "fig_2_25.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/783_sa_3805502.jpg"
+  },
+  {
+    "filename": "fig_2_26.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/823_sa_11048476.jpg"
+  },
+  {
+    "filename": "fig_2_27.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/576_sa_10463977.jpg"
+  },
+  {
+    "filename": "fig_2_28.jpg",
+    "caption": "Figure 2 : Example images with overlaid masks from our newly introduced dataset, SA-1B . SA-1B contains 11M diverse, high-resolution, licensed, and privacy protecting images and 1.1B high-quality segmentation masks. These masks were annotated fully automatically by SAM, and as we verify by human ratings and numerous experiments, are of high quality and diversity. We group images by number of masks per image for visualization (there are ∼ similar-to \\scriptstyle\\sim 100 masks per image on average).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/579_sa_1232910.jpg"
+  },
+  {
+    "filename": "fig_3_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/9_sa_1192782.jpg"
+  },
+  {
+    "filename": "fig_3_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/25_sa_864082.jpg"
+  },
+  {
+    "filename": "fig_3_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/32_sa_8234897.jpg"
+  },
+  {
+    "filename": "fig_3_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/45_sa_4298678.jpg"
+  },
+  {
+    "filename": "fig_4_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/67_sa_1468983.jpg"
+  },
+  {
+    "filename": "fig_4_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/61_sa_2146330.jpg"
+  },
+  {
+    "filename": "fig_4_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/66_sa_9307564.jpg"
+  },
+  {
+    "filename": "fig_4_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/65_sa_2889438.jpg"
+  },
+  {
+    "filename": "fig_5_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/187_sa_7694512.jpg"
+  },
+  {
+    "filename": "fig_5_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/145_sa_3647402.jpg"
+  },
+  {
+    "filename": "fig_5_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/116_sa_6137832.jpg"
+  },
+  {
+    "filename": "fig_5_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/154_sa_2945741.jpg"
+  },
+  {
+    "filename": "fig_6_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/208_sa_6808005.jpg"
+  },
+  {
+    "filename": "fig_6_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/230_sa_6506882.jpg"
+  },
+  {
+    "filename": "fig_6_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/250_sa_9338205.jpg"
+  },
+  {
+    "filename": "fig_6_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/221_sa_9820072.jpg"
+  },
+  {
+    "filename": "fig_7_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/360_sa_5537747.jpg"
+  },
+  {
+    "filename": "fig_7_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/318_sa_7769360.jpg"
+  },
+  {
+    "filename": "fig_7_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/304_sa_1437195.jpg"
+  },
+  {
+    "filename": "fig_7_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/317_sa_7651290.jpg"
+  },
+  {
+    "filename": "fig_8_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/456_sa_11107398.jpg"
+  },
+  {
+    "filename": "fig_8_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/452_sa_10129735.jpg"
+  },
+  {
+    "filename": "fig_8_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/438_sa_1596486.jpg"
+  },
+  {
+    "filename": "fig_8_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/401_sa_10771020.jpg"
+  },
+  {
+    "filename": "fig_9_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/783_sa_3805502.jpg"
+  },
+  {
+    "filename": "fig_9_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/823_sa_11048476.jpg"
+  },
+  {
+    "filename": "fig_9_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/576_sa_10463977.jpg"
+  },
+  {
+    "filename": "fig_9_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/sa1b_examples/579_sa_1232910.jpg"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 3 : Each column shows 3 valid masks generated by SAM from a single ambiguous point prompt (green circle).",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x2.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 4 : Segment Anything Model (SAM) overview. A heavyweight image encoder outputs an image embedding that can then be efficiently queried by a variety of input prompts to produce object masks at amortized real-time speed. For ambiguous prompts corresponding to more than one object, SAM can output multiple valid masks and associated confidence scores.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x3.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 5 : Image-size normalized mask center distributions.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/center_distribution.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 6 : Dataset mask properties. The legend references the number of images and masks in each dataset. Note, that SA-1B has 11 × {\\times} more images and 400 × {\\times} more masks than the largest existing segmentation dataset Open Images [ 60 ] .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x4.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 6 : Dataset mask properties. The legend references the number of images and masks in each dataset. Note, that SA-1B has 11 × {\\times} more images and 400 × {\\times} more masks than the largest existing segmentation dataset Open Images [ 60 ] .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x5.png"
+  },
+  {
+    "filename": "fig_13_3.png",
+    "caption": "Figure 6 : Dataset mask properties. The legend references the number of images and masks in each dataset. Note, that SA-1B has 11 × {\\times} more images and 400 × {\\times} more masks than the largest existing segmentation dataset Open Images [ 60 ] .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x6.png"
+  },
+  {
+    "filename": "fig_13_4.png",
+    "caption": "Figure 6 : Dataset mask properties. The legend references the number of images and masks in each dataset. Note, that SA-1B has 11 × {\\times} more images and 400 × {\\times} more masks than the largest existing segmentation dataset Open Images [ 60 ] .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x7.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 7 : Estimated geographic distribution of SA-1B images. Most of the world’s countries have more than 1000 images in SA-1B , and the three countries with the most images are from different parts of the world.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x8.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 7 : Estimated geographic distribution of SA-1B images. Most of the world’s countries have more than 1000 images in SA-1B , and the three countries with the most images are from different parts of the world.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x9.png"
+  },
+  {
+    "filename": "fig_15_1.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/ade20k_ADE_val_00001049.jpg"
+  },
+  {
+    "filename": "fig_15_2.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/cells_10k_0e21d7b3eea8cdbbed60d51d72f4f8c1974c5d76a8a3893a7d5835c85284132e.jpg"
+  },
+  {
+    "filename": "fig_15_3.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/cityscapes_10k_blurred_munster_000144_000019_leftImg8bit_blurred.jpg"
+  },
+  {
+    "filename": "fig_15_4.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/doors_10k_TR_024413.jpg"
+  },
+  {
+    "filename": "fig_15_5.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/dram_10k_1905_221847.jpg"
+  },
+  {
+    "filename": "fig_15_6.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/egohos_10k_blurred_thu_manicure_RGB_manicure_lzy_1_68.jpg"
+  },
+  {
+    "filename": "fig_15_7.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/gtea_10k_blurred_s4_cofhoney_0000000700.jpg"
+  },
+  {
+    "filename": "fig_15_8.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/hypersim_10k_frame.jpg"
+  },
+  {
+    "filename": "fig_15_9.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/drones_10k_69-10400-3200-OR.jpg"
+  },
+  {
+    "filename": "fig_15_10.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/ishape_10k_3982.jpg"
+  },
+  {
+    "filename": "fig_15_11.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/lvis_10k_blurred_000000050844.jpg"
+  },
+  {
+    "filename": "fig_15_12.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/ndd20_10k_1599.jpg"
+  },
+  {
+    "filename": "fig_15_13.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/ndis_10k_blurred_64_1537102819.jpg"
+  },
+  {
+    "filename": "fig_15_14.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/ovis_10k_blurred_img_0000022.jpg"
+  },
+  {
+    "filename": "fig_15_15.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/plant_10k_ara2012_plant101_rgb.jpg"
+  },
+  {
+    "filename": "fig_15_16.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/plittersdorf_10k_20220213100529_000507.jpg"
+  },
+  {
+    "filename": "fig_15_17.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/streets_10k_Lake.jpg"
+  },
+  {
+    "filename": "fig_15_18.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/timberseg_10k_000050.jpg"
+  },
+  {
+    "filename": "fig_15_19.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/trashcan_10k_vid_000343_frame0000015.jpg"
+  },
+  {
+    "filename": "fig_15_20.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/visor_10k_blurred_P04_13_frame_0000005102.jpg"
+  },
+  {
+    "filename": "fig_15_21.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/woodscapes_10k_03918_MVL.jpg"
+  },
+  {
+    "filename": "fig_15_22.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/xray_hard_10k_xray_hard00550.jpg"
+  },
+  {
+    "filename": "fig_15_23.jpg",
+    "caption": "Figure 8 : Samples from the 23 diverse segmentation datasets used to evaluate SAM’s zero-shot transfer capabilities.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/datasets/zerowaste_10k_07_frame_032200.jpg"
+  },
+  {
+    "filename": "fig_16_1.png",
+    "caption": "Figure 9 : Point to mask evaluation on 23 datasets. (a) Mean IoU of SAM and the strongest single point segmenter, RITM [ 92 ] . Due to ambiguity, a single mask may not match ground truth; circles show “oracle” results of the most relevant of SAM’s 3 predictions. (b) Per-dataset comparison of mask quality ratings by annotators from 1 (worst) to 10 (best). All methods use the ground truth mask center as the prompt. (c, d) mIoU with varying number of points. SAM significantly outperforms prior interactive segmenters with 1 point and is on par with more points. Low absolute mIoU at 1 point is the result of ambiguity.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x10.png"
+  },
+  {
+    "filename": "fig_16_2.png",
+    "caption": "Figure 9 : Point to mask evaluation on 23 datasets. (a) Mean IoU of SAM and the strongest single point segmenter, RITM [ 92 ] . Due to ambiguity, a single mask may not match ground truth; circles show “oracle” results of the most relevant of SAM’s 3 predictions. (b) Per-dataset comparison of mask quality ratings by annotators from 1 (worst) to 10 (best). All methods use the ground truth mask center as the prompt. (c, d) mIoU with varying number of points. SAM significantly outperforms prior interactive segmenters with 1 point and is on par with more points. Low absolute mIoU at 1 point is the result of ambiguity.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x11.png"
+  },
+  {
+    "filename": "fig_16_3.png",
+    "caption": "Figure 9 : Point to mask evaluation on 23 datasets. (a) Mean IoU of SAM and the strongest single point segmenter, RITM [ 92 ] . Due to ambiguity, a single mask may not match ground truth; circles show “oracle” results of the most relevant of SAM’s 3 predictions. (b) Per-dataset comparison of mask quality ratings by annotators from 1 (worst) to 10 (best). All methods use the ground truth mask center as the prompt. (c, d) mIoU with varying number of points. SAM significantly outperforms prior interactive segmenters with 1 point and is on par with more points. Low absolute mIoU at 1 point is the result of ambiguity.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x12.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "Figure 10 : Zero-shot edge prediction on BSDS500. SAM was not trained to predict edge maps nor did it have access to BSDS images or annotations during training.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x13.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "Figure 10 : Zero-shot edge prediction on BSDS500. SAM was not trained to predict edge maps nor did it have access to BSDS images or annotations during training.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x14.png"
+  },
+  {
+    "filename": "fig_17_3.png",
+    "caption": "Figure 10 : Zero-shot edge prediction on BSDS500. SAM was not trained to predict edge maps nor did it have access to BSDS images or annotations during training.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x15.png"
+  },
+  {
+    "filename": "fig_17_4.png",
+    "caption": "Figure 10 : Zero-shot edge prediction on BSDS500. SAM was not trained to predict edge maps nor did it have access to BSDS images or annotations during training.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x16.png"
+  },
+  {
+    "filename": "fig_17_5.png",
+    "caption": "Figure 10 : Zero-shot edge prediction on BSDS500. SAM was not trained to predict edge maps nor did it have access to BSDS images or annotations during training.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x17.png"
+  },
+  {
+    "filename": "fig_17_6.png",
+    "caption": "Figure 10 : Zero-shot edge prediction on BSDS500. SAM was not trained to predict edge maps nor did it have access to BSDS images or annotations during training.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x18.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 11 : Mask quality rating distribution from our human study for ViTDet and SAM, both applied to LVIS ground truth boxes. We also report LVIS and COCO ground truth quality. The legend shows rating means and 95% confidence intervals. Despite its lower AP (Table 5 ), SAM has higher ratings than ViTDet, suggesting that ViTDet exploits biases in the COCO and LVIS training data.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x19.png"
+  },
+  {
+    "filename": "fig_19_1.png",
+    "caption": "Figure 12 : Zero-shot text-to-mask. SAM can work with simple and nuanced text prompts. When SAM fails to make a correct prediction, an additional point prompt can help.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x20.png"
+  },
+  {
+    "filename": "fig_19_2.png",
+    "caption": "Figure 12 : Zero-shot text-to-mask. SAM can work with simple and nuanced text prompts. When SAM fails to make a correct prediction, an additional point prompt can help.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x21.png"
+  },
+  {
+    "filename": "fig_19_3.png",
+    "caption": "Figure 12 : Zero-shot text-to-mask. SAM can work with simple and nuanced text prompts. When SAM fails to make a correct prediction, an additional point prompt can help.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x22.png"
+  },
+  {
+    "filename": "fig_19_4.png",
+    "caption": "Figure 12 : Zero-shot text-to-mask. SAM can work with simple and nuanced text prompts. When SAM fails to make a correct prediction, an additional point prompt can help.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x23.png"
+  },
+  {
+    "filename": "fig_19_5.png",
+    "caption": "Figure 12 : Zero-shot text-to-mask. SAM can work with simple and nuanced text prompts. When SAM fails to make a correct prediction, an additional point prompt can help.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x24.png"
+  },
+  {
+    "filename": "fig_19_6.png",
+    "caption": "Figure 12 : Zero-shot text-to-mask. SAM can work with simple and nuanced text prompts. When SAM fails to make a correct prediction, an additional point prompt can help.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x25.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "Figure 13 : Ablation studies of our data engine stages, image encoder scaling, and training data scaling. (Left) Each data engine stage leads to improvements on our 23 dataset suite, and training with only the automatic data (our default) yields similar results to using data from all three stages. (Middle) SAM trained with ∼ similar-to \\scriptstyle\\sim 10% of SA-1B and full SA-1B is comparable. We train with all 11M images by default, but using 1M images is a reasonable practical setting. (Right) Scaling SAM’s image encoder shows meaningful, yet saturating gains. Nevertheless, smaller image encoders may be preferred in certain settings.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x26.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "Figure 13 : Ablation studies of our data engine stages, image encoder scaling, and training data scaling. (Left) Each data engine stage leads to improvements on our 23 dataset suite, and training with only the automatic data (our default) yields similar results to using data from all three stages. (Middle) SAM trained with ∼ similar-to \\scriptstyle\\sim 10% of SA-1B and full SA-1B is comparable. We train with all 11M images by default, but using 1M images is a reasonable practical setting. (Right) Scaling SAM’s image encoder shows meaningful, yet saturating gains. Nevertheless, smaller image encoders may be preferred in certain settings.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x27.png"
+  },
+  {
+    "filename": "fig_20_3.png",
+    "caption": "Figure 13 : Ablation studies of our data engine stages, image encoder scaling, and training data scaling. (Left) Each data engine stage leads to improvements on our 23 dataset suite, and training with only the automatic data (our default) yields similar results to using data from all three stages. (Middle) SAM trained with ∼ similar-to \\scriptstyle\\sim 10% of SA-1B and full SA-1B is comparable. We train with all 11M images by default, but using 1M images is a reasonable practical setting. (Right) Scaling SAM’s image encoder shows meaningful, yet saturating gains. Nevertheless, smaller image encoders may be preferred in certain settings.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x28.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 14 : Details of the lightweight mask decoder. A two-layer decoder updates both the image embedding and prompt tokens via cross-attention. Then the image embedding is upscaled, from which the updated output tokens are used to dynamically predict masks. (Not illustrated for figure clarity: At every attention layer, positional encodings are added to the image embedding, and the entire original prompt token (including position encoding) is re-added to the token queries and keys.)",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x29.png"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x30.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x31.png"
+  },
+  {
+    "filename": "fig_22_3.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x32.png"
+  },
+  {
+    "filename": "fig_22_4.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x33.png"
+  },
+  {
+    "filename": "fig_22_5.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x34.png"
+  },
+  {
+    "filename": "fig_22_6.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x35.png"
+  },
+  {
+    "filename": "fig_22_7.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x36.png"
+  },
+  {
+    "filename": "fig_22_8.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x37.png"
+  },
+  {
+    "filename": "fig_22_9.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x38.png"
+  },
+  {
+    "filename": "fig_22_10.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x39.png"
+  },
+  {
+    "filename": "fig_22_11.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x40.png"
+  },
+  {
+    "filename": "fig_22_12.png",
+    "caption": "Figure 15 : Additional visualizations of zero-shot edge predictions on BSDS500. Recall that SAM was not trained to predict edge maps and did not have access to BSDS images and annotations during training.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x41.png"
+  },
+  {
+    "filename": "fig_23_1.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x42.png"
+  },
+  {
+    "filename": "fig_23_2.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x43.png"
+  },
+  {
+    "filename": "fig_23_3.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x44.png"
+  },
+  {
+    "filename": "fig_23_4.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x45.png"
+  },
+  {
+    "filename": "fig_23_5.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x46.png"
+  },
+  {
+    "filename": "fig_23_6.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x47.png"
+  },
+  {
+    "filename": "fig_23_7.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x48.png"
+  },
+  {
+    "filename": "fig_23_8.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x49.png"
+  },
+  {
+    "filename": "fig_23_9.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x50.png"
+  },
+  {
+    "filename": "fig_23_10.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x51.png"
+  },
+  {
+    "filename": "fig_23_11.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x52.png"
+  },
+  {
+    "filename": "fig_23_12.png",
+    "caption": "Figure 16 : Zero-shot instance segmentation on LVIS v1. SAM produces higher quality masks than ViTDet. As a zero-shot model, SAM does not have the opportunity to learn specific training data biases; see top-right as an example where SAM makes a modal prediction, whereas the ground truth in LVIS is amodal given that mask annotations in LVIS have no holes.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x53.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 17 : Visualization of thresholding the similarities of mask embeddings from SAM’s latent space. A query is indicated by the magenta box; top row shows matches at a low threshold, bottom row at a high threshold. The most similar mask embeddings in the same image can often be semantically similar to the query mask embedding, even though SAM is not trained with explicit semantic supervision.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x54.png"
+  },
+  {
+    "filename": "fig_25_1.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x55.png"
+  },
+  {
+    "filename": "fig_25_2.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x56.png"
+  },
+  {
+    "filename": "fig_25_3.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x57.png"
+  },
+  {
+    "filename": "fig_25_4.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x58.png"
+  },
+  {
+    "filename": "fig_25_5.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x59.png"
+  },
+  {
+    "filename": "fig_25_6.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x60.png"
+  },
+  {
+    "filename": "fig_25_7.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x61.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "(a) LVIS v0.5 [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x55.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "(b) VISOR [ 28 , 27 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x56.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "(c) DRAM [ 24 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x57.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "(d) IBD [ 17 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x58.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "(e) NDD20 [ 100 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x59.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "(f) OVIS [ 81 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x60.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "(g) iShape [ 111 ]",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/x61.png"
+  },
+  {
+    "filename": "fig_33_1.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im1.jpg"
+  },
+  {
+    "filename": "fig_33_2.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im2.jpg"
+  },
+  {
+    "filename": "fig_33_3.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im3.jpg"
+  },
+  {
+    "filename": "fig_33_4.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im4.jpg"
+  },
+  {
+    "filename": "fig_33_5.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im5.jpg"
+  },
+  {
+    "filename": "fig_33_6.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im6.jpg"
+  },
+  {
+    "filename": "fig_33_7.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im7.jpg"
+  },
+  {
+    "filename": "fig_33_8.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im8.jpg"
+  },
+  {
+    "filename": "fig_33_9.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im9.jpg"
+  },
+  {
+    "filename": "fig_33_10.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im10.jpg"
+  },
+  {
+    "filename": "fig_33_11.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im11.jpg"
+  },
+  {
+    "filename": "fig_33_12.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im12.jpg"
+  },
+  {
+    "filename": "fig_33_13.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im13.jpg"
+  },
+  {
+    "filename": "fig_33_14.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im14.jpg"
+  },
+  {
+    "filename": "fig_33_15.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im15.jpg"
+  },
+  {
+    "filename": "fig_33_16.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im16.jpg"
+  },
+  {
+    "filename": "fig_33_17.jpg",
+    "caption": "Objective and Setup",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im17.jpg"
+  },
+  {
+    "filename": "fig_35.jpg",
+    "caption": "Example interface page. There will be five images on the right and a question box on the left.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im1.jpg"
+  },
+  {
+    "filename": "fig_36.jpg",
+    "caption": "Mouse over an image to show the full image.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im2.jpg"
+  },
+  {
+    "filename": "fig_37.jpg",
+    "caption": "Click on an image to make it full screen. The arrows will cycle between images. Click again to return to previous view.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im3.jpg"
+  },
+  {
+    "filename": "fig_38.jpg",
+    "caption": "The first image on the top row shows the image without a mask. A blue point will be on the object of interest, or a blue and white box will surround it.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im4.jpg"
+  },
+  {
+    "filename": "fig_39.jpg",
+    "caption": "The second image on the top row shows the mask for the object in red.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im5.jpg"
+  },
+  {
+    "filename": "fig_40.jpg",
+    "caption": "The third image on the top row shows the mask only. The mask is in yellow and the background is purple.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im6.jpg"
+  },
+  {
+    "filename": "fig_41.jpg",
+    "caption": "The first image on the bottom row shows a zoomed in view of the object without a mask.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im7.jpg"
+  },
+  {
+    "filename": "fig_42.jpg",
+    "caption": "The second image on the bottom row shows a zoomed in view of the object with a mask. The mask is in red.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im8.jpg"
+  },
+  {
+    "filename": "fig_43.jpg",
+    "caption": "On the left are buttons to rate the mask quality, with selections 1-10.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im9.jpg"
+  },
+  {
+    "filename": "fig_48.jpg",
+    "caption": "Example error of ‘Include a piece of another object’: The elephant mask contains a piece of another nearby elephant.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im10.jpg"
+  },
+  {
+    "filename": "fig_49_1.jpg",
+    "caption": "Example error of ‘Missing a part of an object’: the mask is missing a disconnected part of the object: the back half of the zebra, and the right portion of the plate.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im11.jpg"
+  },
+  {
+    "filename": "fig_49_2.jpg",
+    "caption": "Example error of ‘Missing a part of an object’: the mask is missing a disconnected part of the object: the back half of the zebra, and the right portion of the plate.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im12.jpg"
+  },
+  {
+    "filename": "fig_50_1.jpg",
+    "caption": "Example error of ‘Include an arbitrary part of a collection’: In top top image, the point is on one orange rind, but the mask covers two orange rinds. This is a mask error: the mask covers an arbitrary number of objects in the collection, and should either cover one orange rind or all of them. In the bottom image, the box is around both vegetables. Since this is the best match to the box, this is not a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im13.jpg"
+  },
+  {
+    "filename": "fig_50_2.jpg",
+    "caption": "Example error of ‘Include an arbitrary part of a collection’: In top top image, the point is on one orange rind, but the mask covers two orange rinds. This is a mask error: the mask covers an arbitrary number of objects in the collection, and should either cover one orange rind or all of them. In the bottom image, the box is around both vegetables. Since this is the best match to the box, this is not a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im14.jpg"
+  },
+  {
+    "filename": "fig_51.jpg",
+    "caption": "Example error for ‘Incorrect holes in the mask’: This mask has holes in the upper left and on the left sides (black arrows). These holes are much easier to see on the ‘mask only’ image.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im15.jpg"
+  },
+  {
+    "filename": "fig_52.jpg",
+    "caption": "Example error for ‘Incorrect pixels included separated from the main part of the mask’: The ‘mask only’ view reveals a few stray incorrect pixels on the clock face.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im16.jpg"
+  },
+  {
+    "filename": "fig_53.jpg",
+    "caption": "Example error for ‘Poor edge quality’: The mask has poor edge quality, both along the edge of the umbrella, as well as along the thin pole.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im17.jpg"
+  },
+  {
+    "filename": "fig_54_1.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im18.jpg"
+  },
+  {
+    "filename": "fig_54_2.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im19.jpg"
+  },
+  {
+    "filename": "fig_54_3.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im20.jpg"
+  },
+  {
+    "filename": "fig_54_4.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im21.jpg"
+  },
+  {
+    "filename": "fig_54_5.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im22.jpg"
+  },
+  {
+    "filename": "fig_54_6.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im23.jpg"
+  },
+  {
+    "filename": "fig_54_7.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im24.jpg"
+  },
+  {
+    "filename": "fig_54_8.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im25.jpg"
+  },
+  {
+    "filename": "fig_54_9.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im26.jpg"
+  },
+  {
+    "filename": "fig_54_10.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im27.jpg"
+  },
+  {
+    "filename": "fig_54_11.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im28.jpg"
+  },
+  {
+    "filename": "fig_54_12.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im29.jpg"
+  },
+  {
+    "filename": "fig_54_13.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im30.jpg"
+  },
+  {
+    "filename": "fig_54_14.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im31.jpg"
+  },
+  {
+    "filename": "fig_54_15.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im16.jpg"
+  },
+  {
+    "filename": "fig_54_16.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im32.jpg"
+  },
+  {
+    "filename": "fig_54_17.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im33.jpg"
+  },
+  {
+    "filename": "fig_54_18.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im34.jpg"
+  },
+  {
+    "filename": "fig_54_19.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im35.jpg"
+  },
+  {
+    "filename": "fig_55.jpg",
+    "caption": "Example for ‘Combine two unrelated things’: The point indicates the lizard, but the mask covers both the lizard and a bird. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im18.jpg"
+  },
+  {
+    "filename": "fig_56.jpg",
+    "caption": "Example error for ‘Failure to consistently handle obscuring foreground objects’: The pole on the right (blue arrow) is excluded from the mask, while the pole on the left is included in the object (black arrow). The mask should either include or exclude both of these.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im19.jpg"
+  },
+  {
+    "filename": "fig_57.jpg",
+    "caption": "Example of ‘Pixelation of a small mask’: this mask has an imperfect boundary, since it extends beyond the object at the black arrow. However, the ‘blocky’ pattern of the mask is not an error, since, when zoomed in this much, the image is also blocky the same way.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im20.jpg"
+  },
+  {
+    "filename": "fig_58.jpg",
+    "caption": "Example error for consistency with the provided point: The mask does not agree with the blue point, so this is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im21.jpg"
+  },
+  {
+    "filename": "fig_59.jpg",
+    "caption": "Example for consistency with the provided point: For this input point, but the logo (left) and the container (right) are valid objects, since the blue point lies on both of them. Neither mask has a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im22.jpg"
+  },
+  {
+    "filename": "fig_60.jpg",
+    "caption": "Example for consistency with a box: The box surrounds the bowl of oranges, but the mask is only of a single orange. This is a mask error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im23.jpg"
+  },
+  {
+    "filename": "fig_61.jpg",
+    "caption": "Example for consistency with a box: The box’s shape fits the zebra. Even though the mask extends slightly outside the box to include the zebra’s left leg, this is not an error.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im24.jpg"
+  },
+  {
+    "filename": "fig_63.jpg",
+    "caption": "Example of a mask with a score of 1: It is not clear what object this mask corresponds to.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im25.jpg"
+  },
+  {
+    "filename": "fig_64.jpg",
+    "caption": "Example of a mask with a low score (2-4): The main object is identifiable, but the mask includes a large, incorrect portion of another object.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im26.jpg"
+  },
+  {
+    "filename": "fig_65.jpg",
+    "caption": "Example of a mask with a low score (2-4): The main object is identifiable, but a large, random part of the object is missing.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im27.jpg"
+  },
+  {
+    "filename": "fig_66.jpg",
+    "caption": "Example of a mask with a low-to-medium score (4-5): The object is identifiable and the edges are all correct, but the mask incorrectly includes the hand of the person on the left.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im28.jpg"
+  },
+  {
+    "filename": "fig_67.jpg",
+    "caption": "Example of a mask with a medium score (5-6): The mask clearly corresponds to the plate, but the boundary with the waffle is quite poor.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im29.jpg"
+  },
+  {
+    "filename": "fig_68.jpg",
+    "caption": "Example of a mask with a medium score (5-6): the object is easy to identify, and most of the edges make sense. However, there is a significant disconnected part (their arm inside the frame) that is mostly missing, as well as splotchy pixels in this region.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im30.jpg"
+  },
+  {
+    "filename": "fig_69.jpg",
+    "caption": "Example of a mask with a medium-to-high score (6-8): the mask has two small-ish regions of poor boundary, at the top of the mask and on the bottom right.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im31.jpg"
+  },
+  {
+    "filename": "fig_70.jpg",
+    "caption": "Example of a mask with a medium-to-high score (6-8): The wreath is a valid object that is the size of the box (the entire wreath + clock would also be a valid object). However, there are incorrect stray mask pixels on the clock.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im16.jpg"
+  },
+  {
+    "filename": "fig_71.jpg",
+    "caption": "Example of a mask with a high score (7-9): The boundary of the horse is almost entirely correct, except for the right side of its back leg. The mask consistently includes all of the equipment that horse is wearing, and has logical boundaries.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im32.jpg"
+  },
+  {
+    "filename": "fig_72.jpg",
+    "caption": "Example of a mask with a very high score ( ∼ similar-to \\sim 9): There are only minor errors around the edge of the mask. The blocky ‘pixelation’ is not an error, since the image is also blocky at this scale.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im33.jpg"
+  },
+  {
+    "filename": "fig_73.jpg",
+    "caption": "Example of a mask with a very high score (9-10): the mask has only very minor errors in the edge on the bottom right.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im34.jpg"
+  },
+  {
+    "filename": "fig_74.jpg",
+    "caption": "Example of a mask with a very high score (9-10): There are only minor errors around the edge of the mask.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.02643/assets/figs/annotator_guidelines/im35.jpg"
+  }
+]

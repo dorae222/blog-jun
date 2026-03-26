@@ -1,0 +1,14 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Cost-performance plot. Gemini 2.5 Pro is a marked improvement over Gemini 1.5 Pro, and has an LMArena score that is over 120 points higher than Gemini 1.5 Pro. Cost is a weighted average of input and output tokens pricing per million tokens. Source: LMArena , imported on 2025-06-16.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.06261/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Number of output tokens generated per second (after the first chunk has been received from the API) for different models. Source: ArtificialAnalysis.ai , imported on 2025-06-15.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.06261/assets/figures/speed_comparison_250615.pdf"
+  }
+]

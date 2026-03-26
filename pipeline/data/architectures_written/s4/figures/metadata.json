@@ -1,0 +1,122 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : ( Left ) State Space Models (SSM) parameterized by matrices 𝑨 , 𝑩 , 𝑪 , 𝑫 𝑨 𝑩 𝑪 𝑫 \\bm{A},\\bm{B},\\bm{C},\\bm{D} map an input signal u ​ ( t ) 𝑢 𝑡 u(t) to output y ​ ( t ) 𝑦 𝑡 y(t) through a latent state x ​ ( t ) 𝑥 𝑡 x(t) .\n( Center ) Recent theory on continuous-time memorization derives special 𝑨 𝑨 \\bm{A} matrices that allow SSMs to capture LRDs mathematically and empirically.\n( Right ) SSMs can be computed either as a recurrence (left) or convolution (right).\nHowever, materializing these conceptual views requires utilizing different representations of its parameters ( red , blue , green ) which are very expensive to compute.\nS4 introduces a novel parameterization that efficiently swaps between these representations, allowing it to handle a wide range of tasks, be efficient at both training and inference, and excel at long sequences.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/x1.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "Figure 4 : Visualizations of a trained S4 model on LRA Path-X. SSM convolution kernels 𝑲 ¯ ∈ ℝ 16384 bold-¯ 𝑲 superscript ℝ 16384 \\bm{\\overline{K}}\\in\\mathbbm{R}^{16384} are reshaped into a 128 × 128 128 128 128\\times 128 image. ( Left ) Example from the Path-X task, which involves deducing if the markers are connected by a path ( Top ) Filters from the first layer ( Bottom ) Filters from the last layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathx_positive.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "Figure 4 : Visualizations of a trained S4 model on LRA Path-X. SSM convolution kernels 𝑲 ¯ ∈ ℝ 16384 bold-¯ 𝑲 superscript ℝ 16384 \\bm{\\overline{K}}\\in\\mathbbm{R}^{16384} are reshaped into a 128 × 128 128 128 128\\times 128 image. ( Left ) Example from the Path-X task, which involves deducing if the markers are connected by a path ( Top ) Filters from the first layer ( Bottom ) Filters from the last layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_4_filters_layer_0.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "Figure 4 : Visualizations of a trained S4 model on LRA Path-X. SSM convolution kernels 𝑲 ¯ ∈ ℝ 16384 bold-¯ 𝑲 superscript ℝ 16384 \\bm{\\overline{K}}\\in\\mathbbm{R}^{16384} are reshaped into a 128 × 128 128 128 128\\times 128 image. ( Left ) Example from the Path-X task, which involves deducing if the markers are connected by a path ( Top ) Filters from the first layer ( Bottom ) Filters from the last layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_4_filters_layer_5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathx_positive.png"
+  },
+  {
+    "filename": "fig_7_1.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_4_filters_layer_0.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_4_filters_layer_5.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 9 : CIFAR-10 classification with unconstrained, real-valued SSMs with various initializations. ( Left ) Train accuracy. ( Right ) Validation accuracy.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_real_train.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 9 : CIFAR-10 classification with unconstrained, real-valued SSMs with various initializations. ( Left ) Train accuracy. ( Right ) Validation accuracy.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_real_validation.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_real_train.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_real_validation.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_nplr_validation.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_reg.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_nplr_validation.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(b)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/ssm_ablation_reg.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Figure 11 : Comparison of S4 and specialized time-series models for forecasting tasks. ( Top Left ) The forecasting task involves predicting future values of a time-series given past context. ( Bottom Left ) We perform simple forecasting using a sequence model such as S4 as a black box. ( Right ) Informer uses an encoder-decoder architecture designed specifically for forecasting problems involving a customized attention module (figure taken from Zhou et al. [ 50 ] ).",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/x2.png"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 12 : ( Convolutional filters on Pathfinder ) A random selection of filters learned by S4 in the first layer (top 2 rows) and last layer (bottom 2 rows) of the best model.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_filters_layer_0_trunc.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "Figure 12 : ( Convolutional filters on Pathfinder ) A random selection of filters learned by S4 in the first layer (top 2 rows) and last layer (bottom 2 rows) of the best model.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_filters_layer_5_trunc.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_filters_layer_0_trunc.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2111.00396/assets/figs/pathfinder_filters_layer_5_trunc.png"
+  }
+]

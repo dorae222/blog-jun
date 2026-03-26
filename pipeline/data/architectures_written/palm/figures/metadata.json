@@ -1,0 +1,242 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: These examples demonstrate exploratory capabilities in prompting PaLM to generate explanations using chain-of-thought prompting (Wei et al., 2022b ) . All examples were generated with greedy (1-best) decoding of PaLM 540B. The prompting was done with 2-shot exemplars, which are shown in Section 9 , along with output on more examples using these same exemplars.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: The Pathways system (Barham et al., 2022 ) scales training across two TPU v4 pods using two-way data parallelism at the pod level.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: The Pathways system (Barham et al., 2022 ) scales training across two TPU v4 pods using two-way data parallelism at the pod level.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: BIG-bench evaluation of PaLM. (left) Evaluation of PaLM, GPT-3, Gopher, and Chinchilla. Previous models have only evaluated on a subset of tasks, so this graph shows aggregate results on the 58 tasks which all three models have evaluated on. (right) Evaluation of PaLM on a larger set of 150 BIG-bench tasks. For each task, the results of its preferred metric are used. The results are normalized by setting the maximum score to 100 and the random chance score to 0 for multiple-choice tasks, so that they are negative valued if the model performs worse than random chance. The normalized results are averaged over all tasks.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x4.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: BIG-bench evaluation of PaLM. (left) Evaluation of PaLM, GPT-3, Gopher, and Chinchilla. Previous models have only evaluated on a subset of tasks, so this graph shows aggregate results on the 58 tasks which all three models have evaluated on. (right) Evaluation of PaLM on a larger set of 150 BIG-bench tasks. For each task, the results of its preferred metric are used. The results are normalized by setting the maximum score to 100 and the random chance score to 0 for multiple-choice tasks, so that they are negative valued if the model performs worse than random chance. The normalized results are averaged over all tasks.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4: Distribution of score difference in “normalized preferred metric” between PaLM 540B 5-shot and the prior SOTA across a common subset of 58 BIG-bench text tasks. Positive numbers (blue) indicate that PaLM 540B achieves higher than the prior SOTA, while negative numbers (orange) indicate that the prior SOTA is higher than that of PaLM 540B. Prior SOTA includes GPT-3 175B 1-shot (Brown et al., 2020 ) , Gopher 5-shot (Rae et al., 2021 ) and Chinchilla 5-shot (Hoffmann et al., 2022 ) . Names of individual tasks are not shown here for visual clarity.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5: 5-shot evaluations on six individual tasks with interesting scaling characteristics. For each task, the “normalized preferred metric” is used, where 0% corresponds to random guessing for multiple choice tasks. (a) shows log-linear improvements with scale, (b) shows “discontinuous” improvements with scale, and (c) shows relatively flat improvements with scale.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6: Distribution of score difference in “normalized preferred metric” between PaLM 540B and the average human performance across all 150 BIG-bench text tasks. Positive numbers (blue) indicate that PaLM 540B achieves higher than the average human performance, while negative numbers (orange) indicate that the average human performance is higher than that of PaLM 540B. Names of individual tasks are not shown here for visual clarity.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7: 5-shot evaluation performance by model scale for 24 tasks in BIG-bench Lite. 10 10 10 24 tasks in BIG-bench Lite correspond to t1: auto _ _ \\_ debugging, t2: bbq _ _ \\_ lite _ _ \\_ json, t3: code _ _ \\_ line _ _ \\_ description, t4: conceptual _ _ \\_ combinations, t5: conlang _ _ \\_ translation, t6: emoji _ _ \\_ movie, t7: formal _ _ \\_ fallacies _ _ \\_ syllogisms _ _ \\_ negation, t8: hindu _ _ \\_ knowledge, t9: known _ _ \\_ unknowns, t10: language _ _ \\_ identification, t11: logic _ _ \\_ grid _ _ \\_ puzzle, t12: logical _ _ \\_ deduction, t13: misconceptions _ _ \\_ russian, t14: novel _ _ \\_ concepts, t15: operators, t16: parsinlu _ _ \\_ reading _ _ \\_ comprehension, t17: play _ _ \\_ dialog _ _ \\_ same _ _ \\_ or _ _ \\_ different, t18: repeat _ _ \\_ copy _ _ \\_ logic, t19: strange _ _ \\_ stories, t20: strategyqa, t21: symbol _ _ \\_ interpretation, t22: vitaminc _ _ \\_ fact _ _ \\_ verification, t23: winowhy, t24: linguistics _ _ \\_ puzzles. PaLM 540B performs best among all model scales, but it achieves higher performance than the best human performance score on only 3 tasks suggesting further headroom for improvement. Task t24 is difficult for both the model and humans with performance close to 0.0. See footnote for task names and appendix H.2 for per-task data.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 8: Chain of thought prompting allows language models to better perform multi-step reasoning tasks such as math word problems.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 9: We analyzed 150 random GSM8K examples, and found that PaLM 62B makes reasoning errors on 45 of them. These were manually categorized into three general error types. Errors in the “Other” category included hallucinations, repetitive outputs, and symbol mapping errors. This figure shows the proportion of errors for each type that were fixed by scaling to PaLM 540B, which were substantial for all categories.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 10: Via chain of thought prompting, PaLM achieves strong performance on a range of arithmetic and commonsense reasoning tasks. PaLM achieves new SOTA on GSM8K, MAWPS, SVAMP, and StrategyQA. Comparisons with prior SOTA are the following. GSM8K: Cobbe et al. ( 2021 ) , MAWPS and ASDiv: Lan et al. ( 2021 ) , SVAMP: Pi et al. ( 2022 ) , AQuA: Piekos et al. ( 2021 ) , CommonsenseQA: Talmor et al. ( 2019 ) leadersboard, StrategyQA: Geva et al. ( 2021 ) .",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 11: Examples from the PaLM-Coder 540B model. (top left) GSM8K-Python question converted from the OpenAI GSM8K math dataset. (bottom left) TransCoder example translating a simple function from C++ to Python. (right) Converted HumanEval example.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x13.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 12: Scaling results for HumanEval, MBPP, GSM8K-Python, TransCoder, and DeepFix datasets on PaLM and PaLM-Coder models scales 8B, 62B and 540B. For DeepFix we report scaling of the compile rate.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x14.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 12: Scaling results for HumanEval, MBPP, GSM8K-Python, TransCoder, and DeepFix datasets on PaLM and PaLM-Coder models scales 8B, 62B and 540B. For DeepFix we report scaling of the compile rate.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x15.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "Figure 13: An example DeepFix problem with the original broken code on the left and the PaLM-Coder 540B model’s prediction on the right. The predicted code contains fixes for all of the compilation errors (undeclared variables), as well as other stylistic improvements (declaring variables together) and logic improvements (reading numbers into array a in a loop and not using index i outside the loop).",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/figs/deepfix_task_879.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "Figure 13: An example DeepFix problem with the original broken code on the left and the PaLM-Coder 540B model’s prediction on the right. The predicted code contains fixes for all of the compilation errors (undeclared variables), as well as other stylistic improvements (declaring variables together) and logic improvements (reading numbers into array a in a loop and not using index i outside the loop).",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/figs/deepfix_task_1147.png"
+  },
+  {
+    "filename": "fig_18_1.png",
+    "caption": "Figure 15: Comparison of PaLM on 0-shot translation tasks. (left) Comparison with previous large language models. (right) Comparison of different PaLM model scales.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x16.png"
+  },
+  {
+    "filename": "fig_18_2.png",
+    "caption": "Figure 15: Comparison of PaLM on 0-shot translation tasks. (left) Comparison with previous large language models. (right) Comparison of different PaLM model scales.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x17.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x16.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x17.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 16: Few-shot learning performance on 5 different tasks across 3 models sizes (8B, 62B, 540B). Most tasks improve monotonically as the number of few-shot examples is increased. Certain tasks like Trivia QA break this trend. Performance on the few-shot tasks scales well with model sizes, with the 540B model achieving the best performance across all tasks.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x18.png"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "Figure 17: Variance analysis of 1-shot learning over the course of pre-training. The checkpoints are all spaced 2B tokens apart that ends with the final model checkpoint. We can see relatively low variation in the score across similar steps, with the exception of WebQuestions on the 540B model. Note that elsewhere, we always present results on the final checkpoint, even if the results are worse than an earlier checkpoint.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x19.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "Figure 17: Variance analysis of 1-shot learning over the course of pre-training. The checkpoints are all spaced 2B tokens apart that ends with the final model checkpoint. We can see relatively low variation in the score across similar steps, with the exception of WebQuestions on the 540B model. Note that elsewhere, we always present results on the final checkpoint, even if the results are worse than an earlier checkpoint.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x20.png"
+  },
+  {
+    "filename": "fig_22_3.png",
+    "caption": "Figure 17: Variance analysis of 1-shot learning over the course of pre-training. The checkpoints are all spaced 2B tokens apart that ends with the final model checkpoint. We can see relatively low variation in the score across similar steps, with the exception of WebQuestions on the 540B model. Note that elsewhere, we always present results on the final checkpoint, even if the results are worse than an earlier checkpoint.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x21.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 18: (a) Proportions of training examples memorized for the three model sizes. Held-out data is from the same distribution as training, but was not exactly seen in the training. (b) Log-log plot of memorization rate based on how many times the example was seen in the training. (c) Proportion examples memorized, broken down by corpus.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x22.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 19: Each “Input” was independently prepended with the same 2-shot exemplar shown at the top, and “Model Output” shows the greedy decoding output of PaLM 540B. The two exemplar jokes are known jokes (explanations written by authors), while all evaluated jokes were written by the authors. Of course, these jokes do share abstract premises with existing jokes (wordplay, reliability, humorous analogies, reversal-of-expectations). The inference chaining examples were also written by the authors.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x23.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 20: Winogender overall accuracy on PaLM 62B and 540B, using different scoring methods. PaLM 540B achieves a new state-of-the-art performance in 1-shot and few-shot settings, even when using generative scoring methods.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x24.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "Figure 21: Diasaggregated Winogender accuracy on PaLM 540B. “Stereotypical” and “gotcha” indicates whether the correct answer could be inferred based on 2016 US BLS occupation data (Rudinger et al., 2018 ) . Performance is lower on “gotcha” examples.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x25.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "Figure 22: Distribution of toxicity probabilities of the continuation in the first sentence for various religious groups for PaLM 540B.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x26.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "Figure 23: Toxicity probability of the continuation (TPC) as a function of Toxicity probability of the prompt (TPP). The human baseline represents the toxicity probability of the original sentence continuation. Model TPC is more consistent with the TPP than the human TPC, suggesting that the model is strongly influenced by the prompt-style and is likely to respond like-to-like. Note that the PaLM 62B and 540B models have very similar toxicity profiles.",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x27.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "Figure 24: Model performance as a function of total training FLOP count. The PaLM line represents the scaling curve of PaLM 8B, 62B, 540B. BIG-bench uses “Normalized Preferred Metrics,” which is a score normalization provided by BIG-bench that linearly scales all results to make a score of 0.0 equivalent to random chance and 100.0 equivalent to perfect performance.",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x28.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "Figure 25: Hierarchical topics detected in the dataset.",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/figs/dataset_topics.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "Figure 26: Model performance as a function of total training FLOP count. On the 58 BIG-bench tasks and the 9 English NLP benchmarks ( Table 31 ), the solid line shows the scaling curve of model performance interpolated from PaLM 8B, 62B and 540B trained on 0.78T tokens, while the dashed line shows the performance gains from training PaLM 62B longer on 1.325T tokens.",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x29.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure 27: With additional training to 1.325T tokens, PaLM 62B achieves significant improvements on a range of tasks but does not bridge the gap to PaLM 540B.",
+    "figure_number": "Figure 27",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x30.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "Figure 28: Examples questions where PaLM 62B had incorrect responses with semantic understanding errors, but PaLM 540B fixed such errors.",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x31.png"
+  },
+  {
+    "filename": "fig_34_1.png",
+    "caption": "Figure 29: Examples questions where PaLM 62B had incorrect responses with one-step missing errors but PaLM 540B fixed such errors.",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x32.png"
+  },
+  {
+    "filename": "fig_34_2.png",
+    "caption": "Figure 29: Examples questions where PaLM 62B had incorrect responses with one-step missing errors but PaLM 540B fixed such errors.",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x33.png"
+  },
+  {
+    "filename": "fig_35.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x32.png"
+  },
+  {
+    "filename": "fig_36.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.02311/assets/x33.png"
+  }
+]

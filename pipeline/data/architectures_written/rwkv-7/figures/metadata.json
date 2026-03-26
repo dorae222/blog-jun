@@ -1,0 +1,194 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: RWKV-7’s overall architecture.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: A simple illustration of the update mechanism of a single head of RWKV-7’s state. Note that the actual state size is 64 × 64 64\\times 64 per head, not 4 × 4 4\\times 4 .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "(a) FLOPS vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/flops_vs_acc_multi.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "(a) FLOPS vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/active_vs_acc_multi.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(a) FLOPS vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/flops_vs_acc_multi.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(b) Active Parameters vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/active_vs_acc_multi.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "(a) FLOPS vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/flops_vs_acc_english.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "(a) FLOPS vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/active_vs_acc_english.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(a) FLOPS vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/flops_vs_acc_english.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(b) Active Parameters vs. Average Benchmark Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/active_vs_acc_english.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 5: PG19 loss versus sequence position for RWKV and Mamba models trained on The Pile datasets.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/pile_pg19_loss.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 6: PG19 loss versus sequence position for RWKV7 models and predecessors trained on the World dataset.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/world_pg19_loss.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "(a) 1.5B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/1b5_NIAH.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "(a) 1.5B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/2b9_NIAH.png"
+  },
+  {
+    "filename": "fig_11_3.png",
+    "caption": "(a) 1.5B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/1b5_NIAH_128k.png"
+  },
+  {
+    "filename": "fig_11_4.png",
+    "caption": "(a) 1.5B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/2b9_NIAH_128k.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(a) 1.5B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/1b5_NIAH.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(b) 3B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/2b9_NIAH.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(c) 1.5B extended",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/1b5_NIAH_128k.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(d) 3B extended",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/2b9_NIAH_128k.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 8: Minimum number of layers (lower is better) required to attain ¿ 95% validation accuracy on group multiplication problems by sequence length and group.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/x3.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 9: Time vs. Sequence Length (H100)",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/x4.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 10: The architecture of VisualRWKV-7. The input image is processed by three vision encoders, and the obtained features are concatenated. Afterward, they are projected through an MLP with context gating to align with the dimensions of the RWKV-7 block. Finally, the image features are concatenated with the text embeddings and fed into the RWKV-7 LLM.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/x5.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 11: The architecture of RWKV-7, drawn in detail.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/x6.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "(a) 0.1B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_0b1.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "(a) 0.1B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_0b4.png"
+  },
+  {
+    "filename": "fig_20_3.png",
+    "caption": "(a) 0.1B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_1b5.png"
+  },
+  {
+    "filename": "fig_20_4.png",
+    "caption": "(a) 0.1B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_2b9.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(a) 0.1B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_0b1.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "(b) 0.4b",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_0b4.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "(c) 1.5B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_1b5.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "(d) 2.9B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2503.14456/assets/figures/training_2b9.png"
+  }
+]

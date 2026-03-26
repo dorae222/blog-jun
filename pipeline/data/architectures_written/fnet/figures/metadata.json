@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: FNet architecture with N 𝑁 N encoder blocks.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.03824/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Speed-accuracy trade-offs for GPU pre-training. The dashed line shows the Pareto efficiency frontier, indicating the best trade-offs. For smaller models (faster training speeds; left-hand side of figure), the FNet (yellow squares) and Linear (red triangles) models define the frontier, while for larger models (slower training speeds; right-hand side of figure), BERT (blue circles) and FNet-Hybrid (green stars) define the frontier.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.03824/assets/figures/gpu_speed_accuracy.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Speed-accuracy trade-offs for TPU pre-training. The dashed line shows the Pareto efficiency frontier.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2105.03824/assets/figures/tpu_speed_accuracy.png"
+  }
+]

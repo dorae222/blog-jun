@@ -1,0 +1,104 @@
+[
+  {
+    "filename": "fig_1.jpg",
+    "caption": "Figure 1 : Visualization of the first PCA components. We compute a PCA between the patches of the images from the same column (a, b, c and d) and show their first 3 components.\nEach component is matched to a different color channel.\nSame parts are matched between related images despite changes of pose, style or even objects.\nBackground is removed by thresholding the first PCA component.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/new-figure-1.jpg"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Evolution of performance when scaling in parameters. We show performance on eight types of vision tasks, as presented in Sec. 7 , and average metrics with each type.\nFeatures are extracted from our self-supervised encoders, DINOv2 (dark blue), and we compare them with self-supervised methods (pale orange), as well as weakly-supervised methods (dark pink).\nWe report the best-performing weakly-supervised model’s performance as a dashed horizontal line.\nOur family of models drastically improves over the previous state of the art in self-supervised learning and reaches performance comparable with weakly-supervised features.\nSee Sec. 7 for a detailed analysis.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Overview of our data processing pipeline. Images from curated and uncurated data sources are first mapped to embeddings.\nUncurated images are then deduplicated before being matched to curated images.\nThe resulting combination augments the initial dataset through a self-supervised retrieval system.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x2.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_3.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x5.png"
+  },
+  {
+    "filename": "fig_4_4.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x6.png"
+  },
+  {
+    "filename": "fig_4_5.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x7.png"
+  },
+  {
+    "filename": "fig_4_6.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x8.png"
+  },
+  {
+    "filename": "fig_4_7.png",
+    "caption": "Figure 4 : Model scale versus data scale. Evolution of performance as a function of model size for two different pretraining datasets: ImageNet-22k (14M images) and LVD-142M (142M images).\nThe ViT-g trained on LVD-142M surpasses the ViT-g trained on ImageNet-22k on most benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x9.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(a) Comparison on individual metrics",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x10.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) Comparison on individual metrics",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x10.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6 : Role of resolution. Performance of ViT-L/16 trained on ImageNet-1k at fixed resolution (“224” and “416”) or trained at 224 then 416 for a short duration (“224 → → \\rightarrow 416”).\nWe train linear classifiers on top of frozen features at different resolutions and report Top-1 accuracy on ImageNet and mIoU on ADE-20k. We observe that performing SSL training at high resolution for a short duration achieve behavior and results close to training at the same high resolution for the full training, at a fraction of the cost.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/x11.png"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "Figure 7 : Segmentation and depth estimation with linear classifiers. Examples from ADE20K, NYUd, SUN RGB-D and KITTI with a linear probe on frozen OpenCLIP-G and DINOv2-g features.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/new-figure-7.jpg"
+  },
+  {
+    "filename": "fig_10.jpg",
+    "caption": "Figure 8 : Examples of out-of-distribution examples with frozen DINOv2-g features and a linear probe.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/new-figure-8.jpg"
+  },
+  {
+    "filename": "fig_11.jpg",
+    "caption": "Figure 9 : More visualization of the first PCA components. We compute the PCA between the patches from all of the images and show their first 3 components.\nEach component corresponds to a specific color channel. Same parts are matched between related images depsite changes of pose, style or even objects.\nBackground is removed by removing patches with a negative score of the first PCA component.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/new-figure-9.jpg"
+  },
+  {
+    "filename": "fig_12.jpg",
+    "caption": "Figure 10 : Matching across images. We match patch-level features between images from different domains, poses and even objects that share similar semantic information.\nThis exhibits the ability of our model to transfer across domains and understand relations between similar parts of different objects.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2304.07193/assets/new-figure-10.jpg"
+  }
+]

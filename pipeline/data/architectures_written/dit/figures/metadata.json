@@ -1,0 +1,188 @@
+[
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : ImageNet generation with Diffusion Transformers (DiTs). Bubble area indicates the flops of the diffusion model. Left: FID-50K (lower is better) of our DiT models at 400K training iterations. Performance steadily improves in FID as model flops increase. Right: Our best model, DiT-XL/2, is compute-efficient and outperforms all prior U-Net-based diffusion models, like ADM and LDM.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : The Diffusion Transformer (DiT) architecture. Left: We train conditional latent DiT models. The input latent is decomposed into patches and processed by several DiT blocks. Right: Details of our DiT blocks. We experiment with variants of standard transformer blocks that incorporate conditioning via adaptive layer norm, cross-attention and extra input tokens. Adaptive layer norm works best.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Input specifications for DiT. Given patch size p × p 𝑝 𝑝 p\\times p , a spatial representation (the noised latent from the VAE) of shape I × I × C 𝐼 𝐼 𝐶 I\\times I\\times C is “patchified” into a sequence of length T = ( I / p ) 2 𝑇 superscript 𝐼 𝑝 2 T=(I/p)^{2} with hidden dimension d 𝑑 d . A smaller patch size p 𝑝 p results in a longer sequence length and thus more Gflops.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : Comparing different conditioning strategies. adaLN-Zero outperforms cross-attention and in-context conditioning at all stages of training.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6 : Scaling the DiT model improves FID at all stages of training. We show FID-50K over training iterations for 12 of our DiT models. Top row: We compare FID holding patch size constant. Bottom row: We compare FID holding model size constant. Scaling the transformer backbone yields better generative models across all model sizes and patch sizes.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7 : Increasing transformer forward pass Gflops increases sample quality. Best viewed zoomed-in. We sample from all 12 of our DiT models after 400K training steps using the same input latent noise and class label. Increasing the Gflops in the model—either by increasing transformer depth/width or increasing the number of input tokens—yields significant improvements in visual fidelity.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8 : Transformer Gflops are strongly correlated with FID. We plot the Gflops of each of our DiT models and each model’s FID-50K after 400K training steps.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9 : Larger DiT models use large compute more efficiently. We plot FID as a function of total training compute.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10 : Scaling-up sampling compute does not compensate for a lack of model compute. For each of our DiT models trained for 400K iterations, we compute FID-10K using [16, 32, 64, 128, 256, 1000] sampling steps. For each number of steps, we plot the FID as well as the Gflops used to sample each image. Small models cannot close the performance gap with our large models, even if they sample with more test-time Gflops than the large models.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12 : DiT scaling behavior on several generative modeling metrics. Left: We plot model performance as a function of total training compute for FID, sFID, Inception Score, Precision and Recall. Right: We plot model performance at 400K training steps for all 12 DiT variants against transformer Gflops, finding strong correlations across metrics. All values were computed using the ft-MSE VAE decoder.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13 : Training loss curves for all DiT models. We plot the loss over training for all DiT models (the sum of the noise prediction mean-squared error and 𝒟 K ​ L subscript 𝒟 𝐾 𝐿 \\mathcal{D}_{KL} ). We also highlight early training behavior. Note that scaled-up DiT models exhibit lower training losses.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.jpg",
+    "caption": "Figure 14 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “arctic wolf” (270)",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-270.jpg"
+  },
+  {
+    "filename": "fig_15.jpg",
+    "caption": "Figure 15 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “volcano” (980)",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-980.jpg"
+  },
+  {
+    "filename": "fig_16.jpg",
+    "caption": "Figure 16 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “husky” (250)",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-250.jpg"
+  },
+  {
+    "filename": "fig_17.jpg",
+    "caption": "Figure 17 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “sulphur-crested cockatoo” (89)",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-89.jpg"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "Figure 18 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “cliff drop-off” (972)",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-972.jpg"
+  },
+  {
+    "filename": "fig_19.jpg",
+    "caption": "Figure 19 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “balloon” (417)",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-417.jpg"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "Figure 20 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “lion” (291)",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-291.jpg"
+  },
+  {
+    "filename": "fig_21.jpg",
+    "caption": "Figure 21 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “otter” (360)",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-4.0-class-360.jpg"
+  },
+  {
+    "filename": "fig_22.jpg",
+    "caption": "Figure 22 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 2.0 Class label = “red panda” (387)",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-2.0-class-387.jpg"
+  },
+  {
+    "filename": "fig_23.jpg",
+    "caption": "Figure 23 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 2.0 Class label = “panda” (388)",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-2.0-class-388.jpg"
+  },
+  {
+    "filename": "fig_24.jpg",
+    "caption": "Figure 24 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 1.5 Class label = “coral reef” (973)",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-1.5-class-973.jpg"
+  },
+  {
+    "filename": "fig_25.jpg",
+    "caption": "Figure 25 : Uncurated 512 × 512 512 512 512\\times 512 DiT-XL/2 samples. Classifier-free guidance scale = 1.5 Class label = “macaw” (88)",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_512_jpg/superimage-cfg-1.5-class-88.jpg"
+  },
+  {
+    "filename": "fig_26.jpg",
+    "caption": "Figure 26 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “macaw” (88)",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-4.0-class-88.jpg"
+  },
+  {
+    "filename": "fig_27.jpg",
+    "caption": "Figure 27 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “dog sled” (537)",
+    "figure_number": "Figure 27",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-4.0-class-537.jpg"
+  },
+  {
+    "filename": "fig_28.jpg",
+    "caption": "Figure 28 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “arctic fox” (279)",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-4.0-class-279.jpg"
+  },
+  {
+    "filename": "fig_29.jpg",
+    "caption": "Figure 29 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 4.0 Class label = “loggerhead sea turtle” (33)",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-4.0-class-33.jpg"
+  },
+  {
+    "filename": "fig_30.jpg",
+    "caption": "Figure 30 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 2.0 Class label = “golden retriever” (207)",
+    "figure_number": "Figure 30",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-2.0-class-207.jpg"
+  },
+  {
+    "filename": "fig_31.jpg",
+    "caption": "Figure 31 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 2.0 Class label = “lake shore” (975)",
+    "figure_number": "Figure 31",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-2.0-class-975.jpg"
+  },
+  {
+    "filename": "fig_32.jpg",
+    "caption": "Figure 32 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 1.5 Class label = “space shuttle” (812)",
+    "figure_number": "Figure 32",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-1.5-class-812.jpg"
+  },
+  {
+    "filename": "fig_33.jpg",
+    "caption": "Figure 33 : Uncurated 256 × 256 256 256 256\\times 256 DiT-XL/2 samples. Classifier-free guidance scale = 1.5 Class label = “ice cream” (928)",
+    "figure_number": "Figure 33",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2212.09748/assets/superimages_256_jpg/superimage-cfg-1.5-class-928.jpg"
+  }
+]

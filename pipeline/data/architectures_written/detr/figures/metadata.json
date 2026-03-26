@@ -1,0 +1,170 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: DETR directly predicts (in parallel)\nthe final set of detections by combining a common CNN with a transformer architecture. During training, bipartite matching uniquely assigns predictions with ground truth boxes. Prediction with no match should yield a “ no object ” ( ∅ \\varnothing ) class prediction.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: DETR uses a conventional CNN backbone to learn a 2D representation of an input image.\nThe model flattens it and supplements it with a positional encoding before\npassing it into a transformer encoder.\nA transformer decoder then takes as input a small fixed number of learned positional embeddings,\nwhich we call object queries , and additionally attends to the encoder output.\nWe pass each output embedding of the decoder to a shared feed forward\nnetwork (FFN) that predicts either a detection (class and bounding box) or a “ no object ” class.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Encoder self-attention for a set of reference points. The encoder is able to separate individual instances.\nPredictions are made with baseline DETR model on a validation set image.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: AP and AP 50 performance after each decoder layer.\nA single long schedule baseline model is evaluated.\nDETR does not need NMS by design, which is validated by this figure.\nNMS lowers AP in the final layers, removing TP predictions,\nbut improves AP in the first decoder layers, removing double predictions,\nas there is no communication in the first layer, and slightly improves AP 50 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_2.jpg",
+    "caption": "Figure 4: AP and AP 50 performance after each decoder layer.\nA single long schedule baseline model is evaluated.\nDETR does not need NMS by design, which is validated by this figure.\nNMS lowers AP in the final layers, removing TP predictions,\nbut improves AP in the first decoder layers, removing double predictions,\nas there is no communication in the first layer, and slightly improves AP 50 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/giraffe_collage2.jpg"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 4: AP and AP 50 performance after each decoder layer.\nA single long schedule baseline model is evaluated.\nDETR does not need NMS by design, which is validated by this figure.\nNMS lowers AP in the final layers, removing TP predictions,\nbut improves AP in the first decoder layers, removing double predictions,\nas there is no communication in the first layer, and slightly improves AP 50 .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.jpg",
+    "caption": "Figure 5: Out of distribution generalization for rare classes.\nEven though no image in the training set has more than 13 giraffes,\nDETR has no difficulty generalizing to 24 and more instances of the same class.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/giraffe_collage2.jpg"
+  },
+  {
+    "filename": "fig_7_1.png",
+    "caption": "Figure 6: Visualizing decoder attention for every predicted object\n(images from COCO val set).\nPredictions are made with DETR-DC5 model.\nAttention scores are coded with different colors for different objects.\nDecoder typically attends to object extremities,\nsuch as legs and heads.\nBest viewed in color.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/elephants.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "Figure 6: Visualizing decoder attention for every predicted object\n(images from COCO val set).\nPredictions are made with DETR-DC5 model.\nAttention scores are coded with different colors for different objects.\nDecoder typically attends to object extremities,\nsuch as legs and heads.\nBest viewed in color.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/zebras.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 7 : Visualization of all box predictions on all images from COCO 2017 val set for 20 out of total N = 100 𝑁 100 N=100 prediction slots in DETR decoder. Each box prediction is represented as a point with the coordinates of its center in the 1-by-1 square normalized by each image size. The points are color-coded so that green color corresponds to small boxes, red to large horizontal boxes and blue to large vertical boxes. We observe that each slot learns to specialize on certain areas and box sizes with several operating modes. We note that almost all slots have a mode of predicting large image-wide boxes that are common in COCO dataset.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/query_distr.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 8: Illustration of the panoptic head. A binary mask is generated in parallel for each detected object, then the masks are merged using pixel-wise argmax.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x5.png"
+  },
+  {
+    "filename": "fig_10_1.jpg",
+    "caption": "Figure 9: Qualitative results for panoptic segmentation generated by DETR-R101. DETR produces aligned mask predictions in a unified manner for things and stuff.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/0784_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_10_2.jpg",
+    "caption": "Figure 9: Qualitative results for panoptic segmentation generated by DETR-R101. DETR produces aligned mask predictions in a unified manner for things and stuff.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3499_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_10_3.jpg",
+    "caption": "Figure 9: Qualitative results for panoptic segmentation generated by DETR-R101. DETR produces aligned mask predictions in a unified manner for things and stuff.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/0673_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 10: Architecture of DETR’s transformer. Please, see Section 0.A.3 for details.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x6.png"
+  },
+  {
+    "filename": "fig_12_1.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/1113_gt.jpg"
+  },
+  {
+    "filename": "fig_12_2.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/1113_panopticfpn.jpg"
+  },
+  {
+    "filename": "fig_12_3.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/1113_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_12_4.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3485_gt.jpg"
+  },
+  {
+    "filename": "fig_12_5.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3485_panopticfpn.jpg"
+  },
+  {
+    "filename": "fig_12_6.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3485_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/1113_gt.jpg"
+  },
+  {
+    "filename": "fig_13_2.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/1113_panopticfpn.jpg"
+  },
+  {
+    "filename": "fig_13_3.jpg",
+    "caption": "(a) Failure case with overlapping objects. PanopticFPN misses one\nplane entirely, while DETR fails to accurately segment 3 of them.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/1113_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_14_1.jpg",
+    "caption": "(b) Things masks are predicted at full resolution, which allows sharper boundaries than PanopticFPN",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3485_gt.jpg"
+  },
+  {
+    "filename": "fig_14_2.jpg",
+    "caption": "(b) Things masks are predicted at full resolution, which allows sharper boundaries than PanopticFPN",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3485_panopticfpn.jpg"
+  },
+  {
+    "filename": "fig_14_3.jpg",
+    "caption": "(b) Things masks are predicted at full resolution, which allows sharper boundaries than PanopticFPN",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/figures/Panoptic/3485_detr_R101.jpg"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 12: Analysis of the number of instances of various classes missed by DETR depending on how many are present in the image. We report the mean and the standard deviation. As the number of instances gets close to 100, DETR starts saturating and misses more and more objects",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2005.12872/assets/x7.png"
+  }
+]

@@ -1,0 +1,188 @@
+[
+  {
+    "filename": "fig_1.jpg",
+    "caption": "Figure 1 : Qwen2-VL capabilities: Multilingual image text understanding, code/math reasoning, video analysis, live chat, agent potential, and more. See Appendix for details.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2_vl_example.jpg"
+  },
+  {
+    "filename": "fig_2.jpg",
+    "caption": "Figure 2 : Qwen2-VL is capable of accurately identifying and comprehending the content within images, regardless of their clarity, resolution, or extreme aspect ratios.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2_vl_frame.jpg"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : A demonstration of M-RoPE. By decomposing rotary embedding into temporal, height, and width components, M-RoPE can explicitly model the positional information of text, images, and video in LLM.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/mrope.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Qwen2-VL-7B with different min_pixels. Small images are upscaled to surpass a specified min_pixels threshold before input into the model. Increasing the image size within a reasonable range shows enhanced performance on perceptual tasks like InfoVQA, HallusionBench, and OCRBench.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/minpixels_resolution.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : Evaluate the length extrapolation capability of Qwen2-VL-72B on Video-MME Medium Video. With the help of M-RoPE, the model demonstrated robust performance when the inference length exceeded the maximum training length of 16384 tokens.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/x1.png"
+  },
+  {
+    "filename": "fig_6.jpg",
+    "caption": "Figure 6 : Model Performance Scaling Across Capabilities and Training Progress. As model size and the volume of training data increase, performance consistently improves across a range of capabilities and benchmarks.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/scale.jpg"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7 : When presented with an image of cubes of different colors, the models identify their layout and the color of each cube.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/boxes.png"
+  },
+  {
+    "filename": "fig_8.jpg",
+    "caption": "Figure 8 : The model displays an adeptness in recognizing flowers in photographs.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/flowers.jpg"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9 : Literary writing in multiple languages based on visual stimuli.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/arxiv_sample.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10 : The model displays an adeptness in recognizing multilingual texts in images.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/screenshot_multilingual4.png"
+  },
+  {
+    "filename": "fig_11.jpg",
+    "caption": "Figure 11 : Recognition of dense Chinese text. The model is capable of directly converting lengthy, closely packed Chinese characters into standard English with accuracy and fluency.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/4_text_information_1.jpeg"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12 : The model displays an adeptness in recognizing multilingual texts in images. Image source: (Yang et al., 2023 )",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/multilingual_2.png"
+  },
+  {
+    "filename": "fig_13.jpg",
+    "caption": "Figure 13 : The model displays an adeptness in recognizing multilingual texts in images.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/Handwritten_chinese.jpeg"
+  },
+  {
+    "filename": "fig_14.jpg",
+    "caption": "Figure 14 : The model displays an adeptness in solving mathematical problems. Image source: Lu et al. ( 2021 )",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2-1-triangle.jpg"
+  },
+  {
+    "filename": "fig_15.jpg",
+    "caption": "Figure 15 : Solving a math problem. The model calculates the surface area and volume of these figures with step-by-step explanation",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/3_1_math_cube_2x.jpg"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 17 : The model displays an adeptness in recognize content from the web page.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2-3-screenshot1.png"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "Figure 18: The model displays an adeptness in OCR and mathematical reasoning.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2-4-math1.jpg"
+  },
+  {
+    "filename": "fig_19.jpg",
+    "caption": "Figure 19: The model displays an adeptness in OCR and following formats.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2-5-information_extraction.jpg"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "Figure 20 : The model displays an adeptness in OCR and following formats.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2-6-table_weather.jpg"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 21 : The model displays an adeptness in large images OCR.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2-7-screenshot2.png"
+  },
+  {
+    "filename": "fig_21_2.jpg",
+    "caption": "Figure 21 : The model displays an adeptness in large images OCR.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/screenshot_with_crop.jpg"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 22 : The model displays an adeptness in recognizing multi-round video chat.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/video_space_frames.png"
+  },
+  {
+    "filename": "fig_23_1.png",
+    "caption": "Figure 23 : The model displays an adeptness in recognizing multi-video understanding.",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/video_part1_frames.png"
+  },
+  {
+    "filename": "fig_23_2.png",
+    "caption": "Figure 23 : The model displays an adeptness in recognizing multi-video understanding.",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/qwen2-vl/video_part2_frames.png"
+  },
+  {
+    "filename": "fig_24_1.jpg",
+    "caption": "Figure 24 : Our models were able to locate specific elements within images, such as identifying the red car accurately.",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2_car_input.jpeg"
+  },
+  {
+    "filename": "fig_24_2.png",
+    "caption": "Figure 24 : Our models were able to locate specific elements within images, such as identifying the red car accurately.",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2_car_output.png"
+  },
+  {
+    "filename": "fig_25.jpg",
+    "caption": "Figure 25 : Our model is capable of annotating and posing questions regarding the content present in webpage screenshots, demonstrating its potential as a visual agent. Image source: (Yang et al., 2023 )",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/2_news.jpeg"
+  },
+  {
+    "filename": "fig_26.jpg",
+    "caption": "Figure 26 : The model identified the destination and arrival time in the image, called the 24-hour weather query function, correctly input the destination, and extracted the weather at the arrival time from the query results, thus enabling it to answer the user’s question.",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/func_call_basic.jpg"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "Figure 27 : The model identified the steps in the flowchart, drafted the simulation code as required while omitting the details, and then successfully executed it through the code interpreter. Image source: (Dubey et al., 2024 )",
+    "figure_number": "Figure 27",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/func_call_flowchart.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/func_call_table.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "Figure 28 : The model analyzed the table, and wrote the code to calculate the mean of each row in the table and to plot the results as a bar chart, which was successfully executed and visualized by the code interpreter. Image source: (Dubey et al., 2024 )",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2409.12191/assets/images/func_call_table_result.png"
+  }
+]

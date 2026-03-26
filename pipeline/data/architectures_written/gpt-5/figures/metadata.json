@@ -1,0 +1,188 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Factuality on ChatGPT Production Traffic (Browsing Enabled)",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Average Hallucination Rate (Browsing Enabled)",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Average Hallucination Rate (Browsing Disabled)",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Coding Deception Eval",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/coding_deception_eval.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : Percentage of production traffic per Deception Category",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/prod_traffic_deception_category.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6 : Health performance and safety. gpt-5-thinking outperforms all previous models, including GPT-4o, OpenAI o1, OpenAI o3, and OpenAI o4-mini. gpt-5-thinking-mini performs nearly as well. gpt-5-main scores substantially higher than our previous best non-thinking model, GPT-4o.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7 : Health error rates in three areas of safety. gpt-5-thinking sees 8x or more reductions in failure rates from OpenAI o3. gpt-5-thinking-mini outperforms larger models, and gpt-5-main outperforms all previous models as well.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8 : Agent Red Teaming (ART) benchmark for prompt injections",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/ART.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9 :",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/Autograded_Gryphon_Free_Response.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10 :",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/Multimodal_Troubleshooting_Virology_Multi-select.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11 :",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/ProtocolQA_Open-Ended.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12 :",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/Biorisk_Tacit_Knowledge_and_Troubleshooting.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13 :",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/TroubleshootingBench.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 14 :",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/Capture_the_Flag_CTF.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 15 :",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/Cyber_Range.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 16 :",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/NAS.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 17 :",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/NAS2.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 18 :",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/swe_bench.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 19 :",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/GPT-5_SWE-bench_Verified_n=477.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Figure 20 :",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/OpenAI_PRs_no_browsing.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 21 :",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/mle.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 22 :",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/molecule.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 23 :",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/MLE-Bench-30.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 24 :",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/SWE-Lancer_IC_SWE.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 25 :",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/PaperBench_no_browsing.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "Figure 26 :",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/OpenAI-Proof_Q_A.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "Figure 27 :",
+    "figure_number": "Figure 27",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/horizon2.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "Figure 28 :",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/cot1.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "Figure 29 :",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/cot2.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "Figure 30 :",
+    "figure_number": "Figure 30",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/rubricscores.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "Figure 31 :",
+    "figure_number": "Figure 31",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2601.03267/assets/peruserrate.png"
+  }
+]

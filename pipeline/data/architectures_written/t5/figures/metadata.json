@@ -1,0 +1,38 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: A diagram of our text-to-text framework.\nEvery task we consider—including translation, question answering, and classification—is cast as feeding our model text as input and training it to generate some target text.\nThis allows us to use the same model, loss function, hyperparameters, etc. across our diverse set of tasks.\nIt also provides a standard testbed for the methods included in our empirical survey.\n“T5” refers to our model, which we dub the “ T ext- t o- T ext T ransfer T ransformer”.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1910.10683/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Schematic of the objective we use in our baseline model.\nIn this example, we process the sentence “Thank you for inviting me to your party last week.”\nThe words “for”, “inviting” and “last” (marked with an × \\times ) are randomly chosen for corruption.\nEach consecutive span of corrupted tokens is replaced by a sentinel token (shown as <X> and <Y> ) that is unique over the example.\nSince “for” and “inviting” occur consecutively, they are replaced by a single sentinel <X> .\nThe output sequence then consists of the dropped-out spans, delimited by the sentinel tokens used to replace them in the input plus a final sentinel token <Z> .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1910.10683/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Matrices representing different attention mask patterns.\nThe input and output of the self-attention mechanism are denoted x 𝑥 x and y 𝑦 y respectively.\nA dark cell at row i 𝑖 i and column j 𝑗 j indicates that the self-attention mechanism is allowed to attend to input element j 𝑗 j at output timestep i 𝑖 i .\nA light cell indicates that the self-attention mechanism is not allowed to attend to the corresponding i 𝑖 i and j 𝑗 j combination.\nLeft: A fully-visible mask allows the self-attention mechanism to attend to the full input at every output timestep.\nMiddle: A causal mask prevents the i 𝑖 i th output element from depending on any input elements from “the future”.\nRight: Causal masking with a prefix allows the self-attention mechanism to use fully-visible masking on a portion of the input sequence.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1910.10683/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Schematics of the Transformer architecture variants we consider.\nIn this diagram, blocks represent elements of a sequence and lines represent attention visibility.\nDifferent colored groups of blocks indicate different Transformer layer stacks.\nDark grey lines correspond to fully-visible masking and light grey lines correspond to causal masking.\nWe use “.” to denote a special end-of-sequence token that represents the end of a prediction.\nThe input and output sequences are represented as x 𝑥 x and y 𝑦 y respectively.\nLeft: A standard encoder-decoder architecture uses fully-visible masking in the encoder and the encoder-decoder attention, with causal masking in the decoder.\nMiddle: A language model consists of a single Transformer layer stack and is fed the concatenation of the input and target, using a causal mask throughout.\nRight: Adding a prefix to a language model corresponds to allowing fully-visible masking over the input.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1910.10683/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: A flow chart of our exploration of unsupervised objectives.\nWe first consider a few disparate approaches in Section 3.3.1 and find that a BERT-style denoising objective performs best.\nThen, we consider various methods for simplifying the BERT objective so that it produces shorter target sequences in Section 3.3.2 .\nGiven that replacing dropped-out spans with sentinel tokens performs well and results in short target sequences, in Section 3.3.3 we experiment with different corruption rates.\nFinally, we evaluate an objective that intentionally corrupts contiguous spans of tokens in Section 3.3.4 .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1910.10683/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Pre-training loss for our original C4 data set as well as 4 4 4 artificially truncated versions.\nThe sizes listed refer to the number of tokens in each data set.\nThe four sizes considered correspond to repeating the data set between 64 64 64 and 4 , 096 4 096 4{,}096 times over the course of pre-training.\nUsing a smaller data set size results in smaller training loss values, which may suggest some memorization of the unlabeled data set.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1910.10683/assets/x6.png"
+  }
+]

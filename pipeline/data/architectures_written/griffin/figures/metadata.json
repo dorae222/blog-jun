@@ -1,0 +1,212 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "(a) Scaling curve during training",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "(a) Scaling curve during training",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x2.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "(a) Scaling curve during training",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "(b) Maximum throughput at 1B parameter scale.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2: a) The main backbone of our mode architecture is the residual block, which is stacked N 𝑁 N times.\nb) The gated MLP block that we use. c) The recurrent block that we propose as an alternative to Multi Query Attention (MQA).\nIt uses our proposed RG-LRU layer, defined in Section 2.4 .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x3.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) 400m",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) 400m",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "(a) 400m",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x6.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) 400m",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) 1B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(c) 7B",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x6.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "(a) Latency empty prefill",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x7.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "(a) Latency empty prefill",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x8.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(a) Latency empty prefill",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x7.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(b) Latency 4k prefill",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x8.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "Figure 5: Performance of various 1B parameter models on a held-out evaluation set of books.\nOn the left, the models have been trained with sequence length 2048, and on the right with sequence lengths of respectively 2048 (2k) and 8192 (8k).\nHawk and Griffin are able to extrapolate to significantly longer sequences than the Transformer baselines, and further improve performance when trained on longer sequences.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x9.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "Figure 5: Performance of various 1B parameter models on a held-out evaluation set of books.\nOn the left, the models have been trained with sequence length 2048, and on the right with sequence lengths of respectively 2048 (2k) and 8192 (8k).\nHawk and Griffin are able to extrapolate to significantly longer sequences than the Transformer baselines, and further improve performance when trained on longer sequences.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x10.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x11.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x12.png"
+  },
+  {
+    "filename": "fig_13_3.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x11.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(b) Induction Heads Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x12.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "(c) Phonebook Lookup Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x13.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 7: The behaviour of different gating mechanisms applied on the recurrent weight a 𝑎 a (note that in the Mamba’s notations this is − A 𝐴 -A ).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x14.png"
+  },
+  {
+    "filename": "fig_18_1.png",
+    "caption": "(a) Scan runtimes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x15.png"
+  },
+  {
+    "filename": "fig_18_2.png",
+    "caption": "(a) Scan runtimes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x16.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(a) Scan runtimes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x15.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(b) Hawk runtimes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x16.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 9: Performance of 400M parameter Griffin and MQA Transformer models using different local attention window sizes and different training sequence lengths. The window sizes of the local attention layers are shown above each bar in the plot. We notice that a global attention MQA Transformer is much better than local attention variants of the MQA Transformer (where the window size is smaller than the training sequence length). Furthermore, we see that using a fixed local attention window size of 1024 (denoted ‘1K’ in the plot) for the Griffin model outperforms all global attention and local attention MQA Transformer baselines across all training sequence lengths.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x17.png"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "Figure 10: The evaluation performance of 1B parameter models across a range of sequence lengths on held-out evaluation sets of ArXiv articles.\nOn the left, we compare the performance of different models trained with sequence length 2048, evaluated with a sequence length of up to 32,768.\nOn the right, we compare Griffin and Hawk when trained respectively on 2048 (2k) and 8192 (8k) sequence lengths.\nResults are qualitatively similar to the evaluation on Books presented in Figure 5 .",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x18.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "Figure 10: The evaluation performance of 1B parameter models across a range of sequence lengths on held-out evaluation sets of ArXiv articles.\nOn the left, we compare the performance of different models trained with sequence length 2048, evaluated with a sequence length of up to 32,768.\nOn the right, we compare Griffin and Hawk when trained respectively on 2048 (2k) and 8192 (8k) sequence lengths.\nResults are qualitatively similar to the evaluation on Books presented in Figure 5 .",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x19.png"
+  },
+  {
+    "filename": "fig_23_1.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x20.png"
+  },
+  {
+    "filename": "fig_23_2.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x21.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "(a) Selective Copying Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x20.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "(b) Induction Heads Task Task",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.19427/assets/x21.png"
+  }
+]

@@ -1,0 +1,512 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Gopher (280B) vs LM SOTA . An overview of the percentage change in performance metric (higher is better) of Gopher versus state-of-the-art language model performance across 124 tasks. Each bar represents a task, here we clip the maximum relative improvement to 120%. In total Gopher shows an improvement across 100 / 124.\nThe best-published results include (175B) GPT-3, (178B) Jurassic-1, and (530B) Megatron-Turing NLG. For full comparison including supervised and human performance see Figure A8 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Language Modelling Comparisons with SOTA. Comparison of Gopher to the current SOTA models on various language modelling tasks, including many from The Pile (Gao et al., 2020 ) . The superscript (1) indicates the prior SOTA was Jurassic-1 and (2) indicates GPT-3. Gopher achieves state-of-the-art performance on 11 out of 19 datasets with the largest improvements on books and articles.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Scaling curves for FEVER. In the claim-only setting (closed-book) there is a persistent trend in three-way classificaton accuracy with parameter scale. Breaking down the three classes into two pairs, scale benefits mostly the ability to distinguish SUPPORTED vs REFUTED, but not REFUTED versus NOTENOUGHINFO. When gold evidence is provided (open-book) there is a small benefit from 7.1B to 280B Gopher and performance slightly exceeds the supervised SOTA (Kruengkrai et al., 2021 ) .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : 280B vs best performance up to 7.1B across different tasks.\nWe compare the performance of Gopher to the best performance of our smaller models up to 7.1B.\nIn nearly every case, Gopher outperforms the best smaller model’s performance. Small gains come from either scale not improving results substantially or the smaller models already being very performant.\nLanguage modelling improvements are in BPB and the rest are in terms of accuracy.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) Generation analysis.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) Generation analysis.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x6.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) Generation analysis.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) Classification analysis.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x6.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "(a) Impact of model size on gender bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/genderbias-template.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "(a) Impact of model size on gender bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/winogender-gotcha.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(a) Impact of model size on gender bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/genderbias-template.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(b) Accuracy on “gotcha” examples.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/winogender-gotcha.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "(a) Sentiment scores by country.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x7.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "(a) Sentiment scores by country.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x8.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(a) Sentiment scores by country.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x7.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(b) Sentiment scores by race.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x8.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 8 : Perplexity by dialect. (Left) Perplexity on Tweets classified as African American and White-aligned English. (Right) The relative decrease in perplexity compared to the 44M model.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x9.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 8 : Perplexity by dialect. (Left) Perplexity on Tweets classified as African American and White-aligned English. (Right) The relative decrease in perplexity compared to the 44M model.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x10.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x9.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x10.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 9 : Toxicity analyses of Dialogue-Prompted models. (Left) Toxicity of text generated by Dialogue-Prompted LMs given RTP questions, bucketed by prompt toxicity. Continuation toxicity does not increase with model scale. (Right) For “high” toxicity prompts (>66%), the toxicity of Dialogue-Prompted Gopher models on RTP-questions and Gopher models on RTP relative to 44M models.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x11.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure A1 : Diagram of dataset processing stages . All stages are applied to MassiveWeb , our curated dataset of web-text comprising 48% of training data. For the other MassiveText subsets (Books, News, Code, C4, and Wikipedia), we apply content filtering, document deduplication, and test-set filtering.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x12.png"
+  },
+  {
+    "filename": "fig_19_1.png",
+    "caption": "(a) Document Lengths in MassiveText (in tokens).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x13.png"
+  },
+  {
+    "filename": "fig_19_2.png",
+    "caption": "(a) Document Lengths in MassiveText (in tokens).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x14.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(a) Document Lengths in MassiveText (in tokens).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x13.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(b) Training Data Toxicity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x14.png"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "(a) Non-English languages in MassiveText",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x15.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "(a) Non-English languages in MassiveText",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x16.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "(a) Non-English languages in MassiveText",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x15.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "(b) Top 20 domains of MassiveWeb",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x16.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure A4 : Downstream performance for different MassiveText subset sampling weights. The configuration (in green) with 10% C4, 50% MassiveWeb , 30% Books, and 10% News performs well across all tasks and achieves the best performance on Curation Corpus—we therefore choose those sampling weights in our main Gopher training experiments.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x17.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "Figure A5 : MassiveWeb Ablations . Performance of 1.4B parameter models (lower is better) trained on OpenWebText, C4, and versions of MassiveWeb with progressively more pre-processing stages added. Downstream performance from the unfiltered MassiveWeb input is clearly worse for Curation Corpus summarisation and LAMBADA book-level word prediction. Applying a quality filter and de-duplication stages significantly improves quality. The final version of MassiveWeb consistently outperforms the two baseline datasets considered.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x18.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "Figure A6 : 7.1B model train with Adafactor and Adam. We found that training with Adafactor resulted in increased training instabilities at larger scales. This resulted in unhealthy training curves even at smaller learning rates and increased probability of a divergence.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x19.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "Figure A7 : bfloat16 Training. For four different combinations of float32 and bfloat16 parameters (detailed below) we show performance on three different downstream tasks using a 417M parameter model.\nWhile bfloat16 without random rounding is clearly the least performant (blue), bfloat16 with random rounding (orange) unexpectedly under-performs full-precision training.\nStoring a float32 copy of the parameters in the optimiser state alleviates this issue.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x20.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "Figure A8 : Results Overview . A performance overview of Gopher versus state-of-the-art performance from existing language models, supervised models and human performance where available.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x21.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "Figure A9 : Online Evaluation curves. Zero-shot performance on the C4, Curation Corpus, LAMBADA, and WikiText-103 evaluation sets during training.\nThe largest models did not have an evaluator running during the entirety of training. A more detailed summary can be found in Table A6 .",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x22.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "Figure A10 : Scaling Curves. Plotting parameters versus evaluation loss, in bits per byte. Both axes are log-scale to inspect the presence of a power-law. Whilst this appears to hold at smaller scale, the 280B Gopher model has notably deviated from this trend.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x23.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure A11 : Context Length Scaling. Relative performance improvement of increasing the evaluation sequence length of Gopher (trained with 2048) versus a model evaluated with a sequence length of 1024 1024 1024 . We observe the largest gains for articles and code: ArXiv, GitHub, PubMed and PhilPapers. Reassuringly, we see no gains for PubMed Abstracts.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x24.png"
+  },
+  {
+    "filename": "fig_33_1.png",
+    "caption": "(a) Model Comparison",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x25.png"
+  },
+  {
+    "filename": "fig_33_2.png",
+    "caption": "(a) Model Comparison",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x26.png"
+  },
+  {
+    "filename": "fig_34.png",
+    "caption": "(a) Model Comparison",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x25.png"
+  },
+  {
+    "filename": "fig_35.png",
+    "caption": "(b) Gopher versus June ’22 forecasts.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x26.png"
+  },
+  {
+    "filename": "fig_36.png",
+    "caption": "Figure A13 : Gopher calibration on MMLU. Each point represents a topic.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x27.png"
+  },
+  {
+    "filename": "fig_37_1.png",
+    "caption": "(a) Gopher family task breakdown.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x28.png"
+  },
+  {
+    "filename": "fig_37_2.png",
+    "caption": "(a) Gopher family task breakdown.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x29.png"
+  },
+  {
+    "filename": "fig_38.png",
+    "caption": "(a) Gopher family task breakdown.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x28.png"
+  },
+  {
+    "filename": "fig_39.png",
+    "caption": "(b) Gopher vs GPT-3, both evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x29.png"
+  },
+  {
+    "filename": "fig_40_1.png",
+    "caption": "(a) Gopher family BIG-bench category breakdown, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x30.png"
+  },
+  {
+    "filename": "fig_40_2.png",
+    "caption": "(a) Gopher family BIG-bench category breakdown, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x31.png"
+  },
+  {
+    "filename": "fig_41.png",
+    "caption": "(a) Gopher family BIG-bench category breakdown, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x30.png"
+  },
+  {
+    "filename": "fig_42.png",
+    "caption": "(b) Gopher family BIG-bench task breakdown, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x31.png"
+  },
+  {
+    "filename": "fig_43_1.png",
+    "caption": "(a) Gopher family BIG-bench category breakdown relative to random baseline, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x32.png"
+  },
+  {
+    "filename": "fig_43_2.png",
+    "caption": "(a) Gopher family BIG-bench category breakdown relative to random baseline, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x33.png"
+  },
+  {
+    "filename": "fig_44.png",
+    "caption": "(a) Gopher family BIG-bench category breakdown relative to random baseline, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x32.png"
+  },
+  {
+    "filename": "fig_45.png",
+    "caption": "(b) Gopher family BIG-bench task breakdown relative to random baseline, all evaluated 5-shot.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x33.png"
+  },
+  {
+    "filename": "fig_46.png",
+    "caption": "Figure A17 : TruthfulQA Multiple-Choice (MC1) . Left: Comparison of zero-shot accuracy across model families and scales (baselines from Lin et al. ( 2021b ) ). Accuracy improves with model scale for the Gopher family. This is not the case for prior baselines GPT-J, GPT-2, T5 and GPT-3 --- however there are slight differences in task setup which we ablate in Table A15 . We also see a large-boost from few-shot prompting. Right: Few-shot prompting only consistently improves performance at the 280B scale, and ten-shot appears to be optimal.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x34.png"
+  },
+  {
+    "filename": "fig_47.png",
+    "caption": "Figure A18 : Model comparison on the RACE reading comprehension dataset. Accuracy of different models on the RACE multiple-choice reading comprehension question dataset (Lai et al., 2017 ) . See also Table 4 .",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x35.png"
+  },
+  {
+    "filename": "fig_48.png",
+    "caption": "Figure A19 : Gopher calibration on RACE-h. The model is reasonably well calibrated but generally slightly overconfident.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x36.png"
+  },
+  {
+    "filename": "fig_49.png",
+    "caption": "Figure A20 : Scaling Curves for Common Sense Reasoning. In all cases the common sense reasoning ability increased with model size. The performance gap between Gopher , GPT-3, and Megatron-Turing is quite small.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x37.png"
+  },
+  {
+    "filename": "fig_50.png",
+    "caption": "Figure A21 : Continuation toxicity vs. prompt toxicity. Larger models produce more toxic responses when given toxic prompts.\nContinuation toxicity is almost uniformly below prompt toxicity.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x38.png"
+  },
+  {
+    "filename": "fig_51_1.png",
+    "caption": "(a) Toxicity score distribution per data subset.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x39.png"
+  },
+  {
+    "filename": "fig_51_2.png",
+    "caption": "(a) Toxicity score distribution per data subset.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x40.png"
+  },
+  {
+    "filename": "fig_52.png",
+    "caption": "(a) Toxicity score distribution per data subset.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x39.png"
+  },
+  {
+    "filename": "fig_53.png",
+    "caption": "(b) Toxicity of data versus samples.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x40.png"
+  },
+  {
+    "filename": "fig_54_1.png",
+    "caption": "(a) Subgroup AUC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x41.png"
+  },
+  {
+    "filename": "fig_54_2.png",
+    "caption": "(a) Subgroup AUC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x42.png"
+  },
+  {
+    "filename": "fig_54_3.png",
+    "caption": "(a) Subgroup AUC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x43.png"
+  },
+  {
+    "filename": "fig_55.png",
+    "caption": "(a) Subgroup AUC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x41.png"
+  },
+  {
+    "filename": "fig_56.png",
+    "caption": "(b) Background Negative Subgroup Positive AUC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x42.png"
+  },
+  {
+    "filename": "fig_57.png",
+    "caption": "(c) Background Positive Subgroup Negative AUC",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x43.png"
+  },
+  {
+    "filename": "fig_58_1.png",
+    "caption": "(a) Impact of gender word on measured bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/genderbias-words.png"
+  },
+  {
+    "filename": "fig_58_2.png",
+    "caption": "(a) Impact of gender word on measured bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/winogender-main.png"
+  },
+  {
+    "filename": "fig_59.png",
+    "caption": "(a) Impact of gender word on measured bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/genderbias-words.png"
+  },
+  {
+    "filename": "fig_60.png",
+    "caption": "(b) Coreference accuracy vs. model scale.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/figures/winogender-main.png"
+  },
+  {
+    "filename": "fig_61.png",
+    "caption": "Figure A25 : Average group fairness. The average of distances between sentiment score distributions for each category (defined in Equation 1 ), at each model size. A lower value indicates less bias.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x44.png"
+  },
+  {
+    "filename": "fig_62_1.png",
+    "caption": "(a) Sentiment scores by religion.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x45.png"
+  },
+  {
+    "filename": "fig_62_2.png",
+    "caption": "(a) Sentiment scores by religion.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x46.png"
+  },
+  {
+    "filename": "fig_63.png",
+    "caption": "(a) Sentiment scores by religion.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x45.png"
+  },
+  {
+    "filename": "fig_64.png",
+    "caption": "(b) Sentiment scores by occupation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x46.png"
+  },
+  {
+    "filename": "fig_65.png",
+    "caption": "Figure A27 : Fine-tuning curves. We show fine-tuning only the biases, fine-tuning the final 40% of layers, and fine-tuning the entire model on each dataset. We truncate the evaluation curve at its best point (i.e. before overfitting) for ease of visibility.\nFine-tuning an entire model is generally best for performance and FLOP efficiency.\nDue to the resource requirements, on Python GitHub we omit fine-tuning the final 40% of Gopher and stop the other two runs early.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x47.png"
+  },
+  {
+    "filename": "fig_66.png",
+    "caption": "Figure A28 : Distillation of a 7.1B model to a 1.4B model. We train a 1.4B model using the logits of a 7.1B teacher model. We find that the resulting model outperforms a 1.4B model trained from scratch though considerably underperforms the 7.1B teacher on all tasks.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x48.png"
+  },
+  {
+    "filename": "fig_67.png",
+    "caption": "Figure A29 : Accelerating the training of larger models with reverse distillation and warm starting. We use a 600M parameter teacher to accelerate the training of a 1.3B parameter student.\nWe are able to achieve modest gains using a smaller teacher, though over an entire training cycle the benefits appear to be limited.\nUsing the same 600M model architecture initialised via warm starting is much more effective.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x49.png"
+  },
+  {
+    "filename": "fig_68.png",
+    "caption": "Figure A30 : Pruning Autoregressive Transformers. (Left) For a 110 110 110 M parameter model, we show the on-line evaluation performance on the C4 evaluation set. Sparsification begins at 0.6 × 10 8 0.6 superscript 10 8 0.6\\times 10^{8} sequences and ends after 2.4 × 10 8 2.4 superscript 10 8 2.4\\times 10^{8} sequences. The final loss values are used to produce the corresponding data points in the scaling curves on the right.\n(Right) For models pruned to the listed sparsity levels during training, we show the final evaluation loss versus the number of non-zero parameters.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x50.png"
+  },
+  {
+    "filename": "fig_69.png",
+    "caption": "Figure A31 : Warm starting training. For two different expansion factors and three downstream tasks, we show a comparison between a warm started model and a baseline that has been trained from scratch.\n(Top) Warm starting of a 4.7B model from a 1.3B model-- a 3.5 × 3.5\\times expansion.\nThe warm started model intersects with a model trained from scratch 1 / 3 1 3 1/3 of the way through training.\n(Bottom) Warm starting of a 9B model from a 4.5B model-- a 2.0 × 2.0\\times expansion.\nWe train the warm started model to the point where it achieves performance comparable to a 9B parameter model trained from scratch -- reducing the total number of training steps by just under 40%.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x51.png"
+  },
+  {
+    "filename": "fig_70.png",
+    "caption": "Figure A32 : Schematic for warm starting with increased width. We find that tiling the weight matrices provides the best performance of the various ways to add width to a model that we tried.\nThis is likely because it preserves the banded structure that emerges in the attention weight matrices during training.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2112.11446/assets/x52.png"
+  }
+]

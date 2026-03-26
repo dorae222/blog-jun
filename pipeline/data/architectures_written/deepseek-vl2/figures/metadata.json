@@ -1,0 +1,62 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Average performance vs. activated parameters among different open-source models . We average the accuracy of MMBench v1.1, MMStar, MMMU (Val), MathVista (TestMini), AI2D (Test), and OCRBench. The scores of OCRBench are divided by 10 10 to scale them to [ 0 , 100 ] [0,100] .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Overview of DeepSeek-VL2 . The overall structure is a llava-style architecture, which includes a vision encoder, a VL adaptor, and a MoE-based LLM.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Illustration of dynamic tiling strategy in DeepSeek-VL2 . By dividing images into multiple tiles, DeepSeek-VL2 achieves stronger fine-grained understanding capabilities compared to DeepSeek-VL.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: General question answering capability of DeepSeek-VL2 . Our model has multi-faceted capabilities, including recognition of landmarks, image-based poetry composition, answering questions about general knowledge, understanding charts, recognizing text, and more.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Meme understanding capability of DeepSeek-VL2 . Our model can understand the humor in memes and provide explanations.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Multi-image conversation capability of DeepSeek-VL2 . Our model can understand the relationships between multiple images and do some reasoning based on them.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Visual storytelling capability of DeepSeek-VL2 . Our model can accept multiple images as input and narrate a story in either Chinese or English based on the images.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Visual grounding ability of DeepSeek-VL2 . Our model can locate objects based on their category names, descriptions, or some abstract concepts.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: Grounded conversation with DeepSeek-VL2 . Our model can perform reasoning on images while identifying the locations of relevant objects, thereby enabling the possibility of interacting with the real world.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: In-context visual grounding with DeepSeek-VL2 . Given one image, either with or without visual prompts, DeepSeek-VL2 is able to find relevant objects in another image.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.10302/assets/x10.png"
+  }
+]

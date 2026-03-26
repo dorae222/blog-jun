@@ -1,0 +1,518 @@
+[
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3 : Rectified flows are sample efficient. Rectified Flows perform better then other formulations when sampling fewer steps. For 25 and more steps, only rf/lognorm(0.00, 1.00) remains competitive to eps/linear .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/x1.png"
+  },
+  {
+    "filename": "fig_6_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/spaceelevator.jpg"
+  },
+  {
+    "filename": "fig_6_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/royalburger.jpg"
+  },
+  {
+    "filename": "fig_6_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/gremlins.jpg"
+  },
+  {
+    "filename": "fig_6_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/caroffice.jpg"
+  },
+  {
+    "filename": "fig_6_5.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/birdthing.jpg"
+  },
+  {
+    "filename": "fig_6_6.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/humanlife.jpg"
+  },
+  {
+    "filename": "fig_6_7.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/002/origamipig.jpg"
+  },
+  {
+    "filename": "fig_6_8.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/001/rustedrobot.jpg"
+  },
+  {
+    "filename": "fig_6_9.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/001/dogfinememe.jpg"
+  },
+  {
+    "filename": "fig_6_10.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/001/hippowaffle.jpg"
+  },
+  {
+    "filename": "fig_7_1.jpg",
+    "caption": "Figure 4 : Training dynamics of model architectures. Comparative analysis of DiT , CrossDiT , UViT , and MM-DiT on CC12M, focusing on validation loss, CLIP score, and FID.\nOur proposed MM-DiT performs favorably across all metrics.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/archs_squeezed/val_loss_level_avg.jpg"
+  },
+  {
+    "filename": "fig_7_2.jpg",
+    "caption": "Figure 4 : Training dynamics of model architectures. Comparative analysis of DiT , CrossDiT , UViT , and MM-DiT on CC12M, focusing on validation loss, CLIP score, and FID.\nOur proposed MM-DiT performs favorably across all metrics.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/archs_squeezed/clip_fid_sampler_default_ema_True.jpg"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 5 : Effects of QK-normalization. Normalizing the Q- and K-embeddings before calculating the attention matrix prevents the attention-logit growth instability ( left ), which causes the attention entropy to collapse ( right ) and has been previously reported in the discriminative ViT literature (Dehghani et al., 2023 ; Wortsman et al., 2023 ) . In contrast with these previous works, we observe this instability in the last transformer blocks of our networks. Maximum attention logits and attention entropies are shown averaged over the last 5 blocks of a 2B (d=24) model.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/qk_norm/02_max_attn_logit_qk.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 5 : Effects of QK-normalization. Normalizing the Q- and K-embeddings before calculating the attention matrix prevents the attention-logit growth instability ( left ), which causes the attention entropy to collapse ( right ) and has been previously reported in the discriminative ViT literature (Dehghani et al., 2023 ; Wortsman et al., 2023 ) . In contrast with these previous works, we observe this instability in the last transformer blocks of our networks. Maximum attention logits and attention entropies are shown averaged over the last 5 blocks of a 2B (d=24) model.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/qk_norm/02_attn_entropy_qk.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 6 : Timestep shifting at higher resolutions. Top right: Human quality preference rating when applying the shifting based on Equation 23 . Bottom row: A 512 2 superscript 512 2 512^{2} model trained and sampled with m / n = 1.0 𝑚 𝑛 1.0 \\sqrt{m/n}=1.0 ( top ) and m / n = 3.0 𝑚 𝑛 3.0 \\sqrt{m/n}=3.0 ( bottom ).\nSee Section 5.3.2 .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/timeshift_v1.png"
+  },
+  {
+    "filename": "fig_9_2.jpg",
+    "caption": "Figure 6 : Timestep shifting at higher resolutions. Top right: Human quality preference rating when applying the shifting based on Equation 23 . Bottom row: A 512 2 superscript 512 2 512^{2} model trained and sampled with m / n = 1.0 𝑚 𝑛 1.0 \\sqrt{m/n}=1.0 ( top ) and m / n = 3.0 𝑚 𝑛 3.0 \\sqrt{m/n}=3.0 ( bottom ).\nSee Section 5.3.2 .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/qualshift/row_unshifted10k_q40.jpg"
+  },
+  {
+    "filename": "fig_9_3.jpg",
+    "caption": "Figure 6 : Timestep shifting at higher resolutions. Top right: Human quality preference rating when applying the shifting based on Equation 23 . Bottom row: A 512 2 superscript 512 2 512^{2} model trained and sampled with m / n = 1.0 𝑚 𝑛 1.0 \\sqrt{m/n}=1.0 ( top ) and m / n = 3.0 𝑚 𝑛 3.0 \\sqrt{m/n}=3.0 ( bottom ).\nSee Section 5.3.2 .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/qualshift/row_shifted10k_q40.jpg"
+  },
+  {
+    "filename": "fig_10.jpg",
+    "caption": "Figure 7 : Human Preference Evaluation against currrent closed and open SOTA generative image models. Our 8B model compares favorable against current state-of-the-art text-to-image models when evaluated on the parti-prompts (Yu et al., 2022 ) across the categories visual quality , prompt following and typography generation .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/baseline_comp.jpg"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/00_coco_val_loss_train-step.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/00_coco_val_loss_train-flops.png"
+  },
+  {
+    "filename": "fig_11_3.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/01_kinetics_val_loss_train-step.png"
+  },
+  {
+    "filename": "fig_11_4.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/01_kinetics_val_loss_train-flops.png"
+  },
+  {
+    "filename": "fig_11_5.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/00_coco_val_loss_gen-eval.png"
+  },
+  {
+    "filename": "fig_11_6.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/00_coco_val_loss_elo.png"
+  },
+  {
+    "filename": "fig_11_7.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/00_coco_val_loss_compbench-avg.png"
+  },
+  {
+    "filename": "fig_11_8.png",
+    "caption": "Figure 8 : Quantitative effects of scaling. We analyze the impact of model size on performance, maintaining consistent training hyperparameters throughout.\nAn exception is depth=38, where learning rate adjustments at 3 × 10 5 3 superscript 10 5 3\\times 10^{5} steps were necessary to prevent divergence.\n(Top) Validation loss smoothly decreases as a function of both model size and training steps for both image (columns 1 and 2) and video models (columns 3 and 4).\n(Bottom) Validation loss is a strong predictor of overall model performance . There is a marked correlation between validation loss and holistic image evaluation metrics, including\nGenEval (Ghosh et al., 2023 ) , column 1, human preference, column 2, and T2I-CompBench (Huang et al., 2023 ) , column 3. For video models we observe a similar correlation between validation loss and human preference, column 4.\n.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_val_squeeze/01_kinetics_val_loss_elo.png"
+  },
+  {
+    "filename": "fig_12_1.jpg",
+    "caption": "Figure 9 : Impact of T5. We observe T5 to\nbe important for complex prompts e.g. such involving a high degree of detail\nor longer spelled text (rows 2 and 3). For most prompts, however, we find\nthat removing T5 at inference time still achieves competitive\nperformance.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/embedder_drop/burger_all_3.jpg"
+  },
+  {
+    "filename": "fig_12_2.jpg",
+    "caption": "Figure 9 : Impact of T5. We observe T5 to\nbe important for complex prompts e.g. such involving a high degree of detail\nor longer spelled text (rows 2 and 3). For most prompts, however, we find\nthat removing T5 at inference time still achieves competitive\nperformance.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/embedder_drop/burger_no_t5_3.jpg"
+  },
+  {
+    "filename": "fig_12_3.jpg",
+    "caption": "Figure 9 : Impact of T5. We observe T5 to\nbe important for complex prompts e.g. such involving a high degree of detail\nor longer spelled text (rows 2 and 3). For most prompts, however, we find\nthat removing T5 at inference time still achieves competitive\nperformance.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/embedder_drop/monkey_all_3.jpg"
+  },
+  {
+    "filename": "fig_12_4.jpg",
+    "caption": "Figure 9 : Impact of T5. We observe T5 to\nbe important for complex prompts e.g. such involving a high degree of detail\nor longer spelled text (rows 2 and 3). For most prompts, however, we find\nthat removing T5 at inference time still achieves competitive\nperformance.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/embedder_drop/monkey_not5_3.jpg"
+  },
+  {
+    "filename": "fig_12_5.jpg",
+    "caption": "Figure 9 : Impact of T5. We observe T5 to\nbe important for complex prompts e.g. such involving a high degree of detail\nor longer spelled text (rows 2 and 3). For most prompts, however, we find\nthat removing T5 at inference time still achieves competitive\nperformance.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/embedder_drop/ferrel_all_3.jpg"
+  },
+  {
+    "filename": "fig_12_6.jpg",
+    "caption": "Figure 9 : Impact of T5. We observe T5 to\nbe important for complex prompts e.g. such involving a high degree of detail\nor longer spelled text (rows 2 and 3). For most prompts, however, we find\nthat removing T5 at inference time still achieves competitive\nperformance.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/embedder_drop/ferrel_not5_3.jpg"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/pigbutcher.jpg"
+  },
+  {
+    "filename": "fig_13_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/spacepretzel.jpg"
+  },
+  {
+    "filename": "fig_13_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/singingkangaroo.webp.jpg"
+  },
+  {
+    "filename": "fig_13_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/universebottle.webp.jpg"
+  },
+  {
+    "filename": "fig_13_5.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/surfburger.webp.jpg"
+  },
+  {
+    "filename": "fig_13_6.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/swampogre.webp.jpg"
+  },
+  {
+    "filename": "fig_13_7.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/veggiecar.webp.jpg"
+  },
+  {
+    "filename": "fig_13_8.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/heatdeath.webp.jpg"
+  },
+  {
+    "filename": "fig_13_9.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/cheesecrab.jpg"
+  },
+  {
+    "filename": "fig_13_10.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/sd3cherries.webp.jpeg"
+  },
+  {
+    "filename": "fig_13_11.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/translucentpig.jpg"
+  },
+  {
+    "filename": "fig_13_12.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/003/burgersofa.webp.jpeg"
+  },
+  {
+    "filename": "fig_14_1.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/ink_machine.jpg"
+  },
+  {
+    "filename": "fig_14_2.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/bear_it.jpg"
+  },
+  {
+    "filename": "fig_14_3.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/tiny_sushi_city.jpg"
+  },
+  {
+    "filename": "fig_14_4.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/life_tree2.jpg"
+  },
+  {
+    "filename": "fig_14_5.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/anthro_fractal_v2.jpg"
+  },
+  {
+    "filename": "fig_14_6.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/river_2.jpg"
+  },
+  {
+    "filename": "fig_14_7.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/donut1.jpg"
+  },
+  {
+    "filename": "fig_14_8.jpg",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/samples/grid_samples/foxed_and_zebrad.jpg"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 10 : FID scores after training flow models with different sizes (parameterized via their depth) on the latent space of different autoencoders (4 latent channels, 8 channels and 16 channels) as discussed in Section 5.2.1 . As expected, the flow model trained on the 16-channel autoencoder space needs more model capacity to achieve similar performance. At depth d = 22 𝑑 22 d=22 , the gap between 8-chn and 16-chn becomes negligible. We opt for the 16-chn model as we ultimately aim to scale to much larger model sizes.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/fid_ae_study.png"
+  },
+  {
+    "filename": "fig_16_1.png",
+    "caption": "Figure 11 : The mode (left) and logit-normal (right) distributions that we\nexplore for biasing the sampling of training timesteps.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dists/modesampler.png"
+  },
+  {
+    "filename": "fig_16_2.png",
+    "caption": "Figure 11 : The mode (left) and logit-normal (right) distributions that we\nexplore for biasing the sampling of training timesteps.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dists/lnsampler.png"
+  },
+  {
+    "filename": "fig_17_1.jpg",
+    "caption": "Figure 12: Qualitative effects of scaling. Displayed are examples demonstrating the impact of scaling training steps (left to right: 50k, 200k, 350k, 500k) and model sizes (top to bottom: depth=15, 30, 38) on PartiPrompts, highlighting the influence of training duration and model complexity.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_parti/000034.jpg"
+  },
+  {
+    "filename": "fig_17_2.jpg",
+    "caption": "Figure 12: Qualitative effects of scaling. Displayed are examples demonstrating the impact of scaling training steps (left to right: 50k, 200k, 350k, 500k) and model sizes (top to bottom: depth=15, 30, 38) on PartiPrompts, highlighting the influence of training duration and model complexity.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_parti/000042.jpg"
+  },
+  {
+    "filename": "fig_17_3.jpg",
+    "caption": "Figure 12: Qualitative effects of scaling. Displayed are examples demonstrating the impact of scaling training steps (left to right: 50k, 200k, 350k, 500k) and model sizes (top to bottom: depth=15, 30, 38) on PartiPrompts, highlighting the influence of training duration and model complexity.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_parti/000049.jpg"
+  },
+  {
+    "filename": "fig_17_4.jpg",
+    "caption": "Figure 12: Qualitative effects of scaling. Displayed are examples demonstrating the impact of scaling training steps (left to right: 50k, 200k, 350k, 500k) and model sizes (top to bottom: depth=15, 30, 38) on PartiPrompts, highlighting the influence of training duration and model complexity.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/scale_parti/000127.jpg"
+  },
+  {
+    "filename": "fig_18_1.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/third_sweep_no_dpo_dinosaur.jpg"
+  },
+  {
+    "filename": "fig_18_2.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/third_sweep_no_dpo_panic.jpg"
+  },
+  {
+    "filename": "fig_18_3.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/third_sweep_rank_128_lr_1e-5_dpobeta_500_ITER_000004000__dinosaur.jpg"
+  },
+  {
+    "filename": "fig_18_4.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/third_sweep_rank_128_lr_1e-5_dpobeta_500_ITER_000004000__panic.jpg"
+  },
+  {
+    "filename": "fig_18_5.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/initial_sweep_8b_no_dpo__dinosaur.jpg"
+  },
+  {
+    "filename": "fig_18_6.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/initial_sweep_8b_no_dpo__panic.jpg"
+  },
+  {
+    "filename": "fig_18_7.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/initial_sweep_8b_rank_128_lr_1e-5_dpobeta_1k_ITER_000002000__dinosaur.jpg"
+  },
+  {
+    "filename": "fig_18_8.jpg",
+    "caption": "Figure 13 : Comparison between base models and DPO-finetuned models. DPO-finetuning generally results in more aesthetically pleasing samples with better spelling.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/dpo_images/initial_sweep_8b_rank_128_lr_1e-5_dpobeta_1k_ITER_000002000__panic.jpg"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 14 : Human preference evaluation between base models and DPO-finetuned models. Human evaluators prefer DPO-finetuned models for both prompt following and general quality.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/x2.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/birdhat_ae.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/gosmallbird.png"
+  },
+  {
+    "filename": "fig_20_3.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/bird_gosmall_3.png"
+  },
+  {
+    "filename": "fig_20_4.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/gobigapple_ae.png"
+  },
+  {
+    "filename": "fig_20_5.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/gounet_4.png"
+  },
+  {
+    "filename": "fig_20_6.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/go_unet_1.png"
+  },
+  {
+    "filename": "fig_20_7.jpg",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/unet.jpg"
+  },
+  {
+    "filename": "fig_20_8.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/unot.png"
+  },
+  {
+    "filename": "fig_20_9.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/unot_2.png"
+  },
+  {
+    "filename": "fig_20_10.jpg",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/cat_sign.jpg"
+  },
+  {
+    "filename": "fig_20_11.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/cat_sign_rules_2.png"
+  },
+  {
+    "filename": "fig_20_12.png",
+    "caption": "Figure 15 : Zero Shot Text manipulation and insertion with the 2B Edit model",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/edit/cat_sign_rules_3.png"
+  },
+  {
+    "filename": "fig_21_1.jpg",
+    "caption": "(a) Final result of SSCD deduplication over the entire dataset",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/deduplication/sscd_v3.jpg"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "(a) Final result of SSCD deduplication over the entire dataset",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/deduplication/bigdups.png"
+  },
+  {
+    "filename": "fig_22.jpg",
+    "caption": "(a) Final result of SSCD deduplication over the entire dataset",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/deduplication/sscd_v3.jpg"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "(b) Result of SSCD deduplication with various thresholds over 1000 random clusters",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/img/deduplication/bigdups.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 17 : SSCD-based deduplication prevents memorization. To assess how well our SSCD-based deduplication works, we extract memorized samples from\nsmall, specifically for this purpose trained models and compare them before and after deduplication.\nWe plot a comparison between number of memorized samples, before and after using SSCD with the threshold of 0.5 to remove near-duplicated samples. Carlini et al. ( 2023 ) mark images within clique size of 10 as memorized samples. Here we also explore different sizes for cliques. For all clique thresholds, SSCD is able to significantly reduce the number of memorized samples. Specifically, when the clique size is 10, models on the deduplicated training samples cut off at SSCD = 0.5 absent 0.5 =0.5 show a 5 × 5\\times reduction in potentially memorized examples.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.03206/assets/x3.png"
+  }
+]

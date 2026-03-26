@@ -1,0 +1,356 @@
+[
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 1 : Illustration of the neural architecture.\nEach HGRN layer consists of a token mixer HGRU and a channel mixer GLU. HGRU employs linear recurrence in the complex domain: 𝐡 t = λ t ⊙ exp ⁡ ( i ​ θ ) ⊙ 𝐡 t − 1 + ( 1 − λ t ) ⊙ 𝐜 t subscript 𝐡 𝑡 direct-product subscript 𝜆 𝑡 𝑖 𝜃 subscript 𝐡 𝑡 1 direct-product 1 subscript 𝜆 𝑡 subscript 𝐜 𝑡 \\mathbf{h}_{t}=\\lambda_{t}\\odot\\exp(i\\theta)\\odot\\mathbf{h}_{t-1}+(1-\\lambda_{t})\\odot\\mathbf{c}_{t} . Here c t subscript 𝑐 𝑡 c_{t} is the input vector, θ 𝜃 \\theta is the rotation angle, μ t subscript 𝜇 𝑡 \\mu_{t} is the output of the original forget gate, γ k superscript 𝛾 𝑘 \\gamma^{k} is the lower bound of the k 𝑘 k -th layer, λ 𝜆 \\lambda is the resulting data dependent decay rate: λ t = γ k + ( 1 − γ k ) ⊙ μ t subscript 𝜆 𝑡 superscript 𝛾 𝑘 direct-product 1 superscript 𝛾 𝑘 subscript 𝜇 𝑡 \\lambda_{t}=\\gamma^{k}+(1-\\gamma^{k})\\odot\\mu_{t} .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x1.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 2 : Visualization of forget rates. We plot the forget rates of layers 5 and 6 on a model trained on language modeling tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 2 : Visualization of forget rates. We plot the forget rates of layers 5 and 6 on a model trained on language modeling tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_3.png",
+    "caption": "Figure 2 : Visualization of forget rates. We plot the forget rates of layers 5 and 6 on a model trained on language modeling tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x4.png"
+  },
+  {
+    "filename": "fig_3_4.png",
+    "caption": "Figure 2 : Visualization of forget rates. We plot the forget rates of layers 5 and 6 on a model trained on language modeling tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x5.png"
+  },
+  {
+    "filename": "fig_3_5.png",
+    "caption": "Figure 2 : Visualization of forget rates. We plot the forget rates of layers 5 and 6 on a model trained on language modeling tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x6.png"
+  },
+  {
+    "filename": "fig_3_6.png",
+    "caption": "Figure 2 : Visualization of forget rates. We plot the forget rates of layers 5 and 6 on a model trained on language modeling tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x7.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(i) With lower bound",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x2.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(ii) Without lower bound",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x3.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(iii) LRU",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x6.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x7.png"
+  },
+  {
+    "filename": "fig_10_1.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x8.png"
+  },
+  {
+    "filename": "fig_10_2.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x9.png"
+  },
+  {
+    "filename": "fig_10_3.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x10.png"
+  },
+  {
+    "filename": "fig_10_4.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x11.png"
+  },
+  {
+    "filename": "fig_10_5.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x12.png"
+  },
+  {
+    "filename": "fig_10_6.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x13.png"
+  },
+  {
+    "filename": "fig_10_7.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x14.png"
+  },
+  {
+    "filename": "fig_10_9.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x16.png"
+  },
+  {
+    "filename": "fig_10_10.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x17.png"
+  },
+  {
+    "filename": "fig_10_11.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x18.png"
+  },
+  {
+    "filename": "fig_10_12.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x19.png"
+  },
+  {
+    "filename": "fig_10_13.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x20.png"
+  },
+  {
+    "filename": "fig_10_14.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x21.png"
+  },
+  {
+    "filename": "fig_10_15.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x22.png"
+  },
+  {
+    "filename": "fig_10_16.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x23.png"
+  },
+  {
+    "filename": "fig_10_17.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x24.png"
+  },
+  {
+    "filename": "fig_10_18.png",
+    "caption": "Figure 3 : Visualization forget rates in each layer.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x25.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(i) With lower bound",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x8.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(ii) Without lower bound",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x9.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(iii) LRU",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x10.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x11.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x12.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x13.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x14.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x16.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x17.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x18.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x19.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x20.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x21.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x22.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x23.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x24.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x25.png"
+  },
+  {
+    "filename": "fig_29_1.png",
+    "caption": "Figure 4 : Visualization of token mixing matrix in each layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x26.png"
+  },
+  {
+    "filename": "fig_29_2.png",
+    "caption": "Figure 4 : Visualization of token mixing matrix in each layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x27.png"
+  },
+  {
+    "filename": "fig_29_3.png",
+    "caption": "Figure 4 : Visualization of token mixing matrix in each layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x28.png"
+  },
+  {
+    "filename": "fig_29_4.png",
+    "caption": "Figure 4 : Visualization of token mixing matrix in each layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x29.png"
+  },
+  {
+    "filename": "fig_29_5.png",
+    "caption": "Figure 4 : Visualization of token mixing matrix in each layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x30.png"
+  },
+  {
+    "filename": "fig_29_6.png",
+    "caption": "Figure 4 : Visualization of token mixing matrix in each layer.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x31.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "(i) Layer 1",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x26.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "(ii) Layer 1",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x27.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "(iii) Layer 2",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x28.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "(iv) Layer 4",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x29.png"
+  },
+  {
+    "filename": "fig_34.png",
+    "caption": "(v) Layer 5",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x30.png"
+  },
+  {
+    "filename": "fig_35.png",
+    "caption": "(vi) Layer 6",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.04823/assets/x31.png"
+  }
+]
