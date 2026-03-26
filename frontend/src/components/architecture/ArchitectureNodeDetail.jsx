@@ -4,11 +4,7 @@ import {
   ArrowRight, ArrowLeft,
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-
-const CATEGORY_COLORS = {
-  llm: '#3B82F6', ssm: '#10B981', diffusion: '#F59E0B',
-  multimodal: '#8B5CF6', agent: '#EF4444', technique: '#6B7280', vision: '#EC4899',
-}
+import { CATEGORY_COLORS } from '../../data/architectureConstants'
 
 export default function ArchitectureNodeDetail({
   node,
