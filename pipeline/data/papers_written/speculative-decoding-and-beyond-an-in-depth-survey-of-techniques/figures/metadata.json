@@ -1,0 +1,44 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: (a) The Llama architecture consists of stacked transformer decoder blocks. (b) Each decoder block contains a self-attention (SA) block and feedforward (FFN) block. (c) During the decoding stage, tokens are generated auto-regressively.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Illustration of speculative decoding workflow.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: A taxonomy of generation-refinement frameworks, showing two phases: (1) Generation of draft tokens through various methods and (2) Refinement through verification strategies.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Illustration of tree-based speculative decoding, with token tree construction on the left\nand tree attention mask on the right.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Comparison of speculative decoding approaches: (a) Sequential processing where draft generates tokens (0-3) before target verification. (b) Parallel processing where draft generates new tokens while target simultaneously verifies previous ones.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Asynchronous and heterogeneous schedules.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x6.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Flow of AR image generation with SD.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2502.19732/assets/x7.png"
+  }
+]

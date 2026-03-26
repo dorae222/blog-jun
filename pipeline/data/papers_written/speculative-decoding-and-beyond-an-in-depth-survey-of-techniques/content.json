@@ -1,0 +1,19 @@
+{
+  "title": "Speculative Decoding and Beyond: An In-Depth Survey of Techniques",
+  "title_ko": "Speculative Decoding의 모든 것: 기법 심층 서베이",
+  "slug": "speculative-decoding-and-beyond-an-in-depth-survey-of-techniques",
+  "category": "technique",
+  "sub_category": "",
+  "year": 2025,
+  "venue": "",
+  "authors": "Yunhai Hu et al.",
+  "arxiv_url": "https://arxiv.org/abs/2502.19732",
+  "summary": "LLM 추론의 메모리 바운드 병목을 해결하는 speculative decoding 기법들을 generation-refinement 프레임워크로 체계적으로 분류한 포괄적 서베이. Draft 생성 방법, 검증 전략, tree-based 확장, 비동기 스케줄링까지 전체 기술 지형도를 제시한다.",
+  "tags": [
+    "nlp",
+    "speculative-decoding",
+    "inference-optimization",
+    "llm"
+  ],
+  "related_architecture": ""
+}

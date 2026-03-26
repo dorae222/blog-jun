@@ -1,0 +1,23 @@
+{
+  "title": "AI Core Techniques Complete Guide",
+  "title_ko": "AI 핵심 기법 총정리",
+  "slug": "ai-core-techniques-guide",
+  "category": "technique",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "AI 모델의 성능을 좌우하는 핵심 기법들을 총정리합니다. Attention 메커니즘, 효율적 학습(LoRA, QLoRA), 추론 최적화(Speculative Decoding, Flash Attention), Scaling Laws, RAG, RLHF/DPO 등 모든 AI 분야에 공통으로 적용되는 기반 기술을 체계적으로 다룹니다.",
+  "tags": [
+    "technique",
+    "attention",
+    "lora",
+    "flash-attention",
+    "scaling-laws",
+    "rag",
+    "rlhf",
+    "optimization",
+    "roadmap"
+  ],
+  "is_pinned": true
+}

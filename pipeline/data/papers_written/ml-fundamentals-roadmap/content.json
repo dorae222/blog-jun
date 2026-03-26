@@ -1,0 +1,21 @@
+{
+  "title": "Machine Learning Fundamentals to Practice: Learning Roadmap",
+  "title_ko": "머신러닝 기초부터 실전까지: 학습 로드맵",
+  "slug": "ml-fundamentals-roadmap",
+  "category": "ml",
+  "post_type": "article",
+  "year": 2026,
+  "authors": "",
+  "arxiv_url": "",
+  "summary": "머신러닝의 수학적 기초부터 실전 응용까지 체계적인 학습 로드맵을 제시합니다. 확률/통계, 선형대수, 최적화 이론 등 수학 기초부터 지도/비지도/강화학습의 핵심 알고리즘, 모델 평가, 인과추론, MLOps까지 51개 주제를 단계별로 정리합니다.",
+  "tags": [
+    "machine-learning",
+    "fundamentals",
+    "supervised-learning",
+    "unsupervised-learning",
+    "model-evaluation",
+    "mlops",
+    "roadmap"
+  ],
+  "is_pinned": true
+}
