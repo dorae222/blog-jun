@@ -128,6 +128,12 @@ def import_papers(dry_run: bool = False, update: bool = False):
 
         slug = data.get('slug') or slugify(title, allow_unicode=True)[:300]
 
+        # content.md 우선, 없으면 content.json의 content 필드 폴백
+        content_md = paper_dir / 'content.md'
+        content = content_md.read_text(encoding='utf-8') if content_md.exists() else data.get('content', '')
+        summary = data.get('summary', '')
+        tags_raw = data.get('tags', [])
+
         existing = Post.objects.filter(slug=slug).first()
         if existing and not update:
             print(f"  [SKIP] Post 이미 존재: {title}")
@@ -156,12 +162,6 @@ def import_papers(dry_run: bool = False, update: bool = False):
         cat_key = data.get('sub_category') or data.get('category', '')
         cat_slug = CATEGORY_SLUG_MAP.get(cat_key, 'llm')
         category = categories.get(cat_slug) or categories.get('ai-ml')
-
-        # content.md 우선, 없으면 content.json의 content 필드 폴백
-        content_md = paper_dir / 'content.md'
-        content = content_md.read_text(encoding='utf-8') if content_md.exists() else data.get('content', '')
-        summary = data.get('summary', '')
-        tags_raw = data.get('tags', [])
 
         if dry_run:
             print(f"  [DRY-RUN] Post 생성 예정: {title} → {cat_slug}")
