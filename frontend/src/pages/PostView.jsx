@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, List, X, ChevronRight } from 'lucide-react'
 import { getCategoryIcon } from '../utils/categoryIcons'
@@ -57,7 +58,32 @@ export default function PostView() {
 
   const catRouteKey = CATEGORY_ROUTE_MAP[post.category?.parent?.slug] || CATEGORY_ROUTE_MAP[post.category?.slug] || ''
 
+  const canonicalUrl = `https://blog.dorae222.com/post/${post.slug}`
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.summary || post.title,
+    datePublished: post.published_at || post.created_at,
+    dateModified: post.updated_at || post.published_at || post.created_at,
+    author: { '@type': 'Person', name: 'HyeongJun' },
+    publisher: { '@type': 'Organization', name: 'HJ Tech Blog' },
+    ...(post.cover_image_url ? { image: post.cover_image_url } : {}),
+  }
+
   return (
+    <>
+    <Helmet>
+      <title>{post.title} | HJ Tech Blog</title>
+      <meta name="description" content={post.summary || post.title} />
+      <meta property="og:title" content={post.title} />
+      <meta property="og:description" content={post.summary || post.title} />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content={canonicalUrl} />
+      {post.cover_image_url && <meta property="og:image" content={post.cover_image_url} />}
+      <link rel="canonical" href={canonicalUrl} />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+    </Helmet>
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
@@ -268,5 +294,6 @@ export default function PostView() {
         )}
       </AnimatePresence>
     </motion.div>
+    </>
   )
 }
