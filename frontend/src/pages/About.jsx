@@ -187,7 +187,7 @@ export default function About() {
               경영학부 + 빅데이터융합전공
             </p>
             <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>
-              2019.03 - 2025.02 | GPA 4.0 / 4.5
+              2019.03 - 2025.02
             </p>
           </div>
         </ScrollReveal>
