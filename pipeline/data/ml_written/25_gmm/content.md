@@ -37,6 +37,9 @@ $$r_{ik} = p(z_i = k \mid x_i) = \frac{\pi_k \, \mathcal{N}(x_i \mid \mu_k, \Sig
 
 ---
 
+![GMM 등고선: 가우시안 혼합 모델의 타원형 클러스터와 확률 등고선](figures/gmm_contours.png)
+*GMM 등고선: 각 가우시안 성분의 평균과 공분산으로 정의된 타원형 등고선이 데이터의 밀도 분포를 확률적으로 표현한다.*
+
 ## 알고리즘: EM (Expectation-Maximization)
 
 GMM의 파라미터 $\{\pi_k, \mu_k, \Sigma_k\}_{k=1}^{K}$는 직접 해석적으로 풀 수 없기 때문에, **EM 알고리즘**을 이용해 로그-우도(Log-Likelihood)를 반복적으로 최대화합니다.
@@ -205,6 +208,9 @@ print(f"이상치 수: {len(anomalies)}, 정상 샘플 수: {len(normal)}")
 ```
 
 ---
+
+![BIC 모델 선택: 성분 수에 따른 BIC/AIC 값 변화와 최적 K 결정](figures/bic_model_selection.png)
+*BIC 모델 선택: BIC와 AIC 곡선에서 최솟값을 보이는 성분 수를 최적 K로 선택하며, BIC가 과적합 방지에 더 보수적인 기준을 제공한다.*
 
 ## 시각화
 

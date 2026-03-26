@@ -61,6 +61,9 @@ $$P(x_i \mid C) = P(x_i=1 \mid C)^{x_i} \cdot (1 - P(x_i=1 \mid C))^{1-x_i}$$
 
 ---
 
+![클래스 조건부 분포: 각 클래스에서 특성값의 확률 밀도 함수](figures/class_conditional_distributions.png)
+*클래스 조건부 분포: 나이브 베이즈가 각 클래스별로 특성의 확률 분포를 개별적으로 추정하여 분류에 활용하는 원리를 보여준다.*
+
 ## 알고리즘 비교
 
 | 모델 | 특성 유형 | 우도 분포 | 주요 용도 |
@@ -179,6 +182,9 @@ Bernoulli NB Accuracy: 0.8101
 ```
 
 ---
+
+![나이브 베이즈 결정 경계: 가우시안 나이브 베이즈의 클래스 분리](figures/naive_bayes_decision_boundary.png)
+*나이브 베이즈 결정 경계: 가우시안 나이브 베이즈 분류기가 특성 공간에서 형성하는 결정 경계와 각 클래스의 영역을 시각화한다.*
 
 ## 시각화 — Decision Boundary
 

@@ -37,6 +37,9 @@ $$\mu_i = \frac{1}{|C_i|} \sum_{x \in C_i} x$$
 
 ---
 
+![K-Means 반복 과정: 중심 이동과 클러스터 재배정의 반복적 수렴](figures/kmeans_iterations.png)
+*K-Means 반복 과정: 초기 중심에서 시작하여 배정-갱신 단계를 반복하면서 클러스터 중심이 최적 위치로 수렴하는 과정을 보여준다.*
+
 ## 알고리즘 변형
 
 ### Lloyd 알고리즘 단계
@@ -134,6 +137,9 @@ print(f"실루엣 계수: {silhouette_score(X_scaled, labels):.4f}")
 ```
 
 ---
+
+![엘보우 방법: 클러스터 수에 따른 Inertia 변화와 최적 K 선택](figures/elbow_method.png)
+*엘보우 방법: Inertia가 급격히 감소하다가 완만해지는 엘보우 지점을 최적 클러스터 수 K로 선택한다.*
 
 ## 시각화
 

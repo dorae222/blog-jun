@@ -52,6 +52,9 @@ $$\mathcal{L}_{\text{SimCLR}} = -\log \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\su
 
 ---
 
+![레이블 전파 과정: 소수의 레이블 데이터에서 비레이블 데이터로 레이블이 확산되는 과정](figures/label_propagation.png)
+*레이블 전파 과정: 레이블된 소수의 데이터 포인트에서 시작하여 유사도 그래프를 따라 레이블이 점진적으로 전파된다.*
+
 ## 알고리즘
 
 ### Label Propagation vs Label Spreading
@@ -211,6 +214,9 @@ Pseudo-labeling 정확도: 0.8933
 ```
 
 ---
+
+![레이블 비율에 따른 성능 변화: 레이블 데이터의 비율이 모델 정확도에 미치는 영향](figures/label_ratio_effect.png)
+*레이블 비율에 따른 성능 변화: 레이블 데이터 비율이 증가할수록 모델 성능이 향상되며, 준지도학습은 적은 레이블로도 지도학습에 근접한 성능을 달성한다.*
 
 ## 시각화
 
