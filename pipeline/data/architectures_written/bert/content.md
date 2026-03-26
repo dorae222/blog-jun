@@ -6,6 +6,11 @@
 
 핵심 혁신은 **MLM(Masked Language Modeling)**이다. 문장 내 임의 15% 토큰을 마스킹하고 이를 예측하도록 학습함으로써, 왼쪽과 오른쪽 문맥을 **동시에** 활용하는 깊은 양방향 표현을 학습한다. GLUE 벤치마크 80.2점, SQuAD 1.1 F1 93.2점 등 **11개 NLP 태스크에서 SOTA**를 경신하며, 사전학습-미세조정 패러다임을 NLP의 표준으로 확립했다.
 
+아래 그림은 BERT의 사전 학습과 미세조정 전체 흐름을 보여준다. 동일한 아키텍처가 사전 학습과 미세조정 모두에 사용되며, 출력 레이어만 태스크에 따라 교체된다.
+
+![BERT 사전 학습 및 미세조정 전체 절차 — MLM/NSP 사전 학습에서 다운스트림 태스크 미세조정으로](figures/fig_1.png)
+*Figure 1: BERT 사전 학습 및 미세조정 절차 — (좌) MLM과 NSP로 사전 학습하고, (우) 동일한 사전 학습 파라미터를 MNLI, NER, SQuAD 등 다양한 다운스트림 태스크의 초기화에 사용한다. 미세조정 시 모든 파라미터를 업데이트한다. (Source: Devlin et al., 2018)*
+
 ## 아키텍처 상세
 
 ### Transformer Encoder 기반
@@ -22,6 +27,11 @@ BERT는 Transformer의 **인코더 부분만** 사용한다. 디코더와 Cross-
 BERT의 입력은 세 가지 임베딩의 합이다:
 
 $$E_{\text{input}} = E_{\text{token}} + E_{\text{segment}} + E_{\text{position}}$$
+
+아래 그림은 이 세 가지 임베딩이 결합되는 과정을 구체적으로 보여준다.
+
+![BERT 입력 표현 — Token, Segment, Position 임베딩의 합](figures/fig_2.png)
+*Figure 2: BERT 입력 표현 구조 — Token Embedding, Segment Embedding(문장 A/B 구분), Position Embedding 세 가지를 합산하여 최종 입력 벡터를 구성한다. (Source: Devlin et al., 2018)*
 
 - **Token Embedding**: WordPiece 토크나이저(30,522 vocab)
 - **Segment Embedding**: 문장 A/B 구분 (`[SEP]` 토큰으로 분리)
@@ -99,7 +109,12 @@ class BERTModel(nn.Module):
 
 ### 1. 깊은 양방향 표현
 
-ELMo는 순방향과 역방향 LSTM을 **독립적으로** 학습한 뒤 결합했지만, BERT는 Self-Attention을 통해 **모든 위치가 동시에 양방향 문맥을 참조**한다. 이로 인해 "bank"의 의미가 "river bank"인지 "bank account"인지를 더 정확하게 구분할 수 있다.
+ELMo는 순방향과 역방향 LSTM을 **독립적으로** 학습한 뒤 결합했지만, BERT는 Self-Attention을 통해 **모든 위치가 동시에 양방향 문맥을 참조**한다. 아래 그림은 세 모델의 아키텍처 차이를 명확히 보여준다.
+
+![BERT, OpenAI GPT, ELMo의 사전 학습 아키텍처 비교](figures/fig_3.png)
+*Figure 3: 사전 학습 아키텍처 비교 — BERT는 양방향 Transformer로 모든 레이어에서 좌우 문맥을 동시에 참조한다. OpenAI GPT는 왼→오 단방향, ELMo는 독립적으로 학습된 양방향 LSTM의 결합이다. (Source: Devlin et al., 2018)*
+
+이로 인해 "bank"의 의미가 "river bank"인지 "bank account"인지를 더 정확하게 구분할 수 있다.
 
 ### 2. MLM: 새로운 사전학습 목적함수
 
@@ -107,7 +122,12 @@ MLM은 자기회귀 LM(GPT)의 단방향 제약을 극복하는 핵심 아이디
 
 ### 3. 범용 미세조정
 
-`[CLS]` 토큰 위에 단순한 분류 레이어만 추가하면 분류, NLI, QA 등 다양한 태스크를 수행할 수 있다. 태스크별로 전체 모델을 미세조정하되, 아키텍처 변경은 최소화한다.
+`[CLS]` 토큰 위에 단순한 분류 레이어만 추가하면 분류, NLI, QA 등 다양한 태스크를 수행할 수 있다. 아래 그림은 네 가지 대표적 다운스트림 태스크에서의 미세조정 방식을 보여준다.
+
+![BERT의 다양한 다운스트림 태스크 미세조정 — 문장 쌍 분류, 단일 문장 분류, QA, 태깅](figures/fig_4.png)
+*Figure 4: BERT 미세조정 태스크별 구성 — (좌상) 문장 쌍 분류, (우상) 단일 문장 분류, (좌하) 추출적 QA(Start/End 스팬 예측), (우하) 시퀀스 태깅(NER 등). 모든 태스크에서 동일한 BERT 구조를 사용하며 출력 레이어만 변경한다. (Source: Devlin et al., 2018)*
+
+태스크별로 전체 모델을 미세조정하되, 아키텍처 변경은 최소화한다.
 
 ## 벤치마크/성능
 

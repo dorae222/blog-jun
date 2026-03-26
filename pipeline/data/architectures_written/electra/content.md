@@ -12,6 +12,11 @@ BERT의 MLM은 입력 토큰 중 15%만 마스킹하고 나머지 85%에서는 �
 
 ### Generator-Discriminator 구조
 
+아래 그림은 ELECTRA의 Replaced Token Detection 학습 과정을 보여준다. 소형 Generator가 마스킹된 토큰을 예측하여 교체하면, Discriminator가 모든 위치에서 원본/교체 여부를 판별한다.
+
+![ELECTRA Replaced Token Detection 개요 — Generator가 토큰을 교체하고 Discriminator가 판별](figures/fig_2.png)
+*Figure 2: Replaced Token Detection 개요 — Generator가 [MASK] 위치에 토큰을 생성하고, Discriminator(ELECTRA)가 모든 위치에서 original/replaced를 판별한다. 사전 학습 후 Generator는 폐기된다. (Source: Clark et al., 2020)*
+
 ELECTRA는 GAN(Generative Adversarial Network)과 유사한 **생성기(Generator)-판별기(Discriminator)** 이중 구조를 사용하지만, 적대적 학습이 아닌 최대 우도(maximum likelihood) 학습을 적용한다.
 
 | 구성 요소 | Generator | Discriminator |
@@ -55,21 +60,41 @@ $y_t = 1$이면 원본, $y_t = 0$이면 교체된 토큰이다. MLM이 15% 위�
 
 ### Generator 크기 비율의 중요성
 
+다음 그래프는 Generator와 Discriminator의 크기 비율에 따른 GLUE 성능 변화를 보여준다. Generator가 Discriminator보다 작을 때 최적의 성능을 달성하는 것이 흥미로운 결과이다.
+
+![Generator/Discriminator 크기 비율에 따른 GLUE 성능 변화](figures/fig_3_1.png)
+*Figure 3a: Generator 크기 최적화 — Generator가 Discriminator보다 작을 때(약 1/4 크기) 최적의 GLUE 성능을 달성한다. 너무 크거나 너무 작은 Generator 모두 성능이 저하된다. (Source: Clark et al., 2020)*
+
 Generator와 Discriminator의 크기 비율은 성능에 큰 영향을 미친다. 논문에서 1:1, 1:2, 1:4 등 다양한 비율을 실험한 결과, **Generator가 Discriminator의 1/4일 때 최적**이라는 결론을 도출했다. Generator가 너무 크면 교체된 토큰이 원본과 너무 유사해져 판별이 쉬워지고, 너무 작으면 학습 신호가 노이즈가 된다.
 
 ## 핵심 혁신
 
 ### 1. 100% 토큰 활용의 학습 효율성
 
+다음 그래프는 동일 연산 예산에서 RTD와 MLM의 성능을 비교한 것으로, ELECTRA가 모든 규모에서 BERT를 일관되게 앞서는 것을 보여준다.
+
+![RTD vs MLM 성능 비교 — 동일 연산 예산에서 ELECTRA가 일관되게 우수](figures/fig_1.png)
+*Figure 1: RTD vs MLM 학습 효율 — 동일 연산 예산에서 Replaced Token Detection이 Masked Language Modeling을 일관되게 능가한다. (Source: Clark et al., 2020)*
+
 BERT의 MLM은 15% 마스킹 비율로 인해 각 배치에서 85%의 토큰이 낭비된다. ELECTRA의 RTD는 모든 토큰에서 학습하므로, 동일 연산량 대비 약 4배 많은 학습 신호를 얻는다.
 
 ### 2. 소형 모델에서의 압도적 효율
+
+아래 그래프는 다양한 모델 크기에서 BERT와 ELECTRA의 성능을 비교한 것으로, 특히 소형 모델에서 ELECTRA의 우위가 두드러진다.
+
+![모델 크기별 BERT vs ELECTRA 성능 비교](figures/fig_4_1.png)
+*Figure 4: 모델 크기별 성능 비교 — ELECTRA는 모든 크기에서 BERT를 능가하며, 특히 소형 모델에서 성능 차이가 더 크다. (Source: Clark et al., 2020)*
 
 ELECTRA-Small(14M)은 GPT-1(110M)과 유사한 GLUE 성능을 달성하면서 파라미터는 1/8에 불과하다. 이는 제한된 연산 자원 환경에서 특히 큰 의미를 가진다.
 
 ### 3. GAN 구조의 NLP 적용
 
 GAN의 Generator-Discriminator 프레임워크를 NLP 사전 학습에 성공적으로 적용한 첫 사례다. 단, 실제 적대적 학습이 아닌 MLM 기반 학습을 사용하여 학습 안정성을 확보했다.
+
+다음 그래프는 ELECTRA, Adversarial ELECTRA, Two-Stage ELECTRA, BERT의 학습 알고리즘별 GLUE 성능을 연산량(FLOPs) 대비로 비교한 것이다. ELECTRA가 모든 연산 구간에서 가장 높은 GLUE 점수를 달성한다.
+
+![학습 알고리즘별 GLUE 성능 비교 — FLOPs 대비 효율](figures/fig_3_2.png)
+*Figure 3b: 학습 알고리즘 비교 — ELECTRA(파란색)가 BERT(점선), Adversarial ELECTRA, Two-Stage ELECTRA를 모든 연산 구간에서 능가한다. (Source: Clark et al., 2020)*
 
 ## 벤치마크/성능
 

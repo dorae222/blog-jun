@@ -8,6 +8,11 @@
 
 **참고 논문**: [Deep contextualized word representations](https://arxiv.org/abs/1802.05365) (Peters et al., 2018)
 
+아래 다이어그램은 ELMo의 전체 아키텍처를 보여준다. Character CNN에서 시작하여 2층 BiLSTM을 거치고, 태스크별 가중 합산으로 최종 표현을 생성하는 구조가 핵심이다.
+
+![ELMo 아키텍처 — Character CNN, BiLSTM, 가중 합산 전체 구조](figures/architecture.png)
+*Figure 1: ELMo 아키텍처(93.6M 파라미터) — Character CNN 토큰 임베딩, 2층 BiLSTM(각 4096-dim→512 투사), 태스크별 가중 합산 메커니즘, 그리고 LSTM 셀 내부 구조. (Peters et al., 2018)*
+
 ## 아키텍처 상세
 
 ### 전체 구조
@@ -50,6 +55,11 @@ $$\text{ELMo}_k = \gamma \sum_{j=0}^{L} s_j \cdot h_{k,j}$$
 
 이 발견은 이후 BERT에서도 확인되었으며, Transformer 레이어의 정보 분화 연구의 기초가 되었다.
 
+아래 히트맵은 태스크별로 BiLSTM 각 레이어에 부여되는 가중치를 시각화한 것으로, 태스크마다 필요한 언어 정보 수준이 다름을 직접적으로 보여준다.
+
+![태스크별 BiLSTM 레이어 가중치 시각화](figures/fig_2.png)
+*Figure 3: 태스크별 BiLSTM 레이어 가중치 분포 — softmax 정규화된 가중치 히트맵. 하위 레이어(형태론)와 상위 레이어(의미론)의 기여가 태스크에 따라 다르게 나타난다. (Peters et al., 2018)*
+
 ## 핵심 혁신
 
 ### 1. 문맥화된 임베딩
@@ -63,6 +73,11 @@ ELMo는 사전 학습된 표현을 다운스트림 모델의 **추가 입력 특
 ### 3. 사전 학습 → 전이 학습 패러다임의 개척
 
 대규모 비지도 코퍼스에서 언어 모델을 사전 학습하고, 그 표현을 다양한 다운스트림 태스크에 전이하는 패러다임을 NLP에서 실질적으로 입증한 첫 대규모 성공 사례이다.
+
+다음 그래프는 SNLI와 SRL 태스크에서 학습 데이터 비율(0.1%~100%)에 따른 ELMo 적용 전후 성능 변화를 보여준다. 특히 적은 데이터에서 ELMo의 효과가 극대화됨을 확인할 수 있다.
+
+![SNLI 및 SRL에서 학습 데이터 크기에 따른 ELMo 성능 비교](figures/fig_1.png)
+*Figure 2: ELMo 적용 전후 성능 비교 — 학습 데이터 비율을 0.1%에서 100%까지 변화시켰을 때 SNLI와 SRL 태스크의 성능 변화. 소량 데이터에서 ELMo의 이점이 가장 두드러진다. (Peters et al., 2018)*
 
 ## 벤치마크/성능
 

@@ -82,6 +82,13 @@ Hoffmann et al.은 세 가지 독립적인 실험 방법으로 컴퓨팅 최적 
 
 이 방법은 총 400개 이상의 학습 실험을 포함하며, 핵심 차이점은 **cosine learning rate schedule을 각 실험의 학습 토큰 수에 맞춰 개별적으로 조정하였다**는 것입니다. Kaplan et al.이 모든 모델에 동일한 스케줄을 적용한 것과 대비됩니다. 학습률의 최소값이 최대값의 $\frac{1}{10}$이 되도록 cosine annealing을 설정하여, 각 실험이 적절히 수렴한 상태에서 평가되도록 하였습니다.
 
+아래 그래프는 방법 1의 전체 실험 결과를 요약합니다.
+
+![학습 곡선 엔벌로프: 다양한 모델 크기와 학습 길이에 따른 손실 프론티어](figures/fig_2.png)
+*Figure 2: 학습 곡선 엔벌로프 분석. 왼쪽은 70M~10B 모델을 4가지 cosine cycle 길이로 학습시킨 전체 손실 곡선이며, 이들의 하한선(envelope)에서 FLOP당 최소 손실을 추출한다. 이로부터 주어진 컴퓨팅 예산에서의 최적 모델 크기(가운데)와 최적 학습 토큰 수(오른쪽)를 추정하며, 초록색 점은 Gopher 컴퓨팅 예산에서의 예측값이다. (Hoffmann et al., 2022)*
+
+이 그래프에서 핵심적인 관찰은 학습 곡선의 하한선(envelope)이 FLOPs에 대해 매끄러운 멱함수 관계를 형성한다는 것이며, 이로부터 최적 모델 크기와 토큰 수의 스케일링 지수를 안정적으로 추정할 수 있습니다.
+
 이 방법의 결과:
 
 $$N_{\text{opt}} \propto C^{0.50}, \quad D_{\text{opt}} \propto C^{0.50}$$
@@ -247,11 +254,21 @@ Chinchilla는 4배 작은 모델임에도 Gopher 대비 BPB를 6.4% 개선하였
 
 MMLU에서 7.6pp, BIG-bench에서 10.5pp의 개선은 통계적 변동을 넘어서는 의미 있는 차이입니다. 특히 **TriviaQA에서의 19.5pp 차이**는 더 많은 데이터로 학습된 모델이 사실 관련 지식(factual knowledge)을 더 효과적으로 습득한다는 것을 보여줍니다.
 
+BIG-bench 결과를 개별 태스크 수준에서 살펴보면, Chinchilla의 우위가 대부분의 태스크에 걸쳐 일관되게 나타남을 확인할 수 있습니다.
+
+![BIG-bench 개별 태스크에서 Chinchilla와 Gopher의 상대적 성능 차이](figures/fig_7.png)
+*Figure 7: BIG-bench 결과 비교. Chinchilla(70B)가 Gopher(280B) 대비 거의 모든 BIG-bench 태스크에서 우위를 보이며, 특히 analogical_similarity, gre_reading_comprehension 등에서 100%p 이상의 상대적 개선을 달성하였다. 주황색(Gopher 우위)은 4개 태스크에 불과하다. (Hoffmann et al., 2022)*
+
 PIQA에서 두 모델의 성능이 동일하고, HumanEval에서는 Gopher가 약간 우위를 보였다는 점은 특정 추론 능력이나 코드 생성에서 모델 크기가 여전히 중요한 요소일 수 있음을 시사합니다.
 
 ### MMLU 세부 분석
 
-MMLU(Massive Multitask Language Understanding)는 57개 학문 분야에 걸쳐 전문 지식을 평가하는 벤치마크입니다. Chinchilla는 67.6%를 달성하여 Gopher의 60.0%를 크게 능가하였으며, 57개 과목 중 51개에서 우위를 보였습니다.
+MMLU(Massive Multitask Language Understanding)는 57개 학문 분야에 걸쳐 전문 지식을 평가하는 벤치마크입니다. Chinchilla는 67.6%를 달성하여 Gopher의 60.0%를 크게 능가하였으며, 57개 과목 중 51개에서 우위를 보였습니다. 개별 과목별 결과를 시각화하면 이 우위의 범위가 명확해집니다.
+
+![MMLU 57개 과목별 Chinchilla의 Gopher 대비 상대적 성능 향상](figures/fig_6.png)
+*Figure 6: MMLU 과목별 성능 비교. Chinchilla(70B)는 57개 과목 중 51개에서 Gopher(280B)를 능가하고, 2개에서 동일하며, 4개에서만 열세를 보인다. 평균 7.6%p 향상이며, 특히 conceptual_physics, college_physics, high_school_physics 등 과학 분야에서 30%p 이상의 대폭적인 개선이 관찰된다. (Hoffmann et al., 2022)*
+
+이처럼 거의 모든 과목에 걸쳐 일관된 향상이 나타난다는 점은 주목할 만합니다.
 
 분야별 성능 향상:
 
@@ -266,7 +283,12 @@ MMLU(Massive Multitask Language Understanding)는 57개 학문 분야에 걸쳐 
 
 ### Kaplan et al. 예측과의 정량적 비교
 
-Chinchilla의 결과를 Kaplan et al.의 스케일링 법칙 예측과 직접 비교하면 그 차이가 극명합니다:
+Chinchilla의 결과를 Kaplan et al.의 스케일링 법칙 예측과 직접 비교하면 그 차이가 극명합니다. 아래 실험은 $10^{21}$ FLOPs 예산에서 두 방법론의 예측을 직접 대조하여 검증합니다.
+
+![Kaplan et al. 예측과 Chinchilla 예측의 직접 비교: 10^21 FLOPs에서의 학습 곡선](figures/fig_11.png)
+*Figure A4: Kaplan et al.(2020)과의 직접 비교. $10^{21}$ FLOPs 예산에서 Chinchilla 방법론(Approach 1)이 예측한 2.80B 모델(파랑)과 Kaplan et al.이 예측한 4.74B 모델(주황)을 실제로 학습시킨 결과, Chinchilla 기반 예측 모델이 학습 종료 시 더 낮은 손실에 도달한다. 이는 더 작은 모델을 더 많은 토큰으로 학습시키는 전략이 실제로 우월함을 실증적으로 보여준다. (Hoffmann et al., 2022)*
+
+정량적으로 비교하면:
 
 | 항목 | Kaplan et al. 예측 | Chinchilla 결과 |
 |------|------------------|---------------|

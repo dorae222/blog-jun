@@ -8,6 +8,9 @@ GPT-3의 가장 중요한 기여는 **In-Context Learning(ICL)**의 발견이다
 
 API를 통한 상업적 배포로 **LLM의 산업화를 촉발**했으며, ChatGPT, InstructGPT 등 후속 모델의 기반이 되었다.
 
+![GPT-3의 메타러닝 개념도 — 사전학습 중 습득한 패턴 인식 능력을 추론 시 In-Context Learning으로 활용](figures/fig_1.png)
+*Figure 1.1: 언어 모델 메타러닝 — 비지도 사전학습의 외부 루프에서 습득한 패턴 인식 능력을 추론 시 내부 루프(In-Context Learning)로 활용하는 개념도. 하나의 시퀀스 내에 반복되는 서브태스크가 내재되어 있다. (Source: Brown et al., 2020)*
+
 ## 아키텍처 상세
 
 ### 대규모 Transformer 디코더
@@ -42,6 +45,9 @@ GPT-3 논문은 총 8가지 크기의 모델을 학습하여 스케일링 법칙
 
 ### In-Context Learning 메커니즘
 
+![Zero-shot, One-shot, Few-shot과 전통적 Fine-tuning의 비교 — GPT-3의 세 가지 평가 설정](figures/fig_4.png)
+*Figure 2.1: In-Context Learning의 세 가지 설정과 전통적 Fine-tuning 비교 — Zero-shot은 태스크 설명만, One-shot은 예시 1개, Few-shot은 예시 수 개를 프롬프트에 제공하며, 모두 그래디언트 업데이트 없이 추론만으로 수행한다. (Source: Brown et al., 2020)*
+
 ICL의 세 가지 평가 설정:
 
 1. **Zero-shot**: 태스크 설명만 제공
@@ -60,6 +66,12 @@ ICL의 세 가지 평가 설정:
 별도의 그래디언트 업데이트 없이, **프롬프트만으로 태스크를 수행**하는 능력이 충분한 규모에서 창발한다는 것을 보였다. 이는 프롬프트 엔지니어링이라는 새로운 분야를 탄생시켰다.
 
 ### 2. 스케일링 법칙의 대규모 검증
+
+![42개 벤치마크에 대한 모델 크기별 종합 성능 — Few-shot이 모델 크기에 따라 가장 빠르게 향상](figures/fig_3.png)
+*Figure 1.3: 42개 정확도 기반 벤치마크의 종합 성능 — 모델 크기가 커질수록 Zero-shot 성능은 완만하게, Few-shot 성능은 급격하게 향상되어, 대형 모델일수록 In-Context Learning 능력이 강함을 보여준다. (Source: Brown et al., 2020)*
+
+![컴퓨팅 자원에 따른 검증 손실의 멱법칙 관계 — 스케일링 법칙의 대규모 검증](figures/fig_6.png)
+*Figure 3.1: 컴퓨팅 자원과 검증 손실의 멱법칙 관계 — 학습에 투입된 연산량(PetaFLOP/s-days)에 대해 검증 손실이 $L = 2.57 \cdot C^{-0.048}$의 멱법칙을 따르며, 기존 스케일링 법칙이 2 자릿수 이상 추가 확장에서도 유효함을 입증한다. (Source: Brown et al., 2020)*
 
 모델 크기가 커질수록 Few-shot 성능이 **로그-선형적으로 향상**됨을 8가지 모델 크기에 걸쳐 체계적으로 입증했다. 특히 일부 태스크에서는 특정 규모 이상에서 갑자기 성능이 점프하는 현상(phase transition)이 관찰되었다.
 
@@ -80,6 +92,9 @@ API 기반 배포를 통해 연구자뿐 아니라 일반 개발자도 대형 �
 | 3-digit 덧셈 | Few-shot | 80% | - |
 
 Few-shot으로 파인튜닝 없이 파인튜닝된 모델과 경쟁하거나 일부 태스크에서는 이를 능가했다.
+
+![10개 산술 태스크에서 모델 크기별 Few-shot 성능 — 175B에서 갑작스런 성능 점프를 보여주는 창발적 능력](figures/fig_15.png)
+*Figure 3.10: 산술 태스크의 Few-shot 성능 — 13B에서 175B로의 크기 증가 시 2자리 덧셈 100%, 3자리 덧셈 80% 등 급격한 성능 점프가 발생하여, 대형 모델에서의 창발적 능력(Emergent Ability)을 명확히 보여준다. (Source: Brown et al., 2020)*
 
 ## 관련 모델 비교
 

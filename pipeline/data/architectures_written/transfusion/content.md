@@ -10,11 +10,15 @@ Transfusion은 2024년 Meta가 발표한 통합 멀티모달 생성 모델로, �
 
 이미지를 이산화(tokenization)하지 않고 VAE의 연속 잠재 벡터로 직접 처리하므로, VQ 양자화에서 발생하는 정보 손실이 없다. VQ 방식은 코드북의 크기에 의해 표현력이 제한되고, 양자화 과정에서 미세한 디테일이 손실되지만, Transfusion은 연속 벡터를 직접 사용하여 이 한계를 극복한다. 그 결과 텍스트 생성과 이미지 생성 모두에서 전문 모델과 경쟁하는 성능을 달성하며, 7B 파라미터에서 DALL-E 2와 경쟁하는 이미지 품질을 보이며, GenEval 벤치마크에서 0.71점으로 DALL-E 2의 0.52점을 크게 상회한다. 이와 동시에 텍스트 성능(C4 Perplexity 7.21, MMLU 54.8)은 동일 규모의 순수 언어 모델 LLaMA 2(7.08, 55.1)와 거의 동일하여, 이미지 학습이 텍스트 성능을 저하시키지 않음을 입증한다.
 
-![Architecture](figures/architecture.svg)
+![Transfusion 전체 아키텍처 — 텍스트 LM Loss와 이미지 Diffusion Loss를 동시에 최적화하는 통합 구조](figures/architecture.png)
+*Figure 1: Transfusion 전체 아키텍처 — 텍스트와 이미지 패치가 인터리브된 시퀀스를 단일 트랜스포머가 처리하며, 텍스트에는 Cross-Entropy Loss, 이미지에는 MSE Diffusion Loss를 동시에 적용한다. (Source: Zhou et al., 2024)*
 
 ## 아키텍처 상세
 
 ### 혼합 시퀀스 표현
+
+![Transfusion 상위 수준 구조 — 단일 트랜스포머가 이산 텍스트 토큰과 연속 이미지 벡터를 동시에 처리](figures/fig_1.png)
+*Figure 2: Transfusion 상위 수준 도해 — 이산(텍스트) 토큰은 자기회귀 방식으로, 연속(이미지) 벡터는 병렬 확산 방식으로 처리된다. BOI/EOI 마커 토큰이 모달리티를 구분한다. (Source: Zhou et al., 2024)*
 
 Transfusion의 입력 시퀀스는 텍스트 토큰과 이미지 패치 벡터가 인터리브된(interleaved) 혼합 시퀀스이다. 텍스트는 표준 토크나이저(BPE 등)로 이산 토큰 시퀀스로 변환되고, 이미지는 사전학습된 VAE 인코더를 통해 연속 잠재 벡터 시퀀스로 변환된다. 이미지 시작과 끝은 특수 토큰 `<BOI>`(Begin of Image)와 `<EOI>`(End of Image)로 표시된다.
 
@@ -46,11 +50,17 @@ $$\mathcal{L}_{\text{Transfusion}} = \mathcal{L}_{\text{LM}} + \lambda \cdot \ma
 
 ### 어텐션 마스크 설계
 
+![Transfusion 어텐션 마스크 — 텍스트는 인과 마스크, 이미지 패치 간은 양방향 어텐션](figures/fig_21.png)
+*Figure 3: Transfusion 어텐션 마스크 — 텍스트 토큰은 인과 마스크(causal)를 따르고, 같은 이미지 내 패치들은 서로 양방향(bidirectional) 어텐션을 수행하여 공간적 일관성을 보장한다. (Source: Zhou et al., 2024)*
+
 Transfusion은 모달리티별로 다른 어텐션 패턴을 적용하는 하이브리드 어텐션 마스크를 사용한다:
 
 - **텍스트 토큰 간**: 표준 인과 마스크(causal mask)를 사용하여 자기회귀 생성을 지원한다. 각 텍스트 토큰은 자신과 이전 토큰만 참조할 수 있다.
 - **이미지 패치 내부**: U-Net의 로컬 어텐션 아이디어를 차용한 양방향 어텐션(bidirectional attention)을 적용한다. 이미지 내 패치들은 서로를 모두 참조할 수 있어, 이미지의 전역적 일관성을 유지한다. 이는 확산 모델의 디노이징 과정에서 이미지 전체의 정보를 활용할 수 있게 한다.
 - **텍스트-이미지 간**: 양방향 크로스 어텐션을 사용하여 텍스트 조건이 이미지 생성에 영향을 미치고, 동시에 이미지 정보가 후속 텍스트 생성에 활용된다.
+
+![이미지를 VAE 잠재 표현으로 변환하고 패치로 분할하는 과정](figures/fig_19_1.png)
+*Figure 4: 이미지 인코딩/디코딩 파이프라인 — 이미지를 사전학습된 VAE로 잠재 표현으로 변환한 후, Linear 또는 U-Net Down 블록으로 패치 표현을 생성한다. 디코딩 시 역과정을 거쳐 VAE 디코더로 복원한다. (Source: Zhou et al., 2024)*
 
 ### 추론 과정
 

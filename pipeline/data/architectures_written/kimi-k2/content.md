@@ -8,6 +8,9 @@ DeepSeek-V3의 MLA(Multi-Head Latent Attention) 아키텍처에서 영감을 받
 
 **참고 논문**: [Kimi K2 Technical Report](https://arxiv.org/abs/2507.20534)
 
+![Kimi K2 아키텍처 개요 — MoE + MLA 기반 디코더 구조](figures/architecture.png)
+*Figure 1: Kimi K2 아키텍처 — 1T 파라미터의 희소 MoE 구조에 MLA 어텐션과 MuonClip 옵티마이저를 결합한 설계. 토큰당 32B만 활성화하여 추론 효율을 극대화. (Source: arXiv 2507.20534)*
+
 ## 아키텍처 상세
 
 ### MLA (Multi-Head Latent Attention)
@@ -40,6 +43,9 @@ Kimi K2의 핵심 훈련 혁신이다. 기존 AdamW 대비 QK 레이어의 훈�
 
 MuonClip은 기존 AdamW 대비 동일 스텝 수에서 더 낮은 손실을 달성하며, 특히 MoE 모델의 대규모 학습에서 효과가 크다.
 
+![Muon 옵티마이저의 어텐션 로짓 불안정 문제](figures/fig_2_1.png)
+*Figure 2: MuonClip 도입 동기 — 기존 Muon 옵티마이저 사용 시 어텐션 로짓이 학습 후반에 1000 이상으로 급증하여 수치 불안정을 야기. QK-Clip으로 이를 효과적으로 억제. (Source: arXiv 2507.20534)*
+
 ### 보조 손실 없는 전문가 부하 균형
 
 DeepSeek-V3에서 도입된 편향 항 동적 조정 방식을 채택하여, 별도의 auxiliary loss 없이도 전문가 간 부하를 균형 있게 유지한다.
@@ -52,6 +58,9 @@ DeepSeek-V3에서 도입된 편향 항 동적 조정 방식을 채택하여, 별
 
 ### 2. MuonClip의 훈련 안정성
 
+![Kimi K2 학습 손실 곡선 — 전 과정에서 스파이크 없음](figures/fig_3.png)
+*Figure 3: Kimi K2 학습 손실 곡선 — MuonClip 적용으로 전체 학습 과정에서 손실 스파이크 없이 안정적으로 수렴. (Source: arXiv 2507.20534)*
+
 대규모 MoE 모델 학습에서 흔히 발생하는 불안정 문제를 MuonClip으로 해결하여, 15T 토큰 이상의 대규모 학습을 안정적으로 완주했다.
 
 ### 3. 오픈소스 1T 모델
@@ -59,6 +68,9 @@ DeepSeek-V3에서 도입된 편향 항 동적 조정 방식을 채택하여, 별
 Apache 2.0 라이선스로 1T 파라미터 모델을 공개한 것은 오픈소스 AI 생태계에 대한 중요한 기여이다.
 
 ## 벤치마크/성능
+
+![Kimi K2 주요 벤치마크 결과 — 에이전틱 코딩, 도구 사용, 수학/STEM 분야](figures/fig_1.png)
+*Figure 4: Kimi K2 주요 벤치마크 — SWE-bench, LiveCodeBench, Tau2-bench 등에서 DeepSeek-V3, GPT-4.1을 능가하는 오픈소스 최고 성능 달성. (Source: arXiv 2507.20534)*
 
 | 벤치마크 | Kimi K2 | DeepSeek-V3 | GPT-4.1 | Claude Sonnet 4 |
 |---------|---------|------------|---------|----------------|
@@ -83,6 +95,9 @@ Apache 2.0 라이선스로 1T 파라미터 모델을 공개한 것은 오픈소�
 - **정렬**: 에이전틱 SFT + RL 기반 정렬
 - **특화 데이터**: 코드·수학·에이전트 데이터 비율 강화
 - **라이선스**: Apache 2.0 (가중치: Modified Apache 2.0)
+
+![희소성 스케일링 법칙 — 전문가 수 증가에 따른 성능 향상](figures/fig_5_1.png)
+*Figure 5: 희소성 스케일링 법칙 — 활성 전문가 수를 8로 고정하고 전체 전문가 수를 증가시킬수록 동일 FLOPs 대비 더 낮은 검증 손실 달성. (Source: arXiv 2507.20534)*
 
 ## 실무 활용
 

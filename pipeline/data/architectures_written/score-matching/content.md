@@ -6,6 +6,11 @@ Score matching과 Langevin dynamics를 결합한 생성 모델은 2019년 Stanfo
 
 Score function만 알면 **Langevin dynamics**를 통해 데이터 분포에서 샘플링할 수 있다는 통찰이 핵심이다. 다양한 수준의 가우시안 노이즈에 대한 score를 동시에 학습하는 **Noise Conditional Score Network(NCSN)**을 제안하여, annealed Langevin dynamics로 고품질 샘플을 생성한다.
 
+다음 그림은 Score 기반 생성 모델(NCSN)의 전체 아키텍처를 보여준다.
+
+![NCSN 아키텍처 다이어그램](figures/architecture.png)
+*Figure 1: NCSN 전체 구조 — 다중 노이즈 수준의 Forward 과정, RefineNet 기반 Score Network, Denoising Score Matching 학습 목표, Annealed Langevin Dynamics 샘플링 알고리즘. (Source: Song & Ermon, 2019)*
+
 ## 아키텍처 상세
 
 ### Score Function 정의
@@ -45,6 +50,21 @@ $$\mathcal{L} = \frac{1}{L}\sum_{i=1}^{L} \lambda(\sigma_i) \mathbb{E}\left[\|\m
 $$\mathbf{x}_{k+1} = \mathbf{x}_k + \frac{\alpha_i}{2} \mathbf{s}_\theta(\mathbf{x}_k, \sigma_i) + \sqrt{\alpha_i}\mathbf{z}_k, \quad \mathbf{z}_k \sim \mathcal{N}(0, \mathbf{I})$$
 
 각 노이즈 수준에서 $T$ 스텝의 Langevin dynamics를 수행한 후 다음 수준으로 전환한다.
+
+다음 그림은 데이터 분포의 score function과 학습된 score network의 비교로, score matching의 핵심 아이디어를 시각적으로 보여준다.
+
+![데이터 score function과 학습된 score network 비교](figures/fig_3.png)
+*Figure 1: Score function 시각화 — 가우시안 혼합 분포의 실제 데이터 score. 화살표가 데이터 밀도가 높은 방향을 가리키며, 주황색이 진할수록 밀도가 높다. 고밀도 영역에서는 score 추정이 정확하지만 저밀도 영역에서는 부정확해지는 문제를 노이즈 추가로 해결한다. (Source: Song & Ermon, 2019)*
+
+아래는 Langevin dynamics와 annealed Langevin dynamics의 샘플링 품질 차이를 보여준다.
+
+![Langevin dynamics vs Annealed Langevin dynamics 비교](figures/fig_5.png)
+*Figure 2: 가우시안 혼합에서의 샘플링 비교 — (a) 정확한 샘플링, (b) 일반 Langevin dynamics, (c) Annealed Langevin dynamics. 일반 Langevin dynamics는 모드 간 비율을 잘못 추정하지만, annealed 방식은 정확한 비율을 복원한다. (Source: Song & Ermon, 2019)*
+
+다음은 annealed Langevin dynamics의 중간 샘플링 과정으로, 노이즈에서 점진적으로 이미지가 생성되는 과정을 보여준다.
+
+![Annealed Langevin dynamics의 중간 샘플링 과정](figures/fig_7.png)
+*Figure 3: Annealed Langevin dynamics 중간 샘플 — CelebA(상)와 CIFAR-10(하)에서 높은 노이즈에서 시작하여 점차 깨끗한 이미지로 수렴하는 과정. 초기 노이즈 수준에서 전역 구조가 형성되고, 후기 단계에서 세부 디테일이 추가된다. (Source: Song & Ermon, 2019)*
 
 ## 핵심 혁신
 

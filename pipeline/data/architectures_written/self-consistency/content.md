@@ -12,6 +12,9 @@ Self-Consistency의 핵심 직관은 단순하지만 강력하다: **"복잡한 
 
 ![Architecture](figures/architecture.svg)
 
+![Self-Consistency 방법론 개요 — 다중 추론 경로 샘플링과 다수결 집계](figures/fig_1.png)
+*Figure 1: Self-Consistency 3단계 — (1) CoT 프롬프팅으로 언어 모델에 질문, (2) 탐욕적 디코딩 대신 다양한 추론 경로를 샘플링, (3) 추론 경로를 주변화하고 최종 답안 집합에서 가장 일관된 답을 선택. (Source: arXiv 2203.11171)*
+
 ## 아키텍처 상세
 
 Self-Consistency의 메커니즘은 세 단계로 구성된다.
@@ -70,6 +73,9 @@ $$\text{Accuracy}(N) \approx \alpha \log N + \beta$$
 
 즉, $N$을 2배로 늘리면 일정한 비율의 성능 향상을 얻는다. 그러나 비용은 $N$에 선형으로 증가하므로, 실용적으로는 $N = 10 \sim 40$이 최적 범위다.
 
+![샘플링 경로 수에 따른 MultiArith 정확도 향상](figures/fig_2_1.png)
+*Figure 2: 샘플 수와 정확도 — Self-Consistency(파란색)가 CoT greedy 디코딩(주황색) 대비 샘플 수 증가에 따라 일관되게 정확도가 향상되는 로그-선형 패턴. (Source: arXiv 2203.11171)*
+
 | 샘플 수 $N$ | GSM8K 정확도 (PaLM 540B) | 비용 배수 |
 |------------|------------------------|----------|
 | 1 (greedy) | 56.9% | 1x |
@@ -86,6 +92,9 @@ $$\text{Accuracy}(N) \approx \alpha \log N + \beta$$
 
 3. **학습 불필요(Training-Free)**: 파인튜닝 없이 추론 시점에만 적용되므로, 어떤 LLM에도 즉시 적용 가능하다. 기존 CoT 프롬프트를 그대로 사용하며, 디코딩 전략만 변경한다.
 
+![일관성과 정확도의 상관관계 — 높은 일관성은 높은 정확도를 의미](figures/fig_6.png)
+*Figure 3: 일관성-정확도 상관관계 — 다수결의 일치도(consistency)가 높을수록 모델의 정확도도 비례하여 증가. 이는 Self-Consistency가 불확실성 추정 지표로도 활용 가능함을 시사. (Source: arXiv 2203.11171)*
+
 4. **모델 불확실성의 간접 측정**: 다수결 결과의 일치도는 모델의 확신도(confidence)를 반영한다. 다수가 동의하는 답은 높은 확신을, 분산된 답은 모델의 불확실성을 나타내며, 이는 답변의 신뢰도 지표로 활용할 수 있다.
 
 ## 벤치마크/성능
@@ -100,6 +109,9 @@ $$\text{Accuracy}(N) \approx \alpha \log N + \beta$$
 | StrategyQA | PaLM 540B | 75.6% | **81.6%** | +6.0%p |
 
 GSM8K에서의 17.5%p 향상이 가장 인상적이다. 기본 정확도가 낮은 벤치마크(AQuA 35.8% $\rightarrow$ 48.0%)에서 절대적 향상폭이 크고, 기본 정확도가 높은 벤치마크(ARC-c 85.2% $\rightarrow$ 88.7%)에서는 향상 여지가 작아 상대적으로 작은 향상을 보인다. 모든 벤치마크에서 일관되게 성능이 향상된다는 점이 중요하다.
+
+![GSM8K에서 다양한 샘플링 전략에 대한 강건성 분석](figures/fig_4_1.png)
+*Figure 4: 샘플링 전략 강건성 — GSM8K에서 temperature, top-k 등 다양한 샘플링 파라미터에 대해 Self-Consistency가 일관되게 성능 향상을 보이며, 특정 설정에 민감하지 않음을 확인. (Source: arXiv 2203.11171)*
 
 ## 학습
 

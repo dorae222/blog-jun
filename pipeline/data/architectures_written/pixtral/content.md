@@ -10,6 +10,11 @@ Pixtral의 비전 인코더는 **2D RoPE(Rotary Position Embedding)**를 적용�
 
 ## 아키텍처 상세
 
+다음은 Pixtral의 전체 아키텍처를 상세히 나타낸 다이어그램이다. 비전 인코더부터 멀티모달 디코더까지의 데이터 흐름을 확인할 수 있다.
+
+![Pixtral 12B 전체 아키텍처 다이어그램 — 비전 인코더, 멀티모달 퓨전, 디코더 구조](figures/architecture.png)
+*Figure 1: Pixtral 12B 아키텍처 개요 — Vision Encoder(400M), Multimodal Fusion, Mistral-NeMo-12B 디코더의 전체 파이프라인. (Source: Mistral AI)*
+
 ### 전체 구조
 
 1. **비전 인코더**: Pixtral ViT (400M params, 처음부터 학습)
@@ -22,6 +27,11 @@ Pixtral의 비전 인코더는 ViT 구조를 기반으로 하되, 핵심적인 �
 
 **기존 ViT**: 이미지를 고정 크기(224/384px)로 리사이즈 → 고정 패치 수
 **Pixtral ViT**: 원본 이미지 크기 유지 → 가변 패치 수 + 2D RoPE
+
+아래 그림은 Pixtral 비전 인코더의 내부 구조를 보여준다. Block-diagonal attention mask와 RoPE-2D가 가변 크기 이미지를 어떻게 처리하는지 확인할 수 있다.
+
+![Pixtral 비전 인코더 구조 — RoPE-2D와 Block-diagonal attention을 활용한 가변 해상도 이미지 처리](figures/fig_3.png)
+*Figure 2: Pixtral Vision Encoder — 이미지 패치에 RoPE-2D 위치 인코딩을 적용하고, Block-diagonal attention mask로 시퀀스 패킹을 지원한다. (Source: arXiv 2410.07073)*
 
 2D RoPE는 각 패치의 (행, 열) 위치를 독립적으로 인코딩한다:
 
@@ -43,6 +53,11 @@ $$\text{RoPE}_{2D}(x_{i,j}) = x \cdot \begin{bmatrix} \cos(i\theta) & -\sin(i\th
 여기서 `pij`는 (i행, j열) 패치의 시각 토큰이며, [ROW]는 행 경계를 표시한다. 이 구조적 정보가 LLM에 전달되어 이미지 내 공간 관계를 더 정확히 추론할 수 있다.
 
 ### 128K 컨텍스트 다중 이미지
+
+다음 그림은 Pixtral의 전체 멀티모달 파이프라인을 보여준다. 여러 이미지와 텍스트가 하나의 시퀀스로 통합되어 디코더에 입력되는 과정을 확인할 수 있다.
+
+![Pixtral 멀티모달 아키텍처 — 다중 이미지와 텍스트를 하나의 시퀀스로 처리하는 구조](figures/fig_4.png)
+*Figure 3: Pixtral 전체 멀티모달 구조 — 비전 인코더가 이미지를 토큰화하고, 텍스트 토큰과 함께 멀티모달 디코더에 입력된다. 128K 컨텍스트 내에서 임의 개수의 이미지를 처리할 수 있다. (Source: arXiv 2410.07073)*
 
 128K 토큰 컨텍스트에서 여러 장의 이미지와 텍스트를 자유롭게 혼합할 수 있다:
 
@@ -66,7 +81,10 @@ $$\text{RoPE}_{2D}(x_{i,j}) = x \cdot \begin{bmatrix} \cos(i\theta) & -\sin(i\th
 
 ### 1. 처음부터 학습한 비전 인코더
 
-CLIP이나 SigLIP 같은 기존 인코더를 사용하지 않고, 목적에 최적화된 비전 인코더를 처음부터 학습하였다. 이를 통해 2D RoPE 등 원하는 기법을 자유롭게 적용할 수 있었다.
+CLIP이나 SigLIP 같은 기존 인코더를 사용하지 않고, 목적에 최적화된 비전 인코더를 처음부터 학습하였다. 이를 통해 2D RoPE 등 원하는 기법을 자유롭게 적용할 수 있었다. 아래 그래프는 Pixtral ViT가 기존 CLIPA 인코더 대비 문서 이해 태스크에서 얼마나 큰 성능 향상을 보이는지 나타낸다.
+
+![Pixtral ViT vs CLIPA 비전 인코더 성능 비교 — 문서 이해 태스크에서의 정확도 차이](figures/fig_7.png)
+*Figure 5: 비전 인코더 ablation 비교 — Pixtral ViT는 ChartQA, DocVQA 등 문서 이해 태스크에서 CLIPA 대비 큰 폭의 성능 향상을 보이며, 자체 학습 인코더의 효과를 입증한다. (Source: arXiv 2410.07073)*
 
 ### 2. 2D RoPE
 
@@ -77,6 +95,11 @@ CLIP이나 SigLIP 같은 기존 인코더를 사용하지 않고, 목적에 최�
 128K 컨텍스트에서 다수 이미지를 처리하는 능력은 실무에서 매우 유용하다. 보고서, 논문, 매뉴얼 등 다중 페이지 문서를 한 번에 분석할 수 있다.
 
 ## 벤치마크/성능
+
+Pixtral은 동일 파라미터 규모의 오픈 모델 중에서 멀티모달 벤치마크 성능이 가장 우수하다. 아래 그래프는 모델 크기 대비 성능(MM-MT-Bench)을 비교한 결과이다.
+
+![Pixtral 12B 성능 비교 — MM-MT-Bench에서 동급 모델 대비 최고 성능/비용 효율](figures/fig_1_1.png)
+*Figure 4: Pixtral 성능 비교 (MM-MT-Bench) — 12B 파라미터로 72B 모델에 준하는 성능을 달성하며, 동일 규모에서 최고의 성능/비용 효율을 보인다. (Source: arXiv 2410.07073)*
 
 | 벤치마크 | Pixtral-12B | LLaVA-OV-7B | Qwen2-VL-7B |
 |----------|-----------|-----------|-----------|

@@ -6,6 +6,11 @@ Claude Opus 4.5는 2025년 7월 15일 Anthropic이 공개한 최신 플래그십
 
 특히 SWE-bench Verified에서 **80.9%**를 기록하며 최초로 80% 벽을 돌파하였고, 이는 GPT-5.1(76.3%), Gemini 3 Pro(76.2%)를 크게 앞서는 수치이다. Anthropic 내부 엔지니어링 채용 시험에서도 **인간 최고 점수를 초과**하는 전례 없는 성과를 보여주었다.
 
+아래 다이어그램은 Claude Opus 4.5의 전체 아키텍처를 보여준다. Dense Decoder-only Transformer 구조를 기반으로 RMSNorm, SwiGLU, RoPE 등의 현대적 기법을 결합한 설계가 핵심이다.
+
+![Claude Opus 4.5 메인 아키텍처 — Dense Transformer 기반 디코더 구조와 MHA, SwiGLU FFN 상세](figures/architecture.png)
+*Figure 1: Claude Opus 4.5 메인 아키텍처 — Dense Decoder-only Transformer 스택, Multi-Head Attention 및 SwiGLU FFN 확장 구조. (Anthropic)*
+
 ## 아키텍처 상세
 
 ### 기본 구조
@@ -90,6 +95,11 @@ Claude Opus 4.5의 SWE-bench 80.9%는 Claude 3.5 Sonnet(49.0%) 대비 **65% 상�
 | **에이전틱** | ✅ 최적화 | ✅ | ✅ | 부분적 |
 | **오픈소스** | ❌ | ❌ | ❌ | ✅ |
 | **안전 수준** | ASL-3 | 자체 | 자체 | 커뮤니티 |
+
+다음 다이어그램은 Constitutional AI 훈련 파이프라인과 에이전틱 워크플로 아키텍처, 그리고 경쟁 모델 간 핵심 차이점을 종합적으로 보여준다.
+
+![Constitutional AI 훈련 파이프라인 및 에이전틱 워크플로 아키텍처](figures/detail.png)
+*Figure 2: Constitutional AI(CAI) 훈련 파이프라인 — Pretraining, SFT, RLAIF, ASL-3 Safety 4단계와 에이전틱 워크플로의 Observe-Think-Act 루프 및 경쟁 모델 비교. (Anthropic)*
 
 ## 훈련 파이프라인 (추정)
 

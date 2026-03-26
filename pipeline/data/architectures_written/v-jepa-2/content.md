@@ -8,6 +8,9 @@ V-JEPA 2는 2025년 Meta가 발표한 비디오 기반 세계 모델(world model
 
 V-JEPA 2의 핵심 철학은 MAE나 VideoMAE와 같은 마스킹 오토인코더가 **픽셀 수준의 복원**에 집중하는 것과 대조적이다. V-JEPA 2는 픽셀을 직접 복원하지 않고, 마스킹된 영역의 **추상적(abstract) 표현**만 예측한다. 이를 통해 배경 텍스처, 조명 변화 등 물리적으로 무의미한 저수준 디테일에 집착하지 않고, 객체의 움직임, 상호작용, 인과 관계 등 고수준 의미 구조를 학습한다. 궁극적으로 V-JEPA 2는 비디오를 통해 물리 세계를 이해하는 "세계 모델"을 향한 중요한 진전을 보여준다.
 
+![V-JEPA 2 전체 파이프라인 — 비디오 사전학습에서 다운스트림 태스크까지의 흐름](figures/fig_1.png)
+*Figure 1: V-JEPA 2 개요 — 인터넷 규모 비디오/이미지로 사전학습 후, Language Alignment(Video QA), Attentive Probe(행동 분류/객체 인식/행동 예측), 로봇 데이터 기반 Action-Conditioned 후학습(로봇 조작)으로 활용되는 다단계 파이프라인. (Source: Assran et al., 2025)*
+
 ![Architecture](figures/architecture.svg)
 
 ## 아키텍처 상세
@@ -21,6 +24,9 @@ V-JEPA 2의 아키텍처는 세 가지 핵심 구성요소로 이루어진다:
 **2. 타깃 인코더(Target Encoder)**: 컨텍스트 인코더와 동일한 아키텍처이지만, 마스킹된 패치를 포함한 전체 비디오를 처리한다. 이 인코더는 gradient 업데이트 없이 컨텍스트 인코더의 **EMA(Exponential Moving Average)**로만 업데이트된다:
 
 $$\theta_\text{target} \leftarrow m \cdot \theta_\text{target} + (1-m) \cdot \theta_\text{context}$$
+
+![V-JEPA 2의 사전학습 아키텍처 — 마스크 디노이징 목표와 EMA 타깃 인코더 구조](figures/fig_2_1.png)
+*Figure 2: 멀티스테이지 학습 (사전학습 단계) — 비디오 클립을 패치화하여 마스킹 후 인코더에 입력하고, 예측기가 마스크 토큰 위치의 표현을 EMA 인코더 출력에 L1 손실로 회귀시킨다. Stop-gradient로 타깃 인코더의 collapse를 방지한다. (Source: Assran et al., 2025)*
 
 **3. 예측기(Predictor)**: 컨텍스트 인코더의 출력을 받아 마스킹된 영역의 타깃 인코더 출력을 예측하는 경량 네트워크이다.
 
@@ -50,6 +56,12 @@ $$\mathcal{L} = \frac{1}{|\mathcal{M}|} \sum_{i \in \mathcal{M}} \| \text{Predic
 | 레이어 수 | 40 |
 | 어텐션 헤드 | 24 |
 | 위치 인코딩 | 학습 가능한 3D (공간 2D + 시간 1D) |
+
+![V-JEPA 2 사전학습 레시피의 스케일링 요소별 기여도 — V-JEPA 1 대비 +4%p 향상](figures/fig_4.png)
+*Figure 3: 스케일링 요소별 기여 — V-JEPA 1 기준(84.2%)에서 데이터 확대(+1.0), 모델 확장(+1.5), 긴 학습(+0.8), 고해상도(+0.7)를 순차적으로 적용하여 88.2%까지 6개 이미지/비디오 분류 태스크의 평균 정확도를 향상시킨다. (Source: Assran et al., 2025)*
+
+![V-JEPA 2의 모델 크기 스케일링 — ViT-L에서 ViT-g까지의 성능 향상](figures/fig_8_1.png)
+*Figure 5: 모델 크기 스케일링 — 파라미터 300M(ViT-L)에서 1B(ViT-g)로 확장 시 평균 정확도가 86.0%에서 87.5%로 +1.7%p 향상되며, 모델 크기에 따른 일관된 성능 개선을 보인다. (Source: Assran et al., 2025)*
 
 ## 핵심 혁신
 

@@ -8,6 +8,11 @@
 
 **참고 논문**: [Jamba: A Hybrid Transformer-Mamba Language Model](https://arxiv.org/abs/2403.19887)
 
+다음 그림은 Jamba의 전체 블록 구조와 각 레이어 유형을 보여준다.
+
+![Jamba 블록 구조와 레이어 유형 — Attention, Mamba, MoE 레이어의 교차 배치](figures/fig_1.png)
+*Figure 1: Jamba 블록 구조 — (a) Mamba와 Attention 레이어의 교차 배치, (b) 각 레이어 유형의 내부 구성. Attention:Mamba = 1:7 비율로 MoE가 매 2번째 레이어에 적용된다. (Source: Lieber et al., 2024)*
+
 ## 아키텍처 상세
 
 ### Attention:Mamba 비율 설계
@@ -54,6 +59,11 @@ Jamba의 하이브리드 설계가 제공하는 메모리 효율은 극적이다
 
 Mamba 레이어는 KV 캐시가 필요 없이 고정 크기의 상태 벡터만 유지하므로, 시퀀스 길이가 길어져도 메모리 사용량이 거의 증가하지 않는다.
 
+아래 그래프는 단일 A100 80GB GPU에 적재 가능한 최대 컨텍스트 길이를 모델별로 비교한 것이다.
+
+![단일 A100 80GB GPU에서의 최대 컨텍스트 길이 비교 — Jamba가 가장 긴 컨텍스트를 지원한다](figures/fig_2.png)
+*Figure 2: 단일 A100 80GB GPU 기준 최대 컨텍스트 길이 비교 — Jamba는 Mixtral 대비 2배, Llama-2-70B 대비 7배 긴 컨텍스트를 처리할 수 있다. (Source: Lieber et al., 2024)*
+
 ## 핵심 혁신
 
 ### 1. Attention + SSM 하이브리드의 실용성 입증
@@ -67,6 +77,11 @@ Mamba 레이어가 24/32(75%)를 차지하므로, 전체 모델의 메모리 복
 ### 3. MoE + SSM의 삼중 하이브리드
 
 Attention, Mamba(SSM), MoE라는 세 가지 효율화 기법을 동시에 결합한 최초의 모델이다.
+
+다양한 배치 크기에서의 처리량 비교는 Jamba의 효율성을 명확히 보여준다.
+
+![단일 GPU 환경에서 배치 크기별 처리량 비교 — Jamba가 Mixtral 대비 3배 높은 처리량을 달성](figures/fig_3_1.png)
+*Figure 3: 단일 A100 GPU에서의 배치 크기별 처리량 비교 — Jamba는 대규모 배치 처리 시 Mixtral 대비 3배 이상의 처리량을 달성하며, Llama-2-70B는 큰 배치에서 메모리 한계에 도달한다. (Source: Lieber et al., 2024)*
 
 ## 벤치마크/성능
 
@@ -88,12 +103,22 @@ Attention, Mamba(SSM), MoE라는 세 가지 효율화 기법을 동시에 결합
 | **KV 캐시** | 큼 | 중간 | 없음 | **최소** |
 | **전역 의존성** | 강함 | 강함 | 약함 | **강함** |
 
+다음은 256K 토큰 길이까지의 Needle-in-a-Haystack 평가 결과로, Jamba의 장문 검색 능력을 시각적으로 보여준다.
+
+![Jamba의 Needle-in-a-Haystack 평가 결과 — 256K 토큰까지 안정적인 검색 성능](figures/fig_6.png)
+*Figure 4: Needle-in-a-Haystack 평가 — Jamba는 256K 토큰 컨텍스트 내 임의 위치에 삽입된 정보를 안정적으로 검색하는 능력을 보여준다. (Source: Lieber et al., 2024)*
+
 ## 학습 상세
 
 - **데이터**: 내부 데이터셋 (구체적 구성 미공개), 추정 1T 토큰 이상
 - **정렬**: Jamba-Instruct는 SFT + DPO 적용
 - **공개**: Hugging Face에 Apache 2.0 라이선스로 가중치 공개
 - **컨텍스트**: Mamba의 SSM 상태로 256K 처리, 슬라이딩 윈도우 불필요
+
+Attention-Mamba 하이브리드의 학습 효율성은 아래 학습 손실 곡선에서 확인할 수 있다.
+
+![Attention-Mamba 비율별 학습 손실 곡선 비교 — 하이브리드가 순수 Attention과 순수 Mamba보다 낮은 손실을 달성](figures/fig_7.png)
+*Figure 5: Attention-Mamba 비율별 학습 손실 비교 (1.3B 파라미터) — 하이브리드 구조(1:3, 1:7 비율)가 순수 Attention 및 순수 Mamba 대비 전 학습 과정에서 일관되게 낮은 손실을 달성한다. (Source: Lieber et al., 2024)*
 
 ## 실무 활용
 

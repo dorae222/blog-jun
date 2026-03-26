@@ -5,7 +5,7 @@ RLHF(Reinforcement Learning from Human Feedback)는 [[InstructGPT]], ChatGPT 등
 Stanford 대학교의 Rafael Rafailov 등이 2023년 NeurIPS에서 발표한 **DPO(Direct Preference Optimization)**는 이 복잡성을 수학적으로 제거합니다. 핵심 통찰은 KL-제약 RLHF의 최적화 문제를 닫힌 형태(closed-form)로 풀면, **보상 함수가 최적 정책과 참조 정책의 로그 비율로 정확히 표현**된다는 것입니다. 이를 통해 보상 모델 학습 단계를 완전히 건너뛰고, 선호도 데이터에 대한 단순한 이진 분류 손실만으로 정책을 직접 최적화할 수 있습니다.
 
 ![RLHF와 DPO 파이프라인 비교](figures/fig_1.png)
-*Figure 1. RLHF(좌)는 보상 모델을 먼저 학습한 뒤 강화학습 루프로 정책을 최적화하는 반면, DPO(우)는 선호도 데이터로부터 최대 우도(maximum likelihood) 목적함수로 직접 정책을 학습한다. 보상 모델 학습과 PPO 강화학습이라는 두 단계를 완전히 제거한 것이 DPO의 핵심 기여이다.*
+*Figure 1. RLHF(좌)는 보상 모델을 먼저 학습한 뒤 강화학습 루프로 정책을 최적화하는 반면, DPO(우)는 선호도 데이터로부터 최대 우도(maximum likelihood) 목적함수로 직접 정책을 학습한다. 보상 모델 학습과 PPO 강화학습이라는 두 단계를 완전히 제거한 것이 DPO의 핵심 기여이다. (Rafailov et al., 2023)*
 
 DPO는 발표 이후 Semantic Scholar 기준 약 **6,500회 이상 인용**(1,531건의 고영향력 인용 포함)되었으며, [[Llama 3]], [[Mistral]], Qwen, Gemma 등 대부분의 오픈소스 모델이 DPO 또는 그 변형을 사용하여 정렬됩니다.
 
@@ -144,7 +144,7 @@ $$\nabla_\theta \mathcal{L}_{\mathrm{DPO}} = -\beta \, \mathbb{E} \left[ \underb
 IMDb 리뷰 데이터를 이용한 긍정 감정 생성 태스크에서, DPO와 PPO의 **보상-KL 프론티어(frontier)**를 비교했습니다. 이 프론티어는 "주어진 KL divergence 예산 내에서 달성 가능한 최대 보상"을 나타내며, 알고리즘의 최적화 품질을 가장 직접적으로 평가하는 지표입니다.
 
 ![IMDb 감정 생성에서 DPO와 PPO의 보상-KL 프론티어 비교](figures/fig_2_1.png)
-*Figure 2. IMDb 감정 생성 태스크에서 보상-KL 발산 프론티어. DPO(주황)가 모든 KL 값에서 가장 높은 기대 보상을 달성하여, 동일 보상을 더 낮은 KL divergence로 얻는다. 이는 DPO가 reward hacking 없이 실질적으로 원하는 속성을 학습함을 정량적으로 보여준다.*
+*Figure 2. IMDb 감정 생성 태스크에서 보상-KL 발산 프론티어. DPO(주황)가 모든 KL 값에서 가장 높은 기대 보상을 달성하여, 동일 보상을 더 낮은 KL divergence로 얻는다. 이는 DPO가 reward hacking 없이 실질적으로 원하는 속성을 학습함을 정량적으로 보여준다. (Rafailov et al., 2023)*
 
 | 방법 | 최대 보상 | KL @ 최대 보상 | 보상-KL 효율 |
 |------|----------|---------------|-------------|
@@ -158,6 +158,9 @@ DPO는 PPO보다 **높은 보상을 더 낮은 KL divergence**로 달성했습�
 ### 요약 생성 (TL;DR)
 
 Reddit 포스트 요약 태스크에서 DPO는 PPO 기반 RLHF의 최고 성능을 초과했습니다.
+
+![TL;DR 요약에서 다양한 샘플링 온도에 따른 인간 요약 대비 승률](figures/fig_2_2.png)
+*Figure 3. TL;DR 요약 태스크에서 인간 작성 요약 대비 GPT-4 평가 승률. DPO(주황)가 모든 샘플링 온도에서 PPO(파랑)를 능가하며, 온도 변화에 대한 강건성도 더 높다. (Rafailov et al., 2023)*
 
 | 방법 | vs SFT 승률 | vs 인간 요약 승률 | KL Divergence |
 |------|------------|-----------------|---------------|
@@ -173,7 +176,10 @@ DPO가 **더 높은 승률을 더 낮은 KL divergence**로 달성했다는 점�
 도움이 되면서도 무해한 응답 생성에서 DPO는 데이터셋의 선택된 응답(chosen)을 능가한 **유일한 방법**이었습니다.
 
 ![Anthropic-HH 대화 태스크에서 GPT-4 평가 승률](figures/fig_3_1.png)
-*Figure 3. Anthropic-HH 단일 대화에서 GPT-4 평가 승률. DPO(주황)가 데이터셋의 선택된 응답 대비 50% 이상의 승률을 기록한 유일한 방법이다. Preferred-FT(분홍)와 Pythia-2.8B(파랑) 기준선은 50% 미만으로, 데이터셋 레이블보다 성능이 낮다.*
+*Figure 4. Anthropic-HH 단일 대화에서 GPT-4 평가 승률. DPO(주황)가 데이터셋의 선택된 응답 대비 50% 이상의 승률을 기록한 유일한 방법이다. Preferred-FT(분홍)와 Pythia-2.8B(파랑) 기준선은 50% 미만으로, 데이터셋 레이블보다 성능이 낮다. (Rafailov et al., 2023)*
+
+![Anthropic-HH 대화에서 학습 과정에 따른 승률 변화](figures/fig_3_2.png)
+*Figure 5. Anthropic-HH 대화 태스크에서 학습 진행에 따른 승률 변화. 다양한 샘플링 온도에서 DPO의 성능 향상이 학습 전반에 걸쳐 안정적으로 유지된다. (Rafailov et al., 2023)*
 
 | 방법 | Helpful 승률 | Harmless 승률 | 평균 |
 |------|-------------|---------------|------|
@@ -197,6 +203,16 @@ $\beta$는 DPO에서 가장 중요한 하이퍼파라미터로, KL 페널티의 
 | 1.0 | 매우 보수적, 거의 학습 안됨 | 극도의 안전성 요구 시 |
 
 실무적으로는 $\beta \in [0.05, 0.3]$ 범위에서 시작하여, 검증 세트의 성능을 기준으로 조정하는 것이 권장됩니다.
+
+### Best of N 기준선과의 비교
+
+Best of N 샘플링은 참조 정책에서 N개의 응답을 생성한 뒤, 보상 모델로 최고 점수의 응답을 선택하는 방법입니다. 이 단순한 기준선과의 비교를 통해 DPO의 최적화 품질을 검증할 수 있습니다.
+
+![Anthropic-HH 대화에서 Best of N 기준선 성능](figures/fig_4_1.png)
+*Figure 6. Anthropic-HH 대화 태스크에서 Best of N 기준선의 승률. N이 64~128을 넘으면 성능이 정체되며, DPO는 이 정체 구간의 성능을 단일 샘플로 달성한다. (Rafailov et al., 2023)*
+
+![TL;DR 요약에서 Best of N 기준선 성능](figures/fig_4_2.png)
+*Figure 7. TL;DR 요약 태스크에서 Best of N 기준선의 승률. 마찬가지로 N=64~128에서 성능이 수렴하며, DPO가 추론 시 다중 샘플링 없이도 경쟁력 있는 성능을 제공함을 보여준다. (Rafailov et al., 2023)*
 
 ## 의의 및 한계
 

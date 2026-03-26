@@ -8,6 +8,11 @@
 - **발표**: 2015년 3월, Stanford University
 - **라이선스**: N/A (학술 논문)
 
+다음 그림은 비평형 열역학 기반 확산 모델의 전체 구조를 보여준다.
+
+![비평형 열역학 기반 확산 모델 아키텍처](figures/architecture.png)
+*Figure 1: 확산 모델 전체 구조 — Forward Process(점진적 노이즈 추가), Reverse Process(학습된 디노이징), U-Net 아키텍처, ELBO 학습 목표, 노이즈 스케줄을 포함한 이론적 프레임워크. (Source: Sohl-Dickstein et al., 2015)*
+
 ## 아키텍처 상세
 
 ### 열역학적 직관
@@ -60,6 +65,16 @@ $$\mathcal{L} = \mathbb{E}_q\left[-\log p_\theta(\mathbf{x}_0 | \mathbf{x}_1) + 
 |------|-----------|-----------|---------|
 | Gaussian Diffusion | 연속 데이터 | 가우시안 | 이미지, 오디오 |
 | Binomial Diffusion | 이진/이산 데이터 | 이항 | 텍스트, 이산 토큰 |
+
+다음 그림은 2D Swiss Roll 데이터에서의 forward 확산 과정을 보여주는 개념 검증 실험 결과이다.
+
+![Swiss Roll 데이터의 forward 확산 과정](figures/fig_1_1.png)
+*Figure 1: Swiss Roll 데이터에서의 확산 과정 — 복잡한 나선형 데이터 분포가 점진적인 가우시안 노이즈 추가를 통해 등방 가우시안으로 변환되는 forward process의 시작점. (Source: Sohl-Dickstein et al., 2015)*
+
+다음은 MNIST 데이터셋에서 학습된 확산 모델의 생성 샘플이다.
+
+![확산 모델로 생성된 MNIST 샘플](figures/fig_6.png)
+*Figure 2: 확산 확률 모델로 생성된 MNIST 숫자 샘플 — 평균이 아닌 실제 가우시안/이항 분포에서 추출한 진정한 샘플로, 초기 확산 모델의 생성 능력을 보여준다. (Source: Sohl-Dickstein et al., 2015)*
 
 ## 핵심 혁신
 

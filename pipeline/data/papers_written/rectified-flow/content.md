@@ -4,6 +4,11 @@ Rectified Flow(Liu et al., ICLR 2023)는 노이즈 분포 $\pi_0$와 데이터 �
 
 이 논문은 이미지 생성뿐 아니라 도메인 전환(image-to-image transfer)에도 동일한 프레임워크를 적용할 수 있음을 보이며, 이후 InstaFlow, Stable Diffusion 3(SD3) 등 영향력 있는 후속 연구들의 기반이 되었다.
 
+다음 그림은 Rectified Flow의 핵심 결과를 요약한다. 1-Rectified Flow는 2 스텝만으로도 합리적인 이미지를 생성하며, 2-Rectified Flow(Reflow 1회 적용)는 단 1 스텝(Distilled)으로도 고품질 결과를 달성한다.
+
+![1-Rectified Flow와 2-Rectified Flow의 스텝별 생성 결과](figures/fig_1.jpg)
+*Figure 1: Rectified Flow의 이미지 생성(위 2행: 가우시안 노이즈 → 고양이 얼굴)과 이미지 전환(아래 2행: 사람 얼굴 → 고양이 얼굴). 1-Rectified Flow는 $N \geq 2$ 에서 양호한 결과를 보이며, 2-Rectified Flow는 직선화된 궤적 덕분에 $N=1$ 에서도 고품질 생성이 가능하다. (Liu et al., 2023)*
+
 ---
 
 ## 배경 및 문제
@@ -74,6 +79,12 @@ $$\pi_{\mathrm{RF}}^{(k)}: X_0 \sim \pi_0,\ X_1^{(k)} = \Phi_{v^{(k)}}(X_0)$$
 | 독립 $\pi_0 \otimes \pi_1$ | 노이즈와 데이터를 무작위로 짝지음 | 초기에 곡선, Reflow로 개선 |
 | OT 커플링 | Wasserstein 거리 최소화 쌍 | 이미 직선에 가까움 |
 
+Rectified Flow와 VP ODE의 궤적 차이는 다음 2D 예제에서 명확히 드러난다. Rectified Flow는 Reflow 1회만으로 궤적이 거의 직선이 되는 반면, VP ODE는 Reflow 후에도 곡선 궤적이 유지된다.
+
+![Rectified Flow 초기 궤적](figures/fig_4_1.png)
+![Rectified Flow Reflow 후 직선화된 궤적](figures/fig_4_2.png)
+*Figure 2: Rectified Flow의 Reflow 전(좌)과 후(우) 궤적 비교 — 가우시안 혼합 분포(빨간 점)를 타겟으로 할 때, 초기 교차 궤적이 Reflow 1회로 각 모드를 향한 직선 경로로 정리된다. VP ODE와 sub-VP ODE는 동일한 Reflow를 적용해도 곡선이 유지된다. (Liu et al., 2023)*
+
 Flow Matching(Lipman et al., 2022)의 OT-CFM은 사실상 OT 커플링을 사용하는 Rectified Flow와 동치임을 논문은 지적한다. Rectified Flow의 차별점은 **독립 커플링에서 출발해도 Reflow로 OT에 수렴할 수 있다**는 절차적 보장이다.
 
 Reflow를 반복할수록 궤적 직선성과 수송 비용이 어떻게 개선되는지 아래 그래프에서 정량적으로 확인할 수 있다.
@@ -88,6 +99,11 @@ Reflow로 충분히 직선화된 후, 추가로 **증류(distillation)**를 적�
 $$\mathcal{L}_{\mathrm{distill}} = \mathbb{E}\left[\|\hat{X}_1 - X_1\|^2\right]$$
 
 여기서 $\hat{X}_1 = Z_0 + v_{\theta}(Z_0, 0)$은 단일 Euler 스텝 예측이고, $X_1$은 멀티스텝 ODE 해다. 이 접근법은 Consistency Models(Song et al., 2023)와 목표가 유사하지만, Rectified Flow의 직선 구조 덕분에 증류 대상의 품질이 더 높다.
+
+Rectified Flow의 직선 궤적과 균일 속도 특성은 스텝 수에 따른 이산화 품질에 직접적으로 영향을 미친다. 아래 그림은 Rectified Flow가 단일 스텝으로도 분포의 평균을 정확히 생성하고 2 스텝이면 전체 분포를 커버하는 반면, VP ODE는 시간 후반부에 업데이트가 집중되어 적은 스텝에서 품질이 저하됨을 보여준다.
+
+![스텝 수에 따른 Rectified Flow 궤적 시각화](figures/fig_5_1.png)
+*Figure 3: Rectified Flow의 직선 궤적과 균일 시간 진행 — $\pi_0$(보라 점)에서 $\pi_1$(빨간 점)까지 직선으로 이동하며, $N=1$ 스텝으로도 분포의 평균에 도달한다. $N=2$ 이면 전체 분포를 충분히 커버한다. (Liu et al., 2023)*
 
 ### 이론적 성질
 

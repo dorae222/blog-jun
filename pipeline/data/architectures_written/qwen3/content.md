@@ -76,6 +76,11 @@ outputs = model.generate(inputs, max_new_tokens=500, temperature=0.7)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
+다음 그림은 Qwen3 시리즈의 4단계 사후학습(post-training) 파이프라인을 보여준다.
+
+![Qwen3 사후학습 파이프라인 흐름도](figures/fig_1.png)
+*Figure 2: Qwen3 사후학습 파이프라인 — 플래그십 모델은 Long-CoT Cold Start, Reasoning RL, Thinking Mode Fusion, General RL 4단계를 거치고, 경량 모델은 Strong-to-Weak Distillation으로 학습된다. (Source: Qwen Team, 2025)*
+
 ## 핵심 혁신
 
 ### 1. Thinking Mode

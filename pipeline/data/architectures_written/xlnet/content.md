@@ -16,6 +16,11 @@ XLNet은 이 두 문제를 근본적으로 해결하면서, 총 18개 NLP 태스
 
 ## 아키텍처 상세
 
+다음 다이어그램은 XLNet의 전체 아키텍처를 보여준다. Permutation Language Modeling, Two-Stream Attention, Segment Recurrence가 핵심 구성 요소이다.
+
+![XLNet 전체 아키텍처 다이어그램 — PLM, Two-Stream Attention, Transformer-XL 기반 구조](figures/architecture.png)
+*Figure 1: XLNet 아키텍처 — 순열 언어 모델링으로 양방향 문맥을 학습하고, Two-Stream Attention으로 정보 누출을 방지하며, Transformer-XL의 세그먼트 반복으로 장거리 의존성을 포착한다. (Source: XLNet 논문)*
+
 ### 모델 규모
 
 | 구성 요소 | XLNet-Base | XLNet-Large |
@@ -53,6 +58,11 @@ $$\max_{\theta} \; \mathbb{E}_{\mathbf{z} \sim \mathcal{Z}_T} \left[ \sum_{t=1}^
 - D를 예측 (C, A를 참조)
 - B를 예측 (C, A, D를 참조 = 양방향 문맥!)
 
+다음 그림은 동일한 시퀀스 [x1, x2, x3, x4]에서 x3을 예측할 때, 서로 다른 분해 순서(factorization order)에 따라 참조하는 문맥이 달라지는 과정을 보여준다.
+
+![순열 언어 모델링 — 4가지 분해 순서에 따른 x3 예측 과정](figures/fig_11.png)
+*Figure 2: 순열 언어 모델링 예시 — 동일한 x3을 예측하지만, 분해 순서에 따라 참조 가능한 토큰이 달라진다. 이를 통해 자기회귀 방식으로도 양방향 문맥 학습이 가능해진다. (Source: XLNet 논문)*
+
 ### Two-Stream Self-Attention
 
 PLM을 구현하려면 예측 시 **정보 누출(information leakage)**을 방지해야 한다. 이를 위해 두 가지 스트림을 병렬로 유지한다:
@@ -62,6 +72,11 @@ $$h_{z_t}^{(m)} \leftarrow \text{Attention}(Q=h_{z_t}^{(m-1)}, KV=h_{\mathbf{z}_
 
 **2. Query Stream** $g_{z_t}^{(m)}$: 위치만 알고 내용은 모름
 $$g_{z_t}^{(m)} \leftarrow \text{Attention}(Q=g_{z_t}^{(m-1)}, KV=h_{\mathbf{z}_{<t}}^{(m-1)})$$
+
+아래 그림은 Two-Stream Attention의 전체 구조를 시각화한 것이다. (a) Content Stream, (b) Query Stream, (c) 전체 PLM 학습 과정과 어텐션 마스크를 함께 보여준다.
+
+![Two-Stream Self-Attention 구조 — Content Stream, Query Stream, 전체 PLM 흐름](figures/fig_1.png)
+*Figure 3: Two-Stream Self-Attention — (a) Content Stream은 자기 자신을 포함한 모든 토큰을 참조하고, (b) Query Stream은 자기 자신의 내용을 제외하고 위치 정보만 사용한다. (c) 전체 PLM 학습 흐름과 어텐션 마스크. (Source: XLNet 논문)*
 
 ```python
 import torch
@@ -96,6 +111,11 @@ XLNet-Large는 발표 당시 18개 태스크에서 BERT를 능가했다:
 | SST-2 | Accuracy | 94.9 | **96.8** | +1.9 |
 
 GLUE 88.4점은 당시 인간 성능(87.1)을 1.3포인트 초과하는 기록이었다.
+
+다음은 XLNet의 Content Stream이 순열 [3, 2, 4, 1]에서 각 위치별로 어떤 토큰들을 참조하는지를 상세히 보여주는 그림이다.
+
+![Content Stream의 Joint View와 Split View — 순열 순서에 따른 어텐션 연결 상세](figures/fig_12.png)
+*Figure 4: Content Stream 상세 — 분해 순서 [3, 2, 4, 1]에서 각 위치의 Content Stream이 참조하는 토큰들의 관계를 Joint View(상단)와 개별 Position View(하단)로 분리하여 보여준다. (Source: XLNet 논문)*
 
 ## 관련 모델 비교
 

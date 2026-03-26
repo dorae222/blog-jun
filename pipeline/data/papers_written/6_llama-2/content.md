@@ -4,6 +4,11 @@ Llama 2는 Meta AI가 2023년 7월 발표한 오픈 기반 언어 모델 시리�
 
 2026년 3월 기준 Google Scholar 인용 수가 약 7,700회 이상을 기록하며, 2023년 AI 분야에서 가장 영향력 있는 논문 중 하나로 평가된다. Llama 2는 유용성(helpfulness)과 안전성(safety)을 동시에 추구하는 정렬 접근법을 공개적으로 상세히 설명하여, RLHF 기반 안전한 챗 모델 개발의 **방법론적 교과서** 역할을 하고 있다.
 
+다음 그림은 Llama 2의 전체 훈련 파이프라인을 보여준다. 사전학습 데이터로 자기지도 학습을 수행한 뒤, 인간 선호도 데이터 기반의 보상 모델(Safety/Helpful)과 RLHF(Rejection Sampling + PPO)를 결합하여 최종 Llama 2-Chat 모델을 생성한다.
+
+![Llama 2-Chat 전체 훈련 파이프라인 개요](figures/p05_fig01.jpeg)
+*Figure 1: Llama 2-Chat의 전체 훈련 파이프라인. 사전학습(Pretraining) → SFT(Supervised Fine-tuning) → RLHF(인간 피드백 기반 보상 모델 + Rejection Sampling + PPO)의 다단계 구조로, 유용성과 안전성을 동시에 최적화한다. (Touvron et al., 2023)*
+
 ## 배경 및 문제
 
 ### Llama 1의 한계
@@ -42,6 +47,11 @@ $$\mathcal{L}(N, D) \approx \frac{A}{N^\alpha} + \frac{B}{D^\beta} + \mathcal{L}
 여기서 $N$은 파라미터 수, $D$는 토큰 수다. $D$를 1.4T에서 2T로 증가시키면 $\frac{B}{D^\beta}$ 항이 줄어들어 전체 손실이 감소한다.
 
 사전학습 데이터는 공개적으로 이용 가능한 온라인 소스에서 수집되었다. Meta는 개인 정보를 포함할 가능성이 있는 사이트에서의 데이터를 최소화하고, 사실적 정보의 비율을 높이기 위해 위키피디아, 학술 논문, 코드 저장소 등 신뢰할 수 있는 소스의 비율을 조절했다. 토크나이저는 Llama 1과 동일한 BPE(Byte Pair Encoding) 기반으로, 어휘 크기는 32,000 토큰이다.
+
+아래 그림은 사전학습 과정에서 각 모델 크기별 학습 손실(training loss)의 변화를 보여준다. 학습 토큰 수가 증가할수록 모든 모델의 손실이 꾸준히 감소하며, 더 큰 모델일수록 더 낮은 손실에 도달한다. 2T 토큰 시점에서도 손실 곡선이 완전히 수렴하지 않았다는 점은 추가 학습의 여지가 남아 있음을 시사한다.
+
+![Llama 2 모델 크기별 사전학습 손실 곡선](figures/fig_6.png)
+*Figure 2: Llama 2 사전학습 손실(training loss) 곡선. 7B(파란), 13B(초록), 34B(노란), 70B(빨간) 모델 모두 2T 토큰에 걸쳐 손실이 꾸준히 감소하며, 모델 크기가 클수록 더 낮은 손실에 수렴한다. (Touvron et al., 2023)*
 
 ### Grouped Query Attention (GQA)
 
@@ -130,6 +140,16 @@ GAtt의 핵심 아이디어:
 3. 추론 시에는 시스템 프롬프트를 처음에 한 번만 제공
 
 이를 통해 모델은 시스템 프롬프트의 지시사항을 대화 전반에 걸쳐 일관되게 따르게 된다. 실험에서 GAtt 적용 후 20턴 이상의 대화에서도 시스템 프롬프트 준수율이 크게 향상되었다.
+
+다음은 GAtt의 효과를 잘 보여주는 예시다. "Always answer with emojis" 시스템 프롬프트가 주어졌을 때, GAtt 적용 전에는 두 번째 턴부터 일반 텍스트로 응답하지만(좌), GAtt 적용 후에는 여러 턴에 걸쳐 일관되게 이모지로만 응답한다(우). 이는 GAtt가 장기 대화에서 시스템 프롬프트 준수율을 실질적으로 향상시킴을 보여준다.
+
+![Ghost Attention 적용 전후 시스템 프롬프트 준수 비교](figures/fig_10_1.png)
+*Figure 3: Ghost Attention(GAtt) 적용 전(좌)과 후(우)의 시스템 프롬프트 준수 비교. "Always answer with emojis" 지시가 주어졌을 때, GAtt 없이는 두 번째 턴부터 지시를 무시하지만, GAtt 적용 후에는 여러 턴에 걸쳐 일관되게 준수한다. (Touvron et al., 2023)*
+
+GAtt의 내부 동작을 어텐션 패턴으로도 확인할 수 있다. 아래 히트맵은 GAtt 적용 전후의 어텐션 가중치 분포를 비교한 것으로, GAtt 적용 후 모델이 이전 턴의 시스템 프롬프트 위치에 더 강한 어텐션을 배분하는 것을 확인할 수 있다.
+
+![Ghost Attention 적용 전후 어텐션 패턴 히트맵 비교](figures/fig_11.png)
+*Figure 4: GAtt 적용 전(좌)과 후(우)의 어텐션 패턴 히트맵. GAtt 적용 후 모델이 시스템 프롬프트 토큰 위치에 대해 더 강한 어텐션 가중치를 유지하여, 멀티턴 대화에서도 지시사항을 잊지 않는다. (Touvron et al., 2023)*
 
 ## 방법론
 
@@ -231,6 +251,11 @@ GPT-3.5와는 대부분의 벤치마크에서 동등하지만, GPT-4와는 여�
 | 70B vs Vicuna-33B | 66% | 17% | 17% |
 
 Llama 2-Chat 70B는 ChatGPT(GPT-3.5 Turbo)와 거의 동등한 수준이며, 다른 모든 오픈소스 챗 모델을 크게 앞선다.
+
+단일 턴과 멀티턴 평가를 분리하면 더 세밀한 패턴이 드러난다. 아래 그림은 각 모델 크기별로 Single Turn과 Multi-Turn에서의 승률을 비교한 것이다. Llama 2-Chat은 모든 크기에서 경쟁 모델을 앞서되, 특히 34B와 70B에서 멀티턴 대화 능력이 두드러지게 높다. 이는 Ghost Attention과 반복적 RLHF가 멀티턴 대화 품질에 기여했음을 시사한다.
+
+![Llama 2-Chat 모델 크기별 Single Turn vs Multi-Turn 승률 비교](figures/fig_13.png)
+*Figure 5: Llama 2-Chat의 모델 크기별 Single Turn 및 Multi-Turn 승률(Win Rate %). 모든 크기에서 경쟁 모델 대비 우위를 보이며, 특히 대형 모델에서 멀티턴 성능이 두드러진다. ChatGPT 대비에서는 거의 대등한 결과를 기록한다. (Touvron et al., 2023)*
 
 아래 그림은 GPT-4를 심판으로 한 평가에서 Llama 2-Chat 70B가 유용성(Helpfulness)과 안전성(Safety) 두 축 모두에서 경쟁 모델들을 압도하는 결과를 보여준다. 녹색 영역은 Llama 2가 상대 모델보다 우수한 구간으로, ChatGPT를 포함한 모든 비교 대상이 이 영역 내에 위치한다.
 

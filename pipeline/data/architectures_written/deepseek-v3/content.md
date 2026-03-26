@@ -8,6 +8,11 @@ V2의 MLA(Multi-head Latent Attention)와 DeepSeekMoE를 계승하면서, **보�
 
 ## 아키텍처 상세
 
+다음 다이어그램은 DeepSeek-V3의 전체 아키텍처를 보여준다. MLA, DeepSeekMoE, MTP가 핵심 구성 요소이다.
+
+![DeepSeek-V3 전체 아키텍처 — MLA + DeepSeekMoE + MTP + FP8 Training 구조](figures/architecture.png)
+*Figure 1: DeepSeek-V3 아키텍처 — 671B 전체 파라미터 중 37B만 토큰당 활성화되는 MoE 구조. MLA로 KV 캐시를 절감하고, MTP로 학습 신호 밀도를 높인다. (Source: DeepSeek-V3 논문)*
+
 ### 기본 구조
 
 | 구성 요소 | 사양 |
@@ -33,6 +38,11 @@ $$c^{KV}_t = W^{DKV} h_t \in \mathbb{R}^{d_c}, \quad d_c \ll n_h \cdot d_h$$
 
 V2의 160개 라우팅 전문가에서 **256개로 확장**하고, 공유 전문가는 2개에서 1개로 줄였다. 토큰당 8개의 라우팅 전문가가 활성화된다.
 
+아래 그림은 논문에서 제시한 DeepSeek-V3의 기본 아키텍처 구조를 보여준다. Transformer Block 내부에서 MLA와 DeepSeekMoE가 어떻게 결합되는지 확인할 수 있다.
+
+![DeepSeek-V3 기본 아키텍처 — DeepSeekMoE(상단)와 MLA(하단)의 상세 구조](figures/fig_2.png)
+*Figure 2: DeepSeek-V3 기본 아키텍처 — (상단) DeepSeekMoE: 256개 라우팅 전문가 중 Top-8을 선택하고 1개의 공유 전문가를 항상 활성화. (하단) MLA: KV를 저차원 잠재 벡터로 압축하여 캐시 효율을 극대화. (Source: DeepSeek-V3 논문)*
+
 ## 핵심 혁신
 
 ### 1. Auxiliary-loss-free 부하 균형
@@ -44,6 +54,11 @@ $$g_i = \text{Softmax}(s_i + b_i)$$
 여기서 $s_i$는 라우터 로짓, $b_i$는 동적 편향 항이다. $b_i$는 학습 중 전문가 활용 빈도에 따라 조정되어, 성능 저하 없이 균형을 확보한다.
 
 ### 2. Multi-Token Prediction (MTP)
+
+다음 그림은 MTP의 구현 방식을 보여준다. 메인 모델과 MTP 모듈이 Embedding Layer와 Output Head를 공유하면서 각각 다른 깊이의 토큰을 예측한다.
+
+![Multi-Token Prediction 구현 — Main Model과 MTP Module의 연결 구조](figures/fig_3.png)
+*Figure 3: Multi-Token Prediction — 메인 모델이 다음 토큰(t2~t6)을 예측하고, MTP Module 1은 t3~t7, MTP Module 2는 t4~t8을 예측한다. 각 깊이에서 완전한 인과 체인을 유지하여 학습 신호 밀도를 높인다. (Source: DeepSeek-V3 논문)*
 
 메인 헤드가 다음 1개 토큰을 예측하는 동시에, 추가 헤드로 **미래 1~2개 토큰도 예측**하여 학습 신호의 밀도를 높인다:
 
@@ -58,6 +73,11 @@ $$\mathcal{L}_{\text{MTP}} = \mathcal{L}_{\text{main}} + \sum_{k=1}^{K} \lambda_
 ### 4. DualPipe 파이프라인 병렬화
 
 DualPipe는 파이프라인 버블(pipeline bubble)을 최소화하는 새로운 스케줄링 기법으로, 통신과 연산을 오버랩하여 GPU 활용률을 극대화한다.
+
+아래 벤치마크 차트는 DeepSeek-V3가 GPT-4o, Claude-3.5-Sonnet 등 주요 모델들과 비교했을 때 어떤 위치에 있는지를 한눈에 보여준다.
+
+![DeepSeek-V3 벤치마크 성능 비교 — MMLU-Pro, GPQA, MATH-500, Codeforces 등](figures/fig_1.png)
+*Figure 4: DeepSeek-V3 벤치마크 성능 — MATH-500(90.2%)과 AIME 2024(39.2%)에서 GPT-4o와 Claude-3.5-Sonnet을 크게 앞서며, MMLU-Pro(75.9%)와 SWE-bench(42.0%)에서도 경쟁력 있는 성능을 보인다. (Source: DeepSeek-V3 논문)*
 
 ## 벤치마크/성능
 

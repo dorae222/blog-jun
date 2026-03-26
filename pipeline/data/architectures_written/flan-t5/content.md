@@ -12,6 +12,9 @@ Flan-T5는 2022년 10월 Google Research가 발표한 **명령어 파인튜닝(I
 - **코드**: [t5x (GitHub)](https://github.com/google-research/t5x)
 - **라이선스**: Apache 2.0
 
+![Flan-T5 아키텍처 개요 — 인코더-디코더 구조에 명령어 튜닝 적용](figures/architecture.png)
+*Figure 1: Flan-T5 아키텍처 — T5의 인코더-디코더 구조를 유지하면서 Flan Collection(1,836 태스크)과 CoT 파인튜닝을 적용한 설계. (Source: arXiv 2210.11416)*
+
 ## 아키텍처 상세
 
 Flan-T5는 T5의 인코더-디코더 구조를 그대로 유지한다. 아키텍처적 변경은 없으며, **데이터와 학습 방법론**만 변경했다:
@@ -32,6 +35,9 @@ Flan-T5는 T5의 인코더-디코더 구조를 그대로 유지한다. 아키텍
 
 ## 핵심 혁신: Flan Collection과 Chain-of-Thought
 
+![명령어 튜닝 개념도 — 1.8K 태스크로 학습 후 미지의 태스크에 일반화](figures/fig_1.png)
+*Figure 2: 명령어 튜닝 개념 — 1,836개 태스크를 명령어 형태로 파인튜닝하고, 제로샷·퓨샷·CoT 등 다양한 설정에서 미지의 태스크에 일반화하는 과정. (Source: arXiv 2210.11416)*
+
 ### Flan Collection
 
 Flan-T5의 핵심은 **1,836개 태스크**로 구성된 대규모 명령어 데이터셋인 Flan Collection이다:
@@ -42,7 +48,13 @@ $$\text{Flan Collection} = \text{Flan 2021} + \text{P3++} + \text{Super-Natural 
 - **템플릿**: 각 태스크마다 최대 10개의 명령어 템플릿 사용
 - **Input Inversion**: 역 태스크도 학습하여 다양한 형식에 강건하게 대응
 
+![Flan Collection 구성 — 파인튜닝 태스크와 평가 벤치마크 구분](figures/fig_2.png)
+*Figure 3: Flan Collection 구성 — T0-SF, Muffin, Natural Instructions v2, CoT(추론) 데이터셋을 포함한 473개 데이터셋, 1,836개 태스크. MMLU, BBH 등은 평가용으로 분리. (Source: arXiv 2210.11416)*
+
 ### Chain-of-Thought (CoT) 파인튜닝
+
+![파인튜닝 데이터 형식 조합 — 제로샷, 퓨샷, CoT의 혼합](figures/fig_3.png)
+*Figure 4: 파인튜닝 데이터 형식 — 명령어 유무, 예시(exemplar) 유무, CoT 유무를 조합하여 다양한 프롬프트 형식으로 학습. 모든 조합을 혼합 학습한 것이 핵심. (Source: arXiv 2210.11416)*
 
 Flan-T5의 두 번째 핵심 혁신은 **CoT 데이터를 파인튜닝에 포함**한 것이다:
 
@@ -60,6 +72,9 @@ Flan-T5의 두 번째 핵심 혁신은 **CoT 데이터를 파인튜닝에 포함
 **핵심 발견**: CoT 데이터를 5%만 포함해도 제로샷·퓨샷 모두에서 1~7포인트 향상이 나타났다.
 
 ### 혼합 프롬프트 설정
+
+![제로샷 CoT 추론 예시 — BIG-Bench 태스크에서의 단계별 추론](figures/fig_7.png)
+*Figure 5: 제로샷 CoT 추론 — CoT 데이터를 포함하여 파인튜닝하면 미지의 BIG-Bench 태스크에서도 단계별 추론이 가능해짐. Boolean Expressions, Disambiguation QA 등에서 효과 입증. (Source: arXiv 2210.11416)*
 
 제로샷, 퓨샷, CoT 프롬프트를 **혼합하여 학습**했을 때 모든 설정에서 2%+ 성능 향상이 나타났다.
 

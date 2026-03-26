@@ -6,6 +6,11 @@ Qwen2는 Alibaba Cloud(알리바바 클라우드)가 2024년 6월 6일 공개한
 
 Qwen2의 핵심 경쟁력은 세 가지이다: (1) 7T 토큰 이상의 고품질 다국어 데이터(29개 언어), (2) 151,936개의 대형 어휘로 CJK 언어 토큰화 효율 극대화, (3) YARN 기반 128K 컨텍스트 외삽. Qwen2-7B가 Llama-3-8B를 대부분의 벤치마크에서 능가하며, Qwen2-72B는 MMLU 84.2%를 달성했다.
 
+다음 그림은 Qwen2의 전체 아키텍처를 보여준다.
+
+![Qwen2 아키텍처 다이어그램](figures/architecture.png)
+*Figure 1: Qwen2 아키텍처 — GQA 기반 어텐션, SwiGLU FFN, RoPE 위치 인코딩을 결합한 Dense Transformer 구조. 151K 어휘와 128K 컨텍스트를 지원한다. (Source: Alibaba Cloud)*
+
 ## 아키텍처 상세
 
 ### 기본 구조
@@ -54,6 +59,11 @@ YARN(Yet Another RoPE Extension)을 사용하여 기본 학습 컨텍스트 4,09
 $$\text{YARN}: \theta'_i = \theta_i \cdot s(i)$$
 
 여기서 $s(i)$는 차원별 스케일링 팩터로, 저주파 성분은 덜 수정하고 고주파 성분은 더 많이 수정하여 외삽 품질을 유지한다. Dual Chunk Attention으로 긴 시퀀스에서의 어텐션 안정성도 확보했다.
+
+다음 그림은 Qwen2 시리즈의 YARN 기반 128K 컨텍스트 외삽 성능을 Needle in a Haystack 테스트로 검증한 결과이다.
+
+![Qwen2 Needle in a Haystack 테스트 결과](figures/fig_1.png)
+*Figure 1: Qwen2 Instruct 모델의 Needle in a Haystack 테스트 — Qwen2-72B-Instruct는 128K 전체 컨텍스트에서 거의 완벽한 검색 정확도를 달성하며, YARN 기반 컨텍스트 외삽의 효과를 입증한다. (Source: Yang et al., 2024)*
 
 ## 핵심 혁신
 

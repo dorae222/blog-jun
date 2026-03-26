@@ -33,6 +33,11 @@ $$\text{GQA}: Q \in \mathbb{R}^{32 \times 128}, \quad K, V \in \mathbb{R}^{8 \ti
 
 ### Sliding Window Attention (SWA)
 
+아래 그림은 Vanilla Attention과 Sliding Window Attention의 차이를 보여준다. SWA에서는 각 토큰이 윈도우 크기 W 이내의 토큰에만 어텐션하지만, 여러 레이어를 거치면서 수용 영역이 확장된다.
+
+![Sliding Window Attention — Vanilla Attention 대비 윈도우 기반 어텐션과 수용 영역 확장](figures/fig_1.png)
+*Figure 1: Sliding Window Attention — Vanilla Attention(좌)은 모든 토큰에 어텐션하지만, SWA(중앙)는 W개 토큰만 어텐션한다. k개 레이어 후 수용 영역은 k x W로 확장된다(우). (Source: Jiang et al., 2023)*
+
 Mistral 7B의 가장 독특한 혁신이다. 각 레이어에서 현재 위치 기준 **W=4,096 토큰** 윈도우 내에서만 어텐션을 수행한다:
 
 $$\text{Attention}(q_i) = \text{softmax}\left(\frac{q_i K_{[i-W, i]}^T}{\sqrt{d}}\right) V_{[i-W, i]}$$
@@ -44,6 +49,11 @@ $$\text{최대 수용 영역} = W \times L = 4,096 \times 32 = 131,072$$
 이론적으로 32개 레이어를 통해 약 131K 토큰의 간접적 문맥 접근이 가능하다.
 
 ### Rolling Buffer KV 캐시
+
+다음 그림은 Rolling Buffer 캐시의 동작을 보여준다. 고정 크기 W의 순환 버퍼로 KV 캐시를 관리하여, 시퀀스 길이에 관계없이 메모리가 일정하게 유지된다.
+
+![Rolling Buffer KV 캐시 — 고정 크기 W의 순환 버퍼로 KV 캐시 관리](figures/fig_3.png)
+*Figure 2: Rolling Buffer 캐시 — 캐시 크기 W=4의 순환 버퍼에서 위치 i의 KV는 i mod W에 저장된다. 위치 i > W이면 오래된 값이 덮어쓰인다. (Source: Jiang et al., 2023)*
 
 SWA와 결합하여 KV 캐시 크기를 윈도우 크기 W로 **상수화**한다:
 
@@ -71,6 +81,11 @@ LLaMA의 제한적 라이선스와 달리, 상업적 활용을 포함한 완전�
 
 ## 벤치마크/성능
 
+아래 그래프는 Mistral 7B와 LLaMA 모델들의 벤치마크 성능을 비교한 것으로, Mistral 7B가 LLaMA-2 7B/13B를 모든 벤치마크에서 능가하며, LLaMA-1 34B에도 수학/코드/추론에서 크게 앞서는 것을 보여준다.
+
+![Mistral 7B vs LLaMA 벤치마크 성능 비교](figures/fig_5.png)
+*Figure 4: 벤치마크 성능 비교 — Mistral 7B(주황색)가 LLaMA-2 7B/13B, LLaMA-1 34B를 대부분의 벤치마크에서 능가한다. 특히 Math, Code 벤치마크에서 차이가 크다. (Source: Jiang et al., 2023)*
+
 | 벤치마크 | Mistral 7B | Llama-2-7B | Llama-2-13B |
 |---------|-----------|-----------|------------|
 | **MMLU** | **62.5%** | 45.3% | 54.8% |
@@ -78,6 +93,11 @@ LLaMA의 제한적 라이선스와 달리, 상업적 활용을 포함한 완전�
 | **GSM8K** | **52.2%** | 14.6% | 28.7% |
 | **HellaSwag** | **83.3%** | 78.6% | 80.7% |
 | **ARC-C** | **58.8%** | 53.1% | 56.8% |
+
+다음 그래프는 Mistral 7B의 "유효 모델 크기"를 보여준다. MMLU에서 LLaMA-2 23B 급(3.3배), 추론에서 38B 급(5.4배)의 유효 크기를 가지며, 7B 파라미터로 훨씬 큰 모델에 필적하는 성능을 달성한다.
+
+![Mistral 7B 유효 모델 크기 — MMLU, 추론, 지식, 이해 카테고리별 비교](figures/fig_6.png)
+*Figure 5: 유효 모델 크기 분석 — Mistral 7B는 MMLU에서 LLaMA-2 23B급(3.3x), Reasoning에서 38B급(5.4x), Comprehension에서 21B급(3x)의 유효 크기를 보여준다. (Source: Jiang et al., 2023)*
 
 ## 관련 모델 비교
 
@@ -94,6 +114,11 @@ LLaMA의 제한적 라이선스와 달리, 상업적 활용을 포함한 완전�
 - **SWA 구현**: xFormers 라이브러리 활용
 - **Instruct 버전**: 공개 인스트럭션 데이터셋으로 SFT (RLHF 미적용)
 - **하이퍼파라미터**: 미공개
+
+아래는 Pre-fill 단계에서의 청크 처리 방식을 보여준다. 긴 시퀀스를 청크 단위로 나누어 메모리 사용을 제한하며, SWA 마스크를 결합하여 효율적으로 처리한다.
+
+![Pre-fill과 청킹 — 긴 시퀀스의 메모리 효율적 처리](figures/fig_4.png)
+*Figure 3: Pre-fill과 청킹 — 세 번째 청크("the dog go to")가 자기 자신에 causal mask(우측 블록), 캐시에 sliding window(중앙 블록)를 적용하고, 윈도우 밖 과거 토큰은 접근하지 않는다(좌측 블록). (Source: Jiang et al., 2023)*
 
 ## 실무 활용
 

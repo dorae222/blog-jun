@@ -45,6 +45,12 @@ VQ-regularized 오토인코더(VQ-VAE 계열) 또는 KL-regularized 오토인코
 
 KL-AE의 경우 잠재 공간의 분산을 억제하는 약한 KL 규제가 추가됩니다($\lambda_{\text{KL}} \approx 10^{-6}$).
 
+오토인코더의 재구성 품질은 다음 예시에서 확인할 수 있습니다. 원본 이미지(배경)와 잠재 공간을 거쳐 복원된 이미지(확대 영역)를 비교하면, $f=8$ 압축에서도 세밀한 디테일이 잘 보존됨을 알 수 있습니다.
+
+![오토인코더 재구성 품질 - 원본과 복원 비교](figures/fig_1_1.jpg)
+![오토인코더 재구성 품질 - 원본과 복원 비교 (얼굴)](figures/fig_1_5.jpg)
+*Figure 1: LDM 오토인코더의 재구성 품질 — 원본(배경)과 잠재 공간 복원(확대 영역) 비교. 접시의 질감, 색상 그라데이션과 얼굴의 피부 디테일, 눈동자 등 고주파 정보가 정밀하게 보존된다. (Rombach et al., 2022)*
+
 **2단계: 잠재 공간에서 LDM 학습**
 
 1단계에서 학습된 인코더 $\mathcal{E}$를 고정하고, 잠재 공간에서 DDPM과 동일한 확산 과정을 학습합니다. 잠재 표현 $z$는 픽셀 공간 $x$보다 훨씬 작으므로(예: 512x512 -> 64x64x4) 계산 효율이 대폭 향상됩니다.
@@ -156,6 +162,12 @@ $$\tilde{\epsilon}_\theta(z_t, y) = \epsilon_\theta(z_t, \varnothing) + s \cdot 
 | VQGAN | 14.2 |
 | **LDM-8 (ours)** | **4.02** |
 
+다음은 LDM이 다양한 데이터셋에서 생성한 256x256 샘플 예시입니다. CelebA-HQ 얼굴과 LSUN-Church 건축물 모두 높은 사실성과 디테일을 보여줍니다.
+
+![LDM CelebA-HQ 256x256 생성 샘플](figures/fig_4_1.jpg)
+![LDM LSUN-Church 256x256 생성 샘플](figures/fig_4_7.jpg)
+*Figure 2: LDM으로 생성한 CelebA-HQ(좌)와 LSUN-Church(우) 256x256 샘플 — 잠재 공간에서의 확산만으로도 얼굴의 세밀한 표정과 건축물의 복잡한 구조를 정밀하게 생성한다. (Rombach et al., 2022)*
+
 ### 텍스트-이미지 생성 (MS-COCO 256x256)
 
 | 모델 | FID ↓ | CLIP Score ↑ |
@@ -163,6 +175,12 @@ $$\tilde{\epsilon}_\theta(z_t, y) = \epsilon_\theta(z_t, \varnothing) + s \cdot 
 | DALL-E (zero-shot) | 27.5 | 27.4 |
 | GLIDE (Nichol et al., 2022) | 12.24 | — |
 | **LDM-KL-8-G (ours)** | **12.63** | **30.5** |
+
+Cross-Attention 메커니즘을 통한 텍스트-이미지 생성의 결과는 인상적입니다. 아래는 사용자 프롬프트로 생성한 예시로, 추상적 개념("Latent Diffusion" 표지판)과 창의적 조합("반은 쥐, 반은 문어")을 정확하게 시각화합니다.
+
+![LDM 텍스트-이미지 생성: Latent Diffusion 표지판](figures/fig_5_1.jpg)
+![LDM 텍스트-이미지 생성: 반쥐반문어 합성 동물](figures/fig_5_3.jpg)
+*Figure 3: LDM-8(KL)의 텍스트-이미지 생성 샘플 (LAION 학습, CFG $s=10.0$) — "A street sign that reads Latent Diffusion"(좌)과 "A creature that is half mouse half octopus"(우). Cross-Attention이 텍스트의 의미를 정확히 반영한 이미지를 생성한다. (Rombach et al., 2022)*
 
 ### 계산 효율성
 
