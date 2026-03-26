@@ -1,0 +1,25 @@
+{
+  "id": "58",
+  "title": "HyperAgents: Self-Referential Agents for Open-Ended Self-Improvement",
+  "title_ko": "HyperAgents: 개방형 자기 개선을 위한 자기 참조적 에이전트",
+  "slug": "hyperagents",
+  "category": "agents",
+  "sub_category": "agent",
+  "category_slug": "agent",
+  "year": 2026,
+  "venue": "arXiv preprint",
+  "authors": "Jenny Zhang, Bingchen Zhao, Wannan Yang, Jakob Foerster, Jeff Clune, Minqi Jiang, Sam Devlin, Tatiana Shavrina",
+  "arxiv_url": "https://arxiv.org/abs/2603.19461",
+  "summary": "기존 self-improving AI의 고정된 메타 메커니즘 한계를 극복하기 위해, task agent와 meta agent를 단일 편집 가능 프로그램으로 통합한 hyperagent를 제안합니다. '개선하는 방법 자체를 개선'하는 metacognitive self-modification이 가능하며, 코딩·논문 리뷰·로보틱스·수학 4개 도메인에서 기존 방법을 초과하는 성능을 달성했습니다.",
+  "tags": [
+    "self-improving-ai",
+    "meta-learning",
+    "open-ended-ai",
+    "LLM-agent",
+    "recursive-self-improvement",
+    "darwin-godel-machine",
+    "metacognition"
+  ],
+  "related_architecture": null,
+  "is_pinned": false
+}
