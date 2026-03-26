@@ -1,0 +1,104 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Organization of BigScience working groups.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Creation Pipeline of the ROOTS Corpus. The purple-colored sourcing stage of the pipeline and the yellow-colored processing stage are described respectively in Section 3.1.2 and Section 3.1.3 .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3 : Graphical overview of the ROOTS corpus. Left: A treemap plot of the language families of all 46 natural languages where surface is proportional to the number of bytes. Indo-European and Sino-Tibetan families overwhelm the plot with a combined total of 1321.89 GB. The thin orange surface represents 18GB of Indonesian data and the green rectangle 0.4GB constituting the Niger-Congo language family subset. Right: A waffle plot of the distribution of the 13 programming languages by size, where one square represents approximately 200MB.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3 : Graphical overview of the ROOTS corpus. Left: A treemap plot of the language families of all 46 natural languages where surface is proportional to the number of bytes. Indo-European and Sino-Tibetan families overwhelm the plot with a combined total of 1321.89 GB. The thin orange surface represents 18GB of Indonesian data and the green rectangle 0.4GB constituting the Niger-Congo language family subset. Right: A waffle plot of the distribution of the 13 programming languages by size, where one square represents approximately 200MB.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x4.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Language distribution of the prompted dataset xP3 closely follows ROOTS.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x5.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : The BLOOM architecture. The k h ​ e ​ a ​ d subscript 𝑘 ℎ 𝑒 𝑎 𝑑 k_{head} slope parameters for ALIBI are taken as 2 − 8 ​ i n superscript 2 8 𝑖 𝑛 2^{\\frac{-8i}{n}} with n 𝑛 n the number of heads and i ∈ 1 , 2 , … , n 𝑖 1 2 … 𝑛 i\\in{1,2,...,n} .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x6.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6 : DP+PP+TP combination leads to 3D parallelism.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x8.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7 : Performance of various LLMs on subset of tasks from SuperGLUE benchmark in zero- and one-shot prompt-based setting.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x9.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8 : Comparison of the scaling of BLOOM versus OPT on each SuperGLUE one-shot task. Each point represents the average accuracy of a model within the BLOOM or OPT family of models on one of the five task prompts. The number of parameters on the x-axis is presented in log-scale.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x10.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9 : WikiLingua One-shot Results. Each plot represents a different language with per-prompt ROUGE-2 F-measure scores.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x11.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10 : Results for a wide variety of language models on the 5-shot HELM benchmark. Taken from Liang et al. ( 2022 )",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x12.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11 : BLOOMZ zero-shot task generalization. Five untuned prompts are evaluated for each dataset and plotted. T0 is monolingual (English) while other models are multilingual. T0 performance may be hurt by its inability to tokenize some non-English texts.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x13.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "(a) BLOOM-1B7",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x14.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "(a) BLOOM-1B7",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x15.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(a) BLOOM-1B7",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x14.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(b) BLOOM",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x15.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 13 : Overall accuracy of BLOOM on crowS-Pairs per prompt for English and French. Results on the two smallest BLOOM models and monolingual GPT models of comparable size are also shown.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2211.05100/assets/x16.png"
+  }
+]

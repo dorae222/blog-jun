@@ -1,0 +1,44 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1 : 4-bit quantized phi-3-mini running natively on an iPhone with A16 Bionic chip, generating over 12 tokens per second.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1 : 4-bit quantized phi-3-mini running natively on an iPhone with A16 Bionic chip, generating over 12 tokens per second.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/x2.png"
+  },
+  {
+    "filename": "fig_1_3.png",
+    "caption": "Figure 1 : 4-bit quantized phi-3-mini running natively on an iPhone with A16 Bionic chip, generating over 12 tokens per second.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/x3.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Scaling law close to the “Data Optimal Regime” (from left to right: phi-1.5, phi-2, phi-3-mini, phi-3-small) versus Llama-2 family of models (7B, 13B, 34B, 70B) that were trained on the same fixed data. We plot the log of MMLU error versus the log of model size.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/scaling.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Comparison of harmful response percentages by Microsoft AI Red Team between phi-3-mini before and after the safety alignment. Note that the harmful response percentages in this chart are inflated numbers as the red team tried to induce phi-3-mini in an adversarial way to generate harmful responses through multi-turn conversations.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/with_without_safety_training.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4 : Left: phi-3-mini ’s completion without search. Right: phi-3-mini ’s completion with search, using the default HuggingFace Chat-UI search ability.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/without_search.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4 : Left: phi-3-mini ’s completion without search. Right: phi-3-mini ’s completion with search, using the default HuggingFace Chat-UI search ability.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2404.14219/assets/with_search.png"
+  }
+]

@@ -1,0 +1,968 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : A high-level illustration of Transfusion. A single transformer perceives, processes, and produces data of every modality. Discrete (text) tokens are processed autoregressively and trained on the next token prediction objective. Continuous (image) vectors are processed together in parallel and trained on the diffusion objective. Marker BOI and EOI tokens separate the modalities.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/avocado_armchair.jpg"
+  },
+  {
+    "filename": "fig_2_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/bread_apple_knife.jpg"
+  },
+  {
+    "filename": "fig_2_3.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/corgi.jpg"
+  },
+  {
+    "filename": "fig_2_4.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/fractal.jpg"
+  },
+  {
+    "filename": "fig_2_5.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/jay_macroons.jpg"
+  },
+  {
+    "filename": "fig_2_6.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/transfusion.jpg"
+  },
+  {
+    "filename": "fig_2_7.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/hand3.jpg"
+  },
+  {
+    "filename": "fig_2_8.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/bunny_cloud.jpg"
+  },
+  {
+    "filename": "fig_2_9.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/start_blue_tshirt.jpg"
+  },
+  {
+    "filename": "fig_2_10.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/tulips.jpg"
+  },
+  {
+    "filename": "fig_2_11.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/racoon_royal_2.jpg"
+  },
+  {
+    "filename": "fig_2_12.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/three_sphere.jpg"
+  },
+  {
+    "filename": "fig_2_13.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/transparent_duck.jpg"
+  },
+  {
+    "filename": "fig_2_14.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/chromeplated_cat.jpg"
+  },
+  {
+    "filename": "fig_2_15.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/kangaroo.jpg"
+  },
+  {
+    "filename": "fig_2_16.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/egg_and_bird.jpg"
+  },
+  {
+    "filename": "fig_3.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/avocado_armchair.jpg"
+  },
+  {
+    "filename": "fig_4.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/bread_apple_knife.jpg"
+  },
+  {
+    "filename": "fig_5.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/corgi.jpg"
+  },
+  {
+    "filename": "fig_6.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/fractal.jpg"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "((e))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/jay_macroons.jpg"
+  },
+  {
+    "filename": "fig_8.jpg",
+    "caption": "((f))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/transfusion.jpg"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "((g))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/hand3.jpg"
+  },
+  {
+    "filename": "fig_10.jpg",
+    "caption": "((h))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/bunny_cloud.jpg"
+  },
+  {
+    "filename": "fig_11.jpg",
+    "caption": "((i))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/start_blue_tshirt.jpg"
+  },
+  {
+    "filename": "fig_12.jpg",
+    "caption": "((j))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/tulips.jpg"
+  },
+  {
+    "filename": "fig_13.jpg",
+    "caption": "((k))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/racoon_royal_2.jpg"
+  },
+  {
+    "filename": "fig_14.jpg",
+    "caption": "((l))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/three_sphere.jpg"
+  },
+  {
+    "filename": "fig_15.jpg",
+    "caption": "((m))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/transparent_duck.jpg"
+  },
+  {
+    "filename": "fig_16.jpg",
+    "caption": "((n))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/chromeplated_cat.jpg"
+  },
+  {
+    "filename": "fig_17.jpg",
+    "caption": "((o))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/kangaroo.jpg"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "((p))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/egg_and_bird.jpg"
+  },
+  {
+    "filename": "fig_19_1.png",
+    "caption": "Figure 3 : We convert images to and from latent representations using a pretrained VAE, and then into patch representations with either a simple linear layer or U-Net down blocks.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x2.png"
+  },
+  {
+    "filename": "fig_19_2.png",
+    "caption": "Figure 3 : We convert images to and from latent representations using a pretrained VAE, and then into patch representations with either a simple linear layer or U-Net down blocks.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x3.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Figure 3 : We convert images to and from latent representations using a pretrained VAE, and then into patch representations with either a simple linear layer or U-Net down blocks.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x2.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 4 : Expanding on the causal mask, Transfusion allows patches of the same image to condition on each other.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x3.png"
+  },
+  {
+    "filename": "fig_24_1.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x4.png"
+  },
+  {
+    "filename": "fig_24_2.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x5.png"
+  },
+  {
+    "filename": "fig_24_3.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x6.png"
+  },
+  {
+    "filename": "fig_24_4.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x7.png"
+  },
+  {
+    "filename": "fig_24_5.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x8.png"
+  },
+  {
+    "filename": "fig_24_6.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x9.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "((a)) C4 Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x4.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "((b)) Wikipedia Perplexity",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x5.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "((c)) Llama 2 Eval Suite Accuracy",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x6.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "((d)) MS-COCO 5k CIDEr",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x7.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "((e)) MS-COCO 30k FID",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x8.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "((f)) MS-COCO 30k CLIP",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/x9.png"
+  },
+  {
+    "filename": "fig_31_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_remove_cupcake.jpg"
+  },
+  {
+    "filename": "fig_31_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_remove_cupcake.jpg"
+  },
+  {
+    "filename": "fig_31_3.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_change_tomato_to_olive.jpg"
+  },
+  {
+    "filename": "fig_31_4.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_change_tomato_to_olive.jpg"
+  },
+  {
+    "filename": "fig_31_5.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_zebra.jpg"
+  },
+  {
+    "filename": "fig_31_6.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/2_zebra.jpg"
+  },
+  {
+    "filename": "fig_31_7.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_cartoon_style.jpg"
+  },
+  {
+    "filename": "fig_31_8.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_cartoon_style.jpg"
+  },
+  {
+    "filename": "fig_32_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_remove_cupcake.jpg"
+  },
+  {
+    "filename": "fig_32_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_remove_cupcake.jpg"
+  },
+  {
+    "filename": "fig_33_1.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_change_tomato_to_olive.jpg"
+  },
+  {
+    "filename": "fig_33_2.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_change_tomato_to_olive.jpg"
+  },
+  {
+    "filename": "fig_34_1.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_zebra.jpg"
+  },
+  {
+    "filename": "fig_34_2.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/2_zebra.jpg"
+  },
+  {
+    "filename": "fig_35_1.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_cartoon_style.jpg"
+  },
+  {
+    "filename": "fig_35_2.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_cartoon_style.jpg"
+  },
+  {
+    "filename": "fig_36_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/downtown_seattle_sunset.jpg"
+  },
+  {
+    "filename": "fig_36_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/vegetable_car.jpg"
+  },
+  {
+    "filename": "fig_36_3.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/diffusion_sign.jpg"
+  },
+  {
+    "filename": "fig_36_4.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/basketball_shoe.jpg"
+  },
+  {
+    "filename": "fig_36_5.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/coffee_from_human_souls.jpg"
+  },
+  {
+    "filename": "fig_36_6.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/fox_and_unicorn_2.jpg"
+  },
+  {
+    "filename": "fig_36_7.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/yellow_wall.jpg"
+  },
+  {
+    "filename": "fig_36_8.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/crab_cheese.jpg"
+  },
+  {
+    "filename": "fig_36_9.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/beam_raccoon.jpg"
+  },
+  {
+    "filename": "fig_36_10.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/greek_island.jpg"
+  },
+  {
+    "filename": "fig_36_11.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/be_excellent_to_each_toher.jpg"
+  },
+  {
+    "filename": "fig_36_12.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/cave_tree.jpg"
+  },
+  {
+    "filename": "fig_36_13.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/cow_man_tie.jpg"
+  },
+  {
+    "filename": "fig_36_14.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/lychee_chair_2.jpg"
+  },
+  {
+    "filename": "fig_36_15.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/old_rusted_robot.jpg"
+  },
+  {
+    "filename": "fig_36_16.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/burger.jpg"
+  },
+  {
+    "filename": "fig_37.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/downtown_seattle_sunset.jpg"
+  },
+  {
+    "filename": "fig_38.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/vegetable_car.jpg"
+  },
+  {
+    "filename": "fig_39.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/diffusion_sign.jpg"
+  },
+  {
+    "filename": "fig_40.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/basketball_shoe.jpg"
+  },
+  {
+    "filename": "fig_41.jpg",
+    "caption": "((e))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/coffee_from_human_souls.jpg"
+  },
+  {
+    "filename": "fig_42.jpg",
+    "caption": "((f))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/fox_and_unicorn_2.jpg"
+  },
+  {
+    "filename": "fig_43.jpg",
+    "caption": "((g))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/yellow_wall.jpg"
+  },
+  {
+    "filename": "fig_44.jpg",
+    "caption": "((h))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/crab_cheese.jpg"
+  },
+  {
+    "filename": "fig_45.jpg",
+    "caption": "((i))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/beam_raccoon.jpg"
+  },
+  {
+    "filename": "fig_46.jpg",
+    "caption": "((j))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/greek_island.jpg"
+  },
+  {
+    "filename": "fig_47.jpg",
+    "caption": "((k))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/be_excellent_to_each_toher.jpg"
+  },
+  {
+    "filename": "fig_48.jpg",
+    "caption": "((l))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/cave_tree.jpg"
+  },
+  {
+    "filename": "fig_49.jpg",
+    "caption": "((m))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/cow_man_tie.jpg"
+  },
+  {
+    "filename": "fig_50.jpg",
+    "caption": "((n))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/lychee_chair_2.jpg"
+  },
+  {
+    "filename": "fig_51.jpg",
+    "caption": "((o))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/old_rusted_robot.jpg"
+  },
+  {
+    "filename": "fig_52.jpg",
+    "caption": "((p))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/burger.jpg"
+  },
+  {
+    "filename": "fig_53_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/woman_under_blanket.jpg"
+  },
+  {
+    "filename": "fig_53_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/small_blue_book_red_large_book.jpg"
+  },
+  {
+    "filename": "fig_53_3.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/horse_read_a_book.jpg"
+  },
+  {
+    "filename": "fig_53_4.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/light_bulb_sailboat.jpg"
+  },
+  {
+    "filename": "fig_53_5.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/monarch_butterfly.jpg"
+  },
+  {
+    "filename": "fig_53_6.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/rowboat_bike.jpg"
+  },
+  {
+    "filename": "fig_53_7.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/cookie_dip.jpg"
+  },
+  {
+    "filename": "fig_53_8.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/angry_duck_1.jpg"
+  },
+  {
+    "filename": "fig_53_9.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/panda_with_red_hat.jpg"
+  },
+  {
+    "filename": "fig_53_10.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/japanese_garden.jpg"
+  },
+  {
+    "filename": "fig_53_11.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/spaceship_pretzel.jpg"
+  },
+  {
+    "filename": "fig_53_12.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/graffiti_dog.jpg"
+  },
+  {
+    "filename": "fig_53_13.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/spacious_japanese_room.jpg"
+  },
+  {
+    "filename": "fig_53_14.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/raccoon_cowboy.jpg"
+  },
+  {
+    "filename": "fig_53_15.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/floating_garlic.jpg"
+  },
+  {
+    "filename": "fig_53_16.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/bear_in_the_river.jpg"
+  },
+  {
+    "filename": "fig_54.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/woman_under_blanket.jpg"
+  },
+  {
+    "filename": "fig_55.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/small_blue_book_red_large_book.jpg"
+  },
+  {
+    "filename": "fig_56.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/horse_read_a_book.jpg"
+  },
+  {
+    "filename": "fig_57.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/light_bulb_sailboat.jpg"
+  },
+  {
+    "filename": "fig_58.jpg",
+    "caption": "((e))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/monarch_butterfly.jpg"
+  },
+  {
+    "filename": "fig_59.jpg",
+    "caption": "((f))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/rowboat_bike.jpg"
+  },
+  {
+    "filename": "fig_60.jpg",
+    "caption": "((g))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/cookie_dip.jpg"
+  },
+  {
+    "filename": "fig_61.jpg",
+    "caption": "((h))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/angry_duck_1.jpg"
+  },
+  {
+    "filename": "fig_62.jpg",
+    "caption": "((i))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/panda_with_red_hat.jpg"
+  },
+  {
+    "filename": "fig_63.jpg",
+    "caption": "((j))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/japanese_garden.jpg"
+  },
+  {
+    "filename": "fig_64.jpg",
+    "caption": "((k))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/spaceship_pretzel.jpg"
+  },
+  {
+    "filename": "fig_65.jpg",
+    "caption": "((l))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/graffiti_dog.jpg"
+  },
+  {
+    "filename": "fig_66.jpg",
+    "caption": "((m))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/spacious_japanese_room.jpg"
+  },
+  {
+    "filename": "fig_67.jpg",
+    "caption": "((n))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/raccoon_cowboy.jpg"
+  },
+  {
+    "filename": "fig_68.jpg",
+    "caption": "((o))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/floating_garlic.jpg"
+  },
+  {
+    "filename": "fig_69.jpg",
+    "caption": "((p))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/samples/bear_in_the_river.jpg"
+  },
+  {
+    "filename": "fig_70_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_change_cloest_keyboard_to_black.jpg"
+  },
+  {
+    "filename": "fig_70_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_change_cloest_keyboard_to_black.jpg"
+  },
+  {
+    "filename": "fig_70_3.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_calligraphy.jpg"
+  },
+  {
+    "filename": "fig_70_4.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_calligraphy.jpg"
+  },
+  {
+    "filename": "fig_70_5.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_mountains.jpg"
+  },
+  {
+    "filename": "fig_70_6.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_mountains.jpg"
+  },
+  {
+    "filename": "fig_70_7.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_helicopter.jpg"
+  },
+  {
+    "filename": "fig_70_8.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_helicopter.jpg"
+  },
+  {
+    "filename": "fig_70_9.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_add_blue_rug.jpg"
+  },
+  {
+    "filename": "fig_70_10.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_add_blue_rug.jpg"
+  },
+  {
+    "filename": "fig_70_11.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_remove_light.jpg"
+  },
+  {
+    "filename": "fig_70_12.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/2_remove_light.jpg"
+  },
+  {
+    "filename": "fig_70_13.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_thread_to_wire.jpg"
+  },
+  {
+    "filename": "fig_70_14.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_thread_to_wire.jpg"
+  },
+  {
+    "filename": "fig_70_15.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_change_bat_to_brown.jpg"
+  },
+  {
+    "filename": "fig_70_16.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_change_bat_to_brown.jpg"
+  },
+  {
+    "filename": "fig_71_1.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_change_cloest_keyboard_to_black.jpg"
+  },
+  {
+    "filename": "fig_71_2.jpg",
+    "caption": "((a))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_change_cloest_keyboard_to_black.jpg"
+  },
+  {
+    "filename": "fig_72_1.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_calligraphy.jpg"
+  },
+  {
+    "filename": "fig_72_2.jpg",
+    "caption": "((b))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_calligraphy.jpg"
+  },
+  {
+    "filename": "fig_73_1.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_mountains.jpg"
+  },
+  {
+    "filename": "fig_73_2.jpg",
+    "caption": "((c))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_mountains.jpg"
+  },
+  {
+    "filename": "fig_74_1.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_helicopter.jpg"
+  },
+  {
+    "filename": "fig_74_2.jpg",
+    "caption": "((d))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_helicopter.jpg"
+  },
+  {
+    "filename": "fig_75_1.jpg",
+    "caption": "((e))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_add_blue_rug.jpg"
+  },
+  {
+    "filename": "fig_75_2.jpg",
+    "caption": "((e))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_add_blue_rug.jpg"
+  },
+  {
+    "filename": "fig_76_1.jpg",
+    "caption": "((f))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_remove_light.jpg"
+  },
+  {
+    "filename": "fig_76_2.jpg",
+    "caption": "((f))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/2_remove_light.jpg"
+  },
+  {
+    "filename": "fig_77_1.jpg",
+    "caption": "((g))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_thread_to_wire.jpg"
+  },
+  {
+    "filename": "fig_77_2.jpg",
+    "caption": "((g))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_thread_to_wire.jpg"
+  },
+  {
+    "filename": "fig_78_1.jpg",
+    "caption": "((h))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/0_change_bat_to_brown.jpg"
+  },
+  {
+    "filename": "fig_78_2.jpg",
+    "caption": "((h))",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.11039/assets/img_edit_samples/1_change_bat_to_brown.jpg"
+  }
+]

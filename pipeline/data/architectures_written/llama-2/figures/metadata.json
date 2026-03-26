@@ -1,0 +1,296 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: Helpfulness human evaluation results for Llama 2-Chat compared to other open-source and closed-source models. Human raters compared model generations on ~4k prompts consisting of both single and multi-turn prompts. The 95% confidence intervals for this evaluation are between 1% and 2%. More details in Section 3.4.2 . While reviewing these results, it is important to note that human evaluations can be noisy due to limitations of the prompt set, subjectivity of the review guidelines, subjectivity of individual raters, and the inherent difficulty of comparing generations.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: Helpfulness human evaluation results for Llama 2-Chat compared to other open-source and closed-source models. Human raters compared model generations on ~4k prompts consisting of both single and multi-turn prompts. The 95% confidence intervals for this evaluation are between 1% and 2%. More details in Section 3.4.2 . While reviewing these results, it is important to note that human evaluations can be noisy due to limitations of the prompt set, subjectivity of the review guidelines, subjectivity of individual raters, and the inherent difficulty of comparing generations.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x2.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 1: Helpfulness human evaluation results for Llama 2-Chat compared to other open-source and closed-source models. Human raters compared model generations on ~4k prompts consisting of both single and multi-turn prompts. The 95% confidence intervals for this evaluation are between 1% and 2%. More details in Section 3.4.2 . While reviewing these results, it is important to note that human evaluations can be noisy due to limitations of the prompt set, subjectivity of the review guidelines, subjectivity of individual raters, and the inherent difficulty of comparing generations.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 2: Win-rate % for helpfulness and safety between commercial-licensed baselines and Llama 2-Chat , according to GPT-4. To complement the human evaluation, we used a more capable model, not subject to our own guidance. Green area indicates our model is better according to GPT-4. To remove ties, we used w ​ i ​ n / ( w ​ i ​ n + l ​ o ​ s ​ s ) 𝑤 𝑖 𝑛 𝑤 𝑖 𝑛 𝑙 𝑜 𝑠 𝑠 win/(win+loss) . The orders in which the model responses are presented to GPT-4 are randomly swapped to alleviate bias.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3: Safety human evaluation results for Llama 2-Chat compared to other open-source and closed-source models. Human raters judged model generations for safety violations across ~2,000 adversarial prompts consisting of both single and multi-turn prompts. More details can be found in Section 4.4 . It is important to caveat these safety results with the inherent bias of LLM evaluations due to limitations of the prompt set, subjectivity of the review guidelines, and subjectivity of individual raters. Additionally, these safety evaluations are performed using content standards that are likely to be biased towards the Llama 2-Chat models.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_overall_human_temp.png"
+  },
+  {
+    "filename": "fig_5.jpg",
+    "caption": "Figure 4: Training of Llama 2-Chat : This process begins with the pretraining of Llama 2 using publicly available online sources. Following this, we create an initial version of Llama 2-Chat through the application of supervised fine-tuning . Subsequently, the model is iteratively refined using Reinforcement Learning with Human Feedback (RLHF) methodologies, specifically through rejection sampling and Proximal Policy Optimization (PPO). Throughout the RLHF stage, the accumulation of iterative reward modeling data in parallel with model enhancements is crucial to ensure the reward models remain within distribution.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x3.jpg"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 5: Training Loss for Llama 2 models. We compare the training loss of the Llama 2 family of models. We observe that after pretraining on 2T Tokens, the models still did not show any sign of saturation.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 6: Scaling trends for the reward model. More data and a larger-size model generally improve accuracy, and it appears that our models have not yet saturated from learning on the training data.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 7: Max and median reward among N samples , N ∈ [ 1 , … , 100 ] 𝑁 1 … 100 N\\in[1,\\ldots,100] averaged over our training set of prompts. The delta between max and median can be interpreted as potential gain with Rejection Sampling.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x6.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 8: RLHF impact of the temperature when sampling N outputs and scoring them with a reward model.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x7.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "Figure 8: RLHF impact of the temperature when sampling N outputs and scoring them with a reward model.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x8.png"
+  },
+  {
+    "filename": "fig_10_1.png",
+    "caption": "Figure 9: Issues with multi-turn memory (left) can be improved with GAtt (right) .",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x9.png"
+  },
+  {
+    "filename": "fig_10_2.png",
+    "caption": "Figure 9: Issues with multi-turn memory (left) can be improved with GAtt (right) .",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 10: Attention visualization for a dialogue with and without GAtt . We considered the maximum activations across the network and we bin neighboring tokens together.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x11.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "Figure 11: Evolution of Llama 2-Chat . We show the evolution after multiple iterations fine-tuning for the win-rate % of Llama 2-Chat compared to ChatGPT. Left : the judge is our reward model, which may favor our model, and right , the judge is GPT-4, which should be more neutral.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x12.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "Figure 11: Evolution of Llama 2-Chat . We show the evolution after multiple iterations fine-tuning for the win-rate % of Llama 2-Chat compared to ChatGPT. Left : the judge is our reward model, which may favor our model, and right , the judge is GPT-4, which should be more neutral.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x13.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 12: Human evaluation results for Llama 2-Chat models compared to open- and closed-source models across ~4,000 helpfulness prompts with three raters per prompt.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/human_evals/single_vs_multiturn.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 13: Pretraining data toxicity. To allow for better downstream generalization, we chose not to scrub toxic data from pretraining. The HateBERT classifier assigns a toxicity likelihood of 0.5 or higher to about 0.2% of documents in our pretraining corpus.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/data_toxicity.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 14: Impact of safety RLHF measured by reward model score distributions. Left : safety reward model scores of generations on the Meta Safety test set. The clustering of samples in the top left corner suggests the improvements of model safety. Right : helpfulness reward model scores of generations on the Meta Helpfulness test set.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x14.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 15: Safety data scaling trends. Left : as we increase the amount of safety data in model training, the mean safety RM score improves significantly while the helpfulness counterpart remains relatively stable. Right : the left tail of safety RM scores (i.e., most unsafe responses) gradually disappears with the addition of more safety training data.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x15.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "(a) Impact on Safety RM Score.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x16.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "(a) Impact on Safety RM Score.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x17.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "(a) Impact on Safety RM Score.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x16.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(b) Targeted Context Distillation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x17.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "(a) Overall violation percentage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_human_eval/overall_violation.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "(a) Overall violation percentage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_human_eval/rating.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(a) Overall violation percentage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_human_eval/overall_violation.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "(b) Overall safety and helpfulness mean rating.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_human_eval/rating.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 18: Single-turn and multi-turn violation percentage. Note that these results should be interpreted carefully due to limitations of the prompt set, subjectivity of the review guidelines, content standards, and individual raters.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_human_eval/turn_violation.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 19: Violation percentage per risk category. Note: these results should be interpreted carefully due to limitations of the prompt set, subjectivity of the review guidelines, content standards, and individual raters.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/safety_human_eval/category.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 20: Distribution shift for progressive versions of Llama 2-Chat , from SFT models towards RLHF.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x18.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "Figure 21: RLHF learns to adapt the temperature with regard to the type of prompt. Lower Self-BLEU corresponds to more diversity: RLHF eliminates diversity in responses to factual prompts but retains more diversity when generating responses to creative prompts.\nWe prompt each model with a diverse set of 10 creative and 10 factual instructions and sample 25 responses. This is repeated for the temperatures T ∈ { k / 10 ∣ k ∈ ℕ : 1 ≤ k ≤ 15 } 𝑇 conditional-set 𝑘 10 : 𝑘 ℕ 1 𝑘 15 T\\in\\{k/10\\mid k\\in\\mathbb{N}:1\\leq k\\leq 15\\} . For each of the 25 responses we compute the Self-BLEU metric and report the mean and standard deviation against the temperature.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x19.png"
+  },
+  {
+    "filename": "fig_27_1.png",
+    "caption": "Figure 22: Time awareness — illustration of our model generalizing the notion of time, with 1,000 SFT time-focused data.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x20.png"
+  },
+  {
+    "filename": "fig_27_2.png",
+    "caption": "Figure 22: Time awareness — illustration of our model generalizing the notion of time, with 1,000 SFT time-focused data.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x21.png"
+  },
+  {
+    "filename": "fig_27_3.png",
+    "caption": "Figure 22: Time awareness — illustration of our model generalizing the notion of time, with 1,000 SFT time-focused data.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x22.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "Figure 23: Tool use emergence. Llama 2-Chat is able to understand the tools’s applications, and the API arguments, just through the semantics, despite never having been trained to use tools.",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x23.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "Figure 24: Multi-query variants enable higher throughput with larger batch sizes, and show similar latency on smaller batches. Output length is fixed at 128 tokens. The first data point corresponds to batch size 1, and then we double it until the model runs out of memory. The MHA variant triggers an out-of-memory error at a batch size of 1024 for a context of 256 tokens and at a batch size of 128 for 2k context, whereas MQA and GQA have successful runs in those settings.",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/img/llama-mq-combined.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "Figure 25: Distribution of human preference data rating over batches. Over time, the share of samples with an unsure or negligibly better rating become larger with better performing Llama 2-Chat trained and available for preference data annotation.",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x24.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "Figure 26: Annotation curriculum. Evolution for each new batch of the maximum and median score given a reward model for prompts samples with a models trained on each of the batches. We can see that the score progressively decrease, suggesting that the prompts are on average harder in the most recent batches.",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x25.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure 27: Reward model score distribution shift caused by incorporating preference rating based margin in ranking loss. With the margin term, we observe a binary split pattern in reward distribution, especially with a larger margin.",
+    "figure_number": "Figure 27",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x26.png"
+  },
+  {
+    "filename": "fig_33_1.png",
+    "caption": "Figure 28: GAtt zero-shot generalisation. Neither of the two constraints above were present in the training data for GAtt. Yet, they are perfectly fulfilled trough all the turns.",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x27.png"
+  },
+  {
+    "filename": "fig_33_2.png",
+    "caption": "Figure 28: GAtt zero-shot generalisation. Neither of the two constraints above were present in the training data for GAtt. Yet, they are perfectly fulfilled trough all the turns.",
+    "figure_number": "Figure 28",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x28.png"
+  },
+  {
+    "filename": "fig_34.png",
+    "caption": "Figure 29: Average reward model score vs model response quality rating (7-point Likert scale) from triple human review . The left and right plots are on helpfulness and safety test sets, respectively. The shaded areas represent ± plus-or-minus \\pm 1 standard deviation.",
+    "figure_number": "Figure 29",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x29.png"
+  },
+  {
+    "filename": "fig_35_1.png",
+    "caption": "Figure 30: Impact of system prompt on human evaluation results for ChatGPT ( Left ). Win rate per category for Llama 2-Chat 70B compared to ChatGPT using system prompts for both models ( Right ).",
+    "figure_number": "Figure 30",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x30.png"
+  },
+  {
+    "filename": "fig_35_2.png",
+    "caption": "Figure 30: Impact of system prompt on human evaluation results for ChatGPT ( Left ). Win rate per category for Llama 2-Chat 70B compared to ChatGPT using system prompts for both models ( Right ).",
+    "figure_number": "Figure 30",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x31.png"
+  },
+  {
+    "filename": "fig_36_1.png",
+    "caption": "Figure 31: Win rate of Llama 2-Chat versus ChatGPT analyzed by number of turns ( Left ) in the prompt and word count ( Right ) for the prompt and generation combined. For the word count plot, we report the win rate for each quintile. The maximum total word count (prompt and generation) is 2432. We do not see any trends in win rate with either word count or turn count.",
+    "figure_number": "Figure 31",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x32.png"
+  },
+  {
+    "filename": "fig_36_2.png",
+    "caption": "Figure 31: Win rate of Llama 2-Chat versus ChatGPT analyzed by number of turns ( Left ) in the prompt and word count ( Right ) for the prompt and generation combined. For the word count plot, we report the win rate for each quintile. The maximum total word count (prompt and generation) is 2432. We do not see any trends in win rate with either word count or turn count.",
+    "figure_number": "Figure 31",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x33.png"
+  },
+  {
+    "filename": "fig_37.png",
+    "caption": "Figure 32: Safety and Helpfulness reward model scores on a set of safe (left) and unsafe (right) responses from the safety test set. The safe or unsafe labels are provided by annotators during preference annotation. Conflicts can be observed between the two aspects at the bottom right corner (i.e., high safety score but low helpfulness score) of the safe response plot and the top left corner (i.e., low safety score but high helpfulness score) of the unsafe response plot.",
+    "figure_number": "Figure 32",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x34.png"
+  },
+  {
+    "filename": "fig_38.png",
+    "caption": "Figure 33: The false model refusal rate increases with the percentage of safety data. Left : false refusal rate on the helpfulness dataset ranges from 0.006% (i.e., 1 occurrence) to 0.05% (i.e., 8 occurrences); Right : false refusal rate on the borderline dataset ranges from 15% to 27%.",
+    "figure_number": "Figure 33",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.09288/assets/x35.png"
+  }
+]

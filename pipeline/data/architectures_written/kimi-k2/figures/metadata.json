@@ -1,0 +1,164 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Kimi K2 main results. 3 3 3 All models evaluated above are non-thinking models. For SWE-bench Multilingual, we evaluated only Claude 4 Sonnet because the cost of Claude 4 Opus was prohibitive.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: Left: During a mid-scale training run, attention logits rapidly exceed 1000, which could lead to potential numerical instabilities and even training divergence. Right: Maximum logits for Kimi K2 with MuonClip and τ \\tau = 100 over the entire training run.\nThe max logits rapidly increase to the capped value of 100, and only decay to a stable range after approximately 30% of the training steps, demonstrating the effective regulation effect of QK-Clip.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x3.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: Left: During a mid-scale training run, attention logits rapidly exceed 1000, which could lead to potential numerical instabilities and even training divergence. Right: Maximum logits for Kimi K2 with MuonClip and τ \\tau = 100 over the entire training run.\nThe max logits rapidly increase to the capped value of 100, and only decay to a stable range after approximately 30% of the training steps, demonstrating the effective regulation effect of QK-Clip.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x4.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Per-step training loss curve of Kimi K2, without smoothing or sub-sampling . It shows no spikes throughout the entire training process. Note that we omit the very beginning of training for clarity.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x5.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Auto-regressive chunk-wise rephrasing pipeline for long input excerpts. The input is split into smaller chunks with preserved context, rewritten sequentially, and then concatenated into a full rewritten passage.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x6.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "Figure 5: Sparsity Scaling Law. Increasing sparsity leads to improved model performance. We fixed the number of activated experts to 8 and the number of shared experts to 1, and varied the total number of experts, resulting in models with different sparsity levels.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x7.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "Figure 5: Sparsity Scaling Law. Increasing sparsity leads to improved model performance. We fixed the number of activated experts to 8 and the number of shared experts to 1, and varied the total number of experts, resulting in models with different sparsity levels.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x8.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 5: Sparsity Scaling Law. Increasing sparsity leads to improved model performance. We fixed the number of activated experts to 8 and the number of shared experts to 1, and varied the total number of experts, resulting in models with different sparsity levels.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x7.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 6: Scaling curves for models with number of attention heads equals to number of layers and their counterparts with doubled attention heads. Doubling the number of attention heads leads to a reduction in validation loss of approximately 0.5 % 0.5\\% to 1.2 % 1.2\\% .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x8.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 7: Computation, communication and offloading overlapped in different PP phases.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x9.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "(a) Synthesizing tool specs, agents and tasks",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x10.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "(a) Synthesizing tool specs, agents and tasks",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x11.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(a) Synthesizing tool specs, agents and tasks",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(b) Generating agent trajectories",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x11.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "(a) t-SNE visualization of real MCP tools, colored by their original source categories",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x12.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "(a) t-SNE visualization of real MCP tools, colored by their original source categories",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x13.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(a) t-SNE visualization of real MCP tools, colored by their original source categories",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x12.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(b) t-SNE visualization of synthetic tools, colored by pre-defined domain categories",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x13.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 10: Parameter update utilizing a checkpoint engine",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x14.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 11: Chinese in-house benchmark evaluation.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x15.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 12: Applying QK-Clip to Muon in a small-scale setting with an aggresive threshold ( τ \\tau = 30) has negligible impact on loss, indicating that it is a safe and effective method for constraining attention logits.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x16.png"
+  },
+  {
+    "filename": "fig_18_1.png",
+    "caption": "(a) Theoretical perfect three-stage pipeline weight update",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x17.png"
+  },
+  {
+    "filename": "fig_18_2.png",
+    "caption": "(a) Theoretical perfect three-stage pipeline weight update",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x18.png"
+  },
+  {
+    "filename": "fig_18_3.png",
+    "caption": "(a) Theoretical perfect three-stage pipeline weight update",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x19.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(a) Theoretical perfect three-stage pipeline weight update",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x17.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(b) A PCIE bounded three-stage pipeline",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x18.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(c) Fixed two-stage pipeline",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2507.20534/assets/x19.png"
+  }
+]

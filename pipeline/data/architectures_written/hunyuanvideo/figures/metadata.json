@@ -1,0 +1,326 @@
+[
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2 : Left: Computation resources used for closed-source and open-source video generation models. Right: Performance comparison between HunyuanVideo and other selected strong baselines.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2 : Left: Computation resources used for closed-source and open-source video generation models. Right: Performance comparison between HunyuanVideo and other selected strong baselines.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/ranking.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x1.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/ranking.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3 : The overall training system for HunyuanVideo.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/overall.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4 : Our hierarchical data filtering pipeline. We employ various filters for data filtering and progressively increase their thresholds to build 4 training datasets, i.e., 256p, 360p, 540p, and 720p, while the final SFT dataset is built through manual annotation. This figure highlights some of the most important filters to use at each stage. A large portion of data will be removed at each stage, ranging from half to one-fifth of the data from the previous stage.\nHere, gray bars represent the amount of data filtered out by each filter while colored bars indicate the amount of remaining data at each stage.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x2.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5 : The overall architecture of HunyuanVideo. The model is trained on a spatial-temporally compressed latent space, which is compressed through Causal 3D VAE. Text prompts are encoded using a large language model, and used as the condition. Gaussian noise and condition are taken as input, our model generates a output latent, which is decoded into images or videos through the 3D VAE decoder.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/hunyuanvideo_overview.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6 : The architecture of our 3DVAE.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x3.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7 : VAE reconstruction case comparison.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x4.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 8 : The architecture of our HunyuanVideo Diffusion Backbone.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x5.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 9 : Text encoder comparison between T5 XXL and the instruction-guided MLLM introduced by HunyuanVideo.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x6.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x7.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x8.png"
+  },
+  {
+    "filename": "fig_12_3.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x9.png"
+  },
+  {
+    "filename": "fig_12_4.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x10.png"
+  },
+  {
+    "filename": "fig_12_5.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x11.png"
+  },
+  {
+    "filename": "fig_12_6.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "(a) T2X(I) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x7.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "(b) T2X(I) Power law of C C and N N",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x8.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "(c) T2X(I) Power law of C C and D D",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x9.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "(d) T2X(V) Loss curve and envelope",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x10.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "(e) T2X(V) Power law of C C and N N",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x11.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "(f) T2X(V) Power law of C C and D D",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x12.png"
+  },
+  {
+    "filename": "fig_19_1.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x13.png"
+  },
+  {
+    "filename": "fig_19_2.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x14.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x13.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(b)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x14.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 12 : Prompt: A white cat sits on a white soft sofa like a person, while its long-haired male owner, with his hair tied up in a topknot, sits on the floor, gazing into the cat’s eyes. His child stands nearby, observing the interaction between the cat and the man.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/text_alignment.png"
+  },
+  {
+    "filename": "fig_23_1.png",
+    "caption": "(a) Prompt: the ultra-wide-angle lens follows closely from the hood, with raindrops continuously splattering against the lens. Ahead, a sports car speeds around a corner, its tires violently skidding against the wet road, creating a mist of water. Neon lights refract in the rain, leaving colorful streaks on the car’s surface. The camera swiftly shifts to the side of the car, capturing the wheels spinning at high speed, before finally moving to the rear.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high-quality-1.png"
+  },
+  {
+    "filename": "fig_23_2.png",
+    "caption": "(a) Prompt: the ultra-wide-angle lens follows closely from the hood, with raindrops continuously splattering against the lens. Ahead, a sports car speeds around a corner, its tires violently skidding against the wet road, creating a mist of water. Neon lights refract in the rain, leaving colorful streaks on the car’s surface. The camera swiftly shifts to the side of the car, capturing the wheels spinning at high speed, before finally moving to the rear.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high-quality-2.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "(a) Prompt: the ultra-wide-angle lens follows closely from the hood, with raindrops continuously splattering against the lens. Ahead, a sports car speeds around a corner, its tires violently skidding against the wet road, creating a mist of water. Neon lights refract in the rain, leaving colorful streaks on the car’s surface. The camera swiftly shifts to the side of the car, capturing the wheels spinning at high speed, before finally moving to the rear.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high-quality-1.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "(b) Prompt: a stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse. She wears sunglasses and red lipstick. She walks confidently and casually. The street is damp and reflective, creating a mirror effect of the colorful lights. Many pedestrians walk about.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high-quality-2.png"
+  },
+  {
+    "filename": "fig_26_1.jpg",
+    "caption": "(a) Prompt: At sunset, a modified Ford F-150 Raptor roared past on the off-road track. The raised suspension allowed the huge explosion-proof tires to flip freely on the mud, and the mud splashed on the roll cage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_3.jpg"
+  },
+  {
+    "filename": "fig_26_2.jpg",
+    "caption": "(a) Prompt: At sunset, a modified Ford F-150 Raptor roared past on the off-road track. The raised suspension allowed the huge explosion-proof tires to flip freely on the mud, and the mud splashed on the roll cage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_5.jpg"
+  },
+  {
+    "filename": "fig_26_3.jpg",
+    "caption": "(a) Prompt: At sunset, a modified Ford F-150 Raptor roared past on the off-road track. The raised suspension allowed the huge explosion-proof tires to flip freely on the mud, and the mud splashed on the roll cage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_2.jpg"
+  },
+  {
+    "filename": "fig_26_4.jpg",
+    "caption": "(a) Prompt: At sunset, a modified Ford F-150 Raptor roared past on the off-road track. The raised suspension allowed the huge explosion-proof tires to flip freely on the mud, and the mud splashed on the roll cage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_7.jpg"
+  },
+  {
+    "filename": "fig_26_5.jpg",
+    "caption": "(a) Prompt: At sunset, a modified Ford F-150 Raptor roared past on the off-road track. The raised suspension allowed the huge explosion-proof tires to flip freely on the mud, and the mud splashed on the roll cage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_8.jpg"
+  },
+  {
+    "filename": "fig_27.jpg",
+    "caption": "(a) Prompt: At sunset, a modified Ford F-150 Raptor roared past on the off-road track. The raised suspension allowed the huge explosion-proof tires to flip freely on the mud, and the mud splashed on the roll cage.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_3.jpg"
+  },
+  {
+    "filename": "fig_28.jpg",
+    "caption": "(b) Prompt: The panning camera moves forward slowly, with a depth of field in the middle focus, and warm sunset light covers the screen. The girl in the picture runs with her skirt fluttering, turns and jumps.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_5.jpg"
+  },
+  {
+    "filename": "fig_29.jpg",
+    "caption": "(c) Prompt: In the gym, a woman in workout clothes runs on a treadmill. Side angle. Realistic, Indoor lighting, Professional.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_2.jpg"
+  },
+  {
+    "filename": "fig_30.jpg",
+    "caption": "(d) Prompt: Swimmer swimming underwater, in slow motion. Realistic, Underwater lighting, Peaceful.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_7.jpg"
+  },
+  {
+    "filename": "fig_31.jpg",
+    "caption": "(e) Prompt: On the rooftop, there is an open-air basketball court, and five male students are playing basketball. Realistic, Natural lighting, Casual.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/high_motion_8.jpg"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "Figure 15 : HunyuanVideo’s performance on concept generalization. The results of the three rows correspond to the text prompts (1) ‘In a distant galaxy, an astronaut floats on a shimmering, pink, gemstone-like lake that reflects the vibrant colors of the surrounding sky, creating a stunning scene. The astronaut gently drifts on the lake’s surface, the soft sounds of water whispering the planet’s secrets. He reaches out, his fingertips gliding over the cool, smooth water. ’, (2) ‘A macro lens captures a tiny orchestra of insects playing instruments.’ and (3) ‘The night-blooming cactus flowers in the evening, with a brief, rapid closure. Time-lapse shot, extreme close-up. Realistic, Night lighting, Mysterious.’ respectively.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/concept.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "Figure 16 : Prompt: The woman walks over and opens the red wooden door. As the door swings open, seawater bursts forth, in a realistic style.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/sequential_motion.png"
+  },
+  {
+    "filename": "fig_34.png",
+    "caption": "Figure 17 : High text-video alignment videos generated by HunyuanVideo. Top row: Prompt: A close-up of a wave crashing against the beach, the sea foam spells out “WAKE UP” on the sand. Bottom row: Prompt: In a garden filled with blooming flowers, “GROW LOVE” has been spelled out with colorful petals.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/ocr.png"
+  },
+  {
+    "filename": "fig_35.png",
+    "caption": "Figure 18 : The architecture of sound effect and music generation model.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/vt2a_arch.png"
+  },
+  {
+    "filename": "fig_36.png",
+    "caption": "Figure 19 : Differences between text-to-video (T2V) model and image-to-video (I2V) model.",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x15.png"
+  },
+  {
+    "filename": "fig_37.png",
+    "caption": "Figure 20 : Sample results of the I2V pre-training model.",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/figures/i2v_pretraining_result.png"
+  },
+  {
+    "filename": "fig_38.png",
+    "caption": "Figure 21 : Sample results of our portrait I2V model.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/applications/app_figures/portrait_to_video_new.png"
+  },
+  {
+    "filename": "fig_39.png",
+    "caption": "Figure 22 : Overview of Avatar Animation built on top of HunyuanVideo . We adopt 3D VAE to encode and inject reference and pose condition, and use additional cross-attention layers to inject audio and expression signals. Masks are employed to explicitly guide where they are affecting.",
+    "figure_number": "Figure 22",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x16.png"
+  },
+  {
+    "filename": "fig_40.png",
+    "caption": "Figure 23 : Audio-Driven . HunyuanVideo can generate vivid talking avatar videos.",
+    "figure_number": "Figure 23",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x17.png"
+  },
+  {
+    "filename": "fig_41.png",
+    "caption": "Figure 24 : Pose-Driven . HunyuanVideo can animate wide variety of characters with high quality and appearance consistency under various poses.",
+    "figure_number": "Figure 24",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x18.png"
+  },
+  {
+    "filename": "fig_42.png",
+    "caption": "Figure 25 : Expression-Driven . HunyuanVideo can accurately control facial movements of wide-variety of avatar styles.",
+    "figure_number": "Figure 25",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x19.png"
+  },
+  {
+    "filename": "fig_43.png",
+    "caption": "Figure 26 : Hybrid Condition-Driven . HunyuanVideo supports full control with multiple driving sources across various avatar characters.",
+    "figure_number": "Figure 26",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2412.03603/assets/x20.png"
+  }
+]

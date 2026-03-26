@@ -1,0 +1,206 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Chameleon represents all modalities — images, text, and code, as discrete tokens and uses a uniform transformer-based architecture that is trained from scratch in an end-to-end fashion on ∼ similar-to \\sim 10T tokens of interleaved mixed-modal data. As a result, Chameleon can both reason over, as well as generate, arbitrary mixed-modal documents. Text tokens are represented in green and image tokens are represented in blue.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.jpg",
+    "caption": "Figure 2 : Sample interleaved image and text generation from Chameleon. The corresponding images are generated in locations marked by <img> .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/toucan.jpg"
+  },
+  {
+    "filename": "fig_2_2.jpg",
+    "caption": "Figure 2 : Sample interleaved image and text generation from Chameleon. The corresponding images are generated in locations marked by <img> .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/puffin.jpg"
+  },
+  {
+    "filename": "fig_2_3.jpg",
+    "caption": "Figure 2 : Sample interleaved image and text generation from Chameleon. The corresponding images are generated in locations marked by <img> .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/pheasant.jpg"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3 : Sample generation from Chameleon.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/stop_sign.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3 : Sample generation from Chameleon.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/stop_sign_response.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4 : Sample Chameleon outputs.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/banana.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4 : Sample Chameleon outputs.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/banana_bread.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) Uncontrolled growth of output norms is a strong indicator of future training divergence.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x2.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) Uncontrolled growth of output norms is a strong indicator of future training divergence.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x3.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "(a) Uncontrolled growth of output norms is a strong indicator of future training divergence.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) Uncontrolled growth of output norms is a strong indicator of future training divergence.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x2.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) An ablation with Chameleon -7B with and without QK-Norm .",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x3.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(c) An ablation with Chameleon -7B with and without dropout .",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x4.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "(a) Training Curves for 600k steps for Chameleon-7B and Chameleon-34B over Mixed-Modal Data.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x5.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "(a) Training Curves for 600k steps for Chameleon-7B and Chameleon-34B over Mixed-Modal Data.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x6.png"
+  },
+  {
+    "filename": "fig_9_3.png",
+    "caption": "(a) Training Curves for 600k steps for Chameleon-7B and Chameleon-34B over Mixed-Modal Data.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x7.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(a) Training Curves for 600k steps for Chameleon-7B and Chameleon-34B over Mixed-Modal Data.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x5.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(b) Training loss curve with image generation disabled does not suffer from instability issues.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x6.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(c) For Chameleon-34B , using dropout does not fix divergences, both with and without norm-reordering.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x7.png"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "(a) Text",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/step_ren.jpg"
+  },
+  {
+    "filename": "fig_13_2.jpg",
+    "caption": "(a) Text",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/vqa_flowers.jpg"
+  },
+  {
+    "filename": "fig_13_3.jpg",
+    "caption": "(a) Text",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/gyumri.jpg"
+  },
+  {
+    "filename": "fig_13_4.jpg",
+    "caption": "(a) Text",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/gyumri_arch.jpg"
+  },
+  {
+    "filename": "fig_16.jpg",
+    "caption": "(c) Image Generation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/step_ren.jpg"
+  },
+  {
+    "filename": "fig_17.jpg",
+    "caption": "(d) Visual Chat",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/vqa_flowers.jpg"
+  },
+  {
+    "filename": "fig_18_1.jpg",
+    "caption": "(e) Interleaved Text/Image Generation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/gyumri.jpg"
+  },
+  {
+    "filename": "fig_18_2.jpg",
+    "caption": "(e) Interleaved Text/Image Generation",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/assets/gyumri_arch.jpg"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 8 : Task categories and examples of prompts. Image attributions: Seguin ( 2010 ); Agriflanders ( 2009 ); Tuszyński ( 2015 ); Sokolov ( 2022 ) .",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x8.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "(a) The prompt task fulfillment rates.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x9.png"
+  },
+  {
+    "filename": "fig_20_2.png",
+    "caption": "(a) The prompt task fulfillment rates.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x10.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(a) The prompt task fulfillment rates.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x9.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "(b) Chameleon vs. the baselines: Gemini+, GPT-4V+, Gemini, GPT-4V.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x10.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 10 : The inter-annotator agreement on the questions in the absolute evaluation.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2405.09818/assets/x11.png"
+  }
+]

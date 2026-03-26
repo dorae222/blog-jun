@@ -1,0 +1,86 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Overlaid predictions. We overlay the predictions from our three different approaches, along with projections from Kaplan et al. ( 2020 ) . We find that all three methods predict that current large models should be substantially smaller and therefore trained much longer than is currently done.\nIn Figure A3 , we show the results with the predicted optimal tokens plotted against the optimal number of parameters for fixed FLOP budgets. Chinchilla outperforms Gopher and the other large models (see Section 4.2 ).",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Training curve envelope. On the left we show all of our different runs. We launched a range of model sizes going from 70M to 10B, each for four different cosine cycle lengths. From these curves, we extracted the envelope of minimal loss per FLOP, and we used these points to estimate the optimal model size ( center ) for a given compute budget and the optimal number of training tokens ( right ).\nIn green, we show projections of optimal model size and training token count based on the number of FLOPs used to train Gopher ( 5.76 × 10 23 5.76 superscript 10 23 5.76\\times 10^{23} ).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : IsoFLOP curves. For various model sizes, we choose the number of training tokens such that the final FLOPs is a constant. The cosine cycle length is set to match the target FLOP count. We find a clear valley in loss, meaning that for a given FLOP budget there is an optimal model to train ( left ).\nUsing the location of these valleys, we project optimal model size and number of tokens for larger models ( center and right ).\nIn green, we show the estimated number of parameters and tokens for an optimal model trained with the compute budget of Gopher .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Parametric fit. We fit a parametric modelling of the loss L ^ ​ ( N , D ) ^ 𝐿 𝑁 𝐷 \\hat{L}(N,D) and display contour ( left ) and isoFLOP slices ( right ).\nFor each isoFLOP slice, we include a corresponding dashed line in the left plot.\nIn the left plot, we show the efficient frontier in blue, which is a line in log-log space.\nSpecifically, the curve goes through each iso-loss contour at the point with the fewest FLOPs.\nWe project the optimal model size given the Gopher FLOP budget to be 40B parameters.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : Pile Evaluation. For the different evaluation sets in The Pile (Gao et al., 2020 ) , we show the bits-per-byte (bpb) improvement (decrease) of Chinchilla compared to Gopher .\nOn all subsets, Chinchilla outperforms Gopher .",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6 : MMLU results compared to Gopher We find that Chinchilla outperforms Gopher by 7.6% on average (see Table 6 ) in addition to performing better on 51/57 individual tasks, the same on 2/57, and worse on only 4/57 tasks.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7 : BIG-bench results compared to Gopher Chinchilla out performs Gopher on all but four BIG-bench tasks considered. Full results are in Table A7 .",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure A1 : Grid over cosine cycle length. We show 6 curves with the cosine cycle length set to 1, 1.1, 1.25, 1.5, 2, and 5 × \\times longer than the target number of training steps.\nWhen the cosine cycle length is too long, and the learning rate does not drop appropriately, then performance is impaired.\nWe find that overestimating the number of training steps beyond 25% leads to clear drops in performance.\nWe show results where we have set the number of training steps to two different values (top and bottom).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure A2 : C4 and GitHub IsoFLOP curves. Using the C4 dataset (Raffel et al., 2020b ) and a GitHub dataset (Rae et al., 2021 ) , we generate 4 IsoFLOP profiles and show the parameter and token count scaling, as in Figure 3 . Scaling coefficients are shown in Table A2 .",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure A3 : Optimal number of tokens and parameters for a training FLOP budget. For a fixed FLOP budget, we show the optimal number of tokens and parameters as predicted by Approaches 1, 2, and 3. For an alternate representation, see Figure 1 .",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure A4 : Comparison to Kaplan et al. ( 2020 ) at 10 21 superscript 10 21 10^{21} FLOPs. We train 2.80 and 4.74 billion parameter transformers predicted as optimal for 10 21 superscript 10 21 10^{21} FLOPs by Approach 1 and by Kaplan et al. ( 2020 ) . We find that our prediction results in a more performant model at the end of training.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure A5 : Training curve envelopes. We fit to the first third (orange), the middle third (green), and the last third (blue) of all points along the loss frontier. We plot only a subset of the points.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure A6 : Comparison of other differences. Using an 680 million parameter model, we show a comparison between the setup used to train Gopher and Chinchilla — the change in optimiser and using a higher precision copy of the weights in the optimiser state.\nThe setup used for Chinchilla (orange) clearly outperforms the setup used to train Gopher (green).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure A7 : Adam vs AdamW. For a 417M (blue) and 1.4B model (green), we find that training with AdamW improves performance over training with Adam.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2203.15556/assets/x14.png"
+  }
+]

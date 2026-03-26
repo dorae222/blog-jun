@@ -1,0 +1,296 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: Graphical models for diffusion (left) and non-Markovian (right) inference models.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: Graphical models for diffusion (left) and non-Markovian (right) inference models.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x2.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 2: Graphical model for accelerated generation, where τ = [ 1 , 3 ] 𝜏 1 3 \\tau=[1,3] .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x3.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "Figure 3: CIFAR10 and CelebA samples with dim ( τ ) = 10 dimension 𝜏 10 \\dim(\\tau)=10 and dim ( τ ) = 100 dimension 𝜏 100 \\dim(\\tau)=100 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "Figure 3: CIFAR10 and CelebA samples with dim ( τ ) = 10 dimension 𝜏 10 \\dim(\\tau)=10 and dim ( τ ) = 100 dimension 𝜏 100 \\dim(\\tau)=100 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "Figure 3: CIFAR10 and CelebA samples with dim ( τ ) = 10 dimension 𝜏 10 \\dim(\\tau)=10 and dim ( τ ) = 100 dimension 𝜏 100 \\dim(\\tau)=100 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x6.png"
+  },
+  {
+    "filename": "fig_5_4.png",
+    "caption": "Figure 3: CIFAR10 and CelebA samples with dim ( τ ) = 10 dimension 𝜏 10 \\dim(\\tau)=10 and dim ( τ ) = 100 dimension 𝜏 100 \\dim(\\tau)=100 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x7.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x5.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x6.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x7.png"
+  },
+  {
+    "filename": "fig_10_1.png",
+    "caption": "Figure 4: Hours to sample 50k images with one Nvidia 2080 Ti GPU and samples at different steps.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x8.png"
+  },
+  {
+    "filename": "fig_10_2.png",
+    "caption": "Figure 4: Hours to sample 50k images with one Nvidia 2080 Ti GPU and samples at different steps.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x9.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x8.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x9.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 5: Samples from DDIM with the same random 𝒙 T subscript 𝒙 𝑇 {\\bm{x}}_{T} and different number of steps.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x10.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 5: Samples from DDIM with the same random 𝒙 T subscript 𝒙 𝑇 {\\bm{x}}_{T} and different number of steps.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x11.png"
+  },
+  {
+    "filename": "fig_13_3.png",
+    "caption": "Figure 5: Samples from DDIM with the same random 𝒙 T subscript 𝒙 𝑇 {\\bm{x}}_{T} and different number of steps.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x12.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x10.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x11.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x12.png"
+  },
+  {
+    "filename": "fig_17_1.png",
+    "caption": "Figure 6: Interpolation of samples from DDIM with dim ( τ ) = 50 dimension 𝜏 50 \\dim(\\tau)=50 .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/celeba-interp-line.png"
+  },
+  {
+    "filename": "fig_17_2.png",
+    "caption": "Figure 6: Interpolation of samples from DDIM with dim ( τ ) = 50 dimension 𝜏 50 \\dim(\\tau)=50 .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/bedroom-interp-line.png"
+  },
+  {
+    "filename": "fig_17_3.png",
+    "caption": "Figure 6: Interpolation of samples from DDIM with dim ( τ ) = 50 dimension 𝜏 50 \\dim(\\tau)=50 .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/church-interp-line.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/celeba-interp-line.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/bedroom-interp-line.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/church-interp-line.png"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 7: CIFAR10 samples from 1000 step DDPM, 1000 step DDIM and 100 step DDIM.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x13.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "Figure 7: CIFAR10 samples from 1000 step DDPM, 1000 step DDIM and 100 step DDIM.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x14.png"
+  },
+  {
+    "filename": "fig_21_3.png",
+    "caption": "Figure 7: CIFAR10 samples from 1000 step DDPM, 1000 step DDIM and 100 step DDIM.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x15.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x13.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x14.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x15.png"
+  },
+  {
+    "filename": "fig_25_1.png",
+    "caption": "Figure 8: CelebA samples from 1000 step DDPM, 1000 step DDIM and 100 step DDIM.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x16.png"
+  },
+  {
+    "filename": "fig_25_2.png",
+    "caption": "Figure 8: CelebA samples from 1000 step DDPM, 1000 step DDIM and 100 step DDIM.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x17.png"
+  },
+  {
+    "filename": "fig_25_3.png",
+    "caption": "Figure 8: CelebA samples from 1000 step DDPM, 1000 step DDIM and 100 step DDIM.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x18.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x16.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x17.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x18.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "Figure 9: CelebA samples from DDIM with the same random 𝒙 T subscript 𝒙 𝑇 {\\bm{x}}_{T} and different number of steps.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x19.png"
+  },
+  {
+    "filename": "fig_30_1.png",
+    "caption": "Figure 10: Church samples from 100 step DDPM and 100 step DDIM.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x20.png"
+  },
+  {
+    "filename": "fig_30_2.png",
+    "caption": "Figure 10: Church samples from 100 step DDPM and 100 step DDIM.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x21.png"
+  },
+  {
+    "filename": "fig_31.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x20.png"
+  },
+  {
+    "filename": "fig_32.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/x21.png"
+  },
+  {
+    "filename": "fig_33.png",
+    "caption": "Figure 11: More interpolations from the CelebA DDIM with dim ( τ ) = 50 dimension 𝜏 50 \\dim(\\tau)=50 .",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/celeba-interp-grid.png"
+  },
+  {
+    "filename": "fig_34.png",
+    "caption": "Figure 12: More interpolations from the Bedroom DDIM with dim ( τ ) = 50 dimension 𝜏 50 \\dim(\\tau)=50 .",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/bedroom-interp-grid.png"
+  },
+  {
+    "filename": "fig_35.png",
+    "caption": "Figure 13: More interpolations from the Church DDIM with dim ( τ ) = 50 dimension 𝜏 50 \\dim(\\tau)=50 .",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2010.02502/assets/figures/church-interp-grid.png"
+  }
+]

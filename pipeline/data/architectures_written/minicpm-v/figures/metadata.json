@@ -1,0 +1,80 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Moore’s Law for MLLM? Trends of MLLM development in terms of time (x-axis), model size (y-axis), and performance (color). The red line shows the decreasing model sizes for achieving GPT-4V level performance, while the blue line represents the growing end-side computation capacity. This jointly shows that GPT-4V level MLLMs deployed on end devices are becoming increasingly possible, unlocking a wider spectrum of real-world AI applications in the near future.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Qualitative results of MiniCPM-Llama3-V 2.5 in reading text in images, converting tables to markdown, performing complex reasoning, and multilingual interaction, etc. See here for the screen recordings of MiniCPM-Llama3-V 2.5 running on mobile phones.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Model architecture. (a) Overall structure presents the architecture of the model including the visual encoder, shared compression layer, and LLM. (b) Adaptive visual encoding deals with high-resolution inputs in various aspect ratios.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: RLAIF-V framework for hallucination reduction. (1) Response generation produces multiple responses for an instruction using the policy model. (2) Feedback collection evaluates the correctness of each response in a divide-and-conquer fashion. (3) DPO optimizes the model on the preference dataset.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: An overview of end-side deployment. Current end-side chips for computation acceleration include CPU, GPU and NPU. We list their generality, (estimated) ideal and current performance, and related deployment frameworks.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Ablation study on the Xiaomi 14 Pro (Snapdragon 8 Gen 3). We show the influence of different techniques on the (a) encoding latency and (b) decoding throughput. No opt. : non-optimized, mem. opt. : memory usage optimization, comp. opt. : compilation optimization, config. opt. : configuration optimization, NPU : NPU acceleration. Note that the encoding latency includes both model loading time and encoding time, which differs from Fig. 5 ’s encoding time only.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Results on different end-side devices. We show the (a) encoding latency and (b) decoding throughput across different device types. Xiaomi 14 Pro is the only device with NPU.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Experimental results on multilingual multimodal interaction. We translate LLaVA Bench reference response into different languages, and adopt GPT-4-Turbo for evaluation. Here we randomly select 15 languages for visualization.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: The example of MiniCPM-Llama3-V 2.5 for the input image with extreme aspect ratio.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: Comparison between MiniCPM-Llama3-V 2.5 and GPT-4V on hallucinations.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11: Multilingual results of MiniCPM-Llama3-V 2.5. We select German, French, Japanese, Korean and Spanish as examples for demonstration.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: Qualitative results of MiniCPM-V 2.0. (1) Case 1 shows a scene-text understanding example on the street. (2) Case 2 shows an example of image understanding with an extreme aspect ratio. (3) Case 3 compares MiniCPM-V 2.0 and GPT-4V on detail captioning. The hallucinated outputs are marked in red color.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13: Multilingual results. Comparison between MiniCPM-Llama3-V 2.5, Yi-VL 34B, and Phi-3-vision-128k-instruct on more languages.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.01800/assets/x13.png"
+  }
+]
