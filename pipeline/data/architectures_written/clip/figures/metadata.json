@@ -1,0 +1,146 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Summary of our approach. While standard image models jointly train an image feature extractor and a linear classifier to predict some label, CLIP jointly trains an image encoder and a text encoder to predict the correct pairings of a batch of (image, text) training examples. At test time the learned text encoder synthesizes a zero-shot linear classifier by embedding the names or descriptions of the target dataset’s classes.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: CLIP is much more efficient at zero-shot transfer than our image caption baseline. Although highly expressive, we found that transformer-based language models are relatively weak at zero-shot ImageNet classification. Here, we see that it learns 3x slower than a baseline which predicts a bag-of-words (BoW) encoding of the text (Joulin et al., 2016 ) . Swapping the prediction objective for the contrastive objective of CLIP further improves efficiency another 4x.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Numpy-like pseudocode for the core of an implementation of CLIP.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Prompt engineering and ensembling improve zero-shot performance. Compared to the baseline of using contextless class names, prompt engineering and ensembling boost zero-shot classification performance by almost 5 points on average across 36 datasets. This improvement is similar to the gain from using 4 times more compute with the baseline zero-shot method but is “free” when amortized over many predictions.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Zero-shot CLIP is competitive with a fully supervised baseline. Across a 27 dataset eval suite, a zero-shot CLIP classifier outperforms a fully supervised linear classifier fitted on ResNet-50 features on 16 datasets, including ImageNet.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Zero-shot CLIP outperforms few-shot linear probes. Zero-shot CLIP matches the average performance of a 4-shot linear classifier trained on the same feature space and nearly matches the best results of a 16-shot linear classifier across publicly available models. For both BiT-M and SimCLRv2, the best performing model is highlighted. Light gray lines are other models in the eval suite. The 20 datasets with at least 16 examples per class were used in this analysis.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: The data efficiency of zero-shot transfer varies widely. Calculating the number of labeled examples per class a linear classifier on the same CLIP feature space requires to match the performance of the zero-shot classifier contextualizes the effectiveness of zero-shot transfer. Values are estimated based on log-linear interpolation of 1, 2, 4, 8, 16-shot and fully supervised results. Performance varies widely from still underperforming a one-shot classifier on two datasets to matching an estimated 184 labeled examples per class.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Zero-shot performance is correlated with linear probe performance but still mostly sub-optimal. Comparing zero-shot and linear probe performance across datasets shows a strong correlation with zero-shot performance mostly shifted 10 to 25 points lower. On only 5 datasets does zero-shot performance approach linear probe performance ( ≤ \\leq 3 point difference).",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: Zero-shot CLIP performance scales smoothly as a function of model compute. Across 39 evals on 36 different datasets, average zero-shot error is well modeled by a log-log linear trend across a 44x range of compute spanning 5 different CLIP models. Lightly shaded lines are performance on individual evals, showing that performance is much more varied despite the smooth overall trend.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: Linear probe performance of CLIP models in comparison with state-of-the-art computer vision models , including EfficientNet (Tan & Le, 2019 ; Xie et al., 2020 ) , MoCo (Chen et al., 2020d ) , Instagram-pretrained ResNeXt models (Mahajan et al., 2018 ; Touvron et al., 2019 ) , BiT (Kolesnikov et al., 2019 ) , ViT (Dosovitskiy et al., 2020 ) , SimCLRv2 (Chen et al., 2020c ) , BYOL (Grill et al., 2020 ) , and the original ResNet models (He et al., 2016b ) . (Left) Scores are averaged over 12 datasets studied by Kornblith et al. ( 2019 ) . (Right) Scores are averaged over 27 datasets that contain a wider variety of distributions. Dotted lines indicate models fine-tuned or evaluated on images at a higher-resolution than pre-training. See Table 10 for individual scores and Figure 20 for plots for each dataset.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11: CLIP’s features outperform the features of the best ImageNet model on a wide variety of datasets. Fitting a linear classifier on CLIP’s features outperforms using the Noisy Student EfficientNet-L2 on 21 out of 27 datasets.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: CLIP’s features are more robust to task shift when compared to models pre-trained on ImageNet. For both dataset splits, the transfer scores of linear probes trained on the representations of CLIP models are higher than other models with similar ImageNet performance. This suggests that the representations of models trained on ImageNet are somewhat overfit to their task.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x12.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 13: Zero-shot CLIP is much more robust to distribution shift than standard ImageNet models. (Left) An ideal robust model (dashed line) performs equally well on the ImageNet distribution and on other natural image distributions. Zero-shot CLIP models shrink this “robustness gap” by up to 75%. Linear fits on logit transformed values are shown with bootstrap estimated 95% confidence intervals. (Right) Visualizing distribution shift for bananas, a class shared across 5 of the 7 natural distribution shift datasets. The performance of the best zero-shot CLIP model, ViT-L/14@336px, is compared with a model that has the same performance on the ImageNet validation set, ResNet-101.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x13.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 13: Zero-shot CLIP is much more robust to distribution shift than standard ImageNet models. (Left) An ideal robust model (dashed line) performs equally well on the ImageNet distribution and on other natural image distributions. Zero-shot CLIP models shrink this “robustness gap” by up to 75%. Linear fits on logit transformed values are shown with bootstrap estimated 95% confidence intervals. (Right) Visualizing distribution shift for bananas, a class shared across 5 of the 7 natural distribution shift datasets. The performance of the best zero-shot CLIP model, ViT-L/14@336px, is compared with a model that has the same performance on the ImageNet validation set, ResNet-101.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x14.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 14: While supervised adaptation to ImageNet increases ImageNet accuracy by 9.2%, it slightly reduces average robustness. (Left) Customizing zero-shot CLIP to each dataset improves robustness compared to using a single static zero-shot ImageNet classifier and pooling predictions across similar classes as in Taori et al. ( 2020 ) . CLIP models adapted to ImageNet have similar effective robustness as the best prior ImageNet models. (Right) Details of per dataset changes in accuracy for the two robustness interventions. Adapting to ImageNet increases accuracy on ImageNetV2 noticeably but trades off accuracy on several other distributions. Dataset specific zero-shot classifiers can improve accuracy by a large amount but are limited to only a few datasets that include classes which don’t perfectly align with ImageNet categories.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x15.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 14: While supervised adaptation to ImageNet increases ImageNet accuracy by 9.2%, it slightly reduces average robustness. (Left) Customizing zero-shot CLIP to each dataset improves robustness compared to using a single static zero-shot ImageNet classifier and pooling predictions across similar classes as in Taori et al. ( 2020 ) . CLIP models adapted to ImageNet have similar effective robustness as the best prior ImageNet models. (Right) Details of per dataset changes in accuracy for the two robustness interventions. Adapting to ImageNet increases accuracy on ImageNetV2 noticeably but trades off accuracy on several other distributions. Dataset specific zero-shot classifiers can improve accuracy by a large amount but are limited to only a few datasets that include classes which don’t perfectly align with ImageNet categories.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x16.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 15: Few-shot CLIP also increases effective robustness compared to existing ImageNet models but is less robust than zero-shot CLIP. Minimizing the amount of ImageNet training data used for adaption increases effective robustness at the cost of decreasing relative robustness. 16-shot logistic regression CLIP matches zero-shot CLIP on ImageNet, as previously reported in Figure 7 , but is less robust.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x17.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 16: The hardest problems for CLIP also tend to be the hardest problems for humans. Here we rank image categories by difficulty for CLIP as measured as probability of the correct label.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x18.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 17: Few statistically significant improvements in accuracy due to detected data overlap. (Left) While several datasets have up to ± plus-or-minus \\pm 20% apparent differences in zero-shot accuracy on detected overlapping vs clean examples only 5 datasets out of 35 total have 99.5% Clopper-Pearson confidence intervals that exclude a 0% accuracy difference. 2 of these datasets do worse on overlapping data. (Right) Since the percentage of detected overlapping examples is almost always in the single digits, the overall test accuracy gain due to overlap is much smaller with the largest estimated increase being only 0.6% on Birdsnap. Similarly, for only 6 datasets are the accuracy improvements statistically significant when calculated using a one-sided binomial test.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x19.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Figure 18: CLIP performance on Member of Congress images when given the combined returned label set for the images from Google Cloud Vision, Amazon Rekognition and Microsoft Azure Computer Vision. The 20 most gendered labels for men and women were identified with χ 2 superscript 𝜒 2 \\chi^{2} tests with the threshold at 0.5%. Labels are sorted by absolute frequencies. Bars denote the percentage of images for a certain label by gender.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x20.png"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 19: Two example images from the Rendered SST2 dataset",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/sst2-positive.png"
+  },
+  {
+    "filename": "fig_21_2.png",
+    "caption": "Figure 19: Two example images from the Rendered SST2 dataset",
+    "figure_number": "Figure 19",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/sst2-negative.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 20: Linear probe performance plotted for each of the 27 datasets, using the data from Table 10 .",
+    "figure_number": "Figure 20",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x21.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 21: Visualization of predictions from 36 CLIP zero-shot classifiers. All examples are random with the exception of reselecting Hateful Memes to avoid offensive content. The predicted probability of the top 5 classes is shown along with the text used to represent the class. When more than one template is used, the first template is shown. The ground truth label is colored green while an incorrect prediction is colored orange.",
+    "figure_number": "Figure 21",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2103.00020/assets/x22.png"
+  }
+]

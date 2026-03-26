@@ -1,0 +1,92 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Illustration of the overall architecture and training of Llama 3. Llama 3 is a Transformer language model trained to predict the next token of a textual sequence. See text for details.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2 : Scaling law IsoFLOPs curves between 6 × 10 18 fragments 6 10 18 6\\times 10^{18} and 10 22 fragments 10 22 10^{22} FLOPs. The loss is the negative log-likelihood on a held-out validation set. We approximate measurements at each compute scale using a second degree polynomial.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2 : Scaling law IsoFLOPs curves between 6 × 10 18 fragments 6 10 18 6\\times 10^{18} and 10 22 fragments 10 22 10^{22} FLOPs. The loss is the negative log-likelihood on a held-out validation set. We approximate measurements at each compute scale using a second degree polynomial.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x3.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 2 : Scaling law IsoFLOPs curves between 6 × 10 18 fragments 6 10 18 6\\times 10^{18} and 10 22 fragments 10 22 10^{22} FLOPs. The loss is the negative log-likelihood on a held-out validation set. We approximate measurements at each compute scale using a second degree polynomial.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3 : Number of training tokens in identified compute-optimal models as a function of pre-training compute budget. We include the fitted scaling-law prediction as well. The compute-optimal models correspond to the parabola minimums in Figure 3 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 4 : Scaling law forecast for ARC Challenge. Left: Normalized negative log-likelihood of the correct answer on the ARC Challenge benchmark as a function of pre-training FLOPs. Right: ARC Challenge benchmark accuracy as a function of the normalized negative log-likelihood of the correct answer. This analysis enables us to predict model performance on the ARC Challenge benchmark before pre-training commences. See text for details.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 5 : Illustration of 4D parallelism. GPUs are divided into parallelism groups in the order of [TP, CP, PP, DP], where DP stands for FSDP. In this example, 16 GPUs are configured with a group size of |TP|=2, |CP|=2, |PP|=2, and |DP|=2.\nA GPU’s position in 4D parallelism is represented as a vector, [ D 1 fragments D 1 D_{1} , D 2 fragments D 2 D_{2} , D 3 fragments D 3 D_{3} , D 4 fragments D 4 D_{4} ], where D i fragments D 𝑖 D_{i} is the index on the i 𝑖 i -th parallelism dimension. In this example,\nGPU0[TP0, CP0, PP0, DP0] and GPU1[TP1, CP0, PP0, DP0] are in the same TP group, GPU0 and GPU2 are in the same CP group, GPU0 and GPU4 are in the same PP group, and GPU0 and GPU8 are in the same DP group.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 6 : Illustration of pipeline parallelism in Llama 3. Pipeline parallelism partitions eight pipeline stages (0 to 7) across four pipeline ranks (PP ranks 0 to 3), where the GPUs with rank 0 run stages 0 and 4, the GPUs with P rank 1 run stages 1 and 5, etc . The colored blocks (0 to 9) represent a sequence of micro-batches, where M 𝑀 M is the total number of micro-batches and N 𝑁 N is the number of continuous micro-batches for the same stage’s forward or backward. Our key insight is to make N 𝑁 N tunable.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x6.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 7 : Illustration of the overall post-training approach for Llama 3. Our post-training strategy involves rejection sampling, supervised finetuning, and direct preference optimization. See text for details.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x7.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 8 : Code translation example. We display an example of using Llama 3 to translate Python code (left) to PHP code (right) to augment our SFT dataset with a wider range of programming languages.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x8.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 9 : Improving generated code quality with system prompts. Left: without system prompt Right: with system prompt.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x9.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 10 : Multi-step tool usage. Example of Llama 3 performing multi-step planning, reasoning, and tool calling to solve a task.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 11 : Processing file uploads. Example of Llama 3 performing analysis and visualization of an uploaded file.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/assets/llama-file-upload-6x.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 12 : Performance of pre-trained Llama 3 8B and 70B models on pre-training benchmarks. Results are aggregated by capability category by averaging accuracies across all benchmarks corresponding to that category.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x11.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 12 : Performance of pre-trained Llama 3 8B and 70B models on pre-training benchmarks. Results are aggregated by capability category by averaging accuracies across all benchmarks corresponding to that category.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2407.21783/assets/x12.png"
+  }
+]

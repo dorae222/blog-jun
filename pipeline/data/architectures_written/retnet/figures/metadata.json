@@ -1,0 +1,80 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Retentive network (RetNet) achieves low-cost inference (i.e., GPU memory, throughput, and latency), training parallelism, and favorable scaling curves compared with Transformer. Results of inference cost are reported with 8k as input length. Figure 6 shows more results on different sequence lengths.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : RetNet makes the “impossible triangle” possible, which achieves training parallelism, good performance, and low inference cost simultaneously.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "(a) Parallel representation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "(a) Parallel representation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x4.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(a) Parallel representation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(b) Recurrent representation.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5 : Perplexity decreases along with scaling up the model size. We empirically observe that RetNet tends to outperform Transformer when the model size is larger than 2B.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x5.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "(a) GPU memory cost of Transformer and RetNet.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x6.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "(a) GPU memory cost of Transformer and RetNet.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x7.png"
+  },
+  {
+    "filename": "fig_8_3.png",
+    "caption": "(a) GPU memory cost of Transformer and RetNet.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(a) GPU memory cost of Transformer and RetNet.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x6.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(b) Throughput of Transformer and RetNet.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x7.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(c) Inference latency with different batch sizes.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2307.08621/assets/x8.png"
+  }
+]

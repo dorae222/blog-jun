@@ -1,0 +1,68 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : (a) A single Jamba block. (b) Different types of layers. The implementation shown here is with l = 8 𝑙 8 l=8 , a : m = 1 : 7 : 𝑎 𝑚 1 : 7 a:m=1:7 ratio of attention-to-Mamba layers, and MoE applied every e = 2 𝑒 2 e=2 layers.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Comparison of maximum context length fitting in a single A100 80GB GPU. Jamba enables 2x the context length of Mixtral and 7x that of Llama-2-70B.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "(a) Throughput at different batch sizes (single A100 GPU, 8K context length). Jamba allows processing large batches, with a throughput 3x greater than Mixtral.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "(a) Throughput at different batch sizes (single A100 GPU, 8K context length). Jamba allows processing large batches, with a throughput 3x greater than Mixtral.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x4.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(a) Throughput at different batch sizes (single A100 GPU, 8K context length). Jamba allows processing large batches, with a throughput 3x greater than Mixtral.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(b) Throughput at different context lengths (single batch, 4 A100 GPUs). With a context of 128K tokens, Jamba obtains 3x the throughput of Mixtral, while Llama-2-70B does not fit with this long context.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 4 : A needle-in-a-haystack evaluation showing Jamba’s ability to recall statements placed in the middle of contexts of up to 256K tokens length.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 5 : Training loss curves for pure Attention, pure Mamba, and Attention-Mamba hybrids (no MoE), with ratios a : m : 𝑎 𝑚 a:m of 1:3 and 1:4. All models are 1.3B parameters. The two hybrids achieve better loss throughout this training run, without any noticeable difference between the different Attention/Mamba ratios.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/figures/attn-mamba-jamba-ratio-loss.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 6 : Training loss curves for pure Attention, pure Mamba, and an Attention-Mamba hybrid (no MoE). All models are 7B parameters. the hybrid achives better loss throughout this training run.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/figures/attn-mamba-jamba-loss.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7 : Example induction head (H3, first attention layer) from a hybrid Attention-Mamba model. Highlighted words reflect strong attention from the last token, “:”, just before the model is about to predict the label. We see that the attention is focused on label tokens from the few-shot examples.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/x6.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 8 : Adding RMSNorm to Mamba layers prevents loss spikes.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2403.19887/assets/figures/spikes.png"
+  }
+]

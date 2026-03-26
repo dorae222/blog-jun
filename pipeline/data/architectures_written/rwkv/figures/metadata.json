@@ -1,0 +1,308 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Average performance of RWKV models compared to transformers across twelve NLP tasks. For further details, see section 5 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: Elements within an RWKV block (left) and the complete RWKV residual block, equipped with a final head for language modeling (right).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: Elements within an RWKV block (left) and the complete RWKV residual block, equipped with a final head for language modeling (right).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x3.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: RWKV architecture for language modeling.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x4.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Scaling laws curves for RWKV models",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x6.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x7.png"
+  },
+  {
+    "filename": "fig_5_3.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x8.png"
+  },
+  {
+    "filename": "fig_5_4.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x9.png"
+  },
+  {
+    "filename": "fig_5_5.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x10.png"
+  },
+  {
+    "filename": "fig_5_6.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x11.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) HellaSwag",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(c) LAMBADA (OpenAI)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x8.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(d) OpenBookQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x9.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(e) ReCoRD",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x10.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(f) Winogrande",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x11.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 6: RWKV shows decreasing mean test loss as a function of context length on the Pile Gao et al. ( 2020 )",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x12.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 7: Cumulative time on text generation for LLMs. Unlike transformers, RWKV exhibits linear scaling.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x13.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 8: RWKV time-mixing block formulated as an RNN cell. Color codes: yellow ( μ 𝜇 \\mu ) denotes the token shift, red (1) denotes the denominator, blue (2) denotes the numerator, and pink (3) denotes the fraction computations in 16 . h ℎ h denotes the numerator-denominator tuple.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x14.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 9: Effect of small initialization embedding.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x15.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 10: Model behavior visualizations of RWKV.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x16.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 11: Model behavior visualizations of the RWKV model.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x17.png"
+  },
+  {
+    "filename": "fig_18_1.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x18.png"
+  },
+  {
+    "filename": "fig_18_2.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x19.png"
+  },
+  {
+    "filename": "fig_18_3.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x20.png"
+  },
+  {
+    "filename": "fig_18_4.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x21.png"
+  },
+  {
+    "filename": "fig_18_5.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x22.png"
+  },
+  {
+    "filename": "fig_18_6.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x23.png"
+  },
+  {
+    "filename": "fig_18_7.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x24.png"
+  },
+  {
+    "filename": "fig_18_8.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x25.png"
+  },
+  {
+    "filename": "fig_18_9.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x26.png"
+  },
+  {
+    "filename": "fig_18_10.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x27.png"
+  },
+  {
+    "filename": "fig_18_11.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x28.png"
+  },
+  {
+    "filename": "fig_18_12.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x29.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "(a) ARC (Challenge)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x18.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(b) ARC (Easy)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x19.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(c) BoolQ",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x20.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "(d) COPA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x21.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "(e) HeadQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x22.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "(f) HellaSwag",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x23.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "(g) LAMBADA (OpenAI)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x24.png"
+  },
+  {
+    "filename": "fig_26.png",
+    "caption": "(h) OpenBookQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x25.png"
+  },
+  {
+    "filename": "fig_27.png",
+    "caption": "(i) PiQA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x26.png"
+  },
+  {
+    "filename": "fig_28.png",
+    "caption": "(j) ReCoRD",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x27.png"
+  },
+  {
+    "filename": "fig_29.png",
+    "caption": "(k) SciQ",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x28.png"
+  },
+  {
+    "filename": "fig_30.png",
+    "caption": "(l) Winogrande",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x29.png"
+  },
+  {
+    "filename": "fig_31_1.png",
+    "caption": "Figure 13: Text generation inference memory (CPU RAM, GPU VRAM) for LLMs. Model parameters are not accounted.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x30.png"
+  },
+  {
+    "filename": "fig_31_2.png",
+    "caption": "Figure 13: Text generation inference memory (CPU RAM, GPU VRAM) for LLMs. Model parameters are not accounted.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x31.png"
+  },
+  {
+    "filename": "fig_32_1.png",
+    "caption": "Figure 14: Text generation inference time for LLMs.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x32.png"
+  },
+  {
+    "filename": "fig_32_2.png",
+    "caption": "Figure 14: Text generation inference time for LLMs.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.13048/assets/x33.png"
+  }
+]

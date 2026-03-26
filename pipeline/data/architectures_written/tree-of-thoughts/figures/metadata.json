@@ -1,0 +1,74 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Schematic illustrating various approaches to problem solving with LLMs. Each rectangle box represents a thought , which is a coherent language sequence that serves as an intermediate step toward problem solving. See concrete examples of how thoughts are generated, evaluated, and searched in Figures 2 , 4 , 6 .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 2: ToT in a game of 24. The LM is prompted for (a) thought generation and (b) valuation.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x2.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Table 2: Game of 24 Results.",
+    "figure_number": "Table 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Table 2: Game of 24 Results.",
+    "figure_number": "Table 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x4.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "Figure 3: Game of 24 (a) scale analysis & (b) error analysis.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x3.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "Figure 3: Game of 24 (a) scale analysis & (b) error analysis.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 4: A step of deliberate search in a randomly picked Creative Writing task. Given the input, the LM samples 5 different plans, then votes 5 times to decide which plan is best. The majority choice is used to consequently write the output passage with the same sample-vote procedure.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x5.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "Figure 5: Creative Writing results.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x6.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "Figure 5: Creative Writing results.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x7.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "Figure 5: Creative Writing results.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x6.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "Figure 5: Creative Writing results.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x7.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 6: In Mini Crosswords, (a) how thoughts are proposed and aggregated in a priority queue for depth-first search (DFS), and (b) how a state is evaluated based on the possibility of filling in each remaining word clue, and pruned if any remaining clue is deemed not possible to fill by the LM. Then DFS backtracks to the parent state and explore the next promising thought for clue.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2305.10601/assets/x8.png"
+  }
+]

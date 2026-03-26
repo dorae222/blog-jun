@@ -1,0 +1,38 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Sliding Window Attention. The number of operations in vanilla attention is quadratic in the sequence length, and the memory increases linearly with the number of tokens. At inference time, this incurs higher latency and smaller throughput due to reduced cache availability. To alleviate this issue, we use sliding window attention: each token can attend to at most W 𝑊 W tokens from the previous layer (here, W = 3 𝑊 3 W=3 ). Note that tokens outside the sliding window still influence next word prediction. At each attention layer, information can move forward by W 𝑊 W tokens. Hence, after k 𝑘 k attention layers, information can move forward by up to k × W 𝑘 𝑊 k\\times W tokens.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.06825/assets/x1.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 2: Rolling buffer cache. The cache has a fixed size of W = 4 𝑊 4 W=4 . Keys and values for position i 𝑖 i are stored in position i mod W modulo 𝑖 𝑊 i\\bmod W of the cache. When the position i 𝑖 i is larger than W 𝑊 W , past values in the cache are overwritten.\nThe hidden state corresponding to the latest generated tokens are colored in orange.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.06825/assets/x2.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 3: Pre-fill and chunking. During pre-fill of the cache, long sequences are chunked to limit memory usage.\nWe process a sequence in three chunks, “The cat sat on”, “the mat and saw”, “the dog go to”.\nThe figure shows what happens for the third chunk (“the dog go to”): it attends itself using a causal mask (rightmost block), attends the cache using a sliding window (center block), and does not attend to past tokens as they are outside of the sliding window (left block).",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.06825/assets/x3.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 4: Performance of Mistral 7B and different Llama models on a wide range of benchmarks . All models were re-evaluated on all metrics with our evaluation pipeline for accurate comparison. Mistral 7B significantly outperforms Llama 2 7B and Llama 2 13B on all benchmarks. It is also vastly superior to Llama 1 34B in mathematics, code generation, and reasoning benchmarks.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.06825/assets/images/230927_bars.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 5: Results on MMLU, commonsense reasoning, world knowledge and reading comprehension for Mistral 7B and Llama 2 (7B/13B/70B) . Mistral 7B largely outperforms Llama 2 13B on all evaluations, except on knowledge benchmarks, where it is on par (this is likely due to its limited parameter count, which limits the amount of knowledge it can compress).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.06825/assets/images/230927_effective_sizes.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 6: Human evaluation of Mistral 7B – Instruct vs Llama 2 13B – Chat Example. An example of human evaluation from llmboxing.com . The question asks for recommendations of books in quantum physics. Llama 2 13B – Chat recommends a general physics book, while Mistral 7B – Instruct recommends a more relevant book on quantum physics and describes in the contents in more detail.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.06825/assets/images/llama_vs_mistral_example.png"
+  }
+]

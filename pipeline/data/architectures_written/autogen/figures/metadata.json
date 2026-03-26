@@ -1,0 +1,170 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : AutoGen enables diverse LLM-based applications using multi-agent conversations. (Left) AutoGen agents are conversable, customizable, and can be based on LLMs, tools, humans, or even a combination of them. (Top-middle) Agents can converse to solve tasks. (Right) They can form a chat, potentially with humans in the loop. (Bottom-middle) The framework supports flexible conversation patterns.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Illustration of how to use AutoGen to program a multi-agent conversation. The top sub-figure illustrates the built-in agents provided by AutoGen , which have unified conversation interfaces and can be customized. The middle sub-figure shows an example of using AutoGen to develop a two-agent system with a custom reply function. The bottom sub-figure illustrates the resulting automated agent chat from the two-agent system during program execution.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Six examples of diverse applications built using AutoGen . Their conversation patterns show AutoGen ’s flexibility and power.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "(a) A1: Performance on MATH (w/ GPT-4).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "(a) A1: Performance on MATH (w/ GPT-4).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x5.png"
+  },
+  {
+    "filename": "fig_4_3.png",
+    "caption": "(a) A1: Performance on MATH (w/ GPT-4).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x6.png"
+  },
+  {
+    "filename": "fig_4_4.png",
+    "caption": "(a) A1: Performance on MATH (w/ GPT-4).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x7.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(a) A1: Performance on MATH (w/ GPT-4).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(b) A2: Q&A tasks (w/ GPT-3.5).",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x5.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(c) A3: Performance on ALFWorld.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x6.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(d) A4: Performance on OptiGuide.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x7.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 5 : Default system message for the built-in assistant agent in AutoGen (v0.1.1). This is an example of conversation programming via natural language. It contains instructions of different types, including role play, control flow, output confine, facilitate automation, and grounding.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x8.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 6 : Examples of three settings utilized to solve math problems using AutoGen :\n(Gray) Enables a workflow where a student collaborates with an assistant agent to solve problems, either autonomously or in a human-in-the-loop mode.\n(Gray + Orange) Facilitates a more sophisticated workflow wherein the assistant, on the fly, can engage another user termed “expert”, who is in the loop with their own assistant agent, to aid in problem-solving if its own solutions are not satisfactory.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x9.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 7 : Overview of Retrieval-augmented Chat which involves two agents, including a Retrieval-augmented User Proxy and a Retrieval-augmented Assistant. Given a set of documents, the Retrieval-augmented User Proxy first automatically processes documents—splits, chunks, and stores them in a vector database. Then for a given user input, it retrieves relevant chunks as context and sends it to the Retrieval-augmented Assistant, which uses LLM to generate code or text to answer questions. Agents converse until they find a satisfactory answer.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 8 : Retrieval-augmented Chat without (W/O) and with (W/) interactive retrieval .",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x11.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 9 : We use AutoGen to solve tasks in the ALFWorld benchmark, which contains household tasks described in natural language. We propose two designs: a two-agent design where the assistant agent suggests the next step, and the Executor executes actions and provides feedback. The three-agent design adds a grounding agent that supplies commonsense facts to the executor when needed.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x12.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 10 : Comparison of results from two designs: (a) Two-agent design which consists of an assistant and an executor, (b) Three-agent design which adds a grounding agent that serves as a knowledge source. For simplicity, we omit the in-context examples and part of the exploration trajectory, and only show parts contributing to the failure/success of the attempt.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x13.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 11 : Our re-implementation of OptiGuide with AutoGen streamlining agents’ interactions. The Commander receives user questions (e.g., What if we prohibit shipping from supplier 1 to roastery 2?) and coordinates with the Writer and Safeguard. The Writer crafts the code and interpretation, the Safeguard ensures safety (e.g., not leaking information, no malicious code), and the Commander executes the code. If issues arise, the process can repeat until resolved. Shaded circles represent steps that may be repeated multiple times.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x14.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 12 : A5: Dynamic Group Chat: Overview of how AutoGen enables dynamic group chats to solve tasks. The Manager agent, which is an instance of the GroupChatManager class, performs the following three steps–select a single speaker (in this case Bob ), ask the speaker to respond, and broadcast the selected speaker’s message to all other agents",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x27.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 13 : Comparison of two-agent chat (a) and group chat (b) on a given task. The group chat resolves the task successfully with a smoother conversation, while the two-agent chat fails on the same task and ends with a repeated conversation.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/figures/two-agent-vs-group-chat.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 14 : A6: Conversational Chess: Our conversational chess application can support various scenarios, as each player can be an LLM-empowered AI, a human, or a hybrid of the two. Here, the board agent maintains the rules of the game and supports the players with information about the board.\nPlayers and the board agent all use natural language for communication.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x28.png"
+  },
+  {
+    "filename": "fig_19_1.png",
+    "caption": "(a) Conversation between two AI players",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x29.png"
+  },
+  {
+    "filename": "fig_19_2.png",
+    "caption": "(a) Conversation between two AI players",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x30.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "(a) Conversation between two AI players",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x29.png"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "(b) Conversation between the AI players (player white shown in blue) and the board agent for making a new move.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x30.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 16 : Comparison of two designs–(a) without a board agent, and (b) with a board agent–in Conversational Chess.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x31.png"
+  },
+  {
+    "filename": "fig_23.png",
+    "caption": "Figure 17 : We use AutoGen to build MiniWobChat, which solves tasks in the MiniWob++ benchmark. MiniWobChat consists of two agents: an assistant agent and an executor agent. The assistant agent suggests actions to manipulate the browser while the executor executes the suggested actions and returns rewards/feedback. The assistant agent records the feedback and continues until the feedback indicates task success or failure.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x32.png"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 18 : Comparisons between RCI (state-of-the-art prior work) and MiniWobChat on the MiniWob++ benchmark are elucidated herein. We utilize all available tasks in the official RCI code, each with varying degrees of difficulty, to conduct comprehensive comparisons. For each task, the success rate across ten different instances is reported. The results reveal that MiniWobChat attains a performance comparable to that of RCI. When a success rate tolerance of 0.1 is considered for each task, both methods outperform each other on an equal number of tasks.",
+    "figure_number": "Figure 18",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2308.08155/assets/x33.png"
+  }
+]

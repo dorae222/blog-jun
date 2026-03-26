@@ -1,0 +1,38 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Replaced token detection pre-training consistently outperforms masked language model pre-training given the same compute budget. The left figure is a zoomed-in view of the dashed box.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2003.10555/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: An overview of replaced token detection. The generator can be any model that produces an output distribution over tokens, but we usually use a small masked language model that is trained jointly with the discriminator.\nAlthough the models are structured like in a GAN, we train the generator with maximum likelihood rather than adversarially due to the difficulty of applying GANs to text.\nAfter pre-training, we throw out the generator and only fine-tune the discriminator (the ELECTRA model) on downstream tasks.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2003.10555/assets/x2.png"
+  },
+  {
+    "filename": "fig_3_1.png",
+    "caption": "Figure 3: Left : GLUE scores for different generator/discriminator sizes (number of hidden units). Interestingly, having a generator smaller than the discriminator improves results. Right : Comparison of different training algorithms. As our focus is on efficiency, the x-axis shows FLOPs rather than train steps (e.g., ELECTRA is trained for fewer steps than BERT because it includes the generator).",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2003.10555/assets/x3.png"
+  },
+  {
+    "filename": "fig_3_2.png",
+    "caption": "Figure 3: Left : GLUE scores for different generator/discriminator sizes (number of hidden units). Interestingly, having a generator smaller than the discriminator improves results. Right : Comparison of different training algorithms. As our focus is on efficiency, the x-axis shows FLOPs rather than train steps (e.g., ELECTRA is trained for fewer steps than BERT because it includes the generator).",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2003.10555/assets/x4.png"
+  },
+  {
+    "filename": "fig_4_1.png",
+    "caption": "Figure 4: Left and Center : Comparison of BERT and ELECTRA for different model sizes. Right : A small ELECTRA model converges to higher downstream accuracy than BERT, showing the improvement comes from more than just faster training.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2003.10555/assets/x5.png"
+  },
+  {
+    "filename": "fig_4_2.png",
+    "caption": "Figure 4: Left and Center : Comparison of BERT and ELECTRA for different model sizes. Right : A small ELECTRA model converges to higher downstream accuracy than BERT, showing the improvement comes from more than just faster training.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2003.10555/assets/x6.png"
+  }
+]

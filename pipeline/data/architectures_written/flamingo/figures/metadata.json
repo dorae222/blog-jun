@@ -1,0 +1,1412 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x2.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser1a.png"
+  },
+  {
+    "filename": "fig_1_3.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser1b.png"
+  },
+  {
+    "filename": "fig_1_4.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser1c.png"
+  },
+  {
+    "filename": "fig_1_5.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser2a.png"
+  },
+  {
+    "filename": "fig_1_6.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser2b.png"
+  },
+  {
+    "filename": "fig_1_7.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser2c.png"
+  },
+  {
+    "filename": "fig_1_8.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser3a.png"
+  },
+  {
+    "filename": "fig_1_9.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser3b.png"
+  },
+  {
+    "filename": "fig_1_10.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser3c.png"
+  },
+  {
+    "filename": "fig_1_11.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser4a.png"
+  },
+  {
+    "filename": "fig_1_12.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser4b.png"
+  },
+  {
+    "filename": "fig_1_13.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser4c.png"
+  },
+  {
+    "filename": "fig_1_14.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser5a.png"
+  },
+  {
+    "filename": "fig_1_15.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser5b.png"
+  },
+  {
+    "filename": "fig_1_16.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser5c.png"
+  },
+  {
+    "filename": "fig_1_17.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser6a.png"
+  },
+  {
+    "filename": "fig_1_18.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser6b.png"
+  },
+  {
+    "filename": "fig_1_19.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser6c.png"
+  },
+  {
+    "filename": "fig_1_20.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser7a.png"
+  },
+  {
+    "filename": "fig_1_21.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser7b.png"
+  },
+  {
+    "filename": "fig_1_22.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/teaser7c.png"
+  },
+  {
+    "filename": "fig_1_23.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/placeholder.png"
+  },
+  {
+    "filename": "fig_1_24.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/shakespeare.png"
+  },
+  {
+    "filename": "fig_1_25.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/obama.png"
+  },
+  {
+    "filename": "fig_1_26.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0002.png"
+  },
+  {
+    "filename": "fig_1_27.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0003.png"
+  },
+  {
+    "filename": "fig_1_28.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0004.png"
+  },
+  {
+    "filename": "fig_1_29.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0005.png"
+  },
+  {
+    "filename": "fig_1_30.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0006.png"
+  },
+  {
+    "filename": "fig_1_31.jpg",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/moonbears.jpeg"
+  },
+  {
+    "filename": "fig_1_32.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x3.png"
+  },
+  {
+    "filename": "fig_1_33.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x4.png"
+  },
+  {
+    "filename": "fig_1_34.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x5.png"
+  },
+  {
+    "filename": "fig_1_35.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x6.png"
+  },
+  {
+    "filename": "fig_1_36.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x7.png"
+  },
+  {
+    "filename": "fig_1_37.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x8.png"
+  },
+  {
+    "filename": "fig_1_38.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x9.png"
+  },
+  {
+    "filename": "fig_1_39.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x10.png"
+  },
+  {
+    "filename": "fig_1_40.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x11.png"
+  },
+  {
+    "filename": "fig_1_41.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x12.png"
+  },
+  {
+    "filename": "fig_1_42.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/flamingo_icon.png"
+  },
+  {
+    "filename": "fig_1_43.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x13.png"
+  },
+  {
+    "filename": "fig_1_44.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/flamingo_picture.png"
+  },
+  {
+    "filename": "fig_1_45.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x14.png"
+  },
+  {
+    "filename": "fig_1_46.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/teaserpics/flamingo_3d.png"
+  },
+  {
+    "filename": "fig_1_47.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x15.png"
+  },
+  {
+    "filename": "fig_1_48.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x16.png"
+  },
+  {
+    "filename": "fig_1_49.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x17.png"
+  },
+  {
+    "filename": "fig_1_50.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x18.png"
+  },
+  {
+    "filename": "fig_1_51.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x19.png"
+  },
+  {
+    "filename": "fig_1_52.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/appleipod.png"
+  },
+  {
+    "filename": "fig_1_53.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x20.png"
+  },
+  {
+    "filename": "fig_1_54.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x21.png"
+  },
+  {
+    "filename": "fig_1_55.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x22.png"
+  },
+  {
+    "filename": "fig_1_56.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x23.png"
+  },
+  {
+    "filename": "fig_1_57.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x24.png"
+  },
+  {
+    "filename": "fig_1_58.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x25.png"
+  },
+  {
+    "filename": "fig_1_59.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x26.png"
+  },
+  {
+    "filename": "fig_1_60.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x27.png"
+  },
+  {
+    "filename": "fig_1_61.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x28.png"
+  },
+  {
+    "filename": "fig_1_62.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x29.png"
+  },
+  {
+    "filename": "fig_1_63.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/boston_skyline.png"
+  },
+  {
+    "filename": "fig_1_64.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x30.png"
+  },
+  {
+    "filename": "fig_1_65.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x31.png"
+  },
+  {
+    "filename": "fig_1_66.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x32.png"
+  },
+  {
+    "filename": "fig_1_67.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x33.png"
+  },
+  {
+    "filename": "fig_1_68.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/tokyo_skyline.png"
+  },
+  {
+    "filename": "fig_1_69.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x34.png"
+  },
+  {
+    "filename": "fig_1_70.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x35.png"
+  },
+  {
+    "filename": "fig_1_71.png",
+    "caption": "Figure 1 : Selected examples of inputs and outputs obtained from Flamingo -80B. Flamingo can rapidly adapt to various image/video understanding tasks with few-shot prompting (top).\nOut of the box, Flamingo is also capable of multi-image visual dialogue (bottom). More examples in\nAppendix C .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x36.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Flamingo results overview. Left : Our largest model, dubbed Flamingo , outperforms state-of-the-art fine-tuned models on 6 of the 16 tasks we consider\nwith no fine-tuning.\nFor the 9 tasks with published few-shot results, Flamingo sets the new few-shot state of the art. Note: We omit RareAct, our 16th benchmark, as it is a zero-shot benchmark with no available fine-tuned results to compare to. Right : Flamingo performance improves with model size and number of shots.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x37.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : Flamingo architecture overview. Flamingo is a family of visual language models (VLMs) that take as input visual data interleaved with text and produce free-form text as output.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x38.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : gated xattn-dense layers. To condition the LM on visual inputs, we insert new cross-attention layers between existing pretrained and frozen LM layers. The keys and values in these layers are obtained from the vision features while the queries are derived from the language inputs.\nThey are followed by dense feed-forward layers.\nThese layers are gated so that the LM is kept intact at initialization for improved stability and performance.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x39.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : The Perceiver Resampler module maps a variable size grid of spatio-temporal visual features output by the Vision Encoder to a fixed number of output tokens (five in the figure), independently from the input image resolution or the number of input video frames.\nThis transformer has a set of learned latent vectors as queries, and the keys and values are a concatenation of the spatio-temporal visual features with the learned latent vectors.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x42.png"
+  },
+  {
+    "filename": "fig_6_1.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x43.png"
+  },
+  {
+    "filename": "fig_6_2.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x44.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(a)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x43.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(b)",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x44.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 7 : Interleaved visual data and text support. Given text interleaved with images/videos, e.g. coming from a webpage, we first process the text by inserting <image> tags at the locations of the visual data in the text as well as special tokens ( <BOS> for “beginning of sequence” or <EOC> for “end of chunk”).\nImages are processed independently by the Vision Encoder and Perceiver Resampler to extract visual tokens.\nAt a given text token, the model only cross-attends to the visual tokens corresponding to the last preceding image/video. ϕ italic-ϕ \\phi indicates which image/video a text token can attend or 0 0 when no image/video is preceding.\nIn practice, this selective cross-attention is achieved through masking – illustrated here with the dark blue entries (unmasked/visible) and light blue entries (masked).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x45.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 8 : Few-shot interleaved prompt generation. Given some task-specific few-shot examples (a.k.a. support examples) and a query for which Flamingo should make a prediction, we build the prompt by interleaving images with their corresponding texts.\nWe introduce some formatting to do this, prepending\n“ Output: ” to the expected response for all vision-to-text tasks or prompting in the format “ Question: {question} Answer: {answer} ” for visual question-answering tasks.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x46.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 9 : Training datasets. Mixture of training datasets of different formats. N 𝑁 N corresponds to the number of visual inputs for a single example. For paired image (or video) and text datasets, N = 1 𝑁 1 N=1 . T 𝑇 T is the number of video frames ( T = 1 𝑇 1 T=1 for images). H 𝐻 H , W 𝑊 W , and C 𝐶 C are height, width and color channels.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x47.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/cd_and_floppy.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_elephant.png"
+  },
+  {
+    "filename": "fig_12_3.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_canada.png"
+  },
+  {
+    "filename": "fig_12_4.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x50.png"
+  },
+  {
+    "filename": "fig_12_5.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_banana_shop.png"
+  },
+  {
+    "filename": "fig_12_6.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_bednet.png"
+  },
+  {
+    "filename": "fig_12_7.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_christmas.png"
+  },
+  {
+    "filename": "fig_12_8.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x51.png"
+  },
+  {
+    "filename": "fig_12_9.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_house_book.png"
+  },
+  {
+    "filename": "fig_12_10.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/coco_steak.png"
+  },
+  {
+    "filename": "fig_12_11.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/images/frozen_movie.png"
+  },
+  {
+    "filename": "fig_12_12.png",
+    "caption": "Figure 10 : Selected single image samples. Gray boxes are user input and the pink boxes are Flamingo output.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x52.png"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/samoyed.jpeg"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x53.png"
+  },
+  {
+    "filename": "fig_13_3.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x54.png"
+  },
+  {
+    "filename": "fig_13_4.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x55.png"
+  },
+  {
+    "filename": "fig_13_5.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x56.png"
+  },
+  {
+    "filename": "fig_13_6.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x57.png"
+  },
+  {
+    "filename": "fig_13_7.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x58.png"
+  },
+  {
+    "filename": "fig_13_8.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x59.png"
+  },
+  {
+    "filename": "fig_13_9.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x60.png"
+  },
+  {
+    "filename": "fig_13_10.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x61.png"
+  },
+  {
+    "filename": "fig_13_11.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x62.png"
+  },
+  {
+    "filename": "fig_13_12.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x63.png"
+  },
+  {
+    "filename": "fig_13_13.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x64.png"
+  },
+  {
+    "filename": "fig_13_14.jpg",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/coco_ny.jpeg"
+  },
+  {
+    "filename": "fig_13_15.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x65.png"
+  },
+  {
+    "filename": "fig_13_16.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x66.png"
+  },
+  {
+    "filename": "fig_13_17.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x67.png"
+  },
+  {
+    "filename": "fig_13_18.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x68.png"
+  },
+  {
+    "filename": "fig_13_19.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x69.png"
+  },
+  {
+    "filename": "fig_13_20.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x70.png"
+  },
+  {
+    "filename": "fig_13_21.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x71.png"
+  },
+  {
+    "filename": "fig_13_22.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x72.png"
+  },
+  {
+    "filename": "fig_13_23.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x73.png"
+  },
+  {
+    "filename": "fig_13_24.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x74.png"
+  },
+  {
+    "filename": "fig_13_25.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x75.png"
+  },
+  {
+    "filename": "fig_13_26.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x76.png"
+  },
+  {
+    "filename": "fig_13_27.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/purple_hd.png"
+  },
+  {
+    "filename": "fig_13_28.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x77.png"
+  },
+  {
+    "filename": "fig_13_29.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x78.png"
+  },
+  {
+    "filename": "fig_13_30.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/green_hd.png"
+  },
+  {
+    "filename": "fig_13_31.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x79.png"
+  },
+  {
+    "filename": "fig_13_32.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x80.png"
+  },
+  {
+    "filename": "fig_13_33.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/yellow_hd.png"
+  },
+  {
+    "filename": "fig_13_34.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x81.png"
+  },
+  {
+    "filename": "fig_13_35.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x82.png"
+  },
+  {
+    "filename": "fig_13_36.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/black_hd.png"
+  },
+  {
+    "filename": "fig_13_37.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x83.png"
+  },
+  {
+    "filename": "fig_13_38.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x84.png"
+  },
+  {
+    "filename": "fig_13_39.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x85.png"
+  },
+  {
+    "filename": "fig_13_40.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x86.png"
+  },
+  {
+    "filename": "fig_13_41.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x87.png"
+  },
+  {
+    "filename": "fig_13_42.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x88.png"
+  },
+  {
+    "filename": "fig_13_43.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x89.png"
+  },
+  {
+    "filename": "fig_13_44.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x90.png"
+  },
+  {
+    "filename": "fig_13_45.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/triangle.png"
+  },
+  {
+    "filename": "fig_13_46.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x91.png"
+  },
+  {
+    "filename": "fig_13_47.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/hexagon.png"
+  },
+  {
+    "filename": "fig_13_48.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x92.png"
+  },
+  {
+    "filename": "fig_13_49.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x93.png"
+  },
+  {
+    "filename": "fig_13_50.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x94.png"
+  },
+  {
+    "filename": "fig_13_51.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x95.png"
+  },
+  {
+    "filename": "fig_13_52.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x96.png"
+  },
+  {
+    "filename": "fig_13_53.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x97.png"
+  },
+  {
+    "filename": "fig_13_54.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x98.png"
+  },
+  {
+    "filename": "fig_13_55.jpg",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/soupmonster.jpeg"
+  },
+  {
+    "filename": "fig_13_56.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x99.png"
+  },
+  {
+    "filename": "fig_13_57.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x100.png"
+  },
+  {
+    "filename": "fig_13_58.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x101.png"
+  },
+  {
+    "filename": "fig_13_59.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x102.png"
+  },
+  {
+    "filename": "fig_13_60.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x103.png"
+  },
+  {
+    "filename": "fig_13_61.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x104.png"
+  },
+  {
+    "filename": "fig_13_62.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x105.png"
+  },
+  {
+    "filename": "fig_13_63.jpg",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/naughtydog.jpeg"
+  },
+  {
+    "filename": "fig_13_64.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x106.png"
+  },
+  {
+    "filename": "fig_13_65.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x107.png"
+  },
+  {
+    "filename": "fig_13_66.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x108.png"
+  },
+  {
+    "filename": "fig_13_67.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x109.png"
+  },
+  {
+    "filename": "fig_13_68.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x110.png"
+  },
+  {
+    "filename": "fig_13_69.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x111.png"
+  },
+  {
+    "filename": "fig_13_70.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x112.png"
+  },
+  {
+    "filename": "fig_13_71.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x113.png"
+  },
+  {
+    "filename": "fig_13_72.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x114.png"
+  },
+  {
+    "filename": "fig_13_73.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x115.png"
+  },
+  {
+    "filename": "fig_13_74.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/homebase.png"
+  },
+  {
+    "filename": "fig_13_75.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x116.png"
+  },
+  {
+    "filename": "fig_13_76.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x117.png"
+  },
+  {
+    "filename": "fig_13_77.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x118.png"
+  },
+  {
+    "filename": "fig_13_78.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x119.png"
+  },
+  {
+    "filename": "fig_13_79.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x120.png"
+  },
+  {
+    "filename": "fig_13_80.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x121.png"
+  },
+  {
+    "filename": "fig_13_81.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x122.png"
+  },
+  {
+    "filename": "fig_13_82.jpg",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/robot_ball_cloth.jpeg"
+  },
+  {
+    "filename": "fig_13_83.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x123.png"
+  },
+  {
+    "filename": "fig_13_84.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x124.png"
+  },
+  {
+    "filename": "fig_13_85.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x125.png"
+  },
+  {
+    "filename": "fig_13_86.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x126.png"
+  },
+  {
+    "filename": "fig_13_87.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x127.png"
+  },
+  {
+    "filename": "fig_13_88.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x128.png"
+  },
+  {
+    "filename": "fig_13_89.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x129.png"
+  },
+  {
+    "filename": "fig_13_90.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x130.png"
+  },
+  {
+    "filename": "fig_13_91.png",
+    "caption": "Figure 11 : Selected dialogue samples. Gray boxes are user input and the pink boxes are Flamingo output. For dialogue, Flamingo is provided with a custom prompt (hidden from the visualization but shown in Appendix B.1.6 ) containing a dialogue with 3 corresponding images, but it is not fine-tuned for dialogue in any other way.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x131.png"
+  },
+  {
+    "filename": "fig_14_1.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x132.png"
+  },
+  {
+    "filename": "fig_14_2.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.0.png"
+  },
+  {
+    "filename": "fig_14_3.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.1.png"
+  },
+  {
+    "filename": "fig_14_4.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.2.png"
+  },
+  {
+    "filename": "fig_14_5.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.3.png"
+  },
+  {
+    "filename": "fig_14_6.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.4.png"
+  },
+  {
+    "filename": "fig_14_7.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.5.png"
+  },
+  {
+    "filename": "fig_14_8.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.6.png"
+  },
+  {
+    "filename": "fig_14_9.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_puppy.png.7.png"
+  },
+  {
+    "filename": "fig_14_10.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.0.png"
+  },
+  {
+    "filename": "fig_14_11.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.1.png"
+  },
+  {
+    "filename": "fig_14_12.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.2.png"
+  },
+  {
+    "filename": "fig_14_13.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.3.png"
+  },
+  {
+    "filename": "fig_14_14.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.4.png"
+  },
+  {
+    "filename": "fig_14_15.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.5.png"
+  },
+  {
+    "filename": "fig_14_16.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.6.png"
+  },
+  {
+    "filename": "fig_14_17.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_atari.png.7.png"
+  },
+  {
+    "filename": "fig_14_18.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.0.png"
+  },
+  {
+    "filename": "fig_14_19.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.1.png"
+  },
+  {
+    "filename": "fig_14_20.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.2.png"
+  },
+  {
+    "filename": "fig_14_21.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.3.png"
+  },
+  {
+    "filename": "fig_14_22.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.4.png"
+  },
+  {
+    "filename": "fig_14_23.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.5.png"
+  },
+  {
+    "filename": "fig_14_24.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.6.png"
+  },
+  {
+    "filename": "fig_14_25.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_objects.png.7.png"
+  },
+  {
+    "filename": "fig_14_26.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.0.png"
+  },
+  {
+    "filename": "fig_14_27.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.1.png"
+  },
+  {
+    "filename": "fig_14_28.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.2.png"
+  },
+  {
+    "filename": "fig_14_29.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.3.png"
+  },
+  {
+    "filename": "fig_14_30.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.4.png"
+  },
+  {
+    "filename": "fig_14_31.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.5.png"
+  },
+  {
+    "filename": "fig_14_32.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.6.png"
+  },
+  {
+    "filename": "fig_14_33.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_scissors.png.7.png"
+  },
+  {
+    "filename": "fig_14_34.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.0.png"
+  },
+  {
+    "filename": "fig_14_35.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.1.png"
+  },
+  {
+    "filename": "fig_14_36.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.2.png"
+  },
+  {
+    "filename": "fig_14_37.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.3.png"
+  },
+  {
+    "filename": "fig_14_38.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.4.png"
+  },
+  {
+    "filename": "fig_14_39.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.5.png"
+  },
+  {
+    "filename": "fig_14_40.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.6.png"
+  },
+  {
+    "filename": "fig_14_41.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_flamingo.png.7.png"
+  },
+  {
+    "filename": "fig_14_42.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0000.png"
+  },
+  {
+    "filename": "fig_14_43.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0001.png"
+  },
+  {
+    "filename": "fig_14_44.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0002.png"
+  },
+  {
+    "filename": "fig_14_45.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0003.png"
+  },
+  {
+    "filename": "fig_14_46.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0004.png"
+  },
+  {
+    "filename": "fig_14_47.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0005.png"
+  },
+  {
+    "filename": "fig_14_48.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0006.png"
+  },
+  {
+    "filename": "fig_14_49.png",
+    "caption": "Figure 12 : Selected video samples. These are all of the frames the model sees.\n(Best viewed with zoom.)",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/figures/videoframes/imvid_shot_0007.png"
+  },
+  {
+    "filename": "fig_15.png",
+    "caption": "Figure 13 : Hallucinations and ungrounded guesses in open-ended visual question answering. Left: The model occasionally hallucinates by producing answers that seem likely given the text only, but are wrong given the image as additional input. Middle: Similar hallucinations can be provoked by adversarially prompting the model with an irrelevant question. Right: A more common pitfall arises when the model makes ungrounded guesses when the answer cannot be determined based on the inputs.\nFew-shot examples and more sophisticated prompt design may be used to mitigate these issues. More broadly, addressing these issues is an important research direction towards improving our models’ applications in open-ended visual dialogue settings.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2204.14198/assets/x133.png"
+  }
+]

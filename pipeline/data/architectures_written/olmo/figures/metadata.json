@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Accuracy score progression of OLMo-7B on 8 core end-tasks score from Catwalk evaluation suite described in Section 2.4 . We can see the benefit of decaying LR to 0 in the final 1000 steps of training on most tasks.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.00838/assets/x7.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Bits per byte on 11 evaluation data sources from Paloma and their combination (Magnusson et al., 2023 ) , decontaminated from OLMo’s pretraining data. While models follow a general data scaling trend, sample efficiency is most favorable on in-distribution data. For example, OLMo-7B overtakes all other models on C4, perhaps from having 88.8% Common Crawl pretraining data.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.00838/assets/x8.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Bits per byte for each of the 7 remaining Paloma data sources not aggregated in Figure 2 .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.00838/assets/x9.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Accuracy score progression of OLMo-7B on 6 additional end-tasks. The performance of these additional end-tasks was unstable and provided limited signal during model development.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2402.00838/assets/x10.png"
+  }
+]

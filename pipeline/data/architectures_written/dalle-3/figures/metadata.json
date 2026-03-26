@@ -1,0 +1,566 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cat/sd2.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cat/yfcc_c.png"
+  },
+  {
+    "filename": "fig_1_3.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cat/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_1_4.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cat/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_1_5.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/robot/sd2.png"
+  },
+  {
+    "filename": "fig_1_6.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/robot/yfcc_c.png"
+  },
+  {
+    "filename": "fig_1_7.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/robot/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_1_8.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/robot/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_1_9.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/hero-images/SD2.png"
+  },
+  {
+    "filename": "fig_1_10.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/hero-images/CC-small-noncomm.png"
+  },
+  {
+    "filename": "fig_1_11.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/hero-images/CC-small-comm.png"
+  },
+  {
+    "filename": "fig_1_12.png",
+    "caption": "Figure 1: Selection of text prompts. Using entirely Creative-Commons images and our synthetic captioning approach, we achieve comparable qualitative performance to Stable Diffusion 2 (SD2-base), as seen in CommonCanvas generations, while only requiring a small fraction ( < 3 % absent percent 3 <3\\% ) of the amount of training data. We include results for two CommonCanvas architectures , small (S) and large (L) (Section 6 ), and two CC-image datasets , commercial (C) and non-commercial (NC) (Section 4 ). We label our results accordingly as CommonCanvas- < < architecture > > - < < dataset > > .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/hero-images/CC-large-noncomm.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "(a) Prompt",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/SD2.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "(a) Prompt",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/YFCC-NC.png"
+  },
+  {
+    "filename": "fig_2_3.png",
+    "caption": "(a) Prompt",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/lionking/lionking-sd2.png"
+  },
+  {
+    "filename": "fig_2_4.png",
+    "caption": "(a) Prompt",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/lionking/lionking-sd2+.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(b) SD2 Output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/SD2.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(c) CommonCanvas Output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/YFCC-NC.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(e) SD2 Output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/lionking/lionking-sd2.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(f) CommonCanvas Output",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/lionking/lionking-sd2+.png"
+  },
+  {
+    "filename": "fig_9_1.png",
+    "caption": "(a) Pre-trained BLIP-2.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x1.png"
+  },
+  {
+    "filename": "fig_9_2.png",
+    "caption": "(a) Pre-trained BLIP-2.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x2.png"
+  },
+  {
+    "filename": "fig_9_3.png",
+    "caption": "(a) Pre-trained BLIP-2.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x3.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(a) Pre-trained BLIP-2.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x1.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(b) Generating CommonCatalog for training CommonCanvas.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x2.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "(c) “Lossy compression” via BLIP-2 from an input image to a synthetic caption. When we use a T2I model to generate an image with this “lossy” caption (e.g., via CommonCanvas), the resulting generation looks nothing like the original prompt image that produced the caption.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x3.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 5 : Original vs. BLIP-2-generated captions for an image from LAION-2B.\nBLIP-2 generates a caption that better aligns with what a human would write. See Figure 14 for more examples.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/laion-captions/example-caption.png"
+  },
+  {
+    "filename": "fig_15_1.png",
+    "caption": "Figure 6 : Cumulative effect of various speed-ups in our SD2 training pipeline on 128 Throughputs evaluated on 128 A100s.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x4.png"
+  },
+  {
+    "filename": "fig_15_2.png",
+    "caption": "Figure 6 : Cumulative effect of various speed-ups in our SD2 training pipeline on 128 Throughputs evaluated on 128 A100s.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x5.png"
+  },
+  {
+    "filename": "fig_16.png",
+    "caption": "Figure 6 : Cumulative effect of various speed-ups in our SD2 training pipeline on 128 Throughputs evaluated on 128 A100s.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x4.png"
+  },
+  {
+    "filename": "fig_17.png",
+    "caption": "Figure 7 : User preference study using Parti prompts.\nCommonCanvas-LNC model matches the performance of SD2 despite being trained with < 3 % absent percent 3 <3\\% the amount of data.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x5.png"
+  },
+  {
+    "filename": "fig_18.png",
+    "caption": "Figure 8 : FID, KID, and CLIP-FID vs. CLIP-Score computed on 30K samples from COCO2014 for different SD2 models trained on smaller subsets of LAION (10M, 90M, using either original captions or synthetic BLIP2 captions. Interestingly, increasing the amount of training data from 10M to 90M samples does not lead to improved quantitative metrics across guidance scales 1 to 8. Lower FID is better; higher CLIP score is better.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x6.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 9 : CLIP-FID for different models. We can see domain shift between MS COCO captions and web-scraped conceptual captions. CLIP-FID likely favors SD2, as CLIP is trained on a similar style of text as LAION. This plot only covers the first stage of training at 256x256 resolution. We",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/x7.png"
+  },
+  {
+    "filename": "fig_20_1.png",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/nc_clipw_7/ice_princess.png"
+  },
+  {
+    "filename": "fig_20_2.jpg",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/sd2/ice_princess.jpeg"
+  },
+  {
+    "filename": "fig_20_3.png",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/nc_clipw_7/Snoopy.png"
+  },
+  {
+    "filename": "fig_20_4.jpg",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/sd2/Snoopy.jpeg"
+  },
+  {
+    "filename": "fig_20_5.png",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/nc_clipw_7/a_adventurous_archaeologist_with_a_whip_and_a_fedora.png"
+  },
+  {
+    "filename": "fig_20_6.jpg",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/sd2/a_adventurous_archeologist.jpeg"
+  },
+  {
+    "filename": "fig_20_7.png",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/nc_clipw_7/A_teenage_wizard_with_round_glasses.png"
+  },
+  {
+    "filename": "fig_20_8.jpg",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/sd2/a_wizard_with_round_glasses.jpeg"
+  },
+  {
+    "filename": "fig_20_9.png",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/nc_clipw_7/A_cartoon_beagle_in_a_red_dog_house.png"
+  },
+  {
+    "filename": "fig_20_10.jpg",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/sd2/A_cartoon_beagle_in_a_red_dog_house.jpeg"
+  },
+  {
+    "filename": "fig_20_11.png",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/nc_clipw_7/black_and_white_stencil_little_girl_reaching_for_heart-shaped_red_balloon.png"
+  },
+  {
+    "filename": "fig_20_12.jpg",
+    "caption": "Figure 10 : We compare CommonCanvas-SNC (Ours) to SD2. Our model is less likely to generate iconic characters given suggestive prompts (drawn from Lee et al. [ 29 ] ).",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-examples/sd2/a_black_white_stencil_girl_red_balloon.jpeg"
+  },
+  {
+    "filename": "fig_21_1.png",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/ours/Bill-Gates-Example.png"
+  },
+  {
+    "filename": "fig_21_2.jpg",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/SD2/Bill_Gates_SD2.jpeg"
+  },
+  {
+    "filename": "fig_21_3.png",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/ours/Elon-Musk-example.png"
+  },
+  {
+    "filename": "fig_21_4.jpg",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/SD2/Elon_Musk_SD2.jpeg"
+  },
+  {
+    "filename": "fig_21_5.png",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/ours/Kim-Kardashian-example.png"
+  },
+  {
+    "filename": "fig_21_6.jpg",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/SD2/Kim_Kardashian_SD2.jpeg"
+  },
+  {
+    "filename": "fig_21_7.png",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/ours/Barack-Obama-Ours.png"
+  },
+  {
+    "filename": "fig_21_8.jpg",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/SD2/Barack-Obama-SD2.jpeg"
+  },
+  {
+    "filename": "fig_21_9.png",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/ours/Hillary-Clinton-Ours.png"
+  },
+  {
+    "filename": "fig_21_10.jpg",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/SD2/Hillary_Clinton_SD2.jpeg"
+  },
+  {
+    "filename": "fig_21_11.png",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/ours/Richard-Feynman-Ours.png"
+  },
+  {
+    "filename": "fig_21_12.jpg",
+    "caption": "Figure 11 : Using CommonCanvas-SNC (Ours) to generate celebrities. Our model is worse at synthesizing individual people than SD2, but is capable of generating some noteworthy public figures.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/examples/SD2/Richard-Feynman-SD2.jpeg"
+  },
+  {
+    "filename": "fig_22_1.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/CAD/sd2.png"
+  },
+  {
+    "filename": "fig_22_2.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/CAD/yfcc_c.png"
+  },
+  {
+    "filename": "fig_22_3.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/CAD/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_22_4.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/CAD/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_22_5.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/bear-and-fox/sd2.png"
+  },
+  {
+    "filename": "fig_22_6.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/bear-and-fox/yfcc_c.png"
+  },
+  {
+    "filename": "fig_22_7.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/bear-and-fox/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_22_8.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/bear-and-fox/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_22_9.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/klein/sd2.png"
+  },
+  {
+    "filename": "fig_22_10.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/klein/yfcc_c.png"
+  },
+  {
+    "filename": "fig_22_11.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/klein/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_22_12.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/klein/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_22_13.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cake/sd2.png"
+  },
+  {
+    "filename": "fig_22_14.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cake/yfcc_c.png"
+  },
+  {
+    "filename": "fig_22_15.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cake/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_22_16.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/cake/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_22_17.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/birds/sd2.png"
+  },
+  {
+    "filename": "fig_22_18.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/birds/yfcc_c.png"
+  },
+  {
+    "filename": "fig_22_19.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/birds/yfcc_nc.png"
+  },
+  {
+    "filename": "fig_22_20.png",
+    "caption": "Figure 12 : Additional qualitative examples comparing SD2 to our model trained on the commerical split (CommonCanvas-SC), non-commerical split (CommonCanvas-SNC), and the larger UNet model trained on the non-commercial (CommonCanvas-LNC).",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/additional-examples/birds/yfcc_nc_plus.png"
+  },
+  {
+    "filename": "fig_23_1.png",
+    "caption": "Figure 13 : Additional qualitative examples of our CommonCanvas models.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/teaser-images/teaser-images-0.png"
+  },
+  {
+    "filename": "fig_23_2.png",
+    "caption": "Figure 13 : Additional qualitative examples of our CommonCanvas models.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/teaser-images/teaser-images-1.png"
+  },
+  {
+    "filename": "fig_23_3.png",
+    "caption": "Figure 13 : Additional qualitative examples of our CommonCanvas models.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/teaser-images/teaser-images-3.png"
+  },
+  {
+    "filename": "fig_23_4.png",
+    "caption": "Figure 13 : Additional qualitative examples of our CommonCanvas models.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/teaser-images/teaser-images-4.png"
+  },
+  {
+    "filename": "fig_24_1.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/elsa_blip2.png"
+  },
+  {
+    "filename": "fig_24_2.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/SD2.png"
+  },
+  {
+    "filename": "fig_24_3.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/YFCC-NC.png"
+  },
+  {
+    "filename": "fig_24_4.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/elsa-from-frozen/YFCC-COMM.png"
+  },
+  {
+    "filename": "fig_24_5.jpg",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/pikachu/pickachu-orig.jpeg"
+  },
+  {
+    "filename": "fig_24_6.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/pikachu/SD2.png"
+  },
+  {
+    "filename": "fig_24_7.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/pikachu/YFCC-NC.png"
+  },
+  {
+    "filename": "fig_24_8.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/pikachu/YFCC-COMM.png"
+  },
+  {
+    "filename": "fig_24_9.jpg",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/ewoks/ewok.jpeg"
+  },
+  {
+    "filename": "fig_24_10.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/ewoks/SD2.png"
+  },
+  {
+    "filename": "fig_24_11.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/ewoks/YFCC-NC.png"
+  },
+  {
+    "filename": "fig_24_12.png",
+    "caption": "Figure 14 : Additional qualitative examples comparing our CommonCanvas models to SD2, given synthetic BLIP2 captions as prompts. While not perfect, our models are better at avoiding generating potentially problematic data.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/prompt-roundtrips/ewoks/YFCC-COMM.png"
+  },
+  {
+    "filename": "fig_25.png",
+    "caption": "Figure 15 : How does reducing the amount of training data affect the training dynamics? We find a noticeable improvement drop when training with less than 10 million samples.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2310.16825/assets/iclr2023/figs/charts/eval-over-time-noclip.png"
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Left : Sliced score matching (SSM) loss w.r.t. iterations. No noise is added to data. Right : Same but data are perturbed with 𝒩 ​ ( 0 , 0.0001 ) 𝒩 0 0.0001 \\mathcal{N}(0,0.0001) .",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/manifold.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2 : Left : ∇ 𝐱 log ⁡ p data ​ ( 𝐱 ) subscript ∇ 𝐱 subscript 𝑝 data 𝐱 \\nabla_{\\mathbf{x}}\\log p_{\\text{data}}(\\mathbf{x}) ; Right : 𝐬 𝜽 ​ ( 𝐱 ) subscript 𝐬 𝜽 𝐱 \\mathbf{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}) . The data density p data ​ ( 𝐱 ) subscript 𝑝 data 𝐱 p_{\\text{data}}(\\mathbf{x}) is encoded using an orange colormap: darker color implies higher density. Red rectangles highlight regions where ∇ 𝐱 log ⁡ p data ​ ( 𝐱 ) ≈ 𝐬 𝜽 ​ ( 𝐱 ) subscript ∇ 𝐱 subscript 𝑝 data 𝐱 subscript 𝐬 𝜽 𝐱 \\nabla_{\\mathbf{x}}\\log p_{\\text{data}}(\\mathbf{x})\\approx\\mathbf{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}) .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/paper/diagrams/data_scores.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2 : Left : ∇ 𝐱 log ⁡ p data ​ ( 𝐱 ) subscript ∇ 𝐱 subscript 𝑝 data 𝐱 \\nabla_{\\mathbf{x}}\\log p_{\\text{data}}(\\mathbf{x}) ; Right : 𝐬 𝜽 ​ ( 𝐱 ) subscript 𝐬 𝜽 𝐱 \\mathbf{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}) . The data density p data ​ ( 𝐱 ) subscript 𝑝 data 𝐱 p_{\\text{data}}(\\mathbf{x}) is encoded using an orange colormap: darker color implies higher density. Red rectangles highlight regions where ∇ 𝐱 log ⁡ p data ​ ( 𝐱 ) ≈ 𝐬 𝜽 ​ ( 𝐱 ) subscript ∇ 𝐱 subscript 𝑝 data 𝐱 subscript 𝐬 𝜽 𝐱 \\nabla_{\\mathbf{x}}\\log p_{\\text{data}}(\\mathbf{x})\\approx\\mathbf{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}) .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/paper/diagrams/estimated_scores.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/paper/diagrams/data_scores.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/paper/diagrams/estimated_scores.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 3 : Samples from a mixture of Gaussian with different methods. (a) Exact sampling. (b) Sampling using Langevin dynamics with the exact scores. (c) Sampling using annealed Langevin dynamics with the exact scores. Clearly Langevin dynamics estimate the relative weights between the two modes incorrectly, while annealed Langevin dynamics recover the relative weights faithfully.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/anneal.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 4 : Intermediate samples of annealed Langevin dynamics.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/sampling.png"
+  },
+  {
+    "filename": "fig_8_1.png",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/mnist_samples.png"
+  },
+  {
+    "filename": "fig_8_2.png",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/celeba_samples_small.png"
+  },
+  {
+    "filename": "fig_8_3.png",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/cifar10_samples_small.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/mnist_samples.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(b) CelebA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/celeba_samples_small.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "(c) CIFAR-10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/cifar10_samples_small.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 6 : Image inpainting on CelebA ( left ) and CIFAR-10 ( right ). The leftmost column of each figure shows the occluded images, while the rightmost column shows the original images.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/inpainting.png"
+  },
+  {
+    "filename": "fig_13_1.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_mnist_samples.jpg"
+  },
+  {
+    "filename": "fig_13_2.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_celeba_samples.jpg"
+  },
+  {
+    "filename": "fig_13_3.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_cifar10_samples.jpg"
+  },
+  {
+    "filename": "fig_14.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_mnist_samples.jpg"
+  },
+  {
+    "filename": "fig_15.jpg",
+    "caption": "(b) CelebA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_celeba_samples.jpg"
+  },
+  {
+    "filename": "fig_16.jpg",
+    "caption": "(c) CIFAR-10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_cifar10_samples.jpg"
+  },
+  {
+    "filename": "fig_17_1.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_mnist_sampling.jpg"
+  },
+  {
+    "filename": "fig_17_2.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_celeba_sampling.jpg"
+  },
+  {
+    "filename": "fig_17_3.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_cifar10_sampling.jpg"
+  },
+  {
+    "filename": "fig_18.jpg",
+    "caption": "(a) MNIST",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_mnist_sampling.jpg"
+  },
+  {
+    "filename": "fig_19.jpg",
+    "caption": "(b) CelebA",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_celeba_sampling.jpg"
+  },
+  {
+    "filename": "fig_20.jpg",
+    "caption": "(c) CIFAR-10",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/baselines/baseline_cifar10_sampling.jpg"
+  },
+  {
+    "filename": "fig_21.png",
+    "caption": "Figure 9 : Nearest neighbors measured by the ℓ 2 subscript ℓ 2 \\ell_{2} distance between images. Images on the left of the red vertical line are samples from NCSN. Images on the right are nearest neighbors in the training dataset.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/nn_l2.png"
+  },
+  {
+    "filename": "fig_22.png",
+    "caption": "Figure 10 : Nearest neighbors measured by the ℓ 2 subscript ℓ 2 \\ell_{2} distance in the feature space of an Inception V3 network pretrained on ImageNet. Images on the left of the red vertical line are samples from NCSN. Images on the right are nearest neighbors in the training dataset.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/nn_inception.png"
+  },
+  {
+    "filename": "fig_23.jpg",
+    "caption": "Figure 11 : Extended MNIST samples",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_samples/mnist_samples_large.jpg"
+  },
+  {
+    "filename": "fig_24.jpg",
+    "caption": "Figure 12 : Extended CelebA samples",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_samples/celeba_samples_large.jpg"
+  },
+  {
+    "filename": "fig_25.jpg",
+    "caption": "Figure 13 : Extended CIFAR-10 samples",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_samples/cifar10_samples_large.jpg"
+  },
+  {
+    "filename": "fig_26.jpg",
+    "caption": "Figure 14 : Extended intermediate samples from annealed Langevin dynamics for CelebA.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_sampling/celeba_sampling_large.jpg"
+  },
+  {
+    "filename": "fig_27.jpg",
+    "caption": "Figure 15 : Extended intermediate samples from annealed Langevin dynamics for CelebA.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_sampling/cifar10_sampling_large.jpg"
+  },
+  {
+    "filename": "fig_28.jpg",
+    "caption": "Figure 16 : Extended image inpainting results for CelebA. The leftmost column of each figure shows the occluded images, while the rightmost column shows the original images.",
+    "figure_number": "Figure 16",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_inpaint/celeba_inpainting_large.jpg"
+  },
+  {
+    "filename": "fig_29.jpg",
+    "caption": "Figure 17 : Extended image inpainting results for CIFAR-10. The leftmost column of each figure shows the occluded images, while the rightmost column shows the original images.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1907.05600/assets/diagrams/large_inpaint/cifar10_inpainting_large.jpg"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Overview of BLIP-2’s framework.\nWe pre-train a lightweight Querying Transformer following a two-stage strategy to bridge the modality gap.\nThe first stage bootstraps vision-language representation learning from a frozen image encoder.\nThe second stage bootstraps vision-to-language generative learning from a frozen LLM,\nwhich enables zero-shot instructed image-to-text generation (see Figure 4 for more examples).",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : ( Left ) Model architecture of Q-Former and BLIP-2’s first-stage vision-language representation learning objectives. We jointly optimize three objectives which enforce the queries (a set of learnable embeddings) to extract visual representation most relevant to the text. ( Right ) The self-attention masking strategy for each objective to control query-text interaction.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : BLIP-2’s second-stage vision-to-language generative pre-training, which bootstraps from frozen large language models (LLMs). ( Top ) Bootstrapping a decoder-based LLM (e.g. OPT). ( Bottom ) Bootstrapping an encoder-decoder-based LLM (e.g. FlanT5). The fully-connected layer adapts from the output dimension of the Q-Former to the input dimension of the chosen LLM.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Selected examples of instructed zero-shot image-to-text generation using a BLIP-2 model w/ ViT-g and FlanT5 XXL XXL {}_{\\text{XXL}} ,\nwhere it shows a wide range of capabilities including\nvisual conversation, visual knowledge reasoning, visual commensense reasoning,\nstorytelling, personalized image-to-text generation, etc.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "Figure 5: Effect of vision-language representation learning on vision-to-language generative learning. Without representation learning, the Q-Former fails the bridge the modality gap, leading to significantly lower performance on zero-shot VQA.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x5.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "Figure 5: Effect of vision-language representation learning on vision-to-language generative learning. Without representation learning, the Q-Former fails the bridge the modality gap, leading to significantly lower performance on zero-shot VQA.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x6.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6 : Incorrect output examples for instructed zero-shot image-to-text generation using a BLIP-2 model w/ ViT-g and FlanT5 XXL XXL {}_{\\text{XXL}} .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x7.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7 : Model architecture for VQA finetuning, where the LLM receives Q-Former’s output and the question as input, then predicts answers. We also provide the question as a condition to Q-Former, such that the extracted image features are more relevant to the question.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2301.12597/assets/x8.png"
+  }
+]

@@ -1,0 +1,542 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : We introduce the Segment Anything Model 2 (SAM 2), towards solving the promptable visual segmentation task (a) with our foundation model (b), trained on our large-scale SA-V dataset collected through our data engine (c). SAM 2 is capable of interactively segmenting regions through prompts (clicks, boxes, or masks) on one or multiple video frames by utilizing a streaming memory that stores previous prompts and predictions.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Interactive segmentation with SAM 2. Step 1 (selection): we prompt SAM 2 in frame 1 to obtain the segment of the target object (the tongue). Green/red dots indicate positive/negative prompts respectively. SAM 2 automatically propagates the segment to the following frames (blue arrows) to form a masklet . If SAM 2 loses the object (after frame 2), we can correct the masklet by providing an additional prompt in a new frame (red arrow). Step 2 (refinement): a single click in frame 3 is sufficient to recover the object and propagate it to obtain the correct masklet. A decoupled SAM + video tracker approach would require several clicks in frame 3 (as in frame 1) to correctly re-annotate the object as the segmentation is restarted from scratch. With SAM 2’s memory, a single click can recover the tongue.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : The SAM 2 architecture.\nFor a given frame, the segmentation prediction is conditioned on the current prompt and/or on previously observed memories.\nVideos are processed in a streaming fashion with frames being consumed one at a time by the image encoder, and cross-attended to memories of the target object from previous frames. The mask decoder, which optionally also takes input prompts, predicts the segmentation mask for that frame. Finally, a memory encoder transforms the prediction and image encoder embeddings (not shown in the figure) for use in future frames.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x3.png"
+  },
+  {
+    "filename": "fig_4_1.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_033851/0.jpg"
+  },
+  {
+    "filename": "fig_4_2.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_033851/6.jpg"
+  },
+  {
+    "filename": "fig_4_3.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_033851/12.jpg"
+  },
+  {
+    "filename": "fig_4_4.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_033851/18.jpg"
+  },
+  {
+    "filename": "fig_4_5.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_000001/0.jpg"
+  },
+  {
+    "filename": "fig_4_6.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_000001/6.jpg"
+  },
+  {
+    "filename": "fig_4_7.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_000001/12.jpg"
+  },
+  {
+    "filename": "fig_4_8.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_000001/18.jpg"
+  },
+  {
+    "filename": "fig_4_9.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_000001/24.jpg"
+  },
+  {
+    "filename": "fig_4_10.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_027687/0.jpg"
+  },
+  {
+    "filename": "fig_4_11.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_027687/6.jpg"
+  },
+  {
+    "filename": "fig_4_12.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_027687/12.jpg"
+  },
+  {
+    "filename": "fig_4_13.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_027687/18.jpg"
+  },
+  {
+    "filename": "fig_4_14.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_015541/0.jpg"
+  },
+  {
+    "filename": "fig_4_15.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_015541/6.jpg"
+  },
+  {
+    "filename": "fig_4_16.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_015541/12.jpg"
+  },
+  {
+    "filename": "fig_4_17.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_015541/18.jpg"
+  },
+  {
+    "filename": "fig_4_18.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_015541/24.jpg"
+  },
+  {
+    "filename": "fig_4_19.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_036174/0.jpg"
+  },
+  {
+    "filename": "fig_4_20.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_036174/6.jpg"
+  },
+  {
+    "filename": "fig_4_21.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_036174/12.jpg"
+  },
+  {
+    "filename": "fig_4_22.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_036174/18.jpg"
+  },
+  {
+    "filename": "fig_4_23.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_006356/0.jpg"
+  },
+  {
+    "filename": "fig_4_24.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_006356/6.jpg"
+  },
+  {
+    "filename": "fig_4_25.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_006356/12.jpg"
+  },
+  {
+    "filename": "fig_4_26.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_006356/18.jpg"
+  },
+  {
+    "filename": "fig_4_27.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_006356/24.jpg"
+  },
+  {
+    "filename": "fig_4_28.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_002597/0.jpg"
+  },
+  {
+    "filename": "fig_4_29.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_002597/6.jpg"
+  },
+  {
+    "filename": "fig_4_30.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_002597/12.jpg"
+  },
+  {
+    "filename": "fig_4_31.jpg",
+    "caption": "Figure 4 : Example videos from the SA-V dataset with masklets overlaid (manual and automatic). Each masklet has a unique color, and each row represents frames from one video, with 1 second between them.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/dataset_vis/sav_002597/18.jpg"
+  },
+  {
+    "filename": "fig_5_1.png",
+    "caption": "(a) Size",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x4.png"
+  },
+  {
+    "filename": "fig_5_2.png",
+    "caption": "(a) Size",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/region_map_6_25.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(a) Size",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x4.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "(b) Geography",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/region_map_6_25.png"
+  },
+  {
+    "filename": "fig_11_1.png",
+    "caption": "Figure 6: Zero-shot accuracy over 9 datasets in interactive offline and online evaluation settings.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x5.png"
+  },
+  {
+    "filename": "fig_11_2.png",
+    "caption": "Figure 6: Zero-shot accuracy over 9 datasets in interactive offline and online evaluation settings.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x6.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "Figure 7 : Performance of SAM 2 as a function of the SA-V quantity. We report 𝒥 & ℱ 𝒥 ℱ \\mathcal{J}\\&\\mathcal{F} accuracy for 3-click prompts in the first frame on SA-V val (left), 9 zero-shot datasets (center), and MOSE dev (right).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x7.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "Figure 7 : Performance of SAM 2 as a function of the SA-V quantity. We report 𝒥 & ℱ 𝒥 ℱ \\mathcal{J}\\&\\mathcal{F} accuracy for 3-click prompts in the first frame on SA-V val (left), 9 zero-shot datasets (center), and MOSE dev (right).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x8.png"
+  },
+  {
+    "filename": "fig_12_3.png",
+    "caption": "Figure 7 : Performance of SAM 2 as a function of the SA-V quantity. We report 𝒥 & ℱ 𝒥 ℱ \\mathcal{J}\\&\\mathcal{F} accuracy for 3-click prompts in the first frame on SA-V val (left), 9 zero-shot datasets (center), and MOSE dev (right).",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x9.png"
+  },
+  {
+    "filename": "fig_19.png",
+    "caption": "Figure 8 : An illustration of the Promptable Visual Segmentation task (PVS). Previously studied tasks such as Segment Anything (SA) and semi-supervised Video Object Segmentation (VOS) can be seen as special cases of the PVS task.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x10.png"
+  },
+  {
+    "filename": "fig_20.png",
+    "caption": "Figure 9 : Mask decoder architecture. The design largely follows SAM, and we additionally include the stride 4 and 8 features from the image encoder during upsampling. We also use the mask token corresponding to the output mask as an object pointer and generate an occlusion score which indicates if the object of interest is visible in the current frame.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x11.png"
+  },
+  {
+    "filename": "fig_23_1.jpg",
+    "caption": "Figure 10 : Annotations overlaid on the first frame: (a) manual labels (ML) only, (b) with automatic labels (Auto). Automatic labels increase diversity and coverage.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/manual_vs_pseudo/manual.jpg"
+  },
+  {
+    "filename": "fig_23_2.jpg",
+    "caption": "Figure 10 : Annotations overlaid on the first frame: (a) manual labels (ML) only, (b) with automatic labels (Auto). Automatic labels increase diversity and coverage.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/figs/manual_vs_pseudo/manual_and_auto.jpg"
+  },
+  {
+    "filename": "fig_24.png",
+    "caption": "Figure 11 : Annotation guideline overview. There are 3 main annotation tasks: masklet selection, masklet tracking, and masklet verification. Each task has a different set of annotators working on it.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x12.png"
+  },
+  {
+    "filename": "fig_25_1.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x13.png"
+  },
+  {
+    "filename": "fig_25_2.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x14.png"
+  },
+  {
+    "filename": "fig_25_3.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x15.png"
+  },
+  {
+    "filename": "fig_25_4.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x16.png"
+  },
+  {
+    "filename": "fig_25_5.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x17.png"
+  },
+  {
+    "filename": "fig_25_6.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x18.png"
+  },
+  {
+    "filename": "fig_25_7.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x19.png"
+  },
+  {
+    "filename": "fig_25_8.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x20.png"
+  },
+  {
+    "filename": "fig_25_9.png",
+    "caption": "Figure 12: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive offline evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x21.png"
+  },
+  {
+    "filename": "fig_26_1.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x22.png"
+  },
+  {
+    "filename": "fig_26_2.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x23.png"
+  },
+  {
+    "filename": "fig_26_3.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x24.png"
+  },
+  {
+    "filename": "fig_26_4.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x25.png"
+  },
+  {
+    "filename": "fig_26_5.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x26.png"
+  },
+  {
+    "filename": "fig_26_6.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x27.png"
+  },
+  {
+    "filename": "fig_26_7.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x28.png"
+  },
+  {
+    "filename": "fig_26_8.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x29.png"
+  },
+  {
+    "filename": "fig_26_9.png",
+    "caption": "Figure 13: Zero-shot performance of SAM 2 vs baselines (SAM+XMem++ and SAM+Cutie) under interactive online evaluation with different numbers of interacted frames, using 3 clicks per interacted frame. See § E.1.2 for details.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x30.png"
+  },
+  {
+    "filename": "fig_27_1.png",
+    "caption": "Figure 14 : Zero-shot performance on 17 video datasets of SAM 2 vs two baselines (SAM+XMem++ and SAM+Cutie) under semi-supervised VOS evaluation using different prompts (1, 3 or 5 clicks, bounding boxes, or ground-truth masks on the first video frame), with the averaged performance across datasets for each type of prompt shown in Table 4 in the main text. See § E.1.3 for details.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x31.png"
+  },
+  {
+    "filename": "fig_27_2.png",
+    "caption": "Figure 14 : Zero-shot performance on 17 video datasets of SAM 2 vs two baselines (SAM+XMem++ and SAM+Cutie) under semi-supervised VOS evaluation using different prompts (1, 3 or 5 clicks, bounding boxes, or ground-truth masks on the first video frame), with the averaged performance across datasets for each type of prompt shown in Table 4 in the main text. See § E.1.3 for details.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x32.png"
+  },
+  {
+    "filename": "fig_27_3.png",
+    "caption": "Figure 14 : Zero-shot performance on 17 video datasets of SAM 2 vs two baselines (SAM+XMem++ and SAM+Cutie) under semi-supervised VOS evaluation using different prompts (1, 3 or 5 clicks, bounding boxes, or ground-truth masks on the first video frame), with the averaged performance across datasets for each type of prompt shown in Table 4 in the main text. See § E.1.3 for details.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x33.png"
+  },
+  {
+    "filename": "fig_27_4.png",
+    "caption": "Figure 14 : Zero-shot performance on 17 video datasets of SAM 2 vs two baselines (SAM+XMem++ and SAM+Cutie) under semi-supervised VOS evaluation using different prompts (1, 3 or 5 clicks, bounding boxes, or ground-truth masks on the first video frame), with the averaged performance across datasets for each type of prompt shown in Table 4 in the main text. See § E.1.3 for details.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x34.png"
+  },
+  {
+    "filename": "fig_27_5.png",
+    "caption": "Figure 14 : Zero-shot performance on 17 video datasets of SAM 2 vs two baselines (SAM+XMem++ and SAM+Cutie) under semi-supervised VOS evaluation using different prompts (1, 3 or 5 clicks, bounding boxes, or ground-truth masks on the first video frame), with the averaged performance across datasets for each type of prompt shown in Table 4 in the main text. See § E.1.3 for details.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x35.png"
+  },
+  {
+    "filename": "fig_28_1.png",
+    "caption": "Figure 15 : Zero-shot performance of SAM 2 vs SAM on a suite of 37 datasets. The figure shows the center 1 click mIoU delta between SAM 2 and SAM. Datasets derived from video distribution are highlighted in red, while those from image distribution are highlighted in blue.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x36.png"
+  },
+  {
+    "filename": "fig_28_2.png",
+    "caption": "Figure 15 : Zero-shot performance of SAM 2 vs SAM on a suite of 37 datasets. The figure shows the center 1 click mIoU delta between SAM 2 and SAM. Datasets derived from video distribution are highlighted in red, while those from image distribution are highlighted in blue.",
+    "figure_number": "Figure 15",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/x37.png"
+  },
+  {
+    "filename": "fig_29_1.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/uvo_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_2.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/ego_exo4d.jpeg"
+  },
+  {
+    "filename": "fig_29_3.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/lvos_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_4.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/endovis_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_5.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/lindenthal.jpeg"
+  },
+  {
+    "filename": "fig_29_6.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/vipseg_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_7.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/vkitti2_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_8.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/esd_o45.jpeg"
+  },
+  {
+    "filename": "fig_29_9.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/fbms_o45.jpeg"
+  },
+  {
+    "filename": "fig_29_10.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/cells.jpeg"
+  },
+  {
+    "filename": "fig_29_11.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/visor_o45.jpeg"
+  },
+  {
+    "filename": "fig_29_12.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/pumavos_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_13.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/corsican_o45.jpeg"
+  },
+  {
+    "filename": "fig_29_14.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/cityscapes_o45.jpeg"
+  },
+  {
+    "filename": "fig_29_15.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/vost_op45.jpeg"
+  },
+  {
+    "filename": "fig_29_16.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/heart.jpeg"
+  },
+  {
+    "filename": "fig_29_17.jpg",
+    "caption": "Figure 17 : Examples from SAM 2 zero-shot video benchmark suite.",
+    "figure_number": "Figure 17",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2408.00714/assets/img/visualize_zero_shot/lv_vis_op45.jpeg"
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : (a): Content stream attention, which is the same as the standard self-attention. (b): Query stream attention, which does not have access information about the content x z t subscript 𝑥 subscript 𝑧 𝑡 x_{z_{t}} . (c): Overview of the permutation language modeling training with two-stream attention.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/x1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "(a) Content stripes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/content_stripe.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "(a) Content stripes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/diag_self.png"
+  },
+  {
+    "filename": "fig_2_3.png",
+    "caption": "(a) Content stripes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/two_segm.png"
+  },
+  {
+    "filename": "fig_2_4.png",
+    "caption": "(a) Content stripes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/diag_symm.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "(a) Content stripes",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/content_stripe.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "(b) Local/Self focus",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/diag_self.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "(c) Two segments",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/two_segm.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "(d) Content-based symmetry",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/diag_symm.png"
+  },
+  {
+    "filename": "fig_7_1.png",
+    "caption": "(a) Self exclusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/self_exclusion.png"
+  },
+  {
+    "filename": "fig_7_2.png",
+    "caption": "(a) Self exclusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/rel_stride.png"
+  },
+  {
+    "filename": "fig_7_3.png",
+    "caption": "(a) Self exclusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/one_sided.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "(a) Self exclusion",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/self_exclusion.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "(b) Relative stride",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/rel_stride.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "(c) One-side masked",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/fig/one_sided.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 4 : Illustration of the permutation language modeling objective for predicting x 3 subscript 𝑥 3 x_{3} given the same input sequence 𝐱 𝐱 {\\mathbf{x}} but with different factorization orders.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/x2.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 5 : A detailed illustration of the content stream of the proposed objective with both the joint view and split views based on a length-4 sequence under the factorization order [3, 2, 4, 1]. Note that if we ignore the query representation, the computation in this figure is simply the standard self-attention, though with a particular attention mask.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/x3.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 6 : A detailed illustration of the query stream of the proposed objective with both the joint view and split views based on a length-4 sequence under the factorization order [3, 2, 4, 1]. The dash arrows indicate that the query stream cannot access the token (content) at the same position, but only the location information.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1906.08237/assets/x4.png"
+  }
+]

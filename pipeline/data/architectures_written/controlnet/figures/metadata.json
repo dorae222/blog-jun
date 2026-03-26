@@ -1,0 +1,68 @@
+[
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: A neural block takes a feature map x 𝑥 x as input\nand outputs another feature map y 𝑦 y , as shown in (a). To add a ControlNet to\nsuch a block we lock the original block and create a trainable copy\nand connect them together using zero\nconvolution layers, i.e . , 1 × 1 1 1 1\\times 1 convolution with\nboth weight and bias initialized to zero. Here c 𝑐 c is a conditioning vector\nthat we wish to add to the network, as shown in (b).",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Stable Diffusion’s U-net architecture connected with a ControlNet on the encoder blocks and middle block. The locked, gray blocks\nshow the structure of Stable Diffusion V1.5 (or V2.1, as they use the same U-net architecture). The trainable blue blocks and the white zero convolution layers are added to build a ControlNet.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: The sudden convergence phenomenon.\nDue to the zero convolutions, ControlNet\nalways predicts high-quality images during the\nentire training. At a certain step in the\ntraining process ( e.g . , the 6133 steps marked\nin bold), the model suddenly learns to follow\nthe input condition.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: Effect of Classifier-Free Guidance (CFG) and the proposed CFG Resolution Weighting (CFG-RW).",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Composition of multiple conditions. We present the application to use depth and pose simultaneously.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.jpg",
+    "caption": "Figure 7: Controlling Stable Diffusion with various conditions without prompts . The top row is input conditions, while all other rows are outputs. We use the empty string as input prompts. All models are trained with general-domain data. The model has to recognize semantic contents in the input condition images to generate images.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/imgs/qua.jpg"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Ablative study of different architectures on a sketch condition and different prompt settings.\nFor each setting, we show a random batch of 6 samples without cherry-picking. Images are at 512 × \\times 512 and best viewed when zoomed in. The green “conv” blocks on the left are standard convolution layers initialized with Gaussian weights.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x7.png"
+  },
+  {
+    "filename": "fig_9.png",
+    "caption": "Figure 9: Comparison to previous methods.We present the qualitative comparisons to PITI [ 89 ] , Sketch-Guided Diffusion [ 88 ] , and Taming Transformers [ 19 ] .",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x8.png"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: The influence of different training dataset sizes. See also the supplementary material for extended examples.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x9.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11: Interpreting contents. If the input is ambiguous and the user does not mention object contents in prompts, the results look like the model tries to interpret input shapes.",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x10.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: Transfer pretrained ControlNets to community models [ 16 , 61 ] without training the neural networks again.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2302.05543/assets/x11.png"
+  }
+]

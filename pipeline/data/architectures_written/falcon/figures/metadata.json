@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: The Falcon series of models achieves competitive performance, with Falcon-180B nearly matching the 1-shot performance of PaLM-2 Large. 1-shot performance of PaLM (Chowdhery et al.,, 2022 ) , PaLM-2 (Anil et al.,, 2023 ) , and Falcon-180B, on a set of tasks from Brown et al., ( 2020 ) . These evaluation results are only a small snapshot of our evaluations, see Section 6 for details and comparisons with GPT-3.5/4, LLaMA-1/2, and Inflection-1.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Although open models lag behind closed models in pretraining compute (by ∼ similar-to \\sim 18 months), the gap is not widening. After a 1 year lag, GPT-3 sparked a \"scaling frenzy\", with the emergence of numerous LLMs. Models in the >10,000 PF-days range remain rare for open-source.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Two eras of pretraining practices, from predominant model scaling ■ ■ \\blacksquare to joint model and data scaling ◆ ◆ \\Diamondblack . Before Hoffmann et al., ( 2022 ) , models ( ■ ■ \\blacksquare ) predominantly scaled their parameter count at a fixed dataset size (around 300 billion tokens), in line with the recommendations of Kaplan et al., ( 2020 ) . Afterward ( ◆ ◆ \\Diamondblack ), models started scaling both model size and dataset size jointly, sharply increasing the need for scalable data pipelines. Estimate of clean data available in CommonCrawl from our work in Penedo et al., ( 2023 ) , considering English only–would double if allowing multilinguality.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: When compared to a strong web data baseline, high-quality curated data does not improve zero-shot performance. Over-reliance on a single type of curated data is even detrimental to performance. The make-up of the conversations, books, and tech data corpora is outlined in Table 5 . We report the zero-shot performance using different data-mixtures and compare with a baseline model trained on RefinedWeb only, our deduplicated and filtered web-only dataset Penedo et al., ( 2023 ) . The shaded green-area indicates the ± 3 ​ σ plus-or-minus 3 𝜎 \\pm 3\\sigma confidence interval based on 10 experiments across data splits.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/x4.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Subsequent stages of Macrodata Refinement remove nearly 90% of the documents originally in CommonCrawl. Notably, filtering and deduplication each result in a halving of the data available: around 50% of documents are discarded for not being English, 24% of remaining for being of insufficient quality, and 12% for being duplicates. We report removal rate ( grey ) with respect to each previous stage, and kept rate ( shade ) overall. Figure from Penedo et al., ( 2023 ) .",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/x5.png"
+  },
+  {
+    "filename": "fig_12.png",
+    "caption": "Figure 12: Human ratings can be at odds with NLP task performance. Variants of Falcon-40B finetuned on different datasets, horizontal lines for baselines from the OpenAI API and from human annotators. Star ratings collected blind, from a pool of 15 annotators across 250 unique prompts.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/figures/falcon-human-rating.png"
+  },
+  {
+    "filename": "fig_13.png",
+    "caption": "Figure 13: In all our evaluations, we rank possible answers by their logprobabilities according to the model given a prompt. In grey in the prompt, we highlight the alternative possibility of outlining each candidate explicitely in the prompt ( CH )–in line with Rae et al., ( 2021 ) , we find this beneficial for larger and more capable models, but detrimental for smaller ones.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/figures/prompt_me.png"
+  },
+  {
+    "filename": "fig_14.png",
+    "caption": "Figure 14: The Falcon series strongly improves at all scales against other models which have reported results with the EleutherAI Evaluation Harness. Models trained on RefinedWeb alone also reproduce the performance of the GPT-3 series, despite not using curated data. Aggregated zero-shot accuracy on HellaSwag, LAMBADA, Winogrande, PIQA, ARC, and OpenBookQA.",
+    "figure_number": "Figure 14",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2311.16867/assets/x6.png"
+  }
+]

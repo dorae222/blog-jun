@@ -1,0 +1,80 @@
+[
+  {
+    "filename": "fig_1_1.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x1.png"
+  },
+  {
+    "filename": "fig_1_2.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x2.png"
+  },
+  {
+    "filename": "fig_1_3.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x3.png"
+  },
+  {
+    "filename": "fig_1_4.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x4.png"
+  },
+  {
+    "filename": "fig_1_5.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x5.png"
+  },
+  {
+    "filename": "fig_1_6.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x6.png"
+  },
+  {
+    "filename": "fig_1_7.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/figures/swiss_flow_0.png"
+  },
+  {
+    "filename": "fig_1_8.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/figures/swiss_flow_half.png"
+  },
+  {
+    "filename": "fig_1_9.png",
+    "caption": "Figure 1: The proposed modeling framework trained on 2-d swiss roll data. The top row shows time slices from the forward trajectory q ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑞 superscript 𝐱 0 ⋯ 𝑇 q\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . The data\ndistribution (left) undergoes Gaussian diffusion, which gradually transforms it into an identity-covariance Gaussian (right). The middle row shows\nthe corresponding time slices from the trained reverse trajectory p ​ ( 𝐱 ( 0 ​ ⋯ ​ T ) ) 𝑝 superscript 𝐱 0 ⋯ 𝑇 p\\left(\\mathbf{x}^{(0\\cdots T)}\\right) . An identity-covariance Gaussian (right) undergoes a Gaussian diffusion\nprocess with learned mean and covariance functions, and is gradually transformed back into the data distribution (left).\nThe bottom row shows the drift term, 𝐟 μ ​ ( 𝐱 ( t ) , t ) − 𝐱 ( t ) subscript 𝐟 𝜇 superscript 𝐱 𝑡 𝑡 superscript 𝐱 𝑡 \\mathbf{f}_{\\mu}\\left(\\mathbf{x}^{(t)},t\\right)-\\mathbf{x}^{(t)} , for the same reverse diffusion process.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/figures/swiss_flow_1.png"
+  },
+  {
+    "filename": "fig_2_1.png",
+    "caption": "Figure 2: Binary sequence learning via binomial diffusion. A binomial diffusion model was trained on binary ‘heartbeat’ data, where a pulse occurs every 5th bin. Generated samples (left) are identical to the training data. The sampling procedure consists of initialization at independent binomial noise (right), which is then transformed into the data distribution by a binomial diffusion process, with trained bit flip probabilities. Each row contains an independent sample. For ease of visualization, all samples have been shifted so that a pulse occurs in the first column. In the raw sequence data, the first pulse is uniformly distributed over the first five bins.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x7.png"
+  },
+  {
+    "filename": "fig_2_2.png",
+    "caption": "Figure 2: Binary sequence learning via binomial diffusion. A binomial diffusion model was trained on binary ‘heartbeat’ data, where a pulse occurs every 5th bin. Generated samples (left) are identical to the training data. The sampling procedure consists of initialization at independent binomial noise (right), which is then transformed into the data distribution by a binomial diffusion process, with trained bit flip probabilities. Each row contains an independent sample. For ease of visualization, all samples have been shifted so that a pulse occurs in the first column. In the raw sequence data, the first pulse is uniformly distributed over the first five bins.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x8.png"
+  },
+  {
+    "filename": "fig_2_3.png",
+    "caption": "Figure 2: Binary sequence learning via binomial diffusion. A binomial diffusion model was trained on binary ‘heartbeat’ data, where a pulse occurs every 5th bin. Generated samples (left) are identical to the training data. The sampling procedure consists of initialization at independent binomial noise (right), which is then transformed into the data distribution by a binomial diffusion process, with trained bit flip probabilities. Each row contains an independent sample. For ease of visualization, all samples have been shifted so that a pulse occurs in the first column. In the raw sequence data, the first pulse is uniformly distributed over the first five bins.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x9.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure App.1: Samples from a diffusion probabilistic model trained on MNIST digits.\nNote that unlike many MNIST sample figures, these are true samples rather than the mean of the Gaussian or binomial distribution from which samples would be drawn.",
+    "figure_number": "",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/1503.03585/assets/x10.png"
+  }
+]

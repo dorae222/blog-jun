@@ -1,0 +1,110 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1: Empirical LR schedule. We found that lowering learning rate was helpful for avoiding instabilities.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2: Validation Perplexity. Our mid-flight LR\nchanges had clear effects on validation perplexity.",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3: Zero-shot NLP Evaluation Averages . Across a variety of tasks and model sizes, OPT largely matches the reported averages of GPT-3. However, performance varies greatly per task: see Appendix A .",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4: Multi-shot performance . OPT performance for one- and few-shot lags behind GPT-3 models, but performance depends heavily per task; see Appendix A .",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5: RealToxicityPompts . OPT-175B is more likely to generate toxic responses than either Davinci or PaLM. Consistent with prior work, toxicity rates increase as prompt toxicity increases.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x5.png"
+  },
+  {
+    "filename": "fig_6.png",
+    "caption": "Figure 6: Zero-shot NLP Evaluations . Full evaluations on all 16 NLP tasks, with comparisons where available. We find that across most tasks, GPT-3 models and OPT models perform similarly, but some tasks display highly erratic behavior.",
+    "figure_number": "Figure 6",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x6.png"
+  },
+  {
+    "filename": "fig_7.png",
+    "caption": "Figure 7: Multishot-shot NLP Evaluations . Full evaluations on all 16 NLP tasks, with comparisons to the GPT-3 reported performance. As with zero-shot, performance is roughly similar for most tasks, with some tasks demonstrating erratic behavior.",
+    "figure_number": "Figure 7",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/x7.png"
+  },
+  {
+    "filename": "fig_8.png",
+    "caption": "Figure 8: Poetry generation. We have observed the model can write entertaining poetry on topics such as dodos, samosas, and performance reviews. However, we struggled to get the model to observe rhyme or meter.",
+    "figure_number": "Figure 8",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/psc_poem_1.png"
+  },
+  {
+    "filename": "fig_9.jpg",
+    "caption": "Figure 9: Conversation generation. OPT-175B adopts a patriotic personality when prompted as the Statue of Liberty. However, the model also devolves into somewhat simple and linguistically repetitive generations further into the conversation.",
+    "figure_number": "Figure 9",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/chat_statue_of_liberty.jpg"
+  },
+  {
+    "filename": "fig_10.png",
+    "caption": "Figure 10: Basic few-shot translation example. OPT was not intentionally trained to be multilingual, but we found anecdotally it has limited success with simple translations in German, Spanish, French, and Chinese.",
+    "figure_number": "Figure 10",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/chinese_1.png"
+  },
+  {
+    "filename": "fig_11.png",
+    "caption": "Figure 11: Paper writing example. Prompting with \"1. Introduction\" generally yielded more interesting results compared to prompting with “Abstract.” Our prompt here was inspired by the first sentence of the seminal ResNet work He et al. ( 2016 ) .",
+    "figure_number": "Figure 11",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/depth_scaling_2.png"
+  },
+  {
+    "filename": "fig_12_1.png",
+    "caption": "Figure 12: Arithmetic. We observe mistakes when extending from addition to other operations.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/addition_1.png"
+  },
+  {
+    "filename": "fig_12_2.png",
+    "caption": "Figure 12: Arithmetic. We observe mistakes when extending from addition to other operations.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/subtraction_to_addition.png"
+  },
+  {
+    "filename": "fig_12_3.png",
+    "caption": "Figure 12: Arithmetic. We observe mistakes when extending from addition to other operations.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/multiply_wrong.png"
+  },
+  {
+    "filename": "fig_12_4.png",
+    "caption": "Figure 12: Arithmetic. We observe mistakes when extending from addition to other operations.",
+    "figure_number": "Figure 12",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/bad_division.png"
+  },
+  {
+    "filename": "fig_13_1.png",
+    "caption": "Figure 13: Python programming. Simply switching out a variable name can alter the generated output.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/str_length.png"
+  },
+  {
+    "filename": "fig_13_2.png",
+    "caption": "Figure 13: Python programming. Simply switching out a variable name can alter the generated output.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/fib1.png"
+  },
+  {
+    "filename": "fig_13_3.png",
+    "caption": "Figure 13: Python programming. Simply switching out a variable name can alter the generated output.",
+    "figure_number": "Figure 13",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2205.01068/assets/samples/fib2.png"
+  }
+]

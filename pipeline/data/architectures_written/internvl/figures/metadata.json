@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "fig_1.png",
+    "caption": "Figure 1 : Comparisons of different vision and vision-language foundation models. (a) indicates the traditional vision foundation model, e.g . ResNet [ 57 ] pre-trained on classification tasks. (b) represents the vision-language foundation models, e.g . CLIP [ 117 ] pre-trained on image-text pairs. (c) is our InternVL, which presents a workable way to align the large-scale vision foundation model ( i.e . , InternViT-6B) with the large language model and is versatile for both contrastive and generative tasks.",
+    "figure_number": "Figure 1",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2312.14238/assets/x1.png"
+  },
+  {
+    "filename": "fig_2.png",
+    "caption": "Figure 2 : Comparison results on various generic visual-linguistic tasks , including image classification, video classification, image-text retrieval, image captioning, and multi-modal dialogue. The proposed InternVL achieves the best performance on all these tasks. Note that only the models trained on public data are included.\n“IN” is an abbreviation for ImageNet [ 38 ] .",
+    "figure_number": "Figure 2",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2312.14238/assets/x2.png"
+  },
+  {
+    "filename": "fig_3.png",
+    "caption": "Figure 3 : The training strategy of the proposed InternVL model. It consists of three progressive stages, including vision-language contrastive training, vision-language generative training, and supervised fine-tuning. These stages effectively leverage public data from diverse sources, ranging from noisy image-text pairs on the web to high-quality caption, VQA, and multi-modal dialogue datasets.",
+    "figure_number": "Figure 3",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2312.14238/assets/x3.png"
+  },
+  {
+    "filename": "fig_4.png",
+    "caption": "Figure 4 : Different ways to use InternVL. By flexibly combining the vision encoder and the language middleware, InternVL can support various vision-language tasks, including contrastive tasks, generative tasks, and multi-modal dialogue.",
+    "figure_number": "Figure 4",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2312.14238/assets/x4.png"
+  },
+  {
+    "filename": "fig_5.png",
+    "caption": "Figure 5 : Panoramic overview of the datasets used in InternVL’s stage 1 and stage 2. During the training of stage 1 and stage 2, we utilize web-scale image-text data from a variety of sources to train our InternVL model, as shown in (a).\nTo assess InternVL’s capabilities in handling generic visual-linguistic tasks, we conducted extensive validations across a range of tasks and datasets, including (b) image classification, (c) video classification, (d) image-text retrieval, (e) video-text retrieval, (f) image captioning, and (g) semantic segmentation.",
+    "figure_number": "Figure 5",
+    "source_url": "https://ar5iv.labs.arxiv.org/html/2312.14238/assets/x5.png"
+  }
+]
