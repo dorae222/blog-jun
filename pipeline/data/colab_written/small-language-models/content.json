@@ -1,0 +1,20 @@
+{
+  "slug": "small-language-models",
+  "title": "Small Language Models: Compact Yet Powerful",
+  "title_ko": "Small Language Models: 작지만 강한 모델들",
+  "category_slug": "technique",
+  "summary": "1B~7B 규모의 Small Language Models(SLM) 트렌드를 분석합니다. Phi 시리즈, Gemma, Qwen2.5 등 최신 SLM의 설계 원칙을 정리하고, 데이터 품질 중심 학습, 증류, 양자화 등 SLM이 대형 모델에 근접하는 전략을 살펴봅니다.",
+  "tags": [
+    "small-language-model",
+    "slm",
+    "phi",
+    "gemma",
+    "qwen",
+    "distillation",
+    "quantization",
+    "edge-ai",
+    "on-device",
+    "data-quality"
+  ],
+  "is_pinned": false
+}
