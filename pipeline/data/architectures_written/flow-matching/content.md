@@ -9,6 +9,9 @@ Flow Matching(FM)은 2022년 Meta AI의 Yaron Lipman 등이 제안한 생성 모
 - **발표**: 2022년 10월, Meta AI Research
 - **라이선스**: MIT
 
+![Diffusion 경로와 Optimal Transport 경로의 궤적 비교 — 곡선 vs 직선](figures/fig_14_1.png)
+*Figure 1: Diffusion vs OT 궤적 비교 — Diffusion 경로(좌)는 곡선 궤적을 따르지만, Optimal Transport 경로(우)는 직선 궤적으로 더 효율적인 ODE 적분을 가능하게 한다. (Source: Lipman et al., 2022)*
+
 ## 아키텍처 상세
 
 ### 연속 정규화 흐름 (CNF)
@@ -49,6 +52,9 @@ $$u_t(x | x_1) = x_1 - x_0$$
 
 이 직선 궤적(straight path)은 적분 시 수치 오차가 최소화되어 4~8 NFE만으로도 고품질 샘플링이 가능하다.
 
+![OT 경로의 직선 궤적 — 노이즈에서 데이터로의 직접적 이동 경로](figures/fig_14_2.png)
+*Figure 2: OT-CFM의 직선 궤적 — 각 노이즈 샘플이 대응하는 데이터 포인트까지 직선으로 이동하여, ODE 적분 시 수치 오차가 최소화된다. (Source: Lipman et al., 2022)*
+
 | 경로 유형 | 수학적 정의 | NFE 효율 | 관련 모델 |
 |----------|-----------|---------|---------|
 | 직선 경로 (OT) | $x_t = (1-t)x_0 + tx_1$ | 4~8 | Flow Matching, Rectified Flow |
@@ -78,6 +84,9 @@ OT-CFM은 Rectified Flow(Xingchao Liu et al., 2022)와 수학적으로 동치이
 
 동일한 NFE 예산에서 OT-CFM이 DDPM보다 일관되게 우수한 FID를 달성한다.
 
+![NFE에 따른 수치 오차와 샘플 품질 비교 — FM-OT가 적은 NFE로 낮은 오차 달성](figures/fig_21_1.png)
+*Figure 3: NFE 효율성 비교 — OT 경로를 사용한 Flow Matching(FM-OT)이 Diffusion 기반 방법(SM-Dif, FM-Dif) 대비 적은 NFE에서도 낮은 수치 오차를 유지한다. (Source: Lipman et al., 2022)*
+
 ## 관련 모델 비교
 
 | 특성 | Flow Matching | DDPM | Score-SDE | Rectified Flow |
@@ -97,6 +106,9 @@ OT-CFM은 Rectified Flow(Xingchao Liu et al., 2022)와 수학적으로 동치이
 - **시간**: $t \sim \mathcal{U}[0, 1]$
 
 ## 실무 활용
+
+![OT-CFM으로 학습한 CNF의 ImageNet-128 비조건부 생성 샘플](figures/fig_1.png)
+*Figure 4: ImageNet-128 생성 결과 — OT 경로를 사용한 Flow Matching으로 학습한 CNF가 생성한 다양한 고품질 이미지 샘플. (Source: Lipman et al., 2022)*
 
 ### 1. 현대 대규모 모델의 학습 기법
 

@@ -6,6 +6,11 @@ Mistral 7B는 프랑스 AI 스타트업 Mistral AI가 2023년 10월 발표한 7.
 
 Mistral AI는 이 모델을 **Apache 2.0 라이선스**로 공개하여 완전한 상업적 자유를 부여했으며, 이후 Mixtral 8x7B, Mistral Large, Mistral NeMo 등으로 이어지는 Mistral 모델 라인업의 출발점이 되었다. 특히 Mistral AI는 Meta, Google, OpenAI 등 미국 기업 중심의 LLM 생태계에서 유럽 기반 스타트업이 경쟁력 있는 오픈 모델을 제시할 수 있음을 입증했다는 점에서도 주목할 만하다.
 
+다음 아키텍처 다이어그램은 Mistral 7B의 전체 구조와 핵심 설계 요소를 한눈에 보여준다.
+
+![Mistral 7B 전체 아키텍처 다이어그램 — SWA, GQA, SwiGLU FFN, RoPE, Rolling KV Cache 포함](figures/architecture.png)
+*Figure 1: Mistral 7B 아키텍처 개요 — 32개 Transformer 블록에 Sliding Window Attention + GQA, SwiGLU FFN, Pre-RMSNorm을 적용하고, Rolling KV Cache(윈도우 4096)로 메모리를 고정한다. (Jiang et al., 2023)*
+
 ## 배경 및 문제
 
 ### 표준 어텐션의 복잡도 문제
@@ -53,7 +58,7 @@ $$\text{SWA}(q_i, K, V) = \text{softmax}\left(\frac{q_i K_{[i-W+1:i]}^\top}{\sqr
 Mistral 7B에서 $W = 4096$을 사용한다. 단일 레이어의 어텐션 범위는 $W$로 제한되지만, 핵심 통찰은 **레이어를 거듭하면서 정보가 전파**된다는 것이다. 다음 그림은 Vanilla Attention과 SWA의 어텐션 행렬을 비교하고, 다층 구조에서 유효 컨텍스트가 확장되는 원리를 보여준다.
 
 ![Vanilla Attention과 Sliding Window Attention의 어텐션 행렬 비교 및 다층 구조를 통한 유효 컨텍스트 확장](figures/fig_1.png)
-*Vanilla Attention(좌)은 모든 이전 토큰을 참조하여 $O(n^2)$ 복잡도를 가지는 반면, SWA(중)는 윈도우 $W$ 내의 토큰만 참조한다. 우측 다이어그램은 레이어가 쌓일수록 각 토큰의 유효 컨텍스트(receptive field)가 $W \times L$까지 확장되는 과정을 나타낸다.*
+*Figure 2: Vanilla Attention(좌)은 모든 이전 토큰을 참조하여 $O(n^2)$ 복잡도를 가지는 반면, SWA(중)는 윈도우 $W$ 내의 토큰만 참조한다. 우측 다이어그램은 레이어가 쌓일수록 각 토큰의 유효 컨텍스트(receptive field)가 $W \times L$까지 확장되는 과정을 나타낸다. (Jiang et al., 2023)*
 
 #### 정보 전파의 수학적 분석
 
@@ -87,7 +92,7 @@ $$\text{cache\_k}[i \bmod W] = k_i, \quad \text{cache\_v}[i \bmod W] = v_i$$
 이 방식은 운영체제의 원형 버퍼(circular buffer) 자료구조와 동일한 원리를 사용한다. 새로운 토큰이 들어오면 가장 오래된 토큰의 KV를 덮어쓰므로, 추가적인 메모리 할당이나 해제가 필요 없다. 다음 그림은 SWA에서 각 토큰이 참조하는 영역을 Past, Cache, Current로 구분하여, 롤링 버퍼가 어떤 범위의 KV를 유지하는지 직관적으로 보여준다.
 
 ![SWA의 Past, Cache, Current 어텐션 영역 구분](figures/fig_4.png)
-*SWA에서 현재 토큰이 참조하는 영역을 세 가지로 분류한 도식. Past(노란색)는 이미 윈도우 밖으로 밀려난 토큰으로 더 이상 직접 참조할 수 없고, Cache(주황색)는 롤링 버퍼에 저장된 최근 $W$개의 토큰, Current(빨간색)는 현재 처리 중인 토큰이다. 롤링 버퍼는 Cache 영역만 유지함으로써 메모리를 고정시킨다.*
+*Figure 3: SWA에서 현재 토큰이 참조하는 영역을 세 가지로 분류한 도식. Past(노란색)는 이미 윈도우 밖으로 밀려난 토큰으로 더 이상 직접 참조할 수 없고, Cache(주황색)는 롤링 버퍼에 저장된 최근 $W$개의 토큰, Current(빨간색)는 현재 처리 중인 토큰이다. 롤링 버퍼는 Cache 영역만 유지함으로써 메모리를 고정시킨다. (Jiang et al., 2023)*
 
 이를 통해 시퀀스 길이에 무관하게 **KV 캐시 메모리가 $O(W)$로 일정**하게 유지된다.
 
@@ -103,7 +108,7 @@ $$\text{cache\_k}[i \bmod W] = k_i, \quad \text{cache\_v}[i \bmod W] = v_i$$
 시퀀스가 길어질수록 절감 효과가 극적으로 커진다. 특히 서빙 환경에서 동시에 여러 요청을 처리할 때, 고정된 KV 캐시 크기는 메모리 예산을 예측 가능하게 만들어 배치 스케줄링을 크게 단순화한다. 다음 그림은 배치 환경에서 롤링 버퍼가 여러 시퀀스에 걸쳐 어떻게 동작하는지를 타임스텝별로 시각화한다.
 
 ![롤링 버퍼 KV 캐시의 배치 처리 동작 시각화](figures/fig_3.png)
-*배치 내 서로 다른 길이의 시퀀스 3개에 대해 롤링 버퍼 KV 캐시가 동작하는 방식. 각 타임스텝($i$, $i+1$, $i+2$)에서 새 토큰(빨간색)이 추가되면 슬라이딩 윈도우가 오른쪽으로 이동하며, 윈도우 밖의 오래된 토큰은 캐시에서 자동으로 덮어쓰여진다. 시퀀스 길이가 다르더라도 각 시퀀스의 캐시 크기는 동일하게 $W$로 유지된다.*
+*Figure 4: 배치 내 서로 다른 길이의 시퀀스 3개에 대해 롤링 버퍼 KV 캐시가 동작하는 방식. 각 타임스텝($i$, $i+1$, $i+2$)에서 새 토큰(빨간색)이 추가되면 슬라이딩 윈도우가 오른쪽으로 이동하며, 윈도우 밖의 오래된 토큰은 캐시에서 자동으로 덮어쓰여진다. 시퀀스 길이가 다르더라도 각 시퀀스의 캐시 크기는 동일하게 $W$로 유지된다. (Jiang et al., 2023)*
 
 ### 프리필 청킹 (Chunked Prefill)
 
@@ -179,7 +184,7 @@ $$\text{SwiGLU}(x) = (\text{Swish}(xW_{gate}) \odot xW_{up}) W_{down}$$
 Mistral 7B의 가장 인상적인 결과는 7B라는 소형 규모로 자신보다 2배~5배 큰 모델들을 전방위로 능가한다는 점이다. 다음 그림은 MMLU, Knowledge, Reasoning, Comprehension, Math, Code 등 주요 카테고리에서 Mistral 7B와 Llama 모델 간의 벤치마크 성능을 비교한다.
 
 ![Mistral 7B와 Llama 모델 간 벤치마크 성능 비교](figures/fig_5.png)
-*MMLU, Knowledge, Reasoning, Comprehension(좌측)과 AGI Eval, Math, BBH, Code(우측) 카테고리별 성능 비교. Mistral 7B(주황색)가 Llama 2 7B(빨간색)는 물론 Llama 2 13B(하늘색), Llama 1 34B(초록색)까지 대부분의 벤치마크에서 능가한다. 특히 Math와 Code 영역에서의 격차가 두드러진다.*
+*Figure 5: MMLU, Knowledge, Reasoning, Comprehension(좌측)과 AGI Eval, Math, BBH, Code(우측) 카테고리별 성능 비교. Mistral 7B(주황색)가 Llama 2 7B(빨간색)는 물론 Llama 2 13B(하늘색), Llama 1 34B(초록색)까지 대부분의 벤치마크에서 능가한다. 특히 Math와 Code 영역에서의 격차가 두드러진다. (Jiang et al., 2023)*
 
 | 모델 | 파라미터 | MMLU | HellaSwag | WinoGrande | ARC-e | ARC-c | MBPP | GSM8K |
 |------|---------|------|-----------|------------|-------|-------|------|-------|
@@ -199,7 +204,7 @@ Mistral 7B의 가장 인상적인 결과는 7B라는 소형 규모로 자신보�
 이러한 성능 격차를 보다 직관적으로 표현한 것이 다음 그림이다. Mistral 7B의 성능이 Llama 2의 어느 규모에 해당하는지를 벤치마크별로 보여주어, 아키텍처 효율성의 의미를 한눈에 파악할 수 있다.
 
 ![Mistral 7B의 성능에 대응하는 Llama 2 동등 모델 크기](figures/fig_6.png)
-*벤치마크 카테고리별로 Mistral 7B와 동등한 성능을 내기 위해 필요한 Llama 2의 모델 크기를 나타낸 그래프. MMLU에서는 Llama 2 23B(3.3배), Reasoning에서는 Llama 2 38B(5.4배), Knowledge에서는 13B(1.9배), Comprehension에서는 21B(3배)에 해당하는 성능을 7B 규모에서 달성한다. 이는 Mistral 7B의 아키텍처 효율성이 단순한 모델 크기 증가 대비 3~5배의 파라미터 효율을 제공함을 의미한다.*
+*Figure 6: 벤치마크 카테고리별로 Mistral 7B와 동등한 성능을 내기 위해 필요한 Llama 2의 모델 크기를 나타낸 그래프. MMLU에서는 Llama 2 23B(3.3배), Reasoning에서는 Llama 2 38B(5.4배), Knowledge에서는 13B(1.9배), Comprehension에서는 21B(3배)에 해당하는 성능을 7B 규모에서 달성한다. 이는 Mistral 7B의 아키텍처 효율성이 단순한 모델 크기 증가 대비 3~5배의 파라미터 효율을 제공함을 의미한다. (Jiang et al., 2023)*
 
 ### 카테고리별 성능 분석
 
@@ -235,6 +240,11 @@ Mistral 7B의 가장 인상적인 결과는 7B라는 소형 규모로 자신보�
 | **Mistral 7B Instruct** | **6.84** | SFT + DPO | RLHF 없음 |
 
 Mistral 7B Instruct는 RLHF 파이프라인 없이 SFT와 DPO만으로도 RLHF를 적용한 Llama 2 Chat 모델들보다 높은 대화 품질을 보인다. 이는 강화학습 기반 정렬(RLHF)의 복잡한 파이프라인 없이도 DPO와 같은 직접적 최적화 방법이 효과적일 수 있음을 시사한다.
+
+아래 그림은 실제 사용자 평가 환경에서 Mistral 7B Instruct가 LLaMA 2 13B Chat과 직접 비교된 결과를 보여준다. 동일한 질문에 대해 두 모델의 응답을 나란히 비교하면 Mistral 7B Instruct의 응답 품질 우위를 확인할 수 있다.
+
+![Mistral 7B Instruct와 LLaMA 2 13B Chat의 실제 대화 품질 비교](figures/fig_9.png)
+*Figure 7: Chatbot Arena 스타일의 블라인드 평가에서 Mistral 7B Instruct v0.1과 LLaMA 2 13B Chat의 응답 비교. 7B 규모의 Mistral Instruct가 거의 2배 큰 LLaMA 2 13B Chat을 상대로 승리하며, SFT + DPO 정렬 전략의 효과를 실증한다. (Jiang et al., 2023)*
 
 ## 의의 및 한계
 

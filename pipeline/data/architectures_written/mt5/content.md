@@ -67,6 +67,16 @@ outputs = model.generate(**inputs, max_length=150)
 print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ```
 
+다음 그림은 mC4 데이터셋의 언어별 페이지 수와 샘플링 비율 간의 관계를 보여준다.
+
+![mC4 데이터셋의 언어별 분포와 샘플링 비율](figures/fig_1.png)
+*Figure 2: mC4 언어별 페이지 수(왼쪽 축)와 샘플링 지수에 따른 학습 비율(오른쪽 축) — 최종 모델은 alpha=0.3을 사용하여 저자원 언어의 과소표현 문제를 완화한다. (Source: Xue et al., 2021)*
+
+모델 규모가 커질수록 제로샷 크로스-링구얼 전이 능력이 향상되는 것을 다음 그림에서 확인할 수 있다.
+
+![TyDi QA 태스크에서의 모델 크기별 성능 비교](figures/fig_2.png)
+*Figure 3: TyDi QA GoldP 태스크의 평균 F1 — 모델 규모가 커질수록 Zero-Shot 성능이 In-Language Multitask에 수렴하여, 대형 모델에서 크로스-링구얼 전이의 효과가 극대화됨을 보여준다. (Source: Xue et al., 2021)*
+
 ## 핵심 혁신
 
 ### 1. Multilingual

@@ -73,6 +73,11 @@ $O(N^2)$ 문제를 해결하기 위해 다양한 근사 어텐션 방법이 제�
 
 FlashAttention의 핵심 통찰은 **FLOP 수가 아니라 IO가 실제 병목**이라는 점입니다. 따라서 같은 FLOP을 수행하더라도 IO를 줄이면 실질적인 속도 향상을 얻을 수 있습니다.
 
+아래 아키텍처 다이어그램은 표준 어텐션과 FlashAttention의 HBM 접근 패턴 차이를 직관적으로 비교합니다. 표준 어텐션은 7단계에 걸쳐 $O(N^2)$의 HBM 접근이 발생하는 반면, FlashAttention은 타일링과 온라인 소프트맥스를 결합하여 $N \times N$ 행렬을 HBM에 구체화하지 않습니다.
+
+![표준 어텐션과 FlashAttention의 연산 흐름 및 GPU 메모리 계층 구조 비교](figures/architecture.png)
+*Figure 3: 표준 어텐션 vs FlashAttention 연산 흐름 비교 -- 표준 어텐션은 Q, K, V를 HBM에서 반복적으로 읽고 쓰며 O(N^2)의 메모리 접근이 발생하지만, FlashAttention은 블록 단위로 SRAM에서 계산을 완료하여 O(N^2 d / M)으로 IO를 절감한다. (Dao et al., 2022)*
+
 ## 핵심 아이디어
 
 ### 타일링 (Tiling)
@@ -181,6 +186,11 @@ Algorithm: FlashAttention Forward
 - 마스킹 없는 블록: 일반적으로 계산
 
 인과적 마스킹에서는 어텐션 행렬의 상삼각 부분이 모두 마스킹되므로, 전체 블록 중 약 절반을 건너뛸 수 있습니다. 이로 인해 인과적 어텐션에서는 추가적인 약 2배의 속도 향상이 가능합니다.
+
+다음 그림은 A100 GPU에서 인과적 마스킹을 포함한 다양한 구성에서의 FlashAttention 속도 향상을 보여줍니다. 특히 인과적 마스크(Causal Mask)를 적용한 경우 시퀀스 길이 2048에서 3배 이상의 속도 향상이 관찰되어, 자기 회귀 모델에서의 실질적 효과를 확인할 수 있습니다.
+
+![A100 GPU에서 인과적 마스킹 포함 FlashAttention 속도 향상 비교](figures/p29_fig01.jpeg)
+*Figure 4: A100 GPU에서의 FlashAttention 속도 향상 (d=128) -- Dropout+Padding, Padding 마스킹, 인과적(Causal) 마스크, 마스킹 없음 등 다양한 구성별 벤치마크. 인과적 마스크 적용 시 시퀀스 길이 증가에 따라 속도 향상이 가장 크게 나타난다. (Dao et al., 2022)*
 
 ### 역전파 (Backward Pass) - 재계산 전략
 

@@ -98,10 +98,16 @@ def import_results():
     created = 0
     skipped = 0
 
+    # data_written/으로 이관 완료된 카테고리는 스킵
+    SKIP_PARENT_CODES = {"30.Data"}
+
     for path, result in results.items():
         cat_info = catalog.get(path, {})
         parent_code = cat_info.get("parent_code", "")
         subcategory = cat_info.get("subcategory", "")
+
+        if parent_code in SKIP_PARENT_CODES:
+            continue
 
         # Slug 생성
         slug = result.get("title", "").lower().replace(" ", "-")[:300]

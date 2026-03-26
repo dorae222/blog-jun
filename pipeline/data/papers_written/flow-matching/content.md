@@ -2,6 +2,11 @@
 
 Flow Matching(FM)은 Lipman et al.이 ICLR 2023에서 제안한 생성 모델 학습 프레임워크로, 연속 정규화 플로우(Continuous Normalizing Flows, CNF)를 **시뮬레이션 없이** 효율적으로 학습하는 방법이다. 기존 CNF 학습은 ODE 적분을 통한 시뮬레이션이 필요해 계산 비용이 컸지만, Flow Matching은 조건부 확률 경로를 활용해 이 문제를 우회한다. 특히 최적 수송(Optimal Transport, OT) 경로를 적용하면 노이즈에서 데이터까지의 궤적이 직선에 가까워져 적은 함수 평가 횟수(NFE)로도 고품질 샘플링이 가능하다. 이 방법론은 이후 Stable Diffusion 3, Flux 등 최신 대규모 이미지 생성 모델의 이론적 기반이 되었다.
 
+다음은 Flow Matching(OT 경로)으로 학습한 CNF가 생성한 ImageNet 128x128 샘플로, 시뮬레이션 없는 학습만으로도 다양하고 사실적인 이미지를 생성할 수 있음을 보여준다.
+
+![Flow Matching OT 경로로 생성한 ImageNet 128x128 샘플](figures/fig_1.png)
+*Figure 1: Flow Matching(OT 경로)으로 학습한 CNF의 ImageNet 128x128 무조건부 생성 샘플 — 동물, 사물, 풍경 등 다양한 카테고리에서 높은 품질의 이미지를 생성한다. (Lipman et al., 2023)*
+
 ## 배경 및 문제
 
 ### 연속 정규화 플로우 (CNF)
@@ -100,6 +105,14 @@ $$u_t(x|x_1) = x_1 - x_0$$
 
 이를 Diffusion 경로의 조건부 벡터 필드와 비교하면 차이가 더 명확하다. VP-SDE(DDPM) 경로에서는 $u_t(x|x_1) = \frac{\dot{\sigma}_t}{\sigma_t}(x - \mu_t) + \dot{\mu}_t$로 시간에 복잡하게 의존하는 반면, OT 경로에서는 상수로 단순화된다.
 
+경로 선택의 효과는 2D checkerboard 데이터에서 더욱 직관적으로 확인할 수 있다. 아래는 Score-Diffusion과 FM-OT가 가우시안 소스에서 checkerboard 분포를 학습하는 과정을 시각화한 것이다.
+
+![Score-Diffusion의 2D checkerboard 궤적 진화](figures/fig_15_1.png)
+*Figure 2: Score-Diffusion(SM-Dif)의 checkerboard 학습 궤적 — 시간이 흐르면서 천천히 패턴이 형성되며, 중간 단계에서 분포가 불안정하게 변화한다. (Lipman et al., 2023)*
+
+![FM-OT의 2D checkerboard 궤적 진화](figures/fig_15_11.png)
+*Figure 3: FM-OT의 checkerboard 학습 궤적 — OT 경로는 초기부터 빠르게 checkerboard 패턴을 형성하며, 안정적이고 효율적인 분포 변환을 수행한다. (Lipman et al., 2023)*
+
 ### 학습 알고리즘 요약
 
 OT-CFM의 학습 과정은 놀라울 정도로 간단하다.
@@ -151,6 +164,11 @@ score\_dif 방법은 학습 초기에 1000 NFE 이상을 요구하다가 점차 
 | DDIM | 100 | 4.67 |
 | Flow Matching (Gaussian) | 100 | 3.08 |
 | **OT-CFM** | **10** | **3.25** |
+
+다음 그래프는 NFE에 따른 수치 적분 오차를 비교한 것으로, FM-OT가 적은 NFE에서도 현저히 낮은 오차를 달성함을 보여준다.
+
+![NFE에 따른 수치 적분 오차 비교](figures/fig_21_1.png)
+*Figure 4: ImageNet 32x32에서 NFE에 따른 수치 적분 오차 — FM-OT(녹색)는 SM-Dif(파랑) 및 FM-Dif(주황) 대비 모든 NFE 구간에서 현저히 낮은 오차를 보인다. NFE=10에서도 다른 방법의 NFE=100 수준 오차를 달성한다. (Lipman et al., 2023)*
 
 OT-CFM은 DDPM의 1/100 NFE로 비슷한 FID를 달성한다. 이는 직선 경로가 곡선 경로에 비해 수치 적분 오차가 작기 때문이다. 특히 NFE=10이라는 것은 단 10번의 신경망 forward pass만으로 샘플 하나를 생성할 수 있음을 의미하며, 이는 실시간 생성에 매우 유리한 조건이다.
 

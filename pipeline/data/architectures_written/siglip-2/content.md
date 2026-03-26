@@ -44,6 +44,11 @@ $$\mathcal{L}_\text{total} = \mathcal{L}_\text{sigmoid} + \alpha \cdot \mathcal{
 
 이 조합은 전역적 시각-언어 정렬(대조 학습)과 지역적 시각 패턴 학습(MIM)을 동시에 달성한다.
 
+다음 그림은 SigLIP 2의 4가지 핵심 혁신 — 시그모이드 손실, NaViT 가변 해상도, MIM 보조 손실, SO400M 아키텍처 — 을 상세히 보여준다.
+
+![SigLIP 2의 핵심 혁신 상세도](figures/detail.png)
+*Figure 2: SigLIP 2 핵심 혁신 — Sigmoid vs Softmax 손실 비교(좌상), NaViT 가변 해상도 패치 처리(상단 중앙), 다국어 및 다운스트림 성능(우상), MIM 보조 손실(하단 중앙), SO400M 최적화 아키텍처(우하). (Source: Tschannen et al., 2025)*
+
 ## 핵심 혁신
 
 1. **배치 크기 독립성**: 시그모이드 손실로 배치 크기에 대한 민감도를 제거하여, 소규모 배치에서도 안정적 학습이 가능하다.

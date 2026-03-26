@@ -8,6 +8,9 @@ Flamingo의 가장 중요한 기여는 **인터리브(interleaved) 이미지-텍
 
 논문: [Flamingo: a Visual Language Model for Few-Shot Learning](https://arxiv.org/abs/2204.14198)
 
+![Flamingo 전체 아키텍처 — Vision Encoder, Perceiver Resampler, Gated Cross-Attention 구조](figures/architecture.png)
+*Figure 1: Flamingo 전체 아키텍처 — 고정된 Vision Encoder(NFNet-F6)가 시각 특징을 추출하고, Perceiver Resampler가 64개 토큰으로 압축한 뒤, Gated Cross-Attention을 통해 고정된 LLM(Chinchilla 70B)에 주입하는 구조. (Source: Alayrac et al., 2022)*
+
 ## 아키텍처 상세
 
 ### 전체 구조
@@ -19,6 +22,9 @@ Flamingo는 세 가지 핵심 컴포넌트로 구성된다:
 3. **LLM + Gated Cross-Attention(Partially Trainable)**: Chinchilla 70B
 
 ### Perceiver Resampler
+
+![Perceiver Resampler 상세 구조 — 학습 가능한 잠재 쿼리가 시각 특징에서 정보를 추출하는 과정](figures/fig_5.png)
+*Figure 2: Perceiver Resampler 모듈 — 가변 크기의 시공간 시각 특징을 고정된 수의 출력 토큰으로 매핑한다. 학습된 잠재 벡터가 쿼리 역할을 하고, 시각 특징과 잠재 벡터의 결합이 키/값으로 사용된다. (Source: Alayrac et al., 2022)*
 
 Perceiver Resampler는 임의 크기의 이미지/비디오 특징을 **고정된 64개의 시각 토큰**으로 압축한다:
 
@@ -39,6 +45,9 @@ $$\text{output} = \text{FFN}(y)$$
 - **결과**: LLM의 언어 능력을 손상시키지 않으면서 멀티모달 능력을 안정적으로 추가
 
 모든 Gated Cross-Attention 레이어가 아닌, LLM 레이어 중 일부에만 삽입된다 (4개 레이어마다 1개).
+
+![Flamingo 아키텍처 개요 — 인터리브 이미지-텍스트 입력과 Gated Cross-Attention 삽입 구조](figures/fig_3.png)
+*Figure 3: Flamingo 아키텍처 개요 — 인터리브된 이미지-텍스트 시퀀스를 입력받아, 고정된 LM 블록 사이에 삽입된 Gated XATTN-DENSE 레이어를 통해 시각 정보를 반영한다. (Source: Alayrac et al., 2022)*
 
 ### 인터리브 멀티모달 처리
 
@@ -73,6 +82,9 @@ $$\text{output} = \text{FFN}(y)$$
 ### 3. 인터리브 멀티모달 소수샷 학습
 
 이미지와 텍스트가 자유롭게 섞인 시퀀스를 처리하는 최초의 대규모 모델로, "프롬프트에 예제를 제공하면 새 태스크를 수행"하는 GPT-3의 ICL 패러다임을 멀티모달로 확장했다.
+
+![Gated Cross-Attention Dense 레이어 상세 구조](figures/fig_4.png)
+*Figure 4: Gated XATTN-DENSE 레이어 — 비전 특징에서 키/값을, 언어 입력에서 쿼리를 얻는 교차 어텐션 레이어. 게이팅을 통해 초기화 시 LM의 원래 동작을 유지하여 안정적인 학습을 보장한다. (Source: Alayrac et al., 2022)*
 
 ## 벤치마크/성능
 

@@ -8,6 +8,11 @@ Chameleon은 2024년 5월 Meta가 발표한 조기 융합(early-fusion) 방식�
 
 논문: [Chameleon: Mixed-Modal Early-Fusion Foundation Models](https://arxiv.org/abs/2405.09818)
 
+다음 다이어그램은 Chameleon의 조기 융합 아키텍처와 혼합 모달리티 생성 과정을 보여준다.
+
+![Chameleon 아키텍처 — 혼합 모달리티 사전학습과 생성 과정](figures/fig_1.png)
+*Figure 1: Chameleon 아키텍처 개요 — (a) 이미지와 텍스트를 모두 이산 토큰으로 변환하여 동일한 자기회귀 트랜스포머로 사전학습하고, (b) 텍스트와 이미지를 자유롭게 인터리브하여 생성한다. (Source: Team et al., 2024)*
+
 ## 아키텍처 상세
 
 ### 전체 구조
@@ -42,7 +47,15 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{\text{norm}(Q) \cdot \te
 
 3. **Z-loss 정규화**: 로짓 크기가 지나치게 커지는 것을 방지하는 보조 손실
 
-이 기법들이 없으면 이미지-텍스트 혼합 학습 시 학습 손실이 발산하는 현상이 빈번하게 발생한다.
+이 기법들이 없으면 이미지-텍스트 혼합 학습 시 학습 손실이 발산하는 현상이 빈번하게 발생한다. 아래 그래프는 QK-Norm과 dropout 적용 여부에 따른 출력 norm의 변화를 보여준다.
+
+![QK-Norm과 dropout 적용에 따른 출력 norm 안정성 비교](figures/fig_5_1.png)
+*Figure 2: 학습 안정성 분석 — QK-Norm과 dropout을 모두 적용했을 때만 출력 norm이 안정적으로 유지되며, 미적용 시 norm이 제어 불가능하게 증가하여 학습 발산의 전조가 된다. (Source: Team et al., 2024)*
+
+Norm 재정렬 또한 학습 안정성에 결정적 역할을 한다.
+
+![Norm 재정렬 적용 전후의 학습 손실 비교](figures/fig_12.png)
+*Figure 3: Norm 재정렬 효과 — 정규화 순서를 재배치하면 학습 초기의 급격한 손실 스파이크가 완전히 제거되어 안정적인 수렴이 가능해진다. (Source: Team et al., 2024)*
 
 ### 모델 사양
 
@@ -98,6 +111,16 @@ Chameleon은 처음부터 이미지와 텍스트를 동일한 토큰 공간에�
 
 1. **VQ-VAE 토크나이저 학습**: Make-A-Scene 기반의 이미지 토크나이저를 먼저 학습 (8192 코드북, 1024 토큰/이미지)
 2. **통합 자기회귀 모델 학습**: 이미지 토큰과 텍스트 토큰을 혼합한 데이터로 사전학습
+
+다음은 7B와 34B 모델의 학습 손실 곡선이다.
+
+![Chameleon 7B와 34B의 학습 손실 곡선](figures/fig_10.png)
+*Figure 4: 학습 손실 곡선 — 34B 모델이 7B 대비 일관되게 낮은 학습 손실을 달성하며, 약 600K 스텝에 걸쳐 안정적으로 수렴한다. (Source: Team et al., 2024)*
+
+Chameleon은 다양한 유형의 인터리브 이미지-텍스트 생성을 지원한다.
+
+![Chameleon의 인터리브 이미지-텍스트 생성 카테고리 분포](figures/fig_19.png)
+*Figure 5: 인터리브 생성 태스크 분포 — Brainstorming(18.6%), Explanation(14.4%), How-to(12.5%) 등 다양한 카테고리에서 이미지와 텍스트를 혼합 생성하는 능력을 보여준다. (Source: Team et al., 2024)*
 
 학습 데이터: 2조 토큰 이상의 텍스트와 수십억 장의 이미지를 이산 토큰으로 변환한 혼합 데이터
 옵티마이저: AdamW

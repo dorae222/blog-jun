@@ -92,7 +92,19 @@ DiffuSeq의 가장 두드러진 특성 중 하나는 품질(quality)과 다양�
 
 CFG 가이던스 스케일 $s$를 높이면 BLEU 점수(품질)가 올라가지만 다양성(div-4)은 감소하고, $s$를 낮추면 반대 경향을 보인다. GPT2-base, GPT2-large 같은 자기회귀 모델은 이러한 연속적인 제어가 불가능하여 그래프 상에서 고정된 점으로 나타난다.
 
-MBR 디코딩을 적용했을 때 후보 수 $|\mathcal{S}|$가 증가할수록 일관된 BLEU 향상이 관찰되었으며, 이는 확산 모델이 생성하는 다양한 샘플들 사이에서 최적의 대표 샘플을 효과적으로 선별할 수 있음을 보여준다.
+MBR 디코딩의 효과는 후보 수 $|\mathcal{S}|$에 따른 BLEU 변화에서 명확히 확인된다. 아래 그림은 Text Simplification과 Paraphrase 태스크에서 후보 수를 1에서 20으로 늘렸을 때의 BLEU 향상을 보여준다.
+
+![MBR 디코딩의 후보 수에 따른 BLEU 향상](figures/fig_3_1.png)
+*Figure 6: MBR 디코딩에서 후보 수 $|\mathcal{S}|$에 따른 BLEU 변화 — Text Simplification(좌)과 Paraphrase(우) 태스크에서 DiffuSeq는 후보 수가 증가할수록 일관되게 BLEU가 향상되며, GPT2 베이스라인을 능가한다. (Gong et al., 2023)*
+
+이러한 BLEU 향상은 확산 모델이 생성하는 다양한 샘플들 사이에서 최적의 대표 샘플을 효과적으로 선별할 수 있음을 보여준다.
+
+### 생성 과정에서의 품질 변화
+
+확산 과정의 진행에 따라 BLEU와 다양성(div-4) 점수가 어떻게 변화하는지 추적하면, DiffuSeq의 반복적 정제 메커니즘을 직관적으로 이해할 수 있다.
+
+![생성 과정 진행에 따른 BLEU/div-4 변화](figures/fig_6_1.png)
+*Figure 7: Text Simplification 태스크에서 생성 과정 진행(%)에 따른 BLEU(파란)와 div-4(주황) 변화 — 초기 스텝에서 다양성이 급격히 형성되고, 이후 점진적으로 BLEU가 수렴하며 품질이 안정화된다. (Gong et al., 2023)*
 
 ### 추론 속도와 품질
 

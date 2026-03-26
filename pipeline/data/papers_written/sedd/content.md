@@ -55,12 +55,22 @@ text8에서 SEDD-Absorb는 약 **33 BPD(bits per dimension)**를 달성하였으
 ![SEDD-Absorbing의 샘플링 반복 횟수에 따른 생성 퍼플렉시티](figures/fig_2.png)
 *네트워크 평가 횟수가 증가할수록 SEDD-A의 생성 퍼플렉시티가 꾸준히 감소하며, 약 1000회 이상의 평가에서 GPT-2 Small/Medium과 동등하거나 더 낮은 퍼플렉시티를 달성한다. 이산 확산 모델이 자기회귀 모델에 필적하는 생성 품질을 보인 최초의 결과이다.*
 
+모델 크기에 따른 SEDD의 스케일링 특성도 중요한 결과이다. 아래 그래프에서 SEDD-A Medium 모델은 충분한 샘플링 스텝에서 GPT-2 Small/Medium 수준을 뛰어넘는 퍼플렉시티를 달성하며, 모델 크기 증가에 따른 일관된 성능 개선을 보여준다.
+
+![SEDD-A Small/Medium 모델의 네트워크 평가 횟수별 생성 퍼플렉시티](figures/fig_3.png)
+*SEDD-A Small(파랑)과 Medium(주황) 모델의 생성 퍼플렉시티 -- 네트워크 평가 횟수가 증가할수록 퍼플렉시티가 지속적으로 감소하며, Medium 모델은 약 1000회 평가에서 GPT-2 Small/Medium(별 마커)보다 낮은 퍼플렉시티를 달성한다. (Lou et al., 2024)*
+
 아래 그래프는 absorbing 커널에서 다양한 샘플러(analytic, euler)와 모델 크기(small, medium)에 따른 퍼플렉시티 변화를 종합적으로 보여준다.
 
 ![SEDD Absorbing의 샘플러별, 모델 크기별 생성 퍼플렉시티 비교](figures/fig_6.png)
 *Analytic 샘플러(원형 마커)가 Euler 샘플러(삼각 마커)보다 전반적으로 낮은 퍼플렉시티를 달성한다. Medium 모델(주황)은 Small 모델(파랑)보다 일관되게 우수하며, 충분한 샘플링 스텝에서 GPT-2(별 마커) 대비 동등 이상의 성능을 보인다. Uniform 커널(점선)은 absorb 커널(실선)에 비해 성능이 떨어지는 것도 확인할 수 있다.*
 
 샘플링 측면에서도 tau-leaping 샘플러는 자기회귀 디코딩보다 병렬 처리가 가능하여, 특히 배치 생성 시나리오에서 처리량(throughput) 우위를 가진다.
+
+Uniform 커널의 경우에도 유사한 경향이 관찰되지만, Absorbing 커널에 비해 전반적으로 높은 퍼플렉시티를 보인다. 아래 그래프는 이 차이를 명확히 보여준다.
+
+![SEDD Uniform 커널의 샘플러별, 모델 크기별 생성 퍼플렉시티](figures/fig_7.png)
+*SEDD Uniform 커널의 생성 퍼플렉시티 -- Absorbing 커널(Figure 4)과 동일한 설정에서 Uniform 커널은 전반적으로 더 높은 퍼플렉시티를 보인다. 이는 마스킹 기반 흡수 전이가 균등 전이보다 이산 텍스트 데이터에 더 적합한 구조임을 뒷받침한다. (Lou et al., 2024)*
 
 ## 의의 및 한계
 

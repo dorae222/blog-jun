@@ -81,6 +81,21 @@ $$\text{Generate Code} \xrightarrow{\text{execute}} \text{Result/Error} \xrighta
 - `TERMINATE`: 종료 조건 충족 시에만 인간 확인
 - `NEVER`: 완전 자동 실행
 
+다음 그림은 AutoGen의 전체 프레임워크를 보여주며, 에이전트 커스터마이징, 대화 패턴, 실제 대화 흐름을 설명한다.
+
+![AutoGen 프레임워크 개요](figures/fig_1.png)
+*Figure 2: AutoGen 프레임워크 개요 — 커스터마이징 가능한 Conversable Agent(좌), Joint/Hierarchical Chat 등 유연한 대화 패턴(중앙), 자동 코드 실행과 오류 수정이 이루어지는 실제 에이전트 대화 예시(우). (Source: Wu et al., 2023)*
+
+아래는 AutoGen의 ConversableAgent 계층 구조와 개발자 코드, 실행 흐름 간의 관계를 상세히 보여준다.
+
+![AutoGen 에이전트 계층 구조와 대화 흐름](figures/fig_2.png)
+*Figure 3: AutoGen 프로그래밍 모델 — ConversableAgent를 상속하는 AssistantAgent/UserProxyAgent/GroupChatManager(상), 에이전트 정의 및 대화 시작 코드(중), send/receive/generate_reply 기반의 자동 대화 실행 흐름(하). (Source: Wu et al., 2023)*
+
+다음은 AutoGen을 활용한 6가지 다양한 애플리케이션 구성 예시이다.
+
+![AutoGen 기반 6가지 애플리케이션 예시](figures/fig_3.png)
+*Figure 4: AutoGen으로 구축한 다양한 애플리케이션 — 수학 문제 풀이(A1), RAG 기반 Q&A(A2), ALFWorld 시뮬레이션(A3), 멀티 에이전트 코딩(A4), 동적 그룹 채팅(A5), 대화형 체스(A6). (Source: Wu et al., 2023)*
+
 ## 핵심 혁신
 
 1. **대화 기반 컴퓨테이션**: 에이전트 간 대화를 연산의 기본 단위로 정의함으로써, 복잡한 워크플로를 자연스러운 대화 흐름으로 구현할 수 있게 했다. 이는 전통적인 파이프라인/DAG 기반 워크플로 엔진과 근본적으로 다른 접근이다.

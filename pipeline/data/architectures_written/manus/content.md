@@ -12,7 +12,10 @@ Manus는 중국 스타트업 Manus AI(Monica.im 팀 출신)가 2025년 3월 공�
 
 Manus의 등장이 보여준 핵심 교훈은 **"에이전트의 성공은 모델 크기가 아닌 시스템 설계에 달려 있다"**는 것이다. Manus는 자체 모델을 학습하지 않고 Claude 3.5 Sonnet, GPT-4o 등 기존 상용 모델을 조합하여 활용하면서도, 정교한 오케스트레이션과 도구 통합을 통해 최고 수준의 성능을 달성했다.
 
-![Architecture](figures/architecture.svg)
+아래 다이어그램은 Manus의 계층적 멀티 에이전트 아키텍처를 보여준다. Orchestrator를 중심으로 브라우저, 코딩, 파일 에이전트가 클라우드 가상 컴퓨팅 환경에서 협업하는 구조이다.
+
+![Manus 계층적 멀티 에이전트 아키텍처 — Orchestrator와 서브에이전트 구조](figures/architecture.png)
+*Figure 1: Manus 아키텍처 — Orchestrator(중앙 계획), Browser Agent, Coding Agent, File Agent가 클라우드 가상 컴퓨팅 환경에서 실시간 스트리밍과 함께 협업하는 계층적 멀티 에이전트 구조. (Manus AI)*
 
 ## 아키텍처 상세
 
@@ -64,6 +67,11 @@ API가 있으면 더 빠르고 안정적인 API를 사용하고, 없으면 Chrom
 ### 실행 환경
 
 클라우드 기반 가상 머신(풀 OS, 브라우저, 터미널 포함)에서 실행되어 수 시간 단위의 장시간 작업도 사용자 PC 부담 없이 처리한다. SSE를 통해 각 에이전트의 추론 과정, 중간 결과, 스크린샷을 실시간 스트리밍한다.
+
+다음 다이어그램은 Observe-Think-Act 루프, GUI+API 이중 자동화 전략, 이원화된 메모리 시스템, MoA(Mixture of Agents) 패턴 등 Manus의 핵심 혁신을 상세히 보여준다.
+
+![Manus Observe-Think-Act 루프 및 멀티 에이전트 오케스트레이션 상세](figures/detail.png)
+*Figure 2: Manus 핵심 메커니즘 — Observe-Think-Act 의사결정 루프, GUI/API 이중 자동화 전략, 단기/장기 이원 메모리 시스템, MoA 패턴(Claude 3.5 Sonnet 오케스트레이터 + 태스크별 LLM 라우팅), 그리고 AutoGPT→Manus 에이전트 진화 타임라인. (Manus AI)*
 
 ## 핵심 혁신
 

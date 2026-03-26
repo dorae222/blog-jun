@@ -10,6 +10,11 @@ Qwen2-VL은 2024년 9월 Alibaba가 발표한 시각-언어 모델이다. 두 �
 
 논문: [Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution](https://arxiv.org/abs/2409.12191)
 
+아래 다이어그램은 Qwen2-VL의 전체 아키텍처를 보여준다. 다양한 해상도의 이미지와 비디오를 네이티브 해상도로 입력받아 각각에 비례하는 시각 토큰으로 처리하는 구조가 핵심이다.
+
+![Qwen2-VL 아키텍처 — 네이티브 해상도 입력과 동적 토큰 처리](figures/fig_2.jpg)
+*Figure 1: Qwen2-VL 아키텍처 개요 — Vision Encoder가 다양한 해상도의 이미지/비디오를 네이티브 해상도 그대로 처리하여 비례적인 토큰 수를 생성하고, QwenLM Decoder가 통합 시퀀스로 처리한다. (Source: Wang et al., 2024)*
+
 ## 아키텍처 상세
 
 ### 전체 구조
@@ -51,7 +56,10 @@ $$\text{RoPE}_{\text{image}}(x_{i,j}) = \text{RoPE}(x, \text{height}=i, \text{wi
 **비디오**: 3D 위치 (행, 열, 시간)
 $$\text{RoPE}_{\text{video}}(x_{i,j,t}) = \text{RoPE}(x, \text{height}=i, \text{width}=j, \text{temporal}=t)$$
 
-RoPE의 주파수 차원을 세 그룹으로 분할하여 각각 height, width, temporal 위치를 인코딩한다. 텍스트의 경우 세 차원이 동일한 값을 가져 1D로 동작한다.
+RoPE의 주파수 차원을 세 그룹으로 분할하여 각각 height, width, temporal 위치를 인코딩한다. 텍스트의 경우 세 차원이 동일한 값을 가져 1D로 동작한다. 아래 그림은 M-RoPE가 비디오와 텍스트의 위치 정보를 통합하는 방식을 보여준다.
+
+![M-RoPE의 temporal, height, width 차원 분리 인코딩](figures/fig_3.png)
+*Figure 2: M-RoPE 구조 — RoPE의 주파수 차원을 temporal, height, width 세 축으로 분해하여 이미지(2D), 비디오(3D), 텍스트(1D)의 위치 정보를 하나의 통합 프레임워크로 처리한다. (Source: Wang et al., 2024)*
 
 | 구성 요소 | Qwen2-VL-72B |
 |-----------|-------------|
@@ -66,7 +74,10 @@ RoPE의 주파수 차원을 세 그룹으로 분할하여 각각 height, width, 
 
 ### 1. 네이티브 동적 해상도
 
-이미지를 인위적으로 분할하지 않고 원본 해상도에 비례한 토큰으로 처리하여, 타일 경계에서의 정보 단절 문제가 없다. 이는 문서 내 표, 차트 등 연속적인 시각 요소 이해에서 특히 유리하다.
+이미지를 인위적으로 분할하지 않고 원본 해상도에 비례한 토큰으로 처리하여, 타일 경계에서의 정보 단절 문제가 없다. 이는 문서 내 표, 차트 등 연속적인 시각 요소 이해에서 특히 유리하다. 다음은 최소 해상도(min_pixels) 설정에 따른 벤치마크 성능 변화이다.
+
+![min_pixels 설정에 따른 다양한 벤치마크 성능 변화](figures/fig_4.png)
+*Figure 3: 동적 해상도 효과 — 이미지 최소 해상도를 높이면 InfoVQA, OCRBench 등 세밀한 인식이 필요한 태스크에서 성능이 향상되어, 해상도와 인식 품질의 직접적 상관관계를 보여준다. (Source: Wang et al., 2024)*
 
 ### 2. M-RoPE
 
@@ -94,6 +105,16 @@ RoPE의 주파수 차원을 세 그룹으로 분할하여 각각 height, width, 
 | 위치 인코딩 | **M-RoPE** | 2D RoPE | Learned | RoPE |
 | 비디오 이해 | 3D M-RoPE | 미지원 | 프레임 시퀀스 | 프레임 시퀀스 |
 | 컨텍스트 | 32K | 128K | 32K | 32K |
+
+M-RoPE 덕분에 Qwen2-VL은 학습 시 최대 시퀀스 길이를 넘어서는 추론도 안정적으로 수행한다.
+
+![학습 시퀀스 길이를 초과한 추론에서의 M-RoPE 길이 외삽 성능](figures/fig_5.png)
+*Figure 4: M-RoPE 길이 외삽 — 학습 최대 길이(16,384 토큰)를 초과하는 추론 시퀀스에서도 Video-MME 성능이 안정적으로 유지되어, M-RoPE의 외삽 능력을 입증한다. (Source: Wang et al., 2024)*
+
+모델 크기와 학습 데이터의 증가에 따른 성능 향상 패턴은 다음과 같다.
+
+![모델 크기 및 학습 진행에 따른 성능 스케일링](figures/fig_6.jpg)
+*Figure 5: 스케일링 거동 — (a) 2B→8B→72B 파라미터 증가에 따라 OCR, 비디오, VQA 등 모든 능력이 일관되게 향상. (b) 학습 토큰 증가에 따라 다양한 벤치마크에서 꾸준한 성능 개선이 관찰된다. (Source: Wang et al., 2024)*
 
 ## 학습 상세
 

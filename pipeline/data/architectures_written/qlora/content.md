@@ -12,6 +12,11 @@ NF4(NormalFloat 4-bit), Double Quantization, Paged Optimizers라는 **세 가지
 
 ![Architecture](figures/architecture.svg)
 
+아래 그림은 Full Finetuning, LoRA, QLoRA의 메모리 구조를 비교한 것으로, QLoRA가 4비트 양자화된 트랜스포머 위에 LoRA 어댑터를 적용하고 Paged Optimizers로 GPU-CPU 간 메모리를 관리하는 구조를 보여준다.
+
+![Full Finetuning, LoRA, QLoRA 메모리 구조 비교](figures/fig_1.png)
+*Figure 1: 파인튜닝 기법별 메모리 구조 비교 — Full Finetuning은 16비트 모델 전체를 학습하고, LoRA는 16비트 모델 위에 어댑터만 학습하며, QLoRA는 4비트 양자화 모델에 어댑터를 적용하고 Paged Optimizers로 메모리 스파이크를 처리한다. (Source: Dettmers et al., 2023)*
+
 ## 기법 상세
 
 ### 혁신 1: NF4 (NormalFloat 4-bit) 데이터 타입
@@ -41,6 +46,11 @@ nf4_levels = [(quantiles[i] + quantiles[i+1]) / 2 for i in range(num_levels)]
 | **NF4** | **정보 이론 최적** | **최소 (~0.5%)** |
 
 NF4는 균등 간격의 INT4보다 정규 분포 가중치에 대해 **정보 손실이 유의미하게 낮다**. 실험적으로 FP32 대비 약 **0~1%의 성능 저하**만 발생한다.
+
+다음 그래프는 4비트 데이터 타입별 LLaMA 모델의 제로샷 정확도를 비교한 것으로, NFloat(NF4)가 일반 Float4보다 모든 모델 크기에서 우수한 성능을 보인다.
+
+![4비트 데이터 타입별 제로샷 정확도 비교 — NFloat vs Float4](figures/fig_3.png)
+*Figure 3: 4비트 데이터 타입 성능 비교 — NFloat(NF4, 파란색)가 일반 Float4(초록색)보다 모든 모델 크기에서 유의미하게 높은 제로샷 정확도를 달성한다. Double Quantization(주황색)은 추가 메모리 절감을 제공한다. (Source: Dettmers et al., 2023)*
 
 ### 혁신 2: Double Quantization (이중 양자화)
 
@@ -119,6 +129,11 @@ QLoRA Paged Optimizers:
 | NF4 + DQ | 4.127 | 34.9 | 5.71 |
 
 NF4는 4비트임에도 불구하고 **FP16과 거의 동일한 성능**을 유지한다.
+
+아래 그래프는 4비트 QLoRA와 16비트 파인튜닝의 RougeL 성능을 비교한 것으로, QLoRA가 모든 Transformer 레이어에 LoRA를 적용했을 때 16비트 풀 파인튜닝과 동등한 성능을 달성함을 보여준다.
+
+![QLoRA vs 16비트 파인튜닝 RougeL 성능 비교](figures/fig_2.png)
+*Figure 2: QLoRA 성능 검증 — 4비트 QLoRA-All(파란색)이 16비트 Full Finetuning(주황색)과 동등한 RougeL 점수를 달성한다. 모든 Transformer 레이어에 LoRA를 적용하는 것이 핵심이다. (Source: Dettmers et al., 2023)*
 
 ### Guanaco 모델 성능 (Vicuna 벤치마크)
 
@@ -232,6 +247,11 @@ trainer = SFTTrainer(
 )
 trainer.train()
 ```
+
+다음 그래프는 LLaMA 모델 크기별 메모리 사용량 구성을 보여준다. QLoRA를 통해 65B 모델도 45GB에 수용되어 단일 GPU에서 학습이 가능하다.
+
+![LLaMA 모델 크기별 메모리 풋프린트 분석](figures/fig_6.png)
+*Figure 6: 메모리 풋프린트 분석 — 모델 가중치(파란색)가 메모리의 대부분을 차지하며, QLoRA의 4비트 양자화로 65B 모델이 45GB에 들어간다. Paged Optimizers가 남은 메모리 스파이크를 처리한다. (Source: Dettmers et al., 2023)*
 
 ## 한계 및 전망
 

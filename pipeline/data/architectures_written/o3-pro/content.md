@@ -6,6 +6,11 @@ OpenAI o3-pro는 o3 계열의 **최고 성능 변형**으로, 2025년 6월 10일
 
 o3-pro의 핵심 차별점은 놀랍도록 단순하다: **모델 가중치나 아키텍처를 변경하지 않고**, 순수하게 추론 시점의 **컴퓨트 예산(inference compute budget)만을 대폭 확장**한 서빙 구성(serving configuration)이다. 이는 학습 시간 스케일링에만 의존하던 기존 패러다임을 보완하는 혁신적 접근이다.
 
+아래 다이어그램은 o3-pro의 아키텍처를 보여준다. o3와 동일한 Dense Transformer 구조를 기반으로, 추론 시 Extended Test-Time Compute(더 깊은 CoT, 확장된 검증, 넓은 탐색)를 적용하는 서빙 구성 차이가 핵심이다.
+
+![o3-pro 아키텍처 — o3 기반 Dense Transformer + Extended Test-Time Compute 구성](figures/architecture.png)
+*Figure 1: o3-pro 아키텍처 — o3와 동일한 Dense Decoder-only Transformer 기반 모델에 Extended Test-Time Compute(Deep CoT, Extended Verification, Broader Search)를 적용한 서빙 구성. (OpenAI)*
+
 ## 아키텍처 상세
 
 ### 기본 구조 (o3와 동일)
@@ -54,6 +59,11 @@ $$y^* = \arg\max_{y \in \{y_1, ..., y_N\}} R(y)$$
 ### 4. 비용-정확도 동적 조절
 
 단일 모델에서 비용과 정확도를 동적으로 조절할 수 있음을 보여주는 상업적으로도 의미 있는 사례이다. 간단한 문제는 o3-low, 복잡한 문제는 o3-pro로 라우팅하여 비용을 최적화할 수 있다.
+
+다음 다이어그램은 o3-pro의 Test-Time Compute Scaling 메커니즘을 상세히 보여준다. 추론 컴퓨트 증가에 따른 성능 향상 곡선과 3가지 핵심 축(Deep CoT, Self-Verification, Parallel Search)의 작동 원리를 확인할 수 있다.
+
+![o3-pro Test-Time Compute Scaling 메커니즘 — 추론 컴퓨트 확장의 3가지 축](figures/detail.png)
+*Figure 2: o3-pro Test-Time Compute Scaling — Extended CoT(수십 단계 분해), Multi-pass Self-Verification(논리적 일관성 검증), Best-of-N Parallel Search(최적 경로 선택)의 3가지 축으로 동일 모델에서 3~5배 비용으로 SOTA 추론 성능을 달성하는 메커니즘. (OpenAI)*
 
 ## 벤치마크/성능
 

@@ -109,6 +109,11 @@ $$\text{score}_{\text{sup}}(y^{(i)}) = \frac{p_\theta(\text{[IsSup]}=\text{fully
 ![Self-RAG 아키텍처 파이프라인 — 검색기(Contriever-MS MARCO), 생성기(Llama2-7B/13B), 반성 토큰의 통합 구조](figures/architecture.png)
 *Self-RAG 아키텍처 파이프라인. 입력 쿼리가 들어오면 Contriever-MS MARCO 검색기가 관련 패시지를 검색하고, Llama2-7B/13B 기반 Generator가 검색된 문서를 조건으로 답변을 생성한다. 이때 [Retrieve], [IsRel], [IsSup], [IsUse] 반성 토큰이 생성 과정에 통합되어 검색 필요성 판단부터 생성 품질 검증까지 단일 모델 내에서 수행된다.*
 
+다음 그림은 Self-RAG의 학습 데이터가 어떻게 구성되는지를 구체적으로 보여준다. 검색이 불필요한 경우와 필요한 경우에 반성 토큰이 다르게 삽입된다.
+
+![Self-RAG 학습 예시 — 검색 불필요(여름 휴가 에세이)와 검색 필요(미국 주 이름 유래) 두 가지 학습 샘플](figures/fig_2.png)
+*Figure 2: Self-RAG 학습 데이터 예시. 왼쪽(에세이 요청)은 검색이 불필요하여 [Retrieve]=No와 [IsUse] 토큰만 삽입되고, 오른쪽(사실 기반 질문)은 Retriever가 호출되어 [IsRel], [IsSup] 등 모든 반성 토큰이 포함된다. (Asai et al., 2023)*
+
 ### Critic 모델 학습 (반성 토큰 레이블링)
 
 Self-RAG의 학습 파이프라인에서 가장 핵심적인 단계는 Critic 모델의 학습이다. 이 과정은 다음과 같이 진행된다:
@@ -187,6 +192,11 @@ Self-RAG 13B는 **6개의 다양한 태스크에서 ChatGPT와 retrieval-augment
 
 PubHealth에서의 결과도 주목할 만하다. Self-RAG 13B는 78.2%를 달성하여 ChatGPT(70.1%)를 8.1%p 상회하였다. 공중보건 관련 주장의 진위를 검증하는 이 태스크에서, `[IsSup]` 토큰이 생성된 판단이 검색된 의학 문서에 의해 충분히 뒷받침되는지를 확인하는 역할을 효과적으로 수행한 것이다.
 
+다음 그림은 학습 데이터 규모가 PopQA 성능에 미치는 영향을 보여준다.
+
+![학습 데이터 수(k 단위)에 따른 PopQA 성능 향상 곡선](figures/fig_6_1.png)
+*Figure 3e: 학습 데이터 수 증가에 따른 PopQA 성능 변화. 10K에서 150K로 데이터가 증가함에 따라 성능이 꾸준히 향상되며, 충분한 학습 데이터가 적응적 검색 능력 습득에 중요함을 보여준다. (Asai et al., 2023)*
+
 ### 팩트 검증: Bio Generation
 
 | 모델 | Factuality (%) | 유용성 점수 |
@@ -213,7 +223,17 @@ Self-RAG는 인용 정밀도(citation precision)와 재현율(citation recall)�
 
 ASQA는 하나의 질문에 대해 여러 관점의 답변과 인용을 제공해야 하는 태스크이다. Self-RAG 13B는 ChatGPT + RAG 대비 citation precision에서 7.4%p, citation recall에서 7.8%p 향상을 보였다. 이는 세그먼트 단위로 근거 지지도를 평가하는 `[IsSup]` 메커니즘이 인용의 정확성을 크게 개선한다는 것을 의미한다.
 
+다음 그림은 학습 데이터 규모에 따른 ASQA 인용 정밀도의 변화를 보여준다.
+
+![학습 데이터 수에 따른 ASQA 인용 정밀도 — 반성 토큰 학습 효과](figures/fig_9.png)
+*Figure 3g: 학습 데이터 규모에 따른 ASQA 인용 정밀도(citation precision). 데이터 증가에 따라 인용 정확성이 꾸준히 향상되며, 장문 생성에서도 Self-RAG의 자기 비평 메커니즘이 효과적임을 입증한다. (Asai et al., 2023)*
+
 ### Ablation Study: 반성 토큰의 효과
+
+다음 그림은 `[IsSup]` 가중치 변화에 따라 인용 정밀도와 텍스트 다양성(MAUVE) 사이에 명확한 트레이드오프가 존재함을 보여준다.
+
+![[IsSup] 토큰 가중치 변화에 따른 인용 정밀도(Precision)와 MAUVE 점수의 트레이드오프](figures/fig_3_1.png)
+*Figure 3a: [IsSup] 가중치 증가에 따른 인용 정밀도(상단)와 MAUVE 다양성 점수(하단) 변화. 사실성이 높아질수록 텍스트 다양성이 감소하는 트레이드오프를 보여주며, 추론 시 가중치로 균형을 조절할 수 있다. (Asai et al., 2023)*
 
 각 반성 토큰을 제거한 ablation 실험은 Self-RAG의 설계 결정의 합리성을 검증한다:
 
