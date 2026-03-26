@@ -1,0 +1,20 @@
+{
+  "slug": "synthetic-data-training",
+  "title": "Training with Synthetic Data: When It Works and When It Doesn't",
+  "title_ko": "합성 데이터로 학습하기: 효과적인 경우와 한계",
+  "category_slug": "training",
+  "summary": "대형 모델이 생성한 합성 데이터로 소형 모델을 학습시키는 전략의 원리와 한계를 분석합니다. Phi 시리즈의 교과서 품질 데이터, OpenThoughts3의 추론 데이터, Self-Instruct 패러다임을 살펴보며, 합성 데이터가 효과적인 조건과 주의점을 정리합니다.",
+  "tags": [
+    "synthetic-data",
+    "data-quality",
+    "distillation",
+    "self-instruct",
+    "phi",
+    "openthoughts3",
+    "fine-tuning",
+    "model-collapse",
+    "data-generation",
+    "training"
+  ],
+  "is_pinned": false
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "phi",
+  "id": 59,
+  "title": "Textbooks Are All You Need",
+  "title_ko": "Textbooks Are All You Need: 교과서 품질 데이터의 힘",
+  "category_slug": "training",
+  "arxiv_url": "https://arxiv.org/abs/2306.11644",
+  "venue": "arXiv",
+  "paper_year": 2023,
+  "paper_authors": "Suriya Gunasekar, Yi Zhang, Jyoti Aneja, Caio César Teodoro Mendes, Allie Del Giorno, Sefa Gul, Aditya Nori, et al.",
+  "summary": "1.3B 파라미터의 Phi-1이 교과서 품질 합성 데이터만으로 HumanEval 51%를 달성하여, 데이터 품질이 모델 크기보다 중요할 수 있음을 증명한 Microsoft Research 논문입니다.",
+  "tags": [
+    "phi",
+    "synthetic-data",
+    "data-quality",
+    "code-generation",
+    "small-language-model",
+    "textbook-quality",
+    "humaneval",
+    "microsoft"
+  ],
+  "is_pinned": true
+}

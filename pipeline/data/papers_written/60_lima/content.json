@@ -1,0 +1,24 @@
+{
+  "slug": "lima",
+  "id": 60,
+  "title": "LIMA: Less Is More for Alignment",
+  "title_ko": "LIMA: 정렬에는 적은 데이터로 충분하다",
+  "category_slug": "training",
+  "arxiv_url": "https://arxiv.org/abs/2305.11206",
+  "venue": "NeurIPS 2023",
+  "paper_year": 2023,
+  "paper_authors": "Chunting Zhou, Pengfei Liu, Puxin Xu, Srini Iyer, Jiao Sun, Yuning Mao, Xuezhe Ma, Avia Efrat, Ping Yu, Lili Yu, Susan Zhang, Gargi Ghosh, Mike Lewis, Luke Zettlemoyer, Omer Levy",
+  "summary": "단 1,000개의 정성 선별된 예제만으로 65B LLaMA를 정렬하여 GPT-4에 근접하는 대화 품질을 달성한 Meta AI의 연구입니다. '표면적 정렬 가설'을 제시하여, LLM의 핵심 지식은 사전학습에서 이미 습득되며 정렬은 소량의 데이터로 충분함을 보여줍니다.",
+  "tags": [
+    "alignment",
+    "fine-tuning",
+    "data-efficiency",
+    "instruction-following",
+    "superficial-alignment",
+    "llama",
+    "rlhf",
+    "few-shot",
+    "meta"
+  ],
+  "is_pinned": false
+}
