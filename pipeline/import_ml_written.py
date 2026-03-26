@@ -29,12 +29,38 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.files import File
 from django.utils import timezone
-from blog.models import Post, Category, Tag
+from blog.models import Post, Category, Tag, PostImage
 
 ML_WRITTEN_DIR = Path(__file__).parent / 'data' / 'ml_written'
 
 # sub_category → Category slug 매핑 (블로그 DB에 'ml' 카테고리 필요)
 ML_CATEGORY_SLUG = 'ml'
+
+
+def upload_figure(post, fig_path: Path, dry_run: bool) -> str | None:
+    """figure 파일을 PostImage로 업로드하고 media URL을 반환."""
+    if not fig_path.exists():
+        print(f"    [WARN] figure 파일 없음: {fig_path}")
+        return None
+    if dry_run:
+        print(f"    [DRY-RUN] figure 업로드 예정: {fig_path.name}")
+        return f"/media/posts/dry-run/{fig_path.name}"
+    with open(fig_path, 'rb') as f:
+        img = PostImage.objects.create(
+            post=post,
+            alt_text=fig_path.stem,
+            original_path=str(fig_path),
+        )
+        img.image.save(fig_path.name, File(f), save=True)
+    return img.image.url
+
+
+def replace_figure_paths(content: str, figure_url_map: dict) -> str:
+    """마크다운 내 figures/ 상대 경로 → 서버 media URL 치환."""
+    for local_path, media_url in figure_url_map.items():
+        content = content.replace(f"figures/{local_path}", media_url)
+        content = content.replace(f"./figures/{local_path}", media_url)
+    return content
 
 
 def get_or_create_tag(name: str) -> Tag:
@@ -103,7 +129,30 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
             continue
         if existing and update:
             if not dry_run:
-                existing.content = content
+                # figure 업로드 + 경로 치환 (update 시에도 필요)
+                figures_dir = item_dir / 'figures'
+                figure_url_map = {}
+                if figures_dir.exists():
+                    existing_figs = set(
+                        pi.image.name.split('/')[-1]
+                        for pi in existing.images.all()
+                        if pi.image
+                    )
+                    for fig_file in sorted(figures_dir.iterdir()):
+                        if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                            continue
+                        if fig_file.name in existing_figs:
+                            pi = existing.images.filter(image__endswith=fig_file.name).first()
+                            if pi:
+                                figure_url_map[fig_file.name] = pi.image.url
+                            continue
+                        url = upload_figure(existing, fig_file, dry_run=False)
+                        if url:
+                            figure_url_map[fig_file.name] = url
+                            print(f"    [IMG] {fig_file.name} → {url}")
+
+                updated_content = replace_figure_paths(content, figure_url_map) if figure_url_map else content
+                existing.content = updated_content
                 existing.summary = summary
                 update_fields = ['content', 'summary']
                 is_pinned = data.get('is_pinned', False)
@@ -150,6 +199,22 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
         for tag_name in tags_raw:
             tag = get_or_create_tag(tag_name)
             post.tags.add(tag)
+
+        # figures 업로드 및 URL 치환
+        figures_dir = item_dir / 'figures'
+        figure_url_map = {}
+        if figures_dir.exists():
+            for fig_file in sorted(figures_dir.iterdir()):
+                if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif'}:
+                    continue
+                url = upload_figure(post, fig_file, dry_run=False)
+                if url:
+                    figure_url_map[fig_file.name] = url
+                    print(f"    [IMG] {fig_file.name} → {url}")
+
+        if figure_url_map:
+            post.content = replace_figure_paths(content, figure_url_map)
+            post.save(update_fields=['content'])
 
         # PDF 첨부
         if pdf_attachment:
