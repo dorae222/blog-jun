@@ -1,0 +1,25 @@
+{
+  "id": "68",
+  "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+  "title_ko": "오픈 도메인 질의응답을 위한 밀집 패시지 검색",
+  "slug": "dpr",
+  "category": "rag",
+  "sub_category": "rag",
+  "category_slug": "rag",
+  "year": 2020,
+  "venue": "EMNLP 2020",
+  "authors": "Vladimir Karpukhin, Barlas Oguz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey Edunov, Danqi Chen, Wen-tau Yih",
+  "arxiv_url": "https://arxiv.org/abs/2004.04906",
+  "summary": "TF-IDF, BM25 등 희소 벡터 검색을 대체하는 밀집 벡터 기반 패시지 검색 기법을 제안합니다. BERT 기반 이중 인코더로 질문과 패시지를 밀집 벡터 공간에 매핑하고, in-batch negatives 학습 전략과 FAISS 인덱싱으로 대규모 오픈 도메인 QA에서 BM25를 9-19% 능가하는 검색 정확도를 달성합니다.",
+  "tags": [
+    "dense-retrieval",
+    "dual-encoder",
+    "FAISS",
+    "in-batch-negatives",
+    "open-domain-QA",
+    "passage-retrieval",
+    "BERT"
+  ],
+  "related_architecture": null,
+  "is_pinned": false
+}
