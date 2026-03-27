@@ -1,0 +1,18 @@
+{
+  "slug": "context-compression",
+  "title": "Context Compression: Efficient Processing of Long Inputs",
+  "title_ko": "Context Compression: 긴 입력을 효율적으로 처리하기",
+  "category_slug": "technique",
+  "summary": "LLM에 전달하는 컨텍스트를 압축하여 비용과 지연시간을 줄이는 기법을 다룹니다. LLMLingua 시리즈의 프롬프트 압축, 문서 요약 기반 압축, 토큰 병합/프루닝, 그리고 RAG에서의 컨텍스트 최적화 전략을 설명합니다.",
+  "tags": [
+    "context-compression",
+    "prompt-compression",
+    "llmlingua",
+    "token-pruning",
+    "rag-optimization",
+    "cost-reduction",
+    "long-context",
+    "efficiency"
+  ],
+  "is_pinned": false
+}
