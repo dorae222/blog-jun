@@ -44,6 +44,7 @@ export default function Editor() {
 
   useEffect(() => {
     if (!user) { navigate('/login'); return }
+    if (!user.is_staff) { navigate('/'); return }
     getCategories().then(r => setCategories(r.data.results || r.data || []))
     getTags().then(r => setAllTags(r.data.results || r.data || []))
     getSeries().then(r => setAllSeries(r.data.results || r.data || []))
@@ -186,7 +187,7 @@ export default function Editor() {
     updateForm({ content: form.content + '\n' + linkText })
   }, [form.content])
 
-  if (!user) return null
+  if (!user || !user.is_staff) return null
 
   const VIEW_MODES = [
     { id: 'wysiwyg', icon: Eye, label: 'WYSIWYG' },

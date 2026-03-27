@@ -20,12 +20,12 @@ function AuthorInfo({ author }) {
   const name = author.display_name || author.username
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
       {avatar ? (
-        <img src={avatar} alt={name} className="w-7 h-7 rounded-full" />
+        <img src={avatar} alt={name} className="w-6 h-6 sm:w-7 sm:h-7 rounded-full shrink-0" />
       ) : (
         <div
-          className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold"
+          className="w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
           style={{ background: 'var(--bg-tertiary)', color: 'var(--text-secondary)' }}
         >
           {name[0]?.toUpperCase()}
@@ -36,16 +36,16 @@ function AuthorInfo({ author }) {
           href={author.profile_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium hover:underline"
+          className="text-sm font-medium hover:underline truncate"
           style={{ color: 'var(--text)' }}
         >
           {name}
         </a>
       ) : (
-        <span className="text-sm font-medium" style={{ color: 'var(--text)' }}>{name}</span>
+        <span className="text-sm font-medium truncate" style={{ color: 'var(--text)' }}>{name}</span>
       )}
       {author.provider && (
-        <span className="text-[10px] px-1.5 py-0.5 rounded-full" style={{ background: 'var(--bg-tertiary)', color: 'var(--text-tertiary)' }}>
+        <span className="hidden sm:inline text-[11px] px-1.5 py-0.5 rounded-full shrink-0" style={{ background: 'var(--bg-tertiary)', color: 'var(--text-tertiary)' }}>
           {author.provider}
         </span>
       )}
@@ -71,50 +71,50 @@ export default function CommentItem({ comment, isReply = false, onReply, onEdit,
   }
 
   return (
-    <div className={isReply ? 'ml-8 pl-4 border-l-2' : ''} style={isReply ? { borderColor: 'var(--border)' } : {}}>
+    <div className={isReply ? 'ml-3 sm:ml-6 md:ml-8 pl-3 sm:pl-4 border-l-2' : ''} style={isReply ? { borderColor: 'var(--border)' } : {}}>
       <div className="py-3">
         {/* 헤더 */}
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center gap-2">
+        <div className="flex items-start sm:items-center justify-between gap-2 mb-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 flex-wrap">
             <AuthorInfo author={comment.author} />
-            <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>
+            <span className="text-xs whitespace-nowrap" style={{ color: 'var(--text-tertiary)' }}>
               {timeAgo(comment.created_at)}
             </span>
             {comment.is_edited && (
-              <span className="text-[10px]" style={{ color: 'var(--text-tertiary)' }}>(수정됨)</span>
+              <span className="text-[11px]" style={{ color: 'var(--text-tertiary)' }}>(수정됨)</span>
             )}
           </div>
 
           {/* 액션 버튼 */}
           {!comment.is_deleted && user && (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center shrink-0">
               {!isReply && (
                 <button
                   onClick={() => setShowReplyForm(!showReplyForm)}
-                  className="p-1.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                  className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                   style={{ color: 'var(--text-tertiary)' }}
                   title="답글"
                 >
-                  <Reply size={14} />
+                  <Reply size={15} />
                 </button>
               )}
               {isAuthor && (
                 <button
                   onClick={() => { setEditing(true); setEditContent(comment.content) }}
-                  className="p-1.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                  className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                   style={{ color: 'var(--text-tertiary)' }}
                   title="수정"
                 >
-                  <Pencil size={14} />
+                  <Pencil size={15} />
                 </button>
               )}
               {(isAuthor || isAdmin) && (
                 <button
                   onClick={() => onDelete(comment.id)}
-                  className="p-1.5 rounded-lg hover:bg-red-500/10 transition-colors text-red-400"
+                  className="p-2 rounded-lg hover:bg-red-500/10 transition-colors text-red-400"
                   title="삭제"
                 >
-                  <Trash2 size={14} />
+                  <Trash2 size={15} />
                 </button>
               )}
             </div>
@@ -128,14 +128,14 @@ export default function CommentItem({ comment, isReply = false, onReply, onEdit,
               value={editContent}
               onChange={(e) => setEditContent(e.target.value)}
               maxLength={2000}
-              rows={3}
+              rows={2}
               className="flex-1 resize-none rounded-lg px-3 py-2 text-sm border focus:outline-none focus:ring-2 focus:ring-blue-500/30"
               style={{ background: 'var(--bg-secondary)', color: 'var(--text)', borderColor: 'var(--border)' }}
             />
-            <button onClick={handleEdit} className="p-2 rounded-lg text-green-500 hover:bg-green-500/10">
+            <button onClick={handleEdit} className="p-2.5 rounded-lg text-green-500 hover:bg-green-500/10">
               <Check size={16} />
             </button>
-            <button onClick={() => setEditing(false)} className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5" style={{ color: 'var(--text-tertiary)' }}>
+            <button onClick={() => setEditing(false)} className="p-2.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5" style={{ color: 'var(--text-tertiary)' }}>
               <X size={16} />
             </button>
           </div>
@@ -162,7 +162,7 @@ export default function CommentItem({ comment, isReply = false, onReply, onEdit,
 
         {/* 답글 작성 폼 */}
         {showReplyForm && (
-          <div className="mt-3 ml-8">
+          <div className="mt-3 ml-0 sm:ml-4 md:ml-8">
             <CommentForm
               placeholder={`@${comment.author.display_name || comment.author.username} 에게 답글...`}
               initialValue={`@${comment.author.display_name || comment.author.username} `}

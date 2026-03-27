@@ -104,12 +104,16 @@ export default function Header() {
                     className="absolute right-0 top-full mt-2 w-48 rounded-xl shadow-lg glass-nav overflow-hidden z-50"
                     style={{ border: '1px solid var(--border)' }}
                   >
-                    <Link to="/dashboard" onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
-                      style={{ color: 'var(--text-secondary)' }}>Dashboard</Link>
-                    <Link to="/editor" onClick={() => setUserMenuOpen(false)}
-                      className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
-                      style={{ color: 'var(--text-secondary)' }}>새 글 작성</Link>
+                    {user.is_staff && (
+                      <>
+                        <Link to="/dashboard" onClick={() => setUserMenuOpen(false)}
+                          className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                          style={{ color: 'var(--text-secondary)' }}>Dashboard</Link>
+                        <Link to="/editor" onClick={() => setUserMenuOpen(false)}
+                          className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                          style={{ color: 'var(--text-secondary)' }}>새 글 작성</Link>
+                      </>
+                    )}
                     <div style={{ borderTop: '1px solid var(--border)' }} />
                     <button
                       onClick={() => { logout(); navigate('/'); setUserMenuOpen(false) }}
@@ -171,7 +175,7 @@ export default function Header() {
                 className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                 About
               </Link>
-              {user && (
+              {user?.is_staff && (
                 <>
                   <Link to="/dashboard" onClick={closeMobile}
                     className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>

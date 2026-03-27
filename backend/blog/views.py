@@ -8,7 +8,7 @@ from django.views.decorators.cache import cache_page
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.decorators import api_view, permission_classes, throttle_classes, action
 from rest_framework.filters import SearchFilter
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -30,20 +30,16 @@ from .serializers import (
 )
 
 
-class IsAuthorOrReadOnly(permissions.BasePermission):
+class IsAdminOrReadOnly(permissions.BasePermission):
+    """관리자만 글 작성/수정/삭제 가능, 나머지는 읽기만."""
     def has_permission(self, request, view):
         if request.method in permissions.SAFE_METHODS:
             return True
-        return request.user and request.user.is_authenticated
-
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        return obj.author == request.user
+        return request.user and request.user.is_staff
 
 
 class PostViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthorOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     filterset_fields = ['status', 'post_type', 'category__slug', 'series__slug']
     search_fields = ['title', 'content', 'summary']
@@ -110,15 +106,15 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer = PostListSerializer(qs, many=True)
         return Response(serializer.data)
 
-    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['post'], permission_classes=[IsAdminUser])
     def bulk_delete(self, request):
         slugs = request.data.get('slugs', [])
         if not slugs:
             return Response({'detail': 'slugs 필드가 필요합니다.'}, status=400)
-        deleted, _ = Post.objects.filter(slug__in=slugs, author=request.user).delete()
+        deleted, _ = Post.objects.filter(slug__in=slugs).delete()
         return Response({'deleted': deleted})
 
-    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    @action(detail=True, methods=['post'], permission_classes=[IsAdminUser])
     def generate_cover(self, request, slug=None):
         """커버 이미지 생성/재생성."""
         from django.core.management import call_command
@@ -134,7 +130,7 @@ class PostViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({'detail': f'커버 생성 실패: {e}'}, status=500)
 
-    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['post'], permission_classes=[IsAdminUser])
     def bulk_update_status(self, request):
         slugs = request.data.get('slugs', [])
         new_status = request.data.get('status')
@@ -143,7 +139,7 @@ class PostViewSet(viewsets.ModelViewSet):
             return Response({'detail': 'slugs 필드가 필요합니다.'}, status=400)
         if new_status not in valid_statuses:
             return Response({'detail': f'status는 {valid_statuses} 중 하나여야 합니다.'}, status=400)
-        updated = Post.objects.filter(slug__in=slugs, author=request.user).update(status=new_status)
+        updated = Post.objects.filter(slug__in=slugs).update(status=new_status)
         return Response({'updated': updated})
 
 
@@ -225,12 +221,10 @@ class ImageUploadView(generics.CreateAPIView):
 
 
 @api_view(['GET'])
+@permission_classes([IsAdminUser])
 @cache_page(60 * 10)  # 10분 캐시
 def dashboard_stats(request):
-    if not request.user.is_authenticated:
-        return Response({'detail': 'Authentication required'}, status=401)
-
-    base_qs = Post.objects.filter(author=request.user)
+    base_qs = Post.objects.all()
     # 기본 통계 + 이미지 커버리지를 단일 aggregate로 통합
     stats = base_qs.aggregate(
         total_posts=Count('id'),
@@ -314,7 +308,7 @@ AUDIT_FILE = os.environ.get('AUDIT_FILE_PATH', os.path.join(settings.BASE_DIR, '
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def audit_results(request):
     """감사 결과 JSON 파일을 읽어 반환"""
     if not os.path.exists(AUDIT_FILE):
