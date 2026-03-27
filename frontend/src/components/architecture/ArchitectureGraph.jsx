@@ -100,7 +100,7 @@ function applyHighlightState(svg, { selectedSlug, searchQuery, baseEdgeOpacity, 
   })
 
   // 엣지 처리
-  svg.selectAll('.links line').each(function (d) {
+  svg.selectAll('.links path').each(function (d) {
     const src = typeof d.source === 'object' ? d.source.slug : d.source
     const tgt = typeof d.target === 'object' ? d.target.slug : d.target
     const isConnected = selectedSlug && (src === selectedSlug || tgt === selectedSlug)
@@ -238,7 +238,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       defs.append('marker')
         .attr('id', `arrow-${type}`)
         .attr('viewBox', '0 -5 10 10')
-        .attr('refX', 20)
+        .attr('refX', 15)
         .attr('refY', 0)
         .attr('markerWidth', 6)
         .attr('markerHeight', 6)
@@ -249,11 +249,12 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
         .style('opacity', 0.6)
     })
 
-    // 엣지 렌더링
+    // 엣지 렌더링 (곡선 path)
     const linkGroup = g.append('g').attr('class', 'links')
-    const links = linkGroup.selectAll('line')
+    const links = linkGroup.selectAll('path')
       .data(edgeData)
-      .join('line')
+      .join('path')
+      .attr('fill', 'none')
       .attr('stroke', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).stroke)
       .attr('stroke-width', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).width)
       .attr('stroke-dasharray', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).dasharray)
@@ -275,7 +276,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       .attr('fill-opacity', 0.85)
       .attr('stroke', d => CATEGORY_COLORS[d.architecture_category] || '#8895A7')
       .attr('stroke-width', 2)
-      .attr('stroke-opacity', 0.3)
+      .attr('stroke-opacity', 0.4)
 
     // 노드 레이블
     nodeGs.append('text')
@@ -330,24 +331,26 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
           if (tgt === d.slug) connectedSlugs.add(src)
         })
 
-        // 다른 노드 dimming
+        // 다른 노드 dimming (완화된 강도)
         svg.selectAll('.node-group').each(function (nd) {
           if (nd.slug === d.slug) return
           const isConn = connectedSlugs.has(nd.slug)
-          d3.select(this).select('circle')
-            .style('opacity', isConn ? 1 : 0.12)
-            .attr('fill-opacity', isConn ? 0.9 : 0.12)
-          d3.select(this).select('.node-label')
-            .style('opacity', isConn ? 1 : 0.06)
+          const el = d3.select(this)
+          el.select('circle')
+            .style('opacity', isConn ? 1 : 0.2)
+            .attr('fill-opacity', isConn ? 0.9 : 0.2)
+            .attr('stroke-width', isConn ? 2.5 : 2)
+          el.select('.node-label')
+            .style('opacity', isConn ? 1 : 0.15)
         })
 
         // 엣지 dimming
-        svg.selectAll('.links line').each(function (e) {
+        svg.selectAll('.links path').each(function (e) {
           const src = typeof e.source === 'object' ? e.source.slug : e.source
           const tgt = typeof e.target === 'object' ? e.target.slug : e.target
           const isConn = src === d.slug || tgt === d.slug
           d3.select(this)
-            .style('opacity', isConn ? 0.8 : 0.03)
+            .style('opacity', isConn ? 0.9 : 0.08)
             .attr('stroke-width', isConn
               ? (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width * 1.5
               : (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width
@@ -371,9 +374,16 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       })
       .on('mousemove', (event) => {
         const rect = container.getBoundingClientRect()
+        const tooltipEl = tooltip.node()
+        const tw = tooltipEl.offsetWidth || 200
+        const th = tooltipEl.offsetHeight || 80
+        const mx = event.clientX - rect.left
+        const my = event.clientY - rect.top
+        const left = (mx + 14 + tw > rect.width) ? mx - tw - 14 : mx + 14
+        const top = (my + th > rect.height) ? my - th - 8 : my - 12
         tooltip
-          .style('left', `${event.clientX - rect.left + 14}px`)
-          .style('top', `${event.clientY - rect.top - 12}px`)
+          .style('left', `${left}px`)
+          .style('top', `${top}px`)
       })
       .on('mouseleave', () => {
         tooltip.style('opacity', 0)
@@ -418,30 +428,43 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
 
     nodeGs.call(drag)
 
+    // 카테고리별 클러스터 중심점 계산
+    const categories = [...new Set(nodeData.map(n => n.architecture_category))]
+    const catCenters = {}
+    categories.forEach((cat, i) => {
+      const angle = (2 * Math.PI * i) / categories.length - Math.PI / 2
+      const radius = Math.min(width, height) * 0.25
+      catCenters[cat] = {
+        x: width / 2 + radius * Math.cos(angle),
+        y: height / 2 + radius * Math.sin(angle),
+      }
+    })
+
     // 포스 시뮬레이션
     const simulation = d3.forceSimulation(nodeData)
       .force('link', d3.forceLink(edgeData)
         .id(d => d.slug)
-        .distance(100)
+        .distance(120)
         .strength(0.4)
       )
       .force('charge', d3.forceManyBody()
-        .strength(-250)
+        .strength(-300)
         .distanceMax(400)
       )
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide().radius(d => d.radius + 6))
-      .force('x', d3.forceX(width / 2).strength(0.03))
-      .force('y', d3.forceY(height / 2).strength(0.03))
+      .force('collision', d3.forceCollide().radius(d => d.radius + 10))
+      .force('clusterX', d3.forceX(d => catCenters[d.architecture_category]?.x || width / 2).strength(0.08))
+      .force('clusterY', d3.forceY(d => catCenters[d.architecture_category]?.y || height / 2).strength(0.08))
 
     simulationRef.current = simulation
 
     simulation.on('tick', () => {
-      links
-        .attr('x1', d => d.source.x)
-        .attr('y1', d => d.source.y)
-        .attr('x2', d => d.target.x)
-        .attr('y2', d => d.target.y)
+      links.attr('d', d => {
+        const dx = d.target.x - d.source.x
+        const dy = d.target.y - d.source.y
+        const dr = Math.sqrt(dx * dx + dy * dy) * 0.8
+        return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`
+      })
 
       nodeGs.attr('transform', d => `translate(${d.x},${d.y})`)
     })
