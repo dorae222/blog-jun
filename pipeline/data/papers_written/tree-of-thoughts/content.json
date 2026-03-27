@@ -1,0 +1,26 @@
+{
+  "slug": "tree-of-thoughts",
+  "title": "Tree of Thoughts: Deliberate Problem Solving with Large Language Models",
+  "title_ko": "사고의 나무: 대규모 언어 모델을 활용한 숙고적 문제 해결",
+  "category_slug": "reasoning",
+  "summary": "Tree of Thoughts(ToT)는 LLM의 추론 과정을 트리 구조로 확장하여, 각 노드에서 여러 가지 사고 후보를 생성하고 휴리스틱 평가를 통해 유망한 경로를 선택적으로 탐색하는 프레임워크입니다. BFS/DFS 기반 탐색과 자기 평가(self-evaluation)를 결합하여 Game of 24, Creative Writing, Mini Crosswords 등 기존 CoT로는 해결이 어려운 문제에서 획기적인 성능 향상을 달성합니다.",
+  "tags": [
+    "tree-of-thoughts",
+    "ToT",
+    "reasoning",
+    "deliberate-problem-solving",
+    "search-algorithm",
+    "BFS",
+    "DFS",
+    "self-evaluation",
+    "LLM",
+    "prompt-engineering",
+    "game-of-24",
+    "NeurIPS2023"
+  ],
+  "is_pinned": false,
+  "arxiv_url": "https://arxiv.org/abs/2305.10601",
+  "venue": "NeurIPS 2023",
+  "paper_year": 2024,
+  "paper_authors": "Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Thomas L. Griffiths, Yuan Cao, Karthik Narasimhan"
+}
