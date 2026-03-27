@@ -148,6 +148,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!user) { navigate('/login'); return }
+    if (!user.is_staff) { navigate('/'); return }
     getDashboardStats().then(r => setStats(r.data)).catch(() => {})
     loadAudit()
   }, [user, navigate])
@@ -262,7 +263,7 @@ export default function Dashboard() {
   const missingImageCount = stats?.image_coverage?.missing_image ?? 0
   const totalPages = Math.ceil(totalPosts / pageSize)
 
-  if (!user) return null
+  if (!user || !user.is_staff) return null
 
   return (
     <motion.div
