@@ -38,7 +38,7 @@ $$\text{Attn}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 
 | 모델 | 연도 | 핵심 기여 |
 |------|------|-----------|
-| **HiPPO** | 2020 | 직교 다항식 기반 상태 초기화 — 긴 시퀀스 역사를 수학적 최적 방식으로 압축 |
+| **HiPPO** | 2020 | 직교 다항식 기반 상태 초기화 ( 긴 시퀀스 역사를 수학적 최적 방식으로 압축 |
 | **LSSL** | 2021 | HiPPO를 딥러닝 프레임워크에 통합하는 최초 시도 |
 | **S4** | 2021 | 구조화된 SSM으로 Long Range Arena에서 Transformer를 최초 능가 |
 | **S4D, S5, H3, Hyena** | 2022-23 | 대각화, 다중 헤드, 암묵적 컨볼루션 등 다양한 변형 |
@@ -55,7 +55,7 @@ Mamba의 핵심은 SSM에 **선택성(selectivity)**을 부여하는 것입니�
 
 저자들은 선택성의 필요성을 두 가지 합성 태스크로 논증합니다.
 
-**선택적 복사(Selective Copy) 태스크** — 입력 시퀀스에서 유효한 토큰만 골라 출력하는 과제입니다:
+**선택적 복사(Selective Copy) 태스크** ) 입력 시퀀스에서 유효한 토큰만 골라 출력하는 과제입니다:
 
 ```
 입력: [A, B, 0, 0, C, 0, D] (0은 노이즈)
@@ -64,7 +64,7 @@ Mamba의 핵심은 SSM에 **선택성(selectivity)**을 부여하는 것입니�
 
 시간 불변 SSM은 모든 시점에서 동일한 $\bar{A}, \bar{B}$가 적용되므로 노이즈 토큰과 유효 토큰을 구별할 수 없어 실패합니다.
 
-**유도 헤드(Induction Head) 태스크** — 시퀀스 내에서 특정 패턴이 반복될 때 이전 패턴의 다음 토큰을 예측하는 과제입니다. 예를 들어 "...AB...A"가 주어지면 "B"를 예측해야 합니다. 이는 in-context learning의 기본 메커니즘으로, 내용 기반의 조건부 추론 능력이 필요합니다.
+**유도 헤드(Induction Head) 태스크** ( 시퀀스 내에서 특정 패턴이 반복될 때 이전 패턴의 다음 토큰을 예측하는 과제입니다. 예를 들어 "...AB...A"가 주어지면 "B"를 예측해야 합니다. 이는 in-context learning의 기본 메커니즘으로, 내용 기반의 조건부 추론 능력이 필요합니다.
 
 Mamba는 두 태스크 모두에서 시퀀스 길이 $2^{12} = 4{,}096$까지 완벽한 정확도를 달성하며, 선택성이 SSM의 표현력을 근본적으로 확장함을 실증합니다.
 
@@ -93,9 +93,9 @@ $$y(t) = C h(t) + D x(t)$$
 
 여기서 $h(t) \in \mathbb{R}^N$은 숨겨진 상태, $x(t) \in \mathbb{R}$은 입력 신호, $y(t) \in \mathbb{R}$은 출력입니다. 각 행렬의 역할은 다음과 같습니다:
 
-- $A \in \mathbb{R}^{N \times N}$: **상태 전이 행렬** — 이전 상태가 다음 상태에 미치는 영향을 결정
-- $B \in \mathbb{R}^{N \times 1}$: **입력 행렬** — 새로운 입력이 상태에 기록되는 방식을 결정
-- $C \in \mathbb{R}^{1 \times N}$: **출력 행렬** — 상태에서 출력을 읽어내는 방식을 결정
+- $A \in \mathbb{R}^{N \times N}$: **상태 전이 행렬** ) 이전 상태가 다음 상태에 미치는 영향을 결정
+- $B \in \mathbb{R}^{N \times 1}$: **입력 행렬** ( 새로운 입력이 상태에 기록되는 방식을 결정
+- $C \in \mathbb{R}^{1 \times N}$: **출력 행렬** ) 상태에서 출력을 읽어내는 방식을 결정
 - $D$: 스킵 연결로 구현되며, 핵심 분석에서는 생략
 
 직관적으로, SSM은 입력 신호 $x(t)$를 $N$차원 숨겨진 상태 $h(t)$를 거쳐 출력 $y(t)$로 변환하는 선형 동적 시스템입니다.
@@ -139,8 +139,8 @@ $$\bar{A}_t = \exp(\Delta_t A), \quad \bar{B}_t \approx \Delta_t B_t$$
 
 | $\Delta_t$ 값 | $\bar{A}_t$ | $\bar{B}_t$ | 동작 | 직관적 의미 |
 |:---:|:---:|:---:|:---|:---|
-| **큼** | $\approx 0$ | $\approx \Delta_t B_t$ (큼) | 이전 상태 리셋, 현재 입력 강하게 반영 | "이 토큰은 중요하다 — 기억하라" |
-| **작음** | $\approx I$ | $\approx 0$ | 이전 상태 유지, 현재 입력 무시 | "이 토큰은 무시하라 — 기존 상태를 지켜라" |
+| **큼** | $\approx 0$ | $\approx \Delta_t B_t$ (큼) | 이전 상태 리셋, 현재 입력 강하게 반영 | "이 토큰은 중요하다 ( 기억하라" |
+| **작음** | $\approx I$ | $\approx 0$ | 이전 상태 유지, 현재 입력 무시 | "이 토큰은 무시하라 ) 기존 상태를 지켜라" |
 
 이는 RNN의 게이트 메커니즘과 깊은 연관이 있습니다. 실제로 저자들은 $\Delta_t$가 LSTM의 forget gate와 수학적으로 유사하며, $B_t$와 $C_t$가 각각 input gate와 output gate에 대응함을 보입니다. 그러나 LSTM과 달리 SSM 프레임워크에서 동작하므로 병렬 스캔이 가능하다는 결정적 차이가 있습니다.
 
@@ -180,7 +180,7 @@ $$(\bar{A}_i, \bar{B}_i x_i) \bullet (\bar{A}_j, \bar{B}_j x_j) = (\bar{A}_j \ba
 
 Mamba 블록은 Transformer의 두 개 서브블록(MHA + FFN)을 **하나의 통합 블록**으로 대체합니다. H3 아키텍처와 게이트 MLP에서 영감을 받은 구조입니다.
 
-![Mamba 블록 아키텍처 — 선형 투영, Conv1d, 선택적 SSM, 게이팅 분기의 통합 구조](figures/architecture.png)
+![Mamba 블록 아키텍처 ( 선형 투영, Conv1d, 선택적 SSM, 게이팅 분기의 통합 구조](figures/architecture.png)
 *Mamba 블록 아키텍처. 입력은 두 분기로 나뉘어, SSM 경로(Linear→Conv1d→SiLU→Selective SSM)와 게이팅 경로(Linear→SiLU)를 거친 후 element-wise 곱셈으로 결합된다. 선택 메커니즘이 SSM 파라미터 $A, B, C, \Delta$를 입력 의존적으로 생성하는 것이 핵심이다.*
 
 설계의 핵심 포인트는 다음과 같습니다:
@@ -220,15 +220,15 @@ class SelectiveSSM(nn.Module):
         # dt_rank → d_model: 저랭크 투영으로 Δ를 d_model 차원으로 확장
         self.dt_proj = nn.Linear(self.dt_rank, d_model, bias=True)
 
-        # A는 입력 독립적 (HiPPO 초기화 — 음수 실수 대각 행렬)
+        # A는 입력 독립적 (HiPPO 초기화 ) 음수 실수 대각 행렬)
         A = torch.arange(1, d_state + 1).float().repeat(d_model, 1)
         self.A_log = nn.Parameter(torch.log(A))  # log 공간에서 학습하여 안정성 확보
         self.D = nn.Parameter(torch.ones(d_model))  # 스킵 연결 (D 항)
 
     def forward(self, x):
         """
-        x: (B, L, D) — 배치, 시퀀스 길이, 모델 차원
-        반환: (B, L, D) — 선택적으로 필터링된 출력
+        x: (B, L, D) ( 배치, 시퀀스 길이, 모델 차원
+        반환: (B, L, D) ) 선택적으로 필터링된 출력
         """
         B, L, D = x.shape
         N = self.d_state
@@ -238,7 +238,7 @@ class SelectiveSSM(nn.Module):
         dt, B_param, C_param = x_dbl.split(
             [self.dt_rank, N, N], dim=-1
         )
-        # Δ_t = softplus(Linear(dt)) — 항상 양수, 게이트 역할
+        # Δ_t = softplus(Linear(dt)), 항상 양수, 게이트 역할
         dt = F.softplus(self.dt_proj(dt))  # (B, L, D)
 
         # A 복원: -exp(A_log)로 음수 보장 (안정적 동역학)

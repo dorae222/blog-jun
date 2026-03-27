@@ -375,13 +375,13 @@ ViT는 "이미지를 단어처럼 처리할 수 있다"는 단순하지만 강�
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 발전 기반
-- [[deit|DeiT]] — 후속 모델
-- [[dinov2|DINOv2]] — 후속 모델
-- [[mae|MAE]] — 후속 모델
-- [[sam|SAM]] — 후속 모델
-- [[swin-transformer|Swin Transformer]] — 후속 모델
-- [[llava|Visual Instruction Tuning]] — 영감을 줌
-- [[clip|CLIP]] — 적용 모델
-- [[dit|DiT (Diffusion Transformers)]] — 적용 모델
-- [[pixtral|Pixtral]] — 적용 모델
+- [[transformer|Transformer]] ( 발전 기반
+- [[deit|DeiT]] ) 후속 모델
+- [[dinov2|DINOv2]] ( 후속 모델
+- [[mae|MAE]] ) 후속 모델
+- [[sam|SAM]] ( 후속 모델
+- [[swin-transformer|Swin Transformer]] ) 후속 모델
+- [[llava|Visual Instruction Tuning]] ( 영감을 줌
+- [[clip|CLIP]] ) 적용 모델
+- [[dit|DiT (Diffusion Transformers)]] ( 적용 모델
+- [[pixtral|Pixtral]] ) 적용 모델

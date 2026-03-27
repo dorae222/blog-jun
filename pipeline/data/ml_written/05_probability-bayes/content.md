@@ -276,7 +276,7 @@ plt.savefig('probability_distributions.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 # ── 2. 베이즈 업데이트 시뮬레이션 (동전 예시) ──────────────────────
-# 사전 분포: Beta(2, 2) — 균등에 가깝지만 극단은 억제
+# 사전 분포: Beta(2, 2), 균등에 가깝지만 극단은 억제
 # 관측: 진짜 p = 0.7인 동전을 점진적으로 던짐
 
 np.random.seed(42)

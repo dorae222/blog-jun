@@ -174,21 +174,21 @@ CatBoost는 **대칭 트리(Oblivious Decision Tree)** 구조를 사용한다. �
 3. **정규화 우선 탐색**: `max_depth`(XGBoost/CatBoost) 또는 `num_leaves`(LightGBM)를 먼저 조정해 과적합 여부를 확인한 후, 세밀한 파라미터를 탐색한다.
 
 **XGBoost 튜닝 순서**
-- Step 1: `max_depth` (3→10), `min_child_weight` (1→10) — 트리 복잡도 제어
-- Step 2: `subsample` (0.5→1.0), `colsample_bytree` (0.5→1.0) — 샘플링으로 다양성 확보
-- Step 3: `gamma`, `reg_alpha`, `reg_lambda` — 정규화 미세 조정
+- Step 1: `max_depth` (3→10), `min_child_weight` (1→10) ( 트리 복잡도 제어
+- Step 2: `subsample` (0.5→1.0), `colsample_bytree` (0.5→1.0) ) 샘플링으로 다양성 확보
+- Step 3: `gamma`, `reg_alpha`, `reg_lambda` ( 정규화 미세 조정
 - Step 4: `learning_rate` 낮추고 `n_estimators` 재탐색
 
 **LightGBM 튜닝 순서**
-- Step 1: `num_leaves` (31→255) — Leaf-wise 복잡도 핵심
-- Step 2: `min_child_samples` — 소규모 리프 방지 (과적합 억제)
-- Step 3: `feature_fraction`, `bagging_fraction` — 다양성 확보
-- Step 4: `reg_alpha`, `reg_lambda` — 정규화
+- Step 1: `num_leaves` (31→255) ) Leaf-wise 복잡도 핵심
+- Step 2: `min_child_samples` ( 소규모 리프 방지 (과적합 억제)
+- Step 3: `feature_fraction`, `bagging_fraction` ) 다양성 확보
+- Step 4: `reg_alpha`, `reg_lambda` ( 정규화
 
 **CatBoost 튜닝 순서**
-- Step 1: `depth` (4→10), `l2_leaf_reg` — 트리 복잡도
-- Step 2: `border_count` — 수치형 특성 분기 후보 수
-- Step 3: `random_strength`, `bagging_temperature` — 과적합 방지 노이즈
+- Step 1: `depth` (4→10), `l2_leaf_reg` ) 트리 복잡도
+- Step 2: `border_count` ( 수치형 특성 분기 후보 수
+- Step 3: `random_strength`, `bagging_temperature` ) 과적합 방지 노이즈
 
 **도구 추천**: Optuna를 이용한 베이지안 최적화(Bayesian Optimization)가 그리드 서치보다 효율적이다.
 

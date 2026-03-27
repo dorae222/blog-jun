@@ -4,7 +4,7 @@
 
 핵심 아이디어는 언어 에이전트가 태스크 수행에 실패했을 때, 실패의 원인을 **자연어로 분석하고 반성**한 후, 이 반성을 장기 메모리에 저장하여 다음 시행에서 활용하는 것입니다. 이는 인간이 실수로부터 배우는 방식 -- "무엇이 잘못되었는지 되돌아보고, 다음에는 다르게 하겠다"는 자기 성찰 -- 을 LLM 에이전트에 구현한 것입니다.
 
-![Reflexion의 세 가지 적용 영역 — 의사결정, 프로그래밍, 추론 태스크에서의 작동 과정](figures/fig_1.png)
+![Reflexion의 세 가지 적용 영역 ( 의사결정, 프로그래밍, 추론 태스크에서의 작동 과정](figures/fig_1.png)
 
 *Figure 1: Reflexion의 세 가지 적용 영역. (a) 태스크가 주어지면, (b) 에이전트가 트래젝토리를 생성하고, (c) 내부/외부 평가를 통해 실패를 감지하며, (d) 자연어 반성을 생성하고, (e) 반성을 바탕으로 개선된 다음 트래젝토리를 생성한다. 의사결정(AlfWorld), 프로그래밍(HumanEval), 추론(HotPotQA) 세 도메인에서 작동한다. (Shinn et al., 2024)*
 
@@ -40,7 +40,7 @@ Reflexion의 핵심 통찰은 다음과 같습니다.
 
 ### Reflexion 아키텍처
 
-![Reflexion의 아키텍처 다이어그램 — Actor, Evaluator, Self-Reflection, Experience(장기 메모리)의 네 구성 요소와 환경의 상호작용](figures/fig_2.png)
+![Reflexion의 아키텍처 다이어그램 ) Actor, Evaluator, Self-Reflection, Experience(장기 메모리)의 네 구성 요소와 환경의 상호작용](figures/fig_2.png)
 
 *Figure 2: Reflexion의 아키텍처. Agent는 Actor(LLM), Evaluator, Self-Reflection(LLM), Experience(장기 메모리)의 네 구성 요소로 구성된다. Actor가 환경과 상호작용하여 Trajectory(단기 메모리)를 생성하고, Evaluator가 성공/실패를 판단하며, 실패 시 Self-Reflection이 언어적 반성을 생성하여 Experience에 저장한다. 다음 시행에서 Actor는 이 Experience를 참조한다. (Shinn et al., 2024)*
 
@@ -102,7 +102,7 @@ Reflexion은 4개의 핵심 구성 요소로 이루어져 있습니다.
 
 AlfWorld는 텍스트 기반 가상 환경에서 6가지 유형의 가정용 태스크를 수행하는 벤치마크입니다.
 
-![AlfWorld에서의 Reflexion 성능 — 시행 횟수가 증가할수록 성공률이 지속적으로 상승하는 그래프](figures/fig_3_1.png)
+![AlfWorld에서의 Reflexion 성능 ( 시행 횟수가 증가할수록 성공률이 지속적으로 상승하는 그래프](figures/fig_3_1.png)
 
 *Figure 3: AlfWorld에서의 성능 비교. ReAct only(회색)는 약 75%에서 정체되지만, ReAct + Reflexion(Heuristic 평가: 파란색, GPT 평가: 초록색)은 시행 횟수가 증가할수록 지속적으로 향상되어 최종 97%의 성공률을 달성한다. (Shinn et al., 2024)*
 
@@ -118,7 +118,7 @@ Reflexion은 10번의 시행 내에 97%의 태스크를 성공적으로 수행�
 
 ### HotPotQA: 추론
 
-![HotPotQA에서의 Reflexion 성능 — CoT와 ReAct 모두에 Reflexion을 적용했을 때의 향상을 보여주는 그래프](figures/fig_6_1.png)
+![HotPotQA에서의 Reflexion 성능 ) CoT와 ReAct 모두에 Reflexion을 적용했을 때의 향상을 보여주는 그래프](figures/fig_6_1.png)
 
 *Figure 4: HotPotQA에서의 성능 비교. CoT only(회색 점선)와 ReAct only(회색 실선)는 시행이 증가해도 성능이 정체되지만, CoT + Reflexion(빨간색)과 ReAct + Reflexion(파란색)은 지속적으로 향상된다. ReAct + Reflexion이 최종 55%로 가장 높은 성능을 달성한다. (Shinn et al., 2024)*
 
@@ -160,7 +160,7 @@ GPT-4 + Reflexion은 **91.0%의 pass@1**을 달성합니다. 이는 단일 시�
 
 ### 실패 사례 분석
 
-![WebShop에서의 Reflexion 성능 — ReAct + Reflexion이 ReAct only와 비슷한 수준에 머무르는 결과](figures/fig_11.png)
+![WebShop에서의 Reflexion 성능, ReAct + Reflexion이 ReAct only와 비슷한 수준에 머무르는 결과](figures/fig_11.png)
 
 *Figure 5: WebShop에서의 Reflexion 성능. ReAct + Reflexion(파란색)이 ReAct only(회색)와 큰 차이를 보이지 않는다. WebShop은 각 에피소드의 상품과 검색 결과가 다르기 때문에, 이전 경험의 반성이 새로운 에피소드에 일반화되기 어렵다. (Shinn et al., 2024)*
 

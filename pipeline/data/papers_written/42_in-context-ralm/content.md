@@ -6,7 +6,7 @@ Ram et al. (2023)이 TACL에 발표한 **"In-Context Retrieval-Augmented Languag
 
 다음 그래프는 In-Context RALM의 핵심 결과를 요약합니다. BM25 검색만으로도 baseline 대비 큰 perplexity 감소를 달성하며, Predictive Reranking을 추가하면 성능이 더욱 향상됩니다.
 
-![In-Context RALM의 핵심 실험 결과 — 검색 방법별 Perplexity 비교](figures/fig_1.png)
+![In-Context RALM의 핵심 실험 결과, 검색 방법별 Perplexity 비교](figures/fig_1.png)
 *Figure 1: GPT-2 345M과 GPT-2 XL 1.5B에서 검색 없음, BM25, Predictive Reranking 적용 시 WikiText-103 테스트 세트의 Perplexity 비교. 모든 모델 규모에서 In-Context RALM이 LM 수정 없이 일관된 성능 향상을 달성한다 (Ram et al., 2023).*
 
 본 논문의 주요 기여는 다음 네 가지로 요약됩니다.

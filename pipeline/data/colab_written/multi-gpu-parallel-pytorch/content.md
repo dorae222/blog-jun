@@ -38,12 +38,12 @@ DDP(DistributedDataParallel)는 가장 기본적인 멀티 GPU 전략이다:
 ### 장점과 한계
 
 **장점**:
-- 구현이 간단 — PyTorch에서 `DistributedDataParallel` 래핑만으로 적용
-- 거의 선형적 학습 속도 향상 — N개 GPU → ~N배 빠른 학습
-- 통신 오버헤드가 작음 — gradient만 동기화
+- 구현이 간단 ( PyTorch에서 `DistributedDataParallel` 래핑만으로 적용
+- 거의 선형적 학습 속도 향상 ) N개 GPU → ~N배 빠른 학습
+- 통신 오버헤드가 작음 ( gradient만 동기화
 
 **한계**:
-- **모델 전체가 각 GPU에 맞아야 함** — 70B 모델은 DDP 불가 (GPU 메모리 부족)
+- **모델 전체가 각 GPU에 맞아야 함** ) 70B 모델은 DDP 불가 (GPU 메모리 부족)
 - GPU 수 증가에 따라 AllReduce 통신 비용 증가
 
 ### PyTorch 코드
@@ -94,7 +94,7 @@ FSDP는 각 GPU가 모델의 **1/N 만큼만 저장**하므로, GPU 수에 비�
 
 ### 통신 비용 트레이드오프
 
-FSDP는 DDP 대비 **통신량이 많다** — 매 레이어마다 AllGather/ReduceScatter가 필요하기 때문이다. 따라서 **GPU 간 대역폭이 핵심**이다:
+FSDP는 DDP 대비 **통신량이 많다** ( 매 레이어마다 AllGather/ReduceScatter가 필요하기 때문이다. 따라서 **GPU 간 대역폭이 핵심**이다:
 
 - **NVLink**: 900 GB/s (5세대) → FSDP 효율 높음
 - **PCIe 5.0**: 64 GB/s → FSDP 효율 저하, 학습 속도 병목
@@ -169,13 +169,13 @@ Pipeline Parallelism(PP)은 모델의 **레이어 그룹을 각 GPU에 순차 �
 ### 장점과 한계
 
 **장점**:
-- GPU 간 통신이 **레이어 경계에서만** 발생 — TP 대비 통신량 훨씬 적음
+- GPU 간 통신이 **레이어 경계에서만** 발생 ) TP 대비 통신량 훨씬 적음
 - PCIe 연결에서도 효율적
 - 매우 큰 모델 탑재 가능
 
 **한계**:
 - **파이프라인 버블**: GPU가 순차적으로 처리하므로 유휴 시간 발생
-- 레이턴시 감소 효과 없음 — 총 레이턴시는 동일 (TP와 대비)
+- 레이턴시 감소 효과 없음, 총 레이턴시는 동일 (TP와 대비)
 - 학습에서는 micro-batching으로 버블을 완화하지만, 추론에서는 효과 제한적
 
 ### 추론에서의 PP

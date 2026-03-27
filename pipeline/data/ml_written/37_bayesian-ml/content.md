@@ -69,7 +69,7 @@ $$p(y^* | x^*, X, y) = \mathcal{N}\left(y^* \mid m_N^T x^*,\; (x^*)^T S_N x^* + 
 $$f(x) \sim \mathcal{GP}(m(x),\, k(x, x'))$$
 
 - $m(x)$: 평균 함수 (보통 0으로 설정)
-- $k(x, x')$: **커널 함수(공분산 함수)** — 두 점 사이의 유사성을 정의
+- $k(x, x')$: **커널 함수(공분산 함수)** ( 두 점 사이의 유사성을 정의
 
 대표적인 커널 함수:
 - **RBF (Radial Basis Function)**: $k(x, x') = \sigma_f^2 \exp\left(-\frac{\|x - x'\|^2}{2l^2}\right)$
@@ -249,7 +249,7 @@ GP의 경우 행렬 역산 $O(N^3)$이 병목이며, 학습 데이터 수가 수
 
 | 라이브러리 | 언어 | 특징 |
 |---|---|---|
-| **scikit-learn** | Python | BayesianRidge, GaussianProcessRegressor — 입문용 |
+| **scikit-learn** | Python | BayesianRidge, GaussianProcessRegressor ) 입문용 |
 | **GPy** | Python | GP 전문 라이브러리, 다양한 커널 |
 | **GPyTorch** | Python (PyTorch) | GPU 가속 GP, 대규모 데이터 대응 |
 | **PyMC** | Python | MCMC 기반 전체 베이지안 모델링 |
@@ -259,11 +259,11 @@ GP의 경우 행렬 역산 $O(N^3)$이 병목이며, 학습 데이터 수가 수
 
 ### 베이지안 워크플로 권장 순서
 
-1. **Prior 설계** — 도메인 지식 반영, Prior Predictive Check로 타당성 검증
-2. **모델 적합** — MAP → Full Bayesian 순서로 점진적으로 복잡도 높이기
-3. **Posterior 진단** — R-hat, ESS(유효 샘플 수) 확인 (MCMC 사용 시)
-4. **Posterior Predictive Check** — 모델이 실제 데이터 분포를 재현하는지 확인
-5. **모델 비교** — WAIC, LOO-CV로 모델 선택
+1. **Prior 설계** ( 도메인 지식 반영, Prior Predictive Check로 타당성 검증
+2. **모델 적합** ) MAP → Full Bayesian 순서로 점진적으로 복잡도 높이기
+3. **Posterior 진단** ( R-hat, ESS(유효 샘플 수) 확인 (MCMC 사용 시)
+4. **Posterior Predictive Check** ) 모델이 실제 데이터 분포를 재현하는지 확인
+5. **모델 비교**, WAIC, LOO-CV로 모델 선택
 
 ---
 

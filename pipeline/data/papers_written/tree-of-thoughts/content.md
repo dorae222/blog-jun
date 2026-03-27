@@ -123,7 +123,7 @@ GPT-4를 평가자로 사용한 비교에서, ToT로 생성된 이야기가 IO�
 
 5x5 미니 크로스워드 퍼즐은 가장 복잡한 태스크로, DFS + 백트래킹을 사용합니다.
 
-![Mini Crosswords 태스크의 프롬프트 예시 — 단서와 현재 보드 상태를 바탕으로 LLM이 후보 단어와 확신도를 제안](figures/p08_fig01.jpeg)
+![Mini Crosswords 태스크의 프롬프트 예시, 단서와 현재 보드 상태를 바탕으로 LLM이 후보 단어와 확신도를 제안](figures/p08_fig01.jpeg)
 
 *Figure 1: Mini Crosswords 태스크의 프롬프트 예시. 5x5 크로스워드 퍼즐에서 가로/세로 단서가 주어지면, LLM이 각 빈칸에 들어갈 후보 단어와 확신도(certain/high/medium/low)를 제안한다. (Yao et al., 2024)*
 

@@ -141,7 +141,7 @@ CFG 가이던스 스케일 $s$를 높이면 BLEU 점수(품질)가 올라가지�
 MBR 디코딩의 효과는 후보 수 $|\mathcal{S}|$에 따른 BLEU 변화에서 명확히 확인된다. 아래 그림은 Text Simplification과 Paraphrase 태스크에서 후보 수를 1에서 20으로 늘렸을 때의 BLEU 향상을 보여준다.
 
 ![MBR 디코딩의 후보 수에 따른 BLEU 향상](figures/fig_3_1.png)
-*Figure 6: MBR 디코딩에서 후보 수 $|\mathcal{S}|$에 따른 BLEU 변화 — Text Simplification(좌)과 Paraphrase(우) 태스크에서 DiffuSeq는 후보 수가 증가할수록 일관되게 BLEU가 향상되며, GPT2 베이스라인을 능가한다. (Gong et al., 2023)*
+*Figure 6: MBR 디코딩에서 후보 수 $|\mathcal{S}|$에 따른 BLEU 변화 ( Text Simplification(좌)과 Paraphrase(우) 태스크에서 DiffuSeq는 후보 수가 증가할수록 일관되게 BLEU가 향상되며, GPT2 베이스라인을 능가한다. (Gong et al., 2023)*
 
 이러한 BLEU 향상은 확산 모델이 생성하는 다양한 샘플들 사이에서 최적의 대표 샘플을 효과적으로 선별할 수 있음을 보여준다.
 
@@ -155,7 +155,7 @@ MBR 디코딩의 원리를 더 직관적으로 설명하면, 확산 모델은 �
 확산 과정의 진행에 따라 BLEU와 다양성(div-4) 점수가 어떻게 변화하는지 추적하면, DiffuSeq의 반복적 정제 메커니즘을 직관적으로 이해할 수 있다.
 
 ![생성 과정 진행에 따른 BLEU/div-4 변화](figures/fig_6_1.png)
-*Figure 7: Text Simplification 태스크에서 생성 과정 진행(%)에 따른 BLEU(파란)와 div-4(주황) 변화 — 초기 스텝에서 다양성이 급격히 형성되고, 이후 점진적으로 BLEU가 수렴하며 품질이 안정화된다. (Gong et al., 2023)*
+*Figure 7: Text Simplification 태스크에서 생성 과정 진행(%)에 따른 BLEU(파란)와 div-4(주황) 변화 ) 초기 스텝에서 다양성이 급격히 형성되고, 이후 점진적으로 BLEU가 수렴하며 품질이 안정화된다. (Gong et al., 2023)*
 
 ### 추론 속도와 품질
 
@@ -260,7 +260,7 @@ class DiffuSeqModel(nn.Module):
 
     def forward(
         self,
-        z0_x: torch.Tensor,   # 소스 임베딩 (B, src_len, D) — 노이즈 없음
+        z0_x: torch.Tensor,   # 소스 임베딩 (B, src_len, D), 노이즈 없음
         zt_y: torch.Tensor,   # 목표 노이즈 임베딩 (B, tgt_len, D)
         t: torch.Tensor,      # 타임스텝 (B,)
     ) -> torch.Tensor:

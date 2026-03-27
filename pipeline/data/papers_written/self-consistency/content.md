@@ -4,7 +4,7 @@
 
 핵심 아이디어는 직관적이면서도 강력합니다. 기존 CoT 프롬프팅이 단일 greedy decoding 경로에 의존하는 반면, Self-Consistency는 **다수의 추론 경로를 샘플링한 후 가장 일관적인 답을 다수결로 선택**합니다. 이 단순한 변경만으로 GSM8K에서 17.9%p, AQuA에서 12.2%p 등 산술/상식 추론 벤치마크 전반에서 압도적인 성능 향상을 달성합니다.
 
-![Self-Consistency 방법의 3단계 파이프라인 — CoT 프롬프트로 다양한 추론 경로를 샘플링한 후 다수결 투표로 최종 답을 결정](figures/fig_1.png)
+![Self-Consistency 방법의 3단계 파이프라인 ( CoT 프롬프트로 다양한 추론 경로를 샘플링한 후 다수결 투표로 최종 답을 결정](figures/fig_1.png)
 
 *Figure 1: Self-Consistency 방법의 3단계 파이프라인. (1) CoT 프롬프트로 언어 모델을 유도하고, (2) greedy decoding 대신 디코더에서 다양한 추론 경로를 샘플링하며, (3) 추론 경로를 주변화(marginalize)하여 가장 일관적인 최종 답을 선택한다. (Wang et al., 2023)*
 
@@ -107,7 +107,7 @@ $$\hat{a} = \arg\max_a \sum_{i=1}^{n} \mathbb{1}[a_i = a]$$
 
 샘플 수 $n$은 Self-Consistency의 핵심 하이퍼파라미터입니다.
 
-![Self-Consistency가 다양한 산술/상식 추론 태스크에서 CoT greedy decoding 대비 일관된 성능 향상을 보여주는 그래프 — 샘플 수 증가에 따라 정확도가 지속적으로 상승](figures/fig_2_1.png)
+![Self-Consistency가 다양한 산술/상식 추론 태스크에서 CoT greedy decoding 대비 일관된 성능 향상을 보여주는 그래프 ) 샘플 수 증가에 따라 정확도가 지속적으로 상승](figures/fig_2_1.png)
 
 *Figure 2: Self-Consistency(파란색)는 CoT greedy decoding(주황색) 대비 모든 산술/상식 추론 태스크에서 일관된 성능 향상을 보인다. 샘플 수가 증가할수록 정확도가 지속적으로 상승하며, 비교적 적은 수의 샘플(5~10개)에서도 상당한 개선이 나타난다. (Wang et al., 2023)*
 
@@ -155,7 +155,7 @@ $$\hat{a} = \arg\max_a \sum_{i=1}^{n} \mathbb{1}[a_i = a]$$
 
 ### 모델 스케일에 따른 효과
 
-![모델 크기에 따른 Self-Consistency와 Greedy Decoding의 성능 비교 — 모델이 클수록 Self-Consistency의 이점이 더 커진다](figures/fig_4_2.png)
+![모델 크기에 따른 Self-Consistency와 Greedy Decoding의 성능 비교, 모델이 클수록 Self-Consistency의 이점이 더 커진다](figures/fig_4_2.png)
 
 *Figure 4: GSM8K에서의 모델 스케일에 따른 성능 비교. Self-Consistency는 모든 모델 크기에서 Greedy Decoding을 능가하며, 모델이 클수록 그 격차가 더 벌어진다. 이는 대형 모델이 더 다양하고 정확한 추론 경로를 생성할 수 있기 때문이다. (Wang et al., 2023)*
 

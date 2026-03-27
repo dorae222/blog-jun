@@ -415,7 +415,7 @@ print(f"활성 비율: {active_params/total_params*100:.1f}%")
 
 ## 관련 문서
 
-- [[mistral-7b|Mistral 7B]] — 발전 기반
-- [[mistral-large-3|Mistral Large 3 / Mistral 3]] — 후속 모델
-- [[deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] — 영감을 줌
-- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] — 영감을 줌
+- [[mistral-7b|Mistral 7B]] ( 발전 기반
+- [[mistral-large-3|Mistral Large 3 / Mistral 3]] ) 후속 모델
+- [[deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] ( 영감을 줌
+- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] ) 영감을 줌

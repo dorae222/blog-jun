@@ -84,7 +84,7 @@ $\alpha = 1$이면 라플라스 스무딩, $0 < \alpha < 1$이면 리드스톤(L
 
 ## Python 구현
 
-### Gaussian Naive Bayes — Iris 데이터셋
+### Gaussian Naive Bayes ( Iris 데이터셋
 
 ```python
 from sklearn.datasets import load_iris
@@ -131,7 +131,7 @@ weighted avg       0.97      0.97      0.97        30
  [6.61   2.98   5.58   2.04  ]]
 ```
 
-### Multinomial Naive Bayes — 텍스트 분류
+### Multinomial Naive Bayes ) 텍스트 분류
 
 ```python
 from sklearn.datasets import fetch_20newsgroups
@@ -160,7 +160,7 @@ print(f"Accuracy: {accuracy_score(test.target, y_pred):.4f}")
 Accuracy: 0.9606
 ```
 
-### Bernoulli Naive Bayes — 이진 특성
+### Bernoulli Naive Bayes ( 이진 특성
 
 ```python
 from sklearn.naive_bayes import BernoulliNB
@@ -186,7 +186,7 @@ Bernoulli NB Accuracy: 0.8101
 ![나이브 베이즈 결정 경계: 가우시안 나이브 베이즈의 클래스 분리](figures/naive_bayes_decision_boundary.png)
 *나이브 베이즈 결정 경계: 가우시안 나이브 베이즈 분류기가 특성 공간에서 형성하는 결정 경계와 각 클래스의 영역을 시각화한다.*
 
-## 시각화 — Decision Boundary
+## 시각화 ) Decision Boundary
 
 2개의 특성을 선택하여 Gaussian NB의 결정 경계를 시각화합니다.
 
@@ -226,7 +226,7 @@ scatter = ax.scatter(X2[:, 0], X2[:, 1], c=y, cmap=cmap_pt,
 
 ax.set_xlabel('Sepal Length (cm)', fontsize=12)
 ax.set_ylabel('Sepal Width (cm)',  fontsize=12)
-ax.set_title('Gaussian Naive Bayes — Decision Boundary (Iris)', fontsize=14)
+ax.set_title('Gaussian Naive Bayes, Decision Boundary (Iris)', fontsize=14)
 legend = ax.legend(*scatter.legend_elements(),
                    title='Species', loc='upper right')
 ax.add_artist(legend)
