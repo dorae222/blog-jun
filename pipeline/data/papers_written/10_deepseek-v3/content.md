@@ -441,7 +441,7 @@ print(f"편향 범위: [{router.bias.min():.6f}, {router.bias.max():.6f}]")
 
 ## 관련 문서
 
-- [[deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] — 발전 기반
-- [[deepseek-r1|DeepSeek-R1]] — 후속 모델
-- [[deepseek-r1-zero|DeepSeek-R1-Zero]] — 후속 모델
-- [[kimi-k2|Kimi K2]] — 영감을 줌
+- [[deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] ( 발전 기반
+- [[deepseek-r1|DeepSeek-R1]] ) 후속 모델
+- [[deepseek-r1-zero|DeepSeek-R1-Zero]] ( 후속 모델
+- [[kimi-k2|Kimi K2]] ) 영감을 줌

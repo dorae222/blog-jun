@@ -60,7 +60,7 @@ $\mu_i$는 기업 $i$의 Sales 기본 수준을 결정하는 모든 관측 불�
 
 $$\text{Sales}_{it} = \beta_1 \text{Price}_{it} + \beta_3 \text{Listed}_i + \mu_i + \epsilon_{it}$$
 
-$\text{Listed}_i$는 $\mu_i$와 마찬가지로 $i$에만 의존하므로, 이 둘을 구분할 수 없습니다. 결국 $\beta_3 \text{Listed}_i$는 $\mu_i$에 흡수되어 **$\text{Listed}_i$의 개별 효과를 식별할 수 없게 됩니다.** 이는 개체 고정 효과 모형의 근본적인 한계입니다 — 시간이 지나도 변하지 않는 개체 속성의 효과는 추정할 수 없습니다.
+$\text{Listed}_i$는 $\mu_i$와 마찬가지로 $i$에만 의존하므로, 이 둘을 구분할 수 없습니다. 결국 $\beta_3 \text{Listed}_i$는 $\mu_i$에 흡수되어 **$\text{Listed}_i$의 개별 효과를 식별할 수 없게 됩니다.** 이는 개체 고정 효과 모형의 근본적인 한계입니다 ( 시간이 지나도 변하지 않는 개체 속성의 효과는 추정할 수 없습니다.
 
 ---
 
@@ -282,7 +282,7 @@ for var in ['price', 'adv_lag']:
     sig  = '***' if pval < 0.001 else ('**' if pval < 0.01 else ('*' if pval < 0.05 else ''))
     print(f"  {var:10s}: {coef:+.4f}  (p={pval:.4f}) {sig}")
 
-print(f"\n  진짜 계수 — price: -0.68,  adv_lag: +0.35")
+print(f"\n  진짜 계수 ) price: -0.68,  adv_lag: +0.35")
 print("  해석: 동일 기업에서 동일 연도 환경 하에,")
 print("        가격 1단위 상승 시 Sales 평균 {:.2f}단위 감소.".format(abs(params['price'])))
 ```

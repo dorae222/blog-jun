@@ -6,7 +6,7 @@ QLoRA(Quantized Low-Rank Adaptation)는 이러한 메모리 병목을 근본적�
 
 다음 그림은 QLoRA의 전체 아키텍처를 요약합니다. 사전학습 가중치 $W_0$를 NF4로 양자화하여 동결하고, 저랭크 행렬 $B \cdot A$로 구성된 LoRA 어댑터만 학습하는 구조입니다.
 
-![QLoRA 전체 아키텍처 — NF4 양자화된 사전학습 가중치 위에 학습 가능한 LoRA 어댑터를 결합하는 구조](figures/architecture.png)
+![QLoRA 전체 아키텍처 ( NF4 양자화된 사전학습 가중치 위에 학습 가능한 LoRA 어댑터를 결합하는 구조](figures/architecture.png)
 *QLoRA 아키텍처 개요: 사전학습 가중치 $W_0$는 NF4로 양자화되어 동결(frozen)되고, 저랭크 행렬 $B \cdot A$만 BF16으로 학습된다. Full Fine-tuning이 100%의 파라미터를 16비트로 학습하는 것과 달리, QLoRA는 전체의 약 0.01%만 학습하면서 4비트 양자화 모델 위에서 동작하여 단일 48GB GPU에서 65B 모델 파인튜닝을 실현한다.*
 
 QLoRA로 학습된 Guanaco 모델 패밀리는 Vicuna 벤치마크에서 ChatGPT 성능의 99.3%에 도달하며, 이전까지 수십 개의 GPU가 필요했던 대규모 모델 파인튜닝을 단일 소비자용 GPU에서도 수행할 수 있는 길을 열었습니다. 이 논문은 NeurIPS 2023에 채택되었으며, LLM 파인튜닝의 민주화에 결정적인 기여를 한 연구로 평가받고 있습니다.
@@ -216,7 +216,7 @@ NF4는 동일한 4비트 예산 내에서 가장 낮은 양자화 오차를 보�
 
 QLoRA로 학습된 Guanaco 모델 패밀리는 OASST1(OpenAssistant) 데이터셋으로 파인튜닝되었습니다. 아래 그림은 모델 평가에 사용된 인간 평가 인터페이스를 보여줍니다. 두 모델의 응답을 나란히 제시하고, 평가자가 유용성, 정확성, 상세도를 기준으로 1~10점 척도의 점수를 부여하는 방식입니다.
 
-![Vicuna 벤치마크에 사용된 인간 평가 인터페이스 — 두 모델의 응답을 비교 평가](figures/fig_5.png)
+![Vicuna 벤치마크에 사용된 인간 평가 인터페이스 ) 두 모델의 응답을 비교 평가](figures/fig_5.png)
 *Figure 5: Vicuna 벤치마크의 인간 평가 인터페이스. 동일한 질문에 대한 두 모델(Response A, B)의 응답을 나란히 보여주고, 평가자가 각각 1~10점으로 평가한다. 이 방식으로 Guanaco 모델이 ChatGPT 수준의 응답 품질을 달성했는지 검증하였다. (Dettmers et al., 2023)*
 
 Vicuna 벤치마크에서 GPT-4를 평가자로 사용한 결과:
@@ -265,12 +265,12 @@ QLoRA는 LoRA 대비 약 3.3배, 전체 파인튜닝 대비 약 16배의 메모�
 
 먼저, LoRA 어댑터를 어느 모듈에 적용하느냐에 따른 성능 차이가 뚜렷하게 나타납니다. 다음 그림은 모든 선형 레이어(QLoRA-All), FFN만(QLoRA-FFN), 어텐션만(QLoRA-Attention) 적용한 경우의 RougeL 성능을 비교합니다.
 
-![QLoRA 어댑터 타겟 모듈별 RougeL 성능 비교 — All, FFN, Attention 모듈 적용 결과](figures/fig_2.png)
+![QLoRA 어댑터 타겟 모듈별 RougeL 성능 비교 ( All, FFN, Attention 모듈 적용 결과](figures/fig_2.png)
 *Figure 6: LoRA 어댑터 타겟 모듈별 RougeL 성능 비교. QLoRA-All(모든 선형 레이어 적용)이 QLoRA-FFN, QLoRA-Attention보다 일관되게 높은 성능을 보인다. 4비트(파랑)와 16비트(주황) 간 성능 차이가 미미하여 NF4 양자화의 손실이 거의 없음을 확인할 수 있다. (Dettmers et al., 2023)*
 
 또한, LoRA의 랭크 $r$에 따른 성능 변화도 중요한 분석 대상입니다. 다음 그림은 랭크 값에 따른 RougeL 성능의 분포를 보여줍니다.
 
-![LoRA 랭크(r) 값에 따른 RougeL 성능 분포 — 8, 16, 32, 64 비교](figures/fig_4.png)
+![LoRA 랭크(r) 값에 따른 RougeL 성능 분포 ) 8, 16, 32, 64 비교](figures/fig_4.png)
 *Figure 7: LoRA 랭크 $r$에 따른 RougeL 성능 분포. $r=8$에서 $r=64$까지 성능이 점진적으로 향상되지만, $r=32$ 이후의 개선 폭은 미미하다. $r=64$가 성능과 효율의 최적 균형점으로, QLoRA 논문의 기본 권장값이다. (Dettmers et al., 2023)*
 
 이 실험 결과를 종합하면 다음과 같은 결론을 도출할 수 있습니다:

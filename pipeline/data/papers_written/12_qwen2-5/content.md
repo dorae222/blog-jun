@@ -187,12 +187,12 @@ $$\mathcal{L}_{\text{DPO}}(\pi_\theta; \pi_{\text{ref}}) = -\mathbb{E}_{(x, y_w,
 이러한 안전성 평가를 위해 Qwen2.5 팀은 중국어 문화권 특유의 혐오 표현 용어 사전을 체계적으로 구축하였습니다. 다음 그림은 인종차별, 성차별 등 카테고리별로 분류된 혐오 표현 데이터셋의 구조를 보여줍니다.
 
 ![Qwen2.5 안전성 데이터셋 - 중국어 혐오 표현 용어 분류 체계](figures/fig_2.png)
-*Figure 4: 중국어 혐오 표현 용어 데이터셋 구조 — 인종차별(Racism), 성차별(Sexism) 등 그룹별로 분류된 용어와 정의. 문화적 맥락에 따른 암묵적 혐오 표현까지 포함하여 포괄적인 안전성 평가 기준을 제공한다. (Alibaba Qwen Team, 2025)*
+*Figure 4: 중국어 혐오 표현 용어 데이터셋 구조 ( 인종차별(Racism), 성차별(Sexism) 등 그룹별로 분류된 용어와 정의. 문화적 맥락에 따른 암묵적 혐오 표현까지 포함하여 포괄적인 안전성 평가 기준을 제공한다. (Alibaba Qwen Team, 2025)*
 
 또한 안전성 평가를 위한 프롬프트 설계에서는 기본 프롬프트와 few-shot 프롬프트를 체계적으로 비교 실험하였습니다. 다음 그림은 두 가지 프롬프트 방식의 구성을 보여줍니다.
 
 ![Qwen2.5 안전성 평가 프롬프트 설계 - 기본 프롬프트와 Few-shot 프롬프트 비교](figures/fig_3.png)
-*Figure 5: 안전성 평가 프롬프트 템플릿 비교 — 기본 프롬프트(Basic Prompt)와 3개 예시를 포함한 Few-shot 프롬프트(Basic Prompt with 3 Examples) 구성. 중국어와 영어 이중 언어로 설계되어 다국어 안전성 평가를 지원한다. (Alibaba Qwen Team, 2025)*
+*Figure 5: 안전성 평가 프롬프트 템플릿 비교 ) 기본 프롬프트(Basic Prompt)와 3개 예시를 포함한 Few-shot 프롬프트(Basic Prompt with 3 Examples) 구성. 중국어와 영어 이중 언어로 설계되어 다국어 안전성 평가를 지원한다. (Alibaba Qwen Team, 2025)*
 
 ### Qwen2.5-Coder
 
@@ -276,15 +276,15 @@ YaRN을 통해 1M 토큰까지 확장한 경우에도 실용적인 추론 속도
 동일한 Qwen2.5-7B 모델을 A100 GPU에서 측정한 결과에서도 유사한 경향이 관찰됩니다. A100에서는 H20 대비 전반적으로 더 낮은 TTFT를 보이며, 최적화 효과도 일관되게 나타납니다.
 
 ![Qwen2.5-7B의 컨텍스트 길이별 TTFT 비교 - A100 GPU 기준](figures/p18_fig02.png)
-*Figure 7: Qwen2.5-7B의 A100 GPU에서의 TTFT 비교 — Full Attention 대비 최적화 방법이 1M 토큰에서 약 4배의 속도 향상을 달성. A100의 높은 메모리 대역폭 덕분에 H20 대비 전체적으로 더 빠른 응답을 보인다. (Alibaba Qwen Team, 2025)*
+*Figure 7: Qwen2.5-7B의 A100 GPU에서의 TTFT 비교 ( Full Attention 대비 최적화 방법이 1M 토큰에서 약 4배의 속도 향상을 달성. A100의 높은 메모리 대역폭 덕분에 H20 대비 전체적으로 더 빠른 응답을 보인다. (Alibaba Qwen Team, 2025)*
 
 장문 컨텍스트 전용 모델인 Qwen2.5-Turbo-1M에서도 TTFT 최적화 효과를 확인할 수 있습니다. 다음 두 그림은 각각 H20과 A100 GPU에서의 Qwen2.5-Turbo-1M 모델 성능을 보여줍니다.
 
 ![Qwen2.5-Turbo-1M의 컨텍스트 길이별 TTFT 비교 - H20 GPU 기준](figures/p18_fig03.png)
-*Figure 8: Qwen2.5-Turbo-1M의 H20 GPU에서의 TTFT 비교 — 1M 토큰 처리 시 Full Attention은 약 295초가 소요되는 반면, 최적화 방법은 약 68초로 약 4.3배 단축. Turbo 모델 특유의 경량 아키텍처가 장문 처리에 최적화되어 있음을 보여준다. (Alibaba Qwen Team, 2025)*
+*Figure 8: Qwen2.5-Turbo-1M의 H20 GPU에서의 TTFT 비교 ) 1M 토큰 처리 시 Full Attention은 약 295초가 소요되는 반면, 최적화 방법은 약 68초로 약 4.3배 단축. Turbo 모델 특유의 경량 아키텍처가 장문 처리에 최적화되어 있음을 보여준다. (Alibaba Qwen Team, 2025)*
 
 ![Qwen2.5-Turbo-1M의 컨텍스트 길이별 TTFT 비교 - A100 GPU 기준](figures/p18_fig04.png)
-*Figure 9: Qwen2.5-Turbo-1M의 A100 GPU에서의 TTFT 비교 — A100에서는 1M 토큰 기준 Full Attention 약 172초, 최적화 방법 약 53초로 약 3.2배의 속도 향상을 달성. GPU 종류에 관계없이 일관된 최적화 효과를 보여준다. (Alibaba Qwen Team, 2025)*
+*Figure 9: Qwen2.5-Turbo-1M의 A100 GPU에서의 TTFT 비교, A100에서는 1M 토큰 기준 Full Attention 약 172초, 최적화 방법 약 53초로 약 3.2배의 속도 향상을 달성. GPU 종류에 관계없이 일관된 최적화 효과를 보여준다. (Alibaba Qwen Team, 2025)*
 
 ---
 

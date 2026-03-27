@@ -83,7 +83,7 @@ Rectified Flow와 VP ODE의 궤적 차이는 다음 2D 예제에서 명확히 �
 
 ![Rectified Flow 초기 궤적](figures/fig_4_1.png)
 ![Rectified Flow Reflow 후 직선화된 궤적](figures/fig_4_2.png)
-*Figure 2: Rectified Flow의 Reflow 전(좌)과 후(우) 궤적 비교 — 가우시안 혼합 분포(빨간 점)를 타겟으로 할 때, 초기 교차 궤적이 Reflow 1회로 각 모드를 향한 직선 경로로 정리된다. VP ODE와 sub-VP ODE는 동일한 Reflow를 적용해도 곡선이 유지된다. (Liu et al., 2023)*
+*Figure 2: Rectified Flow의 Reflow 전(좌)과 후(우) 궤적 비교 ( 가우시안 혼합 분포(빨간 점)를 타겟으로 할 때, 초기 교차 궤적이 Reflow 1회로 각 모드를 향한 직선 경로로 정리된다. VP ODE와 sub-VP ODE는 동일한 Reflow를 적용해도 곡선이 유지된다. (Liu et al., 2023)*
 
 Flow Matching(Lipman et al., 2022)의 OT-CFM은 사실상 OT 커플링을 사용하는 Rectified Flow와 동치임을 논문은 지적한다. Rectified Flow의 차별점은 **독립 커플링에서 출발해도 Reflow로 OT에 수렴할 수 있다**는 절차적 보장이다.
 
@@ -103,7 +103,7 @@ $$\mathcal{L}_{\mathrm{distill}} = \mathbb{E}\left[\|\hat{X}_1 - X_1\|^2\right]$
 Rectified Flow의 직선 궤적과 균일 속도 특성은 스텝 수에 따른 이산화 품질에 직접적으로 영향을 미친다. 아래 그림은 Rectified Flow가 단일 스텝으로도 분포의 평균을 정확히 생성하고 2 스텝이면 전체 분포를 커버하는 반면, VP ODE는 시간 후반부에 업데이트가 집중되어 적은 스텝에서 품질이 저하됨을 보여준다.
 
 ![스텝 수에 따른 Rectified Flow 궤적 시각화](figures/fig_5_1.png)
-*Figure 3: Rectified Flow의 직선 궤적과 균일 시간 진행 — $\pi_0$(보라 점)에서 $\pi_1$(빨간 점)까지 직선으로 이동하며, $N=1$ 스텝으로도 분포의 평균에 도달한다. $N=2$ 이면 전체 분포를 충분히 커버한다. (Liu et al., 2023)*
+*Figure 3: Rectified Flow의 직선 궤적과 균일 시간 진행 ) $\pi_0$(보라 점)에서 $\pi_1$(빨간 점)까지 직선으로 이동하며, $N=1$ 스텝으로도 분포의 평균에 도달한다. $N=2$ 이면 전체 분포를 충분히 커버한다. (Liu et al., 2023)*
 
 ### 이론적 성질
 

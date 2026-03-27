@@ -10,7 +10,7 @@ DDPM과 DDIM의 근본적인 차이는 다음 그래피컬 모델에서 확인�
 
 ![DDPM의 마르코프 확산 그래피컬 모델](figures/fig_1_1.png)
 ![DDIM의 비마르코프 확산 그래피컬 모델](figures/fig_1_2.png)
-*Figure 1: 마르코프 확산 모델(위)과 비마르코프 추론 모델(아래)의 그래피컬 모델 비교 — 비마르코프 모델은 $q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)$ 형태로 $\mathbf{x}_0$ 에 직접 조건화한다. (Song et al., 2021)*
+*Figure 1: 마르코프 확산 모델(위)과 비마르코프 추론 모델(아래)의 그래피컬 모델 비교 ( 비마르코프 모델은 $q(\mathbf{x}_{t-1}|\mathbf{x}_t, \mathbf{x}_0)$ 형태로 $\mathbf{x}_0$ 에 직접 조건화한다. (Song et al., 2021)*
 
 DDPM은 가우시안 마르코프 체인을 순방향 프로세스로 사용한다. 시간 $t$ 에서의 잠재 변수 $\mathbf{x}_t$ 는 이전 상태 $\mathbf{x}_{t-1}$ 에만 의존하며, 이 마르코프 구조 덕분에 임의 시각의 주변 분포를 닫힌 형태로 표현할 수 있다:
 
@@ -89,30 +89,30 @@ CIFAR-10과 CelebA-HQ, LSUN 데이터셋에서 측정한 주요 결과:
 다음 그래프는 스텝 수에 따른 50k 이미지 생성 소요 시간을 보여준다. DDIM은 스텝 수를 줄임으로써 생성 시간을 선형적으로 단축할 수 있다.
 
 ![CIFAR-10에서 스텝 수별 샘플링 소요 시간](figures/fig_10_1.png)
-*Figure 4: CIFAR-10에서 스텝 수에 따른 50k 이미지 생성 소요 시간 (Nvidia 2080 Ti 기준) — 스텝 수 감소에 비례하여 생성 시간이 줄어든다. (Song et al., 2021)*
+*Figure 4: CIFAR-10에서 스텝 수에 따른 50k 이미지 생성 소요 시간 (Nvidia 2080 Ti 기준) ) 스텝 수 감소에 비례하여 생성 시간이 줄어든다. (Song et al., 2021)*
 
 50 스텝의 DDIM은 1000 스텝 DDPM과 비교해 **20배 빠르면서도 유사한 FID 4.67**을 달성한다. 동일 스텝에서 $\eta$ 값을 변화시키면 $\eta=0$ (결정론적)이 가장 낮은 FID를 보이는 경향이 있으며, CelebA-HQ 256x256에서는 100 스텝 DDIM이 1000 스텝 DDPM(FID 7.79)보다 오히려 낮은 FID 7.33을 기록하기도 했다. 이는 결정론적 경로가 확률적 탐색의 노이즈를 제거해 더 일관된 이미지를 생성하기 때문으로 해석된다.
 
 DDIM의 결정론적 특성은 동일한 초기 잠재 변수 $\mathbf{x}_T$ 에서 스텝 수를 변화시켜도 의미적으로 일관된 이미지를 생성한다는 점에서 확인된다. 아래 CIFAR-10 실험은 동일한 $\mathbf{x}_T$ 로부터 10, 20, 50, 100, 1000 스텝으로 생성한 결과를 보여주며, 각 행이 동일한 잠재 변수에 대응한다.
 
 ![동일 잠재 변수에서 다양한 스텝으로 생성한 CIFAR-10 DDIM 샘플](figures/fig_13_1.png)
-*Figure 5: 동일한 $\mathbf{x}_T$ 에서 스텝 수(10, 20, 50, 100, 1000)를 변화시킨 CIFAR-10 DDIM 샘플 — 각 행은 동일 잠재 변수를 공유하며, 스텝 수가 줄어도 객체의 구조와 색감이 일관되게 유지된다. (Song et al., 2021)*
+*Figure 5: 동일한 $\mathbf{x}_T$ 에서 스텝 수(10, 20, 50, 100, 1000)를 변화시킨 CIFAR-10 DDIM 샘플 ( 각 행은 동일 잠재 변수를 공유하며, 스텝 수가 줄어도 객체의 구조와 색감이 일관되게 유지된다. (Song et al., 2021)*
 
 CelebA에서도 이러한 일관성이 확인된다. 다음 그림은 동일 $\mathbf{x}_T$ 로부터 20, 50, 100, 1000 스텝으로 생성한 CelebA 샘플을 비교한 것으로, 스텝 수와 무관하게 동일 인물의 유사한 포즈와 표정이 유지됨을 보여준다.
 
 ![동일 잠재 변수에서 스텝 수에 따른 CelebA DDIM 샘플 일관성](figures/fig_29.png)
-*Figure 6: 동일한 $\mathbf{x}_T$ 에서 스텝 수(20, 50, 100, 1000)를 변화시킨 CelebA DDIM 샘플 — 스텝 수가 줄어도 생성되는 이미지의 정체성, 포즈, 배경이 일관되게 유지된다. (Song et al., 2021)*
+*Figure 6: 동일한 $\mathbf{x}_T$ 에서 스텝 수(20, 50, 100, 1000)를 변화시킨 CelebA DDIM 샘플 ) 스텝 수가 줄어도 생성되는 이미지의 정체성, 포즈, 배경이 일관되게 유지된다. (Song et al., 2021)*
 
 잠재 공간 보간 실험에서도 DDIM은 DDPM 대비 더 매끄럽고 의미 있는 중간 이미지를 생성한다. 두 잠재 벡터 $\mathbf{x}_T^{(1)}$, $\mathbf{x}_T^{(2)}$ 사이의 구면 선형 보간(SLERP)을 적용하면, 아래와 같이 자연스러운 속성 변환이 관찰된다.
 
 ![CelebA 잠재 공간 보간 결과](figures/fig_17_1.png)
-*Figure 7: CelebA DDIM 잠재 공간 보간 ($\dim(\tau)=50$) — 두 얼굴 사이의 구면 선형 보간이 피부색, 머리 스타일, 얼굴 윤곽 등의 속성을 매끄럽게 전환하며, 중간 이미지도 자연스러운 얼굴을 유지한다. (Song et al., 2021)*
+*Figure 7: CelebA DDIM 잠재 공간 보간 ($\dim(\tau)=50$) ( 두 얼굴 사이의 구면 선형 보간이 피부색, 머리 스타일, 얼굴 윤곽 등의 속성을 매끄럽게 전환하며, 중간 이미지도 자연스러운 얼굴을 유지한다. (Song et al., 2021)*
 
 LSUN Church 데이터셋에서도 100 스텝 DDIM과 DDPM의 품질 차이가 뚜렷하게 나타난다. DDPM은 100 스텝으로 줄이면 구조적 왜곡이 발생하지만, DDIM은 동일 스텝에서도 정밀한 건축물 디테일을 유지한다.
 
 ![LSUN Church 100 스텝 DDPM 샘플](figures/fig_30_1.png)
 ![LSUN Church 100 스텝 DDIM 샘플](figures/fig_30_2.png)
-*Figure 8: LSUN Church 100 스텝 샘플 비교 — DDPM(위)과 DDIM(아래). DDIM은 적은 스텝에서도 건축물의 구조와 세부 디테일을 효과적으로 보존한다. (Song et al., 2021)*
+*Figure 8: LSUN Church 100 스텝 샘플 비교 ) DDPM(위)과 DDIM(아래). DDIM은 적은 스텝에서도 건축물의 구조와 세부 디테일을 효과적으로 보존한다. (Song et al., 2021)*
 
 DDIM Inversion을 통한 재구성 충실도도 높게 측정되었다. 이는 실제 이미지를 잠재 코드로 인코딩한 뒤 다시 디코딩했을 때 원본과 거의 동일한 이미지가 복원됨을 의미하며, 이후 이미지 편집 파이프라인의 핵심 전제 조건이 된다.
 
@@ -185,9 +185,9 @@ for t in inv_scheduler.timesteps:
 
 ## 관련 문서
 
-- [[DDPM]] — DDIM이 기반으로 하는 원조 확산 모델; 마르코프 체인 기반 1000 스텝 샘플링
-- [[Score-Based Generative Models]] — 연속 시간 SDE/ODE 관점으로 DDIM을 통합하는 프레임워크
-- [[DPM-Solver]] — 고차 ODE 솔버를 활용해 5-10 스텝 고품질 샘플링을 달성
-- [[Latent Diffusion Models]] — DDIM 샘플러를 잠재 공간에 적용한 Stable Diffusion의 기반
-- [[Null-text Inversion]] — CFG 환경에서 DDIM Inversion의 재구성 오차를 해결
-- [[Consistency Models]] — DDIM ODE 궤적을 직접 학습해 단일 스텝 생성을 달성
+- [[DDPM]] ( DDIM이 기반으로 하는 원조 확산 모델; 마르코프 체인 기반 1000 스텝 샘플링
+- [[Score-Based Generative Models]] ) 연속 시간 SDE/ODE 관점으로 DDIM을 통합하는 프레임워크
+- [[DPM-Solver]] ( 고차 ODE 솔버를 활용해 5-10 스텝 고품질 샘플링을 달성
+- [[Latent Diffusion Models]] ) DDIM 샘플러를 잠재 공간에 적용한 Stable Diffusion의 기반
+- [[Null-text Inversion]] ( CFG 환경에서 DDIM Inversion의 재구성 오차를 해결
+- [[Consistency Models]] ) DDIM ODE 궤적을 직접 학습해 단일 스텝 생성을 달성

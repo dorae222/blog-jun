@@ -18,8 +18,8 @@ DDPM 등 기존 확산 모델은 픽셀 공간에서 동작하기 때문에 고�
 
 논문의 핵심 통찰은 이미지 정보를 두 종류로 구분한 것입니다.
 
-- **고주파 지각 세부 정보**: 픽셀 수준의 질감, 색상 미세 변화 등 — VQ-VAE나 KL-AE 같은 오토인코더로 효율적으로 처리 가능
-- **의미론적 구성 정보**: 구도, 객체 배치, 전반적 스타일 등 — 확산 모델이 학습해야 할 진짜 과제
+- **고주파 지각 세부 정보**: 픽셀 수준의 질감, 색상 미세 변화 등 ( VQ-VAE나 KL-AE 같은 오토인코더로 효율적으로 처리 가능
+- **의미론적 구성 정보**: 구도, 객체 배치, 전반적 스타일 등 ) 확산 모델이 학습해야 할 진짜 과제
 
 기존 픽셀 공간 확산 모델은 이 두 종류를 구분하지 않고 모두 학습해야 했습니다. LDM은 첫 번째를 오토인코더에 위임하고, 확산 모델은 두 번째에만 집중하게 만들어 학습 효율을 비약적으로 끌어올립니다.
 
@@ -49,7 +49,7 @@ KL-AE의 경우 잠재 공간의 분산을 억제하는 약한 KL 규제가 추�
 
 ![오토인코더 재구성 품질 - 원본과 복원 비교](figures/fig_1_1.jpg)
 ![오토인코더 재구성 품질 - 원본과 복원 비교 (얼굴)](figures/fig_1_5.jpg)
-*Figure 1: LDM 오토인코더의 재구성 품질 — 원본(배경)과 잠재 공간 복원(확대 영역) 비교. 접시의 질감, 색상 그라데이션과 얼굴의 피부 디테일, 눈동자 등 고주파 정보가 정밀하게 보존된다. (Rombach et al., 2022)*
+*Figure 1: LDM 오토인코더의 재구성 품질 ( 원본(배경)과 잠재 공간 복원(확대 영역) 비교. 접시의 질감, 색상 그라데이션과 얼굴의 피부 디테일, 눈동자 등 고주파 정보가 정밀하게 보존된다. (Rombach et al., 2022)*
 
 **2단계: 잠재 공간에서 LDM 학습**
 
@@ -166,28 +166,28 @@ $$\tilde{\epsilon}_\theta(z_t, y) = \epsilon_\theta(z_t, \varnothing) + s \cdot 
 
 ![LDM CelebA-HQ 256x256 생성 샘플](figures/fig_4_1.jpg)
 ![LDM LSUN-Church 256x256 생성 샘플](figures/fig_4_7.jpg)
-*Figure 2: LDM으로 생성한 CelebA-HQ(좌)와 LSUN-Church(우) 256x256 샘플 — 잠재 공간에서의 확산만으로도 얼굴의 세밀한 표정과 건축물의 복잡한 구조를 정밀하게 생성한다. (Rombach et al., 2022)*
+*Figure 2: LDM으로 생성한 CelebA-HQ(좌)와 LSUN-Church(우) 256x256 샘플 ) 잠재 공간에서의 확산만으로도 얼굴의 세밀한 표정과 건축물의 복잡한 구조를 정밀하게 생성한다. (Rombach et al., 2022)*
 
 ### 텍스트-이미지 생성 (MS-COCO 256x256)
 
 | 모델 | FID ↓ | CLIP Score ↑ |
 |------|-------|-------------|
 | DALL-E (zero-shot) | 27.5 | 27.4 |
-| GLIDE (Nichol et al., 2022) | 12.24 | — |
+| GLIDE (Nichol et al., 2022) | 12.24 | ( |
 | **LDM-KL-8-G (ours)** | **12.63** | **30.5** |
 
 Cross-Attention 메커니즘을 통한 텍스트-이미지 생성의 결과는 인상적입니다. 아래는 사용자 프롬프트로 생성한 예시로, 추상적 개념("Latent Diffusion" 표지판)과 창의적 조합("반은 쥐, 반은 문어")을 정확하게 시각화합니다.
 
 ![LDM 텍스트-이미지 생성: Latent Diffusion 표지판](figures/fig_5_1.jpg)
 ![LDM 텍스트-이미지 생성: 반쥐반문어 합성 동물](figures/fig_5_3.jpg)
-*Figure 3: LDM-8(KL)의 텍스트-이미지 생성 샘플 (LAION 학습, CFG $s=10.0$) — "A street sign that reads Latent Diffusion"(좌)과 "A creature that is half mouse half octopus"(우). Cross-Attention이 텍스트의 의미를 정확히 반영한 이미지를 생성한다. (Rombach et al., 2022)*
+*Figure 3: LDM-8(KL)의 텍스트-이미지 생성 샘플 (LAION 학습, CFG $s=10.0$) ) "A street sign that reads Latent Diffusion"(좌)과 "A creature that is half mouse half octopus"(우). Cross-Attention이 텍스트의 의미를 정확히 반영한 이미지를 생성한다. (Rombach et al., 2022)*
 
 ### 계산 효율성
 
 LDM의 가장 중요한 기여 중 하나는 계산 효율성입니다. 동일한 FID를 달성하기 위한 학습 계산량을 비교하면:
 
 - **ADM (픽셀 공간, 512x512)**: ~1000 V100-days
-- **LDM-4 (잠재 공간, 512x512 출력)**: ~160 V100-days — **약 6배 절감**
+- **LDM-4 (잠재 공간, 512x512 출력)**: ~160 V100-days ( **약 6배 절감**
 
 DDIM 50 스텝으로도 고품질 이미지를 생성할 수 있어, 실질적인 생성 시간은 픽셀 공간 DDPM 대비 수십 배 단축됩니다.
 
@@ -339,8 +339,8 @@ class CrossAttention(torch.nn.Module):
 
     def forward(self, x: torch.Tensor, context: torch.Tensor) -> torch.Tensor:
         """
-        x:       (B, N, query_dim)   — 이미지 공간 토큰
-        context: (B, M, context_dim) — 텍스트/조건 토큰
+        x:       (B, N, query_dim)   ) 이미지 공간 토큰
+        context: (B, M, context_dim) ( 텍스트/조건 토큰
         """
         B, N, _ = x.shape
         h = self.heads
@@ -380,11 +380,11 @@ if __name__ == "__main__":
 
 ## 관련 문서
 
-- [[ddpm|DDPM: Denoising Diffusion Probabilistic Models]] — LDM의 기반이 되는 확산 모델
-- [[ddim|DDIM: Denoising Diffusion Implicit Models]] — LDM 샘플링 가속화에 활용
-- [[cfg|Classifier-Free Guidance]] — LDM 조건부 생성의 핵심 기법
-- [[controlnet|ControlNet]] — LDM에 공간 조건(자세, 엣지)을 추가하는 후속 연구
-- [[sdxl|SDXL: Improving Latent Diffusion Models]] — LDM 아키텍처를 개선한 Stable Diffusion XL
-- [[sd3|Stable Diffusion 3]] — Flow Matching으로 발전한 LDM 후속작
-- [[dalle-2|DALL-E 2]] — CLIP 기반 계층적 이미지 생성, 동시기 연구
-- [[clip|CLIP]] — LDM 텍스트 인코더로 활용되는 멀티모달 표현 학습
+- [[ddpm|DDPM: Denoising Diffusion Probabilistic Models]] ) LDM의 기반이 되는 확산 모델
+- [[ddim|DDIM: Denoising Diffusion Implicit Models]] ( LDM 샘플링 가속화에 활용
+- [[cfg|Classifier-Free Guidance]] ) LDM 조건부 생성의 핵심 기법
+- [[controlnet|ControlNet]] ( LDM에 공간 조건(자세, 엣지)을 추가하는 후속 연구
+- [[sdxl|SDXL: Improving Latent Diffusion Models]] ) LDM 아키텍처를 개선한 Stable Diffusion XL
+- [[sd3|Stable Diffusion 3]] ( Flow Matching으로 발전한 LDM 후속작
+- [[dalle-2|DALL-E 2]] ) CLIP 기반 계층적 이미지 생성, 동시기 연구
+- [[clip|CLIP]], LDM 텍스트 인코더로 활용되는 멀티모달 표현 학습

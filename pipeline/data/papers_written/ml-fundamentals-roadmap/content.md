@@ -2,162 +2,301 @@
 
 ## 개요
 
-머신러닝(Machine Learning)은 데이터로부터 패턴을 학습하여 예측과 결정을 수행하는 AI의 핵심 분야입니다. 딥러닝이 각광받는 현재에도, 전통적 머신러닝 알고리즘과 이론은 데이터 과학, 산업 AI, 연구 등 다양한 영역에서 필수적인 기초 지식으로 활용됩니다.
+머신러닝(Machine Learning)은 데이터로부터 패턴을 학습하여 예측과 결정을 수행하는 인공지능의 핵심 분야입니다. 딥러닝이 각광받는 시대에도 전통적 머신러닝 알고리즘과 이론은 데이터 과학, 산업 AI, 연구 등 폭넓은 영역에서 필수 기초 지식으로 활용됩니다.
 
-이 가이드는 머신러닝의 **수학적 기초부터 실전 응용까지** 51개 주제를 체계적으로 정리합니다. 확률/통계, 선형대수, 최적화 이론 등 수학 기초부터 지도/비지도/강화학습의 핵심 알고리즘, 모델 평가, 인과추론, MLOps까지 단계별로 학습할 수 있는 로드맵을 제시합니다.
+이 가이드는 머신러닝의 **수학적 기초부터 실전 응용까지** 51개 주제를 11개 Part로 체계적으로 정리합니다. 확률/통계, 선형대수, 최적화 이론 등 수학 기초부터 지도/비지도/강화학습의 핵심 알고리즘, 모델 평가, 인과추론, MLOps까지 단계별 학습 로드맵을 제시합니다.
 
 ### 왜 머신러닝 기초가 중요한가?
 
-딥러닝의 시대에도 머신러닝 기초가 중요한 이유는 분명합니다. 첫째, 모든 딥러닝 모델은 머신러닝 이론(경사하강법, 정규화, 편향-분산 트레이드오프 등) 위에 구축됩니다. 둘째, 많은 실무 문제에서 XGBoost, LightGBM 등 전통적 ML 알고리즘이 여전히 최고의 성능을 보입니다. 셋째, 데이터 전처리, 피처 엔지니어링, 모델 평가 등 ML 파이프라인의 핵심은 딥러닝에서도 동일하게 적용됩니다.
+딥러닝의 시대에도 머신러닝 기초가 중요한 이유는 크게 세 가지입니다.
+
+1. **이론적 토대**: 모든 딥러닝 모델은 경사하강법, 정규화, [[03_bias-variance-tradeoff|편향-분산 트레이드오프]] 등 머신러닝 이론 위에 구축됩니다.
+2. **실무 경쟁력**: Kaggle 대회나 산업 현장에서 XGBoost, LightGBM 등 전통적 ML 알고리즘이 테이블 데이터에 대해 여전히 최고 성능을 기록합니다.
+3. **파이프라인 공통성**: [[08_data-preprocessing|데이터 전처리]], [[09_feature-engineering|피처 엔지니어링]], 모델 평가 등 ML 파이프라인의 핵심 단계는 딥러닝에서도 동일하게 적용됩니다.
+
+:::tip
+이 로드맵은 Part 1(기초 개념)부터 Part 11(MLOps)까지 순차적으로 구성되어 있지만, 반드시 순서대로 학습할 필요는 없습니다. 본인의 수준과 목적에 맞게 "추천 학습 경로" 섹션을 참고하여 선택적으로 진행하세요.
+:::
 
 ---
 
-## 핵심 흐름: 머신러닝 학습 체계
+## 학습 유형 비교: 지도 vs 비지도 vs 강화학습
+
+머신러닝 알고리즘은 학습 데이터의 특성에 따라 크게 세 가지 패러다임으로 구분됩니다. 각 패러다임의 특징을 이해하는 것이 [[01_ml-overview|ML 개론]]의 출발점입니다.
+
+| 구분 | 지도학습 (Supervised) | 비지도학습 (Unsupervised) | 강화학습 (Reinforcement) |
+|------|----------------------|--------------------------|-------------------------|
+| **입력 데이터** | (X, y) 쌍 (피처 + 레이블) | X만 (레이블 없음) | 상태(State) + 보상(Reward) |
+| **목표** | 입력→출력 매핑 함수 학습 | 데이터 구조/패턴 발견 | 누적 보상 최대화 정책 학습 |
+| **대표 알고리즘** | 선형 회귀, SVM, XGBoost | K-Means, PCA, DBSCAN | Q-Learning, Policy Gradient |
+| **평가 방식** | 정답과 비교 (Accuracy, MSE) | 내부 지표 (Silhouette, Inertia) | 에피소드 누적 보상 |
+| **실무 예시** | 스팸 분류, 집값 예측 | 고객 세분화, 이상 탐지 | 게임 AI, 로봇 제어, RLHF |
+| **데이터 요구량** | 대량의 레이블 데이터 필요 | 레이블 불필요 | 시뮬레이션 환경 필요 |
+| **난이도** | 중간 (데이터 확보가 관건) | 중간 (해석이 어려움) | 높음 (보상 설계가 관건) |
+
+---
+
+## Part 1~3: 기초 개념과 수학적 토대
 
 ### Part 1: 기초 개념 (Fundamentals)
 
-머신러닝의 전체 그림과 핵심 개념을 이해합니다.
+머신러닝의 전체 그림과 핵심 개념을 이해합니다. [[01_ml-overview|ML 개론]]에서 AI/ML/DL의 관계를 파악하고, [[03_bias-variance-tradeoff|편향-분산 트레이드오프]]를 통해 모델 복잡도 조절의 핵심 원리를 학습합니다.
 
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| ML 개론 | AI/ML/DL 관계, 학습 유형, No Free Lunch | [ML 개론](/post/ml-overview) |
-| ML 워크플로 | 문제 정의→데이터→학습→평가→배포 | [ML 워크플로](/post/ml-workflow) |
-| 편향-분산 트레이드오프 | 과적합/과소적합, 모델 복잡도 | [편향-분산](/post/bias-variance-tradeoff) |
+| 주제 | 핵심 내용 | 선수 지식 | 관련 포스트 |
+|------|----------|----------|------------|
+| ML 개론 | AI/ML/DL 관계, 학습 유형, No Free Lunch 정리 | 없음 | [[01_ml-overview]] |
+| ML 워크플로 | 문제 정의 → 데이터 → 학습 → 평가 → 배포 | ML 개론 | [ML 워크플로](/post/ml-workflow) |
+| 편향-분산 트레이드오프 | 과적합/과소적합, 모델 복잡도와 일반화 | ML 개론 | [[03_bias-variance-tradeoff]] |
 
 ### Part 2: 수학적 기초 (Mathematical Foundations)
 
-ML을 깊이 이해하기 위한 수학적 토대입니다.
+ML을 깊이 이해하기 위한 수학적 토대입니다. 선형대수는 데이터 표현과 변환, 확률/베이즈는 불확실성 모델링, 정보이론은 손실 함수 이해, 최적화 이론은 모델 학습 메커니즘의 기반입니다.
 
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 선형대수 | 벡터, 행렬, 고유값 분해, SVD | [선형대수](/post/linear-algebra-for-ml) |
-| 확률과 베이즈 | 확률 분포, 베이즈 정리, MLE/MAP | [확률/베이즈](/post/probability-bayes) |
-| 정보이론 | 엔트로피, KL-Divergence, Cross-Entropy | [정보이론](/post/information-theory) |
-| 최적화 이론 | 경사하강법, 볼록 최적화, 라그랑주 | [최적화](/post/optimization-theory) |
+| 주제 | 핵심 내용 | ML에서의 역할 | 관련 포스트 |
+|------|----------|-------------|------------|
+| 선형대수 | 벡터, 행렬, 고유값 분해, SVD | 데이터 표현, PCA, 추천 시스템 | [선형대수](/post/linear-algebra-for-ml) |
+| 확률과 베이즈 | 확률 분포, 베이즈 정리, MLE/MAP | 나이브 베이즈, GMM, 불확실성 추정 | [확률/베이즈](/post/probability-bayes) |
+| 정보이론 | 엔트로피, KL-Divergence, Cross-Entropy | 결정 트리 분할 기준, 손실 함수 | [정보이론](/post/information-theory) |
+| 최적화 이론 | 경사하강법, 볼록 최적화, 라그랑주 승수법 | 모델 학습(SGD), SVM 최적화 | [최적화](/post/optimization-theory) |
 
 ### Part 3: 데이터 전처리 (Data Preprocessing)
 
-실무에서 가장 많은 시간이 소요되는 단계입니다.
+실무에서 전체 프로젝트 시간의 60~80%가 소요되는 단계입니다. 아무리 좋은 알고리즘이라도 데이터 품질이 나쁘면 성능이 보장되지 않습니다.
 
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 데이터 전처리 | 결측치, 스케일링, 인코딩 | [데이터 전처리](/post/data-preprocessing) |
-| 피처 엔지니어링 | 피처 생성, 선택, 변환 | [피처 엔지니어링](/post/feature-engineering) |
-| 불균형 데이터 | SMOTE, 오버/언더샘플링, 비용 민감 학습 | [불균형 데이터](/post/imbalanced-data) |
-
-### Part 4: 지도학습 — 회귀 (Supervised: Regression)
-
-연속적인 값을 예측하는 모델입니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 선형 회귀 | 최소제곱법, 정규방정식 | [선형 회귀](/post/linear-regression) |
-| 정규화 회귀 | Ridge, Lasso, Elastic Net | [정규화 회귀](/post/regularized-regression) |
-| 다항 회귀 | 비선형 관계 모델링 | [다항 회귀](/post/polynomial-regression) |
-
-### Part 5: 지도학습 — 분류 (Supervised: Classification)
-
-범주를 예측하는 모델입니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 로지스틱 회귀 | 시그모이드 함수, 이진 분류 | [로지스틱 회귀](/post/logistic-regression) |
-| 나이브 베이즈 | 베이즈 정리 기반 분류 | [나이브 베이즈](/post/naive-bayes) |
-| KNN | 거리 기반 분류/회귀 | [KNN](/post/knn) |
-| SVM | 최대 마진 분류, 커널 트릭 | [SVM](/post/svm) |
-| 결정 트리 | 정보 이득, 지니 계수 | [결정 트리](/post/decision-tree) |
-
-### Part 6: 앙상블 학습 (Ensemble Methods)
-
-여러 모델을 결합하여 성능을 높이는 기법입니다. 실무에서 가장 많이 사용되는 모델군입니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 앙상블 개요 | 배깅, 부스팅, 스태킹 | [앙상블 개요](/post/ensemble-overview) |
-| 랜덤 포레스트 | 배깅 + 피처 랜덤 선택 | [랜덤 포레스트](/post/random-forest) |
-| 그래디언트 부스팅 | 잔차 학습, 순차적 모델 추가 | [그래디언트 부스팅](/post/gradient-boosting) |
-| XGBoost/LightGBM | 산업 표준 부스팅 라이브러리 | [XGBoost/LightGBM](/post/xgboost-lightgbm) |
-
-### Part 7: 비지도학습 (Unsupervised Learning)
-
-레이블 없이 데이터의 구조를 발견합니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| K-Means | 중심점 기반 군집화 | [K-Means](/post/kmeans-clustering) |
-| 고급 클러스터링 | DBSCAN, 계층적 클러스터링 | [고급 클러스터링](/post/advanced-clustering) |
-| GMM | 가우시안 혼합 모델, EM 알고리즘 | [GMM](/post/gmm) |
-| PCA | 주성분 분석, 차원 축소 | [PCA](/post/pca) |
-| t-SNE/UMAP | 비선형 차원 축소, 시각화 | [t-SNE/UMAP](/post/tsne-umap) |
-
-### Part 8: 모델 평가 (Model Evaluation)
-
-모델의 성능을 정확히 측정하고 비교하는 방법입니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 분류 메트릭 | Accuracy, Precision, Recall, F1, AUC | [분류 메트릭](/post/classification-metrics) |
-| 회귀 메트릭 | MSE, RMSE, MAE, R^2 | [회귀 메트릭](/post/regression-metrics) |
-| 교차 검증 | K-Fold, Stratified, Time Series Split | [교차 검증](/post/cross-validation) |
-| 모델 해석력 | SHAP, LIME, Feature Importance | [모델 해석력](/post/model-interpretability) |
-
-### Part 9: 인과추론 (Causal Inference)
-
-상관관계를 넘어 인과관계를 추론하는 방법론입니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 인과추론 개요 | 잠재 결과 프레임워크, ATE | [인과추론 개요](/post/causal-inference-overview) |
-| 패널 데이터/고정효과 | 개체 고정효과, 시간 고정효과 | [패널 데이터](/post/panel-data-fixed-effects) |
-| 이중차분법(DID) | 처치-대조 그룹 비교 | [DID](/post/did) |
-| RD/IV | 회귀불연속, 도구변수 | [RD/IV](/post/rd-iv) |
-| PSM/합성통제 | 성향점수 매칭, 합성통제법 | [PSM/합성통제](/post/psm-synthetic-control) |
-
-### Part 10: 고급 주제 (Advanced Topics)
-
-특수한 문제 영역과 고급 기법을 다룹니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| 베이지안 ML | 사전/사후 분포, MCMC | [베이지안 ML](/post/bayesian-ml) |
-| 준지도학습 | 레이블 부족 문제 해결 | [준지도학습](/post/semi-supervised-learning) |
-| 토픽 모델링 | LDA, 문서 주제 분류 | [토픽 모델링](/post/topic-modeling) |
-| 커널 방법 | 커널 트릭, RKHS | [커널 방법](/post/kernel-methods) |
-| 시계열 ML | ARIMA, Prophet, 시계열 특징 | [시계열 ML](/post/time-series-ml) |
-| 추천 시스템 | 협업 필터링, 콘텐츠 기반 | [추천 시스템](/post/recommendation-systems) |
-| NLP 전통 ML | TF-IDF, Word2Vec, 감성분석 | [NLP 전통 ML](/post/nlp-traditional-ml) |
-| 이상 탐지 | Isolation Forest, LOF | [이상 탐지](/post/anomaly-detection) |
-| 강화학습 기초 | MDP, Q-Learning, Policy Gradient | [강화학습](/post/reinforcement-learning-basics) |
-
-### Part 11: 실전과 MLOps (Practice & MLOps)
-
-ML을 실무에 적용하고 운영하는 방법입니다.
-
-| 주제 | 핵심 내용 | 관련 포스트 |
-|------|----------|------------|
-| Scikit-learn Pipeline | 파이프라인 구축, 재현 가능한 ML | [sklearn Pipeline](/post/sklearn-pipeline) |
-| A/B 테스트 | 가설 검정, 통계적 유의성 | [A/B 테스트](/post/ab-testing) |
-| ML 시스템 설계 | 대규모 ML 시스템 설계 원칙 | [ML 시스템 설계](/post/ml-system-design) |
-| MLOps 기초 | CI/CD for ML, 모니터링, 재학습 | [MLOps](/post/mlops-fundamentals) |
-| AutoML | 자동화된 ML 파이프라인 | [AutoML](/post/automl) |
-| ML 인터뷰 가이드 | ML 면접 준비 전략 | [ML 인터뷰](/post/ml-interview-guide) |
+| 주제 | 핵심 내용 | 실무 중요도 | 관련 포스트 |
+|------|----------|-----------|------------|
+| 데이터 전처리 | 결측치 처리, 스케일링, 인코딩, 이상치 제거 | 매우 높음 | [[08_data-preprocessing]] |
+| 피처 엔지니어링 | 피처 생성, 선택, 변환, 도메인 지식 활용 | 매우 높음 | [[09_feature-engineering]] |
+| 불균형 데이터 | SMOTE, 오버/언더샘플링, 비용 민감 학습 | 높음 | [불균형 데이터](/post/imbalanced-data) |
 
 ---
 
-## 주요 알고리즘 요약 테이블
+## Part 4~5: 지도학습 알고리즘
 
-| 알고리즘 | 유형 | 장점 | 단점 | 적합한 문제 |
-|---------|------|------|------|------------|
-| [선형 회귀](/post/linear-regression) | 회귀 | 해석 용이, 빠름 | 비선형 관계 표현 불가 | 연속값 예측 |
-| [로지스틱 회귀](/post/logistic-regression) | 분류 | 확률 출력, 해석 용이 | 비선형 경계 어려움 | 이진 분류 |
-| [SVM](/post/svm) | 분류/회귀 | 고차원에 강함 | 대규모 데이터 느림 | 소규모 고차원 |
-| [결정 트리](/post/decision-tree) | 분류/회귀 | 해석 최고 | 과적합 경향 | 설명 필요한 문제 |
-| [랜덤 포레스트](/post/random-forest) | 앙상블 | 안정적, 과적합 적음 | 느린 추론 | 범용 |
-| [XGBoost](/post/xgboost-lightgbm) | 앙상블 | 최고 성능 (테이블) | 하이퍼파라미터 많음 | 테이블 데이터 |
-| [K-Means](/post/kmeans-clustering) | 군집화 | 빠름, 단순 | 클러스터 수 지정 필요 | 구형 클러스터 |
-| [PCA](/post/pca) | 차원 축소 | 분산 최대 보존 | 선형 변환만 가능 | 차원 축소/시각화 |
-| [KNN](/post/knn) | 분류/회귀 | 학습 불필요 | 추론 느림, 고차원 약함 | 소규모 데이터 |
-| [나이브 베이즈](/post/naive-bayes) | 분류 | 매우 빠름 | 독립 가정 | 텍스트 분류 |
+### Part 4: 지도학습 - 회귀 (Supervised: Regression)
+
+연속적인 값을 예측하는 모델군입니다. 선형 회귀에서 출발하여 정규화(Ridge, Lasso)로 과적합을 제어하고, 다항 회귀로 비선형 관계를 포착합니다.
+
+| 주제 | 핵심 내용 | 수학적 기반 | 관련 포스트 |
+|------|----------|-----------|------------|
+| 선형 회귀 | 최소제곱법(OLS), 정규방정식, 경사하강법 | 선형대수, 최적화 | [선형 회귀](/post/linear-regression) |
+| 정규화 회귀 | Ridge(L2), Lasso(L1), Elastic Net | 최적화(라그랑주) | [정규화 회귀](/post/regularized-regression) |
+| 다항 회귀 | 비선형 관계 모델링, 피처 확장 | 선형대수 | [다항 회귀](/post/polynomial-regression) |
+
+### Part 5: 지도학습 - 분류 (Supervised: Classification)
+
+범주를 예측하는 모델군입니다. 로지스틱 회귀부터 SVM, 결정 트리까지 각 알고리즘의 결정 경계 특성이 다르므로, 문제 특성에 맞는 알고리즘 선택이 중요합니다.
+
+| 주제 | 핵심 내용 | 결정 경계 특성 | 관련 포스트 |
+|------|----------|-------------|------------|
+| 로지스틱 회귀 | 시그모이드 함수, 이진/다중 분류 | 선형 경계 | [로지스틱 회귀](/post/logistic-regression) |
+| 나이브 베이즈 | 베이즈 정리 기반, 조건부 독립 가정 | 확률 기반 | [나이브 베이즈](/post/naive-bayes) |
+| KNN | 거리 기반 분류/회귀, 게으른 학습 | 비선형 (지역적) | [KNN](/post/knn) |
+| SVM | 최대 마진 분류, 커널 트릭(RBF, Poly) | 선형/비선형 (커널) | [SVM](/post/svm) |
+| 결정 트리 | 정보 이득, 지니 계수, 가지치기 | 축 정렬 비선형 | [결정 트리](/post/decision-tree) |
+
+---
+
+## Part 6: 앙상블 학습 (Ensemble Methods)
+
+여러 모델을 결합하여 단일 모델보다 높은 성능과 안정성을 달성하는 기법입니다. 테이블 데이터에서 실무적으로 가장 많이 사용되는 모델군이며, Kaggle 상위권 솔루션의 대다수가 앙상블 기법을 활용합니다.
+
+| 주제 | 핵심 내용 | 결합 전략 | 관련 포스트 |
+|------|----------|----------|------------|
+| 앙상블 개요 | 배깅, 부스팅, 스태킹 원리 비교 | 투표/평균/메타학습 | [앙상블 개요](/post/ensemble-overview) |
+| 랜덤 포레스트 | 배깅 + 피처 랜덤 선택 (분산 감소) | 병렬 독립 학습 | [랜덤 포레스트](/post/random-forest) |
+| 그래디언트 부스팅 | 잔차 학습, 순차적 약한 학습기 추가 | 순차 보완 학습 | [그래디언트 부스팅](/post/gradient-boosting) |
+| XGBoost/LightGBM | 산업 표준 부스팅 라이브러리, 정규화 내장 | 순차 + 최적화 | [XGBoost/LightGBM](/post/xgboost-lightgbm) |
+
+### 앙상블 전략 비교
+
+앙상블의 세 가지 주요 전략은 각기 다른 원리로 성능을 향상시킵니다.
+
+| 전략 | 원리 | 주로 감소시키는 오차 | 대표 알고리즘 | 학습 방식 |
+|------|------|-------------------|-------------|----------|
+| 배깅 (Bagging) | 부트스트랩 샘플로 다수 모델 독립 학습 후 투표 | 분산 (Variance) | 랜덤 포레스트 | 병렬 |
+| 부스팅 (Boosting) | 이전 모델의 오류에 집중하여 순차 학습 | 편향 (Bias) | XGBoost, LightGBM, AdaBoost | 순차 |
+| 스태킹 (Stacking) | 다양한 모델의 예측을 메타 모델의 입력으로 활용 | 편향 + 분산 | 다층 스태킹 | 계층적 |
+
+---
+
+## Part 7: 비지도학습 (Unsupervised Learning)
+
+레이블 없이 데이터의 내재적 구조를 발견하는 알고리즘군입니다. 군집화(Clustering)와 차원 축소(Dimensionality Reduction)가 대표적이며, 탐색적 데이터 분석(EDA), 고객 세분화, 시각화 등에 핵심적으로 활용됩니다.
+
+| 주제 | 핵심 내용 | 적용 시나리오 | 관련 포스트 |
+|------|----------|-------------|------------|
+| K-Means | 중심점 기반 군집화, 반복적 할당-갱신 | 고객 세분화, 이미지 압축 | [K-Means](/post/kmeans-clustering) |
+| 고급 클러스터링 | DBSCAN(밀도 기반), 계층적 클러스터링 | 비구형 클러스터, 이상치 | [고급 클러스터링](/post/advanced-clustering) |
+| GMM | 가우시안 혼합 모델, EM 알고리즘 | 소프트 클러스터링, 밀도 추정 | [GMM](/post/gmm) |
+| PCA | 주성분 분석, 분산 최대 보존 차원 축소 | 시각화, 노이즈 제거, 전처리 | [PCA](/post/pca) |
+| t-SNE/UMAP | 비선형 차원 축소, 이웃 구조 보존 | 고차원 데이터 시각화 | [t-SNE/UMAP](/post/tsne-umap) |
+
+---
+
+## Part 8: 모델 평가와 해석 (Model Evaluation)
+
+모델의 성능을 정확히 측정하고 비교하는 것은 ML 파이프라인에서 가장 중요한 단계 중 하나입니다. 잘못된 평가 지표를 선택하면 실제로는 나쁜 모델을 좋은 모델로 오판할 수 있습니다.
+
+### 태스크별 평가 지표 비교
+
+| 태스크 유형 | 주요 지표 | 적합한 상황 | 주의사항 |
+|------------|----------|-----------|---------|
+| **이진 분류** | Accuracy, Precision, Recall, F1, AUC-ROC | 일반 분류 문제 | 불균형 데이터에서 Accuracy 함정 주의 |
+| **다중 분류** | Macro/Micro/Weighted F1, Confusion Matrix | 3개 이상 클래스 | 클래스별 성능 차이 확인 필수 |
+| **회귀** | MSE, RMSE, MAE, R-squared, MAPE | 연속값 예측 | 이상치에 MSE가 민감 |
+| **군집화** | Silhouette Score, Davies-Bouldin, Inertia | 비지도 평가 | 외부 레이블이 있으면 ARI/NMI 활용 |
+| **랭킹** | NDCG, MAP, MRR | 검색, 추천 | 상위 K개 결과의 품질이 핵심 |
+| **이상 탐지** | Precision@K, Recall@K, AP | 극도의 불균형 | 정상/이상 비율에 따른 보정 필요 |
+
+| 주제 | 핵심 내용 | 관련 포스트 |
+|------|----------|------------|
+| 분류 메트릭 | Accuracy, Precision, Recall, F1, AUC-ROC/PR | [분류 메트릭](/post/classification-metrics) |
+| 회귀 메트릭 | MSE, RMSE, MAE, R-squared | [회귀 메트릭](/post/regression-metrics) |
+| 교차 검증 | K-Fold, Stratified K-Fold, Time Series Split | [교차 검증](/post/cross-validation) |
+| 모델 해석력 | SHAP, LIME, Feature Importance, PDP | [모델 해석력](/post/model-interpretability) |
+
+---
+
+## 편향-분산 트레이드오프 심화
+
+[[03_bias-variance-tradeoff|편향-분산 트레이드오프]]는 머신러닝에서 가장 핵심적인 개념 중 하나입니다. 모든 예측 모델의 기대 오차는 다음 세 가지 요소로 분해됩니다.
+
+$$\text{Expected Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Noise}$$
+
+- **편향 (Bias)**: 모델의 가정이 너무 단순하여 실제 패턴을 포착하지 못하는 오차입니다. 높은 편향은 **과소적합(Underfitting)**을 유발합니다.
+- **분산 (Variance)**: 학습 데이터의 작은 변동에 모델이 과도하게 반응하는 정도입니다. 높은 분산은 **과적합(Overfitting)**을 유발합니다.
+- **환원 불가능 노이즈**: 데이터 자체에 내재된 불확실성으로, 어떤 모델로도 줄일 수 없습니다.
+
+### 모델 복잡도별 편향-분산 특성
+
+| 모델 복잡도 | 편향 | 분산 | 전형적 상황 | 해결 전략 |
+|-----------|------|------|-----------|----------|
+| **매우 낮음** (선형 회귀, 적은 피처) | 높음 | 낮음 | 과소적합: 학습/테스트 오차 모두 높음 | 피처 추가, 비선형 모델 전환 |
+| **적절** (정규화된 트리, 적절한 앙상블) | 중간 | 중간 | 최적 지점: 일반화 성능 최대화 | 교차 검증으로 확인 |
+| **매우 높음** (깊은 트리, 과도한 피처) | 낮음 | 높음 | 과적합: 학습 오차 낮고 테스트 오차 높음 | 정규화, 가지치기, 데이터 추가 |
+
+:::warning
+실무에서 과적합을 판단할 때는 학습 오차와 검증 오차의 **격차**를 봐야 합니다. 학습 오차가 0에 가까운데 검증 오차가 높다면, 모델이 학습 데이터를 암기하고 있을 가능성이 높습니다. 교차 검증과 학습 곡선(Learning Curve) 분석을 반드시 수행하세요.
+:::
+
+---
+
+## ML 워크플로: 문제 정의부터 배포까지
+
+실무에서 머신러닝 프로젝트는 단순히 모델을 학습시키는 것이 아니라, 문제 정의부터 배포/모니터링까지 전체 파이프라인을 설계하고 운영하는 과정입니다.
+
+### 6단계 ML 파이프라인
+
+**1단계: 문제 정의**
+- 비즈니스 목표를 ML 문제로 변환합니다 (분류? 회귀? 군집화?)
+- 성공 지표(KPI)를 정의합니다
+- 베이스라인 모델을 설정합니다 (규칙 기반, 단순 통계 등)
+
+**2단계: 데이터 수집 및 탐색**
+- 데이터 소스 확보 및 품질 검증
+- 탐색적 데이터 분석(EDA): 분포, 상관관계, 결측치 패턴 파악
+- 데이터 분할: 학습/검증/테스트 세트 (시계열의 경우 시간 순서 유지)
+
+**3단계: 데이터 전처리 및 피처 엔지니어링**
+- [[08_data-preprocessing|데이터 전처리]]: 결측치 처리, 스케일링, 인코딩
+- [[09_feature-engineering|피처 엔지니어링]]: 도메인 지식 기반 피처 생성, 피처 선택
+- 데이터 파이프라인 자동화 (재현 가능한 전처리)
+
+**4단계: 모델 학습 및 선택**
+- 여러 알고리즘 후보 실험 (선형 모델, 트리 기반, 앙상블 등)
+- 하이퍼파라미터 튜닝 (Grid Search, Random Search, Bayesian Optimization)
+- 교차 검증으로 일반화 성능 확인
+
+**5단계: 모델 평가 및 해석**
+- 태스크에 맞는 평가 지표 선택 (위 평가 지표 비교표 참조)
+- 모델 해석: SHAP, LIME으로 피처 기여도 분석
+- 오류 분석: 어떤 유형의 데이터에서 실패하는지 파악
+
+**6단계: 배포 및 모니터링**
+- 모델 서빙 (REST API, 배치 예측 등)
+- 데이터 드리프트 모니터링: 입력 데이터 분포 변화 감지
+- 모델 재학습 전략 수립 (주기적/트리거 기반)
+
+---
+
+## 주요 알고리즘 비교 매트릭스
+
+### 알고리즘별 특성 종합 비교
+
+| 알고리즘 | 유형 | 학습 속도 | 추론 속도 | 해석 가능성 | 대규모 데이터 | 비선형 처리 | 적합한 문제 |
+|---------|------|----------|----------|-----------|-------------|-----------|------------|
+| 선형 회귀 | 회귀 | 매우 빠름 | 매우 빠름 | 매우 높음 | 우수 | 불가 | 연속값 예측, 기저선 모델 |
+| 로지스틱 회귀 | 분류 | 매우 빠름 | 매우 빠름 | 매우 높음 | 우수 | 불가 | 이진 분류, 확률 출력 |
+| SVM | 분류/회귀 | 느림 | 보통 | 낮음 | 약함 | 커널 사용 시 가능 | 소규모 고차원 데이터 |
+| 결정 트리 | 분류/회귀 | 빠름 | 매우 빠름 | 매우 높음 | 보통 | 가능 | 규칙 추출, 설명 필요한 문제 |
+| 랜덤 포레스트 | 앙상블 | 보통 | 보통 | 중간 | 우수 | 가능 | 범용, 안정적 성능 |
+| XGBoost | 앙상블 | 보통 | 빠름 | 중간 | 우수 | 가능 | 테이블 데이터 최강 |
+| LightGBM | 앙상블 | 빠름 | 빠름 | 중간 | 매우 우수 | 가능 | 대규모 테이블 데이터 |
+| KNN | 분류/회귀 | 없음 (게으른 학습) | 매우 느림 | 높음 | 매우 약함 | 가능 | 소규모 저차원 데이터 |
+| 나이브 베이즈 | 분류 | 매우 빠름 | 매우 빠름 | 높음 | 우수 | 불가 | 텍스트 분류, 스팸 필터링 |
+| K-Means | 군집화 | 빠름 | 빠름 | 중간 | 우수 | 불가 | 구형 클러스터 |
+| PCA | 차원 축소 | 빠름 | 매우 빠름 | 중간 | 우수 | 불가 | 전처리, 시각화, 노이즈 제거 |
+
+### 문제 유형별 알고리즘 추천
+
+| 문제 상황 | 1순위 추천 | 2순위 추천 | 비추천 |
+|----------|-----------|-----------|-------|
+| 테이블 데이터 + 충분한 데이터 | XGBoost / LightGBM | 랜덤 포레스트 | KNN (느림) |
+| 소규모 데이터 (< 1000건) | 로지스틱 회귀 / SVM | 결정 트리 | 딥러닝 (과적합) |
+| 해석이 중요한 문제 | 로지스틱 회귀 / 결정 트리 | SHAP 적용 앙상블 | 블랙박스 모델 |
+| 텍스트 분류 (전통 ML) | 나이브 베이즈 / SVM | 로지스틱 회귀 + TF-IDF | KNN |
+| 고차원 희소 데이터 | SVM (선형 커널) | 로지스틱 회귀 (L1) | 트리 기반 (비효율) |
+| 실시간 추론 필요 | 로지스틱 회귀 / 결정 트리 | LightGBM | KNN / SVM (느림) |
+
+---
+
+## Part 9: 인과추론 (Causal Inference)
+
+상관관계를 넘어 인과관계를 추론하는 방법론입니다. 데이터 과학에서 "왜?" 라는 질문에 답하기 위한 통계적 프레임워크를 다루며, A/B 테스트가 불가능한 관측 데이터에서 정책 효과를 추정하는 데 핵심적입니다.
+
+인과추론의 근본 문제는 **반사실(Counterfactual)**을 관측할 수 없다는 것입니다. 한 사람이 약을 먹었을 때와 먹지 않았을 때의 결과를 동시에 관측할 수 없으므로, 통계적 방법으로 인과 효과를 **추정**해야 합니다.
+
+| 주제 | 핵심 방법론 | 핵심 가정 | 적용 시나리오 | 관련 포스트 |
+|------|-----------|----------|-------------|------------|
+| 인과추론 개요 | 잠재 결과 프레임워크, ATE/ATT | SUTVA, 무시가능성 | 처치 효과 추정의 기초 | [인과추론 개요](/post/causal-inference-overview) |
+| 패널 데이터/고정효과 | 개체/시간 고정효과, 이원 고정효과 | 시간 불변 교란 제거 | 관측 불가능한 이질성 통제 | [패널 데이터](/post/panel-data-fixed-effects) |
+| 이중차분법 (DID) | 처치-대조 그룹 시간 차이의 차이 | 평행 추세 가정 | 정책 효과 분석, 자연 실험 | [DID](/post/did) |
+| RD / IV | 회귀불연속 설계, 도구변수 추정 | 연속성/외생성 가정 | 임계점 기반 효과, 내생성 해결 | [RD/IV](/post/rd-iv) |
+| PSM / 합성통제 | 성향점수 매칭, 합성통제법 | 공통 지지, 볼록 결합 | 비교군 구성, 단일 처치 분석 | [PSM/합성통제](/post/psm-synthetic-control) |
+
+---
+
+## Part 10~11: 고급 주제와 실전
+
+### Part 10: 고급 주제 (Advanced Topics)
+
+특수한 문제 영역과 고급 기법을 다룹니다. 각 주제는 특정 도메인이나 데이터 특성에 특화된 알고리즘을 다루므로, 필요에 따라 선택적으로 학습합니다.
+
+| 주제 | 핵심 내용 | 활용 분야 | 관련 포스트 |
+|------|----------|----------|------------|
+| 베이지안 ML | 사전/사후 분포, MCMC, 변분 추론 | 불확실성 정량화, 소량 데이터 | [베이지안 ML](/post/bayesian-ml) |
+| 준지도학습 | 자기 학습, 레이블 전파, MixMatch | 레이블 비용 절감 | [준지도학습](/post/semi-supervised-learning) |
+| 토픽 모델링 | LDA, 문서-주제 확률 분포 | 텍스트 마이닝, 문서 분류 | [토픽 모델링](/post/topic-modeling) |
+| 커널 방법 | 커널 트릭, RKHS, 커널 PCA | 비선형 문제의 선형 해법 | [커널 방법](/post/kernel-methods) |
+| 시계열 ML | ARIMA, Prophet, 시계열 피처 | 수요 예측, 이상 감지 | [시계열 ML](/post/time-series-ml) |
+| 추천 시스템 | 협업 필터링, 콘텐츠 기반, 하이브리드 | 이커머스, 콘텐츠 플랫폼 | [추천 시스템](/post/recommendation-systems) |
+| NLP 전통 ML | TF-IDF, Word2Vec, 감성분석 | 텍스트 분류, 감성 분석 | [NLP 전통 ML](/post/nlp-traditional-ml) |
+| 이상 탐지 | Isolation Forest, LOF, One-Class SVM | 금융 사기, 장비 이상 | [이상 탐지](/post/anomaly-detection) |
+| 강화학습 기초 | MDP, Q-Learning, Policy Gradient | 게임 AI, 로봇, RLHF | [강화학습](/post/reinforcement-learning-basics) |
+
+### Part 11: 실전과 MLOps (Practice & MLOps)
+
+ML을 실무에 적용하고 안정적으로 운영하는 방법입니다. 모델 개발과 프로덕션 운영 사이의 격차를 해소하는 것이 이 파트의 핵심입니다.
+
+| 주제 | 핵심 내용 | 실무 가치 | 관련 포스트 |
+|------|----------|----------|------------|
+| Scikit-learn Pipeline | 전처리-학습-예측 파이프라인 일체화 | 재현성, 데이터 누수 방지 | [sklearn Pipeline](/post/sklearn-pipeline) |
+| A/B 테스트 | 가설 검정, 통계적 유의성, 효과 크기 | 의사결정 근거 확보 | [A/B 테스트](/post/ab-testing) |
+| ML 시스템 설계 | 대규모 ML 시스템 아키텍처 설계 원칙 | 면접 + 실무 시스템 설계 | [ML 시스템 설계](/post/ml-system-design) |
+| MLOps 기초 | CI/CD for ML, 모니터링, 자동 재학습 | 프로덕션 ML 운영 | [MLOps](/post/mlops-fundamentals) |
+| AutoML | 자동화된 ML 파이프라인 (NAS, HPO) | 비전문가 ML 접근 | [AutoML](/post/automl) |
+| ML 인터뷰 가이드 | ML 면접 유형, 준비 전략, 핵심 질문 | 커리어 준비 | [ML 인터뷰](/post/ml-interview-guide) |
 
 ---
 
@@ -165,81 +304,77 @@ ML을 실무에 적용하고 운영하는 방법입니다.
 
 ### 초심자 (ML 입문)
 
-ML의 기본 개념과 핵심 알고리즘을 이해합니다.
+ML의 기본 개념과 핵심 알고리즘을 이해하는 것이 목표입니다. 수학적 엄밀성보다는 직관적 이해를 우선합니다.
 
-**1단계: 개념 잡기**
-1. [ML 개론](/post/ml-overview) — AI/ML/DL의 관계
-2. [ML 워크플로](/post/ml-workflow) — 전체 프로세스 이해
-3. [편향-분산 트레이드오프](/post/bias-variance-tradeoff) — 모델 복잡도의 핵심
-
-**2단계: 핵심 알고리즘**
-4. [선형 회귀](/post/linear-regression) → [로지스틱 회귀](/post/logistic-regression)
-5. [결정 트리](/post/decision-tree) → [랜덤 포레스트](/post/random-forest)
-6. [K-Means](/post/kmeans-clustering) → [PCA](/post/pca)
-
-**3단계: 평가**
-7. [분류 메트릭](/post/classification-metrics) + [회귀 메트릭](/post/regression-metrics)
-8. [교차 검증](/post/cross-validation)
+| 단계 | 학습 주제 | 학습 목표 | 예상 기간 |
+|------|----------|----------|----------|
+| 1단계: 개념 잡기 | [[01_ml-overview]], ML 워크플로, [[03_bias-variance-tradeoff]] | AI/ML/DL 구분, 과적합 이해 | 1주 |
+| 2단계: 핵심 알고리즘 | 선형 회귀 → 로지스틱 회귀 → 결정 트리 → 랜덤 포레스트 | 회귀/분류 기본 모델 구현 | 2주 |
+| 3단계: 비지도학습 입문 | K-Means → PCA | 군집화, 차원 축소 개념 | 1주 |
+| 4단계: 평가 | 분류 메트릭 + 회귀 메트릭 + 교차 검증 | 올바른 모델 평가 능력 | 1주 |
 
 ### 중급 (실무 역량)
 
-고급 알고리즘과 실무 기법을 학습합니다.
+고급 알고리즘과 실무 데이터 처리 기법을 학습합니다.
 
-**1단계: 수학 기초**
-1. [선형대수](/post/linear-algebra-for-ml)
-2. [확률/베이즈](/post/probability-bayes)
-3. [최적화 이론](/post/optimization-theory)
-
-**2단계: 고급 알고리즘**
-4. [SVM](/post/svm) + [커널 방법](/post/kernel-methods)
-5. [그래디언트 부스팅](/post/gradient-boosting) → [XGBoost/LightGBM](/post/xgboost-lightgbm)
-6. [GMM](/post/gmm) + [고급 클러스터링](/post/advanced-clustering)
-
-**3단계: 실전 기법**
-7. [데이터 전처리](/post/data-preprocessing) + [피처 엔지니어링](/post/feature-engineering)
-8. [불균형 데이터](/post/imbalanced-data) 처리
-9. [모델 해석력](/post/model-interpretability) — SHAP, LIME
-10. [sklearn Pipeline](/post/sklearn-pipeline)
+| 단계 | 학습 주제 | 학습 목표 | 예상 기간 |
+|------|----------|----------|----------|
+| 1단계: 수학 기초 | 선형대수, 확률/베이즈, 최적화 이론 | 알고리즘 내부 원리 이해 | 2주 |
+| 2단계: 고급 알고리즘 | SVM + 커널, 그래디언트 부스팅 → XGBoost/LightGBM | 실무 최강 모델 구현 | 2주 |
+| 3단계: 데이터 실전 | [[08_data-preprocessing]] + [[09_feature-engineering]] + 불균형 데이터 | 데이터 품질 관리 능력 | 2주 |
+| 4단계: 해석과 파이프라인 | 모델 해석력(SHAP, LIME) + sklearn Pipeline | 설명 가능한 ML | 1주 |
 
 ### 고급 (전문가 역량)
 
-특수 문제와 MLOps를 마스터합니다.
+특수 문제 도메인과 프로덕션 운영을 마스터합니다.
 
-**1단계: 특수 문제**
-1. [시계열 ML](/post/time-series-ml)
-2. [추천 시스템](/post/recommendation-systems)
-3. [이상 탐지](/post/anomaly-detection)
-
-**2단계: 통계적 기법**
-4. [인과추론 개요](/post/causal-inference-overview) → [DID](/post/did) → [PSM/합성통제](/post/psm-synthetic-control)
-5. [A/B 테스트](/post/ab-testing)
-6. [베이지안 ML](/post/bayesian-ml)
-
-**3단계: 시스템과 운영**
-7. [ML 시스템 설계](/post/ml-system-design)
-8. [MLOps](/post/mlops-fundamentals)
-9. [AutoML](/post/automl)
-10. [ML 인터뷰 가이드](/post/ml-interview-guide)
+| 단계 | 학습 주제 | 학습 목표 | 예상 기간 |
+|------|----------|----------|----------|
+| 1단계: 특수 문제 | 시계열 ML, 추천 시스템, 이상 탐지 | 도메인 특화 알고리즘 | 3주 |
+| 2단계: 인과추론 | 인과추론 개요 → DID → PSM/합성통제 → A/B 테스트 | 정책 효과 추정 능력 | 2주 |
+| 3단계: 고급 이론 | 베이지안 ML, 커널 방법, 강화학습 기초 | 이론적 깊이 확보 | 2주 |
+| 4단계: 시스템 운영 | ML 시스템 설계, MLOps, AutoML | 프로덕션 ML 역량 | 2주 |
 
 ---
 
 ## ML과 딥러닝의 교차점
 
-머신러닝 기초는 딥러닝 이해의 필수 전제입니다.
+머신러닝 기초는 딥러닝 이해의 필수 전제입니다. 아래 테이블은 ML 기초 개념이 딥러닝의 어떤 구성 요소로 확장되는지를 보여줍니다.
 
-| ML 기초 | 딥러닝 연결 | 관련 포스트 |
-|---------|------------|------------|
-| 경사하강법 | Optimizer (Adam, SGD) | [최적화](/post/optimization-theory) |
-| 정규화 | Dropout, Weight Decay | [정규화 회귀](/post/regularized-regression) |
-| 앙상블 | MoE (Mixture of Experts) | [앙상블 개요](/post/ensemble-overview) |
-| PCA/차원축소 | AutoEncoder, VAE | [PCA](/post/pca) |
-| 교차 검증 | 학습/검증/테스트 분리 | [교차 검증](/post/cross-validation) |
-| 강화학습 | RLHF, PPO, DPO | [강화학습](/post/reinforcement-learning-basics) |
+| ML 기초 개념 | 딥러닝 확장 | 핵심 연결 고리 | 관련 포스트 |
+|-------------|-----------|-------------|------------|
+| 경사하강법 (SGD) | Adam, AdamW, 학습률 스케줄러 | 최적화 알고리즘의 진화 | [최적화](/post/optimization-theory) |
+| L1/L2 정규화 | Dropout, Weight Decay, Batch Norm | 과적합 방지 전략의 확장 | [정규화 회귀](/post/regularized-regression) |
+| 앙상블 (배깅/부스팅) | Mixture of Experts (MoE) | 다수 전문가 모델 결합 | [앙상블 개요](/post/ensemble-overview) |
+| PCA / 차원 축소 | AutoEncoder, VAE | 비선형 차원 축소 | [PCA](/post/pca) |
+| 교차 검증 | 학습/검증/테스트 분리, Early Stopping | 일반화 성능 관리 | [교차 검증](/post/cross-validation) |
+| 강화학습 (Q-Learning) | RLHF, PPO, DPO | LLM 정렬(Alignment) 핵심 기법 | [강화학습](/post/reinforcement-learning-basics) |
+| 피처 엔지니어링 | 표현 학습 (Representation Learning) | 수동 → 자동 피처 추출 | [[09_feature-engineering]] |
+
+---
+
+## 선수 지식 체계: Part 간 의존 관계
+
+각 Part 간에는 선수 지식 의존 관계가 존재합니다. 아래 테이블로 어떤 순서로 학습해야 하는지 확인할 수 있습니다.
+
+| Part | 제목 | 선수 Part | 선택적 선수 | 비고 |
+|------|------|----------|-----------|------|
+| Part 1 | 기초 개념 | 없음 | 없음 | 모든 학습의 출발점 |
+| Part 2 | 수학적 기초 | Part 1 | 없음 | 깊은 이해를 위해 필수 |
+| Part 3 | 데이터 전처리 | Part 1 | 없음 | 실무 시작점 |
+| Part 4 | 지도학습: 회귀 | Part 1 | Part 2 | 수학 기초가 있으면 이해 깊어짐 |
+| Part 5 | 지도학습: 분류 | Part 1, Part 4 | Part 2 | 회귀 이해 후 분류 확장 |
+| Part 6 | 앙상블 학습 | Part 5 | Part 3 | 개별 모델 이해 선행 |
+| Part 7 | 비지도학습 | Part 1 | Part 2 | 선형대수(PCA)가 도움됨 |
+| Part 8 | 모델 평가 | Part 4, Part 5 | Part 7 | 모든 모델에 적용 |
+| Part 9 | 인과추론 | Part 1 | Part 2 (확률) | 독립적으로 학습 가능 |
+| Part 10 | 고급 주제 | Part 5, Part 7 | Part 2 | 관심 분야만 선택적 학습 |
+| Part 11 | 실전/MLOps | Part 3~8 | Part 10 | 전체 파이프라인 이해 후 |
 
 ---
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) — 전체 AI/ML 지형도
-- [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) — 딥러닝 기법으로의 확장
-- [AWS & Cloud 인프라 학습 가이드](/post/aws-cloud-infrastructure-guide) — SageMaker, Bedrock 등 ML 인프라
+- [[ai-ml-architecture-roadmap|AI/ML 아키텍처 로드맵]] : 전체 AI/ML 지형도 (딥러닝 아키텍처 포함)
+- [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) : 딥러닝 기법으로의 확장
+- [AWS & Cloud 인프라 학습 가이드](/post/aws-cloud-infrastructure-guide) : SageMaker, Bedrock 등 ML 인프라

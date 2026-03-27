@@ -8,8 +8,8 @@ Mistral AI는 이 모델을 **Apache 2.0 라이선스**로 공개하여 완전�
 
 다음 아키텍처 다이어그램은 Mistral 7B의 전체 구조와 핵심 설계 요소를 한눈에 보여준다.
 
-![Mistral 7B 전체 아키텍처 다이어그램 — SWA, GQA, SwiGLU FFN, RoPE, Rolling KV Cache 포함](figures/architecture.png)
-*Figure 1: Mistral 7B 아키텍처 개요 — 32개 Transformer 블록에 Sliding Window Attention + GQA, SwiGLU FFN, Pre-RMSNorm을 적용하고, Rolling KV Cache(윈도우 4096)로 메모리를 고정한다. (Jiang et al., 2023)*
+![Mistral 7B 전체 아키텍처 다이어그램 ( SWA, GQA, SwiGLU FFN, RoPE, Rolling KV Cache 포함](figures/architecture.png)
+*Figure 1: Mistral 7B 아키텍처 개요 ) 32개 Transformer 블록에 Sliding Window Attention + GQA, SwiGLU FFN, Pre-RMSNorm을 적용하고, Rolling KV Cache(윈도우 4096)로 메모리를 고정한다. (Jiang et al., 2023)*
 
 ## 배경 및 문제
 

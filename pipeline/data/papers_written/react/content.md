@@ -4,7 +4,7 @@
 
 핵심 아이디어는 언어 모델이 **추론 트레이스(Thought)와 태스크별 행동(Action)을 교대로 생성**하도록 하는 것입니다. 기존에는 추론(Chain-of-Thought)과 행동(tool use/API call)이 분리된 별개의 접근법이었지만, ReAct는 이 둘을 유기적으로 결합합니다. 추론은 행동 계획을 수립하고 결과를 해석하는 데 활용되며, 행동의 결과(관찰)는 다음 추론의 근거가 됩니다.
 
-![4가지 프롬프팅 방법의 비교 — Standard, CoT(Reason Only), Act-only, ReAct(Reason+Act)로 HotPotQA와 AlfWorld 태스크를 해결하는 과정](figures/fig_1.png)
+![4가지 프롬프팅 방법의 비교 ( Standard, CoT(Reason Only), Act-only, ReAct(Reason+Act)로 HotPotQA와 AlfWorld 태스크를 해결하는 과정](figures/fig_1.png)
 
 *Figure 1: 4가지 프롬프팅 방법의 비교. (1) HotPotQA: (a) Standard는 바로 답을 출력, (b) CoT는 추론만 수행, (c) Act-only는 검색 행동만 수행, (d) ReAct는 추론과 행동을 교대로 수행하여 정확한 답에 도달. (2) AlfWorld: (a) Act-only는 환각으로 실패, (b) ReAct는 추론으로 행동을 안내하여 성공. (Yao et al., 2023)*
 
@@ -164,7 +164,7 @@ ReAct는 1,800개의 인간 시연(demonstration)으로 학습된 모방학습+�
 
 ### 스케일링 결과
 
-![모델 크기별 HotPotQA 성능 비교 — 프롬프팅과 파인튜닝 모두에서 ReAct의 효과를 보여주는 그래프](figures/fig_5.png)
+![모델 크기별 HotPotQA 성능 비교 ) 프롬프팅과 파인튜닝 모두에서 ReAct의 효과를 보여주는 그래프](figures/fig_5.png)
 
 *Figure 2: PaLM 8B/62B/540B에서의 HotPotQA 성능 비교. (왼쪽) 프롬프팅 설정에서 ReAct는 모든 모델 크기에서 기존 방법을 능가하며, 모델이 클수록 격차가 벌어진다. (오른쪽) 파인튜닝 설정에서도 ReAct의 이점이 유지된다. (Yao et al., 2023)*
 
@@ -172,7 +172,7 @@ ReAct는 1,800개의 인간 시연(demonstration)으로 학습된 모방학습+�
 
 ### Human-in-the-Loop
 
-![인간 개입을 통한 행동 수정 예시 — ReAct의 환각 사고를 인간이 수정하여 태스크를 성공시키는 과정](figures/fig_9.png)
+![인간 개입을 통한 행동 수정 예시 ( ReAct의 환각 사고를 인간이 수정하여 태스크를 성공시키는 과정](figures/fig_9.png)
 
 *Figure 3: Human-in-the-loop 행동 수정 예시. (a) ReAct 에이전트가 환각으로 인해 실패하는 트래젝토리. (b) 인간이 두 개의 Thought만 수정하여(Act 17, 23) 에이전트가 올바른 추론과 행동을 생성하도록 유도, 태스크를 성공시킨다. (Yao et al., 2023)*
 
@@ -258,7 +258,7 @@ ReAct는 2023년 이후 가장 널리 사용되는 LLM 에이전트 패턴입니
 
 ### 최신 정보 접근의 이점
 
-![ReAct가 최신 정보를 활용하여 정답에 도달하는 예시 — 원래 레이블이 오래된 HotPotQA 질문에서도 정확한 답변 가능](figures/fig_8.png)
+![ReAct가 최신 정보를 활용하여 정답에 도달하는 예시 ) 원래 레이블이 오래된 HotPotQA 질문에서도 정확한 답변 가능](figures/fig_8.png)
 
 *Figure 4: 최신 정보 접근의 이점. HotPotQA의 원래 정답 레이블이 오래된 정보에 기반한 경우에도, ReAct는 실시간 웹 검색을 통해 최신 정보를 확인하고 정확한 답변을 제공한다. (Yao et al., 2023)*
 

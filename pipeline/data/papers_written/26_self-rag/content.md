@@ -4,7 +4,7 @@ Self-RAG는 2023년 워싱턴대학교의 Akari Asai 등이 발표한 논문으�
 
 다음 그림은 기존 RAG와 Self-RAG의 동작 방식 차이를 보여준다.
 
-![기존 RAG와 Self-RAG의 동작 방식 비교 — Self-RAG는 검색 필요성을 동적으로 판단하고 생성 결과를 자기 비평한다](figures/fig_1.png)
+![기존 RAG와 Self-RAG의 동작 방식 비교 ( Self-RAG는 검색 필요성을 동적으로 판단하고 생성 결과를 자기 비평한다](figures/fig_1.png)
 *Figure 1: Standard RAG vs Self-RAG 비교. 기존 RAG(왼쪽)는 모든 입력에 대해 무조건 검색을 수행하고 검색 문서를 그대로 사용하는 반면, Self-RAG(오른쪽)는 (1) 검색 필요성을 온디맨드로 판단하고, (2) 여러 문서에 대해 병렬로 세그먼트를 생성한 뒤, (3) 반성 토큰([IsRel], [IsSup])으로 각 후보를 비평하여 최적의 세그먼트를 선택한다. 하단의 에세이 요청처럼 검색이 불필요한 경우에는 [Retrieve]=No로 판단하여 직접 생성한다.*
 
 핵심적인 기여는 검색, 생성, 비평이라는 세 가지 역할을 **단일 모델**로 통합했다는 점이다. 기존에는 검색기, 생성기, 비평기(critic)가 각각 별도의 모델이었으나, Self-RAG는 반성 토큰을 어휘에 추가하는 것만으로 이 세 가지를 하나의 모델에서 수행한다. 구체적으로, 모델은 텍스트를 생성하는 도중에 `[Retrieve]`, `[IsRel]`, `[IsSup]`, `[IsUse]`라는 네 가지 특수 토큰을 출력하며, 이를 통해 검색의 필요성을 판단하고, 검색된 문서의 품질을 평가하고, 자신이 생성한 텍스트가 근거에 의해 뒷받침되는지를 스스로 검증한다. ICLR 2024 발표 이후 약 700건 이상 인용되며, 적응적 RAG 연구의 기반이 되었다.
@@ -106,12 +106,12 @@ $$\text{score}_{\text{sup}}(y^{(i)}) = \frac{p_\theta(\text{[IsSup]}=\text{fully
 
 다음 그림은 Self-RAG의 전체 아키텍처 파이프라인을 보여준다. Contriever-MS MARCO 검색기가 관련 패시지를 검색하고, Llama2-7B/13B 기반 Generator가 반성 토큰과 함께 답변을 생성하는 구조이다.
 
-![Self-RAG 아키텍처 파이프라인 — 검색기(Contriever-MS MARCO), 생성기(Llama2-7B/13B), 반성 토큰의 통합 구조](figures/architecture.png)
+![Self-RAG 아키텍처 파이프라인 ) 검색기(Contriever-MS MARCO), 생성기(Llama2-7B/13B), 반성 토큰의 통합 구조](figures/architecture.png)
 *Self-RAG 아키텍처 파이프라인. 입력 쿼리가 들어오면 Contriever-MS MARCO 검색기가 관련 패시지를 검색하고, Llama2-7B/13B 기반 Generator가 검색된 문서를 조건으로 답변을 생성한다. 이때 [Retrieve], [IsRel], [IsSup], [IsUse] 반성 토큰이 생성 과정에 통합되어 검색 필요성 판단부터 생성 품질 검증까지 단일 모델 내에서 수행된다.*
 
 다음 그림은 Self-RAG의 학습 데이터가 어떻게 구성되는지를 구체적으로 보여준다. 검색이 불필요한 경우와 필요한 경우에 반성 토큰이 다르게 삽입된다.
 
-![Self-RAG 학습 예시 — 검색 불필요(여름 휴가 에세이)와 검색 필요(미국 주 이름 유래) 두 가지 학습 샘플](figures/fig_2.png)
+![Self-RAG 학습 예시 ( 검색 불필요(여름 휴가 에세이)와 검색 필요(미국 주 이름 유래) 두 가지 학습 샘플](figures/fig_2.png)
 *Figure 2: Self-RAG 학습 데이터 예시. 왼쪽(에세이 요청)은 검색이 불필요하여 [Retrieve]=No와 [IsUse] 토큰만 삽입되고, 오른쪽(사실 기반 질문)은 Retriever가 호출되어 [IsRel], [IsSup] 등 모든 반성 토큰이 포함된다. (Asai et al., 2023)*
 
 ### Critic 모델 학습 (반성 토큰 레이블링)
@@ -225,7 +225,7 @@ ASQA는 하나의 질문에 대해 여러 관점의 답변과 인용을 제공�
 
 다음 그림은 학습 데이터 규모에 따른 ASQA 인용 정밀도의 변화를 보여준다.
 
-![학습 데이터 수에 따른 ASQA 인용 정밀도 — 반성 토큰 학습 효과](figures/fig_9.png)
+![학습 데이터 수에 따른 ASQA 인용 정밀도 ) 반성 토큰 학습 효과](figures/fig_9.png)
 *Figure 3g: 학습 데이터 규모에 따른 ASQA 인용 정밀도(citation precision). 데이터 증가에 따라 인용 정확성이 꾸준히 향상되며, 장문 생성에서도 Self-RAG의 자기 비평 메커니즘이 효과적임을 입증한다. (Asai et al., 2023)*
 
 ### Ablation Study: 반성 토큰의 효과
