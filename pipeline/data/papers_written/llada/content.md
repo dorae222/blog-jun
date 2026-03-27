@@ -261,7 +261,7 @@ def llada_generate(model, prompt_ids, max_new_tokens=128, num_steps=25, temperat
 
 ## 관련 문서
 
-- [MDLM: Simple and Effective Masked Diffusion Language Models](https://arxiv.org/abs/2406.07524) — LLaDA의 직접적 이론적 선행 연구
-- [D3PM: Structured Denoising Diffusion Models in Discrete State-Spaces](https://arxiv.org/abs/2107.03006) — 이산 확산의 수학적 토대
-- [BERT: Pre-training of Deep Bidirectional Transformers](https://arxiv.org/abs/1810.04805) — 마스크 언어 모델링의 원점
-- [LLaMA 3](https://arxiv.org/abs/2407.21783) — 주요 비교 베이스라인 AR 모델
+- [MDLM: Simple and Effective Masked Diffusion Language Models](https://arxiv.org/abs/2406.07524) ( LLaDA의 직접적 이론적 선행 연구
+- [D3PM: Structured Denoising Diffusion Models in Discrete State-Spaces](https://arxiv.org/abs/2107.03006) ) 이산 확산의 수학적 토대
+- [BERT: Pre-training of Deep Bidirectional Transformers](https://arxiv.org/abs/1810.04805) ( 마스크 언어 모델링의 원점
+- [LLaMA 3](https://arxiv.org/abs/2407.21783) ) 주요 비교 베이스라인 AR 모델

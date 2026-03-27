@@ -162,7 +162,7 @@ $$\tilde{K} = K - \mathbf{1}_N K - K \mathbf{1}_N + \mathbf{1}_N K \mathbf{1}_N$
 $$\tilde{K} \mathbf{\alpha} = \lambda N \mathbf{\alpha}$$
 
 자주 사용되는 커널:
-- **RBF(Gaussian) 커널**: $k(\mathbf{x}, \mathbf{y}) = \exp\left(-\frac{\|\mathbf{x} - \mathbf{y}\|^2}{2\sigma^2}\right)$ — 비선형 클러스터 분리에 효과적
+- **RBF(Gaussian) 커널**: $k(\mathbf{x}, \mathbf{y}) = \exp\left(-\frac{\|\mathbf{x} - \mathbf{y}\|^2}{2\sigma^2}\right)$, 비선형 클러스터 분리에 효과적
 - **다항식 커널**: $k(\mathbf{x}, \mathbf{y}) = (\mathbf{x}^T \mathbf{y} + c)^p$
 
 단점은 $N \times N$ 커널 행렬을 저장하고 분해해야 하므로 $O(N^2)$ 메모리와 $O(N^3)$ 연산이 필요하여, 대용량 데이터에는 적용이 어렵습니다.

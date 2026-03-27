@@ -213,7 +213,7 @@ plt.tight_layout()
 plt.savefig('lda_perplexity.png', dpi=150)
 plt.show()
 
-# 낮을수록 좋음 — 그래프의 'elbow' 지점이 최적 K
+# 낮을수록 좋음, 그래프의 'elbow' 지점이 최적 K
 print(f"최소 perplexity: {min(perplexities):.2f} (K={topic_range[np.argmin(perplexities)]})")
 ```
 

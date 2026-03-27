@@ -360,8 +360,8 @@ class DiffusionLM(nn.Module):
 
     def forward(
         self,
-        x_t: torch.Tensor,  # [B, L, embed_dim] — 노이즈 임베딩
-        t: torch.Tensor,    # [B] — 정규화된 시간 [0, 1]
+        x_t: torch.Tensor,  # [B, L, embed_dim] ( 노이즈 임베딩
+        t: torch.Tensor,    # [B] ) 정규화된 시간 [0, 1]
     ) -> torch.Tensor:
         """
         노이즈 임베딩 x_t에서 원본 임베딩 x_0 예측.
@@ -515,8 +515,8 @@ def guided_generation(
 
 ## 관련 문서
 
-- [[ddpm|DDPM: Denoising Diffusion Probabilistic Models]] — Diffusion-LM의 기반 확산 모델
-- [[d3pm|D3PM: Structured Denoising Diffusion in Discrete State-Spaces]] — 이산 확산의 대안 접근
-- [[diffu-seq|DiffuSeq]] — Diffusion-LM을 Seq2Seq에 확장
-- [[classifier-guidance|Classifier-Free Guidance]] — 이미지에서 분류기 유도의 원형
-- [[score-sde|Score SDE]] — 연속 시간 확산의 수학적 기반
+- [[ddpm|DDPM: Denoising Diffusion Probabilistic Models]] ( Diffusion-LM의 기반 확산 모델
+- [[d3pm|D3PM: Structured Denoising Diffusion in Discrete State-Spaces]] ) 이산 확산의 대안 접근
+- [[diffu-seq|DiffuSeq]] ( Diffusion-LM을 Seq2Seq에 확장
+- [[classifier-guidance|Classifier-Free Guidance]] ) 이미지에서 분류기 유도의 원형
+- [[score-sde|Score SDE]], 연속 시간 확산의 수학적 기반

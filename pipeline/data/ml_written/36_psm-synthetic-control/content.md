@@ -6,9 +6,9 @@
 
 이 포스트에서는 외생적 변이가 불완전하거나 없을 때 선택 편향을 보정하는 3가지 방법을 체계적으로 비교한다:
 
-- **Part A**: Propensity Score Matching (PSM) — 관찰 가능한 변수 기반 매칭
-- **Part B**: Synthetic Control Method (SCM) — 가상의 합성 통제군 구성
-- **Part C**: Heckman Selection Model — Inverse Mills Ratio로 자기선택 편향 보정
+- **Part A**: Propensity Score Matching (PSM) ( 관찰 가능한 변수 기반 매칭
+- **Part B**: Synthetic Control Method (SCM) ) 가상의 합성 통제군 구성
+- **Part C**: Heckman Selection Model ( Inverse Mills Ratio로 자기선택 편향 보정
 
 ---
 
@@ -108,7 +108,7 @@ SCM은 표본 수가 적어 전통적인 표준 오차를 계산하기 어렵다
 
 ---
 
-## Part C: Selection Bias Correction — Heckman Selection Model
+## Part C: Selection Bias Correction ) Heckman Selection Model
 
 ### 8. 자기선택 편향 문제
 

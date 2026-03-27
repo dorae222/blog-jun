@@ -360,5 +360,5 @@ AWS에서 AI/ML 파이프라인을 구축합니다. MLS 자격증 수준.
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) — AI/ML 기술 전체 지형도
-- [머신러닝 기초부터 실전까지](/post/ml-fundamentals-roadmap) — ML 이론과 실습
+- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) ( AI/ML 기술 전체 지형도
+- [머신러닝 기초부터 실전까지](/post/ml-fundamentals-roadmap) ) ML 이론과 실습

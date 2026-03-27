@@ -37,7 +37,7 @@ y(t) = C·h(t) + D·x(t)     (출력 방정식)
 
 - [Hyena](/post/hyena) (2023): Attention을 긴 합성곱으로 대체하는 접근. 암묵적(implicit) 합성곱 필터 학습. Sub-quadratic 복잡도.
 
-### Phase 2: Mamba — SSM의 실질적 돌파 (2023)
+### Phase 2: Mamba ( SSM의 실질적 돌파 (2023)
 
 - [Mamba](/post/mamba) (2023): SSM에 **선택적 메커니즘(Selective Mechanism)**을 도입. 입력에 따라 B, C, Δ 파라미터가 동적으로 변화. 하드웨어 최적화된 선택적 스캔(Selective Scan) 알고리즘. 1.4B 파라미터에서 Transformer와 동등한 언어 모델링 성능. 시퀀스 길이에 대해 선형 스케일링으로 100만 토큰 이상 처리 가능.
 
@@ -281,30 +281,30 @@ Mamba는 1.4B 규모에서 GPT-3(1.3B)와 동등하거나 약간 나은 퍼플�
 
 SSM의 기본 원리와 핵심 모델을 이해합니다.
 
-1. Transformer의 한계 이해 — O(n^2) 복잡도, KV 캐시 문제
-2. [S4](/post/s4) — SSM의 이론적 기초 (HiPPO, 구조화된 행렬)
-3. [Mamba](/post/mamba) — 선택적 메커니즘의 이해
-4. [Jamba](/post/jamba) — SSM-Transformer 하이브리드의 실제 적용
+1. Transformer의 한계 이해 ) O(n^2) 복잡도, KV 캐시 문제
+2. [S4](/post/s4) ( SSM의 이론적 기초 (HiPPO, 구조화된 행렬)
+3. [Mamba](/post/mamba) ) 선택적 메커니즘의 이해
+4. [Jamba](/post/jamba) ( SSM-Transformer 하이브리드의 실제 적용
 
 ### 중급 (이론 심화)
 
 SSM의 수학적 기초와 다양한 변형을 깊이 학습합니다.
 
-1. [H3](/post/h3) — 언어 모델링에서의 SSM
-2. [Mamba-2](/post/mamba-2) — State Space Duality 이론
-3. [RetNet](/post/retnet) — Retention 메커니즘
-4. [GLA](/post/gla) + [Gated DeltaNet](/post/gated-deltanet) — Linear Attention 변형
-5. [RWKV](/post/rwkv) + [RWKV-7](/post/rwkv-7) — RNN 기반 접근
-6. [xLSTM](/post/xlstm) — LSTM의 현대화
+1. [H3](/post/h3) ) 언어 모델링에서의 SSM
+2. [Mamba-2](/post/mamba-2) ( State Space Duality 이론
+3. [RetNet](/post/retnet) ) Retention 메커니즘
+4. [GLA](/post/gla) + [Gated DeltaNet](/post/gated-deltanet) ( Linear Attention 변형
+5. [RWKV](/post/rwkv) + [RWKV-7](/post/rwkv-7) ) RNN 기반 접근
+6. [xLSTM](/post/xlstm) ( LSTM의 현대화
 
 ### 고급 (최신 연구)
 
 최전선의 SSM 연구를 추적합니다.
 
-1. [Mamba-3](/post/mamba-3) — 최신 SSM 발전
-2. [Griffin](/post/griffin) — Google의 하이브리드 접근
-3. [Jamba 1.6](/post/jamba-1-6) — 대규모 하이브리드 모델
-4. [Hyena](/post/hyena) + [HGRN](/post/hgrn) — 대안적 접근법
+1. [Mamba-3](/post/mamba-3) ) 최신 SSM 발전
+2. [Griffin](/post/griffin) ( Google의 하이브리드 접근
+3. [Jamba 1.6](/post/jamba-1-6) ) 대규모 하이브리드 모델
+4. [Hyena](/post/hyena) + [HGRN](/post/hgrn) ( 대안적 접근법
 5. SSM의 멀티모달 확장과 비전 응용
 
 ---
@@ -323,6 +323,6 @@ SSM은 여전히 활발한 연구 분야입니다. 주요 연구 방향은 다�
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) — 전체 AI/ML 지형도
-- [LLM 핵심 논문 가이드](/post/llm-paper-guide) — SSM이 도전하는 LLM 영역
-- [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) — Attention, Flash Attention 등 관련 기법
+- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) ) 전체 AI/ML 지형도
+- [LLM 핵심 논문 가이드](/post/llm-paper-guide) ( SSM이 도전하는 LLM 영역
+- [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) ) Attention, Flash Attention 등 관련 기법
