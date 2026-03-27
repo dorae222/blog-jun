@@ -2,7 +2,7 @@
   "slug": "apache-hive-sql-bigdata",
   "title": "Apache Hive: SQL-Based Big Data Warehouse on Hadoop",
   "title_ko": "Apache Hive - SQL로 다루는 빅데이터 웨어하우스",
-  "category_slug": "data-engineering",
+  "category_slug": "hadoop",
   "summary": "Apache Hive의 아키텍처, HiveQL 문법, Metastore 구조, 파일 포맷 선택, 파티셔닝/버켓팅 최적화 전략까지 실무 관점에서 체계적으로 정리한 가이드입니다. Schema on Read 개념부터 Tez/Spark 실행 엔진 전환, 그리고 현대 데이터 레이크 아키텍처에서 Hive Metastore가 차지하는 위치까지 다룹니다.",
   "tags": [
     "Apache Hive",

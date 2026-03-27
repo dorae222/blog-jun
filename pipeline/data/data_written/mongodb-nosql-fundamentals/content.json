@@ -2,7 +2,7 @@
   "slug": "mongodb-nosql-fundamentals",
   "title": "MongoDB와 NoSQL 기초: 관계형 데이터베이스의 한계와 문서형 DB의 등장",
   "title_ko": "MongoDB와 NoSQL 기초: 관계형 데이터베이스의 한계와 문서형 DB의 등장",
-  "category_slug": "data-engineering",
+  "category_slug": "database",
   "series_slug": "mongodb-fundamentals",
   "series_order": 1,
   "summary": "RDBMS가 직면한 스키마 경직성과 수직 확장의 한계를 짚고, NoSQL이 등장하게 된 배경을 설명합니다. ACID와 CAP Theorem의 차이, 4가지 NoSQL 데이터 모델의 특성을 정리한 뒤, MongoDB의 문서 구조와 CRUD 연산을 실전 코드와 함께 다룹니다.",

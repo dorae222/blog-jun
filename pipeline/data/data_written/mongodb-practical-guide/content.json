@@ -2,7 +2,7 @@
   "slug": "mongodb-practical-guide",
   "title": "MongoDB Practical Guide: Installation, CRUD Operations, and Update Operators",
   "title_ko": "MongoDB 실전 가이드: 설치부터 CRUD 연산, 갱신 연산자까지",
-  "category_slug": "data-engineering",
+  "category_slug": "database",
   "summary": "MongoDB의 설치 과정부터 Compass UI 설정, 기본 CRUD 쿼리, 그리고 $set, $inc, $push 등 갱신 연산자의 실전 활용법까지 단계별로 정리한 가이드입니다. 실무에서 MongoDB를 처음 다루는 개발자를 위해 코드 예제 중심으로 구성했습니다.",
   "tags": [
     "MongoDB",
