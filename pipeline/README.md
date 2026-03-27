@@ -7,21 +7,20 @@
 ```
 Obsidian 노트 / arXiv 논문
         ↓
-scanner → preprocessor → batch_prepare → batch_process → batch_import
-        ↓                                                      ↓
-   content/ (원본)                                    pipeline/data/ (결과)
-                                                           ↓
-                                                    각 importer → Django DB
+scanner → preprocessor → content.md 직접 편집 (Claude Code)
+        ↓                        ↓
+   content/ (원본)      pipeline/data/ (결과)
+                              ↓
+                       각 importer → Django DB
 ```
 
 ## 디렉토리 구조
 
 | 디렉토리 | 역할 |
 |---------|------|
-| `utils/` | 공통 유틸 (batch_client, svg_utils, post_factory, text_utils, image_utils) |
+| `utils/` | 공통 유틸 (svg_utils, post_factory, text_utils, image_utils) |
 | `importers/` | 컨텐츠 → Django DB (papers, architectures, ml, colab, data, cloud) |
 | `generators/` | 이미지/컨텐츠 생성 (cover_templates, arch_figures, paper_svgs, ml_outputs) |
-| `batch/` | OpenAI Batch API (prepare, process, import_results, rewrite, fixstyle) |
 | `preprocessing/` | Notion → Markdown 전처리 (scanner, preprocessor, html_parser) |
 | `useful/` | 독립 유틸리티 (embedding, figure 분석, PDF 임포트 등) |
 | `data/` | 처리된 컨텐츠 JSON (ml_written, papers_written, architectures_written 등) |
@@ -47,16 +46,6 @@ scanner → preprocessor → batch_prepare → batch_process → batch_import
 | `generators/arch_figures.py` | 아키텍처 다이어그램 생성 | `--slug [slug]` |
 | `generators/paper_svgs.py` | 논문 리뷰 SVG 생성 | `--slug [slug]` |
 | `generators/figure_integrator.py` | Figure를 content에 통합 | `--slug [slug]` |
-
-### Batch API
-
-| 스크립트 | 역할 | 실행 예시 |
-|---------|------|---------|
-| `batch/prepare.py` | Batch 요청 준비 (JSONL) | `--type ml` |
-| `batch/generate.py` | Batch 실행 | `--input prepared.jsonl` |
-| `batch/import_results.py` | Batch 결과 → content.json | `--type ml` |
-| `batch/rewrite.py` | 컨텐츠 재작성 Batch | `--slugs slug1,slug2` |
-| `batch/fixstyle.py` | 스타일 교정 Batch | `--all` |
 
 ### Useful (독립 유틸리티)
 
@@ -117,4 +106,4 @@ rsync -avz ml-sandbox:/workspace/backend/media/figures/outputs/ backend/media/fi
 
 `pipeline/data/`는 컨텐츠 소스 데이터를 보관.
 바이너리 파일(PNG/SVG/PDF)은 Git LFS로, 텍스트 파일(JSON/MD)은 일반 git으로 추적.
-중간 산출물(batch_*.jsonl, preprocessed/ 등)은 .gitignore에서 제외.
+중간 산출물(preprocessed/ 등)은 .gitignore에서 제외.

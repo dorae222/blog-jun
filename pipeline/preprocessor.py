@@ -255,7 +255,7 @@ def convert_obsidian_syntax(content: str, stats: Counter) -> str:
     """Obsidian 전용 문법을 표준 마크다운으로 변환."""
 
     # E-18: [[내부 링크]] — 추출 후 텍스트로 변환
-    # wiki-link 관계를 먼저 추출 → content_links에 저장 (batch_import에서 PostLink 생성용)
+    # wiki-link 관계를 먼저 추출 → content_links에 저장 (import 시 PostLink 생성용)
     def replace_wikilink(m):
         inner = m.group(1)
         if "|" in inner:
