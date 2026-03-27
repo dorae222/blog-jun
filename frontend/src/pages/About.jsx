@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { Github, Mail, Linkedin, GraduationCap, Award, Users, Trophy, MapPin, Briefcase } from 'lucide-react'
+import { Github, Mail, Linkedin, GraduationCap, Award, MapPin } from 'lucide-react'
 import ScrollReveal from '../components/common/ScrollReveal'
 import TechStack from '../components/portfolio/TechStack'
+import Timeline from '../components/portfolio/Timeline'
 import TechIcon from '../components/icons/TechIcon'
 import { ACTIVITIES } from '../data/activities'
 
@@ -22,30 +23,21 @@ const CERTS_AWS = [
   { name: 'Machine Learning Engineer', code: 'MLA-C01', level: 'Associate' },
   { name: 'Solutions Architect', code: 'SAA-C03', level: 'Associate' },
   { name: 'Data Engineer', code: 'DEA-C01', level: 'Associate' },
+  { name: 'AI Practitioner', code: 'AIF-C01', level: 'Foundational' },
+  { name: 'Cloud Practitioner', code: 'CLF-C02', level: 'Foundational' },
 ]
+
+const LEVEL_COLORS = {
+  Specialty: { bg: '#FF990020', color: '#FF9900' },
+  Associate: { bg: '#2563eb15', color: '#2563eb' },
+  Foundational: { bg: '#10b98115', color: '#10b981' },
+}
 
 const CERTS_DATA = [
   { name: 'ADsP', org: 'K-Data' },
   { name: 'SQLD', org: 'K-Data' },
 ]
 
-const EXPERIENCE = [
-  {
-    period: '2023.12 ~ 2024.02',
-    company: '원데이원 커뮤니케이션',
-    role: '솔루션개발팀 인턴',
-    desc: 'AI바우처 정부 사업을 위한 기획 및 개발. 사업계획서 작성, 주재원 대상 챗봇 조사 및 설계, AI 강의 커리큘럼 설계',
-  },
-]
-
-const ABOUT_ACTIVITIES = ACTIVITIES.filter(a => a.type === 'activity')
-
-const AWARDS = [
-  { year: '2025', name: '인공지능사관학교 온라인 해커톤 1위', org: 'AICA' },
-  { year: '2023', name: '교내 한국어 지역 방언 분류 (Kaggle) 3위', org: 'Kaggle' },
-  { year: '2022', name: '한국관광공사 표창장 - 사장상', org: '한국관광공사' },
-  { year: '2022', name: '한국관광 데이터랩 우수 활용사례 공모전 2위', org: 'KTO Data Lab' },
-]
 
 export default function About() {
   return (
@@ -199,33 +191,6 @@ export default function About() {
         </ScrollReveal>
       </section>
 
-      {/* Experience */}
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <ScrollReveal>
-          <div className="flex items-center gap-2 mb-6">
-            <Briefcase size={24} className="text-primary-600" />
-            <h2 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Experience</h2>
-          </div>
-        </ScrollReveal>
-
-        <div className="space-y-3">
-          {EXPERIENCE.map((exp, i) => (
-            <ScrollReveal key={exp.company} delay={i * 0.05}>
-              <div className="flex items-start gap-4 p-4 rounded-xl glass hover:shadow-md transition-all">
-                <span className="text-xs font-mono whitespace-nowrap mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-                  {exp.period}
-                </span>
-                <div>
-                  <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{exp.company}</p>
-                  <p className="text-xs font-medium text-primary-600">{exp.role}</p>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>{exp.desc}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
       {/* Certifications */}
       <section className="max-w-4xl mx-auto px-4 py-8">
         <ScrollReveal>
@@ -263,8 +228,8 @@ export default function About() {
                     <span
                       className="text-xs px-2 py-0.5 rounded-full"
                       style={{
-                        background: cert.level === 'Specialty' ? '#FF990020' : '#2563eb15',
-                        color: cert.level === 'Specialty' ? '#FF9900' : '#2563eb',
+                        background: LEVEL_COLORS[cert.level]?.bg,
+                        color: LEVEL_COLORS[cert.level]?.color,
                       }}
                     >
                       {cert.level}
@@ -295,60 +260,8 @@ export default function About() {
         </ScrollReveal>
       </section>
 
-      {/* Activities */}
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <ScrollReveal>
-          <div className="flex items-center gap-2 mb-6">
-            <Users size={24} className="text-primary-600" />
-            <h2 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Activities</h2>
-          </div>
-        </ScrollReveal>
-
-        <div className="space-y-3">
-          {ABOUT_ACTIVITIES.map((act, i) => (
-            <ScrollReveal key={act.id} delay={i * 0.05}>
-              <div className="flex items-start gap-4 p-4 rounded-xl glass hover:shadow-md transition-all">
-                <span className="text-xs font-mono whitespace-nowrap mt-0.5" style={{ color: 'var(--text-secondary)' }}>
-                  {act.date}
-                </span>
-                <div>
-                  <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{act.title}</p>
-                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{act.description}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Awards */}
-      <section className="max-w-4xl mx-auto px-4 py-8">
-        <ScrollReveal>
-          <div className="flex items-center gap-2 mb-6">
-            <Trophy size={24} className="text-primary-600" />
-            <h2 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Awards</h2>
-          </div>
-        </ScrollReveal>
-
-        <div className="space-y-3">
-          {AWARDS.map((award, i) => (
-            <ScrollReveal key={award.name} delay={i * 0.05}>
-              <div className="flex items-start gap-4 p-4 rounded-xl glass hover:shadow-md transition-all">
-                <span
-                  className="text-xs font-bold px-2 py-0.5 rounded-full whitespace-nowrap mt-0.5"
-                  style={{ background: '#2563eb15', color: '#2563eb' }}
-                >
-                  {award.year}
-                </span>
-                <div>
-                  <p className="text-sm font-medium" style={{ color: 'var(--text)' }}>{award.name}</p>
-                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>{award.org}</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
+      {/* Timeline (Activities + Awards + Education + Projects) */}
+      <Timeline items={ACTIVITIES} />
 
       {/* Tech Stack */}
       <TechStack />
