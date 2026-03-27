@@ -14,9 +14,14 @@ import argparse
 import shutil
 from pathlib import Path
 
-# Django 설정
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'backend'))
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+# Django 설정 (로컬: backend/, Docker: /app)
+_here = Path(__file__).resolve()
+_backend = _here.parent.parent / 'backend'
+if _backend.exists():
+    sys.path.insert(0, str(_backend))
+elif Path('/app/config').exists():
+    sys.path.insert(0, '/app')
+sys.path.insert(0, str(_here.parent))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 
 import django
