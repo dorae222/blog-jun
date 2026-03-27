@@ -158,16 +158,18 @@ class ArchitectureEntryBriefSerializer(FigureUrlMixin, serializers.ModelSerializ
         ]
 
     def get_parent_names(self, obj):
+        # child_relations: from_entry=obj → obj가 자식 → to_entry가 부모
         return [{'name': r.to_entry.name, 'slug': r.to_entry.slug,
                  'relation_type': r.relation_type,
                  'post_slug': r.to_entry.related_post.slug if r.to_entry.related_post_id else None}
-                for r in obj.parent_relations.select_related('to_entry', 'to_entry__related_post').all()[:5]]
+                for r in obj.child_relations.select_related('to_entry', 'to_entry__related_post').all()[:5]]
 
     def get_child_names(self, obj):
+        # parent_relations: to_entry=obj → obj가 부모 → from_entry가 자식
         return [{'name': r.from_entry.name, 'slug': r.from_entry.slug,
                  'relation_type': r.relation_type,
                  'post_slug': r.from_entry.related_post.slug if r.from_entry.related_post_id else None}
-                for r in obj.child_relations.select_related('from_entry', 'from_entry__related_post').all()[:5]]
+                for r in obj.parent_relations.select_related('from_entry', 'from_entry__related_post').all()[:5]]
 
 
 class PostDetailSerializer(ImageUrlMixin, serializers.ModelSerializer):

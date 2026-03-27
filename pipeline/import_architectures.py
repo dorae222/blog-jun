@@ -123,6 +123,7 @@ def import_architectures(dry_run: bool = False, update: bool = False):
             return str(v)[:max_len] if max_len else str(v)
 
         defaults = {
+            'name': name,
             'organization': s(data.get('organization'), max_len=200),
             'release_date': release_date,
             'decoder_type': decoder_type,
