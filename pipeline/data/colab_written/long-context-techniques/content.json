@@ -1,0 +1,18 @@
+{
+  "slug": "long-context-techniques",
+  "title": "Long Context LLM: Techniques for 100K+ Token Processing",
+  "title_ko": "Long Context LLM: 100K+ 토큰 처리의 원리와 기법",
+  "category_slug": "technique",
+  "summary": "LLM의 컨텍스트 윈도우를 확장하는 기법을 분석합니다. RoPE 스케일링, YaRN, Ring Attention 등 위치 인코딩 확장 기법과 KV-Cache 최적화, Sliding Window Attention 등 효율적 장문 처리 전략을 다룹니다.",
+  "tags": [
+    "long-context",
+    "rope",
+    "yarn",
+    "ring-attention",
+    "sliding-window",
+    "kv-cache",
+    "context-window",
+    "position-encoding"
+  ],
+  "is_pinned": false
+}
