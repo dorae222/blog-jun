@@ -1,0 +1,18 @@
+{
+  "slug": "graphrag-knowledge-graph",
+  "title": "GraphRAG in Practice: Knowledge Graph-Based RAG",
+  "title_ko": "GraphRAG 실전: 지식 그래프 기반 RAG 구축",
+  "category_slug": "rag",
+  "summary": "Microsoft GraphRAG를 실전에 적용하는 방법을 다룹니다. 지식 그래프 구축부터 커뮤니티 탐지, 로컬/글로벌 검색까지의 파이프라인을 설명하고, 기존 벡터 RAG와의 비교 및 하이브리드 전략을 제시합니다.",
+  "tags": [
+    "graphrag",
+    "knowledge-graph",
+    "rag",
+    "neo4j",
+    "community-detection",
+    "entity-extraction",
+    "hybrid-search",
+    "practical-guide"
+  ],
+  "is_pinned": false
+}

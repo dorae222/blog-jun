@@ -1,0 +1,22 @@
+{
+  "slug": "camel",
+  "id": 62,
+  "title": "CAMEL: Communicative Agents for \"Mind\" Exploration of Large Language Model Society",
+  "title_ko": "CAMEL: LLM 멀티에이전트 협력의 선구자",
+  "category_slug": "agent",
+  "arxiv_url": "https://arxiv.org/abs/2303.17760",
+  "venue": "NeurIPS 2023",
+  "paper_year": 2023,
+  "paper_authors": "Guohao Li, Hasan Abed Al Kader Hammoud, Hani Itani, Dmitrii Khizbullin, Bernard Ghanem",
+  "summary": "두 LLM 에이전트가 역할을 분담하여 협력하는 멀티에이전트 프레임워크 CAMEL을 분석합니다. AI Society와 Code Generation 시나리오에서의 역할 기반 협력, Inception Prompting 기법, 그리고 멀티에이전트 시스템의 가능성과 한계를 다룹니다.",
+  "tags": [
+    "multi-agent",
+    "role-playing",
+    "cooperative-ai",
+    "inception-prompting",
+    "llm-agent",
+    "conversation",
+    "autonomous-agent"
+  ],
+  "is_pinned": false
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "llm-tool-use-patterns",
+  "title": "LLM Tool Use Patterns: From Function Calling to Agents",
+  "title_ko": "LLM Tool Use 패턴: Function Calling부터 Agent까지",
+  "category_slug": "agent",
+  "summary": "LLM이 외부 도구를 활용하는 패턴을 단계별로 분석합니다. 단순 Function Calling에서 시작하여 ReAct, Multi-Tool 체이닝, 그리고 자율적 에이전트까지, Tool Use의 발전 과정과 각 패턴의 적용 시나리오를 다룹니다.",
+  "tags": [
+    "tool-use",
+    "function-calling",
+    "react",
+    "agent",
+    "mcp",
+    "langchain",
+    "multi-tool",
+    "autonomous-agent"
+  ],
+  "is_pinned": false
+}

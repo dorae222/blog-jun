@@ -1,0 +1,19 @@
+{
+  "slug": "hybrid-search-reranking",
+  "title": "Hybrid Search: Dense + Sparse + Reranking",
+  "title_ko": "하이브리드 검색 실전: Dense + Sparse + Reranking",
+  "category_slug": "rag",
+  "summary": "Dense retrieval(벡터 검색)과 Sparse retrieval(BM25)을 결합하고, Cross-Encoder Reranking으로 정밀도를 높이는 하이브리드 검색 전략을 다룹니다. RAG 파이프라인에서 검색 품질이 생성 품질을 결정하는 이유와 실전 구현법을 설명합니다.",
+  "tags": [
+    "hybrid-search",
+    "dense-retrieval",
+    "sparse-retrieval",
+    "bm25",
+    "reranking",
+    "cross-encoder",
+    "rag",
+    "vector-search",
+    "reciprocal-rank-fusion"
+  ],
+  "is_pinned": false
+}
