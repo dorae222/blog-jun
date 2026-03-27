@@ -1,0 +1,26 @@
+{
+  "slug": "reflexion",
+  "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+  "title_ko": "Reflexion: 언어적 강화학습을 통한 언어 에이전트",
+  "category_slug": "agent",
+  "summary": "Reflexion은 언어 에이전트가 실패한 시행으로부터 자연어 형태의 자기 반성(self-reflection)을 생성하고 이를 장기 메모리에 저장하여 후속 시행에서 활용하는 '언어적 강화학습' 프레임워크입니다. 기존 강화학습의 스칼라 보상 대신 구체적인 언어 피드백을 활용하여, AlfWorld에서 기존 ReAct 대비 22%p 향상된 97%, HumanEval 코딩에서 91% pass@1 등 의사결정/프로그래밍/추론 태스크 전반에서 획기적 성능 개선을 달성합니다.",
+  "tags": [
+    "Reflexion",
+    "self-reflection",
+    "verbal-reinforcement-learning",
+    "LLM-agent",
+    "episodic-memory",
+    "AlfWorld",
+    "HotPotQA",
+    "HumanEval",
+    "code-generation",
+    "decision-making",
+    "ReAct",
+    "NeurIPS2023"
+  ],
+  "is_pinned": false,
+  "arxiv_url": "https://arxiv.org/abs/2303.11366",
+  "venue": "NeurIPS 2023",
+  "paper_year": 2024,
+  "paper_authors": "Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, Shunyu Yao"
+}
