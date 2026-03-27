@@ -8,8 +8,10 @@ from blog.sitemaps import sitemap_xml, robots_txt
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('blog.urls')),
+    path('api/', include('comments.urls')),
     path('api/auth/', include('accounts.urls')),
     path('api/operations/', include('operations.urls')),
+    path('accounts/', include('allauth.urls')),  # allauth OAuth 플로우
     path('sitemap.xml', sitemap_xml),
     path('robots.txt', robots_txt),
 ]
