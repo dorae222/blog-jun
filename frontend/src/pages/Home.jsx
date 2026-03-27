@@ -1,15 +1,16 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { ChevronRight, Eye, ArrowRight } from 'lucide-react'
+import { ChevronRight, Eye, ArrowRight, Loader2 } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
+import GraphZoomControls from '../components/architecture/GraphZoomControls'
 import ScrollReveal from '../components/common/ScrollReveal'
 import { getStats, getPosts, getArchitectureStats, getArchitectureTree } from '../api/posts'
 import { CATEGORY_TREE } from '../data/categories'
-import { CATEGORY_COLORS } from '../data/architectureConstants'
+import { CATEGORIES, CATEGORY_COLORS } from '../data/architectureConstants'
 
 export default function Home() {
   const navigate = useNavigate()
@@ -21,10 +22,25 @@ export default function Home() {
   const [error, setError] = useState(false)
 
   // Architecture graph
+  const graphRef = useRef(null)
   const [archStats, setArchStats] = useState(null)
+  const [archLoading, setArchLoading] = useState(true)
   const [treeNodes, setTreeNodes] = useState([])
   const [treeEdges, setTreeEdges] = useState([])
   const [selectedArchNode, setSelectedArchNode] = useState(null)
+  const [archCategory, setArchCategory] = useState('all')
+  const [showHint, setShowHint] = useState(true)
+
+  const filteredNodes = useMemo(() => {
+    if (archCategory === 'all') return treeNodes
+    return treeNodes.filter(n => n.architecture_category === archCategory)
+  }, [treeNodes, archCategory])
+
+  const filteredEdges = useMemo(() => {
+    if (archCategory === 'all') return treeEdges
+    const slugSet = new Set(filteredNodes.map(n => n.slug))
+    return treeEdges.filter(e => slugSet.has(e.from_slug) && slugSet.has(e.to_slug))
+  }, [treeEdges, filteredNodes, archCategory])
 
   useEffect(() => {
     getStats().then((r) => setStats(r.data)).catch(() => setError(true))
@@ -36,7 +52,15 @@ export default function Home() {
         setTreeEdges(r.data.edges || [])
       })
       .catch(() => {})
+      .finally(() => setArchLoading(false))
   }, [])
+
+  // 힌트 자동 fade-out
+  useEffect(() => {
+    if (!showHint) return
+    const t = setTimeout(() => setShowHint(false), 4000)
+    return () => clearTimeout(t)
+  }, [showHint])
 
   function fetchPosts(categoryKey) {
     const params = { page_size: 6 }
@@ -98,19 +122,37 @@ export default function Home() {
       <HeroSection stats={stats} />
 
       {/* Architecture Graph Preview */}
-      {treeNodes.length > 0 && (
+      {(archLoading || treeNodes.length > 0) && (
         <section className="py-12 md:py-16 px-4 section-gradient-blue">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
-              <div className="text-center mb-6">
+              <div className="text-center mb-4">
                 <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--text)' }}>
                   Architecture Lineage
                 </h2>
-                {archStats && (
-                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                    {archStats.total_entries} models · {archStats.total_relations} connections
-                  </p>
-                )}
+                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  {filteredNodes.length} models · {filteredEdges.length} connections
+                </p>
+              </div>
+            </ScrollReveal>
+
+            {/* Category filter pills */}
+            <ScrollReveal>
+              <div className="flex flex-wrap items-center justify-center gap-1.5 mb-5">
+                {CATEGORIES.map(cat => (
+                  <button
+                    key={cat.key}
+                    onClick={() => { setArchCategory(cat.key); setSelectedArchNode(null) }}
+                    className="text-xs px-3 py-1 rounded-full font-medium transition-colors"
+                    style={{
+                      background: archCategory === cat.key ? cat.color + '20' : 'transparent',
+                      color: archCategory === cat.key ? cat.color : 'var(--text-secondary)',
+                      border: `1px solid ${archCategory === cat.key ? cat.color + '40' : 'var(--border)'}`,
+                    }}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
               </div>
             </ScrollReveal>
 
@@ -119,53 +161,86 @@ export default function Home() {
               className="relative h-[350px] md:h-[500px] rounded-xl overflow-hidden border mb-6"
               style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
             >
-              <ArchitectureGraph
-                nodes={treeNodes}
-                edges={treeEdges}
-                onNodeClick={handleArchNodeClick}
-                onNodeDoubleClick={handleArchNodeDoubleClick}
-                selectedSlug={selectedArchNode?.slug}
-                searchQuery=""
-              />
+              {archLoading ? (
+                <div className="flex items-center justify-center h-full">
+                  <Loader2 className="animate-spin" size={32} style={{ color: 'var(--text-secondary)' }} />
+                </div>
+              ) : (
+                <>
+                  <ArchitectureGraph
+                    key={archCategory}
+                    ref={graphRef}
+                    nodes={filteredNodes}
+                    edges={filteredEdges}
+                    onNodeClick={handleArchNodeClick}
+                    onNodeDoubleClick={handleArchNodeDoubleClick}
+                    selectedSlug={selectedArchNode?.slug}
+                    searchQuery=""
+                  />
 
-              {/* Selected node mini-card overlay */}
-              <AnimatePresence>
-                {selectedArchNode && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute bottom-3 right-3 p-3 rounded-xl border text-sm z-30"
-                    style={{
-                      background: 'var(--card-bg)',
-                      borderColor: 'var(--border)',
-                      backdropFilter: 'blur(8px)',
-                      maxWidth: 240,
-                    }}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{ background: CATEGORY_COLORS[selectedArchNode.architecture_category] || '#8895A7' }}
-                      />
-                      <span className="font-semibold truncate" style={{ color: 'var(--text)' }}>
-                        {selectedArchNode.name}
-                      </span>
-                    </div>
-                    <p className="text-xs mb-2 truncate" style={{ color: 'var(--text-secondary)' }}>
-                      {selectedArchNode.organization}
-                      {selectedArchNode.release_date && ` · ${selectedArchNode.release_date.slice(0, 4)}`}
-                    </p>
-                    <Link
-                      to={`/architectures/tree?selected=${selectedArchNode.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-medium text-primary-600 hover:underline"
-                    >
-                      트리에서 보기 <ArrowRight size={12} />
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  {/* Zoom controls */}
+                  <GraphZoomControls
+                    onZoomIn={() => graphRef.current?.zoomIn()}
+                    onZoomOut={() => graphRef.current?.zoomOut()}
+                    onFitAll={() => graphRef.current?.fitAll()}
+                  />
+
+                  {/* Interaction hint */}
+                  <AnimatePresence>
+                    {showHint && (
+                      <motion.p
+                        initial={{ opacity: 0.6 }}
+                        animate={{ opacity: 0.5 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="absolute top-3 left-3 z-10 text-xs px-2.5 py-1 rounded-lg"
+                        style={{ color: 'var(--text-secondary)', background: 'var(--card-bg)', border: '1px solid var(--border)' }}
+                      >
+                        Click node for details · Drag to explore
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Selected node mini-card overlay */}
+                  <AnimatePresence>
+                    {selectedArchNode && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute bottom-3 right-3 p-3 rounded-xl border text-sm z-30"
+                        style={{
+                          background: 'var(--card-bg)',
+                          borderColor: 'var(--border)',
+                          backdropFilter: 'blur(8px)',
+                          maxWidth: 240,
+                        }}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <span
+                            className="w-2.5 h-2.5 rounded-full shrink-0"
+                            style={{ background: CATEGORY_COLORS[selectedArchNode.architecture_category] || '#8895A7' }}
+                          />
+                          <span className="font-semibold truncate" style={{ color: 'var(--text)' }}>
+                            {selectedArchNode.name}
+                          </span>
+                        </div>
+                        <p className="text-xs mb-2 truncate" style={{ color: 'var(--text-secondary)' }}>
+                          {selectedArchNode.organization}
+                          {selectedArchNode.release_date && ` · ${selectedArchNode.release_date.slice(0, 4)}`}
+                        </p>
+                        <Link
+                          to={`/architectures/tree?selected=${selectedArchNode.slug}`}
+                          className="inline-flex items-center gap-1 text-xs font-medium text-primary-600 hover:underline"
+                        >
+                          트리에서 보기 <ArrowRight size={12} />
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+              )}
             </div>
 
             <ScrollReveal delay={0.2}>
