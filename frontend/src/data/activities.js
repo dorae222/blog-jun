@@ -37,7 +37,7 @@ export const ACTIVITIES = [
   },
   {
     id: 5,
-    date: '2024.07 – 12',
+    date: '2024.07 – 2024.12',
     title: 'BizLab Big Data Lab',
     description: '한양대학교 경영대 빅데이터 랩 활동. 데이터 분석·ML 프로젝트 수행',
     tags: ['Python', 'ML', 'Data Analysis'],
@@ -83,5 +83,21 @@ export const ACTIVITIES = [
     description: '한국데이터산업진흥원 주관. 데이터 분석·ML 집중 과정 수료',
     tags: ['Python', 'ML', 'Data'],
     type: 'education',
+  },
+  {
+    id: 11,
+    date: '2023',
+    title: '교내 한국어 지역 방언 분류 (Kaggle) — 3위',
+    description: 'Kaggle InClass 대회. BERT 기반 한국어 방언 분류 모델 (97.2%)',
+    tags: ['NLP', 'BERT', 'Kaggle'],
+    type: 'award',
+  },
+  {
+    id: 12,
+    date: '2022',
+    title: '한국관광공사 표창장 — 사장상',
+    description: '관광 데이터 분석 및 활용 공로',
+    tags: ['Data Analysis'],
+    type: 'award',
   },
 ]

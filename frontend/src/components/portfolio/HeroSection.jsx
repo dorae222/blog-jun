@@ -1,6 +1,7 @@
 import ParticleBackground from '../effects/ParticleBackground'
 import TypeWriter from '../common/TypeWriter'
 import GradientCursor from '../effects/GradientCursor'
+import AnimatedCounter from '../common/AnimatedCounter'
 import TechIcon from '../icons/TechIcon'
 import { motion } from 'framer-motion'
 import { Github, Mail, Linkedin, ArrowRight } from 'lucide-react'
@@ -17,7 +18,7 @@ const ORBIT_TECHS = [
   { name: 'FastAPI', angle: 315 },
 ]
 
-export default function HeroSection() {
+export default function HeroSection({ stats = {} }) {
   return (
     <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden">
       <ParticleBackground count={40} />
@@ -135,6 +136,20 @@ export default function HeroSection() {
           <br />
           and full-stack products — then writing about them here.
         </motion.p>
+
+        {/* Stats */}
+        {(stats.total_posts || stats.categories || stats.tags) && (
+          <motion.div
+            className="flex items-center justify-center gap-6 mb-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            <AnimatedCounter end={stats.total_posts || 0} label="Posts" duration={1.5} />
+            <AnimatedCounter end={stats.categories || 0} label="Categories" duration={1.5} />
+            <AnimatedCounter end={stats.tags || 0} label="Tags" duration={1.5} />
+          </motion.div>
+        )}
 
         {/* CTA */}
         <motion.div
