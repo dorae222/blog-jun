@@ -13,6 +13,7 @@ import argparse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'backend'))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 
 import django
@@ -20,35 +21,12 @@ django.setup()
 
 from django.contrib.auth.models import User
 from django.utils.text import slugify
-from django.core.files import File
 from django.utils import timezone
-from blog.models import Post, Category, Tag, PostImage
+from blog.models import Post, Category, Tag
+
+from utils.import_helpers import upload_figure, replace_figure_paths, get_default_author
 
 DATA_DIR = Path(__file__).parent / 'data' / 'data_written'
-
-
-def upload_figure(post, fig_path: Path, dry_run: bool) -> str | None:
-    """figure 파일을 PostImage로 업로드하고 media URL을 반환."""
-    if not fig_path.exists():
-        return None
-    if dry_run:
-        return f"/media/posts/dry-run/{fig_path.name}"
-    with open(fig_path, 'rb') as f:
-        img = PostImage.objects.create(
-            post=post,
-            alt_text=fig_path.stem,
-            original_path=str(fig_path),
-        )
-        img.image.save(fig_path.name, File(f), save=True)
-    return img.image.url
-
-
-def replace_figure_paths(content: str, figure_url_map: dict) -> str:
-    """마크다운 내 figures/ 상대 경로 → 서버 media URL 치환."""
-    for local_path, media_url in figure_url_map.items():
-        content = content.replace(f"figures/{local_path}", media_url)
-        content = content.replace(f"./figures/{local_path}", media_url)
-    return content
 
 
 def import_data(dry_run: bool = False, update: bool = False):
