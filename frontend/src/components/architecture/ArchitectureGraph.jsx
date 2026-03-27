@@ -314,50 +314,53 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       .on('mouseenter', (event, d) => {
         const catColor = CATEGORY_COLORS[d.architecture_category] || '#8895A7'
 
-        // 호버된 노드에 글로우
-        d3.select(event.currentTarget).select('circle')
-          .attr('filter', 'url(#glow)')
-          .attr('stroke', catColor)
-          .attr('stroke-width', 3)
-          .attr('stroke-opacity', 0.7)
-          .attr('fill-opacity', 1)
+        // 선택 상태에서는 tooltip만 표시, 노드/엣지 시각 변경 안 함
+        if (!selectedSlug) {
+          // 호버된 노드에 글로우
+          d3.select(event.currentTarget).select('circle')
+            .attr('filter', 'url(#glow)')
+            .attr('stroke', catColor)
+            .attr('stroke-width', 3)
+            .attr('stroke-opacity', 0.7)
+            .attr('fill-opacity', 1)
 
-        // 연결된 노드/엣지 하이라이트
-        const connectedSlugs = new Set()
-        edgeData.forEach(e => {
-          const src = typeof e.source === 'object' ? e.source.slug : e.source
-          const tgt = typeof e.target === 'object' ? e.target.slug : e.target
-          if (src === d.slug) connectedSlugs.add(tgt)
-          if (tgt === d.slug) connectedSlugs.add(src)
-        })
+          // 연결된 노드/엣지 하이라이트
+          const connectedSlugs = new Set()
+          edgeData.forEach(e => {
+            const src = typeof e.source === 'object' ? e.source.slug : e.source
+            const tgt = typeof e.target === 'object' ? e.target.slug : e.target
+            if (src === d.slug) connectedSlugs.add(tgt)
+            if (tgt === d.slug) connectedSlugs.add(src)
+          })
 
-        // 다른 노드 dimming (완화된 강도)
-        svg.selectAll('.node-group').each(function (nd) {
-          if (nd.slug === d.slug) return
-          const isConn = connectedSlugs.has(nd.slug)
-          const el = d3.select(this)
-          el.select('circle')
-            .style('opacity', isConn ? 1 : 0.2)
-            .attr('fill-opacity', isConn ? 0.9 : 0.2)
-            .attr('stroke-width', isConn ? 2.5 : 2)
-          el.select('.node-label')
-            .style('opacity', isConn ? 1 : 0.15)
-        })
+          // 다른 노드 dimming (완화된 강도)
+          svg.selectAll('.node-group').each(function (nd) {
+            if (nd.slug === d.slug) return
+            const isConn = connectedSlugs.has(nd.slug)
+            const el = d3.select(this)
+            el.select('circle')
+              .style('opacity', isConn ? 1 : 0.2)
+              .attr('fill-opacity', isConn ? 0.9 : 0.2)
+              .attr('stroke-width', isConn ? 2.5 : 2)
+            el.select('.node-label')
+              .style('opacity', isConn ? 1 : 0.15)
+          })
 
-        // 엣지 dimming
-        svg.selectAll('.links path').each(function (e) {
-          const src = typeof e.source === 'object' ? e.source.slug : e.source
-          const tgt = typeof e.target === 'object' ? e.target.slug : e.target
-          const isConn = src === d.slug || tgt === d.slug
-          d3.select(this)
-            .style('opacity', isConn ? 0.9 : 0.08)
-            .attr('stroke-width', isConn
-              ? (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width * 1.5
-              : (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width
-            )
-        })
+          // 엣지 dimming
+          svg.selectAll('.links path').each(function (e) {
+            const src = typeof e.source === 'object' ? e.source.slug : e.source
+            const tgt = typeof e.target === 'object' ? e.target.slug : e.target
+            const isConn = src === d.slug || tgt === d.slug
+            d3.select(this)
+              .style('opacity', isConn ? 0.9 : 0.08)
+              .attr('stroke-width', isConn
+                ? (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width * 1.5
+                : (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width
+              )
+          })
+        }
 
-        // 툴팁
+        // 툴팁은 항상 표시
         const catBadge = d.architecture_category
           ? `<span style="display:inline-block;background:${catColor}20;color:${catColor};font-size:10px;padding:1px 6px;border-radius:9px;margin-left:6px;font-weight:600">${d.architecture_category.toUpperCase()}</span>`
           : ''
@@ -387,13 +390,15 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       })
       .on('mouseleave', () => {
         tooltip.style('opacity', 0)
-        // 선택/검색 상태에 따라 복원
-        applyHighlightState(svg, {
-          selectedSlug,
-          searchQuery,
-          baseEdgeOpacity: baseEdgeOpacityRef.current,
-          edgeData,
-        })
+        // 선택 상태에서는 복원 불필요 (변경하지 않았으므로)
+        if (!selectedSlug) {
+          applyHighlightState(svg, {
+            selectedSlug,
+            searchQuery,
+            baseEdgeOpacity: baseEdgeOpacityRef.current,
+            edgeData,
+          })
+        }
       })
       .on('click', (event, d) => {
         event.stopPropagation()
