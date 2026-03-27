@@ -17,6 +17,26 @@ function getNodeRadius(paramScale) {
   return 8
 }
 
+// 모든 노드가 보이도록 줌 fit
+function fitToNodes(svg, zoom, container, nodeData, duration = 600) {
+  if (!nodeData.length || !container) return
+  const width = container.clientWidth
+  const height = container.clientHeight
+  const xs = nodeData.map(n => n.x || width / 2)
+  const ys = nodeData.map(n => n.y || height / 2)
+  const minX = Math.min(...xs) - 60
+  const maxX = Math.max(...xs) + 60
+  const minY = Math.min(...ys) - 60
+  const maxY = Math.max(...ys) + 60
+  const bw = maxX - minX
+  const bh = maxY - minY
+  const scale = Math.min(width / bw, height / bh, 1.5) * 0.85
+  const tx = width / 2 - (minX + bw / 2) * scale
+  const ty = height / 2 - (minY + bh / 2) * scale
+  svg.transition().duration(duration)
+    .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+}
+
 // 하이라이트 상태 통합 처리
 function applyHighlightState(svg, { selectedSlug, searchQuery, baseEdgeOpacity, edgeData }) {
   const lowerQuery = (searchQuery || '').toLowerCase()
@@ -136,7 +156,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
   const edgeDataRef = useRef([])
   const baseEdgeOpacityRef = useRef(0.5)
 
-  // focusOnNode API 노출
+  // API 노출: focusOnNode, zoomIn, zoomOut, fitAll
   useImperativeHandle(ref, () => ({
     focusOnNode(slug) {
       const node = nodeDataRef.current.find(n => n.slug === slug)
@@ -151,6 +171,20 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       const ty = height / 2 - node.y * scale
       svg.transition().duration(500)
         .call(zoomRef.current.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+    },
+    zoomIn() {
+      if (!svgRef.current || !zoomRef.current) return
+      d3.select(svgRef.current).transition().duration(300)
+        .call(zoomRef.current.scaleBy, 1.4)
+    },
+    zoomOut() {
+      if (!svgRef.current || !zoomRef.current) return
+      d3.select(svgRef.current).transition().duration(300)
+        .call(zoomRef.current.scaleBy, 1 / 1.4)
+    },
+    fitAll() {
+      if (!svgRef.current || !zoomRef.current) return
+      fitToNodes(d3.select(svgRef.current), zoomRef.current, containerRef.current, nodeDataRef.current)
     },
   }), [])
 
@@ -484,21 +518,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
 
     // 초기 줌 — 모든 노드가 보이게
     initialZoomTimerRef.current = setTimeout(() => {
-      if (!nodeData.length) return
-      const xs = nodeData.map(n => n.x || width / 2)
-      const ys = nodeData.map(n => n.y || height / 2)
-      const minX = Math.min(...xs) - 60
-      const maxX = Math.max(...xs) + 60
-      const minY = Math.min(...ys) - 60
-      const maxY = Math.max(...ys) + 60
-      const bw = maxX - minX
-      const bh = maxY - minY
-      const scale = Math.min(width / bw, height / bh, 1.5) * 0.85
-      const tx = width / 2 - (minX + bw / 2) * scale
-      const ty = height / 2 - (minY + bh / 2) * scale
-
-      svg.transition().duration(600)
-        .call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale))
+      fitToNodes(svg, zoom, container, nodeData)
     }, 800)
 
     return () => {
