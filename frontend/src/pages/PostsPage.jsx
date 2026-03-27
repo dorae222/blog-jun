@@ -156,6 +156,9 @@ export default function PostsPage() {
     <>
     <Helmet>
       <title>{pageTitle}</title>
+      <meta name="description" content={catNode?.desc || 'AI, 클라우드, 데이터 엔지니어링 기술 블로그. 논문 리뷰, 튜토리얼, 프로젝트 기록을 공유합니다.'} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:type" content="website" />
     </Helmet>
     <motion.div
       initial={{ opacity: 0, y: 12 }}
