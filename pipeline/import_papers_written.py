@@ -199,7 +199,7 @@ def import_papers(dry_run: bool = False, update: bool = False):
             post.save(update_fields=['content'])
 
         # related_architecture 연결
-        arch_slug = data.get('related_architecture', '').strip()
+        arch_slug = (data.get('related_architecture') or '').strip()
         if arch_slug:
             try:
                 arch = ArchitectureEntry.objects.get(slug=arch_slug)
