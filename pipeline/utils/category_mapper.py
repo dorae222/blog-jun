@@ -42,6 +42,12 @@ COLAB_CATEGORY_MAP = {
     'core-techniques': 'technique',
 }
 
+# Architecture 카테고리 매핑
+ARCH_CATEGORY_MAP = {
+    'llm': 'llm', 'vision': 'vision', 'multimodal': 'multimodal',
+    'ssm': 'ssm', 'diffusion': 'diffusion', 'agent': 'agent',
+}
+
 # Data 카테고리: 기본값 — content.json의 category_slug 사용
 # ML 카테고리: 고정 'ml' — content.json의 sub_category로 서브카테고리 결정
 
@@ -64,6 +70,9 @@ class CategoryMapper:
         """
         if post_type == 'paper_review':
             return PAPER_CATEGORY_MAP.get(source_category, 'technique')
+
+        if post_type == 'architecture':
+            return ARCH_CATEGORY_MAP.get(source_category, 'llm')
 
         if source_category in COLAB_CATEGORY_MAP:
             return COLAB_CATEGORY_MAP[source_category]

@@ -20,6 +20,7 @@ if _backend.exists():
     sys.path.insert(0, str(_backend))          # 로컬: pipeline/../backend/
 else:
     sys.path.insert(0, str(_here.parent.parent))  # Docker: /app (config/ 바로 아래)
+sys.path.insert(0, str(_here.parent))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.prod')
 
 import django
@@ -27,46 +28,16 @@ django.setup()
 
 from django.contrib.auth.models import User
 from django.utils.text import slugify
-from django.core.files import File
 from django.utils import timezone
-from blog.models import Post, Category, Tag, PostImage
+from blog.models import Post, Category, Tag
+
+from utils.import_helpers import upload_figure, replace_figure_paths, get_default_author
+from utils.category_mapper import CategoryMapper
+from utils.post_factory import get_or_create_tags
+
+_mapper = CategoryMapper()
 
 ML_WRITTEN_DIR = Path(__file__).parent / 'data' / 'ml_written'
-
-# sub_category → Category slug 매핑 (블로그 DB에 'ml' 카테고리 필요)
-ML_CATEGORY_SLUG = 'ml'
-
-
-def upload_figure(post, fig_path: Path, dry_run: bool) -> str | None:
-    """figure 파일을 PostImage로 업로드하고 media URL을 반환."""
-    if not fig_path.exists():
-        print(f"    [WARN] figure 파일 없음: {fig_path}")
-        return None
-    if dry_run:
-        print(f"    [DRY-RUN] figure 업로드 예정: {fig_path.name}")
-        return f"/media/posts/dry-run/{fig_path.name}"
-    with open(fig_path, 'rb') as f:
-        img = PostImage.objects.create(
-            post=post,
-            alt_text=fig_path.stem,
-            original_path=str(fig_path),
-        )
-        img.image.save(fig_path.name, File(f), save=True)
-    return img.image.url
-
-
-def replace_figure_paths(content: str, figure_url_map: dict) -> str:
-    """마크다운 내 figures/ 상대 경로 → 서버 media URL 치환."""
-    for local_path, media_url in figure_url_map.items():
-        content = content.replace(f"figures/{local_path}", media_url)
-        content = content.replace(f"./figures/{local_path}", media_url)
-    return content
-
-
-def get_or_create_tag(name: str) -> Tag:
-    slug = slugify(name, allow_unicode=False)[:100] or name[:100]
-    tag, _ = Tag.objects.get_or_create(slug=slug, defaults={'name': name})
-    return tag
 
 
 def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
@@ -80,12 +51,14 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
         sys.exit(1)
 
     # ml 카테고리 조회 (없으면 생성)
-    ml_category, cat_created = Category.objects.get_or_create(
-        slug=ML_CATEGORY_SLUG,
-        defaults={'name': 'ML', 'order': 10},
-    )
-    if cat_created:
-        print(f"[INFO] Category 생성: {ML_CATEGORY_SLUG}")
+    ml_category = _mapper.resolve_with_fallback('ml', 'article', 'ml')
+    if ml_category is None:
+        ml_category, cat_created = Category.objects.get_or_create(
+            slug='ml',
+            defaults={'name': 'ML', 'order': 10},
+        )
+        if cat_created:
+            print(f"[INFO] Category 생성: ml")
 
     if reset and not dry_run:
         deleted, _ = Post.objects.filter(category=ml_category).delete()
@@ -162,8 +135,7 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
                 existing.save(update_fields=update_fields)
                 # 태그 갱신
                 existing.tags.clear()
-                for tag_name in tags_raw:
-                    tag = get_or_create_tag(tag_name)
+                for tag in get_or_create_tags(tags_raw):
                     existing.tags.add(tag)
                 print(f"  [UPDATE] content + tags 업데이트: {display_title}")
             else:
@@ -196,8 +168,7 @@ def import_ml(dry_run: bool = False, reset: bool = False, update: bool = False):
         print(f"  [CREATE] {display_title}")
 
         # 태그 연결
-        for tag_name in tags_raw:
-            tag = get_or_create_tag(tag_name)
+        for tag in get_or_create_tags(tags_raw):
             post.tags.add(tag)
 
         # figures 업로드 및 URL 치환

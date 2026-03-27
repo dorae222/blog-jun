@@ -19,6 +19,7 @@ if _backend_dir.exists():
     sys.path.insert(0, str(_backend_dir))
 elif Path('/app/config').exists():
     sys.path.insert(0, '/app')
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.dev')
 
 import django
@@ -27,43 +28,14 @@ django.setup()
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.files import File
-from blog.models import ArchitectureEntry, ArchitectureConcept, ArchitectureRelation, Post, Category, Tag, PostImage
+from blog.models import ArchitectureEntry, ArchitectureConcept, ArchitectureRelation, Post, Category, Tag
+
+from utils.import_helpers import upload_figure, replace_figure_paths, get_default_author
+from utils.category_mapper import CategoryMapper
+_mapper = CategoryMapper()
 
 
 ARCH_WRITTEN_DIR = Path(__file__).parent / 'data' / 'architectures_written'
-
-
-def upload_post_figure(post, fig_path: Path) -> str | None:
-    """figure 파일을 PostImage로 업로드하고 media URL을 반환."""
-    if not fig_path.exists():
-        return None
-    with open(fig_path, 'rb') as f:
-        img = PostImage.objects.create(
-            post=post,
-            alt_text=fig_path.stem,
-            original_path=str(fig_path),
-        )
-        img.image.save(fig_path.name, File(f), save=True)
-    return img.image.url
-
-
-def replace_figure_paths(content: str, figure_url_map: dict) -> str:
-    """마크다운 내 figures/ 상대 경로 → 서버 media URL 치환."""
-    for local_path, media_url in figure_url_map.items():
-        content = content.replace(f"figures/{local_path}", media_url)
-        content = content.replace(f"./figures/{local_path}", media_url)
-    return content
-
-
-# architecture_category → Blog Category slug 매핑
-ARCH_CATEGORY_MAP = {
-    'llm': 'llm',
-    'vision': 'vision',
-    'multimodal': 'multimodal',
-    'ssm': 'ssm',
-    'diffusion': 'diffusion',
-    'agent': 'agent',
-}
 
 
 def get_or_create_concept(name: str) -> ArchitectureConcept:
@@ -228,7 +200,7 @@ def import_architectures(dry_run: bool = False, update: bool = False):
             post_tags = content_meta.get('tags', [])
 
             # 카테고리 결정
-            cat_slug = ARCH_CATEGORY_MAP.get(data.get('architecture_category', ''), 'llm')
+            cat_slug = _mapper.resolve(data.get('architecture_category', ''), 'architecture')
             categories = {c.slug: c for c in Category.objects.all()}
             post_category = categories.get(cat_slug) or categories.get('ai-ml')
 
@@ -254,7 +226,7 @@ def import_architectures(dry_run: bool = False, update: bool = False):
                                 if pi:
                                     figure_url_map[fig_file.name] = pi.image.url
                                 continue
-                            url = upload_post_figure(existing_post, fig_file)
+                            url = upload_figure(existing_post, fig_file, dry_run=False)
                             if url:
                                 figure_url_map[fig_file.name] = url
                                 print(f"      [IMG] {fig_file.name} → {url}")
@@ -305,7 +277,7 @@ def import_architectures(dry_run: bool = False, update: bool = False):
                     for fig_file in sorted(figures_dir.iterdir()):
                         if fig_file.suffix.lower() not in {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'}:
                             continue
-                        url = upload_post_figure(new_post, fig_file)
+                        url = upload_figure(new_post, fig_file, dry_run=False)
                         if url:
                             figure_url_map[fig_file.name] = url
                             print(f"      [IMG] {fig_file.name} → {url}")
