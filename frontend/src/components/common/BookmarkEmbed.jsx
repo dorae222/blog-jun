@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react'
 import { ExternalLink, FileText, Github, Bot } from 'lucide-react'
+import CARD_COLORS, { DOMAIN_MAP } from '../../data/cardColors'
 
 const DOMAIN_STYLES = {
-  'github.com':       { accent: '#24292f', Icon: Github,       label: 'GitHub' },
-  'huggingface.co':   { accent: '#ffd21e', Icon: null,         label: 'Hugging Face' },
-  'arxiv.org':        { accent: '#b31b1b', Icon: FileText,     label: 'arXiv' },
-  'openai.com':       { accent: '#412991', Icon: Bot,          label: 'OpenAI' },
+  'github.com':       { colorKey: DOMAIN_MAP['github.com'],     Icon: Github,       label: 'GitHub' },
+  'huggingface.co':   { colorKey: DOMAIN_MAP['huggingface.co'], Icon: null,         label: 'Hugging Face' },
+  'arxiv.org':        { colorKey: DOMAIN_MAP['arxiv.org'],      Icon: FileText,     label: 'arXiv' },
+  'openai.com':       { colorKey: DOMAIN_MAP['openai.com'],     Icon: Bot,          label: 'OpenAI' },
 }
 
 function getDomainStyle(domain) {
   for (const [key, style] of Object.entries(DOMAIN_STYLES)) {
     if (domain.includes(key)) return style
   }
-  return { accent: '#6366f1', Icon: ExternalLink, label: null }
+  return { colorKey: DOMAIN_MAP._default, Icon: ExternalLink, label: null }
 }
 
 export default function BookmarkEmbed({ url }) {
@@ -73,7 +74,8 @@ export default function BookmarkEmbed({ url }) {
     )
   }
 
-  const { accent, Icon } = meta.style
+  const { colorKey, Icon } = meta.style
+  const c = CARD_COLORS[colorKey] || CARD_COLORS.indigo
 
   return (
     <a
@@ -81,7 +83,7 @@ export default function BookmarkEmbed({ url }) {
       target="_blank"
       rel="noopener noreferrer"
       className="block rounded-lg border overflow-hidden transition-all hover:shadow-md hover:-translate-y-0.5 my-4"
-      style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)', borderLeft: `3px solid ${accent}` }}
+      style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)', backgroundImage: `linear-gradient(to bottom, rgba(${c.rgb},0.06) 0%, transparent 30%)` }}
     >
       <div className="flex items-start gap-3 p-4">
         <div className="flex-1 min-w-0">
@@ -94,12 +96,13 @@ export default function BookmarkEmbed({ url }) {
             </p>
           )}
           <div className="flex items-center gap-1.5 mt-2">
+            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: c.hex }} />
             {meta.favicon && <img src={meta.favicon} alt="" className="w-4 h-4" />}
             <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{meta.domain}</span>
           </div>
         </div>
         {Icon ? (
-          <Icon size={16} className="flex-shrink-0 mt-1" style={{ color: accent }} />
+          <Icon size={16} className="flex-shrink-0 mt-1" style={{ color: c.hex }} />
         ) : (
           <ExternalLink size={14} className="flex-shrink-0 mt-1" style={{ color: 'var(--text-secondary)' }} />
         )}
