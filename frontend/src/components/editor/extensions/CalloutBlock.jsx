@@ -1,12 +1,13 @@
 import { Node, mergeAttributes } from '@tiptap/core'
 import { ReactNodeViewRenderer, NodeViewWrapper, NodeViewContent } from '@tiptap/react'
 import { Info, AlertTriangle, Lightbulb, AlertCircle } from 'lucide-react'
+import CARD_COLORS, { CALLOUT_MAP } from '../../../data/cardColors'
 
 const CALLOUT_TYPES = {
-  info: { icon: Info, color: '#3b82f6', bg: 'rgba(59, 130, 246, 0.08)', border: 'rgba(59, 130, 246, 0.3)', label: 'Info' },
-  warning: { icon: AlertTriangle, color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.08)', border: 'rgba(245, 158, 11, 0.3)', label: 'Warning' },
-  tip: { icon: Lightbulb, color: '#10b981', bg: 'rgba(16, 185, 129, 0.08)', border: 'rgba(16, 185, 129, 0.3)', label: 'Tip' },
-  danger: { icon: AlertCircle, color: '#ef4444', bg: 'rgba(239, 68, 68, 0.08)', border: 'rgba(239, 68, 68, 0.3)', label: 'Danger' },
+  info:    { icon: Info,          ...CARD_COLORS[CALLOUT_MAP.info] },
+  warning: { icon: AlertTriangle, ...CARD_COLORS[CALLOUT_MAP.warning] },
+  tip:     { icon: Lightbulb,     ...CARD_COLORS[CALLOUT_MAP.tip] },
+  danger:  { icon: AlertCircle,   ...CARD_COLORS[CALLOUT_MAP.danger] },
 }
 
 const CalloutComponent = ({ node, updateAttributes }) => {
@@ -23,17 +24,25 @@ const CalloutComponent = ({ node, updateAttributes }) => {
   return (
     <NodeViewWrapper
       className="callout-block my-3"
-      style={{ background: type.bg, borderLeft: `4px solid ${type.border}`, borderRadius: '8px', padding: '1rem 1rem 1rem 0.75rem' }}
+      style={{
+        background: `rgba(${type.rgb}, 0.06)`,
+        border: `1px solid rgba(${type.rgb}, 0.08)`,
+        borderRadius: '12px',
+        padding: '1rem 1.25rem',
+      }}
     >
-      <div className="flex items-start gap-2">
-        <button
-          onClick={cycleType}
-          contentEditable={false}
-          className="shrink-0 mt-0.5 cursor-pointer hover:opacity-70"
-          title="Click to change type"
-        >
-          <Icon size={18} style={{ color: type.color }} />
-        </button>
+      <div className="flex flex-col gap-1">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, fontSize: '13px', color: type.hex, marginBottom: '2px' }}>
+          <button
+            onClick={cycleType}
+            contentEditable={false}
+            className="shrink-0 cursor-pointer hover:opacity-70 inline-flex"
+            title="Click to change type"
+          >
+            <Icon size={16} style={{ color: type.hex }} />
+          </button>
+          <span>{type.label}</span>
+        </div>
         <div className="flex-1 min-w-0">
           <NodeViewContent className="callout-content" />
         </div>
