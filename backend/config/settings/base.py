@@ -129,7 +129,8 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True  # OAuth 페이지로 바로 리다이렉트
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']  # email 선택, password 선택
+ACCOUNT_SIGNUP_FIELDS = ['email*']  # 소셜 로그인 전용 — password 불필요
+ACCOUNT_LOGIN_METHODS = {'email'}  # allauth 기본 로그인 방식 (소셜 로그인만 사용하지만 설정 필요)
 
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
