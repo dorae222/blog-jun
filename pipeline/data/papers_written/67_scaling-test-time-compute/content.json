@@ -1,0 +1,24 @@
+{
+  "id": "67",
+  "title": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+  "title_ko": "LLM 테스트 시점 연산의 최적 스케일링은 모델 파라미터 스케일링보다 효과적일 수 있다",
+  "slug": "scaling-test-time-compute",
+  "category": "reasoning",
+  "sub_category": "reasoning",
+  "category_slug": "reasoning",
+  "year": 2024,
+  "venue": "arXiv 2024",
+  "authors": "Charlie Snell, Jaehoon Lee, Kelvin Xu, Aviral Kumar",
+  "arxiv_url": "https://arxiv.org/abs/2408.03314",
+  "summary": "LLM의 테스트 시점 연산(test-time compute)을 최적으로 스케일링하면 모델 파라미터를 14배 이상 늘리는 것과 동등한 성능 향상을 달성할 수 있음을 보여줍니다. 검색(search) 기반과 수정(revision) 기반 두 가지 접근법의 트레이드오프를 분석하고, 문제 난이도에 따른 최적 연산 분배 전략을 제시합니다.",
+  "tags": [
+    "test-time-compute",
+    "inference-scaling",
+    "search-vs-revision",
+    "compute-optimal",
+    "process-reward-model",
+    "LLM-reasoning"
+  ],
+  "related_architecture": null,
+  "is_pinned": false
+}

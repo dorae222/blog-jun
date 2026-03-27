@@ -1,0 +1,25 @@
+{
+  "id": "65",
+  "title": "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models",
+  "title_ko": "SmoothQuant: 대규모 언어 모델을 위한 정밀하고 효율적인 학습 후 양자화",
+  "slug": "smoothquant",
+  "category": "efficiency",
+  "sub_category": "efficiency",
+  "category_slug": "efficiency",
+  "year": 2022,
+  "venue": "ICML 2023",
+  "authors": "Guangxuan Xiao, Ji Lin, Mickael Seznec, Hao Wu, Julien Demouth, Song Han",
+  "arxiv_url": "https://arxiv.org/abs/2211.10438",
+  "summary": "LLM 양자화에서 활성화의 이상치(outlier)가 핵심 난제임을 분석하고, 양자화 난이도를 활성화에서 가중치로 수학적으로 이전하는 스무딩 기법을 제안합니다. 채널별 스케일링 변환을 통해 W8A8 양자화를 정확도 손실 없이 달성하며, INT8 GEMM 커널로 최대 1.56배 속도 향상을 보입니다.",
+  "tags": [
+    "quantization",
+    "activation-quantization",
+    "weight-quantization",
+    "LLM-compression",
+    "outlier-smoothing",
+    "W8A8",
+    "model-efficiency"
+  ],
+  "related_architecture": null,
+  "is_pinned": false
+}

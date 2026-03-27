@@ -1,0 +1,24 @@
+{
+  "id": "63",
+  "title": "GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers",
+  "title_ko": "GPTQ: 생성형 사전학습 트랜스포머를 위한 정밀 학습 후 양자화",
+  "slug": "gptq",
+  "category": "efficiency",
+  "sub_category": "efficiency",
+  "category_slug": "efficiency",
+  "year": 2022,
+  "venue": "ICLR 2023",
+  "authors": "Elias Frantar, Saleh Ashkboos, Torsten Hoefler, Dan Alistarh",
+  "arxiv_url": "https://arxiv.org/abs/2210.17323",
+  "summary": "대규모 생성형 언어 모델을 3-4비트로 양자화하면서도 정확도를 유지하는 one-shot 학습 후 양자화 기법을 제안합니다. OBQ(Optimal Brain Quantization)를 기반으로 레이어 단위 접근법을 통해 1750억 파라미터 모델도 약 4 GPU-hours 만에 양자화 가능하며, 기존 라운딩 기법 대비 큰 폭의 성능 향상을 달성합니다.",
+  "tags": [
+    "quantization",
+    "post-training-quantization",
+    "LLM-compression",
+    "weight-quantization",
+    "OBQ",
+    "model-efficiency"
+  ],
+  "related_architecture": null,
+  "is_pinned": true
+}

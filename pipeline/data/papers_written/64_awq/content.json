@@ -1,0 +1,24 @@
+{
+  "id": "64",
+  "title": "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration",
+  "title_ko": "AWQ: LLM 압축 및 가속을 위한 활성화 인식 가중치 양자화",
+  "slug": "awq",
+  "category": "efficiency",
+  "sub_category": "efficiency",
+  "category_slug": "efficiency",
+  "year": 2023,
+  "venue": "MLSys 2024",
+  "authors": "Ji Lin, Jiaming Tang, Haotian Tang, Shang Yang, Wei-Ming Chen, Wei-Chen Wang, Guangxuan Xiao, Xingyu Dang, Chuang Gan, Song Han",
+  "arxiv_url": "https://arxiv.org/abs/2306.00978",
+  "summary": "LLM의 모든 가중치가 동일하게 중요하지 않다는 관찰에서 출발하여, 활성화 분포를 기반으로 중요한 가중치 채널을 보호하는 양자화 기법을 제안합니다. 채널별 스케일링을 통해 혼합 정밀도 없이도 하드웨어 효율적인 저비트 양자화를 달성하며, 다양한 LLM과 멀티모달 모델에서 우수한 성능을 보입니다.",
+  "tags": [
+    "quantization",
+    "activation-aware",
+    "weight-quantization",
+    "LLM-compression",
+    "model-efficiency",
+    "per-channel-scaling"
+  ],
+  "related_architecture": null,
+  "is_pinned": false
+}
