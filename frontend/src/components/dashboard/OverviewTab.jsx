@@ -1,4 +1,5 @@
 import { ImageOff } from 'lucide-react'
+import CARD_COLORS, { COVERAGE_MAP, getCardStyle } from '../../data/cardColors'
 
 export default function OverviewTab({ stats, onShowMissingImages }) {
   if (!stats?.image_coverage) return null
@@ -18,21 +19,21 @@ export default function OverviewTab({ stats, onShowMissingImages }) {
             {image_coverage.total_published}
           </p>
         </div>
-        <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #10b981' }}>
+        <div className="p-5 rounded-xl" style={getCardStyle(COVERAGE_MAP.with_image, { topAccent: true })}>
           <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>이미지 있음</p>
-          <p className="text-3xl font-bold" style={{ color: '#10b981' }}>
+          <p className="text-3xl font-bold" style={{ color: CARD_COLORS[COVERAGE_MAP.with_image].hex }}>
             {image_coverage.with_any_image}
           </p>
         </div>
-        <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #f97316' }}>
+        <div className="p-5 rounded-xl" style={getCardStyle(COVERAGE_MAP.missing_image, { topAccent: true })}>
           <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>이미지 없음</p>
-          <p className="text-3xl font-bold" style={{ color: '#f97316' }}>
+          <p className="text-3xl font-bold" style={{ color: CARD_COLORS[COVERAGE_MAP.missing_image].hex }}>
             {image_coverage.missing_image}
           </p>
         </div>
-        <div className="p-5 rounded-xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)', borderLeft: '4px solid #3b82f6' }}>
+        <div className="p-5 rounded-xl" style={getCardStyle(COVERAGE_MAP.coverage, { topAccent: true })}>
           <p className="text-xs uppercase tracking-wide mb-1" style={{ color: 'var(--text-secondary)' }}>커버리지</p>
-          <p className="text-3xl font-bold" style={{ color: '#3b82f6' }}>
+          <p className="text-3xl font-bold" style={{ color: CARD_COLORS[COVERAGE_MAP.coverage].hex }}>
             {coveragePct}%
           </p>
         </div>

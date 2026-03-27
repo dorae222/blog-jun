@@ -49,7 +49,7 @@ export default function ArchitectureNodeDetail({
     : 'absolute bottom-0 left-0 right-0 z-30 rounded-t-2xl shadow-2xl overflow-hidden'
 
   const containerStyle = isSide
-    ? { background: 'var(--card-bg)', borderLeft: `3px solid ${color}` }
+    ? { background: 'var(--card-bg)', boxShadow: `inset 0 3px 0 ${color}`, borderRight: '1px solid var(--border)' }
     : { background: 'var(--card-bg)', borderTop: `3px solid ${color}`, maxHeight: '50vh' }
 
   const scrollStyle = isSide
