@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { ChevronRight, Eye } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
@@ -30,7 +31,23 @@ export default function Home() {
       .catch(() => setError(true))
   }, [])
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'HJ Tech Blog',
+    url: 'https://blog.dorae222.com',
+    description: 'AI, 클라우드, 데이터 엔지니어링 기술 블로그',
+    author: { '@type': 'Person', name: 'HyeongJun' },
+  }
+
   return (
+    <>
+    <Helmet>
+      <title>HJ Tech Blog</title>
+      <meta name="description" content="AI, 클라우드, 데이터 엔지니어링 기술 블로그. 논문 리뷰, 튜토리얼, 프로젝트 기록을 공유합니다." />
+      <link rel="canonical" href="https://blog.dorae222.com" />
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+    </Helmet>
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
@@ -185,5 +202,6 @@ export default function Home() {
       {/* Activities Timeline */}
       <Timeline items={ACTIVITIES} />
     </motion.div>
+    </>
   )
 }
