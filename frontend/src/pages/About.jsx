@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { Github, Mail, Linkedin, GraduationCap, Award, Users, Trophy, MapPin, Briefcase } from 'lucide-react'
 import ScrollReveal from '../components/common/ScrollReveal'
 import TechStack from '../components/portfolio/TechStack'
@@ -48,6 +49,11 @@ const AWARDS = [
 
 export default function About() {
   return (
+    <>
+    <Helmet>
+      <title>About | HJ Tech Blog</title>
+      <meta name="description" content="AI/ML 엔지니어 도형준의 기술 블로그. AWS 자격증, 논문 리뷰, 클라우드 인프라 경험을 공유합니다." />
+    </Helmet>
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
@@ -347,5 +353,6 @@ export default function About() {
       {/* Tech Stack */}
       <TechStack />
     </motion.div>
+    </>
   )
 }
