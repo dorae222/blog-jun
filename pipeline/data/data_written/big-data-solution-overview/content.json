@@ -2,7 +2,7 @@
   "slug": "big-data-solution-overview",
   "title": "Big Data Solutions: Hadoop Ecosystem Components and Architecture",
   "title_ko": "빅데이터 솔루션 총정리: Hadoop 에코시스템 컴포넌트와 아키텍처",
-  "category_slug": "data-engineering",
+  "category_slug": "hadoop",
   "summary": "빅데이터 처리를 위한 Hadoop 에코시스템의 주요 솔루션을 총정리합니다. HDFS와 MapReduce 코어부터 Sqoop, Pig, Hive, HBase, Spark까지 각 컴포넌트의 역할과 관계를 살펴보고, 실전 코드와 함께 언제 어떤 도구를 선택해야 하는지 판단 기준을 제시합니다.",
   "tags": [
     "Big Data",

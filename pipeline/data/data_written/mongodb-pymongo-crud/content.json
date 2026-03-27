@@ -2,7 +2,7 @@
   "slug": "mongodb-pymongo-crud",
   "title": "MongoDB + Python: Building a Membership CRUD Program with pymongo",
   "title_ko": "MongoDB + Python: pymongo로 구현하는 회원 관리 CRUD 프로그램",
-  "category_slug": "data-engineering",
+  "category_slug": "database",
   "summary": "Python의 pymongo 라이브러리를 활용하여 MongoDB에 회원 정보를 저장하고 CRUD 기능을 구현하는 과정을 다룹니다. MongoDB 연결부터 자동 증가 ID 구현, pandas를 활용한 결과 출력까지 실전 코드 중심으로 설명합니다.",
   "tags": [
     "MongoDB",
