@@ -2,7 +2,7 @@
   "slug": "apache-pig-hadoop-etl",
   "title": "Apache Pig - Hadoop ETL with Pig Latin Guide",
   "title_ko": "Apache Pig - Hadoop ETL을 위한 Pig Latin 완벽 가이드",
-  "category_slug": "data-engineering",
+  "category_slug": "hadoop",
   "summary": "Apache Pig의 핵심 개념부터 Pig Latin 문법, 자료구조, 관계형 연산자, 집계 함수까지 실전 예제와 함께 다루는 Hadoop ETL 가이드입니다.",
   "tags": [
     "hadoop",

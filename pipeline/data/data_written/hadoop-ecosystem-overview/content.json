@@ -2,7 +2,7 @@
   "slug": "hadoop-ecosystem-overview",
   "title": "Hadoop Ecosystem: Complete Guide to Big Data Architecture",
   "title_ko": "Hadoop 에코시스템 완벽 가이드: 빅데이터 아키텍처의 모든 것",
-  "category_slug": "data-engineering",
+  "category_slug": "hadoop",
   "series_slug": "hadoop-complete-guide",
   "series_order": 1,
   "summary": "Hadoop 에코시스템의 핵심 구성요소인 HDFS, MapReduce, YARN, Hive, Pig, Sqoop, Spark 등을 체계적으로 정리한 가이드입니다. 빅데이터의 3V 특성부터 RDBMS의 한계, 그리고 이를 해결하기 위한 분산 처리 프레임워크의 등장 배경과 각 컴포넌트의 역할을 다룹니다.",

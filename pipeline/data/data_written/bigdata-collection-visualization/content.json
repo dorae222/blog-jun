@@ -2,7 +2,7 @@
   "slug": "bigdata-collection-visualization",
   "title": "Big Data Collection and Visualization Pipeline with Python",
   "title_ko": "Python으로 구축하는 빅데이터 수집 및 시각화 파이프라인",
-  "category_slug": "data-engineering",
+  "category_slug": "pipeline",
   "summary": "Python을 활용한 웹 크롤링, 자연어 처리, 데이터 시각화 파이프라인 구축을 다루는 실전 가이드입니다. BeautifulSoup, KoNLPy, WordCloud 등을 조합하여 뉴스 기사 수집부터 형태소 분석, 빈도 분석, 워드클라우드 생성까지 전체 흐름을 구현합니다.",
   "tags": [
     "Web Crawling",

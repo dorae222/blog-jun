@@ -2,7 +2,7 @@
   "slug": "spark-in-memory-distributed",
   "title": "Apache Spark In-Memory Distributed Processing: From MapReduce Bottlenecks to Memory-First Architecture",
   "title_ko": "Apache Spark 인메모리 분산 처리: MapReduce의 병목을 넘어 메모리 중심 아키텍처로",
-  "category_slug": "data-engineering",
+  "category_slug": "spark",
   "summary": "MapReduce가 디스크 I/O에 묶여 있던 한계를 Apache Spark가 인메모리 연산으로 어떻게 극복했는지, 그 아키텍처와 핵심 개념을 정리합니다. RDD에서 DataFrame까지의 데이터 추상화 변천, Standalone 클러스터 구성 실습, 그리고 실무 활용 사례를 통해 Spark의 분산 처리 원리를 깊이 있게 다룹니다.",
   "tags": [
     "Apache Spark",

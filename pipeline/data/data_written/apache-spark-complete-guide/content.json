@@ -2,7 +2,7 @@
   "slug": "apache-spark-complete-guide",
   "title": "Apache Spark: From RDD to DataFrame and Beyond",
   "title_ko": "Apache Spark 완벽 가이드: RDD부터 DataFrame, MLlib까지",
-  "category_slug": "data-engineering",
+  "category_slug": "spark",
   "summary": "Apache Spark의 등장 배경부터 핵심 데이터 구조인 RDD, DataFrame, Dataset의 차이점, 클러스터 매니저 구성, 그리고 PySpark를 활용한 실전 데이터 처리까지 체계적으로 정리한 가이드입니다. MapReduce의 한계를 극복한 인메모리 분산 처리 엔진의 모든 것을 다룹니다.",
   "tags": [
     "Apache Spark",

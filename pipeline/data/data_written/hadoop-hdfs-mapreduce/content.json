@@ -2,7 +2,7 @@
   "slug": "hadoop-hdfs-mapreduce",
   "title": "HDFS와 MapReduce: Hadoop 분산 처리의 핵심",
   "title_ko": "HDFS와 MapReduce: Hadoop 분산 처리의 핵심",
-  "category_slug": "data-engineering",
+  "category_slug": "hadoop",
   "summary": "Hadoop의 두 가지 핵심 구성 요소인 HDFS(분산 파일 시스템)와 MapReduce(분산 처리 엔진)의 아키텍처를 정리하고, Hortonworks 환경에서 실제로 클러스터를 구성하며 사용해본 CLI 명령어와 설정 예제를 다룹니다. 완전분산모드 구성까지 포함하여 Hadoop을 처음 접하는 분들이 전체 그림을 잡을 수 있도록 작성했습니다.",
   "tags": [
     "hdfs",
