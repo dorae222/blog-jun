@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText } from 'lucide-react'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ArchitectureNodeDetail from '../components/architecture/ArchitectureNodeDetail'
@@ -215,6 +216,11 @@ export default function ArchitectureTreePage() {
   const edgeCount = edges.length
 
   return (
+    <>
+    <Helmet>
+      <title>아키텍처 계보 | HJ Tech Blog</title>
+      <meta name="description" content="LLM, SSM, Diffusion 등 AI 모델 아키텍처 계보 트리 시각화. GPT, LLaMA, Gemma 등 주요 모델의 관계와 발전 흐름을 탐색합니다." />
+    </Helmet>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -451,5 +457,6 @@ export default function ArchitectureTreePage() {
         )}
       </div>
     </motion.div>
+    </>
   )
 }

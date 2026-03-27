@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.conf import settings
 
-from blog.models import Post
+from blog.models import Post, Category
 
 
 def sitemap_xml(request):
@@ -15,7 +15,14 @@ def sitemap_xml(request):
     urls = [
         f'<url><loc>{base_url}/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>',
         f'<url><loc>{base_url}/posts</loc><changefreq>daily</changefreq><priority>0.9</priority></url>',
+        f'<url><loc>{base_url}/about</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>',
+        f'<url><loc>{base_url}/architectures/tree</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>',
     ]
+    for cat in Category.objects.filter(parent__isnull=True).values('slug'):
+        urls.append(
+            f'<url><loc>{base_url}/posts/{cat["slug"]}</loc>'
+            f'<changefreq>daily</changefreq><priority>0.8</priority></url>'
+        )
     for post in posts:
         lastmod = post['updated_at'].strftime('%Y-%m-%d')
         urls.append(
@@ -41,8 +48,16 @@ def robots_txt(request):
     content = (
         'User-agent: *\n'
         'Allow: /\n'
-        'Disallow: /admin/\n'
+        'Allow: /api/posts/\n'
+        'Allow: /api/feed/\n'
+        'Allow: /api/categories/\n'
+        'Allow: /api/tags/\n'
+        'Allow: /api/stats/\n'
+        'Allow: /api/architectures/\n'
+        'Disallow: /api/auth/\n'
+        'Disallow: /api/operations/\n'
         'Disallow: /api/\n'
+        'Disallow: /admin/\n'
         f'\nSitemap: {site_url}/sitemap.xml\n'
     )
     return HttpResponse(content, content_type='text/plain')
