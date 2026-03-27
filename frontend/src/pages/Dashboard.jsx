@@ -13,12 +13,13 @@ import {
   FileText, CheckCircle, Clock,
   LayoutGrid, Cloud, Brain, Database, Code2, FolderOpen, Terminal, BookOpen,
   Archive, Plus, Tags, Cpu,
-  BarChart3,
+  BarChart3, MessageCircle,
 } from 'lucide-react'
 import StatsBar from '../components/dashboard/StatsBar'
 import PostsTab from '../components/dashboard/PostsTab'
 import ArchitecturesTab from '../components/dashboard/ArchitecturesTab'
 import TagsTab from '../components/dashboard/TagsTab'
+import CommentsTab from '../components/dashboard/CommentsTab'
 import OverviewTab from '../components/dashboard/OverviewTab'
 
 const DEFAULT_PAGE_SIZE = 10
@@ -300,6 +301,7 @@ export default function Dashboard() {
           { id: 'posts', label: '포스트', Icon: FileText },
           { id: 'architectures', label: 'Architectures', Icon: Cpu },
           { id: 'tags',  label: '태그 관리', Icon: Tags },
+          { id: 'comments', label: '댓글 관리', Icon: MessageCircle },
           { id: 'overview', label: '콘텐츠 현황', Icon: BarChart3 },
         ].map(t => (
           <button key={t.id} onClick={() => setTab(t.id)}
@@ -356,6 +358,9 @@ export default function Dashboard() {
           handleMerge={handleMerge} handleCleanup={handleCleanup}
         />
       )}
+
+      {/* ─── 댓글 관리 탭 ─── */}
+      {tab === 'comments' && <CommentsTab />}
 
       {/* ─── 콘텐츠 현황 탭 ─── */}
       {tab === 'overview' && (

@@ -15,11 +15,8 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'slug', 'code', 'icon', 'color', 'parent', 'order', 'post_count', 'children']
 
     def get_children(self, obj):
-        from django.db.models import Count, Q
-        children = obj.children.annotate(
-            post_count=Count('posts', filter=Q(posts__status='published'))
-        ).order_by('order', 'code')
-        if children.exists():
+        children = obj.children.all()  # prefetch 캐시 사용
+        if children:
             return CategorySerializer(children, many=True).data
         return []
 

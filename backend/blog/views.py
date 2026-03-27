@@ -1,7 +1,7 @@
 import json
 import os
 from django.conf import settings
-from django.db.models import Count, Q, F, Sum, Case, When, Value, IntegerField
+from django.db.models import Count, Q, F, Sum, Case, When, Value, IntegerField, Prefetch
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
@@ -151,8 +151,13 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CategorySerializer
 
     def get_queryset(self):
+        children_qs = Category.objects.annotate(
+            post_count=Count('posts', filter=Q(posts__status='published'))
+        ).order_by('order', 'code')
         return Category.objects.filter(parent__isnull=True).annotate(
             post_count=Count('posts', filter=Q(posts__status='published'))
+        ).prefetch_related(
+            Prefetch('children', queryset=children_qs)
         )
 
 
@@ -226,43 +231,43 @@ def dashboard_stats(request):
         return Response({'detail': 'Authentication required'}, status=401)
 
     base_qs = Post.objects.filter(author=request.user)
+    # 기본 통계 + 이미지 커버리지를 단일 aggregate로 통합
     stats = base_qs.aggregate(
         total_posts=Count('id'),
         published=Count('id', filter=Q(status='published')),
         drafts=Count('id', filter=Q(status='draft')),
         total_views=Sum('view_count'),
+        with_cover_image=Count('id', filter=Q(
+            status='published',
+        ) & ~Q(cover_image='') & Q(cover_image__isnull=False)),
     )
-    total_posts = stats['total_posts']
     published = stats['published']
-    drafts = stats['drafts']
-    total_views = stats['total_views'] or 0
 
+    # 카테고리 분포 + 이미지 커버리지 by 카테고리 통합
+    published_qs = base_qs.filter(status='published')
     category_dist = list(
-        Post.objects.filter(author=request.user, status='published')
-        .values('category__name', 'category__color')
-        .annotate(count=Count('id'))
+        published_qs
+        .values('category__name', 'category__color', 'category__slug')
+        .annotate(
+            count=Count('id'),
+            with_cover=Count('id', filter=~Q(cover_image='') & Q(cover_image__isnull=False)),
+        )
         .order_by('-count')
     )
 
     post_type_dist = list(
-        Post.objects.filter(author=request.user, status='published')
+        published_qs
         .values('post_type')
         .annotate(count=Count('id'))
         .order_by('-count')
     )
 
     recent_posts = list(
-        Post.objects.filter(author=request.user)
-        .order_by('-updated_at')
+        base_qs.order_by('-updated_at')
         .values('id', 'title', 'slug', 'status', 'updated_at')[:5]
     )
 
-    # 이미지 커버리지 통계
-    published_qs = Post.objects.filter(author=request.user, status='published')
-    with_cover = published_qs.exclude(cover_image='').exclude(cover_image__isnull=True).count()
-    with_arch_figure = published_qs.filter(
-        architecture_entries__figure__isnull=False
-    ).exclude(architecture_entries__figure='').distinct().count()
+    # with_any_image: 커버 또는 아키텍처 figure가 있는 포스트
     with_any_image = published_qs.filter(
         Q(~Q(cover_image=''), cover_image__isnull=False) |
         Q(architecture_entries__figure__isnull=False) & ~Q(architecture_entries__figure='')
@@ -270,26 +275,27 @@ def dashboard_stats(request):
 
     image_coverage = {
         'total_published': published,
-        'with_cover_image': with_cover,
+        'with_cover_image': stats['with_cover_image'],
         'with_any_image': with_any_image,
         'missing_image': published - with_any_image,
     }
 
-    image_coverage_by_category = list(
-        published_qs
-        .values('category__slug', 'category__name')
-        .annotate(
-            total=Count('id'),
-            with_cover=Count('id', filter=~Q(cover_image='') & Q(cover_image__isnull=False)),
-        )
-        .order_by('-total')
-    )
+    # category_dist에서 이미 with_cover를 포함하므로 별도 쿼리 불필요
+    image_coverage_by_category = [
+        {
+            'category__slug': c['category__slug'],
+            'category__name': c['category__name'],
+            'total': c['count'],
+            'with_cover': c['with_cover'],
+        }
+        for c in category_dist
+    ]
 
     return Response({
-        'total_posts': total_posts,
+        'total_posts': stats['total_posts'],
         'published': published,
-        'drafts': drafts,
-        'total_views': total_views,
+        'drafts': stats['drafts'],
+        'total_views': stats['total_views'] or 0,
         'category_distribution': category_dist,
         'post_type_distribution': post_type_dist,
         'recent_posts': recent_posts,
@@ -328,7 +334,16 @@ class ArchitectureEntryViewSet(viewsets.ModelViewSet):
     filterset_fields = ['decoder_type', 'architecture_category', 'branch_type']
 
     def get_queryset(self):
-        qs = ArchitectureEntry.objects.prefetch_related('concepts', 'related_post')
+        qs = ArchitectureEntry.objects.prefetch_related('concepts').select_related('related_post')
+        if self.action == 'retrieve':
+            qs = qs.prefetch_related(
+                Prefetch('parent_relations',
+                         queryset=ArchitectureRelation.objects.select_related(
+                             'from_entry', 'from_entry__related_post')),
+                Prefetch('child_relations',
+                         queryset=ArchitectureRelation.objects.select_related(
+                             'to_entry', 'to_entry__related_post')),
+            )
         concept = self.request.query_params.get('concept')
         if concept:
             qs = qs.filter(concepts__slug=concept)
