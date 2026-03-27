@@ -135,22 +135,132 @@ Flow Matching 패러다임의 부상과 비디오/3D 생성으로의 확장이 �
 - **Score 관점**: [Score Matching](/post/score-matching), [Score-SDE](/post/score-sde) — Score Function 추정
 - **Flow 관점**: [Flow Matching](/post/flow-matching), [Rectified Flow](/post/rectified-flow) — 연속 정규화 흐름
 
-### 2. 아키텍처 진화
+#### 순방향 과정 (Forward Process) 직관적 이해
+
+순방향 과정은 "깨끗한 데이터에 점진적으로 노이즈를 추가하여 완전한 가우시안 노이즈로 변환하는 과정"입니다. 직관적으로, 선명한 사진에 반복적으로 TV 화면의 정적(static) 노이즈를 섞는 것과 같습니다.
+
+수학적으로, 시각 $t$에서의 노이즈 추가는 다음과 같이 정의됩니다:
+
+$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} \cdot x_{t-1},\ \beta_t \mathbf{I})$$
+
+여기서 $\beta_t$는 노이즈 스케줄로, 각 스텝에서 추가되는 노이즈의 양을 결정합니다. 핵심적인 성질은 임의의 시각 $t$에서의 노이즈 샘플을 **한 번에** 계산할 수 있다는 점입니다:
+
+$$q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} \cdot x_0,\ (1-\bar{\alpha}_t) \mathbf{I})$$
+
+여기서 $\bar{\alpha}_t = \prod_{s=1}^{t}(1-\beta_s)$입니다. 이 성질 덕분에 학습 시 중간 스텝을 모두 계산할 필요 없이, 임의의 $t$에 대한 노이즈 샘플을 즉시 생성할 수 있어 효율적입니다.
+
+:::info
+$\bar{\alpha}_t$가 0에 가까워질수록 원본 데이터의 정보가 사라지고 순수 가우시안 노이즈에 가까워집니다. DDPM은 $T=1000$에서 $\bar{\alpha}_T \approx 0$이 되도록 스케줄을 설계합니다.
+:::
+
+#### 역방향 과정 (Reverse Process) 직관적 이해
+
+역방향 과정은 "노이즈에서 데이터를 복원하는 과정"으로, 신경망이 각 시각에서 추가된 노이즈를 예측하여 제거합니다. 직관적으로, TV 정적 노이즈에서 시작하여 한 프레임씩 선명하게 만들어가는 과정입니다.
+
+역방향 과정의 수학적 표현은 다음과 같습니다:
+
+$$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1};\ \mu_\theta(x_t, t),\ \sigma_t^2 \mathbf{I})$$
+
+핵심은 $\mu_\theta$를 어떻게 매개변수화하느냐입니다. DDPM은 노이즈 $\epsilon$을 예측하는 방식을 채택합니다:
+
+$$\mu_\theta(x_t, t) = \frac{1}{\sqrt{\alpha_t}} \left(x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta(x_t, t)\right)$$
+
+학습 목적함수는 단순한 MSE로 귀결됩니다:
+
+$$\mathcal{L}_{\text{simple}} = \mathbb{E}_{t, x_0, \epsilon} \left[\|\epsilon - \epsilon_\theta(\sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t}\epsilon,\ t)\|^2\right]$$
+
+### 2. DDPM에서 DDIM으로: 결정론적 샘플링의 등장
+
+[DDPM](/post/ddpm)의 가장 큰 실용적 문제는 1000스텝의 순차적 샘플링이 필요하다는 점이었습니다. [DDIM](/post/ddim)은 이 문제를 해결하기 위해 핵심적인 관찰을 합니다: **DDPM의 학습 목적함수는 마르코프 가정 없이도 유효하다.**
+
+DDIM은 비마르코프(non-Markovian) 순방향 과정을 정의하여, 역방향 샘플링을 **결정론적(deterministic)** ODE로 변환합니다:
+
+$$x_{t-1} = \sqrt{\bar{\alpha}_{t-1}} \cdot \hat{x}_0(x_t, t) + \sqrt{1-\bar{\alpha}_{t-1}} \cdot \epsilon_\theta(x_t, t)$$
+
+여기서 $\hat{x}_0 = \frac{x_t - \sqrt{1-\bar{\alpha}_t} \cdot \epsilon_\theta(x_t, t)}{\sqrt{\bar{\alpha}_t}}$는 현재 노이즈 예측으로부터 복원한 원본 추정값입니다.
+
+이 결정론적 매핑의 핵심 이점은 다음과 같습니다:
+
+| 특성 | DDPM | DDIM |
+|------|------|------|
+| 샘플링 스텝 | 1000 | 10-50 |
+| 결정론적 | 아니오 (확률적) | 예 |
+| 인코딩 가능 | 아니오 | 예 (잠재 공간 매핑) |
+| 보간 가능 | 제한적 | 잠재 공간에서 가능 |
+| 생성 품질 | 높음 | 스텝 수에 의존 |
+
+### 3. Score-SDE: 연속 시간 통합 프레임워크
+
+[Score-SDE](/post/score-sde)는 DDPM과 Score Matching을 **확률적 미분방정식(SDE)** 프레임워크로 통합합니다:
+
+$$dx = f(x, t)dt + g(t)dw \quad \text{(순방향 SDE)}$$
+
+$$dx = [f(x, t) - g(t)^2 \nabla_x \log p_t(x)]dt + g(t)d\bar{w} \quad \text{(역방향 SDE)}$$
+
+이 프레임워크에서 DDPM은 Variance Preserving SDE의 이산화에 해당하고, Score Matching은 $\nabla_x \log p_t(x)$를 학습하는 것에 해당합니다. 또한 역방향 SDE에 대응하는 **확률 흐름 ODE(Probability Flow ODE)**도 존재하며, 이것이 DDIM의 이론적 근거가 됩니다.
+
+### 4. LDM: 잠재 공간으로의 전환
+
+[LDM](/post/ldm)(Latent Diffusion Model)은 확산 모델의 실용적 상용화를 가능하게 한 결정적 전환점입니다. 핵심 아이디어는 **픽셀 공간 대신 VAE의 잠재 공간에서 확산을 수행**하는 것입니다:
+
+1. **인코딩**: 이미지 $x \in \mathbb{R}^{H \times W \times 3}$을 VAE 인코더로 잠재 벡터 $z \in \mathbb{R}^{h \times w \times c}$로 압축 (보통 8배 다운샘플)
+2. **확산**: 잠재 공간에서 DDPM/DDIM 수행
+3. **디코딩**: 생성된 잠재 벡터를 VAE 디코더로 이미지로 복원
+
+| 비교 | 픽셀 확산 (DDPM) | 잠재 확산 (LDM) |
+|------|-----------------|----------------|
+| 입력 차원 | 256×256×3 = 196,608 | 32×32×4 = 4,096 |
+| 연산 비용 | 매우 높음 | ~48배 절감 |
+| 해상도 | 256×256 제한적 | 512×512+ 실용적 |
+| 텍스트 조건 | 직접 처리 | Cross-Attention으로 결합 |
+
+LDM의 성공은 Stable Diffusion으로 이어졌고, 이후 SDXL, SD3 등 모든 상업적 확산 모델의 표준 아키텍처가 되었습니다.
+
+### 5. Flow Matching: 더 단순한 학습 패러다임
+
+[Flow Matching](/post/flow-matching)은 확산 모델을 **연속 정규화 흐름(Continuous Normalizing Flow, CNF)**으로 재해석합니다. SDE 대신 ODE만을 사용하며, 학습 목적함수가 더 단순합니다:
+
+$$\mathcal{L}_{FM} = \mathbb{E}_{t, x_0, x_1} \left[\|v_\theta(x_t, t) - (x_1 - x_0)\|^2\right]$$
+
+여기서 $x_t = (1-t) \cdot x_0 + t \cdot x_1$로, 노이즈($x_0$)에서 데이터($x_1$)까지의 **직선 경로**를 따릅니다. [Rectified Flow](/post/rectified-flow)는 이 직선 경로를 더욱 최적화하여 적은 스텝으로 고품질 생성을 가능하게 합니다.
+
+Flow Matching의 장점은 다음과 같습니다:
+
+- **단순한 목적함수**: 속도장(velocity field)을 직접 회귀
+- **유연한 경로 설계**: 직선, 곡선 등 다양한 보간 경로 가능
+- **안정적 학습**: 분산이 낮아 학습이 빠르고 안정적
+- **ODE 기반**: 확률적 노이즈 없이 결정론적 생성
+
+[SD3](/post/sd3)와 [FLUX](/post/flux)는 Flow Matching을 채택한 대표적 상용 모델입니다.
+
+### 6. 아키텍처 진화
 
 - **U-Net 시대**: DDPM ~ Stable Diffusion. U-Net + Cross-Attention
 - **DiT 시대**: [DiT](/post/dit), [SD3](/post/sd3), [FLUX](/post/flux). Transformer 기반. 스케일링에 유리
 - **하이브리드**: 비디오 모델(Sora 등)은 3D 구조와 Transformer 결합
 
-### 3. 조건부 생성의 발전
+U-Net에서 DiT로의 전환은 Vision Transformer의 성공에 영감을 받았습니다. DiT는 이미지 패치를 토큰으로 취급하고, 타임스텝과 클래스 조건을 Adaptive Layer Norm(adaLN)으로 주입합니다. 이 설계는 모델 크기를 키울수록 성능이 일관되게 향상되는 **스케일링 법칙**을 확산 모델에 가져왔습니다.
+
+### 7. 조건부 생성의 발전
 
 - **무조건부** → **분류기 기반** ([Classifier Guidance](/post/classifier-guidance)) → **분류기-없는** ([CFG](/post/cfg)) → **정밀 제어** ([ControlNet](/post/controlnet))
 
-### 4. 샘플링 가속
+CFG의 수식은 다음과 같습니다:
+
+$$\tilde{\epsilon}_\theta = \epsilon_\theta(x_t, \emptyset) + s \cdot (\epsilon_\theta(x_t, c) - \epsilon_\theta(x_t, \emptyset))$$
+
+가이던스 스케일 $s$가 1보다 클수록 조건에 더 충실한 생성이 이루어지며, 대부분의 상용 모델은 $s = 7.5$ 전후를 기본값으로 사용합니다.
+
+### 8. 샘플링 가속
 
 - **많은 스텝**: DDPM (1000 스텝)
 - **적은 스텝**: [DDIM](/post/ddim) (10-50 스텝)
 - **단일 스텝**: [Consistency Model](/post/consistency-model) (1 스텝)
 - **Flow 기반**: [Rectified Flow](/post/rectified-flow) (직선 경로, 적은 스텝)
+
+:::tip
+실무에서 가장 널리 사용되는 샘플러는 **DPM-Solver++**(20-25 스텝)와 **Euler**(25-50 스텝)입니다. Consistency Model은 1스텝 생성이 가능하지만, 다중 스텝에서의 품질은 아직 기존 방법에 미치지 못합니다.
+:::
 
 ---
 
