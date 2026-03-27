@@ -1,35 +1,72 @@
-import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { useEffect, useState, useCallback } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { ChevronRight, Eye } from 'lucide-react'
+import { ChevronRight, Eye, ArrowRight } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
-import TechStack from '../components/portfolio/TechStack'
-import Timeline from '../components/portfolio/Timeline'
+import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ScrollReveal from '../components/common/ScrollReveal'
-import AnimatedCounter from '../components/common/AnimatedCounter'
-import { getCategoryIcon } from '../utils/categoryIcons'
-import { getStats, getPosts } from '../api/posts'
-import { ACTIVITIES } from '../data/activities'
+import { getStats, getPosts, getArchitectureStats, getArchitectureTree } from '../api/posts'
 import { CATEGORY_TREE } from '../data/categories'
+import { CATEGORY_COLORS } from '../data/architectureConstants'
 
 export default function Home() {
+  const navigate = useNavigate()
   const [stats, setStats] = useState({})
   const [recentPosts, setRecentPosts] = useState([])
   const [popularPosts, setPopularPosts] = useState([])
   const [postsTab, setPostsTab] = useState('recent')
+  const [selectedCategory, setSelectedCategory] = useState(null)
   const [error, setError] = useState(false)
+
+  // Architecture graph
+  const [archStats, setArchStats] = useState(null)
+  const [treeNodes, setTreeNodes] = useState([])
+  const [treeEdges, setTreeEdges] = useState([])
+  const [selectedArchNode, setSelectedArchNode] = useState(null)
 
   useEffect(() => {
     getStats().then((r) => setStats(r.data)).catch(() => setError(true))
-    getPosts({ ordering: '-published_at', page_size: 6 })
+    fetchPosts(null)
+    getArchitectureStats().then((r) => setArchStats(r.data)).catch(() => {})
+    getArchitectureTree()
+      .then((r) => {
+        setTreeNodes(r.data.nodes || [])
+        setTreeEdges(r.data.edges || [])
+      })
+      .catch(() => {})
+  }, [])
+
+  function fetchPosts(categoryKey) {
+    const params = { page_size: 6 }
+    if (categoryKey) {
+      const cat = CATEGORY_TREE.find(c => c.key === categoryKey)
+      if (cat) params.category = cat.key
+    }
+    getPosts({ ...params, ordering: '-published_at' })
       .then((r) => setRecentPosts(r.data.results || []))
       .catch(() => setError(true))
-    getPosts({ ordering: '-view_count', page_size: 6 })
+    getPosts({ ...params, ordering: '-view_count' })
       .then((r) => setPopularPosts(r.data.results || []))
       .catch(() => setError(true))
+  }
+
+  function handleCategoryChange(key) {
+    setSelectedCategory(key)
+    setPostsTab('recent')
+    fetchPosts(key)
+  }
+
+  const handleArchNodeClick = useCallback((node) => {
+    setSelectedArchNode(node)
   }, [])
+
+  const handleArchNodeDoubleClick = useCallback((node) => {
+    if (node?.related_post_slug) {
+      navigate(`/post/${node.related_post_slug}`)
+    }
+  }, [navigate])
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -39,6 +76,10 @@ export default function Home() {
     description: 'AI, 클라우드, 데이터 엔지니어링 기술 블로그',
     author: { '@type': 'Person', name: 'HyeongJun' },
   }
+
+  const allPostsPath = selectedCategory
+    ? CATEGORY_TREE.find(c => c.key === selectedCategory)?.path || '/posts'
+    : '/posts'
 
   return (
     <>
@@ -54,51 +95,95 @@ export default function Home() {
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      <HeroSection />
+      <HeroSection stats={stats} />
 
-      {/* 카테고리 섹션 */}
-      <section className="py-12 md:py-16 px-4 section-gradient-purple">
-        <div className="max-w-4xl mx-auto">
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold text-center mb-10" style={{ color: 'var(--text)' }}>
-              Categories
-            </h2>
-          </ScrollReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {CATEGORY_TREE.map((cat, i) => (
-              <ScrollReveal key={cat.key} delay={i * 0.08}>
-                <Link
-                  to={cat.path}
-                  className="block p-6 rounded-xl text-center transition-all hover:shadow-lg hover:-translate-y-1 glass"
-                >
-                  <div className="mb-3" style={{ color: cat.color }}>{getCategoryIcon(cat.key, 28)}</div>
-                  <h3 className="font-bold text-lg mb-1" style={{ color: cat.color }}>
-                    {cat.label}
-                  </h3>
-                  <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-                    {cat.desc}
+      {/* Architecture Graph Preview */}
+      {treeNodes.length > 0 && (
+        <section className="py-12 md:py-16 px-4 section-gradient-blue">
+          <div className="max-w-5xl mx-auto">
+            <ScrollReveal>
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--text)' }}>
+                  Architecture Lineage
+                </h2>
+                {archStats && (
+                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                    {archStats.total_entries} models · {archStats.total_relations} connections
                   </p>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+                )}
+              </div>
+            </ScrollReveal>
 
-      {/* Blog Stats */}
-      <section className="py-12 px-4 section-gradient-blue">
-        <div className="max-w-4xl mx-auto text-center">
-          <ScrollReveal>
-            <div className="flex justify-center gap-8">
-              <AnimatedCounter end={stats.total_posts || 0} label="Published Posts" />
-              <AnimatedCounter end={stats.categories || 0} label="Categories" />
-              <AnimatedCounter end={stats.tags || 0} label="Tags" />
+            {/* Graph container */}
+            <div
+              className="relative h-[350px] md:h-[500px] rounded-xl overflow-hidden border mb-6"
+              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
+            >
+              <ArchitectureGraph
+                nodes={treeNodes}
+                edges={treeEdges}
+                onNodeClick={handleArchNodeClick}
+                onNodeDoubleClick={handleArchNodeDoubleClick}
+                selectedSlug={selectedArchNode?.slug}
+                searchQuery=""
+              />
+
+              {/* Selected node mini-card overlay */}
+              <AnimatePresence>
+                {selectedArchNode && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute bottom-3 right-3 p-3 rounded-xl border text-sm z-30"
+                    style={{
+                      background: 'var(--card-bg)',
+                      borderColor: 'var(--border)',
+                      backdropFilter: 'blur(8px)',
+                      maxWidth: 240,
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span
+                        className="w-2.5 h-2.5 rounded-full shrink-0"
+                        style={{ background: CATEGORY_COLORS[selectedArchNode.architecture_category] || '#8895A7' }}
+                      />
+                      <span className="font-semibold truncate" style={{ color: 'var(--text)' }}>
+                        {selectedArchNode.name}
+                      </span>
+                    </div>
+                    <p className="text-xs mb-2 truncate" style={{ color: 'var(--text-secondary)' }}>
+                      {selectedArchNode.organization}
+                      {selectedArchNode.release_date && ` · ${selectedArchNode.release_date.slice(0, 4)}`}
+                    </p>
+                    <Link
+                      to={`/architectures/tree?selected=${selectedArchNode.slug}`}
+                      className="inline-flex items-center gap-1 text-xs font-medium text-primary-600 hover:underline"
+                    >
+                      트리에서 보기 <ArrowRight size={12} />
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
-      {/* Posts (Recent / Popular tabs) */}
+            <ScrollReveal delay={0.2}>
+              <div className="text-center">
+                <Link
+                  to="/architectures/tree"
+                  className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-gray-50"
+                  style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+                >
+                  전체 트리 탐색 <ArrowRight size={14} />
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
+
+      {/* Posts (Category filter + Recent/Popular tabs) */}
       {error ? (
         <section className="py-12 md:py-16 px-4 section-gradient-purple">
           <div className="max-w-6xl mx-auto text-center">
@@ -118,6 +203,38 @@ export default function Home() {
       ) : (recentPosts.length > 0 || popularPosts.length > 0) && (
         <section className="py-12 md:py-16 px-4 section-gradient-purple">
           <div className="max-w-6xl mx-auto">
+            {/* Category filter pills */}
+            <ScrollReveal>
+              <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+                <button
+                  onClick={() => handleCategoryChange(null)}
+                  className="text-sm px-4 py-1.5 rounded-full font-medium transition-colors"
+                  style={{
+                    background: !selectedCategory ? 'var(--text)' : 'transparent',
+                    color: !selectedCategory ? 'var(--bg)' : 'var(--text-secondary)',
+                    border: `1px solid ${!selectedCategory ? 'var(--text)' : 'var(--border)'}`,
+                  }}
+                >
+                  전체
+                </button>
+                {CATEGORY_TREE.map(cat => (
+                  <button
+                    key={cat.key}
+                    onClick={() => handleCategoryChange(cat.key)}
+                    className="text-sm px-4 py-1.5 rounded-full font-medium transition-colors"
+                    style={{
+                      background: selectedCategory === cat.key ? cat.color + '20' : 'transparent',
+                      color: selectedCategory === cat.key ? cat.color : 'var(--text-secondary)',
+                      border: `1px solid ${selectedCategory === cat.key ? cat.color + '40' : 'var(--border)'}`,
+                    }}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            {/* Recent / Popular tabs */}
             <ScrollReveal>
               <div className="flex items-center justify-center gap-4 mb-10">
                 <button
@@ -182,7 +299,7 @@ export default function Home() {
             </div>
             <ScrollReveal delay={0.4}>
               <div className="text-center">
-                <Link to="/posts"
+                <Link to={allPostsPath}
                   className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-lg border
                     text-sm font-medium transition-colors hover:bg-white"
                   style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
@@ -193,14 +310,6 @@ export default function Home() {
           </div>
         </section>
       )}
-
-      {/* Tech Stack */}
-      <div className="section-gradient-cyan">
-        <TechStack />
-      </div>
-
-      {/* Activities Timeline */}
-      <Timeline items={ACTIVITIES} />
     </motion.div>
     </>
   )
