@@ -127,6 +127,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'  # Cloudflare SSL 종료 → allauth https:// 콜백 강제
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True  # OAuth 페이지로 바로 리다이렉트
 ACCOUNT_SIGNUP_FIELDS = ['email*']  # 소셜 로그인 전용 — password 불필요
