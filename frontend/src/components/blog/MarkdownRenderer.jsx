@@ -50,14 +50,14 @@ function preprocessContent(raw, postLinks = []) {
         danger: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',
       }
       const colors = {
-        info:    { border: '#3b82f6', bg: 'rgba(59,130,246,0.08)' },
-        warning: { border: '#f59e0b', bg: 'rgba(245,158,11,0.08)' },
-        tip:     { border: '#10b981', bg: 'rgba(16,185,129,0.08)' },
-        danger:  { border: '#ef4444', bg: 'rgba(239,68,68,0.08)' },
+        info:    { hex: '#3b82f6', rgb: '59,130,246',  label: 'Note' },
+        warning: { hex: '#f59e0b', rgb: '245,158,11',  label: 'Warning' },
+        tip:     { hex: '#10b981', rgb: '16,185,129',  label: 'Tip' },
+        danger:  { hex: '#ef4444', rgb: '239,68,68',   label: 'Caution' },
       }
       const c = colors[type] || colors.info
       const icon = svgIcons[type] || svgIcons.info
-      return `<div class="callout callout-${type}" style="border-left:4px solid ${c.border};background:${c.bg};border-radius:8px;padding:1rem 1rem 1rem 0.75rem;margin:1rem 0">\n<span style="margin-right:0.5rem;display:inline-flex;vertical-align:middle;color:${c.border}">${icon}</span>\n\n${content.trim()}\n\n</div>`
+      return `<div class="callout callout-${type}" style="background:rgba(${c.rgb},0.06);border:1px solid rgba(${c.rgb},0.08);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0">\n<div style="display:flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:${c.hex};margin-bottom:6px"><span style="display:inline-flex">${icon}</span><span>${c.label}</span></div>\n\n${content.trim()}\n\n</div>`
     }
   )
 
@@ -148,10 +148,10 @@ function PreBlock({ children }) {
     return (
       <div className="relative group rounded-lg overflow-hidden my-2 -mt-4" style={{
         background: 'var(--output-bg)',
-        borderLeft: '3px solid var(--text-secondary)'
+        border: '1px solid var(--border)'
       }}>
         <div className="flex items-center justify-between px-4 py-1.5 text-xs"
-          style={{ color: 'var(--text-secondary)' }}>
+          style={{ color: 'var(--text-secondary)', background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
           <span className="font-mono opacity-60">Output</span>
           <button onClick={handleCopy}
             className="opacity-0 group-hover:opacity-100 transition-opacity px-2 py-1 rounded hover:bg-gray-200">
