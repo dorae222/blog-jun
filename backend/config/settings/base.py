@@ -128,8 +128,11 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'  # Cloudflare SSL 종료 → allauth https:// 콜백 강제
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # 소셜 로그인 전용 — 이메일 인증 불필요 (SMTP 미사용)
 SOCIALACCOUNT_AUTO_SIGNUP = True
 SOCIALACCOUNT_LOGIN_ON_GET = True  # OAuth 페이지로 바로 리다이렉트
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True  # 같은 이메일 소셜 계정 자동 연결
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
 ACCOUNT_SIGNUP_FIELDS = ['email*']  # 소셜 로그인 전용 — password 불필요
 ACCOUNT_LOGIN_METHODS = {'email'}  # allauth 기본 로그인 방식 (소셜 로그인만 사용하지만 설정 필요)
 
