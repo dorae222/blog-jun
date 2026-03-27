@@ -1,0 +1,23 @@
+{
+  "slug": "graphrag",
+  "id": 61,
+  "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+  "title_ko": "GraphRAG: 그래프 기반 RAG로 글로벌 질문에 답하기",
+  "category_slug": "rag",
+  "arxiv_url": "https://arxiv.org/abs/2404.16130",
+  "venue": "arXiv",
+  "paper_year": 2024,
+  "paper_authors": "Darren Edge, Ha Trinh, Newman Cheng, Joshua Bradley, Alex Chao, Apurva Mody, Steven Truitt, Jonathan Larson",
+  "summary": "기존 RAG가 로컬 검색에 강하지만 글로벌 질문(전체 데이터셋에 걸친 요약/분석)에 약한 문제를 해결하는 Microsoft의 GraphRAG를 분석합니다. LLM 기반 지식 그래프 구축, 커뮤니티 탐지, 계층적 요약 전략을 다룹니다.",
+  "tags": [
+    "graphrag",
+    "rag",
+    "knowledge-graph",
+    "community-detection",
+    "query-focused-summarization",
+    "retrieval-augmented-generation",
+    "microsoft",
+    "global-search"
+  ],
+  "is_pinned": true
+}

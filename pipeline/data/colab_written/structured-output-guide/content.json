@@ -1,0 +1,19 @@
+{
+  "slug": "structured-output-guide",
+  "title": "Structured Output + Function Calling Complete Guide",
+  "title_ko": "Structured Output + Function Calling 완전 가이드",
+  "category_slug": "technique",
+  "summary": "LLM의 출력을 JSON, 함수 호출 등 구조화된 형식으로 제어하는 방법을 다룹니다. OpenAI/Anthropic의 Structured Output API, Tool Use 프로토콜, Pydantic 기반 스키마 정의, 그리고 Outlines/Instructor 등 오픈소스 대안을 비교합니다.",
+  "tags": [
+    "structured-output",
+    "function-calling",
+    "tool-use",
+    "json-mode",
+    "pydantic",
+    "instructor",
+    "outlines",
+    "api",
+    "practical-guide"
+  ],
+  "is_pinned": false
+}

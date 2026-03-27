@@ -1,0 +1,18 @@
+{
+  "slug": "multi-agent-comparison",
+  "title": "Multi-Agent Systems: CrewAI vs AutoGen vs LangGraph",
+  "title_ko": "멀티에이전트 시스템 비교: CrewAI vs AutoGen vs LangGraph",
+  "category_slug": "agent",
+  "summary": "주요 멀티에이전트 프레임워크 3종(CrewAI, AutoGen, LangGraph)을 비교 분석합니다. 각 프레임워크의 설계 철학, 에이전트 협력 패턴, 코드 예제, 그리고 프로젝트 요구사항에 맞는 선택 가이드를 제공합니다.",
+  "tags": [
+    "multi-agent",
+    "crewai",
+    "autogen",
+    "langgraph",
+    "agent-framework",
+    "cooperative-ai",
+    "orchestration",
+    "practical-guide"
+  ],
+  "is_pinned": true
+}
