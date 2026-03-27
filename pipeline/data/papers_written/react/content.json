@@ -1,0 +1,26 @@
+{
+  "slug": "react",
+  "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+  "title_ko": "ReAct: 언어 모델에서 추론과 행동의 시너지",
+  "category_slug": "agent",
+  "summary": "ReAct는 언어 모델이 추론 트레이스(Thought)와 태스크별 행동(Action)을 교대로 생성하도록 하여, 추론과 행동을 유기적으로 결합하는 프롬프팅 프레임워크입니다. HotPotQA, FEVER 등 지식 집약적 QA에서 추론만 하는 CoT와 행동만 하는 Act-only 방식 모두를 능가하며, AlfWorld, WebShop 등 인터랙티브 의사결정 태스크에서도 모방학습 기반 모델을 뛰어넘는 성능을 보여, 현대 LLM 에이전트 설계의 핵심 패러다임을 확립했습니다.",
+  "tags": [
+    "ReAct",
+    "reasoning",
+    "acting",
+    "LLM-agent",
+    "chain-of-thought",
+    "tool-use",
+    "HotPotQA",
+    "FEVER",
+    "AlfWorld",
+    "WebShop",
+    "prompt-engineering",
+    "ICLR2023"
+  ],
+  "is_pinned": false,
+  "arxiv_url": "https://arxiv.org/abs/2210.03629",
+  "venue": "ICLR 2023",
+  "paper_year": 2023,
+  "paper_authors": "Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, Yuan Cao"
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "self-consistency",
+  "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+  "title_ko": "자기 일관성으로 Chain-of-Thought 추론 성능 향상",
+  "category_slug": "reasoning",
+  "summary": "Self-Consistency는 하나의 greedy decoding 대신 다수의 추론 경로를 샘플링한 후 다수결 투표로 최종 답을 선택하는 방법으로, Chain-of-Thought 프롬프팅의 성능을 획기적으로 향상시킵니다. GSM8K에서 CoT 대비 17.9%p, AQuA에서 12.2%p 등 산술/상식 추론 벤치마크 전반에서 일관된 개선을 달성하며, 추가 학습 없이 디코딩 전략만 변경하여 당시 SOTA를 경신한 단순하면서도 강력한 기법입니다.",
+  "tags": [
+    "self-consistency",
+    "chain-of-thought",
+    "reasoning",
+    "majority-voting",
+    "sampling",
+    "GSM8K",
+    "arithmetic-reasoning",
+    "commonsense-reasoning",
+    "LLM",
+    "prompt-engineering",
+    "decoding-strategy",
+    "ICLR2023"
+  ],
+  "is_pinned": false,
+  "arxiv_url": "https://arxiv.org/abs/2203.11171",
+  "venue": "ICLR 2023",
+  "paper_year": 2023,
+  "paper_authors": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou"
+}
