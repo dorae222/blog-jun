@@ -53,7 +53,7 @@ $\bar{\mathbf{w}}$는 시간이 역방향으로 흐르는 위너 과정이며, $
 다음 그림은 VE-SDE와 VP-SDE의 전이 커널(perturbation kernel)이 시간에 따라 어떻게 변하는지 시각적으로 비교한 것입니다. VE-SDE는 분산이 폭발적으로 증가하는 반면, VP-SDE는 분산을 일정하게 유지하며 평균이 0으로 수축합니다.
 
 ![VE-SDE와 VP-SDE의 전이 커널 비교](figures/fig_2.png)
-*Figure 1: VE-SDE(좌)와 VP-SDE(우)의 전이 커널 시각화 — VE-SDE는 평균이 보존되고 분산이 증가하며, VP-SDE는 평균이 0으로 수축하면서 분산이 1로 유지된다. 이산 모델(SMLD, DDPM)과 연속 SDE가 정확히 일치함을 확인할 수 있다. (Song et al., 2021)*
+*Figure 1: VE-SDE(좌)와 VP-SDE(우)의 전이 커널 시각화 ( VE-SDE는 평균이 보존되고 분산이 증가하며, VP-SDE는 평균이 0으로 수축하면서 분산이 1로 유지된다. 이산 모델(SMLD, DDPM)과 연속 SDE가 정확히 일치함을 확인할 수 있다. (Song et al., 2021)*
 
 ### VE-SDE: SMLD의 연속 시간 극한
 
@@ -131,12 +131,12 @@ PC 샘플러를 사용한 VE-SDE가 FID 2.20으로 당시 최고 수준을 달�
 아래는 클래스 조건부 CIFAR-10 샘플(자동차, 말)로, Score SDE 프레임워크가 무조건부 생성을 넘어 조건부 생성에서도 우수한 품질을 달성함을 보여줍니다.
 
 ![Score SDE 클래스 조건부 CIFAR-10 생성 샘플](figures/fig_4_1.png)
-*Figure 2: Score SDE의 클래스 조건부 CIFAR-10 32x32 샘플 — 상단 4행은 자동차, 하단 4행은 말 클래스. Classifier Guidance를 SDE 프레임워크 안에서 자연스럽게 적용하여 클래스별 고품질 이미지를 생성한다. (Song et al., 2021)*
+*Figure 2: Score SDE의 클래스 조건부 CIFAR-10 32x32 샘플 ) 상단 4행은 자동차, 하단 4행은 말 클래스. Classifier Guidance를 SDE 프레임워크 안에서 자연스럽게 적용하여 클래스별 고품질 이미지를 생성한다. (Song et al., 2021)*
 
 Score SDE는 인페인팅과 컬러화 같은 역문제(inverse problem)에도 직접 적용할 수 있습니다. 순방향 SDE의 구조를 활용해 조건부 생성을 별도 학습 없이 수행합니다.
 
 ![Score SDE를 활용한 인페인팅 및 컬러화 결과](figures/fig_4_2.jpg)
-*Figure 3: LSUN 256x256에서의 인페인팅(상단 2행)과 컬러화(하단 2행) — 첫 번째 열이 원본, 두 번째 열이 마스크/흑백 입력이며, 나머지 열은 조건부 생성 결과. 동일 입력에서 다양한 그럴듯한 완성 결과를 생성한다. (Song et al., 2021)*
+*Figure 3: LSUN 256x256에서의 인페인팅(상단 2행)과 컬러화(하단 2행) ( 첫 번째 열이 원본, 두 번째 열이 마스크/흑백 입력이며, 나머지 열은 조건부 생성 결과. 동일 입력에서 다양한 그럴듯한 완성 결과를 생성한다. (Song et al., 2021)*
 
 ### 로그 우도 및 잠재 공간 분석
 
@@ -153,7 +153,7 @@ sub-VP-SDE가 Flow 기반 모델에 준하는 로그 우도를 달성했으며, 
 Probability Flow ODE의 잠재 공간은 의미론적으로 풍부한 구조를 가지고 있습니다. 아래 그림은 CelebA-HQ 256x256에서 구형 보간(spherical interpolation)과 온도 조절(temperature rescaling)을 수행한 결과입니다.
 
 ![Probability Flow ODE 잠재 공간 보간 및 온도 조절](figures/fig_9_1.png)
-*Figure 4: VP-SDE Probability Flow ODE의 CelebA-HQ 256x256 잠재 공간 활용 — 상단: 두 샘플 간 구형 보간으로 자연스러운 속성 전환(포즈, 표정, 배경). 하단: 잠재 코드의 norm을 줄이면(temperature 감소) 더 선명하지만 평균에 가까운 이미지가 생성된다. (Song et al., 2021)*
+*Figure 4: VP-SDE Probability Flow ODE의 CelebA-HQ 256x256 잠재 공간 활용 ) 상단: 두 샘플 간 구형 보간으로 자연스러운 속성 전환(포즈, 표정, 배경). 하단: 잠재 코드의 norm을 줄이면(temperature 감소) 더 선명하지만 평균에 가까운 이미지가 생성된다. (Song et al., 2021)*
 
 특히 주목할 만한 결과는 Probability Flow ODE가 정의하는 잠재 공간의 **유일성(uniqueness)**입니다. 서로 다른 아키텍처로 독립 학습한 두 모델(Model A, Model B)이 동일한 이미지에 대해 거의 동일한 잠재 코드를 산출합니다. 아래 그림에서 각 차원별 상관계수의 히스토그램은 대부분 $r \approx 1$에 집중되어 있으며, 특정 차원 $x_1(T)$에 대해 $r = 0.96$이라는 높은 상관을 보여줍니다. 이는 Probability Flow ODE의 잠재 공간이 모델 아키텍처에 독립적인 고유한 데이터 표현을 학습함을 의미합니다.
 
@@ -353,11 +353,11 @@ if __name__ == '__main__':
 
 ## 관련 문서
 
-- [[score-matching|Score Matching]] — 스코어 기반 생성 모델의 이론적 배경
-- [[ddpm|DDPM]] — VP-SDE의 이산 시간 특수 사례
-- [[ddim|DDIM]] — Probability Flow ODE의 경험적 발견 (Score SDE로 이론화됨)
-- [[edm|EDM: Elucidating the Design Space]] — Score SDE 프레임워크에서 최적 SDE 탐색
-- [[consistency-model|Consistency Models]] — Score SDE 궤적에서의 단일 스텝 생성
-- [[flow-matching|Flow Matching]] — ODE 기반 생성의 후속 발전
-- [[cfg|Classifier-Free Guidance]] — 조건부 생성을 위한 Score SDE 확장
-- [[ldm|Latent Diffusion Models]] — Score SDE를 잠재 공간으로 확장한 Stable Diffusion의 기반
+- [[score-matching|Score Matching]] ( 스코어 기반 생성 모델의 이론적 배경
+- [[ddpm|DDPM]] ) VP-SDE의 이산 시간 특수 사례
+- [[ddim|DDIM]] ( Probability Flow ODE의 경험적 발견 (Score SDE로 이론화됨)
+- [[edm|EDM: Elucidating the Design Space]] ) Score SDE 프레임워크에서 최적 SDE 탐색
+- [[consistency-model|Consistency Models]] ( Score SDE 궤적에서의 단일 스텝 생성
+- [[flow-matching|Flow Matching]] ) ODE 기반 생성의 후속 발전
+- [[cfg|Classifier-Free Guidance]] ( 조건부 생성을 위한 Score SDE 확장
+- [[ldm|Latent Diffusion Models]] ) Score SDE를 잠재 공간으로 확장한 Stable Diffusion의 기반

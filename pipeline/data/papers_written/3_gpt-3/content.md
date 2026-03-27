@@ -386,7 +386,7 @@ class SimpleTransformerLM(nn.Module):
         seq_len = x.size(1)
         positions = torch.arange(seq_len, device=x.device)
 
-        # Causal mask: 자동회귀 — 미래 토큰을 볼 수 없음
+        # Causal mask: 자동회귀, 미래 토큰을 볼 수 없음
         mask = nn.Transformer.generate_square_subsequent_mask(seq_len)
         mask = mask.to(x.device)
 

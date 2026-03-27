@@ -198,7 +198,7 @@ AR 모델 대비 성능 격차가 있지만, 이산 확산 모델이 텍스트 �
 아래 그림은 LM1B 데이터셋에서 추론 스텝 수에 따른 perplexity 변화와, 훈련된 흡수 모델의 텍스트 생성 및 복원 예시를 보여준다.
 
 ![LM1B에서의 perplexity 및 텍스트 생성/복원 결과](figures/fig_2.png)
-*LM1B 실험 결과. 왼쪽: 추론 스텝 수에 따른 perplexity — 균등(uniform), 마스크(mask), 흡수(absorbing) 세 방식 비교. 스텝 수가 증가할수록 perplexity가 감소하며, 흡수 확산이 가장 낮은 perplexity를 달성한다. 오른쪽: 훈련된 D3PM 흡수 모델로 새로운 문장 생성(상단) 및 손상된 문장 복원(하단) 예시.*
+*LM1B 실험 결과. 왼쪽: 추론 스텝 수에 따른 perplexity ( 균등(uniform), 마스크(mask), 흡수(absorbing) 세 방식 비교. 스텝 수가 증가할수록 perplexity가 감소하며, 흡수 확산이 가장 낮은 perplexity를 달성한다. 오른쪽: 훈련된 D3PM 흡수 모델로 새로운 문장 생성(상단) 및 손상된 문장 복원(하단) 예시.*
 
 ### 추론 스텝 수에 따른 성능 변화
 
@@ -307,7 +307,7 @@ class DiscreteTransition:
     def absorbing(K: int, beta: float, mask_id: int, device) -> torch.Tensor:
         """
         흡수 전이 행렬.
-        Q[i, mask_id] += beta  — 모든 상태에서 mask로 이동 가능
+        Q[i, mask_id] += beta  ) 모든 상태에서 mask로 이동 가능
         """
         Q = (1.0 - beta) * torch.eye(K, device=device)
         Q[:, mask_id] += beta
@@ -332,7 +332,7 @@ def sample_forward(
     K = Qt_bar.shape[0]
 
     x0_onehot = F.one_hot(x0, num_classes=K).float()  # [B, L, K]
-    probs = x0_onehot @ Qt_bar  # [B, L, K] — 전이 확률
+    probs = x0_onehot @ Qt_bar  # [B, L, K] ( 전이 확률
 
     x_t = torch.multinomial(
         probs.view(-1, K), num_samples=1
@@ -352,8 +352,8 @@ def compute_posterior(
     = (x_t @ Qt.T) ⊙ (x0 @ Qt_bar_prev) / (x0 @ Qt_bar @ x_t)
 
     Args:
-        x_t_onehot:    [B, L, K] — 현재 노이즈 토큰 one-hot
-        x0_pred_probs: [B, L, K] — 모델의 x_0 예측 확률
+        x_t_onehot:    [B, L, K] ) 현재 노이즈 토큰 one-hot
+        x0_pred_probs: [B, L, K], 모델의 x_0 예측 확률
         Qt, Qt_bar, Qt_bar_prev: [K, K] 전이 행렬들
 
     Returns:

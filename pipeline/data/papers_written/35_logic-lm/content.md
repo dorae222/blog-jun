@@ -33,7 +33,7 @@ Chain-of-Thought(CoT) 프롬프팅은 LLM에게 단계별 추론 과정을 생�
 아래 아키텍처 다이어그램은 Logic-LM의 파이프라인 구조와 자기 수정 모듈, 그리고 지원하는 형식 논리 유형을 한눈에 보여줍니다.
 
 ![Logic-LM 아키텍처 다이어그램: 파이프라인 흐름, 자기 수정 루프, 지원 형식 논리 유형 개요](figures/architecture.png)
-*Figure A: Logic-LM 아키텍처 — 자연어 문제에서 LLM이 형식 논리 표현을 생성하고, 기호 추론기가 증명을 시도하며, 실패 시 오류 메시지를 LLM에 피드백하는 자기 수정 루프를 포함한다. FOL, 제약 충족, SAT/SMT, 논리 프로그래밍 등 4가지 형식 체계를 지원한다. (Pan et al., 2023)*
+*Figure A: Logic-LM 아키텍처 ( 자연어 문제에서 LLM이 형식 논리 표현을 생성하고, 기호 추론기가 증명을 시도하며, 실패 시 오류 메시지를 LLM에 피드백하는 자기 수정 루프를 포함한다. FOL, 제약 충족, SAT/SMT, 논리 프로그래밍 등 4가지 형식 체계를 지원한다. (Pan et al., 2023)*
 
 ### 기호 추론기의 강점
 
@@ -54,7 +54,7 @@ Logic-LM의 설계 원칙은 **"LLM은 번역하고, 기호 추론기는 추론�
 다음 그림은 Logic-LM 프레임워크의 전체 구조를 개략적으로 보여줍니다. 자연어 문제가 입력되면 Problem Formulator, Symbolic Reasoner, Result Interpreter의 세 모듈을 순차적으로 거쳐 최종 답변이 도출됩니다.
 
 ![Logic-LM 프레임워크 개요: 문제 형식화, 기호 추론, 결과 해석의 3단계 파이프라인 구조도](figures/fig_1.png)
-*Figure 1: Logic-LM 프레임워크 개요 — LLM 기반 Problem Formulator가 자연어를 기호 표현으로 변환하고, Symbolic Reasoner가 추론을 수행한 후, Result Interpreter가 최종 답변을 생성하는 3모듈 파이프라인. (Pan et al., 2023)*
+*Figure 1: Logic-LM 프레임워크 개요 ) LLM 기반 Problem Formulator가 자연어를 기호 표현으로 변환하고, Symbolic Reasoner가 추론을 수행한 후, Result Interpreter가 최종 답변을 생성하는 3모듈 파이프라인. (Pan et al., 2023)*
 
 ### LLM의 역할: 자연어에서 형식 논리로의 번역
 
@@ -200,7 +200,7 @@ LLM이 생성한 형식 프로그램에 구문 오류나 실행 오류가 있을
 다음은 FOLIO 벤치마크의 실제 문제에 대해 Logic-LM이 전체 파이프라인을 수행한 구체적 사례입니다. 자연어 전제와 질의가 1차 논리(FOL)로 형식화되고, 기호 추론기를 통해 최종 답변이 도출되는 전 과정을 확인할 수 있습니다.
 
 ![FOLIO 벤치마크에서 Logic-LM의 기호 표현 생성 및 추론 결과 예시](figures/fig_5.png)
-*Figure 5: Logic-LM의 FOLIO 벤치마크 추론 예시 — Netflix 프로그램 관련 자연어 전제를 FOL 술어와 양화식으로 형식화하고, 기호 추론기를 통해 "Black Mirror is popular"라는 질의에 대한 정답을 도출하는 전체 과정. (Pan et al., 2023)*
+*Figure 5: Logic-LM의 FOLIO 벤치마크 추론 예시, Netflix 프로그램 관련 자연어 전제를 FOL 술어와 양화식으로 형식화하고, 기호 추론기를 통해 "Black Mirror is popular"라는 질의에 대한 정답을 도출하는 전체 과정. (Pan et al., 2023)*
 
 ---
 

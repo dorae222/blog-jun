@@ -149,7 +149,7 @@ BERT의 프레임워크는 명확히 두 단계로 구분됩니다. **사전학�
 다음 다이어그램은 BERT의 전체 아키텍처 구조와 핵심 설계 선택을 요약한 것입니다. Input Embedding에서 시작하여 N개의 Transformer 블록을 거쳐 [CLS] Output으로 이어지는 전체 흐름과, 각 블록 내부의 양방향 Multi-Head Self-Attention과 GELU FFN 구성을 보여줍니다.
 
 ![BERT 전체 아키텍처 구조 - Transformer 인코더 블록 다이어그램과 핵심 설계 요소](figures/architecture.png)
-*Figure 5: BERT 아키텍처 개요 — Input Embedding 후 12(Base)/24(Large)개의 Transformer 인코더 블록을 통과하며, 각 블록은 Post-LN(LayerNorm), 양방향 Multi-Head Self-Attention, GELU FFN, 잔차 연결로 구성된다. 인코더 전용(Encoder-only) 구조로 MLM과 NSP를 통한 사전학습이 가능하며, Base 110M / Large 340M 파라미터 규모이다. (Devlin et al., 2019)*
+*Figure 5: BERT 아키텍처 개요, Input Embedding 후 12(Base)/24(Large)개의 Transformer 인코더 블록을 통과하며, 각 블록은 Post-LN(LayerNorm), 양방향 Multi-Head Self-Attention, GELU FFN, 잔차 연결로 구성된다. 인코더 전용(Encoder-only) 구조로 MLM과 NSP를 통한 사전학습이 가능하며, Base 110M / Large 340M 파라미터 규모이다. (Devlin et al., 2019)*
 
 BERT는 [[transformer|Transformer]]의 인코더 부분만을 사용합니다. 각 레이어는 다음 두 가지 서브레이어로 구성됩니다:
 

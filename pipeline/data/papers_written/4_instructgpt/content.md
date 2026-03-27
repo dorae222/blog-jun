@@ -61,7 +61,7 @@ RLHF의 핵심 통찰은 다음과 같다. 인간이 "최적의 응답"을 직�
 InstructGPT의 핵심은 세 단계로 구성된 **RLHF 파이프라인**이다. 이 파이프라인의 목표는 인간의 선호도를 수학적 보상 함수로 모델링하고, 이를 최적화하여 모델의 출력을 정렬하는 것이다. 아래 그림은 전체 파이프라인의 구조를 보여준다.
 
 ![InstructGPT RLHF 3단계 학습 파이프라인 개요도](figures/fig_2.png)
-*Figure 2: InstructGPT의 RLHF 3단계 파이프라인 — Step 1에서는 레이블러가 작성한 시연 데이터로 SFT를 수행하고, Step 2에서는 모델 출력에 대한 비교 순위 데이터로 보상 모델(RM)을 학습하며, Step 3에서는 보상 모델의 점수를 신호로 삼아 PPO 알고리즘으로 정책을 최적화한다. (Ouyang et al., 2022)*
+*Figure 2: InstructGPT의 RLHF 3단계 파이프라인 ( Step 1에서는 레이블러가 작성한 시연 데이터로 SFT를 수행하고, Step 2에서는 모델 출력에 대한 비교 순위 데이터로 보상 모델(RM)을 학습하며, Step 3에서는 보상 모델의 점수를 신호로 삼아 PPO 알고리즘으로 정책을 최적화한다. (Ouyang et al., 2022)*
 
 ### 1단계: 지도 파인튜닝 (SFT)
 
@@ -129,7 +129,7 @@ InstructGPT의 데이터 수집은 체계적인 파이프라인을 따른다. �
 데이터 수집에서 핵심적인 역할을 한 것은 레이블러의 순위 평가 작업이다. 아래 그림은 레이블러가 여러 모델 출력을 비교하여 순위를 매기는 실제 인터페이스를 보여준다.
 
 ![레이블러가 모델 출력을 순위별로 평가하는 랭킹 인터페이스](figures/fig_14_2.png)
-*Figure 14: 레이블러 랭킹 인터페이스 — 여러 모델 출력을 Best-to-Worst 순위로 평가하며, 각 응답에 Likert 점수와 유해성 체크리스트를 함께 기록한다. 이 비교 데이터가 보상 모델 학습의 핵심 입력이 된다. (Ouyang et al., 2022)*
+*Figure 14: 레이블러 랭킹 인터페이스 ) 여러 모델 출력을 Best-to-Worst 순위로 평가하며, 각 응답에 Likert 점수와 유해성 체크리스트를 함께 기록한다. 이 비교 데이터가 보상 모델 학습의 핵심 입력이 된다. (Ouyang et al., 2022)*
 
 이 인터페이스를 통해 수집된 비교 데이터는 보상 모델이 "무엇이 좋은 응답인지"를 학습하는 근거가 된다.
 
@@ -198,7 +198,7 @@ InstructGPT의 데이터 수집은 체계적인 파이프라인을 따른다. �
 InstructGPT의 가장 핵심적인 실험 결과는 모델 크기별 사람 선호도 비교이다. 아래 그림은 1.3B부터 175B까지의 모델 크기에서 SFT 175B 대비 승률을 보여준다.
 
 ![모델 크기별 SFT 175B 대비 사람 선호 승률](figures/fig_1.png)
-*Figure 1: 모델 크기(1.3B~175B)에 따른 SFT 175B 대비 사람 선호 승률 — PPO-ptx와 PPO 모델이 전 규모에서 SFT 및 GPT 베이스라인을 크게 앞서며, 특히 1.3B InstructGPT가 175B GPT-3보다 높은 선호율을 기록한다. (Ouyang et al., 2022)*
+*Figure 1: 모델 크기(1.3B~175B)에 따른 SFT 175B 대비 사람 선호 승률 ( PPO-ptx와 PPO 모델이 전 규모에서 SFT 및 GPT 베이스라인을 크게 앞서며, 특히 1.3B InstructGPT가 175B GPT-3보다 높은 선호율을 기록한다. (Ouyang et al., 2022)*
 
 이 결과는 모델 크기보다 학습 방식이 실용적 성능에 더 결정적임을 입증한 핵심 증거이다.
 
@@ -215,7 +215,7 @@ InstructGPT의 가장 핵심적인 실험 결과는 모델 크기별 사람 선�
 InstructGPT와 다른 기존 모델들의 유용성을 Likert 척도로 비교한 결과도 일관된 경향을 보여준다.
 
 ![GPT, SFT, PPO-ptx, FLAN, T0 등 모델별 유용성 Likert 점수 비교 막대 그래프](figures/fig_7.png)
-*Figure 7: 모델별 유용성 Likert 점수(1-7) 비교 — PPO-ptx가 약 5점으로 GPT(~2.5점) 대비 압도적으로 높은 유용성을 기록하며, FLAN이나 T0 같은 기존 지시 튜닝 모델보다도 우수하다. (Ouyang et al., 2022)*
+*Figure 7: 모델별 유용성 Likert 점수(1-7) 비교 ) PPO-ptx가 약 5점으로 GPT(~2.5점) 대비 압도적으로 높은 유용성을 기록하며, FLAN이나 T0 같은 기존 지시 튜닝 모델보다도 우수하다. (Ouyang et al., 2022)*
 
 PPO-ptx는 기존 지시 튜닝 모델(FLAN, T0)과 비교해서도 확연한 차이를 보이며, RLHF 파이프라인의 효과가 단순 지도 학습 기반 지시 튜닝을 크게 넘어섬을 확인할 수 있다.
 
@@ -224,19 +224,19 @@ PPO-ptx는 기존 지시 튜닝 모델(FLAN, T0)과 비교해서도 확연한 �
 이 결과를 더 세분화하여 살펴보면, GPT 배포 프롬프트와 Instruct 배포 프롬프트 모두에서 PPO 계열 모델이 일관된 우위를 보임을 확인할 수 있다.
 
 ![GPT 배포와 Instruct 배포에서의 모델별 승률 비교 차트](figures/fig_5.png)
-*Figure 5: GPT 배포(왼쪽)와 Instruct 배포(오른쪽) 프롬프트에서 모델 크기별 SFT 175B 대비 승률 — Held-out 평가자(상단)와 학습 평가자(하단) 모두에서 PPO-ptx와 PPO가 SFT 및 GPT를 일관되게 앞서며, 학습에 참여하지 않은 평가자에게도 동일한 선호 패턴이 나타나 일반화 성능을 입증한다. (Ouyang et al., 2022)*
+*Figure 5: GPT 배포(왼쪽)와 Instruct 배포(오른쪽) 프롬프트에서 모델 크기별 SFT 175B 대비 승률 ( Held-out 평가자(상단)와 학습 평가자(하단) 모두에서 PPO-ptx와 PPO가 SFT 및 GPT를 일관되게 앞서며, 학습에 참여하지 않은 평가자에게도 동일한 선호 패턴이 나타나 일반화 성능을 입증한다. (Ouyang et al., 2022)*
 
 ### 행동 지표별 상세 비교
 
 사람 선호도 외에도 구체적인 행동 지표에서 InstructGPT의 개선을 정량적으로 확인할 수 있다. 아래 그림은 지시 이행, 제약 준수, 환각, 고객 서비스 언어 사용 등 4가지 핵심 행동 지표를 모델별로 비교한 것이다.
 
 ![모델별 지시 이행, 제약 준수, 환각, 고객 서비스 언어 사용 비율 비교 차트](figures/fig_6.png)
-*Figure 6: 주요 행동 지표 비교 — PPO-ptx는 지시 이행(Attempts correct instruction)과 명시적 제약 준수(Follows explicit constraints)에서 가장 높은 수치를 보이며, 환각(Hallucinations) 비율은 가장 낮다. RLHF가 단순한 선호도 점수 개선을 넘어 모델의 실질적 행동 패턴을 교정함을 보여준다. (Ouyang et al., 2022)*
+*Figure 6: 주요 행동 지표 비교 ) PPO-ptx는 지시 이행(Attempts correct instruction)과 명시적 제약 준수(Follows explicit constraints)에서 가장 높은 수치를 보이며, 환각(Hallucinations) 비율은 가장 낮다. RLHF가 단순한 선호도 점수 개선을 넘어 모델의 실질적 행동 패턴을 교정함을 보여준다. (Ouyang et al., 2022)*
 
 이 행동 지표를 모델 크기별로 세분화하면 더 흥미로운 패턴이 드러난다.
 
 ![모델 크기(1.3B-175B)별 지시 이행, 고객 서비스 적합성, 제약 준수, 환각 비율 변화 추이](figures/fig_34.png)
-*Figure 34: 모델 크기(1.3B-175B)에 따른 4가지 행동 지표 변화 — PPO-ptx(빨강)는 모든 규모에서 지시 이행과 제약 준수가 가장 높고 환각이 가장 낮다. 특히 GPT(파랑)는 모델이 커져도 환각이 줄지 않는 반면, PPO-ptx는 규모와 무관하게 일관된 저환각 성능을 보인다. (Ouyang et al., 2022)*
+*Figure 34: 모델 크기(1.3B-175B)에 따른 4가지 행동 지표 변화 ( PPO-ptx(빨강)는 모든 규모에서 지시 이행과 제약 준수가 가장 높고 환각이 가장 낮다. 특히 GPT(파랑)는 모델이 커져도 환각이 줄지 않는 반면, PPO-ptx는 규모와 무관하게 일관된 저환각 성능을 보인다. (Ouyang et al., 2022)*
 
 PPO-ptx가 모든 모델 크기에서 일관되게 우수한 행동 지표를 보인다는 점은, RLHF의 효과가 특정 규모에 한정되지 않음을 의미한다.
 
@@ -260,7 +260,7 @@ PPO-ptx가 모든 모델 크기에서 일관되게 우수한 행동 지표를 �
 InstructGPT는 GPT-3 대비 TruthfulQA에서 약 **2배 높은 정직성** 점수를 보였다. 구체적으로, PPO-ptx 모델은 진실성(truthful) 비율이 GPT-3의 ~22%에서 ~50%로 크게 상승했다. 특히 모델이 모르는 것에 대해 "모른다"고 말하는 비율이 증가했다.
 
 ![TruthfulQA 벤치마크에서 모델별 진실성, 정보성, 정직성 비율 비교](figures/fig_8.png)
-*Figure 8: TruthfulQA 벤치마크 결과 — QA 프롬프트(왼쪽)와 Instruction+QA 프롬프트(오른쪽)에서 모델별 진실성(truthful), 정보성(informative), 정직성(truthful+informative) 비율. PPO-ptx는 진실성과 정보성의 균형을 가장 잘 맞추며, SFT는 진실성을 높이지만 정보량은 다소 감소하는 트레이드오프가 존재한다. (Ouyang et al., 2022)*
+*Figure 8: TruthfulQA 벤치마크 결과 ) QA 프롬프트(왼쪽)와 Instruction+QA 프롬프트(오른쪽)에서 모델별 진실성(truthful), 정보성(informative), 정직성(truthful+informative) 비율. PPO-ptx는 진실성과 정보성의 균형을 가장 잘 맞추며, SFT는 진실성을 높이지만 정보량은 다소 감소하는 트레이드오프가 존재한다. (Ouyang et al., 2022)*
 
 이 결과는 hallucination 문제에 대한 실질적 개선을 의미한다. RLHF가 단순히 "더 그럴듯한 응답"이 아닌 "더 정직한 응답"을 생성하도록 모델을 유도함을 보여준다.
 
@@ -269,7 +269,7 @@ InstructGPT는 GPT-3 대비 TruthfulQA에서 약 **2배 높은 정직성** 점�
 RealToxicityPrompts 벤치마크에서 InstructGPT는 GPT-3에 비해 독성 콘텐츠 생성률이 약 **25% 감소**했다.
 
 ![RealToxicityPrompts 벤치마크에서 GPT, SFT, PPO-ptx의 독성 점수 비교](figures/fig_9.png)
-*Figure 9: RealToxicityPrompts 독성 평가 결과 — 인간 평가(왼쪽)와 PerspectiveAPI 자동 평가(오른쪽)에서 Respectful 프롬프트 조건 하에 PPO-ptx가 GPT 대비 독성을 유의미하게 낮춘다. 그러나 프롬프트 유형에 따른 독성 감소 효과의 차이가 주목할 만하다. (Ouyang et al., 2022)*
+*Figure 9: RealToxicityPrompts 독성 평가 결과 ( 인간 평가(왼쪽)와 PerspectiveAPI 자동 평가(오른쪽)에서 Respectful 프롬프트 조건 하에 PPO-ptx가 GPT 대비 독성을 유의미하게 낮춘다. 그러나 프롬프트 유형에 따른 독성 감소 효과의 차이가 주목할 만하다. (Ouyang et al., 2022)*
 
 흥미로운 점은 RLHF 학습이 "respectful" 프롬프트에 대해서는 독성을 크게 줄였지만, 명시적으로 독성 내용을 요청하는 프롬프트에 대해서는 여전히 취약점이 존재했다는 것이다. 이는 보상 모델이 "사용자 요청을 따르는 것"과 "유해한 내용을 거부하는 것" 사이의 균형을 완벽하게 학습하지 못했음을 보여준다.
 
@@ -278,7 +278,7 @@ RealToxicityPrompts 벤치마크에서 InstructGPT는 GPT-3에 비해 독성 콘
 RLHF 훈련이 일부 NLP 벤치마크의 성능을 소폭 하락시키는 현상이 관찰되었다. 이를 **정렬 세금(alignment tax)**이라 한다. 아래 그림은 8개 주요 NLP 벤치마크에서 모델별 성능을 종합적으로 비교한 것으로, PPO-ptx가 사전학습 혼합 항을 통해 정렬 세금을 효과적으로 완화하는 모습을 보여준다.
 
 ![8개 주요 NLP 벤치마크에서 모델별 성능 비교 차트](figures/fig_32.png)
-*Figure 32: 정렬 세금 종합 분석 — DROP, HellaSwag, QuAC, RTE, SST, SQuAD V2, 번역(Fr->En), Winograd 등 8개 벤치마크에서 PPO-ptx(빨강), PPO(주황), SFT(초록), GPT(파랑)의 모델 크기별 성능. PPO는 여러 벤치마크에서 GPT 대비 뚜렷한 성능 하락을 보이지만, PPO-ptx는 사전학습 혼합 항을 통해 GPT의 성능을 거의 유지한다. (Ouyang et al., 2022)*
+*Figure 32: 정렬 세금 종합 분석 ) DROP, HellaSwag, QuAC, RTE, SST, SQuAD V2, 번역(Fr->En), Winograd 등 8개 벤치마크에서 PPO-ptx(빨강), PPO(주황), SFT(초록), GPT(파랑)의 모델 크기별 성능. PPO는 여러 벤치마크에서 GPT 대비 뚜렷한 성능 하락을 보이지만, PPO-ptx는 사전학습 혼합 항을 통해 GPT의 성능을 거의 유지한다. (Ouyang et al., 2022)*
 
 | 벤치마크 | GPT-3 175B | PPO (without ptx) | PPO-ptx | 변화 |
 |---------|-----------|-------------------|---------|------|

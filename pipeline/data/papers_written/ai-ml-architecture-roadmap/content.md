@@ -4,7 +4,7 @@
 
 인공지능과 머신러닝은 2017년 Transformer의 등장을 기점으로 폭발적인 발전을 이루었습니다. 단일 아키텍처에서 시작된 혁신은 자연어 처리, 이미지 생성, 컴퓨터 비전, 멀티모달, 자율 에이전트 등 다양한 영역으로 확장되었으며, 각 분야는 고유한 발전 궤적을 그리면서도 서로 깊이 연결되어 있습니다.
 
-이 글은 AI/ML 분야의 **전체 지형도**를 조망합니다. 7개 핵심 영역 — LLM, Diffusion, Vision, SSM, Multimodal, Agent, Technique — 의 발전 흐름과 상호 관계를 정리하고, 각 분야별 학습 경로를 제시합니다.
+이 글은 AI/ML 분야의 **전체 지형도**를 조망합니다. 7개 핵심 영역 ( LLM, Diffusion, Vision, SSM, Multimodal, Agent, Technique ) 의 발전 흐름과 상호 관계를 정리하고, 각 분야별 학습 경로를 제시합니다.
 
 ### 왜 이 로드맵이 필요한가?
 
@@ -18,59 +18,59 @@ AI/ML 분야는 매주 수십 편의 논문이 발표되고, 새로운 모델이
 
 2017년 [Transformer](/post/transformer) 아키텍처의 발표는 현대 AI의 시작점입니다. Self-Attention 메커니즘으로 RNN/LSTM의 순차 처리 한계를 극복했으며, 이후 모든 주요 모델의 근간이 되었습니다.
 
-- **2017**: [Transformer](/post/transformer) — Attention Is All You Need
-- **2018**: [GPT-1](/post/gpt-1) — 단방향 언어 모델의 가능성 입증
-- **2018**: [BERT](/post/bert) — 양방향 사전학습의 혁신
-- **2018**: [ELMo](/post/elmo) — 문맥 기반 단어 임베딩
-- **2019**: [GPT-2](/post/gpt-2) — 대규모 언어 모델의 등장
-- **2019**: [RoBERTa](/post/roberta), [ALBERT](/post/albert), [XLNet](/post/xlnet) — BERT 변형 모델들
+- **2017**: [Transformer](/post/transformer) ( Attention Is All You Need
+- **2018**: [GPT-1](/post/gpt-1) ) 단방향 언어 모델의 가능성 입증
+- **2018**: [BERT](/post/bert) ( 양방향 사전학습의 혁신
+- **2018**: [ELMo](/post/elmo) ) 문맥 기반 단어 임베딩
+- **2019**: [GPT-2](/post/gpt-2) ( 대규모 언어 모델의 등장
+- **2019**: [RoBERTa](/post/roberta), [ALBERT](/post/albert), [XLNet](/post/xlnet) ) BERT 변형 모델들
 
 ### Phase 2: 스케일링의 시대 (2020-2021)
 
 모델 크기와 데이터 규모를 키우면 성능이 지속적으로 향상된다는 [Scaling Laws](/post/scaling-laws)가 발견되면서, 거대 모델 경쟁이 시작되었습니다. 동시에 Diffusion 기반 생성 모델과 Vision Transformer가 등장하며 새로운 패러다임이 열렸습니다.
 
-- **2020**: [GPT-3](/post/gpt-3) — 175B 파라미터, Few-shot Learning
-- **2020**: [DDPM](/post/ddpm) — 확산 모델의 실용화
-- **2020**: [ViT](/post/vit) — Vision Transformer의 등장
-- **2020**: [Scaling Laws](/post/scaling-laws) — 스케일링 법칙의 발견
-- **2020**: [T5](/post/t5) — Text-to-Text 통합 프레임워크
-- **2021**: [CLIP](/post/clip) — 비전-언어 연결의 시작
-- **2021**: [DALL-E 2](/post/dalle-2), [GLIDE](/post/glide) — 텍스트 기반 이미지 생성
-- **2021**: [DeiT](/post/deit) — 효율적 Vision Transformer 학습
-- **2021**: [Chinchilla](/post/chinchilla) — 데이터 중심 스케일링
+- **2020**: [GPT-3](/post/gpt-3) ( 175B 파라미터, Few-shot Learning
+- **2020**: [DDPM](/post/ddpm) ) 확산 모델의 실용화
+- **2020**: [ViT](/post/vit) ( Vision Transformer의 등장
+- **2020**: [Scaling Laws](/post/scaling-laws) ) 스케일링 법칙의 발견
+- **2020**: [T5](/post/t5) ( Text-to-Text 통합 프레임워크
+- **2021**: [CLIP](/post/clip) ) 비전-언어 연결의 시작
+- **2021**: [DALL-E 2](/post/dalle-2), [GLIDE](/post/glide) ( 텍스트 기반 이미지 생성
+- **2021**: [DeiT](/post/deit) ) 효율적 Vision Transformer 학습
+- **2021**: [Chinchilla](/post/chinchilla) ( 데이터 중심 스케일링
 
 ### Phase 3: 대중화와 다양화 (2022-2023)
 
 오픈소스 LLM, Stable Diffusion, 멀티모달 모델이 등장하면서 AI 기술이 대중화되었습니다. 동시에 효율성과 정렬(alignment)이 핵심 연구 주제로 부상했습니다.
 
-- **2022**: [InstructGPT](/post/instructgpt) — RLHF를 통한 모델 정렬
-- **2022**: [LDM/Stable Diffusion](/post/ldm) — 잠재 공간 기반 확산 모델
-- **2022**: [LLaMA](/post/llama) — 오픈소스 LLM의 시작
-- **2022**: [LoRA](/post/lora), [QLoRA](/post/qlora) — 효율적 파인튜닝
-- **2022**: [Flash Attention](/post/flash-attention) — 메모리 효율적 어텐션
-- **2022**: [SAM](/post/sam) — Segment Anything
-- **2022**: [S4](/post/s4) — State Space Models의 등장
-- **2023**: [LLaMA 2](/post/llama-2), [Mistral 7B](/post/mistral-7b), [Mixtral](/post/mixtral) — 오픈소스 LLM 경쟁
-- **2023**: [Mamba](/post/mamba) — 선택적 SSM으로 Transformer에 도전
-- **2023**: [LLaVA](/post/llava) — 비전-언어 멀티모달 모델
-- **2023**: [GPT-4](/post/gpt-4) — 멀티모달 거대 언어 모델
-- **2023**: [DPO](/post/dpo) — 직접 선호도 최적화
+- **2022**: [InstructGPT](/post/instructgpt) ) RLHF를 통한 모델 정렬
+- **2022**: [LDM/Stable Diffusion](/post/ldm) ( 잠재 공간 기반 확산 모델
+- **2022**: [LLaMA](/post/llama) ) 오픈소스 LLM의 시작
+- **2022**: [LoRA](/post/lora), [QLoRA](/post/qlora) ( 효율적 파인튜닝
+- **2022**: [Flash Attention](/post/flash-attention) ) 메모리 효율적 어텐션
+- **2022**: [SAM](/post/sam) ( Segment Anything
+- **2022**: [S4](/post/s4) ) State Space Models의 등장
+- **2023**: [LLaMA 2](/post/llama-2), [Mistral 7B](/post/mistral-7b), [Mixtral](/post/mixtral) ( 오픈소스 LLM 경쟁
+- **2023**: [Mamba](/post/mamba) ) 선택적 SSM으로 Transformer에 도전
+- **2023**: [LLaVA](/post/llava) ( 비전-언어 멀티모달 모델
+- **2023**: [GPT-4](/post/gpt-4) ) 멀티모달 거대 언어 모델
+- **2023**: [DPO](/post/dpo) ( 직접 선호도 최적화
 
 ### Phase 4: 전문화와 에이전트 (2024-현재)
 
 각 분야가 전문화되면서 추론(reasoning), 멀티모달 통합, 자율 에이전트 등 새로운 방향으로 발전하고 있습니다.
 
-- **2024**: [DeepSeek-V2](/post/deepseek-v2), [DeepSeek-V3](/post/deepseek-v3) — 효율적 MoE 아키텍처
-- **2024**: [DeepSeek-R1](/post/deepseek-r1) — 추론 특화 모델
-- **2024**: [Qwen2](/post/qwen2), [Qwen2.5](/post/qwen2-5) — 다국어 LLM
-- **2024**: [Mamba-2](/post/mamba-2), [Jamba](/post/jamba) — SSM-Transformer 하이브리드
-- **2024**: [SD3](/post/sd3), [FLUX](/post/flux) — 차세대 이미지 생성
-- **2024**: [Sora](/post/sora) — 비디오 생성
-- **2024**: [ReAct](/post/react), [AutoGen](/post/autogen) — AI Agent 프레임워크
-- **2025**: [Claude 4](/post/claude-4), [GPT-5](/post/gpt-5) — 프론티어 모델의 진화
-- **2025**: [Gemini 2.5](/post/gemini-2-5) — 네이티브 멀티모달
-- **2025**: [A2A](/post/a2a), [MCP](/post/mcp) — 에이전트 통신 프로토콜
-- **2025**: [Mamba-3](/post/mamba-3) — SSM의 지속적 발전
+- **2024**: [DeepSeek-V2](/post/deepseek-v2), [DeepSeek-V3](/post/deepseek-v3) ) 효율적 MoE 아키텍처
+- **2024**: [DeepSeek-R1](/post/deepseek-r1) ( 추론 특화 모델
+- **2024**: [Qwen2](/post/qwen2), [Qwen2.5](/post/qwen2-5) ) 다국어 LLM
+- **2024**: [Mamba-2](/post/mamba-2), [Jamba](/post/jamba) ( SSM-Transformer 하이브리드
+- **2024**: [SD3](/post/sd3), [FLUX](/post/flux) ) 차세대 이미지 생성
+- **2024**: [Sora](/post/sora) ( 비디오 생성
+- **2024**: [ReAct](/post/react), [AutoGen](/post/autogen) ) AI Agent 프레임워크
+- **2025**: [Claude 4](/post/claude-4), [GPT-5](/post/gpt-5) ( 프론티어 모델의 진화
+- **2025**: [Gemini 2.5](/post/gemini-2-5) ) 네이티브 멀티모달
+- **2025**: [A2A](/post/a2a), [MCP](/post/mcp) ( 에이전트 통신 프로토콜
+- **2025**: [Mamba-3](/post/mamba-3) ) SSM의 지속적 발전
 
 ---
 

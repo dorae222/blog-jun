@@ -140,7 +140,7 @@ $$\mathcal{L}_{\text{ridge}} = -\frac{1}{n} \sum_{i=1}^n \left[ y_i \log \hat{y}
 
 모든 계수를 0 방향으로 축소하지만 완전히 0으로 만들지는 않는다. sklearn에서 `C = 1/λ` 파라미터로 제어하며 기본값은 L2이다.
 
-### L1 정규화 (Lasso) — Feature Selection 효과
+### L1 정규화 (Lasso), Feature Selection 효과
 
 $$\mathcal{L}_{\text{lasso}} = -\frac{1}{n} \sum_{i=1}^n \left[ y_i \log \hat{y}_i + (1-y_i) \log(1-\hat{y}_i) \right] + \lambda \|\mathbf{w}\|_1$$
 

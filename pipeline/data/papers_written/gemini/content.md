@@ -25,7 +25,7 @@ Gemini의 가장 핵심적인 차별점은 **네이티브 멀티모달(natively 
 
 ### Google의 AI 통합
 
-Gemini는 Google의 두 핵심 AI 연구 조직 — Google Brain과 DeepMind — 의 합병 이후 첫 번째 주력 프로젝트입니다. Google Brain은 Transformer 아키텍처([[attention-is-all-you-need]])의 발상지이며 PaLM, Gemma 등의 LLM을 개발했고, DeepMind는 AlphaGo, AlphaFold 등의 혁신적 시스템으로 알려져 있습니다.
+Gemini는 Google의 두 핵심 AI 연구 조직 ( Google Brain과 DeepMind ) 의 합병 이후 첫 번째 주력 프로젝트입니다. Google Brain은 Transformer 아키텍처([[attention-is-all-you-need]])의 발상지이며 PaLM, Gemma 등의 LLM을 개발했고, DeepMind는 AlphaGo, AlphaFold 등의 혁신적 시스템으로 알려져 있습니다.
 
 이 합병은 두 조직의 강점을 결합하려는 전략적 결정이었습니다:
 - **Google Brain**: 대규모 학습 인프라(TPU), Transformer 아키텍처 전문성
@@ -249,13 +249,13 @@ Gemini Pro의 다국어 음성 인식 성능은 전용 ASR 모델인 Whisper와 
 Gemini Ultra는 수학적 추론과 코딩에서도 강력한 성능을 보입니다:
 
 **수학적 추론:**
-- GSM8K (8-shot, CoT): 94.4% — GPT-4(92.0%)를 초과
-- MATH (4-shot): 53.2% — GPT-4(52.9%)와 동등
+- GSM8K (8-shot, CoT): 94.4% ( GPT-4(92.0%)를 초과
+- MATH (4-shot): 53.2% ) GPT-4(52.9%)와 동등
 - AMC 10/12: 상위 수준의 수학 경시대회에서 경쟁력 있는 성능
 
 **코딩 능력:**
-- HumanEval: 74.4% — GPT-4(67.0%)를 초과
-- Natural2Code: 74.9% — 자연어에서 코드로의 변환에서 최고 수준
+- HumanEval: 74.4% ( GPT-4(67.0%)를 초과
+- Natural2Code: 74.9% ) 자연어에서 코드로의 변환에서 최고 수준
 
 ### 다국어 성능
 

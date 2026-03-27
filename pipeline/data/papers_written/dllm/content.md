@@ -19,7 +19,7 @@ dLLM(Simple Diffusion Language Modeling)은 2026년 arXiv에 발표된 논문으
 
 $$\mathcal{L}_{AR} = -\sum_{t=1}^{T} \log p_\theta(x_t \mid x_1, \ldots, x_{t-1})$$
 
-이 방식은 강력하지만 두 가지 구조적 한계가 있다. 첫째, **단방향 의존성** — 각 토큰은 왼쪽 컨텍스트만 볼 수 있어 양방향 정보를 활용하지 못한다. 둘째, **순차 생성** — 토큰을 하나씩 생성해야 하므로 병렬화가 어렵다.
+이 방식은 강력하지만 두 가지 구조적 한계가 있다. 첫째, **단방향 의존성** ( 각 토큰은 왼쪽 컨텍스트만 볼 수 있어 양방향 정보를 활용하지 못한다. 둘째, **순차 생성** ) 토큰을 하나씩 생성해야 하므로 병렬화가 어렵다.
 
 ### 확산 모델의 잠재력
 
@@ -59,8 +59,8 @@ $$q(x_t \mid x_0) = \text{Cat}(x_t; (1-\alpha_t) \cdot \mathbf{e}_{x_0} + \alpha
 dLLM의 핵심은 모델 $p_\theta(x_0 \mid x_t, t)$가 **현재 시간 $t$를 명시적으로 조건으로 받는다는 것**이다. 이는 모델이 자신이 얼마나 마스크된 입력을 처리하고 있는지를 알고, 적절한 수준의 불확실성을 갖고 예측하도록 한다.
 
 기존 BERT식 마스크 언어 모델링(MLM)과의 차이점:
-- BERT: $p_\theta(x_0 \mid x_t)$ — 시간 정보 없음, 항상 15% 마스크
-- dLLM: $p_\theta(x_0 \mid x_t, t)$ — 시간 $t$에 따라 다른 마스크 비율 처리
+- BERT: $p_\theta(x_0 \mid x_t)$ ( 시간 정보 없음, 항상 15% 마스크
+- dLLM: $p_\theta(x_0 \mid x_t, t)$ ) 시간 $t$에 따라 다른 마스크 비율 처리
 
 시간 $t$는 sinusoidal 임베딩 또는 learned 임베딩을 통해 트랜스포머의 각 레이어에 주입된다. 이 차이가 단순해 보이지만, 시간 조건화의 유무가 확산 LM의 성능을 결정짓는 핵심 요인임을 논문은 실험적으로 입증한다.
 
@@ -343,7 +343,7 @@ class SinusoidalTimeEmbedding(nn.Module):
 
 
 class AdaLN(nn.Module):
-    """Adaptive LayerNorm — 시간 임베딩으로 scale/shift 조정."""
+    """Adaptive LayerNorm ( 시간 임베딩으로 scale/shift 조정."""
 
     def __init__(self, d_model: int, time_dim: int):
         super().__init__()
@@ -578,8 +578,8 @@ def generate(
 
 ## 관련 문서
 
-- [[mdlm|Simple and Effective Masked Diffusion Language Models (MDLM)]] — dLLM의 직접적 전작
-- [[llada|Large Language Diffusion with mAsking (LLaDA)]] — 대규모 마스크 확산 LM
-- [[d3pm|Structured Denoising Diffusion Models in Discrete State-Spaces (D3PM)]] — 이산 확산의 이론적 기반
-- [[sedd|Score Entropy Discrete Diffusion (SEDD)]] — 이산 스코어 매칭 기반 접근
-- [[bd3lm|Block Diffusion (BD3LM)]] — AR과 확산의 블록 단위 혼합
+- [[mdlm|Simple and Effective Masked Diffusion Language Models (MDLM)]] ) dLLM의 직접적 전작
+- [[llada|Large Language Diffusion with mAsking (LLaDA)]] ( 대규모 마스크 확산 LM
+- [[d3pm|Structured Denoising Diffusion Models in Discrete State-Spaces (D3PM)]] ) 이산 확산의 이론적 기반
+- [[sedd|Score Entropy Discrete Diffusion (SEDD)]] ( 이산 스코어 매칭 기반 접근
+- [[bd3lm|Block Diffusion (BD3LM)]] ) AR과 확산의 블록 단위 혼합

@@ -42,7 +42,7 @@ $$\mathcal{L} = \underbrace{\frac{1}{l}\sum_{i=1}^{l} \ell(f_\theta(x_i), y_i)}_
 
 $\tau$는 신뢰도 임계값으로, 확신도가 높은 샘플만 pseudo-label로 사용해 오류 전파를 억제한다.
 
-### 3. 대조학습 (Contrastive Learning) 목적함수 — SimCLR
+### 3. 대조학습 (Contrastive Learning) 목적함수, SimCLR
 
 같은 샘플 $x$의 두 증강(augmentation) $\tilde{x}_i, \tilde{x}_j$를 양성 쌍(positive pair)으로, 배치 내 나머지를 음성 쌍(negative pair)으로 정의한다. NT-Xent 손실:
 
