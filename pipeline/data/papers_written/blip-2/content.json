@@ -1,0 +1,28 @@
+{
+  "slug": "blip-2",
+  "title": "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models",
+  "title_ko": "BLIP-2: 동결된 이미지 인코더와 대규모 언어 모델을 활용한 부트스트래핑 언어-이미지 사전학습",
+  "category_slug": "multimodal",
+  "summary": "BLIP-2는 동결된(frozen) 이미지 인코더와 대규모 언어 모델 사이에 경량 Q-Former 모듈을 삽입하여, 시각-언어 정렬을 효율적으로 달성하는 프레임워크입니다. 2단계 부트스트래핑 전략 - (1) 비전-언어 표현 학습, (2) 비전-언어 생성 학습 - 을 통해 전체 파라미터의 일부만 학습하면서도 VQAv2, image captioning 등에서 기존 대비 54배 적은 학습 파라미터로 SOTA를 달성합니다.",
+  "tags": [
+    "BLIP-2",
+    "Q-Former",
+    "vision-language",
+    "multimodal",
+    "frozen-encoder",
+    "bootstrapping",
+    "image-captioning",
+    "VQA",
+    "contrastive-learning",
+    "LLM",
+    "ViT",
+    "OPT",
+    "FlanT5",
+    "ICML2023"
+  ],
+  "is_pinned": false,
+  "arxiv_url": "https://arxiv.org/abs/2301.12597",
+  "venue": "ICML 2023",
+  "paper_year": 2023,
+  "paper_authors": "Junnan Li, Dongxu Li, Silvio Savarese, Steven Hoi"
+}
