@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('me/', views.current_user, name='current-user'),
+    path('social/callback/', views.social_login_callback, name='social-login-callback'),
 ]

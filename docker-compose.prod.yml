@@ -22,6 +22,7 @@ services:
   redis:
     image: redis:7-alpine
     restart: always
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -45,6 +46,11 @@ services:
       - REDIS_URL=redis://redis:6379/0
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - SOCIAL_LOGIN_CALLBACK_URL=${SOCIAL_LOGIN_CALLBACK_URL:-https://blog.dorae222.com/auth/callback}
     volumes:
       - media_data:/app/media
       - logs:/app/logs

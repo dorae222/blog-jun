@@ -13,16 +13,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # Third party
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
     'django_filters',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
     # Local
-    'blog',
+    'blog.apps.BlogConfig',
     'accounts',
+    'comments.apps.CommentsConfig',
     'operations',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -35,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'operations.middleware.RequestLoggingMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -110,4 +120,41 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': True,
 }
+
+# django-allauth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True  # OAuth 페이지로 바로 리다이렉트
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']  # email 선택, password 선택
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'APP': {
+            'client_id': os.environ.get('GITHUB_CLIENT_ID', ''),
+            'secret': os.environ.get('GITHUB_CLIENT_SECRET', ''),
+        },
+        'SCOPE': ['read:user'],
+    },
+    'google': {
+        'APP': {
+            'client_id': os.environ.get('GOOGLE_CLIENT_ID', ''),
+            'secret': os.environ.get('GOOGLE_CLIENT_SECRET', ''),
+        },
+        'SCOPE': ['profile', 'email'],
+    },
+}
+
+# 소셜 로그인 완료 후 프론트엔드로 리다이렉트
+SOCIAL_LOGIN_CALLBACK_URL = os.environ.get(
+    'SOCIAL_LOGIN_CALLBACK_URL', 'http://localhost:3000/auth/callback'
+)
+# allauth 어댑터
+SOCIALACCOUNT_ADAPTER = 'accounts.adapters.SocialAccountAdapter'
+
+# allauth 로그인 성공 후 JWT 콜백으로 리다이렉트
+LOGIN_REDIRECT_URL = '/api/auth/social/callback/'
 

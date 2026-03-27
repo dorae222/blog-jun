@@ -12,6 +12,7 @@ import TableOfContents from '../components/blog/TableOfContents'
 import TagChip from '../components/common/TagChip'
 import ArchitectureLineageCard from '../components/blog/ArchitectureLineageCard'
 import PostLinksSection from '../components/blog/PostLinksSection'
+import CommentSection from '../components/blog/CommentSection'
 import { getPost } from '../api/posts'
 import { CATEGORY_ROUTE_MAP } from '../data/categories'
 
@@ -251,6 +252,9 @@ export default function PostView() {
               </div>
             </div>
           )}
+
+          {/* 댓글 */}
+          <CommentSection postSlug={slug} />
         </article>
 
         {/* Sidebar TOC (데스크탑) */}
