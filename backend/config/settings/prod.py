@@ -28,7 +28,11 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': os.environ.get('REDIS_URL', 'redis://redis:6379/0'),
-    }
+    },
+    'throttle': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': os.environ.get('REDIS_URL', 'redis://redis:6379/0').rsplit('/', 1)[0] + '/1',
+    },
 }
 
 # Security
@@ -41,16 +45,17 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = 'Lax'
 
-# DRF Throttling
+# DRF Throttling (Redis-backed — 워커 간 공유)
 REST_FRAMEWORK = {
     **REST_FRAMEWORK,
     'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle',
+        'blog.throttles.RedisAnonRateThrottle',
+        'blog.throttles.RedisUserRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
         'anon': '100/hour',
         'user': '1000/hour',
+        'comment': '10/hour',
     },
 }
 

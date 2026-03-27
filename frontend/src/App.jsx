@@ -13,6 +13,7 @@ import PostView from './pages/PostView'
 import PostsPage from './pages/PostsPage'
 import About from './pages/About'
 import Login from './pages/Login'
+import AuthCallback from './pages/AuthCallback'
 import NotFound from './pages/NotFound'
 
 const Editor = lazy(() => import('./pages/Editor'))
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/editor/:slug" element={<Suspense fallback={<div className="flex-1 flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>Loading...</div>}><Editor /></Suspense>} />
             <Route path="/dashboard" element={<Suspense fallback={<div className="flex-1 flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>Loading...</div>}><Dashboard /></Suspense>} />
             <Route path="/login" element={<Login />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/architectures/tree" element={<Suspense fallback={<div className="flex-1 flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>Loading...</div>}><ArchitectureTreePage /></Suspense>} />
             {/* 레거시 경로 리다이렉트 */}
             <Route path="/explore" element={<Navigate to="/posts" replace />} />

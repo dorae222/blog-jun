@@ -29,6 +29,14 @@ const useAuth = create((set) => ({
     set({ user })
   },
 
+  /** 소셜 로그인 콜백에서 토큰 설정 */
+  handleSocialCallback: async (access, refresh) => {
+    localStorage.setItem('access_token', access)
+    localStorage.setItem('refresh_token', refresh)
+    const { data: user } = await getCurrentUser()
+    set({ user })
+  },
+
   logout: () => {
     localStorage.removeItem('access_token')
     localStorage.removeItem('refresh_token')
