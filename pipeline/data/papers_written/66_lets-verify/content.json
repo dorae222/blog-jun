@@ -1,0 +1,25 @@
+{
+  "id": "66",
+  "title": "Let's Verify Step by Step",
+  "title_ko": "단계별로 검증하자",
+  "slug": "lets-verify",
+  "category": "reasoning",
+  "sub_category": "reasoning",
+  "category_slug": "reasoning",
+  "year": 2023,
+  "venue": "ICLR 2024",
+  "authors": "Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike, John Schulman, Ilya Sutskever, Karl Cobbe",
+  "arxiv_url": "https://arxiv.org/abs/2305.20050",
+  "summary": "수학 추론에서 과정 기반 보상 모델(PRM)이 결과 기반 보상 모델(ORM)보다 우수한 성능을 보임을 대규모 실험으로 입증합니다. 80만 개 단계별 레이블로 구성된 PRM800K 데이터셋을 공개하며, 프로세스 감독이 더 정렬된(aligned) AI를 만드는 데 유리하다는 것을 보여줍니다.",
+  "tags": [
+    "process-reward-model",
+    "outcome-reward-model",
+    "math-reasoning",
+    "PRM800K",
+    "RLHF",
+    "verification",
+    "alignment"
+  ],
+  "related_architecture": null,
+  "is_pinned": true
+}
