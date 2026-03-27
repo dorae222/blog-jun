@@ -85,9 +85,8 @@ blog-jun/
 |------|------|
 | `pipeline/scanner.py` | Obsidian 볼트 스캔 (마크다운 수집) |
 | `pipeline/preprocessor.py` | 전처리 (메타데이터 추출, 정리) |
-| `pipeline/batch_prepare.py` | OpenAI Batch API 요청 준비 |
-| `pipeline/batch_process.py` | Batch API 실행 + 결과 수집 |
-| `pipeline/batch_import.py` | 처리 결과 → Django DB import |
+| `pipeline/importers/` | 컨텐츠 임포트 (papers, architectures, ml, colab, data) |
+| `pipeline/generators/` | 이미지/컨텐츠 생성 (cover_templates, paper_svgs) |
 | `pipeline/embedding_generator.py` | 임베딩 생성 (RAG용) |
 | `pipeline/image_handler.py` | 이미지 처리 |
 
