@@ -2,7 +2,7 @@
   "slug": "glide",
   "title": "GLIDE",
   "title_ko": "GLIDE: 확산 기반 이미지 생성 모델",
-  "summary": "GLIDE(Guided Language to Image Diffusion for Generation and Editing)는 2021년 OpenAI가 발표한 텍스트 조건부 이미지 생성 모델로, 텍스트 가이던스를 확산 모델에 통합하는 두 가지 방법—Classifier Guidance와 Classifier-Free Guidance(CFG)—을 비교하고 CFG가 더 우월함을 실증한 중요한 연구이다. GLIDE는 35억 파라미터 규모의 ADM U-Net에 텍스트 인코더(Transformer)를 결합하였다. 텍스트 토큰의 최종 임베딩은 어텐션 레이어에서 Cross-Attention으로 사용되고, 별도의 토큰을 AdaGN에 주입하여 각 U-Net 레이어가 텍스트 정보를 풍부하게 활용하도록 설계하였다.",
+  "summary": "GLIDE(Guided Language to Image Diffusion for Generation and Editing)는 2021년 OpenAI가 발표한 텍스트 조건부 이미지 생성 모델로, 텍스트 가이던스를 확산 모델에 통합하는 두 가지 방법-Classifier Guidance와 Classifier-Free Guidance(CFG)-을 비교하고 CFG가 더 우월함을 실증한 중요한 연구이다. GLIDE는 35억 파라미터 규모의 ADM U-Net에 텍스트 인코더(Transformer)를 결합하였다. 텍스트 토큰의 최종 임베딩은 어텐션 레이어에서 Cross-Attention으로 사용되고, 별도의 토큰을 AdaGN에 주입하여 각 U-Net 레이어가 텍스트 정보를 풍부하게 활용하도록 설계하였다.",
   "tags": [
     "Classifier-Free Guidance",
     "Cross-Attention",

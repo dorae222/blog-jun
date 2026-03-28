@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Flame } from 'lucide-react'
 import { searchPosts, getPopularPosts } from '../../api/posts'
+import InlineMath from './InlineMath'
 
 const isMac = typeof navigator !== 'undefined' && navigator.platform?.includes('Mac')
 
@@ -207,7 +208,7 @@ export default function SearchModal({ isOpen, onClose }) {
                   </div>
                   {item.summary && (
                     <p className="text-xs line-clamp-1" style={{ color: 'var(--text-secondary)' }}>
-                      {item.summary}
+                      <InlineMath text={item.summary} />
                     </p>
                   )}
                   {item.tags && item.tags.length > 0 && (
