@@ -1,0 +1,10 @@
+{
+  "slug": "opencode-guide-03-advanced",
+  "title": "OpenCode Advanced Usage",
+  "title_ko": "OpenCode 고급 활용: LSP 통합과 커스텀 설정",
+  "summary": "OpenCode의 LSP 기반 코드 분석, 커스텀 프로바이더 설정, SQLite 세션 저장, 테마 커스터마이징 등 고급 기능을 다룬다.",
+  "tags": ["OpenCode", "LSP", "커스텀 설정", "SQLite", "고급 활용"],
+  "category_slug": "tool",
+  "series_slug": "opencode-guide",
+  "series_order": 3
+}
