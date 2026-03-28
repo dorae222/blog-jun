@@ -2,7 +2,7 @@
   "slug": "h3",
   "title": "H3",
   "title_ko": "H3: 상태 공간 기반 시퀀스 모델",
-  "summary": "H3(Hungry Hungry Hippos)는 2022년 Stanford Hazy Research 그룹이 발표한 모델로, SSM을 언어 모델링에 본격적으로 적용하려 한 첫 대규모 시도이다. S4를 기반으로 하면서 Transformer가 잘하는 두 가지—인접 토큰 비교와 특정 토큰 기억—를 SSM으로 구현하기 위해 이중 SSM 구조를 설계했다. 하나의 shift SSM이 인접 토큰 패턴을, 또 다른 SSM이 장거리 의존성을 담당하며 이 두 출력을 multiplicative interaction으로 결합한다.",
+  "summary": "H3(Hungry Hungry Hippos)는 2022년 Stanford Hazy Research 그룹이 발표한 모델로, SSM을 언어 모델링에 본격적으로 적용하려 한 첫 대규모 시도이다. S4를 기반으로 하면서 Transformer가 잘하는 두 가지-인접 토큰 비교와 특정 토큰 기억-를 SSM으로 구현하기 위해 이중 SSM 구조를 설계했다. 하나의 shift SSM이 인접 토큰 패턴을, 또 다른 SSM이 장거리 의존성을 담당하며 이 두 출력을 multiplicative interaction으로 결합한다.",
   "tags": [
     "FlashConv",
     "H3",

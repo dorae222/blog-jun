@@ -1,4 +1,5 @@
 import { ExternalLink, BookOpen } from 'lucide-react'
+import InlineMath from '../common/InlineMath'
 
 export default function PaperSummaryBox({ post }) {
   const arch = post.architecture_entries?.[0]
@@ -17,7 +18,7 @@ export default function PaperSummaryBox({ post }) {
 
       {post.summary && (
         <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
-          {post.summary}
+          <InlineMath text={post.summary} />
         </p>
       )}
 
