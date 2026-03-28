@@ -10,19 +10,19 @@ Reflexion의 핵심 통찰은 **"인간은 실패에서 배우며, 언어가 그
 
 ReAct는 Thought-Action-Observation의 단일 시도에서 최선의 답을 구하지만, 복잡한 문제에서는 한 번의 시도로 최적의 답을 찾지 못하는 경우가 빈번하다. Reflexion은 이 한계를 극복하여, 실패한 시도의 궤적(trajectory)과 평가 결과를 분석하고, 구체적인 개선 방향을 자연어로 생성하여 다음 시도의 컨텍스트에 주입한다. 이를 통해 동일한 기반 모델 위에서 별도의 가중치 업데이트 없이도 **반복 시도를 통한 지속적 성능 향상**을 실현한다. HotpotQA에서 17.6%p, HumanEval(코드 생성)에서 24.0%p의 향상은 이 접근법의 효과를 실증한다.
 
-![Reflexion 아키텍처 — Actor, Evaluator, Self-Reflection과 언어적 메모리 기반 자기 개선 에이전트 구조](figures/architecture.svg)
+![Reflexion 아키텍처 - Actor, Evaluator, Self-Reflection과 언어적 메모리 기반 자기 개선 에이전트 구조](figures/architecture.svg)
 
-*Figure 1: Reflexion 아키텍처 — Actor가 환경과 상호작용하고 Evaluator가 피드백을 생성하며, Self-Reflection이 실패 원인을 언어로 분석하여 장기 메모리에 저장하고 다음 시도에 활용하는 언어적 강화 학습 프레임워크이다.*
+*Figure 1: Reflexion 아키텍처 - Actor가 환경과 상호작용하고 Evaluator가 피드백을 생성하며, Self-Reflection이 실패 원인을 언어로 분석하여 장기 메모리에 저장하고 다음 시도에 활용하는 언어적 강화 학습 프레임워크이다.*
 
-![Reflexion 개요 — 의사결정, 프로그래밍, 추론 태스크에서의 적용](figures/fig_1.png)
-*Figure 1: Reflexion 작동 과정 — (a) 태스크 수행, (b) 궤적 기록, (c) 평가, (d) 자기 반성, (e) 개선된 다음 시도. 의사결정, 코드 생성, 추론 세 도메인에서 동일 프레임워크 적용. (Source: arXiv 2303.11366)*
+![Reflexion 개요 - 의사결정, 프로그래밍, 추론 태스크에서의 적용](figures/fig_1.png)
+*Figure 1: Reflexion 작동 과정 - (a) 태스크 수행, (b) 궤적 기록, (c) 평가, (d) 자기 반성, (e) 개선된 다음 시도. 의사결정, 코드 생성, 추론 세 도메인에서 동일 프레임워크 적용. (Source: arXiv 2303.11366)*
 
 ## 아키텍처 상세
 
 Reflexion의 아키텍처는 세 개의 핵심 컴포넌트와 하나의 메모리 시스템으로 구성된다.
 
-![Reflexion 에이전트 아키텍처 — Actor, Evaluator, Self-Reflection, 메모리 구조](figures/fig_2.png)
-*Figure 2: Reflexion 에이전트 구조 — Actor가 환경과 상호작용하고, Evaluator가 내부/외부 피드백을 생성하며, Self-Reflection이 반성 텍스트를 장기 메모리에 저장하여 다음 시도에 활용. (Source: arXiv 2303.11366)*
+![Reflexion 에이전트 아키텍처 - Actor, Evaluator, Self-Reflection, 메모리 구조](figures/fig_2.png)
+*Figure 2: Reflexion 에이전트 구조 - Actor가 환경과 상호작용하고, Evaluator가 내부/외부 피드백을 생성하며, Self-Reflection이 반성 텍스트를 장기 메모리에 저장하여 다음 시도에 활용. (Source: arXiv 2303.11366)*
 
 ### Actor-Evaluator-Self-Reflection 삼중 구조
 
@@ -124,10 +124,10 @@ def is_palindrome(s: str) -> bool:
 | Fever | 사실 검증 | 64.6% | **77.3%** | +12.7%p |
 
 ![ALFWorld에서의 반복 시도에 따른 성공률 향상](figures/fig_4.png)
-*Figure 3: ALFWorld 성공률 — ReAct + Reflexion(파란색)이 시도 횟수 증가에 따라 ReAct 단독(회색) 대비 약 20%p 이상 성공률 향상. 반복 반성의 누적 효과를 시각적으로 확인. (Source: arXiv 2303.11366)*
+*Figure 3: ALFWorld 성공률 - ReAct + Reflexion(파란색)이 시도 횟수 증가에 따라 ReAct 단독(회색) 대비 약 20%p 이상 성공률 향상. 반복 반성의 누적 효과를 시각적으로 확인. (Source: arXiv 2303.11366)*
 
 ![HotpotQA에서의 Reflexion 성능 향상](figures/fig_6_1.png)
-*Figure 4: HotpotQA 성공률 — ReAct + Reflexion(파란색)이 6회 시도 시 55%로, ReAct 단독(회색, 34%) 대비 21%p 향상. CoT + Reflexion(빨간색)도 일관된 향상을 보임. (Source: arXiv 2303.11366)*
+*Figure 4: HotpotQA 성공률 - ReAct + Reflexion(파란색)이 6회 시도 시 55%로, ReAct 단독(회색, 34%) 대비 21%p 향상. CoT + Reflexion(빨간색)도 일관된 향상을 보임. (Source: arXiv 2303.11366)*
 
 특히 HumanEval에서 91%의 성공률은 Reflexion의 자기 수정 루프가 코드 생성에서 매우 효과적임을 보여준다. 테스트 실패 메시지가 명확한 오류 정보를 제공하므로, Self-Reflection 모듈이 구체적이고 실행 가능한 개선 방향을 생성할 수 있기 때문이다. ALFWorld에서의 19%p 향상은 시퀀셜 의사결정에서도 반복 시도와 반성이 효과적임을 입증한다.
 
@@ -146,4 +146,4 @@ Reflexion은 ReAct의 단일 시도 한계를 자기 반성 메커니즘으로 �
 
 ## 관련 문서
 
-- [[react|ReAct]] — 발전 기반
+- [[react|ReAct]] - 발전 기반

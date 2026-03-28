@@ -10,8 +10,8 @@ BERT의 MLM은 개별 토큰을 무작위로 마스킹하므로, 모델이 "바�
 
 아래 그림은 BERT와 ERNIE의 마스킹 전략 차이를 직관적으로 보여준다. BERT는 개별 토큰을 마스킹하는 반면, ERNIE는 개체 전체를 마스킹하여 세계 지식 활용을 유도한다.
 
-![BERT vs ERNIE 마스킹 전략 비교 — BERT는 토큰 수준, ERNIE는 개체 수준 마스킹](figures/fig_1.png)
-*Figure 1: BERT vs ERNIE 마스킹 전략 — BERT는 "Harry Potter is a series of fantasy novel by J.K. Rowling"에서 개별 토큰을 무작위로 마스킹하여 표면적 패턴만으로 복원 가능하지만, ERNIE는 "Harry Potter", "a series of", "J. K. Rowling" 등 개체/구문 단위를 통째로 마스킹하여 세계 지식을 활용해야만 복원할 수 있다. (Source: Sun et al., 2019)*
+![BERT vs ERNIE 마스킹 전략 비교 - BERT는 토큰 수준, ERNIE는 개체 수준 마스킹](figures/fig_1.png)
+*Figure 1: BERT vs ERNIE 마스킹 전략 - BERT는 "Harry Potter is a series of fantasy novel by J.K. Rowling"에서 개별 토큰을 무작위로 마스킹하여 표면적 패턴만으로 복원 가능하지만, ERNIE는 "Harry Potter", "a series of", "J. K. Rowling" 등 개체/구문 단위를 통째로 마스킹하여 세계 지식을 활용해야만 복원할 수 있다. (Source: Sun et al., 2019)*
 
 ## 아키텍처 상세
 
@@ -32,8 +32,8 @@ ERNIE의 기본 아키텍처는 BERT와 동일한 Transformer Encoder이다.
 
 ERNIE의 핵심 혁신은 단어, 구문, 개체의 3가지 수준에서 단계적으로 마스킹을 수행하는 것이다. 아래 그림은 동일 문장에 대한 세 가지 마스킹 수준을 비교한다.
 
-![ERNIE 세 가지 마스킹 수준 — 토큰, 구문, 개체 단위의 단계적 마스킹](figures/fig_2.png)
-*Figure 2: ERNIE 마스킹 수준 비교 — 동일한 문장에 대해 Basic(토큰 수준), Phrase(구문 수준), Entity(개체 수준) 마스킹이 적용되는 예시. 마스킹 수준이 높아질수록 모델이 더 깊은 지식을 활용해야 한다. (Source: Sun et al., 2019)*
+![ERNIE 세 가지 마스킹 수준 - 토큰, 구문, 개체 단위의 단계적 마스킹](figures/fig_2.png)
+*Figure 2: ERNIE 마스킹 수준 비교 - 동일한 문장에 대해 Basic(토큰 수준), Phrase(구문 수준), Entity(개체 수준) 마스킹이 적용되는 예시. 마스킹 수준이 높아질수록 모델이 더 깊은 지식을 활용해야 한다. (Source: Sun et al., 2019)*
 
 #### 1. Basic-level Masking
 
@@ -68,8 +68,8 @@ BERT와 동일한 **토큰 수준** 무작위 마스킹이다. 개별 문자나 
 
 ERNIE는 대화 맥락 학습을 위한 추가 태스크인 **DLM**을 도입했다. 아래 그림은 DLM의 구조를 보여준다.
 
-![ERNIE Dialogue Language Model 구조 — 다중 턴 대화에서의 마스크 예측](figures/fig_3.png)
-*Figure 3: Dialogue Language Model(DLM) — 다중 턴 대화 데이터에서 `[SEP]`으로 구분된 질문-응답 쌍을 입력으로 받아, 마스킹된 토큰을 대화 맥락에 기반하여 예측한다. 이를 통해 대화 이해 능력을 사전 학습 단계에 내재화한다. (Source: Sun et al., 2019)*
+![ERNIE Dialogue Language Model 구조 - 다중 턴 대화에서의 마스크 예측](figures/fig_3.png)
+*Figure 3: Dialogue Language Model(DLM) - 다중 턴 대화 데이터에서 `[SEP]`으로 구분된 질문-응답 쌍을 입력으로 받아, 마스킹된 토큰을 대화 맥락에 기반하여 예측한다. 이를 통해 대화 이해 능력을 사전 학습 단계에 내재화한다. (Source: Sun et al., 2019)*
 
 다중 턴 대화 데이터에서 질문-응답 쌍의 관련성을 판단하는 태스크로, 개방형 대화 이해 능력을 사전 학습 단계에 내재화한다.
 
@@ -89,8 +89,8 @@ ERNIE 2.0은 7가지 학습 태스크를 동시에 학습하는 **Continual Mult
 
 기존 BERT가 순수 텍스트 통계에만 의존하는 반면, ERNIE는 개체명, 구문 구조, 지식 그래프 정보를 학습 과정에 통합한다. 아래 클로즈 테스트 결과는 ERNIE가 BERT 대비 세계 지식을 얼마나 더 잘 내재화했는지를 보여준다.
 
-![ERNIE vs BERT 클로즈 테스트 비교 — 세계 지식 활용 능력 차이](figures/fig_4.png)
-*Figure 4: 클로즈 테스트 비교 — 다양한 문장에서 마스킹된 부분을 ERNIE와 BERT가 예측한 결과. ERNIE는 개체/구문 수준 마스킹을 통해 학습된 세계 지식을 활용하여 BERT보다 정확한 예측을 생성한다. (Source: Sun et al., 2019)*
+![ERNIE vs BERT 클로즈 테스트 비교 - 세계 지식 활용 능력 차이](figures/fig_4.png)
+*Figure 4: 클로즈 테스트 비교 - 다양한 문장에서 마스킹된 부분을 ERNIE와 BERT가 예측한 결과. ERNIE는 개체/구문 수준 마스킹을 통해 학습된 세계 지식을 활용하여 BERT보다 정확한 예측을 생성한다. (Source: Sun et al., 2019)*
 
 이는 모델이 단순한 언어 패턴을 넘어 세계 지식을 내재화하도록 유도하는 선구적 접근법이다.
 
@@ -173,4 +173,4 @@ ERNIE의 "지식 통합 사전 학습" 개념은 이후 ERNIE 3.0(2021, 100B+), 
 
 ## 관련 문서
 
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 영감
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 영감

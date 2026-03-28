@@ -10,12 +10,12 @@ Delta Rule은 신경과학과 기계학습의 교차점에 위치한 온라인 �
 
 2.9B 파라미터 모델이 동일 규모 Mamba-2 및 RWKV-6 대비 여러 NLP 벤치마크에서 SoTA를 달성했으며, 특히 in-context learning과 다국어 처리에서 두드러진 성능 향상을 보였다. World Tokenizer v3의 도입으로 100개 이상 언어를 지원하며, 한국어 포함 CJK 언어에서의 토크나이제이션 효율이 크게 개선되었다.
 
-![RWKV-7 아키텍처 — Delta Rule 기반 연상 기억 업데이트로 재설계된 WKV 연산 구조](figures/architecture.svg)
+![RWKV-7 아키텍처 - Delta Rule 기반 연상 기억 업데이트로 재설계된 WKV 연산 구조](figures/architecture.svg)
 
-*Figure 1: RWKV-7 아키텍처 — WKV 연산자를 Delta Rule 기반으로 전면 재설계하여 연상 기억의 정밀한 수정 능력을 획득하고, LoRA 스타일 상태 업데이트로 표현력을 대폭 향상시켰다.*
+*Figure 1: RWKV-7 아키텍처 - WKV 연산자를 Delta Rule 기반으로 전면 재설계하여 연상 기억의 정밀한 수정 능력을 획득하고, LoRA 스타일 상태 업데이트로 표현력을 대폭 향상시켰다.*
 
 ![RWKV-7 전체 아키텍처와 Time Mix 모듈 상세](figures/fig_1.png)
-*Figure 1: RWKV-7 아키텍처 — L개의 블록으로 구성되며, 각 블록은 Time Mix + ReLU^2 MLP로 이루어짐. Time Mix 모듈은 Token Shift → Weight Prepare → WKV7 Kernel → Readout 순으로 처리. (Source: arXiv 2503.14456)*
+*Figure 1: RWKV-7 아키텍처 - L개의 블록으로 구성되며, 각 블록은 Time Mix + ReLU^2 MLP로 이루어짐. Time Mix 모듈은 Token Shift → Weight Prepare → WKV7 Kernel → Readout 순으로 처리. (Source: arXiv 2503.14456)*
 
 ## 아키텍처 상세
 
@@ -36,7 +36,7 @@ $$h_t = h_{t-1} + (v_t - h_{t-1} k_t) u_t^T$$
 **업데이트 방향 $u_t^T$**: 오차를 어느 방향으로 반영할지를 결정하는 벡터이다. 이는 LoRA에서의 저랭크 업데이트와 유사한 역할을 한다.
 
 ![Delta Rule 상태 업데이트 메커니즘의 시각적 도해](figures/fig_2.png)
-*Figure 2: Delta Rule 상태 업데이트 — 이전 상태 $wkv_{t-1}$에 감쇠를 적용하고, 예측 오차 $(v_t - h_{t-1}k_t)$를 기반으로 상태를 수정하는 과정을 행렬 연산으로 시각화. (Source: arXiv 2503.14456)*
+*Figure 2: Delta Rule 상태 업데이트 - 이전 상태 $wkv_{t-1}$에 감쇠를 적용하고, 예측 오차 $(v_t - h_{t-1}k_t)$를 기반으로 상태를 수정하는 과정을 행렬 연산으로 시각화. (Source: arXiv 2503.14456)*
 
 SSM과의 연결을 명확히 하면, 일반적인 선형 순환 상태 업데이트는 다음과 같다.
 
@@ -73,8 +73,8 @@ RWKV-7의 핵심 혁신은 세 가지이다.
 
 셋째, **연산 효율 유지**이다. Delta rule 도입에도 불구하고 추론 시 $O(1)$ 메모리를 유지하는 RNN 특성을 그대로 보존한다.
 
-![학습 FLOPs 대비 평균 벤치마크 정확도 — RWKV-7의 효율적 스케일링](figures/fig_3_1.png)
-*Figure 3: FLOPs 대비 성능 — RWKV-7(빨간색)이 동일 FLOPs에서 Qwen2.5(초록색), SmolLM2(녹색) 등 Transformer 모델 대비 월등한 평균 정확도를 달성. 0.19B~2.9B 범위에서 일관된 효율 우위. (Source: arXiv 2503.14456)*
+![학습 FLOPs 대비 평균 벤치마크 정확도 - RWKV-7의 효율적 스케일링](figures/fig_3_1.png)
+*Figure 3: FLOPs 대비 성능 - RWKV-7(빨간색)이 동일 FLOPs에서 Qwen2.5(초록색), SmolLM2(녹색) 등 Transformer 모델 대비 월등한 평균 정확도를 달성. 0.19B~2.9B 범위에서 일관된 효율 우위. (Source: arXiv 2503.14456)*
 
 ## 벤치마크/성능
 
@@ -93,8 +93,8 @@ RWKV-7의 핵심 혁신은 세 가지이다.
 | Gated DeltaNet | 게이팅 + Delta Rule | 게이팅 + 오차 | LLaMA 기반 | 영어 중심 |
 | Mamba | 선택적 SSM | 이산화 기반 | GPT-NeoX | 영어 중심 |
 
-![긴 컨텍스트에서의 평균 손실 비교 — RWKV-7 vs RWKV-6/4 vs Mamba](figures/fig_9.png)
-*Figure 4: 장문 컨텍스트 처리 능력 — 토큰 위치 32K까지의 평균 손실 비교에서 RWKV-7(파란색)이 전 구간에서 가장 낮은 손실을 유지하며, RWKV-4와 Mamba 대비 긴 컨텍스트 성능이 크게 향상. (Source: arXiv 2503.14456)*
+![긴 컨텍스트에서의 평균 손실 비교 - RWKV-7 vs RWKV-6/4 vs Mamba](figures/fig_9.png)
+*Figure 4: 장문 컨텍스트 처리 능력 - 토큰 위치 32K까지의 평균 손실 비교에서 RWKV-7(파란색)이 전 구간에서 가장 낮은 손실을 유지하며, RWKV-4와 Mamba 대비 긴 컨텍스트 성능이 크게 향상. (Source: arXiv 2503.14456)*
 
 ## 학습
 
@@ -148,4 +148,4 @@ RWKV-7은 GitHub(BlinkDL/RWKV-LM)에서 사용할 수 있으며, Apache-2.0 라�
 
 ## 관련 문서
 
-- [[rwkv|RWKV]] — 발전 기반
+- [[rwkv|RWKV]] - 발전 기반

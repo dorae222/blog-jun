@@ -18,7 +18,7 @@ FLUX.1은 2024년 Black Forest Labs(Stable Diffusion 원작자 그룹)가 공개
 
 FLUX.1의 핵심 혁신은 SD3의 MMDiT를 발전시킨 하이브리드 아키텍처이다:
 
-**Phase 1 — Double-Stream 블록 (19개):**
+**Phase 1 - Double-Stream 블록 (19개):**
 
 이미지와 텍스트가 각자 독립적인 파라미터로 처리되면서 양방향 상호작용:
 
@@ -28,7 +28,7 @@ $$\text{Attn}([h^x; h^y]) = \text{softmax}\left(\frac{QK^T}{\sqrt{d}}\right) V$$
 
 출력을 다시 이미지/텍스트로 분리하여 각 스트림의 독립적 업데이트가 이루어진다.
 
-**Phase 2 — Single-Stream 블록 (38개):**
+**Phase 2 - Single-Stream 블록 (38개):**
 
 이미지+텍스트를 하나의 시퀀스로 통합하여 공유 파라미터로 효율적 처리.
 
@@ -183,6 +183,6 @@ FLUX.1의 Hybrid Double/Single-Stream 설계는 "이미지와 텍스트를 어�
 
 ## 관련 문서
 
-- [[sd3|Stable Diffusion 3]] — 발전 기반
-- [[flux-2|FLUX.2]] — 후속 모델
-- [[flow-matching|Flow Matching]] — 사용 기법
+- [[sd3|Stable Diffusion 3]] - 발전 기반
+- [[flux-2|FLUX.2]] - 후속 모델
+- [[flow-matching|Flow Matching]] - 사용 기법

@@ -8,8 +8,8 @@ K2가 GPT-4.1, Claude Sonnet 4를 에이전틱 태스크에서 능가했던 것�
 
 아래 다이어그램은 Kimi K2.5의 MoE 아키텍처와 Multi-Head Latent Attention(MLA), Sparse MoE 블록의 구조를 보여준다.
 
-![Kimi K2.5 MoE 아키텍처 — MLA와 Sparse MoE 구조](figures/architecture.png)
-*Figure 1: Kimi K2.5 아키텍처(K2 계보 추론) — Multi-Head Latent Attention(MLA)을 통한 KV 캐시 압축, Sparse MoE 블록의 Top-K 전문가 선택, RMSNorm + SwiGLU 구성. (Moonshot AI)*
+![Kimi K2.5 MoE 아키텍처 - MLA와 Sparse MoE 구조](figures/architecture.png)
+*Figure 1: Kimi K2.5 아키텍처(K2 계보 추론) - Multi-Head Latent Attention(MLA)을 통한 KV 캐시 압축, Sparse MoE 블록의 Top-K 전문가 선택, RMSNorm + SwiGLU 구성. (Moonshot AI)*
 
 ## 아키텍처 상세
 
@@ -41,8 +41,8 @@ DeepSeek-V3에서 도입된 편향 항 동적 조정 방식을 K2가 채택했�
 
 다음 다이어그램은 K2에서 K2.5로의 기술 진화를 상세히 보여준다. MLA의 KV 캐시 압축 원리, MuonClip 옵티마이저의 핵심 메커니즘, 그리고 오픈소스→독점 전환 전략이 포함되어 있다.
 
-![Kimi K2→K2.5 핵심 혁신 상세 — MLA, MuonClip, 전략 전환](figures/detail.png)
-*Figure 2: Kimi K2→K2.5 핵심 혁신 — MLA의 표준 MHA 대비 KV 캐시 압축 원리, MuonClip 옵티마이저의 2차 최적화 경량화, DeepSeek-V2→K2→K2.5 기술 계보 및 학습 파이프라인. (Moonshot AI)*
+![Kimi K2→K2.5 핵심 혁신 상세 - MLA, MuonClip, 전략 전환](figures/detail.png)
+*Figure 2: Kimi K2→K2.5 핵심 혁신 - MLA의 표준 MHA 대비 KV 캐시 압축 원리, MuonClip 옵티마이저의 2차 최적화 경량화, DeepSeek-V2→K2→K2.5 기술 계보 및 학습 파이프라인. (Moonshot AI)*
 
 ## 핵심 혁신
 
@@ -121,4 +121,4 @@ Kimi K2.5는 Moonshot AI의 이중 전략(오픈소스 K2 + 독점 K2.5)을 통�
 
 ## 관련 문서
 
-- [[kimi-k2|Kimi K2]] — 발전 기반
+- [[kimi-k2|Kimi K2]] - 발전 기반

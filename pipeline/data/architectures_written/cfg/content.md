@@ -11,7 +11,7 @@ Classifier-Free Diffusion Guidance(CFG)는 2022년 Google Brain의 Jonathan Ho�
 다음 그림은 CFG의 전체 구조를 보여준다.
 
 ![Classifier-Free Guidance 아키텍처 다이어그램](figures/architecture.png)
-*Figure 1: CFG 전체 구조 — Forward/Reverse 확산 과정, 조건 드롭아웃 기반 학습, CFG Score 공식을 통한 추론, U-Net 디노이저 아키텍처, Classifier Guidance와의 비교, 가이던스 스케일에 따른 생성 품질 변화. (Source: Ho & Salimans, 2022)*
+*Figure 1: CFG 전체 구조 - Forward/Reverse 확산 과정, 조건 드롭아웃 기반 학습, CFG Score 공식을 통한 추론, U-Net 디노이저 아키텍처, Classifier Guidance와의 비교, 가이던스 스케일에 따른 생성 품질 변화. (Source: Ho & Salimans, 2022)*
 
 ## 아키텍처 상세
 
@@ -53,12 +53,12 @@ $s = 1$이면 표준 조건부 샘플링, $s = 0$이면 비조건부 샘플링, 
 다음 그림은 가이던스 강도(guidance scale)가 가우시안 혼합 분포에 미치는 효과를 시각적으로 보여준다.
 
 ![CFG 가이던스 강도에 따른 분포 변화](figures/fig_2.png)
-*Figure 1: 가이던스 강도에 따른 분포 변화 — 가장 왼쪽이 비가이드 분포이며, 오른쪽으로 갈수록 가이던스 강도가 증가하면서 각 조건부 분포가 더욱 뾰족해져 클래스 충실도가 높아진다. (Source: Ho & Salimans, 2022)*
+*Figure 1: 가이던스 강도에 따른 분포 변화 - 가장 왼쪽이 비가이드 분포이며, 오른쪽으로 갈수록 가이던스 강도가 증가하면서 각 조건부 분포가 더욱 뾰족해져 클래스 충실도가 높아진다. (Source: Ho & Salimans, 2022)*
 
 아래는 ImageNet 128x128에서의 실제 생성 결과로, CFG 적용 전후의 이미지 품질 차이를 보여준다.
 
 ![CFG 적용 전후 ImageNet 생성 결과 비교](figures/fig_3.jpg)
-*Figure 2: ImageNet 128x128 생성 결과 비교 — 비가이드 샘플(좌)과 CFG w=3.0 가이드 샘플(우)의 비교. 가이던스 적용 시 클래스 충실도와 이미지 선명도가 현저히 향상되며, 포화된 색상이 특징적이다. (Source: Ho & Salimans, 2022)*
+*Figure 2: ImageNet 128x128 생성 결과 비교 - 비가이드 샘플(좌)과 CFG w=3.0 가이드 샘플(우)의 비교. 가이던스 적용 시 클래스 충실도와 이미지 선명도가 현저히 향상되며, 포화된 색상이 특징적이다. (Source: Ho & Salimans, 2022)*
 
 ## 핵심 혁신
 
@@ -98,7 +98,7 @@ CFG의 단점은 추론 시 매 스텝마다 조건부와 비조건부 두 번�
 
 - **데이터셋**: ImageNet (128×128, 256×256), 텍스트-이미지 쌍
 - **학습 비용**: 기존 확산 모델 학습과 동일 (추가 비용 없음)
-- **구현 복잡도**: 매우 낮음 — 학습 루프에서 조건 드롭아웃만 추가하면 됨
+- **구현 복잡도**: 매우 낮음 - 학습 루프에서 조건 드롭아웃만 추가하면 됨
 
 ## 실무 활용
 
@@ -133,4 +133,4 @@ CFG는 단순하면서도 강력한 기법으로, 확산 모델 기반 생성 AI
 
 ## 관련 문서
 
-- [[classifier-guidance|Classifier Guidance (ADM)]] — 발전 기반
+- [[classifier-guidance|Classifier Guidance (ADM)]] - 발전 기반

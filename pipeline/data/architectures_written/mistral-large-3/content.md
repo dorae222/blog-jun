@@ -10,9 +10,9 @@ Mistral Large 3의 가장 중요한 경쟁력은 **Apache 2.0 라이선스**로 
 
 이 모델은 Mistral 7B에서 시작된 Mistral AI의 여정에서 Mixtral(MoE 도입), Mistral Large(성능 확장)를 거쳐 도달한 플래그십 모델로, 프랑스 AI 스타트업이 글로벌 LLM 시장에서 확고한 위치를 차지했음을 보여주는 이정표이다.
 
-![Mistral Large 3 아키텍처 — 41B Dense 및 675B MoE 변형의 Apache 2.0 플래그십 오픈소스 LLM 구조](figures/architecture.svg)
+![Mistral Large 3 아키텍처 - 41B Dense 및 675B MoE 변형의 Apache 2.0 플래그십 오픈소스 LLM 구조](figures/architecture.svg)
 
-*Figure 1: Mistral Large 3 아키텍처 — Mistral AI의 효율적 설계 철학을 계승한 Decoder-only Transformer로, 함수 호출과 에이전트 워크플로를 강화하고 Apache 2.0으로 완전 오픈소스 공개되었다.*
+*Figure 1: Mistral Large 3 아키텍처 - Mistral AI의 효율적 설계 철학을 계승한 Decoder-only Transformer로, 함수 호출과 에이전트 워크플로를 강화하고 Apache 2.0으로 완전 오픈소스 공개되었다.*
 
 ## 아키텍처 상세
 
@@ -178,4 +178,4 @@ Mistral Large 3 / Mistral 3은 Function Calling, Agentic AI, GQA 분야의 발�
 
 ## 관련 문서
 
-- [[mixtral|Mixtral of Experts]] — 발전 기반
+- [[mixtral|Mixtral of Experts]] - 발전 기반

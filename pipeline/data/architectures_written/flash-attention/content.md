@@ -8,14 +8,14 @@ FlashAttention은 Tri Dao 등이 2022년 스탠퍼드 HazyResearch에서 제안�
 
 FlashAttention은 완전히 다른 접근법을 취한다. **수학적으로 표준 어텐션과 완전히 동일한 결과를 내면서도**, GPU의 메모리 계층 구조(HBM과 SRAM)를 활용한 IO-aware 알고리즘 설계로 HBM 접근 횟수를 O(N²)에서 O(N²d²/M)으로 줄인다(여기서 d는 헤드 차원, M은 SRAM 크기). 결과적으로 표준 구현 대비 **2~4배 빠르고 5~20배 메모리 효율적**이며, 긴 시퀀스 학습의 병목을 획기적으로 해소했다.
 
-![FlashAttention 아키텍처 — GPU HBM-SRAM 메모리 계층을 활용한 IO-aware 타일링 기반 정확한 어텐션](figures/architecture.svg)
+![FlashAttention 아키텍처 - GPU HBM-SRAM 메모리 계층을 활용한 IO-aware 타일링 기반 정확한 어텐션](figures/architecture.svg)
 
-*Figure 1: FlashAttention 아키텍처 — Q, K, V 행렬을 블록 단위로 분할하여 SRAM에서 계산하고, 온라인 소프트맥스로 N x N 어텐션 행렬의 HBM 실체화를 방지하는 IO-aware 알고리즘이다.*
+*Figure 1: FlashAttention 아키텍처 - Q, K, V 행렬을 블록 단위로 분할하여 SRAM에서 계산하고, 온라인 소프트맥스로 N x N 어텐션 행렬의 HBM 실체화를 방지하는 IO-aware 알고리즘이다.*
 
 FlashAttention의 타일링 전략과 속도 향상 효과를 아래 그림에서 확인할 수 있다.
 
-![FlashAttention 타일링 전략 — HBM과 SRAM 사이의 블록 단위 데이터 이동과 GPT-2에서의 속도 향상](figures/fig_1.png)
-*Figure 1: FlashAttention 타일링 전략 — (좌) K, V 블록을 외부 루프(빨간 화살표)로, Q 블록을 내부 루프(파란 화살표)로 순회하여 N x N 어텐션 행렬의 HBM 실체화를 방지한다. (우) GPT-2에서 표준 어텐션 대비 최대 7.6배 속도 향상. (Source: Dao et al., 2022)*
+![FlashAttention 타일링 전략 - HBM과 SRAM 사이의 블록 단위 데이터 이동과 GPT-2에서의 속도 향상](figures/fig_1.png)
+*Figure 1: FlashAttention 타일링 전략 - (좌) K, V 블록을 외부 루프(빨간 화살표)로, Q 블록을 내부 루프(파란 화살표)로 순회하여 N x N 어텐션 행렬의 HBM 실체화를 방지한다. (우) GPT-2에서 표준 어텐션 대비 최대 7.6배 속도 향상. (Source: Dao et al., 2022)*
 
 ## 기법 상세
 
@@ -123,12 +123,12 @@ A100 GPU에서 이론 최대 TFLOPS의 **70~75%**를 달성하며, 이는 메모
 시퀀스 길이에 따른 실행 시간과 메모리 사용량 비교는 아래 그래프에서 확인할 수 있다.
 
 ![시퀀스 길이별 어텐션 실행 시간과 메모리 사용량 비교](figures/fig_5.png)
-*Figure 3: (좌) 시퀀스 길이별 순전파+역전파 실행 시간 비교 — FlashAttention이 표준 어텐션과 PyTorch 구현 대비 일관되게 빠르다. (우) 메모리 사용량 비교 — FlashAttention은 시퀀스 길이 증가에 따라 선형적으로만 메모리가 증가한다. (Source: Dao et al., 2022)*
+*Figure 3: (좌) 시퀀스 길이별 순전파+역전파 실행 시간 비교 - FlashAttention이 표준 어텐션과 PyTorch 구현 대비 일관되게 빠르다. (우) 메모리 사용량 비교 - FlashAttention은 시퀀스 길이 증가에 따라 선형적으로만 메모리가 증가한다. (Source: Dao et al., 2022)*
 
 다양한 시퀀스 길이에서의 A100 GPU 속도 향상 배율은 다음과 같다.
 
-![A100 GPU에서 시퀀스 길이별 FlashAttention 속도 향상 — 최대 4배 이상](figures/fig_7.jpg)
-*Figure 4: A100 GPU에서의 FlashAttention 속도 향상 — Dropout+Masking 포함 시 최대 4.2배, 순수 어텐션에서도 2배 이상의 속도 향상을 시퀀스 길이 128~4096 범위에서 달성한다. (Source: Dao et al., 2022)*
+![A100 GPU에서 시퀀스 길이별 FlashAttention 속도 향상 - 최대 4배 이상](figures/fig_7.jpg)
+*Figure 4: A100 GPU에서의 FlashAttention 속도 향상 - Dropout+Masking 포함 시 최대 4.2배, 순수 어텐션에서도 2배 이상의 속도 향상을 시퀀스 길이 128~4096 범위에서 달성한다. (Source: Dao et al., 2022)*
 
 ## 관련 기법 비교
 
@@ -219,5 +219,5 @@ FlashAttention은 FlashAttention-2(2023)에서 워프 병렬화와 GQA 지원이
 
 ## 관련 문서
 
-- [[flash-attention-2|FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning]] — 후속 모델
-- [[falcon|Falcon]] — 적용 모델
+- [[flash-attention-2|FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning]] - 후속 모델
+- [[falcon|Falcon]] - 적용 모델

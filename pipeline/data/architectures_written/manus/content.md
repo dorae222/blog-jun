@@ -14,8 +14,8 @@ Manus의 등장이 보여준 핵심 교훈은 **"에이전트의 성공은 모�
 
 아래 다이어그램은 Manus의 계층적 멀티 에이전트 아키텍처를 보여준다. Orchestrator를 중심으로 브라우저, 코딩, 파일 에이전트가 클라우드 가상 컴퓨팅 환경에서 협업하는 구조이다.
 
-![Manus 계층적 멀티 에이전트 아키텍처 — Orchestrator와 서브에이전트 구조](figures/architecture.png)
-*Figure 1: Manus 아키텍처 — Orchestrator(중앙 계획), Browser Agent, Coding Agent, File Agent가 클라우드 가상 컴퓨팅 환경에서 실시간 스트리밍과 함께 협업하는 계층적 멀티 에이전트 구조. (Manus AI)*
+![Manus 계층적 멀티 에이전트 아키텍처 - Orchestrator와 서브에이전트 구조](figures/architecture.png)
+*Figure 1: Manus 아키텍처 - Orchestrator(중앙 계획), Browser Agent, Coding Agent, File Agent가 클라우드 가상 컴퓨팅 환경에서 실시간 스트리밍과 함께 협업하는 계층적 멀티 에이전트 구조. (Manus AI)*
 
 ## 아키텍처 상세
 
@@ -71,7 +71,7 @@ API가 있으면 더 빠르고 안정적인 API를 사용하고, 없으면 Chrom
 다음 다이어그램은 Observe-Think-Act 루프, GUI+API 이중 자동화 전략, 이원화된 메모리 시스템, MoA(Mixture of Agents) 패턴 등 Manus의 핵심 혁신을 상세히 보여준다.
 
 ![Manus Observe-Think-Act 루프 및 멀티 에이전트 오케스트레이션 상세](figures/detail.png)
-*Figure 2: Manus 핵심 메커니즘 — Observe-Think-Act 의사결정 루프, GUI/API 이중 자동화 전략, 단기/장기 이원 메모리 시스템, MoA 패턴(Claude 3.5 Sonnet 오케스트레이터 + 태스크별 LLM 라우팅), 그리고 AutoGPT→Manus 에이전트 진화 타임라인. (Manus AI)*
+*Figure 2: Manus 핵심 메커니즘 - Observe-Think-Act 의사결정 루프, GUI/API 이중 자동화 전략, 단기/장기 이원 메모리 시스템, MoA 패턴(Claude 3.5 Sonnet 오케스트레이터 + 태스크별 LLM 라우팅), 그리고 AutoGPT→Manus 에이전트 진화 타임라인. (Manus AI)*
 
 ## 핵심 혁신
 
@@ -112,4 +112,4 @@ Manus는 Anthropic의 Computer Use에서 GUI 자동화 아이디어를 차용하
 
 ## 관련 문서
 
-- [[computer-use|Claude Computer Use]] — 영감
+- [[computer-use|Claude Computer Use]] - 영감

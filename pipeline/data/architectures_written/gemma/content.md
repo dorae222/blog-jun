@@ -8,8 +8,8 @@ Gemma의 가장 눈에 띄는 기술적 특징은 256,128개라는 방대한 어
 
 아래 그림은 Gemma 7B가 동급 오픈 모델들과 비교했을 때 각 능력별 성능을 보여준다. 특히 수학/과학과 코딩 영역에서 큰 강점을 보인다.
 
-![Gemma 7B vs LLaMA-2/Mistral 능력별 성능 비교 — QA, 추론, 수학/과학, 코딩](figures/fig_1.png)
-*Figure 1: Gemma 7B 능력별 성능 비교 — 질의응답(QA), 추론(Reasoning), 수학/과학(Math/Science), 코딩(Coding) 4개 영역에서 LLaMA-2 7B/13B, Mistral 7B와 비교. Gemma 7B는 특히 수학/과학과 코딩에서 동급 대비 뛰어난 성능을 달성한다. (Source: Gemma Team, 2024)*
+![Gemma 7B vs LLaMA-2/Mistral 능력별 성능 비교 - QA, 추론, 수학/과학, 코딩](figures/fig_1.png)
+*Figure 1: Gemma 7B 능력별 성능 비교 - 질의응답(QA), 추론(Reasoning), 수학/과학(Math/Science), 코딩(Coding) 4개 영역에서 LLaMA-2 7B/13B, Mistral 7B와 비교. Gemma 7B는 특히 수학/과학과 코딩에서 동급 대비 뛰어난 성능을 달성한다. (Source: Gemma Team, 2024)*
 
 ## 아키텍처 상세
 
@@ -77,10 +77,10 @@ Gemma는 사전 학습 단계부터 Responsible AI 원칙을 반영했다:
 아래 그림들은 Gemma의 메모리제이션(학습 데이터 암기) 비율이 동급 모델 대비 낮은 수준임을 보여준다.
 
 ![Gemma vs PaLM 모델 계열 간 메모리제이션 비율 비교](figures/fig_2.png)
-*Figure 2: 모델 계열별 메모리제이션 비율 비교 — Gemma 2B/7B는 PaLM, PaLM 2 등 유사 규모 모델과 비교하여 동등하게 낮은 영어 웹 콘텐츠 암기율을 보인다. (Source: Gemma Team, 2024)*
+*Figure 2: 모델 계열별 메모리제이션 비율 비교 - Gemma 2B/7B는 PaLM, PaLM 2 등 유사 규모 모델과 비교하여 동등하게 낮은 영어 웹 콘텐츠 암기율을 보인다. (Source: Gemma Team, 2024)*
 
 ![Gemma 2B/7B의 데이터 소스별 개인 정보 메모리제이션 비율](figures/fig_3.png)
-*Figure 3: 개인 및 민감 데이터 메모리제이션 측정 — Gemma 2B/7B 모두 민감 데이터의 메모리제이션이 발견되지 않았으며, 개인 데이터 암기율도 매우 낮은 수준이다. (Source: Gemma Team, 2024)*
+*Figure 3: 개인 및 민감 데이터 메모리제이션 측정 - Gemma 2B/7B 모두 민감 데이터의 메모리제이션이 발견되지 않았으며, 개인 데이터 암기율도 매우 낮은 수준이다. (Source: Gemma Team, 2024)*
 
 ### 3. 6T 토큰 학습
 
@@ -148,6 +148,6 @@ Gemma 시리즈는 "대형 모델의 기술을 소형 모델로 이전한다"는
 
 ## 관련 문서
 
-- [[gemma-3|Gemma 3]] — 후속 모델
-- [[paligemma-2|PaliGemma 2]] — 후속 모델
-- [[gemini|Gemini]] — 영감
+- [[gemma-3|Gemma 3]] - 후속 모델
+- [[paligemma-2|PaliGemma 2]] - 후속 모델
+- [[gemini|Gemini]] - 영감

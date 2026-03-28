@@ -10,9 +10,9 @@ Jamba 1.6의 개발 동기는 기업 환경에서의 실용적 장문 처리 문
 
 특히 처리량(throughput) 기준으로 동급 Transformer 모델 대비 3배 이상의 효율을 달성하여, API 서빙 비용 절감에 직접적으로 기여한다. 기업용 AI 솔루션에서는 성능뿐 아니라 비용 효율이 채택 결정의 핵심 요소이며, Jamba 1.6는 이 두 가지를 동시에 충족하는 모델로 자리매김하였다.
 
-![Jamba 1.6 아키텍처 — Mamba SSM과 Transformer Attention을 교차 배치한 398B MoE 하이브리드 구조](figures/architecture.svg)
+![Jamba 1.6 아키텍처 - Mamba SSM과 Transformer Attention을 교차 배치한 398B MoE 하이브리드 구조](figures/architecture.svg)
 
-*Figure 1: Jamba 1.6 아키텍처 — Mamba SSM 레이어와 Transformer Attention 레이어를 인터리브드 배치하고, MoE로 토큰당 52B만 활성화하여 256K 컨텍스트를 효율적으로 처리한다.*
+*Figure 1: Jamba 1.6 아키텍처 - Mamba SSM 레이어와 Transformer Attention 레이어를 인터리브드 배치하고, MoE로 토큰당 52B만 활성화하여 256K 컨텍스트를 효율적으로 처리한다.*
 
 ## 아키텍처 상세
 
@@ -51,8 +51,8 @@ SSM의 핵심 장점은 시퀀스 길이에 대한 **선형 복잡도** $O(n)$�
 
 | 메커니즘 | 시간 복잡도 | 공간 복잡도 (KV 캐시) |
 |----------|-----------|---------------------|
-| Self-Attention | $O(n^2 \cdot d)$ | $O(n \cdot d)$ — 시퀀스에 비례 |
-| Mamba SSM | $O(n \cdot d \cdot s)$ | $O(d \cdot s)$ — 고정 크기 |
+| Self-Attention | $O(n^2 \cdot d)$ | $O(n \cdot d)$ - 시퀀스에 비례 |
+| Mamba SSM | $O(n \cdot d \cdot s)$ | $O(d \cdot s)$ - 고정 크기 |
 
 여기서 $n$은 시퀀스 길이, $d$는 히든 차원, $s$는 SSM 상태 크기이다. SSM은 시퀀스 길이와 무관하게 고정 크기의 상태 벡터만 유지하므로, 256K 같은 초장문에서도 메모리 사용량이 거의 증가하지 않는다.
 
@@ -138,4 +138,4 @@ Jamba 1.6는 순수 SSM(Mamba-2)이나 순수 Transformer(LLaMA 3)와 달리 두
 
 ## 관련 문서
 
-- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] — 발전 기반
+- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] - 발전 기반

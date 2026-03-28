@@ -10,8 +10,8 @@ SAM의 야심적인 목표는 NLP의 GPT-3처럼 "세그멘테이션의 파운�
 
 SAM의 아키텍처 설계는 이미지당 한 번의 인코딩 후 다양한 프롬프트에 대해 실시간으로 마스크를 생성할 수 있어, 대화형(interactive) 세그멘테이션 도구로서 뛰어난 사용성을 제공한다. 이미지 인코딩(~150ms) 후 각 프롬프트에 대한 마스크 생성은 ~50ms에 불과하여, 사용자가 클릭을 변경할 때마다 즉각적인 피드백을 받을 수 있다. SAM은 컴퓨터 비전의 파운데이션 모델 패러다임을 세그멘테이션 분야로 확장한 이정표적 모델이다.
 
-![SAM 전체 아키텍처 — Image Encoder, Prompt Encoder, Mask Decoder, Output Heads 구조](figures/architecture.png)
-*Figure 1: SAM 전체 아키텍처 — ViT-H 기반 이미지 인코더, 경량 프롬프트 인코더, 2-레이어 트랜스포머 마스크 디코더, 그리고 3개의 마스크 후보와 IoU 신뢰도를 출력하는 구조. (Source: Kirillov et al., 2023)*
+![SAM 전체 아키텍처 - Image Encoder, Prompt Encoder, Mask Decoder, Output Heads 구조](figures/architecture.png)
+*Figure 1: SAM 전체 아키텍처 - ViT-H 기반 이미지 인코더, 경량 프롬프트 인코더, 2-레이어 트랜스포머 마스크 디코더, 그리고 3개의 마스크 후보와 IoU 신뢰도를 출력하는 구조. (Source: Kirillov et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -46,8 +46,8 @@ $$\mathbf{F}_\text{img} = \text{ViT-H}(\text{image}) \in \mathbb{R}^{64 \times 6
 
 프롬프트 인코더는 매우 경량(<1M 파라미터)으로 설계되어, 프롬프트 변경 시 거의 즉각적인 응답이 가능하다.
 
-![SAM 모델 개요 — 이미지 인코더의 임베딩을 다양한 프롬프트로 효율적으로 쿼리하는 구조](figures/fig_11.png)
-*Figure 2: SAM 모델 개요 — 무거운 이미지 인코더가 이미지 임베딩을 출력하면, 다양한 입력 프롬프트(점, 박스, 마스크)로 실시간에 가까운 속도로 객체 마스크를 생성한다. (Source: Kirillov et al., 2023)*
+![SAM 모델 개요 - 이미지 인코더의 임베딩을 다양한 프롬프트로 효율적으로 쿼리하는 구조](figures/fig_11.png)
+*Figure 2: SAM 모델 개요 - 무거운 이미지 인코더가 이미지 임베딩을 출력하면, 다양한 입력 프롬프트(점, 박스, 마스크)로 실시간에 가까운 속도로 객체 마스크를 생성한다. (Source: Kirillov et al., 2023)*
 
 ### 마스크 디코더 (Mask Decoder)
 
@@ -62,7 +62,7 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\r
 4. **마스크 예측**: MLP로 토큰별 마스크 가중치를 생성하고, 업샘플링된 특징 맵과 내적
 
 ![모호한 프롬프트에 대한 3개의 유효한 마스크 후보 출력](figures/fig_10.png)
-*Figure 3: 모호성 처리 — 하나의 점 프롬프트(녹색 원)에서 3개의 유효한 마스크를 생성하는 예시. 각 열은 서로 다른 해상도의 세그멘테이션(부분, 중간, 전체 객체)을 보여준다. (Source: Kirillov et al., 2023)*
+*Figure 3: 모호성 처리 - 하나의 점 프롬프트(녹색 원)에서 3개의 유효한 마스크를 생성하는 예시. 각 열은 서로 다른 해상도의 세그멘테이션(부분, 중간, 전체 객체)을 보여준다. (Source: Kirillov et al., 2023)*
 
 프롬프트의 모호성(ambiguity)을 처리하기 위해 **3개의 마스크 후보**와 각각의 IoU 신뢰도 점수를 동시에 예측한다. 예를 들어 사람의 팔 위에 점 하나를 찍으면, 모델은 "팔만", "상반신", "전신"이라는 세 가지 유효한 분할 해석을 모두 제시하고, 사용자가 적절한 것을 선택하거나 추가 프롬프트로 명확히 할 수 있다.
 
@@ -92,7 +92,7 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\r
 SAM은 특히 도메인 전이(학습에 없던 의료, 위성, 수중 이미지 등)에서 기존 모델을 크게 능가하며, 이는 SA-1B의 규모와 다양성 덕분이다.
 
 ![SA-1B 데이터셋의 마스크 중심 분포 비교](figures/fig_12.png)
-*Figure 4: SA-1B와 기존 데이터셋(LVIS, COCO, ADE20K, Open Images)의 마스크 중심 분포 비교 — SA-1B는 이미지 전체에 걸쳐 균일한 분포를 보이며, 기존 데이터셋의 중앙 편향 문제를 해결한다. (Source: Kirillov et al., 2023)*
+*Figure 4: SA-1B와 기존 데이터셋(LVIS, COCO, ADE20K, Open Images)의 마스크 중심 분포 비교 - SA-1B는 이미지 전체에 걸쳐 균일한 분포를 보이며, 기존 데이터셋의 중앙 편향 문제를 해결한다. (Source: Kirillov et al., 2023)*
 
 ## 학습
 
@@ -118,5 +118,5 @@ SAM은 비전 파운데이션 모델의 대표적 성공 사례로, SAM 2(2024, 
 
 ## 관련 문서
 
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 발전 기반
-- [[sam-2|SAM 2]] — 후속 모델
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 발전 기반
+- [[sam-2|SAM 2]] - 후속 모델

@@ -10,16 +10,16 @@ Stable Diffusion 3(SD3)는 2024년 Stability AI가 발표한 텍스트-이미지
 
 노이즈 스케줄로는 기존 선형 또는 코사인 스케줄 대신 Flow Matching의 직선 경로(Rectified Flow)를 채택하였고, 고노이즈 구간에 더 많은 학습 가중치를 부여하는 **로짓-정규 분포(logit-normal distribution)**로 타임스텝을 샘플링한다. 세 개의 텍스트 인코더(CLIP-L, CLIP-G, T5-XXL)를 병렬로 활용하여 텍스트 이해력을 최대화하였다. 텍스트 렌더링, 복잡한 구도, 다양한 종횡비 지원에서 SDXL 대비 크게 향상된 품질을 보이며, 특히 이미지 내 텍스트 생성 능력이 크게 개선되었다.
 
-![Stable Diffusion 3 아키텍처 — MMDiT 이중 스트림 어텐션과 Flow Matching 기반 텍스트-이미지 생성 구조](figures/architecture.svg)
+![Stable Diffusion 3 아키텍처 - MMDiT 이중 스트림 어텐션과 Flow Matching 기반 텍스트-이미지 생성 구조](figures/architecture.svg)
 
-*Figure 1: SD3 아키텍처 — 이미지 토큰과 텍스트 토큰을 별도 스트림으로 유지하면서 Full Self-Attention으로 양방향 상호작용하는 MMDiT와, Rectified Flow 기반 직선 경로 학습을 결합한다.*
+*Figure 1: SD3 아키텍처 - 이미지 토큰과 텍스트 토큰을 별도 스트림으로 유지하면서 Full Self-Attention으로 양방향 상호작용하는 MMDiT와, Rectified Flow 기반 직선 경로 학습을 결합한다.*
 
 ## 아키텍처 상세
 
 ### MMDiT 블록: 이중 스트림 어텐션
 
-![DiT, CrossDiT, UViT, MMDiT의 학습 역학 비교 — 검증 손실에서 MMDiT가 가장 우수한 수렴을 보임](figures/fig_7_1.jpg)
-*Figure 4: 아키텍처별 학습 역학 비교 — CC12M에서 DiT, CrossDiT, UViT, MMDiT의 검증 손실 수렴 곡선. MMDiT가 모든 메트릭에서 가장 우수한 성능을 보이며, 이중 스트림 설계의 효과를 입증한다. (Source: Esser et al., 2024)*
+![DiT, CrossDiT, UViT, MMDiT의 학습 역학 비교 - 검증 손실에서 MMDiT가 가장 우수한 수렴을 보임](figures/fig_7_1.jpg)
+*Figure 4: 아키텍처별 학습 역학 비교 - CC12M에서 DiT, CrossDiT, UViT, MMDiT의 검증 손실 수렴 곡선. MMDiT가 모든 메트릭에서 가장 우수한 성능을 보이며, 이중 스트림 설계의 효과를 입증한다. (Source: Esser et al., 2024)*
 
 MMDiT 블록의 핵심은 이미지 시퀀스 $z^x$와 텍스트 시퀀스 $z^y$를 채널 방향으로 연결하여 $[z^x; z^y]$를 구성하고, 이 결합 시퀀스에 Full Self-Attention을 적용하는 것이다. 각 모달리티는 독립적인 선형 변환을 사용한다:
 
@@ -39,8 +39,8 @@ $$\mathcal{L} = \mathbb{E}_{t, x_0, x_1}\left[\|v_\theta(z_t, t) - (x_1 - x_0)\|
 
 여기서 $z_t = (1-t)x_0 + tx_1$은 노이즈 $x_0$와 데이터 $x_1$ 사이의 선형 보간이다. 타임스텝 $t$의 샘플링은 로짓-정규 분포 $t \sim \text{logit-normal}(0, 1)$을 사용한다.
 
-![Rectified Flow의 샘플링 효율성 비교 — 적은 스텝에서도 높은 품질을 유지](figures/fig_5.png)
-*Figure 3: Rectified Flow의 샘플 효율성 — 적은 샘플링 스텝에서 Rectified Flow가 다른 방식보다 우수한 성능을 보이며, 특히 rf/lognorm(0.00, 1.00) 조합이 25스텝 이상에서도 경쟁력을 유지한다. (Source: Esser et al., 2024)* 이 분포는 $t \approx 0.5$ 근처에 밀도를 집중시켜, 중간 노이즈 수준의 학습 가중치를 높인다. 이는 중간 노이즈 수준이 생성 품질에 가장 큰 영향을 미친다는 경험적 관찰에 기반한다.
+![Rectified Flow의 샘플링 효율성 비교 - 적은 스텝에서도 높은 품질을 유지](figures/fig_5.png)
+*Figure 3: Rectified Flow의 샘플 효율성 - 적은 샘플링 스텝에서 Rectified Flow가 다른 방식보다 우수한 성능을 보이며, 특히 rf/lognorm(0.00, 1.00) 조합이 25스텝 이상에서도 경쟁력을 유지한다. (Source: Esser et al., 2024)* 이 분포는 $t \approx 0.5$ 근처에 밀도를 집중시켜, 중간 노이즈 수준의 학습 가중치를 높인다. 이는 중간 노이즈 수준이 생성 품질에 가장 큰 영향을 미친다는 경험적 관찰에 기반한다.
 
 ### 트리플 텍스트 인코더
 
@@ -64,13 +64,13 @@ SD3의 핵심 혁신은 MMDiT의 이중 스트림 설계, Flow Matching 학습, 
 | DALL-E 3 | 높음 | 높음 | 양호 |
 | Midjourney v6 | 높음 | 높음 | 양호 |
 
-![SD3 8B의 인간 선호도 평가 — 기존 SOTA 모델 대비 텍스트 충실도, 시각 품질, 타이포그래피 모두 우위](figures/fig_10.jpg)
-*Figure 7: 인간 선호도 평가 — SD3 8B가 PixArt-alpha, SDXL, Midjourney v6, DALL-E 3 대비 시각 품질(Visual Aesthetics), 프롬프트 충실도(Prompt Following), 타이포그래피(Typography) 세 범주에서 모두 50% 기준선을 크게 상회하는 승률을 기록한다. (Source: Esser et al., 2024)*
+![SD3 8B의 인간 선호도 평가 - 기존 SOTA 모델 대비 텍스트 충실도, 시각 품질, 타이포그래피 모두 우위](figures/fig_10.jpg)
+*Figure 7: 인간 선호도 평가 - SD3 8B가 PixArt-alpha, SDXL, Midjourney v6, DALL-E 3 대비 시각 품질(Visual Aesthetics), 프롬프트 충실도(Prompt Following), 타이포그래피(Typography) 세 범주에서 모두 50% 기준선을 크게 상회하는 승률을 기록한다. (Source: Esser et al., 2024)*
 
 Human Preference 평가에서 SD3 8B는 DALL-E 3, Midjourney v6, SDXL 대비 텍스트 충실도와 이미지 품질 모두에서 우위를 기록하였다. 특히 텍스트 렌더링 능력은 이전 세대 대비 질적 도약이다.
 
-![모델 크기(depth)에 따른 검증 손실 스케일링 — 깊이가 깊을수록 검증 손실이 일관되게 감소](figures/fig_11_1.png)
-*Figure 8: 스케일링 효과 — 모델 깊이(depth 15~38)에 따른 검증 손실의 매끄러운 감소. 모델 크기와 학습 스텝 모두에 대해 검증 손실이 일관되게 하락하며, 검증 손실이 전체 모델 성능의 강력한 예측자임을 보여준다. (Source: Esser et al., 2024)*
+![모델 크기(depth)에 따른 검증 손실 스케일링 - 깊이가 깊을수록 검증 손실이 일관되게 감소](figures/fig_11_1.png)
+*Figure 8: 스케일링 효과 - 모델 깊이(depth 15~38)에 따른 검증 손실의 매끄러운 감소. 모델 크기와 학습 스텝 모두에 대해 검증 손실이 일관되게 하락하며, 검증 손실이 전체 모델 성능의 강력한 예측자임을 보여준다. (Source: Esser et al., 2024)*
 
 ## 학습
 
@@ -87,6 +87,6 @@ SD3는 SDXL에서 발전하였으며, DiT와 Flow Matching 기법을 활용한�
 
 ## 관련 문서
 
-- [[sdxl|SDXL (Stable Diffusion XL)]] — 발전 기반
-- [[flux|FLUX.1]] — 후속 모델
-- [[dit|DiT (Diffusion Transformers)]] — 사용 기법
+- [[sdxl|SDXL (Stable Diffusion XL)]] - 발전 기반
+- [[flux|FLUX.1]] - 후속 모델
+- [[dit|DiT (Diffusion Transformers)]] - 사용 기법

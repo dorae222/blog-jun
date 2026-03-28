@@ -10,14 +10,14 @@ Toolformer의 혁신적 기여는 **도구 사용 능력을 모델 가중치에 
 
 이 접근의 핵심 아이디어는 **"도구 호출이 텍스트 예측을 개선하는가?"**라는 질문으로 요약된다. Toolformer는 텍스트의 각 위치에 다양한 API 호출을 삽입해 보고, 해당 호출이 후속 토큰 예측의 perplexity를 $\tau$ 이상 감소시키면 "유용한" 호출로 판정하여 학습 데이터에 포함한다. 이 자기지도 필터링 메커니즘은 인간 어노테이션 없이도 대규모 학습 데이터를 자동 생성할 수 있게 하며, 도구 사용 학습의 스케일러빌리티를 획기적으로 높인다. 특히 6.7B 크기의 Toolformer가 66B 크기의 OPT보다 뛰어난 성능을 보여, **도구 사용이 모델 크기의 한계를 보완할 수 있음**을 입증했다.
 
-![Toolformer 아키텍처 — 자기지도 API 호출 학습과 perplexity 기반 필터링을 통한 도구 사용 내재화 구조](figures/architecture.svg)
+![Toolformer 아키텍처 - 자기지도 API 호출 학습과 perplexity 기반 필터링을 통한 도구 사용 내재화 구조](figures/architecture.svg)
 
-*Figure 1: Toolformer 아키텍처 — 텍스트의 각 위치에 API 호출 후보를 샘플링하고, perplexity 감소 기준으로 유용한 호출만 필터링하여 모델 가중치에 도구 사용 능력을 자기지도 방식으로 내재화한다.*
+*Figure 1: Toolformer 아키텍처 - 텍스트의 각 위치에 API 호출 후보를 샘플링하고, perplexity 감소 기준으로 유용한 호출만 필터링하여 모델 가중치에 도구 사용 능력을 자기지도 방식으로 내재화한다.*
 
 다음은 Toolformer가 실제로 다양한 API를 자율적으로 호출하는 예시이다. QA, Calculator, MT, WikiSearch 등 각 상황에 적합한 도구를 선택하여 텍스트 생성에 자연스럽게 통합하는 모습을 보여준다.
 
-![Toolformer의 다양한 API 호출 예시 — QA, Calculator, MT, WikiSearch](figures/fig_1.png)
-*Figure 1: Toolformer 예측 예시 — 모델이 자율적으로 QA(질의응답), Calculator(계산기), MT(번역기), WikiSearch(위키피디아 검색) 등 다양한 API를 호출하여 텍스트 완성에 필요한 정보를 획득한다. (Source: Schick et al., 2023)*
+![Toolformer의 다양한 API 호출 예시 - QA, Calculator, MT, WikiSearch](figures/fig_1.png)
+*Figure 1: Toolformer 예측 예시 - 모델이 자율적으로 QA(질의응답), Calculator(계산기), MT(번역기), WikiSearch(위키피디아 검색) 등 다양한 API를 호출하여 텍스트 완성에 필요한 정보를 획득한다. (Source: Schick et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -52,8 +52,8 @@ Toolformer의 학습 파이프라인은 세 단계로 구성된다.
 
 아래 그림은 Toolformer의 핵심 학습 파이프라인을 QA 도구를 예시로 설명한다. 입력 텍스트에서 API 호출 후보를 샘플링하고, 실행 결과를 기반으로 유용성을 필터링한 후, 선택된 API 호출을 원본 텍스트에 삽입하는 전체 과정을 보여준다.
 
-![Toolformer 학습 파이프라인 — API 호출 후보 샘플링, 실행, 필터링 과정](figures/fig_2.png)
-*Figure 2: Toolformer 학습 파이프라인 — 입력 텍스트에서 API 호출 위치와 후보를 샘플링한 후, API를 실행하고 perplexity 감소 기준으로 유용한 호출만 필터링하여 최종 학습 데이터를 생성한다. (Source: Schick et al., 2023)*
+![Toolformer 학습 파이프라인 - API 호출 후보 샘플링, 실행, 필터링 과정](figures/fig_2.png)
+*Figure 2: Toolformer 학습 파이프라인 - 입력 텍스트에서 API 호출 위치와 후보를 샘플링한 후, API를 실행하고 perplexity 감소 기준으로 유용한 호출만 필터링하여 최종 학습 데이터를 생성한다. (Source: Schick et al., 2023)*
 
 이 단계가 Toolformer의 핵심 기여다. 각 API 호출 후보에 대해, 해당 호출이 텍스트 예측을 실제로 개선하는지를 perplexity 기반으로 측정한다.
 
@@ -108,7 +108,7 @@ Output: "317 times 52 is [Calculator(317 * 52)
 다음 그래프는 모델 크기에 따른 API 호출의 효과를 보여준다. 소형 모델에서는 API 호출이 도움이 되지 않지만, 충분히 큰 모델에서는 API 호출을 통한 성능 향상이 두드러진다.
 
 ![모델 크기별 API 호출 유무에 따른 LAMA, Math, QA 벤치마크 성능 비교](figures/fig_4.png)
-*Figure 3: 모델 크기와 도구 사용의 관계 — GPT-2(다양한 크기)와 GPT-J에서 API 호출 유무에 따른 LAMA, Math, QA 성능. 큰 모델일수록 API 호출의 효과가 커지며, API 호출 여부에 따른 성능 격차가 유지된다. (Source: Schick et al., 2023)*
+*Figure 3: 모델 크기와 도구 사용의 관계 - GPT-2(다양한 크기)와 GPT-J에서 API 호출 유무에 따른 LAMA, Math, QA 성능. 큰 모델일수록 API 호출의 효과가 커지며, API 호출 여부에 따른 성능 격차가 유지된다. (Source: Schick et al., 2023)*
 
 ## 벤치마크/성능
 
@@ -124,8 +124,8 @@ Output: "317 times 52 is [Calculator(317 * 52)
 
 다음은 QA 도구에 대한 API 호출 생성을 위해 사용되는 프롬프트 예시이다. 이 few-shot 프롬프트를 통해 GPT-3가 텍스트에서 적절한 위치에 API 호출을 삽입하는 법을 학습한다.
 
-![QA 도구용 few-shot 프롬프트 예시 — API 호출 위치와 형식을 안내하는 프롬프트](figures/fig_3.png)
-*Figure 4: QA API 호출 생성 프롬프트 — few-shot 예시를 통해 GPT-3에게 텍스트 내 적절한 위치에 QA API 호출을 삽입하는 방법을 안내한다. 입력-출력 쌍으로 호출 패턴을 학습시킨다. (Source: Schick et al., 2023)*
+![QA 도구용 few-shot 프롬프트 예시 - API 호출 위치와 형식을 안내하는 프롬프트](figures/fig_3.png)
+*Figure 4: QA API 호출 생성 프롬프트 - few-shot 예시를 통해 GPT-3에게 텍스트 내 적절한 위치에 QA API 호출을 삽입하는 방법을 안내한다. 입력-출력 쌍으로 호출 패턴을 학습시킨다. (Source: Schick et al., 2023)*
 
 ## 학습
 
@@ -141,4 +141,4 @@ Toolformer는 ReAct의 프롬프트 기반 도구 사용에서 영감을 받되,
 
 ## 관련 문서
 
-- [[react|ReAct]] — 영감
+- [[react|ReAct]] - 영감

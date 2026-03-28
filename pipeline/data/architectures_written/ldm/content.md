@@ -15,12 +15,12 @@ LDM은 Cross-Attention 메커니즘을 통해 텍스트, 클래스, 레이아웃
 - **발표**: 2022년 1월, CompVis / LMU Munich
 - **라이선스**: MIT
 
-![LDM 아키텍처 — VAE 잠재 공간에서 확산 과정을 수행하고 Cross-Attention으로 조건을 주입하는 구조](figures/architecture.svg)
+![LDM 아키텍처 - VAE 잠재 공간에서 확산 과정을 수행하고 Cross-Attention으로 조건을 주입하는 구조](figures/architecture.svg)
 
-*Figure 1: LDM 아키텍처 — 사전학습된 VAE로 이미지를 저차원 잠재 공간에 압축한 뒤, U-Net에서 확산 과정을 수행하고 Cross-Attention으로 텍스트·클래스 등 다양한 조건을 유연하게 주입한다.*
+*Figure 1: LDM 아키텍처 - 사전학습된 VAE로 이미지를 저차원 잠재 공간에 압축한 뒤, U-Net에서 확산 과정을 수행하고 Cross-Attention으로 텍스트·클래스 등 다양한 조건을 유연하게 주입한다.*
 
-![인식 압축과 의미적 압축의 관계 — Rate-Distortion 곡선에서 LDM의 위치](figures/fig_2.jpg)
-*Figure 1: 인식 압축 vs 의미적 압축 — 대부분의 이미지 비트는 인식 불가능한 디테일에 해당하며, Autoencoder+GAN이 이를 제거(인식 압축)한 후 LDM이 의미적 생성을 담당한다. (Source: Rombach et al., 2022)*
+![인식 압축과 의미적 압축의 관계 - Rate-Distortion 곡선에서 LDM의 위치](figures/fig_2.jpg)
+*Figure 1: 인식 압축 vs 의미적 압축 - 대부분의 이미지 비트는 인식 불가능한 디테일에 해당하며, Autoencoder+GAN이 이를 제거(인식 압축)한 후 LDM이 의미적 생성을 담당한다. (Source: Rombach et al., 2022)*
 
 ## 아키텍처 상세
 
@@ -28,7 +28,7 @@ LDM은 Cross-Attention 메커니즘을 통해 텍스트, 클래스, 레이아웃
 
 LDM의 핵심 구조는 세 가지 구성 요소로 이루어진다:
 
-**1단계 — 인식 압축 (Perceptual Compression):**
+**1단계 - 인식 압축 (Perceptual Compression):**
 
 사전학습된 오토인코더가 이미지를 잠재 공간으로 인코딩한다:
 
@@ -40,13 +40,13 @@ VAE에는 두 가지 정규화 방식이 사용된다:
 - **KL-정규화**: 잠재 분포를 표준 정규분포로 정규화하는 작은 KL 페널티
 - **VQ-정규화**: VQ-VAE처럼 잠재 벡터를 코드북으로 양자화
 
-**2단계 — 잠재 확산 (Latent Diffusion):**
+**2단계 - 잠재 확산 (Latent Diffusion):**
 
 U-Net 기반 디노이저 $\epsilon_\theta$가 잠재 공간에서 노이즈를 예측한다:
 
 $$\mathcal{L}_{\text{LDM}} = \mathbb{E}_{\mathcal{E}(x), \epsilon \sim \mathcal{N}(0,1), t} \left[ \| \epsilon - \epsilon_\theta(z_t, t) \|_2^2 \right]$$
 
-**3단계 — 디코딩:**
+**3단계 - 디코딩:**
 
 생성된 잠재 벡터를 VAE 디코더로 복원한다:
 
@@ -66,13 +66,13 @@ $$\hat{x} = \mathcal{D}(\hat{z})$$
 
 $f=4$~$f=8$이 품질과 효율의 최적 균형점으로, 이후 Stable Diffusion은 KL-f8을 표준으로 채택하였다.
 
-![다운샘플링 인수별 FID vs 학습 진행도 비교 — LDM-4~8이 최적 균형](figures/fig_6_1.jpg)
-*Figure 3: 다운샘플링 인수별 학습 효율 비교 — LDM-1(픽셀 공간)은 학습이 매우 느리고, LDM-32는 과도한 압축으로 품질이 저하된다. LDM-4~8이 FID와 학습 속도의 최적 균형을 보여준다. (Source: Rombach et al., 2022)*
+![다운샘플링 인수별 FID vs 학습 진행도 비교 - LDM-4~8이 최적 균형](figures/fig_6_1.jpg)
+*Figure 3: 다운샘플링 인수별 학습 효율 비교 - LDM-1(픽셀 공간)은 학습이 매우 느리고, LDM-32는 과도한 압축으로 품질이 저하된다. LDM-4~8이 FID와 학습 속도의 최적 균형을 보여준다. (Source: Rombach et al., 2022)*
 
 ### Cross-Attention 조건 메커니즘
 
-![LDM의 조건 주입 방식 — 연결(concatenation)과 Cross-Attention 메커니즘 비교](figures/fig_3.png)
-*Figure 2: LDM 조건 주입 아키텍처 — 입력 연결 방식과 Cross-Attention 방식으로 텍스트, 시맨틱 맵, 이미지 등 다양한 조건을 U-Net에 주입한다. (Source: Rombach et al., 2022)*
+![LDM의 조건 주입 방식 - 연결(concatenation)과 Cross-Attention 메커니즘 비교](figures/fig_3.png)
+*Figure 2: LDM 조건 주입 아키텍처 - 입력 연결 방식과 Cross-Attention 방식으로 텍스트, 시맨틱 맵, 이미지 등 다양한 조건을 U-Net에 주입한다. (Source: Rombach et al., 2022)*
 
 LDM의 두 번째 핵심 기여는 범용적 조건 주입 메커니즘이다. 도메인별 인코더 $\tau_\theta$가 조건 입력 $y$를 중간 표현으로 변환하고, Cross-Attention으로 U-Net에 주입한다:
 
@@ -143,7 +143,7 @@ $$h_{\text{out}} = \text{CrossAttn}(\text{SelfAttn}(\text{LN}(h_{\text{in}})), \
 ## 실무 활용
 
 ![LAION 데이터셋으로 학습한 LDM-8의 텍스트-이미지 생성 샘플](figures/fig_5_1.jpg)
-*Figure 4: 텍스트-이미지 생성 — LAION 데이터셋으로 학습한 LDM-8(KL)이 사용자 텍스트 프롬프트에서 생성한 이미지. 이 모델이 Stable Diffusion의 직접적 전신이다. (Source: Rombach et al., 2022)*
+*Figure 4: 텍스트-이미지 생성 - LAION 데이터셋으로 학습한 LDM-8(KL)이 사용자 텍스트 프롬프트에서 생성한 이미지. 이 모델이 Stable Diffusion의 직접적 전신이다. (Source: Rombach et al., 2022)*
 
 ### 1. Stable Diffusion의 기반
 
@@ -180,6 +180,6 @@ LDM의 핵심 통찰인 "인식 압축과 의미적 생성의 분리"는 이미�
 
 ## 관련 문서
 
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 발전 기반
-- [[controlnet|ControlNet]] — 후속 모델
-- [[sdxl|SDXL (Stable Diffusion XL)]] — 후속 모델
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 발전 기반
+- [[controlnet|ControlNet]] - 후속 모델
+- [[sdxl|SDXL (Stable Diffusion XL)]] - 후속 모델

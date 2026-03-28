@@ -8,16 +8,16 @@ ViT(Vision Transformer)는 2020년 Google Brain의 Alexey Dosovitskiy 등이 발
 
 ViT 이전에도 이미지에 어텐션 메커니즘을 적용하려는 시도는 있었지만, 대부분 CNN과 결합하거나 지역적 어텐션에 한정되었다. ViT는 컨볼루션 연산 없이 순수 트랜스포머만으로 이미지를 처리하여, 대규모 데이터로 사전학습하면 CNN의 귀납적 편향(translation equivariance, locality) 없이도 동등하거나 우수한 성능을 달성할 수 있음을 입증하였다.
 
-![ViT 아키텍처 — 이미지를 16x16 패치로 분할하여 표준 Transformer 인코더로 처리하는 구조](figures/architecture.svg)
+![ViT 아키텍처 - 이미지를 16x16 패치로 분할하여 표준 Transformer 인코더로 처리하는 구조](figures/architecture.svg)
 
-*Figure 1: ViT 아키텍처 — 이미지를 고정 크기 패치로 분할하고 선형 임베딩과 위치 인코딩을 추가한 뒤 표준 Transformer 인코더에 입력하여, CNN 없이 순수 트랜스포머만으로 이미지를 분류한다.*
+*Figure 1: ViT 아키텍처 - 이미지를 고정 크기 패치로 분할하고 선형 임베딩과 위치 인코딩을 추가한 뒤 표준 Transformer 인코더에 입력하여, CNN 없이 순수 트랜스포머만으로 이미지를 분류한다.*
 
 ## 아키텍처 상세
 
 다음 다이어그램은 ViT의 전체 구조를 보여준다.
 
-![ViT 모델 개요 — 이미지를 패치로 분할, 선형 임베딩, 트랜스포머 인코더 처리](figures/fig_1.png)
-*Figure 1: ViT 아키텍처 — 이미지를 고정 크기 패치로 분할하여 선형 임베딩한 뒤 위치 인코딩을 추가하고, 표준 Transformer 인코더로 처리한다. [CLS] 토큰의 출력으로 분류를 수행한다. (Source: Dosovitskiy et al., 2020)*
+![ViT 모델 개요 - 이미지를 패치로 분할, 선형 임베딩, 트랜스포머 인코더 처리](figures/fig_1.png)
+*Figure 1: ViT 아키텍처 - 이미지를 고정 크기 패치로 분할하여 선형 임베딩한 뒤 위치 인코딩을 추가하고, 표준 Transformer 인코더로 처리한다. [CLS] 토큰의 출력으로 분류를 수행한다. (Source: Dosovitskiy et al., 2020)*
 
 ViT의 아키텍처는 세 단계로 구성된다: 패치 임베딩, 트랜스포머 인코더, 분류 헤드이다.
 
@@ -91,12 +91,12 @@ ViT의 가장 중요한 기여는 **컨볼루션 없는 순수 트랜스포머�
 ImageNet-1K만으로 학습하면 CNN 대비 성능이 낮지만, JFT-300M(3억 장) 규모의 데이터로 사전학습하면 CNN을 능가한다. 이는 트랜스포머가 CNN의 귀납적 편향 없이 데이터에서 직접 패턴을 학습하기 때문이다. 아래 그래프는 이 관계를 명확히 보여준다.
 
 ![사전학습 데이터셋 크기에 따른 ImageNet 전이 성능](figures/fig_4.png)
-*Figure 2: 데이터 규모와 성능 관계 — 소규모 데이터(ImageNet-1K)에서는 BiT(ResNet)가 우세하지만, 대규모 데이터(JFT-300M)로 갈수록 ViT가 ResNet을 능가한다. 큰 ViT 변형일수록 데이터 증가에 따른 성능 향상 폭이 크다. (Source: Dosovitskiy et al., 2020)*
+*Figure 2: 데이터 규모와 성능 관계 - 소규모 데이터(ImageNet-1K)에서는 BiT(ResNet)가 우세하지만, 대규모 데이터(JFT-300M)로 갈수록 ViT가 ResNet을 능가한다. 큰 ViT 변형일수록 데이터 증가에 따른 성능 향상 폭이 크다. (Source: Dosovitskiy et al., 2020)*
 
 Few-shot 학습에서도 동일한 패턴이 관찰된다.
 
 ![학습 샘플 수에 따른 ViT와 ResNet의 Few-shot 성능 비교](figures/fig_5.png)
-*Figure 3: Few-shot 평가 — ResNet은 소규모 사전학습에서 더 우수하지만 빠르게 포화하는 반면, ViT는 사전학습 데이터가 증가할수록 계속 성능이 향상되어 궁극적으로 ResNet을 추월한다. (Source: Dosovitskiy et al., 2020)*
+*Figure 3: Few-shot 평가 - ResNet은 소규모 사전학습에서 더 우수하지만 빠르게 포화하는 반면, ViT는 사전학습 데이터가 증가할수록 계속 성능이 향상되어 궁극적으로 ResNet을 추월한다. (Source: Dosovitskiy et al., 2020)*
 
 ## 관련 모델 비교
 
@@ -110,12 +110,12 @@ Few-shot 학습에서도 동일한 패턴이 관찰된다.
 동일한 계산 예산(compute budget)에서 ViT가 ResNet과 하이브리드 모델을 비교한 결과도 의미 있다.
 
 ![사전학습 계산량 대비 ViT, ResNet, 하이브리드 모델의 성능 비교](figures/fig_6.png)
-*Figure 4: 계산 효율성 비교 — 동일 계산 예산에서 ViT가 ResNet보다 일반적으로 우수하며, 하이브리드 모델은 소규모에서 이점이 있지만 대규모에서는 격차가 사라진다. (Source: Dosovitskiy et al., 2020)*
+*Figure 4: 계산 효율성 비교 - 동일 계산 예산에서 ViT가 ResNet보다 일반적으로 우수하며, 하이브리드 모델은 소규모에서 이점이 있지만 대규모에서는 격차가 사라진다. (Source: Dosovitskiy et al., 2020)*
 
 ViT의 어텐션 메커니즘은 이미지의 의미적으로 중요한 영역에 자연스럽게 집중한다.
 
 ![ViT 출력 토큰에서 입력 공간으로의 어텐션 시각화](figures/fig_7.png)
-*Figure 5: 어텐션 시각화 — ViT의 [CLS] 토큰이 입력 이미지의 의미적으로 관련 있는 영역(동물의 형태, 물체의 윤곽 등)에 집중하는 것을 보여준다. (Source: Dosovitskiy et al., 2020)*
+*Figure 5: 어텐션 시각화 - ViT의 [CLS] 토큰이 입력 이미지의 의미적으로 관련 있는 영역(동물의 형태, 물체의 윤곽 등)에 집중하는 것을 보여준다. (Source: Dosovitskiy et al., 2020)*
 
 ## 학습 상세
 
@@ -172,13 +172,13 @@ ViT의 주요 한계는 다음과 같다:
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 발전 기반
-- [[deit|DeiT]] — 후속 모델
-- [[dinov2|DINOv2]] — 후속 모델
-- [[mae|MAE]] — 후속 모델
-- [[sam|SAM]] — 후속 모델
-- [[swin-transformer|Swin Transformer]] — 후속 모델
-- [[llava|Visual Instruction Tuning]] — 영감을 줌
-- [[clip|CLIP]] — 적용 모델
-- [[dit|DiT (Diffusion Transformers)]] — 적용 모델
-- [[pixtral|Pixtral]] — 적용 모델
+- [[transformer|Transformer]] - 발전 기반
+- [[deit|DeiT]] - 후속 모델
+- [[dinov2|DINOv2]] - 후속 모델
+- [[mae|MAE]] - 후속 모델
+- [[sam|SAM]] - 후속 모델
+- [[swin-transformer|Swin Transformer]] - 후속 모델
+- [[llava|Visual Instruction Tuning]] - 영감을 줌
+- [[clip|CLIP]] - 적용 모델
+- [[dit|DiT (Diffusion Transformers)]] - 적용 모델
+- [[pixtral|Pixtral]] - 적용 모델

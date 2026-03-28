@@ -12,12 +12,12 @@ ReAct가 AI 에이전트 분야에 미친 영향은 절대적이다. 이후 Lang
 
 아래 그림은 Standard, CoT, Act-only, ReAct 네 가지 프롬프팅 방법을 HotpotQA와 ALFWorld 태스크에서 비교한 것이다.
 
-![네 가지 프롬프팅 방법(Standard, CoT, Act-only, ReAct) 비교 — HotpotQA 및 ALFWorld 태스크](figures/fig_1.png)
-*Figure 1: 네 가지 프롬프팅 방법 비교 — (1a) Standard, (1b) CoT(추론만), (1c) Act-only, (1d) ReAct(추론+행동)로 HotpotQA 문제를 해결하는 과정과, ALFWorld 게임에서의 Act-only vs ReAct 비교. (Source: Yao et al., 2022)*
+![네 가지 프롬프팅 방법(Standard, CoT, Act-only, ReAct) 비교 - HotpotQA 및 ALFWorld 태스크](figures/fig_1.png)
+*Figure 1: 네 가지 프롬프팅 방법 비교 - (1a) Standard, (1b) CoT(추론만), (1c) Act-only, (1d) ReAct(추론+행동)로 HotpotQA 문제를 해결하는 과정과, ALFWorld 게임에서의 Act-only vs ReAct 비교. (Source: Yao et al., 2022)*
 
-![ReAct 아키텍처 — Thought-Action-Observation 사이클 기반 추론과 행동 결합 에이전트 구조](figures/architecture.svg)
+![ReAct 아키텍처 - Thought-Action-Observation 사이클 기반 추론과 행동 결합 에이전트 구조](figures/architecture.svg)
 
-*Figure 2: ReAct 아키텍처 — Thought(추론)로 전략을 수립하고 Action(행동)으로 외부 도구를 호출한 뒤 Observation(관찰)으로 결과를 반영하는 에이전틱 루프를 반복하여 추론과 행동의 시너지를 실현한다.*
+*Figure 2: ReAct 아키텍처 - Thought(추론)로 전략을 수립하고 Action(행동)으로 외부 도구를 호출한 뒤 Observation(관찰)으로 결과를 반영하는 에이전틱 루프를 반복하여 추론과 행동의 시너지를 실현한다.*
 
 ## 아키텍처 상세
 
@@ -87,7 +87,7 @@ ReAct는 CoT와 동일하게 few-shot 예시를 통해 구현된다. Thought-Act
 3. **해석 가능한 에이전트 행동**: Thought 단계가 에이전트의 추론 과정을 명시적으로 드러내므로, 왜 특정 행동을 선택했는지 이해하고 디버깅할 수 있다. 아래 예시는 ReAct가 외부 검색을 통해 오래된 정답 라벨을 극복하고 최신 정보를 얻는 과정을 보여준다.
 
 ![ReAct가 외부 검색으로 최신 정보를 획득하여 오래된 라벨을 극복하는 예시](figures/fig_8.png)
-*Figure 5: 외부 지식 접근의 강점 — HotpotQA에서 정답 라벨이 구식(outdated)인 경우, ReAct만이 실시간 웹 검색과 추론을 결합하여 최신 정보를 획득한다. (Source: Yao et al., 2022)*
+*Figure 5: 외부 지식 접근의 강점 - HotpotQA에서 정답 라벨이 구식(outdated)인 경우, ReAct만이 실시간 웹 검색과 추론을 결합하여 최신 정보를 획득한다. (Source: Yao et al., 2022)*
 
 4. **범용 에이전트 패러다임**: 지식 추론(HotpotQA), 사실 검증(Fever), 대화형 게임(ALFWorld), 웹 탐색(WebShop) 등 다양한 도메인에 동일한 패러다임이 적용 가능함을 입증했다.
 
@@ -105,15 +105,15 @@ ReAct는 CoT와 동일하게 few-shot 예시를 통해 구현된다. Thought-Act
 CoT-SC(Self-Consistency) 샘플 수에 따른 성능 변화를 살펴보면, ReAct와 CoT-SC를 결합했을 때 각각 단독 사용 대비 더 높은 성능을 달성한다.
 
 ![HotpotQA에서 CoT-SC 샘플 수에 따른 성능 비교 그래프](figures/fig_3_1.png)
-*Figure 2: HotpotQA에서 CoT-SC 샘플 수에 따른 PaLM-540B 프롬프팅 성능 — CoT-SC→ReAct 결합이 가장 높은 EM 점수를 달성한다. (Source: Yao et al., 2022)*
+*Figure 2: HotpotQA에서 CoT-SC 샘플 수에 따른 PaLM-540B 프롬프팅 성능 - CoT-SC→ReAct 결합이 가장 높은 EM 점수를 달성한다. (Source: Yao et al., 2022)*
 
 ![Fever에서 CoT-SC 샘플 수에 따른 성능 비교 그래프](figures/fig_3_2.png)
-*Figure 3: Fever에서 CoT-SC 샘플 수에 따른 PaLM-540B 프롬프팅 성능 — CoT-SC→ReAct 결합이 최고 정확도를 달성하며, ReAct→CoT-SC도 강력한 성능을 보인다. (Source: Yao et al., 2022)*
+*Figure 3: Fever에서 CoT-SC 샘플 수에 따른 PaLM-540B 프롬프팅 성능 - CoT-SC→ReAct 결합이 최고 정확도를 달성하며, ReAct→CoT-SC도 강력한 성능을 보인다. (Source: Yao et al., 2022)*
 
 모델 스케일 측면에서도 ReAct의 우위가 확인된다. 아래 그래프는 모델 크기(8B→62B→540B)에 따른 프롬프팅과 파인튜닝 결과를 보여준다.
 
 ![HotpotQA에서 모델 크기별 프롬프팅 및 파인튜닝 성능 비교](figures/fig_5.png)
-*Figure 4: HotpotQA 스케일링 실험 결과 — 프롬프팅(좌)과 파인튜닝(우) 모두에서 ReAct가 모델 크기 증가에 따라 일관된 성능 향상을 보인다. (Source: Yao et al., 2022)*
+*Figure 4: HotpotQA 스케일링 실험 결과 - 프롬프팅(좌)과 파인튜닝(우) 모두에서 ReAct가 모델 크기 증가에 따라 일관된 성능 향상을 보인다. (Source: Yao et al., 2022)*
 
 ## 학습
 
@@ -130,9 +130,9 @@ ReAct는 CoT에서 발전하여 외부 도구 사용을 추가한 프레임워�
 
 ## 관련 문서
 
-- [[cot|Chain-of-Thought Prompting]] — 발전 기반
-- [[langraph|LangGraph]] — 후속 모델
-- [[reflexion|Reflexion]] — 후속 모델
-- [[swe-agent|SWE-agent]] — 후속 모델
-- [[autogen|AutoGen]] — 영감을 줌
-- [[toolformer|Toolformer: Language Models Can Teach Themselves to Use Tools]] — 영감을 줌
+- [[cot|Chain-of-Thought Prompting]] - 발전 기반
+- [[langraph|LangGraph]] - 후속 모델
+- [[reflexion|Reflexion]] - 후속 모델
+- [[swe-agent|SWE-agent]] - 후속 모델
+- [[autogen|AutoGen]] - 영감을 줌
+- [[toolformer|Toolformer: Language Models Can Teach Themselves to Use Tools]] - 영감을 줌

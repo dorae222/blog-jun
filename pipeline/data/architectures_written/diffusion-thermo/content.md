@@ -11,7 +11,7 @@
 다음 그림은 비평형 열역학 기반 확산 모델의 전체 구조를 보여준다.
 
 ![비평형 열역학 기반 확산 모델 아키텍처](figures/architecture.png)
-*Figure 1: 확산 모델 전체 구조 — Forward Process(점진적 노이즈 추가), Reverse Process(학습된 디노이징), U-Net 아키텍처, ELBO 학습 목표, 노이즈 스케줄을 포함한 이론적 프레임워크. (Source: Sohl-Dickstein et al., 2015)*
+*Figure 1: 확산 모델 전체 구조 - Forward Process(점진적 노이즈 추가), Reverse Process(학습된 디노이징), U-Net 아키텍처, ELBO 학습 목표, 노이즈 스케줄을 포함한 이론적 프레임워크. (Source: Sohl-Dickstein et al., 2015)*
 
 ## 아키텍처 상세
 
@@ -53,9 +53,9 @@ $$p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \bol
 $$\mathcal{L} = \mathbb{E}_q\left[-\log p_\theta(\mathbf{x}_0 | \mathbf{x}_1) + \sum_{t=2}^{T} D_{\text{KL}}\left(q(\mathbf{x}_{t-1} | \mathbf{x}_t, \mathbf{x}_0) \| p_\theta(\mathbf{x}_{t-1} | \mathbf{x}_t)\right) + D_{\text{KL}}(q(\mathbf{x}_T | \mathbf{x}_0) \| p(\mathbf{x}_T))\right]$$
 
 각 항의 의미:
-- **$\mathcal{L}_0$**: 재구성 항 — 최종 디코딩 품질
-- **$\mathcal{L}_{t}$**: 확산 손실 — 각 스텝에서의 디노이징 정확도
-- **$\mathcal{L}_T$**: Prior 일치 항 — $\mathbf{x}_T$가 가우시안에 수렴하는 정도
+- **$\mathcal{L}_0$**: 재구성 항 - 최종 디코딩 품질
+- **$\mathcal{L}_{t}$**: 확산 손실 - 각 스텝에서의 디노이징 정확도
+- **$\mathcal{L}_T$**: Prior 일치 항 - $\mathbf{x}_T$가 가우시안에 수렴하는 정도
 
 ### 두 가지 확산 변형
 
@@ -69,12 +69,12 @@ $$\mathcal{L} = \mathbb{E}_q\left[-\log p_\theta(\mathbf{x}_0 | \mathbf{x}_1) + 
 다음 그림은 2D Swiss Roll 데이터에서의 forward 확산 과정을 보여주는 개념 검증 실험 결과이다.
 
 ![Swiss Roll 데이터의 forward 확산 과정](figures/fig_1_1.png)
-*Figure 1: Swiss Roll 데이터에서의 확산 과정 — 복잡한 나선형 데이터 분포가 점진적인 가우시안 노이즈 추가를 통해 등방 가우시안으로 변환되는 forward process의 시작점. (Source: Sohl-Dickstein et al., 2015)*
+*Figure 1: Swiss Roll 데이터에서의 확산 과정 - 복잡한 나선형 데이터 분포가 점진적인 가우시안 노이즈 추가를 통해 등방 가우시안으로 변환되는 forward process의 시작점. (Source: Sohl-Dickstein et al., 2015)*
 
 다음은 MNIST 데이터셋에서 학습된 확산 모델의 생성 샘플이다.
 
 ![확산 모델로 생성된 MNIST 샘플](figures/fig_6.png)
-*Figure 2: 확산 확률 모델로 생성된 MNIST 숫자 샘플 — 평균이 아닌 실제 가우시안/이항 분포에서 추출한 진정한 샘플로, 초기 확산 모델의 생성 능력을 보여준다. (Source: Sohl-Dickstein et al., 2015)*
+*Figure 2: 확산 확률 모델로 생성된 MNIST 숫자 샘플 - 평균이 아닌 실제 가우시안/이항 분포에서 추출한 진정한 샘플로, 초기 확산 모델의 생성 능력을 보여준다. (Source: Sohl-Dickstein et al., 2015)*
 
 ## 핵심 혁신
 
@@ -147,5 +147,5 @@ $$\mathcal{L} = \mathbb{E}_q\left[-\log p_\theta(\mathbf{x}_0 | \mathbf{x}_1) + 
 
 ## 관련 문서
 
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 후속 모델
-- [[score-matching|Score-based Generative Model (NCSN)]] — 영감을 줌
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 후속 모델
+- [[score-matching|Score-based Generative Model (NCSN)]] - 영감을 줌

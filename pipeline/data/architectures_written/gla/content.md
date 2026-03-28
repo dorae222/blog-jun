@@ -10,9 +10,9 @@ GLA는 이 문제의 근본 원인이 "모든 과거 정보를 동등하게 누�
 
 GLA는 각 타임스텝에서 게이트 $G_t$를 입력에 따라 동적으로 계산하여 KV 상태의 망각(forget)과 기억(remember)을 선택적으로 조절한다. 이 구조는 Mamba의 선택적 메커니즘과 유사한 역할을 하지만, 행렬 값의 KV 상태를 유지한다는 점에서 차별화된다. RetNet 대비 일관되게 더 낮은 perplexity를 기록하며 선형 어텐션의 발전 방향을 제시했다.
 
-![GLA 아키텍처 — 데이터 의존적 forget gate로 KV 상태를 선택적으로 관리하는 선형 어텐션 구조](figures/architecture.svg)
+![GLA 아키텍처 - 데이터 의존적 forget gate로 KV 상태를 선택적으로 관리하는 선형 어텐션 구조](figures/architecture.svg)
 
-*Figure 1: GLA 아키텍처 — 각 타임스텝에서 입력에 따라 동적으로 계산되는 게이트 G_t로 KV 상태의 망각과 기억을 선택적으로 조절하여 선형 어텐션의 표현력 한계를 극복한다.*
+*Figure 1: GLA 아키텍처 - 각 타임스텝에서 입력에 따라 동적으로 계산되는 게이트 G_t로 KV 상태의 망각과 기억을 선택적으로 조절하여 선형 어텐션의 표현력 한계를 극복한다.*
 
 ## 아키텍처 상세
 
@@ -134,4 +134,4 @@ GLA는 flash-linear-attention 라이브러리를 통해 PyTorch 환경에서 쉽
 
 ## 관련 문서
 
-- [[retnet|RetNet]] — 영감
+- [[retnet|RetNet]] - 영감

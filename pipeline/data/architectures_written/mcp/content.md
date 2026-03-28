@@ -12,9 +12,9 @@ $$\text{커스텀 통합: } O(M \times N) \xrightarrow{\text{MCP}} O(M + N)$$
 
 MCP는 발표 후 1년도 되지 않아 사실상의 업계 표준(de facto standard)으로 자리잡았다. Claude Desktop, Claude Code, Cursor, Windsurf, Goose 등 주요 LLM 클라이언트가 MCP를 지원하며, OpenAI와 Google도 MCP 호환성을 지원하기 시작했다. 수천 개의 커뮤니티 MCP 서버가 개발되어 GitHub, Slack, PostgreSQL, Google Drive, Notion, Jira 등 다양한 서비스와의 통합이 가능하다.
 
-![MCP 프로토콜 아키텍처 — Host, Client, Server 삼중 구조의 LLM-도구 통신 표준](figures/architecture.svg)
+![MCP 프로토콜 아키텍처 - Host, Client, Server 삼중 구조의 LLM-도구 통신 표준](figures/architecture.svg)
 
-*Figure 1: MCP 아키텍처 — Host(LLM 애플리케이션)가 Client를 통해 MCP Server와 JSON-RPC 기반으로 통신하며, Tools·Resources·Prompts 세 가지 기능을 표준화하여 M+N 구현으로 모든 조합을 지원한다.*
+*Figure 1: MCP 아키텍처 - Host(LLM 애플리케이션)가 Client를 통해 MCP Server와 JSON-RPC 기반으로 통신하며, Tools·Resources·Prompts 세 가지 기능을 표준화하여 M+N 구현으로 모든 조합을 지원한다.*
 
 ## 아키텍처 상세
 
@@ -194,7 +194,7 @@ MCP는 에이전트 통신 표준의 첫 번째 계층으로, A2A(에이전트-�
 
 ## 관련 문서
 
-- [[a2a|Agent-to-Agent Protocol]] — 영감을 줌
-- [[ag-ui|AG-UI Protocol]] — 영감을 줌
-- [[claude-code|Claude Code]] — 적용 모델
-- [[goose|Goose]] — 적용 모델
+- [[a2a|Agent-to-Agent Protocol]] - 영감을 줌
+- [[ag-ui|AG-UI Protocol]] - 영감을 줌
+- [[claude-code|Claude Code]] - 적용 모델
+- [[goose|Goose]] - 적용 모델

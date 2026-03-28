@@ -10,14 +10,14 @@ QLoRA(Quantized LoRA)는 Tim Dettmers 등이 2023년 워싱턴 대학교에서 �
 
 NF4(NormalFloat 4-bit), Double Quantization, Paged Optimizers라는 **세 가지 핵심 혁신**으로 메모리를 극적으로 절감하면서도 16비트 풀 파인튜닝과 동등한 성능을 보존한다. Guanaco-33B 모델은 단일 GPU에서 12시간 학습만으로 **ChatGPT의 99.3% 수준**에 도달했다.
 
-![QLoRA 아키텍처 — 4비트 NF4 양자화와 LoRA를 결합한 메모리 효율적 파인튜닝 구조](figures/architecture.svg)
+![QLoRA 아키텍처 - 4비트 NF4 양자화와 LoRA를 결합한 메모리 효율적 파인튜닝 구조](figures/architecture.svg)
 
-*Figure 1: QLoRA 아키텍처 — 사전 학습 가중치를 NF4 4비트로 양자화하고, 역전파 시 BF16으로 디퀀타이즈하여 LoRA 어댑터를 학습하며, Paged Optimizers로 GPU-CPU 간 메모리를 관리한다.*
+*Figure 1: QLoRA 아키텍처 - 사전 학습 가중치를 NF4 4비트로 양자화하고, 역전파 시 BF16으로 디퀀타이즈하여 LoRA 어댑터를 학습하며, Paged Optimizers로 GPU-CPU 간 메모리를 관리한다.*
 
 아래 그림은 Full Finetuning, LoRA, QLoRA의 메모리 구조를 비교한 것으로, QLoRA가 4비트 양자화된 트랜스포머 위에 LoRA 어댑터를 적용하고 Paged Optimizers로 GPU-CPU 간 메모리를 관리하는 구조를 보여준다.
 
 ![Full Finetuning, LoRA, QLoRA 메모리 구조 비교](figures/fig_1.png)
-*Figure 1: 파인튜닝 기법별 메모리 구조 비교 — Full Finetuning은 16비트 모델 전체를 학습하고, LoRA는 16비트 모델 위에 어댑터만 학습하며, QLoRA는 4비트 양자화 모델에 어댑터를 적용하고 Paged Optimizers로 메모리 스파이크를 처리한다. (Source: Dettmers et al., 2023)*
+*Figure 1: 파인튜닝 기법별 메모리 구조 비교 - Full Finetuning은 16비트 모델 전체를 학습하고, LoRA는 16비트 모델 위에 어댑터만 학습하며, QLoRA는 4비트 양자화 모델에 어댑터를 적용하고 Paged Optimizers로 메모리 스파이크를 처리한다. (Source: Dettmers et al., 2023)*
 
 ## 기법 상세
 
@@ -51,8 +51,8 @@ NF4는 균등 간격의 INT4보다 정규 분포 가중치에 대해 **정보 �
 
 다음 그래프는 4비트 데이터 타입별 LLaMA 모델의 제로샷 정확도를 비교한 것으로, NFloat(NF4)가 일반 Float4보다 모든 모델 크기에서 우수한 성능을 보인다.
 
-![4비트 데이터 타입별 제로샷 정확도 비교 — NFloat vs Float4](figures/fig_3.png)
-*Figure 3: 4비트 데이터 타입 성능 비교 — NFloat(NF4, 파란색)가 일반 Float4(초록색)보다 모든 모델 크기에서 유의미하게 높은 제로샷 정확도를 달성한다. Double Quantization(주황색)은 추가 메모리 절감을 제공한다. (Source: Dettmers et al., 2023)*
+![4비트 데이터 타입별 제로샷 정확도 비교 - NFloat vs Float4](figures/fig_3.png)
+*Figure 3: 4비트 데이터 타입 성능 비교 - NFloat(NF4, 파란색)가 일반 Float4(초록색)보다 모든 모델 크기에서 유의미하게 높은 제로샷 정확도를 달성한다. Double Quantization(주황색)은 추가 메모리 절감을 제공한다. (Source: Dettmers et al., 2023)*
 
 ### 혁신 2: Double Quantization (이중 양자화)
 
@@ -135,7 +135,7 @@ NF4는 4비트임에도 불구하고 **FP16과 거의 동일한 성능**을 유�
 아래 그래프는 4비트 QLoRA와 16비트 파인튜닝의 RougeL 성능을 비교한 것으로, QLoRA가 모든 Transformer 레이어에 LoRA를 적용했을 때 16비트 풀 파인튜닝과 동등한 성능을 달성함을 보여준다.
 
 ![QLoRA vs 16비트 파인튜닝 RougeL 성능 비교](figures/fig_2.png)
-*Figure 2: QLoRA 성능 검증 — 4비트 QLoRA-All(파란색)이 16비트 Full Finetuning(주황색)과 동등한 RougeL 점수를 달성한다. 모든 Transformer 레이어에 LoRA를 적용하는 것이 핵심이다. (Source: Dettmers et al., 2023)*
+*Figure 2: QLoRA 성능 검증 - 4비트 QLoRA-All(파란색)이 16비트 Full Finetuning(주황색)과 동등한 RougeL 점수를 달성한다. 모든 Transformer 레이어에 LoRA를 적용하는 것이 핵심이다. (Source: Dettmers et al., 2023)*
 
 ### Guanaco 모델 성능 (Vicuna 벤치마크)
 
@@ -253,7 +253,7 @@ trainer.train()
 다음 그래프는 LLaMA 모델 크기별 메모리 사용량 구성을 보여준다. QLoRA를 통해 65B 모델도 45GB에 수용되어 단일 GPU에서 학습이 가능하다.
 
 ![LLaMA 모델 크기별 메모리 풋프린트 분석](figures/fig_6.png)
-*Figure 6: 메모리 풋프린트 분석 — 모델 가중치(파란색)가 메모리의 대부분을 차지하며, QLoRA의 4비트 양자화로 65B 모델이 45GB에 들어간다. Paged Optimizers가 남은 메모리 스파이크를 처리한다. (Source: Dettmers et al., 2023)*
+*Figure 6: 메모리 풋프린트 분석 - 모델 가중치(파란색)가 메모리의 대부분을 차지하며, QLoRA의 4비트 양자화로 65B 모델이 45GB에 들어간다. Paged Optimizers가 남은 메모리 스파이크를 처리한다. (Source: Dettmers et al., 2023)*
 
 ## 한계 및 전망
 
@@ -279,4 +279,4 @@ QLoRA는 bitsandbytes와 HuggingFace PEFT를 통해 구현되며, 현재 소비�
 
 ## 관련 문서
 
-- [[lora|LoRA: Low-Rank Adaptation of Large Language Models]] — 발전 기반
+- [[lora|LoRA: Low-Rank Adaptation of Large Language Models]] - 발전 기반

@@ -119,5 +119,5 @@ Kling의 가장 인상적인 성과는 2분 길이의 1080p 비디오를 일관�
 
 ## 관련 문서
 
-- [[kling-3|Kling 3]] — 후속 모델
-- [[dit|DiT (Diffusion Transformers)]] — 영감
+- [[kling-3|Kling 3]] - 후속 모델
+- [[dit|DiT (Diffusion Transformers)]] - 영감

@@ -10,14 +10,14 @@ Grounding DINO는 이 한계를 극복하여, "빨간 모자를 쓴 사람", "�
 
 COCO 제로샷 탐지에서 52.5 AP를 달성하여 당시 SOTA를 기록하였으며, 기존 GLIP-L(49.8 AP)을 크게 능가하였다. SAM과 결합한 "Grounded SAM" 파이프라인은 텍스트만으로 객체 탐지와 세그멘테이션을 동시에 수행하는 강력한 도구로 실무에서 폭넓게 활용되고 있으며, 자동 데이터 어노테이션, 이미지 편집, 로보틱스 등 다양한 응용을 가능하게 하였다.
 
-![Grounding DINO 아키텍처 — 텍스트 인코더와 이미지 인코더의 3단계 긴밀 융합 기반 오픈셋 객체 탐지 구조](figures/architecture.svg)
+![Grounding DINO 아키텍처 - 텍스트 인코더와 이미지 인코더의 3단계 긴밀 융합 기반 오픈셋 객체 탐지 구조](figures/architecture.svg)
 
-*Figure 1: Grounding DINO 아키텍처 — Swin Transformer 비전 백본과 BERT 텍스트 인코더를 Feature Enhancer에서 양방향 교차 어텐션으로 깊게 융합하여 자유 텍스트 프롬프트 기반 오픈셋 탐지를 수행한다.*
+*Figure 1: Grounding DINO 아키텍처 - Swin Transformer 비전 백본과 BERT 텍스트 인코더를 Feature Enhancer에서 양방향 교차 어텐션으로 깊게 융합하여 자유 텍스트 프롬프트 기반 오픈셋 탐지를 수행한다.*
 
 다음 그림은 기존 닫힌 집합 탐지기를 오픈셋 시나리오로 확장하는 기존 접근법들을 비교한 것이다.
 
-![기존 오픈셋 탐지 접근법 비교 — 닫힌 집합 탐지기 확장 방식의 차이](figures/fig_2.png)
-*Figure 2: 기존 오픈셋 탐지 접근법 비교 — 닫힌 집합 탐지기를 오픈셋으로 확장하는 다양한 방식을 보여준다. (Source: Liu et al., 2023)*
+![기존 오픈셋 탐지 접근법 비교 - 닫힌 집합 탐지기 확장 방식의 차이](figures/fig_2.png)
+*Figure 2: 기존 오픈셋 탐지 접근법 비교 - 닫힌 집합 탐지기를 오픈셋으로 확장하는 다양한 방식을 보여준다. (Source: Liu et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -25,8 +25,8 @@ Grounding DINO의 아키텍처는 세 단계의 시각-언어 융합(tight fusio
 
 아래 그림은 Grounding DINO의 전체 프레임워크를 세부적으로 나타낸 것으로, Feature Enhancer 레이어와 디코더 레이어의 내부 구조를 함께 보여준다.
 
-![Grounding DINO 전체 프레임워크 — Feature Enhancer, Language-Guided Query Selection, Cross-Modality Decoder의 세부 구조](figures/fig_3.png)
-*Figure 3: Grounding DINO 프레임워크 상세도 — 전체 파이프라인(블록 1), Feature Enhancer 레이어(블록 2), 디코더 레이어(블록 3)의 내부 구조를 보여준다. (Source: Liu et al., 2023)*
+![Grounding DINO 전체 프레임워크 - Feature Enhancer, Language-Guided Query Selection, Cross-Modality Decoder의 세부 구조](figures/fig_3.png)
+*Figure 3: Grounding DINO 프레임워크 상세도 - 전체 파이프라인(블록 1), Feature Enhancer 레이어(블록 2), 디코더 레이어(블록 3)의 내부 구조를 보여준다. (Source: Liu et al., 2023)*
 
 ### 1단계: 이중 인코더 특징 추출
 
@@ -65,8 +65,8 @@ $$\text{score}(i) = \max_j \left(\mathbf{F}_\text{img}^{(i)} \cdot \mathbf{F}_\t
 
 다음 그림은 기존 DINO 탐지기와 Grounding DINO의 구조적 차이를 비교한 것으로, 파란색으로 표시된 부분이 Grounding DINO에서 추가된 언어 융합 모듈이다.
 
-![DINO와 Grounding DINO 구조 비교 — 언어 융합 모듈이 파란색으로 표시](figures/fig_6.png)
-*Figure 6: DINO와 Grounding DINO 비교 — 파란색 부분이 Grounding DINO에서 추가된 텍스트 융합 구성요소를 나타낸다. (Source: Liu et al., 2023)*
+![DINO와 Grounding DINO 구조 비교 - 언어 융합 모듈이 파란색으로 표시](figures/fig_6.png)
+*Figure 6: DINO와 Grounding DINO 비교 - 파란색 부분이 Grounding DINO에서 추가된 텍스트 융합 구성요소를 나타낸다. (Source: Liu et al., 2023)*
 
 ## 핵심 혁신
 
@@ -113,8 +113,8 @@ Grounding DINO는 DETR → DINO-DETR의 종단간 탐지 계보에 언어 이해
 
 다음은 Grounding DINO와 Stable Diffusion을 결합한 실제 응용 사례로, 텍스트 프롬프트로 객체를 탐지한 후 이미지 인페인팅을 수행하는 과정을 보여준다.
 
-![Grounding DINO와 Stable Diffusion 결합 응용 — 텍스트 기반 객체 탐지 후 이미지 인페인팅](figures/fig_8.png)
-*Figure 8: Grounding DINO + Stable Diffusion 응용 — 텍스트로 객체를 탐지(Detection Prompt)한 뒤 Stable Diffusion으로 이미지를 편집(Generation Prompt)하는 파이프라인. (Source: Liu et al., 2023)* 후속 모델인 Grounding DINO 1.5/2.0에서 추론 속도와 정확도가 개선되었다.
+![Grounding DINO와 Stable Diffusion 결합 응용 - 텍스트 기반 객체 탐지 후 이미지 인페인팅](figures/fig_8.png)
+*Figure 8: Grounding DINO + Stable Diffusion 응용 - 텍스트로 객체를 탐지(Detection Prompt)한 뒤 Stable Diffusion으로 이미지를 편집(Generation Prompt)하는 파이프라인. (Source: Liu et al., 2023)* 후속 모델인 Grounding DINO 1.5/2.0에서 추론 속도와 정확도가 개선되었다.
 
 ## 참고 자료
 
@@ -123,4 +123,4 @@ Grounding DINO는 DETR → DINO-DETR의 종단간 탐지 계보에 언어 이해
 
 ## 관련 문서
 
-- [[detr|DETR]] — 발전 기반
+- [[detr|DETR]] - 발전 기반

@@ -207,5 +207,5 @@ GPT-1은 "더 큰 모델, 더 많은 데이터, 더 긴 학습"이라는 스케�
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 발전 기반
-- [[gpt-2|GPT-2]] — 후속 모델
+- [[transformer|Transformer]] - 발전 기반
+- [[gpt-2|GPT-2]] - 후속 모델

@@ -10,16 +10,16 @@ FFT는 순수 수학적 연산으로 학습 가능한 파라미터가 전혀 없
 
 Transformer의 self-attention은 $O(N^2)$ 복잡도를 가지므로 시퀀스 길이가 길어질수록 계산 비용이 급격히 증가한다. FNet은 이 병목을 FFT의 $O(N \log N)$ 복잡도로 해소하면서도, 대부분의 NLU(Natural Language Understanding) 태스크에서 실용적 수준의 성능을 유지할 수 있음을 보여준 최초의 대규모 실험이다.
 
-![FNet 아키텍처 — Self-Attention을 2D FFT로 완전히 대체한 효율적 토큰 믹싱 인코더 구조](figures/architecture.svg)
+![FNet 아키텍처 - Self-Attention을 2D FFT로 완전히 대체한 효율적 토큰 믹싱 인코더 구조](figures/architecture.svg)
 
-*Figure 1: FNet 아키텍처 — Transformer의 Self-Attention을 학습 파라미터 없는 2D FFT(시퀀스 축 + 히든 축)로 대체하여 O(N log N) 복잡도로 BERT 성능의 92~97%를 유지한다.*
+*Figure 1: FNet 아키텍처 - Transformer의 Self-Attention을 학습 파라미터 없는 2D FFT(시퀀스 축 + 히든 축)로 대체하여 O(N log N) 복잡도로 BERT 성능의 92~97%를 유지한다.*
 
 ## 아키텍처 상세
 
 다음 그림은 FNet의 전체 아키텍처를 보여준다. BERT와 동일한 인코더 구조에서 Self-Attention을 Fourier 레이어로 대체한 것이 핵심 변경점이다.
 
-![FNet 아키텍처 — N개의 인코더 블록으로 구성, Fourier 레이어가 어텐션을 대체](figures/fig_1.png)
-*Figure 1: FNet 아키텍처 — N개의 인코더 블록으로 구성되며, 각 블록은 Fourier 토큰 믹싱 레이어와 Feed Forward 레이어로 구성된다. Word, Position, Type 임베딩을 입력으로 받으며, 학습 가능한 파라미터가 없는 Fourier 레이어가 Self-Attention을 완전히 대체한다. (Source: Lee-Thorp et al., 2021)*
+![FNet 아키텍처 - N개의 인코더 블록으로 구성, Fourier 레이어가 어텐션을 대체](figures/fig_1.png)
+*Figure 1: FNet 아키텍처 - N개의 인코더 블록으로 구성되며, 각 블록은 Fourier 토큰 믹싱 레이어와 Feed Forward 레이어로 구성된다. Word, Position, Type 임베딩을 입력으로 받으며, 학습 가능한 파라미터가 없는 Fourier 레이어가 Self-Attention을 완전히 대체한다. (Source: Lee-Thorp et al., 2021)*
 
 FNet의 아키텍처는 Transformer와 거의 동일한 구조를 유지하되, Multi-Head Attention 레이어를 FFT 레이어로 교체한 것이 핵심이다. 각 FNet 블록은 다음 두 단계로 구성된다.
 
@@ -76,13 +76,13 @@ GLUE 벤치마크 전체 평균 기준으로 BERT-Base의 약 97~98% 성능을 �
 
 다음 그래프는 GPU 사전학습에서의 속도-정확도 트레이드오프를 보여준다. 소형 모델에서는 FNet이 파레토 효율 프론티어를 정의하며, 대형 모델에서는 BERT와 FNet-Hybrid가 최적의 트레이드오프를 제공한다.
 
-![GPU 사전학습 속도-정확도 트레이드오프 — FNet, BERT, Linear, FNet-Hybrid 비교](figures/fig_2.png)
-*Figure 2: GPU 사전학습 속도-정확도 트레이드오프 — 점선은 파레토 효율 프론티어를 나타낸다. 소형 모델(빠른 학습 속도, 왼쪽)에서는 FNet(노란 사각형)과 Linear(빨간 삼각형)이 프론티어를 정의하고, 대형 모델(오른쪽)에서는 BERT(파란 원)와 FNet-Hybrid(초록 별)가 프론티어를 정의한다. (Source: Lee-Thorp et al., 2021)*
+![GPU 사전학습 속도-정확도 트레이드오프 - FNet, BERT, Linear, FNet-Hybrid 비교](figures/fig_2.png)
+*Figure 2: GPU 사전학습 속도-정확도 트레이드오프 - 점선은 파레토 효율 프론티어를 나타낸다. 소형 모델(빠른 학습 속도, 왼쪽)에서는 FNet(노란 사각형)과 Linear(빨간 삼각형)이 프론티어를 정의하고, 대형 모델(오른쪽)에서는 BERT(파란 원)와 FNet-Hybrid(초록 별)가 프론티어를 정의한다. (Source: Lee-Thorp et al., 2021)*
 
 TPU 환경에서도 유사한 속도-정확도 트레이드오프 패턴이 관찰된다.
 
 ![TPU 사전학습 속도-정확도 트레이드오프](figures/fig_3.png)
-*Figure 3: TPU 사전학습 속도-정확도 트레이드오프 — TPU에서도 FNet은 동일 학습 시간 대비 효율적인 성능을 달성하며, 특히 소형 모델에서 BERT 대비 훨씬 빠른 학습 속도를 보인다. (Source: Lee-Thorp et al., 2021)*
+*Figure 3: TPU 사전학습 속도-정확도 트레이드오프 - TPU에서도 FNet은 동일 학습 시간 대비 효율적인 성능을 달성하며, 특히 소형 모델에서 BERT 대비 훨씬 빠른 학습 속도를 보인다. (Source: Lee-Thorp et al., 2021)*
 
 | 모델 | 토큰 믹싱 | 복잡도 | 학습 파라미터 | 특징 |
 |------|-----------|--------|---------------|------|
@@ -137,4 +137,4 @@ FNet은 Transformer 대체 모델 중 가장 단순한 접근법으로, 복잡�
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 영감
+- [[transformer|Transformer]] - 영감

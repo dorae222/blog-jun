@@ -10,9 +10,9 @@ DeltaNet의 delta rule은 연상 기억(associative memory)에서 오래된 연�
 
 이 모델은 선형 어텐션 연구의 최전선에 위치하며, "메모리를 어떻게 관리할 것인가"라는 근본적 질문에 게이팅(전역적 망각)과 delta rule(지역적 수정)이라는 이중 메커니즘으로 답한다.
 
-![Gated DeltaNet 아키텍처 — 입력 의존적 게이팅과 Delta Rule을 결합한 선형 어텐션 블록 구조](figures/architecture.svg)
+![Gated DeltaNet 아키텍처 - 입력 의존적 게이팅과 Delta Rule을 결합한 선형 어텐션 블록 구조](figures/architecture.svg)
 
-*Figure 1: Gated DeltaNet 아키텍처 — DeltaNet의 연상 기억 업데이트(지역적 수정)와 GLA의 선택적 망각 게이트(전역적 망각)를 단일 프레임워크로 통합한 선형 복잡도 시퀀스 모델이다.*
+*Figure 1: Gated DeltaNet 아키텍처 - DeltaNet의 연상 기억 업데이트(지역적 수정)와 GLA의 선택적 망각 게이트(전역적 망각)를 단일 프레임워크로 통합한 선형 복잡도 시퀀스 모델이다.*
 
 ## 아키텍처 상세
 
@@ -133,4 +133,4 @@ Gated DeltaNet은 flash-linear-attention 라이브러리를 통해 실무에서 
 
 ## 관련 문서
 
-- [[retnet|RetNet]] — 영감
+- [[retnet|RetNet]] - 영감

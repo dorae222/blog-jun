@@ -10,14 +10,14 @@ ToT의 핵심 비유는 인간의 문제 해결 과정이다. 인간은 어려�
 
 기존 추론 기법과의 관계를 정리하면: CoT는 하나의 선형 경로, Self-Consistency는 여러 선형 경로의 병렬 샘플링, ToT는 트리 구조의 체계적 탐색이다. Self-Consistency가 "여러 번 풀어서 다수결"이라면, ToT는 "한 단계씩 유망한 방향을 선택하며 깊이 탐색"하는 것이다. 이 차이는 Game of 24에서 극적으로 드러난다: CoT 4%, Self-Consistency(k=100) 9%, ToT 74%. 다수 샘플링만으로는 해결할 수 없는 문제 유형이 존재하며, **구조화된 탐색이 본질적으로 필요한 과제**에서 ToT가 압도적 우위를 보인다.
 
-![Tree of Thoughts 아키텍처 — 트리 구조 탐색과 단계별 평가·가지치기 기반 의도적 추론 구조](figures/architecture.svg)
+![Tree of Thoughts 아키텍처 - 트리 구조 탐색과 단계별 평가·가지치기 기반 의도적 추론 구조](figures/architecture.svg)
 
-*Figure 1: ToT 아키텍처 — 추론 과정을 트리로 확장하여 BFS/DFS 탐색 알고리즘으로 각 단계의 유망성을 평가하고 가지치기하며, CoT의 단방향 추론 한계를 극복한 계획적 문제 해결 프레임워크이다.*
+*Figure 1: ToT 아키텍처 - 추론 과정을 트리로 확장하여 BFS/DFS 탐색 알고리즘으로 각 단계의 유망성을 평가하고 가지치기하며, CoT의 단방향 추론 한계를 극복한 계획적 문제 해결 프레임워크이다.*
 
 아래 그림은 기존 추론 방식과 ToT의 차이를 시각적으로 비교한다. 입출력(IO), Chain-of-Thought, Self-Consistency, Tree of Thoughts의 구조적 차이를 확인할 수 있다.
 
-![추론 방식 비교 — IO, CoT, CoT-SC, ToT의 구조적 차이](figures/fig_1.png)
-*Figure 1: 추론 방식 비교 — (a) IO는 직접 입출력, (b) CoT는 단일 선형 경로, (c) Self-Consistency는 여러 경로의 병렬 샘플링, (d) ToT는 트리 구조의 체계적 탐색으로 각 단계에서 평가와 가지치기를 수행한다. (Source: arXiv 2305.10601)*
+![추론 방식 비교 - IO, CoT, CoT-SC, ToT의 구조적 차이](figures/fig_1.png)
+*Figure 1: 추론 방식 비교 - (a) IO는 직접 입출력, (b) CoT는 단일 선형 경로, (c) Self-Consistency는 여러 경로의 병렬 샘플링, (d) ToT는 트리 구조의 체계적 탐색으로 각 단계에서 평가와 가지치기를 수행한다. (Source: arXiv 2305.10601)*
 
 ## 아키텍처 상세
 
@@ -74,8 +74,8 @@ $$\text{DFS}(s) = \begin{cases} s & \text{if terminal}(s) \\ \text{DFS}(\arg\max
 
 다음은 Game of 24에서 ToT가 사고를 생성하고 평가하는 실제 프롬프트 예시이다.
 
-![Game of 24에서의 ToT — 사고 생성 프롬프트와 상태 평가 프롬프트](figures/fig_3.png)
-*Figure 2: Game of 24에서의 ToT — (a) Propose 전략으로 가능한 다음 연산을 생성하고, (b) Value 평가로 각 상태가 24에 도달할 가능성을 "sure/maybe/impossible"로 판단한다. (Source: arXiv 2305.10601)*
+![Game of 24에서의 ToT - 사고 생성 프롬프트와 상태 평가 프롬프트](figures/fig_3.png)
+*Figure 2: Game of 24에서의 ToT - (a) Propose 전략으로 가능한 다음 연산을 생성하고, (b) Value 평가로 각 상태가 24에 도달할 가능성을 "sure/maybe/impossible"로 판단한다. (Source: arXiv 2305.10601)*
 
 Game of 24는 4개의 숫자와 사칙연산으로 24를 만드는 문제다. 이 문제는 계획, 시행착오, 백트래킹이 필수적으로 요구되어 ToT의 강점이 극대화된다.
 
@@ -112,8 +112,8 @@ Game of 24는 4개의 숫자와 사칙연산으로 24를 만드는 문제다. �
 
 아래는 Creative Writing 태스크에서 ToT의 의도적 탐색 과정을 보여준다. 5개의 계획을 샘플링한 후 투표로 최선의 계획을 선택한다.
 
-![Creative Writing에서의 ToT 의도적 탐색 — 5개 계획 샘플링과 투표 기반 선택](figures/fig_7.png)
-*Figure 3: Creative Writing 의도적 탐색 — (a) 입력에서 (b) 5개의 서로 다른 글쓰기 계획을 생성하고, (c) LLM 투표로 가장 일관성 있는 계획(Plan 2)을 선택한다. (Source: arXiv 2305.10601)*
+![Creative Writing에서의 ToT 의도적 탐색 - 5개 계획 샘플링과 투표 기반 선택](figures/fig_7.png)
+*Figure 3: Creative Writing 의도적 탐색 - (a) 입력에서 (b) 5개의 서로 다른 글쓰기 계획을 생성하고, (c) LLM 투표로 가장 일관성 있는 계획(Plan 2)을 선택한다. (Source: arXiv 2305.10601)*
 
 ## 벤치마크/성능
 
@@ -127,8 +127,8 @@ Game of 24에서 CoT 4% vs ToT 74%의 압도적 차이는 ToT의 위력을 극�
 
 다음은 Mini Crosswords에서의 DFS 탐색과 가지치기 과정이다. 제약 조건을 만족하지 못하는 경로는 즉시 가지치기되어 백트래킹한다.
 
-![Mini Crosswords에서의 ToT DFS — 사고 제안, 우선순위 큐, 상태 평가 및 가지치기](figures/fig_11.png)
-*Figure 4: Mini Crosswords DFS 탐색 — (a) 단어 단서에 대한 사고를 제안하고 우선순위 큐로 관리하며, (b) 남은 단서의 충족 가능성을 평가하여 불가능한 상태는 가지치기하고 부모 상태로 백트래킹한다. (Source: arXiv 2305.10601)*
+![Mini Crosswords에서의 ToT DFS - 사고 제안, 우선순위 큐, 상태 평가 및 가지치기](figures/fig_11.png)
+*Figure 4: Mini Crosswords DFS 탐색 - (a) 단어 단서에 대한 사고를 제안하고 우선순위 큐로 관리하며, (b) 남은 단서의 충족 가능성을 평가하여 불가능한 상태는 가지치기하고 부모 상태로 백트래킹한다. (Source: arXiv 2305.10601)*
 
 ## 학습
 
@@ -145,4 +145,4 @@ ToT는 CoT에서 발전하여, 선형 추론을 트리 탐색으로 확장한 �
 
 ## 관련 문서
 
-- [[cot|Chain-of-Thought Prompting]] — 발전 기반
+- [[cot|Chain-of-Thought Prompting]] - 발전 기반

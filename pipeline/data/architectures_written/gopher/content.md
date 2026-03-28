@@ -7,7 +7,7 @@
 Gopher 프로젝트의 가장 중요한 발견은, 모델 스케일링이 모든 태스크에 균등하게 도움이 되지 않는다는 것이다. 상식 추론, 독해, 사실 확인 등에서는 크기에 비례하여 성능이 향상되었지만, **수학적 추론과 논리적 추론에서는 크기 증가만으로 한계**가 있음을 보였다. 이 관찰은 이후 Chinchilla의 효율적 스케일링 연구와 Chain-of-Thought 추론 연구를 촉발시킨 중요한 기여이다.
 
 ![Gopher(280B)와 기존 SOTA 언어 모델의 124개 태스크별 성능 변화율 비교](figures/fig_1.png)
-*Figure 1: Gopher(280B) vs 기존 SOTA 언어 모델 — 124개 태스크에서의 성능 변화율. 사실 확인, 상식 추론, 독해 등에서 큰 향상을 보이지만, 수학(Maths)에서는 향상이 제한적이어서 스케일링의 비균등한 효과를 보여준다. (Source: Rae et al., 2021)*
+*Figure 1: Gopher(280B) vs 기존 SOTA 언어 모델 - 124개 태스크에서의 성능 변화율. 사실 확인, 상식 추론, 독해 등에서 큰 향상을 보이지만, 수학(Maths)에서는 향상이 제한적이어서 스케일링의 비균등한 효과를 보여준다. (Source: Rae et al., 2021)*
 
 **참고 논문**: [Scaling Language Models](https://arxiv.org/abs/2112.11446) (Rae et al., 2021)
 
@@ -60,8 +60,8 @@ Gopher 프로젝트는 6가지 크기의 모델을 동시에 학습하여 스케
 
 ### 1. 태스크별 스케일링 효과의 체계적 분석
 
-![280B Gopher와 7.1B 이하 최고 모델 간의 태스크별 성능 차이 — 스케일 확장의 실질적 효과 분석](figures/fig_4.png)
-*Figure 4: Gopher(280B) vs 7.1B 이하 최고 모델 — 태스크별 성능 차이. 논리적 추론, 사실 확인, STEM 분야에서 큰 향상이 관찰되지만, 수학에서는 일부 태스크에서 오히려 성능이 하락(주황색 바)하여, 크기 확장의 한계를 명확히 드러낸다. (Source: Rae et al., 2021)*
+![280B Gopher와 7.1B 이하 최고 모델 간의 태스크별 성능 차이 - 스케일 확장의 실질적 효과 분석](figures/fig_4.png)
+*Figure 4: Gopher(280B) vs 7.1B 이하 최고 모델 - 태스크별 성능 차이. 논리적 추론, 사실 확인, STEM 분야에서 큰 향상이 관찰되지만, 수학에서는 일부 태스크에서 오히려 성능이 하락(주황색 바)하여, 크기 확장의 한계를 명확히 드러낸다. (Source: Rae et al., 2021)*
 
 124개 태스크를 분석한 결과, 스케일링 효과는 태스크 유형에 따라 크게 달랐다:
 
@@ -88,13 +88,13 @@ Gopher 프로젝트는 6가지 크기의 모델을 동시에 학습하여 스케
 
 ### 3. 책임 있는 AI 분석
 
-![FEVER 태스크에서의 스케일링 곡선 — 모델 크기에 따른 사실 확인 정확도 변화](figures/fig_3.png)
-*Figure 3: FEVER 스케일링 곡선 — 모델 크기에 따라 사실 확인(Claim-only) 정확도가 일관되게 향상되나, SUPPORTED vs REFUTED 구분 능력은 크게 증가하는 반면 REFUTED vs NOTENOUGHINFO 구분은 거의 개선되지 않아, 스케일링의 비대칭적 효과를 보여준다. (Source: Rae et al., 2021)*
+![FEVER 태스크에서의 스케일링 곡선 - 모델 크기에 따른 사실 확인 정확도 변화](figures/fig_3.png)
+*Figure 3: FEVER 스케일링 곡선 - 모델 크기에 따라 사실 확인(Claim-only) 정확도가 일관되게 향상되나, SUPPORTED vs REFUTED 구분 능력은 크게 증가하는 반면 REFUTED vs NOTENOUGHINFO 구분은 거의 개선되지 않아, 스케일링의 비대칭적 효과를 보여준다. (Source: Rae et al., 2021)*
 
 Gopher 논문은 성능 분석과 함께 독성(toxicity), 편향(bias), 개인정보 노출 위험에 대한 종합적인 안전성 평가를 포함했다. 이는 대형 모델의 사회적 영향을 체계적으로 분석한 초기 사례 중 하나이다.
 
 ![19개 언어 모델링 데이터셋에서 Gopher와 기존 SOTA 모델의 비교](figures/fig_2.png)
-*Figure 2: 언어 모델링 태스크 비교 — 19개 데이터셋에서 Gopher가 11개에서 SOTA를 달성하며, 특히 서적과 기사 도메인에서 가장 큰 개선을 보인다. (Source: Rae et al., 2021)*
+*Figure 2: 언어 모델링 태스크 비교 - 19개 데이터셋에서 Gopher가 11개에서 SOTA를 달성하며, 특히 서적과 기사 도메인에서 가장 큰 개선을 보인다. (Source: Rae et al., 2021)*
 
 ## 벤치마크/성능
 
@@ -160,5 +160,5 @@ Gopher는 "크기가 전부가 아니다"라는 메시지로 이후 AI 연구의
 
 ## 관련 문서
 
-- [[chinchilla|Training Compute-Optimal Large Language Models (Chinchilla)]] — 후속 모델
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 영감
+- [[chinchilla|Training Compute-Optimal Large Language Models (Chinchilla)]] - 후속 모델
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 영감

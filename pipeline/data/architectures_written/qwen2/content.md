@@ -9,7 +9,7 @@ Qwen2의 핵심 경쟁력은 세 가지이다: (1) 7T 토큰 이상의 고품질
 다음 그림은 Qwen2의 전체 아키텍처를 보여준다.
 
 ![Qwen2 아키텍처 다이어그램](figures/architecture.png)
-*Figure 1: Qwen2 아키텍처 — GQA 기반 어텐션, SwiGLU FFN, RoPE 위치 인코딩을 결합한 Dense Transformer 구조. 151K 어휘와 128K 컨텍스트를 지원한다. (Source: Alibaba Cloud)*
+*Figure 1: Qwen2 아키텍처 - GQA 기반 어텐션, SwiGLU FFN, RoPE 위치 인코딩을 결합한 Dense Transformer 구조. 151K 어휘와 128K 컨텍스트를 지원한다. (Source: Alibaba Cloud)*
 
 ## 아키텍처 상세
 
@@ -63,7 +63,7 @@ $$\text{YARN}: \theta'_i = \theta_i \cdot s(i)$$
 다음 그림은 Qwen2 시리즈의 YARN 기반 128K 컨텍스트 외삽 성능을 Needle in a Haystack 테스트로 검증한 결과이다.
 
 ![Qwen2 Needle in a Haystack 테스트 결과](figures/fig_1.png)
-*Figure 1: Qwen2 Instruct 모델의 Needle in a Haystack 테스트 — Qwen2-72B-Instruct는 128K 전체 컨텍스트에서 거의 완벽한 검색 정확도를 달성하며, YARN 기반 컨텍스트 외삽의 효과를 입증한다. (Source: Yang et al., 2024)*
+*Figure 1: Qwen2 Instruct 모델의 Needle in a Haystack 테스트 - Qwen2-72B-Instruct는 128K 전체 컨텍스트에서 거의 완벽한 검색 정확도를 달성하며, YARN 기반 컨텍스트 외삽의 효과를 입증한다. (Source: Yang et al., 2024)*
 
 ## 핵심 혁신
 
@@ -142,6 +142,6 @@ Qwen2는 중국 AI 생태계가 오픈소스 LLM 경쟁에서 미국을 추격�
 
 ## 관련 문서
 
-- [[qwen2-5|Qwen2.5 Technical Report]] — 후속 모델
-- [[qwen2-vl|Qwen2-VL]] — 후속 모델
-- [[llama-2|Llama 2: Open Foundation and Fine-Tuned Chat Models]] — 영감
+- [[qwen2-5|Qwen2.5 Technical Report]] - 후속 모델
+- [[qwen2-vl|Qwen2-VL]] - 후속 모델
+- [[llama-2|Llama 2: Open Foundation and Fine-Tuned Chat Models]] - 영감

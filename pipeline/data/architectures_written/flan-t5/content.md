@@ -12,8 +12,8 @@ Flan-T5는 2022년 10월 Google Research가 발표한 **명령어 파인튜닝(I
 - **코드**: [t5x (GitHub)](https://github.com/google-research/t5x)
 - **라이선스**: Apache 2.0
 
-![Flan-T5 아키텍처 개요 — 인코더-디코더 구조에 명령어 튜닝 적용](figures/architecture.png)
-*Figure 1: Flan-T5 아키텍처 — T5의 인코더-디코더 구조를 유지하면서 Flan Collection(1,836 태스크)과 CoT 파인튜닝을 적용한 설계. (Source: arXiv 2210.11416)*
+![Flan-T5 아키텍처 개요 - 인코더-디코더 구조에 명령어 튜닝 적용](figures/architecture.png)
+*Figure 1: Flan-T5 아키텍처 - T5의 인코더-디코더 구조를 유지하면서 Flan Collection(1,836 태스크)과 CoT 파인튜닝을 적용한 설계. (Source: arXiv 2210.11416)*
 
 ## 아키텍처 상세
 
@@ -35,8 +35,8 @@ Flan-T5는 T5의 인코더-디코더 구조를 그대로 유지한다. 아키텍
 
 ## 핵심 혁신: Flan Collection과 Chain-of-Thought
 
-![명령어 튜닝 개념도 — 1.8K 태스크로 학습 후 미지의 태스크에 일반화](figures/fig_1.png)
-*Figure 2: 명령어 튜닝 개념 — 1,836개 태스크를 명령어 형태로 파인튜닝하고, 제로샷·퓨샷·CoT 등 다양한 설정에서 미지의 태스크에 일반화하는 과정. (Source: arXiv 2210.11416)*
+![명령어 튜닝 개념도 - 1.8K 태스크로 학습 후 미지의 태스크에 일반화](figures/fig_1.png)
+*Figure 2: 명령어 튜닝 개념 - 1,836개 태스크를 명령어 형태로 파인튜닝하고, 제로샷·퓨샷·CoT 등 다양한 설정에서 미지의 태스크에 일반화하는 과정. (Source: arXiv 2210.11416)*
 
 ### Flan Collection
 
@@ -48,13 +48,13 @@ $$\text{Flan Collection} = \text{Flan 2021} + \text{P3++} + \text{Super-Natural 
 - **템플릿**: 각 태스크마다 최대 10개의 명령어 템플릿 사용
 - **Input Inversion**: 역 태스크도 학습하여 다양한 형식에 강건하게 대응
 
-![Flan Collection 구성 — 파인튜닝 태스크와 평가 벤치마크 구분](figures/fig_2.png)
-*Figure 3: Flan Collection 구성 — T0-SF, Muffin, Natural Instructions v2, CoT(추론) 데이터셋을 포함한 473개 데이터셋, 1,836개 태스크. MMLU, BBH 등은 평가용으로 분리. (Source: arXiv 2210.11416)*
+![Flan Collection 구성 - 파인튜닝 태스크와 평가 벤치마크 구분](figures/fig_2.png)
+*Figure 3: Flan Collection 구성 - T0-SF, Muffin, Natural Instructions v2, CoT(추론) 데이터셋을 포함한 473개 데이터셋, 1,836개 태스크. MMLU, BBH 등은 평가용으로 분리. (Source: arXiv 2210.11416)*
 
 ### Chain-of-Thought (CoT) 파인튜닝
 
-![파인튜닝 데이터 형식 조합 — 제로샷, 퓨샷, CoT의 혼합](figures/fig_3.png)
-*Figure 4: 파인튜닝 데이터 형식 — 명령어 유무, 예시(exemplar) 유무, CoT 유무를 조합하여 다양한 프롬프트 형식으로 학습. 모든 조합을 혼합 학습한 것이 핵심. (Source: arXiv 2210.11416)*
+![파인튜닝 데이터 형식 조합 - 제로샷, 퓨샷, CoT의 혼합](figures/fig_3.png)
+*Figure 4: 파인튜닝 데이터 형식 - 명령어 유무, 예시(exemplar) 유무, CoT 유무를 조합하여 다양한 프롬프트 형식으로 학습. 모든 조합을 혼합 학습한 것이 핵심. (Source: arXiv 2210.11416)*
 
 Flan-T5의 두 번째 핵심 혁신은 **CoT 데이터를 파인튜닝에 포함**한 것이다:
 
@@ -73,8 +73,8 @@ Flan-T5의 두 번째 핵심 혁신은 **CoT 데이터를 파인튜닝에 포함
 
 ### 혼합 프롬프트 설정
 
-![제로샷 CoT 추론 예시 — BIG-Bench 태스크에서의 단계별 추론](figures/fig_7.png)
-*Figure 5: 제로샷 CoT 추론 — CoT 데이터를 포함하여 파인튜닝하면 미지의 BIG-Bench 태스크에서도 단계별 추론이 가능해짐. Boolean Expressions, Disambiguation QA 등에서 효과 입증. (Source: arXiv 2210.11416)*
+![제로샷 CoT 추론 예시 - BIG-Bench 태스크에서의 단계별 추론](figures/fig_7.png)
+*Figure 5: 제로샷 CoT 추론 - CoT 데이터를 포함하여 파인튜닝하면 미지의 BIG-Bench 태스크에서도 단계별 추론이 가능해짐. Boolean Expressions, Disambiguation QA 등에서 효과 입증. (Source: arXiv 2210.11416)*
 
 제로샷, 퓨샷, CoT 프롬프트를 **혼합하여 학습**했을 때 모든 설정에서 2%+ 성능 향상이 나타났다.
 
@@ -163,7 +163,7 @@ Retrieval-Augmented Generation에서 검색된 문서를 기반으로 답변을 
 4. **최신 지식 부재**: 2022년 이후 정보를 포함하지 않는다
 
 ### 전망
-Flan-T5는 **명령어 튜닝의 효과를 대규모로 입증한 역사적 모델**이다. 이 모델이 보여준 핵심 교훈—"작은 모델 + 좋은 학습 방법 > 큰 모델"—은 이후 Alpaca, Vicuna, LIMA 등 데이터 효율적 정렬(alignment) 연구의 이론적 근거가 되었다. 오픈소스로 공개되어 2024년 기준으로도 Hugging Face에서 가장 많이 다운로드되는 모델 중 하나이며, 특히 RAG 시스템과 경량 NLP 파이프라인에서 여전히 현역으로 활약하고 있다.
+Flan-T5는 **명령어 튜닝의 효과를 대규모로 입증한 역사적 모델**이다. 이 모델이 보여준 핵심 교훈-"작은 모델 + 좋은 학습 방법 > 큰 모델"-은 이후 Alpaca, Vicuna, LIMA 등 데이터 효율적 정렬(alignment) 연구의 이론적 근거가 되었다. 오픈소스로 공개되어 2024년 기준으로도 Hugging Face에서 가장 많이 다운로드되는 모델 중 하나이며, 특히 RAG 시스템과 경량 NLP 파이프라인에서 여전히 현역으로 활약하고 있다.
 
 ---
 
@@ -174,4 +174,4 @@ Flan-T5는 **명령어 튜닝의 효과를 대규모로 입증한 역사적 모�
 
 ## 관련 문서
 
-- [[t5|T5]] — 발전 기반
+- [[t5|T5]] - 발전 기반

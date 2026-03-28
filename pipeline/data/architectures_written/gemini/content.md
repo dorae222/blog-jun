@@ -182,6 +182,6 @@ Gemini 1.0은 Google DeepMind의 통합 AI 플랫폼의 기반을 닦은 모델�
 
 ## 관련 문서
 
-- [[palm|PaLM]] — 발전 기반
-- [[gemini-1-5|Gemini 1.5]] — 후속 모델
-- [[gemma|Gemma: Open Models Based on Gemini Research and Technology]] — 영감을 줌
+- [[palm|PaLM]] - 발전 기반
+- [[gemini-1-5|Gemini 1.5]] - 후속 모델
+- [[gemma|Gemma: Open Models Based on Gemini Research and Technology]] - 영감을 줌

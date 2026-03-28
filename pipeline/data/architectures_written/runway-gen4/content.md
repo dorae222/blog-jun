@@ -10,9 +10,9 @@ Gen-4의 가장 핵심적인 차별화 포인트는 **멀티샷 캐릭터 일관
 
 4K 해상도 출력 지원과 함께 Gen-4.5에서는 실시간 인터랙티브 비디오 생성도 지원하여, 사용자가 실시간으로 장면과 상호작용하는 게임 및 체험형 미디어 분야로의 확장이 가능해졌다. DiT(Diffusion Transformer) 아키텍처에서 영감을 받은 Transformer 기반 비디오 생성 백본을 사용하는 것으로 알려져 있다.
 
-![Runway Gen-4 아키텍처 — 참조 이미지 기반 캐릭터 일관성 유지와 4K 비디오 생성 구조](figures/architecture.svg)
+![Runway Gen-4 아키텍처 - 참조 이미지 기반 캐릭터 일관성 유지와 4K 비디오 생성 구조](figures/architecture.svg)
 
-*Figure 1: Gen-4 아키텍처 — 참조 이미지에서 추출한 시각적 정체성 임베딩을 Cross-Attention으로 주입하여 멀티샷 캐릭터 일관성을 유지하면서 4K 해상도 비디오를 생성한다.*
+*Figure 1: Gen-4 아키텍처 - 참조 이미지에서 추출한 시각적 정체성 임베딩을 Cross-Attention으로 주입하여 멀티샷 캐릭터 일관성을 유지하면서 4K 해상도 비디오를 생성한다.*
 
 ## 아키텍처 상세
 
@@ -133,4 +133,4 @@ Runway Gen-4는 DiT에서 영감을 받았으며, Gen-1 → Gen-2 → Gen-3 Alph
 
 ## 관련 문서
 
-- [[dit|DiT (Diffusion Transformers)]] — 영감
+- [[dit|DiT (Diffusion Transformers)]] - 영감

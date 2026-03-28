@@ -10,14 +10,14 @@ MetaGPT의 핵심 통찰은 **"비구조적 대화는 멀티 에이전트 시스
 
 이 접근의 이론적 배경은 소프트웨어 공학의 **폭포수(Waterfall) 모델**과 유사하다. 요구사항 분석 $\rightarrow$ 시스템 설계 $\rightarrow$ 구현 $\rightarrow$ 테스트의 순차적 절차를 따르되, 각 단계의 산출물이 다음 단계의 입력이 되는 구조화된 파이프라인을 에이전트 시스템으로 자동화한다. 이는 에이전트 간 불필요한 대화를 제거하고, 구조화된 산출물을 통해 환각(hallucination)을 줄이는 효과가 있다.
 
-![MetaGPT 아키텍처 — SOP 기반 역할 분담과 구조화된 산출물 흐름의 멀티 에이전트 소프트웨어 개발 구조](figures/architecture.svg)
+![MetaGPT 아키텍처 - SOP 기반 역할 분담과 구조화된 산출물 흐름의 멀티 에이전트 소프트웨어 개발 구조](figures/architecture.svg)
 
-*Figure 1: MetaGPT 아키텍처 — Product Manager, Architect, Engineer, QA Engineer 역할을 SOP에 따라 배치하고, 구조화된 산출물(PRD, 시스템 설계, 코드, 테스트)이 순차적으로 전달되는 폭포수 프로세스이다.*
+*Figure 1: MetaGPT 아키텍처 - Product Manager, Architect, Engineer, QA Engineer 역할을 SOP에 따라 배치하고, 구조화된 산출물(PRD, 시스템 설계, 코드, 테스트)이 순차적으로 전달되는 폭포수 프로세스이다.*
 
 아래 그림은 MetaGPT의 SOP 기반 에이전트 협업 구조를 보여준다. 실제 소프트웨어 개발 팀의 폭포수 프로세스와 MetaGPT 에이전트의 역할별 산출물 흐름을 비교할 수 있다.
 
-![MetaGPT SOP 기반 협업 구조 — 실제 개발팀과 동일한 역할 분담과 산출물 흐름](figures/fig_1.png)
-*Figure 1: MetaGPT 에이전트 협업과 SOP — Product Manager, Architect, Engineer, QA Engineer가 순차적으로 산출물을 생성하며, 인간 상호작용은 요구사항 입력과 최종 검수로 최소화된다. (Source: arXiv 2308.00352)*
+![MetaGPT SOP 기반 협업 구조 - 실제 개발팀과 동일한 역할 분담과 산출물 흐름](figures/fig_1.png)
+*Figure 1: MetaGPT 에이전트 협업과 SOP - Product Manager, Architect, Engineer, QA Engineer가 순차적으로 산출물을 생성하며, 인간 상호작용은 요구사항 입력과 최종 검수로 최소화된다. (Source: arXiv 2308.00352)*
 
 ## 아키텍처 상세
 
@@ -36,8 +36,8 @@ MetaGPT의 아키텍처는 역할(Role), 액션(Action), 메시지 풀(Message P
 
 다음 그림은 메시지 풀의 발행-구독 패턴과 반복적 프로그래밍의 실행 피드백 루프를 보여준다.
 
-![MetaGPT 메시지 풀과 반복적 프로그래밍 — 발행-구독 패턴과 실행 피드백 루프](figures/fig_2.jpg)
-*Figure 2: 메시지 풀과 반복적 프로그래밍 — (좌) 에이전트들이 공유 메시지 풀에 구조화된 메시지를 발행하고 필요한 것만 구독한다. (우) Engineer 에이전트가 코드 실행 피드백을 받아 반복적으로 수정하는 루프. (Source: arXiv 2308.00352)*
+![MetaGPT 메시지 풀과 반복적 프로그래밍 - 발행-구독 패턴과 실행 피드백 루프](figures/fig_2.jpg)
+*Figure 2: 메시지 풀과 반복적 프로그래밍 - (좌) 에이전트들이 공유 메시지 풀에 구조화된 메시지를 발행하고 필요한 것만 구독한다. (우) Engineer 에이전트가 코드 실행 피드백을 받아 반복적으로 수정하는 루프. (Source: arXiv 2308.00352)*
 
 MetaGPT의 가장 독특한 설계 요소다. 모든 에이전트의 산출물은 공유 메시지 풀에 발행(publish)되며, 각 에이전트는 자신에게 필요한 메시지 타입만 구독(subscribe)한다.
 
@@ -112,8 +112,8 @@ QA Engineer → 테스트
 
 아래는 MetaGPT의 전체 개발 프로세스 상세도이다. "2048 퍼즐 게임"이라는 한 줄 요구사항에서 각 역할이 생성하는 실제 산출물(PRD, 설계서, 코드, 테스트)을 확인할 수 있다.
 
-![MetaGPT 전체 개발 프로세스 — 한 줄 요구사항에서 완성된 소프트웨어까지의 상세 흐름](figures/fig_3.jpg)
-*Figure 3: MetaGPT 개발 프로세스 상세 — Product Manager의 PRD, Architect의 시스템 설계, Engineer의 코드 구현, QA Engineer의 테스트까지 각 단계의 실제 산출물을 보여준다. (Source: arXiv 2308.00352)*
+![MetaGPT 전체 개발 프로세스 - 한 줄 요구사항에서 완성된 소프트웨어까지의 상세 흐름](figures/fig_3.jpg)
+*Figure 3: MetaGPT 개발 프로세스 상세 - Product Manager의 PRD, Architect의 시스템 설계, Engineer의 코드 구현, QA Engineer의 테스트까지 각 단계의 실제 산출물을 보여준다. (Source: arXiv 2308.00352)*
 
 각 역할은 자유 텍스트가 아닌 구조화된 형식(JSON, 마크다운, Mermaid 다이어그램)으로 산출물을 생성한다. 이는 하위 역할이 상위 산출물을 파싱하고 활용하는 데 있어 정확도를 높인다.
 
@@ -132,7 +132,7 @@ QA Engineer → 테스트
 다음 그래프는 MBPP와 HumanEval 코드 생성 벤치마크에서 MetaGPT와 다른 접근법들의 Pass@1 비율을 비교한 것이다.
 
 ![MetaGPT vs 다른 접근법 MBPP/HumanEval Pass@1 비교](figures/fig_4.png)
-*Figure 4: MBPP 및 HumanEval Pass@1 비교 — MetaGPT가 단일 에이전트와 ChatDev 대비 높은 코드 실행 성공률을 달성한다. (Source: arXiv 2308.00352)*
+*Figure 4: MBPP 및 HumanEval Pass@1 비교 - MetaGPT가 단일 에이전트와 ChatDev 대비 높은 코드 실행 성공률을 달성한다. (Source: arXiv 2308.00352)*
 
 | 지표 | 단일 에이전트 | AutoGen | MetaGPT | 향상 |
 |-----|-----------|---------|---------|------|
@@ -162,4 +162,4 @@ MetaGPT는 AutoGen의 멀티 에이전트 아이디어에서 영감을 받되, �
 
 ## 관련 문서
 
-- [[autogen|AutoGen]] — 영감
+- [[autogen|AutoGen]] - 영감

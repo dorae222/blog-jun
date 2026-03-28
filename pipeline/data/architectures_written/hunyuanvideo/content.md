@@ -9,8 +9,8 @@ HunyuanVideo는 2024년 12월 Tencent가 발표한 오픈소스 텍스트-비디
 - **발표**: 2024년 12월, Tencent
 - **라이선스**: Apache 2.0
 
-![HunyuanVideo 전체 아키텍처 — CausalVAE 인코더, LLM 텍스트 인코더, Diffusion Backbone, CausalVAE 디코더로 구성된 파이프라인](figures/fig_7.png)
-*Figure 1: HunyuanVideo 전체 아키텍처 개요 — 비디오를 CausalVAE로 잠재 공간에 압축하고, 텍스트 조건과 함께 Diffusion Backbone에서 노이즈 제거 후 디코더로 비디오를 생성한다. (Source: Tencent, 2024)*
+![HunyuanVideo 전체 아키텍처 - CausalVAE 인코더, LLM 텍스트 인코더, Diffusion Backbone, CausalVAE 디코더로 구성된 파이프라인](figures/fig_7.png)
+*Figure 1: HunyuanVideo 전체 아키텍처 개요 - 비디오를 CausalVAE로 잠재 공간에 압축하고, 텍스트 조건과 함께 Diffusion Backbone에서 노이즈 제거 후 디코더로 비디오를 생성한다. (Source: Tencent, 2024)*
 
 ## 아키텍처 상세
 
@@ -24,8 +24,8 @@ $$\text{Attn}([z^v; z^t]) = \text{softmax}\left(\frac{Q_{[v;t]} K_{[v;t]}^T}{\sq
 
 **독립 스트림 레이어**: 각 모달리티가 자체 파라미터로만 처리.
 
-![HunyuanVideo Diffusion Backbone 상세 구조 — Dual-stream DiT Block과 Single-stream DiT Block의 내부 구성](figures/fig_10.png)
-*Figure 2: Diffusion Backbone 아키텍처 — 앞쪽 1/3은 Dual-stream DiT Block으로 텍스트와 비디오를 독립 처리 후 결합하고, 나머지 2/3은 Single-stream DiT Block으로 통합 처리한다. 3D RoPE 기반 어텐션을 사용한다. (Source: Tencent, 2024)*
+![HunyuanVideo Diffusion Backbone 상세 구조 - Dual-stream DiT Block과 Single-stream DiT Block의 내부 구성](figures/fig_10.png)
+*Figure 2: Diffusion Backbone 아키텍처 - 앞쪽 1/3은 Dual-stream DiT Block으로 텍스트와 비디오를 독립 처리 후 결합하고, 나머지 2/3은 Single-stream DiT Block으로 통합 처리한다. 3D RoPE 기반 어텐션을 사용한다. (Source: Tencent, 2024)*
 
 | 구성 요소 | 사양 |
 |----------|------|
@@ -43,8 +43,8 @@ $$\text{Attn}([z^v; z^t]) = \text{softmax}\left(\frac{Q_{[v;t]} K_{[v;t]}^T}{\sq
 
 $$z = \text{CausalVAE}_{enc}(x) \in \mathbb{R}^{T/4 \times H/8 \times W/8 \times C}$$
 
-![CausalVAE 3D 아키텍처 — 인과 합성곱 기반 인코더-디코더 구조로 시공간 압축 수행](figures/fig_8.png)
-*Figure 3: CausalVAE 3D 아키텍처 — 인과 합성곱을 사용하여 시간 방향 4배, 공간 방향 8배 압축을 수행하는 비디오 전용 VAE 구조. (Source: Tencent, 2024)*
+![CausalVAE 3D 아키텍처 - 인과 합성곱 기반 인코더-디코더 구조로 시공간 압축 수행](figures/fig_8.png)
+*Figure 3: CausalVAE 3D 아키텍처 - 인과 합성곱을 사용하여 시간 방향 4배, 공간 방향 8배 압축을 수행하는 비디오 전용 VAE 구조. (Source: Tencent, 2024)*
 
 인과 합성곱(Causal Conv3D)을 사용하여 현재 프레임은 이전 프레임에만 의존하도록 한다. 720p 129프레임 기준 잠재 크기는 $33 \times 45 \times 80 \times 16$이다.
 
@@ -80,8 +80,8 @@ LLaVA 계열의 멀티모달 언어 모델을 텍스트 인코더로 활용하�
 
 VBench 벤치마크에서 오픈소스 모델 최상위 점수를 기록하였다.
 
-![HunyuanVideo와 주요 비디오 생성 모델 간 성능 비교 — VBench 종합 점수 순위](figures/fig_2_2.png)
-*Figure 5: 비디오 생성 모델 성능 비교 — HunyuanVideo가 VBench 종합 점수에서 오픈소스 및 상업 모델 대비 최상위 순위를 기록하였다. (Source: Tencent, 2024)*
+![HunyuanVideo와 주요 비디오 생성 모델 간 성능 비교 - VBench 종합 점수 순위](figures/fig_2_2.png)
+*Figure 5: 비디오 생성 모델 성능 비교 - HunyuanVideo가 VBench 종합 점수에서 오픈소스 및 상업 모델 대비 최상위 순위를 기록하였다. (Source: Tencent, 2024)*
 
 ## 관련 모델 비교
 
@@ -95,8 +95,8 @@ VBench 벤치마크에서 오픈소스 모델 최상위 점수를 기록하였�
 
 ## 학습 상세
 
-![계층적 데이터 필터링 파이프라인 — 256p에서 720p까지 단계적으로 필터 임계값을 높이며 학습 데이터 구축](figures/fig_6.png)
-*Figure 4: 계층적 데이터 필터링 파이프라인 — 256p, 360p, 540p, 720p 단계별로 필터 임계값을 점진적으로 높여 고품질 학습 데이터를 구축한다. 각 단계마다 이전 데이터의 절반~1/5만 남긴다. (Source: Tencent, 2024)*
+![계층적 데이터 필터링 파이프라인 - 256p에서 720p까지 단계적으로 필터 임계값을 높이며 학습 데이터 구축](figures/fig_6.png)
+*Figure 4: 계층적 데이터 필터링 파이프라인 - 256p, 360p, 540p, 720p 단계별로 필터 임계값을 점진적으로 높여 고품질 학습 데이터를 구축한다. 각 단계마다 이전 데이터의 절반~1/5만 남긴다. (Source: Tencent, 2024)*
 
 - **데이터셋**: Tencent 내부 비디오 데이터 + 공개 데이터
 - **학습 전략**: 저해상도 사전학습 → 고해상도 미세조정 다단계
@@ -140,4 +140,4 @@ HunyuanVideo의 가장 큰 기여는 13B 규모의 비디오 생성 모델을 Ap
 
 ## 관련 문서
 
-- [[dit|DiT (Diffusion Transformers)]] — 발전 기반
+- [[dit|DiT (Diffusion Transformers)]] - 발전 기반

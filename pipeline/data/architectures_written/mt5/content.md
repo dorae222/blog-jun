@@ -6,9 +6,9 @@
 
 mT5(Multilingual T5)는 2021년 Google Research가 발표한 T5의 다국어 확장 버전으로, 영어 전용 C4 대신 101개 언어를 포함하는 mC4(Multilingual C4) 데이터셋으로 사전 학습했다. T5의 텍스트-투-텍스트 통합 프레임워크와 스팬 노이즈 제거 목표를 그대로 유지하면서, 250,112개 토큰의 대용량 SentencePiece vocab으로 다국어 토크나이징 능력을 대폭 강화했다. XTREME·XNLI·TyDi QA 등 다국어 벤치마크에서 mBERT와 XLM-R을 능가하며 당시 최고 수준의 다국어 성능을 달성했다. 비영어권 NLP 연구의 표준 베이스라인으로 널리 활용된다.
 
-![mT5 아키텍처 — 101개 언어 지원 Encoder-Decoder 구조의 다국어 텍스트-투-텍스트 모델](figures/architecture.svg)
+![mT5 아키텍처 - 101개 언어 지원 Encoder-Decoder 구조의 다국어 텍스트-투-텍스트 모델](figures/architecture.svg)
 
-*Figure 1: mT5 아키텍처 — T5의 Encoder-Decoder 구조와 스팬 노이즈 제거 목표를 유지하면서, 250K vocab SentencePiece와 mC4 다국어 코퍼스로 101개 언어를 지원한다.*
+*Figure 1: mT5 아키텍처 - T5의 Encoder-Decoder 구조와 스팬 노이즈 제거 목표를 유지하면서, 250K vocab SentencePiece와 mC4 다국어 코퍼스로 101개 언어를 지원한다.*
 
 ## 아키텍처 상세
 
@@ -43,7 +43,7 @@ mC4(6.4TB, 101개 언어). SentencePiece unigram LM 250,112 vocab. Adafactor opt
 
 ### 관련 모델
 
-- **t5** — 변형
+- **t5** - 변형
 
 ### 어텐션 메커니즘: MHA
 
@@ -72,12 +72,12 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 다음 그림은 mC4 데이터셋의 언어별 페이지 수와 샘플링 비율 간의 관계를 보여준다.
 
 ![mC4 데이터셋의 언어별 분포와 샘플링 비율](figures/fig_1.png)
-*Figure 2: mC4 언어별 페이지 수(왼쪽 축)와 샘플링 지수에 따른 학습 비율(오른쪽 축) — 최종 모델은 alpha=0.3을 사용하여 저자원 언어의 과소표현 문제를 완화한다. (Source: Xue et al., 2021)*
+*Figure 2: mC4 언어별 페이지 수(왼쪽 축)와 샘플링 지수에 따른 학습 비율(오른쪽 축) - 최종 모델은 alpha=0.3을 사용하여 저자원 언어의 과소표현 문제를 완화한다. (Source: Xue et al., 2021)*
 
 모델 규모가 커질수록 제로샷 크로스-링구얼 전이 능력이 향상되는 것을 다음 그림에서 확인할 수 있다.
 
 ![TyDi QA 태스크에서의 모델 크기별 성능 비교](figures/fig_2.png)
-*Figure 3: TyDi QA GoldP 태스크의 평균 F1 — 모델 규모가 커질수록 Zero-Shot 성능이 In-Language Multitask에 수렴하여, 대형 모델에서 크로스-링구얼 전이의 효과가 극대화됨을 보여준다. (Source: Xue et al., 2021)*
+*Figure 3: TyDi QA GoldP 태스크의 평균 F1 - 모델 규모가 커질수록 Zero-Shot 성능이 In-Language Multitask에 수렴하여, 대형 모델에서 크로스-링구얼 전이의 효과가 극대화됨을 보여준다. (Source: Xue et al., 2021)*
 
 ## 핵심 혁신
 
@@ -179,4 +179,4 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[t5|T5]] — 변형 원본
+- [[t5|T5]] - 변형 원본

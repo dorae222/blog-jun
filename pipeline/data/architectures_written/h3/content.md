@@ -12,12 +12,12 @@ H3는 이 두 능력을 SSM으로 구현하기 위해 이중 SSM 구조를 설�
 
 아래 그림은 H3의 핵심 구조를 보여준다. (좌) 이중 SSM과 multiplicative gating으로 구성된 H3 레이어, (중) 연상 기억(associative recall) 수행 능력, (우) FlashConv 알고리즘 구조이다.
 
-![H3 아키텍처 개요 — 이중 SSM 레이어, 연상 기억 메커니즘, FlashConv 알고리즘](figures/fig_1.png)
-*Figure 1: H3 아키텍처 개요 — (좌) H3 레이어는 Shift SSM과 Diagonal SSM을 multiplicative interaction으로 결합한다. (중) 이 구조로 기존 SSM에서 불가능했던 연상 기억(associative recall)을 수행할 수 있다. (우) FlashConv는 fused block FFTConv 위에 state-passing을 적용하여 하드웨어 효율성을 극대화한다. (Source: Fu et al., 2022)*
+![H3 아키텍처 개요 - 이중 SSM 레이어, 연상 기억 메커니즘, FlashConv 알고리즘](figures/fig_1.png)
+*Figure 1: H3 아키텍처 개요 - (좌) H3 레이어는 Shift SSM과 Diagonal SSM을 multiplicative interaction으로 결합한다. (중) 이 구조로 기존 SSM에서 불가능했던 연상 기억(associative recall)을 수행할 수 있다. (우) FlashConv는 fused block FFTConv 위에 state-passing을 적용하여 하드웨어 효율성을 극대화한다. (Source: Fu et al., 2022)*
 
-![H3 아키텍처 — Shift SSM과 Diagonal SSM의 이중 SSM 구조로 인접 토큰 비교와 연상 기억을 달성하는 모델](figures/architecture.svg)
+![H3 아키텍처 - Shift SSM과 Diagonal SSM의 이중 SSM 구조로 인접 토큰 비교와 연상 기억을 달성하는 모델](figures/architecture.svg)
 
-*Figure 2: H3 아키텍처 — 두 개의 SSM(Shift SSM + Diagonal SSM)을 multiplicative interaction으로 결합하여 Transformer의 핵심 능력인 인접 토큰 비교와 연상 기억을 SSM으로 구현한다.*
+*Figure 2: H3 아키텍처 - 두 개의 SSM(Shift SSM + Diagonal SSM)을 multiplicative interaction으로 결합하여 Transformer의 핵심 능력인 인접 토큰 비교와 연상 기억을 SSM으로 구현한다.*
 
 ## 아키텍처 상세
 
@@ -53,8 +53,8 @@ Shift SSM의 출력이 인접 토큰 정보를, 장거리 SSM이 전역 컨텍�
 
 IO-aware 컨볼루션 알고리즘을 도입해 GPU 메모리 계층(SRAM/HBM)을 최적화했다. FlashAttention과 동일한 원리로, 컨볼루션 커널의 물질화(materialization)를 피하고 on-the-fly 계산으로 메모리 사용량을 크게 줄였다. 아래 그림은 FlashConv의 시퀀스 길이별 속도 이점을 보여준다.
 
-![FlashConv 속도 벤치마크 — 시퀀스 길이별 FlashAttention, PyTorch FFTConv 대비 성능 비교](figures/fig_2.png)
-*Figure 2: FlashConv 속도 벤치마크 — 배치 크기 8, 히든 차원 1024 기준으로 시퀀스 길이 256~32K에서의 속도를 비교한다. 커널 퓨전은 짧은 시퀀스(512 이하)에서 3.4배, 블록 FFT는 중간 길이(1K~8K)에서 2배, state-passing은 긴 시퀀스(16K 이상)에서 2.3배 속도 향상을 달성한다. (Source: Fu et al., 2022)*
+![FlashConv 속도 벤치마크 - 시퀀스 길이별 FlashAttention, PyTorch FFTConv 대비 성능 비교](figures/fig_2.png)
+*Figure 2: FlashConv 속도 벤치마크 - 배치 크기 8, 히든 차원 1024 기준으로 시퀀스 길이 256~32K에서의 속도를 비교한다. 커널 퓨전은 짧은 시퀀스(512 이하)에서 3.4배, 블록 FFT는 중간 길이(1K~8K)에서 2배, state-passing은 긴 시퀀스(16K 이상)에서 2.3배 속도 향상을 달성한다. (Source: Fu et al., 2022)*
 
 ## 핵심 혁신
 
@@ -128,6 +128,6 @@ H3는 직접적인 프로덕션 사용보다는 후속 연구(Hyena, Mamba)의 �
 
 ## 관련 문서
 
-- [[s4|S4]] — 발전 기반
-- [[hyena|Hyena]] — 후속 모델
-- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] — 영감을 줌
+- [[s4|S4]] - 발전 기반
+- [[hyena|Hyena]] - 후속 모델
+- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] - 영감을 줌
