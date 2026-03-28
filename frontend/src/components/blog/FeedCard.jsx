@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Eye } from 'lucide-react'
 import { getCategoryIcon } from '../../utils/categoryIcons'
+import InlineMath from '../common/InlineMath'
 
 export default function FeedCard({ item }) {
   const imageUrl = item.cover_image_url || item.figure_url
@@ -42,7 +43,7 @@ export default function FeedCard({ item }) {
 
         {item.summary && (
           <p className="text-xs sm:text-sm line-clamp-2 mb-3" style={{ color: 'var(--text-secondary)' }}>
-            {item.summary}
+            <InlineMath text={item.summary} />
           </p>
         )}
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import TiltCard from '../effects/TiltCard'
 import { getCategoryIcon } from '../../utils/categoryIcons'
+import InlineMath from '../common/InlineMath'
 
 const TYPE_COLORS = {
   article: 'bg-blue-100 text-blue-700',
@@ -62,7 +63,7 @@ function GridCard({ post }) {
 
         {post.summary && (
           <p className="text-sm mb-3 line-clamp-2" style={{ color: 'var(--text-secondary)' }}>
-            {post.summary}
+            <InlineMath text={post.summary} />
           </p>
         )}
 
@@ -105,7 +106,7 @@ function ListCard({ post }) {
 
         {post.summary && (
           <p className="text-sm mb-2 line-clamp-2" style={{ color: 'var(--text-secondary)' }}>
-            {post.summary}
+            <InlineMath text={post.summary} />
           </p>
         )}
 

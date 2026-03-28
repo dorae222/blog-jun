@@ -136,7 +136,7 @@ export default function About() {
                 <span className="text-sm">Seoul, South Korea</span>
               </div>
               <p className="text-base max-w-xl mb-6" style={{ color: 'var(--text-secondary)' }}>
-                자연어처리(NLP) 기반 AI 엔지니어로, 클라우드 인프라와 풀스택 개발을 아우르며 실질적인 AI 서비스를 설계하고 구현합니다. AWS Certified.
+                자연어처리(NLP) 기반 AI 엔지니어로, 클라우드 인프라와 풀스택 개발을 아우르며 실질적인 AI 서비스를 설계하고 구현합니다.
               </p>
               <div className="flex items-center justify-center lg:justify-start gap-4">
                 <a
