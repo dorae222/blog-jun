@@ -1,0 +1,10 @@
+{
+  "slug": "openclaw-guide-02-core",
+  "title": "OpenClaw Core Features",
+  "title_ko": "OpenClaw 핵심 기능: 아키텍처와 도구 시스템",
+  "summary": "OpenClaw의 local-first 아키텍처, 멀티 LLM 지원, SQLite+sqlite-vec 벡터 저장, MCP 도구 시스템을 상세히 분석한다.",
+  "tags": ["OpenClaw", "Architecture", "MCP", "SQLite", "멀티 LLM"],
+  "category_slug": "tool",
+  "series_slug": "openclaw-guide",
+  "series_order": 2
+}
