@@ -3,8 +3,15 @@
   "title": "Claude Code Advanced Usage",
   "title_ko": "Claude Code 고급 활용: MCP 서버와 서브에이전트",
   "summary": "MCP 서버 연동으로 도구를 확장하고, 서브에이전트를 활용한 병렬 작업, Hooks 시스템, 메모리 관리 등 고급 기능을 다룬다.",
-  "tags": ["Claude Code", "MCP", "Subagent", "Hooks", "Memory", "고급 활용"],
-  "category_slug": "tool",
+  "tags": [
+    "Claude Code",
+    "MCP",
+    "Subagent",
+    "Hooks",
+    "Memory",
+    "고급 활용"
+  ],
+  "category_slug": "claude-code",
   "series_slug": "claude-code-guide",
   "series_order": 3
 }

@@ -160,7 +160,7 @@ sudo mv opencode-linux-amd64 /usr/local/bin/opencode
 
 OpenCode의 설정은 여러 위치에서 로드되며, 나중에 로드되는 설정이 우선한다.
 
-```
+```text
 1. Remote config    (.well-known/opencode)
 2. Global config    (~/.config/opencode/opencode.json)
 3. Custom config    (OPENCODE_CONFIG 환경 변수)
@@ -362,13 +362,13 @@ OpenCode TUI에서는 세 가지 방식으로 상호작용한다.
 
 프롬프트에서 `@` 기호로 파일을 참조할 수 있다. 퍼지 검색으로 현재 프로젝트의 파일을 빠르게 찾는다.
 
-```
+```text
 이 파일을 리팩토링해줘 @src/main.go
 ```
 
 `!` 기호로 시작하면 셸 명령의 출력을 프롬프트에 주입할 수 있다.
 
-```
+```text
 !git diff HEAD~3 이 변경사항을 리뷰해줘
 ```
 
@@ -390,7 +390,7 @@ opencode
 
 OpenCode TUI가 열리면 프롬프트에 다음과 같이 입력한다.
 
-```
+```text
 간단한 HTTP 서버를 만들어줘. /hello 엔드포인트에서 JSON 응답을 반환하도록 해줘.
 ```
 
@@ -400,13 +400,13 @@ OpenCode는 AI 모델을 호출하고, 필요한 도구(파일 쓰기, 명령 �
 
 AI가 생성한 파일을 확인한다.
 
-```
+```text
 @main.go 이 코드를 설명해줘
 ```
 
 ### 4단계: 실행과 테스트
 
-```
+```text
 이 서버를 실행하고 테스트해줘
 ```
 
@@ -416,7 +416,7 @@ OpenCode는 `go run main.go`를 실행하고, 별도의 요청으로 테스트�
 
 프로젝트에 맞는 커스텀 지시사항을 생성하자.
 
-```
+```text
 /init
 ```
 

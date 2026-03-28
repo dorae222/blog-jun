@@ -29,7 +29,7 @@ codex exec --full-auto --sandbox workspace-write \
 
 full-auto 모드에서 에이전트의 행동 패턴:
 
-```
+```text
 [자동] shell: npx tsc --noEmit 2>&1
 [자동] 에러 3개 발견, 파일 분석 중...
 [자동] read_file: src/api/handler.ts
@@ -517,7 +517,7 @@ codex --profile ci "실패하는 테스트를 수정해줘"
 
 대화형 세션에서는 `/model` 명령으로 모델을 전환할 수 있다.
 
-```
+```text
 > /model o4-mini
 모델이 o4-mini로 변경되었습니다.
 
@@ -593,7 +593,7 @@ src/
 
 대규모 프로젝트에서는 디렉터리별로 다른 지시사항을 둘 수 있다.
 
-```
+```text
 my-monorepo/
   AGENTS.md              # 전체 프로젝트 공통 규칙
   packages/
@@ -767,7 +767,7 @@ env = { GITHUB_TOKEN = "ghp_..." }
 - **데이터베이스 서버**: 스키마 정보 조회
 - **커스텀 서버**: 팀 내부 API, 문서 시스템 연동
 
-```
+```text
 # MCP를 통해 GitHub 이슈를 참조하며 작업
 > GitHub 이슈 #42의 요구사항에 맞게 코드를 수정해줘
 [Codex가 MCP를 통해 이슈 내용을 조회하고, 코드를 수정]

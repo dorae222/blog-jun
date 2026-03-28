@@ -17,7 +17,18 @@ export const CATEGORY_TREE = [
       { key: 'training', label: 'Training' },
       { key: 'rag', label: 'RAG' },
       { key: 'code', label: 'Code' },
-      { key: 'tool', label: 'Tool' },
+    ],
+  },
+  {
+    key: 'tool', label: 'Tool', color: '#7C3AED',
+    desc: 'Claude Code, Gemini CLI 등 AI 코딩 도구',
+    path: '/posts/tool',
+    subs: [
+      { key: 'claude-code', label: 'Claude Code' },
+      { key: 'gemini-cli', label: 'Gemini CLI' },
+      { key: 'codex-cli', label: 'Codex CLI' },
+      { key: 'openclaw', label: 'OpenClaw' },
+      { key: 'opencode', label: 'OpenCode' },
     ],
   },
   {
@@ -87,4 +98,5 @@ export const CATEGORY_ROUTE_MAP = {
   cloud: 'cloud',
   'data-engineering': 'data',
   ml: 'ml',
+  tool: 'tool',
 }

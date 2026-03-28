@@ -34,7 +34,7 @@ OpenClaw는 TypeScript와 Node.js 기반으로 구축되었다. 전체 기술 �
 
 OpenClaw의 핵심은 **Gateway 서버**다. Gateway는 메시징 플랫폼과 LLM 사이의 중앙 코디네이터로, 다음 역할을 수행한다:
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │                 Gateway Server                   │
 │                                                  │
@@ -246,7 +246,7 @@ OpenClaw가 시작되면(또는 새 MCP 서버가 설정에 추가되면) 다음
 4. **대화 중 호출**: AI가 도구 사용을 결정하면 MCP 프로토콜로 요청을 전송한다
 5. **결과 반환**: 도구 실행 결과가 AI에게 전달되어 응답에 반영된다
 
-```
+```text
 사용자: "Notion에서 이번 주 회의록 찾아줘"
     ↓
 Agent Runner → LLM: "사용 가능한 도구: notion.search_pages, ..."
@@ -286,7 +286,7 @@ LLM → 사용자: "이번 주 회의록 3건을 찾았습니다: ..."
 
 OpenClaw의 메모리 시스템은 전통적인 RAG와 다르게 **파일 우선(file-first)** 접근을 취한다. 마크다운 파일이 진실의 원천(source of truth)이고, 벡터 인덱스는 검색 효율을 위한 보조 구조다.
 
-```
+```text
 워크스페이스 마크다운 파일
     ↓
 청킹 (Markdown 구조 기반)
@@ -507,7 +507,7 @@ interface NormalizedMessage {
 
 Agent Runner가 컨텍스트를 조립하고 LLM에 전달한다:
 
-```
+```text
 시스템 프롬프트 조립:
   ├── SOUL.md 내용
   ├── IDENTITY.md 내용
@@ -526,7 +526,7 @@ LLM의 응답을 원래 채널로 스트리밍한다. 도구 호출이 포함된
 
 Agentic Loop는 OpenClaw의 핵심 메커니즘이다. LLM이 도구 호출을 제안하면 실행하고, 결과를 다시 LLM에 전달하는 과정을 반복한다:
 
-```
+```text
 Agent Runner → LLM: 사용자 메시지 + 컨텍스트 + 도구 목록
     ↓
 LLM 응답: "도구 X를 호출하겠습니다" (tool_call)
@@ -571,7 +571,7 @@ Skills는 OpenClaw에게 **특정 도구 조합을 사용하는 방법**을 가�
 
 Skill은 `SKILL.md` 파일이 있는 디렉토리다:
 
-```
+```text
 skills/
 └── my-custom-skill/
     ├── SKILL.md          # 필수: Skill 정의 (YAML frontmatter + 지침)
@@ -673,7 +673,7 @@ Skills가 "지침서"라면, 플러그인은 OpenClaw의 **런타임 기능을 �
 
 ### 플러그인 구조
 
-```
+```text
 my-plugin/
 ├── openclaw.plugin.json    # 플러그인 매니페스트
 ├── src/

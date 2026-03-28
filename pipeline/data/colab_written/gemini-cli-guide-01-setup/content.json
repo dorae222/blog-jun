@@ -3,8 +3,13 @@
   "title": "Getting Started with Gemini CLI",
   "title_ko": "Gemini CLI 시작하기: 설치와 기본 사용법",
   "summary": "Google의 오픈소스 AI 코딩 에이전트 Gemini CLI를 설치하고, 인증 설정부터 첫 대화까지의 과정을 단계별로 안내한다.",
-  "tags": ["Gemini CLI", "Google", "CLI Agent", "Agentic Coding"],
-  "category_slug": "tool",
+  "tags": [
+    "Gemini CLI",
+    "Google",
+    "CLI Agent",
+    "Agentic Coding"
+  ],
+  "category_slug": "gemini-cli",
   "series_slug": "gemini-cli-guide",
   "series_order": 1
 }

@@ -3,8 +3,14 @@
   "title": "Codex CLI Workflow Design",
   "title_ko": "Codex CLI 실전: 레거시 마이그레이션",
   "summary": "Codex CLI를 활용한 레거시 코드 마이그레이션, 대규모 리팩토링, 테스트 자동 생성 등 실전 워크플로우를 다룬다.",
-  "tags": ["Codex CLI", "Migration", "Refactoring", "Workflow", "실전"],
-  "category_slug": "tool",
+  "tags": [
+    "Codex CLI",
+    "Migration",
+    "Refactoring",
+    "Workflow",
+    "실전"
+  ],
+  "category_slug": "codex-cli",
   "series_slug": "codex-guide",
   "series_order": 4
 }

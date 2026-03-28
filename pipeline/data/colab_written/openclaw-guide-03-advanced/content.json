@@ -3,8 +3,14 @@
   "title": "OpenClaw Advanced Usage",
   "title_ko": "OpenClaw 고급 활용: 커스터마이징과 확장",
   "summary": "OpenClaw의 캐릭터 시스템, 커스텀 MCP 서버, 플러그인 아키텍처, 멀티 에이전트 설정 등 고급 기능을 다룬다.",
-  "tags": ["OpenClaw", "Character System", "Plugin", "커스터마이징", "고급 활용"],
-  "category_slug": "tool",
+  "tags": [
+    "OpenClaw",
+    "Character System",
+    "Plugin",
+    "커스터마이징",
+    "고급 활용"
+  ],
+  "category_slug": "openclaw",
   "series_slug": "openclaw-guide",
   "series_order": 3
 }

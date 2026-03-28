@@ -263,7 +263,7 @@ ollama pull qwen2.5-coder:32b-q4_K_M
 
 일일 개발 워크플로우에서 모델을 전환하는 실전 전략을 소개한다.
 
-```
+```text
 [오전: 설계 및 분석 세션]
 /model anthropic/claude-opus-4-20250514
 - 아키텍처 분석
@@ -327,7 +327,7 @@ Crush가 OpenCode 대비 차별화하는 주요 포인트는 다음과 같다.
 
 OpenCode에서 Crush로 전환할 때 확인할 사항은 다음과 같다.
 
-```
+```text
 1. [ ] Crush 설치 확인
 2. [ ] API 키 환경 변수 확인 (동일하게 사용 가능)
 3. [ ] 설정 파일 형식 확인 및 변환
@@ -379,7 +379,7 @@ API 키 환경 변수는 동일하게 사용할 수 있다. `OPENAI_API_KEY`, `A
 
 #### 전략 1: OpenCode + Cursor
 
-```
+```text
 [Cursor] - 일상적인 코드 편집, 자동 완성, 시각적 diff 확인
 [OpenCode] - 복잡한 리팩토링, 터미널 작업, CI/CD 통합
 ```
@@ -388,7 +388,7 @@ Cursor의 시각적 편집과 OpenCode의 터미널 자유도를 결합하는 �
 
 #### 전략 2: OpenCode + Claude Code
 
-```
+```text
 [Claude Code] - 복잡한 추론이 필요한 고난도 작업 (Claude Opus)
 [OpenCode] - 일상 작업 (Ollama 로컬 모델로 비용 절감)
 ```
@@ -397,7 +397,7 @@ Claude Code의 강점인 깊은 추론 능력과 OpenCode의 비용 효율성을
 
 #### 전략 3: OpenCode 단독 (풀 오픈소스)
 
-```
+```text
 [OpenCode + Ollama] - 모든 작업을 로컬에서 무료로 수행
 [OpenCode + Cloud API] - 복잡한 작업에만 클라우드 API 사용
 ```
@@ -432,7 +432,7 @@ go mod init my-api
 opencode
 ```
 
-```
+```text
 # OpenCode에서:
 
 1. Plan 에이전트로 아키텍처 설계
@@ -460,7 +460,7 @@ API 문서를 OpenAPI 3.0 형식으로 생성해줘.
 
 ### 시나리오 2: 레거시 코드 리팩토링
 
-```
+```text
 # Plan 모드로 분석
 /agent plan
 이 프로젝트의 코드 품질 문제를 분석해줘.
@@ -479,7 +479,7 @@ Plan의 분석 결과를 바탕으로 우선순위 1번부터 리팩토링을 �
 
 ### 시나리오 3: 다국어 프로젝트에서 LSP 활용
 
-```
+```text
 # TypeScript + Go 혼합 프로젝트
 @frontend/src/api.ts 와 @backend/handler.go 사이의
 API 인터페이스가 일치하는지 확인해줘.
@@ -679,7 +679,7 @@ curl -s https://api.openai.com/v1/models \
 
 #### 컨텍스트 윈도우 초과
 
-```
+```text
 # 수동 압축
 /compact
 
