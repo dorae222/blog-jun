@@ -3,8 +3,14 @@
   "title": "Gemini CLI Workflow Design",
   "title_ko": "Gemini CLI 실전: 프로젝트 적용 사례",
   "summary": "GEMINI.md 설정, Git 워크플로우, CI/CD 통합, 대규모 프로젝트에서의 Gemini CLI 활용 전략과 실전 사례를 다룬다.",
-  "tags": ["Gemini CLI", "Workflow", "Git", "CI/CD", "프로젝트 관리"],
-  "category_slug": "tool",
+  "tags": [
+    "Gemini CLI",
+    "Workflow",
+    "Git",
+    "CI/CD",
+    "프로젝트 관리"
+  ],
+  "category_slug": "gemini-cli",
   "series_slug": "gemini-cli-guide",
   "series_order": 4
 }

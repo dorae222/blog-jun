@@ -3,8 +3,14 @@
   "title": "Claude Code Core Features",
   "title_ko": "Claude Code 핵심 기능: 도구 시스템과 에이전틱 루프",
   "summary": "Claude Code의 핵심 도구(Read, Edit, Bash, Glob, Grep 등)와 에이전틱 루프 동작 원리, 권한 시스템을 상세히 분석한다.",
-  "tags": ["Claude Code", "Agentic Loop", "Tool System", "Permission", "에이전틱 코딩"],
-  "category_slug": "tool",
+  "tags": [
+    "Claude Code",
+    "Agentic Loop",
+    "Tool System",
+    "Permission",
+    "에이전틱 코딩"
+  ],
+  "category_slug": "claude-code",
   "series_slug": "claude-code-guide",
   "series_order": 2
 }

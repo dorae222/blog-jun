@@ -177,7 +177,7 @@ Vertex AI를 사용하면 조직의 보안 정책과 IAM 제어를 적용할 수
 
 Gemini CLI는 여러 위치의 GEMINI.md를 자동으로 로드하고 병합한다.
 
-```
+```text
 ~/.gemini/GEMINI.md          # 글로벌 - 모든 프로젝트에 적용
 프로젝트루트/GEMINI.md        # 프로젝트 루트 - 해당 프로젝트에 적용
 프로젝트루트/.gemini/GEMINI.md # .gemini 디렉토리 내 - 해당 프로젝트에 적용
@@ -386,7 +386,7 @@ Gemini CLI의 동작을 세밀하게 조정하려면 `settings.json`을 편집�
 
 ### 설정 파일 위치
 
-```
+```text
 ~/.gemini/settings.json           # 글로벌 설정 (모든 프로젝트)
 프로젝트루트/.gemini/settings.json  # 프로젝트 설정 (해당 프로젝트만)
 ```

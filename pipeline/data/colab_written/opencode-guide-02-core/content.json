@@ -3,8 +3,14 @@
   "title": "OpenCode Core Features",
   "title_ko": "OpenCode 핵심 기능: 멀티 모델 지원과 TUI",
   "summary": "OpenCode의 Bubble Tea TUI, 75+ 모델 지원, LSP 통합, 세션 관리 등 핵심 기능을 상세히 분석한다.",
-  "tags": ["OpenCode", "Multi-Model", "TUI", "LSP", "세션 관리"],
-  "category_slug": "tool",
+  "tags": [
+    "OpenCode",
+    "Multi-Model",
+    "TUI",
+    "LSP",
+    "세션 관리"
+  ],
+  "category_slug": "opencode",
   "series_slug": "opencode-guide",
   "series_order": 2
 }

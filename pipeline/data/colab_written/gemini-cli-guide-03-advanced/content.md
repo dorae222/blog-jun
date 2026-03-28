@@ -551,7 +551,7 @@ gemini -r
 
 세션은 프로젝트별로 관리된다.
 
-```
+```text
 ~/.gemini/tmp/<project_hash>/chats/
 ```
 

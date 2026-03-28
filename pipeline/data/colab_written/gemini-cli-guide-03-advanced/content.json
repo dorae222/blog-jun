@@ -3,8 +3,14 @@
   "title": "Gemini CLI Advanced Usage",
   "title_ko": "Gemini CLI 고급 활용: Google 생태계 통합",
   "summary": "Gemini CLI와 Google Cloud, Vertex AI, Google Search 등 Google 생태계의 통합 활용법과 MCP 서버 연동을 다룬다.",
-  "tags": ["Gemini CLI", "Google Cloud", "MCP", "Vertex AI", "고급 활용"],
-  "category_slug": "tool",
+  "tags": [
+    "Gemini CLI",
+    "Google Cloud",
+    "MCP",
+    "Vertex AI",
+    "고급 활용"
+  ],
+  "category_slug": "gemini-cli",
   "series_slug": "gemini-cli-guide",
   "series_order": 3
 }
