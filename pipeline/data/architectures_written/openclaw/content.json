@@ -1,0 +1,8 @@
+{
+  "slug": "openclaw",
+  "title": "OpenClaw",
+  "title_ko": "OpenClaw: 오픈소스 에이전틱 코딩 CLI",
+  "summary": "OpenClaw는 Claude Code에서 영감을 받은 오픈소스 에이전틱 코딩 CLI 도구로, 다양한 LLM 백엔드를 지원하며 자체 호스팅이 가능하다.",
+  "tags": ["OpenClaw", "CLI Agent", "Agentic Coding", "Open Source", "Self-Hosted"],
+  "category_slug": "tool"
+}
