@@ -10,7 +10,9 @@ A2A의 핵심 가치는 벤더 종속성 탈피에 있다. 기존에는 LangChai
 
 에이전트 생태계는 세 가지 통신 계층으로 구성된다. 에이전트-도구(MCP), 에이전트-에이전트(A2A), 에이전트-사용자(AG-UI)가 그것이다. A2A는 이 중 가장 복잡한 에이전트 간 협업 문제를 다루며, 이기종 에이전트 시스템의 통합이라는 엔터프라이즈 핵심 과제를 해결한다.
 
-![Architecture](figures/architecture.svg)
+![A2A 프로토콜 전체 아키텍처 — Agent Card, Task, Artifact, Message 기반 에이전트 간 통신 구조](figures/architecture.svg)
+
+*Figure 1: A2A 프로토콜 아키텍처 — 클라이언트 에이전트와 리모트 에이전트가 Agent Card 기반 발견, Task 기반 작업 위임, Artifact/Message 기반 결과 교환으로 상호운용하는 구조를 보여준다.*
 
 ## 아키텍처 상세
 

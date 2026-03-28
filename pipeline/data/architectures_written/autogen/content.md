@@ -10,7 +10,9 @@ AutoGen의 핵심 철학은 **"대화가 곧 연산(conversation as computation)
 
 멀티 에이전트 시스템의 핵심 도전 과제 중 하나는 에이전트 간 협업의 효율성이다. $N$개의 에이전트가 자유롭게 대화하면 통신 복잡도는 $O(N^2)$이 되며, 대화가 발산하거나 루프에 빠질 위험이 있다. AutoGen은 양자 대화(two-agent)와 GroupChat 패턴을 통해 이 복잡도를 관리하면서도, 유연한 에이전트 간 협업을 가능하게 한다.
 
-![Architecture](figures/architecture.svg)
+![AutoGen 멀티 에이전트 아키텍처 — ConversableAgent 기반 양자 대화 및 GroupChat 협업 구조](figures/architecture.svg)
+
+*Figure 1: AutoGen 아키텍처 — AssistantAgent, UserProxyAgent, GroupChatManager가 대화 기반으로 협업하며, 코드 실행 샌드박스와 인간 입력을 통합하는 멀티 에이전트 프레임워크이다.*
 
 ## 아키텍처 상세
 

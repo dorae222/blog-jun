@@ -181,7 +181,9 @@ BIC 기준 최적 K: 3
 AIC 기준 최적 K: 3
 ```
 
-![Gmm Fig 1](/media/figures/outputs/gmm/gmm_fig_1.png)
+![GMM 등고선과 BIC 선택](figures/bic_model_selection.png)
+
+*Figure 1: BIC/AIC 모델 선택: 성분 수에 따른 BIC/AIC 값 변화와 최적 K=3 결정 과정을 보여준다.*
 
 ### 이상치 탐지 활용
 
@@ -257,7 +259,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Gmm Fig 2](/media/figures/outputs/gmm/gmm_fig_2.png)
+![GMM 클러스터링 결과](figures/gmm_contours.png)
+
+*Figure 2: GMM 클러스터링 결과: 가우시안 혼합 모델의 타원형 신뢰 구간(1σ, 2σ)과 각 클러스터의 중심점을 시각화한다.*
 
 ---
 

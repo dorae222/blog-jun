@@ -306,9 +306,13 @@ OOB Score      : 0.9560
 weighted avg       0.96      0.96      0.96       114
 ```
 
-![Random-Forest Fig 1](/media/figures/outputs/random-forest/random-forest_fig_1.png)
+![Random Forest 특성 중요도](figures/rf_feature_importance.png)
 
-![Random-Forest Fig 2](/media/figures/outputs/random-forest/random-forest_fig_2.png)
+*Figure 1: 특성 중요도 비교: Gini Importance와 Permutation Importance 두 가지 방법으로 측정한 특성 중요도를 비교한다.*
+
+![OOB 오차 수렴 곡선](figures/oob_error_vs_n_estimators.png)
+
+*Figure 2: OOB 오차 수렴: 트리 수 증가에 따른 OOB 오류율 변화를 보여주며, 수렴 지점을 통해 최적 트리 수를 결정한다.*
 
 **코드 설명:**
 - **OOB Score**: `oob_score=True` 설정으로 별도 검증셋 없이 일반화 성능을 추정합니다. 반환값이 1에 가까울수록 좋습니다.

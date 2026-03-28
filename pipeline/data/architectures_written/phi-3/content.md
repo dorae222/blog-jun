@@ -6,7 +6,9 @@
 
 Microsoft가 2024년 4월 공개한 소형 언어 모델(SLM) 시리즈로, '아키텍처 혁신보다 데이터 품질이 더 중요하다'는 명제를 실증한 모델이다. GPT-4를 활용해 생성한 교과서 수준의 합성 데이터를 핵심 학습 자원으로 삼아, 3.8B(Phi-3-mini) 파라미터로 GPT-3.5 수준의 추론 능력을 달성했다. 128K 컨텍스트(LongRoPE로 확장)와 ONNX/DirectML 지원으로 스마트폰·엣지 디바이스에서 로컬 실행이 가능하여, 프라이버시 중시 엣지 AI 응용에 새로운 가능성을 열었다.
 
-![Architecture](figures/architecture.svg)
+![Phi-3 아키텍처 — LongRoPE 128K 컨텍스트와 교과서 품질 합성 데이터 기반 3.8B 소형 언어 모델 구조](figures/architecture.svg)
+
+*Figure 1: Phi-3 아키텍처 — LLaMA-2 유사 Decoder-only Transformer에 LongRoPE로 128K 컨텍스트를 확장하고, 교과서 수준 합성 데이터 3.3T 토큰으로 학습한 엣지 AI 최적화 모델이다.*
 
 다음은 4비트 양자화된 Phi-3-mini가 iPhone A16 Bionic 칩에서 네이티브로 실행되는 모습으로, 초당 12토큰 이상을 생성하며 엣지 AI의 가능성을 보여준다.
 

@@ -6,7 +6,9 @@
 
 DistilBERT는 2019년 Hugging Face가 발표한 지식 증류(Knowledge Distillation) 기반의 경량 BERT로, 실제 산업 배포 환경의 지연 시간 및 메모리 제약 문제를 해결하기 위해 설계되었다. BERT-Base의 레이어를 절반(12→6)으로 줄이고 NSP 태스크와 토큰 타입 임베딩을 제거했음에도 불구하고, 소프트 레이블 증류·히든 스테이트 증류·어텐션 증류를 결합해 BERT-Base 성능의 97%를 유지한다. 파라미터 40% 감소, 추론 속도 60% 향상, 메모리 60% 절감으로 모바일·엣지·서버 경량 NLP의 실질적인 표준 베이스라인이 되었다.
 
-![Architecture](figures/architecture.svg)
+![DistilBERT 아키텍처 — BERT 교사 모델에서 6-레이어 학생 모델로의 지식 증류 구조](figures/architecture.svg)
+
+*Figure 1: DistilBERT 아키텍처 — BERT-Base의 12개 레이어를 6개로 줄이고, 소프트 레이블·히든 스테이트·어텐션 증류를 결합하여 97% 성능을 유지하면서 추론 속도를 60% 향상시킨다.*
 
 ## 아키텍처 상세
 

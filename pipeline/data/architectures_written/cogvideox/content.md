@@ -11,6 +11,10 @@ CogVideoX는 2024년 8월 Tsinghua University와 Zhipu AI가 공동 개발한 �
 
 ## 아키텍처 상세
 
+![CogVideoX 아키텍처 다이어그램](figures/architecture.png)
+
+*Figure 1: CogVideoX의 Expert AdaLN DiT 기반 텍스트-비디오 생성 아키텍처. (Tsinghua/Zhipu AI, 2024)*
+
 ### 전체 파이프라인
 
 CogVideoX의 파이프라인은 세 가지 핵심 모듈로 구성된다:

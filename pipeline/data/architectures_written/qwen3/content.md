@@ -6,7 +6,9 @@
 
 Qwen3는 Alibaba Cloud가 2025년 공개한 대규모 언어 모델 시리즈로, 0.6B부터 235B까지 Dense 및 MoE 두 계열을 포함한다. arXiv:2505.09388에 기술 보고서가 공개되었으며, 단일 모델 내에서 '생각 모드(thinking mode)'와 '비생각 모드(non-thinking mode)'를 동적으로 전환할 수 있는 하이브리드 추론 기능이 가장 큰 혁신이다. GPT-4o, Claude 3.5 Sonnet, DeepSeek-R1을 포함한 다양한 벤치마크에서 경쟁력 있는 성능을 달성하며, Apache 2.0 라이선스로 완전 오픈소스 공개되었다.
 
-![Architecture](figures/architecture.svg)
+![Qwen3 아키텍처 — 생각/비생각 이중 모드와 Dense/MoE 변형을 포함한 차세대 오픈소스 LLM 구조](figures/architecture.svg)
+
+*Figure 1: Qwen3 아키텍처 — 단일 모델 내에서 생각 모드(내부 CoT 추론)와 비생각 모드(빠른 직접 출력)를 동적으로 전환하며, 0.6B부터 235B MoE까지 다양한 규모를 지원한다.*
 
 ## 아키텍처 상세
 

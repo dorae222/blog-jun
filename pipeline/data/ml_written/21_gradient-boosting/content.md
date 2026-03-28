@@ -196,7 +196,9 @@ print(f"최적 트리 수: {np.argmin(test_errors) + 1}")
 최적 트리 수: 300
 ```
 
-![Gradient-Boosting Fig 1](/media/figures/outputs/gradient-boosting/gradient-boosting_fig_1.png)
+![순차적 잔차 학습 과정](figures/sequential_residual_fitting.png)
+
+*Figure 1: 순차적 잔차 학습: 그래디언트 부스팅이 각 단계에서 이전 모델의 잔차를 학습하며 예측을 개선하는 과정을 보여준다.*
 
 ---
 
@@ -235,7 +237,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Gradient-Boosting Fig 2](/media/figures/outputs/gradient-boosting/gradient-boosting_fig_2.png)
+![Feature Importance 시각화](figures/sequential_residual_fitting.png)
+
+*Figure 2: Feature Importance: 그래디언트 부스팅 모델이 학습한 각 특성의 상대적 중요도를 막대 그래프로 시각화한다.*
 
 ### 잔차 감소 과정 시각화
 
@@ -258,7 +262,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Gradient-Boosting Fig 3](/media/figures/outputs/gradient-boosting/gradient-boosting_fig_3.png)
+![학습 단계별 잔차 분포](figures/learning_rate_effect.png)
+
+*Figure 3: 학습 단계별 잔차 분포: 부스팅 단계가 진행됨에 따라 잔차가 0 부근으로 수렴하는 과정을 히스토그램으로 보여준다.*
 
 ---
 

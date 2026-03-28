@@ -15,7 +15,9 @@ Rectified Flow의 핵심 아이디어는 매우 단순하다: 독립적으로 �
 ![1-Rectified Flow와 2-Rectified Flow의 이미지 생성 결과 — 스텝 수에 따른 생성 품질 비교](figures/fig_1.jpg)
 *Figure 1: Rectified Flow의 이미지 생성 궤적 — 1-Rectified Flow는 N=2 이상에서 양호한 결과를 보이고, 2-Rectified Flow(Reflow 1회 적용)는 거의 직선 궤적을 형성하여 N=1(단일 스텝)에서도 고품질 샘플을 생성한다. (Source: Liu et al., 2022)*
 
-![Architecture](figures/architecture.svg)
+![Rectified Flow 아키텍처 — 노이즈-데이터 직선 보간 경로와 Reflow 재학습 기반 생성 흐름 구조](figures/architecture.svg)
+
+*Figure 2: Rectified Flow 아키텍처 — 노이즈와 데이터 쌍을 선형 보간 경로로 연결하고 벡터 필드를 학습하며, Reflow 과정으로 경로를 직선에 수렴시켜 단일 스텝 생성을 가능하게 한다.*
 
 ## 아키텍처 상세
 

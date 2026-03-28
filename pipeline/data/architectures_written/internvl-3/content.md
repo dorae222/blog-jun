@@ -8,6 +8,10 @@ InternVL 3는 2025년 1월 Shanghai AI Lab이 발표한 78B 파라미터 규모�
 
 ## 아키텍처 상세
 
+![InternVL 3 MoE 멀티모달 아키텍처](figures/architecture.png)
+
+*Figure 1: InternVL 3의 InternViT-6B + MoE LLM 네이티브 멀티모달 아키텍처. (Shanghai AI Lab, 2025)*
+
 ### 전체 구조
 
 1. **InternViT-6B**: InternVL 시리즈의 6B 비전 인코더를 계승

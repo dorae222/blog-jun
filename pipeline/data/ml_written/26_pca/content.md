@@ -320,9 +320,13 @@ k=3: 재구성 MSE = 0.0052,  누적 EVR = 0.9948
 k=4: 재구성 MSE = 0.0000,  누적 EVR = 1.0000
 ```
 
-![Pca Fig 1](/media/figures/outputs/pca/pca_fig_1.png)
+![분산 설명률 시각화](figures/explained_variance_ratio.png)
 
-![Pca Fig 2](/media/figures/outputs/pca/pca_fig_2.png)
+*Figure 1: 분산 설명률: 각 주성분의 분산 설명 비율과 누적 분산 설명률을 통해 상위 2개 주성분으로 전체 분산의 약 95.8%를 설명함을 보여준다.*
+
+![PCA 2D 투영 산점도](figures/pca_2d_projection.png)
+
+*Figure 2: PCA 2D 투영: 아이리스 데이터를 상위 2개 주성분으로 투영한 결과, setosa는 명확히 분리되고 versicolor와 virginica는 다소 겹친다.*
 
 아이리스 데이터는 4개의 피처를 갖지만, 상위 2개의 주성분만으로 전체 분산의 약 95.8%를 설명합니다. 2D 산점도를 보면 setosa는 명확히 분리되고, versicolor와 virginica는 다소 겹치는 것을 확인할 수 있습니다.
 

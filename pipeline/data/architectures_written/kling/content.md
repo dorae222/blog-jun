@@ -9,6 +9,10 @@ Kling은 중국의 동영상 플랫폼 기업 Kuaishou Technology가 2024년 6�
 
 ## 아키텍처 상세
 
+![Kling 3D Full Attention DiT 아키텍처](figures/architecture.png)
+
+*Figure 1: Kling의 3D Full Attention DiT 기반 비디오 생성 아키텍처. (Kuaishou, 2024)*
+
 ### DiT 기반 비디오 생성
 
 Kling은 DiT에서 영감을 받은 3D Full Attention 아키텍처를 사용한다:

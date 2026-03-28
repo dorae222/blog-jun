@@ -6,7 +6,9 @@
 
 ALBERT(A Lite BERT)는 2019년 9월 Google Research와 Toyota Technological Institute at Chicago(TTIC)가 공동 발표한 사전 학습 언어 모델이다. 이 모델은 BERT의 두 가지 근본적인 **메모리 비효율 문제**를 정면으로 해결하여, 파라미터 수를 대폭 줄이면서도 오히려 성능을 향상시키는 놀라운 결과를 달성했다.
 
-![Architecture](figures/architecture.svg)
+![ALBERT 아키텍처 — 임베딩 행렬 분해, 레이어 간 파라미터 공유, SOP 사전학습 구조](figures/architecture.svg)
+
+*Figure 1: ALBERT 아키텍처 — 임베딩 행렬을 V x E와 E x H로 분해하고, 모든 Transformer 레이어의 파라미터를 공유하여 BERT-Large 대비 18배 적은 파라미터로 동등 이상의 성능을 달성한다.*
 
 2019년 당시 NLP 분야는 "모델을 키우면 성능이 올라간다"는 스케일링 사고에 지배되어 있었다. BERT-Large(340M), XLNet, RoBERTa 등이 파라미터를 늘리며 경쟁하고 있었으나, 이는 GPU 메모리 제약으로 인해 학습과 배포에 점점 더 큰 부담을 주고 있었다. ALBERT는 이 문제에 대해 구조적 해법을 제시했다. 임베딩 행렬 분해(Factorized Embedding Parameterization)로 어휘 임베딩 크기와 히든 차원을 분리하고, 레이어 간 파라미터 공유(Cross-Layer Parameter Sharing)로 중복 학습을 제거했으며, NSP를 SOP(Sentence Order Prediction)로 대체하여 문장 간 관계 모델링을 강화했다. 결과적으로 BERT-Large 대비 **18배 적은 파라미터**로 GLUE 89.4점, SQuAD 2.0 92.2 F1을 기록하며 당시 SOTA를 달성했다.
 

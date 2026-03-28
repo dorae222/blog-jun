@@ -15,7 +15,9 @@ Griffin의 핵심 주장은 명확하다. 순수 SSM 모델은 특정 태스크(
 
 RG-LRU는 S4나 Mamba처럼 복소수 파라미터를 사용하지 않고 실수 게이트만 사용하여 구현을 크게 단순화했다. 이 설계 선택은 CUDA 구현의 복잡도를 낮추고, 양자화 등 배포 최적화에도 유리하다. Griffin은 RecurrentGemma라는 이름으로 Hugging Face에 공개되어, 산업 수준의 하이브리드 SSM-어텐션 모델 실용화에 이정표를 세웠다.
 
-![Architecture](figures/architecture.svg)
+![Griffin 아키텍처 — RG-LRU 순환 레이어와 Local Attention을 교차 배치한 하이브리드 순환-어텐션 구조](figures/architecture.svg)
+
+*Figure 3: Griffin 아키텍처 — 전체 레이어의 약 2/3를 RG-LRU 순환 레이어로, 1/3을 Local Attention으로 구성하여 순수 SSM의 한계를 극복하면서 Transformer급 성능을 달성한다.*
 
 ## 아키텍처 상세
 

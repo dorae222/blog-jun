@@ -35,6 +35,8 @@ InstructGPT의 핵심은 아키텍처가 아닌 **학습 파이프라인**에 �
 
 $$\mathcal{L}_{\text{SFT}} = -\sum_{t} \log p(y_t | y_{<t}, x)$$
 
+라벨러 선발 과정은 매우 엄격했다. OpenAI는 Upwork와 ScaleAI를 통해 지원자를 모집한 뒤, 민감한 주제에 대한 판단 능력, 지시 수행 정확도, 작문 품질 등을 평가하는 스크리닝 테스트를 실시하여 최종 40명을 선발했다. 라벨러들에게는 "유용하고(helpful), 진실되며(truthful), 무해한(harmless)" 응답을 작성하라는 상세한 가이드라인이 제공되었으며, 특히 불확실한 정보에 대해서는 모른다고 인정하는 것이 더 나은 응답이라는 원칙이 명시되었다. 프롬프트 소스는 세 가지로 구성되었는데, (1) 라벨러가 직접 작성한 프롬프트, (2) OpenAI API 사용자들이 초기 InstructGPT 모델에 보낸 요청, (3) 기존 NLP 데이터셋을 프롬프트로 변환한 것이 포함되었다.
+
 SFT만으로도 GPT-3 대비 유의미한 개선이 있지만, 여전히 환각이나 유해 출력이 발생한다.
 
 ### 2단계: RM (Reward Model) 학습
@@ -43,7 +45,7 @@ SFT만으로도 GPT-3 대비 유의미한 개선이 있지만, 여전히 환각�
 
 $$\mathcal{L}_{\text{RM}} = -\frac{1}{\binom{K}{2}} \sum_{(i,j): y_i \succ y_j} \log \sigma(R(x, y_i) - R(x, y_j))$$
 
-여기서 $y_i \succ y_j$는 $y_i$가 $y_j$보다 선호된다는 뜻이다. 보상 모델은 주어진 프롬프트-응답 쌍의 품질을 스칼라 값으로 출력한다.
+여기서 $y_i \succ y_j$는 $y_i$가 $y_j$보다 선호된다는 뜻이다. 보상 모델은 주어진 프롬프트-응답 쌍의 품질을 스칼라 값으로 출력한다. 보상 모델의 아키텍처는 SFT 모델(6B)에서 마지막 unembedding 레이어를 제거하고 스칼라 출력 헤드를 추가한 형태이다. 핵심적으로, 프롬프트당 K개의 응답을 한 번에 비교하는 $\binom{K}{2}$ 쌍을 단일 배치로 묶어 학습하는데, 이는 개별 쌍을 독립적으로 학습하는 것보다 분산이 낮아 학습이 안정적이다. 라벨러 간 일치율(inter-annotator agreement)은 약 73%로, 인간 판단의 본질적 주관성을 반영한다.
 
 ### 3단계: PPO (Proximal Policy Optimization)
 
@@ -52,6 +54,12 @@ $$\mathcal{L}_{\text{RM}} = -\frac{1}{\binom{K}{2}} \sum_{(i,j): y_i \succ y_j} 
 $$\mathcal{L}_{\text{PPO}} = \mathbb{E}_{x, y \sim \pi_{\theta}} \left[ R_\phi(x, y) - \beta \cdot D_{\text{KL}}(\pi_\theta(y|x) \| \pi_{\text{SFT}}(y|x)) \right]$$
 
 KL 계수 $\beta = 0.02$는 성능 향상과 분포 이탈 사이의 균형을 조절한다. $\beta$가 너무 작으면 보상 해킹(reward hacking)이 발생하고, 너무 크면 개선이 제한된다.
+
+PPO 학습에서는 추가적으로 **PPO-ptx** 변형이 사용되었다. 이는 PPO 목표에 사전 학습 데이터의 언어 모델링 손실을 혼합하는 것으로, alignment tax를 완화하기 위한 전략이다:
+
+$$\mathcal{L}_{\text{PPO-ptx}} = \mathcal{L}_{\text{PPO}} + \gamma \cdot \mathbb{E}_{x \sim D_{\text{pretrain}}} \left[ \log \pi_\theta(x) \right]$$
+
+여기서 $\gamma$는 사전 학습 손실의 혼합 비율이다. 실험 결과 PPO-ptx가 순수 PPO보다 NLP 벤치마크 성능 저하가 적으면서도 인간 선호도에서는 유사한 성능을 보여, 실용적으로 더 우수한 전략임이 확인되었다. PPO 학습은 256k 토큰 크기의 롤아웃을 수집한 뒤, 미니배치 크기 64로 업데이트를 수행하며, 총 약 256k 에피소드에 걸쳐 학습이 진행되었다.
 
 ### Alignment Tax
 
@@ -142,7 +150,11 @@ InstructGPT의 RLHF 방법론은 AI 안전 연구의 실질적 출발점으로, 
 
 ### 3. 상용 AI 서비스의 기반
 
-ChatGPT의 성공은 InstructGPT의 RLHF 파이프라인 위에 구축되었으며, 이는 AI가 상용 서비스로 자리잡는 데 결정적 역할을 했다.
+ChatGPT의 성공은 InstructGPT의 RLHF 파이프라인 위에 구축되었으며, 이는 AI가 상용 서비스로 자리잡는 데 결정적 역할을 했다. 2022년 11월 출시된 ChatGPT는 InstructGPT의 SFT+RM+PPO 파이프라인에 대화(multi-turn) 데이터를 추가하여 학습한 모델로, 출시 5일 만에 100만 사용자를 달성하며 AI 역사를 바꿨다. 이는 InstructGPT가 정립한 정렬 방법론 없이는 불가능했을 성과이다.
+
+### 4. GPT-3와의 비교: 정렬 전후의 차이
+
+GPT-3는 사전 학습만으로도 놀라운 few-shot 능력을 보였지만, 실제 사용자가 원하는 형태의 응답을 생성하는 데는 한계가 있었다. 예를 들어, "이 텍스트를 3문장으로 요약해줘"라는 요청에 GPT-3는 요약 대신 텍스트를 이어 쓰는 경우가 빈번했다. InstructGPT는 동일한 요청에서 지시를 정확히 따르며, 이는 SFT 단계에서 "지시-응답" 패턴을 학습한 효과이다. RLHF를 통한 추가 정렬은 응답의 안전성과 유용성을 한 단계 더 끌어올렸다.
 
 ## 한계 및 전망
 

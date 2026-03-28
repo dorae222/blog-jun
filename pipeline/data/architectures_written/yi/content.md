@@ -6,7 +6,9 @@
 
 전 구글 브레인 리더 이카이푸(李開複)가 설립한 01.AI가 2023년 11월 공개한 이중 언어(한중영) 고성능 LLM이다. LLaMA-2 아키텍처를 기반으로 하되 어휘를 64K로 확장해 중국어 토큰화 효율을 대폭 높이고, GQA를 도입해 추론 속도를 개선했다. 특히 Yi-34B-200K 버전은 200K 토큰이라는 당시 오픈 모델 중 최장 컨텍스트를 YARN·LongRoPE 기법으로 달성했다. 34B 모델이 Llama-2-70B에 필적하는 성능을 절반 파라미터로 달성해, LLaMA 아키텍처의 중국어 적용 가능성을 보여준 대표 사례가 되었다.
 
-![Architecture](figures/architecture.svg)
+![Yi 아키텍처 — LLaMA-2 기반 64K 어휘 확장, GQA, 200K YARN 컨텍스트 구조](figures/architecture.svg)
+
+*Figure 1: Yi 아키텍처 — LLaMA-2를 기반으로 64K 어휘로 CJK 문자 효율을 높이고, GQA로 추론을 가속하며, YARN으로 200K 토큰 컨텍스트를 지원하는 이중 언어 Decoder-only 모델이다.*
 
 ## 아키텍처 상세
 

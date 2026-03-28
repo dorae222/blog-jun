@@ -111,6 +111,32 @@ export default function ArchitectureNodeDetail({
         </button>
       </div>
 
+      {/* 링크 버튼 — 헤더 바로 아래, 스크롤 영역 밖 */}
+      {(node.paper_url || node.related_post_slug) && (
+        <div className="flex flex-wrap gap-2 px-4 pb-2 shrink-0">
+          {node.paper_url && (
+            <a
+              href={node.paper_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:opacity-80"
+              style={{ background: color + '15', color }}
+            >
+              <ExternalLink size={13} /> Paper
+            </a>
+          )}
+          {node.related_post_slug && (
+            <button
+              onClick={() => navigate(`/post/${node.related_post_slug}`)}
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:opacity-80"
+              style={{ background: 'var(--bg)', color: 'var(--text)' }}
+            >
+              <FileText size={13} /> Blog Post
+            </button>
+          )}
+        </div>
+      )}
+
       <div className="px-4 pb-4" style={scrollStyle}>
         {/* Figure 썸네일 */}
         {node.figure_url && (
@@ -213,29 +239,6 @@ export default function ArchitectureNodeDetail({
           </div>
         )}
 
-        {/* 링크 버튼 */}
-        <div className="flex flex-wrap gap-2">
-          {node.paper_url && (
-            <a
-              href={node.paper_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:opacity-80"
-              style={{ background: color + '15', color }}
-            >
-              <ExternalLink size={13} /> Paper
-            </a>
-          )}
-          {node.related_post_slug && (
-            <button
-              onClick={() => navigate(`/post/${node.related_post_slug}`)}
-              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors hover:opacity-80"
-              style={{ background: 'var(--bg)', color: 'var(--text)' }}
-            >
-              <FileText size={13} /> Blog Post
-            </button>
-          )}
-        </div>
       </div>
     </motion.div>
   )

@@ -21,7 +21,9 @@ SDXL은 출시 직후 오픈소스 이미지 생성의 새로운 표준이 되�
 ![SDXL의 2단계 파이프라인 — Base 모델에서 Refiner를 거쳐 최종 이미지 생성까지](figures/fig_2_2.jpg)
 *Figure 1(우): SDXL 2단계 파이프라인 — 노이즈로부터 Base 모델이 128x128 잠재 벡터를 생성하고, Refiner가 SDEdit 방식으로 디테일을 향상시킨 후, VAE 디코더가 1024x1024 최종 이미지를 출력한다. (Source: Podell et al., 2023)*
 
-![Architecture](figures/architecture.svg)
+![SDXL 아키텍처 — 3.5B U-Net 백본과 이중 텍스트 인코더, 2단계 Base+Refiner 파이프라인 구조](figures/architecture.svg)
+
+*Figure 2: SDXL 아키텍처 — 확장된 3.5B U-Net에 CLIP-ViT/L과 OpenCLIP-ViT/bigG 이중 텍스트 인코더를 결합하고, 크기/자르기 조건화와 선택적 Refiner로 1024x1024 고해상도 이미지를 생성한다.*
 
 ## 아키텍처 상세
 

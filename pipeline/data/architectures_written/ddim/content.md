@@ -8,7 +8,9 @@ DDIM(Denoising Diffusion Implicit Models)은 2020년 Stanford University의 Jiam
 
 DDIM은 이 문제를 근본적으로 해결하였다. 핵심 통찰은 DDPM의 forward 과정을 마르코프 체인이 아닌 **비마르코프(non-Markovian) 과정**으로 재정의하더라도 동일한 marginal 분포 $q(\mathbf{x}_t|\mathbf{x}_0)$를 유지할 수 있다는 점이다. 이를 통해 역방향 샘플링 과정에서 확률적 노이즈 주입의 크기를 자유롭게 조절할 수 있으며, 노이즈를 완전히 제거($\sigma_t=0$)하면 결정론적 ODE(Ordinary Differential Equation) 샘플러가 된다. 결정론적 특성 덕분에 동일한 초기 노이즈에서 항상 동일한 이미지가 재현되며, 이 성질은 이미지 편집과 잠재 공간 보간에서 핵심적으로 활용된다. DDIM은 재학습 없이 기존 DDPM 체크포인트를 그대로 사용하면서 10~50 스텝만으로 유사한 품질의 이미지를 생성할 수 있음을 증명하였고, 이후 Stable Diffusion, DALL-E 2 등 거의 모든 확산 기반 생성 모델의 기본 샘플러로 채택되면서 확산 모델의 실용화를 이끈 핵심 돌파구로 평가받는다.
 
-![Architecture](figures/architecture.svg)
+![DDIM 아키텍처 — 비마르코프 역방향 샘플링으로 결정론적 ODE 기반 가속 생성을 달성하는 구조](figures/architecture.svg)
+
+*Figure 1: DDIM 아키텍처 — DDPM과 동일한 학습 목표를 공유하면서 비마르코프 역방향 과정으로 10~50 스텝만에 고품질 이미지를 생성하는 결정론적 샘플러 구조이다.*
 
 ## 아키텍처 상세
 

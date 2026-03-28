@@ -39,6 +39,16 @@ function preprocessContent(raw, postLinks = []) {
     })
     .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
 
+  // remark-math v6: multi-line display math에서 $$는 반드시 독립 행이어야 함
+  processed = processed.replace(/^\$\$(.+)$/gm, (match, rest) => {
+    if (rest.trimEnd().endsWith('$$')) return match
+    return '$$\n' + rest
+  })
+  processed = processed.replace(/^(.+)\$\$\s*$/gm, (match, content) => {
+    if (content.trimStart().startsWith('$$')) return match
+    return content + '\n$$'
+  })
+
   // :::type ... ::: 콜아웃 블록 → HTML 변환 (SVG 아이콘)
   processed = processed.replace(
     /^:::(info|warning|tip|danger)\s*\n([\s\S]*?)^:::\s*$/gm,

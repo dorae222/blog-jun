@@ -15,7 +15,9 @@ CoT의 핵심 통찰은 단순하지만 혁명적이다. 기존 few-shot 프롬�
 ![표준 프롬프팅 vs CoT 프롬프팅 비교 — 중간 추론 단계 포함 여부에 따른 정답 차이](figures/fig_1.png)
 *Figure 1: 표준 프롬프팅 vs CoT 프롬프팅 — 표준 방식은 입력-출력 쌍만 제공하여 오답을 생성하지만, CoT 방식은 단계별 추론 과정(하이라이트)을 포함시켜 정확한 답을 도출한다. (Source: Wei et al., 2022)*
 
-![Architecture](figures/architecture.svg)
+![Chain-of-Thought 프롬프팅 아키텍처 — 입력-중간 추론 단계-출력 삼중 구조 예시를 활용한 추론 유도 기법](figures/architecture.svg)
+
+*Figure 2: CoT 프롬프팅 아키텍처 — 표준 few-shot 프롬프팅의 입력-출력 쌍에 중간 추론 단계를 추가하여, 100B+ 규모 모델에서 수학·상식·기호 추론의 창발적 능력을 유도한다.*
 
 ## 아키텍처 상세
 

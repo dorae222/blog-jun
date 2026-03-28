@@ -342,9 +342,13 @@ N= 30, 앞면=23 | MLE=0.767, MAP=0.750 (진짜 p=0.7)
 N=100, 앞면=70 | MLE=0.700, MAP=0.696 (진짜 p=0.7)
 ```
 
-![Probability-Bayes Fig 1](/media/figures/outputs/probability-bayes/probability-bayes_fig_1.png)
+![베이즈 정리와 확률 분포 시각화](figures/bayes_theorem.png)
 
-![Probability-Bayes Fig 2](/media/figures/outputs/probability-bayes/probability-bayes_fig_2.png)
+*Figure 1: 확률 분포 시각화: 정규, 베타, 이항 분포의 파라미터별 형태와 Ridge/Lasso의 사전 분포 차이를 비교한다.*
+
+![베이지안 업데이트 과정](figures/bayesian_update.png)
+
+*Figure 2: 베이지안 업데이트: 데이터가 늘어날수록 사후 분포가 좁아지며 진짜 확률에 수렴하는 과정을 보여준다.*
 
 코드를 실행하면 두 가지 핵심 결과를 얻습니다:
 

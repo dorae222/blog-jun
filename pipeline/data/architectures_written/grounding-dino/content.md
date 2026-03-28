@@ -10,7 +10,9 @@ Grounding DINO는 이 한계를 극복하여, "빨간 모자를 쓴 사람", "�
 
 COCO 제로샷 탐지에서 52.5 AP를 달성하여 당시 SOTA를 기록하였으며, 기존 GLIP-L(49.8 AP)을 크게 능가하였다. SAM과 결합한 "Grounded SAM" 파이프라인은 텍스트만으로 객체 탐지와 세그멘테이션을 동시에 수행하는 강력한 도구로 실무에서 폭넓게 활용되고 있으며, 자동 데이터 어노테이션, 이미지 편집, 로보틱스 등 다양한 응용을 가능하게 하였다.
 
-![Architecture](figures/architecture.svg)
+![Grounding DINO 아키텍처 — 텍스트 인코더와 이미지 인코더의 3단계 긴밀 융합 기반 오픈셋 객체 탐지 구조](figures/architecture.svg)
+
+*Figure 1: Grounding DINO 아키텍처 — Swin Transformer 비전 백본과 BERT 텍스트 인코더를 Feature Enhancer에서 양방향 교차 어텐션으로 깊게 융합하여 자유 텍스트 프롬프트 기반 오픈셋 탐지를 수행한다.*
 
 다음 그림은 기존 닫힌 집합 탐지기를 오픈셋 시나리오로 확장하는 기존 접근법들을 비교한 것이다.
 
