@@ -105,11 +105,19 @@ AI_CHILDREN = [
         "color": "#06B6D4",
         "description": "코드 생성 모델, CodeLlama, StarCoder, code evaluation",
     },
+    {
+        "code": "20.AI.13",
+        "name": "Tool",
+        "slug": "tool",
+        "icon": "Terminal",
+        "color": "#0EA5E9",
+        "description": "AI 코딩 도구, CLI 에이전트: Claude Code, Gemini CLI, Codex 등",
+    },
 ]
 
 
 class Command(BaseCommand):
-    help = "20.AI 카테고리와 12개 하위 카테고리를 생성(upsert)합니다."
+    help = "20.AI 카테고리와 13개 하위 카테고리를 생성(upsert)합니다."
 
     def handle(self, *args, **options):
         # 부모 카테고리 upsert
