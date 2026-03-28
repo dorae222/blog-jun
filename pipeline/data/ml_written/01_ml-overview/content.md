@@ -266,10 +266,10 @@ weighted avg       0.90      0.90      0.90        30
 
 ## 관련 문서
 
-- [[ml-workflow]] - ML 워크플로우: 문제 정의에서 배포까지
-- [[bias-variance-tradeoff]] - 편향-분산 트레이드오프
-- [[data-preprocessing]] - 데이터 전처리
-- [[feature-engineering]] - 특성 공학
-- [[ensemble-overview]] - 앙상블 학습 개요
-- [[reinforcement-learning-basics]] - 강화학습 기초
-- [[sklearn-pipeline]] - scikit-learn 파이프라인
+- [[ml-workflow|ML 워크플로우: 문제 정의에서 배포까지]]
+- [[bias-variance-tradeoff|편향-분산 트레이드오프]]
+- [[data-preprocessing|데이터 전처리]]
+- [[feature-engineering|특성 공학]]
+- [[ensemble-overview|앙상블 학습 개요]]
+- [[reinforcement-learning-basics|강화학습 기초]]
+- [[sklearn-pipeline|scikit-learn 파이프라인]]

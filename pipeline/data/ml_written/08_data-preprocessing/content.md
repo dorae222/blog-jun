@@ -492,9 +492,9 @@ print(classification_report(y_test, y_pred))
 
 ## 관련 문서
 
-- [[ml-workflow]] - ML 워크플로우 전체 개요
-- [[feature-engineering]] - 피처 엔지니어링
-- [[imbalanced-data]] - 불균형 데이터 처리
-- [[sklearn-pipeline]] - scikit-learn Pipeline 심화
-- [[anomaly-detection]] - 이상치 탐지 심화
-- [[cross-validation]] - 교차 검증 전략
+- [[ml-workflow|ML 워크플로우 전체 개요]]
+- [[feature-engineering|피처 엔지니어링]]
+- [[imbalanced-data|불균형 데이터 처리]]
+- [[sklearn-pipeline|scikit-learn Pipeline 심화]]
+- [[anomaly-detection|이상치 탐지 심화]]
+- [[cross-validation|교차 검증 전략]]

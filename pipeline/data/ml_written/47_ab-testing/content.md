@@ -311,8 +311,8 @@ A/B 테스트는 "직관 vs. 데이터"의 싸움에서 데이터의 손을 들�
 
 ## 관련 문서
 
-- [[causal-inference-overview]] - 인과 추론 개요
-- [[did]] - 이중 차분법 (Difference-in-Differences)
-- [[classification-metrics]] - 분류 모델 성능 지표
-- [[bayesian-ml]] - 베이즈 머신러닝
-- [[mlops-fundamentals]] - MLOps 기초
+- [[causal-inference-overview|인과 추론 개요]]
+- [[did|이중 차분법 (Difference-in-Differences)]]
+- [[classification-metrics|분류 모델 성능 지표]]
+- [[bayesian-ml|베이즈 머신러닝]]
+- [[mlops-fundamentals|MLOps 기초]]

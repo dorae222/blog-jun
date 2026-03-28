@@ -280,9 +280,9 @@ Goldfarb & Tucker(2011)는 EU의 개인정보보호 법률(규제 변화)을 도
 
 ## 관련 문서
 
-- [[panel-data-fixed-effects]] - 패널 데이터와 고정 효과 모형
-- [[did]] - 이중차분법 (Difference-in-Differences)
-- [[rd-iv]] - 회귀불연속 설계와 도구변수법
-- [[psm-synthetic-control]] - 성향점수매칭과 합성 통제법
-- [[ab-testing]] - A/B 테스트와 실험 설계
-- [[cross-validation]] - 교차 검증과 모델 평가
+- [[panel-data-fixed-effects|패널 데이터와 고정 효과 모형]]
+- [[did|이중차분법 (Difference-in-Differences)]]
+- [[rd-iv|회귀불연속 설계와 도구변수법]]
+- [[psm-synthetic-control|성향점수매칭과 합성 통제법]]
+- [[ab-testing|A/B 테스트와 실험 설계]]
+- [[cross-validation|교차 검증과 모델 평가]]
