@@ -10,7 +10,9 @@ Jamba 1.6의 개발 동기는 기업 환경에서의 실용적 장문 처리 문
 
 특히 처리량(throughput) 기준으로 동급 Transformer 모델 대비 3배 이상의 효율을 달성하여, API 서빙 비용 절감에 직접적으로 기여한다. 기업용 AI 솔루션에서는 성능뿐 아니라 비용 효율이 채택 결정의 핵심 요소이며, Jamba 1.6는 이 두 가지를 동시에 충족하는 모델로 자리매김하였다.
 
-![Architecture](figures/architecture.svg)
+![Jamba 1.6 아키텍처 — Mamba SSM과 Transformer Attention을 교차 배치한 398B MoE 하이브리드 구조](figures/architecture.svg)
+
+*Figure 1: Jamba 1.6 아키텍처 — Mamba SSM 레이어와 Transformer Attention 레이어를 인터리브드 배치하고, MoE로 토큰당 52B만 활성화하여 256K 컨텍스트를 효율적으로 처리한다.*
 
 ## 아키텍처 상세
 

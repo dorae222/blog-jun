@@ -217,7 +217,9 @@ plt.savefig('gp_uncertainty.png', dpi=150)
 plt.show()
 ```
 
-![Bayesian-Ml Fig 1](/media/figures/outputs/bayesian-ml/bayesian-ml_fig_1.png)
+![베이지안 회귀 불확실성 시각화](figures/bayesian_regression_uncertainty.png)
+
+*Figure 1: 베이지안 회귀 불확실성: Gaussian Process를 활용한 예측 구간 시각화로, 데이터 근처에서는 불확실성이 좁아지고 데이터가 없는 구간에서는 넓어진다.*
 
 시각화 결과에서 주목할 포인트:
 - 학습 데이터 근처: 불확실성 띠가 좁아짐 (데이터가 충분)

@@ -10,7 +10,9 @@ Claude Code의 설계 철학은 **"개발자의 워크플로에 자연스럽게 
 
 에이전틱 코딩의 핵심 가치는 **"의도 수준의 지시(intent-level instruction)"**에 있다. 개발자가 "이 API를 GraphQL로 마이그레이션해줘"라고 말하면, Claude Code는 스스로 관련 파일을 탐색하고, 변경 계획을 수립하며, 코드를 수정하고, 테스트를 실행하여 결과를 보고한다. 이 전 과정에서 개발자는 코드 한 줄도 직접 작성하지 않으면서도, 원하는 결과를 정확히 얻을 수 있다.
 
-![Architecture](figures/architecture.svg)
+![Claude Code 에이전틱 코딩 아키텍처 — Understand-Search-Plan-Edit-Verify-Report 루프와 도구 사용 구조](figures/architecture.svg)
+
+*Figure 1: Claude Code 아키텍처 — 사용자의 자연어 지시를 받아 코드베이스 탐색, 계획 수립, 파일 편집, 테스트 실행, 결과 보고의 에이전틱 루프를 반복하는 CLI 기반 AI 소프트웨어 엔지니어링 도구이다.*
 
 ## 아키텍처 상세
 

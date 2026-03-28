@@ -8,6 +8,10 @@
 
 ## 아키텍처 상세
 
+![GPT-4.1 아키텍처 다이어그램](figures/architecture.png)
+
+*Figure 1: GPT-4.1의 100만 토큰 컨텍스트 지원 Decoder-only Transformer 아키텍처. (OpenAI, 2025)*
+
 ### 모델 변형
 
 GPT-4.1은 세 가지 변형으로 출시되었다:

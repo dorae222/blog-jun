@@ -8,6 +8,10 @@ OpenAI o3는 o1의 후속으로 2025년 4월 16일 공개된 차세대 추론 �
 
 ## 아키텍처 상세
 
+![OpenAI o3 적응적 컴퓨트 아키텍처](figures/architecture.png)
+
+*Figure 1: OpenAI o3의 적응적 컴퓨트 메커니즘과 추론 스케일링 아키텍처. (OpenAI, 2025)*
+
 ### 기본 구조
 
 | 구성 요소 | 사양 |

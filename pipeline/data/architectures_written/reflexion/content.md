@@ -10,7 +10,9 @@ Reflexion의 핵심 통찰은 **"인간은 실패에서 배우며, 언어가 그
 
 ReAct는 Thought-Action-Observation의 단일 시도에서 최선의 답을 구하지만, 복잡한 문제에서는 한 번의 시도로 최적의 답을 찾지 못하는 경우가 빈번하다. Reflexion은 이 한계를 극복하여, 실패한 시도의 궤적(trajectory)과 평가 결과를 분석하고, 구체적인 개선 방향을 자연어로 생성하여 다음 시도의 컨텍스트에 주입한다. 이를 통해 동일한 기반 모델 위에서 별도의 가중치 업데이트 없이도 **반복 시도를 통한 지속적 성능 향상**을 실현한다. HotpotQA에서 17.6%p, HumanEval(코드 생성)에서 24.0%p의 향상은 이 접근법의 효과를 실증한다.
 
-![Architecture](figures/architecture.svg)
+![Reflexion 아키텍처 — Actor, Evaluator, Self-Reflection과 언어적 메모리 기반 자기 개선 에이전트 구조](figures/architecture.svg)
+
+*Figure 1: Reflexion 아키텍처 — Actor가 환경과 상호작용하고 Evaluator가 피드백을 생성하며, Self-Reflection이 실패 원인을 언어로 분석하여 장기 메모리에 저장하고 다음 시도에 활용하는 언어적 강화 학습 프레임워크이다.*
 
 ![Reflexion 개요 — 의사결정, 프로그래밍, 추론 태스크에서의 적용](figures/fig_1.png)
 *Figure 1: Reflexion 작동 과정 — (a) 태스크 수행, (b) 궤적 기록, (c) 평가, (d) 자기 반성, (e) 개선된 다음 시도. 의사결정, 코드 생성, 추론 세 도메인에서 동일 프레임워크 적용. (Source: arXiv 2303.11366)*

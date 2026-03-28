@@ -8,7 +8,9 @@ FlashAttention은 Tri Dao 등이 2022년 스탠퍼드 HazyResearch에서 제안�
 
 FlashAttention은 완전히 다른 접근법을 취한다. **수학적으로 표준 어텐션과 완전히 동일한 결과를 내면서도**, GPU의 메모리 계층 구조(HBM과 SRAM)를 활용한 IO-aware 알고리즘 설계로 HBM 접근 횟수를 O(N²)에서 O(N²d²/M)으로 줄인다(여기서 d는 헤드 차원, M은 SRAM 크기). 결과적으로 표준 구현 대비 **2~4배 빠르고 5~20배 메모리 효율적**이며, 긴 시퀀스 학습의 병목을 획기적으로 해소했다.
 
-![Architecture](figures/architecture.svg)
+![FlashAttention 아키텍처 — GPU HBM-SRAM 메모리 계층을 활용한 IO-aware 타일링 기반 정확한 어텐션](figures/architecture.svg)
+
+*Figure 1: FlashAttention 아키텍처 — Q, K, V 행렬을 블록 단위로 분할하여 SRAM에서 계산하고, 온라인 소프트맥스로 N x N 어텐션 행렬의 HBM 실체화를 방지하는 IO-aware 알고리즘이다.*
 
 FlashAttention의 타일링 전략과 속도 향상 효과를 아래 그림에서 확인할 수 있다.
 

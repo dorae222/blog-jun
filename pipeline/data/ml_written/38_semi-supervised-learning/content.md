@@ -264,7 +264,9 @@ plt.savefig('ssl_visualization.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Semi-Supervised-Learning Fig 1](/media/figures/outputs/semi-supervised-learning/semi-supervised-learning_fig_1.png)
+![준지도학습 레이블 전파 시각화](figures/label_propagation.png)
+
+*Figure 1: 레이블 전파 시각화: 소수의 레이블 데이터에서 비레이블 데이터로 레이블이 확산되는 준지도학습 과정을 단계별로 보여준다.*
 
 ---
 

@@ -9,6 +9,10 @@ Kling 3는 Kuaishou Technology가 개발한 Kling 시리즈의 세 번째 주요
 
 ## 아키텍처 상세
 
+![Kling 3 멀티샷 캐릭터 일관성 아키텍처](figures/architecture.png)
+
+*Figure 1: Kling 3의 멀티샷 캐릭터 일관성 지원 DiT 아키텍처. (Kuaishou, 2026)*
+
 ### Kling 2.x 아키텍처 계승
 
 Kling 3는 이전 세대의 핵심 아키텍처를 계승하면서 멀티샷 일관성에 특화된 개선을 추가하였다:

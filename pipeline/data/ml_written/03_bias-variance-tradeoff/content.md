@@ -314,11 +314,13 @@ plt.savefig('bias_variance_decomposition.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Bias-Variance-Tradeoff Fig 1](/media/figures/outputs/bias-variance-tradeoff/bias-variance-tradeoff_fig_1.png)
+![과소적합 vs 과적합 비교](figures/underfit_vs_overfit.png)
 
-![Bias-Variance-Tradeoff Fig 2](/media/figures/outputs/bias-variance-tradeoff/bias-variance-tradeoff_fig_2.png)
+*Figure 1: 과소적합 vs 과적합 비교: 1차(과소적합), 4차(적절), 15차(과적합) 다항식 피팅 결과를 통해 모델 복잡도의 영향을 시각적으로 비교한다.*
 
-![Bias-Variance-Tradeoff Fig 3](/media/figures/outputs/bias-variance-tradeoff/bias-variance-tradeoff_fig_3.png)
+![편향-분산 분해 시뮬레이션](figures/bias_variance_decomposition.png)
+
+*Figure 2: 편향-분산 분해: 200회 반복 실험을 통해 측정한 편향², 분산, 총 오차의 관계를 복잡도별로 시각화한다.*
 
 위 코드는 세 가지 시각화를 생성합니다:
 

@@ -8,7 +8,9 @@ SigLIP 2는 2025년 2월 Google DeepMind가 발표한 차세대 시그모이드 
 
 기존 SigLIP(2023)의 핵심 아이디어를 계승하면서, SigLIP 2는 다국어 확장(109개 언어), 학습 레시피 개선(MIM 보조 손실), NaViT 스타일 가변 해상도 처리를 통합하였다. PaLI-3, Gemma 등 Google의 멀티모달 LLM에서 비전 인코더로 채택되어, 시각적 질의응답, 문서 이해, OCR 등 다운스트림 태스크 전반에서 CLIP·OpenCLIP 대비 일관되게 우수한 성능을 보인다.
 
-![Architecture](figures/architecture.svg)
+![SigLIP 2 아키텍처 — 다국어 확장, MIM 보조 손실, NaViT 가변 해상도를 통합한 시각-언어 모델 구조](figures/architecture.svg)
+
+*Figure 1: SigLIP 2 아키텍처 — SigLIP의 시그모이드 대조 손실을 계승하면서 109개 언어 지원, MIM 보조 학습, NaViT 스타일 가변 해상도 처리를 통합한 차세대 비전 인코더이다.*
 
 ## 아키텍처 상세
 

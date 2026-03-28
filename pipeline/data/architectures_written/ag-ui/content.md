@@ -10,7 +10,9 @@ AG-UI(Agent-User Interface) 프로토콜은 AI 에이전트와 프론트엔드 U
 
 에이전트 투명성(agent transparency)은 단순한 UX 개선을 넘어 규제 요건과도 밀접하다. EU AI Act 등 AI 규제가 강화되면서, AI 시스템의 의사결정 과정을 설명할 수 있는 능력이 필수 요건이 되고 있다. AG-UI는 이러한 설명 가능성(explainability)을 프로토콜 수준에서 지원한다. MIT 라이선스로 공개되어 있으며, TypeScript와 Python SDK가 제공된다.
 
-![Architecture](figures/architecture.svg)
+![AG-UI 프로토콜 전체 아키텍처 — 에이전트 백엔드와 프론트엔드 UI 간 이벤트 기반 실시간 스트리밍 통신 구조](figures/architecture.svg)
+
+*Figure 1: AG-UI 프로토콜 아키텍처 — 에이전트의 내부 상태 변화를 이벤트 스트림으로 프론트엔드에 실시간 전달하여 투명한 에이전트-사용자 인터랙션을 구현한다.*
 
 ## 아키텍처 상세
 

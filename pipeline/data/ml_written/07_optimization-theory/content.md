@@ -445,9 +445,13 @@ plt.savefig('lr_scheduling.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Optimization-Theory Fig 1](/media/figures/outputs/optimization-theory/optimization-theory_fig_1.png)
+![옵티마이저 경로 비교](figures/gradient_descent_paths.png)
 
-![Optimization-Theory Fig 2](/media/figures/outputs/optimization-theory/optimization-theory_fig_2.png)
+*Figure 1: 옵티마이저 경로 비교: Beale 함수 등고선 위에서 GD, 모멘텀, RMSProp, Adam의 최적화 경로와 수렴 속도를 비교한다.*
+
+![학습률 스케줄 비교](figures/learning_rate_comparison.png)
+
+*Figure 2: 학습률 스케줄 비교: Step Decay, Cosine Annealing, Warmup+Cosine 세 가지 스케줄링 전략의 학습률 변화 양상을 보여준다.*
 
 위 코드는 두 가지 시각화를 생성합니다:
 

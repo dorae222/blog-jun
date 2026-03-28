@@ -10,7 +10,9 @@ Variational Diffusion Models(VDM)는 2021년 Google Brain의 Diederik Kingma, Ti
 
 VDM은 이 문제에 대한 이론적 해답을 제시하였다. 핵심 기여는 세 가지이다: (1) 노이즈 스케줄을 **신호 대 잡음비(SNR, Signal-to-Noise Ratio)**로 재파라미터화하고, 이를 학습 가능한 단조감소 신경망 $\gamma_\eta(t)$로 모델링, (2) 연속 시간 극한에서 ELBO(Evidence Lower Bound)가 닫힌 형식으로 표현됨을 증명, (3) 확산 손실이 SNR 가중 denoising score matching과 동치임을 보여 기존 DDPM의 학습 목표에 대한 수학적 근거를 제공. VDM은 CIFAR-10에서 BPD(Bits Per Dimension) 2.65를 달성하며 당시 DDPM(3.75 BPD)보다 크게 향상된 가능도를 기록하였다. 이 연구는 이후 EDM의 설계 공간 분석, SD3의 로짓-정규 타임스텝 샘플링 등 노이즈 스케줄 최적화 연구의 선행 연구가 되었다.
 
-![Architecture](figures/architecture.svg)
+![VDM 아키텍처 — SNR 재파라미터화와 학습 가능한 노이즈 스케줄 기반 변분 확산 모델 구조](figures/architecture.svg)
+
+*Figure 1: VDM 아키텍처 — 노이즈 스케줄을 신호 대 잡음비(SNR)로 재파라미터화하고 학습 가능한 단조감소 신경망으로 모델링하여, 연속 시간 극한에서 ELBO의 닫힌 형식 표현을 도출한다.*
 
 ## 아키텍처 상세
 

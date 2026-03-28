@@ -10,7 +10,9 @@ RetNet(Retentive Network)은 2023년 Microsoft Research가 발표한 모델로, 
 
 RetNet의 삼중 모드 전환 아이디어는 SSM/선형 어텐션 연구에서 핵심적 설계 원칙으로 자리잡았으며, GLA, Gated DeltaNet 등 후속 연구의 직접적 기반이 되었다.
 
-![Architecture](figures/architecture.svg)
+![RetNet 아키텍처 — Retention 메커니즘의 병렬/순환/청크 순환 삼중 모드 전환 구조](figures/architecture.svg)
+
+*Figure 1: RetNet 아키텍처 — Retention 연산을 병렬 모드(학습), 순환 모드(추론), 청크 순환 모드(배치 추론)로 등가 변환하여 학습 병렬화, O(1) 추론 메모리, 선형 복잡도를 동시에 달성한다.*
 
 RetNet은 기존 접근법들이 해결하지 못했던 "불가능한 삼각형"을 달성한다. 아래 그림은 Transformer, Linear Transformer, RNN 각각이 삼각형의 한 변씩만 달성하는 반면, RetNet은 세 꼭짓점을 모두 달성함을 보여준다.
 

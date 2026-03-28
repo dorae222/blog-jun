@@ -10,7 +10,9 @@ Self-Consistency의 핵심 직관은 단순하지만 강력하다: **"복잡한 
 
 이 접근의 이론적 배경은 통계학의 배깅(bagging)과 유사하다. 개별 추론 경로가 가질 수 있는 오류를 독립적 샘플링과 다수결로 상쇄하는 것이다. 수학적으로, 각 경로의 오류 확률이 $p < 0.5$일 때, $N$개 경로의 다수결 오류 확률은 $N$이 증가함에 따라 지수적으로 감소한다. 이 원리 덕분에 GSM8K에서 CoT 단독 대비 최대 17.5%p의 성능 향상이 가능하며, 추가 학습이나 모델 수정 없이 순수 추론 시점의 기법만으로 이러한 향상을 달성한다는 점이 특히 실용적이다.
 
-![Architecture](figures/architecture.svg)
+![Self-Consistency 아키텍처 — 다중 CoT 추론 경로 샘플링과 다수결 집계 기반 앙상블 디코딩 구조](figures/architecture.svg)
+
+*Figure 1: Self-Consistency 아키텍처 — 동일 문제에 대해 다양한 CoT 추론 경로를 temperature 기반으로 다수 샘플링한 뒤 최종 답안에 다수결을 적용하여, 추론 시점의 앙상블로 정확도를 향상시킨다.*
 
 ![Self-Consistency 방법론 개요 — 다중 추론 경로 샘플링과 다수결 집계](figures/fig_1.png)
 *Figure 1: Self-Consistency 3단계 — (1) CoT 프롬프팅으로 언어 모델에 질문, (2) 탐욕적 디코딩 대신 다양한 추론 경로를 샘플링, (3) 추론 경로를 주변화하고 최종 답안 집합에서 가장 일관된 답을 선택. (Source: arXiv 2203.11171)*

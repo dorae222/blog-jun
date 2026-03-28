@@ -10,7 +10,9 @@ PixArt-α는 이 문제를 세 단계 분리 학습 전략(Three-Stage Training)
 
 아키텍처적으로는 DiT에 Cross-Attention 블록을 추가하여 T5-XXL 텍스트 인코더와 연동하며, AdaLN-Single 기법으로 타임스텝 임베딩 파라미터를 약 30% 절감하였다. MS-COCO 기준 FID 7.32를 달성하며, 사용자 선호도 평가에서 SDXL과 경쟁력 있는 수준을 보였다.
 
-![Architecture](figures/architecture.svg)
+![PixArt-alpha 아키텍처 — DiT에 Cross-Attention과 AdaLN-Single을 적용한 3단계 효율적 학습 구조](figures/architecture.svg)
+
+*Figure 1: PixArt-alpha 아키텍처 — ImageNet 구조 학습, 텍스트-이미지 정렬, 미적 품질 향상의 3단계 분리 학습으로 SDXL 대비 1/10 비용에 상업 수준 이미지 품질을 달성한다.*
 
 ## 아키텍처 상세
 

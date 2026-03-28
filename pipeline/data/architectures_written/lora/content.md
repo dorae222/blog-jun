@@ -8,7 +8,9 @@ LoRA(Low-Rank Adaptation)는 Edward Hu 등이 2021년 Microsoft Research에서 �
 
 LoRA는 이 문제를 **저랭크 분해(Low-Rank Decomposition)**로 해결한다. 사전 학습된 가중치를 동결한 채로 각 Transformer 레이어에 작은 저랭크 행렬 쌍을 삽입하여, GPT-3 기준 학습 파라미터를 **최대 10,000배** 줄이면서도 전체 파인튜닝과 동등하거나 더 나은 성능을 달성한다. 추론 시에는 어댑터 가중치를 원본에 병합할 수 있어 **추론 지연이 전혀 발생하지 않는다**.
 
-![Architecture](figures/architecture.svg)
+![LoRA 아키텍처 — 사전 학습 가중치를 동결한 채 저랭크 행렬 쌍을 삽입하는 파라미터 효율적 파인튜닝 구조](figures/architecture.svg)
+
+*Figure 1: LoRA 아키텍처 — 각 Transformer 레이어에 저랭크 행렬 A와 B를 병렬로 삽입하여, 학습 파라미터를 최대 10,000배 줄이면서 추론 시 지연 없이 원본 가중치에 병합 가능한 구조이다.*
 
 ## 기법 상세
 

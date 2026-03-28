@@ -10,7 +10,9 @@ QLoRA(Quantized LoRA)는 Tim Dettmers 등이 2023년 워싱턴 대학교에서 �
 
 NF4(NormalFloat 4-bit), Double Quantization, Paged Optimizers라는 **세 가지 핵심 혁신**으로 메모리를 극적으로 절감하면서도 16비트 풀 파인튜닝과 동등한 성능을 보존한다. Guanaco-33B 모델은 단일 GPU에서 12시간 학습만으로 **ChatGPT의 99.3% 수준**에 도달했다.
 
-![Architecture](figures/architecture.svg)
+![QLoRA 아키텍처 — 4비트 NF4 양자화와 LoRA를 결합한 메모리 효율적 파인튜닝 구조](figures/architecture.svg)
+
+*Figure 1: QLoRA 아키텍처 — 사전 학습 가중치를 NF4 4비트로 양자화하고, 역전파 시 BF16으로 디퀀타이즈하여 LoRA 어댑터를 학습하며, Paged Optimizers로 GPU-CPU 간 메모리를 관리한다.*
 
 아래 그림은 Full Finetuning, LoRA, QLoRA의 메모리 구조를 비교한 것으로, QLoRA가 4비트 양자화된 트랜스포머 위에 LoRA 어댑터를 적용하고 Paged Optimizers로 GPU-CPU 간 메모리를 관리하는 구조를 보여준다.
 

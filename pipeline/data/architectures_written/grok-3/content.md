@@ -8,6 +8,10 @@ Grok 3는 수학, 과학, 코딩 분야에서 GPT-4o, Claude 3.5 Sonnet, Gemini 
 
 ## 아키텍처 상세
 
+![Grok 3 추정 아키텍처 다이어그램](figures/architecture.png)
+
+*Figure 1: Grok 3의 추정 아키텍처 구조 (H100 20만 개 기반 학습). (xAI, 2025)*
+
 ### 추정 구조
 
 Grok 3의 구체적 아키텍처는 공개되지 않았으나, 공개된 정보와 업계 분석을 종합하면 다음과 같이 추정된다.

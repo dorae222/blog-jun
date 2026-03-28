@@ -253,7 +253,9 @@ plt.savefig('knn_decision_boundary.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Knn Fig 1](/media/figures/outputs/knn/knn_fig_1.png)
+![KNN 결정 경계 변화](figures/knn_decision_boundaries.png)
+
+*Figure 1: KNN 결정 경계: K=1(과적합)부터 K=30(과소적합)까지 K 값에 따른 결정 경계의 변화를 보여준다.*
 
 K=1일 때 매우 들쭉날쭉한 결정 경계(과적합)부터, K=30일 때 부드럽고 단순한 경계(과소적합)까지 시각적으로 확인할 수 있습니다. 최적 K는 그 사이 어딘가에 존재하며, 교차 검증으로 탐색합니다.
 

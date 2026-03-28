@@ -15,7 +15,9 @@ HGRN은 이 관찰에서 출발하여 레이어 깊이에 따라 망각 게이�
 ![HGRN의 신경 아키텍처 구조 — HGRN 블록, HGRU 토큰 믹서, HRU 순환 유닛의 3단계 구성](figures/fig_2.png)
 *Figure 1: HGRN 아키텍처 — 각 레이어는 HGRU(토큰 믹서)와 GLU(채널 믹서)로 구성된다. HRU 내부에서 레이어별 하한값 $\gamma^k$가 적용된 계층적 망각 게이트를 통해 복소수 도메인의 선형 순환 연산을 수행한다. (Source: Qin et al., 2023)*
 
-![Architecture](figures/architecture.svg)
+![HGRN 아키텍처 — 레이어 깊이에 따라 망각 게이트를 차별화하는 계층적 순환 네트워크 구조](figures/architecture.svg)
+
+*Figure 2: HGRN 전체 아키텍처 — 얕은 레이어는 빠른 망각(단거리 패턴), 깊은 레이어는 느린 망각(장거리 의존성)으로 자연스럽게 분화되는 계층적 게이팅 메커니즘을 적용한다.*
 
 ## 아키텍처 상세
 

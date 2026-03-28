@@ -8,7 +8,9 @@ FlashAttention-2는 Tri Dao가 2023년 Together AI에서 제안한 FlashAttentio
 
 A100 GPU의 이론 최대 연산량은 312 TFLOPS(FP16)이지만, FlashAttention-1은 이 중 약 35%만 활용했다. FlashAttention-2는 non-matmul FLOP 감소, 쿼리 루프 병렬화, GQA/MQA 네이티브 지원의 **세 가지 핵심 최적화**를 통해 이론 최대의 **약 72%(~230 TFLOPS)**를 달성한다. 이는 FlashAttention-1 대비 약 **2배**의 처리량 향상이며, 현재 LLM 추론 및 학습 프레임워크 전반에서 사실상 표준 어텐션 구현으로 채택되어 있다.
 
-![Architecture](figures/architecture.svg)
+![FlashAttention-2 아키텍처 — 쿼리 루프 병렬화와 non-matmul FLOP 최소화로 GPU 활용률을 극대화한 구조](figures/architecture.svg)
+
+*Figure 1: FlashAttention-2 아키텍처 — FlashAttention-1의 타일링 전략을 계승하면서 쿼리 기준 병렬화, non-matmul 연산 최소화, GQA/MQA 네이티브 지원으로 A100 이론 최대의 72%를 달성한다.*
 
 ## 기법 상세
 

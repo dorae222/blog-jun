@@ -253,7 +253,9 @@ ROC-AUC: 0.9476
 L1 정규화 결과: 20개 특성 중 15개 계수가 0으로 제거됨
 ```
 
-![Logistic-Regression Fig 1](/media/figures/outputs/logistic-regression/logistic-regression_fig_1.png)
+![결정 경계와 시그모이드 함수 시각화](figures/decision_boundary.png)
+
+*Figure 1: 로지스틱 회귀 결정 경계: 학습된 모델의 선형 결정 경계와 각 클래스의 확률 분포를 시각적으로 보여준다.*
 
 ---
 

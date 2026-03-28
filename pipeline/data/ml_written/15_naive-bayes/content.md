@@ -235,7 +235,9 @@ plt.savefig('gnb_decision_boundary.png', dpi=150)
 plt.show()
 ```
 
-![Naive-Bayes Fig 1](/media/figures/outputs/naive-bayes/naive-bayes_fig_1.png)
+![나이브 베이즈 결정 경계 시각화](figures/naive_bayes_decision_boundary.png)
+
+*Figure 1: 나이브 베이즈 결정 경계: 가우시안 나이브 베이즈 분류기의 곡선형 결정 경계와 각 클래스의 분류 영역을 보여준다.*
 
 위 코드는 배경 색상으로 각 클래스의 결정 영역을, 점으로 실제 샘플을 표시합니다. 나이브 베이즈의 결정 경계는 가우시안 분포의 등고선 형태로 나타나며, 선형 모델(로지스틱 회귀)과 달리 곡선형 경계를 형성할 수 있습니다.
 

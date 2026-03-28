@@ -199,7 +199,9 @@ plot_decision_boundary(pipeline, X, y, title='RBF SVM 결정 경계')
 CV Accuracy: 0.9267 ± 0.0249
 ```
 
-![Svm Fig 1](/media/figures/outputs/svm/svm_fig_1.png)
+![SVM 마진과 결정 경계](figures/svm_margin_support_vectors.png)
+
+*Figure 1: RBF SVM 결정 경계: 비선형 커널을 적용한 SVM의 결정 경계와 서포트 벡터를 시각화한다.*
 
 ### 커널 비교
 
@@ -230,7 +232,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Svm Fig 2](/media/figures/outputs/svm/svm_fig_2.png)
+![커널별 결정 경계 비교](figures/kernel_trick.png)
+
+*Figure 2: 커널별 결정 경계 비교: 선형, 다항식, RBF, 시그모이드 커널의 결정 경계 형태와 CV 정확도 차이를 보여준다.*
 
 ### 그리드 서치로 C와 γ 튜닝
 
@@ -274,6 +278,8 @@ Fitting 5 folds for each of 25 candidates, totalling 125 fits
 최적 CV 정확도: 0.9633
 ```
 
-![Svm Fig 3](/media/figures/outputs/svm/svm_fig_3.png)
+![C vs γ 그리드 서치 히트맵](figures/kernel_trick.png)
+
+*Figure 3: C vs γ 그리드 서치 결과: 파라미터 조합에 따른 CV 정확도를 히트맵으로 시각화하여 최적 하이퍼파라미터를 탐색한다.*
 
 위 코드를 실행하면 각 커널의 결정 경계 형태와 C·γ 파라미터가 성능에 미치는 영향을 직관적으로 확인할 수 있다. 실무에서는 항상 `StandardScaler`를 먼저 적용하고, `Pipeline`으로 전처리와 모델을 묶어 데이터 누수(data leakage)를 방지하는 것이 중요하다.

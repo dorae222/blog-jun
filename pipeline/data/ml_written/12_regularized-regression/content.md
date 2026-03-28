@@ -354,9 +354,13 @@ LassoCV 최적 λ: 1.7074
 LassoCV: RMSE=24.89, 0 계수=69/100
 ```
 
-![Regularized-Regression Fig 1](/media/figures/outputs/regularized-regression/regularized-regression_fig_1.png)
+![정규화 효과 시각화](figures/regularization_effect.png)
 
-![Regularized-Regression Fig 2](/media/figures/outputs/regularized-regression/regularized-regression_fig_2.png)
+*Figure 1: 정규화 효과: Ridge와 Lasso가 계수를 수축시키는 과정을 시각화하며, Lasso는 유효하지 않은 계수를 0으로 만든다.*
+
+![L1/L2 계수 경로](figures/l1_l2_coefficient_paths.png)
+
+*Figure 2: L1/L2 계수 경로: 정규화 강도(λ)에 따른 계수 변화 추이를 비교하여 Ridge와 Lasso의 수축 패턴 차이를 보여준다.*
 
 위 코드에서 주목할 점:
 
