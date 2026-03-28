@@ -1,0 +1,8 @@
+{
+  "slug": "gemini-cli",
+  "title": "Gemini CLI",
+  "title_ko": "Gemini CLI: Google의 오픈소스 AI 코딩 에이전트",
+  "summary": "Gemini CLI는 Google이 공개한 오픈소스 에이전틱 코딩 CLI 도구로, Gemini 2.5 Pro 기반으로 터미널에서 코드 생성/편집/실행을 에이전틱 방식으로 수행한다.",
+  "tags": ["Gemini CLI", "Google", "CLI Agent", "Agentic Coding", "MCP", "Open Source"],
+  "category_slug": "tool"
+}

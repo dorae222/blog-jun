@@ -28,7 +28,7 @@ django.setup()
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.files import File
-from blog.models import ArchitectureEntry, ArchitectureConcept, ArchitectureRelation, Post, Category, Tag
+from blog.models import ArchitectureEntry, ArchitectureConcept, ArchitectureRelation, Post, Category, Tag, Series
 
 from utils.import_helpers import upload_figure, replace_figure_paths, get_default_author
 from utils.category_mapper import CategoryMapper
@@ -200,8 +200,12 @@ def import_architectures(dry_run: bool = False, update: bool = False):
             post_summary = content_meta.get('summary', '')
             post_tags = content_meta.get('tags', [])
 
-            # 카테고리 결정
-            cat_slug = _mapper.resolve(data.get('architecture_category', ''), 'architecture')
+            # 카테고리 결정 (content.json의 category_slug 우선)
+            raw_cat = content_meta.get('category_slug', '') if content_meta else ''
+            if raw_cat:
+                cat_slug = _mapper.resolve(raw_cat, 'tutorial')
+            else:
+                cat_slug = _mapper.resolve(data.get('architecture_category', ''), 'architecture')
             categories = {c.slug: c for c in Category.objects.all()}
             post_category = categories.get(cat_slug) or categories.get('ai-ml')
 
@@ -242,6 +246,14 @@ def import_architectures(dry_run: bool = False, update: bool = False):
                         if tag_slug_val:
                             tag, _ = Tag.objects.get_or_create(slug=tag_slug_val, defaults={'name': tag_name})
                             existing_post.tags.add(tag)
+                    # 시리즈 할당
+                    series_slug = content_meta.get('series_slug') if content_meta else None
+                    if series_slug:
+                        series_obj = Series.objects.filter(slug=series_slug).first()
+                        if series_obj:
+                            existing_post.series = series_obj
+                            existing_post.series_order = content_meta.get('series_order', 0)
+                            existing_post.save(update_fields=['series', 'series_order'])
                     entry.related_post = existing_post
                     entry.save(update_fields=['related_post'])
                     post_updated += 1
@@ -286,6 +298,15 @@ def import_architectures(dry_run: bool = False, update: bool = False):
                 if figure_url_map:
                     new_post.content = replace_figure_paths(content_text, figure_url_map)
                     new_post.save(update_fields=['content'])
+
+                # 시리즈 할당
+                series_slug = content_meta.get('series_slug') if content_meta else None
+                if series_slug:
+                    series_obj = Series.objects.filter(slug=series_slug).first()
+                    if series_obj:
+                        new_post.series = series_obj
+                        new_post.series_order = content_meta.get('series_order', 0)
+                        new_post.save(update_fields=['series', 'series_order'])
 
                 entry.related_post = new_post
                 entry.save(update_fields=['related_post'])

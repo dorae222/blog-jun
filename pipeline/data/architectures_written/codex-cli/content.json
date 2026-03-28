@@ -1,0 +1,8 @@
+{
+  "slug": "codex-cli",
+  "title": "Codex CLI",
+  "title_ko": "Codex CLI: OpenAI의 샌드박스 기반 AI 코딩 에이전트",
+  "summary": "Codex CLI는 OpenAI가 공개한 오픈소스 에이전틱 코딩 도구로, o4-mini 기반으로 네트워크 격리 샌드박스에서 코드를 안전하게 생성/실행한다.",
+  "tags": ["Codex CLI", "OpenAI", "CLI Agent", "Agentic Coding", "Sandbox", "Open Source"],
+  "category_slug": "tool"
+}
