@@ -376,8 +376,8 @@ N=100, 앞면=70 | MLE=0.700, MAP=0.696 (진짜 p=0.7)
 
 ## 관련 문서
 
-- [[naive-bayes]] - 나이브 베이즈 분류기
-- [[information-theory]] - 정보 이론: 엔트로피와 KL 발산
-- [[bayesian-ml]] - 베이지안 머신러닝
-- [[logistic-regression]] - 로지스틱 회귀와 조건부 확률
-- [[regularized-regression]] - Ridge와 Lasso 정규화 회귀
+- [[naive-bayes|나이브 베이즈 분류기]]
+- [[information-theory|정보 이론: 엔트로피와 KL 발산]]
+- [[bayesian-ml|베이지안 머신러닝]]
+- [[logistic-regression|로지스틱 회귀와 조건부 확률]]
+- [[regularized-regression|Ridge와 Lasso 정규화 회귀]]

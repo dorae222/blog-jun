@@ -348,9 +348,9 @@ PCA의 핵심 강점은 단순하고 해석 가능하며 계산 효율이 높다
 
 ## 관련 문서
 
-- [[linear-algebra-for-ml]] - ML을 위한 선형대수 핵심 정리
-- [[tsne-umap]] - t-SNE와 UMAP: 비선형 차원 축소
-- [[kmeans-clustering]] - K-평균 군집화
-- [[feature-engineering]] - 피처 엔지니어링
-- [[kernel-methods]] - 커널 방법론
-- [[anomaly-detection]] - 이상 탐지
+- [[linear-algebra-for-ml|ML을 위한 선형대수 핵심 정리]]
+- [[tsne-umap|t-SNE와 UMAP: 비선형 차원 축소]]
+- [[kmeans-clustering|K-평균 군집화]]
+- [[feature-engineering|피처 엔지니어링]]
+- [[kernel-methods|커널 방법론]]
+- [[anomaly-detection|이상 탐지]]
