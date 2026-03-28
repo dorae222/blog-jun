@@ -22,5 +22,6 @@
   "arxiv_url": "https://arxiv.org/abs/2103.00020",
   "venue": "ICML 2021",
   "paper_year": 2021,
-  "paper_authors": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, Ilya Sutskever"
+  "paper_authors": "Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, Ilya Sutskever",
+  "related_architecture": "clip"
 }

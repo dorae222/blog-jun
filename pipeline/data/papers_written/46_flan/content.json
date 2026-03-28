@@ -31,5 +31,5 @@
     "FLAN-PaLM",
     "post-training"
   ],
-  "related_architecture": ""
+  "related_architecture": "flan-t5"
 }
