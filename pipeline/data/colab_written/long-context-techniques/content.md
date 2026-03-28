@@ -6,7 +6,7 @@
 이 글은 LLM의 컨텍스트 윈도우 확장 기법을 체계적으로 다루는 튜토리얼이다. [[1_attention-is-all-you-need|Attention]] 메커니즘에 대한 기본 이해를 전제로 하며, [[inference-optimization-mfu|추론 최적화]]와 [[context-compression|Context Compression]]을 함께 참고하면 좋다.
 :::
 
-2023년까지 대부분의 LLM은 4K~8K 토큰의 컨텍스트 윈도우를 가졌다. 2024년에는 [[gemini|Gemini]] 1.5(1M+), Claude 3(200K), GPT-4 Turbo(128K)로 급격히 확장되었고, 2025년에는 1M 토큰 이상이 표준이 되어가고 있다.
+2023년까지 대부분의 LLM은 4K~8K 토큰의 컨텍스트 윈도우를 가졌다. 2024년에는 [[gemini|Gemini]] 1.5(1M+), Claude 3(200K), GPT-4 Turbo(128K)로 급격히 확장되었고, 2025년에는 [[gemini-2-5|Gemini 2.5 Pro]](2M+), Claude 4(1M+), GPT-5(256K+)까지 도달하며 1M 토큰 이상이 사실상 표준이 되었다. 2026년 현재, 대부분의 주요 LLM은 최소 128K 이상의 컨텍스트를 지원하며, 프론티어 모델은 2M 토큰 이상을 처리할 수 있다.
 
 이 글에서는 컨텍스트 윈도우를 확장하는 **핵심 기법**과 **효율적인 장문 처리 전략**을 비교 분석하고, 실전에서 어떤 기법을 선택해야 하는지 가이드를 제공한다.
 
@@ -364,17 +364,18 @@ YaRN은 대부분의 확장 비율에서 가장 낮은 perplexity를 보여준�
 
 ---
 
-## 2025년 Long Context 트렌드
+## 2025-2026년 Long Context 트렌드
 
-### 주요 모델별 컨텍스트 길이
+### 주요 모델별 컨텍스트 길이 (2026년 기준)
 
 | 모델 | 컨텍스트 길이 | 위치 인코딩 | KV 최적화 | 주요 기법 |
 |------|:-----------:|-----------|----------|----------|
-| GPT-4o | 128K | 비공개 | 비공개 | 비공개 |
-| Claude 3.5 Sonnet | 200K | 비공개 | 비공개 | 비공개 |
-| [[gemini|Gemini]] 2.0 | 2M | 비공개 | 비공개 | 비공개 |
+| GPT-5 | 256K+ | 비공개 | 비공개 | 비공개 |
+| Claude 4 (Opus/Sonnet) | 1M+ | 비공개 | 비공개 | 비공개 |
+| [[gemini-2-5|Gemini 2.5 Pro]] | 2M+ | 비공개 | 비공개 | 비공개 |
 | [[llama-3|LLaMA 3.1]] | 128K | YaRN 변형 | GQA (8그룹) | 점진적 학습 |
-| Qwen2.5 | 128K | YaRN | GQA | 다단계 확장 |
+| LLaMA 4 Scout | 10M | 비공개 | iRoPE | 네이티브 Long Context |
+| Qwen3 | 128K+ | YaRN | GQA | 다단계 확장 |
 | Mistral Large | 128K | Sliding Window 하이브리드 | GQA | 전체+로컬 혼합 |
 
 ### 기술 발전 방향
@@ -384,7 +385,8 @@ YaRN은 대부분의 확장 비율에서 가장 낮은 perplexity를 보여준�
 | 하이브리드 어텐션 | 전체 어텐션 + Sliding Window 레이어 혼합 | 효율과 품질 양립 |
 | 하드웨어 공진화 | HBM4 (2TB/s+) 대역폭 증가 | KV-Cache 병목 완화 |
 | 선택적 어텐션 | 동적으로 중요 토큰만 선택하여 어텐션 | 불필요 연산 제거 |
-| Linear Attention | 어텐션 복잡도를 $O(n)$으로 | 근본적 해결 |
+| Linear Attention / SSM 하이브리드 | 어텐션 복잡도를 $O(n)$으로 | 근본적 해결 |
+| 네이티브 Long Context | 사전학습 단계부터 긴 컨텍스트 훈련 | 외삽 없이 긴 문맥 처리 |
 
 ---
 

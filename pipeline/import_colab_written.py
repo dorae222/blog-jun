@@ -27,7 +27,7 @@ django.setup()
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils import timezone
-from blog.models import Post, Category, Tag
+from blog.models import Post, Category, Tag, Series
 
 from utils.import_helpers import upload_figure, replace_figure_paths, get_default_author
 from utils.category_mapper import CategoryMapper
@@ -119,6 +119,14 @@ def import_colab(dry_run: bool = False, update: bool = False):
                     existing.is_pinned = is_pinned
                     update_fields.append('is_pinned')
                 existing.save(update_fields=update_fields)
+                # 시리즈 할당
+                series_slug = data.get('series_slug')
+                if series_slug:
+                    series_obj = Series.objects.filter(slug=series_slug).first()
+                    if series_obj:
+                        existing.series = series_obj
+                        existing.series_order = data.get('series_order', 0)
+                        existing.save(update_fields=['series', 'series_order'])
                 existing.tags.clear()
                 for tag_name in tags_raw:
                     tag_slug_val = slugify(tag_name, allow_unicode=True)[:100]
@@ -176,6 +184,15 @@ def import_colab(dry_run: bool = False, update: bool = False):
         if figure_url_map:
             post.content = replace_figure_paths(content, figure_url_map)
             post.save(update_fields=['content'])
+
+        # 시리즈 할당
+        series_slug = data.get('series_slug')
+        if series_slug:
+            series_obj = Series.objects.filter(slug=series_slug).first()
+            if series_obj:
+                post.series = series_obj
+                post.series_order = data.get('series_order', 0)
+                post.save(update_fields=['series', 'series_order'])
 
         created += 1
         print(f"  [CREATE] Post: {slug}")

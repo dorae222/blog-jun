@@ -1,0 +1,8 @@
+{
+  "slug": "opencode",
+  "title": "OpenCode",
+  "title_ko": "OpenCode: Go 네이티브 AI 코딩 TUI",
+  "summary": "OpenCode는 Go로 작성된 오픈소스 터미널 AI 코딩 도구로, 풍부한 TUI와 멀티 LLM 프로바이더 지원, LSP 통합이 특징이다.",
+  "tags": ["OpenCode", "CLI Agent", "Agentic Coding", "Go", "TUI", "LSP", "Open Source"],
+  "category_slug": "tool"
+}
