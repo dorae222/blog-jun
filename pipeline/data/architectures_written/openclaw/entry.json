@@ -1,8 +1,8 @@
 {
   "name": "OpenClaw",
   "slug": "openclaw",
-  "organization": "Community",
-  "release_date": "2025-06-01",
+  "organization": "OpenClaw Foundation",
+  "release_date": "2025-11-01",
   "decoder_type": "technique",
   "param_scale": "",
   "context_length": "",
@@ -16,17 +16,18 @@
   "num_heads": null,
   "num_experts": null,
   "active_experts": null,
-  "description": "OpenClaw는 Claude Code에서 영감을 받아 개발된 오픈소스 에이전틱 코딩 CLI 도구다. Claude Code의 핵심 워크플로우와 도구 시스템을 오픈소스로 재구현하여, 다양한 LLM 백엔드(Claude, GPT, 오픈소스 모델 등)와 함께 사용할 수 있도록 설계되었다. 자체 호스팅이 가능하여 데이터 주권이 중요한 환경에서 활용할 수 있다.",
-  "key_detail": "OpenClaw의 핵심은 Claude Code 스타일의 에이전틱 루프를 다양한 LLM 백엔드에서 실행할 수 있도록 추상화한 것이다. 파일 시스템 조작, 셸 명령 실행, 코드 검색 등 핵심 도구를 제공하며, 플러그인 시스템을 통해 커스텀 도구를 추가할 수 있다. 프라이빗 환경에서 로컬 모델과 함께 사용할 수 있어 보안이 중요한 기업 환경에 적합하다.",
-  "training_detail": "OpenClaw는 특정 모델에 종속되지 않으며, OpenAI API 호환 엔드포인트를 지원하는 모든 LLM과 함께 동작한다. Go 또는 TypeScript로 구현되어 단일 바이너리로 배포 가능하다.",
+  "description": "OpenClaw(구 Clawdbot/Moltbot)는 Peter Steinberger가 2025년 11월 공개한 오픈소스 로컬 퍼스트 AI 에이전트로, WhatsApp/Telegram/Discord/Slack/iMessage 등 20개 이상의 메시징 앱을 LLM에 연결하여 자율적 작업을 수행한다. 파일 읽기/쓰기, 셸 명령 실행, 웹 브라우저 제어, 멀티스텝 워크플로우를 지원하며, 2026년 2월 오픈소스 재단으로 이관되었다. GitHub 339K+ stars로 역대 가장 빠른 성장을 기록했다.",
+  "key_detail": "OpenClaw의 핵심은 '로컬 퍼스트 제어 평면'으로, 모든 데이터와 실행이 사용자 디바이스에서 이루어진다. Claude, GPT, DeepSeek 등 다양한 LLM 백엔드를 지원하며, 음성 인터랙션(macOS/iOS 웨이크 워드, Android 상시 음성), Canvas/A2UI 에이전트 시각 워크스페이스, 스킬 레지스트리(ClawHub)를 통한 확장성을 제공한다. iOS/Android 컴패니언 앱도 지원한다.",
+  "training_detail": "OpenClaw는 TypeScript + Node.js(pnpm 모노레포)로 구현되며, Hono 웹 게이트웨이, Lit 제어 패널 UI, SQLite + sqlite-vec 저장소를 사용한다. 특정 모델에 종속되지 않고 다양한 LLM 프로바이더와 함께 동작한다.",
   "paper_url": "",
-  "code_url": "https://github.com/openclaw-ai/openclaw",
+  "code_url": "https://github.com/openclaw/openclaw",
   "license_type": "MIT",
   "concepts": [
-    "Agentic Coding",
-    "CLI Agent",
-    "Tool Use",
-    "Open Source"
+    "AI Agent",
+    "Messaging Integration",
+    "Local-First",
+    "Multi-Platform",
+    "Tool Use"
   ],
   "architecture_category": "agent",
   "branch_type": "agent",
@@ -35,7 +36,12 @@
     {
       "to": "claude-code",
       "type": "inspired_by",
-      "description": "OpenClaw는 Claude Code의 에이전틱 코딩 패러다임에서 영감을 받아 오픈소스로 재구현한 도구다."
+      "description": "OpenClaw는 Claude 모델의 에이전틱 기능에서 영감을 받아 메시징 기반 범용 AI 에이전트로 발전한 도구다."
+    },
+    {
+      "to": "mcp",
+      "type": "technique_used",
+      "description": "OpenClaw는 MCP를 지원하여 외부 도구와 서비스를 통합할 수 있다."
     }
   ],
   "related_post_slug": ""
