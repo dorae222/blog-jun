@@ -19,5 +19,6 @@
     "humaneval",
     "microsoft"
   ],
-  "is_pinned": true
+  "is_pinned": true,
+  "related_architecture": "phi"
 }

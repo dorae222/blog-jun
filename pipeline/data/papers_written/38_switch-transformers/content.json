@@ -28,5 +28,5 @@
     "knowledge-distillation",
     "t5"
   ],
-  "related_architecture": ""
+  "related_architecture": "switch-transformer"
 }

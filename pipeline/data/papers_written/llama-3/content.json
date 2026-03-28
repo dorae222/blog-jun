@@ -4,10 +4,21 @@
   "title_ko": "Llama 3: 오픈 웨이트 대규모 언어 모델 군",
   "category_slug": "llm",
   "summary": "Meta(2024)는 8B, 70B, 405B 파라미터의 오픈 웨이트 대규모 언어 모델 Llama 3 시리즈를 발표했습니다. 15.6T 토큰의 고품질 학습 데이터, 개선된 사후 학습 파이프라인, 그리고 405B 모델의 GPT-4급 성능을 통해 오픈소스 LLM의 새로운 기준을 제시했습니다. 멀티모달 확장, 다국어 지원, 코드 생성, 도구 사용 등 다양한 능력을 갖춘 범용 기반 모델입니다.",
-  "tags": ["llama-3", "open-weight", "scaling-laws", "data-quality", "post-training", "meta", "large-language-model", "multilingual", "instruction-tuning"],
+  "tags": [
+    "llama-3",
+    "open-weight",
+    "scaling-laws",
+    "data-quality",
+    "post-training",
+    "meta",
+    "large-language-model",
+    "multilingual",
+    "instruction-tuning"
+  ],
   "is_pinned": false,
   "arxiv_url": "https://arxiv.org/abs/2407.21783",
   "venue": "arXiv",
   "paper_year": 2024,
-  "paper_authors": "Meta AI"
+  "paper_authors": "Meta AI",
+  "related_architecture": "llama-3"
 }

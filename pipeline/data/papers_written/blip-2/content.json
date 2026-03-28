@@ -24,5 +24,6 @@
   "arxiv_url": "https://arxiv.org/abs/2301.12597",
   "venue": "ICML 2023",
   "paper_year": 2023,
-  "paper_authors": "Junnan Li, Dongxu Li, Silvio Savarese, Steven Hoi"
+  "paper_authors": "Junnan Li, Dongxu Li, Silvio Savarese, Steven Hoi",
+  "related_architecture": "blip-2"
 }

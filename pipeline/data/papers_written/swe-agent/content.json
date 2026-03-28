@@ -4,10 +4,21 @@
   "title_ko": "SWE-agent: 에이전트-컴퓨터 인터페이스를 통한 자동화된 소프트웨어 엔지니어링",
   "category_slug": "agent",
   "summary": "Yang et al.(2024)은 LLM 에이전트가 소프트웨어 엔지니어링 태스크를 효과적으로 수행할 수 있도록 설계된 에이전트-컴퓨터 인터페이스(ACI)를 제안했습니다. SWE-bench에서 12.47%의 이슈 해결률을 달성하여 기존 방법 대비 큰 성능 향상을 보였으며, ACI 설계가 에이전트 성능에 미치는 영향을 체계적으로 분석했습니다. 파일 검색, 코드 편집, 테스트 실행 등의 인터페이스 설계 원칙을 제시합니다.",
-  "tags": ["swe-agent", "aci", "software-engineering", "swe-bench", "code-agent", "lm-agent", "tool-use", "debugging", "github-issues"],
+  "tags": [
+    "swe-agent",
+    "aci",
+    "software-engineering",
+    "swe-bench",
+    "code-agent",
+    "lm-agent",
+    "tool-use",
+    "debugging",
+    "github-issues"
+  ],
   "is_pinned": false,
   "arxiv_url": "https://arxiv.org/abs/2405.15793",
   "venue": "arXiv",
   "paper_year": 2024,
-  "paper_authors": "Yang et al."
+  "paper_authors": "Yang et al.",
+  "related_architecture": "swe-agent"
 }
