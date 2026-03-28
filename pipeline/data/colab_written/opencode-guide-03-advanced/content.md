@@ -22,7 +22,7 @@ OpenCode가 LSP를 통합한다는 것은, AI 모델이 단순히 텍스트를 �
 
 ### OpenCode LSP의 동작 원리
 
-```
+```text
 파일 열기/수정
     ↓
 파일 확장자 감지 (.ts, .py, .go 등)
@@ -72,7 +72,7 @@ AI가 이 정보를 활용하여 더 정확한 코드 작성/수정
 
 `diagnostics` 도구는 LSP 서버가 제공하는 진단 정보(에러, 경고, 힌트)를 AI에게 전달한다.
 
-```
+```text
 [diagnostics 도구 동작]
 AI → diagnostics(file_path: "src/main.ts")
     ↓
@@ -91,7 +91,7 @@ AI가 에러를 이해하고 수정 코드 생성
 
 `hover` 도구는 특정 코드 위치의 타입 정보와 문서를 조회한다.
 
-```
+```text
 [hover 도구 동작]
 AI → hover(file_path: "src/utils.ts", line: 10, character: 15)
     ↓
@@ -108,7 +108,7 @@ LSP 서버에 hover 요청
 
 OpenCode의 가장 강력한 패턴은 LSP와 AI의 **피드백 루프**다.
 
-```
+```text
 AI가 코드 작성 (write/edit)
     ↓
 LSP가 즉시 코드 분석
@@ -253,7 +253,7 @@ OpenCode의 설정은 JSON 형식이며, 다음과 같은 계층 구조를 가�
 
 OpenCode의 설정은 여러 소스에서 로드되며 **병합(merge)**된다. 교체(replace)가 아니라 병합이므로, 프로젝트 설정에서 특정 키만 오버라이드할 수 있다.
 
-```
+```text
 글로벌 설정 (~/.config/opencode/opencode.json)
   + 프로젝트 설정 (./opencode.json)
   = 최종 설정 (충돌 시 프로젝트 설정 우선)
@@ -314,7 +314,7 @@ OpenCode의 설정은 여러 소스에서 로드되며 **병합(merge)**된다. 
 
 OpenCode는 30개 이상의 내장 테마를 제공한다. 라이트/다크 모드를 자동으로 감지하여 적용한다.
 
-```
+```text
 # TUI에서 테마 변경
 /theme
 ```
@@ -587,7 +587,7 @@ opencode
 
 OpenCode는 여러 위치에서 지시사항을 로드한다. 첫 번째로 매칭되는 파일이 사용된다.
 
-```
+```text
 우선순위:
 1. AGENTS.md (최우선)
 2. CLAUDE.md (호환)
@@ -710,7 +710,7 @@ Include code examples for all public APIs.
 
 플러그인은 `.opencode/plugins/` (프로젝트) 또는 `~/.config/opencode/plugins/` (글로벌) 디렉토리에 배치한다. TypeScript로 작성한다.
 
-```
+```text
 .opencode/
   plugins/
     my-plugin.ts

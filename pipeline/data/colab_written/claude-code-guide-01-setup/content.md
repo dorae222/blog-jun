@@ -121,7 +121,7 @@ claude
 
 프롬프트에 자연어로 요청을 입력하면 된다:
 
-```
+```text
 > 이 프로젝트의 구조를 설명해줘
 ```
 
@@ -168,7 +168,7 @@ claude --resume          # 대화 목록에서 선택
 
 CLAUDE.md는 여러 위치에서 계층적으로 로드된다:
 
-```
+```text
 ~/.claude/CLAUDE.md              ← 전역 설정 (모든 프로젝트)
 ~/project/CLAUDE.md              ← 프로젝트 루트 설정
 ~/project/src/CLAUDE.md          ← 하위 디렉토리 설정
@@ -203,7 +203,7 @@ CLAUDE.md에는 **프로젝트 구조, 빌드 명령, 코딩 컨벤션, 배포 �
 
 프로젝트에서 아직 CLAUDE.md가 없다면 `/init` 명령으로 자동 생성할 수 있다:
 
-```
+```text
 > /init
 ```
 
@@ -248,7 +248,7 @@ Claude Code 대화 중 `/`로 시작하는 명령어를 사용할 수 있다:
 
 새로운 프로젝트에 투입되었을 때:
 
-```
+```text
 > 이 프로젝트의 전체 구조를 분석하고, 주요 모듈과 데이터 흐름을 설명해줘
 ```
 
@@ -262,7 +262,7 @@ Claude Code는:
 
 에러가 발생했을 때:
 
-```
+```text
 > "TypeError: Cannot read properties of undefined" 에러가
 > src/components/PostList.jsx에서 발생해. 원인을 찾고 수정해줘
 ```
@@ -277,7 +277,7 @@ Claude Code는:
 
 기능을 추가할 때:
 
-```
+```text
 > 사용자가 게시글에 좋아요를 누를 수 있는 기능을 추가해줘.
 > 백엔드 API와 프론트엔드 UI 모두 구현해.
 ```

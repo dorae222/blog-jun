@@ -3,8 +3,15 @@
   "title": "Claude Code Workflow Design",
   "title_ko": "Claude Code 실전: 프로젝트 관리와 워크플로우 설계",
   "summary": "CLAUDE.md 설계, Git/GitHub 워크플로우, CI/CD 통합, 대규모 프로젝트에서의 효율적인 Claude Code 활용 전략을 다룬다.",
-  "tags": ["Claude Code", "CLAUDE.md", "Workflow", "Git", "CI/CD", "프로젝트 관리"],
-  "category_slug": "tool",
+  "tags": [
+    "Claude Code",
+    "CLAUDE.md",
+    "Workflow",
+    "Git",
+    "CI/CD",
+    "프로젝트 관리"
+  ],
+  "category_slug": "claude-code",
   "series_slug": "claude-code-guide",
   "series_order": 4
 }

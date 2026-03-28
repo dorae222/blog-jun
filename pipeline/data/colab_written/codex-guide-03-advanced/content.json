@@ -3,8 +3,14 @@
   "title": "Codex CLI Advanced Usage",
   "title_ko": "Codex CLI 고급 활용: 자동화와 CI 통합",
   "summary": "Codex CLI의 full-auto 모드, CI/CD 파이프라인 통합, 프로그래매틱 출력, 멀티모델 지원 등 고급 활용법을 다룬다.",
-  "tags": ["Codex CLI", "Automation", "CI/CD", "Full-Auto", "고급 활용"],
-  "category_slug": "tool",
+  "tags": [
+    "Codex CLI",
+    "Automation",
+    "CI/CD",
+    "Full-Auto",
+    "고급 활용"
+  ],
+  "category_slug": "codex-cli",
   "series_slug": "codex-guide",
   "series_order": 3
 }

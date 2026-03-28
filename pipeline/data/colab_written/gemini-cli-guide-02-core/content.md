@@ -16,7 +16,7 @@ Gemini CLI의 진정한 힘은 **빌트인 도구 시스템**에 있다. 단순�
 
 Gemini CLI는 **ReAct(Reason and Act)** 패턴을 기반으로 동작한다. 사용자의 요청을 받으면 다음과 같은 루프를 반복한다.
 
-```
+```text
 사용자 입력
     ↓
 [Reason] 현재 상황 분석, 다음 행동 결정
@@ -69,7 +69,7 @@ Gemini CLI는 다양한 빌트인 도구를 제공한다. `/tools` 명령으로 
 
 단일 파일의 내용을 읽는다. 절대 경로를 사용한다.
 
-```
+```text
 도구: read_file
 입력: { "path": "/Users/dev/project/src/index.ts" }
 ```
@@ -80,7 +80,7 @@ Gemini CLI는 다양한 빌트인 도구를 제공한다. `/tools` 명령으로 
 
 여러 파일이나 디렉토리의 내용을 한 번에 읽는다. glob 패턴도 지원한다.
 
-```
+```text
 도구: read_many_files
 입력: { "paths": ["src/**/*.ts", "package.json", "tsconfig.json"] }
 ```
@@ -91,7 +91,7 @@ Gemini CLI는 다양한 빌트인 도구를 제공한다. `/tools` 명령으로 
 
 새 파일을 생성하거나 기존 파일의 전체 내용을 덮어쓴다.
 
-```
+```text
 도구: write_file
 입력: { "path": "/Users/dev/project/src/utils/helper.ts", "content": "..." }
 ```
@@ -104,7 +104,7 @@ Gemini CLI는 다양한 빌트인 도구를 제공한다. `/tools` 명령으로 
 
 파일의 특정 부분만 찾아서 교체한다. 정밀한 코드 수정에 적합하다.
 
-```
+```text
 도구: replace
 입력: {
   "path": "/Users/dev/project/src/auth.ts",
@@ -119,7 +119,7 @@ Gemini CLI는 다양한 빌트인 도구를 제공한다. `/tools` 명령으로 
 
 glob 패턴으로 파일을 검색한다.
 
-```
+```text
 도구: glob
 입력: { "pattern": "src/**/*.test.ts" }
 ```
@@ -130,7 +130,7 @@ glob 패턴으로 파일을 검색한다.
 
 파일 내용에서 텍스트 패턴을 검색한다. grep과 유사한 기능이다.
 
-```
+```text
 도구: search_file_content
 입력: { "pattern": "TODO|FIXME", "path": "src/" }
 ```
@@ -141,7 +141,7 @@ glob 패턴으로 파일을 검색한다.
 
 디렉토리의 내용(파일/폴더 목록)을 나열한다.
 
-```
+```text
 도구: list_directory
 입력: { "path": "/Users/dev/project/src" }
 ```
@@ -152,7 +152,7 @@ glob 패턴으로 파일을 검색한다.
 
 임의의 셸 명령을 실행한다. 가장 강력하지만 가장 위험한 도구이기도 하다.
 
-```
+```text
 도구: run_shell_command
 입력: { "command": "npm test -- --coverage" }
 ```
@@ -169,7 +169,7 @@ glob 패턴으로 파일을 검색한다.
 
 Google 검색을 수행하여 최신 정보를 가져온다.
 
-```
+```text
 도구: google_web_search
 입력: { "query": "React 19 new features 2025" }
 ```
@@ -180,7 +180,7 @@ Google 검색을 수행하여 최신 정보를 가져온다.
 
 특정 URL의 내용을 가져온다.
 
-```
+```text
 도구: web_fetch
 입력: { "url": "https://api.example.com/docs" }
 ```
@@ -193,7 +193,7 @@ Google 검색을 수행하여 최신 정보를 가져온다.
 
 대규모 코드베이스를 체계적으로 분석하는 서브 에이전트다. 단순 파일 읽기보다 깊은 수준의 분석을 수행한다.
 
-```
+```text
 도구: codebase_investigator
 입력: { "query": "인증 흐름에서 JWT 토큰이 어떻게 검증되는지 추적해줘" }
 ```
@@ -202,7 +202,7 @@ Google 검색을 수행하여 최신 정보를 가져온다.
 
 중요한 정보를 영구 메모리에 저장한다. 세션 간에 유지된다.
 
-```
+```text
 도구: save_memory
 입력: { "content": "이 프로젝트는 PostgreSQL 15를 사용하며, 마이그레이션은 Alembic으로 관리한다" }
 ```
@@ -213,7 +213,7 @@ Google 검색을 수행하여 최신 정보를 가져온다.
 
 작업 목록을 생성하고 관리한다.
 
-```
+```text
 도구: write_todos
 입력: { "todos": ["API 엔드포인트 구현", "유닛 테스트 작성", "문서 업데이트"] }
 ```

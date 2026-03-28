@@ -20,7 +20,7 @@ GEMINI.md는 Gemini CLI의 동작을 결정하는 핵심 파일이다. 잘 설�
 
 글로벌, 프로젝트, 모듈별로 GEMINI.md를 분리하여 관심사를 분리한다.
 
-```
+```text
 ~/.gemini/GEMINI.md                    # 글로벌: 개인 코딩 스타일
 프로젝트루트/GEMINI.md                   # 프로젝트: 아키텍처, 규칙
 프로젝트루트/backend/GEMINI.md           # 백엔드: Django 규칙
@@ -344,7 +344,7 @@ gemini> /compress
 
 모노레포에서는 서브 디렉토리별 GEMINI.md를 활용한다.
 
-```
+```text
 monorepo/
   GEMINI.md              # 공통 규칙
   packages/
@@ -376,7 +376,7 @@ git commit -m "docs: GEMINI.md에 새 API 규칙 추가"
 
 팀 전체가 사용할 표준 설정을 `.gemini/` 디렉토리에 관리한다.
 
-```
+```text
 .gemini/
   settings.json          # 프로젝트 설정 (승인 모드, MCP 서버 등)
   GEMINI.md              # 프로젝트 컨텍스트
@@ -529,7 +529,7 @@ Gemini CLI와 Claude Code는 모두 터미널 AI 코딩 에이전트지만 각�
 
 #### Gemini CLI가 유리한 경우
 
-```
+```text
 - Google Cloud 프로젝트 (GCP, BigQuery, Cloud Run 등)
 - 무료 사용이 중요한 경우
 - 웹 검색이 빈번한 작업
@@ -540,7 +540,7 @@ Gemini CLI와 Claude Code는 모두 터미널 AI 코딩 에이전트지만 각�
 
 #### Claude Code가 유리한 경우
 
-```
+```text
 - 복잡한 멀티파일 리팩토링
 - 정교한 코드 생성 (코드 품질)
 - 높은 자율성이 필요한 대규모 작업
@@ -568,7 +568,7 @@ Gemini CLI와 Claude Code는 모두 터미널 AI 코딩 에이전트지만 각�
 
 두 도구를 모두 사용하는 프로젝트에서는 양쪽 설정 파일을 모두 관리한다.
 
-```
+```text
 프로젝트루트/
   GEMINI.md           # Gemini CLI 설정
   CLAUDE.md           # Claude Code 설정
@@ -653,7 +653,7 @@ Gemini CLI 관련 파일 중 Git에 포함하지 않을 것들을 설정한다.
 
 반면 다음은 Git에 포함해야 한다.
 
-```
+```text
 # Git에 커밋
 GEMINI.md                     # 프로젝트 컨텍스트
 .gemini/settings.json         # 공유 설정

@@ -109,7 +109,7 @@ Claude Code는 `CLAUDE.md`를 세 개의 계층에서 읽는다.
 | 프로젝트 | `./CLAUDE.md` | 프로젝트별 설정 | 중간 |
 | 하위 디렉토리 | `./backend/CLAUDE.md` | 서비스별 설정 | 높음 |
 
-```
+```text
 ~/.claude/CLAUDE.md          ← "한국어로 응답해줘, 커밋은 Conventional Commits"
 ├── project-a/CLAUDE.md      ← "Django + React, make test로 테스트"
 │   ├── backend/CLAUDE.md    ← "Python 3.12, Black, type hints"
@@ -145,7 +145,7 @@ Claude Code는 `CLAUDE.md`를 세 개의 계층에서 읽는다.
 
 `/init`을 실행하면 Claude Code가 프로젝트 구조를 분석하여 초기 `CLAUDE.md`를 생성한다.
 
-```
+```text
 분석 과정:
 1. package.json, requirements.txt, go.mod 등으로 기술 스택 파악
 2. 디렉토리 구조 스캔
@@ -203,7 +203,7 @@ Claude Code는 Git 워크플로우를 깊이 이해하고 있으며, 슬래시 �
 
 `/commit` 실행 시 내부 동작은 다음과 같다:
 
-```
+```text
 1. git status로 변경 파일 확인
 2. git diff로 스테이지된 + 미스테이지된 변경 분석
 3. git log로 최근 커밋 메시지 스타일 참고
@@ -560,7 +560,7 @@ claude --add-dir ../payment-service --add-dir ../notification-service
 
 대규모 모노레포에서는 하위 디렉토리별 `CLAUDE.md`가 핵심이다.
 
-```
+```text
 monorepo/
 ├── CLAUDE.md                    ← 전체 모노레포 규칙
 ├── packages/

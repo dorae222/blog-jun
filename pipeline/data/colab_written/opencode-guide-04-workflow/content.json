@@ -3,8 +3,14 @@
   "title": "OpenCode Workflow Design",
   "title_ko": "OpenCode 실전: 팀 개발 환경 구축",
   "summary": "OpenCode를 활용한 팀 개발 환경 구축, 멀티 모델 전략, 비용 최적화, Crush로의 마이그레이션 등 실전 워크플로우를 다룬다.",
-  "tags": ["OpenCode", "Team Dev", "Workflow", "Crush", "실전"],
-  "category_slug": "tool",
+  "tags": [
+    "OpenCode",
+    "Team Dev",
+    "Workflow",
+    "Crush",
+    "실전"
+  ],
+  "category_slug": "opencode",
   "series_slug": "opencode-guide",
   "series_order": 4
 }
