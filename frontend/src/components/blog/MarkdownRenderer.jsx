@@ -23,19 +23,19 @@ function preprocessContent(raw, postLinks = []) {
   let processed = raw
     .replace(/\[\[\[([^\]]*?)\|([^\]]*?)\]\]\]/g, (_, target, display) => {
       const slug = linkMap[target.toLowerCase()]
-      return slug ? `[${display}](/post/${slug})` : display
+      return `[${display}](/post/${slug || target})`
     })
     .replace(/\[\[\[([^\]]*?)\]\]\]/g, (_, title) => {
       const slug = linkMap[title.toLowerCase()]
-      return slug ? `[${title}](/post/${slug})` : title
+      return `[${title}](/post/${slug || title})`
     })
     .replace(/\[\[([^\]]*?)\|([^\]]*?)\]\]/g, (_, target, display) => {
       const slug = linkMap[target.toLowerCase()]
-      return slug ? `[${display}](/post/${slug})` : display
+      return `[${display}](/post/${slug || target})`
     })
     .replace(/\[\[([^\]]*?)\]\]/g, (_, title) => {
       const slug = linkMap[title.toLowerCase()]
-      return slug ? `[${title}](/post/${slug})` : title
+      return `[${title}](/post/${slug || title})`
     })
     .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
 

@@ -337,7 +337,7 @@ CNN 기초와 Vision Transformer의 핵심 원리를 이해하는 단계입니�
 
 ## 관련 카테고리
 
-- [[ai-ml-architecture-roadmap]] - 전체 AI/ML 지형도
-- [[diffusion-models-guide]] - 비전과 밀접한 확산 모델 가이드
+- [[ai-ml-architecture-roadmap|전체 AI/ML 지형도]]
+- [[diffusion-models-guide|비전과 밀접한 확산 모델 가이드]]
 - [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) - 비전에 사용되는 핵심 기법
 - [LLM 핵심 논문 가이드](/post/llm-paper-guide) - 멀티모달 LLM과의 연결

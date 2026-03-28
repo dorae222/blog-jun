@@ -313,8 +313,8 @@ print("        가격 1단위 상승 시 Sales 평균 {:.2f}단위 감소.".form
 
 ## 관련 문서
 
-- [[causal-inference-overview]] - 인과 추론 개요
-- [[did]] - 이중차분법 (Difference-in-Differences)
-- [[rd-iv]] - 회귀 불연속 & 도구 변수
-- [[psm-synthetic-control]] - 성향 점수 매칭 & 합성 통제
-- [[linear-regression]] - 선형 회귀 기초
+- [[causal-inference-overview|인과 추론 개요]]
+- [[did|이중차분법 (Difference-in-Differences)]]
+- [[rd-iv|회귀 불연속 & 도구 변수]]
+- [[psm-synthetic-control|성향 점수 매칭 & 합성 통제]]
+- [[linear-regression|선형 회귀 기초]]
