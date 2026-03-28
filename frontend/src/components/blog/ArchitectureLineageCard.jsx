@@ -158,12 +158,12 @@ export default function ArchitectureLineageCard({ entries }) {
             {entry.figure_url && (
               <div
                 className="rounded-xl overflow-hidden mb-3 flex items-center justify-center"
-                style={{ background: 'var(--card-bg)', maxHeight: '200px' }}
+                style={{ background: 'var(--card-bg)', maxHeight: '320px' }}
               >
                 <img
                   src={entry.figure_url}
                   alt={entry.name}
-                  className="max-w-full max-h-[200px] object-contain"
+                  className="max-w-full max-h-[320px] object-contain"
                   loading="lazy"
                 />
               </div>
