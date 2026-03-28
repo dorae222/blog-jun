@@ -4,10 +4,21 @@
   "title_ko": "Gemini: 고성능 멀티모달 모델 패밀리",
   "category_slug": "multimodal",
   "summary": "Google DeepMind(2024)는 텍스트, 이미지, 오디오, 비디오를 네이티브하게 이해하는 멀티모달 모델 Gemini 패밀리를 발표했습니다. Ultra, Pro, Nano 세 가지 크기로 제공되며, Gemini Ultra는 MMLU에서 90.0%를 달성하여 인간 전문가를 처음으로 능가한 모델이 되었습니다. 크로스모달 추론, 복잡한 수학/코딩 문제 해결, 그리고 다양한 멀티모달 벤치마크에서의 SOTA 성능이 핵심 성과입니다.",
-  "tags": ["gemini", "multimodal", "cross-modal-reasoning", "google-deepmind", "mmlu", "vision-language", "audio", "video-understanding", "large-language-model"],
+  "tags": [
+    "gemini",
+    "multimodal",
+    "cross-modal-reasoning",
+    "google-deepmind",
+    "mmlu",
+    "vision-language",
+    "audio",
+    "video-understanding",
+    "large-language-model"
+  ],
   "is_pinned": false,
   "arxiv_url": "https://arxiv.org/abs/2312.11805",
   "venue": "arXiv",
   "paper_year": 2024,
-  "paper_authors": "Google DeepMind"
+  "paper_authors": "Google DeepMind",
+  "related_architecture": "gemini"
 }

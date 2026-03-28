@@ -4,10 +4,21 @@
   "title_ko": "T5: 통합 텍스트-투-텍스트 전이 학습의 한계 탐구",
   "category_slug": "llm",
   "summary": "Raffel et al.(2020)은 모든 NLP 태스크를 텍스트-투-텍스트 형식으로 통일하는 T5(Text-to-Text Transfer Transformer) 프레임워크를 제안했습니다. 사전 학습 목적 함수, 아키텍처, 데이터셋 크기, 전이 학습 전략 등에 대한 체계적인 비교 연구를 수행하여 전이 학습의 최적 조건을 탐구했습니다. 새로 구축한 C4(Colossal Clean Crawled Corpus) 데이터셋과 함께 GLUE, SuperGLUE, SQuAD 등 다수 벤치마크에서 SOTA를 달성했습니다.",
-  "tags": ["t5", "text-to-text", "transfer-learning", "encoder-decoder", "c4-dataset", "pre-training", "denoising", "multitask-learning", "nlp-benchmark"],
+  "tags": [
+    "t5",
+    "text-to-text",
+    "transfer-learning",
+    "encoder-decoder",
+    "c4-dataset",
+    "pre-training",
+    "denoising",
+    "multitask-learning",
+    "nlp-benchmark"
+  ],
   "is_pinned": false,
   "arxiv_url": "https://arxiv.org/abs/1910.10683",
   "venue": "JMLR",
   "paper_year": 2020,
-  "paper_authors": "Raffel et al."
+  "paper_authors": "Raffel et al.",
+  "related_architecture": "t5"
 }

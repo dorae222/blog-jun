@@ -27,5 +27,5 @@
     "function-calling",
     "LLM-agent"
   ],
-  "related_architecture": ""
+  "related_architecture": "toolformer"
 }

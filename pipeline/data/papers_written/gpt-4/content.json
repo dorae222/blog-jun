@@ -4,10 +4,21 @@
   "title_ko": "GPT-4 기술 보고서: 멀티모달 대규모 언어 모델",
   "category_slug": "llm",
   "summary": "OpenAI(2023)는 텍스트와 이미지를 입력으로 받아 텍스트를 출력하는 대규모 멀티모달 모델 GPT-4를 발표했습니다. GPT-4는 다양한 전문 시험과 학술 벤치마크에서 인간 수준의 성능을 달성했으며, 미국 변호사 시험에서 상위 10%에 해당하는 점수를 기록했습니다. RLHF를 통한 정렬과 예측 가능한 스케일링을 핵심 기술적 성과로 제시하며, 대규모 언어 모델의 새로운 이정표를 세웠습니다.",
-  "tags": ["gpt-4", "multimodal", "rlhf", "scaling", "alignment", "large-language-model", "openai", "benchmark", "safety"],
+  "tags": [
+    "gpt-4",
+    "multimodal",
+    "rlhf",
+    "scaling",
+    "alignment",
+    "large-language-model",
+    "openai",
+    "benchmark",
+    "safety"
+  ],
   "is_pinned": false,
   "arxiv_url": "https://arxiv.org/abs/2303.08774",
   "venue": "arXiv",
   "paper_year": 2023,
-  "paper_authors": "OpenAI"
+  "paper_authors": "OpenAI",
+  "related_architecture": "gpt-4"
 }
