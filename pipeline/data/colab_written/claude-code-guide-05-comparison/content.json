@@ -1,0 +1,10 @@
+{
+  "slug": "claude-code-guide-05-comparison",
+  "title": "AI Coding Agent Comparison",
+  "title_ko": "AI 코딩 에이전트 비교: Claude Code vs Gemini CLI vs Codex",
+  "summary": "Claude Code, Gemini CLI, Codex CLI를 아키텍처, 도구 시스템, 보안 모델, 성능, 가격 등 다각도로 비교 분석한다.",
+  "tags": ["Claude Code", "Gemini CLI", "Codex CLI", "비교 분석", "Agentic Coding"],
+  "category_slug": "tool",
+  "series_slug": "claude-code-guide",
+  "series_order": 5
+}
