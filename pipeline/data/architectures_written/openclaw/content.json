@@ -2,7 +2,7 @@
   "slug": "openclaw",
   "title": "OpenClaw",
   "title_ko": "OpenClaw: 오픈소스 에이전틱 코딩 CLI",
-  "summary": "OpenClaw는 Claude Code에서 영감을 받은 오픈소스 에이전틱 코딩 CLI 도구로, 다양한 LLM 백엔드를 지원하며 자체 호스팅이 가능하다.",
-  "tags": ["OpenClaw", "CLI Agent", "Agentic Coding", "Open Source", "Self-Hosted"],
+  "summary": "OpenClaw는 메시징 앱(WhatsApp, Telegram 등) 기반 오픈소스 로컬 퍼스트 AI 에이전트로, 339K+ GitHub stars를 기록하며 역대 가장 빠르게 성장한 오픈소스 프로젝트다.",
+  "tags": ["OpenClaw", "AI Agent", "Messaging", "Local-First", "Open Source", "Multi-Platform"],
   "category_slug": "tool"
 }

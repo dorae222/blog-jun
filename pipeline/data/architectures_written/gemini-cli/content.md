@@ -4,7 +4,7 @@
 
 Gemini CLI는 Google이 2025년 6월 공개한 오픈소스 에이전틱 코딩 도구로, [[gemini-2-5|Gemini 2.5 Pro]] 모델을 기반으로 터미널에서 직접 실행된다. [[claude-code|Claude Code]]와 유사하게 파일 읽기/쓰기, 셸 명령 실행, 웹 검색 등을 에이전틱 루프 방식으로 수행하며, Google AI Studio API 키를 통해 무료로 사용할 수 있다는 점이 큰 차별점이다.
 
-npm을 통해 설치(`npm install -g @anthropic-ai/gemini-cli` 아님, `npm install -g @anthropic-ai/gemini-cli`가 아니라 `npm install -g @anthropic-ai/gemini-cli` 대신 `npm install -g @google/gemini-cli`)하며, `gemini` 명령어로 터미널에서 바로 실행할 수 있다. Apache-2.0 라이선스로 완전한 오픈소스 프로젝트다.
+`npx @google/gemini-cli` 또는 npm/Homebrew로 설치하며, `gemini` 명령어로 터미널에서 바로 실행할 수 있다. Apache-2.0 라이선스로 완전한 오픈소스 프로젝트이며, TypeScript 모노레포(Ink 6 + React 19 기반 TUI + 독립 core 라이브러리)로 구성된다. 2026년 3월 기준 99K+ GitHub stars, v0.35.3.
 
 ---
 
@@ -18,23 +18,44 @@ $$\text{Understand} \rightarrow \text{Search} \rightarrow \text{Plan} \rightarro
 
 사용자의 자연어 요청을 Gemini 2.5 Pro가 해석하고, 내장 도구를 활용하여 코드베이스를 탐색한 뒤, 실제 파일 수정과 명령 실행을 수행한다.
 
-### 핵심 도구 시스템
+### 내장 도구 (12종)
 
 | 도구 | 기능 |
 |------|------|
-| ReadFile / WriteFile | 파일 읽기/쓰기 |
+| ReadFile / ReadManyFiles | 파일 읽기 |
+| WriteFile / Edit (replace) | 파일 쓰기/수정 |
 | Shell | 셸 명령 실행 |
-| GlobTool / GrepTool | 파일 검색/내용 검색 |
+| Glob / SearchText | 파일 검색/내용 검색 |
+| ReadFolder | 디렉토리 탐색 |
 | WebFetch | 웹 페이지 가져오기 |
-| GoogleSearch | Google 검색 |
+| GoogleSearch | Google 검색 그라운딩 |
+| CodebaseInvestigator | 코드베이스 탐색 에이전트 |
+| SaveMemory / WriteTodos | 메모리 저장/작업 관리 |
 
-### MCP 서버 지원
+### MCP 서버 + Hooks
 
-[[mcp|MCP]](Model Context Protocol)를 통해 외부 도구를 확장할 수 있다. `GEMINI.md` 또는 설정 파일에서 MCP 서버를 정의하면, Gemini CLI가 해당 도구를 자동으로 인식하고 사용한다.
+[[mcp|MCP]](Model Context Protocol)를 통해 외부 도구를 확장할 수 있다. settings.json의 `mcpServers`에서 정의하며, `/mcp` 명령으로 서버 상태를 확인할 수 있다.
 
-### GEMINI.md 프로젝트 설정
+**Hooks 시스템**: 에이전틱 루프의 주요 지점에서 동작을 가로채고 수정할 수 있다. 컨텍스트 주입, 보안 정책 적용, 응답 검열 등에 활용한다.
 
-프로젝트 루트에 `GEMINI.md` 파일을 두면 프로젝트별 지침, MCP 서버 설정, 코딩 규칙 등을 커스터마이징할 수 있다. Claude Code의 `CLAUDE.md`와 동일한 개념이다.
+### GEMINI.md 계층적 컨텍스트
+
+`GEMINI.md` 파일은 계층적으로 로드된다:
+
+1. `~/.gemini/GEMINI.md` (사용자 수준)
+2. 프로젝트 루트 `GEMINI.md`
+3. 현재 디렉토리 `GEMINI.md`
+
+Claude Code의 `CLAUDE.md`와 동일한 개념이며, `/init` 명령으로 자동 생성할 수 있다.
+
+### 샌드박스 프로필
+
+| 프로필 | 설명 |
+|--------|------|
+| permissive-open (기본) | 프로젝트 폴더 내 쓰기 제한 |
+| restrictive-open | 기본적으로 작업 거부 |
+| strict-open | 읽기/쓰기 모두 작업 디렉토리로 제한 |
+| strict-proxied | strict + 네트워크 프록시 경유 |
 
 ---
 
