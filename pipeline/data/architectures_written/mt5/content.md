@@ -6,7 +6,9 @@
 
 mT5(Multilingual T5)는 2021년 Google Research가 발표한 T5의 다국어 확장 버전으로, 영어 전용 C4 대신 101개 언어를 포함하는 mC4(Multilingual C4) 데이터셋으로 사전 학습했다. T5의 텍스트-투-텍스트 통합 프레임워크와 스팬 노이즈 제거 목표를 그대로 유지하면서, 250,112개 토큰의 대용량 SentencePiece vocab으로 다국어 토크나이징 능력을 대폭 강화했다. XTREME·XNLI·TyDi QA 등 다국어 벤치마크에서 mBERT와 XLM-R을 능가하며 당시 최고 수준의 다국어 성능을 달성했다. 비영어권 NLP 연구의 표준 베이스라인으로 널리 활용된다.
 
-![Architecture](figures/architecture.svg)
+![mT5 아키텍처 — 101개 언어 지원 Encoder-Decoder 구조의 다국어 텍스트-투-텍스트 모델](figures/architecture.svg)
+
+*Figure 1: mT5 아키텍처 — T5의 Encoder-Decoder 구조와 스팬 노이즈 제거 목표를 유지하면서, 250K vocab SentencePiece와 mC4 다국어 코퍼스로 101개 언어를 지원한다.*
 
 ## 아키텍처 상세
 

@@ -8,6 +8,10 @@
 
 ## 아키텍처 상세
 
+![GPT-5.2 지속적 개선 아키텍처](figures/architecture.png)
+
+*Figure 1: GPT-5.2의 피드백 루프 기반 지속적 개선 아키텍처. (OpenAI, 2025)*
+
 ### 지속 학습(Continual Learning) 방식
 
 GPT-5 업데이트는 **아키텍처 변경 없이 파인튜닝 방식**으로 개선되었다. 핵심 방법론은 다음과 같다:

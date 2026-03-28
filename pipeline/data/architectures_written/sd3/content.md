@@ -10,7 +10,9 @@ Stable Diffusion 3(SD3)는 2024년 Stability AI가 발표한 텍스트-이미지
 
 노이즈 스케줄로는 기존 선형 또는 코사인 스케줄 대신 Flow Matching의 직선 경로(Rectified Flow)를 채택하였고, 고노이즈 구간에 더 많은 학습 가중치를 부여하는 **로짓-정규 분포(logit-normal distribution)**로 타임스텝을 샘플링한다. 세 개의 텍스트 인코더(CLIP-L, CLIP-G, T5-XXL)를 병렬로 활용하여 텍스트 이해력을 최대화하였다. 텍스트 렌더링, 복잡한 구도, 다양한 종횡비 지원에서 SDXL 대비 크게 향상된 품질을 보이며, 특히 이미지 내 텍스트 생성 능력이 크게 개선되었다.
 
-![Architecture](figures/architecture.svg)
+![Stable Diffusion 3 아키텍처 — MMDiT 이중 스트림 어텐션과 Flow Matching 기반 텍스트-이미지 생성 구조](figures/architecture.svg)
+
+*Figure 1: SD3 아키텍처 — 이미지 토큰과 텍스트 토큰을 별도 스트림으로 유지하면서 Full Self-Attention으로 양방향 상호작용하는 MMDiT와, Rectified Flow 기반 직선 경로 학습을 결합한다.*
 
 ## 아키텍처 상세
 

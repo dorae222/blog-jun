@@ -257,7 +257,9 @@ plt.savefig('recommendation_visualization.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Recommendation-Systems Fig 1](/media/figures/outputs/recommendation-systems/recommendation-systems_fig_1.png)
+![협업 필터링 시각화](figures/collaborative_filtering.png)
+
+*Figure 1: 협업 필터링 결과: 유저-아이템 행렬 분해와 잠재 요인 공간에서의 유저/아이템 임베딩을 시각화한다.*
 
 ---
 

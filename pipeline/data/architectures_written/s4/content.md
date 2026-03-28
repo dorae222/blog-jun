@@ -10,7 +10,9 @@ S4(Structured State Spaces for Sequence Modeling)는 2021년 Stanford의 Albert 
 
 pathfinder-X 같은 극단적 장거리 의존성 벤치마크(시퀀스 길이 16,384)에서 S4는 96% 정확도를 달성하며 Transformer(62%)를 압도했다. Transformer는 이 길이에서 아예 학습이 실패하지만, S4는 안정적으로 수렴한다. 이 결과는 SSM이 장거리 의존성에서 근본적 우위를 가질 수 있음을 처음으로 입증했다.
 
-![Architecture](figures/architecture.svg)
+![S4 아키텍처 — HiPPO 행렬 초기화와 이산화를 통한 구조화된 상태 공간 모델](figures/architecture.svg)
+
+*Figure 1: S4 아키텍처 — 연속 시간 SSM을 HiPPO 행렬로 초기화하고 이산화하여, 순환 모드와 컨볼루션 모드의 이중 표현으로 O(N log N) 복잡도의 장거리 의존성 모델링을 달성한다.*
 
 다음 그림은 S4의 핵심 아이디어를 세 부분으로 요약한다. 연속 상태 공간, HiPPO 기반 장거리 의존성 포착, 그리고 효율적인 이산 표현이다.
 

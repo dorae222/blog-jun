@@ -8,6 +8,10 @@ Gemini 1.5는 Mixture of Experts(MoE) 아키텍처를 채택하여 Gemini 1.0 Ul
 
 ## 아키텍처 상세
 
+![Gemini 1.5 MoE 멀티모달 아키텍처](figures/architecture.png)
+
+*Figure 1: Gemini 1.5의 Mixture of Experts 기반 100만 토큰 컨텍스트 아키텍처. (Google DeepMind, 2024)*
+
 ### 기본 구조
 
 | 구성 요소 | 사양 |

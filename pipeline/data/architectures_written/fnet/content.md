@@ -10,7 +10,9 @@ FFT는 순수 수학적 연산으로 학습 가능한 파라미터가 전혀 없
 
 Transformer의 self-attention은 $O(N^2)$ 복잡도를 가지므로 시퀀스 길이가 길어질수록 계산 비용이 급격히 증가한다. FNet은 이 병목을 FFT의 $O(N \log N)$ 복잡도로 해소하면서도, 대부분의 NLU(Natural Language Understanding) 태스크에서 실용적 수준의 성능을 유지할 수 있음을 보여준 최초의 대규모 실험이다.
 
-![Architecture](figures/architecture.svg)
+![FNet 아키텍처 — Self-Attention을 2D FFT로 완전히 대체한 효율적 토큰 믹싱 인코더 구조](figures/architecture.svg)
+
+*Figure 1: FNet 아키텍처 — Transformer의 Self-Attention을 학습 파라미터 없는 2D FFT(시퀀스 축 + 히든 축)로 대체하여 O(N log N) 복잡도로 BERT 성능의 92~97%를 유지한다.*
 
 ## 아키텍처 상세
 

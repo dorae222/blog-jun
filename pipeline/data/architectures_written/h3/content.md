@@ -15,7 +15,9 @@ H3는 이 두 능력을 SSM으로 구현하기 위해 이중 SSM 구조를 설�
 ![H3 아키텍처 개요 — 이중 SSM 레이어, 연상 기억 메커니즘, FlashConv 알고리즘](figures/fig_1.png)
 *Figure 1: H3 아키텍처 개요 — (좌) H3 레이어는 Shift SSM과 Diagonal SSM을 multiplicative interaction으로 결합한다. (중) 이 구조로 기존 SSM에서 불가능했던 연상 기억(associative recall)을 수행할 수 있다. (우) FlashConv는 fused block FFTConv 위에 state-passing을 적용하여 하드웨어 효율성을 극대화한다. (Source: Fu et al., 2022)*
 
-![Architecture](figures/architecture.svg)
+![H3 아키텍처 — Shift SSM과 Diagonal SSM의 이중 SSM 구조로 인접 토큰 비교와 연상 기억을 달성하는 모델](figures/architecture.svg)
+
+*Figure 2: H3 아키텍처 — 두 개의 SSM(Shift SSM + Diagonal SSM)을 multiplicative interaction으로 결합하여 Transformer의 핵심 능력인 인접 토큰 비교와 연상 기억을 SSM으로 구현한다.*
 
 ## 아키텍처 상세
 

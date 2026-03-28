@@ -8,7 +8,9 @@ Swin Transformer는 2021년 Microsoft Research Asia의 Ze Liu 등이 발표한 �
 
 Swin Transformer는 ICCV 2021 Best Paper Award를 수상하였으며, 2024년 기준 10,000회 이상의 인용으로 비전 트랜스포머 분야에서 가장 영향력 있는 연구 중 하나이다.
 
-![Architecture](figures/architecture.svg)
+![Swin Transformer 아키텍처 — 이동 윈도우 기반 지역 어텐션과 계층적 특징 맵 구조](figures/architecture.svg)
+
+*Figure 1: Swin Transformer 아키텍처 — 이동 윈도우(Shifted Window)로 선형 복잡도의 지역 어텐션을 수행하고, 패치 병합으로 계층적 특징 맵을 생성하여 분류, 탐지, 세그멘테이션을 통합 지원한다.*
 
 ## 아키텍처 상세
 

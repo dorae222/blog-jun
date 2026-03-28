@@ -8,7 +8,9 @@ Cohere Command A는 Cohere가 2025년 3월 공개한 111B 파라미터 기업용
 
 Command A는 Cohere의 기업 AI 전략에서 핵심적인 위치를 차지한다. 기존 Command 시리즈가 범용 텍스트 생성에 초점을 맞췄다면, Command A는 에이전틱 워크플로—도구 호출, 멀티스텝 추론, 구조화된 출력을 통해 복잡한 비즈니스 프로세스를 자동화하는 능력—에 특화되었다. 23개 비즈니스 언어를 지원하여 글로벌 기업 환경에서의 실용성을 극대화하였으며, 특히 RAG 파이프라인에서의 사실성(factuality)이 크게 강화되어 기업의 내부 지식 기반 질의응답에 높은 신뢰성을 제공한다.
 
-![Architecture](figures/architecture.svg)
+![Cohere Command A 아키텍처 — 111B Decoder-only Transformer with GQA, SwiGLU, 256K 컨텍스트 구조](figures/architecture.svg)
+
+*Figure 1: Command A 아키텍처 — GQA 어텐션, SwiGLU 활성화, RMSNorm을 적용한 111B 파라미터 Decoder-only Transformer로, 256K 토큰 컨텍스트와 에이전틱 워크플로를 지원한다.*
 
 ## 아키텍처 상세
 

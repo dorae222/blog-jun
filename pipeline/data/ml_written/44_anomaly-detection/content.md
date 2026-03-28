@@ -324,7 +324,9 @@ Isolation Forest AUC: 0.9653
 LOF AUC:              0.9570
 ```
 
-![Anomaly-Detection Fig 1](/media/figures/outputs/anomaly-detection/anomaly-detection_fig_1.png)
+![이상 탐지 알고리즘 비교 결과](figures/anomaly_detection_comparison.png)
+
+*Figure 1: 이상 탐지 결과: Isolation Forest와 LOF의 이상 탐지 결정 경계 및 AUC 성능을 비교한다.*
 
 ### AutoEncoder 기반 이상 탐지
 

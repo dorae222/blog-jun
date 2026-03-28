@@ -8,7 +8,9 @@ DeiT(Data-efficient Image Transformers)는 2021년 Meta/FAIR의 Hugo Touvron 등
 
 DeiT는 이 문제를 두 가지 핵심 전략으로 해결한다. 첫째, 지식 증류(Knowledge Distillation) 토큰을 트랜스포머 아키텍처에 직접 통합하여, CNN 교사 모델의 귀납적 편향(inductive bias)을 학생 트랜스포머 모델에 전달한다. 둘째, Rand-Augment, Mixup, CutMix, Random Erasing, Repeated Augmentation, Stochastic Depth 등 강력한 데이터 증강과 정규화 기법을 체계적으로 조합하여 소규모 데이터에서의 과적합을 효과적으로 방지한다. 이 전략의 결합으로 DeiT-B는 ImageNet-1K에서 top-1 정확도 83.1%를 달성하였으며, 증류 버전(DeiT-B⚗↑384)은 85.2%라는 인상적인 성능을 기록하여 동일 데이터 조건에서 ViT-B(77.9%)를 5%p 이상 앞서고, 훨씬 큰 ViT-L(307M, 76.5%)마저 능가하였다. DeiT의 학습 레시피는 이후 비전 트랜스포머 학습의 사실상 표준이 되었으며, Swin Transformer, DINOv2, BEiT 등 후속 모델들도 이 레시피를 기반으로 발전하였다.
 
-![Architecture](figures/architecture.svg)
+![DeiT 아키텍처 — ViT에 증류 토큰을 추가하여 CNN 교사 모델의 귀납적 편향을 전달하는 구조](figures/architecture.svg)
+
+*Figure 1: DeiT 아키텍처 — ViT 구조에 증류 토큰(distillation token)을 추가하여 CNN 교사 모델의 지식을 전달하고, 강력한 데이터 증강으로 ImageNet-1K만으로도 경쟁력 있는 성능을 달성한다.*
 
 아래 그림은 ImageNet에서의 처리량(이미지/초) 대비 정확도를 비교한 것으로, DeiT가 EfficientNet과 동등한 성능을 적은 데이터로 달성함을 보여준다.
 

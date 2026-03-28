@@ -10,7 +10,9 @@ Toolformer의 혁신적 기여는 **도구 사용 능력을 모델 가중치에 
 
 이 접근의 핵심 아이디어는 **"도구 호출이 텍스트 예측을 개선하는가?"**라는 질문으로 요약된다. Toolformer는 텍스트의 각 위치에 다양한 API 호출을 삽입해 보고, 해당 호출이 후속 토큰 예측의 perplexity를 $\tau$ 이상 감소시키면 "유용한" 호출로 판정하여 학습 데이터에 포함한다. 이 자기지도 필터링 메커니즘은 인간 어노테이션 없이도 대규모 학습 데이터를 자동 생성할 수 있게 하며, 도구 사용 학습의 스케일러빌리티를 획기적으로 높인다. 특히 6.7B 크기의 Toolformer가 66B 크기의 OPT보다 뛰어난 성능을 보여, **도구 사용이 모델 크기의 한계를 보완할 수 있음**을 입증했다.
 
-![Architecture](figures/architecture.svg)
+![Toolformer 아키텍처 — 자기지도 API 호출 학습과 perplexity 기반 필터링을 통한 도구 사용 내재화 구조](figures/architecture.svg)
+
+*Figure 1: Toolformer 아키텍처 — 텍스트의 각 위치에 API 호출 후보를 샘플링하고, perplexity 감소 기준으로 유용한 호출만 필터링하여 모델 가중치에 도구 사용 능력을 자기지도 방식으로 내재화한다.*
 
 다음은 Toolformer가 실제로 다양한 API를 자율적으로 호출하는 예시이다. QA, Calculator, MT, WikiSearch 등 각 상황에 적합한 도구를 선택하여 텍스트 생성에 자연스럽게 통합하는 모습을 보여준다.
 

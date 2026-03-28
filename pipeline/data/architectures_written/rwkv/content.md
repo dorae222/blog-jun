@@ -10,7 +10,9 @@ WKV(Weighted Key-Value) 연산자를 통해 어텐션의 $O(N^2)$ 복잡도 없�
 
 RWKV는 학술 연구실이 아닌 오픈소스 커뮤니티에서 시작하여 대규모 모델까지 발전시킨 독특한 사례이다. World Tokenizer를 통한 100개 이상 언어 지원이 특히 강점이며, 한국어를 포함한 비영어 언어에서도 효율적인 토크나이제이션을 제공한다.
 
-![Architecture](figures/architecture.svg)
+![RWKV 아키텍처 — WKV 연산자 기반 학습 병렬/추론 순환 이중 모드 시퀀스 모델 구조](figures/architecture.svg)
+
+*Figure 1: RWKV 아키텍처 — Time Mixing(WKV 연산자)과 Channel Mixing 모듈로 구성되어, 학습 시에는 Transformer처럼 병렬 계산하고 추론 시에는 RNN처럼 순환 계산하는 이중 모드를 지원한다.*
 
 ## 아키텍처 상세
 

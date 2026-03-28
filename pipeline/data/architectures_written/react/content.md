@@ -15,7 +15,9 @@ ReAct가 AI 에이전트 분야에 미친 영향은 절대적이다. 이후 Lang
 ![네 가지 프롬프팅 방법(Standard, CoT, Act-only, ReAct) 비교 — HotpotQA 및 ALFWorld 태스크](figures/fig_1.png)
 *Figure 1: 네 가지 프롬프팅 방법 비교 — (1a) Standard, (1b) CoT(추론만), (1c) Act-only, (1d) ReAct(추론+행동)로 HotpotQA 문제를 해결하는 과정과, ALFWorld 게임에서의 Act-only vs ReAct 비교. (Source: Yao et al., 2022)*
 
-![Architecture](figures/architecture.svg)
+![ReAct 아키텍처 — Thought-Action-Observation 사이클 기반 추론과 행동 결합 에이전트 구조](figures/architecture.svg)
+
+*Figure 2: ReAct 아키텍처 — Thought(추론)로 전략을 수립하고 Action(행동)으로 외부 도구를 호출한 뒤 Observation(관찰)으로 결과를 반영하는 에이전틱 루프를 반복하여 추론과 행동의 시너지를 실현한다.*
 
 ## 아키텍처 상세
 

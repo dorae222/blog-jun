@@ -38,11 +38,11 @@ PaLM은 당시 개별적으로 연구되던 여러 최적화 기법을 **하나�
 
 $$\text{SwiGLU}(x) = \text{Swish}(xW_1) \otimes (xV)$$
 
-여기서 $\text{Swish}(x) = x \cdot \sigma(x)$. ReLU나 GELU 대비 **일관된 성능 향상**을 제공하며, 이후 LLaMA, Mistral 등이 채택했다.
+여기서 $\text{Swish}(x) = x \cdot \sigma(x)$. ReLU나 GELU 대비 **일관된 성능 향상**을 제공하며, 이후 LLaMA, Mistral 등이 채택했다. SwiGLU는 Gated Linear Unit(GLU) 계열의 활성화 함수로, 입력에 대해 두 개의 선형 변환을 수행한 뒤 하나를 게이트로 사용한다. 이 게이트 메커니즘이 정보 흐름을 선택적으로 제어하여, 단순 활성화 함수 대비 표현력이 높다. 다만 파라미터가 약 50% 증가하므로, FFN 히든 차원을 $\frac{8}{3}d$ 수준으로 조정하여 전체 파라미터 수를 맞추는 것이 일반적이다.
 
 **2. Multi-Query Attention (MQA)**
 
-PaLM 540B에서 모든 Query 헤드가 **단일 Key-Value**를 공유한다. 이를 통해 KV 캐시를 48배 절감하고 추론 속도를 대폭 향상시켰다.
+PaLM 540B에서 모든 Query 헤드가 **단일 Key-Value**를 공유한다. 이를 통해 KV 캐시를 48배 절감하고 추론 속도를 대폭 향상시켰다. 기존 Multi-Head Attention(MHA)에서는 Q, K, V 각각이 $h$개의 헤드를 가지지만, MQA에서는 K와 V가 단 1개의 헤드만 가지고 모든 Q 헤드가 이를 공유한다. 이는 학습 시에는 품질 저하가 거의 없으면서, 추론 시 autoregressive 디코딩의 메모리 대역폭 병목을 극적으로 완화한다. 이후 GQA(Grouped-Query Attention)가 MHA와 MQA의 절충안으로 제안되어 LLaMA 2 등에서 채택되었다.
 
 **3. RoPE (Rotary Position Embedding)**
 
@@ -50,7 +50,7 @@ PaLM 540B에서 모든 Query 헤드가 **단일 Key-Value**를 공유한다. 이
 
 **4. Parallel Transformer Block**
 
-GPT-J에서 제안된 Attention+FFN 병렬 계산 구조를 채택하여, 대규모 분산 환경에서의 통신 효율을 개선했다:
+GPT-J에서 제안된 Attention+FFN 병렬 계산 구조를 채택하여, 대규모 분산 환경에서의 통신 효율을 개선했다. 기존 Sequential Transformer에서는 Attention 출력이 나온 후 FFN에 입력하는 직렬 구조를 사용하지만, Parallel 방식에서는 동일한 LayerNorm 출력을 Attention과 FFN에 동시에 입력한다. 이를 통해 두 연산의 all-reduce 통신을 하나로 합칠 수 있어 분산 학습에서 통신 오버헤드가 줄어든다. 8B 이상의 대규모 모델에서는 품질 저하 없이 약 15%의 학습 속도 향상을 달성했다:
 
 $$y = x + \text{Attention}(\text{LN}(x)) + \text{FFN}(\text{LN}(x))$$
 
@@ -91,10 +91,12 @@ class PaLMBlock(nn.Module):
 ![Pathways 시스템 분산 학습 구조 다이어그램](figures/fig_2_1.png)
 *Figure 2: Pathways 시스템의 2-way 데이터 병렬화 — 두 TPU v4 Pod 간 교차 그래디언트 전송으로 6,144개 칩에서 효율적 분산 학습을 수행한다. (Source: Chowdhery et al., 2022)*
 
-- **6,144개 TPU v4** 칩에서 단일 모델 학습
+- **6,144개 TPU v4** 칩에서 단일 모델 학습 (2개 TPU v4 Pod, 각 3,072 칩)
 - 이전 LLM 대비 **약 2배** 많은 칩 활용
-- 통신 병목 최소화
-- 57.8% MFU(Model FLOP Utilization) 달성
+- 통신 병목 최소화: Pod 내 ICI(Inter-Chip Interconnect), Pod 간 DCN(Data Center Network) 활용
+- **57.8% MFU(Model FLOP Utilization)** 달성 — 이전 최고 기록인 Megatron-Turing NLG의 약 30%를 크게 상회
+
+Pathways의 핵심 혁신은 SPMD(Single Program Multiple Data) 기반의 유연한 파이프라인 스케줄링이다. 기존 시스템들이 고정된 파이프라인 병렬화를 사용한 반면, Pathways는 각 TPU Pod에서 독립적으로 forward/backward를 실행하고, Pod 간에는 비동기 그래디언트 전송으로 버블(bubble)을 최소화했다. 이러한 설계 덕분에 학습 중 하드웨어 장애 발생 시에도 빠른 복구가 가능했으며, 수주에 걸친 대규모 학습의 안정성을 확보할 수 있었다.
 
 ### Chain-of-Thought (CoT) 프롬프팅
 
@@ -148,9 +150,15 @@ CoT 프롬프팅을 적용한 추론 태스크에서도 PaLM은 광범위한 벤
 
 ### 데이터셋
 - **780B 토큰** 규모의 다국어 학습 코퍼스
-- 영어 웹 문서 50%
-- 다국어 문서, GitHub 소스 코드
-- Wikipedia, 뉴스, 도서
+- 영어 웹 문서(웹페이지 27%, Books 13%, Wikipedia 4%) — 전체의 약 50%
+- 다국어 웹 문서 — 100개 이상 언어 포함
+- **GitHub 소스 코드** — 전체의 약 5%, 코드 생성 능력의 핵심 소스
+- 대화 데이터(소셜 미디어) — 대화 능력 강화 목적
+- SentencePiece 토크나이저(256K 어휘) 사용 — 다국어 커버리지를 위해 대형 어휘 채택
+
+### 스케일링 분석과 Breakthrough 능력
+
+PaLM의 가장 주목할 만한 발견 중 하나는 **불연속적 능력 출현(discontinuous emergence)**이다. 8B, 62B, 540B 세 스케일에서 실험한 결과, 일부 태스크는 62B까지 무작위 수준이다가 540B에서 갑자기 높은 성능을 보이는 "능력 출현(emergent ability)" 패턴을 보였다. 이는 BIG-Bench의 여러 태스크에서 관찰되었으며, 스케일링에 따른 LLM 능력이 단순한 선형 외삽이 아닌 질적 전환을 포함한다는 중요한 증거가 되었다.
 
 ### 학습 인프라
 - **TPU v4 Pod 2개 (총 6,144 칩)**
@@ -175,10 +183,11 @@ PaLM을 코드 생성에 특화한 버전으로 Google의 코딩 어시스턴트
 ## 한계 및 전망
 
 ### 한계
-1. **비공개**: 모델 가중치가 공개되지 않아 외부 연구에 제한이 있다
-2. **막대한 학습 비용**: 6,144 TPU v4라는 천문학적 자원이 필요하다
-3. **컨텍스트 길이**: 2,048 토큰으로 제한적이다
-4. **환각**: 대형 모델임에도 사실과 다른 내용을 생성할 수 있다
+1. **비공개**: 모델 가중치가 공개되지 않아 외부 연구에 제한이 있다. 이는 오픈소스 LLM 생태계(LLaMA, Falcon 등)의 급부상에 비해 PaLM의 학술적 영향력을 제한하는 요인이 되었다
+2. **막대한 학습 비용**: 6,144 TPU v4라는 천문학적 자원이 필요하다. 추정 학습 비용은 수백만 달러에 달하며, 이는 소수의 대기업만 접근 가능한 수준이다
+3. **컨텍스트 길이**: 2,048 토큰으로 제한적이다. 동시기 GPT-3도 동일한 제약을 가졌으나, 이후 GPT-4(128K), Claude(100K) 등이 컨텍스트를 대폭 확장하면서 이 한계가 더 부각되었다
+4. **환각**: 대형 모델임에도 사실과 다른 내용을 생성할 수 있다. 특히 CoT 추론에서 각 단계가 그럴듯하지만 논리적으로 오류가 있는 "faithful but wrong" 추론이 관찰되었다
+5. **Chinchilla 비최적**: 780B 토큰은 540B 파라미터에 대한 Chinchilla 최적(약 10.8T)에 크게 못 미치며, 동일 컴퓨트로 더 작은 모델에 더 많은 데이터를 학습했다면 더 나은 성능이 가능했을 수 있다
 
 ### 전망
 PaLM은 **현대 LLM의 아키텍처 표준(SwiGLU + RoPE + MQA + Parallel Block)을 정립한 모델**이다. 이 조합은 이후 LLaMA, Mistral, Falcon 등 거의 모든 현대 LLM에서 (부분적으로) 채택되었다. PaLM 2로 진화하며 더 효율적인 학습과 다국어 능력을 강화했고, 최종적으로 Gemini 시리즈로 발전하며 Google의 핵심 AI 기반이 되었다.

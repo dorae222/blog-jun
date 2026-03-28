@@ -221,7 +221,9 @@ print(f"최소 perplexity: {min(perplexities):.2f} (K={topic_range[np.argmin(per
 최소 perplexity: 3.93 (K=2)
 ```
 
-![Topic-Modeling Fig 1](/media/figures/outputs/topic-modeling/topic-modeling_fig_1.png)
+![토픽-단어 히트맵 시각화](figures/topic_word_heatmap.png)
+
+*Figure 1: 토픽-단어 히트맵: 각 토픽별 주요 단어의 확률 분포와 Perplexity 기반 최적 토픽 수 선택 결과를 보여준다.*
 
 ---
 

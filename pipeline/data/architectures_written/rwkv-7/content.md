@@ -10,7 +10,9 @@ Delta Rule은 신경과학과 기계학습의 교차점에 위치한 온라인 �
 
 2.9B 파라미터 모델이 동일 규모 Mamba-2 및 RWKV-6 대비 여러 NLP 벤치마크에서 SoTA를 달성했으며, 특히 in-context learning과 다국어 처리에서 두드러진 성능 향상을 보였다. World Tokenizer v3의 도입으로 100개 이상 언어를 지원하며, 한국어 포함 CJK 언어에서의 토크나이제이션 효율이 크게 개선되었다.
 
-![Architecture](figures/architecture.svg)
+![RWKV-7 아키텍처 — Delta Rule 기반 연상 기억 업데이트로 재설계된 WKV 연산 구조](figures/architecture.svg)
+
+*Figure 1: RWKV-7 아키텍처 — WKV 연산자를 Delta Rule 기반으로 전면 재설계하여 연상 기억의 정밀한 수정 능력을 획득하고, LoRA 스타일 상태 업데이트로 표현력을 대폭 향상시켰다.*
 
 ![RWKV-7 전체 아키텍처와 Time Mix 모듈 상세](figures/fig_1.png)
 *Figure 1: RWKV-7 아키텍처 — L개의 블록으로 구성되며, 각 블록은 Time Mix + ReLU^2 MLP로 이루어짐. Time Mix 모듈은 Token Shift → Weight Prepare → WKV7 Kernel → Readout 순으로 처리. (Source: arXiv 2503.14456)*

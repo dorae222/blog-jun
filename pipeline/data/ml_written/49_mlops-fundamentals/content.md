@@ -304,7 +304,9 @@ plt.savefig("mlops_pipeline.png", dpi=150, bbox_inches="tight")
 plt.show()
 ```
 
-![Mlops-Fundamentals Fig 1](/media/figures/outputs/mlops-fundamentals/mlops-fundamentals_fig_1.png)
+![MLOps 파이프라인 전체 흐름](figures/mlops_lifecycle.png)
+
+*Figure 1: MLOps 파이프라인 전체 흐름: 데이터 수집, 전처리, 모델 학습, 배포, 모니터링, 재학습까지의 순환 구조를 시각화한다.*
 
 ### 실험 추적 대시보드 개념도
 
