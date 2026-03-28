@@ -22,5 +22,6 @@
   "arxiv_url": "https://arxiv.org/abs/2303.11366",
   "venue": "NeurIPS 2023",
   "paper_year": 2024,
-  "paper_authors": "Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, Shunyu Yao"
+  "paper_authors": "Noah Shinn, Federico Cassano, Ashwin Gopinath, Karthik Narasimhan, Shunyu Yao",
+  "related_architecture": "reflexion"
 }

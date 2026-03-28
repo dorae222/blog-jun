@@ -22,5 +22,6 @@
   "arxiv_url": "https://arxiv.org/abs/2203.11171",
   "venue": "ICLR 2023",
   "paper_year": 2023,
-  "paper_authors": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou"
+  "paper_authors": "Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed Chi, Sharan Narang, Aakanksha Chowdhery, Denny Zhou",
+  "related_architecture": "self-consistency"
 }
