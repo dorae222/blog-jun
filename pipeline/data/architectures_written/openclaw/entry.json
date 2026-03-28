@@ -1,0 +1,42 @@
+{
+  "name": "OpenClaw",
+  "slug": "openclaw",
+  "organization": "Community",
+  "release_date": "2025-06-01",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "OpenClaw는 Claude Code에서 영감을 받아 개발된 오픈소스 에이전틱 코딩 CLI 도구다. Claude Code의 핵심 워크플로우와 도구 시스템을 오픈소스로 재구현하여, 다양한 LLM 백엔드(Claude, GPT, 오픈소스 모델 등)와 함께 사용할 수 있도록 설계되었다. 자체 호스팅이 가능하여 데이터 주권이 중요한 환경에서 활용할 수 있다.",
+  "key_detail": "OpenClaw의 핵심은 Claude Code 스타일의 에이전틱 루프를 다양한 LLM 백엔드에서 실행할 수 있도록 추상화한 것이다. 파일 시스템 조작, 셸 명령 실행, 코드 검색 등 핵심 도구를 제공하며, 플러그인 시스템을 통해 커스텀 도구를 추가할 수 있다. 프라이빗 환경에서 로컬 모델과 함께 사용할 수 있어 보안이 중요한 기업 환경에 적합하다.",
+  "training_detail": "OpenClaw는 특정 모델에 종속되지 않으며, OpenAI API 호환 엔드포인트를 지원하는 모든 LLM과 함께 동작한다. Go 또는 TypeScript로 구현되어 단일 바이너리로 배포 가능하다.",
+  "paper_url": "",
+  "code_url": "https://github.com/openclaw-ai/openclaw",
+  "license_type": "MIT",
+  "concepts": [
+    "Agentic Coding",
+    "CLI Agent",
+    "Tool Use",
+    "Open Source"
+  ],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "claude-code",
+      "type": "inspired_by",
+      "description": "OpenClaw는 Claude Code의 에이전틱 코딩 패러다임에서 영감을 받아 오픈소스로 재구현한 도구다."
+    }
+  ],
+  "related_post_slug": ""
+}

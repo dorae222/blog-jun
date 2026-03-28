@@ -1,0 +1,42 @@
+{
+  "name": "Codex CLI",
+  "slug": "codex-cli",
+  "organization": "OpenAI",
+  "release_date": "2025-04-16",
+  "decoder_type": "technique",
+  "param_scale": "",
+  "context_length": "",
+  "attention_type": "",
+  "normalization": "",
+  "activation": "",
+  "position_encoding": "",
+  "vocab_size": null,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Codex CLI는 OpenAI가 2025년 4월 공개한 오픈소스 에이전틱 코딩 CLI 도구로, o4-mini 모델을 기반으로 터미널에서 코드 생성, 리팩토링, 디버깅을 수행한다. 가장 큰 특징은 네트워크 격리된 샌드박스에서 코드를 실행하여 안전성을 보장하는 것이며, 멀티파일 편집과 셸 명령 실행을 에이전틱 방식으로 처리한다.",
+  "key_detail": "Codex CLI의 핵심 설계는 '샌드박스 우선' 접근이다. 모든 코드 실행은 네트워크가 격리된 샌드박스 환경에서 이루어지며, 파일 시스템 변경도 격리된 상태에서 수행된 후 사용자 확인을 거쳐 적용된다. suggest/auto-edit/full-auto 세 가지 자율성 수준을 제공하며, OpenAI API 키 또는 Codex Pro를 통해 접근한다.",
+  "training_detail": "Codex CLI는 o4-mini를 기본 모델로 사용하며, OpenAI의 Responses API를 통해 통신한다. npm으로 설치하고 OpenAI API 키로 인증한다.",
+  "paper_url": "",
+  "code_url": "https://github.com/openai/codex",
+  "license_type": "Apache-2.0",
+  "concepts": [
+    "Agentic Coding",
+    "CLI Agent",
+    "Sandbox Execution",
+    "Tool Use"
+  ],
+  "architecture_category": "agent",
+  "branch_type": "agent",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "mcp",
+      "type": "technique_used",
+      "description": "Codex CLI는 MCP를 통한 외부 도구 확장을 지원한다."
+    }
+  ],
+  "related_post_slug": ""
+}
