@@ -10,14 +10,14 @@ S4(Structured State Spaces for Sequence Modeling)는 2021년 Stanford의 Albert 
 
 pathfinder-X 같은 극단적 장거리 의존성 벤치마크(시퀀스 길이 16,384)에서 S4는 96% 정확도를 달성하며 Transformer(62%)를 압도했다. Transformer는 이 길이에서 아예 학습이 실패하지만, S4는 안정적으로 수렴한다. 이 결과는 SSM이 장거리 의존성에서 근본적 우위를 가질 수 있음을 처음으로 입증했다.
 
-![S4 아키텍처 — HiPPO 행렬 초기화와 이산화를 통한 구조화된 상태 공간 모델](figures/architecture.svg)
+![S4 아키텍처 - HiPPO 행렬 초기화와 이산화를 통한 구조화된 상태 공간 모델](figures/architecture.svg)
 
-*Figure 1: S4 아키텍처 — 연속 시간 SSM을 HiPPO 행렬로 초기화하고 이산화하여, 순환 모드와 컨볼루션 모드의 이중 표현으로 O(N log N) 복잡도의 장거리 의존성 모델링을 달성한다.*
+*Figure 1: S4 아키텍처 - 연속 시간 SSM을 HiPPO 행렬로 초기화하고 이산화하여, 순환 모드와 컨볼루션 모드의 이중 표현으로 O(N log N) 복잡도의 장거리 의존성 모델링을 달성한다.*
 
 다음 그림은 S4의 핵심 아이디어를 세 부분으로 요약한다. 연속 상태 공간, HiPPO 기반 장거리 의존성 포착, 그리고 효율적인 이산 표현이다.
 
-![S4의 핵심 개념 — 연속 상태 공간, 장거리 의존성, 이산 표현의 세 가지 관점](figures/fig_1.png)
-*Figure 1: S4의 개념적 프레임워크 — (좌) A, B, C, D 행렬로 매개변수화된 연속 상태 공간 모델, (중앙) HiPPO 이론 기반의 장거리 의존성 포착, (우) 순환/컨볼루션 이중 표현. (Source: S4 논문)*
+![S4의 핵심 개념 - 연속 상태 공간, 장거리 의존성, 이산 표현의 세 가지 관점](figures/fig_1.png)
+*Figure 1: S4의 개념적 프레임워크 - (좌) A, B, C, D 행렬로 매개변수화된 연속 상태 공간 모델, (중앙) HiPPO 이론 기반의 장거리 의존성 포착, (우) 순환/컨볼루션 이중 표현. (Source: S4 논문)*
 
 ## 아키텍처 상세
 
@@ -54,8 +54,8 @@ $$A_{nk} = -\begin{cases} (2n+1)^{1/2}(2k+1)^{1/2} & \text{if } n > k \\ n+1 & \
 
 아래 그래프는 CIFAR-10에서 다양한 초기화 방식의 학습 수렴 속도를 비교한 것이다. HiPPO 초기화가 랜덤 초기화 대비 압도적으로 빠르게 수렴하는 것을 확인할 수 있다.
 
-![다양한 행렬 초기화에 따른 SSM 학습 정확도 비교 — HiPPO vs Diagonal vs Random](figures/fig_14_1.png)
-*Figure 2: SSM 초기화 방식별 CIFAR-10 학습 정확도 — HiPPO(파란색)가 Random(빨간색)과 Diagonal(녹색) 대비 빠르고 안정적으로 수렴한다. 특히 Frozen A(점선)에서도 HiPPO는 높은 성능을 유지한다. (Source: S4 논문)*
+![다양한 행렬 초기화에 따른 SSM 학습 정확도 비교 - HiPPO vs Diagonal vs Random](figures/fig_14_1.png)
+*Figure 2: SSM 초기화 방식별 CIFAR-10 학습 정확도 - HiPPO(파란색)가 Random(빨간색)과 Diagonal(녹색) 대비 빠르고 안정적으로 수렴한다. 특히 Frozen A(점선)에서도 HiPPO는 높은 성능을 유지한다. (Source: S4 논문)*
 
 ### DPLR 분해와 컨볼루션 모드
 
@@ -95,13 +95,13 @@ Long Range Arena(LRA) 벤치마크에서 S4는 모든 태스크에서 Transforme
 
 다음은 Path-X 태스크의 예시와 S4가 학습한 컨볼루션 필터를 시각화한 것이다. 16,384 길이의 시퀀스에서 두 마커가 경로로 연결되어 있는지 판별하는 극단적인 장거리 의존성 태스크이다.
 
-![Path-X 태스크 예시 — 두 마커가 점선 경로로 연결된 이미지](figures/fig_5_1.png)
-*Figure 3: Path-X 태스크 예시 — 128x128 이미지(시퀀스 길이 16,384)에서 두 개의 마커가 점선 경로로 연결되어 있는지 판별해야 한다. S4는 이 태스크에서 96% 정확도를 달성했다. (Source: S4 논문)*
+![Path-X 태스크 예시 - 두 마커가 점선 경로로 연결된 이미지](figures/fig_5_1.png)
+*Figure 3: Path-X 태스크 예시 - 128x128 이미지(시퀀스 길이 16,384)에서 두 개의 마커가 점선 경로로 연결되어 있는지 판별해야 한다. S4는 이 태스크에서 96% 정확도를 달성했다. (Source: S4 논문)*
 
 S4가 학습한 컨볼루션 커널은 첫 번째 레이어와 마지막 레이어에서 뚜렷이 다른 패턴을 보인다.
 
-![S4 첫 번째 레이어의 컨볼루션 필터 — 저수준 특징 추출 패턴](figures/fig_7_1.png)
-*Figure 4: S4 첫 번째 레이어 필터 — 16,384 길이의 컨볼루션 커널을 128x128로 재구성한 시각화. 초기 레이어에서는 국소적 패턴을 감지하는 필터가 학습된다. (Source: S4 논문)*
+![S4 첫 번째 레이어의 컨볼루션 필터 - 저수준 특징 추출 패턴](figures/fig_7_1.png)
+*Figure 4: S4 첫 번째 레이어 필터 - 16,384 길이의 컨볼루션 커널을 128x128로 재구성한 시각화. 초기 레이어에서는 국소적 패턴을 감지하는 필터가 학습된다. (Source: S4 논문)*
 
 | 모델 | 행렬 A 처리 | 초기화 | LTI | 복잡도 | 언어 모델링 |
 |------|-----------|--------|-----|--------|------------|
@@ -162,7 +162,7 @@ S4는 직접적인 프로덕션 LLM으로서의 활용보다는 시계열 예측
 
 ## 관련 문서
 
-- [[h3|H3]] — 후속 모델
-- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] — 후속 모델
-- [[hgrn|HGRN]] — 영감을 줌
-- [[xlstm|xLSTM]] — 영감을 줌
+- [[h3|H3]] - 후속 모델
+- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] - 후속 모델
+- [[hgrn|HGRN]] - 영감을 줌
+- [[xlstm|xLSTM]] - 영감을 줌

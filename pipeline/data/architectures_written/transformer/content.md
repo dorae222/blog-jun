@@ -2,7 +2,7 @@
 
 ## 개요
 
-2017년 6월, Google Brain과 Google Research의 Ashish Vaswani 등이 발표한 **"Attention Is All You Need"** 논문은 딥러닝 역사의 분기점이 된 작업이다. 이 논문에서 제안된 **Transformer** 아키텍처는 당시 NLP 시퀀스 모델링의 주류였던 RNN(Recurrent Neural Network)과 LSTM(Long Short-Term Memory)의 근본적 한계—순차 처리로 인한 병렬화 불가, 장거리 의존성 소실—를 **Self-Attention 메커니즘 하나만으로 완전히 해결**했다.
+2017년 6월, Google Brain과 Google Research의 Ashish Vaswani 등이 발표한 **"Attention Is All You Need"** 논문은 딥러닝 역사의 분기점이 된 작업이다. 이 논문에서 제안된 **Transformer** 아키텍처는 당시 NLP 시퀀스 모델링의 주류였던 RNN(Recurrent Neural Network)과 LSTM(Long Short-Term Memory)의 근본적 한계-순차 처리로 인한 병렬화 불가, 장거리 의존성 소실-를 **Self-Attention 메커니즘 하나만으로 완전히 해결**했다.
 
 Transformer 이전에는 시퀀스를 처리하려면 반드시 시간 축을 따라 순차적으로 계산해야 했다. 이는 GPU의 병렬 연산 능력을 충분히 활용할 수 없게 만들었고, 수백 토큰 이상의 장거리 의존성을 포착하기 어려웠다. Transformer는 이 모든 제약을 제거하고, 입력 시퀀스의 **모든 위치 쌍 간의 관계를 동시에 계산**할 수 있는 구조를 제시했다.
 
@@ -12,8 +12,8 @@ Transformer 이전에는 시퀀스를 처리하려면 반드시 시간 축을 �
 
 아래 그림은 Transformer의 전체 아키텍처로, 왼쪽의 인코더와 오른쪽의 디코더로 구성된 구조를 보여준다.
 
-![Transformer 전체 아키텍처 — 인코더-디코더 구조와 각 서브레이어 구성](figures/fig_1.png)
-*Figure 1: Transformer 모델 아키텍처 — 인코더(왼쪽)와 디코더(오른쪽) 각 N개 레이어로 구성되며, Multi-Head Attention, Feed Forward, Add & Norm 서브레이어가 반복된다. (Source: Vaswani et al., 2017)*
+![Transformer 전체 아키텍처 - 인코더-디코더 구조와 각 서브레이어 구성](figures/fig_1.png)
+*Figure 1: Transformer 모델 아키텍처 - 인코더(왼쪽)와 디코더(오른쪽) 각 N개 레이어로 구성되며, Multi-Head Attention, Feed Forward, Add & Norm 서브레이어가 반복된다. (Source: Vaswani et al., 2017)*
 
 Transformer는 **인코더(Encoder)**와 **디코더(Decoder)** 각각 6개의 동일한 레이어를 쌓은 구조다.
 
@@ -34,11 +34,11 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)
 
 다음 두 그림은 Scaled Dot-Product Attention의 연산 흐름과 Multi-Head Attention의 병렬 구조를 각각 보여준다.
 
-![Scaled Dot-Product Attention 연산 흐름 — Q, K, V 입력부터 출력까지의 단계](figures/fig_2_1.png)
-*Figure 2a: Scaled Dot-Product Attention — Q와 K의 행렬 곱 후 스케일링, 선택적 마스킹, Softmax를 거쳐 V와 곱하는 과정. (Source: Vaswani et al., 2017)*
+![Scaled Dot-Product Attention 연산 흐름 - Q, K, V 입력부터 출력까지의 단계](figures/fig_2_1.png)
+*Figure 2a: Scaled Dot-Product Attention - Q와 K의 행렬 곱 후 스케일링, 선택적 마스킹, Softmax를 거쳐 V와 곱하는 과정. (Source: Vaswani et al., 2017)*
 
-![Multi-Head Attention 구조 — 여러 어텐션 헤드의 병렬 실행과 결합](figures/fig_2_2.png)
-*Figure 2b: Multi-Head Attention — 입력을 h개 헤드로 분리하여 병렬 어텐션을 수행한 뒤 Concat하고 선형 변환하는 구조. (Source: Vaswani et al., 2017)*
+![Multi-Head Attention 구조 - 여러 어텐션 헤드의 병렬 실행과 결합](figures/fig_2_2.png)
+*Figure 2b: Multi-Head Attention - 입력을 h개 헤드로 분리하여 병렬 어텐션을 수행한 뒤 Concat하고 선형 변환하는 구조. (Source: Vaswani et al., 2017)*
 
 ### Multi-Head Attention (MHA)
 
@@ -109,8 +109,8 @@ class MultiHeadAttention(nn.Module):
 
 다음 시각화는 인코더 Self-Attention(레이어 5)에서 장거리 의존성을 포착하는 과정을 보여준다. 단어 "making"에 대한 어텐션이 먼 거리에 위치한 "more difficult"를 정확히 연결하고 있다.
 
-![Self-Attention의 장거리 의존성 포착 — 'making...more difficult' 구문 연결](figures/fig_3.png)
-*Figure 3: 장거리 의존성 어텐션 시각화 — 인코더 레이어 5에서 "making"이 멀리 떨어진 "more difficult"에 어텐션을 집중하여 구문적 의존성을 포착한다. 색상은 서로 다른 헤드를 나타낸다. (Source: Vaswani et al., 2017)*
+![Self-Attention의 장거리 의존성 포착 - 'making...more difficult' 구문 연결](figures/fig_3.png)
+*Figure 3: 장거리 의존성 어텐션 시각화 - 인코더 레이어 5에서 "making"이 멀리 떨어진 "more difficult"에 어텐션을 집중하여 구문적 의존성을 포착한다. 색상은 서로 다른 헤드를 나타낸다. (Source: Vaswani et al., 2017)*
 
 RNN에서 거리 $n$만큼 떨어진 두 위치를 연결하려면 $O(n)$ 단계가 필요하지만, Self-Attention은 **$O(1)$** 단계로 임의의 두 위치를 직접 연결한다. 다만 계산 복잡도는 시퀀스 길이 $n$에 대해 $O(n^2)$으로, 이는 이후 Efficient Transformer 연구의 주요 동기가 되었다.
 
@@ -124,8 +124,8 @@ Encoder-Decoder 구조는 번역뿐 아니라 다양한 시퀀스-투-시퀀스 
 
 아래 시각화는 서로 다른 어텐션 헤드가 문장의 구조적 관계를 학습하는 모습을 보여준다. 각 헤드가 구문 분석, 수식어 관계 등 서로 다른 언어적 패턴에 특화됨을 확인할 수 있다.
 
-![어텐션 헤드별 문장 구조 학습 — 서로 다른 구문적 패턴을 포착하는 헤드들](figures/fig_5_1.png)
-*Figure 5: 어텐션 헤드의 구조적 학습 — 인코더 레이어 5의 서로 다른 헤드가 문장 구조와 관련된 다양한 패턴을 학습하는 모습. 각 헤드가 명확히 다른 역할을 수행한다. (Source: Vaswani et al., 2017)*
+![어텐션 헤드별 문장 구조 학습 - 서로 다른 구문적 패턴을 포착하는 헤드들](figures/fig_5_1.png)
+*Figure 5: 어텐션 헤드의 구조적 학습 - 인코더 레이어 5의 서로 다른 헤드가 문장 구조와 관련된 다양한 패턴을 학습하는 모습. 각 헤드가 명확히 다른 역할을 수행한다. (Source: Vaswani et al., 2017)*
 
 ## 벤치마크/성능
 
@@ -186,16 +186,16 @@ Transformer는 단순히 하나의 모델이 아니라, 현대 AI의 **공통 �
 
 ## 관련 문서
 
-- [[bart|BART]] — 후속 모델
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 후속 모델
-- [[clip|CLIP]] — 후속 모델
-- [[cohere-command-a|Cohere Command A]] — 후속 모델
-- [[detr|DETR]] — 후속 모델
-- [[gpt-1|GPT-1]] — 후속 모델
-- [[t5|T5]] — 후속 모델
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 후속 모델
-- [[whisper|Whisper]] — 후속 모델
-- [[xlnet|XLNet]] — 후속 모델
-- [[fnet|FNet]] — 영감을 줌
-- [[retnet|RetNet]] — 영감을 줌
-- [[rwkv|RWKV]] — 영감을 줌
+- [[bart|BART]] - 후속 모델
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 후속 모델
+- [[clip|CLIP]] - 후속 모델
+- [[cohere-command-a|Cohere Command A]] - 후속 모델
+- [[detr|DETR]] - 후속 모델
+- [[gpt-1|GPT-1]] - 후속 모델
+- [[t5|T5]] - 후속 모델
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 후속 모델
+- [[whisper|Whisper]] - 후속 모델
+- [[xlnet|XLNet]] - 후속 모델
+- [[fnet|FNet]] - 영감을 줌
+- [[retnet|RetNet]] - 영감을 줌
+- [[rwkv|RWKV]] - 영감을 줌

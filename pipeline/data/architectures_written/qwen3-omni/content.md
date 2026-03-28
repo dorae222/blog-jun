@@ -10,14 +10,14 @@ Qwen3의 강력한 텍스트 추론 능력과 Qwen2-VL의 시각 이해, Qwen2-A
 
 옴니모달의 핵심 가치는 사용자가 어떤 형태의 입력을 제공하든 자연스러운 응답을 받을 수 있다는 것이다. 텍스트로 질문하면서 이미지를 첨부할 수도 있고, 음성으로 대화하면서 화면에 보이는 내용에 대해 실시간으로 설명을 요청할 수도 있다. 이러한 자연스러운 멀티모달 인터랙션은 기존의 파이프라인 방식(ASR → LLM → TTS)에서는 달성하기 어려웠던 것으로, 모달리티 간 지연 없는 통합 처리가 핵심이다.
 
-![Qwen3-Omni 아키텍처 — 텍스트, 이미지, 오디오, 비디오 네 모달리티를 통합하는 옴니모달 모델 구조](figures/architecture.svg)
+![Qwen3-Omni 아키텍처 - 텍스트, 이미지, 오디오, 비디오 네 모달리티를 통합하는 옴니모달 모델 구조](figures/architecture.svg)
 
-*Figure 1: Qwen3-Omni 아키텍처 — 텍스트·이미지·오디오·비디오를 단일 모델에서 엔드-투-엔드로 처리하여, 모달리티 간 교차 추론과 234ms 초저지연 음성 응답을 실현한다.*
+*Figure 1: Qwen3-Omni 아키텍처 - 텍스트·이미지·오디오·비디오를 단일 모델에서 엔드-투-엔드로 처리하여, 모달리티 간 교차 추론과 234ms 초저지연 음성 응답을 실현한다.*
 
 다음 그림은 Qwen3-Omni의 다양한 활용 시나리오를 보여준다. 수학 추론, 다국어 지원, 음성 대화, 비디오 이해 등 멀티모달 능력을 통합적으로 제공한다.
 
-![Qwen3-Omni 핵심 기능 — Smarter, Multilingual, Faster, Longer 네 가지 축](figures/fig_1.png)
-*Figure 1: Qwen3-Omni 핵심 기능 개요 — 텍스트, 이미지, 오디오, 비디오를 통합 처리하며 Smarter(수학/추론), Multilingual(다국어), Faster(실시간 응답), Longer(장문 처리) 네 가지 축에서 강점을 보인다. 234ms의 초저지연 음성 응답이 가능하다. (Source: Qwen Team, 2025)*
+![Qwen3-Omni 핵심 기능 - Smarter, Multilingual, Faster, Longer 네 가지 축](figures/fig_1.png)
+*Figure 1: Qwen3-Omni 핵심 기능 개요 - 텍스트, 이미지, 오디오, 비디오를 통합 처리하며 Smarter(수학/추론), Multilingual(다국어), Faster(실시간 응답), Longer(장문 처리) 네 가지 축에서 강점을 보인다. 234ms의 초저지연 음성 응답이 가능하다. (Source: Qwen Team, 2025)*
 
 ## 아키텍처 상세
 
@@ -29,8 +29,8 @@ Qwen3-Omni의 입력 처리는 모달리티별 전문 인코더를 통해 이루
 
 **오디오 인코더**는 AuT(Audio Transformer)라 불리는 전용 오디오 인코더를 사용한다. 다음 그림은 AuT의 내부 구조를 보여주며, 2000만 시간의 지도학습 오디오로 학습된 범용 오디오 표현을 12.5Hz 토큰 레이트로 추출한다.
 
-![AuT 오디오 인코더 구조 — Encoder(32x Self-Attention + 3x Downsampling Conv2d)와 Decoder(8x Cross/Self-Attention)](figures/fig_3.png)
-*Figure 3: AuT(Audio Transformer) 구조 — 10ms 프레임 시프트의 FBank 특징을 입력으로, 3x Downsampling Conv2d와 32x Self-Attention Layer로 인코딩한다. Decoder는 8x Self-Attention과 Cross-Attention으로 구성되어 12.5Hz 토큰 레이트의 범용 오디오 표현을 생성한다. (Source: Qwen Team, 2025)*
+![AuT 오디오 인코더 구조 - Encoder(32x Self-Attention + 3x Downsampling Conv2d)와 Decoder(8x Cross/Self-Attention)](figures/fig_3.png)
+*Figure 3: AuT(Audio Transformer) 구조 - 10ms 프레임 시프트의 FBank 특징을 입력으로, 3x Downsampling Conv2d와 32x Self-Attention Layer로 인코딩한다. Decoder는 8x Self-Attention과 Cross-Attention으로 구성되어 12.5Hz 토큰 레이트의 범용 오디오 표현을 생성한다. (Source: Qwen Team, 2025)*
 
 AuT는 Whisper 계열의 음성 인코더를 기반으로 하며, 80채널 로그 멜 스펙트로그램을 입력으로 받아 음성 특징을 추출한다. 오디오 스트리밍 처리를 지원하여 실시간 음성 입력에 대한 낮은 지연시간을 보장한다. 스트리밍 모드에서는 오디오를 일정 크기의 청크로 분할하여 점진적으로 처리하며, 이전 청크의 컨텍스트를 유지하여 연속적인 음성 인식이 가능하다.
 
@@ -40,8 +40,8 @@ $$\text{M-RoPE}(x, t, h, w) = \text{RoPE}_t(x) \otimes \text{RoPE}_h(x) \otimes 
 
 아래 그림은 Qwen3-Omni의 전체 아키텍처를 보여준다. Thinker-Talker 구조로, Thinker가 텍스트를 생성하고 Talker가 실시간 음성 토큰을 생성하는 이중 구조이다.
 
-![Qwen3-Omni Thinker-Talker 아키텍처 — Vision Encoder, AuT, MoE Thinker/Talker, MTP Module](figures/fig_2.png)
-*Figure 2: Qwen3-Omni 아키텍처 개요 — Thinker(MoE 기반 텍스트 생성)와 Talker(MoE 기반 음성 토큰 생성)의 이중 구조. Vision Encoder와 AuT로 시각/오디오 입력을 처리하고, Thinker의 중간 레이어 표현을 Talker에 전달하여 MTP(Multi-Token Prediction) 모듈로 스트리밍 음성을 생성한다. (Source: Qwen Team, 2025)*
+![Qwen3-Omni Thinker-Talker 아키텍처 - Vision Encoder, AuT, MoE Thinker/Talker, MTP Module](figures/fig_2.png)
+*Figure 2: Qwen3-Omni 아키텍처 개요 - Thinker(MoE 기반 텍스트 생성)와 Talker(MoE 기반 음성 토큰 생성)의 이중 구조. Vision Encoder와 AuT로 시각/오디오 입력을 처리하고, Thinker의 중간 레이어 표현을 Talker에 전달하여 MTP(Multi-Token Prediction) 모듈로 스트리밍 음성을 생성한다. (Source: Qwen Team, 2025)*
 
 ### Qwen3 디코더
 
@@ -105,4 +105,4 @@ Qwen3-Omni의 학습은 모든 모달리티를 포괄하는 대규모 데이터�
 
 ## 관련 문서
 
-- [[qwen3|Qwen3]] — 발전 기반
+- [[qwen3|Qwen3]] - 발전 기반

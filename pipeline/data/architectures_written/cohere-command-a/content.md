@@ -6,11 +6,11 @@
 
 Cohere Command A는 Cohere가 2025년 3월 공개한 111B 파라미터 기업용 대형 언어 모델로, 256K 토큰의 초장문 컨텍스트를 지원한다. 기업 환경에서의 에이전틱 태스크, RAG(검색 증강 생성), 다국어 처리, 복잡한 분석 워크플로에 최적화되어 있다. GPT-4o 및 Claude 3.5 Sonnet 대비 유사하거나 우수한 성능을 보이면서도, 2개의 GPU 서버에서 셀프 호스팅이 가능한 실용적인 배포 효율성을 갖추고 있어 온프레미스 기업 배포에 적합하다.
 
-Command A는 Cohere의 기업 AI 전략에서 핵심적인 위치를 차지한다. 기존 Command 시리즈가 범용 텍스트 생성에 초점을 맞췄다면, Command A는 에이전틱 워크플로—도구 호출, 멀티스텝 추론, 구조화된 출력을 통해 복잡한 비즈니스 프로세스를 자동화하는 능력—에 특화되었다. 23개 비즈니스 언어를 지원하여 글로벌 기업 환경에서의 실용성을 극대화하였으며, 특히 RAG 파이프라인에서의 사실성(factuality)이 크게 강화되어 기업의 내부 지식 기반 질의응답에 높은 신뢰성을 제공한다.
+Command A는 Cohere의 기업 AI 전략에서 핵심적인 위치를 차지한다. 기존 Command 시리즈가 범용 텍스트 생성에 초점을 맞췄다면, Command A는 에이전틱 워크플로-도구 호출, 멀티스텝 추론, 구조화된 출력을 통해 복잡한 비즈니스 프로세스를 자동화하는 능력-에 특화되었다. 23개 비즈니스 언어를 지원하여 글로벌 기업 환경에서의 실용성을 극대화하였으며, 특히 RAG 파이프라인에서의 사실성(factuality)이 크게 강화되어 기업의 내부 지식 기반 질의응답에 높은 신뢰성을 제공한다.
 
-![Cohere Command A 아키텍처 — 111B Decoder-only Transformer with GQA, SwiGLU, 256K 컨텍스트 구조](figures/architecture.svg)
+![Cohere Command A 아키텍처 - 111B Decoder-only Transformer with GQA, SwiGLU, 256K 컨텍스트 구조](figures/architecture.svg)
 
-*Figure 1: Command A 아키텍처 — GQA 어텐션, SwiGLU 활성화, RMSNorm을 적용한 111B 파라미터 Decoder-only Transformer로, 256K 토큰 컨텍스트와 에이전틱 워크플로를 지원한다.*
+*Figure 1: Command A 아키텍처 - GQA 어텐션, SwiGLU 활성화, RMSNorm을 적용한 111B 파라미터 Decoder-only Transformer로, 256K 토큰 컨텍스트와 에이전틱 워크플로를 지원한다.*
 
 ## 아키텍처 상세
 
@@ -188,4 +188,4 @@ Cohere Command A은 RAG, Agentic AI, Function Calling 분야의 발전에 기여
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 발전 기반
+- [[transformer|Transformer]] - 발전 기반

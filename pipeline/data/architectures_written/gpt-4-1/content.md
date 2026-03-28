@@ -210,4 +210,4 @@ $$f(x_m, m) = x_m e^{im\theta}, \quad \theta_j = 10000^{-2j/d}$$
 
 ## 관련 문서
 
-- [[gpt-4|GPT-4]] — 발전 기반
+- [[gpt-4|GPT-4]] - 발전 기반

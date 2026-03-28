@@ -173,4 +173,4 @@ Gemma 3는 "단일 GPU에서 실행 가능한 최강 오픈소스 모델"이라�
 
 ## 관련 문서
 
-- [[gemma|Gemma: Open Models Based on Gemini Research and Technology]] — 발전 기반
+- [[gemma|Gemma: Open Models Based on Gemini Research and Technology]] - 발전 기반

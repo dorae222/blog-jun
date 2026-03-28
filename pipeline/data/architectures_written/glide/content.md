@@ -9,8 +9,8 @@ GLIDE(Guided Language to Image Diffusion for Generation and Editing)는 2021년 
 - **발표**: 2021년 12월, OpenAI
 - **라이선스**: MIT (필터링 버전)
 
-![GLIDE 전체 아키텍처 — U-Net Denoiser, Text Conditioning, CFG 구조](figures/architecture.png)
-*Figure 1: GLIDE 전체 아키텍처 — 3.5B 파라미터 ADM U-Net에 Transformer 텍스트 인코더를 결합하고, Cross-Attention과 AdaGN의 이중 경로로 텍스트 조건을 주입한다. Classifier-Free Guidance(CFG) 수식과 핵심 사양을 함께 보여준다. (Source: Nichol et al., 2021)*
+![GLIDE 전체 아키텍처 - U-Net Denoiser, Text Conditioning, CFG 구조](figures/architecture.png)
+*Figure 1: GLIDE 전체 아키텍처 - 3.5B 파라미터 ADM U-Net에 Transformer 텍스트 인코더를 결합하고, Cross-Attention과 AdaGN의 이중 경로로 텍스트 조건을 주입한다. Classifier-Free Guidance(CFG) 수식과 핵심 사양을 함께 보여준다. (Source: Nichol et al., 2021)*
 
 ## 아키텍처 상세
 
@@ -18,14 +18,14 @@ GLIDE(Guided Language to Image Diffusion for Generation and Editing)는 2021년 
 
 GLIDE는 Transformer 기반 언어 모델로 텍스트를 처리하며, $K$개 토큰의 임베딩 시퀀스를 생성한다. 이 임베딩은 두 경로로 활용된다:
 
-**경로 1 — Cross-Attention:**
+**경로 1 - Cross-Attention:**
 
 U-Net의 각 어텐션 레이어에서 텍스트 임베딩을 Key·Value로 사용:
 
 $$\text{Attn}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d}}\right) V$$
 $$Q = W_Q \cdot h_{\text{image}}, \quad K = W_K \cdot h_{\text{text}}, \quad V = W_V \cdot h_{\text{text}}$$
 
-**경로 2 — AdaGN:**
+**경로 2 - AdaGN:**
 
 최종 토큰 임베딩을 타임스텝 임베딩에 더하여 AdaGN으로 각 레이어에 전역 조건 주입:
 
@@ -54,8 +54,8 @@ $$\tilde{\epsilon} = \epsilon_\theta(\mathbf{x}_t, \varnothing) + s \cdot (\epsi
 
 ### 인페인팅 (Inpainting)
 
-![GLIDE 텍스트 기반 인페인팅 — 마스크 영역을 텍스트 프롬프트에 따라 채우는 예시](figures/fig_2_1.jpg)
-*Figure 2: 텍스트 조건부 인페인팅 — 녹색 영역이 지워진 후, 텍스트 프롬프트에 따라 모델이 주변 맥락의 스타일과 조명에 맞춰 사실적으로 채워 넣는다. (Source: Nichol et al., 2021)*
+![GLIDE 텍스트 기반 인페인팅 - 마스크 영역을 텍스트 프롬프트에 따라 채우는 예시](figures/fig_2_1.jpg)
+*Figure 2: 텍스트 조건부 인페인팅 - 녹색 영역이 지워진 후, 텍스트 프롬프트에 따라 모델이 주변 맥락의 스타일과 조명에 맞춰 사실적으로 채워 넣는다. (Source: Nichol et al., 2021)*
 
 GLIDE는 인페인팅 기능도 제공한다:
 
@@ -75,8 +75,8 @@ GLIDE는 인페인팅 기능도 제공한다:
 3. **텍스트 기반 인페인팅**: 마스크 영역을 텍스트로 지정하여 편집하는 실용적 파이프라인을 시연하였다.
 4. **안전 필터링 공개**: 안전 필터를 적용한 축소 모델을 공개하여 연구 접근성을 높였다.
 
-![GLIDE CFG 생성 샘플 — 포토리얼리스틱한 이미지 생성 결과](figures/fig_1_1.png)
-*Figure 4: GLIDE의 Classifier-Free Guidance 생성 샘플 — 그림자와 반사를 포함한 사실적 이미지를 생성하며, 여러 개념을 올바르게 조합하고 새로운 개념의 예술적 렌더링도 가능하다. (Source: Nichol et al., 2021)*
+![GLIDE CFG 생성 샘플 - 포토리얼리스틱한 이미지 생성 결과](figures/fig_1_1.png)
+*Figure 4: GLIDE의 Classifier-Free Guidance 생성 샘플 - 그림자와 반사를 포함한 사실적 이미지를 생성하며, 여러 개념을 올바르게 조합하고 새로운 개념의 예술적 렌더링도 가능하다. (Source: Nichol et al., 2021)*
 
 ## 벤치마크/성능
 
@@ -112,7 +112,7 @@ GLIDE는 인페인팅 기능도 제공한다:
 GLIDE는 이후 DALL·E 2, Imagen, Stable Diffusion 등 모든 텍스트-이미지 확산 모델의 CFG + Cross-Attention 설계의 원형이 되었다.
 
 ![반복적 인페인팅으로 복잡한 장면을 생성하는 과정](figures/fig_3_1.jpg)
-*Figure 3: 반복 인페인팅 — "a cozy living room"으로 이미지를 생성한 후, 인페인팅 마스크와 후속 텍스트 프롬프트를 사용하여 벽에 그림, 커피 테이블, 꽃병을 순차적으로 추가하는 과정. (Source: Nichol et al., 2021)*
+*Figure 3: 반복 인페인팅 - "a cozy living room"으로 이미지를 생성한 후, 인페인팅 마스크와 후속 텍스트 프롬프트를 사용하여 벽에 그림, 커피 테이블, 꽃병을 순차적으로 추가하는 과정. (Source: Nichol et al., 2021)*
 
 ### 2. 텍스트 기반 이미지 편집
 
@@ -144,5 +144,5 @@ GLIDE가 증명한 "CFG가 CLIP Guidance보다 우수하다"는 결론은 이후
 
 ## 관련 문서
 
-- [[classifier-guidance|Classifier Guidance (ADM)]] — 발전 기반
-- [[dalle-2|DALL·E 2]] — 후속 모델
+- [[classifier-guidance|Classifier Guidance (ADM)]] - 발전 기반
+- [[dalle-2|DALL·E 2]] - 후속 모델

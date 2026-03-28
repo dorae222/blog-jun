@@ -14,9 +14,9 @@ LangGraph의 핵심 통찰은 **"에이전트 워크플로는 본질적으로 �
 
 $$\text{Execute}(G, s_0) = s_n \text{ where } s_n \text{ reaches END or } n > \text{max\_iterations}$$
 
-![LangGraph 아키텍처 — StateGraph 기반 노드-엣지 구조의 에이전트 워크플로 오케스트레이션](figures/architecture.svg)
+![LangGraph 아키텍처 - StateGraph 기반 노드-엣지 구조의 에이전트 워크플로 오케스트레이션](figures/architecture.svg)
 
-*Figure 1: LangGraph 아키텍처 — 노드(처리 로직)와 엣지(전이 조건)로 구성된 유향 그래프에서 공유 상태 객체를 통해 조건부 분기, 루프, 되돌아가기 등 복잡한 에이전트 워크플로를 선언적으로 정의한다.*
+*Figure 1: LangGraph 아키텍처 - 노드(처리 로직)와 엣지(전이 조건)로 구성된 유향 그래프에서 공유 상태 객체를 통해 조건부 분기, 루프, 되돌아가기 등 복잡한 에이전트 워크플로를 선언적으로 정의한다.*
 
 ## 아키텍처 상세
 
@@ -178,4 +178,4 @@ LangGraph는 ReAct의 추론-행동 루프를 그래프 구조로 형식화한 �
 
 ## 관련 문서
 
-- [[react|ReAct]] — 발전 기반
+- [[react|ReAct]] - 발전 기반

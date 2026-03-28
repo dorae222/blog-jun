@@ -12,8 +12,8 @@ PaLM은 29개 NLP 태스크 중 28개에서 기존 SOTA를 능가하고, BIG-Ben
 
 다음은 PaLM이 Chain-of-Thought 프롬프팅을 통해 농담 설명과 논리적 추론을 수행하는 예시이다.
 
-![PaLM의 Chain-of-Thought 프롬프팅 예시 — 농담 설명과 논리적 추론](figures/fig_1.png)
-*Figure 1: PaLM 540B의 Chain-of-Thought 프롬프팅 예시 — 2-shot 프롬프트로 농담 설명과 논리적 추론을 수행한다. (Source: Chowdhery et al., 2022)*
+![PaLM의 Chain-of-Thought 프롬프팅 예시 - 농담 설명과 논리적 추론](figures/fig_1.png)
+*Figure 1: PaLM 540B의 Chain-of-Thought 프롬프팅 예시 - 2-shot 프롬프트로 농담 설명과 논리적 추론을 수행한다. (Source: Chowdhery et al., 2022)*
 
 - **논문**: [PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311)
 - **라이선스**: Proprietary (비공개)
@@ -89,12 +89,12 @@ class PaLMBlock(nn.Module):
 아래 다이어그램은 Pathways 시스템이 두 개의 TPU v4 Pod에서 교차 그래디언트 전송을 통해 분산 학습을 수행하는 구조를 보여준다.
 
 ![Pathways 시스템 분산 학습 구조 다이어그램](figures/fig_2_1.png)
-*Figure 2: Pathways 시스템의 2-way 데이터 병렬화 — 두 TPU v4 Pod 간 교차 그래디언트 전송으로 6,144개 칩에서 효율적 분산 학습을 수행한다. (Source: Chowdhery et al., 2022)*
+*Figure 2: Pathways 시스템의 2-way 데이터 병렬화 - 두 TPU v4 Pod 간 교차 그래디언트 전송으로 6,144개 칩에서 효율적 분산 학습을 수행한다. (Source: Chowdhery et al., 2022)*
 
 - **6,144개 TPU v4** 칩에서 단일 모델 학습 (2개 TPU v4 Pod, 각 3,072 칩)
 - 이전 LLM 대비 **약 2배** 많은 칩 활용
 - 통신 병목 최소화: Pod 내 ICI(Inter-Chip Interconnect), Pod 간 DCN(Data Center Network) 활용
-- **57.8% MFU(Model FLOP Utilization)** 달성 — 이전 최고 기록인 Megatron-Turing NLG의 약 30%를 크게 상회
+- **57.8% MFU(Model FLOP Utilization)** 달성 - 이전 최고 기록인 Megatron-Turing NLG의 약 30%를 크게 상회
 
 Pathways의 핵심 혁신은 SPMD(Single Program Multiple Data) 기반의 유연한 파이프라인 스케줄링이다. 기존 시스템들이 고정된 파이프라인 병렬화를 사용한 반면, Pathways는 각 TPU Pod에서 독립적으로 forward/backward를 실행하고, Pod 간에는 비동기 그래디언트 전송으로 버블(bubble)을 최소화했다. 이러한 설계 덕분에 학습 중 하드웨어 장애 발생 시에도 빠른 복구가 가능했으며, 수주에 걸친 대규모 학습의 안정성을 확보할 수 있었다.
 
@@ -103,7 +103,7 @@ Pathways의 핵심 혁신은 SPMD(Single Program Multiple Data) 기반의 유연
 PaLM은 CoT 프롬프팅과 결합했을 때 **비약적인 추론 능력 향상**을 보여주었다. 아래 그림은 표준 프롬프팅과 CoT 프롬프팅의 차이를 명확히 보여준다.
 
 ![표준 프롬프팅과 Chain-of-Thought 프롬프팅 비교](figures/fig_10.png)
-*Figure 3: 표준 프롬프팅 vs Chain-of-Thought 프롬프팅 — CoT는 중간 추론 단계를 명시적으로 생성하여 수학 문제 같은 다단계 추론 정확도를 크게 향상시킨다. (Source: Chowdhery et al., 2022)*
+*Figure 3: 표준 프롬프팅 vs Chain-of-Thought 프롬프팅 - CoT는 중간 추론 단계를 명시적으로 생성하여 수학 문제 같은 다단계 추론 정확도를 크게 향상시킨다. (Source: Chowdhery et al., 2022)*
 
 $$P(\text{answer} | \text{question}) \rightarrow P(\text{answer} | \text{question}, \text{reasoning steps})$$
 
@@ -121,12 +121,12 @@ $$P(\text{answer} | \text{question}) \rightarrow P(\text{answer} | \text{questio
 다음은 BIG-bench 58개 공통 태스크에서 PaLM과 기존 모델들의 성능 비교이다.
 
 ![BIG-bench 58개 태스크에서의 모델 스케일별 성능 비교](figures/fig_3_1.png)
-*Figure 4: BIG-bench 58개 공통 태스크 성능 비교 — PaLM 540B가 GPT-3, Gopher, Chinchilla를 모든 스케일에서 압도하며, 파라미터 수 증가에 따른 명확한 성능 향상을 보인다. (Source: Chowdhery et al., 2022)*
+*Figure 4: BIG-bench 58개 공통 태스크 성능 비교 - PaLM 540B가 GPT-3, Gopher, Chinchilla를 모든 스케일에서 압도하며, 파라미터 수 증가에 따른 명확한 성능 향상을 보인다. (Source: Chowdhery et al., 2022)*
 
 CoT 프롬프팅을 적용한 추론 태스크에서도 PaLM은 광범위한 벤치마크에서 새로운 SOTA를 달성했다.
 
 ![CoT 프롬프팅 기반 산술 및 상식 추론 태스크 성능](figures/fig_12.png)
-*Figure 5: Chain-of-Thought 프롬프팅 기반 추론 성능 — GSM8K, SVAMP, StrategyQA 등에서 새로운 SOTA를 기록하며, 모델 스케일 증가에 따라 추론 능력이 비약적으로 향상됨을 보여준다. (Source: Chowdhery et al., 2022)*
+*Figure 5: Chain-of-Thought 프롬프팅 기반 추론 성능 - GSM8K, SVAMP, StrategyQA 등에서 새로운 SOTA를 기록하며, 모델 스케일 증가에 따라 추론 능력이 비약적으로 향상됨을 보여준다. (Source: Chowdhery et al., 2022)*
 
 ### 핵심 결과
 - 29개 NLP 태스크 중 **28개에서 SOTA**
@@ -150,11 +150,11 @@ CoT 프롬프팅을 적용한 추론 태스크에서도 PaLM은 광범위한 벤
 
 ### 데이터셋
 - **780B 토큰** 규모의 다국어 학습 코퍼스
-- 영어 웹 문서(웹페이지 27%, Books 13%, Wikipedia 4%) — 전체의 약 50%
-- 다국어 웹 문서 — 100개 이상 언어 포함
-- **GitHub 소스 코드** — 전체의 약 5%, 코드 생성 능력의 핵심 소스
-- 대화 데이터(소셜 미디어) — 대화 능력 강화 목적
-- SentencePiece 토크나이저(256K 어휘) 사용 — 다국어 커버리지를 위해 대형 어휘 채택
+- 영어 웹 문서(웹페이지 27%, Books 13%, Wikipedia 4%) - 전체의 약 50%
+- 다국어 웹 문서 - 100개 이상 언어 포함
+- **GitHub 소스 코드** - 전체의 약 5%, 코드 생성 능력의 핵심 소스
+- 대화 데이터(소셜 미디어) - 대화 능력 강화 목적
+- SentencePiece 토크나이저(256K 어휘) 사용 - 다국어 커버리지를 위해 대형 어휘 채택
 
 ### 스케일링 분석과 Breakthrough 능력
 
@@ -201,5 +201,5 @@ PaLM은 **현대 LLM의 아키텍처 표준(SwiGLU + RoPE + MQA + Parallel Block
 
 ## 관련 문서
 
-- [[gemini|Gemini]] — 후속 모델
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 영감
+- [[gemini|Gemini]] - 후속 모델
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 영감

@@ -12,12 +12,12 @@ Rectified Flow의 핵심 아이디어는 매우 단순하다: 독립적으로 �
 
 실제로 독립 커플링에서 시작하면 경로가 교차하여 완벽한 직선이 되지 않지만, **Reflow** 과정--현재 모델로 커플링을 재생성 후 재학습--을 반복하면 경로가 점점 직선에 수렴한다. Rectified Flow는 수학적으로 Flow Matching의 OT-CFM(Optimal Transport Conditional Flow Matching)과 동치이며, Stable Diffusion 3, FLUX.1 등 현대 대규모 생성 모델들이 채택한 Flow Matching의 이론적 기반이 되었다.
 
-![1-Rectified Flow와 2-Rectified Flow의 이미지 생성 결과 — 스텝 수에 따른 생성 품질 비교](figures/fig_1.jpg)
-*Figure 1: Rectified Flow의 이미지 생성 궤적 — 1-Rectified Flow는 N=2 이상에서 양호한 결과를 보이고, 2-Rectified Flow(Reflow 1회 적용)는 거의 직선 궤적을 형성하여 N=1(단일 스텝)에서도 고품질 샘플을 생성한다. (Source: Liu et al., 2022)*
+![1-Rectified Flow와 2-Rectified Flow의 이미지 생성 결과 - 스텝 수에 따른 생성 품질 비교](figures/fig_1.jpg)
+*Figure 1: Rectified Flow의 이미지 생성 궤적 - 1-Rectified Flow는 N=2 이상에서 양호한 결과를 보이고, 2-Rectified Flow(Reflow 1회 적용)는 거의 직선 궤적을 형성하여 N=1(단일 스텝)에서도 고품질 샘플을 생성한다. (Source: Liu et al., 2022)*
 
-![Rectified Flow 아키텍처 — 노이즈-데이터 직선 보간 경로와 Reflow 재학습 기반 생성 흐름 구조](figures/architecture.svg)
+![Rectified Flow 아키텍처 - 노이즈-데이터 직선 보간 경로와 Reflow 재학습 기반 생성 흐름 구조](figures/architecture.svg)
 
-*Figure 2: Rectified Flow 아키텍처 — 노이즈와 데이터 쌍을 선형 보간 경로로 연결하고 벡터 필드를 학습하며, Reflow 과정으로 경로를 직선에 수렴시켜 단일 스텝 생성을 가능하게 한다.*
+*Figure 2: Rectified Flow 아키텍처 - 노이즈와 데이터 쌍을 선형 보간 경로로 연결하고 벡터 필드를 학습하며, Reflow 과정으로 경로를 직선에 수렴시켜 단일 스텝 생성을 가능하게 한다.*
 
 ## 아키텍처 상세
 
@@ -39,8 +39,8 @@ $$\mathcal{L}(\theta) = \int_0^1 \mathbb{E}_{(X_0, X_1)}\left[\|v_\theta(X_t, t)
 
 ### Reflow 알고리즘: 경로 직선화
 
-![Rectified Flow의 경로 직선화 과정 — (a) 교차하는 선형 보간 경로, (b) 교차점에서 재배선된 궤적](figures/fig_2_1.png)
-*Figure 2(a): 선형 보간의 경로 교차 — 독립 커플링 $(X_0, X_1) \sim \pi_0 \times \pi_1$의 직선 보간 경로가 서로 교차하는 모습. Rectified Flow는 이 교차점에서 궤적을 재배선하여 비교차 특성을 달성한다. (Source: Liu et al., 2022)*
+![Rectified Flow의 경로 직선화 과정 - (a) 교차하는 선형 보간 경로, (b) 교차점에서 재배선된 궤적](figures/fig_2_1.png)
+*Figure 2(a): 선형 보간의 경로 교차 - 독립 커플링 $(X_0, X_1) \sim \pi_0 \times \pi_1$의 직선 보간 경로가 서로 교차하는 모습. Rectified Flow는 이 교차점에서 궤적을 재배선하여 비교차 특성을 달성한다. (Source: Liu et al., 2022)*
 
 1-Rectified Flow에서 학습된 벡터 필드 $v_\theta$로 ODE $dZ_t = v_\theta(Z_t, t)dt$를 풀면 커플링 $(Z_0, Z_1)$을 생성할 수 있다. 이 커플링은 독립 커플링보다 더 "정렬"되어 있으므로, 이를 새로운 학습 데이터로 사용하여 2-Rectified Flow를 학습하면 경로가 더욱 직선화된다:
 
@@ -50,13 +50,13 @@ $$\text{Reflow: } (Z_0, Z_1) \leftarrow \text{ODE}(v_\theta), \quad v_{\theta'} 
 
 ### 비교차 특성과 최적 수송
 
-![Reflow 반복에 따른 궤적 직선화 과정 — 토이 예제에서 Reflow 단계별 궤적 변화](figures/fig_3_1.png)
-*Figure 3(a): Reflow에 의한 궤적 직선화 — 토이 예제에서 보라색 점($\pi_0$)과 빨간색 점($\pi_1$) 사이의 궤적이 Reflow 반복에 따라 점차 직선에 수렴하며, 수송 비용이 최적 수송에 근접한다. (Source: Liu et al., 2022)*
+![Reflow 반복에 따른 궤적 직선화 과정 - 토이 예제에서 Reflow 단계별 궤적 변화](figures/fig_3_1.png)
+*Figure 3(a): Reflow에 의한 궤적 직선화 - 토이 예제에서 보라색 점($\pi_0$)과 빨간색 점($\pi_1$) 사이의 궤적이 Reflow 반복에 따라 점차 직선에 수렴하며, 수송 비용이 최적 수송에 근접한다. (Source: Liu et al., 2022)*
 
 학습된 흐름은 **비교차 특성(non-crossing property)**을 가진다: 서로 다른 초기점에서 출발한 궤적이 교차하지 않는다. 이 특성은 수송 비용 $\mathbb{E}[\|X_1 - X_0\|^2]$를 자연스럽게 최소화하는 방향으로 작용하며, Reflow를 반복할수록 최적 수송 맵에 수렴한다는 이론적 보장이 존재한다.
 
-![Rectified Flow와 VP ODE, sub-VP ODE의 궤적 비교 — 직선 경로 학습의 효과](figures/fig_4_1.png)
-*Figure 4: Rectified Flow vs VP/sub-VP ODE — Rectified Flow는 1회 Reflow로 거의 직선 궤적을 달성하지만, VP ODE와 sub-VP ODE는 곡선 궤적을 형성하며 Reflow로도 직선화가 불가능하다. (Source: Liu et al., 2022)*
+![Rectified Flow와 VP ODE, sub-VP ODE의 궤적 비교 - 직선 경로 학습의 효과](figures/fig_4_1.png)
+*Figure 4: Rectified Flow vs VP/sub-VP ODE - Rectified Flow는 1회 Reflow로 거의 직선 궤적을 달성하지만, VP ODE와 sub-VP ODE는 곡선 궤적을 형성하며 Reflow로도 직선화가 불가능하다. (Source: Liu et al., 2022)*
 
 ## 핵심 혁신
 
@@ -90,4 +90,4 @@ Rectified Flow는 Flow Matching의 이론적 변형이며, Stable Diffusion 3, F
 
 ## 관련 문서
 
-- [[flow-matching|Flow Matching]] — 변형 원본
+- [[flow-matching|Flow Matching]] - 변형 원본

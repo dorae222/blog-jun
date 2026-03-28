@@ -6,13 +6,13 @@
 
 전 구글 브레인 리더 이카이푸(李開複)가 설립한 01.AI가 2023년 11월 공개한 이중 언어(한중영) 고성능 LLM이다. LLaMA-2 아키텍처를 기반으로 하되 어휘를 64K로 확장해 중국어 토큰화 효율을 대폭 높이고, GQA를 도입해 추론 속도를 개선했다. 특히 Yi-34B-200K 버전은 200K 토큰이라는 당시 오픈 모델 중 최장 컨텍스트를 YARN·LongRoPE 기법으로 달성했다. 34B 모델이 Llama-2-70B에 필적하는 성능을 절반 파라미터로 달성해, LLaMA 아키텍처의 중국어 적용 가능성을 보여준 대표 사례가 되었다.
 
-![Yi 아키텍처 — LLaMA-2 기반 64K 어휘 확장, GQA, 200K YARN 컨텍스트 구조](figures/architecture.svg)
+![Yi 아키텍처 - LLaMA-2 기반 64K 어휘 확장, GQA, 200K YARN 컨텍스트 구조](figures/architecture.svg)
 
-*Figure 1: Yi 아키텍처 — LLaMA-2를 기반으로 64K 어휘로 CJK 문자 효율을 높이고, GQA로 추론을 가속하며, YARN으로 200K 토큰 컨텍스트를 지원하는 이중 언어 Decoder-only 모델이다.*
+*Figure 1: Yi 아키텍처 - LLaMA-2를 기반으로 64K 어휘로 CJK 문자 효율을 높이고, GQA로 추론을 가속하며, YARN으로 200K 토큰 컨텍스트를 지원하는 이중 언어 Decoder-only 모델이다.*
 
 ## 아키텍처 상세
 
-LLaMA-2 구조에서 3가지 변화: (1) 64K vocab—한자·한글 등 CJK 문자에 최적화된 토큰 추가로 중국어 텍스트 처리 효율 대폭 향상(LLaMA-2 32K 대비), (2) GQA 도입—KV 헤드 수 감소로 추론 KV 캐시 절감 및 처리량 향상, (3) 200K 컨텍스트—YARN(YetAnotherRoPE ExtensioN)으로 기본 4K RoPE를 200K까지 외삽. Yi-34B: MMLU 76.3%(Llama-2-70B: 68.9%), HumanEval 23.1%. Yi-6B: MMLU 61.4%(Llama-2-13B: 54.8%).
+LLaMA-2 구조에서 3가지 변화: (1) 64K vocab-한자·한글 등 CJK 문자에 최적화된 토큰 추가로 중국어 텍스트 처리 효율 대폭 향상(LLaMA-2 32K 대비), (2) GQA 도입-KV 헤드 수 감소로 추론 KV 캐시 절감 및 처리량 향상, (3) 200K 컨텍스트-YARN(YetAnotherRoPE ExtensioN)으로 기본 4K RoPE를 200K까지 외삽. Yi-34B: MMLU 76.3%(Llama-2-70B: 68.9%), HumanEval 23.1%. Yi-6B: MMLU 61.4%(Llama-2-13B: 54.8%).
 
 ## 모델 사양
 
@@ -42,19 +42,19 @@ LLaMA-2 구조에서 3가지 변화: (1) 64K vocab—한자·한글 등 CJK 문�
 
 Yi의 학습 데이터 품질은 엄격한 전처리 파이프라인을 통해 확보된다.
 
-![Yi의 사전학습 데이터 클리닝 파이프라인 — 다단계 필터링과 품질 관리](figures/fig_1.png)
-*Figure 1: Yi 사전학습 데이터 클리닝 파이프라인 — 웹 데이터부터 고품질 코퍼스까지 다단계 필터링, 중복 제거, 품질 점수화를 거쳐 학습 데이터를 구성한다. (Source: Young et al., 2024)*
+![Yi의 사전학습 데이터 클리닝 파이프라인 - 다단계 필터링과 품질 관리](figures/fig_1.png)
+*Figure 1: Yi 사전학습 데이터 클리닝 파이프라인 - 웹 데이터부터 고품질 코퍼스까지 다단계 필터링, 중복 제거, 품질 점수화를 거쳐 학습 데이터를 구성한다. (Source: Young et al., 2024)*
 
 아래 차트는 3.1T 토큰으로 구성된 이중 언어 데이터의 소스별 비율을 보여준다.
 
-![Yi 사전학습 데이터 구성 — 영어와 중국어 이중 언어 데이터 혼합 비율](figures/fig_2.png)
-*Figure 2: Yi 사전학습 데이터 구성 — 3.1T 토큰의 고품질 영어/중국어 이중 언어 데이터로, LLaMA와 Falcon 대비 더 엄격한 클리닝 파이프라인을 통해 구축되었다. (Source: Young et al., 2024)*
+![Yi 사전학습 데이터 구성 - 영어와 중국어 이중 언어 데이터 혼합 비율](figures/fig_2.png)
+*Figure 2: Yi 사전학습 데이터 구성 - 3.1T 토큰의 고품질 영어/중국어 이중 언어 데이터로, LLaMA와 Falcon 대비 더 엄격한 클리닝 파이프라인을 통해 구축되었다. (Source: Young et al., 2024)*
 
 3T 토큰 이상(영어 약 60%, 중국어 약 40%). BPE 64K vocab(SentencePiece). AdamW, cosine lr schedule, gradient clipping. Flash Attention 2 적용. Yi-34B-200K은 YARN 방식으로 컨텍스트 외삽 후 장문 데이터로 추가 파인튜닝.
 
 ### 관련 모델
 
-- **llama** — 영감
+- **llama** - 영감
 
 ### 어텐션 메커니즘: GQA
 
@@ -100,8 +100,8 @@ SwiGLU는 SiLU 활성화와 게이트 메커니즘을 결합한 FFN 활성화 �
 
 SFT 데이터의 품질이 스케일링에 미치는 영향은 아래 그래프에서 확인할 수 있다.
 
-![SFT 데이터 스케일링 곡선 — Yi의 고품질 SFT 데이터가 UltraChat 대비 가파른 성능 향상을 보임](figures/fig_5.png)
-*Figure 3: SFT 데이터 스케일링 곡선 — Yi의 SFT 데이터(주황색)는 UltraChat(파란색) 대비 가파른 스케일링 기울기를 보이며, 데이터 품질의 중요성을 입증한다. (Source: Young et al., 2024)*
+![SFT 데이터 스케일링 곡선 - Yi의 고품질 SFT 데이터가 UltraChat 대비 가파른 성능 향상을 보임](figures/fig_5.png)
+*Figure 3: SFT 데이터 스케일링 곡선 - Yi의 SFT 데이터(주황색)는 UltraChat(파란색) 대비 가파른 스케일링 기울기를 보이며, 데이터 품질의 중요성을 입증한다. (Source: Young et al., 2024)*
 
 ## 벤치마크/성능
 
@@ -124,8 +124,8 @@ Yi은 GQA, RoPE 연구의 표준 베이스라인으로 활용된다.
 
 Yi-34B-200K의 200K 컨텍스트 성능은 Needle-in-a-Haystack 평가에서 확인된다.
 
-![Yi-34B-200K Needle-in-a-Haystack 평가 — 200K 토큰까지 거의 완벽한 검색 성능](figures/fig_6.png)
-*Figure 4: Yi-34B-200K Needle-in-a-Haystack 평가 — 200K 토큰 길이까지 거의 전체 영역에서 녹색(성공)을 보이며, YARN 기반 컨텍스트 외삽의 효과를 입증한다. (Source: Young et al., 2024)*
+![Yi-34B-200K Needle-in-a-Haystack 평가 - 200K 토큰까지 거의 완벽한 검색 성능](figures/fig_6.png)
+*Figure 4: Yi-34B-200K Needle-in-a-Haystack 평가 - 200K 토큰 길이까지 거의 전체 영역에서 녹색(성공)을 보이며, YARN 기반 컨텍스트 외삽의 효과를 입증한다. (Source: Young et al., 2024)*
 
 ## 한계 및 전망
 
@@ -201,4 +201,4 @@ $$f(x_m, m) = x_m e^{im\theta}, \quad \theta_j = 10000^{-2j/d}$$
 
 ## 관련 문서
 
-- [[llama|LLaMA: Open and Efficient Foundation Language Models]] — 영감
+- [[llama|LLaMA: Open and Efficient Foundation Language Models]] - 영감

@@ -12,12 +12,12 @@ CoT의 핵심 통찰은 단순하지만 혁명적이다. 기존 few-shot 프롬�
 
 아래 그림은 표준 프롬프팅과 CoT 프롬프팅의 차이를 직관적으로 보여준다. 중간 추론 과정(하이라이트)을 예시에 포함시키는 것만으로 정답률이 극적으로 향상된다.
 
-![표준 프롬프팅 vs CoT 프롬프팅 비교 — 중간 추론 단계 포함 여부에 따른 정답 차이](figures/fig_1.png)
-*Figure 1: 표준 프롬프팅 vs CoT 프롬프팅 — 표준 방식은 입력-출력 쌍만 제공하여 오답을 생성하지만, CoT 방식은 단계별 추론 과정(하이라이트)을 포함시켜 정확한 답을 도출한다. (Source: Wei et al., 2022)*
+![표준 프롬프팅 vs CoT 프롬프팅 비교 - 중간 추론 단계 포함 여부에 따른 정답 차이](figures/fig_1.png)
+*Figure 1: 표준 프롬프팅 vs CoT 프롬프팅 - 표준 방식은 입력-출력 쌍만 제공하여 오답을 생성하지만, CoT 방식은 단계별 추론 과정(하이라이트)을 포함시켜 정확한 답을 도출한다. (Source: Wei et al., 2022)*
 
-![Chain-of-Thought 프롬프팅 아키텍처 — 입력-중간 추론 단계-출력 삼중 구조 예시를 활용한 추론 유도 기법](figures/architecture.svg)
+![Chain-of-Thought 프롬프팅 아키텍처 - 입력-중간 추론 단계-출력 삼중 구조 예시를 활용한 추론 유도 기법](figures/architecture.svg)
 
-*Figure 2: CoT 프롬프팅 아키텍처 — 표준 few-shot 프롬프팅의 입력-출력 쌍에 중간 추론 단계를 추가하여, 100B+ 규모 모델에서 수학·상식·기호 추론의 창발적 능력을 유도한다.*
+*Figure 2: CoT 프롬프팅 아키텍처 - 표준 few-shot 프롬프팅의 입력-출력 쌍에 중간 추론 단계를 추가하여, 100B+ 규모 모델에서 수학·상식·기호 추론의 창발적 능력을 유도한다.*
 
 ## 아키텍처 상세
 
@@ -54,8 +54,8 @@ $$P(y|x) = \sum_{z_1,...,z_n} P(z_1|x) \cdot P(z_2|z_1,x) \cdot \ldots \cdot P(y
 
 아래 그림은 수학, 상식 추론, 기호 조작 등 다양한 태스크에서의 CoT 예시를 보여준다.
 
-![산술, 상식, 기호 추론 벤치마크에서의 CoT 예시 — 다양한 추론 유형별 중간 사고 과정](figures/fig_3.png)
-*Figure 2: 다양한 추론 벤치마크의 CoT 예시 — 수학(Math Word Problem, MultiArith), 상식(CSQA, StrategyQA), 기호 조작(Last Letter Concatenation, Coin Flip) 등 각 벤치마크별 입력-추론과정-출력 트리플. (Source: Wei et al., 2022)*
+![산술, 상식, 기호 추론 벤치마크에서의 CoT 예시 - 다양한 추론 유형별 중간 사고 과정](figures/fig_3.png)
+*Figure 2: 다양한 추론 벤치마크의 CoT 예시 - 수학(Math Word Problem, MultiArith), 상식(CSQA, StrategyQA), 기호 조작(Last Letter Concatenation, Coin Flip) 등 각 벤치마크별 입력-추론과정-출력 트리플. (Source: Wei et al., 2022)*
 
 ### Zero-Shot CoT
 
@@ -77,11 +77,11 @@ A: Let's think step by step.
 
 CoT의 효과는 모델 크기에 강하게 의존한다. PaLM 8B에서는 CoT의 효과가 미미하거나 오히려 성능이 하락하지만, PaLM 62B에서 효과가 나타나기 시작하고, PaLM 540B에서 극적인 성능 향상을 보인다. 아래 그림은 PaLM 62B에서 발생한 오류가 540B로 스케일업하면서 해결되는 사례를 보여준다.
 
-![PaLM 62B 오류 분석 — 의미 이해, 단계 누락, 기타 오류 분류 및 540B에서의 수정 비율](figures/fig_9.png)
-*Figure 3: PaLM 62B 오류 분석 — GSM8K에서 62B 모델이 틀린 45개 문제를 분석한 결과, 의미 이해(semantic understanding), 단계 누락(one step missing), 기타(환각, 반복) 오류로 분류된다. 540B로 스케일업 시 모든 카테고리에서 상당 비율이 수정된다. (Source: Wei et al., 2022)*
+![PaLM 62B 오류 분석 - 의미 이해, 단계 누락, 기타 오류 분류 및 540B에서의 수정 비율](figures/fig_9.png)
+*Figure 3: PaLM 62B 오류 분석 - GSM8K에서 62B 모델이 틀린 45개 문제를 분석한 결과, 의미 이해(semantic understanding), 단계 누락(one step missing), 기타(환각, 반복) 오류로 분류된다. 540B로 스케일업 시 모든 카테고리에서 상당 비율이 수정된다. (Source: Wei et al., 2022)*
 
-![PaLM 62B에서 540B로 스케일업 시 수정되는 오류 예시 — 의미 이해 및 단계 누락](figures/fig_10.png)
-*Figure 4: 스케일링에 의한 오류 수정 예시 — (좌) 62B에서 의미 이해 오류가 발생한 문제가 540B에서 정확히 해결되는 사례. (우) 62B에서 한 단계를 누락한 오류가 540B에서 보완되는 사례. (Source: Wei et al., 2022)*
+![PaLM 62B에서 540B로 스케일업 시 수정되는 오류 예시 - 의미 이해 및 단계 누락](figures/fig_10.png)
+*Figure 4: 스케일링에 의한 오류 수정 예시 - (좌) 62B에서 의미 이해 오류가 발생한 문제가 540B에서 정확히 해결되는 사례. (우) 62B에서 한 단계를 누락한 오류가 540B에서 보완되는 사례. (Source: Wei et al., 2022)*
 
 이는 특정 임계점을 넘어야 창발하는 능력(emergent ability)의 대표적 사례다.
 
@@ -122,6 +122,6 @@ CoT는 이후 등장한 거의 모든 에이전트 추론 기법의 근간이다
 
 ## 관련 문서
 
-- [[react|ReAct]] — 후속 모델
-- [[self-consistency|Self-Consistency]] — 후속 모델
-- [[tree-of-thoughts|Tree of Thoughts]] — 후속 모델
+- [[react|ReAct]] - 후속 모델
+- [[self-consistency|Self-Consistency]] - 후속 모델
+- [[tree-of-thoughts|Tree of Thoughts]] - 후속 모델

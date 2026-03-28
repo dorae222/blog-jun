@@ -10,8 +10,8 @@ InternVL은 이 불균형을 해소하기 위해 **InternViT-6B**라는 6B 파�
 
 아래 그림은 기존 비전 파운데이션 모델 패러다임과 InternVL의 차이를 보여준다.
 
-![비전 파운데이션 모델 패러다임 비교 — 전통적 비전 모델, CLIP, InternVL](figures/fig_1.png)
-*Figure 1: 비전 파운데이션 모델 패러다임 비교 — (a) 전통적 분류 기반 비전 모델, (b) CLIP 스타일 비전-언어 대조 학습, (c) InternVL은 6B 규모 비전 인코더를 LLM과 정렬하여 대조 및 생성 태스크 모두 처리한다. (Source: Chen et al., 2023)*
+![비전 파운데이션 모델 패러다임 비교 - 전통적 비전 모델, CLIP, InternVL](figures/fig_1.png)
+*Figure 1: 비전 파운데이션 모델 패러다임 비교 - (a) 전통적 분류 기반 비전 모델, (b) CLIP 스타일 비전-언어 대조 학습, (c) InternVL은 6B 규모 비전 인코더를 LLM과 정렬하여 대조 및 생성 태스크 모두 처리한다. (Source: Chen et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -40,8 +40,8 @@ InternViT-6B는 기존 ViT-L 대비 **20배 큰 규모**로, 고해상도 이미
 
 InternVL의 학습은 세 단계로 진행된다. 아래 그림은 각 단계에서의 모듈 구성과 학습 가능한 가중치를 시각적으로 보여준다.
 
-![InternVL 3단계 점진적 학습 전략 — 대조 학습, 생성 학습, 지도 미세조정](figures/fig_3.png)
-*Figure 2: InternVL 점진적 학습 전략 — Stage 1에서 대조 학습으로 비전-언어 공유 공간을 구축하고, Stage 2에서 생성 학습으로 캡셔닝 능력을 획득하며, Stage 3에서 지도 미세조정으로 VQA 및 멀티모달 대화를 지원한다. (Source: Chen et al., 2023)*
+![InternVL 3단계 점진적 학습 전략 - 대조 학습, 생성 학습, 지도 미세조정](figures/fig_3.png)
+*Figure 2: InternVL 점진적 학습 전략 - Stage 1에서 대조 학습으로 비전-언어 공유 공간을 구축하고, Stage 2에서 생성 학습으로 캡셔닝 능력을 획득하며, Stage 3에서 지도 미세조정으로 VQA 및 멀티모달 대화를 지원한다. (Source: Chen et al., 2023)*
 
 **Stage 1: 대조 학습 (Contrastive Learning)**
 - CLIP 스타일의 이미지-텍스트 대조 학습
@@ -79,13 +79,13 @@ $$\text{Pixel Shuffle}: \mathbb{R}^{H \times W \times C} \rightarrow \mathbb{R}^
 
 InternViT-6B는 분류, 검출, 세그멘테이션, 멀티모달 이해 등 다양한 비전 태스크에서 범용적으로 사용 가능한 비전 파운데이션 모델로 설계되었다. 아래 그림은 InternVL의 다양한 활용 방식을 보여준다.
 
-![InternVL의 다양한 활용 방식 — 대조 태스크, 생성 태스크, 멀티모달 대화](figures/fig_4.png)
-*Figure 3: InternVL 활용 방식 — 비전 인코더와 언어 미들웨어를 유연하게 결합하여 대조 태스크(검색, 분류), 생성 태스크(캡셔닝), 멀티모달 대화 등 다양한 비전-언어 태스크를 처리한다. (Source: Chen et al., 2023)*
+![InternVL의 다양한 활용 방식 - 대조 태스크, 생성 태스크, 멀티모달 대화](figures/fig_4.png)
+*Figure 3: InternVL 활용 방식 - 비전 인코더와 언어 미들웨어를 유연하게 결합하여 대조 태스크(검색, 분류), 생성 태스크(캡셔닝), 멀티모달 대화 등 다양한 비전-언어 태스크를 처리한다. (Source: Chen et al., 2023)*
 
 InternVL은 이미지 분류, 비디오 분류, 이미지-텍스트 검색, 캡셔닝, 멀티모달 대화 등 범용 시각-언어 태스크 전반에서 최고 성능을 달성했다.
 
-![다양한 시각-언어 태스크에서의 InternVL 성능 비교 — 이미지/비디오 분류, 검색, 캡셔닝, 대화](figures/fig_2.png)
-*Figure 4: InternVL 벤치마크 성능 비교 — 이미지 분류, 비디오 분류, 이미지-텍스트 검색, 캡셔닝, 멀티모달 대화 등 모든 범용 시각-언어 태스크에서 기존 모델 대비 최고 성능을 달성한다. 공개 데이터로만 학습된 모델만 포함. (Source: Chen et al., 2023)*
+![다양한 시각-언어 태스크에서의 InternVL 성능 비교 - 이미지/비디오 분류, 검색, 캡셔닝, 대화](figures/fig_2.png)
+*Figure 4: InternVL 벤치마크 성능 비교 - 이미지 분류, 비디오 분류, 이미지-텍스트 검색, 캡셔닝, 멀티모달 대화 등 모든 범용 시각-언어 태스크에서 기존 모델 대비 최고 성능을 달성한다. 공개 데이터로만 학습된 모델만 포함. (Source: Chen et al., 2023)*
 
 ## 벤치마크/성능
 
@@ -158,5 +158,5 @@ InternVL은 "비전 인코더도 LLM처럼 스케일업해야 한다"는 명제�
 
 ## 관련 문서
 
-- [[clip|CLIP]] — 발전 기반
-- [[internvl-3|InternVL 3]] — 후속 모델
+- [[clip|CLIP]] - 발전 기반
+- [[internvl-3|InternVL 3]] - 후속 모델

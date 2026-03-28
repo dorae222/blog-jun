@@ -8,9 +8,9 @@ LoRA(Low-Rank Adaptation)는 Edward Hu 등이 2021년 Microsoft Research에서 �
 
 LoRA는 이 문제를 **저랭크 분해(Low-Rank Decomposition)**로 해결한다. 사전 학습된 가중치를 동결한 채로 각 Transformer 레이어에 작은 저랭크 행렬 쌍을 삽입하여, GPT-3 기준 학습 파라미터를 **최대 10,000배** 줄이면서도 전체 파인튜닝과 동등하거나 더 나은 성능을 달성한다. 추론 시에는 어댑터 가중치를 원본에 병합할 수 있어 **추론 지연이 전혀 발생하지 않는다**.
 
-![LoRA 아키텍처 — 사전 학습 가중치를 동결한 채 저랭크 행렬 쌍을 삽입하는 파라미터 효율적 파인튜닝 구조](figures/architecture.svg)
+![LoRA 아키텍처 - 사전 학습 가중치를 동결한 채 저랭크 행렬 쌍을 삽입하는 파라미터 효율적 파인튜닝 구조](figures/architecture.svg)
 
-*Figure 1: LoRA 아키텍처 — 각 Transformer 레이어에 저랭크 행렬 A와 B를 병렬로 삽입하여, 학습 파라미터를 최대 10,000배 줄이면서 추론 시 지연 없이 원본 가중치에 병합 가능한 구조이다.*
+*Figure 1: LoRA 아키텍처 - 각 Transformer 레이어에 저랭크 행렬 A와 B를 병렬로 삽입하여, 학습 파라미터를 최대 10,000배 줄이면서 추론 시 지연 없이 원본 가중치에 병합 가능한 구조이다.*
 
 ## 기법 상세
 
@@ -18,8 +18,8 @@ LoRA는 이 문제를 **저랭크 분해(Low-Rank Decomposition)**로 해결한�
 
 아래 그림은 LoRA의 재파라미터화 방식을 시각적으로 보여준다. 사전 학습된 가중치 W는 동결하고, 저랭크 행렬 A와 B만 학습한다.
 
-![LoRA 재파라미터화 구조 — 동결된 사전 학습 가중치 W와 저랭크 행렬 A, B의 병렬 구조](figures/fig_1.png)
-*Figure 1: LoRA 재파라미터화 — 사전 학습된 가중치 W는 동결하고, 저랭크 행렬 A(가우시안 초기화)와 B(0 초기화)만 학습한다. (Source: Hu et al., 2021)*
+![LoRA 재파라미터화 구조 - 동결된 사전 학습 가중치 W와 저랭크 행렬 A, B의 병렬 구조](figures/fig_1.png)
+*Figure 1: LoRA 재파라미터화 - 사전 학습된 가중치 W는 동결하고, 저랭크 행렬 A(가우시안 초기화)와 B(0 초기화)만 학습한다. (Source: Hu et al., 2021)*
 
 사전 학습된 가중치 행렬 W₀ ∈ R^{d×k}가 있을 때, 파인튜닝은 이 가중치를 W₀ + ΔW로 업데이트한다. LoRA의 핵심 가설은 **가중치 변화량 ΔW가 낮은 내재 랭크(intrinsic rank)를 가진다**는 것이다.
 
@@ -82,8 +82,8 @@ GPT-3 175B 기준:
 
 다음 히트맵은 서로 다른 랭크(r=8, r=64)의 LoRA 행렬 A 열 벡터 간 부분공간 유사도를 분석한 결과로, 낮은 랭크에서도 핵심 방향이 충분히 포착됨을 보여준다.
 
-![랭크별 부분공간 유사도 분석 — r=8과 r=64 간 ΔWq, ΔWv 열 벡터 비교](figures/fig_3.png)
-*Figure 3: 랭크별 부분공간 유사도 — r=8의 상위 방향이 r=64에도 포함되어 있어, 낮은 랭크로도 핵심 적응 방향을 효과적으로 포착할 수 있음을 입증한다. (Source: Hu et al., 2021)*
+![랭크별 부분공간 유사도 분석 - r=8과 r=64 간 ΔWq, ΔWv 열 벡터 비교](figures/fig_3.png)
+*Figure 3: 랭크별 부분공간 유사도 - r=8의 상위 방향이 r=64에도 포함되어 있어, 낮은 랭크로도 핵심 적응 방향을 효과적으로 포착할 수 있음을 입증한다. (Source: Hu et al., 2021)*
 
 ## 핵심 혁신
 
@@ -119,8 +119,8 @@ LoRA는 학습 파라미터가 수만 배 적으면서도 전체 파인튜닝과
 
 아래 그래프는 GPT-3 175B에서 학습 가능한 파라미터 수 대비 성능을 비교한 것으로, LoRA가 다른 적응 기법보다 우수한 확장성과 태스크 성능을 보여준다.
 
-![GPT-3 175B 검증 정확도 vs 학습 가능 파라미터 수 — 다양한 적응 기법 비교](figures/fig_2.png)
-*Figure 2: GPT-3 175B 성능 비교 — WikiSQL과 MNLI-matched에서 학습 가능 파라미터 수 대비 검증 정확도. LoRA가 적은 파라미터로 더 높은 성능을 달성한다. (Source: Hu et al., 2021)*
+![GPT-3 175B 검증 정확도 vs 학습 가능 파라미터 수 - 다양한 적응 기법 비교](figures/fig_2.png)
+*Figure 2: GPT-3 175B 성능 비교 - WikiSQL과 MNLI-matched에서 학습 가능 파라미터 수 대비 검증 정확도. LoRA가 적은 파라미터로 더 높은 성능을 달성한다. (Source: Hu et al., 2021)*
 
 ## 관련 기법 비교
 
@@ -136,8 +136,8 @@ LoRA만이 **추론 지연 없이** 높은 파라미터 효율성과 학습 안�
 
 다음 히트맵은 Adapter 기반 방식의 추론 지연 비율을 배치 크기와 시퀀스 길이에 따라 측정한 결과다. 짧은 시퀀스와 작은 배치에서 Adapter의 지연이 30% 이상에 달하는 반면, LoRA는 가중치 병합으로 이러한 지연이 완전히 제거된다.
 
-![Adapter 추론 지연 히트맵 — 배치 크기 및 시퀀스 길이별 지연 비율](figures/fig_5.png)
-*Figure 5: Adapter 추론 지연 분석 — 배치 크기와 시퀀스 길이에 따른 Adapter의 추론 지연 비율. 온라인 환경에서 최대 30% 이상의 지연이 발생하며, LoRA의 병합 방식이 이를 완전히 해결한다. (Source: Hu et al., 2021)*
+![Adapter 추론 지연 히트맵 - 배치 크기 및 시퀀스 길이별 지연 비율](figures/fig_5.png)
+*Figure 5: Adapter 추론 지연 분석 - 배치 크기와 시퀀스 길이에 따른 Adapter의 추론 지연 비율. 온라인 환경에서 최대 30% 이상의 지연이 발생하며, LoRA의 병합 방식이 이를 완전히 해결한다. (Source: Hu et al., 2021)*
 
 ## 실무 활용
 
@@ -247,4 +247,4 @@ LoRA는 HuggingFace PEFT 라이브러리에 기본 내장되어 현재 LLM 파�
 
 ## 관련 문서
 
-- [[qlora|QLoRA: Efficient Finetuning of Quantized LLMs]] — 후속 모델
+- [[qlora|QLoRA: Efficient Finetuning of Quantized LLMs]] - 후속 모델

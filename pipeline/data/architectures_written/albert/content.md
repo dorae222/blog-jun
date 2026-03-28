@@ -6,9 +6,9 @@
 
 ALBERT(A Lite BERT)는 2019년 9월 Google Research와 Toyota Technological Institute at Chicago(TTIC)가 공동 발표한 사전 학습 언어 모델이다. 이 모델은 BERT의 두 가지 근본적인 **메모리 비효율 문제**를 정면으로 해결하여, 파라미터 수를 대폭 줄이면서도 오히려 성능을 향상시키는 놀라운 결과를 달성했다.
 
-![ALBERT 아키텍처 — 임베딩 행렬 분해, 레이어 간 파라미터 공유, SOP 사전학습 구조](figures/architecture.svg)
+![ALBERT 아키텍처 - 임베딩 행렬 분해, 레이어 간 파라미터 공유, SOP 사전학습 구조](figures/architecture.svg)
 
-*Figure 1: ALBERT 아키텍처 — 임베딩 행렬을 V x E와 E x H로 분해하고, 모든 Transformer 레이어의 파라미터를 공유하여 BERT-Large 대비 18배 적은 파라미터로 동등 이상의 성능을 달성한다.*
+*Figure 1: ALBERT 아키텍처 - 임베딩 행렬을 V x E와 E x H로 분해하고, 모든 Transformer 레이어의 파라미터를 공유하여 BERT-Large 대비 18배 적은 파라미터로 동등 이상의 성능을 달성한다.*
 
 2019년 당시 NLP 분야는 "모델을 키우면 성능이 올라간다"는 스케일링 사고에 지배되어 있었다. BERT-Large(340M), XLNet, RoBERTa 등이 파라미터를 늘리며 경쟁하고 있었으나, 이는 GPU 메모리 제약으로 인해 학습과 배포에 점점 더 큰 부담을 주고 있었다. ALBERT는 이 문제에 대해 구조적 해법을 제시했다. 임베딩 행렬 분해(Factorized Embedding Parameterization)로 어휘 임베딩 크기와 히든 차원을 분리하고, 레이어 간 파라미터 공유(Cross-Layer Parameter Sharing)로 중복 학습을 제거했으며, NSP를 SOP(Sentence Order Prediction)로 대체하여 문장 간 관계 모델링을 강화했다. 결과적으로 BERT-Large 대비 **18배 적은 파라미터**로 GLUE 89.4점, SQuAD 2.0 92.2 F1을 기록하며 당시 SOTA를 달성했다.
 
@@ -51,10 +51,10 @@ $$h^{(l+1)} = f_\theta(h^{(l)}), \quad l = 0, 1, \ldots, L-1$$
 파라미터 공유가 레이어 간 표현에 미치는 영향은 아래 그래프에서 확인할 수 있다.
 
 ![BERT-large와 ALBERT-large의 레이어별 L2 거리 비교](figures/fig_1_1.png)
-*Figure 1: BERT-large vs ALBERT-large의 레이어별 입출력 L2 거리 — BERT는 레이어가 깊어질수록 L2 거리가 불규칙하게 변동하지만, ALBERT는 파라미터 공유로 인해 안정적인 패턴을 보인다. (Source: Lan et al., 2019)*
+*Figure 1: BERT-large vs ALBERT-large의 레이어별 입출력 L2 거리 - BERT는 레이어가 깊어질수록 L2 거리가 불규칙하게 변동하지만, ALBERT는 파라미터 공유로 인해 안정적인 패턴을 보인다. (Source: Lan et al., 2019)*
 
 ![BERT-large와 ALBERT-large의 레이어별 코사인 유사도 비교](figures/fig_1_2.png)
-*Figure 2: BERT-large vs ALBERT-large의 레이어별 입출력 코사인 유사도 — ALBERT의 파라미터 공유 레이어는 레이어 간 표현 변화가 더 안정적이며, 수렴하는 경향을 보인다. (Source: Lan et al., 2019)*
+*Figure 2: BERT-large vs ALBERT-large의 레이어별 입출력 코사인 유사도 - ALBERT의 파라미터 공유 레이어는 레이어 간 표현 변화가 더 안정적이며, 수렴하는 경향을 보인다. (Source: Lan et al., 2019)*
 
 ### SOP (Sentence Order Prediction)
 
@@ -147,11 +147,11 @@ ALBERT-XXLarge는 BERT-Large 대비 **파라미터 약 31% 절감**하면서 모
 
 ALBERT의 성능은 추가 데이터와 드롭아웃 제거를 통해 더욱 개선된다.
 
-![추가 데이터를 포함한 ALBERT의 MNLI 학습 곡선 — 데이터 추가로 성능이 향상](figures/fig_5.png)
-*Figure 3: 추가 데이터 효과 — ALBERT에 추가 학습 데이터를 제공하면 MNLI 성능이 지속적으로 향상되며, 파라미터 공유 구조가 더 많은 데이터를 효과적으로 활용함을 보여준다. (Source: Lan et al., 2019)*
+![추가 데이터를 포함한 ALBERT의 MNLI 학습 곡선 - 데이터 추가로 성능이 향상](figures/fig_5.png)
+*Figure 3: 추가 데이터 효과 - ALBERT에 추가 학습 데이터를 제공하면 MNLI 성능이 지속적으로 향상되며, 파라미터 공유 구조가 더 많은 데이터를 효과적으로 활용함을 보여준다. (Source: Lan et al., 2019)*
 
-![드롭아웃 제거 시 ALBERT의 MNLI 학습 곡선 — 드롭아웃 없이도 성능 향상](figures/fig_6.png)
-*Figure 4: 드롭아웃 제거 효과 — ALBERT는 파라미터 공유 자체가 정규화 역할을 하므로, 드롭아웃을 제거하면 오히려 MNLI 성능이 개선되는 흥미로운 결과를 보인다. (Source: Lan et al., 2019)*
+![드롭아웃 제거 시 ALBERT의 MNLI 학습 곡선 - 드롭아웃 없이도 성능 향상](figures/fig_6.png)
+*Figure 4: 드롭아웃 제거 효과 - ALBERT는 파라미터 공유 자체가 정규화 역할을 하므로, 드롭아웃을 제거하면 오히려 MNLI 성능이 개선되는 흥미로운 결과를 보인다. (Source: Lan et al., 2019)*
 
 ## 학습
 
@@ -173,4 +173,4 @@ ALBERT는 BERT를 직접 계승하면서, DistilBERT(지식 증류), ELECTRA(효
 
 ## 관련 문서
 
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 발전 기반
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 발전 기반

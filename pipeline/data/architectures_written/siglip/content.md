@@ -10,9 +10,9 @@ CLIP의 대조 학습(contrastive learning)은 배치 내 이미지-텍스트 �
 
 SigLIP은 각 이미지-텍스트 쌍을 **독립적인 이진 분류 문제**로 처리하므로, 전역 정규화가 불필요하고 분산 학습 효율이 크게 향상된다. 배치 크기가 작은 환경에서도 안정적으로 학습되어 학술 연구 환경에서도 재현 가능하며, 현재 대부분의 VLM(Vision-Language Model)에서 표준 비전 인코더로 채택되고 있다. PaliGemma 2, LLaVA-OneVision, MiniCPM-V 등 주요 오픈소스 VLM의 비전 백본으로 SigLIP-SO400M이 사실상 표준으로 자리잡았다. ImageNet 제로샷 분류에서 84.5%를 달성하여, CLIP의 76.2%를 8% 이상 상회하는 성능을 보이며, 이는 동일한 배치 크기에서 시그모이드 손실의 우수성을 명확하게 입증한다.
 
-![SigLIP 아키텍처 — 시그모이드 이진 분류 손실 기반 이중 인코더 시각-언어 사전학습 구조](figures/architecture.svg)
+![SigLIP 아키텍처 - 시그모이드 이진 분류 손실 기반 이중 인코더 시각-언어 사전학습 구조](figures/architecture.svg)
 
-*Figure 1: SigLIP 아키텍처 — CLIP의 소프트맥스 InfoNCE를 시그모이드 이진 분류 손실로 대체하여, 전역 정규화 없이 각 이미지-텍스트 쌍을 독립적으로 처리하며 배치 크기 의존성을 제거한다.*
+*Figure 1: SigLIP 아키텍처 - CLIP의 소프트맥스 InfoNCE를 시그모이드 이진 분류 손실로 대체하여, 전역 정규화 없이 각 이미지-텍스트 쌍을 독립적으로 처리하며 배치 크기 의존성을 제거한다.*
 
 ## 아키텍처 상세
 
@@ -120,6 +120,6 @@ SigLIP은 CLIP의 실질적 후계자로, 2024-2025년 대부분의 오픈소스
 
 ## 관련 문서
 
-- [[clip|CLIP]] — 발전 기반
-- [[siglip-2|SigLIP 2]] — 후속 모델
-- [[paligemma-2|PaliGemma 2]] — 적용 모델
+- [[clip|CLIP]] - 발전 기반
+- [[siglip-2|SigLIP 2]] - 후속 모델
+- [[paligemma-2|PaliGemma 2]] - 적용 모델

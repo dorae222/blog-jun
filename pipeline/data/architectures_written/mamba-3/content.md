@@ -10,9 +10,9 @@ Mamba-2의 SSD(Structured State Space Duality) 프레임워크를 계승하면�
 
 Mamba-3는 SSM 기반 모델의 실용 배포에 가장 가까워진 이정표로 평가받는다. 순수 SSM의 $O(1)$ 메모리 장점을 대부분 유지하면서, 소수의 어텐션 레이어로 in-context retrieval 능력을 크게 보완한 절충안을 제시한다.
 
-![Mamba-3 아키텍처 — SSD 블록과 소수의 Sparse Attention 레이어를 전략적으로 교차 배치한 하이브리드 구조](figures/architecture.svg)
+![Mamba-3 아키텍처 - SSD 블록과 소수의 Sparse Attention 레이어를 전략적으로 교차 배치한 하이브리드 구조](figures/architecture.svg)
 
-*Figure 1: Mamba-3 아키텍처 — 전체 레이어의 85~90%를 SSD 블록으로, 10~15%를 Sparse Attention으로 구성하여 SSM의 O(1) 메모리 장점을 유지하면서 in-context retrieval 능력을 보완한다.*
+*Figure 1: Mamba-3 아키텍처 - 전체 레이어의 85~90%를 SSD 블록으로, 10~15%를 Sparse Attention으로 구성하여 SSM의 O(1) 메모리 장점을 유지하면서 in-context retrieval 능력을 보완한다.*
 
 ## 아키텍처 상세
 
@@ -189,4 +189,4 @@ Mamba-3는 하이브리드 접근법을 채택함으로써 순수 SSM의 "어텐
 
 ## 관련 문서
 
-- [[mamba-2|Mamba-2]] — 발전 기반
+- [[mamba-2|Mamba-2]] - 발전 기반

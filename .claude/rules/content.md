@@ -39,7 +39,25 @@ paths:
 - Output 블록: ` ```output ` (실행 결과 표시)
 - BookmarkEmbed: URL을 카드형 임베드로 변환
 - Figure zoom: 이미지 클릭 시 확대
-- **Mermaid 사용 지양** — 텍스트 설명 또는 figure 이미지 사용
+- **Mermaid 사용 지양** - 텍스트 설명 또는 figure 이미지 사용
+
+## 특수문자 규칙
+- **em dash(`—`) 사용 금지** — 하이픈(`-`)으로 대체
+  - 치환: `sed -i '' 's/—/-/g' content.md`
+  - 관련 문서: `[[slug|Title]] - 관계설명` (하이픈 사용)
+  - Figure 캡션: `*Figure N: 설명 - 부가설명*`
+  - 본문: `개념A - 개념B`
+
+## 관련 문서 섹션 형식
+```markdown
+## 관련 문서
+
+- [[slug|한국어 제목]] - 관계설명
+- [[slug|한국어 제목]]
+```
+- wiki-link는 반드시 `[[slug|Display Name]]` 형식 사용 (bare `[[slug]]` 금지)
+- Display Name은 한국어 제목 또는 고유명사
+- 관계설명은 선택 (발전 기반, 후속 모델, 영감을 줌, 변형 모델 등)
 
 ## 품질 기준
 - 분야/카테고리별로 품질 기준이 다름

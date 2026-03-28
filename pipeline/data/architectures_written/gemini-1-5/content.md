@@ -138,5 +138,5 @@ Gemini 1.5는 LLM 컨텍스트 길이 경쟁에서 결정적인 이정표를 세
 
 ## 관련 문서
 
-- [[gemini|Gemini]] — 발전 기반
-- [[gemini-2-5|Gemini 2.5]] — 후속 모델
+- [[gemini|Gemini]] - 발전 기반
+- [[gemini-2-5|Gemini 2.5]] - 후속 모델

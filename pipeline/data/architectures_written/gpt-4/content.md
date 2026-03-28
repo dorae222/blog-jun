@@ -9,7 +9,7 @@ GPT-4는 단순한 벤치마크 성능을 넘어, **인간 수준의 전문적 �
 GPT-4 프로젝트의 가장 주목할 만한 성과 중 하나는 소규모 모델로부터 대규모 모델의 성능을 정확히 예측할 수 있었다는 점이다.
 
 ![소규모 모델의 학습 결과로 GPT-4 최종 손실을 정확히 예측한 스케일링 법칙](figures/fig_1.png)
-*Figure 1: 예측 가능한 스케일링 — 소규모 모델의 학습 곡선에서 도출한 멱법칙(power law)이 GPT-4의 최종 손실을 정확히 예측한다. x축은 GPT-4 대비 정규화된 학습 컴퓨트. (Source: OpenAI, 2023)*
+*Figure 1: 예측 가능한 스케일링 - 소규모 모델의 학습 곡선에서 도출한 멱법칙(power law)이 GPT-4의 최종 손실을 정확히 예측한다. x축은 GPT-4 대비 정규화된 학습 컴퓨트. (Source: OpenAI, 2023)*
 
 ## 아키텍처 상세
 
@@ -79,8 +79,8 @@ response = openai.ChatCompletion.create(
 
 GPT-4의 전문 시험 성과를 시각적으로 비교하면 그 도약이 더욱 명확하다.
 
-![GPT-4와 GPT-3.5의 전문 시험 성적 비교 — 대부분의 시험에서 GPT-4가 크게 우위](figures/fig_4.png)
-*Figure 2: 학술 및 전문 시험 성적 비교 — GPT-4(녹색)는 사법시험, SAT, AP 등 대부분의 시험에서 GPT-3.5(파란색) 대비 대폭 향상된 성적을 보이며, 상위 퍼센타일에 위치한다. (Source: OpenAI, 2023)*
+![GPT-4와 GPT-3.5의 전문 시험 성적 비교 - 대부분의 시험에서 GPT-4가 크게 우위](figures/fig_4.png)
+*Figure 2: 학술 및 전문 시험 성적 비교 - GPT-4(녹색)는 사법시험, SAT, AP 등 대부분의 시험에서 GPT-3.5(파란색) 대비 대폭 향상된 성적을 보이며, 상위 퍼센타일에 위치한다. (Source: OpenAI, 2023)*
 
 ### 2. 멀티모달 입력 처리
 
@@ -102,8 +102,8 @@ GPT-4 프로젝트의 중요한 성과 중 하나는 **소규모 모델의 성�
 
 MMLU에서 GPT-4는 26개 비영어 언어에서도 영어 SOTA를 능가하는 다국어 성능을 보였다. 아래 그래프는 다양한 언어에서의 MMLU 성능을 보여준다.
 
-![GPT-4의 다국어 MMLU 성능 — 대부분의 언어에서 기존 영어 모델의 영어 성능을 상회](figures/fig_5.png)
-*Figure 3: GPT-4의 다국어 MMLU 성능 (3-shot) — 라트비아어, 웨일스어, 스와힐리어 등 저자원 언어를 포함한 대부분의 언어에서 기존 모델의 영어 성능(GPT-3.5 영어)을 상회한다. (Source: OpenAI, 2023)*
+![GPT-4의 다국어 MMLU 성능 - 대부분의 언어에서 기존 영어 모델의 영어 성능을 상회](figures/fig_5.png)
+*Figure 3: GPT-4의 다국어 MMLU 성능 (3-shot) - 라트비아어, 웨일스어, 스와힐리어 등 저자원 언어를 포함한 대부분의 언어에서 기존 모델의 영어 성능(GPT-3.5 영어)을 상회한다. (Source: OpenAI, 2023)*
 
 ## 관련 모델 비교
 
@@ -136,8 +136,8 @@ Function Calling과 System Prompt를 결합하여 복잡한 워크플로우를 �
 
 GPT-4는 안전성 측면에서도 이전 모델 대비 크게 개선되었다.
 
-![GPT-4의 안전성 개선 — 민감하고 금지된 프롬프트에 대한 부적절 응답률 대폭 감소](figures/fig_9.png)
-*Figure 4: 민감/금지 프롬프트에 대한 부적절 응답률 비교 — GPT-4(녹색)는 text-davinci-003 및 GPT-3.5-turbo 대비 민감 프롬프트와 금지 프롬프트 모두에서 부적절 응답률이 크게 감소했다. (Source: OpenAI, 2023)*
+![GPT-4의 안전성 개선 - 민감하고 금지된 프롬프트에 대한 부적절 응답률 대폭 감소](figures/fig_9.png)
+*Figure 4: 민감/금지 프롬프트에 대한 부적절 응답률 비교 - GPT-4(녹색)는 text-davinci-003 및 GPT-3.5-turbo 대비 민감 프롬프트와 금지 프롬프트 모두에서 부적절 응답률이 크게 감소했다. (Source: OpenAI, 2023)*
 
 ### 한계
 
@@ -210,10 +210,10 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 발전 기반
-- [[instructgpt|Training language models to follow instructions with human feedback]] — 발전 기반
-- [[gpt-4-1|GPT-4.1]] — 후속 모델
-- [[gpt-4o|GPT-4o]] — 후속 모델
-- [[gpt-5|GPT-5]] — 후속 모델
-- [[o1|OpenAI o1]] — 후속 모델
-- [[grok-3|Grok 3]] — 영감을 줌
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 발전 기반
+- [[instructgpt|Training language models to follow instructions with human feedback]] - 발전 기반
+- [[gpt-4-1|GPT-4.1]] - 후속 모델
+- [[gpt-4o|GPT-4o]] - 후속 모델
+- [[gpt-5|GPT-5]] - 후속 모델
+- [[o1|OpenAI o1]] - 후속 모델
+- [[grok-3|Grok 3]] - 영감을 줌

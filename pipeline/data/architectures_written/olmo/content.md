@@ -6,16 +6,16 @@
 
 Allen Institute for AI(AI2)가 2024년 2월 공개한 완전 개방형 언어 모델로, 'Open'의 의미를 모델 가중치 공개에서 훨씬 더 나아가 학습 데이터·코드·평가 코드·학습 로그·중간 체크포인트까지 모두 공개한다. 대부분의 '오픈' LLM이 가중치만 공개하는 데 반해, OLMo는 LLM 연구의 완전한 재현성(reproducibility)을 목표로 한다. 학습 데이터셋 Dolma(3T 토큰)도 함께 공개해 학계가 처음부터 끝까지 동일한 결과를 재현할 수 있게 했다. 영리 목적이 아닌 과학적 투명성 중심의 LLM 연구 인프라로서, AI 연구 접근성 민주화에 기여했다.
 
-![OLMo 아키텍처 — 가중치, 학습 데이터, 코드, 로그까지 완전 공개하는 재현 가능한 Decoder-only LLM 구조](figures/architecture.svg)
+![OLMo 아키텍처 - 가중치, 학습 데이터, 코드, 로그까지 완전 공개하는 재현 가능한 Decoder-only LLM 구조](figures/architecture.svg)
 
-*Figure 1: OLMo 아키텍처 — 비파라메트릭 LayerNorm과 QK-norm으로 안정성을 강화한 Decoder-only Transformer로, Dolma 3T 토큰 데이터셋과 함께 완전한 재현성을 목표로 공개되었다.*
+*Figure 1: OLMo 아키텍처 - 비파라메트릭 LayerNorm과 QK-norm으로 안정성을 강화한 Decoder-only Transformer로, Dolma 3T 토큰 데이터셋과 함께 완전한 재현성을 목표로 공개되었다.*
 
 ## 아키텍처 상세
 
 다음 그래프는 OLMo-7B의 8개 핵심 평가 태스크에서 학습 토큰 수에 따른 정확도 변화를 보여준다. 학습 마지막 1000 스텝에서 learning rate를 0으로 감소시키는 전략이 대부분의 태스크에서 성능 향상을 가져왔음을 확인할 수 있다.
 
 ![OLMo-7B 학습 진행에 따른 8개 핵심 태스크 정확도 변화](figures/fig_1.png)
-*Figure 1: OLMo-7B 학습 진행 곡선 — arc_c, arc_e, boolq, hellaswag, obqa, piqa, sciq, winogrande 8개 태스크에서 토큰 수 증가에 따른 정확도 향상. 최종 LR decay가 성능을 추가로 개선한다. (Source: Groeneveld et al., 2024)*
+*Figure 1: OLMo-7B 학습 진행 곡선 - arc_c, arc_e, boolq, hellaswag, obqa, piqa, sciq, winogrande 8개 태스크에서 토큰 수 증가에 따른 정확도 향상. 최종 LR decay가 성능을 추가로 개선한다. (Source: Groeneveld et al., 2024)*
 
 완전 개방성(Full Openness): 가중치·Dolma 학습 데이터(3T 토큰)·학습 코드(OLMo Python 패키지)·평가 코드(Catwalk)·텐서보드 로그·2000개 이상 중간 체크포인트 모두 Apache 2.0으로 공개. 아키텍처 특이점: 비파라메트릭 LayerNorm(bias=False, affine=False)과 QK-norm으로 학습 안정성 강화. Rotary Position Embedding(RoPE). OLMo-7B: MMLU 52.0%, HellaSwag 78.4%(LLaMA-7B: 76.1%). ALLMo 평가 프레임워크로 재현 가능한 벤치마크 제공.
 
@@ -45,11 +45,11 @@ Allen Institute for AI(AI2)가 2024년 2월 공개한 완전 개방형 언어 �
 
 ## 학습
 
-Dolma v1.6—C4, Pile, Reddit, StackExchange, Wikipedia, Common Crawl 등 조합, 총 3T 토큰. BPE 50,280 vocab(GPT-NeoX 토크나이저 기반). AdamW lr=4e-4, cosine decay to 1e-5, warmup 5000 스텝. 7B: A100 80GB 4096개, 학습 시간 약 25일. 배치 2M 토큰.
+Dolma v1.6-C4, Pile, Reddit, StackExchange, Wikipedia, Common Crawl 등 조합, 총 3T 토큰. BPE 50,280 vocab(GPT-NeoX 토크나이저 기반). AdamW lr=4e-4, cosine decay to 1e-5, warmup 5000 스텝. 7B: A100 80GB 4096개, 학습 시간 약 25일. 배치 2M 토큰.
 
 ### 관련 모델
 
-- **llama** — 영감
+- **llama** - 영감
 
 ### 어텐션 메커니즘: MHA
 
@@ -88,8 +88,8 @@ Dolma는 AI2가 구축한 3T 토큰 규모의 공개 학습 데이터셋으로, 
 
 아래 그래프는 Paloma 평가 데이터 11개 소스에서의 bits per byte를 비교한 것으로, 모델 규모와 데이터 분포에 따른 샘플 효율성 차이를 보여준다. OLMo-7B는 특히 C4에서 다른 모든 모델을 능가하는데, 이는 Common Crawl 기반 사전학습 데이터 비율(88.8%)이 높기 때문이다.
 
-![Paloma 11개 평가 소스에서의 bits per byte 비교 — 데이터 스케일링 트렌드](figures/fig_2.png)
-*Figure 2: Paloma 평가 데이터 분석 — 11개 소스에서의 bits per byte 비교. OLMo-7B는 인-도메인 데이터(C4)에서 가장 높은 샘플 효율성을 보이며, 일반적인 데이터 스케일링 트렌드를 따른다. (Source: Groeneveld et al., 2024)*
+![Paloma 11개 평가 소스에서의 bits per byte 비교 - 데이터 스케일링 트렌드](figures/fig_2.png)
+*Figure 2: Paloma 평가 데이터 분석 - 11개 소스에서의 bits per byte 비교. OLMo-7B는 인-도메인 데이터(C4)에서 가장 높은 샘플 효율성을 보이며, 일반적인 데이터 스케일링 트렌드를 따른다. (Source: Groeneveld et al., 2024)*
 
 ### 3. RoPE
 
@@ -110,7 +110,7 @@ SwiGLU는 SiLU 활성화와 게이트 메커니즘을 결합한 FFN 활성화 �
 추가적으로, Paloma의 나머지 7개 데이터 소스에서의 성능도 확인할 수 있다. Pile, 100 PLs, ICE 등 다양한 도메인에서 OLMo-7B가 경쟁 모델들과 비교 가능한 수준의 언어 모델링 성능을 달성했다.
 
 ![Paloma 나머지 7개 데이터 소스에서의 bits per byte 비교](figures/fig_3.png)
-*Figure 3: 추가 Paloma 평가 — Pile, 100 PLs, ICE, Twitter AAE, Manosphere, Gab, 4chan 데이터에서의 bits per byte. 다양한 도메인에서 OLMo-7B의 범용적 언어 모델링 능력을 확인할 수 있다. (Source: Groeneveld et al., 2024)*
+*Figure 3: 추가 Paloma 평가 - Pile, 100 PLs, ICE, Twitter AAE, Manosphere, Gab, 4chan 데이터에서의 bits per byte. 다양한 도메인에서 OLMo-7B의 범용적 언어 모델링 능력을 확인할 수 있다. (Source: Groeneveld et al., 2024)*
 
 ## 실무 활용
 
@@ -197,4 +197,4 @@ $$f(x_m, m) = x_m e^{im\theta}, \quad \theta_j = 10000^{-2j/d}$$
 
 ## 관련 문서
 
-- [[llama|LLaMA: Open and Efficient Foundation Language Models]] — 영감
+- [[llama|LLaMA: Open and Efficient Foundation Language Models]] - 영감

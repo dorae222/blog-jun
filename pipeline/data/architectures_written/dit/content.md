@@ -13,8 +13,8 @@ Scalable Diffusion Models with Transformers(DiT)는 2022년 Meta AI와 UC Berkel
 
 다음 다이어그램은 DiT의 전체 구조와 네 가지 조건 주입 블록 변형을 보여준다.
 
-![DiT 아키텍처 — 전체 파이프라인과 DiT 블록 변형](figures/fig_3.png)
-*Figure 1: DiT 아키텍처 — 왼쪽: 노이즈된 잠재 맵을 패치화하여 DiT 블록으로 처리하는 전체 파이프라인. 오른쪽: adaLN-Zero, Cross-Attention, In-Context 세 가지 조건 주입 블록 변형. adaLN-Zero가 가장 높은 성능을 달성한다. (Source: Peebles & Xie, 2022)*
+![DiT 아키텍처 - 전체 파이프라인과 DiT 블록 변형](figures/fig_3.png)
+*Figure 1: DiT 아키텍처 - 왼쪽: 노이즈된 잠재 맵을 패치화하여 DiT 블록으로 처리하는 전체 파이프라인. 오른쪽: adaLN-Zero, Cross-Attention, In-Context 세 가지 조건 주입 블록 변형. adaLN-Zero가 가장 높은 성능을 달성한다. (Source: Peebles & Xie, 2022)*
 
 ### 전체 파이프라인: 패치 기반 잠재 공간 처리
 
@@ -57,7 +57,7 @@ DiT는 LDM(Latent Diffusion Models)과 동일하게 VAE 잠재 공간에서 동�
 다음 그래프는 네 가지 조건 주입 방법의 학습 전 과정에서의 FID 비교이다.
 
 ![네 가지 조건 주입 전략의 FID 비교](figures/fig_5.png)
-*Figure 2: 조건 주입 전략 비교 — adaLN-Zero가 모든 학습 단계에서 Cross-Attention, In-Context, adaLN보다 일관되게 낮은 FID를 달성한다. (Source: Peebles & Xie, 2022)*
+*Figure 2: 조건 주입 전략 비교 - adaLN-Zero가 모든 학습 단계에서 Cross-Attention, In-Context, adaLN보다 일관되게 낮은 FID를 달성한다. (Source: Peebles & Xie, 2022)*
 
 ### adaLN-Zero 블록 상세
 
@@ -96,12 +96,12 @@ DiT는 네 가지 크기(S/B/L/XL)와 세 가지 패치 크기(2/4/8) 조합을 
 아래 그래프는 모델 크기와 패치 크기의 12가지 조합에서 학습에 따른 FID 변화를 보여준다.
 
 ![12가지 DiT 변형의 학습에 따른 FID 스케일링 거동](figures/fig_6.png)
-*Figure 3: DiT 스케일링 거동 — 상단: 패치 크기 고정 시 모델 크기에 따른 FID 변화. 하단: 모델 크기 고정 시 패치 크기에 따른 FID 변화. 두 축 모두에서 GFLOPs 증가가 성능 향상을 가져온다. (Source: Peebles & Xie, 2022)*
+*Figure 3: DiT 스케일링 거동 - 상단: 패치 크기 고정 시 모델 크기에 따른 FID 변화. 하단: 모델 크기 고정 시 패치 크기에 따른 FID 변화. 두 축 모두에서 GFLOPs 증가가 성능 향상을 가져온다. (Source: Peebles & Xie, 2022)*
 
 특히 Transformer GFLOPs와 FID 간에는 -0.93의 강한 음의 상관관계가 존재한다.
 
 ![Transformer GFLOPs와 FID-50K 간의 상관관계](figures/fig_8.png)
-*Figure 4: GFLOPs-FID 상관관계 — 12개 DiT 변형에서 Transformer GFLOPs와 FID 사이에 -0.93의 강한 음의 상관관계가 관찰되어, 확산 모델에서도 스케일링 법칙이 성립함을 입증한다. (Source: Peebles & Xie, 2022)*
+*Figure 4: GFLOPs-FID 상관관계 - 12개 DiT 변형에서 Transformer GFLOPs와 FID 사이에 -0.93의 강한 음의 상관관계가 관찰되어, 확산 모델에서도 스케일링 법칙이 성립함을 입증한다. (Source: Peebles & Xie, 2022)*
 
 ## 핵심 혁신
 
@@ -123,7 +123,7 @@ DiT는 네 가지 크기(S/B/L/XL)와 세 가지 패치 크기(2/4/8) 조합을 
 DiT-XL/2는 CFG 적용 시 FID 2.27로 기존 모든 클래스 조건부 모델을 능가하였다. 다음은 기존 확산 모델과의 FID-GFLOPs 비교이다.
 
 ![DiT와 기존 확산 모델의 FID-GFLOPs 비교](figures/fig_2.png)
-*Figure 5: DiT vs 기존 확산 모델 — 왼쪽: DiT 스케일링 곡선. 오른쪽: DiT-XL/2가 ADM, LDM 등 U-Net 기반 모델 대비 더 적은 GFLOPs로 더 낮은 FID를 달성하여 계산 효율성에서도 우위를 보인다. (Source: Peebles & Xie, 2022)*
+*Figure 5: DiT vs 기존 확산 모델 - 왼쪽: DiT 스케일링 곡선. 오른쪽: DiT-XL/2가 ADM, LDM 등 U-Net 기반 모델 대비 더 적은 GFLOPs로 더 낮은 FID를 달성하여 계산 효율성에서도 우위를 보인다. (Source: Peebles & Xie, 2022)*
 
 ## U-Net 기반 확산 모델과의 비교
 
@@ -201,13 +201,13 @@ DiT는 확산 모델의 Transformer 시대를 연 혁신적 연구로, "확산 +
 
 ## 관련 문서
 
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 발전 기반
-- [[cogvideox|CogVideoX]] — 후속 모델
-- [[hunyuanvideo|HunyuanVideo]] — 후속 모델
-- [[pixart-alpha|PixArt-α]] — 후속 모델
-- [[sora|Sora]] — 후속 모델
-- [[kling|Kling]] — 영감을 줌
-- [[runway-gen4|Runway Gen-4]] — 영감을 줌
-- [[transfusion|Transfusion]] — 영감을 줌
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 사용 기법
-- [[sd3|Stable Diffusion 3]] — 적용 모델
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 발전 기반
+- [[cogvideox|CogVideoX]] - 후속 모델
+- [[hunyuanvideo|HunyuanVideo]] - 후속 모델
+- [[pixart-alpha|PixArt-α]] - 후속 모델
+- [[sora|Sora]] - 후속 모델
+- [[kling|Kling]] - 영감을 줌
+- [[runway-gen4|Runway Gen-4]] - 영감을 줌
+- [[transfusion|Transfusion]] - 영감을 줌
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 사용 기법
+- [[sd3|Stable Diffusion 3]] - 적용 모델

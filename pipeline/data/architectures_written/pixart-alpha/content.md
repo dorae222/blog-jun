@@ -10,16 +10,16 @@ PixArt-α는 이 문제를 세 단계 분리 학습 전략(Three-Stage Training)
 
 아키텍처적으로는 DiT에 Cross-Attention 블록을 추가하여 T5-XXL 텍스트 인코더와 연동하며, AdaLN-Single 기법으로 타임스텝 임베딩 파라미터를 약 30% 절감하였다. MS-COCO 기준 FID 7.32를 달성하며, 사용자 선호도 평가에서 SDXL과 경쟁력 있는 수준을 보였다.
 
-![PixArt-alpha 아키텍처 — DiT에 Cross-Attention과 AdaLN-Single을 적용한 3단계 효율적 학습 구조](figures/architecture.svg)
+![PixArt-alpha 아키텍처 - DiT에 Cross-Attention과 AdaLN-Single을 적용한 3단계 효율적 학습 구조](figures/architecture.svg)
 
-*Figure 1: PixArt-alpha 아키텍처 — ImageNet 구조 학습, 텍스트-이미지 정렬, 미적 품질 향상의 3단계 분리 학습으로 SDXL 대비 1/10 비용에 상업 수준 이미지 품질을 달성한다.*
+*Figure 1: PixArt-alpha 아키텍처 - ImageNet 구조 학습, 텍스트-이미지 정렬, 미적 품질 향상의 3단계 분리 학습으로 SDXL 대비 1/10 비용에 상업 수준 이미지 품질을 달성한다.*
 
 ## 아키텍처 상세
 
 ### DiT 블록 구조
 
-![PixArt-α 모델 아키텍처 — Cross-Attention과 AdaLN-Single 적용](figures/fig_4.png)
-*Figure 1: PixArt-α 모델 아키텍처 — DiT 블록에 Cross-Attention 모듈을 통합하여 T5-XXL 텍스트 조건을 주입하고, 모든 블록이 adaLN-single 파라미터를 공유하여 효율성을 극대화. (Source: arXiv 2310.00426)*
+![PixArt-α 모델 아키텍처 - Cross-Attention과 AdaLN-Single 적용](figures/fig_4.png)
+*Figure 1: PixArt-α 모델 아키텍처 - DiT 블록에 Cross-Attention 모듈을 통합하여 T5-XXL 텍스트 조건을 주입하고, 모든 블록이 adaLN-single 파라미터를 공유하여 효율성을 극대화. (Source: arXiv 2310.00426)*
 
 PixArt-α의 DiT 블록은 **Self-Attention → Cross-Attention → FFN** 순서로 구성된다. 입력 이미지는 VAE 인코더를 통해 잠재 공간으로 압축된 후, 고정 크기 패치로 분할되어 1D 토큰 시퀀스가 된다. Self-Attention은 이미지 토큰 간의 공간적 관계를 포착하고, Cross-Attention은 T5-XXL 텍스트 임베딩을 Key·Value로 활용하여 텍스트 조건을 주입한다. FFN(Feed-Forward Network)은 GELU 활성화 함수를 사용하며, 각 서브레이어에 residual connection이 적용된다.
 
@@ -57,8 +57,8 @@ $$\hat{\boldsymbol{\epsilon}}_\theta = \boldsymbol{\epsilon}_\theta(\mathbf{x}_t
 
 ## 핵심 혁신
 
-![CO2 배출량 및 학습 비용 비교 — PixArt-α의 극단적 효율성](figures/fig_2.png)
-*Figure 2: 학습 효율 비교 — PixArt-α는 RAPHAEL 대비 CO2 배출 1.2%, 학습 비용 0.91% 수준($28K)으로, 데이터 사용량과 학습 시간 모두에서 극단적 효율성 달성. (Source: arXiv 2310.00426)*
+![CO2 배출량 및 학습 비용 비교 - PixArt-α의 극단적 효율성](figures/fig_2.png)
+*Figure 2: 학습 효율 비교 - PixArt-α는 RAPHAEL 대비 CO2 배출 1.2%, 학습 비용 0.91% 수준($28K)으로, 데이터 사용량과 학습 시간 모두에서 극단적 효율성 달성. (Source: arXiv 2310.00426)*
 
 PixArt-α의 핵심 혁신은 대규모 텍스트-이미지 모델의 학습 비용 장벽을 극적으로 낮춘 것이다. 세 단계 분리 학습은 각 과제를 독립적으로 최적화하여 데이터 효율성을 극대화한다. AdaLN-Single은 조건 주입의 파라미터 효율을 개선하면서 모델 크기를 줄인다. 고품질 캡션 데이터(LLaVA로 자동 생성)의 활용은 소규모 데이터셋으로도 높은 텍스트 정렬을 달성하는 핵심 요인이다. 이러한 효율적 설계 철학은 후속 모델인 PixArt-δ(LCM 증류), PixArt-Σ(4K 생성)로 계승되었으며, 학계와 산업계 모두에서 효율적 학습의 가능성을 입증한 사례로 평가받는다.
 
@@ -75,14 +75,14 @@ PixArt-α의 핵심 혁신은 대규모 텍스트-이미지 모델의 학습 비
 PixArt-α는 SDXL 대비 약 1/10의 학습 비용으로 MS-COCO FID 7.32를 달성하며, Human Preference 평가에서도 경쟁력 있는 수준을 보인다. 학습 비용 대비 성능 효율 측면에서 당시 최고 수준이다.
 
 ![LAION 원본 캡션 vs LLaVA 정제 캡션 비교](figures/fig_3.png)
-*Figure 3: LLaVA 캡션 품질 비교 — LAION 원본 캡션 대비 LLaVA가 생성한 고밀도 캡션이 텍스트-이미지 정렬 학습 효율을 크게 향상시킴. (Source: arXiv 2310.00426)*
+*Figure 3: LLaVA 캡션 품질 비교 - LAION 원본 캡션 대비 LLaVA가 생성한 고밀도 캡션이 텍스트-이미지 정렬 학습 효율을 크게 향상시킴. (Source: arXiv 2310.00426)*
 
 ## 학습
 
 3단계 분리 학습: **Stage 1** -- ImageNet-1k 256x256 클래스 조건부 생성(200 에폭)으로 픽셀 구조 학습, **Stage 2** -- SAM(1100만 장) + JourneyDB(350만 장) 텍스트 조건부 학습(20 에폭)으로 텍스트-이미지 정렬 학습, **Stage 3** -- LAION-Aesthetics 고품질 데이터 미세조정(10 에폭)으로 미적 품질 향상. 총 학습 비용은 약 675 A100 GPU일(약 $32만). T5-XXL(11B) 텍스트 인코더는 동결 사용하며 별도 학습하지 않는다. 옵티마이저는 AdamW, 학습률은 2e-5이다.
 
 ![다른 텍스트-이미지 생성 모델과의 시각적 비교](figures/fig_8.png)
-*Figure 4: 생성 품질 비교 — SDXL, DeepFloyd, DALL-E 2, RAPHAEL 등과 동일 프롬프트에서의 생성 결과 비교. PixArt-α가 600M 파라미터로 경쟁 모델 수준의 충실도와 텍스트 정렬을 달성. (Source: arXiv 2310.00426)*
+*Figure 4: 생성 품질 비교 - SDXL, DeepFloyd, DALL-E 2, RAPHAEL 등과 동일 프롬프트에서의 생성 결과 비교. PixArt-α가 600M 파라미터로 경쟁 모델 수준의 충실도와 텍스트 정렬을 달성. (Source: arXiv 2310.00426)*
 
 ## 관련 모델
 
@@ -95,4 +95,4 @@ PixArt-α는 DiT에서 직접 발전하였으며, Cross-Attention 기반 텍스�
 
 ## 관련 문서
 
-- [[dit|DiT (Diffusion Transformers)]] — 발전 기반
+- [[dit|DiT (Diffusion Transformers)]] - 발전 기반

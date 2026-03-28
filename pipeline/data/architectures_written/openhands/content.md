@@ -10,9 +10,9 @@ OpenHands의 설계 목표는 **"누구나 AI 소프트웨어 엔지니어를 �
 
 OpenHands의 학술적 기여는 **CodeAct 패러다임**의 제안에 있다. 기존 에이전트가 자연어 명령으로 도구를 호출하는 것과 달리, CodeAct는 에이전트의 모든 행동을 실행 가능한 Python 코드로 표현한다. 이를 통해 복잡한 로직을 정밀하게 제어하고, 실행 결과를 정확히 검증할 수 있다.
 
-![OpenHands 아키텍처 — EventStream 기반 에이전트 런타임과 Docker 샌드박스 실행 환경](figures/architecture.svg)
+![OpenHands 아키텍처 - EventStream 기반 에이전트 런타임과 Docker 샌드박스 실행 환경](figures/architecture.svg)
 
-*Figure 1: OpenHands 아키텍처 — CodeAct 패러다임으로 모든 에이전트 행동을 실행 가능한 Python 코드로 표현하고, 격리된 Docker 샌드박스에서 안전하게 실행하는 확장 가능한 에이전트 플랫폼이다.*
+*Figure 1: OpenHands 아키텍처 - CodeAct 패러다임으로 모든 에이전트 행동을 실행 가능한 Python 코드로 표현하고, 격리된 Docker 샌드박스에서 안전하게 실행하는 확장 가능한 에이전트 플랫폼이다.*
 
 ## 아키텍처 상세
 
@@ -216,4 +216,4 @@ OpenHands는 Devin의 비전을 오픈소스로 구현하려는 시도로 시작
 
 ## 관련 문서
 
-- [[swe-agent|SWE-agent]] — 영감
+- [[swe-agent|SWE-agent]] - 영감

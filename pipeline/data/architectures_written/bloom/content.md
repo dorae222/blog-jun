@@ -14,8 +14,8 @@ BLOOM의 가장 큰 의미는 기술적 성능보다 **과정의 투명성**에 
 
 다음 다이어그램은 BLOOM-176B의 전체 아키텍처와 ALiBi 위치 인코딩의 동작 방식을 보여준다.
 
-![BLOOM-176B 전체 아키텍처 다이어그램 — ALiBi 위치 인코딩 적용 Decoder-Only 구조](figures/architecture.png)
-*Figure 1: BLOOM-176B 아키텍처 — 70개 레이어, 112개 어텐션 헤드, 250,880 어휘 크기의 대규모 Decoder-Only Transformer. ALiBi 위치 인코딩과 BPE 토크나이저를 사용한다. (Source: BLOOM 논문)*
+![BLOOM-176B 전체 아키텍처 다이어그램 - ALiBi 위치 인코딩 적용 Decoder-Only 구조](figures/architecture.png)
+*Figure 1: BLOOM-176B 아키텍처 - 70개 레이어, 112개 어텐션 헤드, 250,880 어휘 크기의 대규모 Decoder-Only Transformer. ALiBi 위치 인코딩과 BPE 토크나이저를 사용한다. (Source: BLOOM 논문)*
 
 BLOOM은 GPT-3 스타일의 **Decoder-only Transformer** 구조를 채택한다:
 
@@ -44,8 +44,8 @@ $$\text{softmax}\left(q_i K^T + m \cdot [-(i-1), -(i-2), \ldots, -1, 0]\right)$$
 
 아래 그림은 BLOOM의 아키텍처를 논문에서 제시한 상세 뷰로 보여준다. 특히 ALiBi 마스크가 Key-Query product에 선형 편향으로 적용되는 과정이 시각화되어 있다.
 
-![BLOOM 아키텍처 상세 — Decoder Block, Multi-Head Attention, ALiBi 마스크 적용 과정](figures/fig_5.png)
-*Figure 2: BLOOM 아키텍처 상세 — (좌) 70개 Decoder Block 구조, (중앙) Multi-Head Attention 구성, (우) ALiBi 마스크가 Key-Query product에 선형 편향(k_head)으로 더해지는 방식. (Source: BLOOM 논문)*
+![BLOOM 아키텍처 상세 - Decoder Block, Multi-Head Attention, ALiBi 마스크 적용 과정](figures/fig_5.png)
+*Figure 2: BLOOM 아키텍처 상세 - (좌) 70개 Decoder Block 구조, (중앙) Multi-Head Attention 구성, (우) ALiBi 마스크가 Key-Query product에 선형 편향(k_head)으로 더해지는 방식. (Source: BLOOM 논문)*
 
 ### 대규모 어휘 사전 (250,880)
 
@@ -92,8 +92,8 @@ for prompt in prompts:
 
 다음 트리맵은 ROOTS 코퍼스의 언어 구성을 보여준다. 인도유럽어족과 시노티벳어족이 전체의 대부분을 차지하지만, 저자원 언어도 포함되어 있다.
 
-![ROOTS 코퍼스 언어 구성 트리맵 — 46개 자연어의 어족별 분포](figures/fig_3_1.png)
-*Figure 3: ROOTS 코퍼스 언어 분포 — 인도유럽어족(프랑스어, 스페인어, 영어 등)과 시노티벳어족(중국어)이 1,321.89GB로 주요 비중을 차지하며, 아프로아시아어족(아랍어), 남아시아어족(베트남어) 등 다양한 언어가 포함된다. (Source: BLOOM 논문)*
+![ROOTS 코퍼스 언어 구성 트리맵 - 46개 자연어의 어족별 분포](figures/fig_3_1.png)
+*Figure 3: ROOTS 코퍼스 언어 분포 - 인도유럽어족(프랑스어, 스페인어, 영어 등)과 시노티벳어족(중국어)이 1,321.89GB로 주요 비중을 차지하며, 아프로아시아어족(아랍어), 남아시아어족(베트남어) 등 다양한 언어가 포함된다. (Source: BLOOM 논문)*
 
 ### 3. 완전 투명한 학습 과정
 학습 로그, 체크포인트, 데이터 처리 코드까지 모두 공개되어 재현 가능성을 극대화했다.
@@ -111,7 +111,7 @@ for prompt in prompts:
 아래 그래프는 SuperGLUE 1-shot 벤치마크에서 BLOOM과 OPT의 스케일링 비교를 보여준다. 모델 크기 증가에 따른 성능 변화를 태스크별로 확인할 수 있다.
 
 ![SuperGLUE 1-shot 벤치마크에서 BLOOM과 OPT의 스케일링 비교](figures/fig_8.png)
-*Figure 5: SuperGLUE 1-shot 태스크별 BLOOM vs OPT 스케일링 — Ax-b, CB, WiC 등에서 BLOOM이 OPT와 유사하거나 우수한 스케일링을 보이며, 특히 대규모 모델에서 두드러진다. (Source: BLOOM 논문)*
+*Figure 5: SuperGLUE 1-shot 태스크별 BLOOM vs OPT 스케일링 - Ax-b, CB, WiC 등에서 BLOOM이 OPT와 유사하거나 우수한 스케일링을 보이며, 특히 대규모 모델에서 두드러진다. (Source: BLOOM 논문)*
 
 ### 다국어 특화 성능
 - 다국어 요약에서 OPT-175B보다 일관되게 우수
@@ -146,8 +146,8 @@ for prompt in prompts:
 
 다음 그림은 384개 A100 GPU에서 BLOOM을 학습하기 위한 3D 병렬화 전략을 보여준다.
 
-![BLOOM 학습을 위한 3D 병렬화 전략 — 데이터, 텐서, 파이프라인 병렬화의 조합](figures/fig_6.png)
-*Figure 4: 3D 병렬화 구조 — 데이터 병렬화(DP=8), 텐서 병렬화(TP=4), 파이프라인 병렬화(PP=12)를 결합하여 384개 A100 GPU에서 176B 모델을 학습한다. 한 모델 복제본이 48개 GPU를 사용한다. (Source: BLOOM 논문)*
+![BLOOM 학습을 위한 3D 병렬화 전략 - 데이터, 텐서, 파이프라인 병렬화의 조합](figures/fig_6.png)
+*Figure 4: 3D 병렬화 구조 - 데이터 병렬화(DP=8), 텐서 병렬화(TP=4), 파이프라인 병렬화(PP=12)를 결합하여 384개 A100 GPU에서 176B 모델을 학습한다. 한 모델 복제본이 48개 GPU를 사용한다. (Source: BLOOM 논문)*
 
 ## 실무 활용
 
@@ -183,4 +183,4 @@ BLOOM은 **기술적 성과보다 사회적 의미가 더 큰 모델**이다. �
 
 ## 관련 문서
 
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 영감
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 영감

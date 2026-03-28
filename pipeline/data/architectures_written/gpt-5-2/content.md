@@ -211,4 +211,4 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[gpt-5|GPT-5]] — 발전 기반
+- [[gpt-5|GPT-5]] - 발전 기반

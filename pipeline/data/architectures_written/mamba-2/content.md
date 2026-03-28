@@ -10,9 +10,9 @@ Mamba-1의 선택적 SSM을 상태 확장 차원 $N$이 헤드 차원과 분리�
 
 이 이중성(duality)의 발견은 SSM과 Transformer라는 두 패러다임이 근본적으로 같은 연산의 서로 다른 관점임을 보여준다. 이론적으로는 두 분야의 알고리즘과 최적화 기법을 자유롭게 상호 차용할 수 있는 기반을 마련했으며, 실용적으로는 SSM 모델의 학습 효율을 극적으로 개선했다.
 
-![Mamba-2 아키텍처 — SSD 프레임워크 기반 SSM-어텐션 이중성을 활용한 구조화된 상태 공간 모델](figures/architecture.svg)
+![Mamba-2 아키텍처 - SSD 프레임워크 기반 SSM-어텐션 이중성을 활용한 구조화된 상태 공간 모델](figures/architecture.svg)
 
-*Figure 1: Mamba-2 아키텍처 — SSM과 구조화된 마스크 어텐션의 수학적 동치성(SSD)을 기반으로 FlashAttention 스타일 타일링을 적용하여 Mamba-1 대비 2~8배 학습 효율을 향상시킨다.*
+*Figure 1: Mamba-2 아키텍처 - SSM과 구조화된 마스크 어텐션의 수학적 동치성(SSD)을 기반으로 FlashAttention 스타일 타일링을 적용하여 Mamba-1 대비 2~8배 학습 효율을 향상시킨다.*
 
 ## 아키텍처 상세
 
@@ -187,5 +187,5 @@ Mamba-2는 state-spaces/mamba 저장소에서 Mamba-1과 동일한 인터페이�
 
 ## 관련 문서
 
-- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] — 발전 기반
-- [[mamba-3|Mamba-3]] — 후속 모델
+- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] - 발전 기반
+- [[mamba-3|Mamba-3]] - 후속 모델

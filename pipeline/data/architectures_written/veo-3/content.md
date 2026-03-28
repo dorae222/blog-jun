@@ -12,9 +12,9 @@ Veo 3가 생성하는 오디오는 세 가지 범주를 포함한다: (1) **장�
 
 비디오 품질 측면에서도 Veo 2 대비 더 세밀한 텍스처, 복잡한 동작, 더 긴 시퀀스에서의 일관성이 향상되었다. Google의 AI 미디어 스튜디오인 VideoFX와 Flow 플랫폼에 통합 제공되며, Gemini Ultra 구독자에게 우선 제공되었다.
 
-![Veo 3 아키텍처 — Joint Multimodal DiT 기반 비디오와 오디오를 동시 생성하는 공동 확산 구조](figures/architecture.svg)
+![Veo 3 아키텍처 - Joint Multimodal DiT 기반 비디오와 오디오를 동시 생성하는 공동 확산 구조](figures/architecture.svg)
 
-*Figure 1: Veo 3 아키텍처 — 비디오 잠재 토큰과 오디오 잠재 토큰을 동일한 DiT 백본에서 공동 확산(Joint Diffusion)으로 처리하여 시각적 이벤트와 소리가 자연스럽게 동기화된 영상을 생성한다.*
+*Figure 1: Veo 3 아키텍처 - 비디오 잠재 토큰과 오디오 잠재 토큰을 동일한 DiT 백본에서 공동 확산(Joint Diffusion)으로 처리하여 시각적 이벤트와 소리가 자연스럽게 동기화된 영상을 생성한다.*
 
 ## 아키텍처 상세
 
@@ -80,4 +80,4 @@ Veo 3는 Veo 2에서 직접 발전하였으며, Google DeepMind의 Imagen, Lumie
 
 ## 관련 문서
 
-- [[veo|Veo 2]] — 발전 기반
+- [[veo|Veo 2]] - 발전 기반

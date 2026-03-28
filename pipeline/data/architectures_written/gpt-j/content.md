@@ -231,4 +231,4 @@ GPT-J는 **현대 LLM의 두 가지 핵심 구성 요소(RoPE, Parallel Block)�
 
 ## 관련 문서
 
-- [[gpt-neo|GPT-Neo]] — 발전 기반
+- [[gpt-neo|GPT-Neo]] - 발전 기반

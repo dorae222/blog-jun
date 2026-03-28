@@ -10,9 +10,9 @@ Mamba는 선택적 메커니즘(Selective Mechanism)을 도입해 $B$, $C$, $\De
 
 Mamba는 SSM 연구사에서 가장 영향력 있는 단일 모델로, 이후 Mamba-2(SSD), Mamba-3(하이브리드), Griffin(Google DeepMind), Jamba(AI21) 등 수많은 후속 연구와 산업 적용의 기반이 되었다.
 
-![Mamba 아키텍처 — 선택적 메커니즘으로 B, C, Delta 파라미터를 입력 의존적으로 결정하는 SSM 블록 구조](figures/architecture.svg)
+![Mamba 아키텍처 - 선택적 메커니즘으로 B, C, Delta 파라미터를 입력 의존적으로 결정하는 SSM 블록 구조](figures/architecture.svg)
 
-*Figure 1: Mamba 아키텍처 — 기존 SSM의 LTI 한계를 극복하여 B, C, Delta를 입력에 따라 동적으로 결정하는 선택적 SSM 블록으로, 시퀀스 길이에 선형 복잡도와 O(1) 추론 메모리를 달성한다.*
+*Figure 1: Mamba 아키텍처 - 기존 SSM의 LTI 한계를 극복하여 B, C, Delta를 입력에 따라 동적으로 결정하는 선택적 SSM 블록으로, 시퀀스 길이에 선형 복잡도와 O(1) 추론 메모리를 달성한다.*
 
 ## 아키텍처 상세
 
@@ -133,8 +133,8 @@ Mamba는 Hugging Face에서 다양한 크기의 사전학습 모델을 사용할
 
 ## 관련 문서
 
-- [[s4|S4]] — 발전 기반
-- [[mamba-2|Mamba-2]] — 후속 모델
-- [[h3|H3]] — 영감
-- [[griffin|Griffin]] — 영감을 줌
-- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] — 영감을 줌
+- [[s4|S4]] - 발전 기반
+- [[mamba-2|Mamba-2]] - 후속 모델
+- [[h3|H3]] - 영감
+- [[griffin|Griffin]] - 영감을 줌
+- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] - 영감을 줌

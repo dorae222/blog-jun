@@ -10,9 +10,9 @@ CrewAI의 핵심 비유는 **실제 회사 조직**이다. 리서처, 작가, �
 
 멀티 에이전트 프레임워크 선택에서 핵심 트레이드오프는 **사용 편의성 vs 유연성**이다. AutoGen은 자유로운 대화를 통해 높은 유연성을 제공하지만 학습 곡선이 가파르고, LangGraph는 그래프 기반으로 정밀한 제어가 가능하지만 보일러플레이트가 많다. CrewAI는 이 스펙트럼에서 "사용 편의성" 측에 위치하며, 가장 적은 코드로 프로덕션 수준의 멀티 에이전트 시스템을 구축할 수 있다.
 
-![CrewAI 아키텍처 — Agent, Task, Crew 삼중 추상화 기반 역할 분담 멀티 에이전트 오케스트레이션](figures/architecture.svg)
+![CrewAI 아키텍처 - Agent, Task, Crew 삼중 추상화 기반 역할 분담 멀티 에이전트 오케스트레이션](figures/architecture.svg)
 
-*Figure 1: CrewAI 아키텍처 — 역할(role)·목표(goal)·배경(backstory)을 가진 에이전트들이 Crew 단위로 조직되어 순차적 또는 계층적으로 태스크를 처리하는 선언적 멀티 에이전트 프레임워크이다.*
+*Figure 1: CrewAI 아키텍처 - 역할(role)·목표(goal)·배경(backstory)을 가진 에이전트들이 Crew 단위로 조직되어 순차적 또는 계층적으로 태스크를 처리하는 선언적 멀티 에이전트 프레임워크이다.*
 
 ## 아키텍처 상세
 
@@ -197,4 +197,4 @@ CrewAI는 AutoGen의 멀티 에이전트 협업 아이디어에서 영감을 받
 
 ## 관련 문서
 
-- [[autogen|AutoGen]] — 영감
+- [[autogen|AutoGen]] - 영감

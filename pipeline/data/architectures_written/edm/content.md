@@ -146,4 +146,4 @@ EDM의 Preconditioning 프레임워크는 확산 모델의 학습을 "네트워�
 
 ## 관련 문서
 
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 발전 기반
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 발전 기반

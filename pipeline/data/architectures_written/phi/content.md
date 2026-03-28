@@ -6,9 +6,9 @@
 
 Phi는 Microsoft Research가 2023년 발표한 소형 언어 모델(SLM) 시리즈로, phi-1(1.3B)과 phi-1.5(1.3B), phi-2(2.7B)로 구성된다. 핵심 철학은 "교과서 수준의 고품질 데이터(Textbook Quality Data)"로, 수십억 파라미터 규모 모델에 필적하는 성능을 단 10억~30억 파라미터로 달성하였다. 코드 생성과 수학 추론 분야에서 특히 뛰어난 성능을 보이며, 모델 크기 대비 성능 효율(parameter efficiency)의 중요성을 강조한 연구이다. 이 시리즈는 소형 모델도 충분한 데이터 품질을 갖추면 대형 모델에 근접할 수 있다는 패러다임을 제시하였다.
 
-![Phi 아키텍처 — 교과서 수준 합성 데이터로 학습한 1.3~2.7B 소형 Decoder-only 언어 모델 구조](figures/architecture.svg)
+![Phi 아키텍처 - 교과서 수준 합성 데이터로 학습한 1.3~2.7B 소형 Decoder-only 언어 모델 구조](figures/architecture.svg)
 
-*Figure 1: Phi 아키텍처 — GPT-4로 생성한 합성 교과서 데이터와 고품질 웹 코드로 학습하여, 1.3B 파라미터만으로 코드 생성과 수학 추론에서 수십억 규모 모델에 필적하는 성능을 달성한다.*
+*Figure 1: Phi 아키텍처 - GPT-4로 생성한 합성 교과서 데이터와 고품질 웹 코드로 학습하여, 1.3B 파라미터만으로 코드 생성과 수학 추론에서 수십억 규모 모델에 필적하는 성능을 달성한다.*
 
 ## 아키텍처 상세
 
@@ -42,7 +42,7 @@ phi-1은 약 7B 토큰의 교과서 품질 데이터(합성 데이터 1B + 웹 �
 
 ### 관련 모델
 
-- **gpt-3** — 영감
+- **gpt-3** - 영감
 
 ### 어텐션 메커니즘: MHA
 
@@ -72,7 +72,7 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 다음 그림은 데이터 품질이 모델 성능에 미치는 영향을 HumanEval 벤치마크로 비교한 결과이다.
 
 ![Phi 모델의 HumanEval 코드 생성 성능 비교](figures/fig_1.png)
-*Figure 2: 데이터 품질에 따른 HumanEval Pass@1 정확도 비교 — The Stack(주황), CodeTextbook(연한 파랑), CodeTextbook+CodeExercises(진한 파랑) 순으로, 교과서 품질 데이터가 모델 크기와 무관하게 성능을 극적으로 향상시킨다. (Source: Gunasekar et al., 2023)*
+*Figure 2: 데이터 품질에 따른 HumanEval Pass@1 정확도 비교 - The Stack(주황), CodeTextbook(연한 파랑), CodeTextbook+CodeExercises(진한 파랑) 순으로, 교과서 품질 데이터가 모델 크기와 무관하게 성능을 극적으로 향상시킨다. (Source: Gunasekar et al., 2023)*
 
 ## 핵심 혁신
 
@@ -184,5 +184,5 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[phi-3|Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone]] — 후속 모델
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 영감
+- [[phi-3|Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone]] - 후속 모델
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 영감
