@@ -10,7 +10,9 @@ xLSTM은 LSTM의 핵심 한계였던 스칼라 메모리 셀을 행렬 메모리
 
 같은 파라미터 수의 Transformer 및 Mamba 대비 언어 모델링 perplexity에서 경쟁력 있는 성능을 달성했으며, LSTM 기반 모델이 대형 언어 모델 시대에도 유효함을 증명한 연구이다. 30년간 축적된 LSTM 연구의 통찰을 현대적으로 재활용했다는 점에서 학술적 의의가 크다.
 
-![Architecture](figures/architecture.svg)
+![xLSTM 아키텍처 — mLSTM(행렬 메모리)과 sLSTM(지수 게이팅)을 조합한 확장 LSTM 구조](figures/architecture.svg)
+
+*Figure 1: xLSTM 아키텍처 — LSTM의 스칼라 메모리 셀을 행렬 메모리로 확장한 mLSTM과 지수 게이팅의 sLSTM 블록을 조합하여, 현대 LLM 시대에서도 경쟁력 있는 언어 모델링 성능을 달성한다.*
 
 ## 아키텍처 상세
 

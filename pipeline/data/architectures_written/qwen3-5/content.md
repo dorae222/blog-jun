@@ -6,7 +6,9 @@
 
 Qwen3.5는 2026년 2월 Alibaba Cloud가 공개한 차세대 대규모 언어 모델로, Qwen3의 순수 Transformer 구조에서 벗어나 Gated DeltaNet(선형 어텐션)과 표준 GQA를 3:1 비율로 교차 배치하는 하이브리드 어텐션 아키텍처를 최초로 도입했다. 플래그십 모델 Qwen3.5-397B-A17B는 총 397B 파라미터 중 토큰당 17B만 활성화하는 대규모 MoE 구조(512 전문가, 10 라우팅 + 1 공유 전문가)를 채택하여, Qwen3-Max 대비 32K 컨텍스트에서 8.6배, 256K에서 19배 빠른 디코딩 처리량을 달성했다. 네이티브 262K 컨텍스트 윈도우와 201개 언어 지원, 조기 융합(early fusion) 멀티모달 훈련을 통해 텍스트·이미지·비디오를 단일 모델에서 처리하며, 에이전틱 AI 태스크에 특화된 도구 사용(MCP) 및 적응적 추론 능력을 갖추었다.
 
-![Architecture](figures/architecture.svg)
+![Qwen3.5 아키텍처 — Gated DeltaNet과 GQA 3:1 하이브리드 어텐션 기반 397B MoE 구조](figures/architecture.svg)
+
+*Figure 1: Qwen3.5 아키텍처 — Gated DeltaNet(선형 어텐션)과 GQA를 3:1 비율로 교차 배치하고, 512개 전문가 중 10개를 라우팅하는 대규모 MoE로 262K 컨텍스트에서 기존 대비 19배 빠른 디코딩을 달성한다.*
 
 ## 아키텍처 상세
 

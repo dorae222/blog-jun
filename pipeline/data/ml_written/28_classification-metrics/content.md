@@ -347,7 +347,9 @@ weighted avg       0.93      0.93      0.93      1500
   threshold=0.7 → Precision=0.897, Recall=0.331, F1=0.484
 ```
 
-![Classification-Metrics Fig 1](/media/figures/outputs/classification-metrics/classification-metrics_fig_1.png)
+![Precision-Recall 곡선과 임계값 분석](figures/precision_recall_curve.png)
+
+*Figure 1: Precision-Recall 트레이드오프: 임계값 변화에 따른 Precision과 Recall의 상반 관계를 시각화하여 비즈니스 요구에 맞는 최적 임계값 선택을 돕는다.*
 
 위 코드를 실행하면 임계값이 낮아질수록 Recall은 높아지고 Precision은 낮아지는 트레이드오프를 직접 확인할 수 있다. 실전에서는 비즈니스 요구사항에 따라 최적 임계값을 선택하는 과정이 모델 개발만큼 중요하다.
 

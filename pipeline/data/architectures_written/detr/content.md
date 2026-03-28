@@ -8,7 +8,9 @@ DETR(DEtection TRansformer)는 2020년 Meta/FAIR의 Nicolas Carion 등이 발표
 
 DETR는 이 모든 수작업 구성요소를 단번에 제거하고, 트랜스포머의 집합 예측(set prediction) 능력을 활용하여 이미지에서 직접 객체 집합을 예측하는 단순하고 우아한 프레임워크를 제시하였다. 핵심 아이디어는 객체 탐지를 "집합 예측 문제"로 재정의하고, 헝가리안 알고리즘을 사용한 이분 매칭(bipartite matching)으로 예측과 정답의 일대일 대응을 구조적으로 보장하는 것이다. 이를 통해 중복 탐지가 원천적으로 방지되어 NMS가 완전히 불필요해졌다. COCO 벤치마크에서 고도로 최적화된 Faster R-CNN과 동등한 42.0 AP를 달성하면서도, 코드베이스는 기존 탐지기의 절반 이하로 간결해졌다. DETR의 등장은 이후 Deformable DETR, DN-DETR, DAB-DETR, DINO-DETR, Grounding DINO, RT-DETR 등 DETR 계열 모델의 풍성한 연구 생태계를 촉발하였다.
 
-![Architecture](figures/architecture.svg)
+![DETR 아키텍처 — CNN 백본, 트랜스포머 인코더-디코더, 이분 매칭 기반 종단간 객체 탐지 구조](figures/architecture.svg)
+
+*Figure 1: DETR 아키텍처 — CNN 백본으로 이미지 특징을 추출하고, 트랜스포머 인코더-디코더와 학습 가능한 객체 쿼리를 통해 NMS 없이 종단간으로 객체를 탐지한다.*
 
 ## 아키텍처 상세
 

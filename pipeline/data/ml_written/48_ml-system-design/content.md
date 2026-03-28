@@ -328,7 +328,9 @@ plt.savefig('ml_system_architecture.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Ml-System-Design Fig 1](/media/figures/outputs/ml-system-design/ml-system-design_fig_1.png)
+![ML 시스템 아키텍처 시각화](figures/ml_system_architecture.png)
+
+*Figure 1: 프로덕션 ML 시스템 아키텍처: 데이터 수집부터 모델 서빙까지 전체 구성 요소와 데이터 흐름을 보여준다.*
 
 ### 드리프트 모니터링 대시보드
 
@@ -378,7 +380,9 @@ plt.savefig('drift_monitoring_dashboard.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Ml-System-Design Fig 2](/media/figures/outputs/ml-system-design/ml-system-design_fig_2.png)
+![드리프트 모니터링 대시보드](figures/system_monitoring_dashboard.png)
+
+*Figure 2: 드리프트 모니터링 대시보드: 30일간 PSI 값과 모델 정확도 추이를 통해 데이터 드리프트를 감지하고 재학습 시점을 결정한다.*
 
 ---
 

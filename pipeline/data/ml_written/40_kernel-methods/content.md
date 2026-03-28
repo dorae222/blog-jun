@@ -184,11 +184,13 @@ plt.show()
 RBF  SVM 정확도: 1.0000
 ```
 
-![Kernel-Methods Fig 1](/media/figures/outputs/kernel-methods/kernel-methods_fig_1.png)
+![커널 변환과 결정 경계](figures/kernel_transformation.png)
 
-![Kernel-Methods Fig 2](/media/figures/outputs/kernel-methods/kernel-methods_fig_2.png)
+*Figure 1: 커널 변환 시각화: 선형 SVM과 RBF SVM의 결정 경계 비교, Kernel PCA vs PCA 비교, 커널 함수 간 성능 차이를 보여준다.*
 
-![Kernel-Methods Fig 3](/media/figures/outputs/kernel-methods/kernel-methods_fig_3.png)
+![커널별 결정 경계 비교](figures/kernel_comparison.png)
+
+*Figure 2: 커널 비교: 동일한 데이터에 선형, 다항식, RBF 커널을 적용했을 때 결정 경계의 복잡도와 유연성 차이를 보여준다.*
 
 ---
 

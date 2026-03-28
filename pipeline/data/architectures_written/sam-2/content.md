@@ -13,7 +13,9 @@ Hiera(Hierarchical Vision Transformer) 기반 경량 이미지 인코더를 채�
 ![SAM 2의 전체 개요 — 프롬프터블 비주얼 세그멘테이션 태스크, 모델 구조, SA-V 데이터 엔진](figures/fig_1.png)
 *Figure 1: SAM 2 전체 개요 — (a) 프롬프터블 비주얼 세그멘테이션 태스크, (b) 이미지 인코더·메모리 어텐션·마스크 디코더로 구성된 모델 구조, (c) SA-V 데이터셋 수집 파이프라인. (Source: Ravi et al., 2024)*
 
-![Architecture](figures/architecture.svg)
+![SAM 2 아키텍처 — Hiera 이미지 인코더, 스트리밍 메모리 어텐션, 마스크 디코더의 통합 세그멘테이션 구조](figures/architecture.svg)
+
+*Figure 2: SAM 2 아키텍처 — Hiera 경량 이미지 인코더로 특징을 추출하고, 메모리 어텐션으로 이전 프레임의 정보를 축적하며, 마스크 디코더로 이미지와 비디오를 통합 세그멘테이션한다.*
 
 ## 아키텍처 상세
 

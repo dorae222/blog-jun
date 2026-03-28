@@ -11,7 +11,9 @@ V-JEPA 2의 핵심 철학은 MAE나 VideoMAE와 같은 마스킹 오토인코더
 ![V-JEPA 2 전체 파이프라인 — 비디오 사전학습에서 다운스트림 태스크까지의 흐름](figures/fig_1.png)
 *Figure 1: V-JEPA 2 개요 — 인터넷 규모 비디오/이미지로 사전학습 후, Language Alignment(Video QA), Attentive Probe(행동 분류/객체 인식/행동 예측), 로봇 데이터 기반 Action-Conditioned 후학습(로봇 조작)으로 활용되는 다단계 파이프라인. (Source: Assran et al., 2025)*
 
-![Architecture](figures/architecture.svg)
+![V-JEPA 2 아키텍처 — 컨텍스트 인코더, EMA 타깃 인코더, 예측기로 구성된 Joint-Embedding Predictive Architecture 구조](figures/architecture.svg)
+
+*Figure 2: V-JEPA 2 아키텍처 — 마스킹된 비디오 패치의 추상적 표현을 잠재 공간에서 예측하는 JEPA 프레임워크로, 컨텍스트 인코더와 EMA 타깃 인코더 간의 비대칭 구조를 통해 물리적 세계의 고수준 의미를 학습한다.*
 
 ## 아키텍처 상세
 

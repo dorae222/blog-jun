@@ -185,7 +185,9 @@ plt.savefig('kmeans_analysis.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Kmeans-Clustering Fig 1](/media/figures/outputs/kmeans-clustering/kmeans-clustering_fig_1.png)
+![K-Means 분석 결과](figures/kmeans_iterations.png)
+
+*Figure 1: K-Means 클러스터링 분석: 클러스터링 결과, 실루엣 분석, 엘보우 방법을 통한 최적 K 탐색 결과를 보여준다.*
 
 ### Mini-Batch K-Means 비교
 

@@ -11,6 +11,10 @@
 
 ## 아키텍처 상세
 
+![EDM Preconditioning 프레임워크 아키텍처](figures/architecture.png)
+
+*Figure 1: EDM의 Preconditioning 프레임워크와 설계 공간 분석 구조. (Karras et al., 2022)*
+
 ### Preconditioning 프레임워크
 
 EDM의 핵심 기여는 네트워크 입출력을 노이즈 수준 $\sigma$에 따라 스케일링하는 네 가지 함수를 이론적으로 유도한 것이다:

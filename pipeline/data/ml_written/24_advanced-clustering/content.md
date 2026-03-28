@@ -204,7 +204,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Advanced-Clustering Fig 1](/media/figures/outputs/advanced-clustering/advanced-clustering_fig_1.png)
+![계층적 클러스터링 덴드로그램](figures/dbscan_vs_hierarchical.png)
+
+*Figure 1: 계층적 클러스터링 덴드로그램: 병합 과정과 절단 기준선을 통해 최적 군집 수를 결정하는 과정을 보여준다.*
 
 ### 최적 군집 수 결정 (덴드로그램 활용)
 
@@ -279,7 +281,9 @@ plt.savefig('dbscan_result.png', dpi=150, bbox_inches='tight')
 plt.show()
 ```
 
-![Advanced-Clustering Fig 2](/media/figures/outputs/advanced-clustering/advanced-clustering_fig_2.png)
+![DBSCAN 결과 시각화](figures/dbscan_eps_effect.png)
+
+*Figure 2: DBSCAN vs K-Means 비교: 비구형 클러스터에서 K-Means가 실패하는 반면 DBSCAN은 Core/Border/Noise를 구분하여 성공적으로 군집화한다.*
 
 ---
 
@@ -312,7 +316,9 @@ plt.legend()
 plt.show()
 ```
 
-![Advanced-Clustering Fig 3](/media/figures/outputs/advanced-clustering/advanced-clustering_fig_3.png)
+![k-거리 그래프](figures/dbscan_eps_effect.png)
+
+*Figure 3: k-거리 그래프: k-NN 거리를 정렬하여 팔꿈치 지점에서 최적 ε 값을 결정하는 DBSCAN 파라미터 선택 방법을 보여준다.*
 
 **MinPts 선택 경험 법칙**
 

@@ -10,7 +10,9 @@ ToT의 핵심 비유는 인간의 문제 해결 과정이다. 인간은 어려�
 
 기존 추론 기법과의 관계를 정리하면: CoT는 하나의 선형 경로, Self-Consistency는 여러 선형 경로의 병렬 샘플링, ToT는 트리 구조의 체계적 탐색이다. Self-Consistency가 "여러 번 풀어서 다수결"이라면, ToT는 "한 단계씩 유망한 방향을 선택하며 깊이 탐색"하는 것이다. 이 차이는 Game of 24에서 극적으로 드러난다: CoT 4%, Self-Consistency(k=100) 9%, ToT 74%. 다수 샘플링만으로는 해결할 수 없는 문제 유형이 존재하며, **구조화된 탐색이 본질적으로 필요한 과제**에서 ToT가 압도적 우위를 보인다.
 
-![Architecture](figures/architecture.svg)
+![Tree of Thoughts 아키텍처 — 트리 구조 탐색과 단계별 평가·가지치기 기반 의도적 추론 구조](figures/architecture.svg)
+
+*Figure 1: ToT 아키텍처 — 추론 과정을 트리로 확장하여 BFS/DFS 탐색 알고리즘으로 각 단계의 유망성을 평가하고 가지치기하며, CoT의 단방향 추론 한계를 극복한 계획적 문제 해결 프레임워크이다.*
 
 아래 그림은 기존 추론 방식과 ToT의 차이를 시각적으로 비교한다. 입출력(IO), Chain-of-Thought, Self-Consistency, Tree of Thoughts의 구조적 차이를 확인할 수 있다.
 

@@ -6,7 +6,9 @@
 
 Allen Institute for AI(AI2)가 2024년 2월 공개한 완전 개방형 언어 모델로, 'Open'의 의미를 모델 가중치 공개에서 훨씬 더 나아가 학습 데이터·코드·평가 코드·학습 로그·중간 체크포인트까지 모두 공개한다. 대부분의 '오픈' LLM이 가중치만 공개하는 데 반해, OLMo는 LLM 연구의 완전한 재현성(reproducibility)을 목표로 한다. 학습 데이터셋 Dolma(3T 토큰)도 함께 공개해 학계가 처음부터 끝까지 동일한 결과를 재현할 수 있게 했다. 영리 목적이 아닌 과학적 투명성 중심의 LLM 연구 인프라로서, AI 연구 접근성 민주화에 기여했다.
 
-![Architecture](figures/architecture.svg)
+![OLMo 아키텍처 — 가중치, 학습 데이터, 코드, 로그까지 완전 공개하는 재현 가능한 Decoder-only LLM 구조](figures/architecture.svg)
+
+*Figure 1: OLMo 아키텍처 — 비파라메트릭 LayerNorm과 QK-norm으로 안정성을 강화한 Decoder-only Transformer로, Dolma 3T 토큰 데이터셋과 함께 완전한 재현성을 목표로 공개되었다.*
 
 ## 아키텍처 상세
 

@@ -15,7 +15,9 @@ LDM은 Cross-Attention 메커니즘을 통해 텍스트, 클래스, 레이아웃
 - **발표**: 2022년 1월, CompVis / LMU Munich
 - **라이선스**: MIT
 
-![Architecture](figures/architecture.svg)
+![LDM 아키텍처 — VAE 잠재 공간에서 확산 과정을 수행하고 Cross-Attention으로 조건을 주입하는 구조](figures/architecture.svg)
+
+*Figure 1: LDM 아키텍처 — 사전학습된 VAE로 이미지를 저차원 잠재 공간에 압축한 뒤, U-Net에서 확산 과정을 수행하고 Cross-Attention으로 텍스트·클래스 등 다양한 조건을 유연하게 주입한다.*
 
 ![인식 압축과 의미적 압축의 관계 — Rate-Distortion 곡선에서 LDM의 위치](figures/fig_2.jpg)
 *Figure 1: 인식 압축 vs 의미적 압축 — 대부분의 이미지 비트는 인식 불가능한 디테일에 해당하며, Autoencoder+GAN이 이를 제거(인식 압축)한 후 LDM이 의미적 생성을 담당한다. (Source: Rombach et al., 2022)*

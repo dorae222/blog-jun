@@ -113,13 +113,15 @@ $$\boldsymbol{q}_m = R_{\Theta, m}^d \mathbf{W}_q \mathbf{x}_m, \quad \boldsymbo
 
 회전 행렬 $R_{\Theta, m}^d$는 다음과 같이 정의됩니다.
 
-$$R_{\Theta, m}^d = \begin{pmatrix}
+$$
+R_{\Theta, m}^d = \begin{pmatrix}
 \cos m\theta_1 & -\sin m\theta_1 & \cdots & 0 \\
 \sin m\theta_1 & \cos m\theta_1 & \cdots & 0 \\
 \vdots & & \ddots & \\
 0 & \cdots & \cos m\theta_{d/2} & -\sin m\theta_{d/2} \\
 0 & \cdots & \sin m\theta_{d/2} & \cos m\theta_{d/2}
-\end{pmatrix}$$
+\end{pmatrix}
+$$
 
 여기서 $\theta_i = 10000^{-2i/d}$이며, 128K 컨텍스트 확장을 위해 LongRoPE 기법을 적용하여 RoPE의 기저 주파수를 조정합니다. 구체적으로 base frequency를 $10,000$에서 더 큰 값으로 확장하고, 비균등 주파수 스케일링을 적용하여 장문에서의 위치 인식 정확도를 유지합니다.
 

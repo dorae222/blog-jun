@@ -10,7 +10,9 @@ MetaGPT의 핵심 통찰은 **"비구조적 대화는 멀티 에이전트 시스
 
 이 접근의 이론적 배경은 소프트웨어 공학의 **폭포수(Waterfall) 모델**과 유사하다. 요구사항 분석 $\rightarrow$ 시스템 설계 $\rightarrow$ 구현 $\rightarrow$ 테스트의 순차적 절차를 따르되, 각 단계의 산출물이 다음 단계의 입력이 되는 구조화된 파이프라인을 에이전트 시스템으로 자동화한다. 이는 에이전트 간 불필요한 대화를 제거하고, 구조화된 산출물을 통해 환각(hallucination)을 줄이는 효과가 있다.
 
-![Architecture](figures/architecture.svg)
+![MetaGPT 아키텍처 — SOP 기반 역할 분담과 구조화된 산출물 흐름의 멀티 에이전트 소프트웨어 개발 구조](figures/architecture.svg)
+
+*Figure 1: MetaGPT 아키텍처 — Product Manager, Architect, Engineer, QA Engineer 역할을 SOP에 따라 배치하고, 구조화된 산출물(PRD, 시스템 설계, 코드, 테스트)이 순차적으로 전달되는 폭포수 프로세스이다.*
 
 아래 그림은 MetaGPT의 SOP 기반 에이전트 협업 구조를 보여준다. 실제 소프트웨어 개발 팀의 폭포수 프로세스와 MetaGPT 에이전트의 역할별 산출물 흐름을 비교할 수 있다.
 

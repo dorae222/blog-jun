@@ -10,6 +10,10 @@ Chameleon이 제시한 조기 융합 방향을 이어받되, Emu3는 한 단계 
 
 ## 아키텍처 상세
 
+![Emu3 통합 멀티모달 아키텍처](figures/architecture.png)
+
+*Figure 1: Emu3의 SBER-VQGAN 토크나이저와 통합 자기회귀 트랜스포머 아키텍처. (BAAI, 2024)*
+
 ### 전체 구조
 
 Emu3의 구조는 세 가지 컴포넌트로 구성된다:
