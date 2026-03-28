@@ -2,9 +2,9 @@
 
 ## 개요
 
-OpenCode는 Go로 작성된 오픈소스 터미널 기반 AI 코딩 도구로, [[claude-code|Claude Code]]에서 영감을 받아 개발되었다. 가장 큰 차별점은 **풍부한 TUI(Terminal User Interface)**와 **Go 네이티브 구현**으로, 빠른 실행 속도와 단일 바이너리 배포를 달성한 점이다.
+OpenCode는 Go로 작성된 오픈소스 터미널 기반 AI 코딩 도구로, [[claude-code|Claude Code]]에서 영감을 받아 개발되었다. 가장 큰 차별점은 **Bubble Tea 프레임워크 기반 풍부한 TUI**와 **75개 이상의 LLM 모델 지원**이다.
 
-Anthropic, OpenAI, Google, Groq, AWS Bedrock, Azure OpenAI 등 주요 LLM 프로바이더를 모두 지원하며, LSP(Language Server Protocol) 통합을 통해 코드 인텔리전스를 에이전트에게 직접 제공한다.
+2025년 9월 원본 레포(opencode-ai/opencode)가 아카이브되고, Charm 팀(Bubble Tea 개발사)의 **"Crush"**로 계승되어 활발히 개발이 이어지고 있다. Anthropic, OpenAI, Google, Groq, AWS Bedrock, Azure OpenAI, OpenRouter, GitHub Copilot 등 주요 프로바이더를 모두 지원하며, LSP 통합을 통해 코드 인텔리전스를 에이전트에게 직접 제공한다. 2026년 초 기준 95K+ GitHub stars.
 
 ---
 
