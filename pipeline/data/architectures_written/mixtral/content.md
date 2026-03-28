@@ -8,8 +8,8 @@ Mixtral 8x7B는 프랑스 AI 스타트업 Mistral AI가 2023년 12월에 공개�
 
 아래 그림은 Mixtral의 Mixture of Experts 레이어 구조를 보여준다.
 
-![Mixtral MoE 레이어 — 라우터가 8개 전문가 중 2개를 선택하여 가중 합산](figures/fig_2.png)
-*Figure 1: Mixture of Experts 레이어 — 각 입력 벡터는 라우터에 의해 8개 전문가 중 2개에 할당되며, 레이어 출력은 선택된 두 전문가의 가중 합이다. 각 전문가는 표준 FFN 블록과 동일하다. (Source: Jiang et al., 2024)*
+![Mixtral MoE 레이어 - 라우터가 8개 전문가 중 2개를 선택하여 가중 합산](figures/fig_2.png)
+*Figure 1: Mixture of Experts 레이어 - 각 입력 벡터는 라우터에 의해 8개 전문가 중 2개에 할당되며, 레이어 출력은 선택된 두 전문가의 가중 합이다. 각 전문가는 표준 FFN 블록과 동일하다. (Source: Jiang et al., 2024)*
 
 ## 아키텍처 상세
 
@@ -70,8 +70,8 @@ Mixtral은 32개의 Query 헤드와 8개의 KV 헤드를 사용하는 GQA를 채
 
 Mixtral의 활성 파라미터 대비 성능 효율은 아래 스케일링 비교에서 명확히 드러난다.
 
-![활성 파라미터 대비 성능 스케일링 — Mixtral 8x7B가 12.9B 활성 파라미터로 70B급 성능 달성](figures/fig_4.png)
-*Figure 2: 활성 파라미터 대비 성능 스케일링 — Mixtral 8x7B(주황색)는 12.9B의 활성 파라미터만으로 Llama-2-70B(빨간색)와 대등하거나 상회하는 성능을 MMLU, 수학, 코드 등 전 영역에서 달성한다. (Source: Jiang et al., 2024)*
+![활성 파라미터 대비 성능 스케일링 - Mixtral 8x7B가 12.9B 활성 파라미터로 70B급 성능 달성](figures/fig_4.png)
+*Figure 2: 활성 파라미터 대비 성능 스케일링 - Mixtral 8x7B(주황색)는 12.9B의 활성 파라미터만으로 Llama-2-70B(빨간색)와 대등하거나 상회하는 성능을 MMLU, 수학, 코드 등 전 영역에서 달성한다. (Source: Jiang et al., 2024)*
 
 Mixtral 8x7B는 공개 당시 동급 최강의 성능을 보여주었다:
 
@@ -88,8 +88,8 @@ Mixtral 8x7B는 공개 당시 동급 최강의 성능을 보여주었다:
 
 다양한 벤치마크에서의 세부 성능 비교는 아래 그래프에서 확인할 수 있다.
 
-![Mixtral과 Llama 모델의 벤치마크 비교 — MMLU, 수학, 코드 등 전 영역에서 우수한 성능](figures/fig_3.png)
-*Figure 3: Mixtral 8x7B와 Llama 시리즈의 벤치마크 비교 — Mixtral(노란색)은 특히 수학과 코드 생성에서 Llama-2-70B를 크게 상회하며, MMLU와 추론에서도 우위를 보인다. (Source: Jiang et al., 2024)*
+![Mixtral과 Llama 모델의 벤치마크 비교 - MMLU, 수학, 코드 등 전 영역에서 우수한 성능](figures/fig_3.png)
+*Figure 3: Mixtral 8x7B와 Llama 시리즈의 벤치마크 비교 - Mixtral(노란색)은 특히 수학과 코드 생성에서 Llama-2-70B를 크게 상회하며, MMLU와 추론에서도 우위를 보인다. (Source: Jiang et al., 2024)*
 
 ## 관련 모델 비교
 
@@ -130,13 +130,13 @@ Mixtral 8x7B는 실무 배포 시 다음과 같은 특성을 고려해야 한다
 
 Mixtral의 전문가 라우팅 패턴은 도메인보다 구문 구조에 더 밀접하게 연관되어 있다는 흥미로운 결과가 관찰되었다.
 
-![도메인별 전문가 할당 비율 — 레이어 0, 15, 31에서의 전문가 활용 분포](figures/fig_8.png)
-*Figure 4: 도메인별 전문가 할당 비율 (레이어 0, 15, 31) — 회색 점선은 균등 할당(1/8)을 나타내며, 전문가 활용이 비교적 균등하면서도 도메인에 따른 미세한 특화 패턴이 관찰된다. (Source: Jiang et al., 2024)*
+![도메인별 전문가 할당 비율 - 레이어 0, 15, 31에서의 전문가 활용 분포](figures/fig_8.png)
+*Figure 4: 도메인별 전문가 할당 비율 (레이어 0, 15, 31) - 회색 점선은 균등 할당(1/8)을 나타내며, 전문가 활용이 비교적 균등하면서도 도메인에 따른 미세한 특화 패턴이 관찰된다. (Source: Jiang et al., 2024)*
 
 아래 시각화는 토큰 수준에서 첫 번째 전문가 선택을 색상으로 표현한 것으로, 구문 구조와의 상관관계를 보여준다.
 
-![토큰별 전문가 선택 시각화 — 코드, 수학, 자연어에서의 전문가 라우팅 패턴](figures/fig_9.png)
-*Figure 5: 토큰별 전문가 선택 시각화 — 각 토큰이 첫 번째로 선택한 전문가를 색상으로 표시. 전문가 선택이 도메인보다는 구문 구조(키워드, 연산자, 자연어 문장 등)에 더 밀접하게 관련되어 있음을 보여준다. (Source: Jiang et al., 2024)*
+![토큰별 전문가 선택 시각화 - 코드, 수학, 자연어에서의 전문가 라우팅 패턴](figures/fig_9.png)
+*Figure 5: 토큰별 전문가 선택 시각화 - 각 토큰이 첫 번째로 선택한 전문가를 색상으로 표시. 전문가 선택이 도메인보다는 구문 구조(키워드, 연산자, 자연어 문장 등)에 더 밀접하게 관련되어 있음을 보여준다. (Source: Jiang et al., 2024)*
 
 ## 한계 및 전망
 
@@ -160,7 +160,7 @@ Mixtral 8x7B는 MoE 아키텍처가 이론적 연구에 머무르지 않고 실�
 
 ## 관련 문서
 
-- [[mistral-7b|Mistral 7B]] — 발전 기반
-- [[mistral-large-3|Mistral Large 3 / Mistral 3]] — 후속 모델
-- [[deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] — 영감을 줌
-- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] — 영감을 줌
+- [[mistral-7b|Mistral 7B]] - 발전 기반
+- [[mistral-large-3|Mistral Large 3 / Mistral 3]] - 후속 모델
+- [[deepseek-v2|DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model]] - 영감을 줌
+- [[jamba|Jamba: A Hybrid Transformer-Mamba Language Model]] - 영감을 줌

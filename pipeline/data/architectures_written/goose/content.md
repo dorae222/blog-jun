@@ -10,9 +10,9 @@ Goose의 독특한 포지셔닝은 **"기업이 실전에서 검증한 오픈소
 
 에이전틱 코딩 도구 시장에서 Goose가 제공하는 핵심 가치는 **벤더 독립성(vendor independence)**이다. Claude Code는 Anthropic API에, Cursor는 자체 인프라에 종속되지만, Goose는 Claude, GPT-4o, Gemini, 로컬 Ollama 모델 등 어떤 LLM 프로바이더든 설정 파일 한 줄로 전환할 수 있다. 비용 최적화가 필요하면 저렴한 모델로, 프라이버시가 중요하면 로컬 모델로 즉시 전환 가능하다.
 
-![Goose 아키텍처 — Rust 코어와 MCP 기반 확장 가능한 플러그인 시스템의 에이전틱 코딩 구조](figures/architecture.svg)
+![Goose 아키텍처 - Rust 코어와 MCP 기반 확장 가능한 플러그인 시스템의 에이전틱 코딩 구조](figures/architecture.svg)
 
-*Figure 1: Goose 아키텍처 — 고성능 Rust 코어 위에 MCP 기반 도구 확장 시스템을 구축하여, 벤더 독립적으로 다양한 LLM 프로바이더와 연동하는 오픈소스 에이전틱 코딩 어시스턴트이다.*
+*Figure 1: Goose 아키텍처 - 고성능 Rust 코어 위에 MCP 기반 도구 확장 시스템을 구축하여, 벤더 독립적으로 다양한 LLM 프로바이더와 연동하는 오픈소스 에이전틱 코딩 어시스턴트이다.*
 
 ## 아키텍처 상세
 
@@ -192,5 +192,5 @@ Goose는 SWE-agent의 에이전틱 코딩 접근법에서 영감을 받되, MCP 
 
 ## 관련 문서
 
-- [[swe-agent|SWE-agent]] — 영감
-- [[mcp|Model Context Protocol]] — 사용 기법
+- [[swe-agent|SWE-agent]] - 영감
+- [[mcp|Model Context Protocol]] - 사용 기법

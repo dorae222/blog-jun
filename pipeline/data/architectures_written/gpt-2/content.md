@@ -8,8 +8,8 @@ GPT-2의 핵심 통찰은 **모든 NLP 태스크를 $p(\text{output} | \text{inp
 
 아래 다이어그램은 GPT-2의 전체 아키텍처를 보여준다. 48층 디코더 스택, Pre-Norm 배치, Masked Multi-Head Self-Attention, 그리고 4가지 모델 변형의 사양을 한눈에 확인할 수 있다.
 
-![GPT-2 Decoder-only Transformer 전체 아키텍처 — Pre-Norm 구조와 모델 변형](figures/architecture.png)
-*Figure 1: GPT-2 아키텍처(1.5B 파라미터) — 48층 Decoder-only Transformer, Pre-Norm(LayerNorm), Masked MHA, GELU FFN, Byte-level BPE 토크나이저(50,257 vocab) 구조와 4가지 모델 변형(Small~XL). (Radford et al., 2019)*
+![GPT-2 Decoder-only Transformer 전체 아키텍처 - Pre-Norm 구조와 모델 변형](figures/architecture.png)
+*Figure 1: GPT-2 아키텍처(1.5B 파라미터) - 48층 Decoder-only Transformer, Pre-Norm(LayerNorm), Masked MHA, GELU FFN, Byte-level BPE 토크나이저(50,257 vocab) 구조와 4가지 모델 변형(Small~XL). (Radford et al., 2019)*
 
 ## 아키텍처 상세
 
@@ -69,8 +69,8 @@ class GPT2Block(nn.Module):
 
 다음 다이어그램은 GPT-2의 핵심 혁신인 Pre-Norm과 Post-Norm의 차이, 그리고 Byte-level BPE, 잔차 가중치 스케일링, 제로샷 멀티태스크, WebText 데이터셋, 단계적 릴리스 등 주요 혁신을 종합적으로 보여준다.
 
-![GPT-2 핵심 혁신 — Pre-Norm vs Post-Norm 비교 및 주요 기술적 기여](figures/detail.png)
-*Figure 2: GPT-2 핵심 혁신 상세 — Post-Norm(GPT-1)에서 Pre-Norm(GPT-2)으로의 전환이 깊은 네트워크의 그래디언트 안정성을 보장하는 원리, 그리고 Byte-level BPE, 잔차 가중치 스케일링, WebText 등 핵심 기여. (Radford et al., 2019)*
+![GPT-2 핵심 혁신 - Pre-Norm vs Post-Norm 비교 및 주요 기술적 기여](figures/detail.png)
+*Figure 2: GPT-2 핵심 혁신 상세 - Post-Norm(GPT-1)에서 Pre-Norm(GPT-2)으로의 전환이 깊은 네트워크의 그래디언트 안정성을 보장하는 원리, 그리고 Byte-level BPE, 잔차 가중치 스케일링, WebText 등 핵심 기여. (Radford et al., 2019)*
 
 ## 핵심 혁신
 
@@ -210,6 +210,6 @@ $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h
 
 ## 관련 문서
 
-- [[gpt-1|GPT-1]] — 발전 기반
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 후속 모델
-- [[gpt-neo|GPT-Neo]] — 영감을 줌
+- [[gpt-1|GPT-1]] - 발전 기반
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 후속 모델
+- [[gpt-neo|GPT-Neo]] - 영감을 줌

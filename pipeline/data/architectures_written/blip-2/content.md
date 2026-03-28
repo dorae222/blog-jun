@@ -10,8 +10,8 @@ BLIP-2(Bootstrapping Language-Image Pre-training 2)는 2023년 1월 Salesforce R
 
 아래 그림은 BLIP-2의 2단계 사전학습 프레임워크를 보여준다.
 
-![BLIP-2 프레임워크 개요 — 고정된 비전 인코더와 LLM을 Q-Former로 연결하는 2단계 학습](figures/fig_1.png)
-*Figure 1: BLIP-2 프레임워크 — (좌) Stage 1에서 Q-Former가 고정된 비전 인코더로부터 시각 표현을 학습하고, (우) Stage 2에서 고정된 LLM과 연결하여 제로샷 이미지-텍스트 생성을 가능하게 한다. (Source: Li et al., 2023)*
+![BLIP-2 프레임워크 개요 - 고정된 비전 인코더와 LLM을 Q-Former로 연결하는 2단계 학습](figures/fig_1.png)
+*Figure 1: BLIP-2 프레임워크 - (좌) Stage 1에서 Q-Former가 고정된 비전 인코더로부터 시각 표현을 학습하고, (우) Stage 2에서 고정된 LLM과 연결하여 제로샷 이미지-텍스트 생성을 가능하게 한다. (Source: Li et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -19,9 +19,9 @@ BLIP-2(Bootstrapping Language-Image Pre-training 2)는 2023년 1월 Salesforce R
 
 BLIP-2는 세 가지 핵심 컴포넌트로 구성된다:
 
-1. **비전 인코더(Frozen)**: EVA-CLIP ViT-G/14 (1B params) — 이미지에서 패치 수준의 시각 특징을 추출
-2. **Q-Former(Trainable)**: 쿼리 트랜스포머 (188M params) — 시각 특징을 LLM이 이해 가능한 토큰으로 변환
-3. **LLM(Frozen)**: OPT-2.7B/6.7B 또는 FlanT5-XL/XXL — 텍스트 이해 및 생성
+1. **비전 인코더(Frozen)**: EVA-CLIP ViT-G/14 (1B params) - 이미지에서 패치 수준의 시각 특징을 추출
+2. **Q-Former(Trainable)**: 쿼리 트랜스포머 (188M params) - 시각 특징을 LLM이 이해 가능한 토큰으로 변환
+3. **LLM(Frozen)**: OPT-2.7B/6.7B 또는 FlanT5-XL/XXL - 텍스트 이해 및 생성
 
 이 구조에서 실제로 학습되는 것은 Q-Former와 연결 레이어뿐이며, 수십억 파라미터의 비전 인코더와 LLM은 그대로 유지된다.
 
@@ -42,8 +42,8 @@ $$\text{Visual Tokens} = \text{Q-Former}(\text{Queries}, \text{ViT\_Output}) \in
 
 Q-Former의 구조와 Stage 1의 세 가지 학습 목표는 아래 그림에서 상세히 확인할 수 있다.
 
-![Q-Former 아키텍처와 Stage 1 학습 목표 — ITC, ITM, ITG를 위한 셀프 어텐션 마스크 전략](figures/fig_2.png)
-*Figure 2: Q-Former 모델 아키텍처와 Stage 1 학습 목표 — (좌) 학습 가능한 쿼리가 비전 인코더 출력과 교차 어텐션으로 상호작용하고, (우) ITC, ITM, ITG 각각 다른 셀프 어텐션 마스크를 사용하여 쿼리-텍스트 상호작용을 제어한다. (Source: Li et al., 2023)*
+![Q-Former 아키텍처와 Stage 1 학습 목표 - ITC, ITM, ITG를 위한 셀프 어텐션 마스크 전략](figures/fig_2.png)
+*Figure 2: Q-Former 모델 아키텍처와 Stage 1 학습 목표 - (좌) 학습 가능한 쿼리가 비전 인코더 출력과 교차 어텐션으로 상호작용하고, (우) ITC, ITM, ITG 각각 다른 셀프 어텐션 마스크를 사용하여 쿼리-텍스트 상호작용을 제어한다. (Source: Li et al., 2023)*
 
 **Stage 1: 비전-언어 표현 학습 (Vision-Language Representation Learning)**
 
@@ -59,8 +59,8 @@ Q-Former와 비전 인코더를 연결하여 세 가지 목표를 동시에 학�
 
 Stage 2에서는 아래 그림과 같이 Q-Former 출력을 FC 레이어를 통해 LLM에 연결한다.
 
-![Stage 2 비전-언어 생성 학습 — 디코더 기반 LLM(OPT)과 인코더-디코더 기반 LLM(FlanT5) 연결](figures/fig_3.png)
-*Figure 3: Stage 2 비전-언어 생성 학습 — (상) 디코더 기반 LLM(OPT)에 Q-Former 출력을 소프트 프롬프트로 전달, (하) 인코더-디코더 기반 LLM(FlanT5)에 Q-Former 출력을 인코더 입력으로 제공. FC 레이어가 Q-Former와 LLM의 차원을 매핑한다. (Source: Li et al., 2023)*
+![Stage 2 비전-언어 생성 학습 - 디코더 기반 LLM(OPT)과 인코더-디코더 기반 LLM(FlanT5) 연결](figures/fig_3.png)
+*Figure 3: Stage 2 비전-언어 생성 학습 - (상) 디코더 기반 LLM(OPT)에 Q-Former 출력을 소프트 프롬프트로 전달, (하) 인코더-디코더 기반 LLM(FlanT5)에 Q-Former 출력을 인코더 입력으로 제공. FC 레이어가 Q-Former와 LLM의 차원을 매핑한다. (Source: Li et al., 2023)*
 
 Q-Former 출력을 FC 레이어를 통해 LLM 입력 공간에 매핑하고, LLM이 시각 정보를 조건으로 텍스트를 생성하도록 학습한다. 디코더 기반 LLM(OPT)에는 language modeling 손실을, 인코더-디코더 기반 LLM(FlanT5)에는 prefix language modeling 손실을 사용한다.
 
@@ -91,10 +91,10 @@ OPT, FlanT5 등 다양한 LLM과 결합 가능한 모듈형 설계로, LLM을 �
 | 모델 | VQAv2 (0-shot) | GQA | 학습 파라미터 |
 |------|---------------|-----|-------------|
 | BLIP-2 (FlanT5-XXL) | **65.0%** | 44.7% | 188M |
-| Flamingo-80B | 56.3% | — | ~10B |
-| Flamingo-9B | 51.8% | — | ~1.5B |
+| Flamingo-80B | 56.3% | - | ~10B |
+| Flamingo-9B | 51.8% | - | ~1.5B |
 | BLIP-2 (OPT-6.7B) | 54.7% | 36.4% | 188M |
-| Kosmos-1 | 51.0% | — | 1.6B |
+| Kosmos-1 | 51.0% | - | 1.6B |
 
 학습 비용 비교:
 - **Stage 1**: 16 A100 GPU, 6일 (AdamW, lr=1e-4, cosine schedule)
@@ -129,8 +129,8 @@ OPT, FlanT5 등 다양한 LLM과 결합 가능한 모듈형 설계로, LLM을 �
 
 BLIP-2의 제로샷 이미지-텍스트 생성 능력은 다양한 시나리오에서 확인할 수 있다.
 
-![BLIP-2 제로샷 생성 예시 — 시각적 대화, 지식 추론, 상식 추론, 스토리텔링 등 다양한 능력](figures/fig_4.png)
-*Figure 4: BLIP-2의 제로샷 이미지-텍스트 생성 예시 — 시각적 대화, 시각 지식 추론, 상식 추론, 스토리텔링, 개인화 생성 등 Q-Former + FlanT5-XXL 조합으로 다양한 멀티모달 태스크를 수행한다. (Source: Li et al., 2023)*
+![BLIP-2 제로샷 생성 예시 - 시각적 대화, 지식 추론, 상식 추론, 스토리텔링 등 다양한 능력](figures/fig_4.png)
+*Figure 4: BLIP-2의 제로샷 이미지-텍스트 생성 예시 - 시각적 대화, 시각 지식 추론, 상식 추론, 스토리텔링, 개인화 생성 등 Q-Former + FlanT5-XXL 조합으로 다양한 멀티모달 태스크를 수행한다. (Source: Li et al., 2023)*
 
 ## 실무 활용
 
@@ -180,4 +180,4 @@ BLIP-2의 Q-Former 개념은 InstructBLIP, mPLUG-Owl, MiniGPT-4 등으로 확장
 
 ## 관련 문서
 
-- [[clip|CLIP]] — 발전 기반
+- [[clip|CLIP]] - 발전 기반

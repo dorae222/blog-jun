@@ -8,16 +8,16 @@ DDIM(Denoising Diffusion Implicit Models)은 2020년 Stanford University의 Jiam
 
 DDIM은 이 문제를 근본적으로 해결하였다. 핵심 통찰은 DDPM의 forward 과정을 마르코프 체인이 아닌 **비마르코프(non-Markovian) 과정**으로 재정의하더라도 동일한 marginal 분포 $q(\mathbf{x}_t|\mathbf{x}_0)$를 유지할 수 있다는 점이다. 이를 통해 역방향 샘플링 과정에서 확률적 노이즈 주입의 크기를 자유롭게 조절할 수 있으며, 노이즈를 완전히 제거($\sigma_t=0$)하면 결정론적 ODE(Ordinary Differential Equation) 샘플러가 된다. 결정론적 특성 덕분에 동일한 초기 노이즈에서 항상 동일한 이미지가 재현되며, 이 성질은 이미지 편집과 잠재 공간 보간에서 핵심적으로 활용된다. DDIM은 재학습 없이 기존 DDPM 체크포인트를 그대로 사용하면서 10~50 스텝만으로 유사한 품질의 이미지를 생성할 수 있음을 증명하였고, 이후 Stable Diffusion, DALL-E 2 등 거의 모든 확산 기반 생성 모델의 기본 샘플러로 채택되면서 확산 모델의 실용화를 이끈 핵심 돌파구로 평가받는다.
 
-![DDIM 아키텍처 — 비마르코프 역방향 샘플링으로 결정론적 ODE 기반 가속 생성을 달성하는 구조](figures/architecture.svg)
+![DDIM 아키텍처 - 비마르코프 역방향 샘플링으로 결정론적 ODE 기반 가속 생성을 달성하는 구조](figures/architecture.svg)
 
-*Figure 1: DDIM 아키텍처 — DDPM과 동일한 학습 목표를 공유하면서 비마르코프 역방향 과정으로 10~50 스텝만에 고품질 이미지를 생성하는 결정론적 샘플러 구조이다.*
+*Figure 1: DDIM 아키텍처 - DDPM과 동일한 학습 목표를 공유하면서 비마르코프 역방향 과정으로 10~50 스텝만에 고품질 이미지를 생성하는 결정론적 샘플러 구조이다.*
 
 ## 아키텍처 상세
 
 ### 비마르코프 Forward Process 재정의
 
-![마르코프 확산 모델의 그래픽 모델 — 각 단계가 이전 단계에만 의존하는 순차적 구조](figures/fig_1_1.png)
-*Figure 1: 마르코프 확산 모델의 그래픽 모델 — DDPM의 forward process는 각 $\mathbf{x}_t$가 $\mathbf{x}_{t-1}$에만 의존하는 마르코프 체인으로 정의된다. DDIM은 이를 비마르코프 과정으로 재정의한다. (Source: Song et al., 2020)*
+![마르코프 확산 모델의 그래픽 모델 - 각 단계가 이전 단계에만 의존하는 순차적 구조](figures/fig_1_1.png)
+*Figure 1: 마르코프 확산 모델의 그래픽 모델 - DDPM의 forward process는 각 $\mathbf{x}_t$가 $\mathbf{x}_{t-1}$에만 의존하는 마르코프 체인으로 정의된다. DDIM은 이를 비마르코프 과정으로 재정의한다. (Source: Song et al., 2020)*
 
 DDPM의 forward 과정은 $q(\mathbf{x}_{1:T}|\mathbf{x}_0) = \prod_{t=1}^{T} q(\mathbf{x}_t|\mathbf{x}_{t-1})$로 정의되는 마르코프 체인이다. 각 전이는 $q(\mathbf{x}_t|\mathbf{x}_{t-1}) = \mathcal{N}(\sqrt{1-\beta_t}\mathbf{x}_{t-1}, \beta_t\mathbf{I})$이며, 누적 분포는 $q(\mathbf{x}_t|\mathbf{x}_0) = \mathcal{N}(\sqrt{\bar{\alpha}_t}\mathbf{x}_0, (1-\bar{\alpha}_t)\mathbf{I})$이다.
 
@@ -43,13 +43,13 @@ $\sigma_t=0$($\eta=0$)으로 설정하면 확률적 노이즈 항이 사라져 �
 
 ### 가속 샘플링 (Accelerated Sampling)
 
-![가속 생성을 위한 그래픽 모델 — 전체 타임스텝에서 서브시퀀스를 선택하여 건너뛰는 구조](figures/fig_4.png)
-*Figure 2: 가속 샘플링 그래픽 모델 — 전체 T 스텝에서 서브시퀀스 $\tau$를 선택하여 중간 단계를 건너뛰며 생성한다. 비마르코프 정의 덕분에 marginal 분포가 유지된다. (Source: Song et al., 2020)*
+![가속 생성을 위한 그래픽 모델 - 전체 타임스텝에서 서브시퀀스를 선택하여 건너뛰는 구조](figures/fig_4.png)
+*Figure 2: 가속 샘플링 그래픽 모델 - 전체 T 스텝에서 서브시퀀스 $\tau$를 선택하여 중간 단계를 건너뛰며 생성한다. 비마르코프 정의 덕분에 marginal 분포가 유지된다. (Source: Song et al., 2020)*
 
 DDIM은 전체 $T=1000$ 타임스텝에서 $S \ll T$개를 균등하게 선택하여 서브시퀀스 $\{\tau_1, \tau_2, \ldots, \tau_S\}$를 구성한다. 선택된 타임스텝 간의 간격이 커지더라도 비마르코프 정의 덕분에 marginal 분포가 유지되므로, 10~50 스텝만으로도 1000 스텝에 근접하는 품질을 달성한다.
 
-![동일한 초기 노이즈에서 스텝 수를 달리한 DDIM 샘플 — 결정론적 특성으로 일관된 이미지 구조 유지](figures/fig_13_1.png)
-*Figure 3: DDIM의 결정론적 샘플링 일관성 — 동일한 $\mathbf{x}_T$에서 스텝 수(10, 20, 50, 100, 1000)를 달리해도 의미적으로 일관된 이미지가 생성된다. (Source: Song et al., 2020)*
+![동일한 초기 노이즈에서 스텝 수를 달리한 DDIM 샘플 - 결정론적 특성으로 일관된 이미지 구조 유지](figures/fig_13_1.png)
+*Figure 3: DDIM의 결정론적 샘플링 일관성 - 동일한 $\mathbf{x}_T$에서 스텝 수(10, 20, 50, 100, 1000)를 달리해도 의미적으로 일관된 이미지가 생성된다. (Source: Song et al., 2020)*
 
 ## 핵심 혁신
 
@@ -73,8 +73,8 @@ DDIM의 가장 중요한 기여는 확산 모델의 forward-reverse 과정이 �
 
 DDIM은 별도의 재학습이 필요하지 않으며, DDPM의 사전학습된 체크포인트를 그대로 활용한다. 실험은 CIFAR-10(32x32), CelebA(64x64), LSUN(256x256) 등 표준 벤치마크에서 진행되었다. 학습 목표 함수는 DDPM과 동일한 $\mathcal{L} = \mathbb{E}_{t,\mathbf{x}_0,\boldsymbol{\epsilon}}[\|\boldsymbol{\epsilon} - \boldsymbol{\epsilon}_\theta(\sqrt{\bar{\alpha}_t}\mathbf{x}_0 + \sqrt{1-\bar{\alpha}_t}\boldsymbol{\epsilon}, t)\|^2]$이다. DDIM의 기여는 학습이 아니라 추론 시의 샘플링 전략 변경에 있다.
 
-![CelebA 데이터셋에서 DDIM 잠재 공간 보간 결과 — 두 얼굴 이미지 간 구형 선형 보간](figures/fig_17_1.png)
-*Figure 4: 잠재 공간 보간 — CelebA에서 두 잠재 벡터 간 구형 선형 보간(slerp)으로 의미 있는 중간 얼굴 이미지를 생성한다. 결정론적 매핑 덕분에 부드러운 전환이 가능하다. (Source: Song et al., 2020)*
+![CelebA 데이터셋에서 DDIM 잠재 공간 보간 결과 - 두 얼굴 이미지 간 구형 선형 보간](figures/fig_17_1.png)
+*Figure 4: 잠재 공간 보간 - CelebA에서 두 잠재 벡터 간 구형 선형 보간(slerp)으로 의미 있는 중간 얼굴 이미지를 생성한다. 결정론적 매핑 덕분에 부드러운 전환이 가능하다. (Source: Song et al., 2020)*
 
 ## 관련 모델
 
@@ -87,4 +87,4 @@ DDIM은 DDPM에서 직접 발전하였으며, 이후 DPM-Solver(고차 ODE 솔�
 
 ## 관련 문서
 
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 발전 기반
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 발전 기반

@@ -14,8 +14,8 @@ LLaVA-OneVision은 2024년 8월 ByteDance와 UW(워싱턴대학교)가 공동 �
 
 아래 그림은 LLaVA-OneVision의 전체 네트워크 아키텍처를 보여준다. 단일 이미지, 다중 이미지, 비디오를 하나의 파이프라인으로 처리하는 구조가 핵심이다.
 
-![LLaVA-OneVision 네트워크 아키텍처 — SigLIP 비전 인코더, MLP 프로젝터, Qwen2 LLM으로 구성](figures/fig_1.png)
-*Figure 1: LLaVA-OneVision 네트워크 아키텍처 — SigLIP 비전 인코더가 단일/다중 이미지 및 비디오 프레임을 인코딩하고, 2-layer MLP 프로젝터가 시각 토큰을 언어 공간으로 매핑하며, Qwen2 LLM이 언어 응답을 생성한다. (Source: Li et al., 2024)*
+![LLaVA-OneVision 네트워크 아키텍처 - SigLIP 비전 인코더, MLP 프로젝터, Qwen2 LLM으로 구성](figures/fig_1.png)
+*Figure 1: LLaVA-OneVision 네트워크 아키텍처 - SigLIP 비전 인코더가 단일/다중 이미지 및 비디오 프레임을 인코딩하고, 2-layer MLP 프로젝터가 시각 토큰을 언어 공간으로 매핑하며, Qwen2 LLM이 언어 응답을 생성한다. (Source: Li et al., 2024)*
 
 LLaVA-OneVision은 LLaVA의 간결한 아키텍처를 유지한다:
 
@@ -27,8 +27,8 @@ LLaVA-OneVision은 LLaVA의 간결한 아키텍처를 유지한다:
 
 AnyRes는 임의 해상도의 이미지를 효율적으로 처리하는 핵심 기법이다. 아래 그림은 개선된 Higher AnyRes와 기존 AnyRes의 비교를 보여준다.
 
-![Higher AnyRes와 기존 AnyRes 비교 — Bilinear Interpolation을 통한 고해상도 이미지 처리](figures/fig_2.png)
-*Figure 2: AnyRes 시각 표현 전략 비교 — (a) Higher AnyRes는 고해상도 이미지를 그리드 분할 후 개별 인코딩하고, Bilinear Interpolation으로 공간 관계를 보존한다. (b) 기존 AnyRes는 단순 분할-인코딩-평탄화 방식을 사용한다. (Source: Li et al., 2024)*
+![Higher AnyRes와 기존 AnyRes 비교 - Bilinear Interpolation을 통한 고해상도 이미지 처리](figures/fig_2.png)
+*Figure 2: AnyRes 시각 표현 전략 비교 - (a) Higher AnyRes는 고해상도 이미지를 그리드 분할 후 개별 인코딩하고, Bilinear Interpolation으로 공간 관계를 보존한다. (b) 기존 AnyRes는 단순 분할-인코딩-평탄화 방식을 사용한다. (Source: Li et al., 2024)*
 
 $$I \in \mathbb{R}^{H \times W \times 3} \rightarrow \{T_{\text{base}}, T_{1,1}, T_{1,2}, ..., T_{m,n}\}$$
 
@@ -51,7 +51,7 @@ LLaVA-OneVision의 핵심 통찰은 **비디오 = 시간순 다중 이미지**�
 이 통합적 접근으로 별도의 시간적 모듈(temporal attention 등) 없이도 비디오 이해가 가능하다. 아래 그림은 각 시나리오별 시각 토큰 할당 전략을 보여준다.
 
 ![단일 이미지, 다중 이미지, 비디오 시나리오별 시각 토큰 할당 전략](figures/fig_3.png)
-*Figure 3: 시나리오별 시각 토큰 할당 전략 — 단일/다중 이미지와 비디오에서 최대 시각 토큰 수를 유사하게 유지하여 크로스-시나리오 능력 전이를 촉진한다. SigLIP의 384x384 입력 기준 729개 토큰이 기본 단위이다. (Source: Li et al., 2024)*
+*Figure 3: 시나리오별 시각 토큰 할당 전략 - 단일/다중 이미지와 비디오에서 최대 시각 토큰 수를 유사하게 유지하여 크로스-시나리오 능력 전이를 촉진한다. SigLIP의 384x384 입력 기준 729개 토큰이 기본 단위이다. (Source: Li et al., 2024)*
 
 | 구성 요소 | 사양 |
 |-----------|------|
@@ -81,8 +81,8 @@ LLaVA-OneVision의 핵심 통찰은 **비디오 = 시간순 다중 이미지**�
 
 아래 그림은 OneVision 1.6M 데이터셋의 구성을 보여준다. 단일 이미지, 다중 이미지, 비디오 데이터가 균형 있게 배합된 것이 핵심이다.
 
-![OneVision 1.6M 데이터셋 구성 — 단일 이미지, 다중 이미지, 비디오 데이터 분포](figures/fig_5.png)
-*Figure 4: OneVision 1.6M 데이터셋 구성 — 단일 이미지, 다중 이미지, 비디오 데이터를 포함하는 고품질 데이터 컬렉션의 카테고리별 분포. 외측 원은 전체 카테고리 비율, 내측 원은 서브셋 분포를 나타낸다. (Source: Li et al., 2024)*
+![OneVision 1.6M 데이터셋 구성 - 단일 이미지, 다중 이미지, 비디오 데이터 분포](figures/fig_5.png)
+*Figure 4: OneVision 1.6M 데이터셋 구성 - 단일 이미지, 다중 이미지, 비디오 데이터를 포함하는 고품질 데이터 컬렉션의 카테고리별 분포. 외측 원은 전체 카테고리 비율, 내측 원은 서브셋 분포를 나타낸다. (Source: Li et al., 2024)*
 
 LLaVA-OneVision은 다양한 데이터 혼합 비율을 실험하여 최적의 학습 레시피를 도출하였다. VQA, OCR, 차트/다이어그램, 과학/수학, 비디오 캡셔닝 등 데이터 카테고리별 비율이 최종 성능에 큰 영향을 미치며, 이 데이터 레시피 자체가 중요한 연구 기여이다. AnyRes의 타일 수와 시각 토큰 수가 학습 효율과 성능 간의 트레이드오프를 결정하며, 최대 12개 타일까지 지원하여 4K 이상의 고해상도 문서 분석도 가능하다.
 
@@ -100,8 +100,8 @@ LLaVA-OneVision은 다양한 데이터 혼합 비율을 실험하여 최적의 �
 
 | 벤치마크 | LLaVA-OV-72B | GPT-4V | InternVL2-76B |
 |----------|------------|--------|-------------|
-| VideoMME | **66.2** | — | 60.7 |
-| MVBench | **67.5** | — | 64.2 |
+| VideoMME | **66.2** | - | 60.7 |
+| MVBench | **67.5** | - | 64.2 |
 
 ## 관련 모델 비교
 
@@ -172,4 +172,4 @@ LLaVA-OneVision은 LLaVA 시리즈의 "단순함" 철학을 유지하면서 시�
 
 ## 관련 문서
 
-- [[llava|Visual Instruction Tuning]] — 발전 기반
+- [[llava|Visual Instruction Tuning]] - 발전 기반

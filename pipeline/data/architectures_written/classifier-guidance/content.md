@@ -9,8 +9,8 @@
 - **발표**: 2021년 5월, OpenAI
 - **라이선스**: MIT
 
-![Classifier Guidance(ADM) 아키텍처 개요 — U-Net과 분류기 가이던스 메커니즘](figures/architecture.png)
-*Figure 1: ADM 아키텍처 전체 구조 — 순전파/역전파 확산 과정, ADM U-Net(554M), 그리고 별도 학습된 분류기의 그래디언트를 score에 결합하는 Classifier Guidance 메커니즘. (Source: arXiv 2105.05233)*
+![Classifier Guidance(ADM) 아키텍처 개요 - U-Net과 분류기 가이던스 메커니즘](figures/architecture.png)
+*Figure 1: ADM 아키텍처 전체 구조 - 순전파/역전파 확산 과정, ADM U-Net(554M), 그리고 별도 학습된 분류기의 그래디언트를 score에 결합하는 Classifier Guidance 메커니즘. (Source: arXiv 2105.05233)*
 
 ## 아키텍처 상세
 
@@ -27,8 +27,8 @@ ADM은 기존 DDPM U-Net에 체계적인 절제 연구(ablation study)를 통해
 | 잔차 블록 | 일반 ResBlock | BigGAN 스타일 ResBlock |
 | 업/다운샘플링 | Stride Conv | 학습된 업/다운샘플 |
 
-![U-Net 아키텍처 절제 연구 — 각 개선 사항의 FID 기여도](figures/fig_2_1.png)
-*Figure 2: 아키텍처 절제 연구 — 채널 수 증가, 해상도 변경, 멀티해상도 어텐션, BigGAN 업/다운샘플링 등 각 개선의 FID 기여도를 학습 시간 대비 비교. 모든 개선을 조합한 모델(분홍색)이 최저 FID 달성. (Source: arXiv 2105.05233)*
+![U-Net 아키텍처 절제 연구 - 각 개선 사항의 FID 기여도](figures/fig_2_1.png)
+*Figure 2: 아키텍처 절제 연구 - 채널 수 증가, 해상도 변경, 멀티해상도 어텐션, BigGAN 업/다운샘플링 등 각 개선의 FID 기여도를 학습 시간 대비 비교. 모든 개선을 조합한 모델(분홍색)이 최저 FID 달성. (Source: arXiv 2105.05233)*
 
 ### Adaptive Group Normalization (AdaGN)
 
@@ -51,7 +51,7 @@ $$\nabla_{\mathbf{x}_t} \log p_s(\mathbf{x}_t | y) = \nabla_{\mathbf{x}_t} \log 
 $s > 1$로 설정하면 분류기 그래디언트를 증폭하여 특정 클래스에 대한 샘플 품질(IS)을 높이는 대신 다양성(FID)을 희생한다. 이 트레이드오프를 추론 시간에 자유롭게 조절할 수 있다.
 
 ![분류기 스케일 변화에 따른 생성 이미지 변화](figures/fig_20.jpg)
-*Figure 3: 분류기 스케일 효과 — 스케일 0.0(좌)에서 5.5(우)로 증가시킬 때 생성 이미지의 변화. 스케일이 커질수록 클래스 충실도가 높아지지만 다양성이 감소하는 트레이드오프를 시각적으로 확인. (Source: arXiv 2105.05233)*
+*Figure 3: 분류기 스케일 효과 - 스케일 0.0(좌)에서 5.5(우)로 증가시킬 때 생성 이미지의 변화. 스케일이 커질수록 클래스 충실도가 높아지지만 다양성이 감소하는 트레이드오프를 시각적으로 확인. (Source: arXiv 2105.05233)*
 
 ### 노이즈 분류기 (Noisy Classifier)
 
@@ -76,8 +76,8 @@ $s > 1$로 설정하면 분류기 그래디언트를 증폭하여 특정 클래�
 
 ADM + Classifier Guidance가 BigGAN-deep의 FID 6.95를 4.59로 크게 능가하며, 업샘플러를 추가하면 3.94까지 낮아진다. Recall(다양성)은 GAN 대비 월등히 높아 모드 커버리지가 우수하다.
 
-![Precision-Recall 트레이드오프 — BigGAN-deep vs Classifier Guidance](figures/fig_12_1.png)
-*Figure 4: Precision-Recall 트레이드오프 — BigGAN-deep(주황색)은 truncation 조절 시 Precision-Recall 곡선이 제한적인 반면, Classifier Guidance(파란색)는 더 넓은 범위에서 우월한 트레이드오프를 달성. (Source: arXiv 2105.05233)*
+![Precision-Recall 트레이드오프 - BigGAN-deep vs Classifier Guidance](figures/fig_12_1.png)
+*Figure 4: Precision-Recall 트레이드오프 - BigGAN-deep(주황색)은 truncation 조절 시 Precision-Recall 곡선이 제한적인 반면, Classifier Guidance(파란색)는 더 넓은 범위에서 우월한 트레이드오프를 달성. (Source: arXiv 2105.05233)*
 
 ## 관련 모델 비교
 
@@ -127,12 +127,12 @@ Classifier Guidance의 score 분해 개념은 이후 CFG, DPS(Diffusion Posterio
 - **DiT (2022)**: ADM의 U-Net을 Transformer로 대체하여 스케일링 법칙 발견
 
 ![ImageNet 512x512에서의 최고 품질 생성 샘플 (FID 3.85)](figures/fig_1.jpg)
-*Figure 5: 최고 품질 생성 결과 — ADM + Classifier Guidance + Upsampler로 생성한 ImageNet 512x512 샘플(FID 3.85). 확산 모델이 GAN을 최초로 능가한 역사적 결과물. (Source: arXiv 2105.05233)*
+*Figure 5: 최고 품질 생성 결과 - ADM + Classifier Guidance + Upsampler로 생성한 ImageNet 512x512 샘플(FID 3.85). 확산 모델이 GAN을 최초로 능가한 역사적 결과물. (Source: arXiv 2105.05233)*
 
 ADM과 Classifier Guidance는 확산 모델이 GAN을 능가할 수 있음을 최초로 증명한 역사적 연구로, 이후 텍스트-이미지 생성 혁명의 이론적 토대를 마련하였다.
 
 ## 관련 문서
 
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 발전 기반
-- [[cfg|Classifier-Free Guidance (CFG)]] — 후속 모델
-- [[glide|GLIDE]] — 후속 모델
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 발전 기반
+- [[cfg|Classifier-Free Guidance (CFG)]] - 후속 모델
+- [[glide|GLIDE]] - 후속 모델

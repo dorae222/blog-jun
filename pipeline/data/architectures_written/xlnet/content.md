@@ -18,8 +18,8 @@ XLNet은 이 두 문제를 근본적으로 해결하면서, 총 18개 NLP 태스
 
 다음 다이어그램은 XLNet의 전체 아키텍처를 보여준다. Permutation Language Modeling, Two-Stream Attention, Segment Recurrence가 핵심 구성 요소이다.
 
-![XLNet 전체 아키텍처 다이어그램 — PLM, Two-Stream Attention, Transformer-XL 기반 구조](figures/architecture.png)
-*Figure 1: XLNet 아키텍처 — 순열 언어 모델링으로 양방향 문맥을 학습하고, Two-Stream Attention으로 정보 누출을 방지하며, Transformer-XL의 세그먼트 반복으로 장거리 의존성을 포착한다. (Source: XLNet 논문)*
+![XLNet 전체 아키텍처 다이어그램 - PLM, Two-Stream Attention, Transformer-XL 기반 구조](figures/architecture.png)
+*Figure 1: XLNet 아키텍처 - 순열 언어 모델링으로 양방향 문맥을 학습하고, Two-Stream Attention으로 정보 누출을 방지하며, Transformer-XL의 세그먼트 반복으로 장거리 의존성을 포착한다. (Source: XLNet 논문)*
 
 ### 모델 규모
 
@@ -60,8 +60,8 @@ $$\max_{\theta} \; \mathbb{E}_{\mathbf{z} \sim \mathcal{Z}_T} \left[ \sum_{t=1}^
 
 다음 그림은 동일한 시퀀스 [x1, x2, x3, x4]에서 x3을 예측할 때, 서로 다른 분해 순서(factorization order)에 따라 참조하는 문맥이 달라지는 과정을 보여준다.
 
-![순열 언어 모델링 — 4가지 분해 순서에 따른 x3 예측 과정](figures/fig_11.png)
-*Figure 2: 순열 언어 모델링 예시 — 동일한 x3을 예측하지만, 분해 순서에 따라 참조 가능한 토큰이 달라진다. 이를 통해 자기회귀 방식으로도 양방향 문맥 학습이 가능해진다. (Source: XLNet 논문)*
+![순열 언어 모델링 - 4가지 분해 순서에 따른 x3 예측 과정](figures/fig_11.png)
+*Figure 2: 순열 언어 모델링 예시 - 동일한 x3을 예측하지만, 분해 순서에 따라 참조 가능한 토큰이 달라진다. 이를 통해 자기회귀 방식으로도 양방향 문맥 학습이 가능해진다. (Source: XLNet 논문)*
 
 ### Two-Stream Self-Attention
 
@@ -75,8 +75,8 @@ $$g_{z_t}^{(m)} \leftarrow \text{Attention}(Q=g_{z_t}^{(m-1)}, KV=h_{\mathbf{z}_
 
 아래 그림은 Two-Stream Attention의 전체 구조를 시각화한 것이다. (a) Content Stream, (b) Query Stream, (c) 전체 PLM 학습 과정과 어텐션 마스크를 함께 보여준다.
 
-![Two-Stream Self-Attention 구조 — Content Stream, Query Stream, 전체 PLM 흐름](figures/fig_1.png)
-*Figure 3: Two-Stream Self-Attention — (a) Content Stream은 자기 자신을 포함한 모든 토큰을 참조하고, (b) Query Stream은 자기 자신의 내용을 제외하고 위치 정보만 사용한다. (c) 전체 PLM 학습 흐름과 어텐션 마스크. (Source: XLNet 논문)*
+![Two-Stream Self-Attention 구조 - Content Stream, Query Stream, 전체 PLM 흐름](figures/fig_1.png)
+*Figure 3: Two-Stream Self-Attention - (a) Content Stream은 자기 자신을 포함한 모든 토큰을 참조하고, (b) Query Stream은 자기 자신의 내용을 제외하고 위치 정보만 사용한다. (c) 전체 PLM 학습 흐름과 어텐션 마스크. (Source: XLNet 논문)*
 
 ```python
 import torch
@@ -114,8 +114,8 @@ GLUE 88.4점은 당시 인간 성능(87.1)을 1.3포인트 초과하는 기록�
 
 다음은 XLNet의 Content Stream이 순열 [3, 2, 4, 1]에서 각 위치별로 어떤 토큰들을 참조하는지를 상세히 보여주는 그림이다.
 
-![Content Stream의 Joint View와 Split View — 순열 순서에 따른 어텐션 연결 상세](figures/fig_12.png)
-*Figure 4: Content Stream 상세 — 분해 순서 [3, 2, 4, 1]에서 각 위치의 Content Stream이 참조하는 토큰들의 관계를 Joint View(상단)와 개별 Position View(하단)로 분리하여 보여준다. (Source: XLNet 논문)*
+![Content Stream의 Joint View와 Split View - 순열 순서에 따른 어텐션 연결 상세](figures/fig_12.png)
+*Figure 4: Content Stream 상세 - 분해 순서 [3, 2, 4, 1]에서 각 위치의 Content Stream이 참조하는 토큰들의 관계를 Joint View(상단)와 개별 Position View(하단)로 분리하여 보여준다. (Source: XLNet 논문)*
 
 ## 관련 모델 비교
 
@@ -165,7 +165,7 @@ SST-2에서 96.8%의 정확도는 상업적 감정 분석 파이프라인에 충
 4. **Encoder-only 한계**: 생성 태스크에는 적합하지 않다
 
 ### 전망
-XLNet이 제시한 핵심 통찰—AR 방식으로도 양방향 문맥을 학습할 수 있다—은 이후 연구에 큰 영향을 미쳤다. 직접적으로 XLNet 아키텍처를 계승한 모델은 많지 않지만, PLM의 개념은 UniLM 등 통합 언어 모델 연구에 영감을 주었으며, Transformer-XL의 상대 위치 인코딩은 이후 RoPE, ALiBi 등 현대 위치 인코딩 기법의 토대가 되었다.
+XLNet이 제시한 핵심 통찰-AR 방식으로도 양방향 문맥을 학습할 수 있다-은 이후 연구에 큰 영향을 미쳤다. 직접적으로 XLNet 아키텍처를 계승한 모델은 많지 않지만, PLM의 개념은 UniLM 등 통합 언어 모델 연구에 영감을 주었으며, Transformer-XL의 상대 위치 인코딩은 이후 RoPE, ALiBi 등 현대 위치 인코딩 기법의 토대가 되었다.
 
 ---
 
@@ -176,5 +176,5 @@ XLNet이 제시한 핵심 통찰—AR 방식으로도 양방향 문맥을 학습
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 발전 기반
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 영감
+- [[transformer|Transformer]] - 발전 기반
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 영감

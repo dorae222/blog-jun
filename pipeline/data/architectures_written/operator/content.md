@@ -10,9 +10,9 @@ Anthropic의 Computer Use가 개발자를 위한 API로 제공된 반면, OpenAI
 
 Operator의 핵심 차별점은 **제품화된 안전 시스템**에 있다. 브라우저 자동화는 결제, 로그인, 개인정보 입력 등 민감한 작업을 수반하므로, 단순한 GUI 조작 능력만으로는 실용화가 어렵다. Operator는 RLHF 기반의 안전 장치를 통해 민감한 상황을 자동으로 인식하고 사용자에게 제어를 넘기는 메커니즘을 갖추었다. 이 "안전한 자율성"이 Operator를 일반 사용자 대상 제품으로 만든 핵심 요소다.
 
-![Operator(CUA) 아키텍처 — GPT-4o 기반 스크린샷 관찰과 브라우저 조작의 관찰-행동 루프 구조](figures/architecture.svg)
+![Operator(CUA) 아키텍처 - GPT-4o 기반 스크린샷 관찰과 브라우저 조작의 관찰-행동 루프 구조](figures/architecture.svg)
 
-*Figure 1: Operator 아키텍처 — GPT-4o의 멀티모달 능력으로 브라우저 스크린샷을 이해하고, RLHF 기반 안전 장치를 통해 민감한 상황에서 자동으로 사용자에게 제어를 넘기는 컴퓨터 사용 에이전트이다.*
+*Figure 1: Operator 아키텍처 - GPT-4o의 멀티모달 능력으로 브라우저 스크린샷을 이해하고, RLHF 기반 안전 장치를 통해 민감한 상황에서 자동으로 사용자에게 제어를 넘기는 컴퓨터 사용 에이전트이다.*
 
 ## 아키텍처 상세
 
@@ -107,5 +107,5 @@ Operator는 GPT-4o에서 발전한 CUA 전용 파인튜닝 모델이다. Anthrop
 
 ## 관련 문서
 
-- [[gpt-4o|GPT-4o]] — 발전 기반
-- [[computer-use|Claude Computer Use]] — 영감
+- [[gpt-4o|GPT-4o]] - 발전 기반
+- [[computer-use|Claude Computer Use]] - 영감

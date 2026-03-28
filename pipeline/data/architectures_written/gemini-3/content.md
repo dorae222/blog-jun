@@ -179,4 +179,4 @@ Gemini 3는 Google DeepMind의 "AI로 과학적 발견을 가속화한다"는 �
 
 ## 관련 문서
 
-- [[gemini-2-5|Gemini 2.5]] — 발전 기반
+- [[gemini-2-5|Gemini 2.5]] - 발전 기반

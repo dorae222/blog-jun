@@ -12,9 +12,9 @@ Veo 2의 핵심 특징은 세 가지로 요약된다. 첫째, **시네마틱 카
 
 Veo 2는 YouTube Shorts 및 Google Workspace 통합, 전문 영화 제작사(예: 도널드 글로버의 Gilga 등)와의 협업을 통해 상업적 배포가 이루어졌다.
 
-![Veo 2 아키텍처 — Cascaded Diffusion 기반 단계적 초해상도로 4K 시네마틱 비디오를 생성하는 구조](figures/architecture.svg)
+![Veo 2 아키텍처 - Cascaded Diffusion 기반 단계적 초해상도로 4K 시네마틱 비디오를 생성하는 구조](figures/architecture.svg)
 
-*Figure 1: Veo 2 아키텍처 — T5 텍스트 인코더와 Cascaded Diffusion으로 저해상도에서 점진적으로 해상도를 높이며, 시네마틱 카메라 동작 제어와 물리적으로 그럴듯한 비디오를 생성한다.*
+*Figure 1: Veo 2 아키텍처 - T5 텍스트 인코더와 Cascaded Diffusion으로 저해상도에서 점진적으로 해상도를 높이며, 시네마틱 카메라 동작 제어와 물리적으로 그럴듯한 비디오를 생성한다.*
 
 ## 아키텍처 상세
 
@@ -149,5 +149,5 @@ Veo 2는 Imagen에서 발전하였으며, Lumiere, VideoPoet 등 Google DeepMind
 
 ## 관련 문서
 
-- [[imagen|Imagen]] — 발전 기반
-- [[veo-3|Veo 3]] — 후속 모델
+- [[imagen|Imagen]] - 발전 기반
+- [[veo-3|Veo 3]] - 후속 모델

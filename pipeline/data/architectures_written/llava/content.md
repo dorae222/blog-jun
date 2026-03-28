@@ -12,8 +12,8 @@ LLaVA의 가장 큰 기여는 두 가지이다. 첫째, **GPT-4를 활용한 멀
 
 다음 다이어그램은 LLaVA의 전체 아키텍처와 2단계 학습 파이프라인을 상세히 보여준다.
 
-![LLaVA 전체 아키텍처 다이어그램 — CLIP 비전 인코더, 선형 프로젝션, LLaMA 디코더 구조](figures/architecture.png)
-*Figure 1: LLaVA 아키텍처 개요 — CLIP ViT-L/14 비전 인코더, Visual-Language Projection, LLaMA 디코더의 전체 파이프라인과 2단계 학습 과정(Feature Alignment + Instruction Tuning). (Source: Liu et al.)*
+![LLaVA 전체 아키텍처 다이어그램 - CLIP 비전 인코더, 선형 프로젝션, LLaMA 디코더 구조](figures/architecture.png)
+*Figure 1: LLaVA 아키텍처 개요 - CLIP ViT-L/14 비전 인코더, Visual-Language Projection, LLaMA 디코더의 전체 파이프라인과 2단계 학습 과정(Feature Alignment + Instruction Tuning). (Source: Liu et al.)*
 
 ### 전체 구조
 
@@ -25,8 +25,8 @@ LLaVA의 구조는 세 가지 컴포넌트로 구성된다:
 
 아래 그림은 LLaVA의 간결한 네트워크 구조를 보여준다. 비전 인코더의 시각 토큰이 프로젝션 레이어를 통해 언어 모델 공간으로 매핑되는 과정을 확인할 수 있다.
 
-![LLaVA 네트워크 구조 — 비전 인코더, 프로젝션 W, 언어 모델의 간결한 연결](figures/fig_1.png)
-*Figure 2: LLaVA 네트워크 구조 — 이미지 $X_v$가 비전 인코더를 통해 시각 특징 $Z_v$로 변환되고, 프로젝션 $W$를 통해 시각 토큰 $H_v$가 된다. 텍스트 토큰 $H_q$와 결합되어 언어 모델이 응답 $X_a$를 생성한다. (Source: arXiv 2304.08485)*
+![LLaVA 네트워크 구조 - 비전 인코더, 프로젝션 W, 언어 모델의 간결한 연결](figures/fig_1.png)
+*Figure 2: LLaVA 네트워크 구조 - 이미지 $X_v$가 비전 인코더를 통해 시각 특징 $Z_v$로 변환되고, 프로젝션 $W$를 통해 시각 토큰 $H_v$가 된다. 텍스트 토큰 $H_q$와 결합되어 언어 모델이 응답 $X_a$를 생성한다. (Source: arXiv 2304.08485)*
 
 시각 정보 처리 과정:
 
@@ -106,8 +106,8 @@ LLaVA의 프로젝션 설계를 선행 연구와 비교하면 그 단순함이 �
 
 모델 가중치, 학습 코드, 데이터셋을 모두 공개하여 활발한 오픈소스 생태계를 형성했다. LLaVA-1.5, LLaVA-NeXT, LLaVA-OneVision 등으로 시리즈가 발전하고, 수백 개의 파생 연구가 탄생했다. 아래는 LLaVA의 멀티턴 대화 능력을 보여주는 예시이다. 이미지에 대해 연속적인 질문을 처리하며 맥락을 유지한다.
 
-![LLaVA 멀티턴 대화 예시 — 냉장고 이미지를 보고 요리 추천 및 레시피를 제공하는 대화](figures/fig_7_1.png)
-*Figure 3: LLaVA 멀티턴 대화 — 냉장고 이미지를 인식하고 요리 추천, 이어서 레시피를 제공하는 연속 대화 예시. 사용자의 의도를 정확히 파악하여 상세한 응답을 생성한다. (Source: arXiv 2304.08485)*
+![LLaVA 멀티턴 대화 예시 - 냉장고 이미지를 보고 요리 추천 및 레시피를 제공하는 대화](figures/fig_7_1.png)
+*Figure 3: LLaVA 멀티턴 대화 - 냉장고 이미지를 인식하고 요리 추천, 이어서 레시피를 제공하는 연속 대화 예시. 사용자의 의도를 정확히 파악하여 상세한 응답을 생성한다. (Source: arXiv 2304.08485)*
 
 ## 벤치마크/성능
 
@@ -204,16 +204,16 @@ LLaVA의 단순한 아키텍처는 각 컴포넌트의 독립적 개선을 용�
 
 다음은 LLaVA가 손으로 그린 스케치를 HTML/JS 코드로 변환하는 시각-코드 생성 능력을 보여주는 예시이다.
 
-![LLaVA 이미지-코드 변환 — 손그림 스케치에서 인터랙티브 웹사이트 코드 생성](figures/fig_6.png)
-*Figure 4: LLaVA 시각-코드 생성 — 사용자가 그린 웹사이트 스케치를 인식하여 HTML/JS 코드를 생성하고, 실제 동작하는 인터랙티브 웹페이지로 변환한다. (Source: arXiv 2304.08485)*
+![LLaVA 이미지-코드 변환 - 손그림 스케치에서 인터랙티브 웹사이트 코드 생성](figures/fig_6.png)
+*Figure 4: LLaVA 시각-코드 생성 - 사용자가 그린 웹사이트 스케치를 인식하여 HTML/JS 코드를 생성하고, 실제 동작하는 인터랙티브 웹페이지로 변환한다. (Source: arXiv 2304.08485)*
 
 LLaVA는 "단순함이 최고의 복잡함"이라는 철학을 멀티모달 AI에서 실증한 기념비적 연구이다. "비전 인코더 + 프로젝터 + LLM" 패턴은 2024-2025년 거의 모든 오픈소스 VLM의 표준 구조가 되었으며, GPT-4 기반 합성 데이터 생성은 데이터 엔지니어링의 새 지평을 열었다. LLaVA가 보여준 "적은 비용, 큰 임팩트"의 철학은 학술 연구의 접근성을 크게 높여 멀티모달 AI 분야의 폭발적 성장을 견인하였다.
 
 ## 관련 문서
 
-- [[llava-onevision|LLaVA-OneVision]] — 후속 모델
-- [[llama|LLaMA: Open and Efficient Foundation Language Models]] — 영감
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 영감
-- [[cogvlm|CogVLM]] — 영감을 줌
-- [[minicpm-v|MiniCPM-V]] — 영감을 줌
-- [[molmo|Molmo]] — 영감을 줌
+- [[llava-onevision|LLaVA-OneVision]] - 후속 모델
+- [[llama|LLaMA: Open and Efficient Foundation Language Models]] - 영감
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 영감
+- [[cogvlm|CogVLM]] - 영감을 줌
+- [[minicpm-v|MiniCPM-V]] - 영감을 줌
+- [[molmo|Molmo]] - 영감을 줌

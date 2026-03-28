@@ -10,8 +10,8 @@
 
 아래 다이어그램은 T5의 텍스트-투-텍스트 프레임워크 핵심 개념을 보여준다. 번역, 질의응답, 분류 등 모든 태스크가 동일한 입출력 형식으로 처리된다.
 
-![T5 텍스트-투-텍스트 프레임워크 다이어그램 — 모든 NLP 태스크를 텍스트 입력-출력으로 통일](figures/fig_1.png)
-*Figure 1: T5 텍스트-투-텍스트 프레임워크 — 번역, 질의응답, 분류 등 모든 태스크를 텍스트 입력→텍스트 출력으로 통합하여 동일한 모델, 손실 함수, 하이퍼파라미터로 학습한다. (Source: Raffel et al., 2019)*
+![T5 텍스트-투-텍스트 프레임워크 다이어그램 - 모든 NLP 태스크를 텍스트 입력-출력으로 통일](figures/fig_1.png)
+*Figure 1: T5 텍스트-투-텍스트 프레임워크 - 번역, 질의응답, 분류 등 모든 태스크를 텍스트 입력→텍스트 출력으로 통합하여 동일한 모델, 손실 함수, 하이퍼파라미터로 학습한다. (Source: Raffel et al., 2019)*
 
 ## 아키텍처 상세
 
@@ -28,7 +28,7 @@
 T5는 인코더-디코더, Language Model, Prefix LM 세 가지 아키텍처 변형을 비교 실험하여 최적 구조를 선택했다.
 
 ![인코더-디코더, Language Model, Prefix LM 세 가지 Transformer 아키텍처 변형 비교](figures/fig_4.png)
-*Figure 2: Transformer 아키텍처 변형 비교 — (좌) 인코더-디코더는 인코더에서 양방향, 디코더에서 인과적 마스킹을 사용한다. (중) Language Model은 단일 스택에 인과적 마스킹을 적용한다. (우) Prefix LM은 입력 부분에 양방향 마스킹을 허용한다. (Source: Raffel et al., 2019)*
+*Figure 2: Transformer 아키텍처 변형 비교 - (좌) 인코더-디코더는 인코더에서 양방향, 디코더에서 인과적 마스킹을 사용한다. (중) Language Model은 단일 스택에 인과적 마스킹을 적용한다. (우) Prefix LM은 입력 부분에 양방향 마스킹을 허용한다. (Source: Raffel et al., 2019)*
 
 ### 인코더-디코더 구조
 
@@ -58,8 +58,8 @@ $$A_{ij} = \frac{Q_i K_j^T}{\sqrt{d}} + b(i-j)$$
 
 아래 그림은 이 Span Corruption 과정을 구체적으로 보여준다.
 
-![Span Corruption 사전 학습 목표의 동작 과정 — 연속 토큰을 sentinel로 대체하고 디코더가 복원](figures/fig_2.png)
-*Figure 3: Span Corruption 사전 학습 목표 — 입력 문장에서 무작위로 선택된 토큰을 sentinel 토큰(`<X>`, `<Y>`)으로 대체하고, 출력은 대체된 스팬을 sentinel 구분자로 연결하여 생성한다. (Source: Raffel et al., 2019)*
+![Span Corruption 사전 학습 목표의 동작 과정 - 연속 토큰을 sentinel로 대체하고 디코더가 복원](figures/fig_2.png)
+*Figure 3: Span Corruption 사전 학습 목표 - 입력 문장에서 무작위로 선택된 토큰을 sentinel 토큰(`<X>`, `<Y>`)으로 대체하고, 출력은 대체된 스팬을 sentinel 구분자로 연결하여 생성한다. (Source: Raffel et al., 2019)*
 
 BERT의 토큰 단위 마스킹보다 효율적이며, 디코더가 연속된 텍스트를 생성하도록 학습된다.
 
@@ -77,8 +77,8 @@ Common Crawl에서 중복 제거, 저품질 필터링을 거쳐 구축한 **750G
 
 논문은 아키텍처(인코더-디코더 vs 디코더-only), 사전 학습 목표(MLM vs Span Corruption vs LM), 학습 전략 등을 체계적으로 비교하여 최적 구성을 도출했다. 아래 플로우차트는 비지도 학습 목표 탐색 과정의 전체 흐름을 보여준다.
 
-![비지도 학습 목표 탐색 플로우차트 — BERT 스타일에서 Span Corruption까지의 실험 경로](figures/fig_5.png)
-*Figure 4: 비지도 학습 목표 탐색 플로우차트 — BERT 스타일 디노이징에서 출발하여 타겟 시퀀스 단축, 코럽션 비율, 연속 스팬 코럽션까지 단계적으로 실험하여 최적 설정을 도출하는 과정. (Source: Raffel et al., 2019)*
+![비지도 학습 목표 탐색 플로우차트 - BERT 스타일에서 Span Corruption까지의 실험 경로](figures/fig_5.png)
+*Figure 4: 비지도 학습 목표 탐색 플로우차트 - BERT 스타일 디노이징에서 출발하여 타겟 시퀀스 단축, 코럽션 비율, 연속 스팬 코럽션까지 단계적으로 실험하여 최적 설정을 도출하는 과정. (Source: Raffel et al., 2019)*
 
 ## 벤치마크/성능
 
@@ -202,9 +202,9 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[transformer|Transformer]] — 발전 기반
-- [[flan-t5|Flan-T5]] — 후속 모델
-- [[switch-transformer|Switch Transformer]] — 후속 모델
-- [[ul2|UL2]] — 후속 모델
-- [[mt5|mT5]] — 변형 모델
-- [[imagen|Imagen]] — 적용 모델
+- [[transformer|Transformer]] - 발전 기반
+- [[flan-t5|Flan-T5]] - 후속 모델
+- [[switch-transformer|Switch Transformer]] - 후속 모델
+- [[ul2|UL2]] - 후속 모델
+- [[mt5|mT5]] - 변형 모델
+- [[imagen|Imagen]] - 적용 모델

@@ -8,8 +8,8 @@ DALL·E 2(Hierarchical Text-Conditional Image Generation with CLIP Latents)는 2
 - **발표**: 2022년 4월, OpenAI
 - **라이선스**: Proprietary
 
-![DALL-E 2 전체 아키텍처 — Diffusion Prior, GLIDE Decoder, Upsampler 3단계 파이프라인](figures/architecture.png)
-*Figure 1: DALL-E 2 전체 아키텍처 — CLIP 텍스트 인코더에서 Diffusion Prior가 CLIP 이미지 임베딩을 생성하고, 수정된 GLIDE U-Net Decoder가 64x64 이미지를 생성한 뒤, 업샘플러가 최종 1024x1024로 확장한다. (Source: Ramesh et al., 2022)*
+![DALL-E 2 전체 아키텍처 - Diffusion Prior, GLIDE Decoder, Upsampler 3단계 파이프라인](figures/architecture.png)
+*Figure 1: DALL-E 2 전체 아키텍처 - CLIP 텍스트 인코더에서 Diffusion Prior가 CLIP 이미지 임베딩을 생성하고, 수정된 GLIDE U-Net Decoder가 64x64 이미지를 생성한 뒤, 업샘플러가 최종 1024x1024로 확장한다. (Source: Ramesh et al., 2022)*
 
 ## 아키텍처 상세
 
@@ -17,7 +17,7 @@ DALL·E 2(Hierarchical Text-Conditional Image Generation with CLIP Latents)는 2
 
 DALL·E 2는 세 단계의 모델로 구성된다:
 
-**Stage 1 — Diffusion Prior:**
+**Stage 1 - Diffusion Prior:**
 
 텍스트 CLIP 임베딩 $z_t = \text{CLIP}_{\text{text}}(y)$에서 이미지 CLIP 임베딩 $z_i$를 생성하는 확산 모델:
 
@@ -25,13 +25,13 @@ $$p(z_i | y) = p(z_i | z_t)$$
 
 Prior로 자기회귀(AR) 모델과 확산 모델 두 가지를 실험하였으며, 확산 Prior가 더 우수한 성능을 보였다.
 
-**Stage 2 — Decoder (64×64):**
+**Stage 2 - Decoder (64×64):**
 
 GLIDE 기반의 확산 U-Net이 CLIP 이미지 임베딩 $z_i$와 텍스트 캡션 $y$를 조건으로 64×64 이미지를 생성한다:
 
 $$p(x_{64} | z_i, y)$$
 
-**Stage 3 — Upsampler (64→256→1024):**
+**Stage 3 - Upsampler (64→256→1024):**
 
 두 단계의 업샘플링 확산 모델이 고해상도 이미지를 완성한다:
 
@@ -45,8 +45,8 @@ $$p(x_{256} | x_{64}, z_i, y) \cdot p(x_{1024} | x_{256}, z_i, y)$$
 | Upsampler (256) | ~1B | 64→256 초해상도 |
 | Upsampler (1024) | ~1B | 256→1024 초해상도 |
 
-![DALL-E 2 파이프라인 개요 — 텍스트 인코더, Prior, Decoder 구조](figures/fig_2.png)
-*Figure 2: DALL-E 2 파이프라인 개요 — 텍스트 인코더가 텍스트 임베딩을 생성하고, Prior가 CLIP 이미지 임베딩으로 변환한 뒤, Decoder가 최종 이미지를 생성한다. CLIP 목적함수로 학습된 임베딩 공간이 핵심 중간 표현이다. (Source: Ramesh et al., 2022)*
+![DALL-E 2 파이프라인 개요 - 텍스트 인코더, Prior, Decoder 구조](figures/fig_2.png)
+*Figure 2: DALL-E 2 파이프라인 개요 - 텍스트 인코더가 텍스트 임베딩을 생성하고, Prior가 CLIP 이미지 임베딩으로 변환한 뒤, Decoder가 최종 이미지를 생성한다. CLIP 목적함수로 학습된 임베딩 공간이 핵심 중간 표현이다. (Source: Ramesh et al., 2022)*
 
 ### CLIP 잠재 공간의 활용
 
@@ -62,8 +62,8 @@ CFG는 텍스트 조건과 CLIP 임베딩 조건에 독립적으로 적용된다
 
 $$\tilde{\epsilon} = \epsilon_\theta(\mathbf{x}_t) + s_t \cdot (\epsilon_\theta(\mathbf{x}_t, z_t) - \epsilon_\theta(\mathbf{x}_t)) + s_i \cdot (\epsilon_\theta(\mathbf{x}_t, z_i) - \epsilon_\theta(\mathbf{x}_t))$$
 
-![이미지 변형 — CLIP 인코딩 후 디코딩으로 의미적으로 유사한 변형 이미지 생성](figures/fig_3_1.jpg)
-*Figure 4: 이미지 변형(Variations) — 입력 이미지를 CLIP으로 인코딩한 후 확산 모델로 디코딩하면, 시계의 존재와 같은 의미론적 정보와 초현실주의 스타일을 보존하면서 비핵심 디테일만 변경한 변형 이미지를 생성한다. (Source: Ramesh et al., 2022)*
+![이미지 변형 - CLIP 인코딩 후 디코딩으로 의미적으로 유사한 변형 이미지 생성](figures/fig_3_1.jpg)
+*Figure 4: 이미지 변형(Variations) - 입력 이미지를 CLIP으로 인코딩한 후 확산 모델로 디코딩하면, 시계의 존재와 같은 의미론적 정보와 초현실주의 스타일을 보존하면서 비핵심 디테일만 변경한 변형 이미지를 생성한다. (Source: Ramesh et al., 2022)*
 
 ## 핵심 혁신
 
@@ -112,8 +112,8 @@ DALL·E 2는 OpenAI API를 통해 최초의 대규모 상업 AI 이미지 생성
 
 인페인팅 기반 이미지 편집 기능으로, 사용자가 마스크를 그리고 텍스트로 해당 영역의 내용을 지정할 수 있다.
 
-![CLIP 임베딩 보간을 통한 이미지 변형 — 두 이미지의 콘텐츠와 스타일을 자연스럽게 혼합](figures/fig_4_2.png)
-*Figure 3: CLIP 임베딩 보간 — 두 이미지의 CLIP 임베딩을 선형 보간한 후 디코딩하면, 콘텐츠와 스타일이 자연스럽게 혼합된 중간 이미지가 생성된다. 디코더 시드를 고정하여 행별로 일관성을 유지한다. (Source: Ramesh et al., 2022)*
+![CLIP 임베딩 보간을 통한 이미지 변형 - 두 이미지의 콘텐츠와 스타일을 자연스럽게 혼합](figures/fig_4_2.png)
+*Figure 3: CLIP 임베딩 보간 - 두 이미지의 CLIP 임베딩을 선형 보간한 후 디코딩하면, 콘텐츠와 스타일이 자연스럽게 혼합된 중간 이미지가 생성된다. 디코더 시드를 고정하여 행별로 일관성을 유지한다. (Source: Ramesh et al., 2022)*
 
 ### 3. 이미지 변형 (Variations)
 
@@ -141,6 +141,6 @@ DALL·E 2의 Prior + Decoder 2단계 파이프라인은 이후 Karlo(카카오�
 
 ## 관련 문서
 
-- [[glide|GLIDE]] — 발전 기반
-- [[dalle-3|DALL·E 3]] — 후속 모델
-- [[clip|CLIP]] — 사용 기법
+- [[glide|GLIDE]] - 발전 기반
+- [[dalle-3|DALL·E 3]] - 후속 모델
+- [[clip|CLIP]] - 사용 기법

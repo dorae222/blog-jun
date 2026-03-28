@@ -6,9 +6,9 @@
 
 Qwen3는 Alibaba Cloud가 2025년 공개한 대규모 언어 모델 시리즈로, 0.6B부터 235B까지 Dense 및 MoE 두 계열을 포함한다. arXiv:2505.09388에 기술 보고서가 공개되었으며, 단일 모델 내에서 '생각 모드(thinking mode)'와 '비생각 모드(non-thinking mode)'를 동적으로 전환할 수 있는 하이브리드 추론 기능이 가장 큰 혁신이다. GPT-4o, Claude 3.5 Sonnet, DeepSeek-R1을 포함한 다양한 벤치마크에서 경쟁력 있는 성능을 달성하며, Apache 2.0 라이선스로 완전 오픈소스 공개되었다.
 
-![Qwen3 아키텍처 — 생각/비생각 이중 모드와 Dense/MoE 변형을 포함한 차세대 오픈소스 LLM 구조](figures/architecture.svg)
+![Qwen3 아키텍처 - 생각/비생각 이중 모드와 Dense/MoE 변형을 포함한 차세대 오픈소스 LLM 구조](figures/architecture.svg)
 
-*Figure 1: Qwen3 아키텍처 — 단일 모델 내에서 생각 모드(내부 CoT 추론)와 비생각 모드(빠른 직접 출력)를 동적으로 전환하며, 0.6B부터 235B MoE까지 다양한 규모를 지원한다.*
+*Figure 1: Qwen3 아키텍처 - 단일 모델 내에서 생각 모드(내부 CoT 추론)와 비생각 모드(빠른 직접 출력)를 동적으로 전환하며, 0.6B부터 235B MoE까지 다양한 규모를 지원한다.*
 
 ## 아키텍처 상세
 
@@ -44,7 +44,7 @@ Qwen3의 핵심 혁신은 생각/비생각 이중 모드(Thinking/Non-Thinking M
 
 ### 관련 모델
 
-- **qwen2-5** — 발전 기반
+- **qwen2-5** - 발전 기반
 
 ### 어텐션 메커니즘: GQA
 
@@ -81,7 +81,7 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 다음 그림은 Qwen3 시리즈의 4단계 사후학습(post-training) 파이프라인을 보여준다.
 
 ![Qwen3 사후학습 파이프라인 흐름도](figures/fig_1.png)
-*Figure 2: Qwen3 사후학습 파이프라인 — 플래그십 모델은 Long-CoT Cold Start, Reasoning RL, Thinking Mode Fusion, General RL 4단계를 거치고, 경량 모델은 Strong-to-Weak Distillation으로 학습된다. (Source: Qwen Team, 2025)*
+*Figure 2: Qwen3 사후학습 파이프라인 - 플래그십 모델은 Long-CoT Cold Start, Reasoning RL, Thinking Mode Fusion, General RL 4단계를 거치고, 경량 모델은 Strong-to-Weak Distillation으로 학습된다. (Source: Qwen Team, 2025)*
 
 ## 핵심 혁신
 
@@ -180,6 +180,6 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[qwen2-5|Qwen2.5 Technical Report]] — 발전 기반
-- [[qwen3-5|Qwen3.5]] — 후속 모델
-- [[qwen3-omni|Qwen3-Omni]] — 후속 모델
+- [[qwen2-5|Qwen2.5 Technical Report]] - 발전 기반
+- [[qwen3-5|Qwen3.5]] - 후속 모델
+- [[qwen3-omni|Qwen3-Omni]] - 후속 모델

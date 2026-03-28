@@ -10,9 +10,9 @@ Sora의 핵심 기술적 기여는 비디오를 **시공간 패치(spacetime pat
 
 이 접근법의 핵심 장점은 임의의 해상도, 종횡비, 지속 시간의 비디오를 동일한 모델로 처리 가능하다는 것이다. 패치 크기와 시간 스트라이드를 조절하여 다양한 형식의 비디오를 유연하게 다룰 수 있다. OpenAI는 기술 보고서에서 Sora를 "세계 시뮬레이터(world simulator)"로 포지셔닝하며, 비디오 생성 분야에 Transformer 스케일링 법칙이 적용됨을 시사하였다.
 
-![Sora 아키텍처 — Video VAE와 시공간 패치 기반 DiT의 텍스트-비디오 생성 구조](figures/architecture.svg)
+![Sora 아키텍처 - Video VAE와 시공간 패치 기반 DiT의 텍스트-비디오 생성 구조](figures/architecture.svg)
 
-*Figure 1: Sora 아키텍처 — 비디오를 Video VAE로 잠재 공간에 압축한 뒤 시공간 3D 패치로 분할하고, DiT의 Full Self-Attention으로 장거리 시공간 의존성을 포착하여 임의 해상도의 비디오를 생성한다.*
+*Figure 1: Sora 아키텍처 - 비디오를 Video VAE로 잠재 공간에 압축한 뒤 시공간 3D 패치로 분할하고, DiT의 Full Self-Attention으로 장거리 시공간 의존성을 포착하여 임의 해상도의 비디오를 생성한다.*
 
 ## 아키텍처 상세
 
@@ -123,5 +123,5 @@ Sora는 DiT에서 직접 발전하였으며, OpenAI의 후속 모델인 Sora 2(2
 
 ## 관련 문서
 
-- [[dit|DiT (Diffusion Transformers)]] — 발전 기반
-- [[sora-2|Sora 2]] — 후속 모델
+- [[dit|DiT (Diffusion Transformers)]] - 발전 기반
+- [[sora-2|Sora 2]] - 후속 모델

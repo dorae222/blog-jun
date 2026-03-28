@@ -6,9 +6,9 @@
 
 Phi-4 Reasoning은 Microsoft Research가 arXiv:2504.21318을 통해 발표한 14B 파라미터 소형 추론 특화 언어 모델이다. Microsoft의 '소형·고성능' 철학을 계승하면서, 합성 데이터(synthetic data) 기반 훈련과 RL을 결합하여 훨씬 큰 모델에 필적하는 수학·과학·논리 추론 능력을 달성하였다. 특히 경쟁 수학(AIME 2025) 및 과학 추론 벤치마크에서 GPT-4o와 동등 수준의 성능을 보이며 소형 추론 모델의 가능성을 입증하였다.
 
-![Phi-4 Reasoning 아키텍처 — 합성 CoT 데이터와 GRPO 기반 RL을 결합한 14B 추론 특화 모델 구조](figures/architecture.svg)
+![Phi-4 Reasoning 아키텍처 - 합성 CoT 데이터와 GRPO 기반 RL을 결합한 14B 추론 특화 모델 구조](figures/architecture.svg)
 
-*Figure 1: Phi-4 Reasoning 아키텍처 — GPT-4o 교사 모델로 생성한 합성 Chain-of-Thought 데이터로 SFT 후 GRPO 기반 RL로 추론 정확도를 강화하여, 14B로 DeepSeek-R1급 성능을 달성한다.*
+*Figure 1: Phi-4 Reasoning 아키텍처 - GPT-4o 교사 모델로 생성한 합성 Chain-of-Thought 데이터로 SFT 후 GRPO 기반 RL로 추론 정확도를 강화하여, 14B로 DeepSeek-R1급 성능을 달성한다.*
 
 ## 아키텍처 상세
 
@@ -43,7 +43,7 @@ Phi-4 Reasoning의 핵심은 고품질 합성 Chain-of-Thought 데이터와 결�
 
 ### 관련 모델
 
-- **phi-3** — 발전 기반
+- **phi-3** - 발전 기반
 
 ### 어텐션 메커니즘: GQA
 
@@ -175,4 +175,4 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[phi-3|Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone]] — 발전 기반
+- [[phi-3|Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone]] - 발전 기반

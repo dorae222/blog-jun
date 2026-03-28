@@ -11,8 +11,8 @@ GPT-Neo는 2021년 3월 EleutherAI가 공개한 오픈소스 자기회귀 언어
 
 아래 다이어그램은 GPT-Neo의 전체 아키텍처와 Local+Global Attention 교대 패턴을 보여준다.
 
-![GPT-Neo 아키텍처 — Local+Global Attention 교대 패턴 기반 Transformer](figures/architecture.png)
-*Figure 1: GPT-Neo 아키텍처(125M/1.3B/2.7B) — Local(짝수)과 Global(홀수) Attention을 교대 적용하는 Sparse Transformer 구조, MHA 확장 구조, 그리고 3가지 모델 변형. (EleutherAI, 2021)*
+![GPT-Neo 아키텍처 - Local+Global Attention 교대 패턴 기반 Transformer](figures/architecture.png)
+*Figure 1: GPT-Neo 아키텍처(125M/1.3B/2.7B) - Local(짝수)과 Global(홀수) Attention을 교대 적용하는 Sparse Transformer 구조, MHA 확장 구조, 그리고 3가지 모델 변형. (EleutherAI, 2021)*
 
 ## 아키텍처 상세
 
@@ -90,8 +90,8 @@ class LocalAttention(nn.Module):
 
 다음 다이어그램은 Local+Global Attention 교대 패턴의 상세 작동 원리를 보여준다. 레이어별 어텐션 마스크 비교, 복잡도 분석, 그리고 효과적 수용 영역(receptive field)의 확장을 시각화한다.
 
-![GPT-Neo Local+Global Alternating Attention 상세 — 어텐션 마스크 비교와 복잡도 분석](figures/detail.png)
-*Figure 2: GPT-Neo Local+Global Attention 상세 — 짝수 레이어의 Local Attention(window=256)과 홀수 레이어의 Global Attention 마스크 비교, 복잡도 분석($O(n \cdot w)$ vs $O(n^2)$), 그리고 교대 패턴을 통한 효과적 수용 영역 확장. (EleutherAI, 2021)*
+![GPT-Neo Local+Global Alternating Attention 상세 - 어텐션 마스크 비교와 복잡도 분석](figures/detail.png)
+*Figure 2: GPT-Neo Local+Global Attention 상세 - 짝수 레이어의 Local Attention(window=256)과 홀수 레이어의 Global Attention 마스크 비교, 복잡도 분석($O(n \cdot w)$ vs $O(n^2)$), 그리고 교대 패턴을 통한 효과적 수용 영역 확장. (EleutherAI, 2021)*
 
 ## 벤치마크/성능
 
@@ -176,5 +176,5 @@ GPT-Neo의 진정한 유산은 성능이 아닌 **운동(movement)**에 있다. 
 
 ## 관련 문서
 
-- [[gpt-j|GPT-J]] — 후속 모델
-- [[gpt-2|GPT-2]] — 영감
+- [[gpt-j|GPT-J]] - 후속 모델
+- [[gpt-2|GPT-2]] - 영감

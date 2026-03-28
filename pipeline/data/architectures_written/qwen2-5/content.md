@@ -10,8 +10,8 @@ Qwen2에서 Qwen2.5로의 핵심 변화는 아키텍처 혁신이 아닌 데이�
 
 다음 그림은 Qwen2.5의 전체 아키텍처를 보여준다. Grouped Query Attention(GQA), RoPE, SwiGLU 등 현대적 설계 요소를 갖춘 Dense Decoder-only Transformer 구조이며, 7가지 모델 크기로 제공된다.
 
-![Qwen2.5 전체 아키텍처 — GQA, RoPE, SwiGLU 기반 Dense Decoder-only Transformer](figures/architecture.png)
-*Figure 1: Qwen2.5 아키텍처 상세 — Grouped Query Attention(GQA)과 RoPE 위치 인코딩, SwiGLU 활성화를 사용하는 Dense Decoder-only Transformer. 0.5B~72B까지 7가지 크기로 제공되며, 핵심 혁신은 18T 토큰 학습 데이터와 Online DPO 정렬에 있다. (Source: Qwen Team, 2024)*
+![Qwen2.5 전체 아키텍처 - GQA, RoPE, SwiGLU 기반 Dense Decoder-only Transformer](figures/architecture.png)
+*Figure 1: Qwen2.5 아키텍처 상세 - Grouped Query Attention(GQA)과 RoPE 위치 인코딩, SwiGLU 활성화를 사용하는 Dense Decoder-only Transformer. 0.5B~72B까지 7가지 크기로 제공되며, 핵심 혁신은 18T 토큰 학습 데이터와 Online DPO 정렬에 있다. (Source: Qwen Team, 2024)*
 
 ### 기본 구조
 
@@ -150,5 +150,5 @@ Qwen3에서는 하이브리드 추론(생각/비생각 모드), 대규모 MoE(23
 
 ## 관련 문서
 
-- [[qwen2|Qwen2 Technical Report]] — 발전 기반
-- [[qwen3|Qwen3]] — 후속 모델
+- [[qwen2|Qwen2 Technical Report]] - 발전 기반
+- [[qwen3|Qwen3]] - 후속 모델

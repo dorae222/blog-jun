@@ -156,6 +156,6 @@ Claude Opus 4는 이후 4.1, 4.5로 빠르게 진화하며 SWE-bench 80.9%(Opus 
 
 ## 관련 문서
 
-- [[claude|Claude (1–3.5 Series)]] — 발전 기반
-- [[claude-4-5|Claude Opus 4.5]] — 후속 모델
-- [[claude-code|Claude Code]] — 후속 모델
+- [[claude|Claude (1–3.5 Series)]] - 발전 기반
+- [[claude-4-5|Claude Opus 4.5]] - 후속 모델
+- [[claude-code|Claude Code]] - 후속 모델
