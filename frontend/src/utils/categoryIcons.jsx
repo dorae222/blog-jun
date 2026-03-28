@@ -1,6 +1,6 @@
 import {
   Cloud, Brain, Database, Code2, BookOpen, Folder, Inbox,
-  Zap, Sparkles, Eye, Layers, Bot, Wrench,
+  Zap, Sparkles, Eye, Layers, Bot, Wrench, Terminal,
   Gauge, Lightbulb, GraduationCap, Search, Code,
 } from 'lucide-react'
 import { AwsIcon, DockerIcon, LxdIcon, DevOpsIcon } from '../components/icons/CategorySvgIcons'
@@ -27,6 +27,13 @@ const MAP = {
   training: GraduationCap,
   rag: Search,
   code: Code,
+  // Tool 카테고리
+  tool: Terminal,
+  'claude-code': Terminal,
+  'gemini-cli': Terminal,
+  'codex-cli': Terminal,
+  openclaw: Terminal,
+  opencode: Terminal,
   // Cloud 서브카테고리
   aws: AwsIcon,
   docker: DockerIcon,

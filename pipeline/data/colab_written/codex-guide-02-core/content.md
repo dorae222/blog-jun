@@ -36,7 +36,7 @@ macOS에서 Codex CLI는 Apple의 **Seatbelt** 프레임워크를 사용한다. 
 
 Seatbelt은 **기본 거부(deny-by-default)** 정책을 사용한다. 명시적으로 허용하지 않은 모든 시스템 콜은 차단된다.
 
-```
+```text
 (version 1)
 (deny default)
 
@@ -132,7 +132,7 @@ bwrap \
 
 Seccomp(Secure Computing Mode)은 시스템 콜 필터링을 제공한다. Codex CLI는 BPF(Berkeley Packet Filter) 프로그램을 사용하여 허용되는 시스템 콜을 제한한다.
 
-```
+```text
 # Codex의 Seccomp 필터 (개념적)
 # 네트워크 관련 시스템 콜 차단
 SCMP_ACT_ERRNO(EPERM) connect
@@ -271,7 +271,7 @@ Codex CLI는 **ReAct(Reasoning + Acting) 패턴**의 단일 에이전트 루프�
 
 ### 3.1 ReAct 루프 구조
 
-```
+```text
 사용자 입력
     |
     v
@@ -294,7 +294,7 @@ Codex CLI는 **ReAct(Reasoning + Acting) 패턴**의 단일 에이전트 루프�
 
 사용자가 "테스트가 실패하는 버그를 찾아서 수정해줘"라고 요청했을 때:
 
-```
+```text
 [Think] 먼저 테스트를 실행하여 어떤 테스트가 실패하는지 확인해야 한다.
 
 [Tool: shell] npm test
@@ -394,7 +394,7 @@ codex-mini-latest는 다음 작업에서 특히 뛰어나다:
 
 Codex CLI의 대화형 모드에서는 여러 턴에 걸친 작업이 가능하다. 각 턴에서 에이전트는 도구를 호출하고, 사용자는 승인 여부를 결정한다.
 
-```
+```text
 [사용자] 이 프로젝트의 TypeScript 에러를 모두 수정해줘
 
 [Codex] 먼저 TypeScript 컴파일 에러를 확인하겠습니다.
@@ -445,7 +445,7 @@ Codex CLI의 대화형 모드에서는 여러 턴에 걸친 작업이 가능하�
 
 긴 세션에서는 컨텍스트 윈도우 한계에 도달할 수 있다. Codex CLI는 이를 **컨텍스트 압축(context compaction)**으로 처리한다.
 
-```
+```text
 [시스템] 컨텍스트 윈도우 한계에 근접했습니다.
         세션을 자동으로 요약합니다.
 
@@ -504,7 +504,7 @@ Codex CLI에서 파일 수정은 항상 `apply_patch` 도구를 통해 이루어
 
 하나의 작업에서 여러 파일을 수정해야 할 때, Codex는 순차적으로 각 파일에 대한 패치를 생성한다.
 
-```
+```text
 [Think] 인터페이스 변경에 따라 3개 파일을 수정해야 한다.
 
 [Tool: apply_patch] src/types/index.ts
@@ -553,7 +553,7 @@ Codex CLI에서 파일 수정은 항상 `apply_patch` 도구를 통해 이루어
 codex --suggest --sandbox read-only
 ```
 
-```
+```text
 > 이 프로젝트의 아키텍처를 분석하고 기술 부채를 찾아줘
 ```
 
@@ -565,7 +565,7 @@ codex --suggest --sandbox read-only
 codex --auto-edit
 ```
 
-```
+```text
 > src/auth/jwt.ts에 있는 토큰 검증 로직에 만료 시간 체크를 추가해줘.
   먼저 테스트를 작성하고, 테스트가 통과하도록 코드를 수정해줘.
 ```

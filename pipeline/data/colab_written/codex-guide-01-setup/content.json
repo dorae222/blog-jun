@@ -3,8 +3,14 @@
   "title": "Getting Started with Codex CLI",
   "title_ko": "Codex CLI 시작하기: 설치와 기본 사용법",
   "summary": "OpenAI의 Rust 기반 AI 코딩 에이전트 Codex CLI를 설치하고, 샌드박스 환경 설정부터 첫 사용까지 안내한다.",
-  "tags": ["Codex CLI", "OpenAI", "CLI Agent", "Rust", "Agentic Coding"],
-  "category_slug": "tool",
+  "tags": [
+    "Codex CLI",
+    "OpenAI",
+    "CLI Agent",
+    "Rust",
+    "Agentic Coding"
+  ],
+  "category_slug": "codex-cli",
   "series_slug": "codex-guide",
   "series_order": 1
 }

@@ -175,7 +175,7 @@ volumes:
 
 ### Nginx 리버스 프록시
 
-```
+```text
 # nginx/conf.d/openclaw.conf
 
 upstream openclaw_backend {
@@ -912,7 +912,7 @@ Obsidian 노트나 Notion 위키를 기반으로 지식을 관리하고 검색�
 
 사용 예시:
 
-```
+```text
 사용자: Kubernetes의 Pod 스케줄링에 대해 정리한 노트가 있었는데, 핵심 내용이 뭐였지?
 봇: 작년 11월에 작성한 "K8s Scheduling Deep Dive" 노트를 찾았습니다.
 

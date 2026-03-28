@@ -75,7 +75,7 @@
 
 대규모 모노레포에서는 패키지별로 다른 규칙이 필요하다.
 
-```
+```text
 monorepo/
   AGENTS.md                    # 공통 규칙 (린팅, 커밋 형식 등)
   packages/
@@ -599,7 +599,7 @@ Codex CLI를 다른 주요 AI 코딩 도구와 비교하여 각각의 강점과 
 
 Codex CLI의 가장 큰 강점은 **플랫폼 네이티브 샌드박스**다. OS 커널 수준에서 에이전트의 행동을 제한하므로, 컨테이너 기반 격리보다 오버헤드가 적고 탈출이 어렵다.
 
-```
+```text
 Codex CLI: OS 커널 -> Seatbelt/Landlock -> 에이전트
 Claude Code: Docker 컨테이너 -> 에이전트
 Gemini CLI: Docker 컨테이너 -> 에이전트

@@ -368,7 +368,7 @@ Telegram은 공식 Bot API를 사용하므로 설정이 가장 간단하고 응�
 
 Telegram에서 `@BotFather`를 검색하여 대화를 시작한다:
 
-```
+```text
 /newbot
 ```
 
@@ -495,7 +495,7 @@ Gateway가 실행되고 메시징 플랫폼이 연동되면, 봇에게 메시지
 
 Telegram이나 다른 연동된 플랫폼에서 봇에게 메시지를 보낸다:
 
-```
+```text
 사용자: 안녕, 너는 누구야?
 봇: 안녕하세요! 저는 OpenClaw 기반의 AI 어시스턴트입니다.
     다양한 작업을 도와드릴 수 있어요 - 정보 검색, 일정 관리,
@@ -506,7 +506,7 @@ Telegram이나 다른 연동된 플랫폼에서 봇에게 메시지를 보낸다
 
 OpenClaw는 단순 채팅을 넘어 실제 작업을 수행한다:
 
-```
+```text
 사용자: 내일 오후 3시에 팀 미팅 일정 잡아줘
 봇: Google Calendar에 내일 오후 3시 팀 미팅을 등록했습니다.
     참석자를 추가할까요?
@@ -568,7 +568,7 @@ OpenClaw의 핵심 설계 철학은 **local-first**다. 모든 데이터가 사�
 
 OpenClaw의 메시지 처리 흐름을 간략히 정리한다:
 
-```
+```text
 메시징 앱 (Telegram/WhatsApp/...)
     ↓
 Channel Adapter (메시지 정규화)
@@ -592,7 +592,7 @@ Agentic Loop (도구 호출 → 결과 → 반복)
 
 OpenClaw 설치 후 기본 디렉토리 구조:
 
-```
+```text
 ~/.openclaw/
 ├── openclaw.json          # 메인 설정 파일
 ├── .env                   # 환경변수 (API 키, 토큰)
