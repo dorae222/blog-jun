@@ -29,8 +29,10 @@ from blog.models import Post
 PIPELINE_DIR = Path('/app/pipeline')
 if not PIPELINE_DIR.exists():
     PIPELINE_DIR = Path(__file__).resolve().parents[4] / 'pipeline'
-if str(PIPELINE_DIR) not in sys.path:
-    sys.path.insert(0, str(PIPELINE_DIR))
+for sub in ['generators', 'utils']:
+    p = str(PIPELINE_DIR / sub)
+    if p not in sys.path:
+        sys.path.insert(0, p)
 
 from cover_templates import (
     generate_paper_cover_svg,
