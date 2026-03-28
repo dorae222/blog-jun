@@ -337,10 +337,10 @@ print("가중치 (w):", w_hat[1:])
 
 ## 관련 문서
 
-- [[regularized-regression]] - Ridge / Lasso / ElasticNet
-- [[polynomial-regression]] - 다항 회귀
-- [[logistic-regression]] - 로지스틱 회귀
-- [[regression-metrics]] - 회귀 평가 지표
-- [[feature-engineering]] - 특성 공학
-- [[data-preprocessing]] - 데이터 전처리
-- [[optimization-theory]] - 경사하강법 이론
+- [[regularized-regression|Ridge / Lasso / ElasticNet]]
+- [[polynomial-regression|다항 회귀]]
+- [[logistic-regression|로지스틱 회귀]]
+- [[regression-metrics|회귀 평가 지표]]
+- [[feature-engineering|특성 공학]]
+- [[data-preprocessing|데이터 전처리]]
+- [[optimization-theory|경사하강법 이론]]

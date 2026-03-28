@@ -329,10 +329,10 @@ PCA 후 데이터 형태: (100, 3) → (100, 2)
 
 ## 관련 문서
 
-- [[probability-bayes]] - 확률론과 베이즈 정리
-- [[pca]] - 주성분 분석 (PCA)
-- [[optimization-theory]] - 최적화 이론
-- [[linear-regression]] - 선형 회귀
-- [[regularized-regression]] - 정규화 회귀 (Ridge/Lasso)
-- [[kernel-methods]] - 커널 방법론
-- [[tsne-umap]] - t-SNE와 UMAP
+- [[probability-bayes|확률론과 베이즈 정리]]
+- [[pca|주성분 분석 (PCA)]]
+- [[optimization-theory|최적화 이론]]
+- [[linear-regression|선형 회귀]]
+- [[regularized-regression|정규화 회귀 (Ridge/Lasso)]]
+- [[kernel-methods|커널 방법론]]
+- [[tsne-umap|t-SNE와 UMAP]]
