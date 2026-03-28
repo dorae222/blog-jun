@@ -8,7 +8,7 @@ import HeroSection from '../components/portfolio/HeroSection'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import GraphZoomControls from '../components/architecture/GraphZoomControls'
 import ScrollReveal from '../components/common/ScrollReveal'
-import { getStats, getPosts, getArchitectureStats, getArchitectureTree } from '../api/posts'
+import { getStats, getFeed, getArchitectureStats, getArchitectureTree } from '../api/posts'
 import { CATEGORY_TREE } from '../data/categories'
 import { CATEGORIES, CATEGORY_COLORS } from '../data/architectureConstants'
 
@@ -64,14 +64,11 @@ export default function Home() {
 
   function fetchPosts(categoryKey) {
     const params = { page_size: 6 }
-    if (categoryKey) {
-      const cat = CATEGORY_TREE.find(c => c.key === categoryKey)
-      if (cat) params.category = cat.key
-    }
-    getPosts({ ...params, ordering: '-published_at' })
+    if (categoryKey) params.category = categoryKey
+    getFeed({ ...params, sort: 'latest' })
       .then((r) => setRecentPosts(r.data.results || []))
       .catch(() => setError(true))
-    getPosts({ ...params, ordering: '-view_count' })
+    getFeed({ ...params, sort: 'popular' })
       .then((r) => setPopularPosts(r.data.results || []))
       .catch(() => setError(true))
   }

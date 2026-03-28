@@ -2,7 +2,7 @@
   "slug": "veo",
   "title": "Veo 2",
   "title_ko": "Veo 2: 확산 기반 비디오 생성 모델",
-  "summary": "Veo(현재 Veo 2)는 2024년 Google DeepMind가 발표한 고해상도 텍스트/이미지-비디오 생성 모델로, 최대 4K 해상도의 장편 비디오 생성 능력을 갖춘 최고 수준의 상업 비디오 생성 시스템이다. Veo 2는 Imagen의 T5 텍스트 인코더 기반 Cascaded Diffusion 접근법을 영상으로 확장하였으며, Google DeepMind의 영상 이해·생성 연구들—Lumiere, VideoPoet, GenCast 등—의 기술적 성과를 통합한 것으로 알려져 있다. 핵심 특징으로는 시네마틱 카메라 동작(달리, 팬, 줌 등)의 자연스러운 표현, 물리적으로 그럴듯한 물체 상호작용, 사람 동작의 정확한 표현이 있다.",
+  "summary": "Veo(현재 Veo 2)는 2024년 Google DeepMind가 발표한 고해상도 텍스트/이미지-비디오 생성 모델로, 최대 4K 해상도의 장편 비디오 생성 능력을 갖춘 최고 수준의 상업 비디오 생성 시스템이다. Veo 2는 Imagen의 T5 텍스트 인코더 기반 Cascaded Diffusion 접근법을 영상으로 확장하였으며, Google DeepMind의 영상 이해·생성 연구들-Lumiere, VideoPoet, GenCast 등-의 기술적 성과를 통합한 것으로 알려져 있다. 핵심 특징으로는 시네마틱 카메라 동작(달리, 팬, 줌 등)의 자연스러운 표현, 물리적으로 그럴듯한 물체 상호작용, 사람 동작의 정확한 표현이 있다.",
   "tags": [
     "4K Video Generation",
     "Camera Control",
