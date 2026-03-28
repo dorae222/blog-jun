@@ -1,0 +1,10 @@
+{
+  "slug": "openclaw-guide-04-workflow",
+  "title": "OpenClaw Workflow Design",
+  "title_ko": "OpenClaw 실전: 자체 호스팅 AI 에이전트 환경",
+  "summary": "OpenClaw를 Docker로 자체 호스팅하고, 팀 메시징 채널에 AI 에이전트를 통합하는 실전 워크플로우를 다룬다.",
+  "tags": ["OpenClaw", "Self-Hosting", "Docker", "Workflow", "실전"],
+  "category_slug": "tool",
+  "series_slug": "openclaw-guide",
+  "series_order": 4
+}
