@@ -37,7 +37,8 @@ function preprocessContent(raw, postLinks = []) {
       const slug = linkMap[title.toLowerCase()]
       return `[${title}](/post/${slug || title})`
     })
-    .replace(/\)\*\*([\uAC00-\uD7AF])/g, ')** $1')
+    // closing ** 뒤에 한국어가 바로 오면 bold 파싱 실패 → 공백 삽입
+    .replace(/([^\s*])\*\*([\uAC00-\uD7AF])/g, '$1** $2')
 
   // remark-math v6: multi-line display math에서 $$는 반드시 독립 행이어야 함
   processed = processed.replace(/^\$\$(.+)$/gm, (match, rest) => {
