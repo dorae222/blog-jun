@@ -12,8 +12,8 @@ MiniCPM-V 2.6(최신 버전)은 Llama-3-8B를 LLM 백본으로, SigLIP-SO400M을
 
 다음 다이어그램은 MiniCPM-V의 전체 아키텍처를 보여준다. 비전 인코더부터 LLM 백본, 엣지 배포 최적화까지의 전체 파이프라인을 확인할 수 있다.
 
-![MiniCPM-V 전체 아키텍처 다이어그램 — Vision Encoder, Adaptive Encoding, LLM 백본 구조](figures/architecture.png)
-*Figure 1: MiniCPM-V 아키텍처 개요 — SigLIP-SO400M 비전 인코더, 적응적 시각 인코딩, Llama-3-8B 백본의 전체 파이프라인과 엣지 배포 구성. (Source: OpenBMB)*
+![MiniCPM-V 전체 아키텍처 다이어그램 - Vision Encoder, Adaptive Encoding, LLM 백본 구조](figures/architecture.png)
+*Figure 1: MiniCPM-V 아키텍처 개요 - SigLIP-SO400M 비전 인코더, 적응적 시각 인코딩, Llama-3-8B 백본의 전체 파이프라인과 엣지 배포 구성. (Source: OpenBMB)*
 
 ### 전체 구조
 
@@ -26,8 +26,8 @@ MiniCPM-V 2.6(최신 버전)은 Llama-3-8B를 LLM 백본으로, SigLIP-SO400M을
 
 아래 그림은 MiniCPM-V의 모델 구조와 적응적 시각 인코딩의 동작 원리를 보여준다. 이미지가 최적 그리드로 분할되어 인코딩되는 전체 과정을 확인할 수 있다.
 
-![MiniCPM-V 모델 구조 및 적응적 시각 인코딩 — 이미지 분할과 슬라이스 인코딩 과정](figures/fig_3.png)
-*Figure 2: MiniCPM-V 모델 구조 — (a) 비전 인코더, 압축 레이어, LLM의 전체 구조와 (b) 적응적 시각 인코딩의 이미지 분할 및 슬라이스 인코딩 과정. (Source: arXiv 2408.01800)*
+![MiniCPM-V 모델 구조 및 적응적 시각 인코딩 - 이미지 분할과 슬라이스 인코딩 과정](figures/fig_3.png)
+*Figure 2: MiniCPM-V 모델 구조 - (a) 비전 인코더, 압축 레이어, LLM의 전체 구조와 (b) 적응적 시각 인코딩의 이미지 분할 및 슬라이스 인코딩 과정. (Source: arXiv 2408.01800)*
 
 MiniCPM-V의 이미지 처리 파이프라인은 세 단계로 구성된다:
 
@@ -48,8 +48,8 @@ $$\text{RoPE}_{2D}(x_{i,j}) = \text{RoPE}(x, \text{row}=i, \text{col}=j)$$
 
 다음 그림은 RLAIF-V의 전체 프레임워크를 보여준다. 응답 생성, 피드백 수집, DPO 최적화의 3단계 파이프라인을 통해 환각을 체계적으로 줄인다.
 
-![RLAIF-V 프레임워크 — 응답 생성, 피드백 수집, DPO를 통한 환각 감소 정렬 과정](figures/fig_4.png)
-*Figure 3: RLAIF-V 프레임워크 — (a) 다중 응답 생성, (b) divide-and-conquer 방식 피드백 수집, (c) DPO를 통한 선호 학습으로 환각을 줄인다. (Source: arXiv 2408.01800)*
+![RLAIF-V 프레임워크 - 응답 생성, 피드백 수집, DPO를 통한 환각 감소 정렬 과정](figures/fig_4.png)
+*Figure 3: RLAIF-V 프레임워크 - (a) 다중 응답 생성, (b) divide-and-conquer 방식 피드백 수집, (c) DPO를 통한 선호 학습으로 환각을 줄인다. (Source: arXiv 2408.01800)*
 
 MiniCPM-V의 독자적 강점인 RLAIF-V는 AI 피드백을 활용한 강화학습이다:
 
@@ -78,8 +78,8 @@ MiniCPM-V의 독자적 강점인 RLAIF-V는 AI 피드백을 활용한 강화학�
 
 VLM의 고질적 문제인 시각적 환각을 체계적으로 줄이는 RLAIF-V 기법은, 의료, 문서 분석 등 정확성이 중요한 실무 환경에서 핵심적 가치를 가진다. 아래 예시는 MiniCPM-V와 GPT-4V의 환각 비교 결과를 보여준다.
 
-![MiniCPM-V와 GPT-4V의 환각 비교 — MiniCPM-V가 더 정확한 시각 정보를 제공](figures/fig_10.png)
-*Figure 4: 환각 비교 — MiniCPM-V 2.5는 GPT-4V 대비 시각적 환각이 적으며, 이미지의 세부 정보를 더 정확하게 기술한다. 빨간색은 환각 부분을 표시. (Source: arXiv 2408.01800)*
+![MiniCPM-V와 GPT-4V의 환각 비교 - MiniCPM-V가 더 정확한 시각 정보를 제공](figures/fig_10.png)
+*Figure 4: 환각 비교 - MiniCPM-V 2.5는 GPT-4V 대비 시각적 환각이 적으며, 이미지의 세부 정보를 더 정확하게 기술한다. 빨간색은 환각 부분을 표시. (Source: arXiv 2408.01800)*
 
 ### 3. 다국어 OCR
 
@@ -93,7 +93,7 @@ VLM의 고질적 문제인 시각적 환각을 체계적으로 줄이는 RLAIF-V
 | DocVQA | **90.8** | 87.2 | 83.7 | 89.3 |
 | MMMU | **43.4** | 56.8 | 41.7 | 41.3 |
 | TextVQA | **80.1** | 78.0 | 68.7 | 79.7 |
-| RealWorldQA | **65.2** | 61.4 | — | 64.5 |
+| RealWorldQA | **65.2** | 61.4 | - | 64.5 |
 | 환각률 (POPE) | **8.2%** | 13.6% | 15.8% | 11.3% |
 
 ## 관련 모델 비교
@@ -103,16 +103,16 @@ VLM의 고질적 문제인 시각적 환각을 체계적으로 줄이는 RLAIF-V
 | 파라미터 | 8B | 5.6B | 7B | 7B |
 | 모바일 배포 | 가능 (int4) | 가능 | 어려움 | 어려움 |
 | OCR 특화 | 강함 | 보통 | 강함 | 보통 |
-| 환각 감소 | RLAIF-V | — | — | — |
+| 환각 감소 | RLAIF-V | - | - | - |
 | 오디오 지원 | 미지원 | 지원 | 미지원 | 미지원 |
 
 ## 학습 상세
 
 3단계 학습 파이프라인:
 
-**Stage 1: 비전-언어 정렬** — MLP 프로젝터 학습, 이미지-캡션 데이터
-**Stage 2: 고해상도 멀티태스크 SFT** — VQA, OCR, 차트, 수학 등 혼합 데이터
-**Stage 3: RLAIF-V 환각 감소 정렬** — AI 피드백 기반 DPO
+**Stage 1: 비전-언어 정렬** - MLP 프로젝터 학습, 이미지-캡션 데이터
+**Stage 2: 고해상도 멀티태스크 SFT** - VQA, OCR, 차트, 수학 등 혼합 데이터
+**Stage 3: RLAIF-V 환각 감소 정렬** - AI 피드백 기반 DPO
 
 ## 실무 활용
 
@@ -150,11 +150,11 @@ MiniCPM-V는 "소형 모델도 대형 모델과 경쟁할 수 있다"는 것을 
 
 아래 그림은 MLLM 발전의 무어의 법칙을 보여준다. GPT-4V 수준 성능을 달성하는 데 필요한 모델 크기가 점차 줄어들고 있으며, 엣지 디바이스의 연산 능력은 증가하는 추세이다.
 
-![MLLM의 무어의 법칙 — 모델 크기 감소 추세와 엣지 디바이스 연산 능력 증가](figures/fig_1.png)
-*Figure 5: MLLM의 무어의 법칙 — GPT-4V 수준 성능을 위한 모델 크기(빨간 선)는 감소하고, 엣지 디바이스 연산 능력(파란 선)은 증가하여, 엣지 배포가 점점 현실화되고 있다. (Source: arXiv 2408.01800)*
+![MLLM의 무어의 법칙 - 모델 크기 감소 추세와 엣지 디바이스 연산 능력 증가](figures/fig_1.png)
+*Figure 5: MLLM의 무어의 법칙 - GPT-4V 수준 성능을 위한 모델 크기(빨간 선)는 감소하고, 엣지 디바이스 연산 능력(파란 선)은 증가하여, 엣지 배포가 점점 현실화되고 있다. (Source: arXiv 2408.01800)*
 
 특히 MiniCPM-V의 성공은 "데이터 품질과 학습 전략이 모델 크기를 보완할 수 있다"는 중요한 교훈을 제공한다. 8B 모델이 72B 모델과 특정 태스크에서 경쟁할 수 있는 것은, 고품질 인스트럭션 데이터와 RLAIF-V 같은 정교한 정렬 기법 덕분이다. 이는 소형 모델의 가능성을 보여주는 동시에, 모델 크기보다 학습 방법론이 더 중요할 수 있음을 시사한다. 양자화 기술의 발전과 함께, 향후 4비트 양자화 모델이 스마트폰에서 실시간으로 고해상도 이미지를 분석하는 시대가 열릴 전망이다.
 
 ## 관련 문서
 
-- [[llava|Visual Instruction Tuning]] — 영감
+- [[llava|Visual Instruction Tuning]] - 영감

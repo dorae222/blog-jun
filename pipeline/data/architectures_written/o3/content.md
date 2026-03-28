@@ -189,6 +189,6 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[o1|OpenAI o1]] — 발전 기반
-- [[o4-mini|OpenAI o4-mini]] — 후속 모델
-- [[o3-pro|OpenAI o3-pro]] — 변형 모델
+- [[o1|OpenAI o1]] - 발전 기반
+- [[o4-mini|OpenAI o4-mini]] - 후속 모델
+- [[o3-pro|OpenAI o3-pro]] - 변형 모델

@@ -8,12 +8,12 @@ DINOv2는 2023년 Meta/FAIR의 Maxime Oquab 등이 발표한 자기지도 학습
 
 DINOv2의 등장은 비전 분야에서도 NLP의 GPT/BERT처럼 "레이블 없는 대규모 사전학습 → 다운스트림 적용"이라는 파운데이션 모델 패러다임이 실현 가능함을 증명한 이정표적 연구이다. 기존의 CLIP이나 SigLIP이 텍스트-이미지 쌍이라는 약한 감독 신호를 필요로 했던 것과 달리, DINOv2는 어떠한 형태의 감독 신호(레이블, 캡션, 태그)도 없이 순수하게 시각 데이터만으로 범용 표현을 학습한다는 점에서 근본적으로 차별화된다. 특히 깊이 추정, 의미론적 세그멘테이션, 인스턴스 검색 등 CLIP이 직접 적용되기 어려운 밀집 예측(dense prediction) 태스크에서도 탁월한 성능을 발휘하며, 패치 수준의 풍부한 지역적 표현이 이를 가능하게 한다. DINOv2는 의료 영상, 위성 이미지, 제조 품질 검사 등 전문 도메인에서도 파인튜닝 없이 높은 성능을 보여 실무적 가치가 매우 높다.
 
-![DINOv2 아키텍처 — 자기증류와 마스킹 이미지 모델링을 결합한 ViT 기반 자기지도 비전 파운데이션 모델](figures/architecture.svg)
+![DINOv2 아키텍처 - 자기증류와 마스킹 이미지 모델링을 결합한 ViT 기반 자기지도 비전 파운데이션 모델](figures/architecture.svg)
 
-*Figure 1: DINOv2 아키텍처 — DINO의 자기증류와 iBOT의 MIM을 결합하고 LVD-142M 데이터셋으로 학습하여, 파인튜닝 없이 분류·세그멘테이션·깊이 추정 등 다양한 비전 태스크에서 범용적 특징을 생성한다.*
+*Figure 1: DINOv2 아키텍처 - DINO의 자기증류와 iBOT의 MIM을 결합하고 LVD-142M 데이터셋으로 학습하여, 파인튜닝 없이 분류·세그멘테이션·깊이 추정 등 다양한 비전 태스크에서 범용적 특징을 생성한다.*
 
-![DINOv2 패치 특징의 PCA 시각화 — 도메인과 포즈를 넘어선 의미적 매칭](figures/fig_1.jpg)
-*Figure 1: PCA 시각화 — 동일 열(a,b,c,d)의 이미지 패치 간 PCA를 계산하여 첫 3개 주성분을 RGB 채널에 매핑. 포즈, 스타일, 객체가 달라도 동일 부분이 일관된 색상으로 매칭됨. (Source: arXiv 2304.07193)*
+![DINOv2 패치 특징의 PCA 시각화 - 도메인과 포즈를 넘어선 의미적 매칭](figures/fig_1.jpg)
+*Figure 1: PCA 시각화 - 동일 열(a,b,c,d)의 이미지 패치 간 PCA를 계산하여 첫 3개 주성분을 RGB 채널에 매핑. 포즈, 스타일, 객체가 달라도 동일 부분이 일관된 색상으로 매칭됨. (Source: arXiv 2304.07193)*
 
 ## 아키텍처 상세
 
@@ -58,8 +58,8 @@ $$\mathcal{L}_\text{KoLeo} = -\frac{1}{n}\sum_{i=1}^{n} \log\!\left(d_{\text{nn}
 
 ## 핵심 혁신
 
-![LVD-142M 데이터 처리 파이프라인 — retrieval 기반 데이터 정제](figures/fig_3.png)
-*Figure 2: 데이터 처리 파이프라인 — 정제된(curated) 데이터와 비정제 웹 이미지를 임베딩 공간에서 매핑 후, 중복 제거와 retrieval 기반 매칭으로 LVD-142M 데이터셋 구축. (Source: arXiv 2304.07193)*
+![LVD-142M 데이터 처리 파이프라인 - retrieval 기반 데이터 정제](figures/fig_3.png)
+*Figure 2: 데이터 처리 파이프라인 - 정제된(curated) 데이터와 비정제 웹 이미지를 임베딩 공간에서 매핑 후, 중복 제거와 retrieval 기반 매칭으로 LVD-142M 데이터셋 구축. (Source: arXiv 2304.07193)*
 
 1. **LVD-142M 데이터셋 구축**: 웹에서 수집한 12억 이미지 후보에서 copy detection으로 중복 제거, NSFW 필터링, PII 처리(얼굴 블러링)를 거쳐 1.42억 이미지의 고품질 데이터셋을 구축하였다. ImageNet-1K의 이미지를 "앵커"로 사용하여 임베딩 공간에서 유사 이미지를 검색하는 retrieval 기반 방식으로 데이터 분포를 제어하였다. 무작위 웹 이미지보다 정제된 데이터가 모델 성능에 미치는 영향을 체계적으로 분석한 점이 주요 기여이다.
 
@@ -79,7 +79,7 @@ $$\mathcal{L}_\text{KoLeo} = -\frac{1}{n}\sum_{i=1}^{n} \log\!\left(d_{\text{nn}
 | 전이 학습 12개 벤치마크 평균 | **최고** | - | - | - |
 
 ![모델 스케일링에 따른 8가지 비전 태스크 성능 변화](figures/fig_2.png)
-*Figure 3: 스케일링 성능 — DINOv2(파란색)가 모델 크기 증가에 따라 기존 자기지도(SSL, 주황색) 및 약지도(WSL, 분홍색) 모델을 크게 능가하며, 8가지 비전 태스크 전반에서 최고 성능 달성. (Source: arXiv 2304.07193)*
+*Figure 3: 스케일링 성능 - DINOv2(파란색)가 모델 크기 증가에 따라 기존 자기지도(SSL, 주황색) 및 약지도(WSL, 분홍색) 모델을 크게 능가하며, 8가지 비전 태스크 전반에서 최고 성능 달성. (Source: arXiv 2304.07193)*
 
 DINOv2는 파인튜닝 없이 선형 프로빙만으로 다양한 비전 태스크에서 지도 학습 모델에 필적하거나 능가하는 성능을 달성한다. 특히 깊이 추정(RMSE 0.279 vs MAE 0.342)과 세그멘테이션(mIoU 49.0)에서의 강점이 두드러지며, 이는 패치 수준의 풍부한 지역 표현 덕분이다.
 
@@ -96,8 +96,8 @@ DINOv2는 파인튜닝 없이 선형 프로빙만으로 다양한 비전 태스�
 - **디스틸레이션**: ViT-g를 Teacher로, ViT-S/B/L을 Student로 학습
 - **학습 목표**: $\mathcal{L} = \mathcal{L}_\text{DINO} + \mathcal{L}_\text{iBOT} + \mathcal{L}_\text{KoLeo}$
 
-![세그멘테이션과 깊이 추정 — OpenCLIP-G 대비 DINOv2-g의 밀집 예측 우위](figures/fig_9.jpg)
-*Figure 4: 세그멘테이션 및 깊이 추정 비교 — ADE20K, NYUd, SUN RGB-D, KITTI에서 선형 프로브만으로 OpenCLIP-G 대비 DINOv2-g가 훨씬 정밀한 세그멘테이션과 깊이 추정 결과를 산출. (Source: arXiv 2304.07193)*
+![세그멘테이션과 깊이 추정 - OpenCLIP-G 대비 DINOv2-g의 밀집 예측 우위](figures/fig_9.jpg)
+*Figure 4: 세그멘테이션 및 깊이 추정 비교 - ADE20K, NYUd, SUN RGB-D, KITTI에서 선형 프로브만으로 OpenCLIP-G 대비 DINOv2-g가 훨씬 정밀한 세그멘테이션과 깊이 추정 결과를 산출. (Source: arXiv 2304.07193)*
 
 ## 관련 모델
 
@@ -110,5 +110,5 @@ DINOv2는 DINO(2021)의 자기증류와 iBOT의 패치 수준 MIM을 결합한 �
 
 ## 관련 문서
 
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 발전 기반
-- [[dinov3|DINOv3]] — 후속 모델
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 발전 기반
+- [[dinov3|DINOv3]] - 후속 모델

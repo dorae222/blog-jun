@@ -15,15 +15,15 @@ SDXL은 출시 직후 오픈소스 이미지 생성의 새로운 표준이 되�
 - **발표**: 2023년 7월, Stability AI
 - **라이선스**: CreativeML Open RAIL+M
 
-![SDXL과 이전 Stable Diffusion 버전의 인간 선호도 비교 — SDXL+Refiner가 48.44% 승률로 압도](figures/fig_2_1.jpg)
-*Figure 1(좌): 사용자 선호도 비교 — SDXL+Refiner(48.44%)가 SDXL Base(36.93%)를 상회하며, SD 1.5(7.91%)와 SD 2.1(6.71%)을 크게 압도한다. Refiner 단계 추가만으로 선호도가 약 12%p 향상된다. (Source: Podell et al., 2023)*
+![SDXL과 이전 Stable Diffusion 버전의 인간 선호도 비교 - SDXL+Refiner가 48.44% 승률로 압도](figures/fig_2_1.jpg)
+*Figure 1(좌): 사용자 선호도 비교 - SDXL+Refiner(48.44%)가 SDXL Base(36.93%)를 상회하며, SD 1.5(7.91%)와 SD 2.1(6.71%)을 크게 압도한다. Refiner 단계 추가만으로 선호도가 약 12%p 향상된다. (Source: Podell et al., 2023)*
 
-![SDXL의 2단계 파이프라인 — Base 모델에서 Refiner를 거쳐 최종 이미지 생성까지](figures/fig_2_2.jpg)
-*Figure 1(우): SDXL 2단계 파이프라인 — 노이즈로부터 Base 모델이 128x128 잠재 벡터를 생성하고, Refiner가 SDEdit 방식으로 디테일을 향상시킨 후, VAE 디코더가 1024x1024 최종 이미지를 출력한다. (Source: Podell et al., 2023)*
+![SDXL의 2단계 파이프라인 - Base 모델에서 Refiner를 거쳐 최종 이미지 생성까지](figures/fig_2_2.jpg)
+*Figure 1(우): SDXL 2단계 파이프라인 - 노이즈로부터 Base 모델이 128x128 잠재 벡터를 생성하고, Refiner가 SDEdit 방식으로 디테일을 향상시킨 후, VAE 디코더가 1024x1024 최종 이미지를 출력한다. (Source: Podell et al., 2023)*
 
-![SDXL 아키텍처 — 3.5B U-Net 백본과 이중 텍스트 인코더, 2단계 Base+Refiner 파이프라인 구조](figures/architecture.svg)
+![SDXL 아키텍처 - 3.5B U-Net 백본과 이중 텍스트 인코더, 2단계 Base+Refiner 파이프라인 구조](figures/architecture.svg)
 
-*Figure 2: SDXL 아키텍처 — 확장된 3.5B U-Net에 CLIP-ViT/L과 OpenCLIP-ViT/bigG 이중 텍스트 인코더를 결합하고, 크기/자르기 조건화와 선택적 Refiner로 1024x1024 고해상도 이미지를 생성한다.*
+*Figure 2: SDXL 아키텍처 - 확장된 3.5B U-Net에 CLIP-ViT/L과 OpenCLIP-ViT/bigG 이중 텍스트 인코더를 결합하고, 크기/자르기 조건화와 선택적 Refiner로 1024x1024 고해상도 이미지를 생성한다.*
 
 ## 아키텍처 상세
 
@@ -62,8 +62,8 @@ $$\text{emb}_{\text{global}} = \text{emb}_{\text{time}} + \text{emb}_{\text{size
 
 ### 마이크로 조건화 (Micro-Conditioning)
 
-![학습 데이터셋의 높이-너비 해상도 분포 — Size Conditioning 없이는 39% 데이터가 폐기됨](figures/fig_3.jpg)
-*Figure 2: 사전학습 데이터셋의 해상도 분포 — 점선(256px)으로 표시된 경계 아래의 저해상도 이미지가 전체의 39%를 차지한다. Size Conditioning을 통해 이 데이터를 모두 활용하면서도 추론 시 고해상도 조건으로 선명한 이미지를 생성할 수 있다. (Source: Podell et al., 2023)*
+![학습 데이터셋의 높이-너비 해상도 분포 - Size Conditioning 없이는 39% 데이터가 폐기됨](figures/fig_3.jpg)
+*Figure 2: 사전학습 데이터셋의 해상도 분포 - 점선(256px)으로 표시된 경계 아래의 저해상도 이미지가 전체의 39%를 차지한다. Size Conditioning을 통해 이 데이터를 모두 활용하면서도 추론 시 고해상도 조건으로 선명한 이미지를 생성할 수 있다. (Source: Podell et al., 2023)*
 
 SDXL의 핵심 혁신 중 하나인 마이크로 조건화는 학습 데이터 전처리로 인한 아티팩트를 제거한다:
 
@@ -84,8 +84,8 @@ $$\text{emb}_{\text{crop}} = \text{SinEmb}(c_{\text{top}}) + \text{SinEmb}(c_{\t
 | Size Conditioning | 저해상도 학습 이미지의 영향 | 목표 해상도 지정 |
 | Crop Conditioning | 크롭 아티팩트 | $(0, 0)$으로 설정 |
 
-![Size Conditioning의 효과 — 동일 시드에서 크기 조건을 변경하면 이미지 품질이 크게 달라짐](figures/fig_4_1.jpg)
-*Figure 3: Size Conditioning 효과 — 동일 프롬프트와 랜덤 시드에서 크기 조건을 64px에서 512px로 변경하면, 이미지 품질과 선명도가 극적으로 향상된다. 모델이 학습 데이터의 원본 해상도를 인식하고 이를 생성 품질에 반영한다. (Source: Podell et al., 2023)*
+![Size Conditioning의 효과 - 동일 시드에서 크기 조건을 변경하면 이미지 품질이 크게 달라짐](figures/fig_4_1.jpg)
+*Figure 3: Size Conditioning 효과 - 동일 프롬프트와 랜덤 시드에서 크기 조건을 64px에서 512px로 변경하면, 이미지 품질과 선명도가 극적으로 향상된다. 모델이 학습 데이터의 원본 해상도를 인식하고 이를 생성 품질에 반영한다. (Source: Podell et al., 2023)*
 
 ### Refiner 모델
 
@@ -185,5 +185,5 @@ SDXL의 기술적 의의는 "기존 아키텍처(U-Net + LDM)를 근본적으로
 
 ## 관련 문서
 
-- [[ldm|LDM (Latent Diffusion Models)]] — 발전 기반
-- [[sd3|Stable Diffusion 3]] — 후속 모델
+- [[ldm|LDM (Latent Diffusion Models)]] - 발전 기반
+- [[sd3|Stable Diffusion 3]] - 후속 모델

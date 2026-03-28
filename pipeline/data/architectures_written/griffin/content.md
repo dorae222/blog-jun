@@ -11,20 +11,20 @@ Griffin의 핵심 주장은 명확하다. 순수 SSM 모델은 특정 태스크(
 다음 그래프는 학습 FLOP 대비 Hawk, Griffin, MQA(Transformer) 기준 모델의 스케일링 곡선을 보여준다.
 
 ![학습 FLOP에 따른 MQA, Hawk, Griffin 스케일링 곡선](figures/fig_2.png)
-*Figure 1: 학습 스케일링 곡선 — Griffin(하이브리드)이 순수 순환 모델 Hawk보다 일관되게 낮은 검증 손실을 보이며, MQA(Transformer)와 유사한 수렴 특성을 달성한다. (Source: De et al., 2024)*
+*Figure 1: 학습 스케일링 곡선 - Griffin(하이브리드)이 순수 순환 모델 Hawk보다 일관되게 낮은 검증 손실을 보이며, MQA(Transformer)와 유사한 수렴 특성을 달성한다. (Source: De et al., 2024)*
 
 RG-LRU는 S4나 Mamba처럼 복소수 파라미터를 사용하지 않고 실수 게이트만 사용하여 구현을 크게 단순화했다. 이 설계 선택은 CUDA 구현의 복잡도를 낮추고, 양자화 등 배포 최적화에도 유리하다. Griffin은 RecurrentGemma라는 이름으로 Hugging Face에 공개되어, 산업 수준의 하이브리드 SSM-어텐션 모델 실용화에 이정표를 세웠다.
 
-![Griffin 아키텍처 — RG-LRU 순환 레이어와 Local Attention을 교차 배치한 하이브리드 순환-어텐션 구조](figures/architecture.svg)
+![Griffin 아키텍처 - RG-LRU 순환 레이어와 Local Attention을 교차 배치한 하이브리드 순환-어텐션 구조](figures/architecture.svg)
 
-*Figure 3: Griffin 아키텍처 — 전체 레이어의 약 2/3를 RG-LRU 순환 레이어로, 1/3을 Local Attention으로 구성하여 순수 SSM의 한계를 극복하면서 Transformer급 성능을 달성한다.*
+*Figure 3: Griffin 아키텍처 - 전체 레이어의 약 2/3를 RG-LRU 순환 레이어로, 1/3을 Local Attention으로 구성하여 순수 SSM의 한계를 극복하면서 Transformer급 성능을 달성한다.*
 
 ## 아키텍처 상세
 
 Griffin은 MLP 레이어, RG-LRU 레이어, Local Attention 레이어를 교차 배치하는 하이브리드 구조이다. 전체 레이어 중 약 2/3는 RG-LRU, 1/3은 Local Attention으로 구성된다. 아래 다이어그램은 Griffin의 전체 아키텍처 구성을 보여준다.
 
-![Griffin 아키텍처 — Residual Block, Gated MLP, Recurrent Block 구조](figures/fig_4.png)
-*Figure 2: Griffin 아키텍처 구성 — (a) Residual Block을 N번 반복, (b) Gated MLP 블록, (c) RG-LRU 기반 Recurrent Block이 MQA를 대체하는 구조. (Source: De et al., 2024)*
+![Griffin 아키텍처 - Residual Block, Gated MLP, Recurrent Block 구조](figures/fig_4.png)
+*Figure 2: Griffin 아키텍처 구성 - (a) Residual Block을 N번 반복, (b) Gated MLP 블록, (c) RG-LRU 기반 Recurrent Block이 MQA를 대체하는 구조. (Source: De et al., 2024)*
 
 ### RG-LRU (Real-Gated Linear Recurrent Unit)
 
@@ -73,7 +73,7 @@ Griffin의 핵심 혁신은 세 가지이다.
 다음은 400M 파라미터 규모에서 시퀀스 길이에 따른 MQA 대비 Griffin의 성능 비교이다.
 
 ![시퀀스 길이별 MQA 대비 Griffin 성능 비교 (400M 규모)](figures/fig_6.png)
-*Figure 3: 400M 규모에서의 성능 비교 — Griffin이 시퀀스 길이 증가에 따라 MQA와 동등하거나 근접한 성능을 보이며, 8K 시퀀스에서도 0.98배 수준을 유지한다. (Source: De et al., 2024)*
+*Figure 3: 400M 규모에서의 성능 비교 - Griffin이 시퀀스 길이 증가에 따라 MQA와 동등하거나 근접한 성능을 보이며, 8K 시퀀스에서도 0.98배 수준을 유지한다. (Source: De et al., 2024)*
 
 | 모델 | 파라미터 | HellaSwag | PIQA | WinoGrande | ARC-E |
 |------|---------|-----------|------|------------|-------|
@@ -92,12 +92,12 @@ Griffin의 핵심 혁신은 세 가지이다.
 추론 효율 측면에서 Griffin은 디코딩 토큰 수가 증가할수록 Transformer 대비 뚜렷한 이점을 보인다.
 
 ![디코딩 토큰 수에 따른 추론 처리량 비교](figures/fig_10.png)
-*Figure 4: 추론 효율 비교 — 디코딩 토큰 수가 증가할수록 Griffin과 Hawk가 MQA(Transformer) 대비 더 빠른 추론 속도를 보이며, 4096 토큰에서 처리량 격차가 극대화된다. (Source: De et al., 2024)*
+*Figure 4: 추론 효율 비교 - 디코딩 토큰 수가 증가할수록 Griffin과 Hawk가 MQA(Transformer) 대비 더 빠른 추론 속도를 보이며, 4096 토큰에서 처리량 격차가 극대화된다. (Source: De et al., 2024)*
 
 또한 Griffin은 in-context learning(복사, 검색) 태스크에서도 순수 순환 모델의 한계를 극복한다.
 
 ![학습 스텝에 따른 In-context 학습 정확도 비교](figures/fig_14.png)
-*Figure 5: In-context 학습 정확도 — Griffin이 Local Attention 덕분에 Hawk(순수 순환) 대비 빠르게 수렴하며 MQA 수준의 정확도에 도달하여, 하이브리드 접근법의 효과를 입증한다. (Source: De et al., 2024)*
+*Figure 5: In-context 학습 정확도 - Griffin이 Local Attention 덕분에 Hawk(순수 순환) 대비 빠르게 수렴하며 MQA 수준의 정확도에 도달하여, 하이브리드 접근법의 효과를 입증한다. (Source: De et al., 2024)*
 
 ## 학습
 
@@ -151,4 +151,4 @@ Griffin은 RecurrentGemma 모델로 Hugging Face에서 바로 사용할 수 있�
 
 ## 관련 문서
 
-- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] — 영감
+- [[mamba|Mamba: Linear-Time Sequence Modeling with Selective State Spaces]] - 영감

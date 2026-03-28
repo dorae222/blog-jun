@@ -6,9 +6,9 @@
 
 DistilBERT는 2019년 Hugging Face가 발표한 지식 증류(Knowledge Distillation) 기반의 경량 BERT로, 실제 산업 배포 환경의 지연 시간 및 메모리 제약 문제를 해결하기 위해 설계되었다. BERT-Base의 레이어를 절반(12→6)으로 줄이고 NSP 태스크와 토큰 타입 임베딩을 제거했음에도 불구하고, 소프트 레이블 증류·히든 스테이트 증류·어텐션 증류를 결합해 BERT-Base 성능의 97%를 유지한다. 파라미터 40% 감소, 추론 속도 60% 향상, 메모리 60% 절감으로 모바일·엣지·서버 경량 NLP의 실질적인 표준 베이스라인이 되었다.
 
-![DistilBERT 아키텍처 — BERT 교사 모델에서 6-레이어 학생 모델로의 지식 증류 구조](figures/architecture.svg)
+![DistilBERT 아키텍처 - BERT 교사 모델에서 6-레이어 학생 모델로의 지식 증류 구조](figures/architecture.svg)
 
-*Figure 1: DistilBERT 아키텍처 — BERT-Base의 12개 레이어를 6개로 줄이고, 소프트 레이블·히든 스테이트·어텐션 증류를 결합하여 97% 성능을 유지하면서 추론 속도를 60% 향상시킨다.*
+*Figure 1: DistilBERT 아키텍처 - BERT-Base의 12개 레이어를 6개로 줄이고, 소프트 레이블·히든 스테이트·어텐션 증류를 결합하여 97% 성능을 유지하면서 추론 속도를 60% 향상시킨다.*
 
 ## 아키텍처 상세
 
@@ -43,7 +43,7 @@ BERT와 동일한 BooksCorpus + Wikipedia 데이터. 배치 4096, cos-lr 스케�
 
 ### 관련 모델
 
-- **bert** — 변형
+- **bert** - 변형
 
 ### 어텐션 메커니즘: 양방향 MHA
 
@@ -79,7 +79,7 @@ print(f"임베딩 차원: {sentence_embedding.shape}")
 다음 그림은 DistilBERT가 등장한 시점의 사전학습 언어 모델 파라미터 규모 추세를 보여준다. 모델 크기가 급격히 증가하는 가운데 DistilBERT(66M)는 경량화의 필요성을 실증한 대표 사례이다.
 
 ![사전학습 언어 모델의 파라미터 수 변화 추세](figures/fig_1.png)
-*Figure 2: 사전학습 언어 모델의 파라미터 규모 추이 — ELMo(94M)부터 MegatronLM(8.3B)까지 급격한 증가세를 보이는 가운데, DistilBERT(66M)은 BERT-Base 대비 40% 파라미터 감소로 97% 성능을 유지하는 효율적 경량화를 달성했다. (Source: Sanh et al., 2019)*
+*Figure 2: 사전학습 언어 모델의 파라미터 규모 추이 - ELMo(94M)부터 MegatronLM(8.3B)까지 급격한 증가세를 보이는 가운데, DistilBERT(66M)은 BERT-Base 대비 40% 파라미터 감소로 97% 성능을 유지하는 효율적 경량화를 달성했다. (Source: Sanh et al., 2019)*
 
 ## 핵심 혁신
 
@@ -195,4 +195,4 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 변형 원본
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 변형 원본

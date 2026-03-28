@@ -8,9 +8,9 @@ SigLIP 2는 2025년 2월 Google DeepMind가 발표한 차세대 시그모이드 
 
 기존 SigLIP(2023)의 핵심 아이디어를 계승하면서, SigLIP 2는 다국어 확장(109개 언어), 학습 레시피 개선(MIM 보조 손실), NaViT 스타일 가변 해상도 처리를 통합하였다. PaLI-3, Gemma 등 Google의 멀티모달 LLM에서 비전 인코더로 채택되어, 시각적 질의응답, 문서 이해, OCR 등 다운스트림 태스크 전반에서 CLIP·OpenCLIP 대비 일관되게 우수한 성능을 보인다.
 
-![SigLIP 2 아키텍처 — 다국어 확장, MIM 보조 손실, NaViT 가변 해상도를 통합한 시각-언어 모델 구조](figures/architecture.svg)
+![SigLIP 2 아키텍처 - 다국어 확장, MIM 보조 손실, NaViT 가변 해상도를 통합한 시각-언어 모델 구조](figures/architecture.svg)
 
-*Figure 1: SigLIP 2 아키텍처 — SigLIP의 시그모이드 대조 손실을 계승하면서 109개 언어 지원, MIM 보조 학습, NaViT 스타일 가변 해상도 처리를 통합한 차세대 비전 인코더이다.*
+*Figure 1: SigLIP 2 아키텍처 - SigLIP의 시그모이드 대조 손실을 계승하면서 109개 언어 지원, MIM 보조 학습, NaViT 스타일 가변 해상도 처리를 통합한 차세대 비전 인코더이다.*
 
 ## 아키텍처 상세
 
@@ -46,10 +46,10 @@ $$\mathcal{L}_\text{total} = \mathcal{L}_\text{sigmoid} + \alpha \cdot \mathcal{
 
 이 조합은 전역적 시각-언어 정렬(대조 학습)과 지역적 시각 패턴 학습(MIM)을 동시에 달성한다.
 
-다음 그림은 SigLIP 2의 4가지 핵심 혁신 — 시그모이드 손실, NaViT 가변 해상도, MIM 보조 손실, SO400M 아키텍처 — 을 상세히 보여준다.
+다음 그림은 SigLIP 2의 4가지 핵심 혁신 - 시그모이드 손실, NaViT 가변 해상도, MIM 보조 손실, SO400M 아키텍처 - 을 상세히 보여준다.
 
 ![SigLIP 2의 핵심 혁신 상세도](figures/detail.png)
-*Figure 2: SigLIP 2 핵심 혁신 — Sigmoid vs Softmax 손실 비교(좌상), NaViT 가변 해상도 패치 처리(상단 중앙), 다국어 및 다운스트림 성능(우상), MIM 보조 손실(하단 중앙), SO400M 최적화 아키텍처(우하). (Source: Tschannen et al., 2025)*
+*Figure 2: SigLIP 2 핵심 혁신 - Sigmoid vs Softmax 손실 비교(좌상), NaViT 가변 해상도 패치 처리(상단 중앙), 다국어 및 다운스트림 성능(우상), MIM 보조 손실(하단 중앙), SO400M 최적화 아키텍처(우하). (Source: Tschannen et al., 2025)*
 
 ## 핵심 혁신
 
@@ -120,4 +120,4 @@ SigLIP 2는 시각-언어 사전학습의 최전선에 서 있으며, 다국어�
 
 ## 관련 문서
 
-- [[siglip|SigLIP]] — 발전 기반
+- [[siglip|SigLIP]] - 발전 기반

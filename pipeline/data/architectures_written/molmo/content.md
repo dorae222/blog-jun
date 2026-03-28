@@ -16,8 +16,8 @@ Molmo는 2024년 9월 Allen AI Institute(AI2)가 발표한 멀티모달 모델�
 
 다음 그림은 Molmo의 전체 아키텍처를 보여준다. CLIP 비전 인코더로 이미지를 처리하고, MLP 프로젝터를 통해 언어 모델에 전달하는 구조이며, 포인팅 좌표를 텍스트로 출력하는 것이 핵심이다.
 
-![Molmo 아키텍처 — CLIP 비전 인코더, MLP 프로젝터, LLM으로 구성된 포인팅 기반 VLM 구조](figures/fig_1.png)
-*Figure 1: Molmo 아키텍처 개요 — CLIP 비전 인코더와 LLM을 커넥터로 연결하는 표준 VLM 구조에서, PixMo 데이터로 학습한 포인팅 능력이 핵심 차별점이다. (Source: Deitke et al., 2024)*
+![Molmo 아키텍처 - CLIP 비전 인코더, MLP 프로젝터, LLM으로 구성된 포인팅 기반 VLM 구조](figures/fig_1.png)
+*Figure 1: Molmo 아키텍처 개요 - CLIP 비전 인코더와 LLM을 커넥터로 연결하는 표준 VLM 구조에서, PixMo 데이터로 학습한 포인팅 능력이 핵심 차별점이다. (Source: Deitke et al., 2024)*
 
 Molmo는 표준적인 VLM 구조를 기반으로 한다:
 
@@ -79,8 +79,8 @@ A: The cat is sitting on the windowsill <point x="0.65" y="0.42"/>
 
 아래 표는 주요 VLM들의 개방성 수준을 비교한 것으로, Molmo가 유일하게 모든 구성 요소(VLM, LLM 백본, 비전 인코더)에서 가중치와 데이터/코드를 모두 공개하고 있음을 보여준다.
 
-![VLM 개방성 비교 표 — Molmo는 모든 구성 요소에서 완전 공개](figures/fig_3.png)
-*Figure 2: VLM 개방성 비교 — Molmo는 VLM 가중치, 학습 데이터/코드, LLM 백본, 비전 인코더 모두에서 Open을 달성한 유일한 모델이다. (Source: Deitke et al., 2024)*
+![VLM 개방성 비교 표 - Molmo는 모든 구성 요소에서 완전 공개](figures/fig_3.png)
+*Figure 2: VLM 개방성 비교 - Molmo는 VLM 가중치, 학습 데이터/코드, LLM 백본, 비전 인코더 모두에서 Open을 달성한 유일한 모델이다. (Source: Deitke et al., 2024)*
 
 ## 벤치마크/성능
 
@@ -95,7 +95,7 @@ Molmo는 특히 포인팅 정확도에서 다른 모델들을 크게 앞서며, 
 다음 그래프는 11개 학술 벤치마크 평균 점수와 인간 선호도 Elo 평점을 비교한 것으로, Molmo-72B가 GPT-4o에 준하는 최상위 성능을 달성했음을 보여준다.
 
 ![11개 학술 벤치마크 평균 점수와 인간 선호도 Elo 평점 비교](figures/fig_2.png)
-*Figure 3: 벤치마크 성능 비교 — (좌) 11개 학술 벤치마크 평균 점수, (우) 인간 선호도 Elo 평점. Molmo-72B는 GPT-4o에 필적하는 성능을 보인다. (Source: Deitke et al., 2024)*
+*Figure 3: 벤치마크 성능 비교 - (좌) 11개 학술 벤치마크 평균 점수, (우) 인간 선호도 Elo 평점. Molmo-72B는 GPT-4o에 필적하는 성능을 보인다. (Source: Deitke et al., 2024)*
 
 ## 관련 모델 비교
 
@@ -164,8 +164,8 @@ Molmo의 포인팅 능력은 AI 에이전트(computer use, 로봇 조작) 분야
 다음 그래프는 27개 모델에 대한 대규모 인간 선호도 Elo 평가 결과로, 325k 쌍별 비교를 기반으로 한 가장 포괄적인 멀티모달 모델 평가이다.
 
 ![27개 멀티모달 모델의 인간 선호도 Elo 평점 상세 비교](figures/fig_4.png)
-*Figure 4: 인간 선호도 Elo 평가 — 870명의 평가자가 15k 이미지-텍스트 프롬프트로 325k 쌍별 비교를 수행한 결과. Molmo-72B(1078.42)는 GPT-4o(1078.88)에 근접한 Elo를 달성했다. (Source: Deitke et al., 2024)*
+*Figure 4: 인간 선호도 Elo 평가 - 870명의 평가자가 15k 이미지-텍스트 프롬프트로 325k 쌍별 비교를 수행한 결과. Molmo-72B(1078.42)는 GPT-4o(1078.88)에 근접한 Elo를 달성했다. (Source: Deitke et al., 2024)*
 
 ## 관련 문서
 
-- [[llava|Visual Instruction Tuning]] — 영감
+- [[llava|Visual Instruction Tuning]] - 영감

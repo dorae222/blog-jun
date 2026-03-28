@@ -12,8 +12,8 @@ DINOv3는 2025년 Meta FAIR에서 발표한 7B 파라미터 규모의 비전 파
 
 아래 다이어그램은 DINOv3의 ViT-giant2 아키텍처와 자기증류 프레임워크의 전체 구조를 보여준다.
 
-![DINOv3 ViT-giant2 아키텍처 — 7B 파라미터 비전 트랜스포머 전체 구조](figures/architecture.png)
-*Figure 1: DINOv3 ViT-giant2 아키텍처 — 48개 레이어, 4,544 히든 차원, SwiGLU FFN, Register Token을 포함한 7B 규모 비전 파운데이션 모델 구조와 자기증류 프레임워크. (Meta FAIR)*
+![DINOv3 ViT-giant2 아키텍처 - 7B 파라미터 비전 트랜스포머 전체 구조](figures/architecture.png)
+*Figure 1: DINOv3 ViT-giant2 아키텍처 - 48개 레이어, 4,544 히든 차원, SwiGLU FFN, Register Token을 포함한 7B 규모 비전 파운데이션 모델 구조와 자기증류 프레임워크. (Meta FAIR)*
 
 ## 아키텍처 상세
 
@@ -59,7 +59,7 @@ Teacher 네트워크는 Student의 EMA로 업데이트되며($\text{momentum}: 0
 아래 다이어그램은 DINO 계열의 자기증류+마스크 이미지 모델링 학습 프레임워크와 비전 스케일링 법칙의 핵심을 상세히 보여준다.
 
 ![DINOv3 자기증류 및 마스크 이미지 모델링 학습 프레임워크 상세](figures/detail.png)
-*Figure 2: DINOv3 학습 프레임워크 — Teacher-Student 자기증류와 DINO+iBOT 결합 손실, 멀티크롭 전략, 그리고 DINO 계열의 스케일링 진화 과정(86M→1.1B→7B). (Meta FAIR)*
+*Figure 2: DINOv3 학습 프레임워크 - Teacher-Student 자기증류와 DINO+iBOT 결합 손실, 멀티크롭 전략, 그리고 DINO 계열의 스케일링 진화 과정(86M→1.1B→7B). (Meta FAIR)*
 
 ## 핵심 혁신
 
@@ -107,4 +107,4 @@ DINOv3는 DINO → DINOv2로 이어지는 자기지도 비전 학습 계보의 �
 
 ## 관련 문서
 
-- [[dinov2|DINOv2]] — 발전 기반
+- [[dinov2|DINOv2]] - 발전 기반

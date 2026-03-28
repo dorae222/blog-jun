@@ -8,8 +8,8 @@ Claude Opus 4.5는 2025년 7월 15일 Anthropic이 공개한 최신 플래그십
 
 아래 다이어그램은 Claude Opus 4.5의 전체 아키텍처를 보여준다. Dense Decoder-only Transformer 구조를 기반으로 RMSNorm, SwiGLU, RoPE 등의 현대적 기법을 결합한 설계가 핵심이다.
 
-![Claude Opus 4.5 메인 아키텍처 — Dense Transformer 기반 디코더 구조와 MHA, SwiGLU FFN 상세](figures/architecture.png)
-*Figure 1: Claude Opus 4.5 메인 아키텍처 — Dense Decoder-only Transformer 스택, Multi-Head Attention 및 SwiGLU FFN 확장 구조. (Anthropic)*
+![Claude Opus 4.5 메인 아키텍처 - Dense Transformer 기반 디코더 구조와 MHA, SwiGLU FFN 상세](figures/architecture.png)
+*Figure 1: Claude Opus 4.5 메인 아키텍처 - Dense Decoder-only Transformer 스택, Multi-Head Attention 및 SwiGLU FFN 확장 구조. (Anthropic)*
 
 ## 아키텍처 상세
 
@@ -99,11 +99,11 @@ Claude Opus 4.5의 SWE-bench 80.9%는 Claude 3.5 Sonnet(49.0%) 대비 **65% 상�
 다음 다이어그램은 Constitutional AI 훈련 파이프라인과 에이전틱 워크플로 아키텍처, 그리고 경쟁 모델 간 핵심 차이점을 종합적으로 보여준다.
 
 ![Constitutional AI 훈련 파이프라인 및 에이전틱 워크플로 아키텍처](figures/detail.png)
-*Figure 2: Constitutional AI(CAI) 훈련 파이프라인 — Pretraining, SFT, RLAIF, ASL-3 Safety 4단계와 에이전틱 워크플로의 Observe-Think-Act 루프 및 경쟁 모델 비교. (Anthropic)*
+*Figure 2: Constitutional AI(CAI) 훈련 파이프라인 - Pretraining, SFT, RLAIF, ASL-3 Safety 4단계와 에이전틱 워크플로의 Observe-Think-Act 루프 및 경쟁 모델 비교. (Anthropic)*
 
 ## 훈련 파이프라인 (추정)
 
-1. **사전 학습**: 대규모 웹 코퍼스, 코드 저장소, 학술 문헌 — Opus 4 대비 데이터 필터링 강화
+1. **사전 학습**: 대규모 웹 코퍼스, 코드 저장소, 학술 문헌 - Opus 4 대비 데이터 필터링 강화
 2. **RLHF + RLAIF**: Constitutional AI 3세대 정교화, 인간 피드백 없이도 헌법 원칙만으로 유해성 최소화
 3. **에이전틱 SFT**: 도구 사용, 멀티스텝 추론 특화 합성 데이터
 4. **안전성 훈련**: Red-teaming + adversarial testing이 훈련 루프에 통합
@@ -141,4 +141,4 @@ Claude Opus 4.5는 AI가 실제 소프트웨어 엔지니어를 대체할 수 �
 
 ## 관련 문서
 
-- [[claude-4|Claude Opus 4]] — 발전 기반
+- [[claude-4|Claude Opus 4]] - 발전 기반

@@ -9,8 +9,8 @@ Consistency Models는 2023년 OpenAI의 Yang Song 등이 발표한 연구로, �
 - **발표**: 2023년 3월, OpenAI
 - **라이선스**: MIT
 
-![Consistency Model 전체 구조 — PF-ODE 궤적 매핑, 두 가지 학습 방법, 단일/다단계 생성](figures/architecture.png)
-*Figure 1: Consistency Model 전체 구조 — PF-ODE 궤적 위의 임의 점을 원점으로 직접 매핑하는 일관성 함수, Consistency Distillation(CD)과 Consistency Training(CT) 두 가지 학습 방법, 그리고 단일/다단계 생성 방식. (Source: Song et al., 2023)*
+![Consistency Model 전체 구조 - PF-ODE 궤적 매핑, 두 가지 학습 방법, 단일/다단계 생성](figures/architecture.png)
+*Figure 1: Consistency Model 전체 구조 - PF-ODE 궤적 위의 임의 점을 원점으로 직접 매핑하는 일관성 함수, Consistency Distillation(CD)과 Consistency Training(CT) 두 가지 학습 방법, 그리고 단일/다단계 생성 방식. (Source: Song et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -22,8 +22,8 @@ $$\frac{d\mathbf{x}_t}{dt} = -t \cdot \nabla_{\mathbf{x}} \log p_t(\mathbf{x}_t)
 
 이 ODE의 해 궤적(solution trajectory) 위의 임의의 점 $(\mathbf{x}_t, t)$에서, ODE를 $t_{\min}$까지 적분하면 동일한 점 $\mathbf{x}_{t_{\min}}$에 도달한다. Consistency function $f: (\mathbf{x}_t, t) \mapsto \mathbf{x}_{t_{\min}}$은 이 매핑을 직접 학습한다.
 
-![일관성 함수의 핵심 개념 — ODE 궤적 위 모든 점이 동일한 시작점으로 매핑](figures/fig_2.jpg)
-*Figure 2: 일관성 함수 개념도 — 여러 ODE 궤적(색상별)에서, 궤적 위의 모든 점 $(x_t, t)$, $(x_{t'}, t')$이 동일한 시작점 $(x_0, 0)$으로 매핑된다. 이를 통해 노이즈에서 한 번의 함수 평가로 깨끗한 이미지를 직접 예측할 수 있다. (Source: Song et al., 2023)*
+![일관성 함수의 핵심 개념 - ODE 궤적 위 모든 점이 동일한 시작점으로 매핑](figures/fig_2.jpg)
+*Figure 2: 일관성 함수 개념도 - 여러 ODE 궤적(색상별)에서, 궤적 위의 모든 점 $(x_t, t)$, $(x_{t'}, t')$이 동일한 시작점 $(x_0, 0)$으로 매핑된다. 이를 통해 노이즈에서 한 번의 함수 평가로 깨끗한 이미지를 직접 예측할 수 있다. (Source: Song et al., 2023)*
 
 ### 일관성 함수의 조건
 
@@ -58,7 +58,7 @@ $$\mathcal{L}^N_{CT} = \mathbb{E}\left[d\left(f_\theta(\mathbf{x}_{t_{n+1}}, t_{
 CT에서는 타임스텝 이산화 수 $N$을 점진적으로 증가시키는 커리큘럼 학습 전략이 사용된다.
 
 ![확률 흐름 ODE에서 일관성 함수가 궤적 위 모든 점을 데이터로 매핑하는 과정](figures/fig_1.jpg)
-*Figure 3: PF-ODE 궤적 시각화 — 데이터에서 노이즈까지의 확률 흐름 ODE 위에서, 일관성 함수 $f_\theta$가 임의 시점 $(x_t, t)$을 원래 데이터 $(x_0, 0)$으로 직접 매핑한다. (Source: Song et al., 2023)*
+*Figure 3: PF-ODE 궤적 시각화 - 데이터에서 노이즈까지의 확률 흐름 ODE 위에서, 일관성 함수 $f_\theta$가 임의 시점 $(x_t, t)$을 원래 데이터 $(x_0, 0)$으로 직접 매핑한다. (Source: Song et al., 2023)*
 
 ### 다단계 샘플링 (Multistep Sampling)
 
@@ -77,7 +77,7 @@ CT에서는 타임스텝 이산화 수 $N$을 점진적으로 증가시키는 �
 4. **유연한 품질-속도 제어**: 단일 스텝부터 다단계 샘플링까지 추론 시간에 자유롭게 선택 가능하다.
 
 ![EDM vs CT 단일 스텝 vs CT 2-스텝 생성 비교](figures/fig_13_1.png)
-*Figure 4: 생성 품질 비교 — EDM 교사 모델(상단), CT 단일 스텝 생성(중단), CT 2-스텝 생성(하단)의 결과. 동일한 초기 노이즈에서 생성되었으며, 2-스텝만으로도 교사 모델에 근접한 품질을 달성한다. (Source: Song et al., 2023)*
+*Figure 4: 생성 품질 비교 - EDM 교사 모델(상단), CT 단일 스텝 생성(중단), CT 2-스텝 생성(하단)의 결과. 동일한 초기 노이즈에서 생성되었으며, 2-스텝만으로도 교사 모델에 근접한 품질을 달성한다. (Source: Song et al., 2023)*
 
 ## 벤치마크/성능
 
@@ -147,4 +147,4 @@ Consistency Model은 확산 모델의 추론 속도 한계를 근본적으로 �
 
 ## 관련 문서
 
-- [[score-sde|Score-based SDE (Stochastic Differential Equations)]] — 발전 기반
+- [[score-sde|Score-based SDE (Stochastic Differential Equations)]] - 발전 기반

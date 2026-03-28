@@ -10,9 +10,9 @@ SWE-agent의 핵심 통찰은 **"도구의 인터페이스 설계가 에이전�
 
 SWE-bench 벤치마크에서 GPT-4 기반으로 12.47%의 이슈 해결률을 달성한 SWE-agent는, 이전 RAG 기반 접근법(1.96%)을 6배 이상 상회하며 최초의 체계적 소프트웨어 엔지니어링 에이전트로 주목받았다. 더 중요한 것은 SWE-agent가 확립한 ACI 설계 원칙과 SWE-bench 벤치마크가 이후 소프트웨어 에이전트 분야 전체의 표준이 되었다는 점이다. Devin, OpenHands, Claude Code, Goose 등 모든 후속 SWE 에이전트가 SWE-bench를 기준으로 성능을 측정하며, ACI 설계 원칙을 참조한다.
 
-![SWE-agent 아키텍처 — ACI 설계 원칙 기반 LLM 최적화 도구 인터페이스와 코드 편집 환경](figures/architecture.svg)
+![SWE-agent 아키텍처 - ACI 설계 원칙 기반 LLM 최적화 도구 인터페이스와 코드 편집 환경](figures/architecture.svg)
 
-*Figure 1: SWE-agent 아키텍처 — LLM의 강점을 극대화하고 약점을 보완하는 ACI(Agent-Computer Interface) 설계로, 파일 탐색·코드 편집·테스트 실행 전용 도구를 제공하여 GitHub 이슈를 자율적으로 해결한다.*
+*Figure 1: SWE-agent 아키텍처 - LLM의 강점을 극대화하고 약점을 보완하는 ACI(Agent-Computer Interface) 설계로, 파일 탐색·코드 편집·테스트 실행 전용 도구를 제공하여 GitHub 이슈를 자율적으로 해결한다.*
 
 ## 아키텍처 상세
 
@@ -144,7 +144,7 @@ SWE-agent는 ReAct의 Thought-Action-Observation 루프를 소프트웨어 엔�
 
 ## 관련 문서
 
-- [[react|ReAct]] — 발전 기반
-- [[devin|Devin]] — 영감을 줌
-- [[goose|Goose]] — 영감을 줌
-- [[openhands|OpenHands]] — 영감을 줌
+- [[react|ReAct]] - 발전 기반
+- [[devin|Devin]] - 영감을 줌
+- [[goose|Goose]] - 영감을 줌
+- [[openhands|OpenHands]] - 영감을 줌

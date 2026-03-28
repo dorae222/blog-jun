@@ -6,14 +6,14 @@
 
 Microsoft가 2024년 4월 공개한 소형 언어 모델(SLM) 시리즈로, '아키텍처 혁신보다 데이터 품질이 더 중요하다'는 명제를 실증한 모델이다. GPT-4를 활용해 생성한 교과서 수준의 합성 데이터를 핵심 학습 자원으로 삼아, 3.8B(Phi-3-mini) 파라미터로 GPT-3.5 수준의 추론 능력을 달성했다. 128K 컨텍스트(LongRoPE로 확장)와 ONNX/DirectML 지원으로 스마트폰·엣지 디바이스에서 로컬 실행이 가능하여, 프라이버시 중시 엣지 AI 응용에 새로운 가능성을 열었다.
 
-![Phi-3 아키텍처 — LongRoPE 128K 컨텍스트와 교과서 품질 합성 데이터 기반 3.8B 소형 언어 모델 구조](figures/architecture.svg)
+![Phi-3 아키텍처 - LongRoPE 128K 컨텍스트와 교과서 품질 합성 데이터 기반 3.8B 소형 언어 모델 구조](figures/architecture.svg)
 
-*Figure 1: Phi-3 아키텍처 — LLaMA-2 유사 Decoder-only Transformer에 LongRoPE로 128K 컨텍스트를 확장하고, 교과서 수준 합성 데이터 3.3T 토큰으로 학습한 엣지 AI 최적화 모델이다.*
+*Figure 1: Phi-3 아키텍처 - LLaMA-2 유사 Decoder-only Transformer에 LongRoPE로 128K 컨텍스트를 확장하고, 교과서 수준 합성 데이터 3.3T 토큰으로 학습한 엣지 AI 최적화 모델이다.*
 
 다음은 4비트 양자화된 Phi-3-mini가 iPhone A16 Bionic 칩에서 네이티브로 실행되는 모습으로, 초당 12토큰 이상을 생성하며 엣지 AI의 가능성을 보여준다.
 
-![Phi-3-mini iPhone 네이티브 실행 — 4비트 양자화로 초당 12토큰 이상 생성](figures/fig_1_1.png)
-*Figure 1: Phi-3-mini 모바일 실행 — 4비트 양자화된 Phi-3-mini가 iPhone A16 Bionic에서 네이티브로 실행되어, 시 생성 태스크를 처리하는 모습. (Source: Abdin et al., 2024)*
+![Phi-3-mini iPhone 네이티브 실행 - 4비트 양자화로 초당 12토큰 이상 생성](figures/fig_1_1.png)
+*Figure 1: Phi-3-mini 모바일 실행 - 4비트 양자화된 Phi-3-mini가 iPhone A16 Bionic에서 네이티브로 실행되어, 시 생성 태스크를 처리하는 모습. (Source: Abdin et al., 2024)*
 
 ## 아키텍처 상세
 
@@ -49,7 +49,7 @@ Microsoft가 2024년 4월 공개한 소형 언어 모델(SLM) 시리즈로, '아
 
 ### 관련 모델
 
-- **phi** — 발전 기반
+- **phi** - 발전 기반
 
 ### 어텐션 메커니즘: GQA
 
@@ -78,8 +78,8 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 
 아래 그래프는 Phi 시리즈와 LLaMA-2 시리즈의 스케일링 법칙을 비교한 것으로, 동일 데이터에서 학습된 LLaMA-2 대비 데이터 최적 체제(Data Optimal Regime)에서 Phi 시리즈가 훨씬 낮은 MMLU 오류율을 달성함을 보여준다.
 
-![데이터 최적 스케일링 법칙 — Phi vs LLaMA-2 모델 크기 대비 MMLU 오류율](figures/fig_2.png)
-*Figure 2: 데이터 최적 스케일링 법칙 — Phi 시리즈(파란색/빨간색)가 동일 데이터의 LLaMA-2(보라색/초록색) 대비 모든 규모에서 낮은 MMLU 오류율을 달성하여, 데이터 품질의 중요성을 입증한다. (Source: Abdin et al., 2024)*
+![데이터 최적 스케일링 법칙 - Phi vs LLaMA-2 모델 크기 대비 MMLU 오류율](figures/fig_2.png)
+*Figure 2: 데이터 최적 스케일링 법칙 - Phi 시리즈(파란색/빨간색)가 동일 데이터의 LLaMA-2(보라색/초록색) 대비 모든 규모에서 낮은 MMLU 오류율을 달성하여, 데이터 품질의 중요성을 입증한다. (Source: Abdin et al., 2024)*
 
 ### 1. Data Quality
 
@@ -119,13 +119,13 @@ Phi-3은 Data Quality, Synthetic Data 연구의 표준 베이스라인으로 활
 
 아래는 Phi-3-mini가 검색 없이 사용자의 질문에 직접 응답하는 모습으로, 3.8B 소형 모델임에도 상세한 일정 계획 등 실용적인 태스크를 처리하는 능력을 보여준다.
 
-![Phi-3-mini 응답 예시 — 검색 없이 상세한 여행 일정 생성](figures/fig_4_1.png)
-*Figure 4: Phi-3-mini 응답 품질 — 3.8B 파라미터의 소형 모델이 검색 없이도 Alaska Skagway 일일 여행 일정을 상세하게 생성하는 모습. (Source: Abdin et al., 2024)*
+![Phi-3-mini 응답 예시 - 검색 없이 상세한 여행 일정 생성](figures/fig_4_1.png)
+*Figure 4: Phi-3-mini 응답 품질 - 3.8B 파라미터의 소형 모델이 검색 없이도 Alaska Skagway 일일 여행 일정을 상세하게 생성하는 모습. (Source: Abdin et al., 2024)*
 
 다음 그래프는 안전성 정렬(safety alignment) 전후의 유해 응답 비율을 비교한 것으로, 안전성 학습이 다양한 유해 카테고리에서 효과적으로 작동함을 보여준다.
 
-![안전성 정렬 전후 유해 응답 비율 비교 — 카테고리별 개선](figures/fig_3.png)
-*Figure 3: 안전성 정렬 효과 — 안전성 학습 전(파란색) 대비 후(주황색)로 모든 유해 카테고리에서 유해 응답 비율이 크게 감소한다. (Source: Abdin et al., 2024)*
+![안전성 정렬 전후 유해 응답 비율 비교 - 카테고리별 개선](figures/fig_3.png)
+*Figure 3: 안전성 정렬 효과 - 안전성 학습 전(파란색) 대비 후(주황색)로 모든 유해 카테고리에서 유해 응답 비율이 크게 감소한다. (Source: Abdin et al., 2024)*
 
 ## 한계 및 전망
 
@@ -191,6 +191,6 @@ $$f(x_m, m) = x_m e^{im\theta}, \quad \theta_j = 10000^{-2j/d}$$
 
 ## 관련 문서
 
-- [[phi|Phi]] — 발전 기반
-- [[phi-4-multimodal|Phi-4-Multimodal]] — 후속 모델
-- [[phi-4-reasoning|Phi-4 Reasoning]] — 후속 모델
+- [[phi|Phi]] - 발전 기반
+- [[phi-4-multimodal|Phi-4-Multimodal]] - 후속 모델
+- [[phi-4-reasoning|Phi-4 Reasoning]] - 후속 모델

@@ -8,8 +8,8 @@ OpenAI의 o1/o3가 추론 시 별도의 "생각" 과정을 거치는 것과 유�
 
 아래 다이어그램은 Gemini 2.5 Pro의 MoE 기반 전체 아키텍처와 Thinking Budget Control 메커니즘을 보여준다.
 
-![Gemini 2.5 Pro MoE 아키텍처 — 내장 사고 기능과 MoE FFN 구조](figures/architecture.png)
-*Figure 1: Gemini 2.5 Pro 메인 아키텍처 — MoE(Mixture-of-Experts) 기반 디코더 스택, GeGLU 활성화의 Sparse MoE FFN 블록, 그리고 사고 예산(Thinking Budget) 제어 메커니즘. (Google DeepMind)*
+![Gemini 2.5 Pro MoE 아키텍처 - 내장 사고 기능과 MoE FFN 구조](figures/architecture.png)
+*Figure 1: Gemini 2.5 Pro 메인 아키텍처 - MoE(Mixture-of-Experts) 기반 디코더 스택, GeGLU 활성화의 Sparse MoE FFN 블록, 그리고 사고 예산(Thinking Budget) 제어 메커니즘. (Google DeepMind)*
 
 ## 아키텍처 상세
 
@@ -67,7 +67,7 @@ SWE-bench Verified에서 63.8%를 달성하여, 실제 GitHub 이슈를 자동�
 다음 그래프는 LLM 모델들의 비용 대비 성능(LMArena 점수)을 비교한 것으로, Gemini 2.5 Pro가 Gemini 1.5 Pro 대비 120점 이상 향상된 성능을 달성했음을 보여준다.
 
 ![LLM 모델별 비용-성능 비교 차트](figures/fig_1.png)
-*Figure 2: 비용-성능 비교 — 백만 토큰당 가격 대비 LMArena 점수. Gemini 2.5 Pro가 비용 효율과 성능 모두에서 최상위에 위치한다. (Source: LMArena, 2025-06-16)*
+*Figure 2: 비용-성능 비교 - 백만 토큰당 가격 대비 LMArena 점수. Gemini 2.5 Pro가 비용 효율과 성능 모두에서 최상위에 위치한다. (Source: LMArena, 2025-06-16)*
 
 ## 벤치마크/성능
 
@@ -136,5 +136,5 @@ Gemini 3로의 진화에서는 에이전틱 AI 능력이 더욱 강화되어, �
 
 ## 관련 문서
 
-- [[gemini-1-5|Gemini 1.5]] — 발전 기반
-- [[gemini-3|Gemini 3]] — 후속 모델
+- [[gemini-1-5|Gemini 1.5]] - 발전 기반
+- [[gemini-3|Gemini 3]] - 후속 모델

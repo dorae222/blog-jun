@@ -10,8 +10,8 @@ CogVLM은 2023년 11월 Tsinghua 대학과 Zhipu AI가 공동 발표한 시각-�
 
 다음 레이더 차트는 CogVLM이 다양한 멀티모달 벤치마크에서 기존 모델들을 전반적으로 능가하는 성능을 보여준다.
 
-![CogVLM 멀티모달 벤치마크 성능 비교 — 17개 태스크에서의 종합 비교](figures/fig_1.png)
-*Figure 1: CogVLM 멀티모달 성능 비교 — 다양한 벤치마크에서 CogVLM(보라색)이 Qwen-VL, LLaVA-1.5, InstructBLIP 등 기존 모델을 전반적으로 능가한다. (Source: Wang et al., 2023)*
+![CogVLM 멀티모달 벤치마크 성능 비교 - 17개 태스크에서의 종합 비교](figures/fig_1.png)
+*Figure 1: CogVLM 멀티모달 성능 비교 - 다양한 벤치마크에서 CogVLM(보라색)이 Qwen-VL, LLaVA-1.5, InstructBLIP 등 기존 모델을 전반적으로 능가한다. (Source: Wang et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -19,7 +19,7 @@ CogVLM은 2023년 11월 Tsinghua 대학과 Zhipu AI가 공동 발표한 시각-�
 
 CogVLM은 세 가지 핵심 컴포넌트로 구성된다:
 
-1. **비전 인코더**: EVA2-CLIP-E (4.4B params) — 이미지에서 시각 특징 추출
+1. **비전 인코더**: EVA2-CLIP-E (4.4B params) - 이미지에서 시각 특징 추출
 2. **MLP 어댑터**: 비전 인코더 출력을 LLM 히든 차원에 매핑
 3. **LLM + Visual Expert**: Vicuna-7B 기반, 각 레이어에 시각 전문가 모듈 추가
 
@@ -27,8 +27,8 @@ CogVLM은 세 가지 핵심 컴포넌트로 구성된다:
 
 아래 그림은 CogVLM의 전체 아키텍처를 보여준다. (a)는 입력 처리 과정으로 ViT 인코더와 MLP 어댑터를 통한 시각 특징 매핑을, (b)는 Visual Expert 모듈의 내부 구조로 시각/텍스트 토큰에 별도의 QKV 행렬과 FFN을 적용하는 방식을 나타낸다.
 
-![CogVLM 아키텍처 — 입력 처리 과정과 Visual Expert 모듈의 내부 구조](figures/fig_5.png)
-*Figure 4: CogVLM 아키텍처 — (a) 이미지를 ViT로 인코딩한 뒤 MLP 어댑터로 텍스트 공간에 매핑하는 입력 처리, (b) 시각/텍스트 토큰에 각각 다른 QKV 행렬과 FFN을 적용하는 Visual Expert 구조. 보라색 부분만 학습 대상이다. (Source: Wang et al., 2023)*
+![CogVLM 아키텍처 - 입력 처리 과정과 Visual Expert 모듈의 내부 구조](figures/fig_5.png)
+*Figure 4: CogVLM 아키텍처 - (a) 이미지를 ViT로 인코딩한 뒤 MLP 어댑터로 텍스트 공간에 매핑하는 입력 처리, (b) 시각/텍스트 토큰에 각각 다른 QKV 행렬과 FFN을 적용하는 Visual Expert 구조. 보라색 부분만 학습 대상이다. (Source: Wang et al., 2023)*
 
 CogVLM의 핵심 혁신이다. 각 트랜스포머 레이어에서 시각 토큰과 텍스트 토큰은 **서로 다른 선형 변환**을 받는다:
 
@@ -69,8 +69,8 @@ Visual Expert 방식은 모든 레이어에서 시각 토큰의 표현이 독립
 
 다음 그래프는 LLM의 텍스트 가중치를 직접 학습할 때 MMLU 점수가 급격히 하락하는 현상을 보여주며, Visual Expert를 통한 텍스트 능력 보존의 필요성을 입증한다.
 
-![MMLU 점수 하락 — LLM 직접 학습 시 텍스트 능력 급격 저하](figures/fig_4.png)
-*Figure 3: MMLU 점수와 학습 손실 — LLM의 언어 파라미터를 직접 학습하면 MMLU 점수가 47에서 24.9로 급락하여, 시각 전문가를 통한 분리 학습의 필요성을 입증한다. (Source: Wang et al., 2023)*
+![MMLU 점수 하락 - LLM 직접 학습 시 텍스트 능력 급격 저하](figures/fig_4.png)
+*Figure 3: MMLU 점수와 학습 손실 - LLM의 언어 파라미터를 직접 학습하면 MMLU 점수가 47에서 24.9로 급락하여, 시각 전문가를 통한 분리 학습의 필요성을 입증한다. (Source: Wang et al., 2023)*
 
 기존 LLM의 텍스트 파라미터를 완전히 고정(frozen)하고, 시각 전문가 파라미터만 학습하므로 원래 LLM의 언어 능력이 전혀 손상되지 않는다. 이는 LLaVA처럼 전체 LLM을 파인튜닝하여 텍스트 능력이 저하될 수 있는 문제를 원천적으로 방지한다.
 
@@ -86,7 +86,7 @@ CogVLM은 바운딩 박스 좌표를 텍스트 토큰으로 출력하는 CogAgen
 
 | 벤치마크 | CogVLM-17B | LLaVA-1.5-13B | BLIP-2 | Qwen-VL |
 |----------|-----------|--------------|--------|---------|
-| NoCaps (CIDEr) | **128.3** | — | 107.5 | 121.4 |
+| NoCaps (CIDEr) | **128.3** | - | 107.5 | 121.4 |
 | VQAv2 | **83.4%** | 80.0% | 65.0% | 79.5% |
 | TextVQA | **70.4%** | 61.3% | 42.5% | 63.8% |
 | GQA | **64.7%** | 63.3% | 44.7% | 59.3% |
@@ -117,8 +117,8 @@ CogVLM은 바운딩 박스 좌표를 텍스트 토큰으로 출력하는 CogAgen
 
 다음은 CogVLM의 다양한 생성 결과로, OCR-Free 추론, 상세 묘사, 차트 이해, 밈 분석, 시각적 추론, grounding 등 폭넓은 멀티모달 능력을 보여준다.
 
-![CogVLM 생성 샘플 — 다양한 멀티모달 태스크에서의 생성 결과](figures/fig_2.png)
-*Figure 2: CogVLM 생성 샘플 — OCR-Free 추론, 상세 묘사, 차트 이해, 시각적 추론, grounding, 세계 지식 활용 등 다양한 태스크에서의 생성 결과. (Source: Wang et al., 2023)*
+![CogVLM 생성 샘플 - 다양한 멀티모달 태스크에서의 생성 결과](figures/fig_2.png)
+*Figure 2: CogVLM 생성 샘플 - OCR-Free 추론, 상세 묘사, 차트 이해, 시각적 추론, grounding, 세계 지식 활용 등 다양한 태스크에서의 생성 결과. (Source: Wang et al., 2023)*
 
 ## 실무 활용
 
@@ -145,8 +145,8 @@ print(tokenizer.decode(outputs[0]))
 
 아래 그래프는 TDIUC 벤치마크에서 세부 질문 유형별 성능을 비교한 것으로, CogVLM이 Sentiment Understanding, Utility & Affordance, Object Recognition 등 대부분의 세부 카테고리에서 우수한 성능을 보인다.
 
-![TDIUC 벤치마크 세부 성능 비교 — 세부 질문 유형별 정확도](figures/fig_6.png)
-*Figure 5: TDIUC 벤치마크 세부 성능 — 감정 이해, 객체 인식, 속성 인식, 공간 관계 등 12개 세부 카테고리에서 CogVLM(보라색)이 기존 모델들을 능가한다. (Source: Wang et al., 2023)*
+![TDIUC 벤치마크 세부 성능 비교 - 세부 질문 유형별 정확도](figures/fig_6.png)
+*Figure 5: TDIUC 벤치마크 세부 성능 - 감정 이해, 객체 인식, 속성 인식, 공간 관계 등 12개 세부 카테고리에서 CogVLM(보라색)이 기존 모델들을 능가한다. (Source: Wang et al., 2023)*
 
 ## 한계 및 전망
 
@@ -162,4 +162,4 @@ CogVLM의 Visual Expert 개념은 이후 CogVLM2, CogAgent 등으로 발전하�
 
 ## 관련 문서
 
-- [[llava|Visual Instruction Tuning]] — 영감
+- [[llava|Visual Instruction Tuning]] - 영감

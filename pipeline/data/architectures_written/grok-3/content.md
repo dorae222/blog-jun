@@ -181,4 +181,4 @@ $$L(N, D) = \frac{A}{N^\alpha} + \frac{B}{D^\beta} + E$$
 
 ## 관련 문서
 
-- [[gpt-4|GPT-4]] — 영감
+- [[gpt-4|GPT-4]] - 영감

@@ -8,14 +8,14 @@ DeiT(Data-efficient Image Transformers)는 2021년 Meta/FAIR의 Hugo Touvron 등
 
 DeiT는 이 문제를 두 가지 핵심 전략으로 해결한다. 첫째, 지식 증류(Knowledge Distillation) 토큰을 트랜스포머 아키텍처에 직접 통합하여, CNN 교사 모델의 귀납적 편향(inductive bias)을 학생 트랜스포머 모델에 전달한다. 둘째, Rand-Augment, Mixup, CutMix, Random Erasing, Repeated Augmentation, Stochastic Depth 등 강력한 데이터 증강과 정규화 기법을 체계적으로 조합하여 소규모 데이터에서의 과적합을 효과적으로 방지한다. 이 전략의 결합으로 DeiT-B는 ImageNet-1K에서 top-1 정확도 83.1%를 달성하였으며, 증류 버전(DeiT-B⚗↑384)은 85.2%라는 인상적인 성능을 기록하여 동일 데이터 조건에서 ViT-B(77.9%)를 5%p 이상 앞서고, 훨씬 큰 ViT-L(307M, 76.5%)마저 능가하였다. DeiT의 학습 레시피는 이후 비전 트랜스포머 학습의 사실상 표준이 되었으며, Swin Transformer, DINOv2, BEiT 등 후속 모델들도 이 레시피를 기반으로 발전하였다.
 
-![DeiT 아키텍처 — ViT에 증류 토큰을 추가하여 CNN 교사 모델의 귀납적 편향을 전달하는 구조](figures/architecture.svg)
+![DeiT 아키텍처 - ViT에 증류 토큰을 추가하여 CNN 교사 모델의 귀납적 편향을 전달하는 구조](figures/architecture.svg)
 
-*Figure 1: DeiT 아키텍처 — ViT 구조에 증류 토큰(distillation token)을 추가하여 CNN 교사 모델의 지식을 전달하고, 강력한 데이터 증강으로 ImageNet-1K만으로도 경쟁력 있는 성능을 달성한다.*
+*Figure 1: DeiT 아키텍처 - ViT 구조에 증류 토큰(distillation token)을 추가하여 CNN 교사 모델의 지식을 전달하고, 강력한 데이터 증강으로 ImageNet-1K만으로도 경쟁력 있는 성능을 달성한다.*
 
 아래 그림은 ImageNet에서의 처리량(이미지/초) 대비 정확도를 비교한 것으로, DeiT가 EfficientNet과 동등한 성능을 적은 데이터로 달성함을 보여준다.
 
 ![ImageNet에서 DeiT vs EfficientNet vs ViT 처리량-정확도 비교](figures/fig_1_1.png)
-*Figure 1: ImageNet 처리량-정확도 비교 — DeiT-B는 ViT-B와 동일한 아키텍처이지만 데이터 부족 환경에 맞는 학습 전략으로 성능을 크게 향상시켰다. 증류 버전(기호 표시)은 EfficientNet과 경쟁하는 정확도를 달성한다. (Source: Touvron et al., 2021)*
+*Figure 1: ImageNet 처리량-정확도 비교 - DeiT-B는 ViT-B와 동일한 아키텍처이지만 데이터 부족 환경에 맞는 학습 전략으로 성능을 크게 향상시켰다. 증류 버전(기호 표시)은 EfficientNet과 경쟁하는 정확도를 달성한다. (Source: Touvron et al., 2021)*
 
 ## 아키텍처 상세
 
@@ -41,8 +41,8 @@ $$\mathbf{z}_0 = [\mathbf{x}_\text{cls};\; \mathbf{x}_\text{distill};\; \mathbf{
 
 아래 그림은 증류 토큰이 아키텍처에 통합되는 과정을 보여준다. class 토큰과 별도로 distillation 토큰이 셀프 어텐션을 통해 패치 토큰들과 상호작용한다.
 
-![DeiT 증류 절차 — class 토큰과 distillation 토큰이 셀프 어텐션으로 상호작용](figures/fig_2.png)
-*Figure 2: DeiT 증류 절차 — class 토큰(좌)은 실제 레이블을, distillation 토큰(우)은 교사 모델의 예측을 학습 목표로 삼는다. 두 토큰 모두 셀프 어텐션 레이어를 통해 패치 토큰과 상호작용하며 역전파로 학습된다. (Source: Touvron et al., 2021)*
+![DeiT 증류 절차 - class 토큰과 distillation 토큰이 셀프 어텐션으로 상호작용](figures/fig_2.png)
+*Figure 2: DeiT 증류 절차 - class 토큰(좌)은 실제 레이블을, distillation 토큰(우)은 교사 모델의 예측을 학습 목표로 삼는다. 두 토큰 모두 셀프 어텐션 레이어를 통해 패치 토큰과 상호작용하며 역전파로 학습된다. (Source: Touvron et al., 2021)*
 
 ### 지식 증류 방식
 
@@ -94,7 +94,7 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\r
 증류 방식별 학습 곡선을 비교하면, 하드 증류 토큰 방식이 가장 높은 성능을 달성하며 학습 에폭이 증가할수록 지속적으로 개선된다.
 
 ![DeiT-B 증류 방식별 학습 에폭에 따른 ImageNet 성능 비교](figures/fig_3.png)
-*Figure 3: 증류 방식별 학습 곡선 — 증류 토큰+하드 증류 방식(빨간 실선)이 에폭 증가에 따라 지속적으로 성능이 향상되며, 증류 없는 기본 모델(점선)은 400 에폭 이후 포화된다. 384 해상도 파인튜닝(빨간 점선)은 추가 성능 향상을 달성한다. (Source: Touvron et al., 2021)*
+*Figure 3: 증류 방식별 학습 곡선 - 증류 토큰+하드 증류 방식(빨간 실선)이 에폭 증가에 따라 지속적으로 성능이 향상되며, 증류 없는 기본 모델(점선)은 400 에폭 이후 포화된다. 384 해상도 파인튜닝(빨간 점선)은 추가 성능 향상을 달성한다. (Source: Touvron et al., 2021)*
 
 DeiT-B는 동일한 ImageNet-1K 데이터만으로 ViT-B 대비 약 4%p 높은 정확도를 달성하며, 훨씬 큰 ViT-L(307M)보다도 우수한 결과를 보인다. 증류+고해상도 파인튜닝 버전(DeiT-B⚗↑384)은 JFT-300M으로 사전학습한 ViT-B/16(84.2%)을 능가하여, 데이터 효율적 학습의 가능성을 극대화하였다.
 
@@ -126,4 +126,4 @@ DeiT는 ViT의 데이터 효율성 문제를 지식 증류와 데이터 증강�
 
 ## 관련 문서
 
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 발전 기반
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 발전 기반

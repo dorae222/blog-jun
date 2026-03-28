@@ -6,13 +6,13 @@ Score-based Generative Modeling through Stochastic Differential Equations는 202
 
 기존의 SMLD(Score Matching with Langevin Dynamics)와 DDPM이 서로 다른 접근처럼 보였으나, 이 논문은 두 방법이 모두 특정 SDE의 이산화(discretization)임을 증명하여 확산 모델의 통일된 수학적 기반을 제시하였다.
 
-![역방향 SDE를 통한 생성 모델 개념도 — 데이터를 노이즈로 변환하는 순방향 SDE와 score function을 이용해 역전시키는 과정](figures/fig_1.png)
-*Figure 1: 역방향 SDE를 통한 Score 기반 생성 모델 — 데이터를 노이즈 분포로 변환하는 연속 SDE를 score function으로 역전시켜 생성한다. (Source: Song et al., 2021)*
+![역방향 SDE를 통한 생성 모델 개념도 - 데이터를 노이즈로 변환하는 순방향 SDE와 score function을 이용해 역전시키는 과정](figures/fig_1.png)
+*Figure 1: 역방향 SDE를 통한 Score 기반 생성 모델 - 데이터를 노이즈 분포로 변환하는 연속 SDE를 score function으로 역전시켜 생성한다. (Source: Song et al., 2021)*
 
 ## 아키텍처 상세
 
-![Score SDE 전체 프레임워크 — Forward SDE, Reverse SDE, Probability Flow ODE의 관계를 보여주는 개요도](figures/fig_2.png)
-*Figure 2: Score SDE 프레임워크 개요 — Forward SDE로 데이터→노이즈 변환, Reverse SDE와 Probability Flow ODE로 생성이 가능하며, 모두 score 추정에 기반한다. (Source: Song et al., 2021)*
+![Score SDE 전체 프레임워크 - Forward SDE, Reverse SDE, Probability Flow ODE의 관계를 보여주는 개요도](figures/fig_2.png)
+*Figure 2: Score SDE 프레임워크 개요 - Forward SDE로 데이터→노이즈 변환, Reverse SDE와 Probability Flow ODE로 생성이 가능하며, 모두 score 추정에 기반한다. (Source: Song et al., 2021)*
 
 ### Forward SDE
 
@@ -39,7 +39,7 @@ $$d\mathbf{x} = \left[\mathbf{f}(\mathbf{x},t) - \frac{1}{2}g(t)^2\nabla_\mathbf
 이 ODE는 역전 가능하여 정확한 로그 가능도 계산이 가능하다.
 
 ![Probability Flow ODE의 적응적 스텝 크기 샘플링, NFE에 따른 품질 비교, 잠재 공간 보간 결과](figures/fig_3.png)
-*Figure 3: Probability Flow ODE 활용 — 적응적 스텝 크기로 빠른 샘플링(좌), NFE 감소에 따른 품질 비교(중), 잠재 공간 보간(우)을 보여준다. (Source: Song et al., 2021)*
+*Figure 3: Probability Flow ODE 활용 - 적응적 스텝 크기로 빠른 샘플링(좌), NFE 감소에 따른 품질 비교(중), 잠재 공간 보간(우)을 보여준다. (Source: Song et al., 2021)*
 
 ### SDE 변형
 
@@ -74,8 +74,8 @@ PC 샘플러는 수치 SDE 솔버(predictor)와 Langevin MCMC(corrector)를 조�
 
 CIFAR-10에서 FID 2.20, IS 9.89를 달성하여 당시 SOTA를 기록하였다.
 
-![LSUN 256x256 인페인팅 및 컬러화 결과 — 마스킹/흑백 이미지에서 다양한 복원 결과를 생성](figures/fig_4_2.jpg)
-*Figure 4: 역문제 해결 응용 — LSUN 256x256에서 인페인팅(상단)과 컬러화(하단) 결과. 원본, 마스킹/흑백 이미지, 그리고 다양한 복원 샘플을 보여준다. (Source: Song et al., 2021)*
+![LSUN 256x256 인페인팅 및 컬러화 결과 - 마스킹/흑백 이미지에서 다양한 복원 결과를 생성](figures/fig_4_2.jpg)
+*Figure 4: 역문제 해결 응용 - LSUN 256x256에서 인페인팅(상단)과 컬러화(하단) 결과. 원본, 마스킹/흑백 이미지, 그리고 다양한 복원 샘플을 보여준다. (Source: Song et al., 2021)*
 
 ## 관련 모델 비교
 
@@ -147,7 +147,7 @@ class ScoreSDE:
 ```
 
 ![CelebA-HQ 1024x1024 고해상도 얼굴 생성 샘플](figures/fig_21.jpg)
-*Figure 5: CelebA-HQ 1024x1024 고해상도 생성 결과 — VE SDE로 학습한 NCSN++ 모델이 생성한 포토리얼리스틱 얼굴 이미지. (Source: Song et al., 2021)*
+*Figure 5: CelebA-HQ 1024x1024 고해상도 생성 결과 - VE SDE로 학습한 NCSN++ 모델이 생성한 포토리얼리스틱 얼굴 이미지. (Source: Song et al., 2021)*
 
 ### 주요 활용 분야
 
@@ -175,7 +175,7 @@ Score SDE는 확산 모델의 수학적 기반을 확립한 기념비적 연구�
 
 ## 관련 문서
 
-- [[score-matching|Score-based Generative Model (NCSN)]] — 발전 기반
-- [[consistency-model|Consistency Model]] — 후속 모델
-- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] — 영감
-- [[flow-matching|Flow Matching]] — 영감을 줌
+- [[score-matching|Score-based Generative Model (NCSN)]] - 발전 기반
+- [[consistency-model|Consistency Model]] - 후속 모델
+- [[ddpm|DDPM (Denoising Diffusion Probabilistic Models)]] - 영감
+- [[flow-matching|Flow Matching]] - 영감을 줌

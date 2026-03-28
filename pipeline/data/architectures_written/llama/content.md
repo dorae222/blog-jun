@@ -10,8 +10,8 @@
 
 아래 다이어그램은 LLaMA의 전체 아키텍처와 GPT-3 대비 3대 핵심 개선 사항(RMSNorm, SwiGLU, RoPE)을 보여준다.
 
-![LLaMA 아키텍처 — RMSNorm, SwiGLU, RoPE 기반 Dense Decoder-only Transformer](figures/architecture.png)
-*Figure 1: LLaMA 아키텍처(7B/13B/33B/65B) — RMSNorm(Pre-Norm), SwiGLU FFN, RoPE 위치 인코딩을 결합한 Dense Decoder-only Transformer. GPT-3 대비 3대 아키텍처 혁신이 현대 오픈소스 LLM의 사실상 표준이 되었다. (Touvron et al., 2023)*
+![LLaMA 아키텍처 - RMSNorm, SwiGLU, RoPE 기반 Dense Decoder-only Transformer](figures/architecture.png)
+*Figure 1: LLaMA 아키텍처(7B/13B/33B/65B) - RMSNorm(Pre-Norm), SwiGLU FFN, RoPE 위치 인코딩을 결합한 Dense Decoder-only Transformer. GPT-3 대비 3대 아키텍처 혁신이 현대 오픈소스 LLM의 사실상 표준이 되었다. (Touvron et al., 2023)*
 
 ## 아키텍처 상세
 
@@ -68,10 +68,10 @@ LLaMA의 가중치 공개(초기 유출 후 공식 공개)는 오픈소스 LLM �
 다음 그래프는 학습 과정에서 모델 크기별 학습 손실 변화와 벤치마크 성능 향상 추이를 보여준다. Chinchilla 스케일링 법칙에 따라 더 많은 토큰을 학습할수록 성능이 지속적으로 향상됨을 확인할 수 있다.
 
 ![LLaMA 모델 크기별 학습 손실 변화](figures/fig_1.png)
-*Figure 2: LLaMA 학습 손실 곡선 — 7B, 13B, 33B, 65B 모델의 학습 토큰 수에 따른 손실 변화. 33B/65B 모델은 1.4T 토큰까지 학습되었으며, 모든 크기에서 손실이 지속적으로 감소한다. (Touvron et al., 2023)*
+*Figure 2: LLaMA 학습 손실 곡선 - 7B, 13B, 33B, 65B 모델의 학습 토큰 수에 따른 손실 변화. 33B/65B 모델은 1.4T 토큰까지 학습되었으며, 모든 크기에서 손실이 지속적으로 감소한다. (Touvron et al., 2023)*
 
 ![LLaMA 학습 진행에 따른 QA 및 상식 추론 벤치마크 성능 변화](figures/fig_2.png)
-*Figure 3: 학습 진행에 따른 벤치마크 성능 변화 — 질의응답(QA)과 상식 추론 태스크에서 모델 크기별 성능이 학습 토큰 수에 비례하여 향상되는 추이. Chinchilla(점선) 대비 LLaMA의 경쟁력을 확인할 수 있다. (Touvron et al., 2023)*
+*Figure 3: 학습 진행에 따른 벤치마크 성능 변화 - 질의응답(QA)과 상식 추론 태스크에서 모델 크기별 성능이 학습 토큰 수에 비례하여 향상되는 추이. Chinchilla(점선) 대비 LLaMA의 경쟁력을 확인할 수 있다. (Touvron et al., 2023)*
 
 ## 벤치마크/성능
 
@@ -197,11 +197,11 @@ $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h
 
 ## 관련 문서
 
-- [[chameleon|Chameleon]] — 후속 모델
-- [[llama-2|Llama 2: Open Foundation and Fine-Tuned Chat Models]] — 후속 모델
-- [[chinchilla|Training Compute-Optimal Large Language Models (Chinchilla)]] — 영감
-- [[llava|Visual Instruction Tuning]] — 영감을 줌
-- [[mistral-7b|Mistral 7B]] — 영감을 줌
-- [[olmo|OLMo: Accelerating the Science of Language Models]] — 영감을 줌
-- [[transfusion|Transfusion]] — 영감을 줌
-- [[yi|Yi: Open Foundation Models by 01.AI]] — 영감을 줌
+- [[chameleon|Chameleon]] - 후속 모델
+- [[llama-2|Llama 2: Open Foundation and Fine-Tuned Chat Models]] - 후속 모델
+- [[chinchilla|Training Compute-Optimal Large Language Models (Chinchilla)]] - 영감
+- [[llava|Visual Instruction Tuning]] - 영감을 줌
+- [[mistral-7b|Mistral 7B]] - 영감을 줌
+- [[olmo|OLMo: Accelerating the Science of Language Models]] - 영감을 줌
+- [[transfusion|Transfusion]] - 영감을 줌
+- [[yi|Yi: Open Foundation Models by 01.AI]] - 영감을 줌

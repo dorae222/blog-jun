@@ -10,9 +10,9 @@ AutoGen의 핵심 철학은 **"대화가 곧 연산(conversation as computation)
 
 멀티 에이전트 시스템의 핵심 도전 과제 중 하나는 에이전트 간 협업의 효율성이다. $N$개의 에이전트가 자유롭게 대화하면 통신 복잡도는 $O(N^2)$이 되며, 대화가 발산하거나 루프에 빠질 위험이 있다. AutoGen은 양자 대화(two-agent)와 GroupChat 패턴을 통해 이 복잡도를 관리하면서도, 유연한 에이전트 간 협업을 가능하게 한다.
 
-![AutoGen 멀티 에이전트 아키텍처 — ConversableAgent 기반 양자 대화 및 GroupChat 협업 구조](figures/architecture.svg)
+![AutoGen 멀티 에이전트 아키텍처 - ConversableAgent 기반 양자 대화 및 GroupChat 협업 구조](figures/architecture.svg)
 
-*Figure 1: AutoGen 아키텍처 — AssistantAgent, UserProxyAgent, GroupChatManager가 대화 기반으로 협업하며, 코드 실행 샌드박스와 인간 입력을 통합하는 멀티 에이전트 프레임워크이다.*
+*Figure 1: AutoGen 아키텍처 - AssistantAgent, UserProxyAgent, GroupChatManager가 대화 기반으로 협업하며, 코드 실행 샌드박스와 인간 입력을 통합하는 멀티 에이전트 프레임워크이다.*
 
 ## 아키텍처 상세
 
@@ -86,17 +86,17 @@ $$\text{Generate Code} \xrightarrow{\text{execute}} \text{Result/Error} \xrighta
 다음 그림은 AutoGen의 전체 프레임워크를 보여주며, 에이전트 커스터마이징, 대화 패턴, 실제 대화 흐름을 설명한다.
 
 ![AutoGen 프레임워크 개요](figures/fig_1.png)
-*Figure 2: AutoGen 프레임워크 개요 — 커스터마이징 가능한 Conversable Agent(좌), Joint/Hierarchical Chat 등 유연한 대화 패턴(중앙), 자동 코드 실행과 오류 수정이 이루어지는 실제 에이전트 대화 예시(우). (Source: Wu et al., 2023)*
+*Figure 2: AutoGen 프레임워크 개요 - 커스터마이징 가능한 Conversable Agent(좌), Joint/Hierarchical Chat 등 유연한 대화 패턴(중앙), 자동 코드 실행과 오류 수정이 이루어지는 실제 에이전트 대화 예시(우). (Source: Wu et al., 2023)*
 
 아래는 AutoGen의 ConversableAgent 계층 구조와 개발자 코드, 실행 흐름 간의 관계를 상세히 보여준다.
 
 ![AutoGen 에이전트 계층 구조와 대화 흐름](figures/fig_2.png)
-*Figure 3: AutoGen 프로그래밍 모델 — ConversableAgent를 상속하는 AssistantAgent/UserProxyAgent/GroupChatManager(상), 에이전트 정의 및 대화 시작 코드(중), send/receive/generate_reply 기반의 자동 대화 실행 흐름(하). (Source: Wu et al., 2023)*
+*Figure 3: AutoGen 프로그래밍 모델 - ConversableAgent를 상속하는 AssistantAgent/UserProxyAgent/GroupChatManager(상), 에이전트 정의 및 대화 시작 코드(중), send/receive/generate_reply 기반의 자동 대화 실행 흐름(하). (Source: Wu et al., 2023)*
 
 다음은 AutoGen을 활용한 6가지 다양한 애플리케이션 구성 예시이다.
 
 ![AutoGen 기반 6가지 애플리케이션 예시](figures/fig_3.png)
-*Figure 4: AutoGen으로 구축한 다양한 애플리케이션 — 수학 문제 풀이(A1), RAG 기반 Q&A(A2), ALFWorld 시뮬레이션(A3), 멀티 에이전트 코딩(A4), 동적 그룹 채팅(A5), 대화형 체스(A6). (Source: Wu et al., 2023)*
+*Figure 4: AutoGen으로 구축한 다양한 애플리케이션 - 수학 문제 풀이(A1), RAG 기반 Q&A(A2), ALFWorld 시뮬레이션(A3), 멀티 에이전트 코딩(A4), 동적 그룹 채팅(A5), 대화형 체스(A6). (Source: Wu et al., 2023)*
 
 ## 핵심 혁신
 
@@ -139,6 +139,6 @@ AutoGen은 ReAct의 추론-행동 루프에서 영감을 받아 멀티 에이전
 
 ## 관련 문서
 
-- [[react|ReAct]] — 영감
-- [[crewai|CrewAI]] — 영감을 줌
-- [[metagpt|MetaGPT]] — 영감을 줌
+- [[react|ReAct]] - 영감
+- [[crewai|CrewAI]] - 영감을 줌
+- [[metagpt|MetaGPT]] - 영감을 줌

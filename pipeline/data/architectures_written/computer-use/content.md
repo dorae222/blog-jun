@@ -14,9 +14,9 @@ $$a_t = \pi(I_t, I_{t-1}, ..., I_1, \text{goal})$$
 
 이는 부분 관측 마르코프 결정 과정(POMDP)의 프레임워크와 유사하며, 스크린샷이라는 고차원 관측을 통해 최적의 GUI 액션 시퀀스를 결정하는 문제로 볼 수 있다.
 
-![Claude Computer Use 아키텍처 — 스크린샷 관찰, 멀티모달 추론, GUI 액션 출력의 관찰-행동 루프](figures/architecture.svg)
+![Claude Computer Use 아키텍처 - 스크린샷 관찰, 멀티모달 추론, GUI 액션 출력의 관찰-행동 루프](figures/architecture.svg)
 
-*Figure 1: Computer Use 아키텍처 — 스크린샷 이미지를 입력으로 받아 Claude의 멀티모달 비전 능력으로 화면을 이해하고, tool use API를 통해 마우스 클릭과 키보드 입력 등 GUI 조작 명령을 생성한다.*
+*Figure 1: Computer Use 아키텍처 - 스크린샷 이미지를 입력으로 받아 Claude의 멀티모달 비전 능력으로 화면을 이해하고, tool use API를 통해 마우스 클릭과 키보드 입력 등 GUI 조작 명령을 생성한다.*
 
 ## 아키텍처 상세
 
@@ -60,7 +60,7 @@ Computer Use는 세 가지 도구 타입을 사용한다.
 
 Computer Use의 핵심은 **스크린샷을 유일한 관측(observation)으로 사용**한다는 점이다. DOM 트리, 접근성 API, UI 자동화 프레임워크 등 구조화된 인터페이스에 의존하지 않고, 인간이 화면을 보는 것과 동일하게 픽셀 이미지를 입력으로 받는다.
 
-이 접근의 장점은 **범용성**이다. 웹 브라우저, 데스크톱 애플리케이션, 터미널, 심지어 원격 데스크톱까지 — 화면에 표시되는 모든 것이 조작 대상이 된다. DOM 기반 접근법(Selenium, Playwright 등)은 웹 애플리케이션에만 적용 가능하고, UI 자동화 프레임워크(pyautogui, Apple Accessibility API 등)는 플랫폼 종속적이다. 스크린샷 기반 접근은 이러한 제약 없이 모든 GUI 환경에 동일한 방식으로 적용된다.
+이 접근의 장점은 **범용성**이다. 웹 브라우저, 데스크톱 애플리케이션, 터미널, 심지어 원격 데스크톱까지 - 화면에 표시되는 모든 것이 조작 대상이 된다. DOM 기반 접근법(Selenium, Playwright 등)은 웹 애플리케이션에만 적용 가능하고, UI 자동화 프레임워크(pyautogui, Apple Accessibility API 등)는 플랫폼 종속적이다. 스크린샷 기반 접근은 이러한 제약 없이 모든 GUI 환경에 동일한 방식으로 적용된다.
 
 모델은 스크린샷에서 다음 정보를 추출하여 행동을 결정한다:
 - **시각적 레이아웃**: 버튼, 입력 필드, 메뉴, 탭 등 UI 요소의 위치와 크기
@@ -167,6 +167,6 @@ Computer Use는 Claude 3.5 Sonnet의 비전 능력을 기반으로 구축되었�
 
 ## 관련 문서
 
-- [[claude|Claude (1-3.5 Series)]] — 발전 기반
-- [[manus|Manus]] — 영감을 줌
-- [[operator|Operator (CUA)]] — 영감을 줌
+- [[claude|Claude (1-3.5 Series)]] - 발전 기반
+- [[manus|Manus]] - 영감을 줌
+- [[operator|Operator (CUA)]] - 영감을 줌

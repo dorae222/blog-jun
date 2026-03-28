@@ -205,4 +205,4 @@ RoBERTa는 **"좋은 데이터와 충분한 학습이 아키텍처 혁신보다 
 
 ## 관련 문서
 
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 발전 기반
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 발전 기반

@@ -14,8 +14,8 @@
 
 다음 다이어그램은 InstructGPT의 SFT → RM → PPO 3단계 파이프라인을 보여준다.
 
-![InstructGPT의 RLHF 3단계 파이프라인 — SFT, RM, PPO](figures/fig_2.png)
-*Figure 1: InstructGPT 학습 파이프라인 — (1) 시연 데이터로 SFT, (2) 비교 데이터로 보상 모델 학습, (3) 보상 모델을 이용한 PPO 강화학습. 이 3단계 구조가 이후 모든 정렬 방법론의 기초가 되었다. (Source: Ouyang et al., 2022)*
+![InstructGPT의 RLHF 3단계 파이프라인 - SFT, RM, PPO](figures/fig_2.png)
+*Figure 1: InstructGPT 학습 파이프라인 - (1) 시연 데이터로 SFT, (2) 비교 데이터로 보상 모델 학습, (3) 보상 모델을 이용한 PPO 강화학습. 이 3단계 구조가 이후 모든 정렬 방법론의 기초가 되었다. (Source: Ouyang et al., 2022)*
 
 InstructGPT의 핵심은 아키텍처가 아닌 **학습 파이프라인**에 있다. 기반 모델은 GPT-3와 동일한 Transformer Decoder이다.
 
@@ -71,8 +71,8 @@ InstructGPT 논문에서 처음으로 보고된 현상으로, RLHF 이후 **일�
 
 다음 그래프는 이 핵심 발견을 정량적으로 보여준다.
 
-![모델 크기별 인간 선호도 비교 — 1.3B InstructGPT가 175B GPT-3를 능가](figures/fig_1.png)
-*Figure 2: 인간 선호도 평가 — 1.3B PPO-ptx(InstructGPT)가 175B GPT-3보다 높은 선호도를 달성하여, 모델 크기보다 정렬이 더 중요함을 극적으로 입증한다. (Source: Ouyang et al., 2022)*
+![모델 크기별 인간 선호도 비교 - 1.3B InstructGPT가 175B GPT-3를 능가](figures/fig_1.png)
+*Figure 2: 인간 선호도 평가 - 1.3B PPO-ptx(InstructGPT)가 175B GPT-3보다 높은 선호도를 달성하여, 모델 크기보다 정렬이 더 중요함을 극적으로 입증한다. (Source: Ouyang et al., 2022)*
 
 1.3B InstructGPT가 175B GPT-3를 인간 평가에서 능가한 것은, AI 연구의 패러다임을 "더 큰 모델"에서 "더 잘 정렬된 모델"로 전환시킨 결정적 증거이다.
 
@@ -102,8 +102,8 @@ SFT→RM→PPO의 3단계 구조는 이후 거의 모든 대화형 AI에서 채�
 
 라벨러들은 InstructGPT 175B의 출력을 GPT-3 175B 대비 **85% 이상의 경우**에서 선호했으며, 환각 감소, 유해 출력 감소, 지시 수행 정확도에서 모두 유의미한 개선을 보였다. 아래는 적절성, 제약 조건 준수, 환각 감소 등의 세부 지표를 보여준다.
 
-![InstructGPT의 세부 평가 지표 — 적절성, 제약 준수, 환각 감소](figures/fig_6.png)
-*Figure 3: 세부 품질 평가 — PPO 모델이 GPT-3 대비 고객 어시스턴트로서의 적절성, 명시적 제약 조건 준수, 환각 감소에서 모두 유의미한 개선을 달성한다. (Source: Ouyang et al., 2022)*
+![InstructGPT의 세부 평가 지표 - 적절성, 제약 준수, 환각 감소](figures/fig_6.png)
+*Figure 3: 세부 품질 평가 - PPO 모델이 GPT-3 대비 고객 어시스턴트로서의 적절성, 명시적 제약 조건 준수, 환각 감소에서 모두 유의미한 개선을 달성한다. (Source: Ouyang et al., 2022)*
 
 ## 관련 모델 비교
 
@@ -161,10 +161,10 @@ GPT-3는 사전 학습만으로도 놀라운 few-shot 능력을 보였지만, �
 사실성과 유해성 측면에서도 InstructGPT는 의미 있는 개선을 보여준다.
 
 ![TruthfulQA 사실성 평가 결과](figures/fig_8.png)
-*Figure 4: TruthfulQA 평가 — InstructGPT(PPO/PPO-ptx)가 GPT-3 대비 진실성과 정보성 모두에서 향상되어, RLHF가 사실적 응답 생성에 기여함을 보여준다. (Source: Ouyang et al., 2022)*
+*Figure 4: TruthfulQA 평가 - InstructGPT(PPO/PPO-ptx)가 GPT-3 대비 진실성과 정보성 모두에서 향상되어, RLHF가 사실적 응답 생성에 기여함을 보여준다. (Source: Ouyang et al., 2022)*
 
 ![RealToxicityPrompts 유해성 평가 결과](figures/fig_9.png)
-*Figure 5: 유해성 평가 — "respectful" 지시 추가 시 InstructGPT가 GPT-3 대비 유해성 점수가 크게 감소하며, 인간 평가와 자동 평가 모두에서 일관된 개선을 보인다. (Source: Ouyang et al., 2022)*
+*Figure 5: 유해성 평가 - "respectful" 지시 추가 시 InstructGPT가 GPT-3 대비 유해성 점수가 크게 감소하며, 인간 평가와 자동 평가 모두에서 일관된 개선을 보인다. (Source: Ouyang et al., 2022)*
 
 ### 한계
 
@@ -183,5 +183,5 @@ InstructGPT는 "AI를 인간의 의도에 맞추는 방법"이라는 정렬(alig
 
 ## 관련 문서
 
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 발전 기반
-- [[gpt-4|GPT-4]] — 후속 모델
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 발전 기반
+- [[gpt-4|GPT-4]] - 후속 모델

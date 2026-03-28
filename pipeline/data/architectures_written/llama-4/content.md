@@ -10,9 +10,9 @@ LLaMA 4의 역사적 의의는 세 가지 측면에서 두드러진다. 첫째, 
 
 LLaMA 4는 또한 네이티브 멀티모달(비전+텍스트) 능력을 기본으로 내장하여, 별도의 멀티모달 어댑터 없이도 이미지와 텍스트를 함께 처리할 수 있다. 30조 토큰 이상의 다국어 멀티모달 데이터로 사전 학습되었으며, MetaP(Meta P-scaling) 기법을 활용한 안정적인 하이퍼파라미터 스케일링이 적용되었다.
 
-![LLaMA 4 아키텍처 — 희소 MoE Transformer 기반 Scout/Maverick/Behemoth 시리즈의 네이티브 멀티모달 구조](figures/architecture.svg)
+![LLaMA 4 아키텍처 - 희소 MoE Transformer 기반 Scout/Maverick/Behemoth 시리즈의 네이티브 멀티모달 구조](figures/architecture.svg)
 
-*Figure 1: LLaMA 4 아키텍처 — 밀집 Transformer에서 희소 MoE로 전환하여 파라미터 규모 대비 추론 비용을 절감하고, 네이티브 비전-텍스트 멀티모달 능력을 기본 내장한 구조이다.*
+*Figure 1: LLaMA 4 아키텍처 - 밀집 Transformer에서 희소 MoE로 전환하여 파라미터 규모 대비 추론 비용을 절감하고, 네이티브 비전-텍스트 멀티모달 능력을 기본 내장한 구조이다.*
 
 ## 아키텍처 상세
 
@@ -129,4 +129,4 @@ LLaMA 4는 LLaMA 시리즈의 네 번째 세대로, LLaMA 3가 밀집 구조에�
 
 ## 관련 문서
 
-- [[llama-3|LLaMA 3]] — 발전 기반
+- [[llama-3|LLaMA 3]] - 발전 기반

@@ -14,8 +14,8 @@ OPT 이전에 GPT-3(175B)는 API를 통해서만 접근 가능했고, 내부 구
 
 다음 다이어그램은 OPT-175B의 전체 아키텍처와 주요 구성 요소를 보여준다.
 
-![OPT-175B 전체 아키텍처 다이어그램 — Pre-LayerNorm 적용 Decoder-Only Transformer 구조](figures/architecture.png)
-*Figure 1: OPT-175B 아키텍처 — GPT-3와 동일한 Decoder-Only 구조에 Pre-LayerNorm을 적용. 96개 레이어, 96개 어텐션 헤드, Hidden Dim 12,288의 대규모 모델이다. (Source: OPT 논문)*
+![OPT-175B 전체 아키텍처 다이어그램 - Pre-LayerNorm 적용 Decoder-Only Transformer 구조](figures/architecture.png)
+*Figure 1: OPT-175B 아키텍처 - GPT-3와 동일한 Decoder-Only 구조에 Pre-LayerNorm을 적용. 96개 레이어, 96개 어텐션 헤드, Hidden Dim 12,288의 대규모 모델이다. (Source: OPT 논문)*
 
 OPT는 GPT-3의 아키텍처를 **충실히 재현**하되 Pre-LayerNorm을 적용한 구조이다:
 
@@ -69,11 +69,11 @@ OPT의 가장 독특한 기여는 **학습 로그북(Logbook)**의 공개이다.
 
 아래 그래프는 OPT-175B 학습 중 적용된 경험적 학습률 스케줄과 그에 따른 검증 퍼플렉서티 변화를 보여준다.
 
-![OPT-175B의 경험적 학습률 스케줄 — 불안정 구간에서 학습률을 수동으로 낮춘 기록](figures/fig_1.png)
-*Figure 2: OPT-175B 학습률 스케줄 — 불안정성이 발생할 때마다 학습률을 수동으로 낮추는 경험적 접근을 적용했다. 약 140K 이터레이션에 걸친 학습 과정이 기록되어 있다. (Source: OPT 논문)*
+![OPT-175B의 경험적 학습률 스케줄 - 불안정 구간에서 학습률을 수동으로 낮춘 기록](figures/fig_1.png)
+*Figure 2: OPT-175B 학습률 스케줄 - 불안정성이 발생할 때마다 학습률을 수동으로 낮추는 경험적 접근을 적용했다. 약 140K 이터레이션에 걸친 학습 과정이 기록되어 있다. (Source: OPT 논문)*
 
-![OPT-175B 검증 퍼플렉서티 변화 — 학습률 조정의 효과가 반영된 안정적인 수렴 곡선](figures/fig_2.png)
-*Figure 3: 검증 퍼플렉서티 — 학습률 조정에 따른 일시적 변동이 관찰되지만, 전반적으로 안정적인 하강 곡선을 보인다. (Source: OPT 논문)*
+![OPT-175B 검증 퍼플렉서티 변화 - 학습률 조정의 효과가 반영된 안정적인 수렴 곡선](figures/fig_2.png)
+*Figure 3: 검증 퍼플렉서티 - 학습률 조정에 따른 일시적 변동이 관찰되지만, 전반적으로 안정적인 하강 곡선을 보인다. (Source: OPT 논문)*
 
 ```python
 from transformers import AutoTokenizer, OPTForCausalLM
@@ -113,11 +113,11 @@ OPT-175B는 GPT-3와 유사한 수준의 성능을 보여준다:
 
 다음 그래프는 모델 크기에 따른 OPT와 GPT-3의 제로샷 성능 비교를 보여준다. 두 모델이 스케일링에 따라 매우 유사한 성능 궤적을 그리는 것을 확인할 수 있다.
 
-![OPT와 GPT-3의 제로샷 NLP 평가 평균 — 모델 크기별 성능 비교](figures/fig_3.png)
-*Figure 4: 14개 NLP 태스크 제로샷 평균 정확도 — OPT(실선)와 GPT-3(점선)가 125M~175B 범위에서 거의 동일한 스케일링 패턴을 보인다. (Source: OPT 논문)*
+![OPT와 GPT-3의 제로샷 NLP 평가 평균 - 모델 크기별 성능 비교](figures/fig_3.png)
+*Figure 4: 14개 NLP 태스크 제로샷 평균 정확도 - OPT(실선)와 GPT-3(점선)가 125M~175B 범위에서 거의 동일한 스케일링 패턴을 보인다. (Source: OPT 논문)*
 
-![OPT와 GPT-3의 멀티샷 NLP 평가 — 0/1/32-shot 설정별 성능 비교](figures/fig_4.png)
-*Figure 5: 멀티샷 NLP 평가 — 0-shot(파란색), 1-shot(주황색), 32-shot(녹색) 설정에서 OPT(원형)와 GPT-3(X) 비교. Few-shot에서는 GPT-3가 약간 우위를 보이는 태스크도 존재한다. (Source: OPT 논문)*
+![OPT와 GPT-3의 멀티샷 NLP 평가 - 0/1/32-shot 설정별 성능 비교](figures/fig_4.png)
+*Figure 5: 멀티샷 NLP 평가 - 0-shot(파란색), 1-shot(주황색), 32-shot(녹색) 설정에서 OPT(원형)와 GPT-3(X) 비교. Few-shot에서는 GPT-3가 약간 우위를 보이는 태스크도 존재한다. (Source: OPT 논문)*
 
 ### 핵심 결과
 - 16개 제로샷 태스크 중 **10개에서 GPT-3와 동등**
@@ -186,4 +186,4 @@ OPT는 **오픈소스 LLM 시대의 문을 연 선구적 모델**이다. GPT-3 �
 
 ## 관련 문서
 
-- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] — 영감
+- [[gpt-3|Language Models are Few-Shot Learners (GPT-3)]] - 영감

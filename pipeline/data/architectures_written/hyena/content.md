@@ -10,9 +10,9 @@ Hyena의 핵심 통찰은 어텐션의 표현력이 두 가지 요소에서 나�
 
 생물학적 서열(DNA) 처리에서 긴 컨텍스트 처리 능력이 두드러지며, 수십만 토큰 길이의 시퀀스에서도 $O(N \log N)$ 복잡도를 유지한다. HyenaDNA 모델은 최대 백만 bp(base pair) 길이의 DNA 서열을 처리하여 게놈 분석에 활용되고 있다. Hyena는 attention-free 대형 언어 모델의 가능성을 열어준 중요한 이정표이다.
 
-![Hyena 아키텍처 — 암묵적 장거리 컨볼루션과 multiplicative gating의 계층적 조합으로 어텐션을 대체하는 구조](figures/architecture.svg)
+![Hyena 아키텍처 - 암묵적 장거리 컨볼루션과 multiplicative gating의 계층적 조합으로 어텐션을 대체하는 구조](figures/architecture.svg)
 
-*Figure 1: Hyena 아키텍처 — 데이터 의존적 가중치와 전역적 상호작용을 암묵적 장거리 컨볼루션과 multiplicative gating으로 근사하여 O(N log N) 복잡도로 어텐션 없이 시퀀스를 처리한다.*
+*Figure 1: Hyena 아키텍처 - 데이터 의존적 가중치와 전역적 상호작용을 암묵적 장거리 컨볼루션과 multiplicative gating으로 근사하여 O(N log N) 복잡도로 어텐션 없이 시퀀스를 처리한다.*
 
 ## 아키텍처 상세
 
@@ -129,4 +129,4 @@ Hyena는 특히 긴 시퀀스 처리가 필수적인 도메인에서 실용적 �
 
 ## 관련 문서
 
-- [[h3|H3]] — 발전 기반
+- [[h3|H3]] - 발전 기반

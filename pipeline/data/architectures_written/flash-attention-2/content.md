@@ -8,16 +8,16 @@ FlashAttention-2는 Tri Dao가 2023년 Together AI에서 제안한 FlashAttentio
 
 A100 GPU의 이론 최대 연산량은 312 TFLOPS(FP16)이지만, FlashAttention-1은 이 중 약 35%만 활용했다. FlashAttention-2는 non-matmul FLOP 감소, 쿼리 루프 병렬화, GQA/MQA 네이티브 지원의 **세 가지 핵심 최적화**를 통해 이론 최대의 **약 72%(~230 TFLOPS)**를 달성한다. 이는 FlashAttention-1 대비 약 **2배**의 처리량 향상이며, 현재 LLM 추론 및 학습 프레임워크 전반에서 사실상 표준 어텐션 구현으로 채택되어 있다.
 
-![FlashAttention-2 아키텍처 — 쿼리 루프 병렬화와 non-matmul FLOP 최소화로 GPU 활용률을 극대화한 구조](figures/architecture.svg)
+![FlashAttention-2 아키텍처 - 쿼리 루프 병렬화와 non-matmul FLOP 최소화로 GPU 활용률을 극대화한 구조](figures/architecture.svg)
 
-*Figure 1: FlashAttention-2 아키텍처 — FlashAttention-1의 타일링 전략을 계승하면서 쿼리 기준 병렬화, non-matmul 연산 최소화, GQA/MQA 네이티브 지원으로 A100 이론 최대의 72%를 달성한다.*
+*Figure 1: FlashAttention-2 아키텍처 - FlashAttention-1의 타일링 전략을 계승하면서 쿼리 기준 병렬화, non-matmul 연산 최소화, GQA/MQA 네이티브 지원으로 A100 이론 최대의 72%를 달성한다.*
 
 ## 기법 상세
 
 FlashAttention의 핵심 아이디어는 어텐션 행렬을 블록 단위로 나누어 SRAM에서 계산하고, 중간 결과를 HBM에 기록하지 않는 것이다. 다음 다이어그램은 이 타일링 기반 포워드 패스의 전체 흐름을 보여준다.
 
 ![FlashAttention 포워드 패스 타일링 다이어그램](figures/fig_1.png)
-*Figure 1: FlashAttention 포워드 패스 다이어그램 — K, V를 블록으로 분할하여 SRAM에서 계산 후 rescaling으로 정확한 결과를 얻으며, 중간 행렬 S, P의 HBM 접근을 회피한다. (Source: Dao, 2023)*
+*Figure 1: FlashAttention 포워드 패스 다이어그램 - K, V를 블록으로 분할하여 SRAM에서 계산 후 rescaling으로 정확한 결과를 얻으며, 중간 행렬 S, P의 HBM 접근을 회피한다. (Source: Dao, 2023)*
 
 ### 개선 1: Non-matmul FLOP 최소화
 
@@ -41,7 +41,7 @@ FlashAttention-1에서는 K, V 블록을 외부 루프, Q 블록을 내부 루�
 FlashAttention-2는 **루프 구조를 뒤집었다**: Q 블록을 외부 루프로, K/V 블록을 내부 루프로 변경했다. 이에 따라 포워드/백워드 패스에서 워커(스레드 블록)의 병렬화 방식도 달라진다.
 
 ![포워드 및 백워드 패스에서의 워커 병렬화 방식](figures/fig_2.png)
-*Figure 2: 포워드/백워드 패스 병렬화 전략 — 포워드 패스에서는 각 워커가 어텐션 행렬의 행 블록을 담당하고, 백워드 패스에서는 열 블록을 담당한다. (Source: Dao, 2023)*
+*Figure 2: 포워드/백워드 패스 병렬화 전략 - 포워드 패스에서는 각 워커가 어텐션 행렬의 행 블록을 담당하고, 백워드 패스에서는 열 블록을 담당한다. (Source: Dao, 2023)*
 
 ```
 FlashAttention-1:
@@ -57,11 +57,11 @@ FlashAttention-2:
 
 이 변경으로 각 워프가 **독립적으로 자신의 출력 행을 계산**할 수 있게 되어, 워프 간 공유 메모리 통신과 동기화가 **완전히 제거**되었다. 이는 전체 성능의 핵심적인 향상 요소다. 아래 그림은 FA1과 FA2의 워프 파티셔닝 차이를 명확히 보여준다.
 
-![FlashAttention-1의 워프 파티셔닝 — K를 워프 간 분할](figures/fig_3_1.png)
-*Figure 3a: FlashAttention-1 워프 파티셔닝 — K를 워프 간에 분할하여 결과를 합산(reduction)해야 하므로 워프 간 동기화가 필요하다. (Source: Dao, 2023)*
+![FlashAttention-1의 워프 파티셔닝 - K를 워프 간 분할](figures/fig_3_1.png)
+*Figure 3a: FlashAttention-1 워프 파티셔닝 - K를 워프 간에 분할하여 결과를 합산(reduction)해야 하므로 워프 간 동기화가 필요하다. (Source: Dao, 2023)*
 
-![FlashAttention-2의 워프 파티셔닝 — Q를 워프 간 분할](figures/fig_3_2.png)
-*Figure 3b: FlashAttention-2 워프 파티셔닝 — Q를 워프 간에 분할하여 각 워프가 독립적으로 출력 행을 계산하므로, 워프 간 통신 없이 병렬 실행이 가능하다. (Source: Dao, 2023)*
+![FlashAttention-2의 워프 파티셔닝 - Q를 워프 간 분할](figures/fig_3_2.png)
+*Figure 3b: FlashAttention-2 워프 파티셔닝 - Q를 워프 간에 분할하여 각 워프가 독립적으로 출력 행을 계산하므로, 워프 간 통신 없이 병렬 실행이 가능하다. (Source: Dao, 2023)*
 
 ### 개선 3: GQA/MQA 네이티브 지원
 
@@ -90,7 +90,7 @@ FlashAttention-1에서 GQA를 사용하려면 KV 텐서를 쿼리 헤드 수만�
 다음 벤치마크는 A100 80GB에서 다양한 시퀀스 길이에 따른 FlashAttention-2의 속도 우위를 보여준다.
 
 ![A100 GPU에서의 어텐션 구현별 속도 비교 벤치마크](figures/fig_7.png)
-*Figure 4: A100 80GB에서 시퀀스 길이별 어텐션 속도 비교 (head_dim=64, causal mask 없음) — FlashAttention-2가 PyTorch, xFormers, FA1, Triton 구현을 모두 압도하며, 16K 시퀀스에서 176 TFLOPS/s를 달성한다. (Source: Dao, 2023)*
+*Figure 4: A100 80GB에서 시퀀스 길이별 어텐션 속도 비교 (head_dim=64, causal mask 없음) - FlashAttention-2가 PyTorch, xFormers, FA1, Triton 구현을 모두 압도하며, 16K 시퀀스에서 176 TFLOPS/s를 달성한다. (Source: Dao, 2023)*
 
 ### A100 80GB SXM5 기준 처리량
 
@@ -200,4 +200,4 @@ model = AutoModelForCausalLM.from_pretrained(
 
 ## 관련 문서
 
-- [[flash-attention|FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness]] — 발전 기반
+- [[flash-attention|FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness]] - 발전 기반

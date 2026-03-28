@@ -10,9 +10,9 @@ Devin의 발표는 AI 업계에 폭발적 반향을 불러일으켰다. SWE-benc
 
 Devin의 등장이 가져온 가장 큰 변화는 **"AI 코딩 도구의 패러다임 전환"**이다. Copilot으로 대표되는 자동완성(autocomplete) 패러다임에서, 에이전트가 자율적으로 개발 전체를 수행하는 에이전틱(agentic) 패러다임으로의 전환을 대중화시켰다. 이후 Anthropic의 Claude Code, OpenAI의 Codex Agent 등이 이 방향을 따라갔다.
 
-![Devin 아키텍처 — 코드 에디터, 터미널, 웹 브라우저를 통합한 자율 AI 소프트웨어 엔지니어 환경](figures/architecture.svg)
+![Devin 아키텍처 - 코드 에디터, 터미널, 웹 브라우저를 통합한 자율 AI 소프트웨어 엔지니어 환경](figures/architecture.svg)
 
-*Figure 1: Devin 아키텍처 — 코드 에디터·터미널·웹 브라우저를 통합한 개발 환경에서 장기 계획 수립, 코드 작성, 테스트 실행, 배포까지 전체 개발 라이프사이클을 자율적으로 처리한다.*
+*Figure 1: Devin 아키텍처 - 코드 에디터·터미널·웹 브라우저를 통합한 개발 환경에서 장기 계획 수립, 코드 작성, 테스트 실행, 배포까지 전체 개발 라이프사이클을 자율적으로 처리한다.*
 
 ## 아키텍처 상세
 
@@ -162,4 +162,4 @@ Devin은 SWE-agent에서 영감을 받은 것으로 추정된다. 이후 오픈�
 
 ## 관련 문서
 
-- [[swe-agent|SWE-agent]] — 영감
+- [[swe-agent|SWE-agent]] - 영감

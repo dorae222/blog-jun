@@ -15,8 +15,8 @@ DeBERTa의 등장은 BERT → RoBERTa → ALBERT → ELECTRA로 이어지던 인
 
 다음 다이어그램은 DeBERTa의 전체 아키텍처를 보여준다. Disentangled Attention과 Enhanced Mask Decoder가 핵심 구성 요소이다.
 
-![DeBERTa 전체 아키텍처 다이어그램 — Disentangled Attention과 Enhanced Mask Decoder 구조](figures/architecture.png)
-*Figure 1: DeBERTa 아키텍처 — 내용(content)과 위치(position) 벡터를 분리하여 어텐션을 계산하고, 최상위 레이어에서 EMD를 통해 절대 위치를 주입하는 구조. (Source: DeBERTa 논문)*
+![DeBERTa 전체 아키텍처 다이어그램 - Disentangled Attention과 Enhanced Mask Decoder 구조](figures/architecture.png)
+*Figure 1: DeBERTa 아키텍처 - 내용(content)과 위치(position) 벡터를 분리하여 어텐션을 계산하고, 최상위 레이어에서 EMD를 통해 절대 위치를 주입하는 구조. (Source: DeBERTa 논문)*
 
 ### 2.1 Disentangled Attention 메커니즘
 
@@ -48,11 +48,11 @@ Disentangled Attention은 사전 학습 중 상대 위치만 사용하므로, **
 
 아래 그림은 기존 BERT 디코딩 레이어와 DeBERTa의 Enhanced Mask Decoder를 비교한 것이다.
 
-![BERT 디코딩 레이어 — 히든 상태 H로부터 Q, K, V를 직접 생성하는 표준 구조](figures/fig_5.png)
-*Figure 2: (a) BERT 디코딩 레이어 — 히든 상태 H에서 Q, K, V를 생성하여 Language Model Head로 전달하는 단순한 구조. (Source: DeBERTa 논문)*
+![BERT 디코딩 레이어 - 히든 상태 H로부터 Q, K, V를 직접 생성하는 표준 구조](figures/fig_5.png)
+*Figure 2: (a) BERT 디코딩 레이어 - 히든 상태 H에서 Q, K, V를 생성하여 Language Model Head로 전달하는 단순한 구조. (Source: DeBERTa 논문)*
 
-![DeBERTa의 Enhanced Mask Decoder — 절대 위치 정보 I를 추가로 주입하여 Query를 생성하는 구조](figures/fig_6.png)
-*Figure 3: (b) Enhanced Mask Decoder — 절대 위치 임베딩 I를 별도로 주입하여 Query를 구성하고, n번 반복하여 디코딩 정확도를 높이는 구조. (Source: DeBERTa 논문)*
+![DeBERTa의 Enhanced Mask Decoder - 절대 위치 정보 I를 추가로 주입하여 Query를 생성하는 구조](figures/fig_6.png)
+*Figure 3: (b) Enhanced Mask Decoder - 절대 위치 임베딩 I를 별도로 주입하여 Query를 구성하고, n번 반복하여 디코딩 정확도를 높이는 구조. (Source: DeBERTa 논문)*
 
 EMD는 이 문제를 해결하기 위해 **최상위 Transformer 레이어 이후에 절대 위치 임베딩을 주입**한다:
 
@@ -119,8 +119,8 @@ DeBERTa는 SuperGLUE에서 인간 기준선을 **0.5점 초과**하며 최초의
 
 다음 그래프는 사전 학습 스텝 수에 따른 MNLI 정확도 변화를 보여준다. DeBERTa가 동일 학습량 대비 일관되게 높은 성능을 달성하는 것을 확인할 수 있다.
 
-![사전 학습 스텝에 따른 MNLI 정확도 비교 — DeBERTa vs RoBERTa vs XLNet](figures/fig_1_1.png)
-*Figure 4: MNLI 개발 세트 정확도 — DeBERTa(Base)가 RoBERTa, XLNet 대비 모든 학습 스텝에서 우위를 보이며, RoBERTa-ReImp보다도 빠르게 수렴한다. (Source: DeBERTa 논문)*
+![사전 학습 스텝에 따른 MNLI 정확도 비교 - DeBERTa vs RoBERTa vs XLNet](figures/fig_1_1.png)
+*Figure 4: MNLI 개발 세트 정확도 - DeBERTa(Base)가 RoBERTa, XLNet 대비 모든 학습 스텝에서 우위를 보이며, RoBERTa-ReImp보다도 빠르게 수렴한다. (Source: DeBERTa 논문)*
 
 ### 4.2 학습 효율
 
@@ -134,7 +134,7 @@ DeBERTa는 SuperGLUE에서 인간 기준선을 **0.5점 초과**하며 최초의
 다음은 DeBERTa와 RoBERTa 및 DeBERTa 변형 모델들의 어텐션 패턴을 비교한 것이다. 분리 어텐션의 각 구성 요소가 어텐션 분포에 미치는 영향을 시각적으로 확인할 수 있다.
 
 ![DeBERTa, RoBERTa, DeBERTa 변형 모델의 마지막 레이어 어텐션 패턴 비교 히트맵](figures/fig_7.png)
-*Figure 5: 마지막 레이어 어텐션 패턴 비교 — DeBERTa(전체), RoBERTa, EMD 제거 버전, C2P 제거 버전, P2C 제거 버전 순서로 비교. DeBERTa가 가장 선명하고 구조화된 어텐션 패턴을 보인다. (Source: DeBERTa 논문)*
+*Figure 5: 마지막 레이어 어텐션 패턴 비교 - DeBERTa(전체), RoBERTa, EMD 제거 버전, C2P 제거 버전, P2C 제거 버전 순서로 비교. DeBERTa가 가장 선명하고 구조화된 어텐션 패턴을 보인다. (Source: DeBERTa 논문)*
 
 ## 5. 관련 모델 비교
 
@@ -175,4 +175,4 @@ DeBERTa는 "더 큰 모델이 더 좋다"는 단순한 스케일링 접근을 �
 
 ## 관련 문서
 
-- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] — 발전 기반
+- [[bert|BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding]] - 발전 기반

@@ -8,16 +8,16 @@ Swin Transformer는 2021년 Microsoft Research Asia의 Ze Liu 등이 발표한 �
 
 Swin Transformer는 ICCV 2021 Best Paper Award를 수상하였으며, 2024년 기준 10,000회 이상의 인용으로 비전 트랜스포머 분야에서 가장 영향력 있는 연구 중 하나이다.
 
-![Swin Transformer 아키텍처 — 이동 윈도우 기반 지역 어텐션과 계층적 특징 맵 구조](figures/architecture.svg)
+![Swin Transformer 아키텍처 - 이동 윈도우 기반 지역 어텐션과 계층적 특징 맵 구조](figures/architecture.svg)
 
-*Figure 1: Swin Transformer 아키텍처 — 이동 윈도우(Shifted Window)로 선형 복잡도의 지역 어텐션을 수행하고, 패치 병합으로 계층적 특징 맵을 생성하여 분류, 탐지, 세그멘테이션을 통합 지원한다.*
+*Figure 1: Swin Transformer 아키텍처 - 이동 윈도우(Shifted Window)로 선형 복잡도의 지역 어텐션을 수행하고, 패치 병합으로 계층적 특징 맵을 생성하여 분류, 탐지, 세그멘테이션을 통합 지원한다.*
 
 ## 아키텍처 상세
 
 아래 그림은 Swin Transformer와 기존 ViT의 구조적 차이를 보여준다. Swin Transformer는 계층적 특징 맵을 생성하여 분류뿐 아니라 탐지·세그멘테이션에도 활용 가능한 반면, ViT는 단일 해상도의 특징 맵만 생성한다.
 
-![Swin Transformer와 ViT의 구조 비교 — 계층적 특징 맵 vs 단일 해상도](figures/fig_1.png)
-*Figure 1: Swin Transformer vs ViT 구조 비교 — (a) Swin Transformer는 패치 병합으로 계층적 특징 맵(4x, 8x, 16x)을 생성하며 선형 복잡도를 가진다. (b) ViT는 전역 어텐션으로 단일 저해상도(16x) 특징 맵만 생성하며 이차 복잡도를 가진다. (Source: Liu et al., 2021)*
+![Swin Transformer와 ViT의 구조 비교 - 계층적 특징 맵 vs 단일 해상도](figures/fig_1.png)
+*Figure 1: Swin Transformer vs ViT 구조 비교 - (a) Swin Transformer는 패치 병합으로 계층적 특징 맵(4x, 8x, 16x)을 생성하며 선형 복잡도를 가진다. (b) ViT는 전역 어텐션으로 단일 저해상도(16x) 특징 맵만 생성하며 이차 복잡도를 가진다. (Source: Liu et al., 2021)*
 
 ### 계층적 구조(Hierarchical Structure)
 
@@ -44,8 +44,8 @@ $M$은 윈도우 크기(7)로 고정이고 $N$은 전체 토큰 수이므로, �
 
 윈도우 내부 어텐션만으로는 인접 윈도우 간 정보 교류가 불가능하다. 아래 그림은 이동 윈도우 메커니즘의 핵심 아이디어를 시각적으로 보여준다.
 
-![이동 윈도우 방식의 셀프 어텐션 계산 — Layer l과 l+1에서의 윈도우 위치 변화](figures/fig_2.png)
-*Figure 2: 이동 윈도우(Shifted Window) 어텐션 — Layer l에서 표준 윈도우 분할로 어텐션을 계산한 후, Layer l+1에서 윈도우를 이동시켜 이전 윈도우 경계를 넘는 연결을 생성한다. (Source: Liu et al., 2021)*
+![이동 윈도우 방식의 셀프 어텐션 계산 - Layer l과 l+1에서의 윈도우 위치 변화](figures/fig_2.png)
+*Figure 2: 이동 윈도우(Shifted Window) 어텐션 - Layer l에서 표준 윈도우 분할로 어텐션을 계산한 후, Layer l+1에서 윈도우를 이동시켜 이전 윈도우 경계를 넘는 연결을 생성한다. (Source: Liu et al., 2021)*
 
 Swin Transformer는 연속된 두 트랜스포머 블록에서 **윈도우 위치를 번갈아 이동**시켜 이 문제를 해결한다:
 
@@ -59,8 +59,8 @@ $$z^{l+1} = \text{FFN}(\text{LN}(\hat{z}^{l+1})) + \hat{z}^{l+1}$$
 
 이동 시 가장자리에서 발생하는 불완전한 윈도우는 **순환 이동(cyclic shift) + 마스킹**으로 효율적으로 처리한다. 다음 그림은 이 순환 이동 기법의 배치 계산 방식을 보여준다.
 
-![이동 윈도우에서의 효율적 배치 계산 — 순환 이동과 마스킹 방식](figures/fig_4.png)
-*Figure 3: 순환 이동(Cyclic Shift) 기반 효율적 배치 계산 — 윈도우 분할 후 순환 이동을 적용하고, 마스킹된 MSA를 수행한 뒤 역순환 이동으로 원래 위치를 복원한다. 이를 통해 추가 연산 없이 이동 윈도우를 효율적으로 구현한다. (Source: Liu et al., 2021)*
+![이동 윈도우에서의 효율적 배치 계산 - 순환 이동과 마스킹 방식](figures/fig_4.png)
+*Figure 3: 순환 이동(Cyclic Shift) 기반 효율적 배치 계산 - 윈도우 분할 후 순환 이동을 적용하고, 마스킹된 MSA를 수행한 뒤 역순환 이동으로 원래 위치를 복원한다. 이를 통해 추가 연산 없이 이동 윈도우를 효율적으로 구현한다. (Source: Liu et al., 2021)*
 
 ### 상대적 위치 편향(Relative Position Bias)
 
@@ -73,7 +73,7 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d}} + B\righ
 다음 그림은 Swin Transformer(Swin-T)의 전체 아키텍처와 트랜스포머 블록 내부 구조를 상세히 보여준다.
 
 ![Swin-T 전체 아키텍처와 연속된 두 트랜스포머 블록의 내부 구조](figures/fig_3.png)
-*Figure 4: Swin-T 아키텍처 상세 — (a) 4단계 계층적 구조에서 패치 병합과 트랜스포머 블록의 배치, (b) W-MSA와 SW-MSA를 교대로 적용하는 연속된 두 트랜스포머 블록의 내부 구조. (Source: Liu et al., 2021)*
+*Figure 4: Swin-T 아키텍처 상세 - (a) 4단계 계층적 구조에서 패치 병합과 트랜스포머 블록의 배치, (b) W-MSA와 SW-MSA를 교대로 적용하는 연속된 두 트랜스포머 블록의 내부 구조. (Source: Liu et al., 2021)*
 
 ## 핵심 혁신
 
@@ -147,4 +147,4 @@ Swin Transformer V2(2022)에서 스케일링과 해상도 전이 기법이 개�
 
 ## 관련 문서
 
-- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] — 발전 기반
+- [[vit|An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]] - 발전 기반

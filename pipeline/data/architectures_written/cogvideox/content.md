@@ -129,4 +129,4 @@ CogVideoX가 제안한 Expert AdaLN과 텍스트-비디오 시퀀스 결합 방�
 
 ## 관련 문서
 
-- [[dit|DiT (Diffusion Transformers)]] — 발전 기반
+- [[dit|DiT (Diffusion Transformers)]] - 발전 기반

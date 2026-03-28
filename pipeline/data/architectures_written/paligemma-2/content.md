@@ -12,8 +12,8 @@ PaliGemma 2의 설계 철학은 **범용 파인튜닝 기반 모델(fine-tuning 
 
 다음 다이어그램은 PaliGemma 2의 전체 아키텍처를 상세히 보여준다. SigLIP 비전 인코더부터 Gemma 2 LLM 백본까지의 데이터 흐름과 학습 파이프라인을 확인할 수 있다.
 
-![PaliGemma 2 전체 아키텍처 다이어그램 — SigLIP 비전 인코더, 선형 프로젝터, Gemma 2 LLM 구조](figures/architecture.png)
-*Figure 1: PaliGemma 2 아키텍처 개요 — SigLIP-SO400M 비전 인코더, Fusion Linear Projection, Gemma 2 LLM 백본의 전체 파이프라인과 4단계 학습 과정. (Source: Google)*
+![PaliGemma 2 전체 아키텍처 다이어그램 - SigLIP 비전 인코더, 선형 프로젝터, Gemma 2 LLM 구조](figures/architecture.png)
+*Figure 1: PaliGemma 2 아키텍처 개요 - SigLIP-SO400M 비전 인코더, Fusion Linear Projection, Gemma 2 LLM 백본의 전체 파이프라인과 4단계 학습 과정. (Source: Google)*
 
 ### 전체 구조
 
@@ -35,8 +35,8 @@ SigLIP이 이미지를 14×14 패치로 분할하고, 각 패치에서 시각 �
 
 아래 그림은 PaliGemma 2의 간결한 모델 구조를 보여준다. 해상도(224/448/896px)와 모델 크기(2B/9B/27B)의 조합을 시각적으로 확인할 수 있다.
 
-![PaliGemma 2 모델 구조 — SigLIP 인코더와 Gemma 2의 크기별 조합](figures/fig_1.png)
-*Figure 2: PaliGemma 2 모델 구조 — SigLIP-400M 인코더가 해상도별로 256/1024/4096개의 이미지 토큰을 생성하고, 선형 프로젝터를 통해 Gemma 2(2B/9B/27B)에 전달된다. (Source: arXiv 2412.03555)*
+![PaliGemma 2 모델 구조 - SigLIP 인코더와 Gemma 2의 크기별 조합](figures/fig_1.png)
+*Figure 2: PaliGemma 2 모델 구조 - SigLIP-400M 인코더가 해상도별로 256/1024/4096개의 이미지 토큰을 생성하고, 선형 프로젝터를 통해 Gemma 2(2B/9B/27B)에 전달된다. (Source: arXiv 2412.03555)*
 
 시각 토큰은 선형 프로젝터를 통해 Gemma 2의 임베딩 공간으로 매핑된 후, 텍스트 토큰 앞에 prefix로 추가된다:
 
@@ -67,8 +67,8 @@ Gemma 2는 두 가지 핵심 기법으로 긴 시퀀스 처리 효율을 높인�
 
 3가지 모델 크기 × 3가지 해상도 = 9가지 조합을 제공하여, 배포 환경(엣지 vs 클라우드)과 태스크 특성(분류 vs OCR)에 최적화된 선택이 가능하다. 다음 그림은 태스크별로 모델 크기와 해상도에 대한 민감도가 어떻게 다른지 보여준다.
 
-![태스크별 모델 크기 및 해상도 민감도 분석 — 크기/해상도 변경에 따른 성능 변화 패턴](figures/fig_3.png)
-*Figure 3: 태스크별 크기-해상도 민감도 — 태스크에 따라 모델 크기에 민감한 유형, 해상도에 민감한 유형, 둘 다에 민감한 유형으로 분류된다. OCR/문서 태스크는 해상도에, 추론 태스크는 모델 크기에 더 민감하다. (Source: arXiv 2412.03555)*
+![태스크별 모델 크기 및 해상도 민감도 분석 - 크기/해상도 변경에 따른 성능 변화 패턴](figures/fig_3.png)
+*Figure 3: 태스크별 크기-해상도 민감도 - 태스크에 따라 모델 크기에 민감한 유형, 해상도에 민감한 유형, 둘 다에 민감한 유형으로 분류된다. OCR/문서 태스크는 해상도에, 추론 태스크는 모델 크기에 더 민감하다. (Source: arXiv 2412.03555)*
 
 ### 3. SigLIP + Gemma 2 시너지
 
@@ -78,8 +78,8 @@ SigLIP의 효율적인 시그모이드 손실과 Gemma 2의 효율적인 어텐�
 
 아래 그래프는 모델 크기(3B/10B/28B)와 해상도(224/448/896px)에 따른 태스크별 전이 학습 성능을 보여준다. 대부분의 태스크에서 모델 크기와 해상도가 증가할수록 성능이 향상되는 것을 확인할 수 있다.
 
-![PaliGemma 2 모델 크기-해상도별 전이 학습 성능 — 30개 이상 벤치마크 결과](figures/fig_4.png)
-*Figure 4: 모델 크기 및 해상도에 따른 전이 학습 성능 — 3B에서 28B로, 224px에서 896px로 확장할수록 대부분의 태스크에서 성능이 향상된다. 밝은 선이 높은 해상도에 해당. (Source: arXiv 2412.03555)*
+![PaliGemma 2 모델 크기-해상도별 전이 학습 성능 - 30개 이상 벤치마크 결과](figures/fig_4.png)
+*Figure 4: 모델 크기 및 해상도에 따른 전이 학습 성능 - 3B에서 28B로, 224px에서 896px로 확장할수록 대부분의 태스크에서 성능이 향상된다. 밝은 선이 높은 해상도에 해당. (Source: arXiv 2412.03555)*
 
 파인튜닝 후 성능 (태스크별):
 
@@ -116,8 +116,8 @@ SigLIP의 효율적인 시그모이드 손실과 Gemma 2의 효율적인 어텐�
 
 다음 히트맵은 모델 크기와 학습률의 최적 조합을 태스크별로 시각화한 것이다. 큰 모델일수록 최적 학습률이 낮아지는 경향을 확인할 수 있다.
 
-![태스크별 모델 크기-학습률 최적 조합 히트맵 — 큰 모델일수록 낮은 학습률이 최적](figures/fig_5.png)
-*Figure 5: 모델 크기별 최적 학습률 — 모델이 커질수록 최적 전이 학습률이 낮아지는 경향을 보인다. 짙은 색이 높은 성능을 나타낸다. (Source: arXiv 2412.03555)*
+![태스크별 모델 크기-학습률 최적 조합 히트맵 - 큰 모델일수록 낮은 학습률이 최적](figures/fig_5.png)
+*Figure 5: 모델 크기별 최적 학습률 - 모델이 커질수록 최적 전이 학습률이 낮아지는 경향을 보인다. 짙은 색이 높은 성능을 나타낸다. (Source: arXiv 2412.03555)*
 
 ## 실무 활용
 
@@ -155,5 +155,5 @@ PaliGemma 2의 파인튜닝 중심 설계는 특히 **특수 도메인**에서 �
 
 ## 관련 문서
 
-- [[gemma|Gemma: Open Models Based on Gemini Research and Technology]] — 발전 기반
-- [[siglip|SigLIP]] — 사용 기법
+- [[gemma|Gemma: Open Models Based on Gemini Research and Technology]] - 발전 기반
+- [[siglip|SigLIP]] - 사용 기법

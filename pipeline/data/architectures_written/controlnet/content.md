@@ -13,15 +13,15 @@ ControlNet은 2023년 Stanford University의 Lvmin Zhang 등이 발표한 연구
 
 다음 다이어그램은 ControlNet의 전체 아키텍처를 상세히 보여준다. Frozen SD U-Net과 Trainable Copy의 연결, Zero Convolution의 원리, 지원되는 조건 유형을 확인할 수 있다.
 
-![ControlNet 전체 아키텍처 다이어그램 — Frozen U-Net, Trainable Copy, Zero Convolution 구조](figures/architecture.png)
-*Figure 1: ControlNet 아키텍처 개요 — 사전학습된 SD U-Net(동결)과 학습 가능한 인코더 복사본이 Zero Convolution으로 연결된다. Canny Edge, Depth Map, OpenPose 등 다양한 공간 조건을 지원한다. (Source: Stanford University)*
+![ControlNet 전체 아키텍처 다이어그램 - Frozen U-Net, Trainable Copy, Zero Convolution 구조](figures/architecture.png)
+*Figure 1: ControlNet 아키텍처 개요 - 사전학습된 SD U-Net(동결)과 학습 가능한 인코더 복사본이 Zero Convolution으로 연결된다. Canny Edge, Depth Map, OpenPose 등 다양한 공간 조건을 지원한다. (Source: Stanford University)*
 
 ### 핵심 설계: Trainable Copy + Zero Convolution
 
 아래 그림은 ControlNet의 핵심 설계를 보여준다. 원본 네트워크 블록을 잠그고, 학습 가능한 복사본을 Zero Convolution으로 연결하는 구조이다.
 
-![ControlNet 블록 구조 — 원본 블록 동결, Trainable Copy와 Zero Convolution 연결](figures/fig_2.png)
-*Figure 2: ControlNet 블록 설계 — (a) 원본 네트워크 블록을 (b) 동결(locked)하고, 학습 가능한 복사본(trainable copy)을 생성하여 Zero Convolution으로 조건 $c$를 입력하고 출력을 원본에 더한다. (Source: arXiv 2302.05543)*
+![ControlNet 블록 구조 - 원본 블록 동결, Trainable Copy와 Zero Convolution 연결](figures/fig_2.png)
+*Figure 2: ControlNet 블록 설계 - (a) 원본 네트워크 블록을 (b) 동결(locked)하고, 학습 가능한 복사본(trainable copy)을 생성하여 Zero Convolution으로 조건 $c$를 입력하고 출력을 원본에 더한다. (Source: arXiv 2302.05543)*
 
 ControlNet의 아키텍처는 우아하면서도 효과적이다:
 
@@ -50,8 +50,8 @@ $$y_c = \mathcal{F}(x; \Theta) + \mathcal{Z}\left(\mathcal{F}(x + \mathcal{Z}(c;
 
 다음은 Stable Diffusion의 U-Net 전체 구조와 ControlNet의 연결 방식을 보여주는 상세도이다. 인코더 블록과 미들 블록의 Trainable Copy가 Zero Convolution을 통해 디코더에 연결된다.
 
-![Stable Diffusion U-Net과 ControlNet 연결 구조 — 인코더 복사본이 Zero Convolution으로 디코더에 연결](figures/fig_3.png)
-*Figure 3: SD U-Net + ControlNet 구조 — 좌측이 동결된 원본 SD U-Net(인코더+디코더), 우측이 학습 가능한 인코더 복사본이다. 각 해상도 레벨(64/32/16/8)에서 Zero Convolution으로 연결된다. (Source: arXiv 2302.05543)*
+![Stable Diffusion U-Net과 ControlNet 연결 구조 - 인코더 복사본이 Zero Convolution으로 디코더에 연결](figures/fig_3.png)
+*Figure 3: SD U-Net + ControlNet 구조 - 좌측이 동결된 원본 SD U-Net(인코더+디코더), 우측이 학습 가능한 인코더 복사본이다. 각 해상도 레벨(64/32/16/8)에서 Zero Convolution으로 연결된다. (Source: arXiv 2302.05543)*
 
 ### Zero Convolution의 원리
 
@@ -73,8 +73,8 @@ $$\frac{\partial \mathcal{Z}}{\partial W_z} = x, \quad \frac{\partial \mathcal{Z
 
 ControlNet 논문에서는 이 현상을 **"급격한 수렴(sudden convergence)"**이라고 명명했다. 학습 전체 기간 동안 생성 이미지의 품질이 유지되다가, 특정 시점에서 모델이 갑자기 입력 조건을 따르기 시작한다. 아래 그림이 이 현상을 보여준다.
 
-![ControlNet 급격한 수렴 현상 — 학습 중 특정 시점에서 조건 따르기를 갑자기 학습](figures/fig_4.png)
-*Figure 4: 급격한 수렴 현상 — Zero Convolution 덕분에 학습 전체 기간 동안 고품질 이미지를 생성하다가, 특정 시점(6133 스텝)에서 입력 조건을 갑자기 따르기 시작한다. (Source: arXiv 2302.05543)*
+![ControlNet 급격한 수렴 현상 - 학습 중 특정 시점에서 조건 따르기를 갑자기 학습](figures/fig_4.png)
+*Figure 4: 급격한 수렴 현상 - Zero Convolution 덕분에 학습 전체 기간 동안 고품질 이미지를 생성하다가, 특정 시점(6133 스텝)에서 입력 조건을 갑자기 따르기 시작한다. (Source: arXiv 2302.05543)*
 
 ### 조건 신호의 주입 경로
 
@@ -104,8 +104,8 @@ $$y_c = \mathcal{F}(x; \Theta) + \sum_i w_i \cdot \mathcal{Z}_i(\cdot)$$
 2. **소규모 데이터 학습**: 수만 장의 조건-이미지 쌍만으로도 효과적인 ControlNet을 학습할 수 있다.
 3. **범용 어댑터 구조**: Canny Edge, HED, Depth, OpenPose, Scribble, Normal Map, Segmentation 등 거의 모든 공간 조건에 적용 가능하다. 아래 결과는 프롬프트 없이 다양한 조건만으로 생성한 이미지들이다.
 
-![ControlNet 다양한 조건별 생성 결과 — Canny, Depth, Sketch, HED, Segmentation, Pose 조건으로 프롬프트 없이 생성](figures/fig_7.jpg)
-*Figure 5: 다양한 조건별 생성 결과 — Canny Edge, Depth, Sketch, HED, Segmentation, OpenPose 등 7가지 조건으로 텍스트 프롬프트 없이도 의미적으로 일관된 이미지를 생성한다. (Source: arXiv 2302.05543)*
+![ControlNet 다양한 조건별 생성 결과 - Canny, Depth, Sketch, HED, Segmentation, Pose 조건으로 프롬프트 없이 생성](figures/fig_7.jpg)
+*Figure 5: 다양한 조건별 생성 결과 - Canny Edge, Depth, Sketch, HED, Segmentation, OpenPose 등 7가지 조건으로 텍스트 프롬프트 없이도 의미적으로 일관된 이미지를 생성한다. (Source: arXiv 2302.05543)*
 4. **플러그-앤-플레이**: 기존 확산 모델 생태계(LoRA, 커스텀 모델 등)와 자유롭게 조합 가능하다.
 
 ## 벤치마크/성능
@@ -213,4 +213,4 @@ ControlNet의 Zero Convolution 아이디어는 사전학습된 모델에 새로�
 
 ## 관련 문서
 
-- [[ldm|LDM (Latent Diffusion Models)]] — 발전 기반
+- [[ldm|LDM (Latent Diffusion Models)]] - 발전 기반
