@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Category, Tag, Series, Post, PostImage, PostTemplate, ArchitectureConcept, ArchitectureEntry
+from .models import (
+    Category, Tag, Series, Post, PostImage, PostTemplate,
+    ArchitectureConcept, ArchitectureEntry,
+    CloudServiceEntry, CloudServiceRelation,
+)
 
 
 @admin.register(Category)
@@ -63,4 +67,20 @@ class ArchitectureEntryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     inlines = [ConceptInline]
     exclude = ['concepts']  # managed via inline
+    readonly_fields = ['created_at', 'updated_at']
+
+
+class CloudServiceRelationInline(admin.TabularInline):
+    model = CloudServiceRelation
+    fk_name = 'from_service'
+    extra = 1
+
+
+@admin.register(CloudServiceEntry)
+class CloudServiceEntryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'provider', 'service_domain', 'importance', 'is_serverless', 'launch_year']
+    list_filter = ['provider', 'service_domain', 'is_serverless']
+    search_fields = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name',)}
+    inlines = [CloudServiceRelationInline]
     readonly_fields = ['created_at', 'updated_at']
