@@ -51,6 +51,15 @@ export const uploadArchitectureFigure = (slug, formData) =>
     headers: { 'Content-Type': 'multipart/form-data' },
   })
 
+// Cloud Service API
+export const getCloudServiceTree = (params) => client.get('/cloud-services/tree/', { params })
+export const updateCloudServicePosition = (slug, x, y) =>
+  client.post(`/cloud-services/${slug}/update_position/`, { x, y })
+export const createCloudServiceRelation = (data) =>
+  client.post('/cloud-services/relations/', data)
+export const deleteCloudServiceRelation = (fromSlug, toSlug) =>
+  client.delete('/cloud-services/relations/', { data: { from_slug: fromSlug, to_slug: toSlug } })
+
 // Cover Image API
 export const generateCover = (slug) => client.post(`/posts/${slug}/generate_cover/`)
 export const getCoverTemplates = () => client.get('/cover-templates/')

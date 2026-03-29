@@ -9,9 +9,9 @@ const RELATION_LABELS = {
   technique_used: 'technique',
 }
 
-function RelatedItem({ item, nodeMap, onNodeFocus }) {
+function RelatedItem({ item, nodeMap, onNodeFocus, categoryColors = CATEGORY_COLORS, categoryField = 'architecture_category' }) {
   const meta = nodeMap.get(item.slug)
-  const color = CATEGORY_COLORS[meta?.architecture_category] || '#8895A7'
+  const color = categoryColors[meta?.[categoryField]] || '#8895A7'
   const displayName = item.name || meta?.name || item.slug
   const org = meta?.organization
   const year = meta?.release_date?.slice(0, 4)
@@ -113,7 +113,7 @@ function Section({ icon: Icon, title, items, nodeMap, onNodeFocus, defaultExpand
   )
 }
 
-export default function ArchitectureRelatedPanel({ node, edges, nodes, onNodeFocus }) {
+export default function ArchitectureRelatedPanel({ node, edges, nodes, onNodeFocus, categoryColors = CATEGORY_COLORS, categoryField = 'architecture_category' }) {
   if (!node) return null
 
   const nodeMap = useMemo(() => {
@@ -145,7 +145,7 @@ export default function ArchitectureRelatedPanel({ node, edges, nodes, onNodeFoc
     return { parents, children, siblings: [...siblingMap.values()] }
   }, [node.slug, edges])
 
-  const catColor = CATEGORY_COLORS[node.architecture_category] || '#8895A7'
+  const catColor = categoryColors[node[categoryField]] || '#8895A7'
   const total = parents.length + children.length
 
   return (

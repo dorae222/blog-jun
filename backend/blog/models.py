@@ -341,3 +341,81 @@ class ArchitectureRelation(models.Model):
 
     def __str__(self):
         return f"{self.from_entry.slug} → {self.to_entry.slug} ({self.get_relation_type_display()})"
+
+
+class CloudServiceEntry(models.Model):
+    class ServiceDomain(models.TextChoices):
+        COMPUTE = 'compute', 'Compute'
+        STORAGE = 'storage', 'Storage'
+        DATABASE = 'database', 'Database'
+        NETWORKING = 'networking', 'Networking'
+        SECURITY = 'security', 'Security'
+        ANALYTICS = 'analytics', 'Analytics'
+        AI_ML = 'ai_ml', 'AI/ML'
+        DEVTOOLS = 'devtools', 'DevTools'
+        MANAGEMENT = 'management', 'Management'
+        INTEGRATION = 'integration', 'Integration'
+        CONTAINER = 'container', 'Container'
+        DEVOPS = 'devops', 'DevOps'
+
+    class Provider(models.TextChoices):
+        AWS = 'aws', 'AWS'
+        DOCKER = 'docker', 'Docker'
+        LXD = 'lxd', 'LXD'
+        GENERAL = 'general', 'General'
+
+    name = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    provider = models.CharField(
+        max_length=20, choices=Provider.choices, default=Provider.AWS
+    )
+    service_domain = models.CharField(max_length=20, choices=ServiceDomain.choices)
+    launch_year = models.IntegerField(null=True, blank=True)
+    is_serverless = models.BooleanField(default=False)
+    is_managed = models.BooleanField(default=True)
+    pricing_model = models.CharField(max_length=20, blank=True)
+    description = models.TextField(blank=True)
+    key_detail = models.TextField(blank=True)
+    use_cases = models.TextField(blank=True)
+    docs_url = models.URLField(blank=True)
+    icon_name = models.CharField(max_length=100, blank=True)
+    importance = models.IntegerField(default=5)
+    tree_x = models.FloatField(null=True, blank=True)
+    tree_y = models.FloatField(null=True, blank=True)
+    related_post = models.ForeignKey(
+        'Post', on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='cloud_service_entries'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['service_domain', 'name']
+        verbose_name_plural = 'cloud service entries'
+
+    def __str__(self):
+        return f"{self.name} ({self.get_service_domain_display()})"
+
+
+class CloudServiceRelation(models.Model):
+    class RelationType(models.TextChoices):
+        INTEGRATES_WITH = 'integrates_with', 'Integrates'
+        DEPENDS_ON = 'depends_on', 'Depends On'
+        ALTERNATIVE_TO = 'alternative_to', 'Alternative'
+        PART_OF = 'part_of', 'Part Of'
+        EVOLVED_FROM = 'evolved_from', 'Evolved From'
+
+    from_service = models.ForeignKey(
+        CloudServiceEntry, related_name='outgoing_relations', on_delete=models.CASCADE
+    )
+    to_service = models.ForeignKey(
+        CloudServiceEntry, related_name='incoming_relations', on_delete=models.CASCADE
+    )
+    relation_type = models.CharField(max_length=20, choices=RelationType.choices)
+    description = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        unique_together = ('from_service', 'to_service', 'relation_type')
+
+    def __str__(self):
+        return f"{self.from_service.slug} → {self.to_service.slug} ({self.get_relation_type_display()})"

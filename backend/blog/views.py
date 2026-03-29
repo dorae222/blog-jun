@@ -15,6 +15,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import (
     Category, Tag, Series, Post, PostImage, PostTemplate,
     ArchitectureConcept, ArchitectureEntry, ArchitectureRelation,
+    CloudServiceEntry, CloudServiceRelation,
 )
 from .serializers import (
     CategorySerializer, TagSerializer, SeriesSerializer,
@@ -27,6 +28,9 @@ from .serializers import (
     ArchitectureEntryWriteSerializer,
     ArchitectureTreeNodeSerializer,
     ArchitectureRelationSerializer,
+    CloudServiceTreeNodeSerializer,
+    CloudServiceDetailSerializer,
+    CloudServiceRelationSerializer,
 )
 
 
@@ -428,6 +432,85 @@ class ArchitectureEntryViewSet(viewsets.ModelViewSet):
             to_slug = request.data.get('to_slug')
             deleted, _ = ArchitectureRelation.objects.filter(
                 from_entry__slug=from_slug, to_entry__slug=to_slug
+            ).delete()
+            return Response({'deleted': deleted})
+
+
+class CloudServiceViewSet(viewsets.ModelViewSet):
+    lookup_field = 'slug'
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['provider', 'service_domain']
+
+    def get_queryset(self):
+        qs = CloudServiceEntry.objects.select_related('related_post')
+        if self.action == 'retrieve':
+            qs = qs.prefetch_related(
+                Prefetch('outgoing_relations',
+                         queryset=CloudServiceRelation.objects.select_related('to_service')),
+                Prefetch('incoming_relations',
+                         queryset=CloudServiceRelation.objects.select_related('from_service')),
+            )
+        return qs
+
+    def get_serializer_class(self):
+        if self.action == 'retrieve':
+            return CloudServiceDetailSerializer
+        return CloudServiceTreeNodeSerializer
+
+    @action(detail=False, methods=['get'])
+    def tree(self, request):
+        entries = CloudServiceEntry.objects.select_related('related_post').all()
+        relations = CloudServiceRelation.objects.select_related(
+            'from_service', 'to_service'
+        ).all()
+
+        domain = request.query_params.get('domain')
+        if domain:
+            entries = entries.filter(service_domain=domain)
+            slugs = set(entries.values_list('slug', flat=True))
+            relations = relations.filter(
+                Q(from_service__slug__in=slugs) | Q(to_service__slug__in=slugs)
+            )
+
+        return Response({
+            'nodes': CloudServiceTreeNodeSerializer(entries, many=True).data,
+            'edges': CloudServiceRelationSerializer(relations, many=True).data,
+        })
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def update_position(self, request, slug=None):
+        entry = self.get_object()
+        entry.tree_x = request.data.get('x')
+        entry.tree_y = request.data.get('y')
+        entry.save(update_fields=['tree_x', 'tree_y'])
+        return Response({'status': 'ok'})
+
+    @action(detail=False, methods=['post', 'delete'], permission_classes=[IsAuthenticated])
+    def relations(self, request):
+        if request.method == 'POST':
+            from_slug = request.data.get('from_slug')
+            to_slug = request.data.get('to_slug')
+            relation_type = request.data.get('relation_type', 'integrates_with')
+            description = request.data.get('description', '')
+            try:
+                from_svc = CloudServiceEntry.objects.get(slug=from_slug)
+                to_svc = CloudServiceEntry.objects.get(slug=to_slug)
+            except CloudServiceEntry.DoesNotExist:
+                return Response({'detail': 'Service not found.'}, status=404)
+            relation, created = CloudServiceRelation.objects.get_or_create(
+                from_service=from_svc, to_service=to_svc, relation_type=relation_type,
+                defaults={'description': description}
+            )
+            return Response(
+                CloudServiceRelationSerializer(relation).data,
+                status=status.HTTP_201_CREATED if created else status.HTTP_200_OK
+            )
+        else:
+            from_slug = request.data.get('from_slug')
+            to_slug = request.data.get('to_slug')
+            deleted, _ = CloudServiceRelation.objects.filter(
+                from_service__slug=from_slug, to_service__slug=to_slug
             ).delete()
             return Response({'deleted': deleted})
 

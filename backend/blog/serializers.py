@@ -3,6 +3,7 @@ from .mixins import ImageUrlMixin
 from .models import (
     Category, Tag, Series, Post, PostImage, PostTemplate, PostLink,
     ArchitectureConcept, ArchitectureEntry, ArchitectureRelation,
+    CloudServiceEntry, CloudServiceRelation,
 )
 
 
@@ -366,3 +367,57 @@ class ArchitectureEntryWriteSerializer(serializers.ModelSerializer):
         if concepts is not None:
             instance.concepts.set(concepts)
         return instance
+
+
+# ── Cloud Service Serializers ───────────────────────────
+
+class CloudServiceRelationSerializer(serializers.ModelSerializer):
+    from_slug = serializers.SlugRelatedField(
+        source='from_service', slug_field='slug', read_only=True
+    )
+    to_slug = serializers.SlugRelatedField(
+        source='to_service', slug_field='slug', read_only=True
+    )
+    from_name = serializers.CharField(source='from_service.name', read_only=True)
+    to_name = serializers.CharField(source='to_service.name', read_only=True)
+
+    class Meta:
+        model = CloudServiceRelation
+        fields = [
+            'id', 'from_slug', 'to_slug', 'from_name', 'to_name',
+            'relation_type', 'description',
+        ]
+
+
+class CloudServiceTreeNodeSerializer(serializers.ModelSerializer):
+    related_post_slug = serializers.SlugRelatedField(
+        source='related_post', slug_field='slug', read_only=True
+    )
+
+    class Meta:
+        model = CloudServiceEntry
+        fields = [
+            'id', 'name', 'slug', 'provider', 'service_domain',
+            'launch_year', 'is_serverless', 'is_managed', 'importance',
+            'tree_x', 'tree_y', 'key_detail', 'docs_url',
+            'related_post_slug',
+        ]
+
+
+class CloudServiceDetailSerializer(serializers.ModelSerializer):
+    related_post_slug = serializers.SlugRelatedField(
+        source='related_post', slug_field='slug', read_only=True
+    )
+    outgoing_relations = CloudServiceRelationSerializer(many=True, read_only=True)
+    incoming_relations = CloudServiceRelationSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = CloudServiceEntry
+        fields = [
+            'id', 'name', 'slug', 'provider', 'service_domain',
+            'launch_year', 'is_serverless', 'is_managed', 'pricing_model',
+            'description', 'key_detail', 'use_cases', 'docs_url',
+            'icon_name', 'importance', 'tree_x', 'tree_y',
+            'related_post_slug', 'outgoing_relations', 'incoming_relations',
+            'created_at', 'updated_at',
+        ]
