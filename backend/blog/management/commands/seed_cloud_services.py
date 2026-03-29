@@ -763,6 +763,41 @@ RELATIONS = [
     ("sns", "eventbridge", "alternative_to", "단순 Pub/Sub vs 이벤트 라우팅/필터링"),
 ]
 
+# ---------------------------------------------------------------------------
+# Service slug → best "overview" post slug mapping
+# ---------------------------------------------------------------------------
+# 서비스별 대표 포스트 매핑. 매핑에 없는 서비스는 related_post=None 으로 설정.
+# 새 개요 포스트를 작성하면 여기에 추가하세요.
+# ---------------------------------------------------------------------------
+SERVICE_POST_MAP = {
+    # Compute
+    "ec2": "amazon-ec2-enhanced-networking--네트워크-성능-향상-기능",
+    "ecs": "amazon-elastic-container-service-amazon-ecs",
+    # Storage
+    "s3": "amazon-simple-storage-serviceamazon-s3-개요",
+    # Database
+    "rds": "amazon-rds",
+    "aurora": "amazon-aurora-개요",
+    "elasticache": "amazon-elasticache인메모리-캐시-서비스-개요",
+    "redshift": "amazon-redshift-개요",
+    # Networking
+    "cloudfront": "amazon-cloudfront",
+    "api-gateway": "amazon-api-gateway-소개",
+    # Analytics
+    "athena": "amazon-athena-개요-및-활용",
+    "glue": "aws-glue-개요-및-주요-특징",
+    "kinesis": "amazon-kinesis-data-streams-kds-개요",
+    # AI/ML
+    "sagemaker": "amazon-sagemaker-ai-개요",
+    "bedrock": "amazon-bedrock",
+    "comprehend": "amazon-comprehend-개요",
+    # Integration
+    "eventbridge": "amazon-eventbridge-scheduler",
+    "step-functions": "aws-step-functions-개요-및-사용-사례",
+    # Management
+    "cloudtrail": "aws-cloudtrail이란",
+}
+
 
 class Command(BaseCommand):
     help = "35개 AWS 클라우드 서비스와 50+ 관계를 시딩합니다."
@@ -840,17 +875,31 @@ class Command(BaseCommand):
             f"(총 {len(RELATIONS)}개 정의)\n"
         )
 
-        # ── 3. 관련 포스트 연결 ─────────────────────────────────────────
+        # ── 3. 관련 포스트 연결 (명시적 매핑) ─────────────────────────────
         linked_count = 0
+        cleared_count = 0
         for svc in CloudServiceEntry.objects.filter(provider="aws"):
-            post = Post.objects.filter(slug__icontains=svc.slug).first()
-            if post and svc.related_post != post:
-                svc.related_post = post
+            target_slug = SERVICE_POST_MAP.get(svc.slug)
+            if target_slug:
+                post = Post.objects.filter(slug=target_slug).first()
+                if not post:
+                    self.stdout.write(
+                        self.style.WARNING(f"  [WARN] {svc.slug}: 매핑된 포스트 '{target_slug}' 없음")
+                    )
+                    continue
+                if svc.related_post != post:
+                    svc.related_post = post
+                    svc.save(update_fields=["related_post"])
+                    linked_count += 1
+                    self.stdout.write(f"  [LINK] {svc.slug} → {post.slug}")
+            elif svc.related_post is not None:
+                old_slug = svc.related_post.slug
+                svc.related_post = None
                 svc.save(update_fields=["related_post"])
-                linked_count += 1
-                self.stdout.write(f"  [LINK] {svc.slug} → {post.slug}")
+                cleared_count += 1
+                self.stdout.write(f"  [CLEAR] {svc.slug} (was → {old_slug})")
 
-        self.stdout.write(f"\n  포스트 연결: {linked_count}개\n")
+        self.stdout.write(f"\n  포스트 연결: {linked_count}개 연결, {cleared_count}개 정리\n")
 
         self.stdout.write(self.style.SUCCESS(
             f"\n=== 시딩 완료! 서비스 {len(SERVICES)}개, "
