@@ -4,7 +4,8 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 import { updateArchitecturePosition } from '../../api/posts'
 import { CATEGORY_COLORS, EDGE_STYLES } from '../../data/architectureConstants'
 
-function getNodeRadius(paramScale) {
+function getAINodeRadius(node) {
+  const paramScale = node.param_scale
   if (!paramScale) return 8
   const s = paramScale.toLowerCase()
   if (s.includes('b') || s.includes('billion')) {
@@ -38,7 +39,8 @@ function fitToNodes(svg, zoom, container, nodeData, duration = 600) {
 }
 
 // 하이라이트 상태 통합 처리
-function applyHighlightState(svg, { selectedSlug, searchQuery, baseEdgeOpacity, edgeData }) {
+function applyHighlightState(svgEl, opts) {
+  const { selectedSlug, searchQuery, baseEdgeOpacity, edgeData, categoryColors, edgeStyles, categoryField } = opts
   const lowerQuery = (searchQuery || '').toLowerCase()
 
   // 선택 노드에 연결된 slug 셋 계산
@@ -52,14 +54,14 @@ function applyHighlightState(svg, { selectedSlug, searchQuery, baseEdgeOpacity, 
     }
   }
 
-  svg.selectAll('.node-group').each(function (d) {
+  svgEl.selectAll('.node-group').each(function (d) {
     const circle = d3.select(this).select('circle')
     const label = d3.select(this).select('.node-label')
     const isSelected = d.slug === selectedSlug
     const isSearchMatch = lowerQuery && d.name.toLowerCase().includes(lowerQuery)
     const dimmed = lowerQuery && !isSearchMatch
     const isConnected = connectedSlugs.has(d.slug)
-    const catColor = CATEGORY_COLORS[d.architecture_category] || '#8895A7'
+    const catColor = categoryColors[d[categoryField]] || '#8895A7'
 
     if (isSelected) {
       circle
@@ -120,11 +122,11 @@ function applyHighlightState(svg, { selectedSlug, searchQuery, baseEdgeOpacity, 
   })
 
   // 엣지 처리
-  svg.selectAll('.links path').each(function (d) {
+  svgEl.selectAll('.links path').each(function (d) {
     const src = typeof d.source === 'object' ? d.source.slug : d.source
     const tgt = typeof d.target === 'object' ? d.target.slug : d.target
     const isConnected = selectedSlug && (src === selectedSlug || tgt === selectedSlug)
-    const style = EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from
+    const style = edgeStyles[d.relation_type] || Object.values(edgeStyles)[0]
 
     if (lowerQuery) {
       d3.select(this).style('opacity', 0.04).attr('stroke-width', style.width)
@@ -145,6 +147,11 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
   onNodeDoubleClick,
   selectedSlug,
   searchQuery,
+  categoryColors = CATEGORY_COLORS,
+  edgeStyles = EDGE_STYLES,
+  getNodeRadius: getNodeRadiusFn = getAINodeRadius,
+  categoryField = 'architecture_category',
+  onPositionUpdate = updateArchitecturePosition,
 }, ref) {
   const containerRef = useRef(null)
   const svgRef = useRef(null)
@@ -193,10 +200,10 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
     saveTimerRef.current = setTimeout(async () => {
       try {
-        await updateArchitecturePosition(slug, Math.round(x), Math.round(y))
+        await onPositionUpdate(slug, Math.round(x), Math.round(y))
       } catch { /* 위치 저장 실패는 무시 */ }
     }, 500)
-  }, [])
+  }, [onPositionUpdate])
 
   useEffect(() => {
     if (!nodes.length || !svgRef.current || !containerRef.current) return
@@ -210,7 +217,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       ...n,
       x: n.tree_x || undefined,
       y: n.tree_y || undefined,
-      radius: getNodeRadius(n.param_scale),
+      radius: getNodeRadiusFn(n),
     }))
     nodeDataRef.current = nodeData
 
@@ -268,7 +275,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
     feMerge.append('feMergeNode').attr('in', 'SourceGraphic')
 
     // 화살표 마커
-    Object.entries(EDGE_STYLES).forEach(([type, style]) => {
+    Object.entries(edgeStyles).forEach(([type, style]) => {
       defs.append('marker')
         .attr('id', `arrow-${type}`)
         .attr('viewBox', '0 -5 10 10')
@@ -289,11 +296,11 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       .data(edgeData)
       .join('path')
       .attr('fill', 'none')
-      .attr('stroke', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).stroke)
-      .attr('stroke-width', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).width)
-      .attr('stroke-dasharray', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).dasharray)
-      .attr('marker-end', d => `url(#arrow-${d.relation_type || 'evolved_from'})`)
-      .style('opacity', d => (EDGE_STYLES[d.relation_type] || EDGE_STYLES.evolved_from).opacity)
+      .attr('stroke', d => (edgeStyles[d.relation_type] || Object.values(edgeStyles)[0]).stroke)
+      .attr('stroke-width', d => (edgeStyles[d.relation_type] || Object.values(edgeStyles)[0]).width)
+      .attr('stroke-dasharray', d => (edgeStyles[d.relation_type] || Object.values(edgeStyles)[0]).dasharray)
+      .attr('marker-end', d => `url(#arrow-${d.relation_type || Object.keys(edgeStyles)[0]})`)
+      .style('opacity', d => (edgeStyles[d.relation_type] || Object.values(edgeStyles)[0]).opacity)
 
     // 노드 그룹
     const nodeGroup = g.append('g').attr('class', 'nodes')
@@ -306,9 +313,9 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
     // 노드 원 — 개선된 렌더링
     nodeGs.append('circle')
       .attr('r', d => d.radius)
-      .attr('fill', d => CATEGORY_COLORS[d.architecture_category] || '#8895A7')
+      .attr('fill', d => categoryColors[d[categoryField]] || '#8895A7')
       .attr('fill-opacity', 0.85)
-      .attr('stroke', d => CATEGORY_COLORS[d.architecture_category] || '#8895A7')
+      .attr('stroke', d => categoryColors[d[categoryField]] || '#8895A7')
       .attr('stroke-width', 2)
       .attr('stroke-opacity', 0.4)
 
@@ -346,7 +353,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
     // 호버 인터랙션 — 연결 노드/엣지 하이라이트
     nodeGs
       .on('mouseenter', (event, d) => {
-        const catColor = CATEGORY_COLORS[d.architecture_category] || '#8895A7'
+        const catColor = categoryColors[d[categoryField]] || '#8895A7'
 
         // 선택 상태에서는 tooltip만 표시, 노드/엣지 시각 변경 안 함
         if (!selectedSlug) {
@@ -385,18 +392,17 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
             const src = typeof e.source === 'object' ? e.source.slug : e.source
             const tgt = typeof e.target === 'object' ? e.target.slug : e.target
             const isConn = src === d.slug || tgt === d.slug
+            const eStyle = edgeStyles[e.relation_type] || Object.values(edgeStyles)[0]
             d3.select(this)
               .style('opacity', isConn ? 0.9 : 0.08)
-              .attr('stroke-width', isConn
-                ? (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width * 1.5
-                : (EDGE_STYLES[e.relation_type] || EDGE_STYLES.evolved_from).width
-              )
+              .attr('stroke-width', isConn ? eStyle.width * 1.5 : eStyle.width)
           })
         }
 
         // 툴팁은 항상 표시
-        const catBadge = d.architecture_category
-          ? `<span style="display:inline-block;background:${catColor}20;color:${catColor};font-size:10px;padding:1px 6px;border-radius:9px;margin-left:6px;font-weight:600">${d.architecture_category.toUpperCase()}</span>`
+        const catValue = d[categoryField]
+        const catBadge = catValue
+          ? `<span style="display:inline-block;background:${catColor}20;color:${catColor};font-size:10px;padding:1px 6px;border-radius:9px;margin-left:6px;font-weight:600">${catValue.toUpperCase()}</span>`
           : ''
         const org = d.organization
           ? `<div style="color:var(--text-secondary);margin-top:2px;font-size:11px">${d.organization}${d.release_date ? ` (${d.release_date.slice(0, 4)})` : ''}</div>`
@@ -431,6 +437,9 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
             searchQuery,
             baseEdgeOpacity: baseEdgeOpacityRef.current,
             edgeData,
+            categoryColors,
+            edgeStyles,
+            categoryField,
           })
         }
       })
@@ -468,7 +477,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
     nodeGs.call(drag)
 
     // 카테고리별 클러스터 중심점 계산
-    const categories = [...new Set(nodeData.map(n => n.architecture_category))]
+    const categories = [...new Set(nodeData.map(n => n[categoryField]))]
     const catCenters = {}
     categories.forEach((cat, i) => {
       const angle = (2 * Math.PI * i) / categories.length - Math.PI / 2
@@ -492,8 +501,8 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       )
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collision', d3.forceCollide().radius(d => d.radius + 10))
-      .force('clusterX', d3.forceX(d => catCenters[d.architecture_category]?.x || width / 2).strength(0.08))
-      .force('clusterY', d3.forceY(d => catCenters[d.architecture_category]?.y || height / 2).strength(0.08))
+      .force('clusterX', d3.forceX(d => catCenters[d[categoryField]]?.x || width / 2).strength(0.08))
+      .force('clusterY', d3.forceY(d => catCenters[d[categoryField]]?.y || height / 2).strength(0.08))
 
     simulationRef.current = simulation
 
@@ -527,7 +536,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
       if (initialZoomTimerRef.current) clearTimeout(initialZoomTimerRef.current)
     }
-  }, [nodes, edges, onNodeClick, onNodeDoubleClick, debouncedSavePosition])
+  }, [nodes, edges, onNodeClick, onNodeDoubleClick, debouncedSavePosition, categoryColors, edgeStyles, getNodeRadiusFn, categoryField])
 
   // 선택/검색 하이라이트 업데이트 (시뮬레이션 재시작 없이)
   useEffect(() => {
@@ -538,8 +547,11 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
       searchQuery,
       baseEdgeOpacity: baseEdgeOpacityRef.current,
       edgeData: edgeDataRef.current,
+      categoryColors,
+      edgeStyles,
+      categoryField,
     })
-  }, [selectedSlug, searchQuery])
+  }, [selectedSlug, searchQuery, categoryColors, edgeStyles, categoryField])
 
   const [legendOpen, setLegendOpen] = useState(false)
 
@@ -571,7 +583,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
         {legendOpen && (
           <div className="px-3 pb-2.5 space-y-2.5">
             <div className="flex flex-wrap gap-x-3 gap-y-1.5">
-              {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
+              {Object.entries(categoryColors).map(([cat, color]) => (
                 <span key={cat} className="flex items-center gap-1.5">
                   <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: color }} />
                   <span style={{ color: 'var(--text-secondary)' }}>{cat.toUpperCase()}</span>
@@ -579,7 +591,7 @@ const ArchitectureGraph = forwardRef(function ArchitectureGraph({
               ))}
             </div>
             <div className="flex flex-wrap gap-x-3 gap-y-1.5">
-              {Object.entries(EDGE_STYLES).map(([type, style]) => (
+              {Object.entries(edgeStyles).map(([type, style]) => (
                 <span key={type} className="flex items-center gap-1.5">
                   <svg width="22" height="8">
                     <line x1="0" y1="4" x2="22" y2="4" stroke={style.stroke} strokeWidth={style.width} strokeDasharray={style.dasharray || undefined} opacity={style.opacity} />
