@@ -2,15 +2,48 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText } from 'lucide-react'
+import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText, Cloud, Brain } from 'lucide-react'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ArchitectureNodeDetail from '../components/architecture/ArchitectureNodeDetail'
+import CloudServiceNodeDetail from '../components/architecture/CloudServiceNodeDetail'
 import ArchitectureRelatedPanel from '../components/architecture/ArchitectureRelatedPanel'
-import { getArchitectureTree } from '../api/posts'
-import { CATEGORY_COLORS, CATEGORIES } from '../data/architectureConstants'
+import { getArchitectureTree, getCloudServiceTree, updateCloudServicePosition } from '../api/posts'
+import { CATEGORY_COLORS, CATEGORIES, EDGE_STYLES } from '../data/architectureConstants'
+import { CLOUD_DOMAIN_COLORS, CLOUD_EDGE_STYLES, CLOUD_CATEGORIES, getCloudNodeRadius } from '../data/cloudConstants'
+
+const DOMAIN_CONFIGS = {
+  ai: {
+    categories: CATEGORIES,
+    categoryColors: CATEGORY_COLORS,
+    edgeStyles: EDGE_STYLES,
+    categoryField: 'architecture_category',
+    fetchTree: getArchitectureTree,
+    filterParam: 'category',
+    searchPlaceholder: '모델 검색...',
+    emptyMsg: '해당 카테고리의 아키텍처 항목이 없습니다.',
+    errorMsg: '아키텍처 트리를 불러올 수 없습니다.',
+    title: '아키텍처 계보 | HJ Tech Blog',
+    description: 'LLM, SSM, Diffusion 등 AI 모델 아키텍처 계보 트리 시각화.',
+  },
+  cloud: {
+    categories: CLOUD_CATEGORIES,
+    categoryColors: CLOUD_DOMAIN_COLORS,
+    edgeStyles: CLOUD_EDGE_STYLES,
+    categoryField: 'service_domain',
+    fetchTree: getCloudServiceTree,
+    filterParam: 'domain',
+    searchPlaceholder: '서비스 검색...',
+    emptyMsg: '해당 도메인의 Cloud 서비스가 없습니다.',
+    errorMsg: 'Cloud 서비스 트리를 불러올 수 없습니다.',
+    title: 'Cloud 서비스 맵 | HJ Tech Blog',
+    description: 'AWS Cloud 서비스 간 관계와 통합 구조를 시각화합니다.',
+    getNodeRadius: getCloudNodeRadius,
+    onPositionUpdate: updateCloudServicePosition,
+  },
+}
 
 // 모바일 카드 뷰 컴포넌트
-function MobileCardView({ nodes, searchQuery, onNodeClick, selectedNode }) {
+function MobileCardView({ nodes, searchQuery, onNodeClick, selectedNode, categoryColors = CATEGORY_COLORS, categoryField = 'architecture_category', domain = 'ai' }) {
   const lowerQuery = (searchQuery || '').toLowerCase()
   const filtered = lowerQuery
     ? nodes.filter(n => n.name.toLowerCase().includes(lowerQuery) || n.organization?.toLowerCase().includes(lowerQuery))
@@ -20,15 +53,15 @@ function MobileCardView({ nodes, searchQuery, onNodeClick, selectedNode }) {
   const grouped = useMemo(() => {
     const groups = {}
     for (const node of filtered) {
-      const cat = node.architecture_category || 'technique'
+      const cat = node[categoryField] || 'technique'
       if (!groups[cat]) groups[cat] = []
       groups[cat].push(node)
     }
     for (const cat of Object.keys(groups)) {
-      groups[cat].sort((a, b) => (b.release_date || '').localeCompare(a.release_date || ''))
+      groups[cat].sort((a, b) => (b.release_date || b.name || '').localeCompare(a.release_date || a.name || ''))
     }
     return groups
-  }, [filtered])
+  }, [filtered, categoryField])
 
   if (filtered.length === 0) {
     return (
@@ -43,14 +76,14 @@ function MobileCardView({ nodes, searchQuery, onNodeClick, selectedNode }) {
       {Object.entries(grouped).map(([cat, catNodes]) => (
         <div key={cat}>
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: CATEGORY_COLORS[cat] || '#8895A7' }} />
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: CATEGORY_COLORS[cat] || 'var(--text-secondary)' }}>
+            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: categoryColors[cat] || '#8895A7' }} />
+            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: categoryColors[cat] || 'var(--text-secondary)' }}>
               {cat} ({catNodes.length})
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {catNodes.map(node => {
-              const color = CATEGORY_COLORS[node.architecture_category] || '#8895A7'
+              const color = categoryColors[node[categoryField]] || '#8895A7'
               const isSelected = selectedNode?.slug === node.slug
               return (
                 <button
@@ -98,6 +131,9 @@ export default function ArchitectureTreePage() {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
+  const [domain, setDomain] = useState(searchParams.get('domain') || 'ai')
+  const config = DOMAIN_CONFIGS[domain] || DOMAIN_CONFIGS.ai
+
   const [nodes, setNodes] = useState([])
   const [edges, setEdges] = useState([])
   const [loading, setLoading] = useState(true)
@@ -127,21 +163,30 @@ export default function ArchitectureTreePage() {
     return nodes.filter(n => n.name.toLowerCase().includes(q)).map(n => n.slug)
   }, [nodes, searchQuery])
 
+  // 도메인 전환
+  const handleDomainChange = useCallback((d) => {
+    setDomain(d)
+    setCategory('all')
+    setSelectedNode(null)
+    setSearchQuery('')
+    setSearchParams(d === 'ai' ? {} : { domain: d })
+  }, [setSearchParams])
+
   // 데이터 로드
   const fetchTree = useCallback(async (cat) => {
     setLoading(true)
     setError(null)
     try {
-      const params = cat && cat !== 'all' ? { category: cat } : {}
-      const { data } = await getArchitectureTree(params)
+      const params = cat && cat !== 'all' ? { [config.filterParam]: cat } : {}
+      const { data } = await config.fetchTree(params)
       setNodes(data.nodes || [])
       setEdges(data.edges || [])
     } catch {
-      setError('아키텍처 트리를 불러올 수 없습니다.')
+      setError(config.errorMsg)
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [config])
 
   useEffect(() => {
     fetchTree(category)
@@ -218,8 +263,8 @@ export default function ArchitectureTreePage() {
   return (
     <>
     <Helmet>
-      <title>아키텍처 계보 | HJ Tech Blog</title>
-      <meta name="description" content="LLM, SSM, Diffusion 등 AI 모델 아키텍처 계보 트리 시각화. GPT, LLaMA, Gemma 등 주요 모델의 관계와 발전 흐름을 탐색합니다." />
+      <title>{config.title}</title>
+      <meta name="description" content={config.description} />
     </Helmet>
     <motion.div
       initial={{ opacity: 0 }}
@@ -234,10 +279,32 @@ export default function ArchitectureTreePage() {
         style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
       >
         <div className="max-w-full mx-auto flex flex-col sm:flex-row sm:items-center gap-2">
-          {/* 카테고리 필터 */}
+          {/* 도메인 탭 + 카테고리 필터 */}
           <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-hide flex-1">
-            <GitFork size={16} style={{ color: 'var(--text-secondary)' }} className="shrink-0 mr-1" />
-            {CATEGORIES.map(cat => {
+            {/* 도메인 전환 */}
+            <div className="flex items-center border rounded-lg overflow-hidden shrink-0 mr-1.5" style={{ borderColor: 'var(--border)' }}>
+              <button
+                onClick={() => handleDomainChange('ai')}
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium transition-colors"
+                style={{
+                  background: domain === 'ai' ? 'var(--text)' : 'transparent',
+                  color: domain === 'ai' ? '#fff' : 'var(--text-secondary)',
+                }}
+              >
+                <Brain size={12} /> AI/ML
+              </button>
+              <button
+                onClick={() => handleDomainChange('cloud')}
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium transition-colors"
+                style={{
+                  background: domain === 'cloud' ? 'var(--text)' : 'transparent',
+                  color: domain === 'cloud' ? '#fff' : 'var(--text-secondary)',
+                }}
+              >
+                <Cloud size={12} /> Cloud
+              </button>
+            </div>
+            {config.categories.map(cat => {
               const active = category === cat.key
               return (
                 <button
@@ -303,7 +370,7 @@ export default function ArchitectureTreePage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleSearchKeyDown}
-                placeholder="모델 검색..."
+                placeholder={config.searchPlaceholder}
                 className="w-full text-sm pl-8 pr-16 py-1.5 rounded-lg border outline-none focus:border-primary-400"
                 style={{
                   borderColor: 'var(--border)',
@@ -356,7 +423,7 @@ export default function ArchitectureTreePage() {
         ) : nodes.length === 0 ? (
           <div className="flex-1 flex items-center justify-center">
             <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              해당 카테고리의 아키텍처 항목이 없습니다.
+              {config.emptyMsg}
             </p>
           </div>
         ) : (
@@ -379,6 +446,8 @@ export default function ArchitectureTreePage() {
                       edges={edges}
                       nodes={nodes}
                       onNodeFocus={handleNodeFocus}
+                      categoryColors={config.categoryColors}
+                      categoryField={config.categoryField}
                     />
                   </motion.div>
                 )}
@@ -394,6 +463,11 @@ export default function ArchitectureTreePage() {
                   onNodeDoubleClick={handleNodeDoubleClick}
                   selectedSlug={selectedNode?.slug}
                   searchQuery={searchQuery}
+                  categoryColors={config.categoryColors}
+                  edgeStyles={config.edgeStyles}
+                  categoryField={config.categoryField}
+                  {...(config.getNodeRadius && { getNodeRadius: config.getNodeRadius })}
+                  {...(config.onPositionUpdate && { onPositionUpdate: config.onPositionUpdate })}
                 />
               </div>
 
@@ -408,14 +482,25 @@ export default function ArchitectureTreePage() {
                     className="shrink-0 overflow-hidden border-l"
                     style={{ borderColor: 'var(--border)' }}
                   >
-                    <ArchitectureNodeDetail
-                      node={selectedNode}
-                      edges={edges}
-                      onClose={() => setSelectedNode(null)}
-                      onNodeFocus={handleNodeFocus}
-                      layout="side"
-                      hideRelations={isLgScreen}
-                    />
+                    {domain === 'cloud' ? (
+                      <CloudServiceNodeDetail
+                        node={selectedNode}
+                        edges={edges}
+                        onClose={() => setSelectedNode(null)}
+                        onNodeFocus={handleNodeFocus}
+                        layout="side"
+                        hideRelations={isLgScreen}
+                      />
+                    ) : (
+                      <ArchitectureNodeDetail
+                        node={selectedNode}
+                        edges={edges}
+                        onClose={() => setSelectedNode(null)}
+                        onNodeFocus={handleNodeFocus}
+                        layout="side"
+                        hideRelations={isLgScreen}
+                      />
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -431,6 +516,11 @@ export default function ArchitectureTreePage() {
                   onNodeDoubleClick={handleNodeDoubleClick}
                   selectedSlug={selectedNode?.slug}
                   searchQuery={searchQuery}
+                  categoryColors={config.categoryColors}
+                  edgeStyles={config.edgeStyles}
+                  categoryField={config.categoryField}
+                  {...(config.getNodeRadius && { getNodeRadius: config.getNodeRadius })}
+                  {...(config.onPositionUpdate && { onPositionUpdate: config.onPositionUpdate })}
                 />
               ) : (
                 <MobileCardView
@@ -438,18 +528,31 @@ export default function ArchitectureTreePage() {
                   searchQuery={searchQuery}
                   onNodeClick={handleNodeClick}
                   selectedNode={selectedNode}
+                  categoryColors={config.categoryColors}
+                  categoryField={config.categoryField}
+                  domain={domain}
                 />
               )}
               {/* 모바일 하단 시트 */}
               <AnimatePresence>
                 {selectedNode && (
-                  <ArchitectureNodeDetail
-                    node={selectedNode}
-                    edges={edges}
-                    onClose={() => setSelectedNode(null)}
-                    onNodeFocus={handleNodeFocus}
-                    layout="bottom"
-                  />
+                  domain === 'cloud' ? (
+                    <CloudServiceNodeDetail
+                      node={selectedNode}
+                      edges={edges}
+                      onClose={() => setSelectedNode(null)}
+                      onNodeFocus={handleNodeFocus}
+                      layout="bottom"
+                    />
+                  ) : (
+                    <ArchitectureNodeDetail
+                      node={selectedNode}
+                      edges={edges}
+                      onClose={() => setSelectedNode(null)}
+                      onNodeFocus={handleNodeFocus}
+                      layout="bottom"
+                    />
+                  )
                 )}
               </AnimatePresence>
             </div>
