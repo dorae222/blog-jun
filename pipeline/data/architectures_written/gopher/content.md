@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gopher 핵심 요약](figures/infographic.svg)
+
+*Figure: Gopher 한 장 요약 인포그래픽*
+
 # Gopher: 스케일링 법칙 실증과 대형 언어 모델의 한계 탐색
 
 ## 개요

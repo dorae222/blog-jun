@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Cloud Map -- 서비스 디스커버리 및 리소스 매핑 서비스 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Cloud Map -- 서비스 디스커버리 및 리소스 매핑 서비스 개요 한 장 요약 인포그래픽*
+
 # AWS Cloud Map -- 서비스 디스커버리 및 리소스 매핑 서비스 개요
 
 ## 개요

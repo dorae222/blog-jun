@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding 핵심 요약](figures/infographic.svg)
+
+*Figure: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding 한 장 요약 인포그래픽*
+
 ## 개요
 
 **BERT(Bidirectional Encoder Representations from Transformers)**는 Google AI Language 팀의 Devlin et al.(2018)이 발표한 사전 학습 언어 모델로, NLP의 패러다임을 근본적으로 바꾼 논문입니다. 기존의 단방향 언어 모델(GPT)이나 얕은 양방향 모델(ELMo)과 달리, Transformer 인코더의 Self-Attention을 활용해 **모든 레이어에서 좌우 문맥을 동시에** 학습합니다. GLUE, SQuAD, SWAG 등 11개 NLP 벤치마크에서 당시 SOTA를 달성했으며, "Pre-train then Fine-tune" 패러다임을 NLP의 표준으로 확립한 핵심 논문입니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Naver News Crawling and WordCloud Visualization with Python 핵심 요약](figures/infographic.svg)
+
+*Figure: Naver News Crawling and WordCloud Visualization with Python 한 장 요약 인포그래픽*
+
 # 네이버 뉴스 크롤링과 워드클라우드 시각화 실전 가이드
 
 ## 개요

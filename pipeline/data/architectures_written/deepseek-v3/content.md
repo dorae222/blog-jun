@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-V3 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-V3 한 장 요약 인포그래픽*
+
 # DeepSeek-V3: 278만 달러로 GPT-4o에 필적한 671B MoE 모델의 혁명
 
 ## 개요

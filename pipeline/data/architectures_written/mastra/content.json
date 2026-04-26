@@ -1,0 +1,14 @@
+{
+  "slug": "mastra",
+  "title": "Mastra",
+  "title_ko": "Mastra: TypeScript 우선 풀스택 AI 에이전트 프레임워크",
+  "summary": "Mastra는 Gatsby의 공동 창업자가 2024년 출시한 TypeScript 우선 에이전트 프레임워크로, 워크플로와 에이전트를 명확히 분리하여 결정적 비즈니스 로직과 비결정적 LLM 호출을 깔끔하게 구성한다. RAG, 메모리, 평가, 음성, 워크플로가 단일 SDK에 통합되어 있고 Next.js와 Vercel 배포에 최적화되어 있다. SoftBank, Marsh McLennan 같은 엔터프라이즈 도입 사례가 빠르게 늘고 있다.",
+  "tags": [
+    "Mastra",
+    "TypeScript",
+    "Agent Framework",
+    "Workflow",
+    "Vercel AI SDK",
+    "Next.js"
+  ]
+}

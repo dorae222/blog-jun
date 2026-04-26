@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Apache Spark: From RDD to DataFrame and Beyond 핵심 요약](figures/infographic.svg)
+
+*Figure: Apache Spark: From RDD to DataFrame and Beyond 한 장 요약 인포그래픽*
+
 # Apache Spark 완벽 가이드: RDD부터 DataFrame, MLlib까지
 
 ## 개요

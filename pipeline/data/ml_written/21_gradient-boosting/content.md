@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gradient Boosting 핵심 요약](figures/infographic.svg)
+
+*Figure: Gradient Boosting 한 장 요약 인포그래픽*
+
 ## 개요
 
 Gradient Boosting은 **약한 학습기(weak learner)** 여러 개를 순차적으로 결합해 강한 예측 모델을 만드는 앙상블 기법입니다. 핵심 아이디어는 간단합니다. 현재 모델이 예측을 잘못한 부분, 즉 **잔차(residual)**를 다음 모델이 집중적으로 학습하도록 합니다. 이 과정을 반복하면 전체 모델의 오류가 점차 줄어들게 됩니다.

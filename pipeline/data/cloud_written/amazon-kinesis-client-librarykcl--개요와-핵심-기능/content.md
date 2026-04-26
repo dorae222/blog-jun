@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Kinesis Client Library(KCL) -- 개요와 핵심 기능 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Kinesis Client Library(KCL) -- 개요와 핵심 기능 한 장 요약 인포그래픽*
+
 # Amazon Kinesis Client Library(KCL) -- 개요와 핵심 기능
 
 ## 개요

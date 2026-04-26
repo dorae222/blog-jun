@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LoRA: Low-Rank Adaptation of Large Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: LoRA: Low-Rank Adaptation of Large Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 GPT-3(175B), PaLM(540B)과 같은 대규모 언어 모델(LLM)의 등장은 자연어 처리의 패러다임을 근본적으로 바꾸어 놓았습니다. 이러한 모델들은 사전학습(pre-training)을 통해 범용적인 언어 이해 능력을 획득하며, 특정 태스크에 대한 파인튜닝(fine-tuning)을 거쳐 뛰어난 성능을 발휘합니다. 그러나 모델의 규모가 기하급수적으로 커지면서, 전체 파인튜닝(full fine-tuning)에 필요한 계산 자원과 저장 비용이 감당할 수 없는 수준에 이르렀습니다.

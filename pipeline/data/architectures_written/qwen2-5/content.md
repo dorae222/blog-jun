@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen2.5 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen2.5 한 장 요약 인포그래픽*
+
 # Qwen2.5: 18T 토큰으로 달성한 오픈소스 최강 LLM
 
 ## 개요

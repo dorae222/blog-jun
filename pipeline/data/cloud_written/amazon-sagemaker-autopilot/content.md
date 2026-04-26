@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Autopilot: AutoML로 모델 개발을 자동화하는 방법 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Autopilot: AutoML로 모델 개발을 자동화하는 방법 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Autopilot: AutoML로 모델 개발을 자동화하는 방법
 
 ## 개요

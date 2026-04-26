@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS OpsWorks 개요 및 활용 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS OpsWorks 개요 및 활용 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS OpsWorks는 Chef와 Puppet을 사용하여 서버 인프라의 구성(Configuration)을 자동으로 관리하는 서비스입니다. 서버에 설치할 소프트웨어, 구성 파일, 서비스 상태 등을 코드로 정의하고 자동으로 적용할 수 있습니다.

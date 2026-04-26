@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![XGBoost vs LightGBM vs CatBoost 핵심 요약](figures/infographic.svg)
+
+*Figure: XGBoost vs LightGBM vs CatBoost 한 장 요약 인포그래픽*
+
 ## 1. 개요: 왜 이 3가지가 실전을 지배하는가
 
 머신러닝 실전 경쟁에서 XGBoost, LightGBM, CatBoost는 오랫동안 최강자 자리를 지켜왔다. 캐글(Kaggle) 우승 솔루션의 절반 이상이 이 세 알고리즘 중 하나 혹은 앙상블 조합을 사용한다는 통계도 있을 만큼, 정형 데이터(tabular data) 분야에서는 딥러닝조차 이들을 쉽게 넘어서지 못한다.

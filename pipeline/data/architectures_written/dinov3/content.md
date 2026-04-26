@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DINOv3 핵심 요약](figures/infographic.svg)
+
+*Figure: DINOv3 한 장 요약 인포그래픽*
+
 # DINOv3: 7B 규모 비전 파운데이션 모델
 
 **Meta** · **2025-08-01** · **Vision** · **CC-BY-NC-4.0**

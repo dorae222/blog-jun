@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Language Models are Few-Shot Learners (GPT-3) 핵심 요약](figures/infographic.svg)
+
+*Figure: Language Models are Few-Shot Learners (GPT-3) 한 장 요약 인포그래픽*
+
 ## 개요
 
 **GPT-3(Generative Pre-trained Transformer 3)**는 OpenAI의 Brown et al.(2020)이 NeurIPS 2020에서 발표한 1750억($1.75 \times 10^{11}$) 파라미터 규모의 자동회귀 언어 모델이다. 이 논문의 핵심 발견은 **In-Context Learning(ICL)**으로, 별도의 파인튜닝이나 그래디언트 업데이트 없이 프롬프트 내에 몇 가지 예제만 제시하면(Few-Shot) 다양한 NLP 태스크를 수행할 수 있음을 대규모로 실증했다.

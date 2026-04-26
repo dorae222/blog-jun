@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AI Core Techniques Complete Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: AI Core Techniques Complete Guide 한 장 요약 인포그래픽*
+
 # AI 핵심 기법 총정리
 
 ## 개요
@@ -250,41 +255,41 @@ Transformer의 핵심인 Attention 메커니즘과 관련 아키텍처 개선 �
 
 가장 영향력 있는 핵심 기법을 먼저 이해합니다.
 
-1. [Transformer](/post/transformer) ( Self-Attention의 기본
-2. [LoRA](/post/lora) ) 효율적 파인튜닝의 원리
-3. [RAG](/post/rag) ( 검색 증강 생성
-4. [Chain-of-Thought](/post/cot) ) 추론 강화 기법
-5. [InstructGPT](/post/instructgpt) ( RLHF의 기본
+1. [Transformer](/post/transformer) - Self-Attention의 기본
+2. [LoRA](/post/lora) - 효율적 파인튜닝의 원리
+3. [RAG](/post/rag) - 검색 증강 생성
+4. [Chain-of-Thought](/post/cot) - 추론 강화 기법
+5. [InstructGPT](/post/instructgpt) - RLHF의 기본
 
 ### 중급 (기법 심화)
 
 각 기법의 변형과 최적화를 학습합니다.
 
 **Attention & 아키텍처**:
-1. [GQA](/post/gqa) + [RoPE](/post/roformer-rope) ) 어텐션 최적화
-2. [Flash Attention](/post/flash-attention) → [Flash Attention 2](/post/flash-attention-2) ( 메모리 효율화
-3. [Switch Transformer](/post/switch-transformer) → [Mixtral](/post/mixtral) → [DeepSeek-V3](/post/deepseek-v3) ) MoE
+1. [GQA](/post/gqa) + [RoPE](/post/roformer-rope) - 어텐션 최적화
+2. [Flash Attention](/post/flash-attention) → [Flash Attention 2](/post/flash-attention-2) - 메모리 효율화
+3. [Switch Transformer](/post/switch-transformer) → [Mixtral](/post/mixtral) → [DeepSeek-V3](/post/deepseek-v3) - MoE
 
 **학습 & 정렬**:
-4. [QLoRA](/post/qlora) ( 양자화 + LoRA
-5. [DPO](/post/dpo) ) 직접 선호도 최적화
-6. [Constitutional AI](/post/constitutional-ai) ( 자기 비판 정렬
+4. [QLoRA](/post/qlora) - 양자화 + LoRA
+5. [DPO](/post/dpo) - 직접 선호도 최적화
+6. [Constitutional AI](/post/constitutional-ai) - 자기 비판 정렬
 
 **추론 & 지식**:
-7. [Self-RAG](/post/self-rag) ) 자기 판단 검색
-8. [Speculative Decoding](/post/speculative-decoding) ( 추론 가속
-9. [Paged Attention](/post/paged-attention) ) 서빙 최적화
+7. [Self-RAG](/post/self-rag) - 자기 판단 검색
+8. [Speculative Decoding](/post/speculative-decoding) - 추론 가속
+9. [Paged Attention](/post/paged-attention) - 서빙 최적화
 
 ### 고급 (연구/실무)
 
 최신 기법과 통합적 이해를 추구합니다.
 
-1. [Scaling Laws](/post/scaling-laws) + [Chinchilla](/post/chinchilla) ( 스케일링 이론
-2. [DeepSeek-V3](/post/deepseek-v3) ) 최신 MoE 설계
-3. [Self-Rewarding LM](/post/self-rewarding-lm) ( 자기 개선 정렬
-4. [Speculative Decoding 서베이](/post/speculative-decoding-and-beyond-an-in-depth-survey-of-techniques) ) 추론 최적화 전체 조망
-5. [ARES](/post/ares-rag-eval) ( RAG 시스템 평가
-6. [Layer Norm](/post/layer-norm-transformer) + [Architecture & Objectives](/post/architecture-pretraining-objectives) ) 아키텍처 설계 원칙
+1. [Scaling Laws](/post/scaling-laws) + [Chinchilla](/post/chinchilla) - 스케일링 이론
+2. [DeepSeek-V3](/post/deepseek-v3) - 최신 MoE 설계
+3. [Self-Rewarding LM](/post/self-rewarding-lm) - 자기 개선 정렬
+4. [Speculative Decoding 서베이](/post/speculative-decoding-and-beyond-an-in-depth-survey-of-techniques) - 추론 최적화 전체 조망
+5. [ARES](/post/ares-rag-eval) - RAG 시스템 평가
+6. [Layer Norm](/post/layer-norm-transformer) + [Architecture & Objectives](/post/architecture-pretraining-objectives) - 아키텍처 설계 원칙
 
 ---
 
@@ -309,8 +314,8 @@ Transformer의 핵심인 Attention 메커니즘과 관련 아키텍처 개선 �
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) ( 전체 AI/ML 지형도
-- [LLM 핵심 논문 가이드](/post/llm-paper-guide) ) LLM에서의 기법 적용
-- [Diffusion Models 완전 정복](/post/diffusion-models-guide) ( 생성 모델에서의 기법
-- [State Space Models 가이드](/post/state-space-models-guide) ) Attention의 대안
+- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) - 전체 AI/ML 지형도
+- [LLM 핵심 논문 가이드](/post/llm-paper-guide) - LLM에서의 기법 적용
+- [Diffusion Models 완전 정복](/post/diffusion-models-guide) - 생성 모델에서의 기법
+- [State Space Models 가이드](/post/state-space-models-guide) - Attention의 대안
 - [머신러닝 기초부터 실전까지](/post/ml-fundamentals-roadmap), ML 이론 기초

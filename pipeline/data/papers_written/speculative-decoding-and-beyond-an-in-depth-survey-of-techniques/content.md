@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Speculative Decoding and Beyond: An In-Depth Survey of Techniques 핵심 요약](figures/infographic.svg)
+
+*Figure: Speculative Decoding and Beyond: An In-Depth Survey of Techniques 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Speculative Decoding and Beyond: An In-Depth Survey of Techniques"(Yunhai Hu et al., 2025)는 대규모 언어 모델(LLM)의 추론 효율성을 획기적으로 개선하는 **Speculative Decoding(투기적 디코딩)** 기법들을 포괄적으로 정리한 서베이 논문이다. LLM이 산업 전반에 배포되면서 추론 지연(inference latency)은 가장 시급한 병목으로 떠올랐고, speculative decoding은 **출력 품질을 훼손하지 않으면서** 추론 속도를 2~3배 이상 향상시킬 수 있는 유일한 방법론 중 하나로 주목받고 있다.

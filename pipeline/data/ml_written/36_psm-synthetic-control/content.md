@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![PSM, Synthetic Control, and Heckman Selection Model 핵심 요약](figures/infographic.svg)
+
+*Figure: PSM, Synthetic Control, and Heckman Selection Model 한 장 요약 인포그래픽*
+
 # PSM, Synthetic Control, Heckman Selection: 선택 편향 보정 3종 세트
 
 ## 0. 왜 3가지 방법이 필요한가

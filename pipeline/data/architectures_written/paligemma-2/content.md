@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![PaliGemma 2 핵심 요약](figures/infographic.svg)
+
+*Figure: PaliGemma 2 한 장 요약 인포그래픽*
+
 # PaliGemma 2: SigLIP과 Gemma 2의 결합으로 탄생한 범용 시각-언어 모델
 
 ## 개요

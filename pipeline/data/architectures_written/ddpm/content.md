@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DDPM 핵심 요약](figures/infographic.svg)
+
+*Figure: DDPM 한 장 요약 인포그래픽*
+
 # DDPM: 디노이징 확산 확률 모델 (Denoising Diffusion Probabilistic Models)
 
 ## 개요

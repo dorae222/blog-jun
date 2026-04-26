@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![BERT 핵심 요약](figures/infographic.svg)
+
+*Figure: BERT 한 장 요약 인포그래픽*
+
 # BERT: Bidirectional Encoder Representations from Transformers
 
 ## 개요

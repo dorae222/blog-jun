@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Workflow - 복잡한 ETL 파이프라인 오케스트레이션 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Workflow - 복잡한 ETL 파이프라인 오케스트레이션 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Glue Workflow는 여러 Glue Job, Crawler, Trigger를 하나의 논리적 단위로 묶어 관리하는 오케스트레이션 기능입니다. 실무에서 ETL 파이프라인은 단일 작업으로 끝나는 경우가 드뭅니다. 데이터 수집, 검증, 변환, 적재, 후처리 등 다양한 단계가 순차적 또는 병렬로 연결되어야 하며, 각 단계의 성공과 실패에 따른 분기 처리도 필요합니다.

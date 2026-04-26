@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Score-based SDE 핵심 요약](figures/infographic.svg)
+
+*Figure: Score-based SDE 한 장 요약 인포그래픽*
+
 # Score SDE: 확률 미분 방정식을 통한 확산 모델 통합 프레임워크
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Bedrock 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Bedrock 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Bedrock은 AWS에서 제공하는 완전 관리형 생성형 AI 서비스로, 다양한 선도적 AI 기업의 파운데이션 모델(Foundation Model, FM)을 서버리스 API를 통해 사용할 수 있게 합니다. 인프라를 직접 관리하거나 모델을 배포할 필요 없이, API 호출만으로 텍스트 생성, 이미지 생성, 임베딩, 채팅 등의 생성형 AI 기능을 애플리케이션에 통합할 수 있습니다.

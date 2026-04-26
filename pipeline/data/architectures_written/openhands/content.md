@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenHands 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenHands 한 장 요약 인포그래픽*
+
 # OpenHands: 오픈소스 AI 소프트웨어 엔지니어
 
 **UIUC** · **2024-07-23** · **Code Agent** · **MIT**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Logic-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning 핵심 요약](figures/infographic.svg)
+
+*Figure: Logic-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)은 자연어 이해와 생성에서 놀라운 성능을 보여주지만, 엄밀한 논리적 추론(logical reasoning)에서는 근본적인 한계를 드러냅니다. 확률적 패턴 매칭에 기반한 LLM은 연역적 추론 과정에서 논리적 비약이나 오류를 빈번히 범하며, 추론 깊이가 깊어질수록 오류가 지수적으로 누적됩니다.

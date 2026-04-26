@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Regularized Regression: Ridge, Lasso, ElasticNet 핵심 요약](figures/infographic.svg)
+
+*Figure: Regularized Regression: Ridge, Lasso, ElasticNet 한 장 요약 인포그래픽*
+
 # 정규화 회귀: Ridge, Lasso, ElasticNet 완전 정리
 
 ## 1. 개요: 왜 정규화가 필요한가

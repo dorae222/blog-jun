@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini CLI Advanced Usage 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini CLI Advanced Usage 한 장 요약 인포그래픽*
+
 # Gemini CLI 고급 활용: Google 생태계 통합
 
 :::info

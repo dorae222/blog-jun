@@ -1,0 +1,14 @@
+{
+  "slug": "google-adk",
+  "title": "Google ADK",
+  "title_ko": "Google ADK: 워크플로 에이전트와 A2A를 표준으로 만든 Google의 오픈소스 에이전트 키트",
+  "summary": "Google Agent Development Kit는 2025년 4월 Google Cloud Next에서 공개된 오픈소스 멀티 에이전트 프레임워크로, A2A 프로토콜의 reference implementation이자 Vertex AI Agent Builder의 기반 SDK다. SequentialAgent, ParallelAgent, LoopAgent 같은 Workflow Agent와 LLM Agent를 동등한 일급 개념으로 두어 결정적 워크플로와 비결정적 LLM 의사결정을 매끄럽게 결합한다. Gemini 외에 GPT, Claude, Ollama까지 모델 비종속 설계로 지원한다.",
+  "tags": [
+    "Google ADK",
+    "Agent Framework",
+    "A2A",
+    "Vertex AI",
+    "Workflow Agent",
+    "Gemini"
+  ]
+}

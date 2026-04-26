@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Application Discovery Service(ADS) 개요 및 활용: 마이그레이션을 위한 온프레미스 인프라 탐색 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Application Discovery Service(ADS) 개요 및 활용: 마이그레이션을 위한 온프레미스 인프라 탐색 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Application Discovery Service(ADS)는 온프레미스 데이터센터의 IT 인프라 정보를 자동으로 수집하고 분석하여, AWS 클라우드 마이그레이션 계획을 수립하는 데 필요한 인사이트를 제공하는 서비스입니다.

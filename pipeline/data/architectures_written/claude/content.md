@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude (1–3.5 Series) 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude (1–3.5 Series) 한 장 요약 인포그래픽*
+
 # Claude (1~3.5 시리즈): Anthropic의 Constitutional AI 기반 대형 언어 모델
 
 ## 개요

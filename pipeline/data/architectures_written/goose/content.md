@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Goose 핵심 요약](figures/infographic.svg)
+
+*Figure: Goose 한 장 요약 인포그래픽*
+
 # Goose: 오픈소스 에이전틱 코딩 어시스턴트
 
 **Block** · **2025-01-01** · **Agentic Coding** · **Apache-2.0**

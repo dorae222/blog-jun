@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini CLI 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini CLI 한 장 요약 인포그래픽*
+
 # Gemini CLI: Google의 오픈소스 AI 코딩 에이전트
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![CLIP 핵심 요약](figures/infographic.svg)
+
+*Figure: CLIP 한 장 요약 인포그래픽*
+
 # CLIP: 대조 학습 기반 시각-언어 사전학습 모델
 
 ## 개요

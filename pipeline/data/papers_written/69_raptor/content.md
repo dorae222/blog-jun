@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval 핵심 요약](figures/infographic.svg)
+
+*Figure: RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval 한 장 요약 인포그래픽*
+
 # RAPTOR: 트리 구조 검색을 위한 재귀적 추상화 처리
 
 ## 논문 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DDIM 핵심 요약](figures/infographic.svg)
+
+*Figure: DDIM 한 장 요약 인포그래픽*
+
 # DDIM: 디노이징 확산 암묵 모델
 
 **Stanford University** · **2020-10-06** · **Diffusion** · **MIT**

@@ -1,0 +1,19 @@
+{
+  "slug": "aws-iam-identity-and-access-management-개요",
+  "title": "AWS IAM",
+  "title_ko": "AWS IAM (Identity and Access Management) 개요",
+  "category_slug": "aws-security",
+  "summary": "AWS IAM의 핵심 구성 요소(User, Group, Role, Policy)부터 Policy 평가 로직, IAM Identity Center, Access Analyzer, Roles Anywhere까지 AWS 보안의 기초를 심층 분석합니다.",
+  "tags": [
+    "AWS",
+    "IAM",
+    "보안",
+    "Identity",
+    "Access Control",
+    "Policy",
+    "Role",
+    "MFA",
+    "STS",
+    "Federation"
+  ]
+}

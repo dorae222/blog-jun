@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![NVLink Deep Dive: GPU Interconnect for AI Workloads 핵심 요약](figures/infographic.svg)
+
+*Figure: NVLink Deep Dive: GPU Interconnect for AI Workloads 한 장 요약 인포그래픽*
+
 # NVLink 완전 이해: GPU 인터커넥트의 모든 것
 
 ## 들어가며

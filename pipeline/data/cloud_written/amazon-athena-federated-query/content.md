@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Athena Federated Query 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Athena Federated Query 한 장 요약 인포그래픽*
+
 # Amazon Athena Federated Query
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![NAT Gateway (NAT 게이트웨이) 핵심 요약](figures/infographic.svg)
+
+*Figure: NAT Gateway (NAT 게이트웨이) 한 장 요약 인포그래픽*
+
 ## 개요
 
 NAT Gateway는 프라이빗 서브넷의 리소스가 인터넷 또는 다른 AWS 서비스에 아웃바운드 연결을 시작할 수 있게 하면서, 인터넷에서 해당 리소스로의 인바운드 연결은 차단하는 관리형 네트워크 주소 변환(NAT) 서비스입니다.

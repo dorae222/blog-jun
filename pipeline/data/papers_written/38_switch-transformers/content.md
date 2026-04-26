@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity 핵심 요약](figures/infographic.svg)
+
+*Figure: Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity 한 장 요약 인포그래픽*
+
 ## 개요
 
 Mixture-of-Experts(MoE)는 모델의 전체 파라미터 수를 대폭 늘리면서도 각 입력에 대해 실제로 활성화되는 연산량은 고정 수준으로 유지하는 **희소(sparse) 확장 전략**이다. 이론적으로 매력적이지만, 기존 MoE(Shazeer et al., 2017)는 Top-2 라우팅의 복잡성, 학습 불안정성, 전문가 간 부하 불균형 등 심각한 실용적 한계를 안고 있었다. Fedus, Zoph, Shazeer가 JMLR 2022에 발표한 **Switch Transformers**는 이러한 한계를 체계적으로 극복하고, 최초로 조 단위($10^{12}$) 파라미터 규모의 언어 모델을 성공적으로 학습하였다.

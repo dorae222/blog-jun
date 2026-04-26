@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Simple Diffusion Language Modeling 핵심 요약](figures/infographic.svg)
+
+*Figure: Simple Diffusion Language Modeling 한 장 요약 인포그래픽*
+
 ## 개요
 
 dLLM(Simple Diffusion Language Modeling)은 2026년 arXiv에 발표된 논문으로, 기존 확산 언어 모델의 복잡성을 대폭 줄이면서도 자기회귀(AR) 모델과 경쟁하는 성능을 달성한 프레임워크다. 저자들은 마스크 확산(masked diffusion)과 흡수 확산(absorbing diffusion)이 사실 동일한 수학적 구조를 공유한다는 점에 착안하여, 이 둘을 **시간 조건부 노이즈 제거**라는 단일 메커니즘으로 통합했다.

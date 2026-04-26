@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MEGAVERSE: Benchmarking Large Language Models Across Languages, Modalities, Models and Tasks 핵심 요약](figures/infographic.svg)
+
+*Figure: MEGAVERSE: Benchmarking Large Language Models Across Languages, Modalities, Models and Tasks 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 발전은 자연어 처리 분야에 혁명적인 변화를 가져왔지만, 그 평가 체계는 여전히 영어에 편중되어 있다. MMLU, HumanEval, GSM8K, HellaSwag 등 LLM 성능을 측정하는 주요 벤치마크들은 대부분 영어만을 대상으로 하며, 전 세계 7,000여 개 언어 중 극소수만이 체계적인 평가를 받고 있다. 전 세계 인구의 약 80%가 영어를 모국어로 사용하지 않음에도 불구하고, AI 기술의 혜택은 영어권에 압도적으로 편중되어 있다는 근본적인 공정성 문제가 존재한다.

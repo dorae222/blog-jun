@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Self-Consistency 핵심 요약](figures/infographic.svg)
+
+*Figure: Self-Consistency 한 장 요약 인포그래픽*
+
 # Self-Consistency: 다중 추론 경로의 앙상블 디코딩
 
 **Google** · **2022-03-21** · **Reasoning Technique** · **오픈**

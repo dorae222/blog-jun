@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Transit Gateway (TGW) 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Transit Gateway (TGW) 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Transit Gateway(TGW)는 여러 VPC와 온프레미스 네트워크를 중앙 허브를 통해 연결하는 네트워크 전송 서비스입니다. Transit Gateway가 등장하기 전에는 VPC 간 연결을 위해 VPC Peering을 사용해야 했는데, N개의 VPC를 완전 연결(Full Mesh)하려면 N*(N-1)/2개의 Peering 연결이 필요했습니다. VPC가 10개만 되어도 45개의 Peering이 필요하며, 관리가 극도로 복잡해집니다.

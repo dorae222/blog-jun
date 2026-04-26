@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Textbooks Are All You Need 핵심 요약](figures/infographic.svg)
+
+*Figure: Textbooks Are All You Need 한 장 요약 인포그래픽*
+
 # Textbooks Are All You Need: 교과서 품질 데이터의 힘
 
 ## 개요

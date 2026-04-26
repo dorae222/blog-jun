@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon ECS (Elastic Container Service) - 컨테이너 오케스트레이션 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon ECS (Elastic Container Service) - 컨테이너 오케스트레이션 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon ECS(Elastic Container Service)는 AWS에서 제공하는 완전 관리형 컨테이너 오케스트레이션 서비스입니다. Docker 컨테이너를 대규모로 실행, 중지, 관리할 수 있으며, AWS 생태계의 다양한 서비스(ALB, CloudWatch, IAM, ECR 등)와 긴밀하게 통합됩니다.

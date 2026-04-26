@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Managed Service for Apache Flink 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Managed Service for Apache Flink 한 장 요약 인포그래픽*
+
 # Amazon Managed Service for Apache Flink (구 Amazon Kinesis Data Analytics for Apache Flink)
 
 ## 개요

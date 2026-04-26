@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Show-o2 핵심 요약](figures/infographic.svg)
+
+*Figure: Show-o2 한 장 요약 인포그래픽*
+
 # Show-o2: 이해와 생성을 통합하는 멀티모달 프레임워크
 
 **NUS/ByteDance** · **2025-01-01** · **Multimodal** · **Apache-2.0**

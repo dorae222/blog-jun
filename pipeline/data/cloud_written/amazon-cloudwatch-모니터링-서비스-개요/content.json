@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-cloudwatch-모니터링-서비스-개요",
+  "title": "Amazon CloudWatch",
+  "title_ko": "Amazon CloudWatch - 통합 모니터링 및 관찰 가능성 서비스 개요",
+  "category_slug": "aws-management",
+  "summary": "Amazon CloudWatch의 Metrics, Logs, Alarms, Dashboards, Synthetics, Container/Application/Lambda Insights, Logs Insights 쿼리, ServiceLens(X-Ray)까지 AWS 관찰 가능성(Observability)의 핵심을 정리합니다.",
+  "tags": [
+    "AWS",
+    "CloudWatch",
+    "모니터링",
+    "관찰 가능성",
+    "Metrics",
+    "Logs",
+    "Alarms",
+    "Dashboards",
+    "Synthetics",
+    "Logs Insights"
+  ]
+}

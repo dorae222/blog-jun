@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Q Developer 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Q Developer 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Q Developer는 소프트웨어 개발의 전체 생명주기를 지원하는 AI 기반 개발 도우미 서비스입니다. IDE에서의 코드 작성, AWS 인프라 관리, 코드 리뷰, 보안 스캔, 레거시 코드 마이그레이션 등 개발자가 수행하는 거의 모든 작업을 AI로 가속화합니다.

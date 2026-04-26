@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone 핵심 요약](figures/infographic.svg)
+
+*Figure: Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone"은 Microsoft Research가 2024년 4월에 발표한 기술 보고서입니다. 이 논문은 3.8B 파라미터의 소형 언어 모델인 **Phi-3-mini**를 중심으로, 고성능 언어 모델을 일반 스마트폰에서 로컬로 실행할 수 있다는 비전을 제시합니다.

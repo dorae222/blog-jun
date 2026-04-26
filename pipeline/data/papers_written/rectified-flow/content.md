@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow 핵심 요약](figures/infographic.svg)
+
+*Figure: Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow 한 장 요약 인포그래픽*
+
 ## 개요
 
 Rectified Flow(Liu et al., ICLR 2023)는 노이즈 분포 $\pi_0$와 데이터 분포 $\pi_1$ 사이를 **직선 경로(straight-line path)**로 연결하는 ODE 기반 생성 모델이다. 기존 확산 모델이 수백 스텝의 수치 적분을 요구하는 것과 달리, Rectified Flow는 흐름 궤적을 직선에 가깝게 만드는 **Reflow** 절차를 도입하여 이론적으로 단일 스텝 생성을 가능하게 한다.

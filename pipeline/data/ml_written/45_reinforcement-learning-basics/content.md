@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Reinforcement Learning Basics 핵심 요약](figures/infographic.svg)
+
+*Figure: Reinforcement Learning Basics 한 장 요약 인포그래픽*
+
 ## 개요
 
 강화학습(Reinforcement Learning, RL)은 지도학습·비지도학습과 구별되는 제3의 머신러닝 패러다임입니다. **에이전트(Agent)**는 **환경(Environment)**과 반복적으로 상호작용하면서 상태(State)를 관찰하고, 행동(Action)을 선택하며, 그 결과로 **보상(Reward)**을 받습니다. 에이전트의 목표는 단기 보상이 아닌 **누적 할인 보상(Cumulative Discounted Reward)**을 최대화하는 정책(Policy)을 학습하는 것입니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Toolformer 핵심 요약](figures/infographic.svg)
+
+*Figure: Toolformer 한 장 요약 인포그래픽*
+
 # Toolformer: 언어 모델의 자기지도 도구 학습
 
 **Meta AI** · **2023-02-09** · **Tool Learning** · **오픈**

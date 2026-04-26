@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MetaGPT 핵심 요약](figures/infographic.svg)
+
+*Figure: MetaGPT 한 장 요약 인포그래픽*
+
 # MetaGPT: SOP 기반 멀티 에이전트 소프트웨어 개발
 
 **DeepWisdom** · **2023-08-01** · **Multi-Agent Framework** · **MIT**

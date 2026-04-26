@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Codex CLI 핵심 요약](figures/infographic.svg)
+
+*Figure: Codex CLI 한 장 요약 인포그래픽*
+
 # Codex CLI: OpenAI의 샌드박스 기반 AI 코딩 에이전트
 
 ## 개요

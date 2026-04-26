@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Polynomial Regression and Nonlinear Transformations 핵심 요약](figures/infographic.svg)
+
+*Figure: Polynomial Regression and Nonlinear Transformations 한 장 요약 인포그래픽*
+
 ## 왜 직선만으로는 부족한가
 
 선형 회귀는 강력하고 해석하기 쉬운 모델이지만, 현실 데이터는 직선 관계보다 곡선 관계를 가지는 경우가 훨씬 많다. 주택 가격과 면적의 관계, 약물 농도와 효과, 자동차 속도와 연비처럼 많은 실제 현상이 비선형 패턴을 따른다.

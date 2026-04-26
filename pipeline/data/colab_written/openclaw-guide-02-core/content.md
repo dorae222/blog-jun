@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenClaw Core Features 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenClaw Core Features 한 장 요약 인포그래픽*
+
 # OpenClaw 핵심 기능: 아키텍처와 도구 시스템
 
 ## 들어가며

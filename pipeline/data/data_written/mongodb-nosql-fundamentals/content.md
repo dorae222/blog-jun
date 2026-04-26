@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MongoDB와 NoSQL 기초: 관계형 데이터베이스의 한계와 문서형 DB의 등장 핵심 요약](figures/infographic.svg)
+
+*Figure: MongoDB와 NoSQL 기초: 관계형 데이터베이스의 한계와 문서형 DB의 등장 한 장 요약 인포그래픽*
+
 # MongoDB와 NoSQL 기초: 관계형 데이터베이스의 한계와 문서형 DB의 등장
 
 ## 개요

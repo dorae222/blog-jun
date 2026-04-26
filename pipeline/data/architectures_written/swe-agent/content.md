@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SWE-agent 핵심 요약](figures/infographic.svg)
+
+*Figure: SWE-agent 한 장 요약 인포그래픽*
+
 # SWE-agent: Agent-Computer Interface 설계의 선구자
 
 **Princeton** · **2024-04-02** · **Code Agent** · **MIT**

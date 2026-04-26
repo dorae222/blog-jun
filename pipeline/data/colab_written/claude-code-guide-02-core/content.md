@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Code Core Features 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Code Core Features 한 장 요약 인포그래픽*
+
 # Claude Code 핵심 기능: 도구 시스템과 에이전틱 루프
 
 :::info

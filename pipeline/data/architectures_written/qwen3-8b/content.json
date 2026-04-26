@@ -1,0 +1,18 @@
+{
+  "slug": "qwen3-8b",
+  "title": "Qwen3-8B",
+  "title_ko": "Qwen3-8B: 8B Dense의 한계를 끌어올린 멀티링구얼 에이전트 모델",
+  "summary": "Qwen3-8B는 Alibaba Cloud가 2025년 4월 공개한 Qwen3 시리즈의 8B Dense 변형으로, 듀얼 모드 추론, 119개 언어 지원, 강력한 함수 호출 능력을 8B 규모에 압축한 모델이다. Qwen3-235B MoE에서 distillation된 추론 능력 덕분에 동급 8B 모델 중 Llama 3.1 8B를 능가하며, 32K 컨텍스트와 Apache 2.0 라이선스로 자체 호스팅 RAG 및 에이전트 환경에 최적화되어 있다.",
+  "tags": [
+    "Qwen3",
+    "Qwen3-8B",
+    "Alibaba",
+    "SLM",
+    "Small Language Model",
+    "Agent",
+    "Function Calling",
+    "Multilingual",
+    "Open Source",
+    "Thinking Mode"
+  ]
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Multitask Prompted Training Enables Zero-Shot Task Generalization 핵심 요약](figures/infographic.svg)
+
+*Figure: Multitask Prompted Training Enables Zero-Shot Task Generalization 한 장 요약 인포그래픽*
+
 ## 개요
 
 GPT-3의 등장 이후, 대규모 언어 모델(LLM)이 별도의 파인튜닝 없이도 새로운 태스크를 수행하는 **제로샷(zero-shot) 일반화** 능력이 큰 주목을 받았습니다. 그러나 GPT-3의 175B 파라미터라는 거대한 규모는 대부분의 연구자에게 접근이 불가능했으며, 제로샷 일반화가 순전히 모델 크기에서 비롯되는 것인지, 학습 방식의 개선으로도 달성 가능한 것인지에 대한 근본적 질문이 남아 있었습니다.

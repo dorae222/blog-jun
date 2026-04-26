@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift View 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift View 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift의 View(뷰)는 자주 사용하는 쿼리를 저장된 가상 테이블로 정의하여 재사용성, 보안, 유지보수성을 높이는 데이터베이스 객체입니다. Redshift는 세 가지 유형의 뷰를 지원하며, 각각 서로 다른 특성과 사용 시나리오를 가지고 있습니다.

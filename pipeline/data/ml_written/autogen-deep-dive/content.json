@@ -1,0 +1,15 @@
+{
+  "slug": "autogen-deep-dive",
+  "title": "AutoGen Deep Dive",
+  "title_ko": "AutoGen 심층 분석: Microsoft의 대화형 멀티에이전트",
+  "summary": "AutoGen은 Microsoft Research가 2023년 공개한 대화 기반 멀티 에이전트 프레임워크로, ConversableAgent를 일급 추상화로 두고 GroupChat과 GroupChatManager를 통해 복잡한 협업을 표현한다. v0.4의 메이저 리팩토링으로 비동기 액터 모델로 전환되었고 AutoGen Studio라는 노코드 UI가 추가되었다. Coder + Reviewer + Executor 그룹챗 예제와 함께 AutoGen의 대화 기반 협업 모델, 코드 실행 에이전트, 대화 패턴 라이브러리를 깊이 있게 분석한다.",
+  "category_slug": "agent",
+  "tags": [
+    "AutoGen",
+    "Multi-Agent",
+    "ConversableAgent",
+    "GroupChat",
+    "Microsoft",
+    "Code Execution"
+  ]
+}

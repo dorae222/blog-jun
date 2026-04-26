@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters 핵심 요약](figures/infographic.svg)
+
+*Figure: Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters 한 장 요약 인포그래픽*
+
 # Scaling LLM Test-Time Compute: 테스트 시점 연산 스케일링
 
 ## 논문 개요

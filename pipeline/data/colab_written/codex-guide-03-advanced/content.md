@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Codex CLI Advanced Usage 핵심 요약](figures/infographic.svg)
+
+*Figure: Codex CLI Advanced Usage 한 장 요약 인포그래픽*
+
 # Codex CLI 고급 활용: 자동화와 CI 통합
 
 :::info

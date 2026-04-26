@@ -1,0 +1,10 @@
+{
+  "slug": "rag-04-agentic-rag",
+  "title": "Agentic RAG: LLM-Driven Retrieval Control",
+  "title_ko": "Agentic RAG: LLM이 retrieval을 제어하는 패러다임",
+  "summary": "Agentic RAG는 단일 retrieve-generate 흐름을 decision loop로 확장합니다. Single-Agent(Reflection + Tool Use), Multi-Agent(Router/Retriever/Generator/Critic), Hierarchical 등 패턴별 차이를 정리하고, LangGraph state graph로 ReAct 스타일 에이전트를 구현하는 예제를 제공합니다. Self-RAG의 학습된 reflection과 비교한 trade-off도 다룹니다.",
+  "category_slug": "rag",
+  "tags": ["RAG", "Agentic-RAG", "LangGraph", "ReAct", "Tool-Use", "Multi-Agent"],
+  "series": "rag-evolution",
+  "series_order": 4
+}

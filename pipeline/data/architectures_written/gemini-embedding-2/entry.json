@@ -1,0 +1,41 @@
+{
+  "name": "Gemini Embedding 2",
+  "slug": "gemini-embedding-2",
+  "organization": "Google",
+  "release_date": "2026-04-09",
+  "decoder_type": "encoder",
+  "param_scale": "Undisclosed",
+  "context_length": "Undisclosed",
+  "attention_type": "Multi-Head Self-Attention",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": 256000,
+  "hidden_dim": "Undisclosed",
+  "num_layers": null,
+  "num_heads": null,
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gemini Embedding 2는 2026년 Google Cloud Next 2026에서 공개된 네이티브 멀티모달 임베딩 모델로, 텍스트뿐 아니라 이미지, 비디오, 오디오, 문서를 단일 임베딩 공간으로 매핑한다. 전작 Gemini Embedding 001이 텍스트 전용이었다면, 2는 진정한 cross-modal 검색을 가능하게 해 오디오 클립으로 비디오를 찾거나 이미지로 PDF 문서를 검색하는 시나리오를 지원한다. Matryoshka Representation Learning은 그대로 계승되어 차원을 자유롭게 자를 수 있고, 멀티모달 RAG, 콘텐츠 추천, 모달리티 간 유사 검색의 기반 인프라로 설계되었다. Vertex AI를 통해서만 제공되는 폐쇄형 모델이지만, 통합 임베딩 공간이라는 개념은 CLIP, ImageBind, SigLIP 계열의 흐름을 production 상용 API로 격상시켰다는 의미가 있다.",
+  "key_detail": "Gemini Embedding 2는 Gemini 멀티모달 디코더의 표현 공간을 contrastive learning으로 정렬하여 텍스트, 이미지, 비디오, 오디오, 문서(PDF/슬라이드) 입력을 동일 차원 벡터로 변환한다. cross-modal 검색에서는 (이미지, 캡션), (비디오, 자막), (오디오, 트랜스크립트) 쌍을 InfoNCE 손실로 학습하여 모달리티 간 거리를 최소화한다. Matryoshka 학습으로 256/512/1024/2048/3072 어디서 잘라도 성능이 안정적이며, 비디오 입력은 frame sampling + 시간축 풀링으로 단일 벡터화한다. 통합 임베딩 공간 덕에 'a dog barking' 텍스트로 동영상의 짖는 장면을 검색하거나, 강아지 사진으로 관련 오디오 클립을 찾을 수 있다.",
+  "training_detail": "텍스트-이미지(LAION 계열, 자체 큐레이션), 텍스트-비디오(YouTube transcript-aligned), 텍스트-오디오(AudioSet 계열), 텍스트-문서(스캔 PDF + OCR pair) 데이터로 다단계 contrastive learning을 수행한다. 모달리티별 인코더는 Gemini 백본을 공유하되 입력 어댑터(image patch embedding, audio mel-spectrogram, video tubelet)를 별도로 두며, projection head는 모달리티-agnostic하다. Matryoshka 손실을 차원 집합 전체에 부여하여 prefix truncation에서도 cross-modal alignment가 유지된다.",
+  "paper_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings",
+  "code_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings",
+  "license_type": "Proprietary",
+  "concepts": [
+    "Multimodal Embedding",
+    "Cross-modal Retrieval",
+    "Matryoshka"
+  ],
+  "architecture_category": "technique",
+  "branch_type": "encoder_only",
+  "is_open_source": false,
+  "relations": [
+    {
+      "to": "gemini-embedding-001",
+      "type": "evolved_from",
+      "description": "텍스트 전용에서 멀티모달로 확장된 후속 모델"
+    }
+  ],
+  "related_post_slug": "gemini-embedding-2"
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Studio - 통합 ML 개발 환경 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Studio - 통합 ML 개발 환경 완벽 가이드 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Studio - 통합 ML 개발 환경 완벽 가이드
 
 ## 개요

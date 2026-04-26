@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mixtral of Experts 핵심 요약](figures/infographic.svg)
+
+*Figure: Mixtral of Experts 한 장 요약 인포그래픽*
+
 ## 개요
 
 Mixtral 8x7B는 Mistral AI가 2024년 1월 발표한 **희소 혼합 전문가(Sparse Mixture of Experts, SMoE)** 언어 모델이다. 모델 이름처럼 8개의 "전문가(expert)" FFN 레이어가 있으며, 각 토큰은 게이팅 네트워크(router)에 의해 그 중 **2개만 선택**되어 처리된다. 이를 통해 전체 파라미터는 46.7B이지만, 실제 추론 시에는 12.9B만 활성화되어 **더 적은 연산으로 더 큰 모델의 성능**을 달성한다.

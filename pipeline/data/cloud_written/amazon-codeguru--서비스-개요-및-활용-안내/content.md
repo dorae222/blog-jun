@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon CodeGuru 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon CodeGuru 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon CodeGuru는 머신러닝을 활용하여 코드 품질을 향상시키고 애플리케이션 성능을 최적화하는 개발자 도구입니다. Amazon 내부에서 수십 년간 축적된 코드 리뷰 경험과 수백만 개의 코드 리뷰 데이터를 학습한 ML 모델을 기반으로 합니다.

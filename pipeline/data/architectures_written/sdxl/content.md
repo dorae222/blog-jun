@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SDXL (Stable Diffusion XL) 핵심 요약](figures/infographic.svg)
+
+*Figure: SDXL (Stable Diffusion XL) 한 장 요약 인포그래픽*
+
 # SDXL (Stable Diffusion XL): 고해상도 오픈소스 이미지 생성의 표준
 
 **Stability AI** · **2023-07-04** · **Diffusion** · **Diffusion UNet** · **오픈소스**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaMA 2 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaMA 2 한 장 요약 인포그래픽*
+
 # LLaMA 2: 오픈소스 Chat 모델의 기준을 세운 모델
 
 ## 개요

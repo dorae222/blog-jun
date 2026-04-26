@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Agent-to-Agent Protocol 핵심 요약](figures/infographic.svg)
+
+*Figure: Agent-to-Agent Protocol 한 장 요약 인포그래픽*
+
 # Agent-to-Agent Protocol: AI 에이전트 간 통신의 표준
 
 **Google** · **2025-04-09** · **Agent Protocol** · **Apache-2.0**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Linear Regression 핵심 요약](figures/infographic.svg)
+
+*Figure: Linear Regression 한 장 요약 인포그래픽*
+
 ## 개요: 가장 단순하고 강력한 예측 모델
 
 **선형 회귀(Linear Regression)**는 입력 변수(특성)와 연속적인 출력 변수(타깃) 사이의 선형 관계를 모델링하는 지도학습 알고리즘입니다. 1805년 Legendre와 Gauss가 천문 관측 오차를 최소화하기 위해 최소제곱법(Least Squares)을 개발한 것이 기원으로, 200년이 지난 지금도 실무에서 가장 먼저 적용해보는 기준 모델(Baseline Model)입니다.

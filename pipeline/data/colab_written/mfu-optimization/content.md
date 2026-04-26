@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MFU Optimization Project: Measuring and Improving GPU Efficiency 핵심 요약](figures/infographic.svg)
+
+*Figure: MFU Optimization Project: Measuring and Improving GPU Efficiency 한 장 요약 인포그래픽*
+
 # MFU 최적화 실전 프로젝트
 
 ## 소개

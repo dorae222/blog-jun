@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![HDFS와 MapReduce: Hadoop 분산 처리의 핵심 핵심 요약](figures/infographic.svg)
+
+*Figure: HDFS와 MapReduce: Hadoop 분산 처리의 핵심 한 장 요약 인포그래픽*
+
 ## 개요
 
 Apache Hadoop은 대용량 데이터를 여러 서버에 나누어 저장하고, 병렬로 처리하기 위한 오픈소스 프레임워크입니다. 구글이 2003년에 발표한 GFS(Google File System) 논문과 2004년의 MapReduce 논문을 기반으로 Yahoo!에서 개발했고, 현재는 Apache 재단에서 관리하고 있습니다.

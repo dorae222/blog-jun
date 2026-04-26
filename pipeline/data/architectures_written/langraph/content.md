@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LangGraph 핵심 요약](figures/infographic.svg)
+
+*Figure: LangGraph 한 장 요약 인포그래픽*
+
 # LangGraph: 그래프 기반 에이전트 오케스트레이션
 
 **LangChain** · **2024-01-17** · **Agent Orchestration** · **MIT**

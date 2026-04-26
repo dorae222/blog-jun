@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Small Language Models: Compact Yet Powerful 핵심 요약](figures/infographic.svg)
+
+*Figure: Small Language Models: Compact Yet Powerful 한 장 요약 인포그래픽*
+
 # Small Language Models: 작지만 강한 모델들
 
 ## 들어가며

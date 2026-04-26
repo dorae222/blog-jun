@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Crawler 개요 - 자동 스키마 탐색과 데이터 카탈로그 구축 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Crawler 개요 - 자동 스키마 탐색과 데이터 카탈로그 구축 한 장 요약 인포그래픽*
+
 # AWS Glue Crawler 개요 - 자동 스키마 탐색과 데이터 카탈로그 구축
 
 ## 개요

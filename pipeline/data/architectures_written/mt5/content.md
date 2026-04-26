@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![mT5 핵심 요약](figures/infographic.svg)
+
+*Figure: mT5 한 장 요약 인포그래픽*
+
 # mT5
 
 **Google Research** · **2021-01-05** · **Encoder-Decoder** · **Dense** · **오픈소스**

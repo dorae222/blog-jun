@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Discrete Diffusion Modeling by Estimating the Ratio of the Data Distribution 핵심 요약](figures/infographic.svg)
+
+*Figure: Discrete Diffusion Modeling by Estimating the Ratio of the Data Distribution 한 장 요약 인포그래픽*
+
 ## 개요
 
 SEDD(Score Entropy Discrete Diffusion)는 Lou et al.이 ICML 2024에서 발표한 논문으로, 연속 공간에서 큰 성공을 거둔 확산 모델(diffusion model)의 핵심 원리를 이산(discrete) 공간으로 이전하는 문제를 다룬다. 텍스트는 본질적으로 이산적인 토큰 시퀀스이므로, 연속 확산 모델을 직접 적용하기 어렵다는 문제가 오랫동안 존재했다. SEDD는 스코어 함수(score function) 대신 **확률 비율(probability ratio)**을 학습 대상으로 삼는 스코어 엔트로피(score entropy) 손실을 제안하며, 이를 통해 GPT-2 수준의 언어 모델링 성능을 달성한 최초의 이산 확산 모델이다.

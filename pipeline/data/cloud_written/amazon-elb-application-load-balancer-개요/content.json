@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-elb-application-load-balancer-개요",
+  "title": "Amazon ELB와 Application Load Balancer 개요",
+  "title_ko": "Amazon ELB와 Application Load Balancer 개요",
+  "category_slug": "aws-networking",
+  "summary": "Amazon ELB의 4가지 로드밸런서(ALB/NLB/GWLB/CLB) 비교, ALB의 L7 라우팅(경로/호스트/헤더), Listener Rule, ACM 통합, Sticky Session, Cross-zone, NLB의 초저 지연 특성을 실전 예제와 함께 정리합니다.",
+  "tags": [
+    "AWS",
+    "ELB",
+    "ALB",
+    "NLB",
+    "로드밸런서",
+    "Listener Rule",
+    "Target Group",
+    "Health Check",
+    "ACM",
+    "네트워킹"
+  ]
+}

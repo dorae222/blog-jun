@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS VPN CloudHub 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS VPN CloudHub 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS VPN CloudHub는 여러 Site-to-Site VPN 연결을 하나의 Virtual Private Gateway(VGW)에 연결하여 온프레미스 사이트 간 통신을 가능하게 하는 네트워크 패턴입니다. 이는 독립적인 AWS 서비스가 아니라 VGW의 BGP 라우팅 특성을 활용한 아키텍처 패턴입니다.

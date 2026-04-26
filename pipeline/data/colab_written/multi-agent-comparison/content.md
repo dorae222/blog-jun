@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Multi-Agent Systems: CrewAI vs AutoGen vs LangGraph 핵심 요약](figures/infographic.svg)
+
+*Figure: Multi-Agent Systems: CrewAI vs AutoGen vs LangGraph 한 장 요약 인포그래픽*
+
 # 멀티에이전트 시스템 비교: CrewAI vs AutoGen vs LangGraph
 
 ## 들어가며

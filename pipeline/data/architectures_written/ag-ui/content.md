@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AG-UI Protocol 핵심 요약](figures/infographic.svg)
+
+*Figure: AG-UI Protocol 한 장 요약 인포그래픽*
+
 # AG-UI Protocol: 에이전트와 사용자 인터페이스의 실시간 연결
 
 **CopilotKit** · **2025-04-01** · **Agent Protocol** · **MIT**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection 핵심 요약](figures/infographic.svg)
+
+*Figure: Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection 한 장 요약 인포그래픽*
+
 ## 개요
 
 Self-RAG는 2023년 워싱턴대학교의 Akari Asai 등이 발표한 논문으로, **ICLR 2024에서 Oral 발표(상위 1%)**로 선정되었다. 이 논문은 언어 모델에 **자기 반성(self-reflection)** 능력을 부여하여 검색과 생성의 품질을 스스로 제어하는 방법을 제안한다. 기존 RAG 시스템은 모든 입력에 대해 무조건 외부 문서를 검색하므로, 간단한 질문이나 검색이 불필요한 경우에도 불필요한 연산과 노이즈가 발생할 수 있었다. Self-RAG는 이를 해결하기 위해 **반성 토큰(reflection token)**이라는 특수 토큰을 도입한다.

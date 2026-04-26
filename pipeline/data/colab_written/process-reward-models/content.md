@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Process Reward Models: Step-by-Step Verification for Better Reasoning 핵심 요약](figures/infographic.svg)
+
+*Figure: Process Reward Models: Step-by-Step Verification for Better Reasoning 한 장 요약 인포그래픽*
+
 # Process Reward Models: 단계별 검증으로 추론 향상하기
 
 ## 들어가며

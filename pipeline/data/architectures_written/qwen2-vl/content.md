@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen2-VL 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen2-VL 한 장 요약 인포그래픽*
+
 # Qwen2-VL: 동적 해상도와 M-RoPE로 달성한 오픈소스 최강 VLM
 
 ## 개요

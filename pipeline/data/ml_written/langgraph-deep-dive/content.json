@@ -1,0 +1,15 @@
+{
+  "slug": "langgraph-deep-dive",
+  "title": "LangGraph Deep Dive",
+  "title_ko": "LangGraph 심층 분석: 그래프 기반 에이전트 오케스트레이션",
+  "summary": "LangGraph는 LLM 에이전트와 멀티 에이전트 워크플로를 상태 그래프로 모델링하는 LangChain의 오케스트레이션 라이브러리로, 월 3,450만 다운로드를 기록하며 엔터프라이즈 도입 1위 자리를 차지하고 있다. StateGraph의 노드/엣지/상태 구조, 조건부 라우팅, 체크포인트 기반 영속성, Time-travel 디버깅, Subgraph 계층화, Human-in-the-Loop 인터럽트 패턴까지 LangGraph의 핵심 메커니즘을 코드 예제와 함께 깊이 있게 분석한다.",
+  "category_slug": "agent",
+  "tags": [
+    "LangGraph",
+    "Agent Orchestration",
+    "Multi-Agent",
+    "StateGraph",
+    "Checkpoint",
+    "Human-in-the-Loop"
+  ]
+}

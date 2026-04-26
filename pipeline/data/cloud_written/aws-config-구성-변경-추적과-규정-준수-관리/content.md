@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Config: 구성 변경 추적과 규정 준수 관리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Config: 구성 변경 추적과 규정 준수 관리 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Config는 AWS 리소스의 구성(Configuration)을 지속적으로 모니터링하고 기록하는 서비스입니다. 리소스가 생성, 수정, 삭제될 때마다 구성 변경 내역이 자동으로 기록되며, 이를 기반으로 리소스가 조직의 보안 정책이나 규정 준수 요구사항에 부합하는지 자동으로 평가할 수 있습니다.

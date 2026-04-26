@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker 서버리스 추론: 트래픽 패턴에 최적화된 ML 모델 배포 전략 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker 서버리스 추론: 트래픽 패턴에 최적화된 ML 모델 배포 전략 한 장 요약 인포그래픽*
+
 # Amazon SageMaker 서버리스 추론: 트래픽 패턴에 최적화된 ML 모델 배포 전략
 
 ## 개요

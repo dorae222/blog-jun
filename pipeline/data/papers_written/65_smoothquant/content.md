@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models 한 장 요약 인포그래픽*
+
 # SmoothQuant: 대규모 언어 모델을 위한 정밀하고 효율적인 학습 후 양자화
 
 ## 논문 개요

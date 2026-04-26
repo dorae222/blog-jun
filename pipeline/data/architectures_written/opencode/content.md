@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenCode 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenCode 한 장 요약 인포그래픽*
+
 # OpenCode: Go 네이티브 AI 코딩 TUI
 
 ## 개요

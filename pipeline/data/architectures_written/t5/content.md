@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![T5 핵심 요약](figures/infographic.svg)
+
+*Figure: T5 한 장 요약 인포그래픽*
+
 # T5: 텍스트-투-텍스트 통합 프레임워크의 정립
 
 ## 개요

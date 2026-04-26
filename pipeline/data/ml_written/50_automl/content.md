@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AutoML: Automated Machine Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: AutoML: Automated Machine Learning 한 장 요약 인포그래픽*
+
 ## 개요
 
 AutoML(Automated Machine Learning)은 머신러닝 파이프라인에서 인간의 반복적 개입을 최소화하고, 모델 개발 과정을 자동화하는 기술 분야입니다. 전통적인 ML 워크플로에서 데이터 과학자는 수많은 실험을 수작업으로 반복해야 했습니다. AutoML은 이 과정을 체계적으로 자동화합니다.

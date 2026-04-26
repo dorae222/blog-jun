@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Causal Inference Overview: Correlation vs Causation 핵심 요약](figures/infographic.svg)
+
+*Figure: Causal Inference Overview: Correlation vs Causation 한 장 요약 인포그래픽*
+
 ## 개요: 왜 인과관계가 중요한가
 
 데이터 분석가라면 누구나 한 번쯤 들어봤을 격언이 있다. "상관관계는 인과관계가 아니다(Correlation is not Causation)." 그러나 현실에서는 이 두 개념이 끊임없이 혼동된다.

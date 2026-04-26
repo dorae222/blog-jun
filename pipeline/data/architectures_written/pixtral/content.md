@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Pixtral 핵심 요약](figures/infographic.svg)
+
+*Figure: Pixtral 한 장 요약 인포그래픽*
+
 # Pixtral: Mistral의 네이티브 비전 인코더와 임의 해상도 처리
 
 ## 개요

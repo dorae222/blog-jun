@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Model Monitor 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Model Monitor 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Model Monitor
 
 ## 개요

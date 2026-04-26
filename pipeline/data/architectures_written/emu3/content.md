@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Emu3 핵심 요약](figures/infographic.svg)
+
+*Figure: Emu3 한 장 요약 인포그래픽*
+
 # Emu3: 다음 토큰 예측만으로 달성하는 통합 멀티모달
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![RetNet 핵심 요약](figures/infographic.svg)
+
+*Figure: RetNet 한 장 요약 인포그래픽*
+
 # RetNet: 학습 병렬화와 효율적 추론을 동시에 달성한 Retention 메커니즘
 
 **Microsoft Research** · **2023-07-17** · **SSM** · **MIT**

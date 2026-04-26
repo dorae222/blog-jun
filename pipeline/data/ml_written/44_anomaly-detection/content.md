@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Anomaly Detection 핵심 요약](figures/infographic.svg)
+
+*Figure: Anomaly Detection 한 장 요약 인포그래픽*
+
 ## 1. 개요 ( 이상 탐지의 특수성
 
 대부분의 지도 학습 문제는 충분한 양의 레이블 데이터를 전제로 한다. 스팸 필터를 만들려면 스팸과 정상 메일이 골고루 있어야 하고, 암 진단 모델을 학습하려면 암 환자와 정상인의 데이터가 모두 필요하다. 그러나 **이상 탐지(Anomaly Detection)** 는 이 전제 자체가 성립하지 않는 환경에서 작동해야 한다.

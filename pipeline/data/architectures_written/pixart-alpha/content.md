@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![PixArt-α 핵심 요약](figures/infographic.svg)
+
+*Figure: PixArt-α 한 장 요약 인포그래픽*
+
 # PixArt-α: 효율적 학습 기반 텍스트-이미지 확산 트랜스포머
 
 **Huawei Noah's Ark Lab** · **2023-10-03** · **Diffusion** · **Apache 2.0**

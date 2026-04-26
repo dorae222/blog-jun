@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Kinesis Producer Library (KPL) 정리 - Aggregation과 Consumer 영향 분석 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Kinesis Producer Library (KPL) 정리 - Aggregation과 Consumer 영향 분석 한 장 요약 인포그래픽*
+
 # Amazon Kinesis Producer Library (KPL) 정리 - Aggregation과 Consumer 영향 분석
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue ResolveChoice 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue ResolveChoice 한 장 요약 인포그래픽*
+
 # AWS Glue ResolveChoice
 
 ## 개요

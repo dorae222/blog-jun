@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AI Coding Agent Comparison 핵심 요약](figures/infographic.svg)
+
+*Figure: AI Coding Agent Comparison 한 장 요약 인포그래픽*
+
 # AI 코딩 에이전트 비교: Claude Code vs Gemini CLI vs Codex CLI
 
 :::info

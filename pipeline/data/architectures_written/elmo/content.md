@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ELMo 핵심 요약](figures/infographic.svg)
+
+*Figure: ELMo 한 장 요약 인포그래픽*
+
 # ELMo: 문맥화된 단어 임베딩의 시작
 
 ## 개요

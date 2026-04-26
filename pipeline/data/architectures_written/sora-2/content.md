@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Sora 2 핵심 요약](figures/infographic.svg)
+
+*Figure: Sora 2 한 장 요약 인포그래픽*
+
 # Sora 2: 물리 시뮬레이션과 오디오 동기화를 갖춘 차세대 비디오 생성
 
 **OpenAI** · **2025-03-01** · **Diffusion** · **Proprietary**

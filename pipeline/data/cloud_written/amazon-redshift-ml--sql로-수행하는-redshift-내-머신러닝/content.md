@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift ML 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift ML 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift ML은 SQL 문만으로 Redshift 데이터 웨어하우스 내에서 머신러닝 모델을 생성, 학습, 추론할 수 있는 기능입니다. 내부적으로 Amazon SageMaker Autopilot을 활용하여 최적의 모델을 자동으로 선택하고 학습하며, 학습된 모델을 Redshift 내 SQL 함수로 배포하여 SELECT 문에서 직접 호출할 수 있습니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MLOps Fundamentals 핵심 요약](figures/infographic.svg)
+
+*Figure: MLOps Fundamentals 한 장 요약 인포그래픽*
+
 ## 개요
 
 MLOps(Machine Learning Operations)는 **ML + DevOps**의 합성어로, 머신러닝 모델을 단순히 실험 노트북 수준에서 끝내지 않고 프로덕션 환경에서 안정적으로 운영하기 위한 일련의 실천 방법론입니다. 전통적인 소프트웨어 DevOps가 코드 빌드·테스트·배포·모니터링을 자동화하듯, MLOps는 **데이터 수집 → 피처 엔지니어링 → 모델 학습 → 평가 → 배포 → 모니터링 → 재학습** 사이클 전체를 자동화하고 재현 가능하게 만드는 것을 목표로 합니다.

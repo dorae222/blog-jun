@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Cross-Validation and Hyperparameter Tuning 핵심 요약](figures/infographic.svg)
+
+*Figure: Cross-Validation and Hyperparameter Tuning 한 장 요약 인포그래픽*
+
 ## 1. 개요: 모델 선택의 핵심, 일반화 성능 추정
 
 머신러닝 모델을 만드는 최종 목표는 **학습 데이터에 잘 맞는 모델**이 아니라, **본 적 없는 데이터에 잘 동작하는 모델**이다. 이 능력을 **일반화(Generalization)** 라 부른다.

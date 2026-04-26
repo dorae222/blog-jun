@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Systems Manager 개요 및 주요 기능 - 하이브리드 인프라 통합 관리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Systems Manager 개요 및 주요 기능 - 하이브리드 인프라 통합 관리 한 장 요약 인포그래픽*
+
 # AWS Systems Manager 개요 및 주요 기능 - 하이브리드 인프라 통합 관리
 
 ## 개요

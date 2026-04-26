@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DiffuSeq: Sequence to Sequence Text Generation with Diffusion Models 핵심 요약](figures/infographic.svg)
+
+*Figure: DiffuSeq: Sequence to Sequence Text Generation with Diffusion Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 DiffuSeq(Gong et al., ICLR 2023)는 확산 모델(Diffusion Model)을 **조건부 Seq2Seq 텍스트 생성**에 직접 적용한 연구다. 기존 언어 모델이 자기회귀(autoregressive) 방식으로 토큰을 하나씩 순차적으로 생성하는 것과 달리, DiffuSeq는 목표 시퀀스 전체를 연속 임베딩 공간(continuous embedding space)에서 반복적으로 탈노이징(denoising)하며 **비자기회귀(non-autoregressive)** 방식으로 한 번에 생성한다.

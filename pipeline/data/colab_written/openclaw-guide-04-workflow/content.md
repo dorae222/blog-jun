@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenClaw Workflow Design 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenClaw Workflow Design 한 장 요약 인포그래픽*
+
 # OpenClaw 실전: 자체 호스팅 AI 에이전트 환경
 
 ## 들어가며

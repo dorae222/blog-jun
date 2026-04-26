@@ -1,0 +1,10 @@
+{
+  "slug": "a2a-01-overview",
+  "title": "A2A Protocol Overview: Why Agents Need a Standard",
+  "title_ko": "A2A 프로토콜 등장 배경: 멀티에이전트의 표준 필요성",
+  "summary": "2025년 4월 Google이 발표하고 6월 Linux Foundation에 기증된 A2A(Agent-to-Agent) 프로토콜의 등장 배경을 정리합니다. LangGraph, CrewAI, AutoGen, ADK, Mastra 등 폭증하는 에이전트 프레임워크가 만들어 낸 사일로 문제와, 부서별로 다른 framework를 쓰는 기업 환경에서 왜 표준이 필수인지 설명합니다. HTTP가 웹을 만들었듯 A2A가 에이전트 웹을 구축하려는 비전, AGNTCY 및 AG-UI Protocol과의 비교, 2026년 4월 시점의 도입 현황까지 다룹니다.",
+  "category_slug": "agent",
+  "tags": ["A2A", "Multi-Agent", "Protocol", "Google", "Linux-Foundation", "Interoperability"],
+  "series": "a2a-protocol",
+  "series_order": 1
+}

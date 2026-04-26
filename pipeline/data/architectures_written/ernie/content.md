@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ERNIE 핵심 요약](figures/infographic.svg)
+
+*Figure: ERNIE 한 장 요약 인포그래픽*
+
 # ERNIE: 지식 통합 기반 사전 학습의 선구자
 
 ## 개요

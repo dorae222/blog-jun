@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![CrewAI 핵심 요약](figures/infographic.svg)
+
+*Figure: CrewAI 한 장 요약 인포그래픽*
+
 # CrewAI: 역할 기반 AI 에이전트 오케스트레이션
 
 **CrewAI Inc.** · **2024-01-01** · **Multi-Agent Framework** · **MIT**

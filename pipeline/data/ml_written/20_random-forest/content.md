@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Random Forest 핵심 요약](figures/infographic.svg)
+
+*Figure: Random Forest 한 장 요약 인포그래픽*
+
 # Random Forest: 나무들의 민주주의
 
 ## 1. 개요: 왜 숲이 나무보다 강한가

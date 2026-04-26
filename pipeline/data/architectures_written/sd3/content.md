@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Stable Diffusion 3 핵심 요약](figures/infographic.svg)
+
+*Figure: Stable Diffusion 3 한 장 요약 인포그래픽*
+
 # Stable Diffusion 3: 멀티모달 확산 트랜스포머 기반 이미지 생성
 
 **Stability AI** · **2024-03-05** · **Diffusion** · **Stability AI Community License**

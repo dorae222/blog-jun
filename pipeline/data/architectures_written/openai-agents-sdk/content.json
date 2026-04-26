@@ -1,0 +1,14 @@
+{
+  "slug": "openai-agents-sdk",
+  "title": "OpenAI Agents SDK",
+  "title_ko": "OpenAI Agents SDK: 핸드오프와 가드레일을 일급 개념으로 만든 OpenAI 네이티브 에이전트 프레임워크",
+  "summary": "OpenAI Agents SDK는 2025년 3월 공개된 경량 멀티 에이전트 프레임워크로, 기존 실험적 라이브러리였던 Swarm의 후속작이다. Agent, Tool, Handoff, Guardrail 네 가지 추상화로 멀티 에이전트 시스템을 구성하며 트레이싱과 평가가 빌트인되어 있다. Realtime API와 통합되어 음성 에이전트도 동일한 추상화로 구축할 수 있고, LiteLLM을 통해 비OpenAI 모델까지 지원한다.",
+  "tags": [
+    "OpenAI",
+    "Agents SDK",
+    "Multi-Agent",
+    "Handoffs",
+    "Guardrails",
+    "Voice Agent"
+  ]
+}

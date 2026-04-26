@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-route-53-dns-서비스-개요",
+  "title": "Amazon Route 53 DNS 서비스 개요",
+  "title_ko": "Amazon Route 53 DNS 서비스 개요",
+  "category_slug": "aws-networking",
+  "summary": "Amazon Route 53의 권한 DNS와 도메인 등록, 7가지 라우팅 정책(Simple/Weighted/Latency/Failover/Geolocation/Geoproximity/Multi-Value), Health Check, Alias 레코드, Private Hosted Zone, DNSSEC, Resolver 엔드포인트를 정리합니다.",
+  "tags": [
+    "AWS",
+    "Route 53",
+    "DNS",
+    "도메인",
+    "라우팅 정책",
+    "Health Check",
+    "Alias 레코드",
+    "DNSSEC",
+    "Private Hosted Zone",
+    "네트워킹"
+  ]
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Denoising Diffusion Probabilistic Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Denoising Diffusion Probabilistic Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Denoising Diffusion Probabilistic Models"(Ho et al., 2020)은 확산 확률 모델(diffusion probabilistic model)을 이용하여 고품질 이미지를 생성하는 방법을 제안한 논문입니다. 논문 발표 당시 GAN(Generative Adversarial Network)이 이미지 생성 분야의 지배적인 패러다임이었지만, DDPM은 GAN 없이도 CIFAR-10에서 FID 3.17, 256×256 LSUN Bedroom에서 FID 6.36이라는 당시 최고 수준의 이미지 품질을 달성했습니다.

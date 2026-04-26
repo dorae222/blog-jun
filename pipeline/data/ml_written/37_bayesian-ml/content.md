@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Bayesian Machine Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: Bayesian Machine Learning 한 장 요약 인포그래픽*
+
 ## 개요
 
 전통적인 머신러닝은 파라미터를 하나의 고정된 값으로 추정합니다. 예를 들어 선형 회귀에서 최적 가중치 $w^*$를 최소제곱법으로 구하면 그 값이 '정답'으로 간주됩니다. 하지만 현실에서는 데이터가 부족하거나 노이즈가 많은 경우가 흔하며, 이런 상황에서 단일 점 추정(point estimate)은 과신(overconfidence)을 낳습니다.

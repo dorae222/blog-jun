@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ALBERT 핵심 요약](figures/infographic.svg)
+
+*Figure: ALBERT 한 장 요약 인포그래픽*
+
 # ALBERT: 경량 BERT를 위한 자기지도 학습 언어 표현
 
 **Google Research / Toyota Technological Institute at Chicago** · **2019-09-26** · **Encoder-only** · **Apache 2.0**

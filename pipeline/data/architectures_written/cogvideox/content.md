@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![CogVideoX 핵심 요약](figures/infographic.svg)
+
+*Figure: CogVideoX 한 장 요약 인포그래픽*
+
 # CogVideoX: 오픈소스 텍스트-비디오 생성 모델
 
 ## 개요

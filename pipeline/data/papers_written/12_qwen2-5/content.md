@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen2.5 Technical Report 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen2.5 Technical Report 한 장 요약 인포그래픽*
+
 ## 개요
 
 Qwen2.5는 Alibaba Cloud의 Qwen 팀이 발표한 차세대 대규모 언어 모델(LLM) 시리즈로, 이전 버전인 [[qwen2|Qwen2]]를 기반으로 사전학습 데이터 규모, 후처리 정렬 기법, 실용적 기능 전반에 걸쳐 대폭적인 개선을 이루었습니다. 본 기술 보고서는 Qwen2.5의 설계 철학, 학습 방법론, 평가 결과를 포괄적으로 다루고 있습니다.

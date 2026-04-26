@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ONNX Runtime Optimization Guide: From PyTorch Export to Quantization 핵심 요약](figures/infographic.svg)
+
+*Figure: ONNX Runtime Optimization Guide: From PyTorch Export to Quantization 한 장 요약 인포그래픽*
+
 # ONNX Runtime 최적화 가이드: PyTorch 모델 변환부터 양자화까지
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer 핵심 요약](figures/infographic.svg)
+
+*Figure: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer"(Raffel et al., 2020)는 NLP의 전이 학습(Transfer Learning)에 대한 가장 포괄적인 체계적 연구 중 하나입니다. 이 논문의 핵심 기여는 두 가지입니다. 첫째, 모든 NLP 태스크를 **텍스트 입력 → 텍스트 출력** 형식으로 통일하는 **Text-to-Text Transfer Transformer(T5)** 프레임워크를 제안했습니다. 둘째, 아키텍처, 사전 학습 목적 함수, 데이터셋, 전이 학습 전략, 스케일링 등에 대한 **체계적인 비교 실험**을 수행하여 각 요소의 영향을 정량적으로 분석했습니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Outposts 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Outposts 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Outposts는 AWS 인프라, 서비스, API, 도구를 사용자의 온프레미스 데이터센터나 코로케이션 시설에 확장하는 완전관리형 하이브리드 클라우드 서비스입니다. 물리적 하드웨어를 AWS가 직접 사용자의 시설에 설치하고 관리하며, 클라우드와 동일한 AWS 서비스를 로컬에서 실행할 수 있게 합니다.

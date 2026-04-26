@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Direct Connect Gateway 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Direct Connect Gateway 한 장 요약 인포그래픽*
+
 # AWS Direct Connect Gateway (DX Gateway) 심층 분석
 
 ## 개요

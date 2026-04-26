@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Sora 핵심 요약](figures/infographic.svg)
+
+*Figure: Sora 한 장 요약 인포그래픽*
+
 # Sora: 시공간 패치 기반 비디오 생성 확산 트랜스포머
 
 **OpenAI** · **2024-02-15** · **Diffusion** · **Proprietary**

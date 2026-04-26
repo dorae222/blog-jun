@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Diffusion-LM Improves Controllable Text Generation 핵심 요약](figures/infographic.svg)
+
+*Figure: Diffusion-LM Improves Controllable Text Generation 한 장 요약 인포그래픽*
+
 ## 개요
 
 Diffusion-LM은 2022년 NeurIPS에서 Xiang Lisa Li et al.이 발표한 논문으로, **단어 임베딩 공간에서 연속 가우시안 확산을 수행**하는 방식으로 텍스트를 생성한다. 이 접근법의 핵심 동기는 **제어 가능한 텍스트 생성(controllable text generation)**이다.

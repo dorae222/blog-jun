@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Notebook 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Notebook 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Notebook
 
 ## 개요

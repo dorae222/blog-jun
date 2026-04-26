@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini CLI Core Features 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini CLI Core Features 한 장 요약 인포그래픽*
+
 # Gemini CLI 핵심 기능: 도구 시스템과 확장
 
 :::info

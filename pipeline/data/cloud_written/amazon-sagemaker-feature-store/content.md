@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Feature Store 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Feature Store 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Feature Store
 
 ## 개요

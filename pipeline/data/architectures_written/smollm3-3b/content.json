@@ -1,0 +1,17 @@
+{
+  "slug": "smollm3-3b",
+  "title": "SmolLM3 (3B)",
+  "title_ko": "SmolLM3-3B: 데이터부터 코드까지 전부 공개한 풀 오픈 SLM",
+  "summary": "SmolLM3는 Hugging Face가 2025년 7월 공개한 3B 파라미터 규모의 소형 언어 모델로, 가중치 외에 학습 데이터·코드·평가까지 일체를 공개한 풀 오픈 정책이 핵심이다. 11.2T 토큰의 다국어 코퍼스로 학습되어 6개 유럽 언어를 지원하고, 듀얼 모드 추론과 도구 호출, 64K 컨텍스트까지 갖추어 Llama 3.2 3B와 Qwen2.5 3B를 능가하는 종합 성능을 보인다.",
+  "tags": [
+    "SmolLM3",
+    "Hugging Face",
+    "SLM",
+    "Small Language Model",
+    "Open Source",
+    "Tool Calling",
+    "Multilingual",
+    "On-device AI",
+    "Reasoning"
+  ]
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DINOv2 핵심 요약](figures/infographic.svg)
+
+*Figure: DINOv2 한 장 요약 인포그래픽*
+
 # DINOv2: 자기지도 비전 파운데이션 모델
 
 **Meta/FAIR** · **2023-04-01** · **Vision** · **Apache-2.0**

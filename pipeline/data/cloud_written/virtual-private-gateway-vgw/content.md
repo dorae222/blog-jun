@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Virtual Private Gateway (VGW) 핵심 요약](figures/infographic.svg)
+
+*Figure: Virtual Private Gateway (VGW) 한 장 요약 인포그래픽*
+
 ## 개요
 
 Virtual Private Gateway(VGW)는 VPC 측에서 VPN 또는 Direct Connect 연결의 종단점(Endpoint) 역할을 하는 AWS 관리형 게이트웨이입니다. 온프레미스 네트워크와 AWS VPC를 연결하는 하이브리드 네트워크 아키텍처에서 VGW는 VPC 측의 핵심 구성 요소입니다.

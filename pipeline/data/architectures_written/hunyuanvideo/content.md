@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![HunyuanVideo 핵심 요약](figures/infographic.svg)
+
+*Figure: HunyuanVideo 한 장 요약 인포그래픽*
+
 # HunyuanVideo: 오픈소스 대규모 비디오 생성 모델
 
 ## 개요

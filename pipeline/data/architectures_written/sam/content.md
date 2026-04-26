@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SAM 핵심 요약](figures/infographic.svg)
+
+*Figure: SAM 한 장 요약 인포그래픽*
+
 # SAM: 범용 세그멘테이션 파운데이션 모델
 
 **Meta** · **2023-04-01** · **Vision** · **Apache-2.0**

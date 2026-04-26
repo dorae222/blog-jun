@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Data Wrangler 소개 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Data Wrangler 소개 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon SageMaker Data Wrangler는 머신러닝 데이터 준비를 위한 시각적 도구로, AWS SageMaker Studio 내에서 사용할 수 있습니다. 이 글에서는 Data Wrangler를 처음 접하는 사용자를 위해, 기본 개념부터 실전 워크플로우까지를 단계별로 안내합니다.

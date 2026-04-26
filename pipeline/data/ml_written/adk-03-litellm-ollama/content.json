@@ -1,0 +1,10 @@
+{
+  "slug": "adk-03-litellm-ollama",
+  "title": "ADK + LiteLLM + Ollama: Local LLM Integration and Air-gapped Environments",
+  "title_ko": "ADK + LiteLLM + Ollama: 로컬 LLM 통합과 air-gapped 환경",
+  "summary": "ADK는 model-agnostic 설계로 LiteLLM 어댑터를 통해 Ollama, vLLM, TGI, OpenAI, Anthropic 등 100여 개 LLM 백엔드를 받아들입니다. 본 3편에서는 brew install ollama부터 ADK에서 LiteLlm wrapper로 ollama_chat/llama3.2를 호출하는 패턴, air-gapped 사내 환경에서 LiteLLM Proxy로 모델을 라우팅하는 토폴로지, Gemini Flash와 Llama 3.2의 성능/비용 비교, tool calling 호환성 이슈, 그리고 MCP 도구를 함께 묶는 통합 아키텍처까지 다룹니다.",
+  "category_slug": "agent",
+  "tags": ["ADK", "LiteLLM", "Ollama", "Local LLM", "Air-gapped", "vLLM", "MCP"],
+  "series": "adk-local-development",
+  "series_order": 3
+}

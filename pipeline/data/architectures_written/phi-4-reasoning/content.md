@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Phi-4 Reasoning 핵심 요약](figures/infographic.svg)
+
+*Figure: Phi-4 Reasoning 한 장 요약 인포그래픽*
+
 # Phi-4 Reasoning
 
 **Microsoft** · **2025-04-30** · **Decoder-only** · **Dense** · **오픈소스**

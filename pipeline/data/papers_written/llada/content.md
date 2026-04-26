@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Large Language Diffusion with mAsking 핵심 요약](figures/infographic.svg)
+
+*Figure: Large Language Diffusion with mAsking 한 장 요약 인포그래픽*
+
 ## 개요
 
 LLaDA(Large Language Diffusion with mAsking)는 2025년 Nie et al.이 발표한 논문으로, **마스크 확산(masked diffusion) 방식을 언어 모델에 8B 파라미터 규모로 적용한 최초의 시도**다. 자기회귀(autoregressive, AR) 방식이 지배해 온 대규모 언어 모델 분야에서, 확산 기반 비자기회귀 모델이 동일한 스케일에서도 경쟁력 있는 성능을 낼 수 있음을 처음으로 실증했다.

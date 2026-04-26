@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale 핵심 요약](figures/infographic.svg)
+
+*Figure: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale 한 장 요약 인포그래픽*
+
 ## 개요
 
 Transformer 아키텍처는 NLP 분야에서 BERT, GPT 등을 통해 압도적인 성과를 거두었습니다. 그러나 컴퓨터 비전 분야는 2020년까지 CNN(Convolutional Neural Network)이 지배하고 있었습니다. Dosovitskiy 등(Google Brain, 2020)은 ICLR 2021에 발표한 **ViT(Vision Transformer)**를 통해 순수 Transformer를 이미지 분류에 직접 적용할 수 있음을 보여주었습니다. 이 논문은 발표 이후 약 5만 회 이상의 인용을 기록하며 컴퓨터 비전 역사상 가장 영향력 있는 논문 중 하나로 자리잡았습니다.

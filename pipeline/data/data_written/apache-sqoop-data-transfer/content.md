@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Apache Sqoop: Bridging RDBMS and Hadoop for Efficient Data Transfer 핵심 요약](figures/infographic.svg)
+
+*Figure: Apache Sqoop: Bridging RDBMS and Hadoop for Efficient Data Transfer 한 장 요약 인포그래픽*
+
 # Apache Sqoop 완벽 가이드: RDBMS와 Hadoop 간 대용량 데이터 전송의 모든 것
 
 ## 개요

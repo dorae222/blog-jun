@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Batch 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Batch 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Batch는 배치 컴퓨팅 워크로드를 AWS 클라우드에서 효율적으로 실행할 수 있도록 설계된 완전관리형 서비스입니다. 데이터 분석, 머신러닝 학습, 금융 모델링, 영상 렌더링 등 대규모 병렬 처리가 필요한 작업을 자동으로 스케줄링하고 실행합니다.

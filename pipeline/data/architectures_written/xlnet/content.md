@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![XLNet 핵심 요약](figures/infographic.svg)
+
+*Figure: XLNet 한 장 요약 인포그래픽*
+
 # XLNet: 순열 언어 모델링으로 BERT의 한계를 넘다
 
 ## 개요

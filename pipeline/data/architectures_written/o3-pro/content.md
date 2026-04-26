@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenAI o3-pro 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenAI o3-pro 한 장 요약 인포그래픽*
+
 # OpenAI o3-pro: 추론 컴퓨트를 극대화한 최강 추론 모델
 
 ## 개요

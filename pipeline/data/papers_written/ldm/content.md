@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![High-Resolution Image Synthesis with Latent Diffusion Models 핵심 요약](figures/infographic.svg)
+
+*Figure: High-Resolution Image Synthesis with Latent Diffusion Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "High-Resolution Image Synthesis with Latent Diffusion Models"(Rombach et al., CVPR 2022)은 확산 모델(diffusion model)의 뛰어난 생성 품질을 유지하면서 픽셀 공간이 아닌 **압축된 잠재 공간(latent space)**에서 확산 과정을 수행함으로써 계산 비용을 획기적으로 줄인 논문입니다. 이 연구는 Stable Diffusion의 기반 아키텍처가 되어 이미지 생성 AI의 대중화를 이끌었으며, 2025년 기준 Google Scholar 인용 수가 2만 회를 넘어서는 등 딥러닝 역사상 가장 영향력 있는 논문 중 하나로 자리매김했습니다.

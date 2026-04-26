@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FNet 핵심 요약](figures/infographic.svg)
+
+*Figure: FNet 한 장 요약 인포그래픽*
+
 # FNet: 푸리에 변환으로 어텐션을 대체한 효율적 토큰 믹싱 모델
 
 **Google Research** · **2021-05-09** · **SSM** · **Apache-2.0**

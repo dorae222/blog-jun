@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OPT 핵심 요약](figures/infographic.svg)
+
+*Figure: OPT 한 장 요약 인포그래픽*
+
 # OPT: GPT-3의 오픈소스 재현과 LLM 연구 민주화
 
 ## 개요

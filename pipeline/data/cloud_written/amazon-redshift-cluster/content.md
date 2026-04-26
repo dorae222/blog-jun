@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Cluster 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Cluster 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift Cluster는 Redshift 데이터 웨어하우스의 기본 배포 단위입니다. 하나의 클러스터는 Leader Node와 하나 이상의 Compute Node로 구성되며, 이 노드들이 협력하여 대규모 병렬 처리(MPP)를 수행합니다.

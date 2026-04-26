@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Lake Formation 소개 - 데이터 레이크 구축과 보안 관리 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Lake Formation 소개 - 데이터 레이크 구축과 보안 관리 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Lake Formation은 안전한 데이터 레이크를 며칠이 아닌 몇 시간 만에 구축하고 관리할 수 있도록 도와주는 관리형 서비스입니다. 기존에 데이터 레이크를 구축하려면 S3 버킷 설정, IAM 정책 관리, Glue Crawler 설정, 데이터 암호화, 접근 제어 등 수많은 단계를 수동으로 구성해야 했습니다.

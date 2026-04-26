@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-Neo 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-Neo 한 장 요약 인포그래픽*
+
 # GPT-Neo: 오픈소스 LLM 생태계의 시발점
 
 ## 개요
