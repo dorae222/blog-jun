@@ -1,0 +1,15 @@
+{
+  "slug": "gemini-embedding-001",
+  "title": "Gemini Embedding 001",
+  "title_ko": "Gemini Embedding 001: Matryoshka 기반 상용 다국어 임베딩 1위",
+  "summary": "Gemini Embedding 001은 2025년 Google이 공개한 텍스트 임베딩 모델로, MTEB 영어 평균 68.32점으로 상용 1위에 올랐다. 3072차원 Matryoshka 표현을 사용해 768/1536 차원으로 자유롭게 잘라 쓸 수 있고, 8K 컨텍스트와 100개 이상 언어를 지원한다. RAG와 시맨틱 검색의 표준 후보로 자리 잡았다.",
+  "tags": [
+    "Embedding",
+    "Gemini",
+    "Google",
+    "Matryoshka",
+    "MTEB",
+    "Dense Retrieval",
+    "Multilingual"
+  ]
+}

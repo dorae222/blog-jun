@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GraphRAG in Practice: Knowledge Graph-Based RAG 핵심 요약](figures/infographic.svg)
+
+*Figure: GraphRAG in Practice: Knowledge Graph-Based RAG 한 장 요약 인포그래픽*
+
 # GraphRAG 실전: 지식 그래프 기반 RAG 구축
 
 ## 들어가며

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Getting Started with OpenClaw 핵심 요약](figures/infographic.svg)
+
+*Figure: Getting Started with OpenClaw 한 장 요약 인포그래픽*
+
 # OpenClaw 시작하기: 메시징 기반 AI 에이전트
 
 ## 들어가며

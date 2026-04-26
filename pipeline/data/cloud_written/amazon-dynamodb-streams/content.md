@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon DynamoDB Streams 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon DynamoDB Streams 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon DynamoDB Streams는 DynamoDB 테이블에서 발생하는 항목(Item) 수준의 변경 사항을 시간 순서대로 캡처하여 스트림으로 제공하는 기능입니다. 이를 변경 데이터 캡처(Change Data Capture, CDC)라고 하며, 테이블의 INSERT, UPDATE, DELETE 이벤트를 거의 실시간으로 처리할 수 있게 합니다.

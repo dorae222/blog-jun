@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Spectrum 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Spectrum 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift Spectrum은 Amazon Redshift의 확장 기능으로, Amazon S3에 저장된 데이터를 Redshift 클러스터로 로드하지 않고도 SQL 쿼리를 실행할 수 있게 해줍니다. 이를 통해 엑사바이트 규모의 비정형 및 반정형 데이터를 기존 Redshift 데이터와 조인하여 분석할 수 있습니다.

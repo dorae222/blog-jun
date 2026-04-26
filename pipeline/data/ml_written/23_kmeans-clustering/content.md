@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![K-Means Clustering 핵심 요약](figures/infographic.svg)
+
+*Figure: K-Means Clustering 한 장 요약 인포그래픽*
+
 ## 개요
 
 K-Means 클러스터링은 레이블 없는 데이터를 **K개의 군집(cluster)**으로 자동 분류하는 비지도 학습(Unsupervised Learning) 알고리즘입니다. 1957년 Stuart Lloyd가 펄스 부호 변조(PCM) 문제를 풀기 위해 고안했으며, 1982년 공식 논문으로 발표된 이후 산업 전반에서 가장 널리 쓰이는 군집화 기법으로 자리 잡았습니다.

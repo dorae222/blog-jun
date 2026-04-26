@@ -1,0 +1,41 @@
+{
+  "name": "Mistral Small 3",
+  "slug": "mistral-small-3",
+  "organization": "Mistral AI",
+  "release_date": "2025-01-30",
+  "decoder_type": "dense",
+  "param_scale": "24B",
+  "context_length": "32K",
+  "attention_type": "Grouped Query Attention (GQA)",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "131,072",
+  "hidden_dim": "5,120",
+  "num_layers": "40",
+  "num_heads": "32 (Q) / 8 (KV)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Mistral Small 3는 Mistral AI가 2025년 1월 30일 공개한 24B 파라미터 Dense 모델로, '저지연(low-latency) GPT-4o-mini' 대체재로 설계되었다. Mistral의 라인업에서 'Small'이라는 이름이지만 24B로 절대 작지 않으며, RTX 4090 또는 32GB MacBook 단일 디바이스에서 추론 가능한 최대 규모를 의도적으로 겨냥하였다. Llama 3.3 70B Instruct에 근접하는 성능을 1/3 규모로 달성하며, bf16 기준 초당 약 150 토큰의 추론 속도로 동급 모델 중 최고 수준의 처리량을 보인다. Apache 2.0 라이선스로 완전 오픈소스 공개되어, 자체 호스팅 챗봇·에이전트·코드 어시스턴트 워크로드에 최적화되어 있다.",
+  "key_detail": "Mistral Small 3의 핵심 혁신은 '레이턴시 우선(latency-first) Dense 설계'이다. 동급 70B Llama, 27B Gemma, 32B Qwen 모델 대비 레이어 수(40)를 적게 유지하면서 히든 차원(5,120)으로 보완하여, 추론 시 Forward pass의 직렬 깊이를 줄였다. 이는 토큰 생성 레이턴시(time-per-output-token)에 직접적으로 영향을 미친다. 또한 Mistral Small 3는 의도적으로 Reinforcement Learning from Human Feedback(RLHF)을 최소화한 '비추론 베이스(non-reasoning base)'로 출시되어, 사용자가 자체 도메인 데이터로 SFT 또는 RL 후속 학습을 자유롭게 수행할 수 있도록 했다. 이는 Llama 3.3나 Qwen2.5 같은 이미 정렬된 모델과 차별화된 포지셔닝이다.",
+  "training_detail": "Mistral Small 3는 Mistral AI 자체 데이터셋으로 사전 학습되었으며, 구체적인 토큰 수와 데이터 구성은 공개되지 않았다. 다만 Mistral 7B(2023), Mixtral 8x7B(2023), Mistral Small 2(2024)의 계보를 잇는 후속 학습 레시피를 사용한 것으로 알려져 있다. 정렬 단계는 SFT 위주로 가볍게 수행되었고, RLHF는 의도적으로 최소화되었다. 이는 후속 reasoning 모델인 Mistral Small 3.1, Mistral Small 3.2를 위한 베이스 모델로 활용 가능성을 염두에 둔 설계이다. 32K 컨텍스트 학습이 기본이며, 추가 외삽은 적용되지 않았다.",
+  "paper_url": "",
+  "code_url": "https://github.com/mistralai/mistral-inference",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "SLM",
+    "Efficient Inference",
+    "Reasoning"
+  ],
+  "architecture_category": "efficiency",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "mistral-large-3",
+      "type": "part_of",
+      "description": "Mistral 3 시리즈의 소형 모델"
+    }
+  ],
+  "related_post_slug": ""
+}

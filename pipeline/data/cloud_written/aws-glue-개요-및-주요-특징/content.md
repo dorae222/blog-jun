@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue 개요 및 주요 특징 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue 개요 및 주요 특징 한 장 요약 인포그래픽*
+
 # AWS Glue 개요 및 주요 특징
 
 ## 개요

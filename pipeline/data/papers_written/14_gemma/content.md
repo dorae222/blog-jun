@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemma: Open Models Based on Gemini Research and Technology 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemma: Open Models Based on Gemini Research and Technology 한 장 요약 인포그래픽*
+
 ## 개요
 
 Gemma는 Google DeepMind가 2024년 2월에 공개한 경량 오픈소스 언어 모델 시리즈입니다. 이름은 라틴어로 "보석(gemstone)"을 의미하며, 대형 상용 모델인 Gemini의 연구 결과와 핵심 기술을 소형 모델에 이식하는 것을 목표로 합니다. Gemma는 단순히 Gemini를 축소한 것이 아니라, 소형 모델에 최적화된 아키텍처와 학습 전략을 독립적으로 설계한 결과물입니다.

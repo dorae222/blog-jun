@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DETR 핵심 요약](figures/infographic.svg)
+
+*Figure: DETR 한 장 요약 인포그래픽*
+
 # DETR: 종단간 객체 탐지 트랜스포머
 
 **Meta/FAIR** · **2020-05-01** · **Vision** · **Apache-2.0**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model 한 장 요약 인포그래픽*
+
 ## 개요
 
 DeepSeek-V2는 DeepSeek AI가 2024년 5월 발표한 MoE(Mixture-of-Experts) 기반 대규모 언어 모델이다. 총 236B 파라미터를 가지지만 토큰당 21B만 활성화하는 희소 활성화 구조를 채택하여, 강력한 성능을 경제적으로 달성한다. 핵심 기여는 두 가지 혁신적인 아키텍처 구성 요소인 **Multi-head Latent Attention(MLA)**와 **DeepSeekMoE**이며, 이를 통해 DeepSeek 67B 대비 훈련 비용 42.5% 절감, KV 캐시 93.3% 절감, 추론 처리량 5.76배 향상을 달성했다.

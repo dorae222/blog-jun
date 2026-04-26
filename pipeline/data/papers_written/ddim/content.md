@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Denoising Diffusion Implicit Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Denoising Diffusion Implicit Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 DDIM(Denoising Diffusion Implicit Models)은 Song et al.이 ICLR 2021에서 발표한 논문으로, DDPM의 느린 샘플링 문제를 근본적으로 해결한다. DDPM은 고품질 이미지를 생성하지만 역방향 샘플링에 1000 스텝이 필요해 실용성이 크게 제한된다. DDIM은 마르코프 제약을 제거한 새로운 확산 프로세스 계열을 정의함으로써, **동일하게 학습된 모델을 재사용**하면서도 50 스텝 내외의 결정론적 샘플링으로 유사한 품질을 달성한다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GLA 핵심 요약](figures/infographic.svg)
+
+*Figure: GLA 한 장 요약 인포그래픽*
+
 # GLA: 데이터 의존적 게이팅으로 선형 어텐션의 표현력을 향상시킨 모델
 
 **Tsinghua University / Shanghai AI Lab** · **2023-12-15** · **SSM** · **MIT**

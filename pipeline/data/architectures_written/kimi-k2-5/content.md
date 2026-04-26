@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Kimi K2.5 핵심 요약](figures/infographic.svg)
+
+*Figure: Kimi K2.5 한 장 요약 인포그래픽*
+
 # Kimi K2.5: 에이전틱 추론의 상용 완성형
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini 3 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini 3 한 장 요약 인포그래픽*
+
 # Gemini 3: Google DeepMind의 차세대 에이전틱 AI 모델
 
 ## 개요

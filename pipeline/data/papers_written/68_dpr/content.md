@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Dense Passage Retrieval for Open-Domain Question Answering 핵심 요약](figures/infographic.svg)
+
+*Figure: Dense Passage Retrieval for Open-Domain Question Answering 한 장 요약 인포그래픽*
+
 # Dense Passage Retrieval: 오픈 도메인 질의응답을 위한 밀집 패시지 검색
 
 ## 논문 개요

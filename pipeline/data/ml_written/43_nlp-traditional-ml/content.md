@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Traditional ML for NLP 핵심 요약](figures/infographic.svg)
+
+*Figure: Traditional ML for NLP 한 장 요약 인포그래픽*
+
 ## 개요
 
 자연어 처리(NLP)는 컴퓨터가 인간의 언어를 이해하고 생성하는 분야입니다. GPT나 BERT 같은 대형 언어 모델이 등장하기 전, NLP는 전통적인 머신러닝 기법과 수작업 특징 공학(feature engineering)에 의존했습니다. 이 포스트에서는 텍스트를 수치 벡터로 변환하는 핵심 기법들을 단계적으로 살펴봅니다.

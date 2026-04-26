@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift SUPER 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift SUPER 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift의 SUPER 데이터 타입은 반정형(semi-structured) 데이터를 네이티브로 저장하고 처리할 수 있도록 설계된 데이터 타입입니다. JSON, 배열, 구조체 등 복잡한 중첩 데이터를 별도의 파싱이나 평탄화(flattening) 없이 Redshift 테이블의 컬럼으로 직접 저장할 수 있습니다.

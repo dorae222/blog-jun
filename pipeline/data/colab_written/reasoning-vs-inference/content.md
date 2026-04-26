@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Reasoning vs Inference: Two Axes of AI Efficiency 핵심 요약](figures/infographic.svg)
+
+*Figure: Reasoning vs Inference: Two Axes of AI Efficiency 한 장 요약 인포그래픽*
+
 # Reasoning vs Inference: AI 효율성의 두 축
 
 ## 들어가며

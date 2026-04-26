@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![xLSTM 핵심 요약](figures/infographic.svg)
+
+*Figure: xLSTM 한 장 요약 인포그래픽*
+
 # xLSTM: LSTM의 발명자가 현대 LLM 시대에 맞게 재설계한 확장 LSTM
 
 **NXAI / JKU Linz (Sepp Hochreiter)** · **2024-05-07** · **SSM** · **NXAI Open License (비상업적 오픈소스)**

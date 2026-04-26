@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Kling 핵심 요약](figures/infographic.svg)
+
+*Figure: Kling 한 장 요약 인포그래픽*
+
 # Kling: 장시간 고해상도 비디오 생성
 
 ## 개요

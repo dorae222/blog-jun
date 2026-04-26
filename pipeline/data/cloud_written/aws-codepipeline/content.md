@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS CodePipeline 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS CodePipeline 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS CodePipeline은 소프트웨어 릴리스 프로세스를 시각적으로 모델링하고 자동화하는 완전관리형 CI/CD(지속적 통합/지속적 배포) 서비스입니다. 코드 변경이 발생하면 소스 가져오기, 빌드, 테스트, 배포까지의 전체 과정을 자동으로 실행합니다.

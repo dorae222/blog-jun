@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon RDS 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon RDS 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon RDS(Relational Database Service)는 AWS에서 제공하는 완전 관리형 관계형 데이터베이스 서비스입니다. 인프라 프로비저닝, 패치 적용, 백업, 복구 등 데이터베이스 운영에 필요한 반복적이고 복잡한 관리 작업을 AWS가 대신 수행하므로, 개발자는 애플리케이션 로직과 스키마 설계에 집중할 수 있습니다.

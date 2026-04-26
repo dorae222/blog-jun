@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models" (Li et al., 2023)는 Salesforce Research의 Junnan Li, Dongxu Li, Silvio Savarese, Steven Hoi가 ICML 2023에서 발표한 논문입니다. 이 연구는 **동결된(frozen) 이미지 인코더와 LLM 사이에 경량 Q-Former 모듈을 삽입**하여, 시각-언어 정렬을 효율적으로 달성하는 프레임워크를 제안합니다.

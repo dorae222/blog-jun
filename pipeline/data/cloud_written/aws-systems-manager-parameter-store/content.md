@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Systems Manager Parameter Store 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Systems Manager Parameter Store 한 장 요약 인포그래픽*
+
 # AWS Systems Manager Parameter Store 심층 분석
 
 ## 개요

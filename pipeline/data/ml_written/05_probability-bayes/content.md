@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Probability Theory and Bayes Theorem 핵심 요약](figures/infographic.svg)
+
+*Figure: Probability Theory and Bayes Theorem 한 장 요약 인포그래픽*
+
 ## 1. 개요: 왜 ML에서 확률론이 필수인가
 
 머신러닝의 본질은 **불확실성(Uncertainty)의 정량화**입니다. 현실 세계의 데이터는 언제나 노이즈를 포함하고, 우리가 관측하는 정보는 항상 불완전합니다. 결정론적(Deterministic) 시스템이 "고양이인가 아닌가?"에 Yes/No만을 반환한다면, 확률론적(Probabilistic) 시스템은 "고양이일 확률 87%, 개일 확률 10%, 기타 3%"처럼 **불확실성의 정도를 함께 표현**합니다.

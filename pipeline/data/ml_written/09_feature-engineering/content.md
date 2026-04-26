@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Feature Engineering and Feature Selection 핵심 요약](figures/infographic.svg)
+
+*Figure: Feature Engineering and Feature Selection 한 장 요약 인포그래픽*
+
 ## 1. 개요: 왜 Feature Engineering인가?
 
 Machine Learning 실무에서 흔히 듣는 말이 있다. "Garbage in, garbage out." 아무리 정교한 모델을 사용해도 입력 데이터의 품질이 낮으면 좋은 결과를 기대할 수 없다. 실제로 Kaggle 대회 상위 입상자들의 인터뷰를 보면 공통된 패턴이 있다. 모델 튜닝에 20%의 시간을 쓰고, 나머지 80%는 데이터를 이해하고 Feature를 설계하는 데 투자한다는 것이다.

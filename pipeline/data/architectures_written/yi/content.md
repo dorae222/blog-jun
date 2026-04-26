@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Yi 핵심 요약](figures/infographic.svg)
+
+*Figure: Yi 한 장 요약 인포그래픽*
+
 # Yi
 
 **01.AI** · **2023-11-02** · **Decoder-only** · **Dense** · **오픈소스**

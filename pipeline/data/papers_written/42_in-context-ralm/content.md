@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![In-Context Retrieval-Augmented Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: In-Context Retrieval-Augmented Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)은 사전학습 과정에서 방대한 텍스트 코퍼스를 학습하여 뛰어난 언어 생성 능력을 보여주지만, 학습 데이터에 포함되지 않은 최신 정보에 접근할 수 없고, 사실에 기반하지 않은 내용을 생성하는 환각(hallucination) 문제를 본질적으로 안고 있습니다. 검색 증강(Retrieval-Augmented) 접근법은 외부 지식 저장소에서 관련 문서를 동적으로 검색하여 모델에 제공함으로써 이러한 한계를 극복하려는 시도입니다.

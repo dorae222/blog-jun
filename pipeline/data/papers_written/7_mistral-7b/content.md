@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mistral 7B 핵심 요약](figures/infographic.svg)
+
+*Figure: Mistral 7B 한 장 요약 인포그래픽*
+
 ## 개요
 
 Mistral 7B는 프랑스 AI 스타트업 Mistral AI가 2023년 10월 발표한 7.3B 파라미터 언어 모델이다. 핵심 혁신은 **SWA(Sliding Window Attention)**와 **롤링 버퍼 KV 캐시(Rolling Buffer KV Cache)**로, 긴 시퀀스를 선형 메모리로 처리할 수 있다. 여기에 **GQA(Grouped Query Attention)**을 결합하여 추론 속도를 크게 향상시켰다.

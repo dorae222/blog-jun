@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Context Compression: Efficient Processing of Long Inputs 핵심 요약](figures/infographic.svg)
+
+*Figure: Context Compression: Efficient Processing of Long Inputs 한 장 요약 인포그래픽*
+
 # Context Compression: 긴 입력을 효율적으로 처리하기
 
 ## 들어가며

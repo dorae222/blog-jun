@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Chinchilla 핵심 요약](figures/infographic.svg)
+
+*Figure: Chinchilla 한 장 요약 인포그래픽*
+
 # Chinchilla: 컴퓨트 최적 스케일링 법칙의 실증
 
 ## 개요

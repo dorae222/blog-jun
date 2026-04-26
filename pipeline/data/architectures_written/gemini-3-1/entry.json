@@ -1,0 +1,43 @@
+{
+  "name": "Gemini 3.1 Pro",
+  "slug": "gemini-3-1",
+  "organization": "Google",
+  "release_date": "2026",
+  "decoder_type": "moe",
+  "param_scale": "미공개",
+  "context_length": "1M",
+  "attention_type": "GQA",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "미공개",
+  "hidden_dim": "미공개",
+  "num_layers": "미공개",
+  "num_heads": "미공개",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gemini 3.1 Pro는 2026년 Google DeepMind가 공개한 Gemini 3 Pro의 후속 모델로, Google의 최신 플래그십 멀티모달 모델이다. 가장 큰 강점은 GPQA Diamond 94.3%(업계 1위)를 비롯한 과학적 추론 능력과, 처음부터 텍스트, 이미지, 비디오, 오디오를 단일 모델에서 네이티브로 처리하는 멀티모달 통합 설계이다. SWE-bench Verified 78.80%로 코딩 분야에서도 최상위권을 유지하며, Artificial Analysis Intelligence Index 57점으로 Claude Opus 4.7, GPT-5.5와 함께 공동 1위에 올랐다. 학습 인프라는 Google의 7세대 Ironwood TPU 클러스터 기반으로, 단일 데이터센터급 학습 효율을 달성한 것으로 평가된다. 1M 토큰 컨텍스트와 멀티모달 처리 능력의 결합은 Gemini 시리즈의 대표적 차별점으로, 비디오 회의 요약, 영상 콘텐츠 분석, 의료 영상 판독 등 실용 시나리오에서 강점을 보인다. 기술 세부사항은 일부 공개되어 있으나 정확한 파라미터 수, 전문가 수 등은 비공개이다.",
+  "key_detail": "Gemini 3.1 Pro의 핵심 혁신은 세 축이다. 첫째, 멀티모달 네이티브 설계의 정교화이다. Gemini는 1세대부터 텍스트, 이미지, 비디오, 오디오를 단일 토크나이저와 단일 트랜스포머에서 처리하는 네이티브 멀티모달 설계를 채택해왔으며, 3.1에서는 모달리티 간 교차 추론(cross-modal reasoning)이 강화되었다. 비디오 프레임 시퀀스 + 오디오 트랙 + 화면 텍스트를 통합 분석하는 시나리오에서 GPT-5.5나 Claude Opus 4.7 대비 우위를 보인다. 둘째, 과학적 추론의 압도적 성능이다. GPQA Diamond에서 94.3%를 기록하여 업계 1위에 올랐으며, 이는 박사급 과학자 평가(약 65%)를 크게 상회하는 수준이다. AIME 등 수학 올림피아드 벤치마크에서도 최상위권을 유지한다. 셋째, Ironwood TPU 기반의 자체 인프라이다. Google은 7세대 Ironwood TPU를 활용하여 NVIDIA GPU 의존도 없이 자체 가속기로 학습을 수행하며, TPU 특화 분산 학습 라이브러리(JAX, Pathways)와 결합하여 훈련 효율을 극대화하였다.",
+  "training_detail": "Gemini 3.1 Pro의 훈련 파이프라인은 Gemini 시리즈의 일관된 4단계 구조를 따른다. 첫째, 멀티모달 사전학습 단계에서는 텍스트 코퍼스, 이미지-텍스트 페어, 비디오-자막 페어, 음성-텍스트 페어 등이 통합 토크나이즈되어 단일 시퀀스로 학습된다. 비디오는 프레임 샘플링과 시간적 축약을 통해 처리되며, 오디오는 멜스펙트로그램 토큰화를 거친다. 둘째, 멀티모달 SFT 단계에서는 인스트럭션 튜닝과 함께 모달리티 간 교차 추론 데이터가 강조된다. 셋째, RLHF 단계에서는 인간 피드백 기반 보상 모델과 자동 평가자(LLM-as-judge)가 결합된다. 넷째, 추론 특화 후속 학습이 추가되어, GPQA, AIME 등 과학/수학 영역에서의 성능이 강화된다. 학습 인프라는 Google의 7세대 Ironwood TPU 클러스터로, JAX와 Pathways 라이브러리를 활용한 대규모 분산 학습이 수행된다. Pathways는 단일 모델을 다수의 TPU pod에 분산시키면서도 단일 프로그램으로 표현하는 추상화를 제공하여, 학습 코드의 단순성과 효율성을 동시에 확보한다. 1M 컨텍스트 학습을 위해 Ring Attention, FlashAttention 등의 메모리 효율 기법이 결합된 것으로 추정된다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "Multimodal Native",
+    "Long Context",
+    "Reasoning",
+    "Ironwood TPU",
+    "GPQA Diamond"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {
+      "to": "gemini-3",
+      "type": "evolved_from",
+      "description": "Gemini 3 Pro의 후속 모델로 GPQA Diamond 94.3% 1위와 멀티모달 능력 강화를 달성하였다."
+    }
+  ],
+  "related_post_slug": ""
+}

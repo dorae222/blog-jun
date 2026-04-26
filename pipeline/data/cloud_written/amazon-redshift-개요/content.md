@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift는 AWS에서 제공하는 완전 관리형 페타바이트급 클라우드 데이터 웨어하우스 서비스입니다. PostgreSQL 8.0.2를 기반으로 개발되었으며, 대규모 분석 쿼리(OLAP)에 최적화된 열 기반(Columnar) 스토리지와 대규모 병렬 처리(MPP, Massively Parallel Processing) 아키텍처를 채택하고 있습니다.

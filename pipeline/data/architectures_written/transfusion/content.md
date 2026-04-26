@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Transfusion 핵심 요약](figures/infographic.svg)
+
+*Figure: Transfusion 한 장 요약 인포그래픽*
+
 # Transfusion: 언어 모델링과 확산을 통합하는 멀티모달 생성
 
 **Meta** · **2024-08-01** · **Multimodal** · **CC-BY-NC-4.0**

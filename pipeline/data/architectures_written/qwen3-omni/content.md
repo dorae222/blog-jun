@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen3-Omni 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen3-Omni 한 장 요약 인포그래픽*
+
 # Qwen3-Omni: 텍스트·이미지·오디오·비디오를 통합하는 옴니모달 AI
 
 **Alibaba** · **2025-09-01** · **Multimodal** · **Apache-2.0**

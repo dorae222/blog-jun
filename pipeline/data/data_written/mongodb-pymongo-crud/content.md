@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MongoDB + Python: Building a Membership CRUD Program with pymongo 핵심 요약](figures/infographic.svg)
+
+*Figure: MongoDB + Python: Building a Membership CRUD Program with pymongo 한 장 요약 인포그래픽*
+
 # MongoDB + Python: pymongo로 구현하는 회원 관리 CRUD 프로그램
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Molmo 핵심 요약](figures/infographic.svg)
+
+*Figure: Molmo 한 장 요약 인포그래픽*
+
 # Molmo: 시각적 포인팅 능력을 갖춘 멀티모달 모델
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLM Inference Optimization: From MFU to Production Serving 핵심 요약](figures/infographic.svg)
+
+*Figure: LLM Inference Optimization: From MFU to Production Serving 한 장 요약 인포그래픽*
+
 # LLM 추론 최적화: MFU부터 프로덕션 서빙까지
 
 ## 들어가며

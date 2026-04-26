@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon DataZone 개요 및 핵심 기능 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon DataZone 개요 및 핵심 기능 한 장 요약 인포그래픽*
+
 # Amazon DataZone 개요 및 핵심 기능
 
 ## 개요

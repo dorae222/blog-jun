@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Test-Time Compute Scaling: Think More at Inference 핵심 요약](figures/infographic.svg)
+
+*Figure: Test-Time Compute Scaling: Think More at Inference 한 장 요약 인포그래픽*
+
 # Test-Time Compute Scaling: 추론 시간에 더 생각하기
 
 ## 들어가며

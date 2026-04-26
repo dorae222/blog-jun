@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Getting Started with Claude Code 핵심 요약](figures/infographic.svg)
+
+*Figure: Getting Started with Claude Code 한 장 요약 인포그래픽*
+
 # Claude Code 시작하기: 설치부터 첫 대화까지
 
 ## 들어가며

@@ -1,0 +1,19 @@
+{
+  "slug": "aws-lambda-개요-및-실전-활용-가이드",
+  "title": "AWS Lambda",
+  "title_ko": "AWS Lambda 개요 및 실전 활용 가이드",
+  "category_slug": "aws-compute",
+  "summary": "AWS Lambda(서버리스 함수 실행 서비스)의 핵심 개념부터 런타임, 트리거, Container Image, Lambda Layers, Provisioned Concurrency, SnapStart, 가격 모델까지 실전 운영 노하우를 종합적으로 정리합니다.",
+  "tags": [
+    "AWS",
+    "Lambda",
+    "서버리스",
+    "Serverless",
+    "FaaS",
+    "이벤트 기반",
+    "Container Image",
+    "Lambda Layers",
+    "SnapStart",
+    "Provisioned Concurrency"
+  ]
+}

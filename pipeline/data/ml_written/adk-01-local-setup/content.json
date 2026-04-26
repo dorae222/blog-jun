@@ -1,0 +1,10 @@
+{
+  "slug": "adk-01-local-setup",
+  "title": "ADK Local Setup: adk web / adk run / API Server",
+  "title_ko": "ADK 로컬 환경 셋업: adk web / adk run / API Server",
+  "summary": "Google ADK(Agent Development Kit)는 Gemini를 일급 시민으로 지원하면서도 model-agnostic하게 설계된 오픈소스 에이전트 프레임워크입니다. 본 1편에서는 pip install google-adk부터 첫 multi-tool 에이전트 작성, 그리고 로컬 실행 3가지 방법(adk web 개발 UI, adk run CLI 대화, adk api_server REST 엔드포인트)까지 단계별로 정리합니다. .env 자동 로딩, 디버그 패널 활용, dev UI를 production에서 쓰면 안 되는 이유까지 포함합니다.",
+  "category_slug": "agent",
+  "tags": ["ADK", "Google", "Local Development", "Gemini", "Agent"],
+  "series": "adk-local-development",
+  "series_order": 1
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Janus-Pro 핵심 요약](figures/infographic.svg)
+
+*Figure: Janus-Pro 한 장 요약 인포그래픽*
+
 # Janus-Pro: 이해와 생성을 위한 디커플링 비전 인코더
 
 ## 개요

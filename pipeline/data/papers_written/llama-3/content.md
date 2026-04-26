@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![The Llama 3 Herd of Models 핵심 요약](figures/infographic.svg)
+
+*Figure: The Llama 3 Herd of Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "The Llama 3 Herd of Models"(Meta, 2024)는 8B, 70B, 405B 파라미터 규모의 오픈 웨이트(open-weight) 대규모 언어 모델 시리즈를 소개한 논문입니다. 특히 405B 모델은 GPT-4(2023년 3월 버전)와 동등하거나 그 이상의 성능을 달성하여, 오픈소스 LLM이 클로즈드 소스 모델과 대등한 수준에 도달할 수 있음을 최초로 실증했습니다.

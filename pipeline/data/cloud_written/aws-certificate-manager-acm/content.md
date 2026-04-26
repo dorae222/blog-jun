@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Certificate Manager (ACM) 완벽 가이드: SSL/TLS 인증서 관리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Certificate Manager (ACM) 완벽 가이드: SSL/TLS 인증서 관리 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Certificate Manager(ACM)는 AWS 서비스 및 내부 연결 리소스에 사용할 수 있는 공인 및 사설 SSL/TLS 인증서를 쉽게 프로비저닝, 관리 및 배포할 수 있는 서비스입니다.

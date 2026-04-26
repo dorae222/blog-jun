@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Secrets Manager BatchGetSecretValue 완벽 가이드: 대량 비밀 조회 최적화 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Secrets Manager BatchGetSecretValue 완벽 가이드: 대량 비밀 조회 최적화 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Secrets Manager를 사용하다 보면 여러 개의 비밀을 한 번에 조회해야 하는 상황이 자주 발생합니다. 마이크로서비스 환경에서 하나의 서비스가 데이터베이스 자격 증명, API 키, 외부 서비스 토큰 등 여러 비밀을 필요로 하는 것은 매우 일반적인 패턴입니다.

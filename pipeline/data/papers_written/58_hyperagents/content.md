@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![HyperAgents: Self-Referential Agents for Open-Ended Self-Improvement 핵심 요약](figures/infographic.svg)
+
+*Figure: HyperAgents: Self-Referential Agents for Open-Ended Self-Improvement 한 장 요약 인포그래픽*
+
 # HyperAgents: 개방형 자기 개선을 위한 자기 참조적 에이전트
 
 ## 개요

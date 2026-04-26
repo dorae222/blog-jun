@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Machine Learning Fundamentals to Practice: Learning Roadmap 핵심 요약](figures/infographic.svg)
+
+*Figure: Machine Learning Fundamentals to Practice: Learning Roadmap 한 장 요약 인포그래픽*
+
 # 머신러닝 기초부터 실전까지: 학습 로드맵
 
 ## 개요

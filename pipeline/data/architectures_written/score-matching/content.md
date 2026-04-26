@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Score-based Generative Model 핵심 요약](figures/infographic.svg)
+
+*Figure: Score-based Generative Model 한 장 요약 인포그래픽*
+
 # Score 기반 생성 모델: NCSN과 Langevin Dynamics
 
 ## 개요

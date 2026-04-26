@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![t-SNE and UMAP 핵심 요약](figures/infographic.svg)
+
+*Figure: t-SNE and UMAP 한 장 요약 인포그래픽*
+
 ## 개요
 
 고차원 데이터를 이해하는 가장 직관적인 방법은 **시각화**입니다. 수백~수천 차원의 특징(feature)을 가진 데이터를 2차원 또는 3차원 산점도로 표현할 수 있다면, 클러스터 구조·이상치·연속적인 변이 등을 한눈에 파악할 수 있습니다.

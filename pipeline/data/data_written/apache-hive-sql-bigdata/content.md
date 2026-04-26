@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Apache Hive: SQL-Based Big Data Warehouse on Hadoop 핵심 요약](figures/infographic.svg)
+
+*Figure: Apache Hive: SQL-Based Big Data Warehouse on Hadoop 한 장 요약 인포그래픽*
+
 # Apache Hive - SQL로 다루는 빅데이터 웨어하우스
 
 ## 개요

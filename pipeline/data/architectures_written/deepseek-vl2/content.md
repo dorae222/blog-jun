@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-VL2 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-VL2 한 장 요약 인포그래픽*
+
 # DeepSeek-VL2: MoE 기반 효율적 멀티모달 모델
 
 ## 개요

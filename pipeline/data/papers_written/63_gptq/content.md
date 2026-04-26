@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers 핵심 요약](figures/infographic.svg)
+
+*Figure: GPTQ: Accurate Post-Training Quantization for Generative Pre-Trained Transformers 한 장 요약 인포그래픽*
+
 # GPTQ: 생성형 사전학습 트랜스포머를 위한 정밀 학습 후 양자화
 
 ## 논문 개요

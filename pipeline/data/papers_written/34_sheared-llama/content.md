@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning 핵심 요약](figures/infographic.svg)
+
+*Figure: Sheared LLaMA: Accelerating Language Model Pre-training via Structured Pruning 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 사전학습은 수천 GPU-시간과 수조 개의 토큰을 요구하는 극도로 비용이 높은 작업입니다. GPT-3(175B)의 학습에는 약 355 GPU-년이 소요되었고, LLaMA-2-70B의 학습에도 170만 GPU-시간 이상이 투입된 것으로 추정됩니다. 이러한 현실에서, 이미 잘 학습된 대형 모델의 지식을 효율적으로 소형 모델에 전이하는 방법은 학계와 산업계 모두의 핵심 연구 과제로 부상하고 있습니다.

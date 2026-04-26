@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon EC2 M1 Mac 인스턴스 - macOS 워크로드를 위한 클라우드 솔루션 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon EC2 M1 Mac 인스턴스 - macOS 워크로드를 위한 클라우드 솔루션 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon EC2 Mac 인스턴스는 Apple Mac mini 하드웨어를 AWS Nitro 시스템에 통합하여 macOS 워크로드를 클라우드에서 실행할 수 있게 하는 서비스입니다. 2020년 Intel Mac mini 기반 `mac1.metal` 인스턴스를 시작으로, 2022년에는 Apple Silicon M1 기반 `mac2.metal` 인스턴스가, 이후 M2 기반 `mac2-m2.metal`, M2 Pro 기반 `mac2-m2pro.metal` 인스턴스가 출시되었습니다.

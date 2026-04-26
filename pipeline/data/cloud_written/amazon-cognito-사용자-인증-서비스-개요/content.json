@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-cognito-사용자-인증-서비스-개요",
+  "title": "Amazon Cognito",
+  "title_ko": "Amazon Cognito 사용자 인증 서비스 개요",
+  "category_slug": "aws-security",
+  "summary": "Amazon Cognito의 User Pool과 Identity Pool 차이부터 Federation, Hosted UI, Lambda Triggers, Advanced Security까지 AWS 기반 웹/모바일 인증을 종합적으로 정리합니다.",
+  "tags": [
+    "AWS",
+    "Cognito",
+    "인증",
+    "Authentication",
+    "User Pool",
+    "Identity Pool",
+    "OIDC",
+    "SAML",
+    "JWT",
+    "Federation"
+  ]
+}

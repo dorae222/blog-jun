@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback 핵심 요약](figures/infographic.svg)
+
+*Figure: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback"(Bai et al., 2022)은 Anthropic에서 발표한 AI 정렬(alignment) 연구의 핵심 논문입니다. Yuntao Bai, Andy Jones, Kamal Ndousse 등 Anthropic 연구진이 참여한 이 연구는, 대규모 언어 모델(LLM)을 인간의 선호도 피드백을 활용한 강화학습(RLHF, Reinforcement Learning from Human Feedback)으로 미세 조정하여, **유용하면서도 무해한** AI 어시스턴트를 구축하는 체계적 방법론을 제시합니다.

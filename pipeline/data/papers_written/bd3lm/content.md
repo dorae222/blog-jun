@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 BD3LM(Block Discrete Denoising Diffusion Language Model)은 자기회귀(AR) 언어 모델과 확산(Diffusion) 언어 모델이라는 두 패러다임을 하나의 통합된 프레임워크로 연결하는 하이브리드 모델이다. Arriola et al.(2025)이 제안한 이 모델은 시퀀스를 고정 크기의 블록으로 분할하고, 블록 사이에서는 자기회귀적 순서를 유지하면서 블록 내부에서는 마스크 확산을 적용한다. 블록 크기라는 단일 하이퍼파라미터를 조절하는 것만으로 순수 AR 모델과 순수 확산 모델 사이의 어디든 위치할 수 있으며, 이를 통해 두 접근법의 장점을 동시에 취한다. 기존 확산 언어 모델 대비 더 낮은 퍼플렉시티를 달성하면서도 KV-캐시와 호환되는 효율적 추론이 가능하다는 점이 핵심 기여다.

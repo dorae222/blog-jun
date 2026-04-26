@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Rekognition Content Moderation 소개: 유해 콘텐츠 자동 감지 시스템 구축 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Rekognition Content Moderation 소개: 유해 콘텐츠 자동 감지 시스템 구축 한 장 요약 인포그래픽*
+
 # Amazon Rekognition Content Moderation 소개: 유해 콘텐츠 자동 감지 시스템 구축
 
 ## 개요

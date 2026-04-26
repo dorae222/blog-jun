@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Self-Consistency Improves Chain of Thought Reasoning in Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Self-Consistency Improves Chain of Thought Reasoning in Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Self-Consistency Improves Chain of Thought Reasoning in Language Models" (Wang et al., 2023)는 Google Research의 Xuezhi Wang, Jason Wei 등이 ICLR 2023에서 발표한 논문입니다. 이 연구는 Chain-of-Thought(CoT) 프롬프팅의 한계를 근본적으로 해결하는 **자기 일관성(Self-Consistency)**이라는 새로운 디코딩 전략을 제안합니다.

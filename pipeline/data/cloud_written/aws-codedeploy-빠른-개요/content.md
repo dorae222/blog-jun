@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS CodeDeploy 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS CodeDeploy 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS CodeDeploy는 Amazon EC2 인스턴스, AWS Lambda 함수, Amazon ECS 서비스, 온프레미스 서버 등 다양한 컴퓨팅 플랫폼에 애플리케이션을 자동으로 배포하는 완전관리형 배포 서비스입니다.

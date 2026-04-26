@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon ElastiCache for Redis (Redis OSS) 클러스터 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon ElastiCache for Redis (Redis OSS) 클러스터 개요 한 장 요약 인포그래픽*
+
 # Amazon ElastiCache for Redis (Redis OSS) 클러스터 개요
 
 ## 개요

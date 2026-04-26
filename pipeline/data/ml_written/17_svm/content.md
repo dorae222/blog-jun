@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Support Vector Machine 핵심 요약](figures/infographic.svg)
+
+*Figure: Support Vector Machine 한 장 요약 인포그래픽*
+
 ## 1. 개요 ( 마진 최대화의 직관
 
 분류 문제를 풀 때, 두 클래스를 나누는 경계선은 무수히 많이 존재할 수 있다. 로지스틱 회귀나 퍼셉트론 같은 모델은 단순히 '오분류가 없는' 경계를 찾는 데 그친다. 그렇다면 무수히 많은 후보 중 **어떤 경계가 가장 좋은가?**

@@ -1,0 +1,10 @@
+{
+  "slug": "a2a-02-specification",
+  "title": "A2A Specification Deep Dive",
+  "title_ko": "A2A 스펙 분석: Agent Card / Task / JSON-RPC 2.0 / gRPC",
+  "summary": "A2A 프로토콜의 3대 축 - Agent Discovery, Task Management, Transport - 를 스펙 수준에서 분해합니다. Agent Card의 JSON 스키마(name, capabilities, skills, security), Task 라이프사이클(submitted -> working -> input-required -> completed/failed/cancelled), Multipart message와 Artifact 구조, JSON-RPC 2.0 + gRPC 이중 트랜스포트, SSE 스트리밍과 webhook, Bearer/OAuth 2.0/mTLS 인증, 그리고 2026년에 강화된 Signed Agent Card까지 실제 페이로드 예시와 함께 정리합니다.",
+  "category_slug": "agent",
+  "tags": ["A2A", "Agent-Card", "JSON-RPC", "gRPC", "SSE", "Specification"],
+  "series": "a2a-protocol",
+  "series_order": 2
+}

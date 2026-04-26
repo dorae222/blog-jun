@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Computer Vision Deep Learning Roadmap 핵심 요약](figures/infographic.svg)
+
+*Figure: Computer Vision Deep Learning Roadmap 한 장 요약 인포그래픽*
+
 # 컴퓨터 비전 딥러닝 로드맵
 
 ## 개요

@@ -1,0 +1,16 @@
+{
+  "slug": "gpt-5-5",
+  "title": "GPT-5.5",
+  "title_ko": "GPT-5.5: 1M 컨텍스트와 동적 추론을 통합한 OpenAI의 차세대 플래그십",
+  "summary": "GPT-5.5는 2026년 OpenAI가 공개한 GPT-5 계열의 후속 모델이다. 컨텍스트가 1M 토큰으로 확장되었고, 10개 주요 벤치마크 중 9개에서 GPT-5.4 대비 향상을 기록하였으며, Intelligence Index 57점으로 Claude/Gemini 3.1과 공동 1위에 올랐다. 가격은 2배로 인상되었으나 응답 지연은 동일하게 유지되었다.",
+  "tags": [
+    "GPT-5.5",
+    "OpenAI",
+    "1M Context",
+    "Reasoning",
+    "Multimodal",
+    "Intelligence Index",
+    "Dynamic Thinking",
+    "MoE"
+  ]
+}

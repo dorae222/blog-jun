@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen3 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen3 한 장 요약 인포그래픽*
+
 # Qwen3
 
 **Alibaba** · **2025-04-29** · **Decoder-only** · **Sparse MoE** · **오픈소스**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SAM 2 핵심 요약](figures/infographic.svg)
+
+*Figure: SAM 2 한 장 요약 인포그래픽*
+
 # SAM 2: 이미지와 비디오 통합 세그멘테이션
 
 **Meta** · **2024-08-01** · **Vision** · **Apache-2.0**

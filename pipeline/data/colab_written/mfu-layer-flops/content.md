@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Layer-wise FLOPs Analysis and Profiling for MFU Optimization 핵심 요약](figures/infographic.svg)
+
+*Figure: Layer-wise FLOPs Analysis and Profiling for MFU Optimization 한 장 요약 인포그래픽*
+
 # Layer별 FLOPs 분석과 프로파일링
 
 ## 소개

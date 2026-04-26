@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Codex CLI Workflow Design 핵심 요약](figures/infographic.svg)
+
+*Figure: Codex CLI Workflow Design 한 장 요약 인포그래픽*
+
 # Codex CLI 실전: 레거시 마이그레이션
 
 :::info

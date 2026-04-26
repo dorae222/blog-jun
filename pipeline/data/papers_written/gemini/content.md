@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini: A Family of Highly Capable Multimodal Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini: A Family of Highly Capable Multimodal Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Gemini: A Family of Highly Capable Multimodal Models"(Google DeepMind, 2024)는 텍스트, 이미지, 오디오, 비디오를 **네이티브하게** 이해하고 추론할 수 있는 멀티모달 모델 패밀리를 소개한 논문입니다. Gemini Ultra, Gemini Pro, Gemini Nano의 세 가지 크기로 제공되며, 특히 Gemini Ultra는 MMLU(Massive Multitask Language Understanding)에서 90.0%를 달성하여 **인간 전문가 수준을 처음으로 능가한 모델**이 되었습니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Codex CLI Core Features 핵심 요약](figures/infographic.svg)
+
+*Figure: Codex CLI Core Features 한 장 요약 인포그래픽*
+
 # Codex CLI 핵심 기능: 샌드박스와 코드 생성
 
 :::info

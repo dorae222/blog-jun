@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Understanding GPU Utilization and MFU (Model FLOPs Utilization) 핵심 요약](figures/infographic.svg)
+
+*Figure: Understanding GPU Utilization and MFU (Model FLOPs Utilization) 한 장 요약 인포그래픽*
+
 # GPU 활용률과 MFU(Model FLOPs Utilization) 이해하기
 
 ## 소개

@@ -1,0 +1,15 @@
+{
+  "slug": "bge-en-icl",
+  "title": "BGE-en-ICL",
+  "title_ko": "BGE-en-ICL: In-Context Learning을 임베딩으로 가져온 BAAI 오픈 모델",
+  "summary": "BGE-en-ICL은 2024년 BAAI가 공개한 Mistral 7B 기반 임베딩 모델로, MTEB 영어 평균 71.24점을 기록했다. 차별점은 추론 시 쿼리 앞에 few-shot 예제를 prepending하면 성능이 추가로 부스트되는 In-Context Learning 임베딩이라는 점이다. MIT 라이선스로 상업적 자유도가 높고, 4096차원, 8K 컨텍스트로 OSS RAG의 강력한 후보다.",
+  "tags": [
+    "Embedding",
+    "BGE",
+    "BAAI",
+    "In-Context Learning",
+    "Dense Retrieval",
+    "Mistral",
+    "MTEB"
+  ]
+}

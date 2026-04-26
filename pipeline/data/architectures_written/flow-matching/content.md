@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Flow Matching 핵심 요약](figures/infographic.svg)
+
+*Figure: Flow Matching 한 장 요약 인포그래픽*
+
 # Flow Matching: 시뮬레이션 없는 연속 정규화 흐름 학습
 
 ## 개요

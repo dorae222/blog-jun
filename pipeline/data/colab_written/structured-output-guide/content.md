@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Structured Output + Function Calling Complete Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: Structured Output + Function Calling Complete Guide 한 장 요약 인포그래픽*
+
 # Structured Output + Function Calling 완전 가이드
 
 ## 들어가며

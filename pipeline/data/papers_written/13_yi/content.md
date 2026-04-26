@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Yi: Open Foundation Models by 01.AI 핵심 요약](figures/infographic.svg)
+
+*Figure: Yi: Open Foundation Models by 01.AI 한 장 요약 인포그래픽*
+
 ## 개요
 
 Yi는 중국의 AI 스타트업 01.AI가 2024년 발표한 오픈소스 대규모 언어 모델(LLM) 시리즈이다. 01.AI는 Kai-Fu Lee(이개복)가 설립한 회사로, Yi-6B와 Yi-34B 두 가지 규모의 모델을 공개했다. 본 논문은 Yi 모델 시리즈의 아키텍처 설계, 사전학습 데이터 파이프라인, 학습 전략, 미세조정(fine-tuning) 방법론, 그리고 다양한 벤치마크에서의 평가 결과를 포괄적으로 기술한다.

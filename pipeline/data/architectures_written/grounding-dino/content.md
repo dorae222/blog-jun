@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Grounding DINO 핵심 요약](figures/infographic.svg)
+
+*Figure: Grounding DINO 한 장 요약 인포그래픽*
+
 # Grounding DINO: 오픈셋 언어 기반 객체 탐지
 
 **IDEA Research** · **2023-03-01** · **Vision** · **Apache-2.0**

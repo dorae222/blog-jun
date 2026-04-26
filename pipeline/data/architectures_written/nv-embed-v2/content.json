@@ -1,0 +1,15 @@
+{
+  "slug": "nv-embed-v2",
+  "title": "NV-Embed v2",
+  "title_ko": "NV-Embed v2: LLM을 임베딩으로 변환한 MTEB 오픈 모델 1위",
+  "summary": "NV-Embed v2는 2024년 NVIDIA가 공개한 Mistral 7B 기반 임베딩 모델로, MTEB 영어 평균 72.31점을 기록하며 오픈 모델 1위에 올랐다. 핵심은 디코더 LLM의 마지막 hidden state를 Latent Attention Layer로 풀링해 단일 벡터를 추출하는 기법이다. 4096차원, 32K 컨텍스트, 2단계 contrastive 학습으로 production RAG의 오픈 모델 표준이 되었다.",
+  "tags": [
+    "Embedding",
+    "NV-Embed",
+    "NVIDIA",
+    "LLM-based",
+    "Latent Attention",
+    "Contrastive Learning",
+    "MTEB"
+  ]
+}

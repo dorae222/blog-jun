@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Classification Metrics Complete Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: Classification Metrics Complete Guide 한 장 요약 인포그래픽*
+
 ## 1. 개요: 왜 지표 선택이 중요한가
 
 분류 모델을 만들었다면 반드시 마주치는 질문이 있다. "이 모델, 얼마나 좋은가요?" 가장 직관적인 대답은 정확도(Accuracy)다. "100개 중 95개 맞혔어요"라고 말하면 누구나 고개를 끄덕인다. 그런데 이 숫자가 얼마나 믿을 수 있을까?

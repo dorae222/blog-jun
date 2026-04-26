@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OLMo: Accelerating the Science of Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: OLMo: Accelerating the Science of Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 OLMo(Open Language Model)는 Allen Institute for AI(AI2)가 2024년 ACL에서 발표한 대규모 언어 모델이다. OLMo의 핵심 목표는 이름 그대로 "진정한 의미의 오픈" 모델을 구축하는 것이다. 기존의 이른바 "오픈소스" LLM들이 모델 가중치만 공개하는 관행이 지배적이었던 반면, OLMo는 **학습 코드, 사전학습 데이터(Dolma), 2,500개 이상의 중간 체크포인트, WandB 학습 로그, 평가 프레임워크(Catwalk, Paloma)**까지 모두 Apache 2.0 라이선스로 공개한다.

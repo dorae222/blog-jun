@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Constitutional AI: Harmlessness from AI Feedback 핵심 요약](figures/infographic.svg)
+
+*Figure: Constitutional AI: Harmlessness from AI Feedback 한 장 요약 인포그래픽*
+
 ## 개요
 
 Constitutional AI(CAI)는 Anthropic이 2022년 12월에 발표한 논문으로, Yuntao Bai를 포함한 51명의 저자가 참여했습니다. 이 연구는 **인간이 정의한 원칙 집합(헌법)을 바탕으로 AI가 스스로 자신의 출력을 비판하고 개선**하는 방식으로 무해한(harmless) AI 시스템을 구축하는 방법론을 제안합니다.

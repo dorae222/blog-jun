@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FLUX.2 핵심 요약](figures/infographic.svg)
+
+*Figure: FLUX.2 한 장 요약 인포그래픽*
+
 # FLUX.2: 차세대 하이브리드 MMDiT 이미지 생성
 
 ## 개요

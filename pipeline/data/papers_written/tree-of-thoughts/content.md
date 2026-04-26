@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Tree of Thoughts: Deliberate Problem Solving with Large Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Tree of Thoughts: Deliberate Problem Solving with Large Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Tree of Thoughts: Deliberate Problem Solving with Large Language Models" (Yao et al., 2024)는 Princeton 대학교의 Shunyu Yao, Karthik Narasimhan과 Google DeepMind의 공동 연구로 NeurIPS 2023에서 발표되었습니다. 이 논문은 기존 [[chain-of-thought]]와 [[self-consistency]]의 한계를 넘어, LLM의 추론 과정을 **트리 구조로 확장**하여 탐색(search)과 평가(evaluation)를 결합하는 **Tree of Thoughts(ToT)** 프레임워크를 제안합니다.

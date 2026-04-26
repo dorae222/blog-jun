@@ -1,0 +1,10 @@
+{
+  "slug": "a2a-03-vs-mcp",
+  "title": "A2A vs MCP: Horizontal Agent Communication and Vertical Tool Access",
+  "title_ko": "A2A vs MCP: 수직(tool)과 수평(agent) 통신의 차이",
+  "summary": "A2A와 MCP는 경쟁이 아니라 직교(orthogonal) 관계입니다. A2A는 에이전트 간 수평 통신(horizontal, agent-to-agent), MCP는 에이전트와 도구/리소스 간 수직 통신(vertical, agent-to-tool)을 담당합니다. 통신 대상, 추상화 단위(Task vs Tool call), 상태 모델(stateful vs stateless), 동기/비동기 차이를 표로 정리하고, Sales Agent가 A2A로 Marketing Agent를 호출하면서 각 에이전트는 MCP로 CRM/CMS에 접근하는 보완 패턴을 코드 예제와 함께 보여 줍니다. Google과 Anthropic의 상호운용성 협업 현황도 다룹니다.",
+  "category_slug": "agent",
+  "tags": ["A2A", "MCP", "Agent-Protocol", "Interoperability", "Architecture"],
+  "series": "a2a-protocol",
+  "series_order": 3
+}

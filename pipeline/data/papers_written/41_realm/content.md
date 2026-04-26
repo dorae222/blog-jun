@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![REALM: Retrieval-Augmented Language Model Pre-Training 핵심 요약](figures/infographic.svg)
+
+*Figure: REALM: Retrieval-Augmented Language Model Pre-Training 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)은 사전학습 과정에서 학습 코퍼스의 방대한 사실 지식(factual knowledge)을 모델 파라미터에 암묵적으로 저장합니다. BERT, GPT-2 등이 놀라운 성능을 보여준 배경에는 이러한 파라메트릭 지식 저장(parametric knowledge storage) 메커니즘이 있었습니다. 그러나 이 접근법에는 근본적인 한계가 존재합니다. 지식이 수억 개의 파라미터에 분산 저장되어 특정 사실의 인코딩 위치를 파악하기 어렵고, 세상의 지식은 끊임없이 변화하는데 모델 파라미터는 재학습 없이는 갱신할 수 없으며, 더 많은 지식을 저장하려면 모델 크기를 계속 키워야 하는 확장성 문제도 있습니다.

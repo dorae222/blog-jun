@@ -1,0 +1,19 @@
+{
+  "slug": "aws-cloudformation-iac-개요",
+  "title": "AWS CloudFormation",
+  "title_ko": "AWS CloudFormation - Infrastructure as Code 서비스 개요",
+  "category_slug": "aws-management",
+  "summary": "AWS CloudFormation의 Template/Stack 구조, Change Set, StackSet, Drift Detection, Custom Resource, Nested Stack부터 Terraform/CDK와의 비교까지 AWS 네이티브 IaC의 핵심을 정리합니다.",
+  "tags": [
+    "AWS",
+    "CloudFormation",
+    "IaC",
+    "Infrastructure as Code",
+    "Stack",
+    "StackSet",
+    "Change Set",
+    "Drift Detection",
+    "CDK",
+    "Terraform"
+  ]
+}

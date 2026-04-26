@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![PCA: Principal Component Analysis 핵심 요약](figures/infographic.svg)
+
+*Figure: PCA: Principal Component Analysis 한 장 요약 인포그래픽*
+
 ## 개요: 왜 차원 축소가 필요한가
 
 현실 세계의 데이터는 대부분 고차원입니다. 유전체 연구에서 하나의 샘플은 수만 개의 유전자 발현 값을 갖고, 이미지 한 장은 수백만 픽셀로 이루어지며, 사용자 행동 데이터는 수천 개의 피처를 포함할 수 있습니다. 이처럼 차원이 높아질수록 여러 문제가 발생합니다.

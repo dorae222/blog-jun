@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker JumpStart 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker JumpStart 한 장 요약 인포그래픽*
+
 # Amazon SageMaker JumpStart
 
 ## 개요

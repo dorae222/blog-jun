@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Whisper 핵심 요약](figures/infographic.svg)
+
+*Figure: Whisper 한 장 요약 인포그래픽*
+
 # Whisper: 웹 스케일 약지도 학습 기반 범용 음성 인식
 
 **OpenAI** · **2022-12-01** · **Multimodal** · **MIT**

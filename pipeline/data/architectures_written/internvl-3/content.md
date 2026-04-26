@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![InternVL 3 핵심 요약](figures/infographic.svg)
+
+*Figure: InternVL 3 한 장 요약 인포그래픽*
+
 # InternVL 3: 네이티브 멀티모달 사전학습과 MoE의 결합
 
 ## 개요

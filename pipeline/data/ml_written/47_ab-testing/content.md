@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![A/B Testing and Statistical Significance 핵심 요약](figures/infographic.svg)
+
+*Figure: A/B Testing and Statistical Significance 한 장 요약 인포그래픽*
+
 ## 개요: 왜 A/B 테스트인가
 
 버튼 색상을 파란색에서 초록색으로 바꾸면 클릭률이 올라갈까? 새로운 추천 알고리즘이 기존 것보다 매출을 높일까? 이런 질문에 직관이나 경험만으로 답하는 것은 위험하다. 사람의 직관은 확증 편향(Confirmation Bias)에 취약하고, 시장 환경이나 계절적 요인이 결과에 혼재될 수 있기 때문이다.

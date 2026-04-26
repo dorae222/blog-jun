@@ -1,0 +1,15 @@
+{
+  "slug": "gemini-embedding-2",
+  "title": "Gemini Embedding 2",
+  "title_ko": "Gemini Embedding 2: 텍스트-이미지-비디오-오디오를 한 공간에 정렬한 네이티브 멀티모달 임베딩",
+  "summary": "Gemini Embedding 2는 2026년 Cloud Next에서 공개된 네이티브 멀티모달 임베딩 모델이다. 텍스트, 이미지, 비디오, 오디오, 문서(PDF)를 단일 임베딩 공간으로 매핑하여 'a dog barking' 텍스트로 비디오 장면을 찾는 cross-modal 검색을 가능하게 한다. Matryoshka 학습을 계승해 차원을 자유롭게 자를 수 있으며 멀티모달 RAG의 기반 인프라로 설계되었다.",
+  "tags": [
+    "Embedding",
+    "Multimodal",
+    "Gemini",
+    "Google",
+    "Cross-modal Retrieval",
+    "Matryoshka",
+    "Vertex AI"
+  ]
+}

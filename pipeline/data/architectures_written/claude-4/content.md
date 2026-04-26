@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Opus 4 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Opus 4 한 장 요약 인포그래픽*
+
 # Claude Opus 4: Anthropic의 에이전틱 AI 플래그십 모델
 
 ## 개요

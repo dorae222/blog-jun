@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Switch Transformer 핵심 요약](figures/infographic.svg)
+
+*Figure: Switch Transformer 한 장 요약 인포그래픽*
+
 # Switch Transformer: Top-1 라우팅으로 MoE의 실용성을 입증
 
 ## 개요

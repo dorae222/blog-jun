@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Service Catalog 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Service Catalog 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Service Catalog는 조직에서 승인한 IT 서비스와 인프라 템플릿을 카탈로그 형태로 관리하고, 사용자가 셀프서비스 방식으로 프로비저닝할 수 있게 해주는 서비스입니다. 쉽게 말해, 기업의 "AWS 인프라 쇼핑몰"을 구축하는 서비스입니다.

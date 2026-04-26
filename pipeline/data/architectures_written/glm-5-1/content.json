@@ -1,0 +1,16 @@
+{
+  "slug": "glm-5-1",
+  "title": "GLM-5.1",
+  "title_ko": "GLM-5.1: NVIDIA GPU 없이 학습된 중국 오픈 가중치 코딩 모델",
+  "summary": "GLM-5.1은 Zhipu AI가 2026년 3월 27일 공개한 5세대 General Language Model의 마이너 업데이트이다. 미국의 첨단 반도체 수출 통제하에서 중국 자체 AI 가속기로 학습되었음에도, 코딩 성능에서 Claude Opus 4.6의 94.6% 수준을 달성하며 오픈 가중치 진영의 새로운 기준을 제시하였다.",
+  "tags": [
+    "GLM",
+    "Zhipu AI",
+    "Open Weights",
+    "Coding",
+    "Bilingual",
+    "Domestic Chip",
+    "Long Context",
+    "Agentic AI"
+  ]
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Manus 핵심 요약](figures/infographic.svg)
+
+*Figure: Manus 한 장 요약 인포그래픽*
+
 # Manus: 범용 AI 에이전트의 실용화
 
 **Manus AI** · **2025-03-06** · **General Agent** · **상용 (초대제)**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mistral Large 3 / Mistral 3 핵심 요약](figures/infographic.svg)
+
+*Figure: Mistral Large 3 / Mistral 3 한 장 요약 인포그래픽*
+
 # Mistral Large 3: Apache 2.0 플래그십 오픈소스 LLM
 
 **Mistral AI** · **2025-05-20** · **Decoder-only** · **Sparse MoE** · **Apache 2.0**

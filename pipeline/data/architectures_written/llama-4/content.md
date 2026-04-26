@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaMA 4 (Scout / Maverick / Behemoth) 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaMA 4 (Scout / Maverick / Behemoth) 한 장 요약 인포그래픽*
+
 # LLaMA 4 (Scout / Maverick / Behemoth): MoE 기반 차세대 오픈소스 대규모 언어 모델
 
 **Meta** · **2025-04-05** · **Decoder-only** · **Sparse MoE** · **Meta LLaMA 4 Community License**

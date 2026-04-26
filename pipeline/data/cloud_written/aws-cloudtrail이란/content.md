@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS CloudTrail이란: AWS API 활동 기록과 보안 감사의 핵심 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS CloudTrail이란: AWS API 활동 기록과 보안 감사의 핵심 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS CloudTrail은 AWS 계정에서 발생하는 모든 API 호출과 관련 활동을 기록하는 거버넌스, 컴플라이언스, 감사 서비스입니다. AWS Management Console, AWS CLI, AWS SDK, 기타 AWS 서비스를 통해 수행되는 모든 작업이 CloudTrail 이벤트로 기록됩니다.

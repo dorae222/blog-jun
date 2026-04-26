@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Consistency Model 핵심 요약](figures/infographic.svg)
+
+*Figure: Consistency Model 한 장 요약 인포그래픽*
+
 # Consistency Model: 일관성 모델
 
 ## 개요

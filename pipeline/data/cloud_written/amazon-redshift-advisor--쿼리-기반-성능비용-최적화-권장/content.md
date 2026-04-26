@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Advisor 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Advisor 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift Advisor는 Redshift 클러스터의 운영 메트릭과 쿼리 패턴을 자동으로 분석하여, 성능 향상과 비용 절감을 위한 구체적인 권장 사항을 제공하는 내장 도구입니다. DBA(Database Administrator)가 수동으로 수행하던 성능 튜닝 분석을 자동화하여, 전문 지식이 없는 팀에서도 Redshift의 성능을 최적화할 수 있도록 지원합니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Direct Connect Location - 물리적 네트워크 접속 지점 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Direct Connect Location - 물리적 네트워크 접속 지점 완벽 가이드 한 장 요약 인포그래픽*
+
 # AWS Direct Connect Location - 물리적 네트워크 접속 지점 완벽 가이드
 
 ## 개요

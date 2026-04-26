@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Timestream 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Timestream 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Timestream은 IoT 센서 데이터, 애플리케이션 메트릭, DevOps 모니터링 로그 등 시계열(time-series) 데이터를 위해 특별히 설계된 완전관리형 서버리스 데이터베이스입니다. 하루에 수조 건의 이벤트를 저장하고 분석할 수 있으며, 관계형 데이터베이스 대비 최대 1,000배 빠르고 1/10 수준의 비용으로 시계열 데이터를 처리할 수 있습니다.

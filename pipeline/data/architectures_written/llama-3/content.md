@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaMA 3 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaMA 3 한 장 요약 인포그래픽*
+
 # LLaMA 3: 오픈소스 LLM의 GPT-4 도전
 
 ## 개요

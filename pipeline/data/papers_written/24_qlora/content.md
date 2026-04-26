@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![QLoRA: Efficient Finetuning of Quantized LLMs 핵심 요약](figures/infographic.svg)
+
+*Figure: QLoRA: Efficient Finetuning of Quantized LLMs 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 파인튜닝은 모델 성능을 특정 태스크에 최적화하는 핵심 단계이지만, 모델 크기가 커짐에 따라 필요한 GPU 메모리가 급격히 증가하는 문제에 직면합니다. [[lora|LoRA]]가 학습 가능한 파라미터 수를 획기적으로 줄였음에도 불구하고, 사전학습 모델의 가중치 자체를 FP16 또는 BF16으로 GPU에 로드해야 하므로 여전히 막대한 메모리가 필요합니다. 예를 들어, LLaMA-65B 모델을 FP16으로 로드하는 것만으로도 약 130GB의 GPU 메모리가 소요되며, 여기에 그래디언트와 옵티마이저 상태까지 포함하면 실질적으로 수백 GB의 메모리가 요구됩니다.

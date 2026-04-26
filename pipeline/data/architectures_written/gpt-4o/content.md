@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-4o 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-4o 한 장 요약 인포그래픽*
+
 # GPT-4o: 네이티브 멀티모달의 새로운 기준
 
 ## 개요

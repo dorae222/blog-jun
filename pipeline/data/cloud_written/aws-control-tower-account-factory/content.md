@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Control Tower Account Factory 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Control Tower Account Factory 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Control Tower Account Factory는 멀티 계정 환경에서 새로운 AWS 계정을 표준화된 방식으로 자동 프로비저닝하는 기능입니다. AWS Service Catalog를 기반으로 동작하며, 사전 정의된 네트워크 구성, 보안 설정, 리전 제한 등을 적용하여 일관성 있는 계정을 빠르게 생성할 수 있습니다.

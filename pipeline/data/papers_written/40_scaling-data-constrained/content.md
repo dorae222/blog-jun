@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Scaling Data-Constrained Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Scaling Data-Constrained Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 성능은 모델 크기($N$), 학습 데이터량($D$), 계산 예산($C$)의 세 축에 의해 결정됩니다. Kaplan et al.(2020)이 처음 제시하고 Hoffmann et al.(2022)이 정교화한 **스케일링 법칙(Scaling Laws)**은 이 세 변수 간의 최적 균형점을 수학적으로 도출하여, 주어진 계산 예산에서 모델 크기와 데이터량을 어떻게 배분해야 최적 성능을 달성하는지를 안내합니다.

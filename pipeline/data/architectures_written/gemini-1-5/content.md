@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini 1.5 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini 1.5 한 장 요약 인포그래픽*
+
 # Gemini 1.5: 100만 토큰 컨텍스트의 MoE 멀티모달 모델
 
 ## 개요

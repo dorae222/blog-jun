@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-V2 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-V2 한 장 요약 인포그래픽*
+
 # DeepSeek-V2: MLA와 DeepSeekMoE로 KV 캐시 93.3%를 절감한 효율 혁명
 
 ## 개요

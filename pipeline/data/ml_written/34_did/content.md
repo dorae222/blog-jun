@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Difference-in-Differences (DID) 핵심 요약](figures/infographic.svg)
+
+*Figure: Difference-in-Differences (DID) 한 장 요약 인포그래픽*
+
 # 이중차분법(DID): 정책 효과를 측정하는 가장 강력한 도구
 
 ## 1. 개요: 왜 DID인가

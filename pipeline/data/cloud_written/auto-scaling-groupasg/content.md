@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Auto Scaling Group(ASG) - EC2 자동 확장/축소 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Auto Scaling Group(ASG) - EC2 자동 확장/축소 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 Auto Scaling Group(ASG)은 Amazon EC2 인스턴스의 수를 자동으로 조절하여 애플리케이션의 가용성을 보장하고 비용을 최적화하는 서비스입니다. 트래픽이 증가하면 인스턴스를 자동으로 추가(Scale Out)하고, 트래픽이 감소하면 불필요한 인스턴스를 제거(Scale In)합니다.

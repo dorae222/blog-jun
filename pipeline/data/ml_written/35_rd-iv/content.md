@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Regression Discontinuity and Instrumental Variables 핵심 요약](figures/infographic.svg)
+
+*Figure: Regression Discontinuity and Instrumental Variables 한 장 요약 인포그래픽*
+
 # RD와 IV: 임계점과 도구변수를 활용한 인과 추론
 
 랜덤화 실험(RCT)이 항상 가능하다면 인과 추론은 쉽다. 그러나 현실에서는 윤리적·실용적 이유로 직접 개입하기 어려운 경우가 많다. 이때 활용하는 두 가지 강력한 준실험(quasi-experiment) 방법이 **회귀 불연속 설계(Regression Discontinuity, RD)**와 **도구변수(Instrumental Variables, IV)**다. Goldfarb, Tucker & Wang(2022)의 디지털 마케팅 인과 추론 강의를 토대로 두 방법의 원리, 가정, 한계를 체계적으로 살펴본다.

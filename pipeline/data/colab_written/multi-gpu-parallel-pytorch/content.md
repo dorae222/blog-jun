@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Multi-GPU Parallel Processing: DDP, FSDP, and Tensor Parallelism 핵심 요약](figures/infographic.svg)
+
+*Figure: Multi-GPU Parallel Processing: DDP, FSDP, and Tensor Parallelism 한 장 요약 인포그래픽*
+
 # Multi-GPU 병렬 처리 실전: DDP, FSDP, Tensor Parallelism
 
 ## 들어가며

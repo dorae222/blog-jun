@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Table 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Table 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift의 테이블 설계는 클러스터 성능을 결정짓는 가장 중요한 요소입니다. Redshift는 MPP(Massively Parallel Processing) 아키텍처를 채택하고 있어, 데이터가 여러 노드의 슬라이스에 어떻게 분산되고 정렬되는지에 따라 쿼리 성능이 극적으로 달라집니다.

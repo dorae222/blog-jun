@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MongoDB Practical Guide: Installation, CRUD Operations, and Update Operators 핵심 요약](figures/infographic.svg)
+
+*Figure: MongoDB Practical Guide: Installation, CRUD Operations, and Update Operators 한 장 요약 인포그래픽*
+
 # MongoDB 실전 가이드: 설치부터 CRUD 연산, 갱신 연산자까지
 
 ## 개요

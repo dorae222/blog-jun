@@ -1,0 +1,14 @@
+{
+  "slug": "dify",
+  "title": "Dify",
+  "title_ko": "Dify: 노코드 워크플로와 RAG GUI를 결합한 오픈소스 LLMOps 1위 플랫폼",
+  "summary": "Dify는 LangGenius가 2023년 출시한 오픈소스 LLMOps 플랫폼으로, 노코드 워크플로 빌더, 프롬프트 IDE, RAG 파이프라인 GUI, 데이터셋 관리, 도구 마켓플레이스를 통합 웹 콘솔로 제공한다. 비개발자가 LLM 애플리케이션을 직접 설계하고 개발자가 API로 임베드하는 협업 모델을 정착시켰으며 GitHub 약 13만 스타로 카테고리 오픈소스 1위 위치를 차지하고 있다. Apache 2.0 라이선스로 셀프호스트가 가능하다.",
+  "tags": [
+    "Dify",
+    "LLMOps",
+    "Workflow Builder",
+    "RAG",
+    "No-Code",
+    "Open Source"
+  ]
+}

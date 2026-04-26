@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Materialized View 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Materialized View 한 장 요약 인포그래픽*
+
 ## 개요
 
 Materialized View(MV, 구체화된 뷰)는 쿼리 결과를 물리적으로 저장하는 데이터베이스 객체입니다. 일반 뷰(View)가 쿼리 실행 시마다 기반 테이블을 다시 스캔하는 반면, MV는 미리 계산된 결과를 저장해두고 조회 시 즉시 반환합니다.

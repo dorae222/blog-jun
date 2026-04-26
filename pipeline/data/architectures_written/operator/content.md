@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Operator (CUA) 핵심 요약](figures/infographic.svg)
+
+*Figure: Operator (CUA) 한 장 요약 인포그래픽*
+
 # Operator (CUA): OpenAI의 컴퓨터 사용 에이전트
 
 **OpenAI** · **2025-01-23** · **Browser Agent** · **상용 (ChatGPT Pro)**

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenCode Core Features 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenCode Core Features 한 장 요약 인포그래픽*
+
 # OpenCode 핵심 기능: 멀티 모델 지원과 TUI
 
 :::info

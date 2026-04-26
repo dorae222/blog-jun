@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![VDM 핵심 요약](figures/infographic.svg)
+
+*Figure: VDM 한 장 요약 인포그래픽*
+
 # VDM: 변분 확산 모델과 학습 가능한 노이즈 스케줄
 
 **Google Brain** · **2021-07-01** · **Diffusion** · **Apache 2.0**

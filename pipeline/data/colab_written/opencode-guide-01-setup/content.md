@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Getting Started with OpenCode 핵심 요약](figures/infographic.svg)
+
+*Figure: Getting Started with OpenCode 한 장 요약 인포그래픽*
+
 # OpenCode 시작하기: 경량 터미널 AI 코딩 도구
 
 :::info

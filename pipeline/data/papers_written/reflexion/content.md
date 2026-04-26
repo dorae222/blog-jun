@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Reflexion: Language Agents with Verbal Reinforcement Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: Reflexion: Language Agents with Verbal Reinforcement Learning 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Reflexion: Language Agents with Verbal Reinforcement Learning" (Shinn et al., 2024)는 Northeastern 대학교의 Noah Shinn과 Princeton 대학교의 Shunyu Yao, Karthik Narasimhan 등이 NeurIPS 2023에서 발표한 논문입니다. 이 연구는 기존 강화학습의 **스칼라 보상 신호를 자연어 반성(verbal reflection)으로 대체**하는 혁신적인 학습 패러다임을 제안합니다.

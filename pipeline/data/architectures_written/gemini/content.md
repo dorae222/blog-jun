@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini 한 장 요약 인포그래픽*
+
 # Gemini 1.0: Google DeepMind의 네이티브 멀티모달 AI 모델
 
 ## 개요

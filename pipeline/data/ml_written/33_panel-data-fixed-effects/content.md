@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Panel Data and Fixed Effects Model 핵심 요약](figures/infographic.svg)
+
+*Figure: Panel Data and Fixed Effects Model 한 장 요약 인포그래픽*
+
 ## 개요: 횡단면 데이터의 한계
 
 인과 추론의 목표는 단순한 상관관계를 넘어 **진짜 원인-결과 관계**를 추정하는 것입니다. 그런데 현실에서 수집한 데이터에는 종종 우리가 관측하지 못한 혼란 변수(Confounders)가 숨어 있어, 단순 회귀만으로는 인과 효과를 정확히 추정할 수 없습니다.

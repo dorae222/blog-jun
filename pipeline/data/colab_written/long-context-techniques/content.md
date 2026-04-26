@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Long Context LLM: Techniques for 100K+ Token Processing 핵심 요약](figures/infographic.svg)
+
+*Figure: Long Context LLM: Techniques for 100K+ Token Processing 한 장 요약 인포그래픽*
+
 # Long Context LLM: 100K+ 토큰 처리의 원리와 기법
 
 ## 들어가며

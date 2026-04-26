@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon OpenSearch Service 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon OpenSearch Service 개요 한 장 요약 인포그래픽*
+
 # Amazon OpenSearch Service 개요
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS DataSync 개요 및 주요 기능 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS DataSync 개요 및 주요 기능 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS DataSync는 온프레미스와 AWS 간, 또는 AWS 서비스 간 대용량 데이터를 빠르고 안전하게 전송할 수 있는 완전 관리형 데이터 전송 서비스입니다. 네트워크 최적화, 데이터 무결성 검증, 전송 스케줄링 등을 자동으로 처리하여 수동 스크립트나 오픈소스 도구 대비 최대 10배 빠른 전송 속도를 제공합니다.

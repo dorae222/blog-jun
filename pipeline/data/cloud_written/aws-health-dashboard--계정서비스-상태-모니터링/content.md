@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Health Dashboard 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Health Dashboard 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Health Dashboard는 AWS 인프라의 서비스 상태를 실시간으로 확인하고, 사용자 계정에 직접적으로 영향을 미치는 이벤트를 추적할 수 있는 모니터링 서비스입니다. 기존에 분리되어 있던 AWS Service Health Dashboard(공개)와 AWS Personal Health Dashboard(계정별)가 2022년에 통합되어 하나의 Health Dashboard로 제공되고 있습니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Linear Algebra for Machine Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: Linear Algebra for Machine Learning 한 장 요약 인포그래픽*
+
 ## 개요: 왜 선형대수가 ML의 언어인가
 
 머신러닝은 본질적으로 **고차원 데이터를 다루는 학문**입니다. 1만 개의 픽셀로 이루어진 이미지, 수백 개의 피처를 가진 테이블 데이터, 수만 개의 토큰으로 구성된 언어 모델, 이 모든 것들은 수치(숫자)의 배열로 표현됩니다. 바로 여기서 **선형대수(Linear Algebra)**가 등장합니다.

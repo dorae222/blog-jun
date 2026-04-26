@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Lightsail - 간단하고 저비용의 AWS 클라우드 플랫폼 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Lightsail - 간단하고 저비용의 AWS 클라우드 플랫폼 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Lightsail은 AWS의 간소화된 클라우드 플랫폼으로, 소규모 프로젝트, 개인 블로그, 스타트업의 MVP, 개발/테스트 환경 등에 최적화된 서비스입니다. EC2, RDS, ALB, CloudFront 등 복잡한 AWS 서비스를 개별적으로 설정하는 대신, Lightsail은 이 모든 것을 통합된 하나의 인터페이스에서 예측 가능한 월정액 가격으로 제공합니다.

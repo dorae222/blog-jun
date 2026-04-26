@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Direct Preference Optimization: Your Language Model is Secretly a Reward Model 핵심 요약](figures/infographic.svg)
+
+*Figure: Direct Preference Optimization: Your Language Model is Secretly a Reward Model 한 장 요약 인포그래픽*
+
 ## 개요
 
 RLHF(Reinforcement Learning from Human Feedback)는 [[InstructGPT]], ChatGPT 등 대형 언어 모델의 정렬(alignment)에 핵심적인 역할을 해왔습니다. 그러나 RLHF는 보상 모델(reward model)과 정책 모델(policy model)을 별도로 학습해야 하고, [[PPO]] 같은 온라인 강화학습 알고리즘의 불안정성과 막대한 GPU 자원 요구라는 실용적 한계를 가집니다.

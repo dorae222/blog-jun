@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Q Business -- 엔터프라이즈용 생성형 AI 기반 업무 비서 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Q Business -- 엔터프라이즈용 생성형 AI 기반 업무 비서 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Q Business는 기업 내부의 데이터, 문서, 시스템을 기반으로 동작하는 완전 관리형 생성형 AI 비서 서비스입니다. 직원들이 자연어로 질문하면 사내 문서, Wiki, Confluence, SharePoint, Salesforce, ServiceNow 등 다양한 엔터프라이즈 데이터 소스에서 관련 정보를 검색하고, 정확한 답변을 생성하여 제공합니다.

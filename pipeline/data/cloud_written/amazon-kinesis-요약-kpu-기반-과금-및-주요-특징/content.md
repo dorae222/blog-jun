@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Kinesis 요약 - KPU 기반 과금 및 주요 특징 심층 분석 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Kinesis 요약 - KPU 기반 과금 및 주요 특징 심층 분석 한 장 요약 인포그래픽*
+
 # Amazon Kinesis 요약 - KPU 기반 과금 및 주요 특징 심층 분석
 
 ## 개요

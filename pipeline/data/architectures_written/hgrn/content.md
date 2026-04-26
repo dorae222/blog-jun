@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![HGRN 핵심 요약](figures/infographic.svg)
+
+*Figure: HGRN 한 장 요약 인포그래픽*
+
 # HGRN: 계층적 게이팅으로 다중 시간 스케일을 포착하는 순환 네트워크
 
 **Shanghai AI Lab / Tsinghua University** · **2023-11-09** · **SSM** · **MIT**

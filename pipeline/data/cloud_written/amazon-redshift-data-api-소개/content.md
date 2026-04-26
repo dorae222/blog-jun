@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Data API 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Data API 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift Data API는 Redshift 클러스터 또는 Redshift Serverless에 대해 JDBC/ODBC 드라이버 없이 HTTP 기반으로 SQL 쿼리를 실행할 수 있는 관리형 API 서비스입니다. 2020년에 출시되었으며, 서버리스 환경(Lambda, Step Functions, EventBridge)에서 Redshift를 활용하는 데 핵심적인 역할을 합니다.

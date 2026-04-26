@@ -1,0 +1,43 @@
+{
+  "name": "Claude Opus 4.7",
+  "slug": "claude-4-7",
+  "organization": "Anthropic",
+  "release_date": "2026-Q1",
+  "decoder_type": "dense",
+  "param_scale": "미공개",
+  "context_length": "200K",
+  "attention_type": "Multi-Head Attention",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "미공개",
+  "hidden_dim": "미공개",
+  "num_layers": "미공개",
+  "num_heads": "미공개",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Claude Opus 4.7은 Anthropic이 2026년 1분기에 공개한 최신 플래그십 모델로, Claude Opus 4.6을 직접 계승한다. 14개 주요 벤치마크 중 12개에서 1위를 기록하였고, SWE-bench Verified 82.0%, LM Arena Elo 1504점이라는 전례 없는 성과를 보여주었다. Anthropic은 200K 토큰 컨텍스트 윈도우와 200달러대($5/$25 per million input/output token)의 가격 정책을 4.6 세대와 동일하게 유지하면서, 모델의 본질적인 지능과 에이전틱 능력을 강화하는 데 집중하였다. 4.7 세대에서는 Computer Use(컴퓨터 직접 조작) 능력이 한 단계 도약하였고, 멀티모달 추론이 텍스트-이미지 결합을 넘어 비디오 프레임 시퀀스 이해까지 확장되었다. Constitutional AI 4세대와 ASL-3(AI Safety Level 3) 안전성 평가를 적용하여, 자율 에이전트 환경에서의 책임성 있는 행동을 보장하기 위한 정교화 작업이 진행되었다. 기술 보고서가 아닌 시스템 카드 형태로만 공개되는 Anthropic의 보안 정책은 4.7에서도 일관되게 유지되었다.",
+  "key_detail": "Claude Opus 4.7의 핵심 혁신은 세 축이다. 첫째, Computer Use 능력이 비약적으로 발전하였다. 화면 스크린샷을 인지하고 마우스 클릭, 키보드 입력, 스크롤을 통해 실제 컴퓨터 환경을 조작하는 능력에서 4.6 대비 큰 폭의 개선을 이루었으며, OSWorld 벤치마크에서 업계 최고 점수를 기록하였다. 둘째, 멀티모달 결합 추론이 강화되었다. 텍스트, 이미지, 다이어그램, 코드 스크린샷, 비디오 프레임 시퀀스를 통합적으로 이해하고 추론하는 능력이 강화되어, 기술 문서 분석과 UI 디버깅 시나리오에서 우수한 성능을 보인다. 셋째, ASL-3 안전성 평가가 완전히 적용되었다. 화학/생물/핵/방사능(CBRN) 무기, 사이버 보안 공격, 자기복제 능력 등 위험 영역에 대한 자동화된 평가와 미티게이션이 훈련 루프에 통합되었으며, 에이전트 환경에서의 자율성과 통제 가능성의 균형이 정교화되었다. LM Arena Elo 1504점은 모든 모델 중 1위로, 사용자 선호도 측면에서도 압도적 우위를 점하였다.",
+  "training_detail": "Claude Opus 4.7의 훈련 세부사항은 Anthropic의 일관된 보안 정책에 따라 미공개이지만, 기존 Claude 시리즈의 패턴에서 추정 가능하다. 사전학습 단계에서는 4.6 세대 대비 더욱 정제된 웹 코퍼스, 코드 저장소, 학술 문헌, 멀티모달 데이터(이미지-텍스트 쌍, 비디오 프레임-자막 쌍)를 학습하였을 것이다. 사후학습에서는 RLHF와 함께 Constitutional AI 4세대(CAI-4)가 적용되었다. CAI-4는 헌법 원칙을 더 세밀화하고, AI 자체가 장기 시뮬레이션을 통해 규칙 위반 가능성을 탐지하는 self-red-teaming 메커니즘을 포함한다. 에이전트 학습에는 컴퓨터 환경 시뮬레이터에서의 강화학습(RL on virtual desktop)이 도입되어 Computer Use 능력 개선에 직결되었다. 또한 도구 호출 신뢰성 향상을 위해 합성 도구 사용 데이터셋의 규모와 다양성이 확대되었다. 안전성 측면에서는 ASL-3 프로토콜에 따라 CBRN 위험 평가, 자기복제 능력 평가, 사이버 공격 능력 평가 등이 정량화된 지표로 측정되었으며, 기준 미달 시 미티게이션 학습이 추가되는 폐쇄 루프가 구성되었다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "Constitutional AI",
+    "Agentic AI",
+    "Computer Use",
+    "Multimodal",
+    "ASL-3 Safety"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {
+      "to": "claude-4-5",
+      "type": "evolved_from",
+      "description": "Claude Opus 4.5의 후속 모델로 SWE-bench 82.0%를 달성하며 14개 벤치마크 중 12개에서 1위를 기록하였다."
+    }
+  ],
+  "related_post_slug": ""
+}

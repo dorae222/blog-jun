@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![sklearn Pipeline Complete Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: sklearn Pipeline Complete Guide 한 장 요약 인포그래픽*
+
 ## 1. Pipeline이 없으면 생기는 문제들
 
 scikit-learn으로 머신러닝 모델을 만들 때, 많은 개발자들이 전처리와 모델 학습을 분리해서 작성한다. 처음에는 코드가 단순해 보이지만 이 방식은 세 가지 심각한 문제를 낳는다.

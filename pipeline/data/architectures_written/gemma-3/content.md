@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemma 3 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemma 3 한 장 요약 인포그래픽*
+
 # Gemma 3: 단일 GPU에서 실행되는 멀티모달 오픈 모델
 
 ## 개요

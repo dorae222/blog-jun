@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Elastic Beanstalk 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Elastic Beanstalk 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Elastic Beanstalk는 웹 애플리케이션과 서비스를 간편하게 배포, 관리, 확장할 수 있는 완전관리형 PaaS(Platform as a Service) 서비스입니다. 개발자가 코드를 업로드하면 Elastic Beanstalk가 자동으로 용량 프로비저닝, 로드 밸런싱, Auto Scaling, 애플리케이션 상태 모니터링을 처리합니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![TiDAR: Think in Diffusion, Talk in Autoregression 핵심 요약](figures/infographic.svg)
+
+*Figure: TiDAR: Think in Diffusion, Talk in Autoregression 한 장 요약 인포그래픽*
+
 ## 개요
 
 "TiDAR: Think in Diffusion, Talk in Autoregression" (Jingyu Liu et al., 2025)은 **Autoregressive(AR) 모델의 높은 생성 품질**과 **Diffusion 모델의 병렬 생성 속도**를 하나의 모델 아키텍처 안에서 결합한 혁신적인 연구입니다. 논문의 제목이 함축하듯, "Diffusion으로 사고(think)하고, Autoregression으로 말(talk)하라"는 철학을 구현합니다. 즉, 다음에 올 토큰 블록을 Diffusion으로 병렬 초안(draft)하고, 실제 출력은 AR의 인과적(causal) 샘플링으로 확정하는 이중 구조입니다.

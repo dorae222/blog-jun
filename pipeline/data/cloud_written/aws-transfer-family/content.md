@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Transfer Family 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Transfer Family 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Transfer Family는 AWS 스토리지 서비스(Amazon S3, Amazon EFS)를 대상으로 파일 전송을 수행할 수 있는 완전 관리형 서비스입니다. SFTP(SSH File Transfer Protocol), FTPS(FTP over SSL), FTP(File Transfer Protocol), AS2(Applicability Statement 2) 프로토콜을 지원하여 기존 파일 전송 워크플로우를 변경 없이 클라우드로 마이그레이션할 수 있습니다.

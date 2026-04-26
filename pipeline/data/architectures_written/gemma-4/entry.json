@@ -1,0 +1,43 @@
+{
+  "name": "Gemma 4",
+  "slug": "gemma-4",
+  "organization": "Google",
+  "release_date": "2026",
+  "decoder_type": "dense",
+  "param_scale": "1B / 4B / 12B / 27B (추정)",
+  "context_length": "128K",
+  "attention_type": "GQA",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU (GeGLU 변형)",
+  "position_encoding": "RoPE",
+  "vocab_size": "256K",
+  "hidden_dim": "변형별 상이",
+  "num_layers": "변형별 상이",
+  "num_heads": "변형별 상이",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Gemma 4는 2026년 Google이 공개한 4세대 오픈 가중치(open-weight) 모델 계열이다. Gemma 시리즈는 Gemini와 동일한 연구 인프라에서 출발하면서도 상업 이용이 자유로운 Apache 2.0 호환 라이선스로 공개되어, 로컬 추론과 온디바이스 배포에 최적화된 라인업이다. Gemma 4 세대에서는 1B, 4B, 12B, 27B의 4가지 변형 사이즈가 제공되며(추정), 모든 변형이 텍스트, 이미지, 오디오를 처리할 수 있는 멀티모달 능력을 갖췄다. 특히 27B 변형은 단일 H100 GPU에서 양자화 없이 추론이 가능하면서도 동급 클래스의 폐쇄형 모델에 근접한 성능을 보인다. Gemma 시리즈의 핵심 가치는 실용적 사이즈와 자유로운 라이선스의 결합으로, 학술 연구, 스타트업의 자체 호스팅, 엣지 디바이스 배포 등에서 폭넓게 활용된다. Gemma 3 대비 멀티모달 능력 추가, 컨텍스트 길이 확장, 그리고 인스트럭션 튜닝 품질 개선이 4세대의 주요 변화이다.",
+  "key_detail": "Gemma 4의 핵심 혁신은 세 축이다. 첫째, 멀티모달 능력의 통합이다. Gemma 3까지는 텍스트 중심이었으나(일부 변형에 이미지 추가), Gemma 4에서는 모든 변형이 텍스트, 이미지, 오디오 입력을 네이티브로 처리한다. 이미지 인코더는 SigLIP 2 계열, 오디오 인코더는 Universal Speech Model(USM) 계열이 활용된 것으로 추정된다. 둘째, 컨텍스트 길이의 확장과 안정화이다. Gemma 3의 128K 컨텍스트가 Gemma 4에서도 유지되면서 RoPE 외삽 보정이 추가로 정교화되어 후반부 토큰 활용도가 개선되었다. 셋째, 사이즈 라인업의 다양화이다. 1B는 모바일/엣지 디바이스, 4B는 노트북 CPU/저사양 GPU, 12B는 단일 RTX 4090/5090 GPU, 27B는 단일 H100 GPU 추론 시나리오에 각각 최적화되었다. 이러한 사이즈 분화는 사용자가 자신의 인프라 제약에 맞는 변형을 선택할 수 있게 하여 실용성을 극대화한다.",
+  "training_detail": "Gemma 4의 학습 파이프라인은 Gemini 시리즈와 동일한 인프라에서 출발한다. 사전학습 단계에서는 Gemini와 공유되는 대규모 멀티모달 코퍼스의 일부가 활용되며, 사이즈별로 약 6T~14T 토큰 규모로 학습된 것으로 추정된다. 작은 변형(1B/4B)은 큰 변형의 distillation을 통해 학습 효율을 높이는 knowledge distillation 기법이 적용되었을 가능성이 높다. 멀티모달 통합은 모달리티별 인코더(이미지: SigLIP 2 계열, 오디오: USM 계열)의 출력을 트랜스포머 입력 공간에 투영하는 방식으로 구현된다. SFT 단계에서는 인스트럭션 튜닝 데이터셋과 함께 안전성 강화 데이터가 활용되며, RLHF는 RLAIF(Constitutional AI 유사 기법)와 결합되어 인간 어노테이터 의존도를 줄였다. 학습 인프라는 Google의 Ironwood 또는 Trillium TPU 클러스터로, JAX와 Pathways 라이브러리를 활용한 대규모 분산 학습이 수행되었다. 라이선스는 Gemma 시리즈의 일관된 정책에 따라 Apache 2.0 호환 형태로 공개되며, 상업 이용이 자유로워 산업계 활용도가 높다.",
+  "paper_url": "",
+  "code_url": "https://github.com/google-deepmind/gemma",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "Open Weights",
+    "Multimodal",
+    "Efficient",
+    "Distillation",
+    "On-Device"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "gemma-3",
+      "type": "evolved_from",
+      "description": "Gemma 3에서 멀티모달 능력을 모든 사이즈로 확장하고 인스트럭션 품질을 개선하였다."
+    }
+  ],
+  "related_post_slug": ""
+}

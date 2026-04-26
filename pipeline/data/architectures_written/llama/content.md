@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaMA 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaMA 한 장 요약 인포그래픽*
+
 # LLaMA: 오픈소스 LLM 혁명의 기폭제
 
 ## 개요

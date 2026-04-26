@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-2 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-2 한 장 요약 인포그래픽*
+
 # GPT-2: Language Models are Unsupervised Multitask Learners
 
 ## 개요

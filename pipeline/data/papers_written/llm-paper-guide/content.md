@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLM Core Paper Guide: Evolution of Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: LLM Core Paper Guide: Evolution of Language Models 한 장 요약 인포그래픽*
+
 # LLM 핵심 논문 가이드: 언어 모델의 진화
 
 ## 개요

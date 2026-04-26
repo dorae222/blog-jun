@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Flow Matching for Generative Modeling 핵심 요약](figures/infographic.svg)
+
+*Figure: Flow Matching for Generative Modeling 한 장 요약 인포그래픽*
+
 ## 개요
 
 Flow Matching(FM)은 Lipman et al.이 ICLR 2023에서 제안한 생성 모델 학습 프레임워크로, 연속 정규화 플로우(Continuous Normalizing Flows, CNF)를 **시뮬레이션 없이** 효율적으로 학습하는 방법이다. 기존 CNF 학습은 ODE 적분을 통한 시뮬레이션이 필요해 계산 비용이 컸지만, Flow Matching은 조건부 확률 경로를 활용해 이 문제를 우회한다. 특히 최적 수송(Optimal Transport, OT) 경로를 적용하면 노이즈에서 데이터까지의 궤적이 직선에 가까워져 적은 함수 평가 횟수(NFE)로도 고품질 샘플링이 가능하다. 이 방법론은 이후 Stable Diffusion 3, Flux 등 최신 대규모 이미지 생성 모델의 이론적 기반이 되었다.

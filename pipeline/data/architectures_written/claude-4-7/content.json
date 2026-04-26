@@ -1,0 +1,17 @@
+{
+  "slug": "claude-4-7",
+  "title": "Claude Opus 4.7",
+  "title_ko": "Claude Opus 4.7: 14개 벤치마크 중 12개 1위, LM Arena Elo 1504의 새 표준",
+  "summary": "Claude Opus 4.7은 Anthropic이 2026년 1분기에 공개한 플래그십 모델이다. SWE-bench Verified 82.0%, LM Arena Elo 1504점 등 14개 주요 벤치마크 중 12개에서 1위를 기록하였다. 200K 컨텍스트와 4.6 세대와 동일한 가격($5/$25)을 유지하면서 Computer Use, 멀티모달 추론, ASL-3 안전성에서 한 단계 도약하였다.",
+  "tags": [
+    "Claude",
+    "Opus 4.7",
+    "Anthropic",
+    "SWE-bench",
+    "Agentic AI",
+    "Computer Use",
+    "Constitutional AI",
+    "ASL-3",
+    "LM Arena"
+  ]
+}

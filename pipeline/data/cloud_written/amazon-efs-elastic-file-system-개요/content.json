@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-efs-elastic-file-system-개요",
+  "title": "Amazon EFS",
+  "title_ko": "Amazon EFS(Elastic File System) 개요",
+  "category_slug": "aws-storage",
+  "summary": "Amazon EFS(관리형 NFS 파일 시스템)의 스토리지 클래스, Lifecycle Management, 처리량 모드(Bursting/Provisioned/Elastic), 성능 모드, Mount Target, Lambda/EC2/Fargate 통합까지 공유 파일 스토리지의 핵심을 종합 정리합니다.",
+  "tags": [
+    "AWS",
+    "EFS",
+    "NFS",
+    "파일 스토리지",
+    "공유 스토리지",
+    "Elastic Throughput",
+    "Lifecycle Management",
+    "EKS",
+    "Lambda",
+    "POSIX"
+  ]
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Self-Rewarding Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Self-Rewarding Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 Self-Rewarding Language Models(Yuan et al., 2024, ICML)는 Meta AI에서 발표한 연구로, 기존 RLHF 파이프라인의 근본적 병목이었던 **별도 보상 모델 학습과 인간 선호도 데이터 수집**을 완전히 제거하는 새로운 정렬(alignment) 프레임워크를 제시한다. 핵심 발상은 놀랍도록 직관적이다. LLM 자체가 응답을 생성하는 동시에 그 응답의 품질을 평가하는 보상 모델 역할까지 수행하도록 하고, 이 자기 평가 결과를 기반으로 [[DPO]]를 통해 스스로를 반복 개선하는 것이다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift UNLOAD 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift UNLOAD 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift UNLOAD 명령은 SELECT 쿼리의 결과를 Amazon S3로 병렬로 내보내는(export) 기능입니다. Redshift 클러스터의 모든 컴퓨트 노드가 동시에 데이터를 S3에 기록하므로, 대량의 데이터를 빠르게 추출할 수 있습니다.

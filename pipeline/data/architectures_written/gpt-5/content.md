@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-5 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-5 한 장 요약 인포그래픽*
+
 # GPT-5: 내장 추론과 범용 지능의 통합
 
 ## 개요

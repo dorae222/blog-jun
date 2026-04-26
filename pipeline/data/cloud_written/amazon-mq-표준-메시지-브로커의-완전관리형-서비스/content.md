@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon MQ: 표준 메시지 브로커의 완전관리형 서비스 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon MQ: 표준 메시지 브로커의 완전관리형 서비스 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon MQ는 Apache ActiveMQ와 RabbitMQ를 위한 AWS 완전관리형 메시지 브로커 서비스입니다. 메시지 브로커는 분산 시스템에서 애플리케이션 간 비동기 통신을 가능하게 하는 핵심 미들웨어이며, Amazon MQ는 이러한 메시지 브로커의 프로비저닝, 설정, 유지 관리를 AWS가 대신 처리해줍니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenCode Advanced Usage 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenCode Advanced Usage 한 장 요약 인포그래픽*
+
 # OpenCode 고급 활용: LSP 통합과 커스텀 설정
 
 :::info

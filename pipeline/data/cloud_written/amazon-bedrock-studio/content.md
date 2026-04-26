@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Bedrock Studio 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Bedrock Studio 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Bedrock Studio는 AWS Management Console 내에서 제공되는 웹 기반 시각적 개발 환경으로, 코딩 없이도 생성형 AI 애플리케이션을 구축, 테스트, 공유할 수 있게 합니다. 데이터 과학자, 비즈니스 분석가, 프로덕트 매니저 등 비개발자가 직접 FM을 실험하고 프로토타입을 만들 수 있다는 점에서 생성형 AI의 민주화를 지향하는 서비스입니다.
