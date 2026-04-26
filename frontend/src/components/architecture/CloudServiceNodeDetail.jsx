@@ -7,11 +7,23 @@ import { useNavigate } from 'react-router-dom'
 import { CLOUD_DOMAIN_COLORS } from '../../data/cloudConstants'
 
 const PROVIDER_COLORS = {
-  AWS: '#FF9900',
-  GCP: '#4285F4',
-  Azure: '#0078D4',
-  Cloudflare: '#F38020',
-  Docker: '#2496ED',
+  aws: '#FF9900',
+  gcp: '#4285F4',
+  azure: '#0078D4',
+  cloudflare: '#F38020',
+  docker: '#2496ED',
+  lxd: '#E95420',
+  general: '#6B7280',
+}
+
+const PROVIDER_LABELS = {
+  aws: 'AWS',
+  gcp: 'GCP',
+  azure: 'Azure',
+  cloudflare: 'Cloudflare',
+  docker: 'Docker',
+  lxd: 'LXD',
+  general: 'General',
 }
 
 const RELATION_LABELS = {
@@ -20,6 +32,21 @@ const RELATION_LABELS = {
   alternative_to: 'alternative',
   part_of: 'part of',
   evolved_from: 'evolved from',
+}
+
+const DOMAIN_LABELS = {
+  compute: 'Compute',
+  storage: 'Storage',
+  database: 'Database',
+  networking: 'Networking',
+  security: 'Security',
+  analytics: 'Analytics',
+  ai_ml: 'AI/ML',
+  devtools: 'DevTools',
+  management: 'Management',
+  integration: 'Integration',
+  container: 'Container',
+  devops: 'DevOps',
 }
 
 export default function CloudServiceNodeDetail({
@@ -85,7 +112,7 @@ export default function CloudServiceNodeDetail({
                 className="text-xs font-medium px-2 py-0.5 rounded-full shrink-0"
                 style={{ backgroundColor: providerColor + '20', color: providerColor }}
               >
-                {node.provider}
+                {PROVIDER_LABELS[node.provider] || node.provider.toUpperCase()}
               </span>
             )}
             {node.service_domain && (
@@ -93,7 +120,7 @@ export default function CloudServiceNodeDetail({
                 className="text-xs font-medium px-2 py-0.5 rounded-full shrink-0"
                 style={{ backgroundColor: domainColor + '20', color: domainColor }}
               >
-                {(node.service_domain || '').replace(/_/g, ' ')}
+                {DOMAIN_LABELS[node.service_domain] || node.service_domain}
               </span>
             )}
           </div>
