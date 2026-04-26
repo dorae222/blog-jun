@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![PaLM 핵심 요약](figures/infographic.svg)
+
+*Figure: PaLM 한 장 요약 인포그래픽*
+
 # PaLM: 5400억 파라미터와 Chain-of-Thought의 힘
 
 ## 개요

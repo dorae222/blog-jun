@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon API Gateway 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon API Gateway 한 장 요약 인포그래픽*
+
 # Amazon API Gateway 심층 분석
 
 ## 개요

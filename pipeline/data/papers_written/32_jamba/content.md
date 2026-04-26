@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Jamba: A Hybrid Transformer-Mamba Language Model 핵심 요약](figures/infographic.svg)
+
+*Figure: Jamba: A Hybrid Transformer-Mamba Language Model 한 장 요약 인포그래픽*
+
 ## 개요
 
 AI21 Labs(2024)가 발표한 **Jamba**는 Transformer, Mamba(Selective SSM), Mixture-of-Experts(MoE)를 단일 아키텍처에 결합한 하이브리드 언어 모델이다. ICLR 2025에 채택되었으며, 세계 최초의 상용 수준(production-grade) Mamba 기반 대형 모델로 평가된다.

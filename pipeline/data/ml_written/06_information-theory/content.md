@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Information Theory for ML 핵심 요약](figures/infographic.svg)
+
+*Figure: Information Theory for ML 한 장 요약 인포그래픽*
+
 # 정보 이론: 엔트로피에서 KL Divergence까지
 
 ## 1. 개요: 정보 이론이 ML과 만나는 지점

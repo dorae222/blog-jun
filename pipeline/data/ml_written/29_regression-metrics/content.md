@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Regression Evaluation Metrics 핵심 요약](figures/infographic.svg)
+
+*Figure: Regression Evaluation Metrics 한 장 요약 인포그래픽*
+
 ## 개요
 
 회귀 모델(Regression Model)은 연속적인 수치를 예측하는 지도 학습의 대표적인 방법입니다. 분류 문제와 달리 회귀에서는 예측값이 정확히 맞거나 틀리는 이분법이 아니라, **얼마나 가까운가**가 핵심입니다. 이 때문에 회귀 모델의 성능을 측정하는 지표는 다양하며, 각각 서로 다른 관점에서 오차를 바라봅니다.

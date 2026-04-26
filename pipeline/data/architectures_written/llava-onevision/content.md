@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaVA-OneVision 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaVA-OneVision 한 장 요약 인포그래픽*
+
 # LLaVA-OneVision: 단일 모델로 모든 시각 이해를 통합
 
 ## 개요

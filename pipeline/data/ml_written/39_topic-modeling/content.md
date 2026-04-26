@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Topic Modeling: LDA and NMF 핵심 요약](figures/infographic.svg)
+
+*Figure: Topic Modeling: LDA and NMF 한 장 요약 인포그래픽*
+
 ## 개요
 
 수천, 수만 건의 뉴스 기사나 논문이 있을 때 사람이 직접 읽지 않고도 "이 문서들은 어떤 주제들로 이루어져 있는가?"를 파악할 수 있다면 얼마나 유용할까요? **토픽 모델링(Topic Modeling)**은 바로 이 질문에 답하는 비지도 학습(Unsupervised Learning) 기법입니다.

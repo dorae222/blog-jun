@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LoRA 핵심 요약](figures/infographic.svg)
+
+*Figure: LoRA 한 장 요약 인포그래픽*
+
 # LoRA: 저랭크 적응을 통한 대형 언어 모델 파인튜닝
 
 **Microsoft** · **2021-10-16** · **오픈소스**

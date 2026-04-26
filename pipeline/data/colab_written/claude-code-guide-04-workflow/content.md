@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Code Workflow Design 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Code Workflow Design 한 장 요약 인포그래픽*
+
 # Claude Code 실전: 프로젝트 관리와 워크플로우 설계
 
 :::info

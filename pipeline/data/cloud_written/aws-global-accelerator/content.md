@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Global Accelerator 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Global Accelerator 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Global Accelerator는 AWS의 글로벌 네트워크 인프라를 활용하여 애플리케이션의 가용성과 성능을 향상시키는 네트워킹 서비스입니다. 일반적인 인터넷 트래픽은 여러 네트워크를 거치며 경로가 가변적이지만, Global Accelerator를 사용하면 사용자의 트래픽이 가장 가까운 AWS 엣지 로케이션으로 진입한 후 AWS의 전용 글로벌 네트워크를 통해 최적의 경로로 전달됩니다.

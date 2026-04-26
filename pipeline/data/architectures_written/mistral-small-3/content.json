@@ -1,0 +1,17 @@
+{
+  "slug": "mistral-small-3",
+  "title": "Mistral Small 3 (24B)",
+  "title_ko": "Mistral Small 3: 단일 GPU에서 GPT-4o-mini를 대체하는 24B 모델",
+  "summary": "Mistral Small 3는 Mistral AI가 2025년 1월 공개한 24B 파라미터 Dense 모델로, RTX 4090 또는 32GB MacBook에서 추론 가능한 최대 규모를 의도적으로 겨냥한 '저지연 GPT-4o-mini 대체재'이다. Llama 3.3 70B에 근접한 성능을 1/3 규모로 달성하면서 초당 약 150 토큰의 빠른 추론 속도를 제공하며, RLHF를 의도적으로 최소화한 베이스 모델 형태로 Apache 2.0 공개되었다.",
+  "tags": [
+    "Mistral Small 3",
+    "Mistral AI",
+    "SLM",
+    "Efficient Inference",
+    "On-premise",
+    "Open Source",
+    "GPT-4o-mini",
+    "RTX 4090",
+    "Dense Transformer"
+  ]
+}

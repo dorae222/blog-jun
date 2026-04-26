@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Hybrid Search: Dense + Sparse + Reranking 핵심 요약](figures/infographic.svg)
+
+*Figure: Hybrid Search: Dense + Sparse + Reranking 한 장 요약 인포그래픽*
+
 # 하이브리드 검색 실전: Dense + Sparse + Reranking
 
 ## 들어가며

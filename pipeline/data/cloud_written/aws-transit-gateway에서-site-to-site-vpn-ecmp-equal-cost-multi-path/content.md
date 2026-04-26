@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Transit Gateway에서 Site-to-Site VPN ECMP (Equal-Cost Multi-Path) 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Transit Gateway에서 Site-to-Site VPN ECMP (Equal-Cost Multi-Path) 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Site-to-Site VPN은 온프레미스 네트워크와 AWS VPC 간에 암호화된 IPsec 터널을 제공합니다. 하나의 VPN Connection은 두 개의 터널로 구성되며, 각 터널의 최대 처리량은 약 1.25Gbps입니다. 이 대역폭이 충분하지 않은 환경에서는 여러 VPN Connection을 생성하여 대역폭을 확장해야 합니다.

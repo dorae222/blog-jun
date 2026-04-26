@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon AppFlow 개요: SaaS와 AWS 간 보안/자동화 데이터 통합 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon AppFlow 개요: SaaS와 AWS 간 보안/자동화 데이터 통합 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon AppFlow는 SaaS(Software as a Service) 애플리케이션과 AWS 서비스 간에 데이터를 안전하게 전송할 수 있도록 설계된 완전관리형 통합 서비스입니다. 기업 환경에서는 Salesforce, SAP, Slack, ServiceNow, Google Analytics 등 다양한 SaaS 도구를 사용하고 있으며, 이들 사이의 데이터를 AWS 환경으로 가져오거나 반대로 AWS에서 SaaS로 내보내는 작업이 빈번합니다.

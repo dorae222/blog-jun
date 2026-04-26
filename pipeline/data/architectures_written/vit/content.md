@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ViT 핵심 요약](figures/infographic.svg)
+
+*Figure: ViT 한 장 요약 인포그래픽*
+
 # ViT: 비전 트랜스포머의 시작
 
 **Google Brain** · **2020-10-22** · **Vision** · **오픈소스**

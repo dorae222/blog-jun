@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![RoBERTa 핵심 요약](figures/infographic.svg)
+
+*Figure: RoBERTa 한 장 요약 인포그래픽*
+
 # RoBERTa: Robustly Optimized BERT Pretraining Approach
 
 ## 개요

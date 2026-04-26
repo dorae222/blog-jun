@@ -1,0 +1,10 @@
+{
+  "slug": "rag-02-graphrag-lazygraphrag",
+  "title": "GraphRAG and LazyGraphRAG",
+  "title_ko": "GraphRAG와 LazyGraphRAG: 지식그래프 기반 검색",
+  "summary": "Microsoft Research가 제안한 GraphRAG는 청크 임베딩 대신 엔티티/관계를 추출해 지식 그래프를 만들고, Leiden 커뮤니티 탐지로 글로벌 요약을 생성합니다. 후속작 LazyGraphRAG는 인덱싱 비용을 0.1% 수준으로 낮추면서 동등한 품질을 유지합니다. 멀티홉 추론과 thematic 질의에 강한 그래프 기반 RAG의 동작 원리와 trade-off를 분석합니다.",
+  "category_slug": "rag",
+  "tags": ["RAG", "GraphRAG", "LazyGraphRAG", "Knowledge-Graph", "Leiden", "Microsoft"],
+  "series": "rag-evolution",
+  "series_order": 2
+}

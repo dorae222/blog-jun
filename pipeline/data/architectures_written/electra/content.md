@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ELECTRA 핵심 요약](figures/infographic.svg)
+
+*Figure: ELECTRA 한 장 요약 인포그래픽*
+
 # ELECTRA: 효율적 사전 학습의 새로운 패러다임
 
 ## 개요

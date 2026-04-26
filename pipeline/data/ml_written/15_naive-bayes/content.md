@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Naive Bayes Classifier 핵심 요약](figures/infographic.svg)
+
+*Figure: Naive Bayes Classifier 한 장 요약 인포그래픽*
+
 ## 개요
 
 나이브 베이즈(Naive Bayes) 분류기는 **베이즈 정리(Bayes' Theorem)**를 기반으로 한 확률적 분류 알고리즘입니다. '나이브(Naive)'라는 이름은 모델이 모든 특성(feature)이 서로 **조건부 독립(conditionally independent)**이라고 가정하기 때문에 붙여졌습니다. 현실 데이터에서 이 가정이 완전히 성립하는 경우는 드물지만, 이 단순한 가정 덕분에 계산이 매우 효율적이고 고차원 희소 데이터(sparse data)에서도 뛰어난 성능을 발휘합니다.

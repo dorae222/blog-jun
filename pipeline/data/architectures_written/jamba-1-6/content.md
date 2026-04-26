@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Jamba 1.6 핵심 요약](figures/infographic.svg)
+
+*Figure: Jamba 1.6 한 장 요약 인포그래픽*
+
 # Jamba 1.6: 대규모 하이브리드 SSM-Transformer의 기업용 진화
 
 **AI21 Labs** · **2025-03-27** · **llm** · **Jamba Open Model License**

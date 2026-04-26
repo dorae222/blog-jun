@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Aurora PostgreSQL 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Aurora PostgreSQL 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Aurora PostgreSQL은 PostgreSQL과 완전히 호환되면서 클라우드 네이티브 아키텍처의 이점을 제공하는 완전관리형 관계형 데이터베이스입니다. 표준 PostgreSQL 대비 최대 3배의 처리량을 제공하며, Aurora의 분산 스토리지 아키텍처를 기반으로 높은 가용성과 내구성을 보장합니다.

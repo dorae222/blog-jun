@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![V-JEPA 2 핵심 요약](figures/infographic.svg)
+
+*Figure: V-JEPA 2 한 장 요약 인포그래픽*
+
 # V-JEPA 2: 비디오 기반 세계 모델
 
 **Meta** · **2025-06-01** · **Vision** · **오픈소스**

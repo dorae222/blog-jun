@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mamba: Linear-Time Sequence Modeling with Selective State Spaces 핵심 요약](figures/infographic.svg)
+
+*Figure: Mamba: Linear-Time Sequence Modeling with Selective State Spaces 한 장 요약 인포그래픽*
+
 ## 개요
 
 Transformer의 Self-Attention은 시퀀스 길이 $N$에 대해 $O(N^2)$의 시간 및 메모리 복잡도를 가집니다. 이는 긴 시퀀스를 처리할 때 심각한 병목이 됩니다. Albert Gu와 Tri Dao(2023)가 발표한 **Mamba**는 **선택적 상태 공간(Selective State Space)**을 도입하여 이 문제를 해결합니다. 입력 데이터에 따라 SSM 파라미터가 동적으로 변화하여, 관련 정보를 선택적으로 기억하고 불필요한 정보를 필터링할 수 있습니다.

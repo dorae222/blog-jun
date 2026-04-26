@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Runway Gen-4 핵심 요약](figures/infographic.svg)
+
+*Figure: Runway Gen-4 한 장 요약 인포그래픽*
+
 # Runway Gen-4: 캐릭터 일관성 기반 AI 비디오 생성
 
 **Runway** · **2025-03-31** · **Diffusion** · **Proprietary**

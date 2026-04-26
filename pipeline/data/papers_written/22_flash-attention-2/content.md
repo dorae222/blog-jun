@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning 핵심 요약](figures/infographic.svg)
+
+*Figure: FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning 한 장 요약 인포그래픽*
+
 ## 개요
 
 트랜스포머 아키텍처의 핵심 연산인 셀프 어텐션(self-attention)은 시퀀스 길이 $N$에 대해 $O(N^2)$의 시간 및 메모리 복잡도를 가진다. 이 이차적 복잡도는 긴 시퀀스를 처리하는 대규모 언어 모델(LLM)에서 심각한 병목이 되어 왔다. FlashAttention-1은 IO 인식(IO-aware) 타일링 기법을 도입하여 메모리 효율성을 혁신적으로 개선했지만, GPU의 이론적 최대 처리량(theoretical peak throughput) 대비 실제 달성률은 25~35% 수준에 머물렀다. 이는 GPU 하드웨어의 계산 자원을 충분히 활용하지 못하고 있음을 의미한다.

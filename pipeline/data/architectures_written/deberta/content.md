@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeBERTa 핵심 요약](figures/infographic.svg)
+
+*Figure: DeBERTa 한 장 요약 인포그래픽*
+
 # DeBERTa: 분리 어텐션으로 BERT를 넘어선 인코더 모델
 
 ## 1. 개요

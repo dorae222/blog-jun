@@ -1,0 +1,10 @@
+{
+  "slug": "rag-03-self-rag",
+  "title": "Self-RAG: Self-Reflective Retrieval",
+  "title_ko": "Self-RAG: 검색 충분성을 자기 검토하는 RAG",
+  "summary": "Asai et al.(2023)이 제안한 Self-RAG는 4가지 reflection token([Retrieve], [IsRel], [IsSup], [IsUse])을 통해 모델이 스스로 retrieval 필요성과 검색 결과의 적절성을 판단합니다. critic 모델로 라벨링한 데이터로 generator를 학습시키며, 추론 시 비용 절감과 환각 감소를 동시에 달성합니다. CRAG, DRAGIN 등 후속 발전도 함께 살펴봅니다.",
+  "category_slug": "rag",
+  "tags": ["RAG", "Self-RAG", "Self-Reflection", "Reflection-Token", "CRAG", "Hallucination"],
+  "series": "rag-evolution",
+  "series_order": 3
+}

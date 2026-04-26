@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AgentBench: Evaluating LLMs as Agents 핵심 요약](figures/infographic.svg)
+
+*Figure: AgentBench: Evaluating LLMs as Agents 한 장 요약 인포그래픽*
+
 ## 개요
 
 LLM(Large Language Model)은 대화, 요약, 번역 등 전통적인 자연어 처리 과제를 넘어, 실제 환경에서 자율적으로 계획을 수립하고 행동을 실행하는 **에이전트(agent)**로서 활용되기 시작했다. [[ReAct]], [[AutoGPT]], [[LangChain]], [[BabyAGI]] 등의 프레임워크는 LLM이 외부 도구를 호출하고, 환경과 상호작용하며, 복잡한 과제를 단계적으로 해결할 수 있음을 보여주었다. 그러나 이러한 에이전트 능력을 체계적이고 공정하게 평가할 수 있는 벤치마크는 사실상 존재하지 않았다.

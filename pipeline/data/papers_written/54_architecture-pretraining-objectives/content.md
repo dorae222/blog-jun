@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization? 핵심 요약](figures/infographic.svg)
+
+*Figure: What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization? 한 장 요약 인포그래픽*
+
 ## 개요
 
 "What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?"(Wang et al., 2022, ICML)는 Hugging Face와 여러 기관의 Thomas Wang 등이 발표한 연구로, LLM 설계의 두 핵심 축인 **아키텍처 선택**과 **사전학습 목표 선택**이 제로샷 일반화에 미치는 영향을 최초로 **통제된 비교 실험**으로 분석한 논문이다.

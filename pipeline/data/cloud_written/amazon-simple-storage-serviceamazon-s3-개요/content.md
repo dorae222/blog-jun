@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon S3 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon S3 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Simple Storage Service(Amazon S3)는 AWS에서 제공하는 객체 스토리지 서비스로, 업계에서 가장 널리 사용되는 클라우드 스토리지 솔루션입니다. 2006년 AWS의 초기 서비스 중 하나로 출시된 이후, S3는 99.999999999%(11 9's)의 내구성을 보장하며 사실상 무제한에 가까운 확장성을 제공합니다.

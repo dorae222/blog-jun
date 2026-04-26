@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Inference Recommender - 최적 추론 인스턴스 자동 추천 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Inference Recommender - 최적 추론 인스턴스 자동 추천 가이드 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Inference Recommender - 최적 추론 인스턴스 자동 추천 가이드
 
 ## 개요

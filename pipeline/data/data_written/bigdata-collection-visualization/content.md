@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Big Data Collection and Visualization Pipeline with Python 핵심 요약](figures/infographic.svg)
+
+*Figure: Big Data Collection and Visualization Pipeline with Python 한 장 요약 인포그래픽*
+
 # Python으로 구축하는 빅데이터 수집 및 시각화 파이프라인
 
 ## 개요

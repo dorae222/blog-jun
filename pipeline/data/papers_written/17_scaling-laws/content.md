@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Scaling Laws for Neural Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Scaling Laws for Neural Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 2020년 OpenAI 연구팀이 발표한 "Scaling Laws for Neural Language Models"(Kaplan et al.)은 대규모 언어 모델(LLM) 연구의 방향을 근본적으로 전환시킨 논문이다. 이 논문의 핵심 발견은 다음과 같다: 언어 모델의 성능(cross-entropy loss)은 모델 파라미터 수 $N$, 학습 데이터 토큰 수 $D$, 학습에 사용된 총 연산량 $C$ 각각에 대해 멱함수(power-law) 형태의 매끄러운 스케일링 관계를 따른다.

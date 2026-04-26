@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Personalize 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Personalize 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Personalize는 Amazon.com에서 20년 이상 발전시켜 온 추천 기술을 기반으로, 개인화된 추천 시스템을 완전 관리형으로 구축할 수 있는 ML 서비스입니다. 추천 시스템 알고리즘에 대한 전문 지식 없이도, 사용자 행동 데이터를 제공하면 자동으로 최적의 모델을 학습하고 실시간 추천을 제공합니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Machine Learning Overview 핵심 요약](figures/infographic.svg)
+
+*Figure: Machine Learning Overview 한 장 요약 인포그래픽*
+
 ## 개요: AI에서 ML, 그리고 DL까지
 
 **인공지능(Artificial Intelligence, AI)**은 인간의 지능을 모방하는 시스템을 만드는 컴퓨터 과학의 한 분야입니다. 1956년 다트머스 회의(Dartmouth Conference)에서 John McCarthy가 "인공지능"이라는 용어를 처음 사용한 이래, AI는 규칙 기반 시스템(Expert System)에서 시작하여 오늘날의 대규모 언어 모델(LLM)에 이르기까지 긴 발전 과정을 거쳐왔습니다.

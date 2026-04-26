@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Classifier 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Classifier 개요 한 장 요약 인포그래픽*
+
 # AWS Glue Classifier 개요
 
 ## 개요

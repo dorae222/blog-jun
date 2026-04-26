@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![CogVLM 핵심 요약](figures/infographic.svg)
+
+*Figure: CogVLM 한 장 요약 인포그래픽*
+
 # CogVLM: 시각 전문가 기반 깊은 시각-언어 융합
 
 ## 개요

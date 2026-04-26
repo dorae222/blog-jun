@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-emr-elastic-mapreduce-개요",
+  "title": "Amazon EMR",
+  "title_ko": "Amazon EMR (Elastic MapReduce) 개요",
+  "category_slug": "aws-analytics",
+  "summary": "Amazon EMR의 배포 모드(EC2/EKS/Serverless), 클러스터 노드 구조, Storage 옵션, Auto Scaling, EMR Studio, Glue 비교까지 관리형 빅데이터 처리의 핵심을 정리합니다.",
+  "tags": [
+    "AWS",
+    "EMR",
+    "빅데이터",
+    "Spark",
+    "Hadoop",
+    "Hive",
+    "Presto",
+    "Trino",
+    "Serverless",
+    "EKS"
+  ]
+}

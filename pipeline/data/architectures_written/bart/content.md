@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![BART 핵심 요약](figures/infographic.svg)
+
+*Figure: BART 한 장 요약 인포그래픽*
+
 # BART: 양방향 인코더와 자기회귀 디코더의 결합
 
 ## 개요

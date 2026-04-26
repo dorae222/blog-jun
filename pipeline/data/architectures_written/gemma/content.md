@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemma 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemma 한 장 요약 인포그래픽*
+
 # Gemma: Google DeepMind의 경량 오픈 언어 모델
 
 ## 개요

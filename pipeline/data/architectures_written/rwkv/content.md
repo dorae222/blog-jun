@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![RWKV 핵심 요약](figures/infographic.svg)
+
+*Figure: RWKV 한 장 요약 인포그래픽*
+
 # RWKV: Transformer의 병렬 학습과 RNN의 효율적 추론을 결합한 커뮤니티 주도 모델
 
 **RWKV Foundation / EleutherAI** · **2023-05-22** · **SSM** · **Apache-2.0**

@@ -1,0 +1,10 @@
+{
+  "slug": "rag-01-evolution-overview",
+  "title": "RAG Evolution Overview",
+  "title_ko": "RAG 진화: Standard에서 Beyond까지",
+  "summary": "Standard RAG의 한계(컨텍스트 손실, 단일 retrieval pass, 검색 충분성 인식 부재)를 짚고, 2024-2026년에 등장한 5가지 진화 방향(GraphRAG, Self-RAG, Agentic RAG, Late Chunking, Adaptive Routing)을 한눈에 정리합니다. RAG가 단순 retrieval에서 Context Engine으로 변화하는 흐름을 5편 시리즈의 출발점에서 매핑합니다.",
+  "category_slug": "rag",
+  "tags": ["RAG", "Retrieval", "LLM", "Context-Engineering", "Survey"],
+  "series": "rag-evolution",
+  "series_order": 1
+}

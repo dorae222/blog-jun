@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen2 Technical Report 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen2 Technical Report 한 장 요약 인포그래픽*
+
 ## 개요
 
 Qwen2는 알리바바 그룹의 Qwen 팀이 2024년 6월에 발표한 2세대 대형 언어 모델(Large Language Model) 시리즈이다. 전작 Qwen1.5의 후속 모델로서, 아키텍처 설계, 사전학습 데이터, 학습 기법, 정렬(Alignment) 전략 모든 측면에서 대폭적인 개선이 이루어졌다. Qwen2 시리즈는 0.5B, 1.5B, 7B, 57B-A14B(Mixture-of-Experts), 72B의 다섯 가지 모델 크기를 제공하며, 다양한 배포 시나리오와 컴퓨팅 예산에 맞출 수 있도록 설계되었다.

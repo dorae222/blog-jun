@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SigLIP 2 핵심 요약](figures/infographic.svg)
+
+*Figure: SigLIP 2 한 장 요약 인포그래픽*
+
 # SigLIP 2: 시그모이드 대조 학습 기반 시각-언어 모델
 
 **Google** · **2025-02-01** · **Vision** · **오픈소스**

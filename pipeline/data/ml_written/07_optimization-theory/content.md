@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Optimization Theory for ML 핵심 요약](figures/infographic.svg)
+
+*Figure: Optimization Theory for ML 한 장 요약 인포그래픽*
+
 # 최적화 이론: 경사하강법과 그 변종들
 
 ## 1. 개요: 학습 = 최적화 문제

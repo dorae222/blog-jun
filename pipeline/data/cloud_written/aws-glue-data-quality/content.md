@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Data Quality 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Data Quality 한 장 요약 인포그래픽*
+
 # AWS Glue Data Quality
 
 ## 개요

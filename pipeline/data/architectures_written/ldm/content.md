@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LDM (Latent Diffusion Models) 핵심 요약](figures/infographic.svg)
+
+*Figure: LDM (Latent Diffusion Models) 한 장 요약 인포그래픽*
+
 # LDM (Latent Diffusion Models): 잠재 공간에서의 효율적 확산 모델
 
 **CompVis / LMU Munich** · **2022-01-05** · **Diffusion** · **Diffusion UNet** · **오픈소스**

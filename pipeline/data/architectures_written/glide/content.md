@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GLIDE 핵심 요약](figures/infographic.svg)
+
+*Figure: GLIDE 한 장 요약 인포그래픽*
+
 # GLIDE: 텍스트 가이드 확산 이미지 생성
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Compute Optimizer 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Compute Optimizer 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Compute Optimizer는 머신러닝 알고리즘을 활용하여 AWS 리소스의 사용 패턴을 분석하고, 비용 절감과 성능 향상을 위한 최적의 리소스 구성을 추천하는 서비스입니다. 많은 조직이 클라우드 리소스를 과도하게 프로비저닝(Over-provisioning)하거나 부족하게 프로비저닝(Under-provisioning)하는 문제를 겪고 있으며, Compute Optimizer는 이러한 비효율성을 데이터 기반으로 해결합니다.

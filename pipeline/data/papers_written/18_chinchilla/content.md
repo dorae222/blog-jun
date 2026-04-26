@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Training Compute-Optimal Large Language Models (Chinchilla) 핵심 요약](figures/infographic.svg)
+
+*Figure: Training Compute-Optimal Large Language Models (Chinchilla) 한 장 요약 인포그래픽*
+
 ## 개요
 
 2022년 NeurIPS에서 발표된 DeepMind의 "Training Compute-Optimal Large Language Models", 흔히 **Chinchilla 논문**으로 불리는 이 연구는 대규모 언어 모델(LLM) 스케일링 연구의 방향을 근본적으로 전환시킨 작업입니다. 2020년 Kaplan et al.이 발표한 스케일링 법칙은 "컴퓨팅이 늘어나면 모델 크기를 우선적으로 키워야 한다"는 결론을 제시하였고, 이에 따라 GPT-3(175B), Gopher(280B), MT-NLG(530B) 등 파라미터 수를 극단적으로 늘리는 방향으로 연구가 진행되었습니다. 그러나 Hoffmann et al.은 이러한 접근에 근본적인 문제가 있음을 밝혀냈습니다.

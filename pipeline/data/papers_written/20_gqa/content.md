@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints 핵심 요약](figures/infographic.svg)
+
+*Figure: GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 자기회귀 추론에서 가장 큰 병목은 **KV 캐시(Key-Value Cache)**의 메모리 대역폭 소비입니다. 시퀀스 길이와 배치 크기가 커질수록 KV 캐시를 HBM에서 반복 로드하는 비용이 급증하여, 실제 연산 시간보다 메모리 접근 시간이 추론 속도를 지배하게 됩니다. 이 문제에 대해 MQA(Multi-Query Attention)가 KV 헤드를 하나로 줄이는 급진적 해법을 제시했지만, 표현력 손실이 뒤따랐습니다.

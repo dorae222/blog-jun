@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker 모델 카드 소개: 왜 모델 문서화가 필요한가 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker 모델 카드 소개: 왜 모델 문서화가 필요한가 한 장 요약 인포그래픽*
+
 # Amazon SageMaker 모델 카드 소개: 왜 모델 문서화가 필요한가
 
 ## 개요

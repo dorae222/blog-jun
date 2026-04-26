@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Imagen 핵심 요약](figures/infographic.svg)
+
+*Figure: Imagen 한 장 요약 인포그래픽*
+
 # Imagen: T5 텍스트 인코더 기반 고품질 이미지 생성
 
 ## 개요

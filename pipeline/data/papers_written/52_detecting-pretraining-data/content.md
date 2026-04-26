@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Detecting Pretraining Data from Large Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Detecting Pretraining Data from Large Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Detecting Pretraining Data from Large Language Models"(Shi et al., 2024)는 ICLR 2024에서 발표된 논문으로, **특정 텍스트가 대규모 언어 모델(LLM)의 사전학습 데이터에 포함되었는지 여부를 외부에서 판별하는 방법론**을 제안합니다. 이 문제는 머신러닝 보안 분야에서 멤버십 추론 공격(Membership Inference Attack, MIA)이라 불리는 고전적 주제의 LLM 확장판에 해당합니다.

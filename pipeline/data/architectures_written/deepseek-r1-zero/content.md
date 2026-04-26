@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-R1-Zero 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-R1-Zero 한 장 요약 인포그래픽*
+
 # DeepSeek-R1-Zero: SFT 없이 순수 RL만으로 추론이 창발한 최초의 대규모 모델
 
 ## 개요

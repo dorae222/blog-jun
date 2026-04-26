@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Toolformer: Language Models Can Teach Themselves to Use Tools 핵심 요약](figures/infographic.svg)
+
+*Figure: Toolformer: Language Models Can Teach Themselves to Use Tools 한 장 요약 인포그래픽*
+
 ## 개요
 
 **Toolformer: Language Models Can Teach Themselves to Use Tools** (Schick et al., 2023)는 Meta AI Research에서 발표한 논문으로, NeurIPS 2023에 채택되었습니다. 이 연구는 언어 모델(LM)이 **외부 도구(API)**를 **자기 지도(self-supervised) 방식**으로 학습하여 활용할 수 있음을 체계적으로 보여줍니다.

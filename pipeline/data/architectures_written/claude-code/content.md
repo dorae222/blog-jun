@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Code 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Code 한 장 요약 인포그래픽*
+
 # Claude Code: 에이전틱 소프트웨어 엔지니어링의 새로운 기준
 
 **Anthropic** · **2025-02-24** · **Agentic Coding** · **상용**

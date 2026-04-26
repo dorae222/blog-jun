@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Query Editor v2 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Query Editor v2 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift Query Editor v2는 AWS 콘솔에서 직접 Redshift 클러스터와 Redshift Serverless에 SQL 쿼리를 실행할 수 있는 웹 기반 SQL 편집기입니다. 별도의 SQL 클라이언트 도구(DBeaver, DataGrip 등)를 설치하지 않아도, 웹 브라우저만으로 Redshift의 데이터를 분석하고 시각화할 수 있습니다.

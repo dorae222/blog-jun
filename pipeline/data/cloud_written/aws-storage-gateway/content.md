@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Storage Gateway 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Storage Gateway 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Storage Gateway는 온프레미스 환경과 AWS 클라우드 스토리지를 원활하게 연결하는 하이브리드 클라우드 스토리지 서비스입니다. 온프레미스 애플리케이션이 표준 스토리지 프로토콜(NFS, SMB, iSCSI, iSCSI VTL)을 사용하여 AWS 클라우드 스토리지에 접근할 수 있도록 중간 게이트웨이 역할을 수행합니다.

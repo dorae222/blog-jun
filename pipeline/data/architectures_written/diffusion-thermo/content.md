@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Diffusion (Thermodynamics) 핵심 요약](figures/infographic.svg)
+
+*Figure: Diffusion (Thermodynamics) 한 장 요약 인포그래픽*
+
 # Diffusion (Thermodynamics): 비평형 열역학 기반 확산 생성 모델
 
 ## 개요

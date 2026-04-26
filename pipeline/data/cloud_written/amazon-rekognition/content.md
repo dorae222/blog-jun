@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Rekognition: AWS의 완전관리형 이미지/비디오 분석 서비스 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Rekognition: AWS의 완전관리형 이미지/비디오 분석 서비스 한 장 요약 인포그래픽*
+
 # Amazon Rekognition: AWS의 완전관리형 이미지/비디오 분석 서비스
 
 ## 개요

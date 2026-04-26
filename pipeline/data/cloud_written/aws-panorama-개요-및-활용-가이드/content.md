@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Panorama 개요 및 활용 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Panorama 개요 및 활용 가이드 한 장 요약 인포그래픽*
+
 # AWS Panorama 개요 및 활용 가이드
 
 ## 개요

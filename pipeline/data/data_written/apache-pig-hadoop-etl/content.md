@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Apache Pig - Hadoop ETL with Pig Latin Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: Apache Pig - Hadoop ETL with Pig Latin Guide 한 장 요약 인포그래픽*
+
 ## 개요
 
 Hadoop 생태계에서 대용량 데이터를 처리하려면 MapReduce 프로그래밍이 필수적입니다. 그러나 단순한 WordCount 하나를 구현하는 데도 Mapper, Reducer 클래스를 정의하고, 입출력 포맷을 설정하며, Job 설정을 작성해야 합니다. Java 코드가 수십 줄에 달하는 이 과정은 데이터 엔지니어에게 반복적이고 생산성을 떨어뜨리는 작업입니다.

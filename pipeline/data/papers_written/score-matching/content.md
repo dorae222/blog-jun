@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Estimation of Non-Normalized Statistical Models by Score Matching 핵심 요약](figures/infographic.svg)
+
+*Figure: Estimation of Non-Normalized Statistical Models by Score Matching 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Estimation of Non-Normalized Statistical Models by Score Matching"(Hyvärinen, 2005)은 비정규화 확률 모델(non-normalized statistical model)의 파라미터 추정이라는 통계 학습의 근본적인 난제를 다루는 논문입니다. JMLR(Journal of Machine Learning Research)에 발표된 이 연구는 2005년 당시에는 상대적으로 주목받지 못했으나, 2019~2020년 이후 Song & Ermon의 NCSN(Noise Conditional Score Networks)과 Song et al.의 Score-SDE가 등장하면서 확산 모델(diffusion model)과 스코어 기반 생성 모델의 이론적 토대로 재조명되었습니다. 현재는 현대 딥러닝 생성 모델의 가장 영향력 있는 고전 논문 중 하나로 자리잡았습니다.

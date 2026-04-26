@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS WAF 적용 대상 및 주요 특징 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS WAF 적용 대상 및 주요 특징 한 장 요약 인포그래픽*
+
 # AWS WAF 적용 대상 및 주요 특징
 
 ## 개요

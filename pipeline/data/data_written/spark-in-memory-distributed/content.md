@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Apache Spark In-Memory Distributed Processing: From MapReduce Bottlenecks to Memory-First Architecture 핵심 요약](figures/infographic.svg)
+
+*Figure: Apache Spark In-Memory Distributed Processing: From MapReduce Bottlenecks to Memory-First Architecture 한 장 요약 인포그래픽*
+
 # Apache Spark 인메모리 분산 처리: MapReduce의 병목을 넘어 메모리 중심 아키텍처로
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DALL·E 3 핵심 요약](figures/infographic.svg)
+
+*Figure: DALL·E 3 한 장 요약 인포그래픽*
+
 # DALL·E 3: 합성 캡션 기반 텍스트-이미지 생성
 
 ## 개요

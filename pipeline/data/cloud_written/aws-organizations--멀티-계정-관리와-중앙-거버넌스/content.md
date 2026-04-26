@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Organizations 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Organizations 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Organizations는 여러 AWS 계정을 하나의 조직(Organization)으로 묶어 중앙에서 관리할 수 있게 해주는 서비스입니다. 단일 계정으로 시작한 AWS 환경이 성장하면서 팀별, 프로젝트별, 환경별로 계정을 분리해야 하는 시점이 옵니다. Organizations는 이러한 멀티 계정 환경의 거버넌스, 비용 관리, 보안 정책을 중앙에서 통합 관리합니다.

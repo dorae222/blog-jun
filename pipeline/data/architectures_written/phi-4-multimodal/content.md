@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Phi-4-Multimodal 핵심 요약](figures/infographic.svg)
+
+*Figure: Phi-4-Multimodal 한 장 요약 인포그래픽*
+
 # Phi-4-Multimodal: 5.6B로 달성하는 음성+시각+텍스트 통합
 
 ## 개요

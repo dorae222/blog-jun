@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Experiments 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Experiments 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 머신러닝 개발은 본질적으로 실험적인 과정입니다. 최적의 모델을 찾기 위해 수십에서 수백 번의 실험을 반복하며, 각 실험에서 데이터셋, 하이퍼파라미터, 알고리즘, 피처 조합 등을 변경합니다. 이 과정에서 각 실험의 설정과 결과를 체계적으로 기록하지 않으면, 어떤 조합이 최상의 성능을 보였는지 추적하기 어려워집니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mixtral 8x7B 핵심 요약](figures/infographic.svg)
+
+*Figure: Mixtral 8x7B 한 장 요약 인포그래픽*
+
 # Mixtral 8x7B: Sparse MoE로 실현한 효율적 대규모 언어 모델
 
 ## 개요

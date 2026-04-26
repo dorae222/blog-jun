@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Bedrock Agents 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Bedrock Agents 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Bedrock Agents는 파운데이션 모델(FM)이 외부 시스템과 상호작용하며 복잡한 태스크를 자율적으로 수행할 수 있도록 하는 완전 관리형 에이전트 프레임워크입니다. 단순한 텍스트 생성을 넘어, FM이 사용자의 요청을 이해하고, 필요한 정보를 검색하고, 외부 API를 호출하여 실제 작업을 완료하는 지능형 AI 에이전트를 구축할 수 있습니다.

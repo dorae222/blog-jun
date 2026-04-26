@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenClaw 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenClaw 한 장 요약 인포그래픽*
+
 # OpenClaw: 로컬 퍼스트 범용 AI 에이전트
 
 ## 개요

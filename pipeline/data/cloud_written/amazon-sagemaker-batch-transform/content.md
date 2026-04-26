@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Batch Transform - 대규모 배치 추론 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Batch Transform - 대규모 배치 추론 완벽 가이드 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Batch Transform - 대규모 배치 추론 완벽 가이드
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Hadoop Ecosystem: Complete Guide to Big Data Architecture 핵심 요약](figures/infographic.svg)
+
+*Figure: Hadoop Ecosystem: Complete Guide to Big Data Architecture 한 장 요약 인포그래픽*
+
 ## 개요
 
 데이터의 양(Volume)이 기하급수적으로 증가하고, 생성 속도(Velocity)가 빨라지며, 형태(Variety)가 다양해지면서 기존 RDBMS만으로는 데이터를 효과적으로 처리하기 어려운 시대가 되었습니다. 이 문제를 해결하기 위해 등장한 것이 **Hadoop 에코시스템**입니다.

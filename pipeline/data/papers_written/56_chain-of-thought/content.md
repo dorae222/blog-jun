@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Chain-of-Thought Prompting Elicits Reasoning in Large Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Chain-of-Thought Prompting Elicits Reasoning in Large Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models"(Wei et al., 2022)는 Google Research의 Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed Chi, Quoc Le, Denny Zhou가 NeurIPS 2022에서 발표한 논문입니다. 이 연구는 대규모 언어 모델(LLM)의 추론 능력을 끌어내는 가장 간단하면서도 강력한 방법 중 하나인 **Chain-of-Thought(CoT) 프롬프팅**을 제안했습니다.

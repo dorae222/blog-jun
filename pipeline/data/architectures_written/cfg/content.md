@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Classifier-Free Guidance (CFG) 핵심 요약](figures/infographic.svg)
+
+*Figure: Classifier-Free Guidance (CFG) 한 장 요약 인포그래픽*
+
 # Classifier-Free Guidance (CFG): 분류기 없는 확산 가이던스
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Knowledge Distillation: From Teacher-Student to Self-Distillation 핵심 요약](figures/infographic.svg)
+
+*Figure: Knowledge Distillation: From Teacher-Student to Self-Distillation 한 장 요약 인포그래픽*
+
 # 지식 증류 완전 가이드: Teacher-Student부터 Self-Distillation까지
 
 ## 소개

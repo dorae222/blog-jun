@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS WAF와 Shield를 이용한 DDoS 방어 - 웹 애플리케이션 보안 전략 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS WAF와 Shield를 이용한 DDoS 방어 - 웹 애플리케이션 보안 전략 한 장 요약 인포그래픽*
+
 # AWS WAF와 Shield를 이용한 DDoS 방어 - 웹 애플리케이션 보안 전략
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS PrivateLink 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS PrivateLink 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS PrivateLink는 VPC, AWS 서비스, 그리고 온프레미스 네트워크 간에 프라이빗 연결을 제공하는 기술입니다. PrivateLink를 사용하면 트래픽이 퍼블릭 인터넷을 경유하지 않고 AWS 네트워크 내에서만 이동하므로, 보안이 강화되고 데이터 노출 위험이 줄어듭니다.

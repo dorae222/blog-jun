@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mistral 7B 핵심 요약](figures/infographic.svg)
+
+*Figure: Mistral 7B 한 장 요약 인포그래픽*
+
 # Mistral 7B: '작지만 강한' 효율적 LLM의 선언
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Fine-Tuning SLM on RTX 3090: Practical Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: Fine-Tuning SLM on RTX 3090: Practical Guide 한 장 요약 인포그래픽*
+
 # RTX 3090에서 SLM 파인튜닝 실전 가이드
 
 ## 들어가며

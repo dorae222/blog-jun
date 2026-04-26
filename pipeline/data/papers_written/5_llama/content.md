@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaMA: Open and Efficient Foundation Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaMA: Open and Efficient Foundation Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 LLaMA(Large Language Model Meta AI)는 Meta AI가 2023년 2월 발표한 오픈소스 기반 언어 모델 시리즈다. 7B, 13B, 33B, 65B 네 가지 크기로 공개되었으며, 모두 **공개적으로 접근 가능한 데이터만**으로 학습되었다. LLaMA의 가장 중요한 기여는 작은 모델로 큰 모델을 능가하는 성능을 보여준 것이다. LLaMA-65B는 GPT-3(175B)와 Chinchilla-70B에 필적하거나 이를 넘어서는 성능을 달성했고, LLaMA-13B는 GPT-3보다 10배 이상 작은 파라미터 수로도 대부분의 벤치마크에서 GPT-3를 상회하였다.

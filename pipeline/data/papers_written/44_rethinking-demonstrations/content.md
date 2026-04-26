@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Rethinking the Role of Demonstrations: What Makes In-Context Learning Work? 핵심 요약](figures/infographic.svg)
+
+*Figure: Rethinking the Role of Demonstrations: What Makes In-Context Learning Work? 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 가장 주목할 만한 능력 중 하나는 인컨텍스트 학습(In-Context Learning, ICL)입니다. ICL은 프롬프트 내에 소수의 입출력 예시(demonstration)를 제공하는 것만으로, 별도의 파라미터 업데이트 없이 새로운 태스크를 수행할 수 있게 해줍니다. GPT-3 (Brown et al., 2020) 이후 ICL은 [[few-shot-prompting]]의 핵심 패러다임으로 자리 잡았으며, 연구자들은 암묵적으로 "모델이 데모의 입력-레이블 매핑을 학습하여 새로운 입력에 적용한다"고 가정해 왔습니다.

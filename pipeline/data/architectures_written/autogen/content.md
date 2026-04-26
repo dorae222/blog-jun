@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AutoGen 핵심 요약](figures/infographic.svg)
+
+*Figure: AutoGen 한 장 요약 인포그래픽*
+
 # AutoGen: 대화 기반 멀티 에이전트 프레임워크
 
 **Microsoft** · **2023-08-16** · **Multi-Agent Framework** · **MIT**

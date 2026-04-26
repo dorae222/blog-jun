@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker 모델 카드: ML 모델 거버넌스와 문서화 자동화 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker 모델 카드: ML 모델 거버넌스와 문서화 자동화 한 장 요약 인포그래픽*
+
 # Amazon SageMaker 모델 카드: ML 모델 거버넌스와 문서화 자동화
 
 ## 개요

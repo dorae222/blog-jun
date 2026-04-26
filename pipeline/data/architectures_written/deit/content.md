@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeiT 핵심 요약](figures/infographic.svg)
+
+*Figure: DeiT 한 장 요약 인포그래픽*
+
 # DeiT: 데이터 효율적 비전 트랜스포머
 
 **Meta/FAIR** · **2021-01-01** · **Vision** · **Apache-2.0**

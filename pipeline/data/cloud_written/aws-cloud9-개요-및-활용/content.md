@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Cloud9 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Cloud9 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Cloud9은 브라우저에서 코드를 작성, 실행, 디버깅할 수 있는 클라우드 기반 통합 개발 환경(IDE)입니다. 별도의 로컬 IDE 설치 없이 웹 브라우저만으로 완전한 개발 환경을 사용할 수 있으며, AWS 서비스와의 긴밀한 통합을 제공합니다.

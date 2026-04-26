@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Debugger 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Debugger 한 장 요약 인포그래픽*
+
 ## 개요
 
 머신러닝 모델 학습은 종종 예측하기 어려운 문제를 수반합니다. 그래디언트 소실(Vanishing Gradient), 과적합(Overfitting), 학습률 문제, 가중치 초기화 실패 등 다양한 이유로 학습이 실패하거나 비효율적으로 진행될 수 있습니다. 이러한 문제는 학습이 완료된 후에야 발견되는 경우가 많아, 상당한 시간과 비용을 낭비하게 됩니다.

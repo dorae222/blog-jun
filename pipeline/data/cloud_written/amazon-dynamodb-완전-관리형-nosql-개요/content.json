@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-dynamodb-완전-관리형-nosql-개요",
+  "title": "Amazon DynamoDB 완전 관리형 NoSQL 개요",
+  "title_ko": "Amazon DynamoDB 완전 관리형 NoSQL 개요",
+  "category_slug": "aws-database",
+  "summary": "Amazon DynamoDB의 데이터 모델, 용량 모드(On-Demand/Provisioned), 일관성 옵션, GSI/LSI 인덱스, Global Tables, DAX 캐싱, Streams CDC, PITR 백업 등 핵심 기능을 실전 예제와 함께 정리합니다.",
+  "tags": [
+    "AWS",
+    "DynamoDB",
+    "NoSQL",
+    "Key-Value",
+    "Global Tables",
+    "DAX",
+    "Streams",
+    "Serverless",
+    "데이터베이스",
+    "PITR"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Qwen3-8B",
+  "slug": "qwen3-8b",
+  "organization": "Alibaba",
+  "release_date": "2025-04-29",
+  "decoder_type": "dense",
+  "param_scale": "8.2B",
+  "context_length": "32K (YaRN 확장 시 131K)",
+  "attention_type": "Grouped Query Attention (GQA)",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "151,936",
+  "hidden_dim": "4,096",
+  "num_layers": "36",
+  "num_heads": "32 (Q) / 8 (KV)",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "Qwen3-8B는 Alibaba Cloud가 2025년 4월 공개한 Qwen3 시리즈의 8B Dense 변형으로, 0.6B / 1.7B / 4B / 8B / 14B / 32B Dense 라인업의 중간 규모이다. 36조 토큰의 다국어 사전 학습 데이터로 훈련되었으며, Qwen3 시리즈 공통 특성인 생각/비생각 이중 모드(thinking/non-thinking mode)와 119개 언어 지원, 강화된 에이전트 능력(function calling)을 8B 규모에 압축하였다. Apache 2.0 라이선스로 완전 오픈소스이며, 동급 8B 모델 중 Llama 3.1 8B, Qwen2.5 7B를 능가하는 종합 성능을 보여 SLM(Small Language Model)과 중대형 모델 사이의 실용적 균형점으로 평가된다.",
+  "key_detail": "Qwen3-8B의 핵심 혁신은 8B 규모에서 상위 모델인 Qwen3-32B Dense나 Qwen3-235B-A22B MoE의 추론 능력을 상당 부분 계승하는 강력한 distillation 전략이다. 시스템 프롬프트의 enable_thinking 플래그로 thinking/non-thinking 모드를 동적 전환할 수 있고, thinking 모드에서는 OpenAI o1-mini에 근접한 수학·코딩 추론을 보인다. 또한 200+ 프로그래밍 언어와 119개 자연어를 지원하며, ReAct, MCP(Model Context Protocol), Qwen-Agent 등 다양한 에이전트 프레임워크와 직접 호환된다.",
+  "training_detail": "Qwen3-8B는 Qwen3 시리즈 공통의 3단계 사전 학습을 따른다. 1단계: 30조 토큰의 일반 다국어 코퍼스로 기본 언어 능력 확보, 2단계: 5조 토큰의 STEM·코드·추론 데이터 강화, 3단계: 1조 토큰의 장문 컨텍스트 데이터로 32K 확장. 정렬은 SFT → 추론 중심 RL(GRPO) → 모드 통합 융합 학습 순으로 진행된다. 8B 모델은 별도로 Qwen3-235B-A22B 결과물을 활용한 logit-level distillation이 적용되어, 동일 규모 from-scratch 학습 대비 추론 능력이 크게 향상되었다.",
+  "paper_url": "https://arxiv.org/abs/2505.09388",
+  "code_url": "https://github.com/QwenLM/Qwen3",
+  "license_type": "Apache 2.0",
+  "concepts": [
+    "SLM",
+    "Agent",
+    "Multilingual"
+  ],
+  "architecture_category": "efficiency",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "qwen3",
+      "type": "part_of",
+      "description": "Qwen3 시리즈의 8B Dense 변형"
+    }
+  ],
+  "related_post_slug": ""
+}

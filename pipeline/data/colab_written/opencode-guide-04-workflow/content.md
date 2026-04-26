@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenCode Workflow Design 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenCode Workflow Design 한 장 요약 인포그래픽*
+
 # OpenCode 실전: 팀 개발 환경 구축
 
 :::info

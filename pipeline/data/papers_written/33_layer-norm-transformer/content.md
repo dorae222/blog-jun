@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![On Layer Normalization in the Transformer Architecture 핵심 요약](figures/infographic.svg)
+
+*Figure: On Layer Normalization in the Transformer Architecture 한 장 요약 인포그래픽*
+
 ## 개요
 
 트랜스포머(Transformer)는 자연어 처리를 비롯한 다양한 딥러닝 분야에서 핵심 아키텍처로 자리잡았다. 그러나 원래 Vaswani et al.(2017)이 제안한 트랜스포머는 Layer Normalization(LN)을 서브레이어의 **출력** 이후에 배치하는 이른바 Post-LN 구조를 사용하였다. 이 구조는 학습 초기에 기울기가 불안정해지기 쉬워, 반드시 학습률 웜업(warmup) 스케줄을 병행해야 한다는 실용적 한계가 있었다.

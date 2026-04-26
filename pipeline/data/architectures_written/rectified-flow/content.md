@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Rectified Flow 핵심 요약](figures/infographic.svg)
+
+*Figure: Rectified Flow 한 장 요약 인포그래픽*
+
 # Rectified Flow: 직선 궤적 기반 생성 흐름 프레임워크
 
 **UT Austin / Peking University** · **2022-09-07** · **Diffusion** · **Apache 2.0**

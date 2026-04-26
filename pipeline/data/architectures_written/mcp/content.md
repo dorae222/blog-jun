@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Model Context Protocol 핵심 요약](figures/infographic.svg)
+
+*Figure: Model Context Protocol 한 장 요약 인포그래픽*
+
 # Model Context Protocol: AI 에이전트 생태계의 USB 표준
 
 **Anthropic** · **2024-11-25** · **Agent Protocol** · **MIT**

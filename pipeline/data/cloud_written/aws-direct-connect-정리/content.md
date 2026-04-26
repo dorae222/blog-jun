@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Direct Connect 정리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Direct Connect 정리 한 장 요약 인포그래픽*
+
 # AWS Direct Connect 정리
 
 ## 개요

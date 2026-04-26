@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Reflexion 핵심 요약](figures/infographic.svg)
+
+*Figure: Reflexion 한 장 요약 인포그래픽*
+
 # Reflexion: 언어적 자기 반성을 통한 에이전트 강화 학습
 
 **Northeastern/MIT** · **2023-03-20** · **Agent Technique** · **오픈**

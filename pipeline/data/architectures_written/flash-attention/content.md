@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FlashAttention 핵심 요약](figures/infographic.svg)
+
+*Figure: FlashAttention 한 장 요약 인포그래픽*
+
 # FlashAttention: IO-Aware 정확한 어텐션 알고리즘
 
 **Stanford University / HazyResearch** · **2022-06-23** · **오픈소스**

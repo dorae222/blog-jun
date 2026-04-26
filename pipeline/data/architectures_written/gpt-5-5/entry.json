@@ -1,0 +1,43 @@
+{
+  "name": "GPT-5.5",
+  "slug": "gpt-5-5",
+  "organization": "OpenAI",
+  "release_date": "2026",
+  "decoder_type": "moe",
+  "param_scale": "미공개",
+  "context_length": "1M",
+  "attention_type": "GQA",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE (YaRN 외삽)",
+  "vocab_size": "미공개",
+  "hidden_dim": "미공개",
+  "num_layers": "미공개",
+  "num_heads": "미공개",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "GPT-5.5는 2026년 OpenAI가 공개한 GPT-5 계열의 후속 모델로, GPT-5.4의 직접 계승자이다. 가장 큰 변화는 컨텍스트 윈도우의 1M 토큰 확장이며, 10개 주요 벤치마크 중 9개에서 GPT-5.4 대비 향상을 기록하였다. Artificial Analysis Intelligence Index 기준 57점으로 Claude Opus 4.7, Gemini 3.1 Pro와 함께 공동 1위에 올랐다. 가격은 GPT-5.4 대비 2배로 인상되었으나, 응답 지연(latency)은 동일하게 유지되어 사용자 경험의 일관성을 확보했다. GPT-5.5는 추론, 코딩, 멀티모달 이해, 에이전트 자동화의 모든 영역에서 균형 잡힌 향상을 보였으며, 특히 1M 컨텍스트 윈도우에서의 정보 활용도(needle-in-a-haystack)에서 업계 최상위 성능을 기록하였다. 기술 세부사항은 OpenAI의 일관된 보안 정책에 따라 비공개이지만, MoE 구조 채택, GQA 어텐션, RoPE의 YaRN 계열 외삽 보정 등 현대적 설계 요소들이 통합된 것으로 추정된다.",
+  "key_detail": "GPT-5.5의 핵심 혁신은 세 축이다. 첫째, 1M 토큰 컨텍스트 윈도우의 실용화이다. 단순히 입력 길이를 확장한 것이 아니라, RAG 없이도 대규모 코드베이스, 장편 소설, 책 한 권 분량의 문서를 단일 프롬프트에서 처리할 수 있는 정보 활용도를 확보하였다. RULER, LongBench v2 등 장문 평가에서 후반부 토큰 활용도가 95% 이상으로, GPT-5.4 대비 큰 폭의 개선을 이루었다. 둘째, 추론 능력의 통합이다. GPT-5.5는 별도의 추론 모드 토글 없이 모델 내부에서 자동으로 추론 깊이를 조절하는 동적 thinking 메커니즘을 도입하였다. 사용자가 reasoning_effort 파라미터를 minimal/low/medium/high로 명시적으로 조절할 수도 있다. 셋째, 9/10 벤치마크 향상이다. Math Olympiad(AIME), GPQA Diamond, SWE-bench Verified, MMLU-Pro 등 10개 주요 벤치마크 중 9개에서 GPT-5.4 대비 향상을 기록하여, 능력의 균형 잡힌 발전을 보여주었다.",
+  "training_detail": "GPT-5.5의 훈련 세부사항은 OpenAI의 보안 정책에 따라 미공개이지만, 기존 GPT-5 시리즈의 패턴에서 추정 가능하다. 사전학습 단계에서는 5.4 세대 대비 더욱 정제된 웹 코퍼스, 코드 저장소, 학술 문헌, 멀티모달 데이터를 학습하였을 것이다. 특히 1M 컨텍스트 활용도를 높이기 위해 장문 데이터의 비중과 품질이 강화되었으며, 합성 장문 추론 데이터(book summarization, codebase Q&A 등)가 적극 활용된 것으로 보인다. 사후학습에서는 RLHF와 함께 추론 전용 RL이 결합되었다. o1 시리즈에서 정립된 process reward model(PRM)과 outcome reward를 결합한 학습 방식이 본 모델군에 통합되어, 모델이 내부적으로 thinking을 수행하는 능력이 자연스럽게 발현되도록 학습되었다. 추론 대화 데이터, 도구 호출 시퀀스, 멀티 에이전트 시뮬레이션 데이터 등이 균형 있게 사용되었다. 추론 인프라는 NVIDIA H100/H200/B200 GPU 클러스터로 구성되었을 것으로 추정되며, 가격이 2배로 인상된 것은 활성 파라미터의 증가나 추론 깊이 확장에 따른 컴퓨트 비용 증가를 반영한 것으로 보인다.",
+  "paper_url": "",
+  "code_url": "",
+  "license_type": "Proprietary",
+  "concepts": [
+    "1M Context",
+    "Reasoning",
+    "Multimodal",
+    "Dynamic Thinking",
+    "MoE"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": false,
+  "relations": [
+    {
+      "to": "gpt-5-2",
+      "type": "evolved_from",
+      "description": "GPT-5.2의 후속 버전 계보로, 1M 컨텍스트 확장과 9/10 벤치마크 향상을 달성하였다."
+    }
+  ],
+  "related_post_slug": ""
+}

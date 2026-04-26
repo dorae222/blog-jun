@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Hyena 핵심 요약](figures/infographic.svg)
+
+*Figure: Hyena 한 장 요약 인포그래픽*
+
 # Hyena: 암묵적 장거리 컨볼루션으로 어텐션을 완전 대체한 서브-이차 모델
 
 **Stanford / Hazy Research / Together AI** · **2023-02-21** · **SSM** · **Apache-2.0**

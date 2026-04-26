@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Finetuned Language Models Are Zero-Shot Learners 핵심 요약](figures/infographic.svg)
+
+*Figure: Finetuned Language Models Are Zero-Shot Learners 한 장 요약 인포그래픽*
+
 ## 개요
 
 GPT-3(Brown et al., 2020)의 등장은 대규모 언어 모델(LLM)이 소수의 예시만으로 새로운 태스크를 수행할 수 있다는 가능성을 보여주었습니다. 그러나 이러한 퓨샷(few-shot) 학습 능력에도 불구하고, 예시 없이 자연어 지시만으로 태스크를 수행하는 제로샷(zero-shot) 설정에서는 성능이 크게 떨어지는 한계가 있었습니다. 제로샷 성능의 저하는 사전 학습(pretraining) 과정에서 모델이 "지시를 따르는" 형식의 데이터를 충분히 경험하지 못했기 때문으로 분석됩니다.

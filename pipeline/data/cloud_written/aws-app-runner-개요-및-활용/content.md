@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS App Runner 개요 및 활용 - 컨테이너 애플리케이션 자동 배포 서비스 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS App Runner 개요 및 활용 - 컨테이너 애플리케이션 자동 배포 서비스 한 장 요약 인포그래픽*
+
 # AWS App Runner 개요 및 활용 - 컨테이너 애플리케이션 자동 배포 서비스
 
 ## 개요

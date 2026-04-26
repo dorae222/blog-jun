@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Internet Gateway (IGW) 핵심 요약](figures/infographic.svg)
+
+*Figure: Internet Gateway (IGW) 한 장 요약 인포그래픽*
+
 ## 개요
 
 Internet Gateway(IGW)는 VPC와 인터넷 간의 통신을 가능하게 하는 AWS의 기본 네트워킹 구성 요소입니다. VPC는 기본적으로 격리된 가상 네트워크이므로, IGW 없이는 VPC 내의 리소스가 인터넷에 접근하거나 인터넷에서 접근을 받을 수 없습니다.

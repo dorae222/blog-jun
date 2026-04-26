@@ -1,0 +1,44 @@
+{
+  "name": "DeepSeek V4",
+  "slug": "deepseek-v4",
+  "organization": "DeepSeek",
+  "release_date": "2026",
+  "decoder_type": "moe",
+  "param_scale": "Pro: 1.6T (active 49B), Flash: 284B (active 13B)",
+  "context_length": "미공개",
+  "attention_type": "MLA",
+  "normalization": "RMSNorm",
+  "activation": "SwiGLU",
+  "position_encoding": "RoPE",
+  "vocab_size": "미공개",
+  "hidden_dim": "미공개",
+  "num_layers": "미공개",
+  "num_heads": "미공개",
+  "num_experts": null,
+  "active_experts": null,
+  "description": "DeepSeek V4는 2026년 중국 항저우 소재 DeepSeek AI가 공개한 4세대 General Language Model로, V3 대비 파라미터 규모를 약 4배 확장하면서 MoE 라우팅과 활성 파라미터 효율을 동시에 개선한 모델이다. 라인업은 두 가지로 분화되었다. DeepSeek V4 Pro는 1.6T(1조 6천억) 총 파라미터에 49B 활성 파라미터를 갖는 대형 MoE 모델이며, DeepSeek V4 Flash는 284B 총 파라미터에 13B 활성 파라미터의 경량 변형이다. 두 모델 모두 가중치를 공개(open-weights)하였으며, 종합 평가 BenchLM에서 87점으로 오픈 가중치 진영 1위를 기록하였다. DeepSeek V3에서 정립한 Multi-head Latent Attention(MLA)과 DeepSeekMoE 라우팅 구조가 그대로 계승되면서, 전문가 균형 학습(auxiliary-loss-free balancing), 다중 토큰 예측(MTP), FP8 혼합 정밀도 학습 등의 기법이 한 단계 정교화되었다. 가격 효율성은 DeepSeek 시리즈의 일관된 강점으로, 동급 폐쇄형 모델 대비 압도적으로 저렴한 API 가격을 유지한다.",
+  "key_detail": "DeepSeek V4의 핵심 혁신은 세 축이다. 첫째, MoE 스케일과 효율의 균형이다. Pro 변형의 1.6T 총 파라미터는 약 256개 전문가에 활성 8개 라우팅 구조로 추정되며, 활성 49B만으로 1.6T급 표현력을 확보한다. Flash 변형은 사용자가 비용 민감 시나리오에서 선택할 수 있는 경량 옵션으로 분리되었다. 둘째, MLA(Multi-head Latent Attention)의 정교화이다. MLA는 KV 캐시를 잠재 공간으로 압축하여, 동일 메모리 예산에서 더 긴 컨텍스트를 처리하거나 더 큰 배치를 처리할 수 있게 한다. V4에서는 잠재 차원과 헤드 구성이 추가로 최적화되었다. 셋째, 학습 효율의 극대화이다. V3에서 도입된 FP8 혼합 정밀도 학습이 V4에서는 더 안정화되었고, 다중 토큰 예측(MTP) 보조 목적 함수가 모든 학습 단계에 통합되어 토큰당 학습 신호가 증가하였다. 결과적으로 V4 Pro는 V3 대비 약 4배 파라미터 확장에도 학습 비용은 2배 수준으로 억제된 것으로 추정된다.",
+  "training_detail": "DeepSeek V4의 학습 파이프라인은 V3에서 정립된 구조를 직접 계승하면서 정량적 개선을 가했다. 사전학습 단계에서는 V3의 14.8T 토큰을 넘어 약 18~20T 토큰 규모의 데이터로 학습된 것으로 추정된다. 데이터 구성은 웹, 코드, 수학, 학술 논문이 균형을 이루며, 중영 양자 균형이 강화되었다. 학습 손실은 표준 LM 손실에 MTP 보조 손실이 결합된 형태이다. 사전학습 후에는 추론 특화 RL 단계가 추가되어, DeepSeek-R1에서 정립된 GRPO(Group Relative Policy Optimization) 기법이 통합되었다. RL은 수학 문제, 코딩 문제, 과학 추론 문제에서 모델이 자체적으로 사고 사슬(chain-of-thought)을 생성하도록 유도하며, 정답 보상과 형식 보상의 결합으로 학습된다. SFT 단계에서는 인간 어노테이션 데이터와 합성 데이터(R1으로 생성된 사고 사슬 등)가 결합되었다. 학습 인프라는 NVIDIA H800 GPU 클러스터를 기반으로 하며, FP8 혼합 정밀도와 자체 분산 학습 라이브러리(DualPipe 등)로 GPU 메모리와 통신 효율을 극대화하였다. 결과적으로 동급 모델 대비 학습 비용이 한 자릿수 수준으로 억제되었다.",
+  "paper_url": "",
+  "code_url": "https://github.com/deepseek-ai/DeepSeek-V4",
+  "license_type": "Custom",
+  "concepts": [
+    "MoE",
+    "Open Weights",
+    "Reasoning",
+    "MLA",
+    "FP8 Training",
+    "Multi-Token Prediction"
+  ],
+  "architecture_category": "llm",
+  "branch_type": "decoder_only",
+  "is_open_source": true,
+  "relations": [
+    {
+      "to": "deepseek-v3",
+      "type": "evolved_from",
+      "description": "DeepSeek V3 대비 파라미터 4배 확장과 MoE 설계 개선으로 BenchLM 1위(87점)를 달성하였다."
+    }
+  ],
+  "related_post_slug": ""
+}

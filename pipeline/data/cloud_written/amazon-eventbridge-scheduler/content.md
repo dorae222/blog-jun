@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon EventBridge Scheduler: 서버리스 작업 스케줄링의 핵심 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon EventBridge Scheduler: 서버리스 작업 스케줄링의 핵심 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon EventBridge Scheduler는 2022년 11월에 출시된 서버리스 스케줄링 서비스로, 대규모 작업 스케줄링을 간편하게 관리할 수 있습니다. 기존 EventBridge Rules의 스케줄 기능을 독립된 서비스로 분리하여, 더욱 강력하고 유연한 스케줄링 기능을 제공합니다.

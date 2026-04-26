@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Cohere Command A 핵심 요약](figures/infographic.svg)
+
+*Figure: Cohere Command A 한 장 요약 인포그래픽*
+
 # Cohere Command A: 기업 에이전틱 워크플로를 위한 111B 언어 모델
 
 **Cohere** · **2025-03-13** · **Decoder-only** · **Proprietary (CC-NC 연구용 공개)**

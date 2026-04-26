@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Model Merging with mergekit: Combining Multiple Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Model Merging with mergekit: Combining Multiple Models 한 장 요약 인포그래픽*
+
 # Model Merging 실전: mergekit으로 모델 합성하기
 
 ## 들어가며

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Kernel Methods 핵심 요약](figures/infographic.svg)
+
+*Figure: Kernel Methods 한 장 요약 인포그래픽*
+
 ## 개요
 
 현실 세계의 데이터는 대부분 선형으로 분리되지 않습니다. 단순한 직선이나 초평면(hyperplane)으로는 분류 경계를 표현하기 어려운 경우가 많습니다. **커널 방법론(Kernel Methods)**은 이 문제를 우아하게 해결하는 수학적 프레임워크입니다.

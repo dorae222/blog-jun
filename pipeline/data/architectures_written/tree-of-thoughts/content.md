@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Tree of Thoughts 핵심 요약](figures/infographic.svg)
+
+*Figure: Tree of Thoughts 한 장 요약 인포그래픽*
+
 # Tree of Thoughts: 트리 탐색 기반 의도적 추론
 
 **Princeton** · **2023-05-17** · **Reasoning Technique** · **오픈**

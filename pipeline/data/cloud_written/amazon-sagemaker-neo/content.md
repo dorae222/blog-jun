@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Neo 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Neo 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Neo
 
 ## 개요

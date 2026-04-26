@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Canvas 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Canvas 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon SageMaker Canvas는 AWS가 제공하는 노코드(No-Code) 머신러닝 플랫폼입니다. 기존에 머신러닝 모델을 구축하려면 Python, R 등의 프로그래밍 언어와 ML 프레임워크에 대한 깊은 이해가 필요했습니다. SageMaker Canvas는 이러한 진입 장벽을 완전히 제거하여, 비즈니스 분석가나 도메인 전문가가 코드 한 줄 작성하지 않고도 머신러닝 모델을 구축하고 예측을 수행할 수 있도록 합니다.

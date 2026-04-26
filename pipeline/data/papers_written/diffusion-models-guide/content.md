@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Complete Guide to Diffusion Models: From DDPM to Stable Diffusion 핵심 요약](figures/infographic.svg)
+
+*Figure: Complete Guide to Diffusion Models: From DDPM to Stable Diffusion 한 장 요약 인포그래픽*
+
 # Diffusion Models 완전 정복: DDPM에서 Stable Diffusion까지
 
 ## 개요
@@ -20,7 +25,7 @@ GAN이 지배하던 이미지 생성 분야에서 DDPM이 GAN을 능가한 이�
 
 **Score Matching과 확산 과정의 연결**
 
-- **2011**: [Score Matching](/post/score-matching) ( 데이터의 Score Function(∇log p(x))을 직접 추정하는 기법. Denoising Score Matching이 실용적 학습 방법을 제공.
+- **2011**: [Score Matching](/post/score-matching) - 데이터의 Score Function(∇log p(x))을 직접 추정하는 기법. Denoising Score Matching이 실용적 학습 방법을 제공.
 - **2015**: Deep Unsupervised Learning using Nonequilibrium Thermodynamics ) 확산 과정을 생성 모델로 처음 제안. 비평형 열역학에서 영감.
 - **2019**: Noise Conditional Score Networks (NCSN) ( 다양한 노이즈 수준에서 Score Matching을 적용하여 고해상도 이미지 생성.
 
@@ -131,9 +136,9 @@ Flow Matching 패러다임의 부상과 비디오/3D 생성으로의 확장이 �
 
 확산 모델은 세 가지 수학적 관점에서 이해할 수 있습니다.
 
-- **확률적 관점**: [DDPM](/post/ddpm) ) 마르코프 체인으로 노이즈 추가/제거
-- **Score 관점**: [Score Matching](/post/score-matching), [Score-SDE](/post/score-sde) ( Score Function 추정
-- **Flow 관점**: [Flow Matching](/post/flow-matching), [Rectified Flow](/post/rectified-flow) ) 연속 정규화 흐름
+- **확률적 관점**: [DDPM](/post/ddpm) - 마르코프 체인으로 노이즈 추가/제거
+- **Score 관점**: [Score Matching](/post/score-matching), [Score-SDE](/post/score-sde) - Score Function 추정
+- **Flow 관점**: [Flow Matching](/post/flow-matching), [Rectified Flow](/post/rectified-flow) - 연속 정규화 흐름
 
 #### 순방향 과정 (Forward Process) 직관적 이해
 
@@ -270,38 +275,38 @@ $$\tilde{\epsilon}_\theta = \epsilon_\theta(x_t, \emptyset) + s \cdot (\epsilon_
 
 수학적 기초와 핵심 모델을 이해합니다.
 
-1. [DDPM](/post/ddpm) ( 확산 모델의 기본 원리 (순방향/역방향 과정)
-2. [DDIM](/post/ddim) ) 결정론적 샘플링의 이해
-3. [CFG](/post/cfg) ( 조건부 생성의 핵심
-4. [LDM](/post/ldm) ) Latent Diffusion과 Stable Diffusion의 원리
-5. [Diffusion 열역학 배경](/post/diffusion-thermo) ( 열역학적 관점
+1. [DDPM](/post/ddpm) - 확산 모델의 기본 원리 (순방향/역방향 과정)
+2. [DDIM](/post/ddim) - 결정론적 샘플링의 이해
+3. [CFG](/post/cfg) - 조건부 생성의 핵심
+4. [LDM](/post/ldm) - Latent Diffusion과 Stable Diffusion의 원리
+5. [Diffusion 열역학 배경](/post/diffusion-thermo) - 열역학적 관점
 
 ### 중급 (이론 심화)
 
 수학적 기초를 깊이 이해하고 다양한 변형을 학습합니다.
 
-1. [Score Matching](/post/score-matching) ) Score Function 추정 이론
-2. [Score-SDE](/post/score-sde) ( SDE 프레임워크
-3. [EDM](/post/edm) ) 설계 공간 분석
-4. [Classifier Guidance](/post/classifier-guidance) → [CFG](/post/cfg) ( 가이던스 기법
-5. [Flow Matching](/post/flow-matching) + [Rectified Flow](/post/rectified-flow) ) Flow 기반 접근
-6. [Consistency Model](/post/consistency-model) ( 가속화 기법
-7. [D3PM](/post/d3pm) + [SEDD](/post/sedd) ) 이산 확산 모델
+1. [Score Matching](/post/score-matching) - Score Function 추정 이론
+2. [Score-SDE](/post/score-sde) - SDE 프레임워크
+3. [EDM](/post/edm) - 설계 공간 분석
+4. [Classifier Guidance](/post/classifier-guidance) → [CFG](/post/cfg) - 가이던스 기법
+5. [Flow Matching](/post/flow-matching) + [Rectified Flow](/post/rectified-flow) - Flow 기반 접근
+6. [Consistency Model](/post/consistency-model) - 가속화 기법
+7. [D3PM](/post/d3pm) + [SEDD](/post/sedd) - 이산 확산 모델
 
 ### 고급 (최신 연구)
 
 최신 아키텍처와 응용을 추적합니다.
 
-1. [DiT](/post/dit) → [SD3](/post/sd3) → [FLUX](/post/flux) ( Transformer 기반 확산
-2. [Sora](/post/sora) + [CogVideoX](/post/cogvideox) ) 비디오 생성
-3. [MDLM](/post/mdlm) + [SEDD](/post/sedd) + [BD3LM](/post/bd3lm) ( 텍스트 확산 모델
-4. [ControlNet](/post/controlnet) ) 정밀 제어
-5. [TiDAR](/post/tidar-think-in-diffusion-talk-in-autoregression) ( 확산과 자기회귀 결합
+1. [DiT](/post/dit) → [SD3](/post/sd3) → [FLUX](/post/flux) - Transformer 기반 확산
+2. [Sora](/post/sora) + [CogVideoX](/post/cogvideox) - 비디오 생성
+3. [MDLM](/post/mdlm) + [SEDD](/post/sedd) + [BD3LM](/post/bd3lm) - 텍스트 확산 모델
+4. [ControlNet](/post/controlnet) - 정밀 제어
+5. [TiDAR](/post/tidar-think-in-diffusion-talk-in-autoregression) - 확산과 자기회귀 결합
 
 ---
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) ) 전체 AI/ML 지형도
-- [컴퓨터 비전 딥러닝 로드맵](/post/computer-vision-dl-roadmap) ( 비전 모델과의 연결
-- [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) ) 확산 모델에 사용되는 기법들
+- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) - 전체 AI/ML 지형도
+- [컴퓨터 비전 딥러닝 로드맵](/post/computer-vision-dl-roadmap) - 비전 모델과의 연결
+- [AI 핵심 기법 총정리](/post/ai-core-techniques-guide) - 확산 모델에 사용되는 기법들

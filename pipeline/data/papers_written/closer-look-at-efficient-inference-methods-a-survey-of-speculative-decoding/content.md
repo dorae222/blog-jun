@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Closer Look at Efficient Inference Methods: A Survey of Speculative Decoding 핵심 요약](figures/infographic.svg)
+
+*Figure: Closer Look at Efficient Inference Methods: A Survey of Speculative Decoding 한 장 요약 인포그래픽*
+
 ## 개요
 
 "A Closer Look at Efficient Inference Methods: A Survey of Speculative Decoding"(Hyun Ryu & Eric Kim, 2024)은 대규모 언어 모델(LLM)의 추론 속도를 가속하는 핵심 기법인 **Speculative Decoding**(투기적 디코딩)에 대한 종합 서베이 논문입니다. 이 논문은 기존 서베이들과 차별화되는 독자적인 분류 체계를 제시합니다. 핵심은 speculative decoding 방법론을 **Draft-Centric**(초안 중심)과 **Model-Centric**(모델 중심)이라는 두 가지 축으로 분류하는 것입니다.

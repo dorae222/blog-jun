@@ -1,0 +1,10 @@
+{
+  "slug": "adk-02-multi-agent-workflow",
+  "title": "ADK Multi-Agent Workflow: Sequential / Parallel / Loop / Custom",
+  "title_ko": "ADK 멀티에이전트 워크플로우: Sequential / Parallel / Loop / Custom",
+  "summary": "ADK의 진짜 강점은 4가지 워크플로우 에이전트(SequentialAgent, ParallelAgent, LoopAgent, Custom BaseAgent)와 session.state 기반 명시적 데이터 전달입니다. 본 2편에서는 output_key로 결과를 다음 에이전트에 넘기는 Sequential 패턴, 동시 fan-out하는 Parallel 패턴(race condition 회피), max_iterations와 exit_loop 도구로 종료를 제어하는 Loop 패턴, 그리고 BaseAgent 상속으로 if-else 분기를 구현하는 Custom 패턴까지 실행 가능한 코드와 함께 다룹니다.",
+  "category_slug": "agent",
+  "tags": ["ADK", "Multi-Agent", "Workflow", "Sequential", "Parallel", "Loop", "Google"],
+  "series": "adk-local-development",
+  "series_order": 2
+}

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker AI 개요: 엔드투엔드 ML 플랫폼의 모든 것 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker AI 개요: 엔드투엔드 ML 플랫폼의 모든 것 한 장 요약 인포그래픽*
+
 # Amazon SageMaker AI 개요: 엔드투엔드 ML 플랫폼의 모든 것
 
 ## 개요

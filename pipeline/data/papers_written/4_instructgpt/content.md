@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Training language models to follow instructions with human feedback 핵심 요약](figures/infographic.svg)
+
+*Figure: Training language models to follow instructions with human feedback 한 장 요약 인포그래픽*
+
 ## 개요
 
 InstructGPT는 OpenAI가 2022년 NeurIPS에 발표한 논문으로, 대형 언어 모델(LLM)이 사용자의 의도에 맞게 동작하도록 **인간 피드백 강화학습(RLHF, Reinforcement Learning from Human Feedback)**을 적용한 연구다. GPT-3는 강력한 언어 생성 능력을 갖추고 있지만, 사용자가 원하는 방향으로 동작하지 않는 경우가 많았다. 유해한 내용을 생성하거나, 지시를 무시하거나, 근거 없는 내용을 사실처럼 제시하는 문제가 있었다. InstructGPT는 이 **정렬(alignment) 문제**를 RLHF 파이프라인으로 해결한다.

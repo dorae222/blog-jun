@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Attention Is All You Need 핵심 요약](figures/infographic.svg)
+
+*Figure: Attention Is All You Need 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Attention Is All You Need"(Vaswani et al., 2017)는 자연어 처리 분야에서 가장 혁신적인 논문 중 하나로, **Transformer** 아키텍처를 처음으로 제안했습니다. 기존의 RNN이나 CNN을 완전히 제거하고, 오직 Self-Attention 메커니즘만을 사용하여 시퀀스-투-시퀀스 학습을 수행합니다. 영어-독일어 번역에서 28.4 BLEU, 영어-프랑스어 번역에서 41.0 BLEU라는 당시 SOTA 성능을 달성했으며, 기존 최고 모델 대비 학습 비용을 1/4 이하로 줄였습니다.

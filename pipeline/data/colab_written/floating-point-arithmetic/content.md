@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![IEEE 754 Floating-Point Arithmetic Deep Dive 핵심 요약](figures/infographic.svg)
+
+*Figure: IEEE 754 Floating-Point Arithmetic Deep Dive 한 장 요약 인포그래픽*
+
 # IEEE 754 부동소수점 연산 심화: 비트 단위로 이해하는 실수 연산
 
 ## 개요

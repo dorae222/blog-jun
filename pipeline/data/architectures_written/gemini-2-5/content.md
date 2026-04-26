@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini 2.5 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini 2.5 한 장 요약 인포그래픽*
+
 # Gemini 2.5 Pro: 내장 사고 기능의 최강 추론 모델
 
 ## 개요

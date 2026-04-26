@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ML Interview Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: ML Interview Guide 한 장 요약 인포그래픽*
+
 ## 개요
 
 ML 면접은 단순히 알고리즘 이름을 외우는 것으로는 통과할 수 없습니다. 면접관은 세 가지 축을 통해 지원자를 평가합니다.

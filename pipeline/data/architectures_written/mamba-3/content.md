@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mamba-3 핵심 요약](figures/infographic.svg)
+
+*Figure: Mamba-3 한 장 요약 인포그래픽*
+
 # Mamba-3: SSM과 Sparse Attention의 전략적 하이브리드
 
 **Carnegie Mellon University / Princeton University** · **2026-03-19** · **Hybrid SSM** · **Apache-2.0**

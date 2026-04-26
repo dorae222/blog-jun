@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DiT (Diffusion Transformers) 핵심 요약](figures/infographic.svg)
+
+*Figure: DiT (Diffusion Transformers) 한 장 요약 인포그래픽*
+
 # DiT (Diffusion Transformers): 확산 트랜스포머
 
 ## 개요

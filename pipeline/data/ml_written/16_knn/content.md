@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![KNN (K-Nearest Neighbors) 핵심 요약](figures/infographic.svg)
+
+*Figure: KNN (K-Nearest Neighbors) 한 장 요약 인포그래픽*
+
 ## 개요
 
 KNN(K-Nearest Neighbors, K-최근접 이웃)은 머신러닝에서 가장 직관적인 알고리즘 중 하나입니다. 핵심 아이디어는 단순합니다. **새로운 데이터 포인트가 주어지면, 학습 데이터에서 가장 가까운 K개의 이웃을 찾고, 그 이웃들의 다수결(분류) 또는 평균(회귀)으로 예측값을 결정합니다.**

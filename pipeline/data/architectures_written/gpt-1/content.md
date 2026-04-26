@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-1 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-1 한 장 요약 인포그래픽*
+
 # GPT-1: Generative Pre-trained Transformer
 
 ## 개요

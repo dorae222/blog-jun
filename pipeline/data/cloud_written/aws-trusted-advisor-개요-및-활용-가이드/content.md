@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Trusted Advisor 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Trusted Advisor 한 장 요약 인포그래픽*
+
 # AWS Trusted Advisor 심층 분석
 
 ## 개요

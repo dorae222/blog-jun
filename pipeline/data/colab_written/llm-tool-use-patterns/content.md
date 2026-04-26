@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLM Tool Use Patterns: From Function Calling to Agents 핵심 요약](figures/infographic.svg)
+
+*Figure: LLM Tool Use Patterns: From Function Calling to Agents 한 장 요약 인포그래픽*
+
 # LLM Tool Use 패턴: Function Calling부터 Agent까지
 
 ## 들어가며

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks 핵심 요약](figures/infographic.svg)
+
+*Figure: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks 한 장 요약 인포그래픽*
+
 ## 개요
 
 RAG(Retrieval-Augmented Generation)는 2020년 NeurIPS에서 Meta AI(당시 Facebook AI Research)의 Patrick Lewis, Ethan Perez, Aleksandra Piktus 등이 발표한 논문으로, **사전학습 언어 모델에 외부 문서 검색 기능을 결합**하는 범용 프레임워크를 제안한다. 기존 seq2seq 모델은 학습 시점에 파라미터 안에 지식을 고정적으로 저장하므로, 새로운 사실이나 롱테일 지식에 취약하다는 한계가 있었다. RAG는 이 문제를 비모수적(non-parametric) 메모리인 외부 문서 저장소와 결합함으로써 해결한다.

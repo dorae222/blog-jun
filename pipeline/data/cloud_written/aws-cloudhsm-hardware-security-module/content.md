@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS CloudHSM 완벽 가이드: 하드웨어 보안 모듈을 활용한 암호화 키 관리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS CloudHSM 완벽 가이드: 하드웨어 보안 모듈을 활용한 암호화 키 관리 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS CloudHSM은 AWS 클라우드에서 전용 하드웨어 보안 모듈(HSM) 인스턴스를 사용하여 암호화 키를 생성하고 관리할 수 있는 서비스입니다. HSM은 암호화 처리 및 키 저장을 위해 설계된 변조 방지(tamper-resistant) 하드웨어 장치입니다.

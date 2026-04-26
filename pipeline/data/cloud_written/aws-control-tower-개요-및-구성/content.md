@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Control Tower 개요 및 구성 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Control Tower 개요 및 구성 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Control Tower는 AWS 멀티 계정 환경을 자동으로 설정하고 거버넌스를 적용할 수 있도록 지원하는 관리형 서비스입니다. 기업이 AWS를 도입할 때 가장 먼저 직면하는 과제 중 하나가 바로 멀티 계정 전략 수립과 보안 거버넌스 적용입니다. AWS Control Tower는 이러한 복잡한 초기 설정 과정을 자동화하고, 지속적인 거버넌스 준수를 보장합니다.

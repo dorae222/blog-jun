@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenThoughts3-1.2M: Data Recipes for Reasoning Models 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenThoughts3-1.2M: Data Recipes for Reasoning Models 한 장 요약 인포그래픽*
+
 # OpenThoughts3-1.2M: 추론 모델을 위한 데이터 레시피
 
 ## 개요

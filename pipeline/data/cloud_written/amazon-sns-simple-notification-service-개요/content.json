@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-sns-simple-notification-service-개요",
+  "title": "Amazon SNS",
+  "title_ko": "Amazon SNS - 완전 관리형 Pub/Sub 메시징 서비스 개요",
+  "category_slug": "aws-integration",
+  "summary": "Amazon SNS(Simple Notification Service)의 Standard/FIFO Topic, Fanout 패턴, Message Filtering, Mobile Push, SMS, EventBridge와의 차이까지 Pub/Sub 메시징 운영의 핵심을 다룹니다.",
+  "tags": [
+    "AWS",
+    "SNS",
+    "Pub/Sub",
+    "메시징",
+    "Fanout",
+    "Mobile Push",
+    "SMS",
+    "이벤트 기반 아키텍처",
+    "Message Filtering",
+    "분산 시스템"
+  ]
+}

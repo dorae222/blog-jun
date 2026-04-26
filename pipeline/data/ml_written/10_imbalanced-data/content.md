@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Imbalanced Data Handling Strategies 핵심 요약](figures/infographic.svg)
+
+*Figure: Imbalanced Data Handling Strategies 한 장 요약 인포그래픽*
+
 ## 개요: 클래스 불균형 문제란?
 
 현실 세계의 ML 문제에서 클래스 불균형(Class Imbalance)은 예외가 아니라 **규칙**에 가깝습니다. 사기 거래 탐지에서 사기 건수는 전체의 0.1% 미만이고, 암 진단에서 양성 케이스는 수천 명 중 한두 명에 불과합니다. 제조 공정의 불량 검출, 네트워크 침입 탐지, 대출 부도 예측, 모두 같은 문제를 공유합니다.

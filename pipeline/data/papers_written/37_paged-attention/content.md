@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Efficient Memory Management for Large Language Model Serving with PagedAttention 핵심 요약](figures/infographic.svg)
+
+*Figure: Efficient Memory Management for Large Language Model Serving with PagedAttention 한 장 요약 인포그래픽*
+
 ## 개요
 
 LLM(대규모 언어 모델)을 프로덕션 환경에서 서빙할 때, GPU 메모리 관리는 가장 핵심적인 병목 요소 중 하나입니다. [[Transformer]] 아키텍처의 자기회귀적(autoregressive) 생성 방식은 모든 이전 토큰의 키(Key)와 값(Value) 벡터를 캐시에 저장해야 하며, 이 KV 캐시(KV cache)는 생성 길이와 동시 요청(배치) 수에 비례하여 선형적으로 증가합니다. 예를 들어, 13B 파라미터 모델에서 단일 요청의 KV 캐시는 최대 1.7GB에 달할 수 있으며, 이는 전체 GPU 메모리의 상당 부분을 차지합니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Data Preprocessing Complete Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: Data Preprocessing Complete Guide 한 장 요약 인포그래픽*
+
 ## 개요: Garbage In, Garbage Out
 
 머신러닝에서 자주 인용되는 격언이 있습니다. **"Garbage In, Garbage Out(GIGO)"**, 쓰레기를 입력하면 쓰레기가 출력된다는 뜻입니다. 아무리 정교한 모델을 설계하더라도, 입력 데이터의 품질이 낮으면 모델의 예측 성능은 기대 이하로 떨어질 수밖에 없습니다.

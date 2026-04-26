@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Application Migration Service (MGN) 개요: 리프트 앤 시프트 마이그레이션의 핵심 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Application Migration Service (MGN) 개요: 리프트 앤 시프트 마이그레이션의 핵심 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Application Migration Service(AWS MGN, 이전 CloudEndure Migration)는 물리 서버, 가상 머신(VMware, Hyper-V 등), 기타 클라우드 환경의 서버를 AWS로 마이그레이션하는 완전관리형 서비스입니다. 리프트 앤 시프트(Lift and Shift, Rehost) 방식의 마이그레이션을 자동화하여, 소스 서버를 최소한의 변경으로 AWS EC2 인스턴스로 전환할 수 있습니다.
