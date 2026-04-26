@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-5 (Updated) 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-5 (Updated) 한 장 요약 인포그래픽*
+
 # GPT-5 업데이트: 지속적 개선과 에이전트 강화
 
 ## 개요

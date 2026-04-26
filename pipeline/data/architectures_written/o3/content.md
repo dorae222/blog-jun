@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenAI o3 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenAI o3 한 장 요약 인포그래픽*
+
 # OpenAI o3: ARC-AGI 87.5%로 인간 평균을 넘어선 추론 AI의 이정표
 
 ## 개요

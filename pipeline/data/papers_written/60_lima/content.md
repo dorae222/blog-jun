@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LIMA: Less Is More for Alignment 핵심 요약](figures/infographic.svg)
+
+*Figure: LIMA: Less Is More for Alignment 한 장 요약 인포그래픽*
+
 ## 개요
 
 "LIMA: Less Is More for Alignment" (Zhou et al., 2023)는 Meta AI의 Chunting Zhou, Pengfei Liu, Puxin Xu 등이 NeurIPS 2023에서 발표한 논문입니다. RLHF(Reinforcement Learning from Human Feedback)가 LLM 정렬의 표준으로 자리 잡던 시기에, **단 1,000개의 정성 선별된 예제만으로 65B LLaMA를 파인튜닝하여 GPT-4에 근접하는 대화 품질을 달성**할 수 있음을 보여주었습니다.

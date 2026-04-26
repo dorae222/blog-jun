@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DBSCAN and Hierarchical Clustering 핵심 요약](figures/infographic.svg)
+
+*Figure: DBSCAN and Hierarchical Clustering 한 장 요약 인포그래픽*
+
 ## 개요
 
 K-Means는 군집화의 대표 알고리즘이지만 세 가지 근본적인 한계를 가집니다.

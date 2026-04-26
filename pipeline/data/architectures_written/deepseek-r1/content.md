@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-R1 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-R1 한 장 요약 인포그래픽*
+
 # DeepSeek-R1: 순수 강화학습으로 o1에 필적하는 추론 AI의 민주화
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ML Workflow and Project Design 핵심 요약](figures/infographic.svg)
+
+*Figure: ML Workflow and Project Design 한 장 요약 인포그래픽*
+
 # ML 워크플로우와 프로젝트 설계
 
 ## 개요

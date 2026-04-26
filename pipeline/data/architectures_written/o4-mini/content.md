@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenAI o4-mini 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenAI o4-mini 한 장 요약 인포그래픽*
+
 # OpenAI o4-mini
 
 **OpenAI** · **2025-04-16** · **Decoder-only** · **Dense**

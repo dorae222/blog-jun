@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Model Pruning: From Magnitude Pruning to Lottery Ticket Hypothesis 핵심 요약](figures/infographic.svg)
+
+*Figure: Model Pruning: From Magnitude Pruning to Lottery Ticket Hypothesis 한 장 요약 인포그래픽*
+
 # 모델 프루닝 완전 가이드: Magnitude 프루닝부터 Lottery Ticket까지
 
 ## 소개

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon ElastiCache 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon ElastiCache 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon ElastiCache는 AWS에서 제공하는 완전관리형 인메모리 데이터 스토어 및 캐시 서비스입니다. Redis OSS(Open Source Software)와 Memcached 두 가지 엔진을 지원하며, 마이크로초 단위의 응답 시간으로 데이터를 읽고 쓸 수 있습니다.

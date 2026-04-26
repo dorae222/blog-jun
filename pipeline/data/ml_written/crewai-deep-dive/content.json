@@ -1,0 +1,15 @@
+{
+  "slug": "crewai-deep-dive",
+  "title": "CrewAI Deep Dive",
+  "title_ko": "CrewAI 심층 분석: 역할 기반 멀티에이전트 협업",
+  "summary": "CrewAI는 역할 기반 멀티 에이전트 오케스트레이션 프레임워크로, Crew, Agent, Task, Process, Memory를 핵심 추상화로 두어 20줄 이내의 코드로 멀티 에이전트 시스템을 구성하게 한다. Sequential과 Hierarchical 프로세스, role/goal/backstory 기반 페르소나, Tools 통합, Crews와 Flows의 이원화까지 CrewAI의 설계 철학을 코드 예제와 함께 깊이 있게 분석하고, LangGraph와의 추상화 레벨 차이를 비교한다.",
+  "category_slug": "agent",
+  "tags": [
+    "CrewAI",
+    "Multi-Agent",
+    "Role-Based",
+    "Agent Orchestration",
+    "Crew",
+    "Process"
+  ]
+}

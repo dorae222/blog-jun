@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Asynchronous Inference: 대용량 요청을 위한 비동기 추론 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Asynchronous Inference: 대용량 요청을 위한 비동기 추론 완벽 가이드 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Asynchronous Inference: 대용량 요청을 위한 비동기 추론 완벽 가이드
 
 ## 개요

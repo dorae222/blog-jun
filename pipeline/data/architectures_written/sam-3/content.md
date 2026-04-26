@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SAM 3 핵심 요약](figures/infographic.svg)
+
+*Figure: SAM 3 한 장 요약 인포그래픽*
+
 # SAM 3: 개념 기반 세그멘테이션의 새 패러다임
 
 **Meta** · **2025-11-01** · **Vision** · **Apache-2.0**

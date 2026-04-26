@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![QLoRA 핵심 요약](figures/infographic.svg)
+
+*Figure: QLoRA 한 장 요약 인포그래픽*
+
 # QLoRA: 양자화된 대형 언어 모델의 효율적 파인튜닝
 
 **University of Washington** · **2023-05-23** · **오픈소스**

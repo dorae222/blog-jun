@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Kinesis Agent 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Kinesis Agent 한 장 요약 인포그래픽*
+
 # Amazon Kinesis Agent
 
 ## 개요

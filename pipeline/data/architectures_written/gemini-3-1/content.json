@@ -1,0 +1,16 @@
+{
+  "slug": "gemini-3-1",
+  "title": "Gemini 3.1 Pro",
+  "title_ko": "Gemini 3.1 Pro: GPQA 94.3%와 네이티브 멀티모달의 정점",
+  "summary": "Gemini 3.1 Pro는 2026년 Google DeepMind가 공개한 Gemini 3 Pro의 후속 모델이다. GPQA Diamond 94.3%로 과학적 추론 1위를 달성하였고, SWE-bench 78.80%, Intelligence Index 57점으로 Claude/GPT와 공동 1위에 올랐다. 7세대 Ironwood TPU 기반 학습과 텍스트/이미지/비디오/오디오 네이티브 멀티모달이 핵심 차별점이다.",
+  "tags": [
+    "Gemini",
+    "Gemini 3.1 Pro",
+    "Google DeepMind",
+    "Multimodal Native",
+    "GPQA",
+    "Ironwood TPU",
+    "Long Context",
+    "Reasoning"
+  ]
+}

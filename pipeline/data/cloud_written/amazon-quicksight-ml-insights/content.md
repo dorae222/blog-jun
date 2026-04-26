@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon QuickSight ML Insights 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon QuickSight ML Insights 한 장 요약 인포그래픽*
+
 # Amazon QuickSight ML Insights
 
 ## 개요

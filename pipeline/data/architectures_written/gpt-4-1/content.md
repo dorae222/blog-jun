@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-4.1 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-4.1 한 장 요약 인포그래픽*
+
 # GPT-4.1: 코딩 에이전트 특화 모델
 
 ## 개요

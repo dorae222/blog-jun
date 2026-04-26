@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-vpc-virtual-private-cloud-개요",
+  "title": "Amazon VPC (Virtual Private Cloud) 개요",
+  "title_ko": "Amazon VPC (Virtual Private Cloud) 개요",
+  "category_slug": "aws-networking",
+  "summary": "Amazon VPC의 CIDR 설계, 서브넷 분리(Public/Private/Isolated), 라우팅 테이블, IGW/NAT/Endpoint, Security Group과 NACL 차이, VPC Peering/Transit Gateway/PrivateLink 등 네트워크 설계 핵심을 정리합니다.",
+  "tags": [
+    "AWS",
+    "VPC",
+    "네트워킹",
+    "Subnet",
+    "Security Group",
+    "NAT Gateway",
+    "Transit Gateway",
+    "PrivateLink",
+    "VPC Endpoint",
+    "IPAM"
+  ]
+}

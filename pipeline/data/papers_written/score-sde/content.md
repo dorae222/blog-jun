@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Score-Based Generative Modeling through Stochastic Differential Equations 핵심 요약](figures/infographic.svg)
+
+*Figure: Score-Based Generative Modeling through Stochastic Differential Equations 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Score-Based Generative Modeling through Stochastic Differential Equations"(Song et al., ICLR 2021)은 스코어 기반 생성 모델(SMLD/NCSN)과 확산 확률 모델(DDPM)을 **연속 확률미분방정식(SDE)** 이라는 단일 프레임워크로 통합한 연구입니다. 논문은 기존의 이산적(discrete) 노이즈 추가 과정을 연속 시간(continuous-time)으로 일반화하여, 두 계열의 방법론이 각각 VE-SDE(Variance Exploding SDE)와 VP-SDE(Variance Preserving SDE)의 특수 사례임을 보입니다.

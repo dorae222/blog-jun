@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems 핵심 요약](figures/infographic.svg)
+
+*Figure: ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems 한 장 요약 인포그래픽*
+
 ## 개요
 
 검색 증강 생성(Retrieval-Augmented Generation, [[RAG]]) 시스템은 외부 지식 베이스에서 관련 문서를 검색하여 대규모 언어 모델([[LLM]])의 응답 품질을 높이는 기법으로, 산업계와 학계에서 가장 활발하게 활용되는 [[LLM]] 활용 패러다임이다. 그러나 RAG 시스템의 성능을 정확하고 신뢰성 있게 평가하는 것은 그 자체로 어려운 문제다. RAG 파이프라인은 검색(retrieval)과 생성(generation)이라는 서로 다른 두 단계로 구성되며, 각 단계가 최종 응답 품질에 독립적으로 기여하기 때문에 단일 지표만으로는 시스템의 강점과 약점을 파악하기 어렵다.

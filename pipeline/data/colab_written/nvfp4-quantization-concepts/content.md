@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![NVFP4 and Modern Quantization Formats: FP4, FP8, INT4, INT8 Compared 핵심 요약](figures/infographic.svg)
+
+*Figure: NVFP4 and Modern Quantization Formats: FP4, FP8, INT4, INT8 Compared 한 장 요약 인포그래픽*
+
 # NVFP4와 현대 양자화 포맷 비교: FP4·FP8·INT4·INT8의 이해
 
 ## 들어가며

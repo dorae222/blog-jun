@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OpenAI o1 핵심 요약](figures/infographic.svg)
+
+*Figure: OpenAI o1 한 장 요약 인포그래픽*
+
 # OpenAI o1: 테스트 시간 컴퓨트 스케일링으로 추론 AI 시대를 연 모델
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Griffin 핵심 요약](figures/infographic.svg)
+
+*Figure: Griffin 한 장 요약 인포그래픽*
+
 # Griffin: RG-LRU와 로컬 어텐션으로 실용적 하이브리드를 완성한 아키텍처
 
 **Google DeepMind** · **2024-02-29** · **Hybrid SSM** · **Apache-2.0**

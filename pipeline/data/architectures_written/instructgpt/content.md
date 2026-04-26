@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![InstructGPT 핵심 요약](figures/infographic.svg)
+
+*Figure: InstructGPT 한 장 요약 인포그래픽*
+
 # InstructGPT: RLHF로 AI 정렬의 새 지평을 연 모델
 
 ## 개요

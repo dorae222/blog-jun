@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Real-time Inference 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Real-time Inference 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Real-time Inference
 
 ## 개요

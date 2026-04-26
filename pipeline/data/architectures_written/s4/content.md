@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![S4 핵심 요약](figures/infographic.svg)
+
+*Figure: S4 한 장 요약 인포그래픽*
+
 # S4: 상태 공간 모델의 시대를 연 구조화된 SSM
 
 **Stanford University** · **2021-10-31** · **SSM** · **Apache-2.0**

@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-eks-elastic-kubernetes-service-개요",
+  "title": "Amazon EKS",
+  "title_ko": "Amazon EKS(Elastic Kubernetes Service) 개요",
+  "category_slug": "aws-compute",
+  "summary": "Amazon EKS의 컨트롤 플레인 구조, 워커 노드 옵션(EC2/Fargate), IRSA/Pod Identity 인증, VPC CNI 네트워킹, EBS/EFS CSI 스토리지, EKS Add-ons, EKS Auto Mode까지 관리형 Kubernetes 운영의 핵심을 정리합니다.",
+  "tags": [
+    "AWS",
+    "EKS",
+    "Kubernetes",
+    "K8s",
+    "컨테이너",
+    "IRSA",
+    "VPC CNI",
+    "Fargate",
+    "관리형 서비스",
+    "EKS Auto Mode"
+  ]
+}

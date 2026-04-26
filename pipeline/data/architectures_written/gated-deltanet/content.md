@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gated DeltaNet 핵심 요약](figures/infographic.svg)
+
+*Figure: Gated DeltaNet 한 장 요약 인포그래픽*
+
 # Gated DeltaNet: Delta Rule과 게이팅을 결합한 선형 어텐션의 최전선
 
 **Tsinghua University / Shanghai AI Lab** · **2024-12-05** · **SSM** · **MIT**

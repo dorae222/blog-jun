@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Semi-supervised and Self-supervised Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: Semi-supervised and Self-supervised Learning 한 장 요약 인포그래픽*
+
 ## 개요
 
 머신러닝 모델을 실제 산업 환경에 적용할 때 가장 흔히 부딪히는 장벽 중 하나는 **레이블(정답) 부족** 문제다. 의료 영상 분류를 위해 전문의가 수천 장을 직접 판독해야 하거나, 법률 문서를 도메인 전문가가 일일이 태깅해야 하는 경우처럼 레이블 획득에는 막대한 시간과 비용이 든다. 반면 레이블이 없는 원시 데이터는 인터넷, 센서, 로그 등에서 거의 무한정 수집할 수 있다.

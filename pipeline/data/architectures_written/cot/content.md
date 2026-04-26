@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Chain-of-Thought Prompting 핵심 요약](figures/infographic.svg)
+
+*Figure: Chain-of-Thought Prompting 한 장 요약 인포그래픽*
+
 # Chain-of-Thought Prompting: 단계별 추론의 시작
 
 **Google** · **2022-01-28** · **Prompting Technique** · **오픈**

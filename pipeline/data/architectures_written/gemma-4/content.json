@@ -1,0 +1,16 @@
+{
+  "slug": "gemma-4",
+  "title": "Gemma 4",
+  "title_ko": "Gemma 4: 1B-27B 사이즈와 네이티브 멀티모달의 오픈 가중치 라인업",
+  "summary": "Gemma 4는 2026년 Google이 공개한 4세대 오픈 가중치 모델 계열이다. 1B, 4B, 12B, 27B의 4가지 변형으로 구성되며, 모든 변형이 텍스트/이미지/오디오를 처리하는 네이티브 멀티모달 능력을 갖췄다. Apache 2.0 호환 라이선스로 자유로운 상업 이용이 가능하며, 단일 H100에서 27B 변형 추론이 가능한 실용적 사이즈가 강점이다.",
+  "tags": [
+    "Gemma",
+    "Gemma 4",
+    "Google DeepMind",
+    "Open Weights",
+    "Multimodal",
+    "Efficient",
+    "On-Device",
+    "Apache 2.0"
+  ]
+}

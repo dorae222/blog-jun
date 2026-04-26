@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Backup 개요 및 주요 기능 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Backup 개요 및 주요 기능 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Backup은 AWS 서비스 전반에 걸쳐 데이터 백업을 중앙에서 관리하고 자동화할 수 있는 완전 관리형 백업 서비스입니다. 개별 서비스마다 별도의 백업 스크립트나 도구를 관리하는 대신, 단일 콘솔에서 통합된 백업 정책을 정의하고 적용할 수 있습니다.

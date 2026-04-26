@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ReAct 핵심 요약](figures/infographic.svg)
+
+*Figure: ReAct 한 장 요약 인포그래픽*
+
 # ReAct: 추론과 행동의 결합
 
 **Princeton/Google** · **2022-10-06** · **Agent Technique** · **오픈**

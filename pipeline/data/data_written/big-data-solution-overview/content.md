@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Big Data Solutions: Hadoop Ecosystem Components and Architecture 핵심 요약](figures/infographic.svg)
+
+*Figure: Big Data Solutions: Hadoop Ecosystem Components and Architecture 한 장 요약 인포그래픽*
+
 # 빅데이터 솔루션 총정리: Hadoop 에코시스템 컴포넌트와 아키텍처
 
 ## 개요

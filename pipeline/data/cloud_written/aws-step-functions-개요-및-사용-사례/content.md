@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Step Functions 개요 및 사용 사례: 서버리스 워크플로우 오케스트레이션 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Step Functions 개요 및 사용 사례: 서버리스 워크플로우 오케스트레이션 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Step Functions는 분산 애플리케이션의 구성 요소를 시각적 워크플로우로 조율(orchestrate)할 수 있는 서버리스 서비스입니다. Lambda 함수, ECS 태스크, SQS 메시지, DynamoDB 작업 등 다양한 AWS 서비스를 순차적 또는 병렬로 연결하여, 복잡한 비즈니스 프로세스를 자동화할 수 있습니다.

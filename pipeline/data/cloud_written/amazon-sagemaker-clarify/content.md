@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Clarify 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Clarify 한 장 요약 인포그래픽*
+
 ## 개요
 
 머신러닝 모델이 비즈니스 의사결정에 점점 더 많이 활용되면서, 모델의 공정성(Fairness)과 투명성(Transparency)에 대한 요구가 급격히 증가하고 있습니다. 모델이 특정 인구 집단에 대해 불공정한 예측을 하거나, 예측의 근거를 설명할 수 없다면 심각한 법적, 윤리적 문제가 발생할 수 있습니다.

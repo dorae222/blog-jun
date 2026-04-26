@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Systems Manager Agent (SSM Agent) - 설치, 구성, 트러블슈팅 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Systems Manager Agent (SSM Agent) - 설치, 구성, 트러블슈팅 가이드 한 장 요약 인포그래픽*
+
 # AWS Systems Manager Agent (SSM Agent) - 설치, 구성, 트러블슈팅 가이드
 
 ## 개요

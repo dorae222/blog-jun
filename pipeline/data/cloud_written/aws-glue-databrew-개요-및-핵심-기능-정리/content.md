@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue DataBrew 개요 및 핵심 기능 정리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue DataBrew 개요 및 핵심 기능 정리 한 장 요약 인포그래픽*
+
 # AWS Glue DataBrew 개요 및 핵심 기능 정리
 
 ## 개요

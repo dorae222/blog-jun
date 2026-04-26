@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![InternVL 핵심 요약](figures/infographic.svg)
+
+*Figure: InternVL 한 장 요약 인포그래픽*
+
 # InternVL: 대규모 비전 인코더로 CLIP의 한계를 넘다
 
 ## 개요

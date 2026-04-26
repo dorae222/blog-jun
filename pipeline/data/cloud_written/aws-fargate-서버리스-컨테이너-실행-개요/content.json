@@ -1,0 +1,19 @@
+{
+  "slug": "aws-fargate-서버리스-컨테이너-실행-개요",
+  "title": "AWS Fargate",
+  "title_ko": "AWS Fargate 서버리스 컨테이너 실행 개요",
+  "category_slug": "aws-compute",
+  "summary": "AWS Fargate(서버리스 컨테이너 컴퓨트)의 ECS/EKS 통합, vCPU/메모리 옵션, awsvpc 네트워킹 모드, Spot 지원, 콜드 스타트 특성, 가격 모델, 적합/부적합 워크로드까지 운영 관점에서 상세히 정리합니다.",
+  "tags": [
+    "AWS",
+    "Fargate",
+    "서버리스",
+    "컨테이너",
+    "ECS",
+    "EKS",
+    "awsvpc",
+    "Spot",
+    "Graviton",
+    "마이크로서비스"
+  ]
+}

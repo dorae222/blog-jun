@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Code Advanced Usage 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Code Advanced Usage 한 장 요약 인포그래픽*
+
 # Claude Code 고급 활용: MCP 서버와 서브에이전트
 
 ## 들어가며

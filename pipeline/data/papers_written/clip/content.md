@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Learning Transferable Visual Models From Natural Language Supervision 핵심 요약](figures/infographic.svg)
+
+*Figure: Learning Transferable Visual Models From Natural Language Supervision 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Learning Transferable Visual Models From Natural Language Supervision" (Radford et al., 2021)는 OpenAI의 Alec Radford, Jong Wook Kim, Ilya Sutskever 등이 ICML 2021에서 발표한 논문으로, **CLIP(Contrastive Language-Image Pre-training)**을 소개합니다. 이 연구는 멀티모달 AI의 기초를 놓은 기념비적 논문으로, 컴퓨터 비전 연구의 패러다임을 근본적으로 전환시켰습니다.

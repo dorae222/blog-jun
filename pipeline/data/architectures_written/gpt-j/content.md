@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-J 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-J 한 장 요약 인포그래픽*
+
 # GPT-J: RoPE와 Parallel Transformer의 선구자
 
 ## 개요

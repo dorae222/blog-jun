@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Flan-T5 핵심 요약](figures/infographic.svg)
+
+*Figure: Flan-T5 한 장 요약 인포그래픽*
+
 # Flan-T5: 명령어 튜닝으로 소형 모델이 거대 모델을 넘다
 
 ## 개요

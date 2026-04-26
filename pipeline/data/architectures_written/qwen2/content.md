@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen2 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen2 한 장 요약 인포그래픽*
+
 # Qwen2: 중국 오픈소스 LLM의 최전선에 선 다국어 모델
 
 ## 개요

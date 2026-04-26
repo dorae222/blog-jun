@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AI Agent Technology Map: From ReAct to Multi-Agent 핵심 요약](figures/infographic.svg)
+
+*Figure: AI Agent Technology Map: From ReAct to Multi-Agent 한 장 요약 인포그래픽*
+
 # AI Agent 기술 지도: ReAct에서 멀티에이전트까지
 
 ## 개요
@@ -177,9 +182,9 @@ LLM의 추론 능력을 강화하는 프롬프팅 기법과 행동 프레임워�
 
 ### 5. 통신 (협력)
 
-- **도구 연결**: [MCP](/post/mcp) ( 표준화된 도구 접근
-- **에이전트 간**: [A2A](/post/a2a) ) 에이전트 협력
-- **사용자 소통**: [AG-UI](/post/ag-ui) ( 인터페이스
+- **도구 연결**: [MCP](/post/mcp) - 표준화된 도구 접근
+- **에이전트 간**: [A2A](/post/a2a) - 에이전트 협력
+- **사용자 소통**: [AG-UI](/post/ag-ui) - 인터페이스
 
 ---
 
@@ -236,31 +241,31 @@ PM → Architect → Engineer → QA → Deploy
 
 추론 프레임워크와 기본 에이전트를 이해합니다.
 
-1. [CoT (Chain-of-Thought)](/post/cot) ) 단계별 추론의 기본
-2. [ReAct](/post/react) ( Reasoning + Acting 프레임워크
-3. [Toolformer](/post/toolformer) ) 도구 활용의 원리
-4. [Claude Code](/post/claude-code) ( 프로덕션 에이전트 체험
-5. [MCP](/post/mcp) ) 도구 연결 프로토콜 이해
+1. [CoT (Chain-of-Thought)](/post/cot) - 단계별 추론의 기본
+2. [ReAct](/post/react) - Reasoning + Acting 프레임워크
+3. [Toolformer](/post/toolformer) - 도구 활용의 원리
+4. [Claude Code](/post/claude-code) - 프로덕션 에이전트 체험
+5. [MCP](/post/mcp) - 도구 연결 프로토콜 이해
 
 ### 중급 (에이전트 구축)
 
 실제 에이전트를 구축하고 멀티에이전트를 이해합니다.
 
-1. [Reflexion](/post/reflexion) ( 자기 개선 에이전트
-2. [Tree of Thoughts](/post/tree-of-thoughts) ) 고급 추론 전략
-3. [SWE-Agent](/post/swe-agent) + [OpenHands](/post/openhands) ( 코딩 에이전트
-4. [AutoGen](/post/autogen) + [CrewAI](/post/crewai) ) 멀티에이전트 프레임워크
-5. [LangGraph](/post/langraph) ( 에이전트 워크플로우 설계
-6. [A2A](/post/a2a) + [AG-UI](/post/ag-ui) ) 에이전트 통신
+1. [Reflexion](/post/reflexion) - 자기 개선 에이전트
+2. [Tree of Thoughts](/post/tree-of-thoughts) - 고급 추론 전략
+3. [SWE-Agent](/post/swe-agent) + [OpenHands](/post/openhands) - 코딩 에이전트
+4. [AutoGen](/post/autogen) + [CrewAI](/post/crewai) - 멀티에이전트 프레임워크
+5. [LangGraph](/post/langraph) - 에이전트 워크플로우 설계
+6. [A2A](/post/a2a) + [AG-UI](/post/ag-ui) - 에이전트 통신
 
 ### 고급 (에이전트 시스템 설계)
 
 프로덕션 에이전트 시스템을 설계하고 운영합니다.
 
-1. [MetaGPT](/post/metagpt) ( 조직형 멀티에이전트 설계
-2. [Computer Use](/post/computer-use) + [Operator](/post/operator) ) GUI 에이전트
-3. [Towards a Science of Scaling Agent Systems](/post/towards-a-science-of-scaling-agent-systems) ( 스케일링 연구
-4. [DeepSeek-R1](/post/deepseek-r1) ) RL 기반 추론 학습
+1. [MetaGPT](/post/metagpt) - 조직형 멀티에이전트 설계
+2. [Computer Use](/post/computer-use) + [Operator](/post/operator) - GUI 에이전트
+3. [Towards a Science of Scaling Agent Systems](/post/towards-a-science-of-scaling-agent-systems) - 스케일링 연구
+4. [DeepSeek-R1](/post/deepseek-r1) - RL 기반 추론 학습
 5. 프로덕션 에이전트 안전성, 모니터링, 비용 최적화
 
 ---
@@ -280,6 +285,6 @@ PM → Architect → Engineer → QA → Deploy
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) ( 전체 AI/ML 지형도
-- [LLM 핵심 논문 가이드](/post/llm-paper-guide) ) Agent의 두뇌가 되는 LLM
+- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) - 전체 AI/ML 지형도
+- [LLM 핵심 논문 가이드](/post/llm-paper-guide) - Agent의 두뇌가 되는 LLM
 - [AI 핵심 기법 총정리](/post/ai-core-techniques-guide), RAG, CoT 등 Agent가 활용하는 기법

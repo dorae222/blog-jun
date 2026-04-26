@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Computer Use 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Computer Use 한 장 요약 인포그래픽*
+
 # Claude Computer Use: AI의 GUI 직접 제어
 
 **Anthropic** · **2024-10-22** · **GUI Automation** · **상용 API**

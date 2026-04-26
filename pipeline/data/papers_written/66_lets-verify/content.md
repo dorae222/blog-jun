@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Let's Verify Step by Step 핵심 요약](figures/infographic.svg)
+
+*Figure: Let's Verify Step by Step 한 장 요약 인포그래픽*
+
 # Let's Verify Step by Step: 단계별로 검증하자
 
 ## 논문 개요

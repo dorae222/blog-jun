@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon QuickSight SPICE 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon QuickSight SPICE 개요 한 장 요약 인포그래픽*
+
 # Amazon QuickSight SPICE 개요
 
 ## 개요

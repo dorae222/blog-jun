@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Trigger - ETL 작업 자동화를 위한 트리거 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Trigger - ETL 작업 자동화를 위한 트리거 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Glue는 서버리스 데이터 통합 서비스로, ETL(Extract, Transform, Load) 작업을 손쉽게 구성하고 실행할 수 있습니다. 이 중에서 **Glue Trigger**는 ETL 작업의 실행 시점을 제어하는 핵심 구성 요소입니다. 트리거를 올바르게 설정하면 수동 개입 없이도 데이터 파이프라인을 완전히 자동화할 수 있습니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MAE 핵심 요약](figures/infographic.svg)
+
+*Figure: MAE 한 장 요약 인포그래픽*
+
 # MAE: 마스킹 오토인코더로 배우는 비전 표현
 
 **Meta/FAIR** · **2021-11-01** · **Vision** · **CC-BY-NC-4.0**

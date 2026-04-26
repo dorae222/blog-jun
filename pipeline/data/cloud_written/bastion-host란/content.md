@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Bastion Host 완벽 가이드: AWS 환경에서의 안전한 원격 접속 전략 핵심 요약](figures/infographic.svg)
+
+*Figure: Bastion Host 완벽 가이드: AWS 환경에서의 안전한 원격 접속 전략 한 장 요약 인포그래픽*
+
 ## 개요
 
 Bastion Host(배스천 호스트, 점프 박스라고도 합니다)는 퍼블릭 네트워크에서 프라이빗 네트워크에 있는 리소스에 안전하게 접근하기 위한 중간 서버입니다. 네트워크 보안에서 "관문(Gateway)" 역할을 수행하며, 모든 원격 접속 트래픽이 이 서버를 경유하도록 강제합니다.

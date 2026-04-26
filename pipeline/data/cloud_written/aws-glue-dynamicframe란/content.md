@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue DynamicFrame란? 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue DynamicFrame란? 한 장 요약 인포그래픽*
+
 # AWS Glue DynamicFrame란?
 
 ## 개요

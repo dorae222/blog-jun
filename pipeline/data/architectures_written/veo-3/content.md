@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Veo 3 핵심 요약](figures/infographic.svg)
+
+*Figure: Veo 3 한 장 요약 인포그래픽*
+
 # Veo 3: 네이티브 오디오-비디오 공동 생성 모델
 
 **Google DeepMind** · **2025-05-20** · **Diffusion** · **Proprietary**

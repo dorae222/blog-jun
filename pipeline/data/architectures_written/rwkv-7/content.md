@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![RWKV-7 (Goose) 핵심 요약](figures/infographic.svg)
+
+*Figure: RWKV-7 (Goose) 한 장 요약 인포그래픽*
+
 # RWKV-7 (Goose): Delta Rule로 재설계된 RWKV의 최신 진화
 
 **RWKV Foundation** · **2025-03-21** · **SSM** · **Apache-2.0**

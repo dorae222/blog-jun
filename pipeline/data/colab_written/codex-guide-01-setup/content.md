@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Getting Started with Codex CLI 핵심 요약](figures/infographic.svg)
+
+*Figure: Getting Started with Codex CLI 한 장 요약 인포그래픽*
+
 # Codex CLI 시작하기: 설치와 기본 사용법
 
 :::info

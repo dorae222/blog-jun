@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS & Cloud Infrastructure Learning Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS & Cloud Infrastructure Learning Guide 한 장 요약 인포그래픽*
+
 # AWS & Cloud 인프라 학습 가이드
 
 ## 개요
@@ -360,5 +365,5 @@ AWS에서 AI/ML 파이프라인을 구축합니다. MLS 자격증 수준.
 
 ## 관련 카테고리
 
-- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) ( AI/ML 기술 전체 지형도
-- [머신러닝 기초부터 실전까지](/post/ml-fundamentals-roadmap) ) ML 이론과 실습
+- [AI/ML 아키텍처 로드맵](/post/ai-ml-architecture-roadmap) - AI/ML 기술 전체 지형도
+- [머신러닝 기초부터 실전까지](/post/ml-fundamentals-roadmap) - ML 이론과 실습

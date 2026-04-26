@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Grok 3 핵심 요약](figures/infographic.svg)
+
+*Figure: Grok 3 한 장 요약 인포그래픽*
+
 # Grok 3: 초대규모 컴퓨트로 추론의 한계를 밀어붙인 모델
 
 ## 개요

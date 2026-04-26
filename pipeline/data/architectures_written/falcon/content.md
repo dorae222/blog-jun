@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Falcon 핵심 요약](figures/infographic.svg)
+
+*Figure: Falcon 한 장 요약 인포그래픽*
+
 # Falcon: 데이터 품질이 모든 것을 결정한다
 
 ## 개요

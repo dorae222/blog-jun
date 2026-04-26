@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![RoFormer: Enhanced Transformer with Rotary Position Embedding 핵심 요약](figures/infographic.svg)
+
+*Figure: RoFormer: Enhanced Transformer with Rotary Position Embedding 한 장 요약 인포그래픽*
+
 ## 개요
 
 "RoFormer: Enhanced Transformer with Rotary Position Embedding"은 Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, Yunfeng Liu가 2021년 발표한 논문으로, **RoPE(Rotary Position Embedding)**라는 새로운 위치 임베딩 기법을 제안한다. 이후 Neurocomputing 저널(2024)에도 정식 게재되었다.

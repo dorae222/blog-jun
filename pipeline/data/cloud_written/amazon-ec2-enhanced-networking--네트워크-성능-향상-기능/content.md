@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon EC2 Enhanced Networking - 네트워크 성능 향상 기능 완벽 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon EC2 Enhanced Networking - 네트워크 성능 향상 기능 완벽 가이드 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon EC2 Enhanced Networking은 단일 루트 I/O 가상화(SR-IOV) 기술을 활용하여 EC2 인스턴스의 네트워크 성능을 획기적으로 향상시키는 기능입니다. 일반적인 가상화 환경에서 네트워크 트래픽은 하이퍼바이저를 거쳐야 하므로 지연(Latency)이 발생하고 CPU 오버헤드가 증가합니다. Enhanced Networking은 이 하이퍼바이저 병목을 제거하여 더 높은 대역폭, 더 낮은 지연, 더 적은 지터(Jitter)를 제공합니다.

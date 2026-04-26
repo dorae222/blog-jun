@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ReAct: Synergizing Reasoning and Acting in Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: ReAct: Synergizing Reasoning and Acting in Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "ReAct: Synergizing Reasoning and Acting in Language Models" (Yao et al., 2023)는 Princeton 대학교의 Shunyu Yao와 Google Research의 공동 연구로 ICLR 2023에서 발표된 논문입니다. 이 연구는 현대 LLM 에이전트의 가장 핵심적인 패러다임인 **ReAct(Reasoning + Acting)**를 제안합니다.

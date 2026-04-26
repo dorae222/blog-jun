@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![UL2 핵심 요약](figures/infographic.svg)
+
+*Figure: UL2 한 장 요약 인포그래픽*
+
 # UL2: 노이즈 제거 혼합으로 언어 학습 패러다임을 통합하다
 
 ## 개요

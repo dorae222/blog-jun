@@ -1,0 +1,19 @@
+{
+  "slug": "amazon-ebs-elastic-block-store-개요",
+  "title": "Amazon EBS",
+  "title_ko": "Amazon EBS(Elastic Block Store) 개요",
+  "category_slug": "aws-storage",
+  "summary": "Amazon EBS의 볼륨 타입(gp3/io2 Block Express/st1/sc1), 스냅샷, KMS 암호화, Multi-Attach, Fast Snapshot Restore, Lifecycle Manager까지 EC2 영구 블록 스토리지의 모든 기능을 실전 관점에서 정리합니다.",
+  "tags": [
+    "AWS",
+    "EBS",
+    "블록 스토리지",
+    "gp3",
+    "io2",
+    "Block Express",
+    "스냅샷",
+    "KMS",
+    "Multi-Attach",
+    "EC2"
+  ]
+}

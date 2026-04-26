@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ControlNet 핵심 요약](figures/infographic.svg)
+
+*Figure: ControlNet 한 장 요약 인포그래픽*
+
 # ControlNet: 공간 조건 제어 확산 모델
 
 ## 개요

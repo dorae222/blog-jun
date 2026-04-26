@@ -1,0 +1,17 @@
+{
+  "slug": "deepseek-v4",
+  "title": "DeepSeek V4",
+  "title_ko": "DeepSeek V4 Pro/Flash: 1.6T MoE와 BenchLM 1위의 오픈 가중치 정점",
+  "summary": "DeepSeek V4는 2026년 DeepSeek AI가 공개한 4세대 General Language Model이다. Pro 변형은 1.6T 총 파라미터에 49B 활성, Flash 변형은 284B 총 파라미터에 13B 활성으로 구성된 MoE 모델이다. 두 모델 모두 가중치를 공개하였으며, BenchLM 87점으로 오픈 가중치 진영 1위를 기록하였다. MLA, MTP, FP8 혼합 정밀도 학습이 핵심 기법이다.",
+  "tags": [
+    "DeepSeek",
+    "DeepSeek V4",
+    "MoE",
+    "Open Weights",
+    "MLA",
+    "FP8 Training",
+    "Multi-Token Prediction",
+    "Reasoning",
+    "BenchLM"
+  ]
+}

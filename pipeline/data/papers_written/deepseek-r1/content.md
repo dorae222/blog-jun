@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning 한 장 요약 인포그래픽*
+
 ## 개요
 
 :::info

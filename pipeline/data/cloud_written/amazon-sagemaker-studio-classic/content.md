@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Studio Classic - 레거시 ML 통합 개발 환경 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Studio Classic - 레거시 ML 통합 개발 환경 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Studio Classic - 레거시 ML 통합 개발 환경
 
 ## 개요

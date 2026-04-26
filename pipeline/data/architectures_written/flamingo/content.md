@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Flamingo 핵심 요약](figures/infographic.svg)
+
+*Figure: Flamingo 한 장 요약 인포그래픽*
+
 # Flamingo: 소수샷 시각-언어 모델의 선구자
 
 ## 개요

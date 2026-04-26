@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![LLaVA 핵심 요약](figures/infographic.svg)
+
+*Figure: LLaVA 한 장 요약 인포그래픽*
+
 # LLaVA: 시각적 인스트럭션 튜닝의 시작
 
 ## 개요

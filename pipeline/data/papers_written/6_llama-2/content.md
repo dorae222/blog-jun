@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Llama 2: Open Foundation and Fine-Tuned Chat Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Llama 2: Open Foundation and Fine-Tuned Chat Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 Llama 2는 Meta AI가 2023년 7월 발표한 오픈 기반 언어 모델 시리즈다. Llama 1의 후속작으로, 7B, 13B, 34B, 70B 네 가지 크기가 있으며, 각각 사전학습 버전(Llama 2)과 채팅에 최적화된 파인튜닝 버전(Llama 2-Chat)이 공개되었다. 가장 중요한 변화는 **상업적 이용을 허용하는 라이선스**로 배포되어 기업과 연구자 모두가 자유롭게 활용할 수 있게 되었다는 점이다.

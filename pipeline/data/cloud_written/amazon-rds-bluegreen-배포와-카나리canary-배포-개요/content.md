@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon RDS Blue/Green 배포 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon RDS Blue/Green 배포 한 장 요약 인포그래픽*
+
 ## 개요
 
 데이터베이스 변경은 애플리케이션 배포에서 가장 위험한 작업 중 하나입니다. 스키마 변경, 엔진 버전 업그레이드, 파라미터 변경 등이 예기치 않은 문제를 일으킬 경우, 롤백이 어렵고 서비스 중단이 길어질 수 있습니다.

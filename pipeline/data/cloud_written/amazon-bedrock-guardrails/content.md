@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Bedrock Guardrails 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Bedrock Guardrails 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Bedrock Guardrails는 생성형 AI 애플리케이션의 입력과 출력에 안전장치(Safeguard)를 적용할 수 있는 완전 관리형 서비스입니다. 파운데이션 모델(FM)이 부적절하거나 유해한 콘텐츠를 생성하는 것을 방지하고, 기업의 정책과 규정을 준수하도록 보장합니다.

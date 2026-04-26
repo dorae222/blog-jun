@@ -1,0 +1,10 @@
+{
+  "slug": "adk-04-evaluation-tracing",
+  "title": "ADK Evaluation, Tracing, and Debugging",
+  "title_ko": "ADK 평가 / 트레이싱 / 디버깅",
+  "summary": "에이전트는 비결정적이라 단위 테스트만으로는 회귀를 잡을 수 없습니다. 본 4편에서는 ADK의 자동 트레이싱(모든 LLM/tool/sub-agent 호출을 OpenTelemetry로 기록), EvalSet과 AgentEvaluator를 활용한 회귀 평가, LLM-as-judge 통합, before_model/after_tool callback 기반 디버깅, session.state 시점별 검증, 그리고 Cloud Run/GKE/Vertex AI Agent Engine으로의 프로덕션 배포까지 정리합니다. 시리즈 종합 정리와 A2A 통합 다음 단계 안내 포함.",
+  "category_slug": "agent",
+  "tags": ["ADK", "Evaluation", "Tracing", "Debugging", "OpenTelemetry", "Vertex AI", "Production"],
+  "series": "adk-local-development",
+  "series_order": 4
+}

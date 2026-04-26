@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Veo 2 핵심 요약](figures/infographic.svg)
+
+*Figure: Veo 2 한 장 요약 인포그래픽*
+
 # Veo 2: 시네마틱 4K 비디오 생성 모델
 
 **Google DeepMind** · **2024-05-14** · **Diffusion** · **Proprietary**

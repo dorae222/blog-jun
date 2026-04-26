@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker 도메인 -- "도메인을 운영한다"는 의미 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker 도메인 -- "도메인을 운영한다"는 의미 한 장 요약 인포그래픽*
+
 # Amazon SageMaker 도메인 -- "도메인을 운영한다"는 의미
 
 ## 개요

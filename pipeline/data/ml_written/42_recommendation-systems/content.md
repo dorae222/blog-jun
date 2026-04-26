@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Recommendation Systems 핵심 요약](figures/infographic.svg)
+
+*Figure: Recommendation Systems 한 장 요약 인포그래픽*
+
 ## 개요
 
 추천 시스템(Recommendation System)은 사용자가 관심을 가질 만한 아이템을 자동으로 제안하는 정보 필터링 기술입니다. 넷플릭스의 영화 추천, 아마존의 상품 추천, 유튜브의 동영상 추천은 모두 이 기술을 기반으로 하며, 각 플랫폼 매출의 상당 부분을 책임집니다. 실제로 넷플릭스 시청의 약 80%가 추천 알고리즘에서 발생하며, 아마존 매출의 35%가 추천 시스템에서 비롯된다고 알려져 있습니다.

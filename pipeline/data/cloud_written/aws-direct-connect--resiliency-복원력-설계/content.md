@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Direct Connect Resiliency(복원력) 설계 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Direct Connect Resiliency(복원력) 설계 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Direct Connect는 온프레미스 데이터센터와 AWS 클라우드 간에 전용 네트워크 연결을 제공하는 서비스입니다. 인터넷을 경유하지 않고 AWS와 직접 연결하기 때문에 일관된 네트워크 성능, 낮은 지연 시간, 높은 대역폭을 확보할 수 있습니다.

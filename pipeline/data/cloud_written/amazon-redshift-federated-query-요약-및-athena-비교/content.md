@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Redshift Federated Query 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Redshift Federated Query 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Redshift Federated Query는 Redshift 클러스터에서 외부 데이터베이스(RDS, Aurora 등)의 데이터를 직접 쿼리할 수 있는 기능입니다. 데이터를 Redshift로 ETL(추출-변환-적재)하지 않고도, 라이브 운영 데이터베이스의 최신 데이터를 실시간으로 분석 쿼리에 포함시킬 수 있습니다.

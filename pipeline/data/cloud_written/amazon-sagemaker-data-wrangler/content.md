@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Data Wrangler 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Data Wrangler 한 장 요약 인포그래픽*
+
 ## 개요
 
 머신러닝 프로젝트에서 데이터 전처리는 전체 작업 시간의 60~80%를 차지한다고 알려져 있습니다. 데이터 과학자들은 데이터 수집, 정제, 변환, 피처 엔지니어링에 막대한 시간을 투자하며, 이 과정은 반복적이고 오류가 발생하기 쉽습니다.

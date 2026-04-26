@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Towards a Science of Scaling Agent Systems 핵심 요약](figures/infographic.svg)
+
+*Figure: Towards a Science of Scaling Agent Systems 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Towards a Science of Scaling Agent Systems" (Yubin Kim et al., 2025)는 LLM 기반 멀티 에이전트 시스템(Multi-Agent System, MAS)의 **스케일링 법칙**을 체계적으로 탐구한 연구이다. 단일 에이전트 시스템(Single Agent System, SAS)과 다양한 MAS 아키텍처(Centralized, Decentralized, Independent, Hybrid)를 3개 LLM 제품군(OpenAI, Google, Anthropic)과 4개 에이전트 벤치마크에 걸쳐 비교 실험하여, **에이전트 수를 늘리는 것이 항상 성능을 향상시키지는 않으며, 태스크 구조와 모델 역량에 따라 스케일링 패턴이 극적으로 달라진다**는 핵심 발견을 보고한다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Augmented AI (Amazon A2I) 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Augmented AI (Amazon A2I) 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Augmented AI(Amazon A2I)는 기계 학습(ML) 예측에 대한 휴먼 리뷰(Human Review) 워크플로를 손쉽게 구축할 수 있도록 지원하는 완전 관리형 서비스입니다. 현실 세계에서 ML 모델은 100% 정확한 예측을 보장하지 못합니다. 특히 의료 영상 분석, 금융 문서 처리, 콘텐츠 모더레이션 등 높은 정확도가 요구되는 영역에서는 모델의 예측 결과를 사람이 검토하고 보정하는 과정이 필수적입니다.

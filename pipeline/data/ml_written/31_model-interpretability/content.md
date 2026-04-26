@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Model Interpretability: SHAP and LIME 핵심 요약](figures/infographic.svg)
+
+*Figure: Model Interpretability: SHAP and LIME 한 장 요약 인포그래픽*
+
 ## 1. 개요: 왜 해석 가능성이 중요한가
 
 머신러닝 모델의 성능이 비약적으로 향상되면서, 의료·금융·법률 등 고위험 도메인에서의 활용이 급증하고 있다. 그러나 XGBoost, LightGBM, 딥러닝 같은 고성능 모델은 내부 구조가 복잡해 '왜 이런 예측을 내렸는가'를 직관적으로 설명하기 어렵다. 이를 **블랙박스(black-box)** 문제라 부른다.

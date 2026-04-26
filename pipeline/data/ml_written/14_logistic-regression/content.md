@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Logistic Regression 핵심 요약](figures/infographic.svg)
+
+*Figure: Logistic Regression 한 장 요약 인포그래픽*
+
 # 로지스틱 회귀: 분류를 위한 확률 모델
 
 ## 1. 개요: 왜 선형 회귀를 분류에 쓸 수 없는가

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![H3 핵심 요약](figures/infographic.svg)
+
+*Figure: H3 한 장 요약 인포그래픽*
+
 # H3: SSM을 언어 모델링에 도입한 이중 상태 공간 아키텍처
 
 **Stanford / Hazy Research** · **2022-12-29** · **Hybrid SSM** · **Apache-2.0**

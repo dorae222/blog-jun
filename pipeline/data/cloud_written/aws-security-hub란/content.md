@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Security Hub 완벽 가이드: 클라우드 보안 상태 중앙 관리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Security Hub 완벽 가이드: 클라우드 보안 상태 중앙 관리 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Security Hub는 AWS 환경의 보안 상태를 중앙에서 종합적으로 관리할 수 있는 클라우드 보안 태세 관리(CSPM, Cloud Security Posture Management) 서비스입니다.

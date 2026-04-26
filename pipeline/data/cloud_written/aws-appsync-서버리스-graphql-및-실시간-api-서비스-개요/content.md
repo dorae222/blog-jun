@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS AppSync: 서버리스 GraphQL 및 실시간 API 서비스 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS AppSync: 서버리스 GraphQL 및 실시간 API 서비스 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS AppSync는 GraphQL API를 완전관리형으로 생성, 배포, 운영할 수 있는 서비스입니다. GraphQL은 Facebook이 2015년에 오픈소스로 공개한 API 쿼리 언어로, REST API의 여러 한계를 해결하기 위해 설계되었습니다.

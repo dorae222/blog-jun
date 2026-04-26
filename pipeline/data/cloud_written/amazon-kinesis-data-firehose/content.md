@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Kinesis Data Firehose 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Kinesis Data Firehose 한 장 요약 인포그래픽*
+
 # Amazon Kinesis Data Firehose
 
 ## 개요

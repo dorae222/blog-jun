@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker Ground Truth 소개 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker Ground Truth 소개 한 장 요약 인포그래픽*
+
 # Amazon SageMaker Ground Truth 소개
 
 ## 개요

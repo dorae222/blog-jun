@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon SageMaker 엔드포인트(Endpoint) 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon SageMaker 엔드포인트(Endpoint) 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 ML 모델을 학습하는 것은 전체 ML 라이프사이클의 절반에 불과합니다. 학습된 모델이 실제 비즈니스 가치를 창출하려면, 애플리케이션에서 모델을 호출하여 예측 결과를 받을 수 있는 추론 인프라가 필요합니다. 이 추론 인프라를 구축하고 관리하는 것은 모델 학습만큼이나 복잡한 엔지니어링 과제입니다.

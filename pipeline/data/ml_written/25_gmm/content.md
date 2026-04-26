@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gaussian Mixture Models (GMM) 핵심 요약](figures/infographic.svg)
+
+*Figure: Gaussian Mixture Models (GMM) 한 장 요약 인포그래픽*
+
 ## 개요
 
 **가우시안 혼합 모델(Gaussian Mixture Model, GMM)**은 데이터가 $K$개의 가우시안 분포가 혼합된 형태로 생성된다고 가정하는 생성 모델이자 확률적 군집화 알고리즘입니다.

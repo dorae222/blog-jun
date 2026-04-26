@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Transformer 핵심 요약](figures/infographic.svg)
+
+*Figure: Transformer 한 장 요약 인포그래픽*
+
 # Transformer: Attention Is All You Need
 
 ## 개요

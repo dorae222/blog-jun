@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Ensemble Methods Overview 핵심 요약](figures/infographic.svg)
+
+*Figure: Ensemble Methods Overview 한 장 요약 인포그래픽*
+
 ## 왜 여러 모델을 결합하는가
 
 단일 모델은 항상 한계가 있다. 결정 나무는 불안정하고 과적합하기 쉬우며, 선형 모델은 비선형 패턴을 놓친다. **앙상블(Ensemble)**은 이 한계를 서로 다른 특성을 가진 여러 모델을 결합해 극복한다.

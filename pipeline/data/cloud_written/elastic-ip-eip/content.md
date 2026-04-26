@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Elastic IP (EIP) 핵심 요약](figures/infographic.svg)
+
+*Figure: Elastic IP (EIP) 한 장 요약 인포그래픽*
+
 ## 개요
 
 Elastic IP(EIP)는 AWS에서 제공하는 고정 퍼블릭 IPv4 주소입니다. EC2 인스턴스에 기본으로 할당되는 퍼블릭 IP 주소는 인스턴스를 중지했다가 다시 시작하면 변경됩니다. 반면 EIP는 사용자가 명시적으로 해제하기 전까지 동일한 IP 주소를 유지하므로, 고정 IP가 필요한 워크로드에 필수적입니다.

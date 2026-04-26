@@ -1,0 +1,10 @@
+{
+  "slug": "rag-05-late-chunking-adaptive-routing",
+  "title": "Late Chunking and Adaptive RAG Routing",
+  "title_ko": "Late Chunking과 Adaptive RAG Routing",
+  "summary": "Jina AI(2024)의 Late Chunking은 전통 청킹의 컨텍스트 손실 문제를 long-context 임베딩 모델로 해결합니다. Adaptive-RAG(2024)는 쿼리 복잡도를 분류해 vector / graph / agentic 파이프라인을 동적으로 선택합니다. 시리즈를 종합하며 2026년 RAG 디자인 가이드와 Context Engine으로의 진화 방향을 제시합니다.",
+  "category_slug": "rag",
+  "tags": ["RAG", "Late-Chunking", "Adaptive-RAG", "Routing", "Jina", "Context-Engine"],
+  "series": "rag-evolution",
+  "series_order": 5
+}

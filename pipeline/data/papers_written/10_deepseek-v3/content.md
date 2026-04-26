@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DeepSeek-V3 Technical Report 핵심 요약](figures/infographic.svg)
+
+*Figure: DeepSeek-V3 Technical Report 한 장 요약 인포그래픽*
+
 ## 개요
 
 DeepSeek-V3는 2024년 12월 DeepSeek AI가 공개한 671B 파라미터 MoE 언어 모델로, 토큰당 37B 파라미터만 활성화하는 효율적인 구조를 갖는다. 전작 DeepSeek-V2의 MLA(Multi-head Latent Attention)와 DeepSeekMoE 아키텍처를 계승하면서, 세 가지 핵심 혁신을 도입했다: (1) 보조 손실 없는 부하 균형 전략(Auxiliary-Loss-Free Load Balancing), (2) Multi-Token Prediction(MTP) 훈련 목표, (3) FP8 혼합 정밀도 훈련 프레임워크. 이를 통해 단 2.788M H800 GPU-시간(약 557만 달러)으로 14.8T 토큰 훈련을 완료하여, 유사 규모 Dense 모델 대비 압도적인 비용 효율성을 달성했다.

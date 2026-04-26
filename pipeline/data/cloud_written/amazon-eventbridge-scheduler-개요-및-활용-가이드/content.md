@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon EventBridge Scheduler 활용 가이드: 고급 패턴과 실전 아키텍처 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon EventBridge Scheduler 활용 가이드: 고급 패턴과 실전 아키텍처 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon EventBridge Scheduler는 서버리스 작업 스케줄링을 위한 완전관리형 서비스입니다. 이 글에서는 기본적인 스케줄 생성을 넘어, 프로덕션 환경에서 EventBridge Scheduler를 효과적으로 활용하기 위한 고급 패턴과 아키텍처를 다룹니다.

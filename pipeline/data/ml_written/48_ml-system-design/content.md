@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![ML System Design Patterns 핵심 요약](figures/infographic.svg)
+
+*Figure: ML System Design Patterns 한 장 요약 인포그래픽*
+
 ## 개요
 
 많은 ML 프로젝트가 실험실에서는 훌륭한 성능을 보이지만, 프로덕션 환경에 배포되면 예상치 못한 문제에 직면합니다. 학술 논문에서는 정적인 데이터셋 위에서 모델 정확도만 측정하면 되지만, 실제 서비스에서는 **지속적으로 변화하는 데이터**, **지연 시간(Latency) 요구사항**, **시스템 장애 복구**, **모델 성능 저하 감지** 등 수많은 엔지니어링 과제가 존재합니다.

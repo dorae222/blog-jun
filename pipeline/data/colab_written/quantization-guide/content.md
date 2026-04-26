@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Model Quantization: Dynamic, Static, and QAT Step-by-Step Guide 핵심 요약](figures/infographic.svg)
+
+*Figure: Model Quantization: Dynamic, Static, and QAT Step-by-Step Guide 한 장 요약 인포그래픽*
+
 # 모델 양자화 완전 가이드: Dynamic, Static, QAT 단계별 실습
 
 ## 소개

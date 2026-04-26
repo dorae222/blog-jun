@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Chameleon 핵심 요약](figures/infographic.svg)
+
+*Figure: Chameleon 한 장 요약 인포그래픽*
+
 # Chameleon: 조기 융합 기반 통합 멀티모달 모델
 
 ## 개요

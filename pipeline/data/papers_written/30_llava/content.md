@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Visual Instruction Tuning 핵심 요약](figures/infographic.svg)
+
+*Figure: Visual Instruction Tuning 한 장 요약 인포그래픽*
+
 ## 개요
 
 GPT-4V가 뛰어난 멀티모달 이해 능력을 보여주지만, 그 학습 방법과 데이터는 공개되지 않았습니다. Liu et al.(2023)은 NeurIPS 2023에서 발표한 **LLaVA(Large Language and Vision Assistant)**를 통해 오픈소스 구성 요소만으로도 강력한 멀티모달 언어 모델을 구축할 수 있음을 보여줍니다. LLaVA는 GPT-4V 대비 85.1%의 상대 점수를 기록하며, Science QA에서는 GPT-4와의 앙상블로 92.53%라는 최고 성능을 달성했습니다.

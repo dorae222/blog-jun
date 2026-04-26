@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Aurora 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Aurora 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Aurora는 AWS가 클라우드 환경에 최적화하여 설계한 완전관리형 관계형 데이터베이스 서비스입니다. MySQL 및 PostgreSQL과 호환되면서도, 상용 데이터베이스 수준의 성능과 가용성을 오픈소스 데이터베이스의 비용 효율성으로 제공합니다.

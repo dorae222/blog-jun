@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Claude Opus 4.5 핵심 요약](figures/infographic.svg)
+
+*Figure: Claude Opus 4.5 한 장 요약 인포그래픽*
+
 # Claude Opus 4.5: SWE-bench 80.9%를 달성한 Anthropic의 최강 에이전트 모델
 
 ## 개요

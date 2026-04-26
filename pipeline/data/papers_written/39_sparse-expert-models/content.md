@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![A Review of Sparse Expert Models in Deep Learning 핵심 요약](figures/infographic.svg)
+
+*Figure: A Review of Sparse Expert Models in Deep Learning 한 장 요약 인포그래픽*
+
 ## 개요
 
 희소 전문가 모델(Sparse Expert Models)은 딥러닝에서 **조건부 계산(conditional computation)**을 실현하는 대표적인 아키텍처 패러다임이다. Mixture-of-Experts(MoE)로 불리는 이 접근법의 핵심은 모델 내에 다수의 전문가(expert) 서브네트워크를 두되, 각 입력에 대해 소수의 전문가만 선택적으로 활성화하는 것이다. 이를 통해 총 파라미터 수를 대폭 확장하면서도 입력당 실제 연산량(FLOPs)은 일정하게 유지할 수 있다.

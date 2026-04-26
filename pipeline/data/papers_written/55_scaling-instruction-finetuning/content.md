@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Scaling Instruction-Finetuned Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Scaling Instruction-Finetuned Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Scaling Instruction-Finetuned Language Models" (Chung et al., 2022)는 Google Research에서 발표한 논문으로, 대형 언어 모델(LLM)에 대한 **지시 파인튜닝(Instruction Finetuning, IFT)**의 효과를 세 가지 스케일링 차원에서 체계적으로 분석한 연구입니다. 이 논문의 핵심 결과물인 **FLAN-T5**와 **FLAN-PaLM** 모델 시리즈는 발표 당시 동일 규모 모델 중 최고 성능을 달성했으며, 특히 FLAN-T5는 오픈소스로 공개되어 이후 수많은 연구와 실무의 기반 모델로 활용되었습니다.

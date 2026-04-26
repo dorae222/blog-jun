@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AR-Diffusion: Auto-Regressive Diffusion Model for Text Generation 핵심 요약](figures/infographic.svg)
+
+*Figure: AR-Diffusion: Auto-Regressive Diffusion Model for Text Generation 한 장 요약 인포그래픽*
+
 ## 개요
 
 AR-Diffusion(Wu et al., NeurIPS 2023)은 자기회귀(AR) 언어 모델과 확산(Diffusion) 모델을 단일 프레임워크로 통합한 텍스트 생성 모델이다. 핵심 아이디어는 시퀀스 내 각 토큰 위치 $i$에 서로 다른 노이즈 타임스텝을 할당하는 **계단식(staircase) 노이즈 스케줄**을 도입하는 것이다. 앞쪽 토큰은 노이즈가 적어 빠르게 확정되고, 뒤쪽 토큰은 노이즈가 많아 나중에 결정되므로 명시적인 인과 마스킹 없이도 자기회귀적 생성 순서가 노이즈 구조 안에 자연스럽게 내재된다. 이를 통해 AR 모델의 순서 일관성과 Diffusion 모델의 양방향 문맥 활용 및 생성 다양성을 동시에 확보한다.

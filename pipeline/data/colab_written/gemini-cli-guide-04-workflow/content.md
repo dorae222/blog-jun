@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Gemini CLI Workflow Design 핵심 요약](figures/infographic.svg)
+
+*Figure: Gemini CLI Workflow Design 한 장 요약 인포그래픽*
+
 # Gemini CLI 실전: 프로젝트 적용 사례
 
 :::info

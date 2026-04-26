@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Bias-Variance Tradeoff 핵심 요약](figures/infographic.svg)
+
+*Figure: Bias-Variance Tradeoff 한 장 요약 인포그래픽*
+
 # 편향-분산 트레이드오프: 모델 복잡도와 일반화
 
 ## 1. 개요

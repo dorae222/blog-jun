@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Comprehend 개요 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Comprehend 개요 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Comprehend는 자연어 처리(Natural Language Processing, NLP)를 활용하여 텍스트에서 의미 있는 인사이트를 추출하는 완전 관리형 서비스입니다. ML 전문 지식 없이도 API 호출만으로 텍스트의 감정, 핵심 구문, 개체명(Entity), 언어, 주제 등을 분석할 수 있습니다.

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Classifier Guidance (ADM) 핵심 요약](figures/infographic.svg)
+
+*Figure: Classifier Guidance (ADM) 한 장 요약 인포그래픽*
+
 # Classifier Guidance (ADM): 분류기 가이던스 기반 확산 모델
 
 ## 개요

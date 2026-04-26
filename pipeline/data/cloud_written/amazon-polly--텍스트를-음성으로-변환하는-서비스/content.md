@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Amazon Polly -- 텍스트를 음성으로 변환하는 서비스 핵심 요약](figures/infographic.svg)
+
+*Figure: Amazon Polly -- 텍스트를 음성으로 변환하는 서비스 한 장 요약 인포그래픽*
+
 ## 개요
 
 Amazon Polly는 텍스트를 자연스러운 음성으로 변환하는 완전 관리형 Text-to-Speech(TTS) 서비스입니다. 딥러닝 기반의 음성 합성 기술을 사용하여 사람의 목소리와 유사한 고품질 오디오를 생성합니다. 60개 이상의 언어를 지원하며, 각 언어별로 다양한 음성(Voice)을 선택할 수 있습니다.

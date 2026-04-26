@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Fast Inference from Transformers via Speculative Decoding 핵심 요약](figures/infographic.svg)
+
+*Figure: Fast Inference from Transformers via Speculative Decoding 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 자기회귀(autoregressive) 생성은 토큰을 하나씩 순차적으로 생성하기 때문에 추론 속도가 느립니다. 모델 크기가 커질수록 단일 포워드 패스(forward pass)의 지연이 증가하며, 이는 실시간 대화형 서비스에서 심각한 병목이 됩니다. GPT-3 175B 규모의 모델이 토큰 하나를 생성하는 데 수십 밀리초가 소요되고, 수백 토큰의 응답을 생성하려면 수초에서 수십 초가 걸리는 상황에서, 추론 지연을 줄이는 것은 LLM 상용화의 핵심 과제입니다.

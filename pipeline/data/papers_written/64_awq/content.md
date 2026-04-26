@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration 핵심 요약](figures/infographic.svg)
+
+*Figure: AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration 한 장 요약 인포그래픽*
+
 # AWQ: LLM 압축 및 가속을 위한 활성화 인식 가중치 양자화
 
 ## 논문 개요

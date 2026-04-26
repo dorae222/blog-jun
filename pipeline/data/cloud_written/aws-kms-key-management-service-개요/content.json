@@ -1,0 +1,19 @@
+{
+  "slug": "aws-kms-key-management-service-개요",
+  "title": "AWS KMS",
+  "title_ko": "AWS KMS (Key Management Service) 개요",
+  "category_slug": "aws-security",
+  "summary": "AWS KMS의 키 종류(AWS Managed/Customer Managed/AWS Owned), Envelope Encryption, Key Policy, Multi-Region Keys, CloudHSM 비교까지 클라우드 암호화 키 관리의 모든 것을 다룹니다.",
+  "tags": [
+    "AWS",
+    "KMS",
+    "암호화",
+    "보안",
+    "Encryption",
+    "Envelope Encryption",
+    "HSM",
+    "CMK",
+    "Key Policy",
+    "Multi-Region"
+  ]
+}

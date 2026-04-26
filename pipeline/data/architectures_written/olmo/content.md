@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![OLMo 핵심 요약](figures/infographic.svg)
+
+*Figure: OLMo 한 장 요약 인포그래픽*
+
 # OLMo
 
 **Allen Institute for AI (AI2)** · **2024-02-01** · **Decoder-only** · **Dense** · **오픈소스**

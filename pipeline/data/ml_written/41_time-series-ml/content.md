@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Time Series Analysis Fundamentals 핵심 요약](figures/infographic.svg)
+
+*Figure: Time Series Analysis Fundamentals 한 장 요약 인포그래픽*
+
 ## 1. 개요: 시계열 데이터란 무엇인가
 
 시계열(Time Series)은 시간 순서에 따라 기록된 데이터의 수열이다. 주가, 기온, 트래픽 로그, 월별 매출처럼 "언제 측정했는가"가 데이터의 의미를 결정한다. 일반적인 ML에서는 샘플 간에 독립 동일 분포(i.i.d.)를 가정하지만, 시계열에서는 **현재 값이 과거 값에 의존**한다. 이 자기상관(autocorrelation) 구조를 무시하면 모델은 데이터의 핵심 패턴을 놓친다.

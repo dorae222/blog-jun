@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Devin 핵심 요약](figures/infographic.svg)
+
+*Figure: Devin 한 장 요약 인포그래픽*
+
 # Devin: 자율 AI 소프트웨어 엔지니어의 등장
 
 **Cognition** · **2024-03-12** · **AI Developer** · **상용**

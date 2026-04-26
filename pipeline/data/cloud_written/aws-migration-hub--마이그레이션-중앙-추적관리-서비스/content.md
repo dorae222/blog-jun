@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Migration Hub 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Migration Hub 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Migration Hub는 AWS로의 마이그레이션 프로젝트를 계획, 추적, 관리할 수 있는 중앙 집중식 서비스입니다. 마이그레이션은 복잡하고 장기적인 프로젝트이며, 수십에서 수천 대의 서버와 데이터베이스를 이동해야 하는 경우가 많습니다. Migration Hub는 이러한 대규모 마이그레이션의 전체 과정을 하나의 대시보드에서 관리할 수 있게 해줍니다.

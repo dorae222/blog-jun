@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FLUX.1 핵심 요약](figures/infographic.svg)
+
+*Figure: FLUX.1 한 장 요약 인포그래픽*
+
 # FLUX.1: 하이브리드 MMDiT 기반 텍스트-이미지 생성
 
 ## 개요

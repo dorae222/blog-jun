@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mamba-2 핵심 요약](figures/infographic.svg)
+
+*Figure: Mamba-2 한 장 요약 인포그래픽*
+
 # Mamba-2: SSM과 어텐션의 수학적 동치성을 증명한 SSD 프레임워크
 
 **Carnegie Mellon University / Princeton University** · **2024-05-31** · **SSM** · **Apache-2.0**

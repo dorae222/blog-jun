@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![MiniCPM-V 핵심 요약](figures/infographic.svg)
+
+*Figure: MiniCPM-V 한 장 요약 인포그래픽*
+
 # MiniCPM-V: 스마트폰에서 동작하는 GPT-4V급 멀티모달 모델
 
 ## 개요

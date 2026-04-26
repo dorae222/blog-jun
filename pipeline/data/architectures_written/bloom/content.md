@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![BLOOM 핵심 요약](figures/infographic.svg)
+
+*Figure: BLOOM 한 장 요약 인포그래픽*
+
 # BLOOM: 전 세계 연구자가 만든 오픈소스 다국어 LLM
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Qwen3-VL 핵심 요약](figures/infographic.svg)
+
+*Figure: Qwen3-VL 한 장 요약 인포그래픽*
+
 # Qwen3-VL: 강화된 추론 능력의 시각-언어 모델
 
 **Alibaba** · **2025-11-01** · **Multimodal** · **Apache-2.0**

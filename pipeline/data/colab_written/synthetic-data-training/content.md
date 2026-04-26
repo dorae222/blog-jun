@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Training with Synthetic Data: When It Works and When It Doesn't 핵심 요약](figures/infographic.svg)
+
+*Figure: Training with Synthetic Data: When It Works and When It Doesn't 한 장 요약 인포그래픽*
+
 # 합성 데이터로 학습하기: 효과적인 경우와 한계
 
 ## 들어가며

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness 핵심 요약](figures/infographic.svg)
+
+*Figure: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness 한 장 요약 인포그래픽*
+
 ## 개요
 
 트랜스포머의 셀프 어텐션은 시퀀스 길이 $N$에 대해 $O(N^2)$의 시간 및 공간 복잡도를 가집니다. 이는 긴 시퀀스 처리를 어렵게 만드는 근본적 제약이었습니다. FlashAttention은 이 문제를 알고리즘의 계산 복잡도를 바꾸지 않고, **GPU 메모리 계층 구조를 활용**하여 실질적인 속도와 메모리 효율을 크게 향상시킵니다.

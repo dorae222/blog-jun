@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![EDM (Elucidating Diffusion Models) 핵심 요약](figures/infographic.svg)
+
+*Figure: EDM (Elucidating Diffusion Models) 한 장 요약 인포그래픽*
+
 # EDM (Elucidating Diffusion Models): 확산 모델 설계 공간 분석
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Well-Architected Framework 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Well-Architected Framework 한 장 요약 인포그래픽*
+
 # AWS Well-Architected Framework 심층 분석
 
 ## 개요

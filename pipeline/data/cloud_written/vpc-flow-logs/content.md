@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![VPC Flow Logs 완벽 가이드: 네트워크 트래픽 모니터링과 분석 핵심 요약](figures/infographic.svg)
+
+*Figure: VPC Flow Logs 완벽 가이드: 네트워크 트래픽 모니터링과 분석 한 장 요약 인포그래픽*
+
 ## 개요
 
 VPC Flow Logs는 Amazon VPC 내 네트워크 인터페이스에서 송수신되는 IP 트래픽에 대한 정보를 캡처할 수 있는 기능입니다. 캡처된 로그 데이터는 Amazon CloudWatch Logs, Amazon S3, Amazon Kinesis Data Firehose로 게시할 수 있습니다.

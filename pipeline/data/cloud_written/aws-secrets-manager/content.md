@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Secrets Manager 완벽 가이드: 보안 자격 증명 및 비밀 관리 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Secrets Manager 완벽 가이드: 보안 자격 증명 및 비밀 관리 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Secrets Manager는 애플리케이션에서 사용하는 데이터베이스 자격 증명, API 키, OAuth 토큰 등 민감한 정보(비밀, Secret)를 안전하게 저장, 관리, 교체할 수 있는 서비스입니다.

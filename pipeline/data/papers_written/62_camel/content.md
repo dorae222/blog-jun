@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society 핵심 요약](figures/infographic.svg)
+
+*Figure: CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society 한 장 요약 인포그래픽*
+
 # CAMEL: LLM 멀티에이전트 협력의 선구자
 
 ## 개요

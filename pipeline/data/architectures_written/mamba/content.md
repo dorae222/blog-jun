@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Mamba 핵심 요약](figures/infographic.svg)
+
+*Figure: Mamba 한 장 요약 인포그래픽*
+
 # Mamba: 선택적 상태 공간 모델로 Transformer에 도전한 SSM의 전환점
 
 **Carnegie Mellon University / Princeton University** · **2023-12-01** · **SSM** · **Apache-2.0**

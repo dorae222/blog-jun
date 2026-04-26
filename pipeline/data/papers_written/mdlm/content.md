@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Simple and Effective Masked Diffusion Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Simple and Effective Masked Diffusion Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 **MDLM(Masked Diffusion Language Model)**은 Sahoo et al.이 NeurIPS 2024에서 발표한 이산 확산 언어 모델이다. 핵심 기여는 마스크(흡수) 확산 과정에 대한 엄밀하고 깔끔한 ELBO(Evidence Lower Bound)를 유도하고, 이를 단순한 가중 교차 엔트로피 목표로 환원하는 것이다.

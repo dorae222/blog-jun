@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering 핵심 요약](figures/infographic.svg)
+
+*Figure: SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering 한 장 요약 인포그래픽*
+
 ## 개요
 
 "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering"(Yang et al., 2024)은 LLM 기반 에이전트가 실제 소프트웨어 엔지니어링 태스크를 자동으로 수행할 수 있도록 설계된 **에이전트-컴퓨터 인터페이스(Agent-Computer Interface, ACI)**를 제안한 논문입니다. SWE-bench 벤치마크에서 12.47%의 이슈 해결률을 달성하여, 기존 최고 성능(RAG 기반 3.8%)을 3배 이상 개선했습니다.

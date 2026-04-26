@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-4 Technical Report 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-4 Technical Report 한 장 요약 인포그래픽*
+
 ## 개요
 
 "GPT-4 Technical Report"(OpenAI, 2023)는 텍스트와 이미지를 모두 입력으로 받아들이고 텍스트를 출력하는 대규모 멀티모달 모델 GPT-4를 소개한 기술 보고서입니다. GPT-4는 미국 변호사 시험(Uniform Bar Exam)에서 상위 약 10%에 해당하는 점수를 기록하고, 다양한 학술 벤치마크에서 기존 최고 성능을 뛰어넘는 결과를 달성했습니다.

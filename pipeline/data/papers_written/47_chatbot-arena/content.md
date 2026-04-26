@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference 핵심 요약](figures/infographic.svg)
+
+*Figure: Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference 한 장 요약 인포그래픽*
+
 ## 개요
 
 대규모 언어 모델(LLM)의 성능을 공정하고 신뢰성 있게 평가하는 것은 AI 연구에서 가장 어렵고 중요한 과제 중 하나입니다. MMLU, HumanEval, GSM8K 같은 고정 벤치마크는 모델 발전의 초기 단계에서는 유용했지만, 모델들이 빠르게 발전하면서 벤치마크 오염, 실용성 괴리, 포화 등 여러 근본적 한계를 드러내고 있습니다. **Chatbot Arena**는 Berkeley AI Research(BAIR)의 Wei-Lin Chiang 등이 제안한 크라우드소싱 기반 LLM 평가 플랫폼으로, 실제 사용자가 블라인드 상태에서 두 모델의 응답을 비교 투표하는 방식으로 이 문제를 해결합니다. ICML 2024에 발표된 이 논문은 플랫폼의 설계 철학, 통계적 방법론(Elo 레이팅, Bradley-Terry 모델), 대규모 실험 결과, 그리고 평가 과정에서 발견된 다양한 인사이트를 체계적으로 정리합니다.

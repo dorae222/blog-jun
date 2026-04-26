@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Studio 개요 및 핵심 포인트 - 시각적 ETL 작업 구축 가이드 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Studio 개요 및 핵심 포인트 - 시각적 ETL 작업 구축 가이드 한 장 요약 인포그래픽*
+
 # AWS Glue Studio 개요 및 핵심 포인트 - 시각적 ETL 작업 구축 가이드
 
 ## 개요

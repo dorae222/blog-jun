@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Swin Transformer 핵심 요약](figures/infographic.svg)
+
+*Figure: Swin Transformer 한 장 요약 인포그래픽*
+
 # Swin Transformer: 계층적 비전 트랜스포머
 
 **Microsoft** · **2021-03-01** · **Vision** · **오픈소스**

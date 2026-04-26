@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Scalable Extraction of Training Data from (Production) Language Models 핵심 요약](figures/infographic.svg)
+
+*Figure: Scalable Extraction of Training Data from (Production) Language Models 한 장 요약 인포그래픽*
+
 ## 개요
 
 "Scalable Extraction of Training Data from (Production) Language Models"(2025, IEEE S&P)는 Google DeepMind의 Milad Nasr, Nicholas Carlini를 비롯하여 워싱턴 대학(Jonathan Hayase), Cornell(A. Feder Cooper), CMU(Matthew Jagielski), UC Berkeley(Eric Wallace), ETH Zurich(Florian Tramer), Google(Daphne Ippolito, Christopher A. Choquette-Choo, Katherine Lee) 등 10인의 연구자가 발표한 보안 연구이다.

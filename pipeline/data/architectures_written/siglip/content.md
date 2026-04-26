@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![SigLIP 핵심 요약](figures/infographic.svg)
+
+*Figure: SigLIP 한 장 요약 인포그래픽*
+
 # SigLIP: 시그모이드 손실 기반 시각-언어 사전학습
 
 **Google** · **2023-03-01** · **Multimodal** · **Apache-2.0**

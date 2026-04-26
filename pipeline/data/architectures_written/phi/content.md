@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Phi 핵심 요약](figures/infographic.svg)
+
+*Figure: Phi 한 장 요약 인포그래픽*
+
 # Phi
 
 **Microsoft** · **2023-06-20** · **Decoder-only** · **Dense** · **오픈소스**

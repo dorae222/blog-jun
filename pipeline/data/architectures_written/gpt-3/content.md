@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![GPT-3 핵심 요약](figures/infographic.svg)
+
+*Figure: GPT-3 한 장 요약 인포그래픽*
+
 # GPT-3: Language Models are Few-Shot Learners
 
 ## 개요

@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Glue Data Catalog 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Glue Data Catalog 한 장 요약 인포그래픽*
+
 # AWS Glue Data Catalog
 
 ## 개요

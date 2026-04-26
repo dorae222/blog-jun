@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Network Firewall 완벽 가이드: 관리형 네트워크 방화벽 서비스 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Network Firewall 완벽 가이드: 관리형 네트워크 방화벽 서비스 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Network Firewall은 Amazon VPC를 위한 관리형 네트워크 방화벽 서비스입니다. AWS Network Firewall을 사용하면 네트워크 트래픽을 세밀하게 제어하는 방화벽 규칙을 정의하고 적용할 수 있습니다.

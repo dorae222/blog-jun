@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![AWS Wavelength 핵심 요약](figures/infographic.svg)
+
+*Figure: AWS Wavelength 한 장 요약 인포그래픽*
+
 ## 개요
 
 AWS Wavelength는 5G 통신사(Carrier) 네트워크의 엣지에 AWS 컴퓨팅과 스토리지 서비스를 배치하는 서비스입니다. 이를 통해 모바일 디바이스와 최종 사용자에게 한 자릿수 밀리초(single-digit milliseconds) 수준의 초저지연 서비스를 제공할 수 있습니다.

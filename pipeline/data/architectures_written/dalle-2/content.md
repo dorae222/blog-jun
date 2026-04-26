@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![DALL·E 2 핵심 요약](figures/infographic.svg)
+
+*Figure: DALL·E 2 한 장 요약 인포그래픽*
+
 # DALL·E 2: CLIP 잠재 공간 기반 계층적 이미지 생성
 
 ## 개요

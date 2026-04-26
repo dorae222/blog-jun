@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Kimi K2 핵심 요약](figures/infographic.svg)
+
+*Figure: Kimi K2 한 장 요약 인포그래픽*
+
 # Kimi K2: MuonClip 옵티마이저와 에이전틱 AI의 만남
 
 ## 개요

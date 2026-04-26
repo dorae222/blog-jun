@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![FlashAttention-2 핵심 요약](figures/infographic.svg)
+
+*Figure: FlashAttention-2 한 장 요약 인포그래픽*
+
 # FlashAttention-2: 최적화된 병렬성과 워크 파티셔닝
 
 **Stanford University / Together AI** · **2023-07-17** · **오픈소스**

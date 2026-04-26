@@ -1,3 +1,8 @@
+<!-- infographic-hero -->
+![Structured Denoising Diffusion Models in Discrete State-Spaces 핵심 요약](figures/infographic.svg)
+
+*Figure: Structured Denoising Diffusion Models in Discrete State-Spaces 한 장 요약 인포그래픽*
+
 ## 개요
 
 D3PM(Structured Denoising Diffusion Models in Discrete State-Spaces)은 2021년 NeurIPS에서 Austin et al.이 발표한 논문으로, **이산 상태 공간에서의 확산 모델을 체계적으로 정립**한 선구적 연구다. DDPM이 연속 공간(이미지 픽셀, 오디오 신호)에서 가우시안 노이즈를 점진적으로 추가하고 제거하는 방식으로 성공을 거둔 것처럼, D3PM은 텍스트 토큰, 이산 이미지(픽셀 색상 256가지), 생물 서열 등 **이산 데이터에 확산 모델을 적용하는 통합 이론 프레임워크**를 구축했다.
