@@ -32,6 +32,7 @@ export const CLOUD_CATEGORIES = [
   { key: 'networking', label: 'Network', color: '#8C4FFF' },
   { key: 'security', label: 'Security', color: '#DD344C' },
   { key: 'analytics', label: 'Analytics', color: '#1A73E8' },
+  { key: 'ai_ml', label: 'AI/ML', color: '#01A88D' },
   { key: 'integration', label: 'Integration', color: '#F59E0B' },
   { key: 'management', label: 'Mgmt', color: '#E7157B' },
 ]
