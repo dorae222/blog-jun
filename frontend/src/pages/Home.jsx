@@ -120,7 +120,7 @@ export default function Home() {
 
       {/* Architecture Graph Preview */}
       {(archLoading || treeNodes.length > 0) && (
-        <section className="py-12 md:py-16 px-4 section-gradient-blue">
+        <section className="pt-10 pb-12 md:py-16 px-4 section-gradient-blue">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-4">

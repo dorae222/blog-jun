@@ -37,9 +37,9 @@ export default function PostsTab({
   CATEGORIES, STATUS_META, POST_TYPES, CAT_ICONS,
 }) {
   return (
-    <div className="flex gap-6">
+    <div className="flex min-w-0 flex-col gap-4 md:flex-row md:gap-6">
       {/* 모바일 필터 드롭다운 */}
-      <div className="md:hidden mb-4 flex gap-2">
+      <div className="grid grid-cols-2 gap-2 md:hidden">
         <select
           value={categoryFilter}
           onChange={e => { setCategoryFilter(e.target.value); setPage(1) }}
@@ -60,6 +60,32 @@ export default function PostsTab({
             <option key={s.value} value={s.value}>{s.label}</option>
           ))}
         </select>
+        <select
+          value={postTypeFilter}
+          onChange={e => { setPostTypeFilter(e.target.value); setPage(1) }}
+          className="col-span-2 text-sm px-3 py-2 rounded-lg border"
+          style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text)' }}
+        >
+          {POST_TYPES.map(t => (
+            <option key={t.value} value={t.value}>{t.label}</option>
+          ))}
+        </select>
+        <button
+          onClick={() => { setNoImageFilter(v => !v); setPage(1) }}
+          className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border text-sm ${
+            noImageFilter ? 'bg-orange-50 text-orange-700 border-orange-200' : ''
+          }`}
+          style={!noImageFilter ? { borderColor: 'var(--border)', color: 'var(--text-secondary)' } : {}}>
+          <ImageOff size={14} /> 이미지 없음
+        </button>
+        <button
+          onClick={() => setAuditFilter(v => !v)}
+          className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border text-sm ${
+            auditFilter ? 'bg-red-50 text-red-700 border-red-200' : ''
+          }`}
+          style={!auditFilter ? { borderColor: 'var(--border)', color: 'var(--text-secondary)' } : {}}>
+          <AlertTriangle size={14} /> 이슈만
+        </button>
       </div>
 
       {/* 사이드바 (데스크탑) */}
@@ -151,7 +177,7 @@ export default function PostsTab({
       </aside>
 
       {/* 포스트 테이블 */}
-      <div className="flex-1 min-w-0">
+      <div className="w-full flex-1 min-w-0">
         {/* 검색 바 */}
         <div className="mb-3 relative">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2"
@@ -168,10 +194,10 @@ export default function PostsTab({
 
         {/* 벌크 액션 바 */}
         {selected.size > 0 && (
-          <div className="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-xl
+          <div className="flex flex-wrap items-center gap-2 mb-3 px-4 py-2.5 rounded-xl
             bg-primary-50 border border-primary-200">
             <span className="text-sm font-semibold text-primary-700">{selected.size}개 선택</span>
-            <div className="flex gap-2 ml-auto">
+            <div className="flex flex-wrap gap-2 sm:ml-auto">
               <button onClick={() => handleBulkStatus('published')}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-600 text-white text-xs font-medium hover:bg-green-700">
                 <CheckCircle size={12} /> 발행
@@ -189,8 +215,94 @@ export default function PostsTab({
           </div>
         )}
 
+        {/* 모바일 카드 목록 */}
+        <div className="md:hidden space-y-2">
+          {visiblePosts.length === 0 && (
+            <div className="px-4 py-8 rounded-xl border text-center text-sm"
+              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text-secondary)' }}>
+              포스트가 없습니다.
+            </div>
+          )}
+          {visiblePosts.map(post => {
+            const issues = auditMap[post.slug] || []
+            const isSelected = selected.has(post.slug)
+            return (
+              <div key={post.id} className="rounded-xl border p-3"
+                style={{
+                  borderColor: isSelected ? 'var(--color-primary-300)' : 'var(--border)',
+                  background: isSelected ? 'var(--bg-secondary)' : 'var(--card-bg)',
+                }}>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={() => toggleSelect(post.slug)}
+                    className="mt-1 rounded shrink-0"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <p className="font-semibold text-sm leading-snug break-words" style={{ color: 'var(--text)' }}>
+                          {post.title}
+                        </p>
+                        <p className="mt-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                          {new Date(post.created_at).toLocaleDateString('ko-KR')}
+                          {post.category?.name && <span className="ml-2">{post.category.name}</span>}
+                        </p>
+                      </div>
+                      <span className="inline-flex shrink-0 items-center gap-1.5 text-xs px-2 py-0.5 rounded-full"
+                        style={{
+                          background: `${STATUS_DOT[post.status] || '#94a3b8'}15`,
+                          color: STATUS_DOT[post.status] || '#94a3b8',
+                        }}>
+                        <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'currentColor' }} />
+                        {post.status}
+                      </span>
+                    </div>
+
+                    <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                      {post.post_type !== 'article' && (
+                        <span className="text-xs px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">{post.post_type}</span>
+                      )}
+                      {issues.length > 0 ? (
+                        <>
+                          <span className="text-xs font-bold text-red-600">{issues.length} issues</span>
+                          <span className={`text-xs px-1.5 py-0.5 rounded-full font-medium
+                            ${ISSUE_COLORS[issues[0]] || 'bg-gray-100 text-gray-600'}`}>
+                            {issues[0]}
+                          </span>
+                        </>
+                      ) : (
+                        <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>이슈 없음</span>
+                      )}
+                    </div>
+
+                    <div className="mt-3 flex items-center justify-end gap-1">
+                      <Link to={`/post/${post.slug}`} target="_blank" title="보기"
+                        className="p-2 rounded-lg transition-colors hover:bg-gray-100"
+                        style={{ color: 'var(--text-secondary)' }}>
+                        <Eye size={15} />
+                      </Link>
+                      <Link to={`/editor/${post.slug}`} title="편집"
+                        className="p-2 rounded-lg transition-colors hover:bg-blue-50 hover:text-blue-600"
+                        style={{ color: 'var(--text-secondary)' }}>
+                        <Pencil size={15} />
+                      </Link>
+                      <button onClick={() => handleDelete(post.slug)} title="삭제"
+                        className="p-2 rounded-lg transition-colors hover:bg-red-50 hover:text-red-600"
+                        style={{ color: 'var(--text-secondary)' }}>
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
         {/* 테이블 */}
-        <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+        <div className="hidden md:block rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
           <table className="w-full text-sm">
             <thead>
               <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>
@@ -312,8 +424,8 @@ export default function PostsTab({
           </table>
         </div>
 
-        <div className="mt-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-3">
             <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
               {visiblePosts.length}개 표시 / 전체 {totalPosts}개
             </p>

@@ -32,17 +32,28 @@ frontend/dist/
 
 # OS
 .DS_Store
+._*
 Thumbs.db
 
 # Docker
 *.log
 
-# Claude Code (대화 기록 등은 무시, 설정/스킬/에이전트는 추적)
-.claude/*
-!.claude/skills/
-!.claude/agents/
-!.claude/rules/
-!.claude/settings.json
+# Agent/local assistant workspaces
+.claude/
+.codex/
+.cursor/
+.continue/
+.windsurf/
+.aider*
+.mcp/
+AGENTS.md
+CLAUDE.md
+.github/plan.md
+
+# Local import/sensitive workspaces
+vault/
+vault-pdfs/
+papers_import/
 
 # Pipeline data — 중간 산출물만 무시
 pipeline/data/batch_*.jsonl
@@ -72,4 +83,3 @@ backups/
 # Backup files
 *.backup.*
 *.backup.jsx
-

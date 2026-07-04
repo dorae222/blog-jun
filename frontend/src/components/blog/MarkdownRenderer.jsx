@@ -9,6 +9,7 @@ import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 import BookmarkEmbed from '../common/BookmarkEmbed'
 import PostLinkTooltip from './PostLinkTooltip'
+import { OptimizedImage } from '../../utils/mediaVariants'
 
 // Obsidian 위키 링크를 내부 링크 또는 텍스트로 변환
 function preprocessContent(raw, postLinks = []) {
@@ -129,7 +130,7 @@ function MermaidDiagram({ code }) {
   return (
     <div
       ref={containerRef}
-      className="my-4 flex justify-center"
+      className="my-4 flex justify-center max-w-full overflow-x-auto"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   )
@@ -157,7 +158,7 @@ function PreBlock({ children }) {
   // Output 블록 — 코드 실행 결과 표시용
   if (lang === 'output') {
     return (
-      <div className="relative group rounded-lg overflow-hidden my-2 -mt-4" style={{
+      <div className="relative group rounded-lg overflow-hidden my-2 -mt-4 max-w-full" style={{
         background: 'var(--output-bg)',
         border: '1px solid var(--border)'
       }}>
@@ -169,7 +170,7 @@ function PreBlock({ children }) {
             {copied ? 'Copied!' : 'Copy'}
           </button>
         </div>
-        <pre className="px-4 pb-3 pt-1 overflow-x-auto m-0 rounded-none"
+        <pre className="px-4 pb-3 pt-1 overflow-x-auto m-0 rounded-none max-w-full"
           style={{ fontSize: '0.85em', lineHeight: '1.6' }}>
           {children}
         </pre>
@@ -178,7 +179,7 @@ function PreBlock({ children }) {
   }
 
   return (
-    <div className="relative group rounded-xl overflow-hidden my-6" style={{ background: 'var(--code-bg)' }}>
+    <div className="relative group rounded-xl overflow-hidden my-6 max-w-full" style={{ background: 'var(--code-bg)' }}>
       <div
         className="flex items-center justify-between px-4 py-2 border-b text-xs"
         style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
@@ -191,7 +192,7 @@ function PreBlock({ children }) {
           {copied ? 'Copied!' : 'Copy'}
         </button>
       </div>
-      <pre className="p-4 overflow-x-auto text-sm leading-relaxed m-0 rounded-none">
+      <pre className="p-4 overflow-x-auto text-sm leading-relaxed m-0 rounded-none max-w-full">
         {children}
       </pre>
     </div>
@@ -225,7 +226,7 @@ function ImageWithZoom({ src, alt }) {
 
   return (
     <>
-      <img
+      <OptimizedImage
         src={src}
         alt={alt || ''}
         loading="lazy"
@@ -233,6 +234,7 @@ function ImageWithZoom({ src, alt }) {
         onError={() => setBroken(true)}
         className="rounded-lg cursor-zoom-in max-w-full mx-auto hover:shadow-lg transition-shadow"
         style={{ maxHeight: '70vh' }}
+        sizes="(max-width: 768px) 100vw, 896px"
       />
       {zoomed && (
         <div
@@ -256,7 +258,7 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
 
   return (
     <ErrorBoundary>
-      <div className="prose prose-lg max-w-none">
+      <div className="prose max-w-none min-w-0 break-words sm:prose-lg">
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex, rehypeHighlight]}
@@ -286,7 +288,7 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
                 return <PostLinkTooltip href={href} linkData={linkData}>{children}</PostLinkTooltip>
               }
               return (
-                <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline">
+                <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline break-words">
                   {children}
                 </a>
               )
@@ -302,7 +304,7 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
               return <p>{children}</p>
             },
             table: ({ children }) => (
-              <div className="relative overflow-x-auto my-4">
+              <div className="relative overflow-x-auto my-4 max-w-full">
                 <table className="min-w-full text-sm">{children}</table>
                 <div className="absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-[var(--bg)] to-transparent pointer-events-none md:hidden" />
               </div>

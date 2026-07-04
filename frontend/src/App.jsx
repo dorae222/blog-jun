@@ -1,12 +1,13 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Toaster } from 'react-hot-toast'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import ScrollToTop from './components/layout/ScrollToTop'
 import ErrorBoundary from './components/common/ErrorBoundary'
+import useAuth from './hooks/useAuth'
 
 import Home from './pages/Home'
 import PostView from './pages/PostView'
@@ -22,6 +23,11 @@ const ArchitectureTreePage = lazy(() => import('./pages/ArchitectureTreePage'))
 
 export default function App() {
   const location = useLocation()
+  const initAuth = useAuth((s) => s.init)
+
+  useEffect(() => {
+    initAuth()
+  }, [initAuth])
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg)' }}>

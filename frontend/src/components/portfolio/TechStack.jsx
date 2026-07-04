@@ -1,4 +1,3 @@
-import ScrollReveal from '../common/ScrollReveal'
 import TechIcon from '../icons/TechIcon'
 
 const STACKS = [
@@ -50,15 +49,13 @@ export default function TechStack() {
   return (
     <section className="py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text)' }}>
-            Tech Stack
-          </h2>
-        </ScrollReveal>
+        <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text)' }}>
+          Tech Stack
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {STACKS.map((stack, i) => (
-            <ScrollReveal key={stack.category} delay={i * 0.1}>
+            <div key={stack.category}>
               <div className="p-5 rounded-xl glass transition-all hover:shadow-lg hover:-translate-y-1">
                 <h3
                   className="text-sm font-bold mb-1 uppercase tracking-wider"
@@ -83,7 +80,7 @@ export default function TechStack() {
                   ))}
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
       </div>
