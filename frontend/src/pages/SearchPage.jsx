@@ -15,7 +15,7 @@ export default function SearchPage() {
   const [categories, setCategories] = useState([])
   const [tags, setTags] = useState([])
   const [loading, setLoading] = useState(false)
-  const [filter, setFilter] = useState({ type: postType })
+  const [filter, setFilter] = useState({ type: postType, tag })
 
   useEffect(() => {
     getCategories().then(r => setCategories(r.data.results || r.data || []))
@@ -29,9 +29,12 @@ export default function SearchPage() {
     } else {
       const params = { status: 'published' }
       if (filter.type) params.post_type = filter.type
+      if (filter.tag) params.tags__slug = filter.tag
       getPosts(params).then(r => setPosts(r.data.results || [])).finally(() => setLoading(false))
     }
-  }, [q, filter.type])
+  }, [q, filter.type, filter.tag])
+
+  const selectedTag = tags.find((t) => t.slug === filter.tag)
 
   return (
     <motion.div
@@ -42,7 +45,7 @@ export default function SearchPage() {
     >
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-4" style={{ color: 'var(--text)' }}>
-          {q ? `Search: "${q}"` : 'All Posts'}
+          {q ? `Search: "${q}"` : selectedTag ? `Tag: #${selectedTag.name}` : 'All Posts'}
         </h1>
         <SearchBar className="max-w-xl" />
       </div>
@@ -70,6 +73,11 @@ export default function SearchPage() {
             <a
               key={t.id}
               href={`/search?tag=${t.slug}`}
+              onClick={(e) => {
+                e.preventDefault()
+                window.history.pushState(null, '', `/search?tag=${t.slug}`)
+                setFilter((prev) => ({ ...prev, tag: t.slug }))
+              }}
               className="text-xs px-2.5 py-1 rounded-full transition-all hover:scale-105"
               style={{
                 background: 'var(--bg-secondary)',

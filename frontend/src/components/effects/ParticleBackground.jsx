@@ -12,6 +12,7 @@ export default function ParticleBackground({ count = 50 }) {
     const resize = () => {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio
       canvas.height = canvas.offsetHeight * window.devicePixelRatio
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
     }
 
@@ -61,14 +62,15 @@ export default function ParticleBackground({ count = 50 }) {
       animId = requestAnimationFrame(draw)
     }
 
+    const onResize = () => { resize(); createParticles() }
     resize()
     createParticles()
     draw()
-    window.addEventListener('resize', () => { resize(); createParticles() })
+    window.addEventListener('resize', onResize)
 
     return () => {
       cancelAnimationFrame(animId)
-      window.removeEventListener('resize', resize)
+      window.removeEventListener('resize', onResize)
     }
   }, [count])
 

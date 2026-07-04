@@ -41,6 +41,24 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -60,6 +78,62 @@ body {
 
 /* KaTeX */
 .katex-display {
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.blog-prose {
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.blog-prose :where(h1, h2, h3, h4) {
+  color: var(--text);
+  line-height: 1.2;
+  scroll-margin-top: 5rem;
+}
+
+.blog-prose :where(p, li, blockquote) {
+  color: var(--text-secondary);
+  line-height: 1.78;
+}
+
+.blog-prose :where(pre, table, img, video, iframe) {
+  max-width: 100%;
+}
+
+.blog-prose :where(th, td) {
+  white-space: nowrap;
+  border-color: var(--border);
+  padding: 0.65rem 0.8rem;
+}
+
+.blog-prose :where(blockquote) {
+  border-left-color: var(--color-primary-500);
+}
+
+@media (max-width: 640px) {
+  .blog-prose :where(h1) {
+    font-size: 1.75rem;
+  }
+
+  .blog-prose :where(h2) {
+    font-size: 1.35rem;
+  }
+
+  .blog-prose :where(p, li) {
+    line-height: 1.72;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

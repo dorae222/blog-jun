@@ -46,11 +46,11 @@ export default function Dashboard() {
       exit={{ opacity: 0 }}
       className="max-w-6xl mx-auto px-4 py-12"
     >
-      <div className="flex items-center justify-between mb-8">
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-3xl font-bold" style={{ color: 'var(--text)' }}>Dashboard</h1>
         <Link
           to="/editor"
-          className="px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors text-sm"
+          className="min-h-10 rounded-lg bg-primary-600 px-4 py-2 text-sm text-white transition-colors hover:bg-primary-700"
         >
           + New Post
         </Link>
@@ -67,7 +67,7 @@ export default function Dashboard() {
           ].map(s => (
             <div
               key={s.label}
-              className="p-4 rounded-xl border"
+              className="rounded-lg border p-4"
               style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
             >
               <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{s.label}</p>
@@ -78,12 +78,12 @@ export default function Dashboard() {
       )}
 
       {/* Filter */}
-      <div className="flex gap-2 mb-6">
+      <div className="mb-6 flex gap-2 overflow-x-auto pb-1">
         {['', 'draft', 'published', 'archived'].map(f => (
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`text-sm px-3 py-1.5 rounded-full border transition-all ${
+            className={`min-h-9 whitespace-nowrap rounded-full border px-3 py-1.5 text-sm transition-all ${
               filter === f ? 'bg-primary-600 text-white border-primary-600' : ''
             }`}
             style={filter !== f ? { borderColor: 'var(--border)', color: 'var(--text-secondary)' } : {}}
@@ -98,7 +98,7 @@ export default function Dashboard() {
         {posts.map(post => (
           <div
             key={post.id}
-            className="flex items-center justify-between p-4 rounded-xl border"
+            className="flex flex-col gap-3 rounded-lg border p-4 sm:flex-row sm:items-center sm:justify-between"
             style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
           >
             <div className="flex-1 min-w-0">
@@ -119,17 +119,17 @@ export default function Dashboard() {
                 {new Date(post.created_at).toLocaleDateString('ko-KR')} · {post.view_count} views
               </p>
             </div>
-            <div className="flex items-center gap-2 ml-4">
+            <div className="flex items-center gap-2 sm:ml-4">
               <Link
                 to={`/editor/${post.slug}`}
-                className="text-sm px-3 py-1 rounded border hover:bg-gray-50 dark:hover:bg-gray-800"
+                className="min-h-9 rounded border px-3 py-1 text-sm hover:bg-gray-50 dark:hover:bg-gray-800"
                 style={{ borderColor: 'var(--border)' }}
               >
                 Edit
               </Link>
               <button
                 onClick={() => handleDelete(post.slug)}
-                className="text-sm px-3 py-1 rounded border text-red-600 hover:bg-red-50"
+                className="min-h-9 rounded border px-3 py-1 text-sm text-red-600 hover:bg-red-50"
                 style={{ borderColor: 'var(--border)' }}
               >
                 Delete

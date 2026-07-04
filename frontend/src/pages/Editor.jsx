@@ -128,22 +128,22 @@ export default function Editor() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="h-[calc(100vh-4rem)] flex flex-col"
+      className="flex h-[calc(100dvh-4rem)] min-h-[620px] flex-col"
     >
       {/* Toolbar */}
-      <div className="flex items-center gap-3 px-4 py-2 border-b" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
+      <div className="flex flex-wrap items-center gap-2 border-b px-3 py-2 sm:gap-3 sm:px-4" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
         <input
           value={form.title}
           onChange={e => setForm(prev => ({ ...prev, title: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-') }))}
           placeholder="Post title..."
-          className="flex-1 text-lg font-semibold bg-transparent outline-none"
+          className="min-h-10 min-w-[220px] flex-1 bg-transparent text-base font-semibold outline-none sm:text-lg"
           style={{ color: 'var(--text)' }}
         />
 
         <select
           value={form.post_type}
           onChange={e => setForm(prev => ({ ...prev, post_type: e.target.value }))}
-          className="text-sm px-2 py-1 rounded border"
+          className="min-h-10 rounded border px-2 py-1 text-sm"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="article">Article</option>
@@ -157,7 +157,7 @@ export default function Editor() {
         <select
           value={form.category}
           onChange={e => setForm(prev => ({ ...prev, category: e.target.value }))}
-          className="text-sm px-2 py-1 rounded border"
+          className="min-h-10 rounded border px-2 py-1 text-sm"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="">Category</option>
@@ -167,19 +167,19 @@ export default function Editor() {
         <select
           value={form.series}
           onChange={e => setForm(prev => ({ ...prev, series: e.target.value }))}
-          className="text-sm px-2 py-1 rounded border"
+          className="min-h-10 rounded border px-2 py-1 text-sm"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="">Series</option>
           {allSeries.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>
 
-        <div className="flex rounded-lg border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+        <div className="flex overflow-hidden rounded-lg border" style={{ borderColor: 'var(--border)' }}>
           {['edit', 'split', 'preview'].map(m => (
             <button
               key={m}
               onClick={() => setViewMode(m)}
-              className={`px-3 py-1 text-xs ${viewMode === m ? 'bg-primary-600 text-white' : ''}`}
+              className={`min-h-10 px-3 py-1 text-xs ${viewMode === m ? 'bg-primary-600 text-white' : ''}`}
             >
               {m}
             </button>
@@ -188,39 +188,39 @@ export default function Editor() {
 
         <button
           onClick={() => setShowTemplates(true)}
-          className="text-sm px-3 py-1 rounded border hover:bg-gray-50 dark:hover:bg-gray-800"
+          className="min-h-10 rounded border px-3 py-1 text-sm hover:bg-gray-50 dark:hover:bg-gray-800"
           style={{ borderColor: 'var(--border)' }}
         >
           Templates
         </button>
 
-        <button onClick={() => handleSave()} className="text-sm px-4 py-1.5 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300">
+        <button onClick={() => handleSave()} className="min-h-10 rounded bg-gray-200 px-4 py-1.5 text-sm hover:bg-gray-300 dark:bg-gray-700">
           Save
         </button>
 
-        <button onClick={handlePublish} className="text-sm px-4 py-1.5 rounded bg-primary-600 text-white hover:bg-primary-700">
+        <button onClick={handlePublish} className="min-h-10 rounded bg-primary-600 px-4 py-1.5 text-sm text-white hover:bg-primary-700">
           Publish
         </button>
       </div>
 
       {/* Editor Area */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
         {viewMode !== 'preview' && (
-          <div className={`${viewMode === 'split' ? 'w-1/2' : 'w-full'} flex flex-col border-r`} style={{ borderColor: 'var(--border)' }}>
+          <div className={`${viewMode === 'split' ? 'h-1/2 w-full lg:h-full lg:w-1/2' : 'h-full w-full'} flex min-h-0 flex-col border-b lg:border-b-0 lg:border-r`} style={{ borderColor: 'var(--border)' }}>
             <textarea
               ref={textareaRef}
               value={form.content}
               onChange={e => setForm(prev => ({ ...prev, content: e.target.value }))}
               onDrop={handleImageDrop}
               onDragOver={e => e.preventDefault()}
-              className="flex-1 p-6 resize-none outline-none font-mono text-sm"
+              className="min-h-0 flex-1 resize-none p-4 font-mono text-sm outline-none sm:p-6"
               style={{ background: 'var(--bg)', color: 'var(--text)' }}
               placeholder="Write your markdown here..."
             />
           </div>
         )}
         {viewMode !== 'edit' && (
-          <div className={`${viewMode === 'split' ? 'w-1/2' : 'w-full'} overflow-y-auto p-6`}>
+          <div className={`${viewMode === 'split' ? 'h-1/2 w-full lg:h-full lg:w-1/2' : 'h-full w-full'} min-h-0 overflow-y-auto p-4 sm:p-6`}>
             <MarkdownRenderer content={form.content} />
           </div>
         )}

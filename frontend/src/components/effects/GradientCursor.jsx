@@ -5,6 +5,10 @@ export default function GradientCursor() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    const hoverable = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (!hoverable.matches || reducedMotion.matches) return
+
     const move = (e) => {
       setPos({ x: e.clientX, y: e.clientY })
       setVisible(true)

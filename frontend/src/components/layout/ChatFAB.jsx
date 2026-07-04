@@ -9,7 +9,7 @@ export default function ChatFAB() {
     <>
       <motion.button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-accent text-white shadow-lg flex items-center justify-center"
+        className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white shadow-lg sm:bottom-6 sm:left-6 sm:h-14 sm:w-14"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >

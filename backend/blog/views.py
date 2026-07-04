@@ -1,6 +1,5 @@
 from django.db.models import Count, Q, F, Sum
 from django.utils import timezone
-from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from rest_framework import viewsets, generics, status, permissions
 from rest_framework.decorators import api_view, action
@@ -30,12 +29,11 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 class PostViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthorOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status', 'post_type', 'category__slug', 'series__slug']
+    filterset_fields = ['status', 'post_type', 'category__slug', 'series__slug', 'tags__slug']
     search_fields = ['title', 'content', 'summary']
     ordering_fields = ['created_at', 'published_at', 'view_count']
     lookup_field = 'slug'
 
-    @method_decorator(cache_page(60 * 5))  # 5분 캐시 (목록)
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
@@ -60,7 +58,6 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
-    @method_decorator(cache_page(60))  # 1분 캐시 (검색)
     @action(detail=False, methods=['get'])
     def search(self, request):
         q = request.query_params.get('q', '')
@@ -113,7 +110,6 @@ class ImageUploadView(generics.CreateAPIView):
 
 
 @api_view(['GET'])
-@cache_page(60 * 10)  # 10분 캐시
 def dashboard_stats(request):
     if not request.user.is_authenticated:
         return Response({'detail': 'Authentication required'}, status=401)

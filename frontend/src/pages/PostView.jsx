@@ -50,11 +50,11 @@ export default function PostView() {
     >
       <ReadingProgress />
 
-      <div className="max-w-7xl mx-auto px-4 py-12 flex gap-8">
-        <article className="flex-1 max-w-4xl">
+      <div className="mx-auto flex max-w-7xl gap-8 px-4 py-8 sm:px-6 sm:py-12">
+        <article className="min-w-0 flex-1 xl:max-w-4xl">
           {/* Header */}
           <header className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="mb-4 flex flex-wrap items-center gap-2">
               {post.category && (
                 <Link
                   to={`/category/${post.category.slug}`}
@@ -77,11 +77,11 @@ export default function PostView() {
               )}
             </div>
 
-            <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+            <h1 className="mb-4 text-3xl font-bold leading-tight sm:text-4xl" style={{ color: 'var(--text)' }}>
               {post.title}
             </h1>
 
-            <div className="flex items-center gap-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
               <span>
                 {post.published_at
                   ? new Date(post.published_at).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -108,11 +108,11 @@ export default function PostView() {
 
           {/* Series Navigation */}
           {post.adjacent_posts && (post.adjacent_posts.prev || post.adjacent_posts.next) && (
-            <nav className="mt-8 grid grid-cols-2 gap-4">
+            <nav className="mt-8 grid gap-4 sm:grid-cols-2">
               {post.adjacent_posts.prev && (
                 <Link
                   to={`/post/${post.adjacent_posts.prev.slug}`}
-                  className="p-4 rounded-xl border hover:shadow-md transition-all text-left"
+                  className="rounded-lg border p-4 text-left transition-all hover:shadow-md"
                   style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
                 >
                   <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>← Previous</span>
@@ -122,7 +122,7 @@ export default function PostView() {
               {post.adjacent_posts.next && (
                 <Link
                   to={`/post/${post.adjacent_posts.next.slug}`}
-                  className="p-4 rounded-xl border hover:shadow-md transition-all text-right col-start-2"
+                  className="rounded-lg border p-4 text-left transition-all hover:shadow-md sm:col-start-2 sm:text-right"
                   style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
                 >
                   <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Next →</span>

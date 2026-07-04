@@ -12,7 +12,7 @@ export default function Header() {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/search', label: 'Posts' },
+    { to: '/posts', label: 'Posts' },
     { to: '/about', label: 'About' },
   ]
 
@@ -50,10 +50,10 @@ export default function Header() {
           )}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={toggle}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="min-h-11 min-w-11 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             aria-label="Toggle theme"
           >
             {dark ? '☀️' : '🌙'}
@@ -62,7 +62,7 @@ export default function Header() {
           {user ? (
             <button
               onClick={() => { logout(); navigate('/') }}
-              className="text-sm px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
+              className="hidden sm:inline-flex text-sm px-3 py-2 rounded-lg border transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
               style={{ borderColor: 'var(--border)' }}
             >
               Logout
@@ -70,15 +70,17 @@ export default function Header() {
           ) : (
             <Link
               to="/login"
-              className="text-sm px-3 py-1.5 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+              className="hidden sm:inline-flex text-sm px-3 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700 transition-colors"
             >
               Login
             </Link>
           )}
 
           <button
-            className="md:hidden p-2"
+            className="md:hidden min-h-11 min-w-11 rounded-lg"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {mobileOpen
@@ -110,6 +112,26 @@ export default function Header() {
                   {l.label}
                 </Link>
               ))}
+              {user ? (
+                <>
+                  <Link to="/dashboard" onClick={() => setMobileOpen(false)} className="block py-2 text-sm">
+                    Dashboard
+                  </Link>
+                  <Link to="/editor" onClick={() => setMobileOpen(false)} className="block py-2 text-sm">
+                    Write
+                  </Link>
+                  <button
+                    onClick={() => { logout(); setMobileOpen(false); navigate('/') }}
+                    className="block w-full py-2 text-left text-sm"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" onClick={() => setMobileOpen(false)} className="block py-2 text-sm">
+                  Login
+                </Link>
+              )}
             </div>
           </motion.nav>
         )}
