@@ -40,7 +40,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 glass-nav">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight">
+        <Link to="/" className="text-xl font-bold tracking-tight shrink-0">
           <span className="text-primary-600">HJ</span>
           <span style={{ color: 'var(--text)' }}> Tech</span>
         </Link>
@@ -83,17 +83,18 @@ export default function Header() {
           </button>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center gap-1 sm:gap-3">
           {user ? (
             <div className="relative" ref={userMenuRef}>
               <button
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
-                className="flex items-center gap-1.5 text-sm px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50"
+                className="flex max-w-[3.25rem] sm:max-w-[13rem] items-center gap-1.5 text-sm px-2 sm:px-3 py-1.5 rounded-lg border transition-colors hover:bg-gray-50"
                 style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+                title={user.username || 'User'}
               >
-                <User size={14} />
-                {user.username || 'User'}
-                <ChevronDown size={12} className={`transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
+                <User size={14} className="shrink-0" />
+                <span className="hidden sm:block truncate">{user.username || 'User'}</span>
+                <ChevronDown size={12} className={`shrink-0 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
                 {userMenuOpen && (
@@ -136,14 +137,14 @@ export default function Header() {
 
           {/* Mobile: 검색 + 햄버거 */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 shrink-0"
             aria-label="검색"
             onClick={() => setSearchModalOpen(true)}
           >
             <Search size={20} />
           </button>
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 shrink-0"
             aria-label="메뉴 열기"
             onClick={() => setMobileOpen(!mobileOpen)}
           >

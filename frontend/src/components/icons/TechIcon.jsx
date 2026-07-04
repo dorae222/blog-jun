@@ -11,6 +11,8 @@ const ICONS = {
   flask:          { cdn: 'si', slug: 'flask',         color: '#000000' },
   react:          { cdn: 'si', slug: 'react',         color: '#61DAFB' },
   docker:         { cdn: 'si', slug: 'docker',        color: '#2496ED' },
+  kubernetes:     { cdn: 'si', slug: 'kubernetes',    color: '#326CE5' },
+  navercloud:     { cdn: 'si', slug: 'naver',         color: '#03C75A' },
   pytorch:        { cdn: 'si', slug: 'pytorch',       color: '#EE4C2C' },
   tensorflow:     { cdn: 'si', slug: 'tensorflow',    color: '#FF6F00' },
   huggingface:    { cdn: 'si', slug: 'huggingface',   color: '#FFD21E' },

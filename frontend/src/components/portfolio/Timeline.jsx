@@ -1,5 +1,4 @@
 import { ExternalLink } from 'lucide-react'
-import ScrollReveal from '../common/ScrollReveal'
 
 // type별 색상·아이콘 설정
 const TYPE_STYLES = {
@@ -13,15 +12,13 @@ export default function Timeline({ items = [] }) {
   return (
     <section className="py-16 px-4 overflow-x-hidden">
       <div className="max-w-4xl mx-auto">
-        <ScrollReveal>
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text)' }}>
-            Activities
-          </h2>
-        </ScrollReveal>
+        <h2 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text)' }}>
+          Activities
+        </h2>
 
         <div className="relative">
           <div
-            className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5"
+            className="absolute left-[6.25rem] md:left-1/2 top-0 bottom-0 w-0.5"
             style={{ background: 'var(--border)' }}
           />
 
@@ -34,11 +31,11 @@ export default function Timeline({ items = [] }) {
 
             const card = (
               <div
-                className={`ml-10 md:ml-0 md:w-5/12 p-4 rounded-xl border ${i % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
+                className={`min-w-0 md:w-5/12 p-4 rounded-xl border ${i % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
                 style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
               >
                 {/* 날짜 + type 뱃지 */}
-                <div className="flex items-center gap-2 mb-1">
+                <div className="hidden md:flex items-center gap-2 mb-1">
                   <span className="text-xs font-medium" style={{ color: typeStyle.color }}>
                     {dateStr}
                   </span>
@@ -56,19 +53,19 @@ export default function Timeline({ items = [] }) {
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold hover:underline mb-1"
+                    className="inline-flex max-w-full items-start gap-1 font-semibold hover:underline mb-1"
                     style={{ color: 'var(--text)' }}
                   >
-                    {item.title}
-                    <ExternalLink size={12} style={{ color: 'var(--text-secondary)' }} />
+                    <span className="min-w-0 break-words">{item.title}</span>
+                    <ExternalLink size={12} className="mt-1 shrink-0" style={{ color: 'var(--text-secondary)' }} />
                   </a>
                 ) : (
-                  <h3 className="font-semibold mb-1" style={{ color: 'var(--text)' }}>{item.title}</h3>
+                  <h3 className="font-semibold mb-1 break-words" style={{ color: 'var(--text)' }}>{item.title}</h3>
                 )}
 
                 {/* 설명 */}
                 {descText && (
-                  <p className="text-sm mb-2" style={{ color: 'var(--text-secondary)' }}>{descText}</p>
+                  <p className="text-sm mb-2 break-words" style={{ color: 'var(--text-secondary)' }}>{descText}</p>
                 )}
 
                 {/* 태그 뱃지 */}
@@ -89,20 +86,28 @@ export default function Timeline({ items = [] }) {
             )
 
             return (
-              <ScrollReveal
+              <div
                 key={item.id}
-                variant={i % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}
-                delay={i * 0.1}
+                className={`relative grid grid-cols-[5.75rem_minmax(0,1fr)] gap-4 mb-8 md:flex md:items-start ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className={`relative flex items-start mb-8 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                  {/* 타임라인 점 — type 색상 */}
-                  <div
-                    className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-4 z-10"
-                    style={{ background: typeStyle.color, borderColor: 'var(--bg)' }}
-                  />
-                  {card}
+                <div className="md:hidden pr-2 pt-1 text-right">
+                  <p className="text-[11px] font-semibold leading-tight" style={{ color: typeStyle.color }}>
+                    {dateStr}
+                  </p>
+                  <span
+                    className="mt-1 inline-flex text-[10px] px-1.5 py-0.5 rounded-full font-medium"
+                    style={{ background: typeStyle.color + '20', color: typeStyle.color }}
+                  >
+                    {typeStyle.label}
+                  </span>
                 </div>
-              </ScrollReveal>
+                {/* 타임라인 점 — type 색상 */}
+                <div
+                  className="absolute left-[6.25rem] md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-4 z-10"
+                  style={{ background: typeStyle.color, borderColor: 'var(--bg)' }}
+                />
+                {card}
+              </div>
             )
           })}
         </div>

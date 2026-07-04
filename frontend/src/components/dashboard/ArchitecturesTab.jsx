@@ -71,7 +71,57 @@ export default function ArchitecturesTab({
           <Plus size={15} /> 새 Architecture
         </Link>
       </div>
-      <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+      <div className="sm:hidden space-y-2">
+        {filtered.length === 0 && (
+          <div className="px-4 py-8 rounded-xl border text-center text-sm"
+            style={{ borderColor: 'var(--border)', background: 'var(--card-bg)', color: 'var(--text-secondary)' }}>
+            {searchQuery ? '검색 결과가 없습니다.' : 'Architecture가 없습니다.'}
+          </div>
+        )}
+        {filtered.map(entry => (
+          <div key={entry.id} className="rounded-xl border p-3"
+            style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-semibold break-words" style={{ color: 'var(--text)' }}>{entry.name}</p>
+                <p className="mt-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                  {[entry.architecture_category?.toUpperCase(), entry.branch_type, entry.organization, entry.release_date?.slice(0, 4)]
+                    .filter(Boolean).join(' · ')}
+                </p>
+              </div>
+              <div className="flex shrink-0 items-center gap-0.5">
+                {entry.related_post_slug && (
+                  <Link to={`/post/${entry.related_post_slug}`} title="포스트 보기"
+                    className="p-2 rounded-lg hover:bg-gray-100" style={{ color: 'var(--text-secondary)' }}>
+                    <Eye size={15} />
+                  </Link>
+                )}
+                <Link
+                  to={entry.related_post_slug ? `/editor/${entry.related_post_slug}` : `/editor`}
+                  title="편집"
+                  className="p-2 rounded-lg hover:bg-blue-50 hover:text-blue-600" style={{ color: 'var(--text-secondary)' }}>
+                  <Pencil size={15} />
+                </Link>
+                <button
+                  onClick={async () => {
+                    if (!confirm(`"${entry.name}" 삭제?`)) return
+                    try {
+                      await deleteArchitecture(entry.slug)
+                      toast.success('삭제 완료')
+                      loadArchitectures()
+                    } catch { toast.error('삭제 실패') }
+                  }}
+                  title="삭제"
+                  className="p-2 rounded-lg hover:bg-red-50 hover:text-red-600"
+                  style={{ color: 'var(--text-secondary)' }}>
+                  <Trash2 size={15} />
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="hidden sm:block rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
         <table className="w-full text-sm">
           <thead>
             <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Eye } from 'lucide-react'
 import { getCategoryIcon } from '../../utils/categoryIcons'
 import InlineMath from '../common/InlineMath'
+import { OptimizedImage } from '../../utils/mediaVariants'
 
 export default function FeedCard({ item }) {
   const imageUrl = item.cover_image_url || item.figure_url
@@ -23,8 +24,13 @@ export default function FeedCard({ item }) {
       <div className="relative aspect-[16/10] overflow-hidden"
         style={{ background: imageUrl ? undefined : `linear-gradient(135deg, ${categoryColor}12, ${categoryColor}08)` }}>
         {imageUrl ? (
-          <img src={imageUrl} alt={item.title} loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <OptimizedImage
+            src={imageUrl}
+            alt={item.title}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <span style={{ color: categoryColor, opacity: 0.25 }}>

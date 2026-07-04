@@ -76,7 +76,7 @@ const ARCH_CATEGORIES = [
 ]
 
 export default function Dashboard() {
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
   const navigate = useNavigate()
 
   // 탭: posts | architectures | tags | overview
@@ -147,24 +147,28 @@ export default function Dashboard() {
   }, [archCatFilter])
 
   useEffect(() => {
+    if (loading) return
     if (!user) { navigate('/login'); return }
     if (!user.is_staff) { navigate('/'); return }
     getDashboardStats().then(r => setStats(r.data)).catch(() => {})
     loadAudit()
-  }, [user, navigate])
+  }, [loading, user, navigate, loadAudit])
 
   useEffect(() => {
+    if (loading || !user?.is_staff) return
     if (tab === 'tags') loadTags()
     if (tab === 'architectures') loadArchitectures()
-  }, [tab])
+  }, [loading, user, tab, loadTags, loadArchitectures])
 
   useEffect(() => {
+    if (loading || !user?.is_staff) return
     loadPosts(statusFilter, categoryFilter, page, postTypeFilter, noImageFilter, searchQuery)
-  }, [statusFilter, categoryFilter, page, pageSize, postTypeFilter, noImageFilter, searchQuery])
+  }, [loading, user, statusFilter, categoryFilter, page, pageSize, postTypeFilter, noImageFilter, searchQuery, loadPosts])
 
   useEffect(() => {
+    if (loading || !user?.is_staff) return
     loadArchitectures(archCatFilter)
-  }, [archCatFilter])
+  }, [loading, user, archCatFilter, loadArchitectures])
 
   // 필터링된 포스트
   const visiblePosts = auditFilter
@@ -263,6 +267,13 @@ export default function Dashboard() {
   const missingImageCount = stats?.image_coverage?.missing_image ?? 0
   const totalPages = Math.ceil(totalPosts / pageSize)
 
+  if (loading) {
+    return (
+      <div className="flex min-h-[40vh] items-center justify-center text-sm" style={{ color: 'var(--text-secondary)' }}>
+        Loading...
+      </div>
+    )
+  }
   if (!user || !user.is_staff) return null
 
   return (
@@ -271,18 +282,18 @@ export default function Dashboard() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="max-w-7xl mx-auto px-4 py-10"
+      className="w-full max-w-7xl mx-auto px-4 py-8 sm:py-10 overflow-x-hidden"
     >
       {/* 헤더 */}
-      <div className="flex items-center justify-between mb-8">
-        <div>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-8">
+        <div className="min-w-0">
           <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>Dashboard</h1>
           <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>
             포스트 관리 및 블로그 현황
           </p>
         </div>
         <Link to="/editor"
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white
+          className="flex w-full sm:w-auto items-center justify-center gap-2 px-4 py-2 rounded-lg bg-primary-600 text-white
             hover:bg-primary-700 text-sm font-medium transition-colors">
           <Plus size={15} /> 새 포스트
         </Link>
@@ -296,25 +307,27 @@ export default function Dashboard() {
       />
 
       {/* 탭 (세그먼트 컨트롤) */}
-      <div className="flex gap-1 mb-6 p-1 rounded-xl w-fit"
-        style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
-        {[
-          { id: 'posts', label: '포스트', Icon: FileText },
-          { id: 'architectures', label: 'Architectures', Icon: Cpu },
-          { id: 'tags',  label: '태그 관리', Icon: Tags },
-          { id: 'comments', label: '댓글 관리', Icon: MessageCircle },
-          { id: 'overview', label: '콘텐츠 현황', Icon: BarChart3 },
-        ].map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)}
-            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              tab === t.id
-                ? 'bg-white shadow-sm text-primary-600'
-                : 'hover:bg-white/50'
-            }`}
-            style={tab !== t.id ? { color: 'var(--text-secondary)' } : {}}>
-            <t.Icon size={14} /> {t.label}
-          </button>
-        ))}
+      <div className="mb-6">
+        <div className="flex w-full flex-wrap gap-1 p-1 rounded-xl sm:w-max"
+          style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)' }}>
+          {[
+            { id: 'posts', label: '포스트', Icon: FileText },
+            { id: 'architectures', label: 'Architectures', Icon: Cpu },
+            { id: 'tags',  label: '태그 관리', Icon: Tags },
+            { id: 'comments', label: '댓글 관리', Icon: MessageCircle },
+            { id: 'overview', label: '콘텐츠 현황', Icon: BarChart3 },
+          ].map(t => (
+            <button key={t.id} onClick={() => setTab(t.id)}
+              className={`flex basis-[calc(50%-0.125rem)] sm:basis-auto shrink-0 items-center justify-center gap-1.5 whitespace-nowrap px-3 sm:px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                tab === t.id
+                  ? 'bg-white shadow-sm text-primary-600'
+                  : 'hover:bg-white/50'
+              }`}
+              style={tab !== t.id ? { color: 'var(--text-secondary)' } : {}}>
+              <t.Icon size={14} /> {t.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ─── 포스트 탭 ─── */}

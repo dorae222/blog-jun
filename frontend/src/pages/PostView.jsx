@@ -93,8 +93,8 @@ export default function PostView() {
     >
       <ReadingProgress />
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12 flex gap-8">
-        <article className="flex-1 max-w-4xl">
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12 flex gap-8 overflow-x-hidden">
+        <article className="w-full min-w-0 flex-1 max-w-4xl overflow-hidden">
           {/* 모바일 목차 버튼 (xl 미만에서만 표시) */}
           <div className="xl:hidden mb-4">
             <button
@@ -107,7 +107,7 @@ export default function PostView() {
           </div>
 
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-1 text-xs mb-4 flex-wrap" style={{ color: 'var(--text-secondary)' }}>
+          <nav className="min-w-0 flex items-center gap-1 text-xs mb-4 flex-wrap" style={{ color: 'var(--text-secondary)' }}>
             <Link to="/" className="hover:text-primary-600 transition-colors">Home</Link>
             <ChevronRight size={12} />
             <Link to="/posts" className="hover:text-primary-600 transition-colors">Posts</Link>
@@ -120,11 +120,11 @@ export default function PostView() {
               </>
             )}
             <ChevronRight size={12} />
-            <span className="truncate max-w-[200px]" style={{ color: 'var(--text)' }}>{post.title}</span>
+            <span className="min-w-0 truncate max-w-[200px]" style={{ color: 'var(--text)' }}>{post.title}</span>
           </nav>
 
           {/* Header */}
-          <header className="mb-8">
+          <header className="mb-8 min-w-0">
             <div className="flex items-center gap-2 mb-4">
               {post.category && (
                 <Link
@@ -151,7 +151,7 @@ export default function PostView() {
               )}
             </div>
 
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4" style={{ color: 'var(--text)' }}>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 break-words" style={{ color: 'var(--text)' }}>
               {post.title}
             </h1>
 

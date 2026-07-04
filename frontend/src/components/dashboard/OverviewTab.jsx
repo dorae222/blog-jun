@@ -53,7 +53,7 @@ export default function OverviewTab({ stats, onShowMissingImages }) {
               ? (image_coverage.with_any_image / image_coverage.total_published) * 100
               : 0}%` }} />
         </div>
-        <div className="flex gap-4 mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
+        <div className="flex flex-wrap gap-3 sm:gap-4 mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
           <span className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-blue-500" /> 커버 이미지: {image_coverage.with_cover_image}
           </span>
@@ -72,7 +72,35 @@ export default function OverviewTab({ stats, onShowMissingImages }) {
       </button>
 
       {/* 카테고리별 이미지 커버리지 */}
-      <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+      <div className="sm:hidden space-y-2">
+        {image_coverage_by_category.map(cat => {
+          const missing = cat.total - cat.with_cover
+          const pct = cat.total > 0 ? Math.round((cat.with_cover / cat.total) * 100) : 0
+          return (
+            <div key={cat.category__slug || 'none'} className="rounded-xl border p-3"
+              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-semibold truncate" style={{ color: 'var(--text)' }}>
+                    {cat.category__name || '(없음)'}
+                  </p>
+                  <p className="mt-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                    총 {cat.total} · 커버 있음 {cat.with_cover} · 없음 {missing}
+                  </p>
+                </div>
+                <span className="shrink-0 text-sm font-bold" style={{ color: pct >= 50 ? '#10b981' : '#f97316' }}>
+                  {pct}%
+                </span>
+              </div>
+              <div className="mt-3 h-2 rounded-full overflow-hidden" style={{ background: 'var(--bg-secondary)' }}>
+                <div className="h-full rounded-full transition-all"
+                  style={{ width: `${pct}%`, background: pct >= 50 ? '#10b981' : '#f97316' }} />
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <div className="hidden sm:block rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
         <table className="w-full text-sm">
           <thead>
             <tr style={{ background: 'var(--bg-secondary)', borderBottom: '1px solid var(--border)' }}>

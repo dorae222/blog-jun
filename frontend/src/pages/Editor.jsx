@@ -13,7 +13,7 @@ import { getPost, createPost, updatePost, getCategories, getTags, getSeries, get
 export default function Editor() {
   const { slug } = useParams()
   const navigate = useNavigate()
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
   const [showTemplates, setShowTemplates] = useState(false)
   const [showLinkModal, setShowLinkModal] = useState(false)
   const [templates, setTemplates] = useState([])
@@ -43,6 +43,7 @@ export default function Editor() {
   })
 
   useEffect(() => {
+    if (loading) return
     if (!user) { navigate('/login'); return }
     if (!user.is_staff) { navigate('/'); return }
     getCategories().then(r => setCategories(r.data.results || r.data || []))
@@ -70,7 +71,7 @@ export default function Editor() {
         })
       })
     }
-  }, [slug, user, navigate])
+  }, [slug, user, loading, navigate])
 
   const [saveStatus, setSaveStatus] = useState('saved')
 
@@ -187,6 +188,13 @@ export default function Editor() {
     updateForm({ content: form.content + '\n' + linkText })
   }, [form.content])
 
+  if (loading) {
+    return (
+      <div className="flex min-h-[40vh] items-center justify-center text-sm" style={{ color: 'var(--text-secondary)' }}>
+        Loading...
+      </div>
+    )
+  }
   if (!user || !user.is_staff) return null
 
   const VIEW_MODES = [
@@ -200,22 +208,22 @@ export default function Editor() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="h-[calc(100vh-4rem)] flex flex-col"
+      className="h-[calc(100vh-4rem)] flex flex-col overflow-hidden"
     >
       {/* Toolbar */}
-      <div className="flex items-center gap-3 px-4 py-2 border-b overflow-x-auto" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 border-b overflow-y-auto max-h-[42vh] sm:max-h-none" style={{ borderColor: 'var(--border)', background: 'var(--bg-secondary)' }}>
         <input
           value={form.title}
           onChange={e => updateForm({ title: e.target.value, slug: e.target.value.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '-') })}
           placeholder="Post title..."
-          className="flex-1 min-w-0 text-lg font-semibold bg-transparent outline-none"
+          className="basis-full sm:basis-auto sm:flex-1 min-w-0 text-base sm:text-lg font-semibold bg-transparent outline-none"
           style={{ color: 'var(--text)', borderBottom: errors.title ? '2px solid #ef4444' : undefined }}
         />
 
         <select
           value={form.post_type}
           onChange={e => updateForm({ post_type: e.target.value })}
-          className="text-sm px-2 py-1 rounded border"
+          className="min-w-[8rem] flex-1 sm:flex-none text-sm px-2 py-1 rounded border"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="article">Article</option>
@@ -229,7 +237,7 @@ export default function Editor() {
         <select
           value={form.category}
           onChange={e => updateForm({ category: e.target.value })}
-          className="text-sm px-2 py-1 rounded border"
+          className="min-w-[8rem] flex-1 sm:flex-none text-sm px-2 py-1 rounded border"
           style={{ borderColor: errors.category ? '#ef4444' : 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="">Category</option>
@@ -239,7 +247,7 @@ export default function Editor() {
         <select
           value={form.series}
           onChange={e => updateForm({ series: e.target.value })}
-          className="text-sm px-2 py-1 rounded border"
+          className="min-w-[8rem] flex-1 sm:flex-none text-sm px-2 py-1 rounded border"
           style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
         >
           <option value="">Series</option>
@@ -253,14 +261,14 @@ export default function Editor() {
               value={form.arxiv_url}
               onChange={e => updateForm({ arxiv_url: e.target.value })}
               placeholder="arXiv URL"
-              className="text-sm px-2 py-1 rounded border w-40"
+              className="text-sm px-2 py-1 rounded border w-full sm:w-40"
               style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
             />
             <input
               value={form.venue}
               onChange={e => updateForm({ venue: e.target.value })}
               placeholder="학회 (NeurIPS, ICML...)"
-              className="text-sm px-2 py-1 rounded border w-32"
+              className="text-sm px-2 py-1 rounded border flex-1 sm:flex-none sm:w-32"
               style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
             />
             <input
@@ -268,14 +276,14 @@ export default function Editor() {
               value={form.paper_year || ''}
               onChange={e => updateForm({ paper_year: e.target.value ? parseInt(e.target.value) : null })}
               placeholder="연도"
-              className="text-sm px-2 py-1 rounded border w-20"
+              className="text-sm px-2 py-1 rounded border w-24 sm:w-20"
               style={{ borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)' }}
             />
           </>
         )}
 
         {/* View Mode Toggle */}
-        <div className="flex items-center rounded border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
+        <div className="flex shrink-0 items-center rounded border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
           {VIEW_MODES.map(mode => (
             <button
               key={mode.id}
@@ -296,7 +304,7 @@ export default function Editor() {
         {/* TOC Toggle */}
         <button
           onClick={() => setShowToc(prev => !prev)}
-          className="px-2 py-1 rounded border text-xs"
+          className="shrink-0 px-2 py-1 rounded border text-xs"
           style={{
             borderColor: 'var(--border)',
             background: showToc ? 'var(--bg)' : 'transparent',
@@ -309,7 +317,7 @@ export default function Editor() {
 
         <button
           onClick={() => setShowLinkModal(true)}
-          className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
+          className="shrink-0 text-sm px-3 py-1 rounded border hover:bg-gray-50"
           style={{ borderColor: 'var(--border)' }}
           title="Insert post link (Ctrl+K)"
         >
@@ -318,7 +326,7 @@ export default function Editor() {
 
         <button
           onClick={() => setShowTemplates(true)}
-          className="text-sm px-3 py-1 rounded border hover:bg-gray-50"
+          className="shrink-0 text-sm px-3 py-1 rounded border hover:bg-gray-50"
           style={{ borderColor: 'var(--border)' }}
         >
           Templates
@@ -340,7 +348,7 @@ export default function Editor() {
         <button
           onClick={() => handleSave()}
           disabled={saveStatus === 'saving'}
-          className="text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="shrink-0 text-sm px-4 py-1.5 rounded bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saveStatus === 'saving' ? '저장 중...' : 'Save'}
         </button>
@@ -348,7 +356,7 @@ export default function Editor() {
         <button
           onClick={handlePublish}
           disabled={saveStatus === 'saving'}
-          className="text-sm px-4 py-1.5 rounded bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="shrink-0 text-sm px-4 py-1.5 rounded bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {saveStatus === 'saving' ? '저장 중...' : 'Publish'}
         </button>

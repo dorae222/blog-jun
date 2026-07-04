@@ -9,18 +9,20 @@ import { Link } from 'react-router-dom'
 
 const ORBIT_TECHS = [
   { name: 'PyTorch', angle: 0 },
-  { name: 'AWS', angle: 45 },
-  { name: 'Python', angle: 90 },
-  { name: 'React', angle: 135 },
-  { name: 'Docker', angle: 180 },
-  { name: 'HuggingFace', angle: 225 },
-  { name: 'Django', angle: 270 },
-  { name: 'FastAPI', angle: 315 },
+  { name: 'Naver Cloud', angle: 36 },
+  { name: 'AWS', angle: 72 },
+  { name: 'Kubernetes', angle: 108 },
+  { name: 'Python', angle: 144 },
+  { name: 'React', angle: 180 },
+  { name: 'Docker', angle: 216 },
+  { name: 'HuggingFace', angle: 252 },
+  { name: 'Django', angle: 288 },
+  { name: 'FastAPI', angle: 324 },
 ]
 
 export default function HeroSection({ stats = {} }) {
   return (
-    <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[60vh] md:min-h-[85vh] flex items-center overflow-hidden pt-6 pb-14 md:py-0">
       <ParticleBackground count={40} />
       <GradientCursor />
 
@@ -118,7 +120,7 @@ export default function HeroSection({ stats = {} }) {
         >
           <TypeWriter
             texts={[
-              'NLP / AI Engineer',
+              'AIOps Engineer',
               'Cloud & Infrastructure Builder',
               'Full-Stack Developer',
             ]}
