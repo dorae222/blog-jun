@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /editor
+Disallow: /login
+
+Sitemap: https://blog.dorae222.com/sitemap.xml
