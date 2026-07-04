@@ -8,16 +8,16 @@ import { Github, Mail, Linkedin, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const ORBIT_TECHS = [
-  { name: 'PyTorch', angle: 0 },
-  { name: 'Naver Cloud', angle: 36 },
-  { name: 'AWS', angle: 72 },
-  { name: 'Kubernetes', angle: 108 },
-  { name: 'Python', angle: 144 },
-  { name: 'React', angle: 180 },
-  { name: 'Docker', angle: 216 },
-  { name: 'HuggingFace', angle: 252 },
-  { name: 'Django', angle: 288 },
-  { name: 'FastAPI', angle: 324 },
+  { name: 'HuggingFace', angle: 270 },
+  { name: 'PyTorch', angle: 306 },
+  { name: 'Python', angle: 342 },
+  { name: 'Naver Cloud', angle: 18 },
+  { name: 'AWS', angle: 54 },
+  { name: 'Kubernetes', angle: 90 },
+  { name: 'Docker', angle: 126 },
+  { name: 'React', angle: 162 },
+  { name: 'FastAPI', angle: 198 },
+  { name: 'Django', angle: 234 },
 ]
 
 export default function HeroSection({ stats = {} }) {
