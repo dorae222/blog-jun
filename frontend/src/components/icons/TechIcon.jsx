@@ -12,7 +12,7 @@ const ICONS = {
   react:          { cdn: 'si', slug: 'react',         color: '#61DAFB' },
   docker:         { cdn: 'si', slug: 'docker',        color: '#2496ED' },
   kubernetes:     { cdn: 'si', slug: 'kubernetes',    color: '#326CE5' },
-  navercloud:     { cdn: 'si', slug: 'naver',         color: '#03C75A' },
+  navercloud:     { cdn: 'local', src: '/assets/brand/ncloud-favicon.png', color: '#03C75A' },
   pytorch:        { cdn: 'si', slug: 'pytorch',       color: '#EE4C2C' },
   tensorflow:     { cdn: 'si', slug: 'tensorflow',    color: '#FF6F00' },
   huggingface:    { cdn: 'si', slug: 'huggingface',   color: '#FFD21E' },
@@ -45,6 +45,9 @@ const ICONS = {
 }
 
 function getIconUrl(icon) {
+  if (icon.cdn === 'local') {
+    return icon.src
+  }
   const hex = icon.color.replace('#', '')
   if (icon.cdn === 'devicon') {
     return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${icon.slug}.svg`
@@ -89,10 +92,11 @@ export default function TechIcon({ name, size = 24, className = '' }) {
     <img
       src={getIconUrl(icon)}
       alt={name}
-      width={size}
-      height={size}
+      width={icon.wide ? Math.round(size * 1.8) : size}
+      height={icon.wide ? Math.round(size * 0.85) : size}
       className={className}
       loading="lazy"
+      style={{ objectFit: 'contain' }}
       onError={() => setBroken(true)}
     />
   )
