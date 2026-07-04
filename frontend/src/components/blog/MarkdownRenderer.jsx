@@ -91,7 +91,9 @@ export default function MarkdownRenderer({ content }) {
             </div>
           ),
         }}
-      />
+      >
+        {content || ''}
+      </ReactMarkdown>
     </div>
   )
 }

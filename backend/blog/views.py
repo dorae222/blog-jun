@@ -2,7 +2,7 @@ from django.db.models import Count, Q, F, Sum
 from django.utils import timezone
 from django.views.decorators.cache import cache_page
 from rest_framework import viewsets, generics, status, permissions
-from rest_framework.decorators import api_view, action
+from rest_framework.decorators import api_view, action, throttle_classes
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -153,6 +153,7 @@ def dashboard_stats(request):
 
 
 @api_view(['GET'])
+@throttle_classes([])
 def health_check(request):
     return Response({'status': 'ok'})
 
