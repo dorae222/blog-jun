@@ -48,6 +48,7 @@ Thumbs.db
 .mcp/
 AGENTS.md
 CLAUDE.md
+plan.md
 .github/plan.md
 
 # Local import/sensitive workspaces
