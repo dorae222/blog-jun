@@ -1,0 +1,17 @@
+{
+  "slug": "agntcy-agent-discovery-trust",
+  "title": "AGNTCY Agent Discovery and Trust",
+  "title_ko": "AGNTCY: 에이전트 발견과 신뢰 레이어",
+  "category_slug": "agent",
+  "summary": "AGNTCY를 에이전트 생태계의 발견, 등록, 신뢰, 상호운용성 레이어로 정리합니다. MCP/A2A/AG-UI와 다른 책임 경계를 설명합니다.",
+  "tags": [
+    "AGNTCY",
+    "Agent-Protocol",
+    "Discovery",
+    "Trust"
+  ],
+  "series": "agent-protocol-stack",
+  "series_order": 4,
+  "label": "AGNTCY",
+  "is_pinned": false
+}

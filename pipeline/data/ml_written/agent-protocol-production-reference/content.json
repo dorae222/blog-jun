@@ -1,0 +1,18 @@
+{
+  "slug": "agent-protocol-production-reference",
+  "title": "Agent Protocol Production Reference Architecture",
+  "title_ko": "Agent Protocol 종합 실전: MCP, A2A, AG-UI 레퍼런스 아키텍처",
+  "category_slug": "agent",
+  "summary": "MCP, A2A, AG-UI를 하나의 프로덕션 에이전트 시스템으로 조합하는 레퍼런스 아키텍처입니다. 사용자 UI, Orchestrator, Remote Agents, MCP tools, 권한/감사/관측성 경계를 end-to-end로 정리합니다.",
+  "tags": [
+    "MCP",
+    "A2A",
+    "AG-UI",
+    "Reference-Architecture",
+    "Production",
+    "Agent"
+  ],
+  "series": "agent-protocol-stack",
+  "series_order": 2,
+  "is_pinned": false
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-24-helm-basics",
+  "title": "Helm Basics for Kubernetes Applications",
+  "title_ko": "Helm chart, values, template, release 기본기",
+  "category_slug": "devops",
+  "summary": "Helm이 Kubernetes manifest를 package, template, values, release 단위로 관리하는 방식을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Helm",
+    "Chart"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 24,
+  "label": "CKAD",
+  "figure_title": "Helm chart, values, template, release 기본기",
+  "is_pinned": false
+}

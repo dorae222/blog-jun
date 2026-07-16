@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-14-label-selector-annotation",
+  "title": "Labels, Selectors, and Annotations",
+  "title_ko": "Label, Selector, Annotation 설계",
+  "category_slug": "devops",
+  "summary": "Kubernetes 객체를 연결하고 선택하는 label/selector와 부가 metadata를 담는 annotation의 차이를 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Labels",
+    "Selectors",
+    "Annotations"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 14,
+  "label": "CKAD",
+  "figure_title": "Label, Selector, Annotation 설계",
+  "is_pinned": false
+}

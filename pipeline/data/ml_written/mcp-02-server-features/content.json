@@ -1,0 +1,18 @@
+{
+  "slug": "mcp-02-server-features",
+  "title": "MCP Server Features: Tools, Resources, Prompts",
+  "title_ko": "MCP 스펙 분석: Tools, Resources, Prompts",
+  "category_slug": "agent",
+  "summary": "MCP 서버가 제공하는 세 기능인 Tools, Resources, Prompts를 실제 JSON-RPC 메시지 흐름으로 분석합니다. tools/list와 tools/call, resources/list와 resources/read, prompts/list와 prompts/get의 차이를 구분하고, 어떤 기능을 언제 써야 하는지 정리합니다.",
+  "tags": [
+    "MCP",
+    "Tools",
+    "Resources",
+    "Prompts",
+    "JSON-RPC",
+    "Specification"
+  ],
+  "series": "mcp-protocol",
+  "series_order": 2,
+  "is_pinned": false
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "agent-protocol-stack",
+  "title": "Agent Protocol Stack: MCP, A2A, AG-UI, AGNTCY",
+  "title_ko": "에이전트 통신 표준 지도: MCP, A2A, AG-UI, AGNTCY",
+  "category_slug": "agent",
+  "summary": "MCP, A2A, AG-UI, AGNTCY를 하나의 에이전트 통신 표준 스택으로 정리합니다. MCP는 에이전트와 도구/데이터, A2A는 에이전트와 에이전트, AG-UI는 에이전트와 사용자 인터페이스, AGNTCY는 에이전트 발견/신뢰 레이어에 가깝습니다. 각 표준의 책임 경계와 함께 실제 시스템에서 어떻게 결합되는지 설명합니다.",
+  "tags": [
+    "MCP",
+    "A2A",
+    "AG-UI",
+    "AGNTCY",
+    "Agent-Protocol",
+    "Interoperability"
+  ],
+  "series": "agent-protocol-stack",
+  "series_order": 1,
+  "is_pinned": false
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "mcp-03-client-features",
+  "title": "MCP Client Features: Roots, Sampling, Elicitation",
+  "title_ko": "MCP Client Features: Roots, Sampling, Elicitation",
+  "category_slug": "agent",
+  "summary": "MCP에서 클라이언트가 서버에 제공하는 기능인 Roots, Sampling, Elicitation을 분석합니다. 서버가 파일 시스템 경계, 모델 샘플링, 사용자 추가 입력을 요청할 수 있다는 점은 MCP가 단순 tool-call 프로토콜이 아니라 양방향 agentic protocol임을 보여줍니다.",
+  "tags": [
+    "MCP",
+    "Roots",
+    "Sampling",
+    "Elicitation",
+    "Client-Features",
+    "Human-in-the-loop"
+  ],
+  "series": "mcp-protocol",
+  "series_order": 3,
+  "is_pinned": false
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-29-troubleshooting-playbook",
+  "title": "Kubernetes Application Troubleshooting Playbook",
+  "title_ko": "Kubernetes 애플리케이션 트러블슈팅 플레이북",
+  "category_slug": "devops",
+  "summary": "Pending, ImagePullBackOff, CrashLoopBackOff, OOMKilled, readiness failure, Service no endpoint 같은 상태별 원인 추적 흐름을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Troubleshooting",
+    "Debugging"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 29,
+  "label": "CKAD",
+  "figure_title": "Kubernetes 애플리케이션 트러블슈팅 플레이북",
+  "is_pinned": false
+}

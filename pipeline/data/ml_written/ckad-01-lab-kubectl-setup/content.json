@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-01-lab-kubectl-setup",
+  "title": "kubectl Setup for Kubernetes Application Work",
+  "title_ko": "kubectl 작업 환경과 기본 조회 흐름",
+  "category_slug": "devops",
+  "summary": "context, namespace, output, explain, dry-run을 중심으로 Kubernetes 리소스를 빠르게 확인하고 manifest를 생성하는 흐름을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "kubectl",
+    "CLI"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 1,
+  "label": "CKAD",
+  "figure_title": "kubectl 작업 환경과 기본 조회 흐름",
+  "is_pinned": false
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-06-namespace-service-basics",
+  "title": "Namespace, Service, and Cluster DNS",
+  "title_ko": "Namespace, Service, Cluster DNS 기본기",
+  "category_slug": "devops",
+  "summary": "Namespace로 리소스 범위를 나누고 Service와 Cluster DNS로 Pod 앞에 안정적인 접근 지점을 만드는 방법을 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Namespace",
+    "Service",
+    "DNS"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 6,
+  "label": "CKAD",
+  "figure_title": "Namespace, Service, Cluster DNS 기본기",
+  "is_pinned": false
+}

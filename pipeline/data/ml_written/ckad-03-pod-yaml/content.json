@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-03-pod-yaml",
+  "title": "Pod and YAML Basics",
+  "title_ko": "Pod와 YAML 기본 구조",
+  "category_slug": "devops",
+  "summary": "Pod manifest의 apiVersion, kind, metadata, spec 구조와 container, port, env, volume 같은 하위 필드의 의미를 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Pod",
+    "YAML"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 3,
+  "label": "CKAD",
+  "figure_title": "Pod와 YAML 기본 구조",
+  "is_pinned": false
+}

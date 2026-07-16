@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-25-kustomize-basics",
+  "title": "Kustomize Basics",
+  "title_ko": "Kustomize base, overlay, patch 기본기",
+  "category_slug": "devops",
+  "summary": "Kustomize가 원본 YAML을 template 없이 base/overlay/patch 방식으로 조합하는 구조를 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Kustomize",
+    "Manifest"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 25,
+  "label": "CKAD",
+  "figure_title": "Kustomize base, overlay, patch 기본기",
+  "is_pinned": false
+}

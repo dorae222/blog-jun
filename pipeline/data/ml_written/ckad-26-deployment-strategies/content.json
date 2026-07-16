@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-26-deployment-strategies",
+  "title": "Blue-Green and Canary with Kubernetes Primitives",
+  "title_ko": "Blue-Green과 Canary 배포를 Kubernetes 기본 리소스로 이해하기",
+  "category_slug": "devops",
+  "summary": "Deployment, Service selector, label versioning을 사용해 blue-green과 canary 배포를 구성하는 기본 원리를 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Deployment",
+    "Blue-Green",
+    "Canary"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 26,
+  "label": "CKAD",
+  "figure_title": "Blue-Green과 Canary 배포를 Kubernetes 기본 리소스로 이해하기",
+  "is_pinned": false
+}

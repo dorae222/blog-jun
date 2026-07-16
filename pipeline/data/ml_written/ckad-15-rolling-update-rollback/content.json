@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-15-rolling-update-rollback",
+  "title": "Rolling Updates and Rollbacks",
+  "title_ko": "Rolling Update와 Rollback 실전 구조",
+  "category_slug": "devops",
+  "summary": "Deployment rollout이 새 ReplicaSet을 늘리고 이전 ReplicaSet을 줄이는 방식과 rollout history, undo 사용 기준을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Deployment",
+    "Rollout",
+    "Rollback"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 15,
+  "label": "CKAD",
+  "figure_title": "Rolling Update와 Rollback 실전 구조",
+  "is_pinned": false
+}

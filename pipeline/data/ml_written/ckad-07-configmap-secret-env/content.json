@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-07-configmap-secret-env",
+  "title": "ConfigMap, Secret, and Environment Injection",
+  "title_ko": "ConfigMap, Secret, env 주입 패턴",
+  "category_slug": "devops",
+  "summary": "애플리케이션 설정을 image에서 분리하고 ConfigMap과 Secret을 env, envFrom, volume mount로 주입하는 방법을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "ConfigMap",
+    "Secret",
+    "Environment"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 7,
+  "label": "CKAD",
+  "figure_title": "ConfigMap, Secret, env 주입 패턴",
+  "is_pinned": false
+}

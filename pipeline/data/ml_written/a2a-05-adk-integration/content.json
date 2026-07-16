@@ -2,9 +2,20 @@
   "slug": "a2a-05-adk-integration",
   "title": "Google ADK + A2A Integration and Security",
   "title_ko": "Google ADK + A2A 통합 패턴과 보안",
-  "summary": "Google ADK(Agent Development Kit)는 A2A의 reference implementation입니다. LlmAgent를 to_a2a_server로 한 줄에 A2A 서버로 노출하는 패턴, ADK-to-ADK 호출 시퀀스, 그리고 프로덕션 보안의 4축(Signed Agent Card with X.509, mTLS transport, OIDC principal propagation, sandboxed external agent invocation)을 정리합니다. Cloud Run + Vertex AI 배포 토폴로지와, 다음 단계인 ADK 로컬 시리즈로의 연결 지점까지 안내합니다.",
+  "summary": "Google ADK(Agent Development Kit)는 A2A의 reference implementation입니다. LlmAgent를 to_a2a_server로 한 줄에 A2A 서버로 노출하는 패턴, ADK-to-ADK 호출 시퀀스, 그리고 프로덕션 보안의 4축(AgentCardSignature with JWS, mTLS transport, OIDC principal propagation, sandboxed external agent invocation)을 정리합니다. Cloud Run + Vertex AI 배포 토폴로지와, 다음 단계인 ADK 로컬 시리즈로의 연결 지점까지 안내합니다.",
   "category_slug": "agent",
-  "tags": ["A2A", "ADK", "Google", "Security", "mTLS", "OIDC", "Production"],
+  "tags": [
+    "A2A",
+    "ADK",
+    "Agent-Protocol",
+    "Google",
+    "OIDC",
+    "Production",
+    "Security",
+    "Specification",
+    "mTLS"
+  ],
   "series": "a2a-protocol",
-  "series_order": 5
+  "series_order": 5,
+  "is_pinned": false
 }

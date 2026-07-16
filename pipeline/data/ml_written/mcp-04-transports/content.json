@@ -1,0 +1,18 @@
+{
+  "slug": "mcp-04-transports",
+  "title": "MCP Transport: stdio vs Streamable HTTP",
+  "title_ko": "MCP Transport: stdio vs Streamable HTTP",
+  "category_slug": "agent",
+  "summary": "MCP의 표준 transport인 stdio와 Streamable HTTP를 비교합니다. 로컬 subprocess 기반 도구에는 stdio가 단순하고 안전하며, 원격/프로덕션 MCP 서버에는 Streamable HTTP가 적합합니다. DNS rebinding, Origin 검증, MCP-Session-Id, MCP-Protocol-Version 같은 운영 포인트를 정리합니다.",
+  "tags": [
+    "MCP",
+    "stdio",
+    "Streamable-HTTP",
+    "SSE",
+    "Transport",
+    "Security"
+  ],
+  "series": "mcp-protocol",
+  "series_order": 4,
+  "is_pinned": false
+}

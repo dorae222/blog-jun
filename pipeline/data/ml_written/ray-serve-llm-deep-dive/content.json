@@ -1,0 +1,19 @@
+{
+  "slug": "ray-serve-llm-deep-dive",
+  "title": "Ray Serve LLM: Python-native Multi-node Serving Graph",
+  "title_ko": "Ray Serve LLM: Python-native Multi-node Serving Graph",
+  "category_slug": "mlops",
+  "summary": "Ray Serve LLM을 KServe와 분리해 Python-native serving graph, actor/replica, autoscaling, multi-node, OpenAI-compatible API, vLLM/SGLang engine 연동 관점으로 정리합니다.",
+  "tags": [
+    "Ray-Serve",
+    "Ray",
+    "LLM-Serving",
+    "vLLM",
+    "Autoscaling",
+    "Multi-Node"
+  ],
+  "is_pinned": false,
+  "series": "ray-serve-llm-runtime",
+  "series_name": "Ray Serve LLM Runtime",
+  "series_order": 1
+}

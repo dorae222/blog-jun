@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-22-rbac-kubeconfig",
+  "title": "kubeconfig, API Groups, and RBAC",
+  "title_ko": "kubeconfig, API group, RBAC 기본기",
+  "category_slug": "devops",
+  "summary": "Kubernetes API 접근이 kubeconfig context, authentication, authorization, Role/RoleBinding을 통해 어떻게 통제되는지 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "RBAC",
+    "kubeconfig",
+    "Security"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 22,
+  "label": "CKAD",
+  "figure_title": "kubeconfig, API group, RBAC 기본기",
+  "is_pinned": false
+}

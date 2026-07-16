@@ -1,0 +1,20 @@
+{
+  "slug": "deepspec-speculative-decoding",
+  "title": "DeepSpec과 Speculative Decoding: draft model을 어떻게 훈련하고 평가할까",
+  "title_ko": "DeepSpec과 Speculative Decoding: draft model을 어떻게 훈련하고 평가할까",
+  "category_slug": "efficiency",
+  "summary": "DeepSpec README 기준으로 draft model, target model, accept/reject, evaluation pipeline을 speculative decoding 관점에서 정리합니다.",
+  "tags": [
+    "DeepSpec",
+    "Draft-Model",
+    "Inference",
+    "Part-Series",
+    "Speculative-Decoding"
+  ],
+  "series": "ai-model-inference-research",
+  "series_order": 20,
+  "label": "AI SERVING",
+  "figure_title": "DeepSpec과 Speculative Decoding",
+  "is_pinned": false,
+  "series_name": "AI Model and Inference Research"
+}

@@ -1,0 +1,21 @@
+{
+  "slug": "kserve-ray-serve-llm",
+  "title": "KServe vs Ray Serve: CRD Control Plane과 Python Serving Graph",
+  "title_ko": "KServe vs Ray Serve: CRD Control Plane과 Python Serving Graph",
+  "category_slug": "mlops",
+  "summary": "KServe와 Ray Serve를 상세 글로 분리한 뒤, CRD control plane과 Python serving graph 중 무엇을 선택할지 비교하는 허브 글입니다.",
+  "tags": [
+    "Comparison",
+    "KServe",
+    "LLMInferenceService",
+    "Part-Series",
+    "Ray-Serve",
+    "Serving-Control-Plane",
+    "vLLM"
+  ],
+  "series": null,
+  "series_order": 0,
+  "label": "AI SERVING",
+  "figure_title": "KServe와 Ray Serve LLM",
+  "is_pinned": false
+}

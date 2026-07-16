@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-28-api-deprecation",
+  "title": "API Versions and Deprecations",
+  "title_ko": "API version과 deprecation 점검",
+  "category_slug": "devops",
+  "summary": "Kubernetes manifest의 apiVersion이 release에 따라 제거될 수 있다는 점과 현재 cluster에서 리소스 API를 확인하는 방법을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "API",
+    "Deprecation"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 28,
+  "label": "CKAD",
+  "figure_title": "API version과 deprecation 점검",
+  "is_pinned": false
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "k8s-gpu-scheduling-dra",
+  "title": "K8s GPU 스케줄링: Device Plugin에서 DRA까지",
+  "title_ko": "K8s GPU 스케줄링: Device Plugin에서 DRA까지",
+  "category_slug": "devops",
+  "summary": "Kubernetes Device Plugin과 Dynamic Resource Allocation을 GPU Pod 운영 관점에서 비교합니다.",
+  "tags": [
+    "DRA",
+    "Device-Plugin",
+    "GPU",
+    "Kubernetes",
+    "Part-Series"
+  ],
+  "series": "kubernetes-ai-infra",
+  "series_order": 10,
+  "label": "AI SERVING",
+  "figure_title": "K8s GPU 스케줄링",
+  "is_pinned": false,
+  "series_name": "Kubernetes AI Serving Infra"
+}

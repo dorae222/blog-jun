@@ -1,0 +1,19 @@
+{
+  "slug": "tei-rag-embedding-rerank",
+  "title": "TEI Serving Runtime: Embedding, Rerank, Dynamic Batching, Observability",
+  "title_ko": "TEI Serving Runtime: Embedding, Rerank, Dynamic Batching, Observability",
+  "category_slug": "mlops",
+  "summary": "TEI를 RAG 부속 기능이 아니라 embedding/rerank 전용 serving runtime으로 분리해 batch, model dimension, rerank top-k, Prometheus/OTel 운영 기준을 정리합니다.",
+  "tags": [
+    "TEI",
+    "Embedding",
+    "Rerank",
+    "RAG",
+    "Prometheus",
+    "OpenTelemetry"
+  ],
+  "is_pinned": false,
+  "series": "tei-serving-runtime",
+  "series_name": "TEI Embedding and Rerank Serving",
+  "series_order": 1
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "helm-argocd-ai-serving-gitops",
+  "title": "Helm/ArgoCD로 AI Serving 배포하기: values, sync waves, health",
+  "title_ko": "Helm/ArgoCD로 AI Serving 배포하기: values, sync waves, health",
+  "category_slug": "devops",
+  "summary": "모델명, GPU request, runtime flag, Gateway, HPA를 Helm values와 ArgoCD sync/health로 관리하는 기준을 정리합니다.",
+  "tags": [
+    "AI-Serving",
+    "ArgoCD",
+    "GitOps",
+    "Helm",
+    "Part-Series"
+  ],
+  "series": "argocd-gitops-operations",
+  "series_order": 20,
+  "label": "AI SERVING",
+  "figure_title": "Helm/ArgoCD AI Serving GitOps",
+  "is_pinned": false,
+  "series_name": "ArgoCD GitOps Operations"
+}

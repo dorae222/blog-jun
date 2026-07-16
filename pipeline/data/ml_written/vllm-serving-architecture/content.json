@@ -1,0 +1,19 @@
+{
+  "slug": "vllm-serving-architecture",
+  "title": "vLLM Serving Runtime: Scheduler, KV Cache, Prefix Cache, Structured Output",
+  "title_ko": "vLLM Serving Runtime: Scheduler, KV Cache, Prefix Cache, Structured Output",
+  "category_slug": "mlops",
+  "summary": "vLLM을 독립 runtime 파트로 보고 scheduler, KV cache, prefix caching, structured output, speculative decoding, disaggregated prefill을 운영 기준으로 정리합니다.",
+  "tags": [
+    "vLLM",
+    "KV-Cache",
+    "PagedAttention",
+    "Prefix-Caching",
+    "Structured-Output",
+    "Speculative-Decoding"
+  ],
+  "is_pinned": false,
+  "series": "vllm-serving-runtime",
+  "series_name": "vLLM Serving Runtime",
+  "series_order": 1
+}

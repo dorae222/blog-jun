@@ -1,11 +1,19 @@
 <!-- infographic-hero -->
-![A2A Specification Deep Dive 핵심 요약](figures/infographic.svg)
+![A2A Specification Deep Dive 핵심 요약](figures/infographic.svg?v=layout-20260706-fix2)
 
 *Figure: A2A Specification Deep Dive 한 장 요약 인포그래픽*
 
 # A2A 스펙 분석: Agent Card / Task / JSON-RPC 2.0 / gRPC
 
 > 시리즈 안내: 본 글은 [[a2a|A2A Protocol]] 시리즈의 2편입니다. [[a2a-01-overview|1편 등장 배경]]에서 표준의 필요성을 다뤘다면, 본 편은 스펙 자체를 분해합니다. [[a2a-03-vs-mcp|3편]], [[a2a-04-python-sdk-tutorial|4편]], [[a2a-05-adk-integration|5편]]으로 이어집니다.
+
+![A2A object model](figures/object-model.svg?v=layout-20260706-fix2)
+
+*Figure 2: AgentCard, Task, Message, Part, Artifact의 계층 관계. (Source: A2A v1.0.0 specification 기반 자체 작성)*
+
+:::info
+2026-07 검증 기준: 본 시리즈는 A2A Protocol v1.0.0의 Agent Card, Task, Message/Part, Artifact, streaming event, push notification, JSON-RPC/gRPC/HTTP bindings를 기준으로 보강한다.
+:::
 
 ## 도입: 스펙을 세 축으로 보기
 
@@ -19,7 +27,7 @@ A2A 스펙은 분량이 크지만 핵심은 세 축이다.
 
 ## 1. Agent Card: 능력의 자기 서술
 
-Agent Card는 에이전트가 "나는 누구이고 무엇을 할 수 있다"를 선언하는 JSON 문서다. 관례적으로 `https://agent.example.com/.well-known/agent.json` 경로에서 GET으로 가져올 수 있다. RFC 8615의 well-known URI 패턴을 따른다.
+Agent Card는 에이전트가 "나는 누구이고 무엇을 할 수 있다"를 선언하는 JSON 문서다. 관례적으로 `https://agent.example.com/.well-known/agent-card.json` 경로에서 GET으로 가져올 수 있다. RFC 8615의 well-known URI 패턴을 따른다.
 
 ### 최소 필드
 
@@ -29,14 +37,14 @@ Agent Card는 에이전트가 "나는 누구이고 무엇을 할 수 있다"를 
   "description": "Conducts deep web research and produces structured reports",
   "url": "https://research.example.com/a2a",
   "version": "1.4.0",
-  "protocol_version": "1.1",
+  "protocolVersion": "1.0",
   "capabilities": {
     "streaming": true,
-    "push_notifications": true,
-    "state_transition_history": true
+    "pushNotifications": true,
+    "stateTransitionHistory": true
   },
-  "default_input_modes": ["text/plain", "application/json"],
-  "default_output_modes": ["text/plain", "application/json", "text/markdown"],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json", "text/markdown"],
   "skills": [
     {
       "id": "web_research",
@@ -48,11 +56,11 @@ Agent Card는 에이전트가 "나는 누구이고 무엇을 할 수 있다"를 
       ]
     }
   ],
-  "security_schemes": {
+  "securitySchemes": {
     "bearer": {
       "type": "http",
       "scheme": "bearer",
-      "bearer_format": "JWT"
+      "bearerFormat": "JWT"
     }
   },
   "security": [{"bearer": []}]
@@ -63,14 +71,14 @@ Agent Card는 에이전트가 "나는 누구이고 무엇을 할 수 있다"를 
 
 - `name`, `description`: 사람과 LLM이 읽을 식별자. LLM 라우팅이 description을 본다
 - `url`: A2A 엔드포인트의 base URL. 모든 RPC 호출이 여기로 향함
-- `protocol_version`: A2A 스펙 자체의 버전. 1.0은 2025-12, 1.1은 2026-03
-- `capabilities`: 옵션 기능 선언. streaming(SSE 지원), push_notifications(webhook 지원)
+- `protocolVersion`: 요청과 Agent Card가 따르는 A2A 프로토콜 버전. 이 글은 v1.0.0 기준으로 설명한다
+- `capabilities`: 옵션 기능 선언. streaming(SSE 지원), pushNotifications(push notification 지원)
 - `skills`: 사람이 부를 수 있는 능력 목록. tag와 example로 검색 가능
-- `security_schemes`, `security`: OpenAPI 3.0과 동일한 보안 정의 형식 채택
+- `securitySchemes`, `security`: OpenAPI 3.0과 동일한 보안 정의 형식 채택
 
-### Signed Agent Card (2026)
+### Agent Card Signature
 
-2026-03 v1.1에서 도입된 Signed Agent Card는 Agent Card 자체에 X.509 서명을 첨부한다. 형식은 JWS(JSON Web Signature)를 따르고, 검증자는 서명을 통해 발급자(에이전트 운영자)와 무결성을 모두 확인한다. 외부 에이전트 호출 시 fake Agent Card 공격을 막는 핵심 메커니즘이다. 자세한 보안 토픽은 [[a2a-05-adk-integration|5편]]에서 다룬다.
+v1.0.0 스펙의 AgentCardSignature는 Agent Card 자체에 JWS 서명을 첨부한다. 형식은 JWS(JSON Web Signature)를 따르고, 검증자는 서명을 통해 발급자(에이전트 운영자)와 무결성을 모두 확인한다. 외부 에이전트 호출 시 fake Agent Card 공격을 막는 핵심 메커니즘이다. 자세한 보안 토픽은 [[a2a-05-adk-integration|5편]]에서 다룬다.
 
 ## 2. Task: 일의 단위와 라이프사이클
 
@@ -165,7 +173,7 @@ Content-Type: application/json
 {
   "jsonrpc": "2.0",
   "id": 1,
-  "method": "tasks/send",
+  "method": "SendMessage",
   "params": {
     "id": "task-7f3c2a91",
     "session_id": "sess-9d4e",
@@ -194,16 +202,16 @@ Content-Type: application/json
 
 | 메서드 | 역할 |
 |--------|------|
-| `tasks/send` | Task 생성 또는 메시지 추가 |
-| `tasks/get` | 현재 상태와 history 조회 |
-| `tasks/cancel` | Task 취소 |
-| `tasks/sendSubscribe` | Task 생성 + SSE 스트림 구독 |
-| `tasks/pushNotification/set` | webhook 등록 |
-| `tasks/pushNotification/get` | 등록된 webhook 조회 |
+| `SendMessage` | Task 생성 또는 메시지 추가 |
+| `GetTask` | 현재 상태와 history 조회 |
+| `CancelTask` | Task 취소 |
+| `SendStreamingMessage` | Task 생성 + SSE 스트림 구독 |
+| `CreateTaskPushNotificationConfig` | webhook 등록 |
+| `GetTaskPushNotificationConfig` | 등록된 webhook 조회 |
 
 ### gRPC (확장 트랜스포트)
 
-JSON-RPC가 텍스트 기반이라 페이로드 크기와 latency에 민감한 환경에서는 gRPC 트랜스포트를 선택할 수 있다. v1.1부터 공식 지원되며, proto 정의는 다음과 같다.
+JSON-RPC가 텍스트 기반이라 페이로드 크기와 latency에 민감한 환경에서는 gRPC 트랜스포트를 선택할 수 있다. v1.0.0 표준 binding으로 정의되며, proto 정의는 다음과 같다.
 
 ```proto
 service A2AService {
@@ -222,7 +230,7 @@ JSON-RPC와 gRPC는 의미적으로 동일한 메서드를 노출한다. Agent C
 
 ### SSE (Server-Sent Events)
 
-`tasks/sendSubscribe` 메서드는 단일 HTTP 응답으로 SSE 스트림을 연다. 서버는 상태 변경마다 이벤트를 푸시한다.
+`SendStreamingMessage` 메서드는 단일 HTTP 응답으로 SSE 스트림을 연다. 서버는 상태 변경마다 이벤트를 푸시한다.
 
 ```text
 HTTP/1.1 200 OK
@@ -242,11 +250,11 @@ data: {"id":"task-7f3c2a91","status":{"state":"completed","timestamp":"..."}}
 
 ### Push Notification (Webhook)
 
-며칠짜리 작업은 SSE 연결을 유지하기 어렵다. `tasks/pushNotification/set`으로 webhook URL을 등록하면, 서버는 상태 변경 시 그 URL로 POST를 보낸다.
+며칠짜리 작업은 SSE 연결을 유지하기 어렵다. `CreateTaskPushNotificationConfig`으로 webhook URL을 등록하면, 서버는 상태 변경 시 그 URL로 POST를 보낸다.
 
 ```json
 {
-  "method": "tasks/pushNotification/set",
+  "method": "CreateTaskPushNotificationConfig",
   "params": {
     "id": "task-7f3c2a91",
     "push_notification_config": {
@@ -298,7 +306,7 @@ security_schemes:
 
 ### Signed Agent Card + OIDC Principal
 
-v1.1에서 추가된 패턴. Agent Card 자체에 X.509 서명을 붙여 발급자를 확인하고, 호출 시 OIDC ID 토큰으로 사용자 principal을 propagation한다. 다단계 호출에서 사용자 권한이 끝까지 유지된다. 자세한 내용은 [[a2a-05-adk-integration|5편]]에서 다룬다.
+v1.0.0 스펙의 security scheme과 AgentCardSignature를 조합하는 운영 패턴. Agent Card 자체에 JWS 서명을 붙여 발급자를 확인하고, 호출 시 OIDC ID 토큰으로 사용자 principal을 propagation한다. 다단계 호출에서 사용자 권한이 끝까지 유지된다. 자세한 내용은 [[a2a-05-adk-integration|5편]]에서 다룬다.
 
 ## 6. 페이로드 한 번에 보기: 호출 시퀀스
 
@@ -307,18 +315,18 @@ v1.1에서 추가된 패턴. Agent Card 자체에 X.509 서명을 붙여 발급�
 ```text
 Client                                  Agent
   │                                       │
-  │  GET /.well-known/agent.json          │
+  │  GET /.well-known/agent-card.json          │
   │ ────────────────────────────────────> │
   │ <──────────────── Agent Card ──────── │
   │                                       │
-  │  POST /a2a (tasks/sendSubscribe)      │
+  │  POST /a2a (SendStreamingMessage)      │
   │ ────────────────────────────────────> │
   │ <──── 200 SSE: state=submitted ────── │
   │ <──── SSE: state=working ──────────── │
   │ <──── SSE: artifact updated ───────── │
   │ <──── SSE: state=input-required ───── │
   │                                       │
-  │  POST /a2a (tasks/send, same id)      │
+  │  POST /a2a (SendMessage, same id)      │
   │  with user response                   │
   │ ────────────────────────────────────> │
   │ <──── SSE: state=working ──────────── │
@@ -332,7 +340,7 @@ Client                                  Agent
 
 A2A 스펙은 세 축으로 압축된다.
 
-- **Agent Card**: well-known URI에 놓인 JSON 문서로 능력을 자기 서술. v1.1부터 X.509 서명 가능
+- **Agent Card**: well-known URI에 놓인 JSON 문서로 능력을 자기 서술. v1.0.0에서 AgentCardSignature로 서명 표현 가능
 - **Task**: 6단계 상태 머신과 multipart message + artifact 구조로 long-running 작업 모델링
 - **Transport**: HTTPS + JSON-RPC 2.0 1차, gRPC 확장. SSE와 webhook으로 진행 상황 전달
 
@@ -340,11 +348,34 @@ A2A 스펙은 세 축으로 압축된다.
 
 다음 [[a2a-03-vs-mcp|3편]]에서는 A2A와 [[mcp|MCP]]의 직교성을 코드 예제로 비교한다. 두 프로토콜이 어떻게 한 시스템 안에서 함께 쓰이는지, 어느 경우에 어느 프로토콜을 선택해야 하는지 정리한다.
 
+## 스펙을 구현으로 옮길 때 자주 틀리는 지점
+
+스펙을 읽는 것과 구현하는 것 사이에는 매번 같은 자리에서 미끄러지는 함정이 있다. 아래는 본문에서 다룬 객체와 트랜스포트를 실제 코드로 옮길 때 가장 자주 어긋나는 지점이다. 각 항목은 무엇을 확인해야 제대로 구현했다고 말할 수 있는지가 서로 다르다.
+
+| 헷갈리는 지점 | 스펙이 정한 것 | 확인 방법 |
+|---|---|---|
+| Task 상태 전이 | `completed`/`failed`/`cancelled`는 종료 상태, `input-required`는 다시 `working`으로 복귀 가능 | 종료 상태 이후 상태 변경 이벤트가 더 나오지 않는지, input-required에서 응답을 받으면 같은 Task가 working으로 돌아오는지 로그로 확인 |
+| Task 재개 | input-required 이후 사용자 응답은 새 Task가 아니라 같은 `id`로 SendMessage | 후속 SendMessage의 `id`가 앞선 응답의 Task `id`와 동일한지 |
+| Message vs Artifact | 대화 turn은 `history`의 Message, 산출물은 `artifacts` 배열로 분리 | 최종 결과물이 마지막 agent Message 텍스트가 아니라 artifact 참조로 감사·재사용되는지 |
+| Streaming 재연결 | SSE는 짧은 작업과 실시간 표시용, 며칠짜리는 push notification webhook | 연결이 끊긴 뒤 GetTask polling이나 등록된 webhook으로 상태가 복구되는지 |
+| JSON-RPC vs gRPC | 두 binding은 의미적으로 동일한 메서드, Agent Card가 지원 트랜스포트를 광고 | client가 트랜스포트를 하드코딩하지 않고 Agent Card 선언을 읽어 고르는지 |
+
+## 자주 나오는 실패 패턴
+
+- **Agent Card만 만들고 Task 라이프사이클을 건너뛴다** - 능력은 광고했지만 상태 머신이 없어 long-running 작업에서 재시도와 복구가 무너진다. `submitted → working → completed/failed`가 영속화되고 같은 `id`로 재조회되는지 먼저 확인한다.
+- **streaming 이벤트와 최종 Artifact의 의미가 겹친다** - SSE로 흘러오는 중간 artifact 이벤트를 최종 산출물로 오인하면 미완성 결과를 소비한다. `completed` 상태와 함께 확정된 artifact만 결과로 취급한다.
+- **binding마다 error 포맷이 달라진다** - JSON-RPC의 error 객체와 gRPC status를 각기 다르게 매핑하면 client가 트랜스포트별로 갈라진다. 두 binding의 에러를 하나의 내부 표현으로 정규화한다.
+- **인증을 Agent Card 밖에서 협상한다** - securitySchemes/security를 선언해 두고도 실제 호출은 별도 합의로 처리하면 secure by default가 깨진다. Agent Card의 스키마 선언과 실제 요청 헤더가 일치하는지 본다.
+
+관측성 축은 미리 이름을 정해 둔다. 최소한 `task_id`, `session_id`, 상태 전이 타임스탬프를 trace에 실어야 SSE로 흘러간 요청과 webhook으로 복구된 요청을 같은 Task로 이어붙일 수 있다. AgentCardSignature 서명과 OIDC principal propagation을 실제 배포로 옮기는 이야기는 [[a2a-05-adk-integration|5편 ADK 통합과 보안]]에서 다룬다.
+
 ## 관련 문서
 
-- [[a2a|A2A Protocol]] - 메인 엔트리
-- [[a2a-01-overview|A2A 등장 배경]] - 이전 편
-- [[a2a-03-vs-mcp|A2A vs MCP]] - 다음 편
-- [[mcp|MCP]] - 도구 통신 프로토콜
-- [[a2a-04-python-sdk-tutorial|A2A Python SDK 실전]] - 구현 튜토리얼
-- [[a2a-05-adk-integration|ADK + A2A]] - 보안과 프로덕션 배포
+- [[a2a|A2A Protocol]] - 본 시리즈가 속한 아키텍처 엔트리
+- [[a2a-01-overview|A2A 등장 배경]] - 이전 편, 이 스펙이 왜 필요했는지의 배경
+- [[a2a-03-vs-mcp|A2A vs MCP]] - 다음 편, JSON-RPC 트랜스포트를 공유하는 두 프로토콜의 경계
+- [[a2a-04-python-sdk-tutorial|A2A Python SDK 실전]] - 본문 6절의 호출 시퀀스를 a2a-sdk 코드로 구현
+- [[a2a-05-adk-integration|ADK + A2A 통합]] - AgentCardSignature·mTLS·OIDC를 실제 보안 배포로
+- [[mcp|MCP]] - 에이전트-도구 수직 통신, A2A와 직교하는 프로토콜
+- [[mcp-04-transports|MCP 전송]] - streaming과 재연결을 다루는 MCP 쪽 트랜스포트, 비교하며 읽기 좋음
+- [[agent-protocol-stack|Agent Protocol Stack]] - A2A가 전체 프로토콜 스택 어디에 놓이는지

@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-20-statefulset-headless",
+  "title": "StatefulSets and Headless Services",
+  "title_ko": "StatefulSet과 Headless Service",
+  "category_slug": "devops",
+  "summary": "순서 있는 Pod identity, stable DNS, volumeClaimTemplates를 제공하는 StatefulSet의 핵심 구조를 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "StatefulSet",
+    "Headless-Service",
+    "Storage"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 20,
+  "label": "CKAD",
+  "figure_title": "StatefulSet과 Headless Service",
+  "is_pinned": false
+}

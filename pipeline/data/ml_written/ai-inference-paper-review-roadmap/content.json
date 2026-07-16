@@ -1,0 +1,18 @@
+{
+  "slug": "ai-inference-paper-review-roadmap",
+  "title": "AI Inference Paper Review Roadmap: PagedAttention, Speculative Decoding, RAG",
+  "title_ko": "AI Inference Paper Review Roadmap: PagedAttention, Speculative Decoding, RAG",
+  "category_slug": "efficiency",
+  "summary": "AI 추론/서빙 관련 논문 리뷰를 PagedAttention, Speculative Decoding, RAG, Agent 평가 흐름으로 묶어 읽는 로드맵입니다.",
+  "tags": [
+    "Paper-Review",
+    "Inference",
+    "PagedAttention",
+    "Speculative-Decoding",
+    "RAG"
+  ],
+  "is_pinned": false,
+  "series": "ai-model-inference-research",
+  "series_name": "AI Model and Inference Research",
+  "series_order": 1
+}

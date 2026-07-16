@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-17-networkpolicy",
+  "title": "NetworkPolicy Basics",
+  "title_ko": "NetworkPolicy 기본과 트래픽 허용 모델",
+  "category_slug": "devops",
+  "summary": "Pod selector, namespace selector, ingress/egress rule을 통해 기본 허용 네트워크에서 명시적 허용 네트워크로 전환하는 방법을 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "NetworkPolicy",
+    "Networking"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 17,
+  "label": "CKAD",
+  "figure_title": "NetworkPolicy 기본과 트래픽 허용 모델",
+  "is_pinned": false
+}
