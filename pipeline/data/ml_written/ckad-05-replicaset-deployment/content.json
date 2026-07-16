@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-05-replicaset-deployment",
+  "title": "ReplicaSet and Deployment Basics",
+  "title_ko": "ReplicaSet과 Deployment 기본기",
+  "category_slug": "devops",
+  "summary": "Deployment가 ReplicaSet을 만들고 ReplicaSet이 Pod replica를 유지하는 ownership 구조와 rolling update의 기본 동작을 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Deployment",
+    "ReplicaSet"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 5,
+  "label": "CKAD",
+  "figure_title": "ReplicaSet과 Deployment 기본기",
+  "is_pinned": false
+}

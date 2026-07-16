@@ -2,11 +2,14 @@
   "slug": "ag-ui",
   "title": "AG-UI Protocol",
   "title_ko": "AG-UI Protocol: AI 에이전트 프레임워크",
-  "summary": "AG-UI(Agent-User Interface) 프로토콜은 AI 에이전트와 프론트엔드 UI 간의 실시간 스트리밍 통신을 표준화하는 오픈 프로토콜이다. CopilotKit이 2025년 공개한 AG-UI는 MCP가 에이전트-도구 통신을, A2A가 에이전트 간 통신을 표준화한 것과 달리, 에이전트-사용자 인터페이스 간의 통신에 집중한다. 에이전트의 사고 과정·도구 호출·상태 변경을 UI가 실시간으로 수신하고 렌더링할 수 있게 하여, 인터랙티브하고 투명한 에이전트 사용자 경험을 구현한다.",
+  "summary": "AG-UI(Agent-User Interface) 프로토콜은 AI 에이전트와 프론트엔드 UI 간의 실시간 스트리밍 통신을 표준화하는 오픈 프로토콜이다. CopilotKit이 2025년 공개한 AG-UI는 MCP가 에이전트-도구 통신을, A2A가 에이전트 간 통신을 표준화한 것과 달리, 에이전트-사용자 인터페이스 간의 통신에 집중한다. 에이전트의 사고 과정·도구 호출·상태 변경을 UI가 실시간으로 수신하고 렌더링할 수 있게 하여, 인터랙티브하고 투명한 에이전트 사용자 경험을 구현한다. 최신 스펙/문서 기준으로 MCP/A2A/AG-UI 스택 내 역할과 후속 심화 시리즈 링크를 보강하였다.",
   "tags": [
     "AG-UI Protocol",
+    "Agent-Protocol",
     "Agent-UI",
     "CopilotKit",
+    "Interoperability",
     "Streaming Protocol"
-  ]
+  ],
+  "is_pinned": false
 }

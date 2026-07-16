@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-08-command-args-image",
+  "title": "Container Image, Command, and Args",
+  "title_ko": "Container image, command, args 동작 원리",
+  "category_slug": "devops",
+  "summary": "Dockerfile ENTRYPOINT/CMD와 Kubernetes PodSpec command/args가 어떻게 매핑되고 override되는지 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Container",
+    "Dockerfile"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 8,
+  "label": "CKAD",
+  "figure_title": "Container image, command, args 동작 원리",
+  "is_pinned": false
+}

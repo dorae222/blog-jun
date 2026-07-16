@@ -1,0 +1,18 @@
+{
+  "slug": "mcp-06-fastmcp-internal-api",
+  "title": "FastMCP Tutorial: Wrapping Internal APIs",
+  "title_ko": "MCP 서버 실전: FastMCP로 내부 API 감싸기",
+  "category_slug": "agent",
+  "summary": "FastMCP로 사내 API를 MCP 서버로 감싸는 실전 튜토리얼입니다. Tool, Resource, Prompt를 하나씩 만들고, stdio 로컬 실행과 Streamable HTTP 운영 전환 시 고려해야 할 환경변수, 인증, timeout, 감사 로그 설계를 함께 정리합니다.",
+  "tags": [
+    "MCP",
+    "FastMCP",
+    "Tutorial",
+    "Internal-API",
+    "Python",
+    "Agent-Tools"
+  ],
+  "series": "mcp-protocol",
+  "series_order": 6,
+  "is_pinned": false
+}

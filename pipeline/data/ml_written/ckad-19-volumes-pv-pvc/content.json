@@ -1,0 +1,21 @@
+{
+  "slug": "ckad-19-volumes-pv-pvc",
+  "title": "Volumes, PersistentVolumes, and PersistentVolumeClaims",
+  "title_ko": "Volume, PV, PVC, StorageClass 기본기",
+  "category_slug": "devops",
+  "summary": "Pod volume, PersistentVolume, PersistentVolumeClaim, StorageClass가 상태 저장 애플리케이션에서 맡는 책임을 구분한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Volume",
+    "PV",
+    "PVC",
+    "StorageClass"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 19,
+  "label": "CKAD",
+  "figure_title": "Volume, PV, PVC, StorageClass 기본기",
+  "is_pinned": false
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-12-probes-health-checks",
+  "title": "Readiness, Liveness, and Startup Probes",
+  "title_ko": "Readiness, Liveness, Startup Probe",
+  "category_slug": "devops",
+  "summary": "Kubelet이 probe로 container 상태를 판단하는 방식과 트래픽 준비, 재시작, 느린 시작을 분리해 설계하는 기준을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Probe",
+    "Health-Check"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 12,
+  "label": "CKAD",
+  "figure_title": "Readiness, Liveness, Startup Probe",
+  "is_pinned": false
+}

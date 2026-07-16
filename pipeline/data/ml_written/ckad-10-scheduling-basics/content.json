@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-10-scheduling-basics",
+  "title": "Node Selection, Affinity, Taints, and Tolerations",
+  "title_ko": "nodeSelector, affinity, taints/tolerations 기본기",
+  "category_slug": "devops",
+  "summary": "Pod를 특정 node 집합에 배치하거나 특정 node에서 밀어내기 위한 scheduling primitive를 비교한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Scheduling",
+    "Affinity",
+    "Taints"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 10,
+  "label": "CKAD",
+  "figure_title": "nodeSelector, affinity, taints/tolerations 기본기",
+  "is_pinned": false
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-11-multicontainer-pods",
+  "title": "Multi-Container Pods, Sidecars, and Init Containers",
+  "title_ko": "Multi-Container Pod, Sidecar, Init Container 패턴",
+  "category_slug": "devops",
+  "summary": "한 Pod 안에 여러 container를 배치하는 이유와 sidecar, adapter, ambassador, init container 패턴을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Pod",
+    "Sidecar",
+    "Init-Container"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 11,
+  "label": "CKAD",
+  "figure_title": "Multi-Container Pod, Sidecar, Init Container 패턴",
+  "is_pinned": false
+}

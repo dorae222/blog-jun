@@ -1,0 +1,20 @@
+{
+  "slug": "model-inference-research-hub",
+  "title": "모델/추론 연구 목차: 최신 모델, 추론 가속, 논문 리뷰",
+  "title_ko": "모델/추론 연구 목차: 최신 모델, 추론 가속, 논문 리뷰",
+  "category_slug": "efficiency",
+  "summary": "최신 모델 흐름과 추론 알고리즘, 논문 리뷰를 하나의 글에 몰아넣지 않고 하위 파트별 목차로 나누는 연구 허브입니다.",
+  "tags": [
+    "AI-Model",
+    "Inference",
+    "Paper-Review",
+    "Speculative-Decoding",
+    "DeepSpec",
+    "GLM",
+    "Qwen",
+    "Kimi"
+  ],
+  "series": null,
+  "series_order": 0,
+  "is_pinned": true
+}

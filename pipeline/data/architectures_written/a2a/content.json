@@ -4,10 +4,14 @@
   "title_ko": "Agent-to-Agent Protocol: AI 에이전트 프레임워크",
   "summary": "Agent-to-Agent(A2A) 프로토콜은 서로 다른 프레임워크나 벤더로 구축된 AI 에이전트들이 직접 통신하고 협업할 수 있게 하는 오픈 표준이다. Google이 2025년 4월 발표한 A2A는 MCP가 에이전트-도구 간 통신을 표준화했다면, A2A는 에이전트-에이전트 간 통신을 표준화한다. 에이전트가 상대 에이전트의 기능을 검색(discover)하고, 작업을 위임(delegate)하며, 진행 상황을 추적하고, 결과를 수신하는 전 과정을 표준화된 인터페이스로 정의한다.",
   "tags": [
+    "A2A",
     "Agent Communication",
+    "Agent-Protocol",
     "Agent-to-Agent Protocol",
     "Google",
     "Interoperability",
-    "Protocol"
-  ]
+    "Protocol",
+    "Specification"
+  ],
+  "is_pinned": false
 }

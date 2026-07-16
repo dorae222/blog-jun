@@ -1,0 +1,17 @@
+{
+  "slug": "ag-ui-realtime-events",
+  "title": "AG-UI Realtime Events",
+  "title_ko": "AG-UI 실시간 이벤트: 에이전트 실행을 UI로 보여주는 방법",
+  "category_slug": "agent",
+  "summary": "AG-UI를 에이전트와 사용자 인터페이스 사이의 이벤트 스트림으로 설명합니다. 메시지, tool call, state delta, interrupt를 UI 상태로 어떻게 반영하는지 정리합니다.",
+  "tags": [
+    "AG-UI",
+    "Agent-UI",
+    "Streaming",
+    "Agent-Protocol"
+  ],
+  "series": "agent-protocol-stack",
+  "series_order": 3,
+  "label": "AG-UI",
+  "is_pinned": false
+}

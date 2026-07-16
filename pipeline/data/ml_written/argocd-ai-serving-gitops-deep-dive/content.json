@@ -1,0 +1,18 @@
+{
+  "slug": "argocd-ai-serving-gitops-deep-dive",
+  "title": "ArgoCD AI Serving GitOps: Application, Sync Wave, Health, Rollback",
+  "title_ko": "ArgoCD AI Serving GitOps: Application, Sync Wave, Health, Rollback",
+  "category_slug": "devops",
+  "summary": "ArgoCD를 AI 모델 서빙 배포의 독립 콘텐츠로 보고 Application, sync wave, health, diff, rollback을 자세히 정리합니다.",
+  "tags": [
+    "ArgoCD",
+    "GitOps",
+    "Kubernetes",
+    "AI-Serving",
+    "Helm"
+  ],
+  "is_pinned": false,
+  "series": "argocd-gitops-operations",
+  "series_name": "ArgoCD GitOps Operations",
+  "series_order": 1
+}

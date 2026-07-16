@@ -1,0 +1,21 @@
+{
+  "slug": "ckad-00-kubernetes-application-map",
+  "title": "Kubernetes 기본기 목차: CKAD에서 운영형 애플리케이션까지",
+  "title_ko": "Kubernetes 기본기 목차: CKAD에서 운영형 애플리케이션까지",
+  "category_slug": "devops",
+  "summary": "Kubernetes 기본기를 CKAD 글 목록으로 끝내지 않고 YAML, Pod, Deployment, Service, Config, Storage, Security, Debugging 하위 파트로 나눕니다.",
+  "tags": [
+    "Kubernetes",
+    "CKAD",
+    "Pod",
+    "Deployment",
+    "Service",
+    "ConfigMap",
+    "RBAC",
+    "Helm",
+    "Kustomize"
+  ],
+  "series": null,
+  "series_order": 0,
+  "is_pinned": true
+}

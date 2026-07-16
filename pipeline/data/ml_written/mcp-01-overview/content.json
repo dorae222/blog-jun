@@ -1,0 +1,17 @@
+{
+  "slug": "mcp-01-overview",
+  "title": "MCP Overview: USB-C for AI Apps",
+  "title_ko": "MCP 개요: AI 앱을 위한 USB-C 표준",
+  "category_slug": "agent",
+  "summary": "Model Context Protocol을 Host, Client, Server의 삼중 구조로 설명합니다. MCP가 왜 M x N 통합 문제를 M + N 문제로 바꾸는지, Tools/Resources/Prompts가 어떤 역할을 맡는지, A2A/AG-UI와 어떻게 조합되는지 정리합니다.",
+  "tags": [
+    "MCP",
+    "Model-Context-Protocol",
+    "Anthropic",
+    "Agent-Tools",
+    "Protocol"
+  ],
+  "series": "mcp-protocol",
+  "series_order": 1,
+  "is_pinned": false
+}

@@ -1,0 +1,20 @@
+{
+  "slug": "llm-observability-cost",
+  "title": "LLM 관측성과 비용: TTFT, ITL, throughput, token cost",
+  "title_ko": "LLM 관측성과 비용: TTFT, ITL, throughput, token cost",
+  "category_slug": "mlops",
+  "summary": "LLM serving에서 latency, throughput, quality, cost를 한 대시보드에서 함께 봐야 하는 이유를 정리합니다.",
+  "tags": [
+    "Autoscaling",
+    "Cost",
+    "Latency",
+    "Observability",
+    "Part-Series"
+  ],
+  "series": "llm-serving-runtime",
+  "series_order": 50,
+  "label": "AI SERVING",
+  "figure_title": "LLM 관측성과 비용",
+  "is_pinned": false,
+  "series_name": "LLM Serving Runtime"
+}

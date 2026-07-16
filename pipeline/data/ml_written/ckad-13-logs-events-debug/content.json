@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-13-logs-events-debug",
+  "title": "Logs, Events, Exec, and Debug Flow",
+  "title_ko": "logs, events, exec, describe 디버깅 흐름",
+  "category_slug": "devops",
+  "summary": "Pod 장애를 phase, condition, event, container log, exec 접근 순서로 좁혀 가는 Kubernetes 기본 디버깅 흐름을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Debugging",
+    "Logs",
+    "Events"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 13,
+  "label": "CKAD",
+  "figure_title": "logs, events, exec, describe 디버깅 흐름",
+  "is_pinned": false
+}

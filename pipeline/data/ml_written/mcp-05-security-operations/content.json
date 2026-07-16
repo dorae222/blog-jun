@@ -1,0 +1,18 @@
+{
+  "slug": "mcp-05-security-operations",
+  "title": "MCP Security and Operations",
+  "title_ko": "MCP 보안과 운영: OAuth, consent, DNS rebinding, registry",
+  "category_slug": "agent",
+  "summary": "MCP 운영에서 반드시 챙겨야 할 보안 원칙을 정리합니다. 사용자 동의, 데이터 프라이버시, Tool safety, Sampling controls, OAuth 인증, DNS rebinding 방어, registry 신뢰, 감사 로그를 하나의 운영 체크리스트로 묶고 MCPSecBench 같은 보안 평가 연구와 연결합니다.",
+  "tags": [
+    "MCP",
+    "Security",
+    "OAuth",
+    "Consent",
+    "DNS-Rebinding",
+    "MCPSecBench"
+  ],
+  "series": "mcp-protocol",
+  "series_order": 5,
+  "is_pinned": false
+}

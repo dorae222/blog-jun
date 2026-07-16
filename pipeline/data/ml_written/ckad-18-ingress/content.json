@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-18-ingress",
+  "title": "Services and Ingress",
+  "title_ko": "Service와 Ingress로 애플리케이션 노출하기",
+  "category_slug": "devops",
+  "summary": "ClusterIP Service, NodePort/LoadBalancer 개념, Ingress rule, ingress controller의 역할을 애플리케이션 접근 경로 중심으로 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Service",
+    "Ingress",
+    "Networking"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 18,
+  "label": "CKAD",
+  "figure_title": "Service와 Ingress로 애플리케이션 노출하기",
+  "is_pinned": false
+}

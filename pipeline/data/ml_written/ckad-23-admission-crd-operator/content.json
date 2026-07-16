@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-23-admission-crd-operator",
+  "title": "Admission Controllers, CRDs, and Operators",
+  "title_ko": "Admission Controller, CRD, Operator 구조",
+  "category_slug": "devops",
+  "summary": "API 요청이 admission 단계에서 검증/변경되고 CRD와 controller loop를 통해 Kubernetes API가 확장되는 방식을 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Admission",
+    "CRD",
+    "Operator"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 23,
+  "label": "CKAD",
+  "figure_title": "Admission Controller, CRD, Operator 구조",
+  "is_pinned": false
+}

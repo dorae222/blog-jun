@@ -1,0 +1,19 @@
+{
+  "slug": "kubernetes-ai-infra-hub",
+  "title": "Kubernetes AI Infra 목차: GPU, Gateway, Storage, Serving Control Plane",
+  "title_ko": "Kubernetes AI Infra 목차: GPU, Gateway, Storage, Serving Control Plane",
+  "category_slug": "devops",
+  "summary": "AI serving을 Kubernetes에서 운영하기 위한 GPU, Gateway, storage, KServe/Ray, observability, security 하위 파트 목차입니다.",
+  "tags": [
+    "Kubernetes",
+    "GPU",
+    "Gateway-API",
+    "DRA",
+    "KServe",
+    "Ray-Serve",
+    "Observability"
+  ],
+  "series": null,
+  "series_order": 0,
+  "is_pinned": true
+}

@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-09-resources-requests-limits",
+  "title": "Resource Requests, Limits, and Quotas",
+  "title_ko": "requests, limits, quota로 리소스 제어하기",
+  "category_slug": "devops",
+  "summary": "CPU/Memory requests와 limits, QoS class, ResourceQuota, LimitRange가 Pod 배치와 런타임 안정성에 주는 영향을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Resources",
+    "Quota"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 9,
+  "label": "CKAD",
+  "figure_title": "requests, limits, quota로 리소스 제어하기",
+  "is_pinned": false
+}

@@ -1,0 +1,27 @@
+{
+  "slug": "ai-model-serving-platform-map",
+  "title": "AI Model Serving Platform Map",
+  "title_ko": "AI 모델 서빙 플랫폼 전체 그림: vLLM, TEI, K8s, Gateway, GitOps",
+  "category_slug": "ml",
+  "sub_category": "mlops",
+  "summary": "이전 통합 지도 글은 대분류 허브로 대체되었습니다.",
+  "tags": [
+    "AI-Serving",
+    "ArgoCD",
+    "GPU",
+    "Gateway-API",
+    "Helm",
+    "Istio",
+    "KServe",
+    "Kubernetes",
+    "Observability",
+    "Part-Series",
+    "Ray-Serve",
+    "TEI",
+    "vLLM"
+  ],
+  "series": null,
+  "series_order": 0,
+  "is_pinned": false,
+  "status": "archived"
+}

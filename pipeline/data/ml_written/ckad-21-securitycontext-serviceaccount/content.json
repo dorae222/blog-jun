@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-21-securitycontext-serviceaccount",
+  "title": "SecurityContext and ServiceAccount",
+  "title_ko": "SecurityContext와 ServiceAccount",
+  "category_slug": "devops",
+  "summary": "Pod/container securityContext와 Kubernetes API 접근 주체인 ServiceAccount의 역할을 구분한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "SecurityContext",
+    "ServiceAccount",
+    "Security"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 21,
+  "label": "CKAD",
+  "figure_title": "SecurityContext와 ServiceAccount",
+  "is_pinned": false
+}

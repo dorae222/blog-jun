@@ -1,0 +1,20 @@
+{
+  "slug": "istio-gateway-inference-routing",
+  "title": "Istio/Gateway API 추론 라우팅: InferencePool과 Endpoint Picker",
+  "title_ko": "Istio/Gateway API 추론 라우팅: InferencePool과 Endpoint Picker",
+  "category_slug": "devops",
+  "summary": "Gateway API Inference Extension, Istio, Envoy AI Gateway를 LLM serving 라우팅 관점에서 정리합니다.",
+  "tags": [
+    "Envoy",
+    "Gateway-API",
+    "InferencePool",
+    "Istio",
+    "Part-Series"
+  ],
+  "series": "kubernetes-ai-infra",
+  "series_order": 30,
+  "label": "AI SERVING",
+  "figure_title": "Istio/Gateway 추론 라우팅",
+  "is_pinned": false,
+  "series_name": "Kubernetes AI Serving Infra"
+}

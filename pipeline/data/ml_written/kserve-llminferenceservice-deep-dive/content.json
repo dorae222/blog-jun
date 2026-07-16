@@ -1,0 +1,19 @@
+{
+  "slug": "kserve-llminferenceservice-deep-dive",
+  "title": "KServe LLMInferenceService: Kubernetes-native LLM Serving Control Plane",
+  "title_ko": "KServe LLMInferenceService: Kubernetes-native LLM Serving Control Plane",
+  "category_slug": "mlops",
+  "summary": "KServe를 Ray Serve와 묶지 않고 Kubernetes-native LLM serving control plane으로 분리해 LLMInferenceService, config, scheduler, Gateway, storage, RBAC 운영을 정리합니다.",
+  "tags": [
+    "KServe",
+    "LLMInferenceService",
+    "Kubernetes",
+    "Gateway-API",
+    "CRD",
+    "AI-Serving"
+  ],
+  "is_pinned": false,
+  "series": "kserve-ai-serving",
+  "series_name": "KServe AI Serving",
+  "series_order": 1
+}

@@ -1,0 +1,21 @@
+{
+  "slug": "latest-open-models-glm-deepspec-qwen-kimi",
+  "title": "최신 오픈 모델 흐름: GLM-5.2, DeepSpec, Qwen, Kimi",
+  "title_ko": "최신 오픈 모델 흐름: GLM-5.2, DeepSpec, Qwen, Kimi",
+  "category_slug": "llm",
+  "summary": "GLM-5.2의 1M context, DeepSpec의 speculative decoding codebase, Qwen/Kimi 계열을 모델 선택 기준으로 분리해 봅니다.",
+  "tags": [
+    "DeepSpec",
+    "GLM-5.2",
+    "Kimi",
+    "Open-Model",
+    "Part-Series",
+    "Qwen"
+  ],
+  "series": "ai-model-inference-research",
+  "series_order": 10,
+  "label": "AI SERVING",
+  "figure_title": "최신 오픈 모델 흐름",
+  "is_pinned": false,
+  "series_name": "AI Model and Inference Research"
+}

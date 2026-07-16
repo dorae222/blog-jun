@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-02-kubernetes-architecture",
+  "title": "Kubernetes Architecture for Application Developers",
+  "title_ko": "애플리케이션 개발자를 위한 Kubernetes 아키텍처",
+  "category_slug": "devops",
+  "summary": "API Server, etcd, scheduler, controller manager, kubelet, container runtime이 애플리케이션 배포 요청을 어떻게 처리하는지 설명한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Architecture",
+    "Control-Plane"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 2,
+  "label": "CKAD",
+  "figure_title": "애플리케이션 개발자를 위한 Kubernetes 아키텍처",
+  "is_pinned": false
+}

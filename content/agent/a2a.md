@@ -12,7 +12,7 @@ architecture_entry: a2a
 
 # Agent-to-Agent Protocol: AI 에이전트 간 통신의 표준
 
-**Google** · **2025-04-09** · **Agent Protocol** · **Apache-2.0**
+**Google / A2A Project** · **2025-04-09** · **Agent Protocol** · **Apache-2.0** · **Spec v1.0.0 기준**
 
 ## 개요
 
@@ -22,7 +22,21 @@ A2A의 핵심 가치는 벤더 종속성 탈피에 있다. 기존에는 LangChai
 
 에이전트 생태계는 세 가지 통신 계층으로 구성된다. 에이전트-도구(MCP), 에이전트-에이전트(A2A), 에이전트-사용자(AG-UI)가 그것이다. A2A는 이 중 가장 복잡한 에이전트 간 협업 문제를 다루며, 이기종 에이전트 시스템의 통합이라는 엔터프라이즈 핵심 과제를 해결한다.
 
-![Architecture](figures/architecture.svg)
+![A2A 프로토콜 아키텍처](figures/architecture.svg?v=layout-20260706-fix2)
+
+## v1.0.0 기준 핵심 객체
+
+2026-07-06 확인 기준으로 이 카드는 A2A Protocol v1.0.0의 공개 스펙을 따른다. 기존 글의 큰 흐름은 유지하되, 디스커버리 경로는 `/.well-known/agent-card.json`, REST binding은 `POST /message:send`와 `POST /message:stream`, 작업 관리는 `GET /tasks/{id}`, `POST /tasks/{id}:subscribe`, push notification config 계열로 맞춘다.
+
+| 축 | v1.0.0 기준 객체/동작 |
+|----|----------------------|
+| Discovery | AgentCard, AgentProvider, AgentCapabilities, AgentSkill, AgentCardSignature |
+| Work unit | Task, TaskStatus, TaskState, Message, Part, Artifact |
+| Streaming | TaskStatusUpdateEvent, TaskArtifactUpdateEvent, StreamResponse |
+| Bindings | JSON-RPC, gRPC, HTTP+JSON/REST |
+| Security | SecurityScheme, OAuth2, OpenID Connect, mTLS, authenticated extended Agent Card |
+
+이 글은 스펙 카드 역할을 하고, 세부 구현과 비교는 [[a2a-01-overview|A2A 심화 시리즈]]와 [[a2a-03-vs-mcp|A2A vs MCP]]에서 이어진다.
 
 ## 아키텍처 상세
 
@@ -30,7 +44,7 @@ A2A 프로토콜의 아키텍처는 네 가지 핵심 개념을 중심으로 설
 
 ### Agent Card
 
-각 에이전트는 자신의 역량, 입출력 스키마, 엔드포인트 URL을 JSON 형태의 Agent Card로 광고(advertise)한다. Agent Card는 `/.well-known/agent.json` 경로에 호스팅되며, 다음과 같은 정보를 포함한다.
+각 에이전트는 자신의 역량, 입출력 스키마, 엔드포인트 URL을 JSON 형태의 Agent Card로 광고(advertise)한다. Agent Card는 `/.well-known/agent-card.json` 경로에 호스팅되며, 다음과 같은 정보를 포함한다.
 
 ```json
 {
@@ -86,10 +100,10 @@ Task 내의 통신은 Message 객체로 이루어지며, 각 Message는 하나 �
 ```
 클라이언트 에이전트                       원격 에이전트
      |                                      |
-     |-- GET /.well-known/agent.json ------→|
+     |-- GET /.well-known/agent-card.json ------→|
      |←-- Agent Card (역량·스키마) ---------|
      |                                      |
-     |-- POST /tasks (JSON-RPC) ----------→|
+     |-- POST /message:send 또는 /message:stream ----------→|
      |←-- Task ID + status: working -------|
      |←-- SSE: 중간 결과 스트리밍 ---------|
      |←-- SSE: status: completed ----------|

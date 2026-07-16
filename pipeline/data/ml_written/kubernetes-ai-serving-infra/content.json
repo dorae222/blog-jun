@@ -1,0 +1,19 @@
+{
+  "slug": "kubernetes-ai-serving-infra",
+  "title": "Kubernetes AI Serving Infra: GPU, Runtime, Gateway, Observability",
+  "title_ko": "Kubernetes AI Serving Infra: GPU, Runtime, Gateway, Observability",
+  "category_slug": "devops",
+  "summary": "AI 모델 서빙을 Kubernetes 관점에서 GPU 스케줄링, serving runtime, Gateway 라우팅, 관측성으로 나눠 정리합니다.",
+  "tags": [
+    "Kubernetes",
+    "GPU",
+    "AI-Serving",
+    "KServe",
+    "Gateway",
+    "Observability"
+  ],
+  "is_pinned": false,
+  "series": "kubernetes-ai-infra",
+  "series_name": "Kubernetes AI Serving Infra",
+  "series_order": 1
+}

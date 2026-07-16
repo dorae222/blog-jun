@@ -6,144 +6,55 @@ tags: ["Anthropic", "Model Context Protocol", "Protocol", "Standardization", "To
 status: published
 post_type: article
 quality_score: 8.0
-created_at: "2026-03-22T10:37:37.226764+00:00"
+created_at: "2026-03-22T10:37:37.000000+00:00"
 architecture_entry: mcp
 ---
 
-# Model Context Protocol: AI 에이전트 생태계의 USB 표준
+<!-- infographic-hero -->
+![Model Context Protocol 핵심 요약](figures/infographic.svg?v=layout-20260706-fix2)
 
-**Anthropic** · **2024-11-25** · **Agent Protocol** · **MIT**
+*Figure: Model Context Protocol 한 장 요약 인포그래픽*
+
+# Model Context Protocol: AI 에이전트 생태계의 USB-C 표준
+
+**Anthropic** · **2024-11-25** · **Agent Protocol** · **MIT** · **Spec 2025-11-25 기준**
 
 ## 개요
 
-Model Context Protocol(MCP)은 LLM 애플리케이션과 외부 도구/리소스/프롬프트 간의 통신을 표준화하는 오픈 프로토콜이다. Anthropic이 2024년 11월 발표한 MCP는 AI 에이전트 생태계의 **"USB 표준"**을 지향한다. USB가 컴퓨터와 주변기기 간의 연결을 표준화한 것처럼, MCP는 LLM 애플리케이션과 외부 도구 간의 연결을 표준화한다.
+Model Context Protocol(MCP)은 LLM 애플리케이션이 외부 도구, 리소스, 프롬프트와 통신하는 방식을 표준화한다. 2025-11-25 최신 스펙 기준 MCP는 Host, Client, Server의 삼중 구조와 JSON-RPC 2.0 메시지, 상태 있는 연결, capability negotiation을 핵심으로 둔다.
 
-MCP가 등장하기 전에는 각 LLM 애플리케이션이 도구와 데이터 소스와 통합하기 위해 독자적인 커스텀 연결을 구현해야 했다. $M$개의 LLM 클라이언트와 $N$개의 도구가 있으면 $M \times N$개의 커스텀 통합이 필요했다. MCP는 이 문제를 MCP 서버(도구 제공자)와 MCP 클라이언트(LLM 애플리케이션) 사이의 통신 규격을 정의함으로써 해결한다. 한 번 구현된 MCP 서버가 모든 호환 클라이언트에서 즉시 사용 가능하게 되어 $M + N$개의 구현만으로 충분하다.
+![MCP 프로토콜 아키텍처 - Host, Client, Server 삼중 구조의 LLM-도구 통신 표준](figures/architecture.svg?v=layout-20260706-fix2)
 
-$$\text{커스텀 통합: } O(M \times N) \xrightarrow{\text{MCP}} O(M + N)$$
+*Figure 1: MCP 아키텍처 - Host가 Client를 통해 MCP Server와 JSON-RPC 기반으로 통신하며, Tools·Resources·Prompts를 표준화한다. (Source: MCP specification 기반 자체 작성)*
 
-MCP는 발표 후 1년도 되지 않아 사실상의 업계 표준(de facto standard)으로 자리잡았다. Claude Desktop, Claude Code, Cursor, Windsurf, Goose 등 주요 LLM 클라이언트가 MCP를 지원하며, OpenAI와 Google도 MCP 호환성을 지원하기 시작했다. 수천 개의 커뮤니티 MCP 서버가 개발되어 GitHub, Slack, PostgreSQL, Google Drive, Notion, Jira 등 다양한 서비스와의 통합이 가능하다.
+## 스펙 기준으로 다시 보기
 
-![Architecture](figures/architecture.svg)
+| 축 | 내용 |
+|----|------|
+| Base protocol | JSON-RPC 2.0, stateful connection, capability negotiation |
+| Server features | Tools, Resources, Prompts |
+| Client features | Roots, Sampling, Elicitation |
+| Transport | stdio, Streamable HTTP |
+| Security | user consent, data privacy, tool safety, sampling controls |
 
-## 아키텍처 상세
+기존 MCP 설명은 Tools 중심으로 단순화되기 쉽다. 하지만 최신 스펙에서 중요한 변화는 클라이언트 기능과 transport 보안까지 함께 봐야 한다는 점이다. 서버는 Tools를 제공할 뿐 아니라, 클라이언트에 Roots, Sampling, Elicitation을 요청할 수 있다. 또한 원격 서버는 Streamable HTTP endpoint에서 Origin 검증, 인증, 세션 관리를 갖춰야 한다.
 
-MCP 프로토콜은 세 가지 핵심 기능(Primitive)을 표준화한다.
+## MCP 시리즈
 
-### 1. Tools (도구)
-
-LLM이 실행할 수 있는 함수를 정의한다. 각 Tool은 이름, 설명, JSON Schema로 정의된 입력 스키마를 가진다.
-
-### 2. Resources (리소스)
-
-파일, 데이터베이스 테이블, API 응답 등 LLM에 제공할 컨텍스트 데이터를 URI 기반으로 노출한다. `file://`, `db://`, `api://` 등의 URI 스킴을 통해 다양한 데이터 소스에 접근한다.
-
-### 3. Prompts (프롬프트)
-
-재사용 가능한 프롬프트 템플릿을 정의한다. 서버가 특정 도메인에 최적화된 프롬프트를 제공함으로써, 클라이언트가 도메인 지식 없이도 해당 도구를 효과적으로 활용할 수 있게 한다.
-
-### 통신 프로토콜
-
-JSON-RPC 2.0 위에서 동작하며, 두 가지 전송(transport) 방식을 지원한다.
-
-| 전송 방식 | 프로토콜 | 적합한 상황 | 예시 |
-|----------|---------|-----------|------|
-| stdio | 표준 입출력 | 로컬 프로세스 | 파일 시스템, 로컬 DB |
-| SSE | HTTP 기반 | 원격 서버 | 클라우드 API, SaaS |
-| Streamable HTTP | HTTP POST | 최신 원격 | 서버리스, 프로덕션 |
-
-### 서버 구현 예시
-
-```python
-# MCP 서버 구현 (Python SDK)
-from mcp.server.fastmcp import FastMCP
-
-mcp = FastMCP("weather-server")
-
-@mcp.tool()
-async def get_weather(city: str) -> str:
-    """지정 도시의 현재 날씨를 조회한다"""
-    weather = await fetch_weather_api(city)
-    return f"{city}: {weather.temp}°C, {weather.condition}"
-
-@mcp.resource("weather://{city}/forecast")
-async def get_forecast(city: str) -> str:
-    """도시의 5일 예보를 반환한다"""
-    forecast = await fetch_forecast_api(city)
-    return format_forecast(forecast)
-
-@mcp.prompt()
-def weather_analysis_prompt(city: str) -> str:
-    """날씨 분석 프롬프트 템플릿"""
-    return f"""다음 도시의 날씨를 분석하세요: {city}
-    1. 현재 날씨를 get_weather로 확인
-    2. 5일 예보를 확인
-    3. 외출 추천 여부를 판단"""
-```
-
-### 클라이언트 설정
-
-```json
-{
-  "mcpServers": {
-    "weather": {
-      "command": "python",
-      "args": ["weather_server.py"]
-    },
-    "github": {
-      "command": "npx",
-      "args": ["@modelcontextprotocol/server-github"],
-      "env": { "GITHUB_TOKEN": "ghp_..." }
-    }
-  }
-}
-```
-
-### 보안 격리
-
-각 MCP 서버는 독립 프로세스로 실행되므로, 하나의 도구가 다른 도구의 데이터에 접근할 수 없다. 이는 도구 사용의 안전성을 구조적으로 보장한다.
-
-## 핵심 혁신
-
-1. **$M \times N \rightarrow M + N$ 통합 문제 해결**: 표준 프로토콜을 통해 각 클라이언트와 서버가 한 번만 MCP를 구현하면, 모든 조합에서 상호운용이 가능하다.
-
-2. **경량 서버 구현**: MCP 서버는 수십 줄의 코드로 구현할 수 있을 만큼 가볍다. 이 낮은 진입 장벽이 빠른 생태계 성장의 핵심 요인이다.
-
-3. **보안 격리**: 각 MCP 서버가 독립 프로세스로 실행되어 도구 간 격리를 구조적으로 보장한다.
-
-4. **생태계 확장성**: 개방형 표준이므로 누구나 MCP 서버를 구현하고 공유할 수 있다. npm, PyPI 등 기존 패키지 매니저를 통해 배포되어 설치가 간편하다.
-
-## 벤치마크/성능
-
-| 측면 | MCP | 직접 API 통합 | LangChain Tools | OpenAI Functions |
-|------|-----|-------------|----------------|------------------|
-| 표준화 | 오픈 표준 | 비표준 | LangChain 전용 | OpenAI 전용 |
-| 클라이언트 호환 | 모든 MCP 클라이언트 | 특정 앱만 | LangChain만 | OpenAI API만 |
-| 구현 비용 | 낮음 (SDK 제공) | 높음 (각각 구현) | 중간 | 중간 |
-| 보안 격리 | 프로세스 분리 | 앱 종속 | 앱 종속 | 서버 측 |
-| 생태계 크기 | 수천 개 서버 | 해당 없음 | 수백 개 | 수십 개 |
-
-## 구현
-
-**개발 환경 통합**: GitHub MCP 서버, PostgreSQL MCP 서버, Docker MCP 서버를 Claude Code에 연결하여, 코딩 에이전트가 이슈 관리, DB 쿼리, 컨테이너 관리까지 수행하는 통합 개발 환경을 구축한다.
-
-**기업 데이터 접근**: 사내 CRM, ERP, 문서 관리 시스템에 대한 MCP 서버를 구축하면, LLM 클라이언트가 기업 데이터에 안전하게 접근하여 분석이나 보고서 생성을 수행할 수 있다.
-
-**커스텀 도구 빌드**: 팀 특화 도구(내부 API, 사내 검색 엔진, 모니터링 시스템)를 MCP 서버로 래핑하여, 모든 팀원이 자신의 LLM 클라이언트에서 동일한 도구를 사용할 수 있게 한다.
-
-## 관련 모델
-
-MCP는 에이전트 통신 표준의 첫 번째 계층으로, A2A(에이전트-에이전트)와 AG-UI(에이전트-UI) 프로토콜과 함께 완전한 에이전트 통신 스택을 구성한다. Claude Code, Goose, Cursor 등의 핵심 도구 인터페이스로 채택되었으며, OpenAI와 Google도 호환 지원을 발표했다.
-
-## 참고 자료
-
-- [MCP GitHub Organization](https://github.com/modelcontextprotocol)
-- [MCP Specification](https://spec.modelcontextprotocol.io)
-- [Anthropic Blog: Introducing MCP](https://www.anthropic.com/news/model-context-protocol)
+- [[mcp-01-overview|MCP 개요: AI 앱을 위한 USB-C 표준]]
+- [[mcp-02-server-features|MCP 스펙 분석: Tools, Resources, Prompts]]
+- [[mcp-03-client-features|MCP Client Features: Roots, Sampling, Elicitation]]
+- [[mcp-04-transports|MCP Transport: stdio vs Streamable HTTP]]
+- [[mcp-05-security-operations|MCP 보안과 운영]]
+- [[mcp-06-fastmcp-internal-api|MCP 서버 실전: FastMCP로 내부 API 감싸기]]
 
 ## 관련 문서
 
-- [[a2a|Agent-to-Agent Protocol]] — 영감을 줌
-- [[ag-ui|AG-UI Protocol]] — 영감을 줌
-- [[claude-code|Claude Code]] — 적용 모델
-- [[goose|Goose]] — 적용 모델
+- [[agent-protocol-stack|에이전트 통신 표준 지도]]
+- [[a2a|Agent-to-Agent Protocol]]
+- [[ag-ui|AG-UI Protocol]]
+
+## 참고 자료
+
+- [MCP specification 2025-11-25](https://modelcontextprotocol.io/specification/2025-11-25)
+- [MCP transports](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports)

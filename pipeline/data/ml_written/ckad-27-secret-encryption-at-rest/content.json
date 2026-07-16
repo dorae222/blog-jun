@@ -1,0 +1,19 @@
+{
+  "slug": "ckad-27-secret-encryption-at-rest",
+  "title": "Secret Encryption at Rest",
+  "title_ko": "Secret 암호화 at rest와 보안 경계",
+  "category_slug": "devops",
+  "summary": "Kubernetes Secret의 base64 표현, RBAC 접근 제어, etcd encryption at rest의 역할과 한계를 구분한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Secret",
+    "Security"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 27,
+  "label": "CKAD",
+  "figure_title": "Secret 암호화 at rest와 보안 경계",
+  "is_pinned": false
+}

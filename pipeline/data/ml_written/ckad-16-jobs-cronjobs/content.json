@@ -1,0 +1,20 @@
+{
+  "slug": "ckad-16-jobs-cronjobs",
+  "title": "Jobs and CronJobs",
+  "title_ko": "Job과 CronJob으로 배치 워크로드 실행하기",
+  "category_slug": "devops",
+  "summary": "완료를 목표로 하는 Job과 반복 스케줄을 가진 CronJob의 spec, completion, backoff, concurrency 정책을 정리한다.",
+  "tags": [
+    "CKAD",
+    "Kubernetes",
+    "Job",
+    "CronJob",
+    "Batch"
+  ],
+  "series": "ckad",
+  "series_name": "CKAD Kubernetes Application Developer",
+  "series_order": 16,
+  "label": "CKAD",
+  "figure_title": "Job과 CronJob으로 배치 워크로드 실행하기",
+  "is_pinned": false
+}

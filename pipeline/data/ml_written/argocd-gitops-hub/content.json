@@ -1,0 +1,19 @@
+{
+  "slug": "argocd-gitops-hub",
+  "title": "ArgoCD/GitOps 목차: Helm, ApplicationSet, Sync Wave, Health, Rollback",
+  "title_ko": "ArgoCD/GitOps 목차: Helm, ApplicationSet, Sync Wave, Health, Rollback",
+  "category_slug": "devops",
+  "summary": "AI serving 운영을 위한 ArgoCD/GitOps 대분류 허브로 Helm values, ApplicationSet, sync wave, health, diff, rollback 하위 파트를 나눕니다.",
+  "tags": [
+    "ArgoCD",
+    "GitOps",
+    "Helm",
+    "ApplicationSet",
+    "Sync-Wave",
+    "Rollback",
+    "AI-Serving"
+  ],
+  "series": null,
+  "series_order": 0,
+  "is_pinned": true
+}

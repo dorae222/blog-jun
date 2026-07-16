@@ -2,12 +2,15 @@
   "slug": "mcp",
   "title": "Model Context Protocol",
   "title_ko": "Model Context Protocol: AI 에이전트 프레임워크",
-  "summary": "Model Context Protocol(MCP)은 LLM 애플리케이션과 외부 도구·리소스·프롬프트 간의 통신을 표준화하는 오픈 프로토콜이다. Anthropic이 2024년 11월 발표한 MCP는 AI 에이전트 생태계의 \"USB 표준\"을 지향한다. MCP가 등장하기 전에는 각 LLM 애플리케이션이 도구·데이터 소스와 통합하기 위해 독자적인 커스텀 연결을 구현해야 했다.",
+  "summary": "Model Context Protocol(MCP)은 LLM 애플리케이션과 외부 도구·리소스·프롬프트 간의 통신을 표준화하는 오픈 프로토콜이다. Anthropic이 2024년 11월 발표한 MCP는 AI 에이전트 생태계의 \"USB 표준\"을 지향한다. MCP가 등장하기 전에는 각 LLM 애플리케이션이 도구·데이터 소스와 통합하기 위해 독자적인 커스텀 연결을 구현해야 했다. 최신 스펙/문서 기준으로 MCP/A2A/AG-UI 스택 내 역할과 후속 심화 시리즈 링크를 보강하였다.",
   "tags": [
+    "Agent-Protocol",
     "Anthropic",
+    "Interoperability",
     "Model Context Protocol",
     "Protocol",
     "Standardization",
     "Tool Interface"
-  ]
+  ],
+  "is_pinned": false
 }
