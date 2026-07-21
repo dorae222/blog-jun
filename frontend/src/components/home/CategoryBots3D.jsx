@@ -3,11 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import * as THREE from 'three'
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js'
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js'
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
-import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js'
 import { CATEGORY_TREE } from '../../data/categories'
+import AuroraBackground from './AuroraBackground'
 
 // 카테고리 ↔ 봇(엠블럼/색/표정) 매핑
 const BOTS = [
@@ -25,6 +22,7 @@ export default function CategoryBots3D({ counts = {} }) {
   const navigate = useNavigate()
   const navRef = useRef(navigate); navRef.current = navigate
   const countsRef = useRef(counts); countsRef.current = counts
+  const tipRef = useRef(null)
   const [tip, setTip] = useState(null)
   const [failed, setFailed] = useState(false)
 
@@ -33,7 +31,7 @@ export default function CategoryBots3D({ counts = {} }) {
     if (!mount) return
     let renderer
     try {
-      renderer = new THREE.WebGLRenderer({ antialias: true })
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     } catch {
       setFailed(true); return
     }
@@ -42,12 +40,13 @@ export default function CategoryBots3D({ counts = {} }) {
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, reduce ? 1 : 2))
     renderer.setSize(W, H)
+    renderer.setClearColor(0x000000, 0) // 투명 — 섹션 그라디언트/오로라가 비침
     renderer.toneMapping = THREE.ACESFilmicToneMapping
     renderer.toneMappingExposure = 1.1
     mount.appendChild(renderer.domElement)
     renderer.domElement.style.display = 'block'
 
-    const scene = new THREE.Scene(); scene.background = new THREE.Color(0xeef1f8)
+    const scene = new THREE.Scene() // 배경 없음(투명)
     const pmrem = new THREE.PMREMGenerator(renderer)
     const envRT = pmrem.fromScene(new RoomEnvironment(), 0.04)
     scene.environment = envRT.texture
@@ -95,14 +94,25 @@ export default function CategoryBots3D({ counts = {} }) {
       g.add(mk(new RoundedBoxGeometry(1.5, 0.85, 1.1, 6, 0.32), phys({ color: cfg.color }), [0, -1.5, 0]))
       const em = emblem(cfg.emblem, cfg.color); g.add(em)
       scene.add(g)
-      bots.push({ group: g, eyes, em, cat: CATEGORY_TREE.find((c) => c.key === cfg.key), color: hex(cfg.color), ph: (index * 1.7) % 6, baseX: 0, baseY: 0 })
+      bots.push({ group: g, eyes, em, cat: CATEGORY_TREE.find((c) => c.key === cfg.key), color: hex(cfg.color), ph: (index * 1.7) % 6, ph2: (index * 2.3 + 1) % 6, baseX: 0, baseY: 0 })
     })
     const botGroups = bots.map((b) => b.group)
 
-    const composer = new EffectComposer(renderer)
-    composer.addPass(new RenderPass(scene, camera))
-    composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), 0.5, 0.5, 0.95))
-    composer.addPass(new OutputPass())
+    // 배경 앰비언트 오브젝트 — 뒤쪽 깊이에서 천천히 떠다니는 파스텔 3D 형상(허전함 완화)
+    const accents = []
+    const ACC = [
+      { g: () => new THREE.SphereGeometry(0.5, 24, 24), c: 0x93c5fd, p: [-8.5, 3.2, -5] },
+      { g: () => new THREE.TorusGeometry(0.5, 0.16, 16, 32), c: 0xc4b5fd, p: [8.6, -2.4, -6] },
+      { g: () => new THREE.IcosahedronGeometry(0.42, 3), c: 0xa5f3fc, p: [6.5, 3.6, -7] },
+      { g: () => new THREE.SphereGeometry(0.34, 24, 24), c: 0xfbcfe8, p: [-6.8, -3.4, -4.5] },
+      { g: () => new THREE.TorusGeometry(0.32, 0.12, 14, 28), c: 0xfde68a, p: [0.5, 4.6, -8] },
+    ]
+    ACC.forEach((a, i) => {
+      const m = mk(a.g(), phys({ color: a.c, roughness: 0.28, transparent: true, opacity: 0.9 }))
+      m.position.set(a.p[0], a.p[1], a.p[2])
+      m.userData.acc = { bx: a.p[0], by: a.p[1], ph: i * 1.6 }
+      scene.add(m); accents.push(m)
+    })
 
     // 반응형 그리드 배치 + 카메라 핏
     function layout() {
@@ -125,6 +135,7 @@ export default function CategoryBots3D({ counts = {} }) {
     layout()
 
     const raycaster = new THREE.Raycaster()
+    const projV = new THREE.Vector3() // 툴팁 위치 투영용 (프레임마다 재사용)
     const pointer = new THREE.Vector2(999, 999)
     let mx = 0, my = 0 // parallax 입력 (기본 0 — hover 센티넬과 분리)
     const hoveredRef = { current: -1 }
@@ -139,10 +150,8 @@ export default function CategoryBots3D({ counts = {} }) {
       renderer.domElement.style.cursor = idx >= 0 ? 'pointer' : 'default'
       if (idx < 0) { setTip(null); return }
       const b = bots[idx]
-      const v = new THREE.Vector3(b.baseX, b.baseY + 2.9 * 0.82, 0).project(camera)
-      const r = mount.getBoundingClientRect()
       const cnt = countsRef.current?.[b.cat.key]?.count
-      setTip({ label: b.cat.label, count: typeof cnt === 'number' ? cnt : null, x: (v.x * 0.5 + 0.5) * r.width, y: (-v.y * 0.5 + 0.5) * r.height, color: b.color })
+      setTip({ label: b.cat.label, count: typeof cnt === 'number' ? cnt : null, color: b.color }) // 위치는 루프에서 tipRef로 추적
     }
 
     let t = 0, raf = 0, running = false
@@ -160,7 +169,10 @@ export default function CategoryBots3D({ counts = {} }) {
         const s = b.group.scale.x + (ts - b.group.scale.x) * 0.15
         b.group.scale.setScalar(s)
         if (!reduce) {
-          b.group.position.y = b.baseY + Math.sin(t * 0.9 + b.ph) * 0.12
+          // 앵커 주변을 천천히 배회 — 수평은 작게(겹침 방지), 깊이(z)와 상하는 크게
+          b.group.position.x = b.baseX + Math.sin(t * 0.2 + b.ph) * 0.3
+          b.group.position.y = b.baseY + Math.cos(t * 0.17 + b.ph) * 0.4 + Math.sin(t * 0.13 + b.ph2) * 0.2
+          b.group.position.z = Math.sin(t * 0.15 + b.ph) * 1.3 + Math.cos(t * 0.1 + b.ph2) * 0.5
           b.group.rotation.y += (mx * 0.35 - b.group.rotation.y) * 0.05
           b.group.rotation.x += (-my * 0.2 - b.group.rotation.x) * 0.05
           b.eyes.scale.y += ((Math.sin(t * 1.1 + b.ph) > 0.985 ? 0.12 : 1) - b.eyes.scale.y) * 0.4
@@ -168,7 +180,20 @@ export default function CategoryBots3D({ counts = {} }) {
           b.em.position.y = 2.05 + Math.sin(t * 1.4 + b.ph) * 0.07
         }
       })
-      composer.render()
+      if (!reduce) accents.forEach((m) => {
+        const a = m.userData.acc
+        m.position.x = a.bx + Math.sin(t * 0.1 + a.ph) * 1.2
+        m.position.y = a.by + Math.cos(t * 0.08 + a.ph) * 0.9
+        m.rotation.x += 0.003; m.rotation.y += 0.004
+      })
+      if (idx >= 0 && tipRef.current) { // 툴팁이 움직이는 봇을 따라감
+        const b = bots[idx]
+        projV.copy(b.group.position); projV.y += 2.5 * b.group.scale.y; projV.project(camera)
+        const r = mount.getBoundingClientRect()
+        tipRef.current.style.left = `${(projV.x * 0.5 + 0.5) * r.width}px`
+        tipRef.current.style.top = `${(-projV.y * 0.5 + 0.5) * r.height - 8}px`
+      }
+      renderer.render(scene, camera)
     }
     const start = () => { if (!running) { running = true; animate() } }
     const stop = () => { running = false; cancelAnimationFrame(raf) }
@@ -177,7 +202,7 @@ export default function CategoryBots3D({ counts = {} }) {
     io.observe(mount)
     const ro = new ResizeObserver(() => {
       W = mount.clientWidth || W; H = mount.clientHeight || H
-      renderer.setSize(W, H); composer.setSize(W, H)
+      renderer.setSize(W, H)
       camera.aspect = W / H; camera.updateProjectionMatrix(); layout()
     })
     ro.observe(mount)
@@ -188,7 +213,7 @@ export default function CategoryBots3D({ counts = {} }) {
       renderer.domElement.removeEventListener('pointerleave', onLeave)
       renderer.domElement.removeEventListener('click', onClick)
       disposables.forEach((d) => d.dispose && d.dispose())
-      envRT.dispose(); pmrem.dispose(); composer.dispose?.(); renderer.dispose()
+      envRT.dispose(); pmrem.dispose(); renderer.dispose()
       if (renderer.domElement.parentNode === mount) mount.removeChild(renderer.domElement)
     }
   }, [])
@@ -214,11 +239,12 @@ export default function CategoryBots3D({ counts = {} }) {
           ))}
         </div>
       ) : (
-        <div className="relative w-full" style={{ height: 'clamp(440px, 60vh, 560px)' }}>
-          <div ref={mountRef} className="absolute inset-0 overflow-hidden rounded-3xl border" style={{ borderColor: 'var(--border)' }} />
+        <div className="relative w-full overflow-hidden" style={{ height: 'clamp(460px, 62vh, 580px)' }}>
+          <AuroraBackground />
+          <div ref={mountRef} className="absolute inset-0" />
           {tip && (
-            <div className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-full border px-3 py-1 text-xs font-semibold shadow-sm"
-              style={{ left: tip.x, top: tip.y - 8, background: 'var(--card-bg)', borderColor: 'var(--border)', color: 'var(--text)' }}>
+            <div ref={tipRef} className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-full border px-3 py-1 text-xs font-semibold shadow-sm"
+              style={{ left: 0, top: 0, background: 'var(--card-bg)', borderColor: 'var(--border)', color: 'var(--text)' }}>
               <span style={{ color: tip.color }}>●</span> {tip.label}{tip.count != null ? ` · ${tip.count}` : ''}
             </div>
           )}
