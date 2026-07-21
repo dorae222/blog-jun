@@ -522,6 +522,7 @@ class FeedView(generics.ListAPIView):
     # 프론트엔드 route key → DB Category slug 매핑
     CATEGORY_MAP = {
         'ai': 'ai-ml',
+        'tool': 'tool',
         'cloud': 'cloud',
         'data': 'data-engineering',
         'ml': 'ml',

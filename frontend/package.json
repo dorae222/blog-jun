@@ -54,6 +54,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
+    "three": "^0.160.0",
     "tiptap-markdown": "^0.9.0",
     "zustand": "^5.0.0"
   },

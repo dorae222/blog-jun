@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Eye } from 'lucide-react'
@@ -7,6 +8,8 @@ import { OptimizedImage } from '../../utils/mediaVariants'
 
 export default function FeedCard({ item }) {
   const imageUrl = item.cover_image_url || item.figure_url
+  const [broken, setBroken] = useState(false)
+  const showImage = imageUrl && !broken
   const categoryName = item.category?.name
   const categoryColor = item.category?.color || '#6366f1'
 
@@ -22,13 +25,14 @@ export default function FeedCard({ item }) {
     >
       {/* 이미지 영역 */}
       <div className="relative aspect-[16/10] overflow-hidden"
-        style={{ background: imageUrl ? undefined : `linear-gradient(135deg, ${categoryColor}12, ${categoryColor}08)` }}>
-        {imageUrl ? (
+        style={{ background: showImage ? undefined : `linear-gradient(135deg, ${categoryColor}12, ${categoryColor}08)` }}>
+        {showImage ? (
           <OptimizedImage
             src={imageUrl}
             alt={item.title}
             loading="lazy"
             sizes="(max-width: 768px) 100vw, 33vw"
+            onError={() => setBroken(true)}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
