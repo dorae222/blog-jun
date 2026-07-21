@@ -39,9 +39,15 @@ const STACKS = [
   },
   {
     category: 'Cloud & DevOps',
-    description: 'Automating deployment and cloud infrastructure',
-    items: ['AWS', 'Docker', 'Linux', 'GitHub Actions', 'Nginx', 'Cloudflare'],
+    description: 'Cloud platforms and CI/CD automation',
+    items: ['AWS', 'Linux', 'GitHub Actions', 'Nginx', 'Cloudflare'],
     color: '#FF9900',
+  },
+  {
+    category: 'Infrastructure',
+    description: 'Kubernetes-native orchestration and GitOps delivery',
+    items: ['Kubernetes', 'Helm', 'ArgoCD', 'Docker'],
+    color: '#326CE5',
   },
 ]
 
@@ -53,32 +59,33 @@ export default function TechStack() {
           Tech Stack
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {STACKS.map((stack, i) => (
-            <div key={stack.category}>
-              <div className="p-5 rounded-xl glass transition-all hover:shadow-lg hover:-translate-y-1">
-                <h3
-                  className="text-sm font-bold mb-1 uppercase tracking-wider"
-                  style={{ color: stack.color }}
-                >
-                  {stack.category}
-                </h3>
-                <p className="text-xs mb-4" style={{ color: 'var(--text-secondary)' }}>
-                  {stack.description}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+          {STACKS.map((stack) => (
+            <div
+              key={stack.category}
+              className="h-full flex flex-col p-5 rounded-xl glass transition-all hover:shadow-lg hover:-translate-y-1"
+            >
+              <h3
+                className="text-sm font-bold mb-1 uppercase tracking-wider"
+                style={{ color: stack.color }}
+              >
+                {stack.category}
+              </h3>
+              <p className="text-xs mb-4" style={{ color: 'var(--text-secondary)' }}>
+                {stack.description}
+              </p>
 
-                <div className="flex flex-wrap gap-3">
-                  {stack.items.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-lg transition-transform hover:scale-105"
-                      style={{ background: stack.color + '12', color: 'var(--text)' }}
-                    >
-                      <TechIcon name={item} size={16} />
-                      <span className="font-medium">{item}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-2.5">
+                {stack.items.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-1.5 text-xs px-2.5 py-1.5 rounded-lg transition-transform hover:scale-105"
+                    style={{ background: stack.color + '12', color: 'var(--text)' }}
+                  >
+                    <TechIcon name={item} size={16} />
+                    <span className="font-medium">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

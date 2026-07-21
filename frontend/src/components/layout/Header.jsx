@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, User, Search } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
 import SearchModal from '../common/SearchModal'
+import Logo from './Logo'
 
 const isMac = typeof navigator !== 'undefined' && navigator.platform?.includes('Mac')
 
@@ -37,12 +38,16 @@ export default function Header() {
 
   const closeMobile = () => setMobileOpen(false)
 
+  // Explore 허브: Posts(List) / Tree / Index 를 하나로 묶음
+  const exploreActive = ['/posts', '/architectures', '/explore'].some((p) =>
+    location.pathname.startsWith(p)
+  )
+
   return (
     <header className="sticky top-0 z-40 glass-nav">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold tracking-tight shrink-0">
-          <span className="text-primary-600">HJ</span>
-          <span style={{ color: 'var(--text)' }}> Tech</span>
+        <Link to="/" className="shrink-0" aria-label="HJ Tech 홈">
+          <Logo />
         </Link>
 
         {/* Desktop Nav */}
@@ -51,11 +56,11 @@ export default function Header() {
             to="/posts"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
             style={{
-              color: location.pathname.startsWith('/posts') ? 'var(--color-primary-600)' : 'var(--text-secondary)',
-              fontWeight: location.pathname.startsWith('/posts') ? 600 : 500,
+              color: exploreActive ? 'var(--color-primary-600)' : 'var(--text-secondary)',
+              fontWeight: exploreActive ? 600 : 500,
             }}
           >
-            Posts
+            Explore
           </Link>
 
           <Link
@@ -169,8 +174,9 @@ export default function Header() {
                 Home
               </Link>
               <Link to="/posts" onClick={closeMobile}
-                className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                Posts
+                className="block py-2 text-sm"
+                style={{ color: exploreActive ? 'var(--color-primary-600)' : 'var(--text-secondary)' }}>
+                Explore
               </Link>
               <Link to="/about" onClick={closeMobile}
                 className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>

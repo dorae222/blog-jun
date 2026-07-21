@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { LayoutGrid, List, ChevronLeft, ChevronRight, SlidersHorizontal, X } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
+import ExploreNav from '../components/explore/ExploreNav'
 import CategoryTabs from '../components/blog/CategoryTabs'
 import LeftSidebar from '../components/blog/LeftSidebar'
 import FeedCard from '../components/blog/FeedCard'
@@ -167,6 +168,10 @@ export default function PostsPage() {
       transition={{ duration: 0.25, ease: 'easeOut' }}
       className="max-w-7xl mx-auto px-4 py-6"
     >
+      <div className="mb-5">
+        <ExploreNav />
+      </div>
+
       <div className="flex gap-6">
         <LeftSidebar category={category} sub={sub} counts={counts} />
 

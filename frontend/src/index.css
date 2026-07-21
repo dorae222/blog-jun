@@ -121,6 +121,30 @@ html { scroll-behavior: smooth; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { scrollbar-width: none; }
 
+/* Aurora hero background — 은은하게 아주 느리게 흐르는 라이트 그라디언트 메시 */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(6%, 5%, 0) scale(1.18); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.12); }
+  50%      { transform: translate3d(-6%, -5%, 0) scale(1); }
+}
+@keyframes aurora-3 {
+  0%, 100% { transform: translate3d(-3%, 3%, 0) scale(1); }
+  50%      { transform: translate3d(4%, -5%, 0) scale(1.22); }
+}
+.aurora-blob { will-change: transform; }
+
+/* 코드 에디터 타이핑 커서 */
+@keyframes caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.code-caret { animation: caret-blink 1.05s step-end infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob { animation: none !important; }
+  .code-caret { animation: none !important; opacity: 1; }
+}
+
 /* Focus visible */
 @layer base {
   button:focus-visible, a:focus-visible, [tabindex]:focus-visible,

@@ -20,6 +20,7 @@ import NotFound from './pages/NotFound'
 const Editor = lazy(() => import('./pages/Editor'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const ArchitectureTreePage = lazy(() => import('./pages/ArchitectureTreePage'))
+const SiteIndexPage = lazy(() => import('./pages/SiteIndexPage'))
 
 export default function App() {
   const location = useLocation()
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/architectures/tree" element={<Suspense fallback={<div className="flex-1 flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>Loading...</div>}><ArchitectureTreePage /></Suspense>} />
+            <Route path="/explore/index" element={<Suspense fallback={<div className="flex-1 flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>Loading...</div>}><SiteIndexPage /></Suspense>} />
             {/* 레거시 경로 리다이렉트 */}
             <Route path="/explore" element={<Navigate to="/posts" replace />} />
             <Route path="/search" element={<Navigate to="/posts" replace />} />

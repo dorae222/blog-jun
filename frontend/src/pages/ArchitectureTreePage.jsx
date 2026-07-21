@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText, Cloud, Brain } from 'lucide-react'
+import ExploreNav from '../components/explore/ExploreNav'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ArchitectureNodeDetail from '../components/architecture/ArchitectureNodeDetail'
 import CloudServiceNodeDetail from '../components/architecture/CloudServiceNodeDetail'
@@ -273,6 +274,11 @@ export default function ArchitectureTreePage() {
       className="flex flex-col"
       style={{ height: 'calc(100vh - 64px)' }}
     >
+      {/* Explore 탭바 */}
+      <div className="shrink-0 px-4" style={{ background: 'var(--card-bg)' }}>
+        <ExploreNav />
+      </div>
+
       {/* 상단 바 */}
       <div
         className="shrink-0 border-b px-4 py-2.5"

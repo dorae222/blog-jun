@@ -1,66 +1,34 @@
-import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState, lazy, Suspense } from 'react'
+import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { ChevronRight, Eye, ArrowRight, Loader2 } from 'lucide-react'
+import { ChevronRight, Eye } from 'lucide-react'
 
 import HeroSection from '../components/portfolio/HeroSection'
-import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
-import GraphZoomControls from '../components/architecture/GraphZoomControls'
+
+// 3D 카테고리 봇 씬 — three 번들이 크므로 홈에서만 lazy-load
+const CategoryBots3D = lazy(() => import('../components/home/CategoryBots3D'))
 import ScrollReveal from '../components/common/ScrollReveal'
-import { getStats, getFeed, getArchitectureStats, getArchitectureTree } from '../api/posts'
+import { getStats, getFeed } from '../api/posts'
 import { CATEGORY_TREE } from '../data/categories'
-import { CATEGORIES, CATEGORY_COLORS } from '../data/architectureConstants'
 
 export default function Home() {
-  const navigate = useNavigate()
   const [stats, setStats] = useState({})
+  const [categoryCounts, setCategoryCounts] = useState({})
   const [recentPosts, setRecentPosts] = useState([])
   const [popularPosts, setPopularPosts] = useState([])
   const [postsTab, setPostsTab] = useState('recent')
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [error, setError] = useState(false)
 
-  // Architecture graph
-  const graphRef = useRef(null)
-  const [archStats, setArchStats] = useState(null)
-  const [archLoading, setArchLoading] = useState(true)
-  const [treeNodes, setTreeNodes] = useState([])
-  const [treeEdges, setTreeEdges] = useState([])
-  const [selectedArchNode, setSelectedArchNode] = useState(null)
-  const [archCategory, setArchCategory] = useState('all')
-  const [showHint, setShowHint] = useState(true)
-
-  const filteredNodes = useMemo(() => {
-    if (archCategory === 'all') return treeNodes
-    return treeNodes.filter(n => n.architecture_category === archCategory)
-  }, [treeNodes, archCategory])
-
-  const filteredEdges = useMemo(() => {
-    if (archCategory === 'all') return treeEdges
-    const slugSet = new Set(filteredNodes.map(n => n.slug))
-    return treeEdges.filter(e => slugSet.has(e.from_slug) && slugSet.has(e.to_slug))
-  }, [treeEdges, filteredNodes, archCategory])
-
   useEffect(() => {
     getStats().then((r) => setStats(r.data)).catch(() => setError(true))
-    fetchPosts(null)
-    getArchitectureStats().then((r) => setArchStats(r.data)).catch(() => {})
-    getArchitectureTree()
-      .then((r) => {
-        setTreeNodes(r.data.nodes || [])
-        setTreeEdges(r.data.edges || [])
-      })
+    // 카테고리별 포스트 카운트 (Domain Board 스탯) — 1회만 조회
+    getFeed({ page_size: 1, include_counts: 'true', sort: 'latest' })
+      .then((r) => setCategoryCounts(r.data.categories || {}))
       .catch(() => {})
-      .finally(() => setArchLoading(false))
+    fetchPosts(null)
   }, [])
-
-  // 힌트 자동 fade-out
-  useEffect(() => {
-    if (!showHint) return
-    const t = setTimeout(() => setShowHint(false), 4000)
-    return () => clearTimeout(t)
-  }, [showHint])
 
   function fetchPosts(categoryKey) {
     const params = { page_size: 6 }
@@ -78,16 +46,6 @@ export default function Home() {
     setPostsTab('recent')
     fetchPosts(key)
   }
-
-  const handleArchNodeClick = useCallback((node) => {
-    setSelectedArchNode(node)
-  }, [])
-
-  const handleArchNodeDoubleClick = useCallback((node) => {
-    if (node?.related_post_slug) {
-      navigate(`/post/${node.related_post_slug}`)
-    }
-  }, [navigate])
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -118,142 +76,14 @@ export default function Home() {
     >
       <HeroSection stats={stats} />
 
-      {/* Architecture Graph Preview */}
-      {(archLoading || treeNodes.length > 0) && (
-        <section className="pt-10 pb-12 md:py-16 px-4 section-gradient-blue">
-          <div className="max-w-5xl mx-auto">
-            <ScrollReveal>
-              <div className="text-center mb-4">
-                <h2 className="text-2xl font-bold mb-2" style={{ color: 'var(--text)' }}>
-                  Architecture Lineage
-                </h2>
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                  {filteredNodes.length} models · {filteredEdges.length} connections
-                </p>
-              </div>
-            </ScrollReveal>
-
-            {/* Category filter pills */}
-            <ScrollReveal>
-              <div className="flex flex-wrap items-center justify-center gap-1.5 mb-5">
-                {CATEGORIES.map(cat => (
-                  <button
-                    key={cat.key}
-                    onClick={() => { setArchCategory(cat.key); setSelectedArchNode(null) }}
-                    className="text-xs px-3 py-1 rounded-full font-medium transition-colors"
-                    style={{
-                      background: archCategory === cat.key ? cat.color + '20' : 'transparent',
-                      color: archCategory === cat.key ? cat.color : 'var(--text-secondary)',
-                      border: `1px solid ${archCategory === cat.key ? cat.color + '40' : 'var(--border)'}`,
-                    }}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
-              </div>
-            </ScrollReveal>
-
-            {/* Graph container */}
-            <div
-              className="relative h-[350px] md:h-[500px] rounded-xl overflow-hidden border mb-6"
-              style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
-            >
-              {archLoading ? (
-                <div className="flex items-center justify-center h-full">
-                  <Loader2 className="animate-spin" size={32} style={{ color: 'var(--text-secondary)' }} />
-                </div>
-              ) : (
-                <>
-                  <ArchitectureGraph
-                    key={archCategory}
-                    ref={graphRef}
-                    nodes={filteredNodes}
-                    edges={filteredEdges}
-                    onNodeClick={handleArchNodeClick}
-                    onNodeDoubleClick={handleArchNodeDoubleClick}
-                    selectedSlug={selectedArchNode?.slug}
-                    searchQuery=""
-                  />
-
-                  {/* Zoom controls */}
-                  <GraphZoomControls
-                    onZoomIn={() => graphRef.current?.zoomIn()}
-                    onZoomOut={() => graphRef.current?.zoomOut()}
-                    onFitAll={() => graphRef.current?.fitAll()}
-                  />
-
-                  {/* Interaction hint */}
-                  <AnimatePresence>
-                    {showHint && (
-                      <motion.p
-                        initial={{ opacity: 0.6 }}
-                        animate={{ opacity: 0.5 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="absolute top-3 left-3 z-10 text-xs px-2.5 py-1 rounded-lg"
-                        style={{ color: 'var(--text-secondary)', background: 'var(--card-bg)', border: '1px solid var(--border)' }}
-                      >
-                        Click node for details · Drag to explore
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Selected node mini-card overlay */}
-                  <AnimatePresence>
-                    {selectedArchNode && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 8 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute bottom-3 right-3 p-3 rounded-xl border text-sm z-30"
-                        style={{
-                          background: 'var(--card-bg)',
-                          borderColor: 'var(--border)',
-                          backdropFilter: 'blur(8px)',
-                          maxWidth: 240,
-                        }}
-                      >
-                        <div className="flex items-center gap-2 mb-1">
-                          <span
-                            className="w-2.5 h-2.5 rounded-full shrink-0"
-                            style={{ background: CATEGORY_COLORS[selectedArchNode.architecture_category] || '#8895A7' }}
-                          />
-                          <span className="font-semibold truncate" style={{ color: 'var(--text)' }}>
-                            {selectedArchNode.name}
-                          </span>
-                        </div>
-                        <p className="text-xs mb-2 truncate" style={{ color: 'var(--text-secondary)' }}>
-                          {selectedArchNode.organization}
-                          {selectedArchNode.release_date && ` · ${selectedArchNode.release_date.slice(0, 4)}`}
-                        </p>
-                        <Link
-                          to={`/architectures/tree?selected=${selectedArchNode.slug}`}
-                          className="inline-flex items-center gap-1 text-xs font-medium text-primary-600 hover:underline"
-                        >
-                          트리에서 보기 <ArrowRight size={12} />
-                        </Link>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </>
-              )}
-            </div>
-
-            <ScrollReveal delay={0.2}>
-              <div className="text-center">
-                <Link
-                  to="/architectures/tree"
-                  className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-gray-50"
-                  style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
-                >
-                  전체 트리 탐색 <ArrowRight size={14} />
-                </Link>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-      )}
+      {/* Category Bots — 3D 마스코트 (hover 반응 + 클릭 탐색) */}
+      <section className="py-12 md:py-16 px-4 section-gradient-blue">
+        <div className="max-w-6xl mx-auto">
+          <Suspense fallback={<div className="rounded-3xl border" style={{ height: 'clamp(440px, 60vh, 560px)', borderColor: 'var(--border)', background: 'var(--card-bg)' }} />}>
+            <CategoryBots3D counts={categoryCounts} />
+          </Suspense>
+        </div>
+      </section>
 
       {/* Posts (Category filter + Recent/Popular tabs) */}
       {error ? (
