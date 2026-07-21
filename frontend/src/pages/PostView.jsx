@@ -16,6 +16,23 @@ import CommentSection from '../components/blog/CommentSection'
 import { getPost } from '../api/posts'
 import { CATEGORY_ROUTE_MAP } from '../data/categories'
 
+// 본문 첫 H1이 포스트 제목과 동일하면 제거 — 페이지 헤더 제목과 중복(제목 2번) 방지.
+// 히어로 이미지/캡션 등 H1 이전 라인은 유지하고, 첫 번째 H1만 검사한다.
+function stripLeadingTitleHeading(content, title) {
+  if (!content || !title) return content
+  const t = title.trim()
+  const lines = content.split('\n')
+  for (let i = 0; i < lines.length; i++) {
+    const m = lines[i].match(/^#\s+(.+?)\s*$/)
+    if (!m) continue
+    if (m[1].trim() === t) {
+      lines.splice(i, lines[i + 1] !== undefined && lines[i + 1].trim() === '' ? 2 : 1)
+    }
+    break
+  }
+  return lines.join('\n')
+}
+
 export default function PostView() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
@@ -58,6 +75,8 @@ export default function PostView() {
   }
 
   const catRouteKey = CATEGORY_ROUTE_MAP[post.category?.parent?.slug] || CATEGORY_ROUTE_MAP[post.category?.slug] || ''
+  // 제목 중복 제거된 본문 (렌더러 + TOC 공통 사용)
+  const bodyContent = stripLeadingTitleHeading(post.content, post.title)
 
   const canonicalUrl = `https://blog.dorae222.com/post/${post.slug}`
   const jsonLd = {
@@ -172,7 +191,7 @@ export default function PostView() {
           )}
 
           {/* Content */}
-          <MarkdownRenderer content={post.content} postLinks={post.outgoing_links || []} />
+          <MarkdownRenderer content={bodyContent} postLinks={post.outgoing_links || []} />
 
           {/* PDF 첨부 뷰어 */}
           {post.pdf_file && (
@@ -259,7 +278,7 @@ export default function PostView() {
 
         {/* Sidebar TOC (데스크탑) */}
         <aside className="hidden xl:block w-64 shrink-0">
-          <TableOfContents content={post.content} />
+          <TableOfContents content={bodyContent} />
         </aside>
       </div>
 
@@ -291,7 +310,7 @@ export default function PostView() {
                 </button>
               </div>
               <div className="px-4 py-3">
-                <TableOfContents content={post.content} />
+                <TableOfContents content={bodyContent} />
               </div>
             </motion.div>
           </>
