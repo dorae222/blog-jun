@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import useAuth from '../hooks/useAuth'
@@ -10,14 +10,25 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const { login } = useAuth()
   const navigate = useNavigate()
+  const [params] = useSearchParams()
+  // 보호된 화면(/notes, /editor 등)에서 튕겨 왔으면 로그인 뒤 그 자리로 돌려보낸다. 같은 사이트 경로만 허용.
+  const nextRaw = params.get('next') || ''
+  const next = nextRaw.startsWith('/') && !nextRaw.startsWith('//') ? nextRaw : '/dashboard'
 
+  // Enter 제출이 안 먹던 문제: 브라우저/비밀번호 관리자 자동완성은 React onChange 없이 값만 채워서
+  // 상태(username/password)가 비어 있는 채로 제출될 수 있다. 제출 시점에는 폼 요소의 실제 값을 읽는다.
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (loading) return
+    const fd = new FormData(e.currentTarget)
+    const u = String(fd.get('username') ?? username).trim()
+    const p = String(fd.get('password') ?? password)
+    if (!u || !p) { toast.error('아이디와 비밀번호를 입력하세요'); return }
     setLoading(true)
     try {
-      await login(username, password)
+      await login(u, p)
       toast.success('로그인 성공')
-      navigate('/dashboard')
+      navigate(next, { replace: true })
     } catch {
       toast.error('로그인 실패')
     } finally {
@@ -36,10 +47,15 @@ export default function Login() {
       <div className="p-8 rounded-2xl border" style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}>
         <h1 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text)' }}>Login</h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div>
-            <label className="block text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Username</label>
+            <label htmlFor="login-username" className="block text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Username</label>
             <input
+              id="login-username"
+              name="username"
+              autoComplete="username"
+              autoCapitalize="none"
+              autoFocus
               value={username}
               onChange={e => setUsername(e.target.value)}
               className="w-full px-4 py-2.5 rounded-lg border outline-none focus:ring-2 focus:ring-primary-500"
@@ -48,8 +64,11 @@ export default function Login() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Password</label>
+            <label htmlFor="login-password" className="block text-sm font-medium mb-1" style={{ color: 'var(--text-secondary)' }}>Password</label>
             <input
+              id="login-password"
+              name="password"
+              autoComplete="current-password"
               type="password"
               value={password}
               onChange={e => setPassword(e.target.value)}

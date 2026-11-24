@@ -23,4 +23,9 @@ export default [
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     },
   },
+  {
+    // 개발 서버 설정·가짜 백엔드·node 테스트는 브라우저가 아니라 node에서 돈다.
+    files: ['vite.config.js', 'dev/**/*.js', 'tests/**/*.js'],
+    languageOptions: { globals: { ...globals.node } },
+  },
 ]

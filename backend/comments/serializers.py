@@ -110,7 +110,7 @@ class CommentCreateSerializer(serializers.ModelSerializer):
 
 
 class AdminCommentSerializer(serializers.ModelSerializer):
-    """관리자용 댓글 serializer — 포스트 정보 포함."""
+    """관리자용 댓글 serializer - 포스트 정보 포함."""
     author = CommentAuthorSerializer(read_only=True)
     post_title = serializers.CharField(source='post.title', read_only=True)
     post_slug = serializers.CharField(source='post.slug', read_only=True)

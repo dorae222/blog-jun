@@ -65,7 +65,7 @@ export default function PostLinkTooltip({ href, linkData, children }) {
               )}
               {linkData.category_name && (
                 <span
-                  className="text-[10px] font-medium px-1.5 py-0.5 rounded mt-1 inline-block"
+                  className="text-[11px] font-medium px-1.5 py-0.5 rounded mt-1 inline-block"
                   style={{
                     background: `${linkData.category_color || '#6366f1'}12`,
                     color: linkData.category_color || '#6366f1',

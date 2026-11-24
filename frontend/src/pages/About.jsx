@@ -10,7 +10,7 @@ const ORBIT_TECHS = [
   { name: 'HuggingFace', angle: 270 },
   { name: 'PyTorch', angle: 306 },
   { name: 'Python', angle: 342 },
-  { name: 'Naver Cloud', angle: 18 },
+  { name: 'PostgreSQL', angle: 18 },
   { name: 'AWS', angle: 54 },
   { name: 'Kubernetes', angle: 90 },
   { name: 'Docker', angle: 126 },

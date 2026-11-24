@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { List, Network, Map } from 'lucide-react'
 
-// Explore 허브 상단 탭바 — List / Tree / Index 3뷰 전환
+// Explore 허브 상단 탭바 - List / Tree / Index 3뷰 전환
 const TABS = [
   { key: 'list', label: 'List', to: '/posts', icon: List, match: (p) => p.startsWith('/posts') },
   { key: 'tree', label: 'Tree', to: '/architectures/tree', icon: Network, match: (p) => p.startsWith('/architectures') },

@@ -114,28 +114,32 @@ function Section({ icon: Icon, title, items, nodeMap, onNodeFocus, defaultExpand
 }
 
 export default function ArchitectureRelatedPanel({ node, edges, nodes, onNodeFocus, categoryColors = CATEGORY_COLORS, categoryField = 'architecture_category' }) {
-  if (!node) return null
-
+  // 훅은 조건부 반환보다 위에 있어야 한다. 아래 `if (!node) return null` 뒤에 두면
+  // node 가 null 인 판과 아닌 판의 훅 개수가 달라져 React 가 멈춘다.
+  // 지금은 호출자가 `selectedNode &&` 로 감싸서 터지지 않았을 뿐이다.
   const nodeMap = useMemo(() => {
     const map = new Map()
     nodes.forEach(n => map.set(n.slug, n))
     return map
   }, [nodes])
 
+  const slug = node?.slug
   const { parents, children, siblings } = useMemo(() => {
+    if (!slug) return { parents: [], children: [], siblings: [] }
+
     const parents = edges
-      .filter(e => e.to_slug === node.slug)
+      .filter(e => e.to_slug === slug)
       .map(e => ({ slug: e.from_slug, name: e.from_name, type: e.relation_type }))
 
     const children = edges
-      .filter(e => e.from_slug === node.slug)
+      .filter(e => e.from_slug === slug)
       .map(e => ({ slug: e.to_slug, name: e.to_name, type: e.relation_type }))
 
     // Siblings: 같은 부모의 다른 자식
     const parentSlugs = new Set(parents.map(p => p.slug))
     const siblingMap = new Map()
     edges.forEach(e => {
-      if (parentSlugs.has(e.from_slug) && e.to_slug !== node.slug) {
+      if (parentSlugs.has(e.from_slug) && e.to_slug !== slug) {
         if (!siblingMap.has(e.to_slug)) {
           siblingMap.set(e.to_slug, { slug: e.to_slug, name: e.to_name, type: e.relation_type })
         }
@@ -143,7 +147,9 @@ export default function ArchitectureRelatedPanel({ node, edges, nodes, onNodeFoc
     })
 
     return { parents, children, siblings: [...siblingMap.values()] }
-  }, [node.slug, edges])
+  }, [slug, edges])
+
+  if (!node) return null
 
   const catColor = categoryColors[node[categoryField]] || '#8895A7'
   const total = parents.length + children.length

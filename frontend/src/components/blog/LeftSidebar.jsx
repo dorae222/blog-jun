@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ChevronRight, ChevronDown, Flame, TagIcon, Eye } from 'lucide-react'
 import { getPopularPosts, getTags } from '../../api/posts'
-import { CATEGORY_TREE } from '../../data/categories'
+import useCategories from '../../hooks/useCategories'
 
 export default function LeftSidebar({ category, sub, counts, mobile, onNavigate }) {
+  const CATEGORY_TREE = useCategories()
   const navigate = useNavigate()
   const [expanded, setExpanded] = useState(category || null)
   const [popular, setPopular] = useState([])

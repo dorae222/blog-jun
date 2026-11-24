@@ -101,7 +101,7 @@ export default function Timeline({ items = [] }) {
                     {typeStyle.label}
                   </span>
                 </div>
-                {/* 타임라인 점 — type 색상 */}
+                {/* 타임라인 점 - type 색상 */}
                 <div
                   className="absolute left-[6.25rem] md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full border-4 z-10"
                   style={{ background: typeStyle.color, borderColor: 'var(--bg)' }}

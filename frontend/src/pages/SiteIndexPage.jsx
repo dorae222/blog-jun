@@ -4,10 +4,11 @@ import { Helmet } from 'react-helmet-async'
 import { ChevronRight } from 'lucide-react'
 
 import ExploreNav from '../components/explore/ExploreNav'
-import { CATEGORY_TREE } from '../data/categories'
+import useCategories from '../hooks/useCategories'
 
-// 사람용 사이트맵 — 전 카테고리 → 서브카테고리를 계층적으로 한눈에
+// 사람용 사이트맵 - 전 카테고리 → 서브카테고리를 계층적으로 한눈에
 export default function SiteIndexPage() {
+  const CATEGORY_TREE = useCategories()
   return (
     <>
       <Helmet>
@@ -53,7 +54,7 @@ export default function SiteIndexPage() {
               className="rounded-2xl border p-5 flex flex-col"
               style={{ background: cat.color + '0F', borderColor: 'var(--border)' }}
             >
-              {/* 카테고리 타이틀 (컬러) — 클릭 시 해당 카테고리 목록으로 */}
+              {/* 카테고리 타이틀 (컬러) - 클릭 시 해당 카테고리 목록으로 */}
               <Link
                 to={cat.path}
                 className="group flex items-center gap-2 mb-1"

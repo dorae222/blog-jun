@@ -2,141 +2,81 @@ import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { Search, Loader2, GitFork, X, LayoutGrid, Network, Building2, Calendar, Cpu, FileText, Cloud, Brain } from 'lucide-react'
+import { Search, Loader2, X, LayoutGrid, Network, Server, Brain } from 'lucide-react'
 import ExploreNav from '../components/explore/ExploreNav'
 import ArchitectureGraph from '../components/architecture/ArchitectureGraph'
 import ArchitectureNodeDetail from '../components/architecture/ArchitectureNodeDetail'
 import CloudServiceNodeDetail from '../components/architecture/CloudServiceNodeDetail'
 import ArchitectureRelatedPanel from '../components/architecture/ArchitectureRelatedPanel'
+import MobileCardView from '../components/architecture/MobileCardView'
+import TreeViewControls from '../components/architecture/TreeViewControls'
 import { getArchitectureTree, getCloudServiceTree, updateCloudServicePosition } from '../api/posts'
-import { CATEGORY_COLORS, CATEGORIES, EDGE_STYLES } from '../data/architectureConstants'
-import { CLOUD_DOMAIN_COLORS, CLOUD_EDGE_STYLES, CLOUD_CATEGORIES, getCloudNodeRadius } from '../data/cloudConstants'
+import { CATEGORY_COLORS, EDGE_STYLES, KIND_FILTER, lanesFromBranches } from '../data/architectureConstants'
+import { CLOUD_DOMAIN_COLORS, CLOUD_EDGE_STYLES, INFRA_CATEGORIES, getCloudNodeRadius,
+         infraLanesFromPayload, layersFromPayload, layerOf, LAYER_NONE } from '../data/cloudConstants'
 
 const DOMAIN_CONFIGS = {
   ai: {
-    categories: CATEGORIES,
+    // 종류 필터는 KIND_FILTER 한 곳만 본다. 무엇으로 가르는지는 그쪽에 적혀 있다
+    categories: KIND_FILTER.options,
+    categoryField: KIND_FILTER.field,
+    filterParam: KIND_FILTER.param,
     categoryColors: CATEGORY_COLORS,
     edgeStyles: EDGE_STYLES,
-    categoryField: 'architecture_category',
     fetchTree: getArchitectureTree,
-    filterParam: 'category',
+    // 발표 시점과 가지를 따라 좌표가 잡혀 있으므로 계보 배치를 기본으로 둔다
+    hasLineage: true,
+    defaultLayout: 'lineage',
     searchPlaceholder: '모델 검색...',
     emptyMsg: '해당 카테고리의 아키텍처 항목이 없습니다.',
     errorMsg: '아키텍처 트리를 불러올 수 없습니다.',
     title: '아키텍처 계보 | HJ Tech Blog',
     description: 'LLM, SSM, Diffusion 등 AI 모델 아키텍처 계보 트리 시각화.',
   },
-  cloud: {
-    categories: CLOUD_CATEGORIES,
+  // 예전 이름은 `cloud` 였다. AWS 35개만 있던 시절의 이름이고, 지금은 컨테이너·DB·
+  // 데이터·서빙·운영이 함께 들어와 인프라 전반을 그린다. `?domain=cloud` 로 들어온
+  // 링크는 아래에서 `infra` 로 넘긴다.
+  infra: {
+    categories: INFRA_CATEGORIES,
     categoryColors: CLOUD_DOMAIN_COLORS,
     edgeStyles: CLOUD_EDGE_STYLES,
     categoryField: 'service_domain',
     fetchTree: getCloudServiceTree,
     filterParam: 'domain',
-    searchPlaceholder: '서비스 검색...',
-    emptyMsg: '해당 도메인의 Cloud 서비스가 없습니다.',
-    errorMsg: 'Cloud 서비스 트리를 불러올 수 없습니다.',
-    title: 'Cloud 서비스 맵 | HJ Tech Blog',
-    description: 'AWS Cloud 서비스 간 관계와 통합 구조를 시각화합니다.',
+    // 세로축이 연도가 아니라 **추상화 층**이다. 인프라 기술의 값은 언제 나왔느냐가
+    // 아니라 어느 층에 서느냐에 있다. EC2(2006)와 Fargate(2017)를 연도로 세우면
+    // 둘 다 컴퓨트라는 것만 보이고, 층으로 세우면 가상화 위에 서버리스가 얹힌 관계가
+    // 보인다. 그래서 힘배치를 걷고 계보 배치를 기본으로 둔다.
+    hasLineage: true,
+    defaultLayout: 'lineage',
+    searchPlaceholder: '기술·서비스 검색...',
+    emptyMsg: '해당 계열의 인프라 항목이 없습니다.',
+    errorMsg: '인프라 트리를 불러올 수 없습니다.',
+    title: '인프라 기술 맵 | HJ Tech Blog',
+    description: '컨테이너, 데이터베이스, 데이터 처리, 서빙, 운영, AWS까지 인프라 기술 간의 관계를 시각화한다.',
     getNodeRadius: getCloudNodeRadius,
     onPositionUpdate: updateCloudServicePosition,
   },
-}
-
-// 모바일 카드 뷰 컴포넌트
-function MobileCardView({ nodes, searchQuery, onNodeClick, selectedNode, categoryColors = CATEGORY_COLORS, categoryField = 'architecture_category', domain = 'ai' }) {
-  const lowerQuery = (searchQuery || '').toLowerCase()
-  const filtered = lowerQuery
-    ? nodes.filter(n => n.name.toLowerCase().includes(lowerQuery) || n.organization?.toLowerCase().includes(lowerQuery))
-    : nodes
-
-  // 카테고리별 그룹핑
-  const grouped = useMemo(() => {
-    const groups = {}
-    for (const node of filtered) {
-      const cat = node[categoryField] || 'technique'
-      if (!groups[cat]) groups[cat] = []
-      groups[cat].push(node)
-    }
-    for (const cat of Object.keys(groups)) {
-      groups[cat].sort((a, b) => (b.release_date || b.name || '').localeCompare(a.release_date || a.name || ''))
-    }
-    return groups
-  }, [filtered, categoryField])
-
-  if (filtered.length === 0) {
-    return (
-      <div className="py-12 text-center text-sm" style={{ color: 'var(--text-secondary)' }}>
-        {searchQuery ? `"${searchQuery}"에 대한 결과가 없습니다.` : '아키텍처 항목이 없습니다.'}
-      </div>
-    )
-  }
-
-  return (
-    <div className="px-4 py-4 space-y-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)' }}>
-      {Object.entries(grouped).map(([cat, catNodes]) => (
-        <div key={cat}>
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: categoryColors[cat] || '#8895A7' }} />
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: categoryColors[cat] || 'var(--text-secondary)' }}>
-              {cat} ({catNodes.length})
-            </span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {catNodes.map(node => {
-              const color = categoryColors[node[categoryField]] || '#8895A7'
-              const isSelected = selectedNode?.slug === node.slug
-              return (
-                <button
-                  key={node.slug}
-                  onClick={() => onNodeClick(node)}
-                  className="text-left p-3 rounded-xl border transition-all"
-                  style={{
-                    borderColor: isSelected ? color : 'var(--border)',
-                    background: isSelected ? color + '08' : 'var(--card-bg)',
-                  }}
-                >
-                  <div className="flex items-start gap-2.5">
-                    {node.figure_url ? (
-                      <div className="w-10 h-10 rounded-lg shrink-0 overflow-hidden" style={{ background: 'var(--bg)' }}>
-                        <img src={node.figure_url} alt="" className="w-full h-full object-cover" loading="lazy" />
-                      </div>
-                    ) : (
-                      <div className="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center" style={{ background: color + '12' }}>
-                        <Cpu size={16} style={{ color }} />
-                      </div>
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium truncate" style={{ color: 'var(--text)' }}>{node.name}</div>
-                      <div className="flex items-center gap-2 mt-0.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
-                        {node.organization && <span className="flex items-center gap-0.5"><Building2 size={10} /> {node.organization}</span>}
-                        {node.release_date && <span className="flex items-center gap-0.5"><Calendar size={10} /> {node.release_date.slice(0, 4)}</span>}
-                        {node.param_scale && <span>{node.param_scale}</span>}
-                      </div>
-                    </div>
-                    {node.related_post_slug && (
-                      <FileText size={12} className="shrink-0 mt-1" style={{ color: 'var(--text-secondary)' }} />
-                    )}
-                  </div>
-                </button>
-              )
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-  )
 }
 
 export default function ArchitectureTreePage() {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [domain, setDomain] = useState(searchParams.get('domain') || 'ai')
+  // `?domain=cloud` 는 예전 이름이다. 기존 링크가 깨지지 않게 `infra` 로 받아 준다
+  const [domain, setDomain] = useState(() => {
+    const d = searchParams.get('domain')
+    return d === 'cloud' ? 'infra' : (d || 'ai')
+  })
   const config = DOMAIN_CONFIGS[domain] || DOMAIN_CONFIGS.ai
 
   const [nodes, setNodes] = useState([])
   const [edges, setEdges] = useState([])
+  // 가지 설정은 트리 응답이 들고 온다. 화면에 상수로 적어 두면 가지가 늘 때 한쪽만 바뀐다
+  const [branches, setBranches] = useState([])
+  // 인프라 트리의 레인(계열)과 세로축(층). AI 쪽 `branches` 와 같은 자리다
+  const [domains, setDomains] = useState([])
+  const [layers, setLayers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedNode, setSelectedNode] = useState(null)
@@ -144,7 +84,17 @@ export default function ArchitectureTreePage() {
   const [category, setCategory] = useState(searchParams.get('category') || 'all')
   const [mobileView, setMobileView] = useState('graph')
   const [matchIndex, setMatchIndex] = useState(0)
-  const [isLgScreen, setIsLgScreen] = useState(
+  const [layoutMode, setLayoutMode] = useState(config.defaultLayout)
+  const [hiddenLanes, setHiddenLanes] = useState([])
+  // 좌측 관련 모델 패널을 여는 기준. 1024에서는 좌우 패널이 함께 열리면 그래프가
+  // 300px대로 눌린다. 1280부터만 둘을 같이 열고, 그 아래에서는 관계를 상세 패널 안에 담는다
+  const [isWideScreen, setIsWideScreen] = useState(
+    typeof window !== 'undefined' ? window.innerWidth >= 1280 : true
+  )
+  // 태블릿 세로(768~1023)는 그래프에 줄 폭이 모자란다. 사이드 패널을 옆으로 밀면
+  // 그래프가 400px대로 눌려 계보가 안 보인다. 그 구간에서는 패널을 그래프 위에 겹친다.
+  // 아이패드 세로 768·834, 갤럭시 탭 800이 전부 여기 들어온다.
+  const [isRoomyScreen, setIsRoomyScreen] = useState(
     typeof window !== 'undefined' ? window.innerWidth >= 1024 : true
   )
 
@@ -152,10 +102,16 @@ export default function ArchitectureTreePage() {
 
   // 화면 크기 감지 (좌측 패널 표시 여부)
   useEffect(() => {
-    const handler = () => setIsLgScreen(window.innerWidth >= 1024)
+    const handler = () => {
+      setIsWideScreen(window.innerWidth >= 1280)
+      setIsRoomyScreen(window.innerWidth >= 1024)
+    }
     window.addEventListener('resize', handler)
     return () => window.removeEventListener('resize', handler)
   }, [])
+
+  // 상세 패널 폭. 넓은 화면에서만 넓힌다. 좁은 화면에서 넓히면 그래프가 남지 않는다
+  const detailPanelWidth = isWideScreen ? 400 : 360
 
   // 검색 매칭 slug 배열
   const matchedSlugs = useMemo(() => {
@@ -164,12 +120,58 @@ export default function ArchitectureTreePage() {
     return nodes.filter(n => n.name.toLowerCase().includes(q)).map(n => n.slug)
   }, [nodes, searchQuery])
 
+  // 레인 설정. 도메인마다 레인이 다르다. AI 는 가지, 인프라는 계열이다.
+  // 둘 다 응답에서 만든다. 상수로 적어 두면 한쪽만 늘어난다
+  const isInfra = domain === 'infra'
+  const laneConfig = useMemo(
+    () => (isInfra ? infraLanesFromPayload(domains) : lanesFromBranches(branches)),
+    [isInfra, domains, branches]
+  )
+  const laneOf = laneConfig.laneOf
+
+  // 계보 축. AI 는 연도, 인프라는 추상화 층이다
+  const layerConfig = useMemo(() => layersFromPayload(layers), [layers])
+  const axisKeyOf = useMemo(
+    () => (isInfra ? (n => layerOf(n)) : null),
+    [isInfra]
+  )
+  const axisLabelOf = useMemo(
+    () => (isInfra ? (k => (k === LAYER_NONE ? LAYER_NONE : (layerConfig.labels[k] || k))) : null),
+    [isInfra, layerConfig]
+  )
+
+  // 데이터에 실제로 있는 가지만 추린다. 비어 있는 레인까지 칩으로 내걸면 눌러도 아무 일이 없다
+  const lanes = useMemo(
+    () => laneConfig.order.filter(lane => nodes.some(n => laneOf(n) === lane)),
+    [nodes, laneConfig, laneOf]
+  )
+  const laneCounts = useMemo(() => {
+    const counts = {}
+    for (const node of nodes) {
+      const lane = laneOf(node)
+      counts[lane] = (counts[lane] || 0) + 1
+    }
+    return counts
+  }, [nodes, laneOf])
+
+  const handleToggleLane = useCallback((lane) => {
+    setHiddenLanes(prev => (prev.includes(lane) ? prev.filter(l => l !== lane) : [...prev, lane]))
+  }, [])
+
+  // 힘 배치에는 가지 칩이 없다. 접어 둔 채로 넘어가면 되살릴 단추가 사라지므로 여기서 편다
+  const handleLayoutModeChange = useCallback((mode) => {
+    setLayoutMode(mode)
+    if (mode !== 'lineage') setHiddenLanes([])
+  }, [])
+
   // 도메인 전환
   const handleDomainChange = useCallback((d) => {
     setDomain(d)
     setCategory('all')
     setSelectedNode(null)
     setSearchQuery('')
+    setLayoutMode(DOMAIN_CONFIGS[d]?.defaultLayout || 'force')
+    setHiddenLanes([])
     setSearchParams(d === 'ai' ? {} : { domain: d })
   }, [setSearchParams])
 
@@ -182,6 +184,9 @@ export default function ArchitectureTreePage() {
       const { data } = await config.fetchTree(params)
       setNodes(data.nodes || [])
       setEdges(data.edges || [])
+      setBranches(data.branches || [])
+      setDomains(data.domains || [])
+      setLayers(data.layers || [])
     } catch {
       setError(config.errorMsg)
     } finally {
@@ -281,7 +286,7 @@ export default function ArchitectureTreePage() {
 
       {/* 상단 바 */}
       <div
-        className="shrink-0 border-b px-4 py-2.5"
+        className="shrink-0 border-b px-2 xs:px-4 py-2 xs:py-2.5"
         style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
       >
         <div className="max-w-full mx-auto flex flex-col sm:flex-row sm:items-center gap-2">
@@ -300,14 +305,14 @@ export default function ArchitectureTreePage() {
                 <Brain size={12} /> AI/ML
               </button>
               <button
-                onClick={() => handleDomainChange('cloud')}
+                onClick={() => handleDomainChange('infra')}
                 className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium transition-colors"
                 style={{
-                  background: domain === 'cloud' ? 'var(--text)' : 'transparent',
-                  color: domain === 'cloud' ? '#fff' : 'var(--text-secondary)',
+                  background: domain === 'infra' ? 'var(--text)' : 'transparent',
+                  color: domain === 'infra' ? '#fff' : 'var(--text-secondary)',
                 }}
               >
-                <Cloud size={12} /> Cloud
+                <Server size={12} /> Infra
               </button>
             </div>
             {config.categories.map(cat => {
@@ -336,7 +341,7 @@ export default function ArchitectureTreePage() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 min-w-0">
             {/* 모바일 뷰 토글 */}
             <div className="flex items-center border rounded-lg overflow-hidden md:hidden shrink-0"
               style={{ borderColor: 'var(--border)' }}>
@@ -365,7 +370,7 @@ export default function ArchitectureTreePage() {
             </div>
 
             {/* 검색 */}
-            <div className="relative shrink-0 w-full sm:w-56">
+            <div className="relative min-w-0 flex-1 sm:flex-none sm:w-56">
               <Search
                 size={14}
                 className="absolute left-2.5 top-1/2 -translate-y-1/2"
@@ -408,6 +413,26 @@ export default function ArchitectureTreePage() {
         </div>
       </div>
 
+      {/* 배치 모드 + 가지 접기 (계보 좌표가 있는 도메인에서만) */}
+      {config.hasLineage && !loading && !error && nodes.length > 0 && (
+        <div
+          className="shrink-0 border-b px-4 py-1.5 hidden md:block"
+          style={{ borderColor: 'var(--border)', background: 'var(--card-bg)' }}
+        >
+          <TreeViewControls
+            layoutMode={layoutMode}
+            onLayoutModeChange={handleLayoutModeChange}
+            lanes={lanes}
+            laneCounts={laneCounts}
+            laneColors={laneConfig.colors}
+            laneLabels={laneConfig.labels}
+            hiddenLanes={hiddenLanes}
+            onToggleLane={handleToggleLane}
+            onResetLanes={() => setHiddenLanes([])}
+          />
+        </div>
+      )}
+
       {/* 메인 영역 */}
       <div className="flex-1 relative overflow-hidden flex">
         {loading ? (
@@ -435,10 +460,10 @@ export default function ArchitectureTreePage() {
         ) : (
           <>
             {/* 데스크탑: 좌측 패널 + 그래프 + 우측 패널 */}
-            <div className="hidden md:flex flex-1">
-              {/* 좌측 관련 모델 패널 — lg+ 에서만 */}
+            <div className="hidden md:flex flex-1 relative">
+              {/* 좌측 관련 모델 패널 - 넓은 화면에서만 */}
               <AnimatePresence>
-                {isLgScreen && selectedNode && (
+                {isWideScreen && selectedNode && (
                   <motion.div
                     initial={{ width: 0, opacity: 0 }}
                     animate={{ width: 260, opacity: 1 }}
@@ -468,10 +493,19 @@ export default function ArchitectureTreePage() {
                   onNodeClick={handleNodeClick}
                   onNodeDoubleClick={handleNodeDoubleClick}
                   selectedSlug={selectedNode?.slug}
+                  selectedNode={selectedNode}
                   searchQuery={searchQuery}
                   categoryColors={config.categoryColors}
                   edgeStyles={config.edgeStyles}
                   categoryField={config.categoryField}
+                  layoutMode={layoutMode}
+                  lanes={lanes}
+                  laneColors={laneConfig.colors}
+                  laneLabels={laneConfig.labels}
+                  laneOf={laneOf}
+                  axisKeyOf={axisKeyOf}
+                  axisLabelOf={axisLabelOf}
+                  hiddenLanes={hiddenLanes}
                   {...(config.getNodeRadius && { getNodeRadius: config.getNodeRadius })}
                   {...(config.onPositionUpdate && { onPositionUpdate: config.onPositionUpdate })}
                 />
@@ -482,20 +516,22 @@ export default function ArchitectureTreePage() {
                 {selectedNode && (
                   <motion.div
                     initial={{ width: 0, opacity: 0 }}
-                    animate={{ width: 360, opacity: 1 }}
+                    animate={{ width: detailPanelWidth, opacity: 1 }}
                     exit={{ width: 0, opacity: 0 }}
                     transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                    className="shrink-0 overflow-hidden border-l"
+                    className={isRoomyScreen
+                      ? 'shrink-0 overflow-hidden border-l'
+                      : 'absolute top-0 right-0 bottom-0 z-30 overflow-hidden border-l shadow-2xl'}
                     style={{ borderColor: 'var(--border)' }}
                   >
-                    {domain === 'cloud' ? (
+                    {domain === 'infra' ? (
                       <CloudServiceNodeDetail
                         node={selectedNode}
                         edges={edges}
                         onClose={() => setSelectedNode(null)}
                         onNodeFocus={handleNodeFocus}
                         layout="side"
-                        hideRelations={isLgScreen}
+                        hideRelations={isWideScreen}
                       />
                     ) : (
                       <ArchitectureNodeDetail
@@ -504,7 +540,7 @@ export default function ArchitectureTreePage() {
                         onClose={() => setSelectedNode(null)}
                         onNodeFocus={handleNodeFocus}
                         layout="side"
-                        hideRelations={isLgScreen}
+                        hideRelations={isWideScreen}
                       />
                     )}
                   </motion.div>
@@ -521,10 +557,19 @@ export default function ArchitectureTreePage() {
                   onNodeClick={handleNodeClick}
                   onNodeDoubleClick={handleNodeDoubleClick}
                   selectedSlug={selectedNode?.slug}
+                  selectedNode={selectedNode}
                   searchQuery={searchQuery}
                   categoryColors={config.categoryColors}
                   edgeStyles={config.edgeStyles}
                   categoryField={config.categoryField}
+                  layoutMode={layoutMode}
+                  lanes={lanes}
+                  laneColors={laneConfig.colors}
+                  laneLabels={laneConfig.labels}
+                  laneOf={laneOf}
+                  axisKeyOf={axisKeyOf}
+                  axisLabelOf={axisLabelOf}
+                  hiddenLanes={hiddenLanes}
                   {...(config.getNodeRadius && { getNodeRadius: config.getNodeRadius })}
                   {...(config.onPositionUpdate && { onPositionUpdate: config.onPositionUpdate })}
                 />
@@ -536,13 +581,12 @@ export default function ArchitectureTreePage() {
                   selectedNode={selectedNode}
                   categoryColors={config.categoryColors}
                   categoryField={config.categoryField}
-                  domain={domain}
                 />
               )}
               {/* 모바일 하단 시트 */}
               <AnimatePresence>
                 {selectedNode && (
-                  domain === 'cloud' ? (
+                  domain === 'infra' ? (
                     <CloudServiceNodeDetail
                       node={selectedNode}
                       edges={edges}

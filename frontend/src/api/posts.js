@@ -9,7 +9,12 @@ export const searchPosts = (q) => client.get('/posts/search/', { params: { q } }
 
 export const getCategories = () => client.get('/categories/')
 export const getTags = () => client.get('/tags/')
-export const getSeries = () => client.get('/series/')
+// 편집기 태그 자동완성용: 기본 페이지(12개)에서 잘리지 않게 전부 받는다(서버 상한 1000).
+export const getAllTags = () => client.get('/tags/', { params: { page_size: 1000 } })
+export const createTag = (data) => client.post('/tags/', data)
+// 시리즈가 120개를 넘어서 page_size 100이면 뒤쪽이 통째로 잘렸다.
+// 홈에서 순서를 섞으려면 목록 전체가 손에 있어야 한다.
+export const getSeries = (params) => client.get('/series/', { params: { page_size: 300, ...params } })
 export const getSeriesDetail = (slug) => client.get(`/series/${slug}/`)
 export const getTemplates = () => client.get('/templates/')
 

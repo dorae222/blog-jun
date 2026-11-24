@@ -80,7 +80,7 @@ def _convert_html_list(list_html, ordered=False):
 
 
 def _convert_tables(text):
-    """<table> 블록 변환 — 닫는 </table> 없는 경우(잘린 pandas HTML)도 처리"""
+    """<table> 블록 변환 - 닫는 </table> 없는 경우(잘린 pandas HTML)도 처리"""
     result = []
     pos = 0
     for m in re.finditer(r'<table[^>]*>', text, re.IGNORECASE):

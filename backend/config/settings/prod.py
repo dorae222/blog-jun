@@ -45,16 +45,19 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 CSRF_COOKIE_SAMESITE = 'Lax'
 
-# DRF Throttling (Redis-backed — 워커 간 공유)
+# DRF Throttling (Redis-backed - 워커 간 공유)
 REST_FRAMEWORK = {
     **REST_FRAMEWORK,
     'DEFAULT_THROTTLE_CLASSES': [
         'blog.throttles.RedisAnonRateThrottle',
         'blog.throttles.RedisUserRateThrottle',
     ],
+    # 공개 블로그는 한 페이지를 그리는 데 API를 여러 번 부른다(피드·카테고리·시리즈·
+    # 포스트링크·통계). 익명 100/hour면 방문자가 열 몇 페이지만 봐도 한도가 차서
+    # 목록이 통째로 빈 화면이 됐다. 읽기는 캐시가 받쳐주므로 넉넉히 연다.
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/hour',
-        'user': '1000/hour',
+        'anon': '3000/hour',
+        'user': '10000/hour',
         'comment': '10/hour',
     },
 }

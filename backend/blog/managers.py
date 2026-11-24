@@ -1,4 +1,4 @@
-"""커스텀 QuerySet/Manager — 자주 사용하는 필터 체인을 메서드로 제공."""
+"""커스텀 QuerySet/Manager - 자주 사용하는 필터 체인을 메서드로 제공."""
 from django.db import models
 from django.db.models import Q
 

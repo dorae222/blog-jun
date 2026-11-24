@@ -87,7 +87,7 @@ function GridCard({ post }) {
   )
 }
 
-// List 뷰 — 가로형 카드
+// List 뷰 - 가로형 카드
 function ListCard({ post }) {
   return (
     <Link

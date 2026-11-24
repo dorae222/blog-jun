@@ -1,7 +1,7 @@
 import { CARD_COLORS } from '../../data/cardColors'
 
 /**
- * AuroraBackground — 화이트 무드 위에 은은하게 흐르는 라이트 그라디언트 메시.
+ * AuroraBackground - 화이트 무드 위에 은은하게 흐르는 라이트 그라디언트 메시.
  * blur된 큰 blob 3개가 카드 팔레트 색(저채도·저opacity)으로 아주 느리게 이동한다.
  * 하드코딩 hex 없음(CARD_COLORS.rgb 사용), prefers-reduced-motion이면 CSS에서 정지.
  */

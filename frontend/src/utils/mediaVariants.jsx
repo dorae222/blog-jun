@@ -2,6 +2,10 @@ import { useEffect, useMemo, useState } from 'react'
 
 const INDEX_URL = '/media/_variants/manifests/latest-webp-index.json'
 const MEDIA_PREFIX = '/media/'
+// 래스터만 webp 파생본을 태운다.
+// .svg를 여기 넣으면 안 된다: 표지는 애니메이션 SVG라 webp로 구우면 움직임이 죽고,
+// 벡터는 이미 편당 10KB 안쪽이라 파생본을 만들 이유도 없다.
+// (파이프라인 쪽 대응은 make_cover_variants.py의 .svg 건너뛰기와 짝이다.)
 const SUPPORTED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png'])
 const VARIANT_ORDER = ['thumb', 'medium', 'large']
 const VARIANT_WIDTHS = {

@@ -1,5 +1,5 @@
 #!/bin/bash
-# DB 백업 스크립트 — pg_dump + gzip, 30일 보존
+# DB 백업 스크립트 - pg_dump + gzip, 30일 보존
 set -euo pipefail
 
 BACKUP_DIR="/opt/blog-jun/backups"

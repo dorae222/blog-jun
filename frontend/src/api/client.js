@@ -37,6 +37,15 @@ client.interceptors.response.use(
         }
       }
     }
+    // 429는 화면을 비우지 말고 이유를 알린다. 이전에는 조용히 실패해서
+    // 목록이 통째로 빈 화면으로 보였고, 콘텐츠가 없는 것과 구분이 안 됐다.
+    if (error.response?.status === 429) {
+      const wait = error.response.data?.detail || '잠시 후 다시 시도해 주세요.'
+      window.dispatchEvent(new CustomEvent('api:throttled', { detail: wait }))
+      error.isThrottled = true
+      return Promise.reject(error)
+    }
+
     // Retry on network errors or 5xx (except 401 which is handled above)
     if (!original._retryNetwork && error.response?.status !== 401 &&
       (error.code === 'ECONNABORTED' || !error.response || error.response.status >= 500)) {

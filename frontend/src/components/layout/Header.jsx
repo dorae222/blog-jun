@@ -1,8 +1,9 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown, User, Search } from 'lucide-react'
+import { Menu, X, ChevronDown, User, Search, PenLine, StickyNote, Zap } from 'lucide-react'
 import useAuth from '../../hooks/useAuth'
+import useWorkspace from '../../hooks/useWorkspace'
 import SearchModal from '../common/SearchModal'
 import Logo from './Logo'
 
@@ -10,6 +11,7 @@ const isMac = typeof navigator !== 'undefined' && navigator.platform?.includes('
 
 export default function Header() {
   const { user, logout } = useAuth()
+  const openQuickNote = useWorkspace((s) => s.openQuickNote)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [searchModalOpen, setSearchModalOpen] = useState(false)
@@ -64,6 +66,17 @@ export default function Header() {
           </Link>
 
           <Link
+            to="/series"
+            className="text-sm font-medium hover:text-primary-600 transition-colors"
+            style={{
+              color: location.pathname.startsWith('/series') ? 'var(--color-primary-600)' : 'var(--text-secondary)',
+              fontWeight: location.pathname.startsWith('/series') ? 600 : 500,
+            }}
+          >
+            Series
+          </Link>
+
+          <Link
             to="/about"
             className="text-sm font-medium hover:text-primary-600 transition-colors"
             style={{
@@ -89,6 +102,20 @@ export default function Header() {
         </nav>
 
         <div className="flex min-w-0 items-center gap-1 sm:gap-3">
+          {user?.is_staff && (
+            <div className="flex items-center gap-1">
+              <Link to="/editor" title="새 글 (n)" aria-label="새 글"
+                className="hidden sm:inline-flex items-center gap-1 text-sm px-2.5 py-1.5 rounded-lg border transition-colors hover:bg-gray-50"
+                style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
+                <PenLine size={14} /> <span className="hidden lg:inline">새 글</span>
+              </Link>
+              <button onClick={openQuickNote} title="빠른 메모 (m)" aria-label="빠른 메모"
+                className="inline-flex items-center gap-1 text-sm p-2 sm:px-2.5 sm:py-1.5 rounded-lg sm:border transition-colors hover:bg-gray-50"
+                style={{ borderColor: 'var(--border)', color: 'var(--text)' }}>
+                <Zap size={14} /> <span className="hidden lg:inline">메모</span>
+              </button>
+            </div>
+          )}
           {user ? (
             <div className="relative" ref={userMenuRef}>
               <button
@@ -116,8 +143,11 @@ export default function Header() {
                           className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
                           style={{ color: 'var(--text-secondary)' }}>Dashboard</Link>
                         <Link to="/editor" onClick={() => setUserMenuOpen(false)}
-                          className="block px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
-                          style={{ color: 'var(--text-secondary)' }}>새 글 작성</Link>
+                          className="flex items-center px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                          style={{ color: 'var(--text-secondary)' }}>새 글 작성<kbd className="ml-auto text-[10px] px-1 rounded border" style={{ borderColor: 'var(--border)' }}>n</kbd></Link>
+                        <Link to="/notes" onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center px-4 py-2.5 text-sm hover:text-primary-600 transition-colors"
+                          style={{ color: 'var(--text-secondary)' }}>메모<kbd className="ml-auto text-[10px] px-1 rounded border" style={{ borderColor: 'var(--border)' }}>m 빠른 메모</kbd></Link>
                       </>
                     )}
                     <div style={{ borderTop: '1px solid var(--border)' }} />
@@ -178,6 +208,14 @@ export default function Header() {
                 style={{ color: exploreActive ? 'var(--color-primary-600)' : 'var(--text-secondary)' }}>
                 Explore
               </Link>
+              <Link
+                to="/series"
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-sm font-medium"
+                style={{ color: location.pathname.startsWith('/series') ? 'var(--color-primary-600)' : 'var(--text-secondary)' }}
+              >
+                Series
+              </Link>
               <Link to="/about" onClick={closeMobile}
                 className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
                 About
@@ -189,8 +227,12 @@ export default function Header() {
                     Dashboard
                   </Link>
                   <Link to="/editor" onClick={closeMobile}
-                    className="block py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                    Write
+                    className="flex items-center gap-2 py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                    <PenLine size={14} /> 새 글
+                  </Link>
+                  <Link to="/notes" onClick={closeMobile}
+                    className="flex items-center gap-2 py-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                    <StickyNote size={14} /> 메모
                   </Link>
                 </>
               )}

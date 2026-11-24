@@ -1,8 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { MAIN_TABS, SUB_TABS } from '../../data/categories'
+import useCategories, { mainTabsOf, subTabsOf } from '../../hooks/useCategories'
 
 export default function CategoryTabs({ category, sub, counts }) {
+  const tree = useCategories()
+  const MAIN_TABS = mainTabsOf(tree)
+  const SUB_TABS = subTabsOf(tree)
   const navigate = useNavigate()
   const subs = category ? SUB_TABS[category] || [] : []
 

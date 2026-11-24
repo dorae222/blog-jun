@@ -40,7 +40,7 @@ export default function CategoryBots3D({ counts = {} }) {
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, reduce ? 1 : 2))
     renderer.setSize(W, H)
-    renderer.setClearColor(0x000000, 0) // 투명 — 섹션 그라디언트/오로라가 비침
+    renderer.setClearColor(0x000000, 0) // 투명 - 섹션 그라디언트/오로라가 비침
     renderer.toneMapping = THREE.ACESFilmicToneMapping
     renderer.toneMappingExposure = 1.1
     mount.appendChild(renderer.domElement)
@@ -98,7 +98,7 @@ export default function CategoryBots3D({ counts = {} }) {
     })
     const botGroups = bots.map((b) => b.group)
 
-    // 배경 앰비언트 오브젝트 — 뒤쪽 깊이에서 천천히 떠다니는 파스텔 3D 형상(허전함 완화)
+    // 배경 앰비언트 오브젝트 - 뒤쪽 깊이에서 천천히 떠다니는 파스텔 3D 형상(허전함 완화)
     const accents = []
     const ACC = [
       { g: () => new THREE.SphereGeometry(0.5, 24, 24), c: 0x93c5fd, p: [-8.5, 3.2, -5] },
@@ -137,7 +137,7 @@ export default function CategoryBots3D({ counts = {} }) {
     const raycaster = new THREE.Raycaster()
     const projV = new THREE.Vector3() // 툴팁 위치 투영용 (프레임마다 재사용)
     const pointer = new THREE.Vector2(999, 999)
-    let mx = 0, my = 0 // parallax 입력 (기본 0 — hover 센티넬과 분리)
+    let mx = 0, my = 0 // parallax 입력 (기본 0 - hover 센티넬과 분리)
     const hoveredRef = { current: -1 }
     const onMove = (ev) => { const r = renderer.domElement.getBoundingClientRect(); pointer.x = ((ev.clientX - r.left) / r.width) * 2 - 1; pointer.y = -((ev.clientY - r.top) / r.height) * 2 + 1; mx = pointer.x; my = pointer.y }
     const onLeave = () => { pointer.set(999, 999); mx = 0; my = 0 }
@@ -169,7 +169,7 @@ export default function CategoryBots3D({ counts = {} }) {
         const s = b.group.scale.x + (ts - b.group.scale.x) * 0.15
         b.group.scale.setScalar(s)
         if (!reduce) {
-          // 앵커 주변을 천천히 배회 — 수평은 작게(겹침 방지), 깊이(z)와 상하는 크게
+          // 앵커 주변을 천천히 배회 - 수평은 작게(겹침 방지), 깊이(z)와 상하는 크게
           b.group.position.x = b.baseX + Math.sin(t * 0.2 + b.ph) * 0.3
           b.group.position.y = b.baseY + Math.cos(t * 0.17 + b.ph) * 0.4 + Math.sin(t * 0.13 + b.ph2) * 0.2
           b.group.position.z = Math.sin(t * 0.15 + b.ph) * 1.3 + Math.cos(t * 0.1 + b.ph2) * 0.5

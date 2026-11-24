@@ -14,6 +14,7 @@ router.register(r'cloud-services', views.CloudServiceViewSet, basename='cloud-se
 urlpatterns = [
     path('', include(router.urls)),
     path('feed/', views.FeedView.as_view(), name='feed'),
+    path('knowledge-graph/', views.KnowledgeGraphView.as_view(), name='knowledge-graph'),
     path('feed/popular/', views.feed_popular, name='feed-popular'),
     path('upload/', views.ImageUploadView.as_view(), name='image-upload'),
     path('dashboard/stats/', views.dashboard_stats, name='dashboard-stats'),

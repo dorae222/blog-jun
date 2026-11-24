@@ -1,4 +1,4 @@
-// 카테고리 단일 소스 — LeftSidebar, CategoryTabs, Home, PostView에서 공유
+// 카테고리 단일 소스 - LeftSidebar, CategoryTabs, Home, PostView에서 공유
 export const CATEGORY_TREE = [
   {
     key: 'ai', label: 'AI', color: '#FF6F00',
@@ -47,6 +47,7 @@ export const CATEGORY_TREE = [
       { key: 'causal-inference', label: '인과추론' },
       { key: 'advanced-algorithms', label: '심화' },
       { key: 'applications', label: '응용' },
+      { key: 'serving', label: 'LLM Serving' },
       { key: 'mlops', label: 'MLOps' },
     ],
   },
@@ -76,6 +77,8 @@ export const CATEGORY_TREE = [
     path: '/posts/data',
     subs: [
       { key: 'big-data', label: 'Big Data' },
+      { key: 'postgresql', label: 'PostgreSQL' },
+      { key: 'graphdb', label: 'GraphDB' },
       { key: 'database', label: 'Database' },
       { key: 'pipeline', label: 'Pipeline' },
     ],

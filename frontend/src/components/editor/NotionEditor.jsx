@@ -1,4 +1,5 @@
 import { useEditor, EditorContent } from '@tiptap/react'
+import { promptDialog } from '../../hooks/useDialog'
 import { BubbleMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -84,12 +85,15 @@ function convertNotebookToContent(notebook) {
   return parts.join('\n\n')
 }
 
-export default function NotionEditor({ content, onChange, onImageUpload }) {
+export default function NotionEditor({ content, onChange, onImageUpload, onReady }) {
   const [slashMenu, setSlashMenu] = useState(null)
   const [showVideoEmbed, setShowVideoEmbed] = useState(false)
   const slashStartPos = useRef(null)
   const imageInputRef = useRef(null)
   const notebookInputRef = useRef(null)
+  // 마지막으로 부모에게 넘긴 마크다운. 부모가 내려준 content가 이것과 다르면(글 불러오기,
+  // 템플릿 적용, 임시저장 복구) 밖에서 바뀐 것이므로 에디터 내용을 갈아 끼운다.
+  const lastEmitted = useRef(content || '')
 
   // 이미지 업로드 핸들러
   const handleImageUpload = useCallback(async (file) => {
@@ -201,9 +205,27 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     },
     onUpdate: ({ editor }) => {
       const markdown = editor.storage.markdown.getMarkdown()
+      lastEmitted.current = markdown
       onChange?.(markdown)
     },
   })
+
+  useEffect(() => {
+    if (!editor || editor.isDestroyed) return
+    const next = content || ''
+    if (next === lastEmitted.current) return
+    lastEmitted.current = next
+    editor.commands.setContent(next, { emitUpdate: false })
+  }, [content, editor])
+
+  // 부모가 커서 자리 삽입(글 링크)·목차 이동에 쓸 수 있게 편집기 인스턴스를 넘긴다.
+  const onReadyRef = useRef(onReady)
+  useEffect(() => { onReadyRef.current = onReady }, [onReady])
+  useEffect(() => {
+    if (!editor) return
+    onReadyRef.current?.(editor)
+    return () => onReadyRef.current?.(null)
+  }, [editor])
 
   // "/" 슬래시 커맨드 감지
   useEffect(() => {
@@ -263,23 +285,20 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     } else if (item.id === 'callout-tip') {
       editor.commands.setCallout('tip')
     } else if (item.id === 'bookmark') {
-      const url = prompt('URL을 입력하세요:')
-      if (url?.trim()) {
-        editor.chain().focus().insertContent(`\n\n${url.trim()}\n\n`).run()
-      }
+      promptDialog({ title: '북마크', label: 'URL', placeholder: 'https://', confirmLabel: '넣기' }).then((url) => {
+        if (url?.trim()) editor.chain().focus().insertContent(`\n\n${url.trim()}\n\n`).run()
+      })
     } else if (item.id === 'codecell') {
       editor.commands.setCodeCell({ language: 'python', code: '# code here' })
     } else if (item.id === 'paper-link') {
-      const url = prompt('arXiv URL을 입력하세요:')
-      if (url?.trim()) {
+      promptDialog({ title: '논문 링크', label: 'arXiv URL', placeholder: 'https://arxiv.org/abs/2401.00001', confirmLabel: '넣기' }).then((url) => {
+        if (!url?.trim()) return
         const arxivId = url.match(/(\d{4}\.\d{4,5})/)?.[1] || ''
-        editor.chain().focus().insertContent(
-          `[arXiv:${arxivId}](${url.trim()})`
-        ).run()
-      }
+        editor.chain().focus().insertContent(`[arXiv:${arxivId}](${url.trim()})`).run()
+      })
     } else if (item.id === 'attribution') {
       editor.chain().focus().insertContent(
-        '\n\n*출처: [논문 제목](URL) — 저자 (연도), 학회*\n\n'
+        '\n\n*출처: [논문 제목](URL) - 저자 (연도), 학회*\n\n'
       ).run()
     } else if (item.id === 'requirements') {
       editor.chain().focus().insertContent(
@@ -288,12 +307,9 @@ export default function NotionEditor({ content, onChange, onImageUpload }) {
     } else if (item.id === 'figure-caption') {
       imageInputRef.current?.click()
     } else if (item.id === 'hf-model') {
-      const model = prompt('HuggingFace 모델명 (예: bert-base-uncased):')
-      if (model?.trim()) {
-        editor.chain().focus().insertContent(
-          `[${model.trim()}](https://huggingface.co/${model.trim()})`
-        ).run()
-      }
+      promptDialog({ title: 'HuggingFace 모델', label: '모델명', placeholder: 'bert-base-uncased', confirmLabel: '넣기' }).then((model) => {
+        if (model?.trim()) editor.chain().focus().insertContent(`[${model.trim()}](https://huggingface.co/${model.trim()})`).run()
+      })
     } else if (item.command) {
       item.command(editor)
     }

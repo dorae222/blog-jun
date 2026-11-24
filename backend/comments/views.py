@@ -18,7 +18,7 @@ class PostCommentViewSet(viewsets.ViewSet):
     permission_classes = [IsCommentAuthorOrReadOnly]
 
     def list(self, request, post_slug=None):
-        """GET /api/posts/{slug}/comments/ — 최상위 댓글 + replies"""
+        """GET /api/posts/{slug}/comments/ - 최상위 댓글 + replies"""
         post = get_object_or_404(Post, slug=post_slug, status='published')
         comments = (
             Comment.objects
@@ -33,7 +33,7 @@ class PostCommentViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def create(self, request, post_slug=None):
-        """POST /api/posts/{slug}/comments/ — 댓글/답글 작성"""
+        """POST /api/posts/{slug}/comments/ - 댓글/답글 작성"""
         post = get_object_or_404(Post, slug=post_slug, status='published')
 
         # Rate limiting
@@ -67,7 +67,7 @@ class CommentDetailViewSet(viewsets.ViewSet):
     permission_classes = [IsCommentAuthorOrReadOnly]
 
     def partial_update(self, request, pk=None):
-        """PATCH /api/comments/{id}/ — 댓글 수정"""
+        """PATCH /api/comments/{id}/ - 댓글 수정"""
         comment = get_object_or_404(Comment, pk=pk)
         self.check_object_permissions(request, comment)
 
@@ -86,7 +86,7 @@ class CommentDetailViewSet(viewsets.ViewSet):
         return Response(CommentSerializer(comment).data)
 
     def destroy(self, request, pk=None):
-        """DELETE /api/comments/{id}/ — 소프트 삭제"""
+        """DELETE /api/comments/{id}/ - 소프트 삭제"""
         comment = get_object_or_404(Comment, pk=pk)
         self.check_object_permissions(request, comment)
 
@@ -100,7 +100,7 @@ class CommentDetailViewSet(viewsets.ViewSet):
 @api_view(['GET'])
 @perm_classes([IsAdminUser])
 def admin_comment_list(request):
-    """GET /api/admin/comments/ — 관리자 댓글 목록 (페이지네이션)"""
+    """GET /api/admin/comments/ - 관리자 댓글 목록 (페이지네이션)"""
     qs = Comment.objects.select_related('author', 'post').order_by('-created_at')
 
     # 필터
@@ -127,7 +127,7 @@ def admin_comment_list(request):
 @api_view(['GET'])
 @perm_classes([IsAdminUser])
 def admin_comment_stats(request):
-    """GET /api/admin/comments/stats/ — 댓글 통계"""
+    """GET /api/admin/comments/stats/ - 댓글 통계"""
     stats = Comment.objects.aggregate(
         total=Count('id'),
         active=Count('id', filter=Q(is_deleted=False)),
@@ -145,7 +145,7 @@ def admin_comment_stats(request):
 @api_view(['DELETE'])
 @perm_classes([IsAdminUser])
 def admin_comment_bulk_delete(request):
-    """DELETE /api/admin/comments/bulk-delete/ — 벌크 소프트 삭제"""
+    """DELETE /api/admin/comments/bulk-delete/ - 벌크 소프트 삭제"""
     ids = request.data.get('ids', [])
     if not ids:
         return Response({'detail': 'ids 필드가 필요합니다.'}, status=400)

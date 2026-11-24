@@ -1,10 +1,13 @@
 @import "tailwindcss";
-@import "highlight.js/styles/github.css";
+@import "highlight.js/styles/github-dark-dimmed.css";
 @import "katex/dist/katex.min.css";
 @import "./components/editor/editor-styles.css";
 @plugin "@tailwindcss/typography";
 
 @theme {
+  /* 갤럭시 폴드 접힘이 280px 다. 기본 sm(640) 아래에 한 칸이 더 필요하다.
+     280~359 구간에서는 칩·검색·패딩을 한 단 더 줄인다 */
+  --breakpoint-xs: 360px;
   --color-primary-50: #eff6ff;
   --color-primary-100: #dbeafe;
   --color-primary-200: #bfdbfe;
@@ -72,16 +75,33 @@ body {
   border-radius: 3px;
 }
 
-/* Code highlighting */
-.hljs {
-  background: var(--code-bg) !important;
+/* 코드 창 - 밝은 본문 위의 어두운 판. 본문과 확실히 갈리고 눈이 덜 피로하다. */
+:root {
+  --term-bg: #171b21;      /* 코드 판 */
+  --term-out: #0f1319;     /* 실행 결과 판 - 코드보다 한 단 더 가라앉힌다 */
+  --term-bar: #1f242c;     /* 창 머리띠 */
+  --term-line: #2b323c;    /* 경계선 */
+  --term-dim: #8b98a8;     /* 보조 글자 */
 }
+.hljs { background: transparent !important; }
+
+/* highlight.js 기본 테마의 `pre code.hljs { padding: 1em }`이 PreBlock의 패딩과
+   겹쳐 코드 위아래 여백이 두 배로 벌어진다. 패딩은 컨테이너에서만 준다. */
+pre code.hljs {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* prose가 pre에 강제하는 상하 margin(32px)이 코드 컨테이너 안쪽 여백으로 새어
+   블록이 필요 이상으로 커진다. 간격은 컨테이너(my-6)가 담당한다. */
+.prose pre { margin: 0 !important; }
 
 /* prose가 pre에 강제하는 다크 배경 제거 (padding/margin은 PreBlock Tailwind 클래스로 제어) */
 .prose pre {
   background-color: transparent !important;
   color: inherit !important;
   border-radius: 0 !important;
+  border: none !important;
 }
 .prose :not(pre) > code {
   background-color: var(--code-bg) !important;
@@ -121,7 +141,7 @@ html { scroll-behavior: smooth; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { scrollbar-width: none; }
 
-/* Aurora hero background — 은은하게 아주 느리게 흐르는 라이트 그라디언트 메시 */
+/* Aurora hero background - 은은하게 아주 느리게 흐르는 라이트 그라디언트 메시 */
 @keyframes aurora-1 {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50%      { transform: translate3d(6%, 5%, 0) scale(1.18); }
@@ -153,3 +173,96 @@ html { scroll-behavior: smooth; }
     outline-offset: 2px;
   }
 }
+
+/* 가로 슬라이드 - 스크롤바는 감추고 화살표로만 넘긴다 */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* 코드 창 + 실행 결과를 한 창으로.
+   이어 붙이는 모양은 **앞에 코드 창이 정말 있을 때만** 맞다. 예전에는 컴포넌트가
+   무조건 붙여 그려서, 앞이 문단인 output 30개가 문단 위로 24px 겹치고 위 테두리 없이
+   잘린 판처럼 보였다(첫 블록이 output인 글, output이 연달아 오는 글, mermaid 뒤의 output).
+   판정은 형제 관계라 CSS가 알고 컴포넌트는 모른다. 그래서 여기로 옮겼다.
+
+   기본값은 홀로 선 판이다. 사방 테두리와 둥근 모서리를 갖는다. */
+.term-out-wrap {
+  border: 1px solid var(--term-line);
+  border-radius: 14px;
+}
+/* 바로 앞이 코드 창일 때만 위를 열어 이어 붙인다 */
+.code-window + .term-out-wrap {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: -1.5rem;
+}
+/* 그때만 앞 창의 아랫모서리를 편다. 예전 선택자는 `+ .group`이라 코드 창 뒤에
+   코드 창이 와도 모서리를 펴서 창이 끊긴 것처럼 보였다. */
+.code-window:has(+ .term-out-wrap) {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* 옆으로 넘치는 도해. 스크롤바만으로는 눈에 안 띄어서 머리띠에 글로 알린다.
+   판정은 렌더러가 figure의 data-wide에 적는다(setState를 쓰면 SVG가 되돌아간다). */
+.diagram-scroll { scrollbar-width: thin; }
+.wide-hint { display: none; }
+figure[data-wide="1"] .wide-hint { display: inline; }
+
+/* 실행 결과 판.
+   위의 `.prose pre { color: inherit !important }`가 인라인 색을 눌러서
+   어두운 바탕에 어두운 글씨가 됐다. 같은 무기로 되받아친다. */
+/* `.prose pre`(0,1,1)가 `.term-output`(0,1,0)을 특이도로 이겨서 색이 안 먹었다.
+   선택자를 그보다 위로 올린다. */
+.prose pre.term-output,
+.prose pre.term-output * { color: #cdd7e3 !important; }
+
+/* 결과 판 왼쪽에 얇은 띠를 둬서 '이건 출력'이라는 신호를 준다 */
+.term-out-body { position: relative; }
+.term-out-body::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+  background: linear-gradient(180deg, #3fb950, rgba(63,185,80,0.15));
+}
+
+/* 터치 입력에서의 탭 타깃.
+   마우스로는 20px 링크도 잘 눌리지만 손가락은 아니다. 실측했더니 헤더 링크가 20px,
+   카테고리 칩이 33px였다. 포인터가 굵은 기기에서만 키워서 데스크톱 레이아웃은 건드리지 않는다. */
+@media (pointer: coarse) {
+  .prose a { padding-block: 2px; }
+
+  /* display를 바꾸면 안 된다. 모바일 메뉴의 block 링크가 inline-flex로 덮이면서
+     Home/Explore/Series/About이 한 줄로 붙어 버렸다. 여백만 키운다. */
+  header nav a,
+  header button,
+  .tap-target {
+    min-height: 44px;
+  }
+  header a,
+  header button {
+    padding-block: 0.5rem;
+  }
+
+  /* 필터 칩은 높이만 키우면 글자가 떠 보이므로 위아래 여백으로 맞춘다 */
+  button[class*="rounded-full"] {
+    min-height: 40px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* 가로 슬라이드는 손가락으로 넘기는 게 기본이라 스냅을 부드럽게 */
+@media (pointer: coarse) {
+  .no-scrollbar { scroll-padding-left: 1rem; -webkit-overflow-scrolling: touch; }
+}
+
+/* 코드 판 안에서 토큰에 배경색이 깔리면 ASCII 다이어그램이 흰 상자로 뒤덮인다.
+   글자색만 쓰고 배경은 창이 책임진다. */
+.code-window .hljs span,
+.code-window code span { background: transparent !important; }
+
+/* 표지 움직임 층(.cover-motion)은 걷어냈다.
+   표지 SVG 자체가 움직이게 되면서(pipeline/generators/cover_studio.py) 카드 위에
+   덮던 CSS 빛/입자 층이 이중이 됐다. 두 겹이 서로 다른 박자로 돌아 표지가
+   지저분해지고, 카드마다 DOM이 4개씩 늘어나기만 했다.
+   컴포넌트 파일(components/common/CoverMotion.jsx)은 되돌릴 때를 대비해 남겨 뒀다. */

@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:workspace": "vite --mode workspace",
+    "dev:mock": "vite --mode mock",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node --test tests/"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

@@ -1,5 +1,7 @@
 """
-30.Data 카테고리 계층 구조를 생성하는 관리 명령어 (4개 서브카테고리).
+30.Data 카테고리 계층 구조를 생성하는 관리 명령어 (하위 3개).
+
+postgresql·graphdb는 여기서 만들지 않는다. 나중에 따로 만든 것이라 이 시드에 없다.
 
 사용법:
     python manage.py seed_data_categories
@@ -38,7 +40,7 @@ DATA_CHILDREN = [
 
 
 class Command(BaseCommand):
-    help = "30.Data 카테고리와 4개 하위 카테고리를 생성(upsert)합니다."
+    help = "30.Data 카테고리와 하위 3개(big-data·database·pipeline)를 생성(upsert)한다."
 
     def handle(self, *args, **options):
         parent, created = Category.objects.update_or_create(

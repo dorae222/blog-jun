@@ -1,4 +1,4 @@
-// HJ Tech 로고 — 그라디언트 모노그램 뱃지 + 워드마크 (favicon과 동일 언어)
+// HJ Tech 로고 - 그라디언트 모노그램 뱃지 + 워드마크 (favicon과 동일 언어)
 export default function Logo({ badgeSize = 32, showWordmark = true }) {
   return (
     <span className="inline-flex items-center gap-2">

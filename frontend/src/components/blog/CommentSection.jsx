@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { confirmDialog } from '../../hooks/useDialog'
 import { MessageCircle } from 'lucide-react'
 import toast from 'react-hot-toast'
 import useAuth from '../../hooks/useAuth'
@@ -60,7 +61,7 @@ export default function CommentSection({ postSlug }) {
   }
 
   const handleDelete = async (id) => {
-    if (!confirm('댓글을 삭제하시겠습니까?')) return
+    if (!(await confirmDialog({ title: '댓글 삭제', message: '댓글을 삭제하시겠습니까?', confirmLabel: '삭제', variant: 'danger' }))) return
     try {
       await deleteComment(id)
       await fetchComments()

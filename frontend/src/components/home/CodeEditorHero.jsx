@@ -58,7 +58,7 @@ export default function CodeEditorHero() {
     }
     setShown(0)
     const STEP = 2 // 틱당 글자 수
-    const INTERVAL = 22 // ms — ~90자/초, 차분하게
+    const INTERVAL = 22 // ms - ~90자/초, 차분하게
     const id = setInterval(() => {
       setShown((prev) => {
         const next = prev + STEP
@@ -84,7 +84,7 @@ export default function CodeEditorHero() {
         boxShadow: '0 20px 50px -24px rgba(15,23,42,0.28), 0 6px 16px -12px rgba(15,23,42,0.14)',
       }}
     >
-      {/* 타이틀 바 — macOS 스타일 신호등 + 파일 탭 */}
+      {/* 타이틀 바 - macOS 스타일 신호등 + 파일 탭 */}
       <div
         className="flex items-center gap-3 px-4 h-11 select-none"
         style={{ borderBottom: '1px solid var(--border)', background: 'var(--bg-secondary)' }}

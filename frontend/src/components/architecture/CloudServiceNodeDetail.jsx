@@ -5,6 +5,8 @@ import {
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { CLOUD_DOMAIN_COLORS } from '../../data/cloudConstants'
+import { escapeAngleBracketsOutsideMath } from '../../utils/mathText'
+import MarkdownRenderer from '../blog/MarkdownRenderer'
 
 const PROVIDER_COLORS = {
   aws: '#FF9900',
@@ -63,7 +65,7 @@ export default function CloudServiceNodeDetail({
   const domainColor = CLOUD_DOMAIN_COLORS[node.service_domain] || '#6B7280'
   const providerColor = PROVIDER_COLORS[node.provider] || '#6B7280'
 
-  // 부모/자식 — hideRelations 시 빈 배열
+  // 부모/자식 - hideRelations 시 빈 배열
   const parents = hideRelations ? [] : edges
     .filter(e => e.to_slug === node.slug)
     .map(e => ({ slug: e.from_slug, name: e.from_name, type: e.relation_type }))
@@ -83,8 +85,8 @@ export default function CloudServiceNodeDetail({
     : 'absolute bottom-0 left-0 right-0 z-30 rounded-t-2xl shadow-2xl overflow-hidden'
 
   const containerStyle = isSide
-    ? { background: 'var(--card-bg)', boxShadow: `inset 0 3px 0 ${domainColor}`, borderRight: '1px solid var(--border)' }
-    : { background: 'var(--card-bg)', borderTop: `3px solid ${domainColor}`, maxHeight: '50vh' }
+    ? { background: 'var(--card-bg)', borderRight: '1px solid var(--border)' }
+    : { background: 'var(--card-bg)', border: '1px solid var(--border)', borderBottom: 'none', height: '58vh', maxHeight: '58vh' }
 
   const scrollStyle = isSide
     ? { flex: 1, overflowY: 'auto' }
@@ -165,7 +167,7 @@ export default function CloudServiceNodeDetail({
         </div>
       )}
 
-      {/* 링크 버튼 — 스크롤 영역 밖 */}
+      {/* 링크 버튼 - 스크롤 영역 밖 */}
       {(node.docs_url || node.related_post_slug) && (
         <div className="flex flex-wrap gap-2 px-4 pb-2 shrink-0">
           {node.docs_url && (
@@ -192,13 +194,17 @@ export default function CloudServiceNodeDetail({
       )}
 
       <div className="px-4 pb-4" style={scrollStyle}>
-        {/* Key Detail (plain text) */}
+        {/* Key Detail (마크다운 + 수식 지원).
+            지금 인프라 노드 35개에는 수식이 없다. 그래도 아키텍처 쪽 상세 패널과
+            같은 방식으로 맞춰 둔다. 나중에 수식이 들어와도 달러가 날것으로 보이지 않는다.
+            긴 수식은 패널 폭을 넘으므로 본문 칸 안에서만 가로로 밀리게 막아 둔다 */}
         {node.key_detail && (
           <div
-            className="text-sm leading-relaxed mb-3 whitespace-pre-line"
-            style={{ color: 'var(--text-secondary)' }}
+            className="text-sm leading-relaxed mb-3 break-words overflow-x-auto [&_p]:m-0
+              [&_.prose]:text-sm [&_.prose]:leading-relaxed [&_.prose]:max-w-none
+              [&_.prose]:text-[color:var(--text-secondary)]"
           >
-            {node.key_detail}
+            <MarkdownRenderer content={escapeAngleBracketsOutsideMath(node.key_detail)} />
           </div>
         )}
 

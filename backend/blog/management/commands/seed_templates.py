@@ -18,7 +18,7 @@ TEMPLATES = [
 [1-2 문단 요약]
 
 ![Architecture Diagram](figures/architecture.png)
-*Figure 1: 아키텍처 다이어그램 — [논문제목](arxiv_url)*
+*Figure 1: 아키텍처 다이어그램 - [논문제목](arxiv_url)*
 
 ## 핵심 기여
 1.
@@ -44,7 +44,7 @@ $$
 **한계**:
 
 ## 관련 논문
-- [[related-paper|관련 논문]] — 한 줄 설명
+- [[related-paper|관련 논문]] - 한 줄 설명
 """,
     },
     {

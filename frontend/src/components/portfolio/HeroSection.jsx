@@ -8,7 +8,7 @@ import AuroraBackground from '../home/AuroraBackground'
 import CodeEditorHero from '../home/CodeEditorHero'
 import useMagnetic from '../../hooks/useMagnetic'
 
-// 마그네틱 CTA — 래퍼 motion.div가 커서 쪽으로 살짝 끌려오고, 내부에 실제 버튼(Link/a)을 둔다.
+// 마그네틱 CTA - 래퍼 motion.div가 커서 쪽으로 살짝 끌려오고, 내부에 실제 버튼(Link/a)을 둔다.
 function MagneticButton({ to, href, primary = false, className = '', children, ...rest }) {
   const { ref, style } = useMagnetic()
   const base = primary
@@ -90,7 +90,7 @@ export default function HeroSection({ stats = {} }) {
             </motion.p>
 
             {/* Stats */}
-            {(stats.total_posts || stats.categories || stats.tags) && (
+            {(stats.total_posts || stats.categories || stats.series) && (
               <motion.div
                 className="flex items-center justify-center lg:justify-start gap-6 mb-8"
                 initial={{ opacity: 0 }}
@@ -99,7 +99,8 @@ export default function HeroSection({ stats = {} }) {
               >
                 <AnimatedCounter end={stats.total_posts || 0} label="Posts" duration={1.5} />
                 <AnimatedCounter end={stats.categories || 0} label="Categories" duration={1.5} />
-                <AnimatedCounter end={stats.tags || 0} label="Tags" duration={1.5} />
+                {/* 태그는 3,400개라 숫자가 의미를 못 준다. 읽는 단위인 시리즈를 보여준다. */}
+                <AnimatedCounter end={stats.series || 0} label="Series" duration={1.5} />
               </motion.div>
             )}
 

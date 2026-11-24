@@ -7,27 +7,37 @@ import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
 import PaperSummaryBox from '../components/blog/PaperSummaryBox'
 import PDFViewer from '../components/blog/PDFViewer'
-import ReadingProgress from '../components/blog/ReadingProgress'
 import TableOfContents from '../components/blog/TableOfContents'
 import TagChip from '../components/common/TagChip'
 import ArchitectureLineageCard from '../components/blog/ArchitectureLineageCard'
 import PostLinksSection from '../components/blog/PostLinksSection'
 import CommentSection from '../components/blog/CommentSection'
+import RelatedSeries from '../components/blog/RelatedSeries'
 import { getPost } from '../api/posts'
 import { CATEGORY_ROUTE_MAP } from '../data/categories'
+import { ogImageUrl } from '../utils/ogImage'
 
-// 본문 첫 H1이 포스트 제목과 동일하면 제거 — 페이지 헤더 제목과 중복(제목 2번) 방지.
+// 본문 첫 H1이 포스트 제목과 동일하면 제거 - 페이지 헤더 제목과 중복(제목 2번) 방지.
 // 히어로 이미지/캡션 등 H1 이전 라인은 유지하고, 첫 번째 H1만 검사한다.
-function stripLeadingTitleHeading(content, title) {
-  if (!content || !title) return content
-  const t = title.trim()
+// 본문 맨 앞의 H1 을 걷는다. 이 화면은 위에서 `post.title` 을 이미 제목으로 그리므로
+// 본문 H1 은 언제나 **두 번째 제목**이 된다.
+//
+// 전에는 H1 글자가 제목과 **똑같을 때만** 걷었다. 그래서 둘이 갈라진 글에서 제목이
+// 두 번 떴다. 876편 가운데 187편이 그 상태였다. 예를 들어 `glide` 는 제목이
+// `GLIDE - CLIP Guidance 대 Classifier-Free Guidance` 인데 본문 H1 은
+// `GLIDE: 텍스트 가이드 확산 이미지 생성` 이라 둘 다 화면에 떴다.
+//
+// 글자를 비교하지 않고 **자리**로 가른다. 첫 `##` 보다 앞에 오는 `#` 하나만 제목 자리다.
+// 그 뒤의 `#` 은 본문이 쓰는 절이므로 건드리지 않는다.
+function stripLeadingTitleHeading(content) {
+  if (!content) return content
   const lines = content.split('\n')
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^#\s+(.+?)\s*$/)
-    if (!m) continue
-    if (m[1].trim() === t) {
-      lines.splice(i, lines[i + 1] !== undefined && lines[i + 1].trim() === '' ? 2 : 1)
-    }
+    const line = lines[i]
+    if (/^##\s/.test(line)) break          // 절이 먼저 나왔다. 제목 자리가 아니다
+    if (/^```/.test(line)) break            // 코드 펜스 안은 보지 않는다
+    if (!/^#\s+\S/.test(line)) continue
+    lines.splice(i, lines[i + 1] !== undefined && lines[i + 1].trim() === '' ? 2 : 1)
     break
   }
   return lines.join('\n')
@@ -76,9 +86,12 @@ export default function PostView() {
 
   const catRouteKey = CATEGORY_ROUTE_MAP[post.category?.parent?.slug] || CATEGORY_ROUTE_MAP[post.category?.slug] || ''
   // 제목 중복 제거된 본문 (렌더러 + TOC 공통 사용)
-  const bodyContent = stripLeadingTitleHeading(post.content, post.title)
+  const bodyContent = stripLeadingTitleHeading(post.content)
 
   const canonicalUrl = `https://blog.dorae222.com/post/${post.slug}`
+  // 카드에 보이는 표지는 움직이는 SVG지만 링크 미리보기용 그림은 PNG로 준다.
+  // 이유와 변환 규칙은 utils/ogImage.js 주석에 적어 뒀다.
+  const ogImage = ogImageUrl(post.cover_image_url)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -88,7 +101,7 @@ export default function PostView() {
     dateModified: post.updated_at || post.published_at || post.created_at,
     author: { '@type': 'Person', name: 'HyeongJun' },
     publisher: { '@type': 'Organization', name: 'HJ Tech Blog' },
-    ...(post.cover_image_url ? { image: post.cover_image_url } : {}),
+    ...(ogImage ? { image: ogImage } : {}),
   }
 
   return (
@@ -100,7 +113,7 @@ export default function PostView() {
       <meta property="og:description" content={post.summary || post.title} />
       <meta property="og:type" content="article" />
       <meta property="og:url" content={canonicalUrl} />
-      {post.cover_image_url && <meta property="og:image" content={post.cover_image_url} />}
+      {ogImage && <meta property="og:image" content={ogImage} />}
       <link rel="canonical" href={canonicalUrl} />
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>
@@ -110,9 +123,9 @@ export default function PostView() {
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      <ReadingProgress />
 
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12 flex gap-8 overflow-x-hidden">
+      {/* overflow-x는 clip으로 - hidden이면 자식 TOC의 position:sticky가 동작하지 않는다 */}
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 py-6 sm:py-12 flex gap-8" style={{ overflowX: 'clip' }}>
         <article className="w-full min-w-0 flex-1 max-w-4xl overflow-hidden">
           {/* 모바일 목차 버튼 (xl 미만에서만 표시) */}
           <div className="xl:hidden mb-4">
@@ -162,7 +175,7 @@ export default function PostView() {
               )}
               {post.series && (
                 <Link
-                  to={`/posts`}
+                  to={`/series?s=${post.series.slug}`}
                   className="text-sm font-medium text-primary-600 hover:underline"
                 >
                   <BookOpen size={14} className="inline mr-1" /> {post.series.name}
@@ -197,7 +210,7 @@ export default function PostView() {
           {post.pdf_file && (
             <PDFViewer
               url={post.pdf_file}
-              title={post.title + ' — 첨부 PDF'}
+              title={post.title + ' - 첨부 PDF'}
             />
           )}
 
@@ -212,42 +225,55 @@ export default function PostView() {
             </div>
           )}
 
-          {/* Related: Architecture Lineage + Post Links */}
-          {(post.architecture_entries?.length > 0 || post.outgoing_links?.length > 0 || post.incoming_links?.length > 0) && (
-            <div className="mt-8 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
+          {/* 이어서 읽기 - 흩어져 있던 연결(시리즈·계보·관련 글)을 한 자리에 모은다.
+              정확도가 높은 순으로 쌓는다: 사람이 묶은 시리즈 > 검증한 계보 > 링크·태그 */}
+          {(post.adjacent_posts?.prev || post.adjacent_posts?.next ||
+            post.architecture_entries?.length > 0 ||
+            post.outgoing_links?.length > 0 || post.incoming_links?.length > 0) && (
+            <section className="mt-10 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
+              <h2 className="text-lg font-bold mb-4" style={{ color: 'var(--text)' }}>
+                이어서 읽기
+              </h2>
+
+              {/* 1. 같은 시리즈의 앞뒤 편 */}
+              {(post.adjacent_posts?.prev || post.adjacent_posts?.next) && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                  {['prev', 'next'].map((dir) => {
+                    const item = post.adjacent_posts?.[dir]
+                    if (!item) return <div key={dir} className="hidden md:block" />
+                    return (
+                      <Link
+                        key={dir}
+                        to={`/post/${item.slug}`}
+                        className="group p-4 rounded-xl border transition-shadow hover:shadow-md"
+                        style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
+                      >
+                        <span className="text-xs font-medium" style={{ color: 'var(--text-secondary)' }}>
+                          {dir === 'prev' ? '이전 편' : '다음 편'}
+                          {post.series?.name ? ` · ${post.series.name}` : ''}
+                        </span>
+                        <p className="text-sm font-semibold mt-1 line-clamp-2 group-hover:text-primary-600 transition-colors"
+                          style={{ color: 'var(--text)' }}>
+                          {item.title}
+                        </p>
+                      </Link>
+                    )
+                  })}
+                </div>
+              )}
+
+              {/* 2. 검증한 아키텍처 계보 */}
               <ArchitectureLineageCard entries={post.architecture_entries} />
+
+              {/* 3. 본문에서 오간 링크 */}
               <PostLinksSection
                 outgoingLinks={post.outgoing_links}
                 incomingLinks={post.incoming_links}
               />
-            </div>
+            </section>
           )}
 
-          {/* Series Navigation */}
-          {post.adjacent_posts && (post.adjacent_posts.prev || post.adjacent_posts.next) && (
-            <nav className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {post.adjacent_posts.prev && (
-                <Link
-                  to={`/post/${post.adjacent_posts.prev.slug}`}
-                  className="p-4 rounded-xl border hover:shadow-md transition-all text-left"
-                  style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
-                >
-                  <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>← Previous</span>
-                  <p className="text-sm font-medium mt-1" style={{ color: 'var(--text)' }}>{post.adjacent_posts.prev.title}</p>
-                </Link>
-              )}
-              {post.adjacent_posts.next && (
-                <Link
-                  to={`/post/${post.adjacent_posts.next.slug}`}
-                  className="p-4 rounded-xl border hover:shadow-md transition-all text-right md:col-start-2"
-                  style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
-                >
-                  <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Next →</span>
-                  <p className="text-sm font-medium mt-1" style={{ color: 'var(--text)' }}>{post.adjacent_posts.next.title}</p>
-                </Link>
-              )}
-            </nav>
-          )}
+
 
           {/* Related Posts (비시리즈 포스트용) */}
           {post.related_posts?.length > 0 && (
@@ -271,6 +297,15 @@ export default function PostView() {
               </div>
             </div>
           )}
+
+          {/* 관련 시리즈 - 한 편을 다 읽은 독자가 다음으로 갈 곳은 낱개 글보다 묶음이다 */}
+          {/* 카테고리 대분류는 포스트 쪽에 없다. 시리즈에 딸려 오는 값을 쓰고,
+              시리즈가 없는 글은 소분류 이름으로만 맞춘다. */}
+          <RelatedSeries
+            series={post.series}
+            categoryName={post.category?.name}
+            categoryGroup={post.series?.category_group}
+          />
 
           {/* 댓글 */}
           <CommentSection postSlug={slug} />
@@ -310,7 +345,7 @@ export default function PostView() {
                 </button>
               </div>
               <div className="px-4 py-3">
-                <TableOfContents content={bodyContent} />
+                <TableOfContents content={bodyContent} onNavigate={() => setTocOpen(false)} />
               </div>
             </motion.div>
           </>

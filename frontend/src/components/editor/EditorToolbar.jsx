@@ -1,3 +1,4 @@
+import { promptDialog } from '../../hooks/useDialog'
 import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough,
   Code, Link, Highlighter, ChevronDown
@@ -32,12 +33,12 @@ function ToolbarButton({ icon: Icon, isActive, onClick, title }) {
 export default function EditorToolbar({ editor }) {
   const [showBlockMenu, setShowBlockMenu] = useState(false)
 
-  const setLink = useCallback(() => {
+  const setLink = useCallback(async () => {
     if (editor.isActive('link')) {
       editor.chain().focus().unsetLink().run()
       return
     }
-    const url = window.prompt('URL:')
+    const url = await promptDialog({ title: '링크 넣기', label: 'URL', placeholder: 'https://', confirmLabel: '넣기' })
     if (url) {
       editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
     }

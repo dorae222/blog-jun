@@ -170,7 +170,7 @@ class Command(BaseCommand):
 
                 if dry_run:
                     self.stdout.write(
-                        f"  {prefix}[CREATE] {slug} ({cat_slug}) — {title}"
+                        f"  {prefix}[CREATE] {slug} ({cat_slug}) - {title}"
                     )
                     created += 1
                     continue

@@ -2,9 +2,9 @@
 커버 이미지 자동 생성 관리 명령어.
 
 전략:
-  1. arch_figure — ArchitectureEntry figure가 있으면 그대로 cover_image로 복사 (AI 포스트 우선)
-  2. paper_cover — AI 카테고리 포스트 중 arch figure 없는 것 (SVG 템플릿, 무료)
-  3. category_gradient — 그 외 카테고리 (SVG 템플릿, 무료)
+  1. arch_figure - ArchitectureEntry figure가 있으면 그대로 cover_image로 복사 (AI 포스트 우선)
+  2. paper_cover - AI 카테고리 포스트 중 arch figure 없는 것 (SVG 템플릿, 무료)
+  3. category_gradient - 그 외 카테고리 (SVG 템플릿, 무료)
 
 사용법:
   python manage.py generate_cover_images                    # 전체 (이미지 없는 것만)

@@ -10,12 +10,13 @@ import LeftSidebar from '../components/blog/LeftSidebar'
 import FeedCard from '../components/blog/FeedCard'
 import BulletinListView from '../components/blog/BulletinListView'
 import { getFeed } from '../api/posts'
-import { CATEGORY_TREE } from '../data/categories'
+import useCategories from '../hooks/useCategories'
 
 // 탭별 기본 뷰 모드
 const DEFAULT_VIEW = { ai: 'card', cloud: 'list', data: 'list' }
 
 export default function PostsPage() {
+  const CATEGORY_TREE = useCategories()
   const { category, sub } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -90,7 +91,7 @@ export default function PostsPage() {
       setTotalCount(count)
       setTotalPages(Math.ceil(count / PAGE_SIZE))
     } catch {
-      // Silently handled — loading state will clear
+      // Silently handled - loading state will clear
     } finally {
       setLoading(false)
       setLoadingMore(false)
@@ -269,7 +270,7 @@ export default function PostsPage() {
           {(q || tag) && (
             <div className="mb-4 flex items-center gap-2">
               <span className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-                {q ? `"${q}" 검색 결과` : `#${tag} 태그`} — {totalCount}건
+                {q ? `"${q}" 검색 결과` : `#${tag} 태그`} - {totalCount}건
               </span>
               <button
                 onClick={() => {

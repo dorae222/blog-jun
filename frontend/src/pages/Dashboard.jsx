@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
+import { confirmDialog } from '../hooks/useDialog'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import useAuth from '../hooks/useAuth'
@@ -9,7 +10,7 @@ import {
   getArchitectures, deleteArchitecture,
 } from '../api/posts'
 import toast from 'react-hot-toast'
-import {
+import { Layers, FolderTree,
   FileText, CheckCircle, Clock,
   LayoutGrid, Cloud, Brain, Database, Code2, FolderOpen, Terminal, BookOpen,
   Archive, Plus, Tags, Cpu,
@@ -20,7 +21,10 @@ import PostsTab from '../components/dashboard/PostsTab'
 import ArchitecturesTab from '../components/dashboard/ArchitecturesTab'
 import TagsTab from '../components/dashboard/TagsTab'
 import CommentsTab from '../components/dashboard/CommentsTab'
+import SeriesTab from '../components/dashboard/SeriesTab'
+import CategoriesTab from '../components/dashboard/CategoriesTab'
 import OverviewTab from '../components/dashboard/OverviewTab'
+import WorkspaceWidgets from '../components/dashboard/WorkspaceWidgets'
 
 const DEFAULT_PAGE_SIZE = 10
 
@@ -193,7 +197,7 @@ export default function Dashboard() {
 
   // 단일 삭제
   const handleDelete = async (slug) => {
-    if (!confirm('이 포스트를 삭제할까요?')) return
+    if (!(await confirmDialog({ title: '포스트 삭제', message: '이 포스트를 삭제할까요? 되돌릴 수 없어요.', confirmLabel: '삭제', variant: 'danger' }))) return
     try {
       await deletePost(slug)
       toast.success('삭제 완료')
@@ -206,7 +210,7 @@ export default function Dashboard() {
   // 벌크 삭제
   const handleBulkDelete = async () => {
     if (!selected.size) return
-    if (!confirm(`선택한 ${selected.size}개 포스트를 삭제할까요?`)) return
+    if (!(await confirmDialog({ title: '포스트 일괄 삭제', message: `선택한 ${selected.size}개 포스트를 삭제할까요?`, confirmLabel: '삭제', variant: 'danger' }))) return
     try {
       const r = await bulkDeletePosts([...selected])
       toast.success(`${r.data.deleted}개 삭제 완료`)
@@ -231,7 +235,7 @@ export default function Dashboard() {
   // 태그 병합
   const handleMerge = async () => {
     if (!mergeSrc || !mergeDst) { toast.error('소스/대상 태그를 선택하세요'); return }
-    if (!confirm(`"${mergeSrc}" → "${mergeDst}" 병합할까요?`)) return
+    if (!(await confirmDialog({ title: '태그 병합', message: `"${mergeSrc}" → "${mergeDst}" 병합할까요?`, confirmLabel: '병합' }))) return
     try {
       const r = await mergeTags(mergeSrc, mergeDst)
       toast.success(`병합 완료 (${r.data.posts_moved}개 포스트 이전)`)
@@ -244,7 +248,7 @@ export default function Dashboard() {
 
   // 고아 태그 삭제
   const handleCleanup = async () => {
-    if (!confirm('포스트 없는 태그를 모두 삭제할까요?')) return
+    if (!(await confirmDialog({ title: '고아 태그 정리', message: '포스트 없는 태그를 모두 삭제할까요?', confirmLabel: '삭제', variant: 'danger' }))) return
     try {
       const r = await cleanupTags()
       toast.success(`${r.data.deleted_orphaned}개 고아 태그 삭제`)
@@ -299,6 +303,9 @@ export default function Dashboard() {
         </Link>
       </div>
 
+      {/* 이어 쓰기 · 최근 메모 */}
+      <WorkspaceWidgets />
+
       {/* Stats Bar */}
       <StatsBar
         stats={stats}
@@ -313,6 +320,8 @@ export default function Dashboard() {
           {[
             { id: 'posts', label: '포스트', Icon: FileText },
             { id: 'architectures', label: 'Architectures', Icon: Cpu },
+            { id: 'categories', label: '카테고리 관리', Icon: FolderTree },
+            { id: 'series', label: '시리즈 관리', Icon: Layers },
             { id: 'tags',  label: '태그 관리', Icon: Tags },
             { id: 'comments', label: '댓글 관리', Icon: MessageCircle },
             { id: 'overview', label: '콘텐츠 현황', Icon: BarChart3 },
@@ -374,6 +383,10 @@ export default function Dashboard() {
       )}
 
       {/* ─── 댓글 관리 탭 ─── */}
+      {tab === 'categories' && <CategoriesTab />}
+
+      {tab === 'series' && <SeriesTab />}
+
       {tab === 'comments' && <CommentsTab />}
 
       {/* ─── 콘텐츠 현황 탭 ─── */}

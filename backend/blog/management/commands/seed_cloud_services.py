@@ -757,8 +757,8 @@ RELATIONS = [
     ("route53", "s3", "integrates_with", "S3 정적 웹 호스팅을 DNS 연결"),
     # ── Alternatives ─────────────────────────────────────────────────────
     ("ecs", "eks", "alternative_to", "AWS 네이티브 vs Kubernetes 컨테이너 오케스트레이션"),
-    ("sqs", "kinesis", "alternative_to", "메시지 큐 vs 스트리밍 — 사용 패턴에 따라 선택"),
-    ("rds", "dynamodb", "alternative_to", "관계형 vs NoSQL — 워크로드 특성에 따라 선택"),
+    ("sqs", "kinesis", "alternative_to", "메시지 큐 vs 스트리밍 - 사용 패턴에 따라 선택"),
+    ("rds", "dynamodb", "alternative_to", "관계형 vs NoSQL - 워크로드 특성에 따라 선택"),
     ("athena", "redshift", "alternative_to", "서버리스 쿼리 vs 전용 웨어하우스"),
     ("sns", "eventbridge", "alternative_to", "단순 Pub/Sub vs 이벤트 라우팅/필터링"),
 ]

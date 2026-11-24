@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { confirmDialog } from '../../hooks/useDialog'
 import { Link } from 'react-router-dom'
 import { Eye, Pencil, Trash2, Plus, Search, Image, AlertTriangle } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -104,7 +105,7 @@ export default function ArchitecturesTab({
                 </Link>
                 <button
                   onClick={async () => {
-                    if (!confirm(`"${entry.name}" 삭제?`)) return
+                    if (!(await confirmDialog({ title: '아키텍처 삭제', message: `"${entry.name}"을(를) 삭제할까요?`, confirmLabel: '삭제', variant: 'danger' }))) return
                     try {
                       await deleteArchitecture(entry.slug)
                       toast.success('삭제 완료')
@@ -189,7 +190,7 @@ export default function ArchitecturesTab({
                     </Link>
                     <button
                       onClick={async () => {
-                        if (!confirm(`"${entry.name}" 삭제?`)) return
+                        if (!(await confirmDialog({ title: '아키텍처 삭제', message: `"${entry.name}"을(를) 삭제할까요?`, confirmLabel: '삭제', variant: 'danger' }))) return
                         try {
                           await deleteArchitecture(entry.slug)
                           toast.success('삭제 완료')

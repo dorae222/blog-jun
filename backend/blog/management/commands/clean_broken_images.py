@@ -15,7 +15,7 @@ import re
 from django.core.management.base import BaseCommand
 from blog.models import Post
 
-# Obsidian "Pasted image" 패턴 — /media/posts/imported/ 아래 경로만 대상
+# Obsidian "Pasted image" 패턴 - /media/posts/imported/ 아래 경로만 대상
 BROKEN_IMAGE_RE = re.compile(
     r'!\[.*?\]\(/media/posts/imported/[^\)]*?Pasted image[^\)]*?\)',
     re.IGNORECASE,

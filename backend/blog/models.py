@@ -41,6 +41,12 @@ class Series(models.Model):
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True)
     order = models.IntegerField(default=0)
+    cover_image = models.ImageField(
+        upload_to='series/covers/',
+        blank=True,
+        null=True,
+        help_text="시리즈 묶음 표지 - 없으면 첫 편의 표지로 대체한다",
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -216,7 +222,41 @@ class ArchitectureConcept(models.Model):
         return self.abbreviation or self.name
 
 
+class Branch(models.Model):
+    """계보 트리의 가지.
+
+    원래 `ArchitectureEntry.branch_type`이 `TextChoices` 8개로 코드에 박혀 있었다.
+    가지를 하나 늘릴 때마다 코드 수정과 마이그레이션이 필요했는데, 가지는 데이터다.
+    검색·RAG·벡터 인덱스·프롬프트 최적화·그래프 ML·고전 ML·서빙처럼 앞으로 늘어날
+    갈래가 여럿이라 여기로 뺐다.
+
+    `slug`가 키다. 기존 `branch_type` 문자열이 그대로 슬러그가 되므로 API가 안 깨진다.
+    """
+    class Axis(models.TextChoices):
+        TRUNK = 'trunk', '줄기'
+        BRANCH = 'branch', '가지'
+
+    name = models.CharField(max_length=60)
+    slug = models.SlugField(unique=True)
+    color = models.CharField(max_length=7, default='#64748b')
+    order = models.IntegerField(default=0, help_text="트리에서 왼쪽부터의 순서")
+    axis = models.CharField(max_length=10, choices=Axis.choices, default=Axis.BRANCH)
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['order', 'name']
+        verbose_name_plural = 'branches'
+
+    def __str__(self):
+        return self.name
+
+
 class ArchitectureEntry(models.Model):
+    class EntryKind(models.TextChoices):
+        MODEL = 'model', '모델'
+        PAPER = 'paper', '논문'
+        TECHNIQUE = 'technique', '기법'
+
     class DecoderType(models.TextChoices):
         DENSE = 'dense', 'Dense'
         SPARSE_MOE = 'sparse_moe', 'Sparse MoE'
@@ -290,9 +330,25 @@ class ArchitectureEntry(models.Model):
     architecture_category = models.CharField(
         max_length=20, choices=ArchitectureCategory.choices, default=ArchitectureCategory.LLM
     )
+    branch = models.ForeignKey(
+        Branch, on_delete=models.SET_NULL, null=True, blank=True, related_name='entries',
+        help_text="트리에서의 가지. 정본은 이쪽이다"
+    )
+    # `branch`의 슬러그를 그대로 담는 거울 필드다. API와 필터가 오래전부터 이 이름을
+    # 문자열로 써 왔고, 프론트엔드 네 곳이 그 값을 읽는다. 지우면 그 화면들이 깨진다.
+    # `choices`는 뗐다. 가지가 늘 때마다 코드를 고치지 않으려고 Branch로 뺐기 때문이다.
     branch_type = models.CharField(
-        max_length=30, choices=BranchType.choices, blank=True,
-        help_text="트리 시각화에서의 가지 위치"
+        max_length=30, blank=True,
+        help_text="branch.slug의 사본. 직접 고치지 마라. save()가 branch에서 맞춘다"
+    )
+    entry_kind = models.CharField(
+        max_length=20, choices=EntryKind.choices, default=EntryKind.MODEL,
+        help_text=(
+            "model=가중치나 API로 실제 서비스되는 모델 카드, "
+            "paper=논문 한 편이 정본인 기법(CoT·ReAct·Reflexion 같은 것), "
+            "technique=모델이 아닌 기법·프로토콜·프레임워크(LoRA·MCP·LangGraph). "
+            "API의 tree/list/detail 세 serializer가 모두 실어 보낸다"
+        )
     )
     tree_x = models.FloatField(null=True, blank=True, help_text="트리 X 좌표")
     tree_y = models.FloatField(null=True, blank=True, help_text="트리 Y 좌표")
@@ -313,6 +369,21 @@ class ArchitectureEntry(models.Model):
     class Meta:
         ordering = ['-release_date', 'name']
         verbose_name_plural = 'architecture entries'
+
+    def save(self, *args, **kwargs):
+        # 거울 필드를 한 곳에서만 쓴다. 두 값이 어긋나면 필터와 화면이 서로 다른 말을 한다.
+        # branch를 비운 채 branch_type만 넣고 저장하는 옛 코드가 있어서, 그 경우에는
+        # 슬러그로 branch를 찾아 채워 준다. 없는 슬러그면 문자열만 남긴다.
+        if self.branch_id:
+            self.branch_type = self.branch.slug
+        elif self.branch_type:
+            self.branch = Branch.objects.filter(slug=self.branch_type).first()
+        update_fields = kwargs.get('update_fields')
+        if update_fields is not None:
+            uf = set(update_fields)
+            if 'branch' in uf or 'branch_type' in uf:
+                kwargs['update_fields'] = list(uf | {'branch', 'branch_type'})
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.name} ({self.organization})"
@@ -364,6 +435,25 @@ class CloudServiceEntry(models.Model):
         LXD = 'lxd', 'LXD'
         GENERAL = 'general', 'General'
 
+    class Layer(models.TextChoices):
+        """추상화 층. 인프라 트리의 세로축이다.
+
+        `launch_year` 를 세로축으로 쓰지 않는다. 인프라 기술의 값은 언제 나왔느냐가
+        아니라 어느 층에 서느냐에 있다. EC2(2006)와 Fargate(2017)를 연도로 세우면
+        둘 다 컴퓨트라는 것만 보이고, 층으로 세우면 가상화 위에 서버리스가 얹힌
+        관계가 보인다.
+
+        위가 추상이고 아래가 물리다. `CONCEPT` 만 층이 아니라 층 밖이다.
+        MVCC·CIDR·GitOps 처럼 제품이 아닌 규격과 기법이 여기 선다.
+        """
+        CONCEPT = 'concept', '개념·규격'
+        SERVERLESS = 'serverless', '서버리스'
+        MANAGED = 'managed', '관리형'
+        ORCHESTRATION = 'orchestration', '오케스트레이션'
+        CONTAINER = 'container', '컨테이너'
+        VIRTUALIZATION = 'virtualization', '가상화'
+        PHYSICAL = 'physical', '물리·OS'
+
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     provider = models.CharField(
@@ -371,6 +461,10 @@ class CloudServiceEntry(models.Model):
     )
     service_domain = models.CharField(max_length=20, choices=ServiceDomain.choices)
     launch_year = models.IntegerField(null=True, blank=True)
+    layer = models.CharField(
+        max_length=20, choices=Layer.choices, blank=True, default='',
+        help_text='추상화 층. 인프라 트리의 세로축이다. 위가 추상, 아래가 물리다',
+    )
     is_serverless = models.BooleanField(default=False)
     is_managed = models.BooleanField(default=True)
     pricing_model = models.CharField(max_length=20, blank=True)
@@ -404,6 +498,12 @@ class CloudServiceRelation(models.Model):
         ALTERNATIVE_TO = 'alternative_to', 'Alternative'
         PART_OF = 'part_of', 'Part Of'
         EVOLVED_FROM = 'evolved_from', 'Evolved From'
+        # 아래 둘은 **층을 가로지르는 세로선**이다. 나머지 다섯에는 층을 건너는
+        # 뜻이 없었다. PostgreSQL(물리) -> RDS(관리형)가 managed_version_of 이고
+        # Docker(컨테이너) -> Linux(물리)가 runs_on 이다. alternative_to 는 같은 층
+        # 안의 가로선이라 선 방향만 봐도 무슨 관계인지 읽힌다.
+        RUNS_ON = 'runs_on', 'Runs On'
+        MANAGED_VERSION_OF = 'managed_version_of', 'Managed Version Of'
 
     from_service = models.ForeignKey(
         CloudServiceEntry, related_name='outgoing_relations', on_delete=models.CASCADE

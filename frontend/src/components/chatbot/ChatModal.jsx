@@ -1,132 +1,222 @@
-import { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { X, ExternalLink, FileText } from 'lucide-react'
-import { sendMessage } from '../../api/chat'
+import toast from 'react-hot-toast'
+import { X, Send, Square, MessageSquarePlus, Bot } from 'lucide-react'
+import ChatMessage from './ChatMessage'
+import TurnstileWidget, { turnstileEnabled } from './TurnstileWidget'
+import useFocusTrap from '../../hooks/useFocusTrap'
+import { streamChat, sendFeedback } from '../../api/chat'
 
-function SourcesList({ sources, webSources }) {
-  if (!sources?.length && !webSources?.length) return null
-  return (
-    <div className="mt-2 pt-2 border-t" style={{ borderColor: 'var(--border)' }}>
-      {sources?.length > 0 && (
-        <div className="space-y-0.5">
-          <span className="text-[10px] uppercase font-semibold" style={{ color: 'var(--text-secondary)' }}>Blog</span>
-          {sources.map((s, i) => (
-            <Link key={i} to={`/post/${s.slug}`} className="flex items-center gap-1 text-xs text-primary-600 hover:underline">
-              <FileText size={10} /> {s.title}
-            </Link>
-          ))}
-        </div>
-      )}
-      {webSources?.length > 0 && (
-        <div className="space-y-0.5 mt-1.5">
-          <span className="text-[10px] uppercase font-semibold" style={{ color: 'var(--text-secondary)' }}>Web</span>
-          {webSources.map((s, i) => (
-            <a key={i} href={s.url} target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-1 text-xs text-primary-600 hover:underline truncate">
-              <ExternalLink size={10} /> {s.title}
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
-  )
+const STORE_KEY = 'chat:v1'
+const MAX_INPUT = 2000
+const GREETING = { id: 'greet', role: 'assistant', status: 'done', content: '안녕하세요! 블로그 글에 대해 궁금한 걸 물어보세요. 답변 아래에 참고한 글을 달아 드려요.' }
+
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`)
+
+/** 대화는 탭을 닫기 전까지(sessionStorage) 이어진다. 진행 중이던 답변은 저장하지 않는다. */
+function loadStore() {
+  try {
+    const d = JSON.parse(sessionStorage.getItem(STORE_KEY) || 'null')
+    if (d?.messages?.length) return d
+  } catch { /* 무시 */ }
+  return { sessionId: null, messages: [GREETING] }
+}
+function saveStore(sessionId, messages) {
+  try {
+    const keep = messages.filter((m) => !m.queued && m.status !== 'connecting' && m.status !== 'streaming').slice(-40)
+    sessionStorage.setItem(STORE_KEY, JSON.stringify({ sessionId, messages: keep }))
+  } catch { /* 무시 */ }
 }
 
+/**
+ * 블로그 챗봇 패널.
+ * - SSE 스트리밍(fetch + ReadableStream), 안 되면 JSON 폴백(api/chat.js).
+ * - 답변 중에 또 보내면 대기열에 쌓았다가 차례로 보낸다("대기 중" 표시).
+ * - ESC로 닫기, Tab 포커스는 패널 안에서만 돈다. 닫으면 여는 버튼으로 포커스가 돌아간다.
+ */
 export default function ChatModal({ onClose }) {
-  const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Hi! Ask me anything about the blog posts.' },
-  ])
+  const init = useRef(loadStore()).current
+  const [messages, setMessages] = useState(init.messages)
+  const [sessionId, setSessionId] = useState(init.sessionId)
   const [input, setInput] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [sessionId] = useState(() => crypto.randomUUID())
-  const bottomRef = useRef(null)
+  const [busy, setBusy] = useState(false)
+  const [tsToken, setTsToken] = useState('')
+  const [tsReset, setTsReset] = useState(0)
+  const boxRef = useRef(null)
+  const inputRef = useRef(null)
+  const logRef = useRef(null)
+  const abortRef = useRef(null)
+  const sessionRef = useRef(sessionId)
+  const tsRef = useRef('')
+  useEffect(() => { sessionRef.current = sessionId }, [sessionId])
+  useEffect(() => { tsRef.current = tsToken }, [tsToken])
 
+  useFocusTrap(boxRef, true, onClose)
+  useEffect(() => { setTimeout(() => inputRef.current?.focus(), 50) }, [])
+  useEffect(() => () => abortRef.current?.abort(), [])
+  useEffect(() => { saveStore(sessionId, messages) }, [sessionId, messages])
+
+  // 맨 아래 근처에 있을 때만 따라 내려간다(위로 올려 읽는 중이면 그대로 둔다).
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = logRef.current
+    if (!el) return
+    if (el.scrollHeight - el.scrollTop - el.clientHeight < 120) el.scrollTop = el.scrollHeight
   }, [messages])
 
-  const handleSend = async () => {
-    if (!input.trim() || loading) return
-    const userMsg = { role: 'user', content: input.trim() }
-    setMessages((prev) => [...prev, userMsg])
-    setInput('')
-    setLoading(true)
+  const patch = useCallback((id, fn) => {
+    setMessages((prev) => prev.map((m) => (m.id === id ? { ...m, ...(typeof fn === 'function' ? fn(m) : fn) } : m)))
+  }, [])
 
+  const run = useCallback(async (userMsg) => {
+    const aid = uid()
+    setBusy(true)
+    setMessages((prev) => [
+      ...prev.map((m) => (m.id === userMsg.id ? { ...m, queued: false } : m)),
+      { id: aid, role: 'assistant', status: 'connecting', content: '', sources: [], replyTo: userMsg.id },
+    ])
+    const controller = new AbortController()
+    abortRef.current = controller
+    let serverError = null
     try {
-      const { data } = await sendMessage(userMsg.content, sessionId)
-      setMessages((prev) => [...prev, {
-        role: 'assistant',
-        content: data.message,
-        sources: data.sources,
-        webSources: data.web_sources,
-      }])
-    } catch {
-      setMessages((prev) => [...prev, { role: 'assistant', content: 'Sorry, something went wrong.' }])
+      await streamChat({
+        message: userMsg.content,
+        sessionId: sessionRef.current,
+        turnstileToken: tsRef.current,
+        signal: controller.signal,
+        onEvent: (ev) => {
+          if (ev.type === 'sources') patch(aid, { sources: ev.sources || [] })
+          else if (ev.type === 'token') patch(aid, (m) => ({ content: m.content + (ev.content || ''), status: 'streaming' }))
+          else if (ev.type === 'error') serverError = ev
+          else if (ev.type === 'done') {
+            if (ev.session_id) setSessionId(ev.session_id)
+            patch(aid, (m) => (serverError && !m.content
+              ? { status: 'error', error: serverError.content || '답변하지 못했어요.', code: serverError.code }
+              : { status: 'done', messageId: ev.message_id, feedbackToken: ev.feedback_token }))
+          }
+        },
+      })
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        patch(aid, (m) => ({ status: 'done', content: m.content ? `${m.content}\n\n_(중단함)_` : '_(중단함)_' }))
+      } else {
+        patch(aid, { status: 'error', error: err.message || '답변을 받지 못했어요.', retryAfter: err.retryAfter, code: err.code })
+      }
     } finally {
-      setLoading(false)
+      abortRef.current = null
+      setBusy(false)
+      if (turnstileEnabled) { setTsToken(''); setTsReset((n) => n + 1) }
     }
+  }, [patch])
+
+  // 대기열: 바쁘지 않고 대기 중인 질문이 있으면 다음 것을 보낸다.
+  useEffect(() => {
+    if (busy) return
+    if (turnstileEnabled && !tsToken) return
+    const next = messages.find((m) => m.role === 'user' && m.queued)
+    if (next) run(next)
+  }, [busy, messages, run, tsToken])
+
+  const send = () => {
+    const text = input.trim().slice(0, MAX_INPUT)
+    if (!text) return
+    setMessages((prev) => [...prev, { id: uid(), role: 'user', content: text, queued: true }])
+    setInput('')
   }
+
+  const retry = useCallback((assistantMsg) => {
+    setMessages((prev) => {
+      const without = prev.filter((m) => m.id !== assistantMsg.id)
+      return without.map((m) => (m.id === assistantMsg.replyTo ? { ...m, queued: true } : m))
+    })
+  }, [])
+
+  const feedback = useCallback(async (msg, value) => {
+    patch(msg.id, { feedback: value })
+    try {
+      await sendFeedback({ messageId: msg.messageId, feedbackToken: msg.feedbackToken, value })
+    } catch {
+      patch(msg.id, { feedback: null })
+      toast.error('피드백을 보내지 못했어요')
+    }
+  }, [patch])
+
+  const reset = () => {
+    abortRef.current?.abort()
+    setMessages([GREETING])
+    setSessionId(null)
+  }
+
+  const queuedCount = messages.filter((m) => m.role === 'user' && m.queued).length
+  const waitingForBot = turnstileEnabled && !tsToken
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 100, scale: 0.9 }}
-      className="fixed bottom-24 left-6 z-50 w-96 max-w-[calc(100vw-3rem)] rounded-2xl shadow-2xl overflow-hidden"
-      style={{ background: 'rgba(255,255,255,0.45)', backdropFilter: 'blur(12px) saturate(180%)', WebkitBackdropFilter: 'blur(12px) saturate(180%)', border: '1px solid rgba(255,255,255,0.3)', boxShadow: '0 8px 32px rgba(31,38,135,0.08), inset 0 1px 0 rgba(255,255,255,0.4)' }}
+      ref={boxRef}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="chat-title"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 40 }}
+      transition={{ duration: 0.18 }}
+      className="fixed z-50 inset-x-0 bottom-0 top-16 sm:top-auto sm:inset-x-auto sm:bottom-24 sm:left-6 sm:w-[24rem] sm:h-[min(36rem,calc(100dvh-8rem))]
+        flex flex-col rounded-t-2xl sm:rounded-2xl shadow-2xl border overflow-hidden"
+      style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
     >
-      <div className="p-4 border-b flex justify-between items-center" style={{ borderColor: 'rgba(255,255,255,0.3)' }}>
-        <h3 className="font-semibold">Chat with HJ Tech</h3>
-        <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded">
+      <div className="px-4 py-3 border-b flex items-center gap-2" style={{ borderColor: 'var(--border)' }}>
+        <Bot size={18} className="text-accent" />
+        <h2 id="chat-title" className="font-semibold text-sm" style={{ color: 'var(--text)' }}>블로그에 물어보기</h2>
+        <button onClick={reset} className="ml-auto p-1.5 rounded-lg hover:bg-black/5" title="새 대화" aria-label="새 대화"
+          style={{ color: 'var(--text-secondary)' }}>
+          <MessageSquarePlus size={16} />
+        </button>
+        <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-black/5" aria-label="닫기 (Esc)" title="닫기 (Esc)"
+          style={{ color: 'var(--text-secondary)' }}>
           <X size={18} />
         </button>
       </div>
 
-      <div className="h-80 overflow-y-auto p-4 space-y-3">
-        {messages.map((msg, i) => (
-          <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div
-              className={`max-w-[80%] px-3 py-2 rounded-xl text-sm ${
-                msg.role === 'user'
-                  ? 'bg-primary-600 text-white'
-                  : ''
-              }`}
-              style={msg.role === 'assistant' ? { background: 'var(--bg-secondary)' } : {}}
-            >
-              {msg.content}
-              {msg.role === 'assistant' && (
-                <SourcesList sources={msg.sources} webSources={msg.webSources} />
-              )}
-            </div>
-          </div>
+      <div ref={logRef} className="flex-1 overflow-y-auto p-4 space-y-3" role="log" aria-live="polite" aria-relevant="additions text">
+        {messages.map((m) => (
+          <ChatMessage key={m.id} msg={m} onFeedback={feedback} onRetry={retry} />
         ))}
-        {loading && (
-          <div className="flex justify-start">
-            <div className="px-3 py-2 rounded-xl text-sm" style={{ background: 'var(--bg-secondary)' }}>
-              <span className="animate-pulse">Thinking...</span>
-            </div>
-          </div>
-        )}
-        <div ref={bottomRef} />
       </div>
 
-      <div className="p-3 border-t flex gap-2" style={{ borderColor: 'var(--border)' }}>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-          placeholder="Ask a question..."
-          className="flex-1 px-3 py-2 rounded-lg text-sm border outline-none focus:ring-2 focus:ring-primary-500"
-          style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text)' }}
-        />
-        <button
-          onClick={handleSend}
-          disabled={loading}
-          className="px-4 py-2 rounded-lg bg-primary-600 text-white text-sm hover:bg-primary-700 disabled:opacity-50"
-        >
-          Send
-        </button>
+      <TurnstileWidget onToken={setTsToken} resetKey={tsReset} />
+
+      <div className="p-3 border-t" style={{ borderColor: 'var(--border)' }}>
+        {(queuedCount > 0 || waitingForBot) && (
+          <p className="text-[11px] mb-1.5" style={{ color: 'var(--text-secondary)' }} aria-live="polite">
+            {waitingForBot ? '봇 확인 중이에요…' : `앞 답변이 끝나면 보낼게요 · 대기 ${queuedCount}개`}
+          </p>
+        )}
+        <div className="flex items-end gap-2">
+          <textarea
+            ref={inputRef}
+            rows={1}
+            value={input}
+            maxLength={MAX_INPUT}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              // 한글 입력 중(조합 중) Enter는 글자 확정용이라 보내지 않는다.
+              if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send() }
+            }}
+            placeholder="질문을 입력하세요 (Shift+Enter 줄바꿈)"
+            aria-label="질문"
+            className="flex-1 max-h-32 resize-none px-3 py-2 rounded-xl text-sm border outline-none focus:ring-2 focus:ring-primary-500"
+            style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text)', fieldSizing: 'content' }}
+          />
+          {busy ? (
+            <button onClick={() => abortRef.current?.abort()} className="p-2.5 rounded-xl border" aria-label="답변 중단"
+              title="답변 중단" style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}>
+              <Square size={16} />
+            </button>
+          ) : null}
+          <button onClick={send} disabled={!input.trim()} aria-label="보내기"
+            className="p-2.5 rounded-xl bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-40">
+            <Send size={16} />
+          </button>
+        </div>
       </div>
     </motion.div>
   )

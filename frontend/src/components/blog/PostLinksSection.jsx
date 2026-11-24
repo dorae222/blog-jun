@@ -18,7 +18,7 @@ function LinkCard({ link, direction }) {
         </p>
         {link.category_name && (
           <span
-            className="text-[10px] font-medium px-1.5 py-0.5 rounded mt-1 inline-block"
+            className="text-[11px] font-medium px-1.5 py-0.5 rounded mt-1 inline-block"
             style={{ background: `${link.category_color || '#6366f1'}15`, color: link.category_color || '#6366f1' }}
           >
             {link.category_name}

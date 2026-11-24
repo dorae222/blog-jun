@@ -5,6 +5,8 @@ import {
   FileText, Code2, BookOpen, Calendar, Cpu, ExternalLink, ChevronDown, Network,
 } from 'lucide-react'
 import { CATEGORY_COLORS } from '../../data/architectureConstants'
+import { escapeAngleBracketsOutsideMath } from '../../utils/mathText'
+import MarkdownRenderer from './MarkdownRenderer'
 
 const RELATION_LABELS = {
   evolved_from: '발전 기반',
@@ -74,10 +76,22 @@ function SpecBadge({ icon: Icon, label }) {
 function ConceptTag({ concept }) {
   const bgColor = concept.color ? `${concept.color}18` : 'var(--card-bg)'
   const textColor = concept.color || 'var(--text-secondary)'
+  // 약칭만 보이는 태그(MLA, GQA, SwiGLU)는 그것만으로는 뜻이 안 잡힌다.
+  // 설명이 있으면 툴팁으로 붙이고, 점선 밑줄로 눌러 볼 것이 있음을 알린다.
+  const tip = concept.description
+    ? `${concept.name}${concept.abbreviation && concept.abbreviation !== concept.name ? ` (${concept.abbreviation})` : ''} - ${concept.description}`
+    : concept.name
   return (
     <span
-      className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold"
-      style={{ background: bgColor, color: textColor, border: `1px solid ${concept.color || 'var(--border)'}40` }}
+      title={tip}
+      className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold"
+      style={{
+        background: bgColor, color: textColor,
+        border: `1px solid ${concept.color || 'var(--border)'}40`,
+        cursor: concept.description ? 'help' : 'default',
+        textDecoration: concept.description ? 'underline dotted' : 'none',
+        textUnderlineOffset: '2px',
+      }}
     >
       {concept.abbreviation || concept.name}
     </span>
@@ -98,7 +112,7 @@ function ExpandableConcepts({ concepts }) {
       {showToggle && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="inline-flex items-center gap-0.5 text-[10px] px-2 py-0.5 rounded-full border transition-colors hover:bg-gray-50"
+          className="inline-flex items-center gap-0.5 text-[11px] px-2 py-0.5 rounded-full border transition-colors hover:bg-gray-50"
           style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
         >
           {expanded ? '접기' : `+${concepts.length - LIMIT}개`}
@@ -133,7 +147,7 @@ export default function ArchitectureLineageCard({ entries }) {
     <div className="mt-8 space-y-4">
       <div className="flex items-center gap-2 mb-2">
         <Layers size={16} className="text-primary-600" />
-        <h3 className="text-sm font-semibold" style={{ color: 'var(--text)' }}>Architecture Lineage</h3>
+        <h3 className="text-sm font-semibold" style={{ color: 'var(--text)' }}>아키텍처 계보</h3>
       </div>
 
       {entries.map(entry => {
@@ -154,25 +168,15 @@ export default function ArchitectureLineageCard({ entries }) {
               border: '1px solid var(--border)',
             }}
           >
-            {/* Figure (전체 폭) */}
-            {entry.figure_url && (
-              <div
-                className="rounded-xl overflow-hidden mb-3 flex items-center justify-center"
-                style={{ background: 'var(--card-bg)', maxHeight: '320px' }}
-              >
-                <img
-                  src={entry.figure_url}
-                  alt={entry.name}
-                  className="max-w-full max-h-[320px] object-contain"
-                  loading="lazy"
-                />
-              </div>
-            )}
+            {/* figure는 넣지 않는다.
+                여러 패널이 든 넓은 그림을 320px 높이로 우겨넣으니 글자가 하나도 안 읽혔다.
+                읽을 수 없는 그림은 정보가 아니라 소음이고, 본문에는 이미 그 글에 맞게
+                그린 다이어그램이 따로 있다. 이 카드는 계보와 메타에 집중한다. */}
 
             {/* Header: name + badges + 링크 버튼 우측 */}
             <div className="flex items-start gap-3 mb-3">
-              {/* 아이콘 (figure 없을 때만) */}
-              {!entry.figure_url && (
+              {/* 카테고리 아이콘 */}
+              {(
                 <div
                   className="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center"
                   style={{ background: catColor + '12' }}
@@ -193,7 +197,7 @@ export default function ArchitectureLineageCard({ entries }) {
                     </span>
                     {entry.architecture_category && (
                       <span
-                        className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                        className="text-[11px] font-medium px-2 py-0.5 rounded-full"
                         style={{ background: `${catColor}20`, color: catColor }}
                       >
                         {entry.architecture_category.toUpperCase()}
@@ -201,7 +205,7 @@ export default function ArchitectureLineageCard({ entries }) {
                     )}
                     {entry.branch_type && (
                       <span
-                        className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                        className="text-[11px] font-medium px-2 py-0.5 rounded-full"
                         style={{ background: 'var(--color-primary-500)', color: '#fff' }}
                       >
                         {entry.branch_type?.replace('_', ' ')}
@@ -209,7 +213,7 @@ export default function ArchitectureLineageCard({ entries }) {
                     )}
                   </div>
 
-                  {/* 링크 버튼 — 상단 우측 */}
+                  {/* 링크 버튼 - 상단 우측 */}
                   {hasLinks && (
                     <div className="flex gap-1 shrink-0">
                       <ExternalLinkButton href={entry.paper_url} icon={FileText} label="Paper" />
@@ -260,14 +264,21 @@ export default function ArchitectureLineageCard({ entries }) {
               </div>
             </div>
 
-            {/* Key detail summary */}
+            {/* Key detail summary (마크다운 + 수식).
+                그냥 문자열로 뿌리면 달러와 백슬래시가 날것으로 보인다. 계보 카드가 붙는
+                글 34편이 그랬다. 줄임은 바깥이 아니라 안쪽 문단에 건다. line-clamp는
+                줄 상자를 세는 규칙이라 블록 자식(여기서는 prose > p)에는 먹지 않는다.
+                KaTeX가 만드는 인라인 블록은 문단의 줄 상자에 그대로 얹히므로 안쪽에
+                걸면 수식이 있어도 두 줄에서 잘린다 */}
             {entry.key_detail && (
-              <p
-                className="text-xs leading-relaxed mb-3 line-clamp-2"
-                style={{ color: 'var(--text-secondary)' }}
+              <div
+                className="text-xs leading-relaxed mb-3 break-words
+                  [&_.prose]:text-xs [&_.prose]:leading-relaxed [&_.prose]:max-w-none
+                  [&_.prose]:text-[color:var(--text-secondary)]
+                  [&_p]:m-0 [&_p]:line-clamp-2"
               >
-                {entry.key_detail}
-              </p>
+                <MarkdownRenderer content={escapeAngleBracketsOutsideMath(entry.key_detail)} />
+              </div>
             )}
 
             {/* Concept tags (접이식) */}
@@ -288,7 +299,7 @@ export default function ArchitectureLineageCard({ entries }) {
                       {Object.entries(groupByRelationType(entry.parent_names)).map(([type, items]) => (
                         <div key={type}>
                           <span
-                            className="text-[10px] font-medium mb-1 block"
+                            className="text-[11px] font-medium mb-1 block"
                             style={{ color: 'var(--text-secondary)' }}
                           >
                             {RELATION_LABELS[type] || type}
@@ -321,7 +332,7 @@ export default function ArchitectureLineageCard({ entries }) {
                       {Object.entries(groupByRelationType(entry.child_names)).map(([type, items]) => (
                         <div key={type}>
                           <span
-                            className="text-[10px] font-medium mb-1 block"
+                            className="text-[11px] font-medium mb-1 block"
                             style={{ color: 'var(--text-secondary)' }}
                           >
                             {RELATION_LABELS[type] || type}

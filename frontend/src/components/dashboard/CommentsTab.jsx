@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { confirmDialog } from '../../hooks/useDialog'
 import { Link } from 'react-router-dom'
 import { Trash2, Search, MessageCircle, AlertTriangle } from 'lucide-react'
 import toast from 'react-hot-toast'
@@ -68,7 +69,7 @@ export default function CommentsTab() {
 
   const handleBulkDelete = async () => {
     if (!selected.size) return
-    if (!confirm(`선택한 ${selected.size}개 댓글을 삭제할까요?`)) return
+    if (!(await confirmDialog({ title: '댓글 삭제', message: `선택한 ${selected.size}개 댓글을 삭제할까요?`, confirmLabel: '삭제', variant: 'danger' }))) return
     try {
       const r = await bulkDeleteComments([...selected])
       toast.success(`${r.data.deleted}개 삭제 완료`)
@@ -135,7 +136,7 @@ export default function CommentsTab() {
         )}
       </div>
 
-      {/* 댓글 테이블 — 모바일에서는 카드, 데스크톱에서는 테이블 */}
+      {/* 댓글 테이블 - 모바일에서는 카드, 데스크톱에서는 테이블 */}
       {/* 데스크톱 테이블 */}
       <div className="hidden sm:block rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border)' }}>
         <table className="w-full text-sm">
