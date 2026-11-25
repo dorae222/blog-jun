@@ -42,7 +42,7 @@ function ChatMessage({ msg, onFeedback, onRetry }) {
   const streaming = msg.status === 'streaming' || msg.status === 'connecting'
   return (
     <div className="flex justify-start">
-      <div className="max-w-[90%] min-w-0">
+      <div className="max-w-[90%] min-w-0 sm:max-w-[min(90%,52rem)]">
         <div className="px-3 py-2 rounded-2xl rounded-bl-md text-sm break-words border"
           style={{ background: 'var(--bg-secondary)', borderColor: msg.status === 'error' ? '#fecaca' : 'var(--border)', color: 'var(--text)' }}>
           {msg.status === 'connecting' && !msg.content && (

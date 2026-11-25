@@ -50,6 +50,22 @@ seedPost({
   content: '## 왜 vLLM인가\n\nPagedAttention 덕분에 KV 캐시 낭비가 줄어든다.\n\n## 설정\n\n```bash\npip install vllm\n```\n',
   created_at: '2026-11-01T09:00:00Z', updated_at: '2026-11-02T09:00:00Z', published_at: '2026-11-02T09:00:00Z',
   view_count: 120, cover: null, arxiv_url: '', venue: '', paper_year: null, paper_authors: '',
+  // 요약 카드 · 확인 질문 · 첨부 파일(화면 확인용 예시)
+  summary_card: {
+    one_line: 'vLLM은 PagedAttention과 연속 배칭으로 같은 GPU에서 더 많은 요청을 처리한다.',
+    learn: ['KV 캐시가 왜 낭비되는지', 'PagedAttention이 메모리를 나누는 방식', '연속 배칭이 처리량을 올리는 이유'],
+    prereq: [{ title: 'k3s 클러스터 메모', slug: 'k3s-cluster-notes' }],
+    level: '중급', read_min: 9,
+  },
+  quiz: [
+    { q: 'PagedAttention이 줄이는 낭비는 무엇인가?', a: 'KV 캐시를 요청마다 최대 길이로 미리 잡아 두는 데서 생기는 메모리 낭비.', where: '왜 vLLM인가' },
+    { q: '설치 명령은?', a: 'pip install vllm', where: '설정' },
+    { q: '연속 배칭의 이점은?', a: '끝난 요청 자리에 새 요청을 바로 끼워 넣어 GPU가 쉬지 않는다.', where: '' },
+  ],
+  attachments: [
+    { id: 1, filename: '처리량_측정.xlsx', url: '/media/posts/vllm-serving/files/%EC%B2%98%EB%A6%AC%EB%9F%89_%EC%B8%A1%EC%A0%95.xlsx', size_bytes: 48213, kind: 'xlsx', description: '배치 크기별 처리량 표', content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', sort_order: 0 },
+    { id: 2, filename: 'bench.ipynb', url: '/media/posts/vllm-serving/files/bench.ipynb', size_bytes: 9120, kind: 'ipynb', description: '', content_type: 'application/x-ipynb+json', sort_order: 1 },
+  ],
 })
 seedPost({
   id: 2, title: 'k3s 클러스터 메모(초안)', slug: 'k3s-cluster-notes', status: 'draft', post_type: 'til',
@@ -88,7 +104,10 @@ const detailPost = (p) => ({
   ...listPost(p), content: p.content, series: seriesObj(p.series), arxiv_url: p.arxiv_url, venue: p.venue,
   paper_year: p.paper_year, paper_authors: p.paper_authors, related_posts: [], outgoing_links: [], incoming_links: [],
   author: { id: 1, username: 'hj' },
+  summary_card: p.summary_card || null, quiz: p.quiz || null,
+  attachments: (p.attachments || []).map(({ content_type: _c, sort_order: _s, ...pub }) => pub),
 })
+let attachmentSeq = 10
 
 // ── HTTP 도우미 ────────────────────────────────────────
 function send(res, status, body, headers = {}) {
@@ -241,6 +260,38 @@ async function handle(req, res) {
   }
 
   // 글
+  // 댓글(개발용: 늘 빈 목록 — 글 화면이 뜨게만 한다)
+  if (/^\/api\/posts\/[^/]+\/comments\/$/.test(path) && method === 'GET') return send(res, 200, [])
+
+  // 글 첨부 파일(개발용: 내용은 메모리에만 둔다)
+  const attM = /^\/api\/posts\/([^/]+)\/attachments\/(?:(\d+)\/)?$/.exec(path)
+  if (attM) {
+    const p = posts.get(decodeURIComponent(attM[1]))
+    if (!p || (!user && p.status !== 'published')) return send(res, 404, { detail: 'Not found.' })
+    p.attachments = p.attachments || []
+    if (!attM[2] && method === 'GET') return send(res, 200, p.attachments)
+    if (!user) return send(res, 401, { detail: 'Authentication credentials were not provided.' })
+    if (!user.is_staff) return send(res, 403, { detail: 'You do not have permission to perform this action.' })
+    if (!attM[2] && method === 'POST') {
+      const f = firstFile(await readBody(req), req.headers['content-type'])
+      if (!f) return send(res, 400, { file: ['파일이 제출되지 않았습니다.'] })
+      const kind = (/\.([a-z0-9]+)$/i.exec(f.name)?.[1] || '').toLowerCase()
+      if (!['xlsx', 'ipynb', 'csv', 'pdf', 'zip', 'py'].includes(kind)) return send(res, 400, { file: ['허용되지 않는 확장자입니다.'] })
+      const filename = f.name.replace(/\s+/g, '_')
+      const url = `/media/posts/${p.slug}/files/${encodeURIComponent(filename)}`
+      media.set(url, f)
+      const old = p.attachments.find((a) => a.filename === filename)
+      if (old) { old.size_bytes = f.buf.length; return send(res, 200, old) }
+      const a = { id: attachmentSeq++, filename, url, size_bytes: f.buf.length, kind, description: '', content_type: f.type, sort_order: p.attachments.length }
+      p.attachments.push(a)
+      return send(res, 201, a)
+    }
+    const a = p.attachments.find((x) => x.id === Number(attM[2]))
+    if (!a) return send(res, 404, { detail: 'Not found.' })
+    if (method === 'PATCH') { Object.assign(a, (await readJson(req)) || {}); return send(res, 200, a) }
+    if (method === 'DELETE') { p.attachments = p.attachments.filter((x) => x !== a); res.statusCode = 204; return res.end() }
+  }
+
   const postM = /^\/api\/posts\/([^/]+)\/(?:(cover)\/)?$/.exec(path)
   if (path === '/api/posts/' && method === 'GET') {
     let list = [...posts.values()]

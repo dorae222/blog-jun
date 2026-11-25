@@ -13,6 +13,9 @@ import ArchitectureLineageCard from '../components/blog/ArchitectureLineageCard'
 import PostLinksSection from '../components/blog/PostLinksSection'
 import CommentSection from '../components/blog/CommentSection'
 import RelatedSeries from '../components/blog/RelatedSeries'
+import SummaryCard from '../components/blog/SummaryCard'
+import AttachmentList from '../components/blog/AttachmentList'
+import PostQuiz from '../components/blog/PostQuiz'
 import { getPost } from '../api/posts'
 import { CATEGORY_ROUTE_MAP } from '../data/categories'
 import { ogImageUrl } from '../utils/ogImage'
@@ -203,8 +206,15 @@ export default function PostView() {
             <PaperSummaryBox post={post} />
           )}
 
+          {/* 글 머리 요약 카드 - summary_card 가 있는 글에만 나온다 */}
+          <SummaryCard card={post.summary_card} attachments={post.attachments || []} />
+
           {/* Content */}
-          <MarkdownRenderer content={bodyContent} postLinks={post.outgoing_links || []} />
+          <MarkdownRenderer content={bodyContent} postLinks={post.outgoing_links || []} attachments={post.attachments || []} />
+
+          {/* 실습 파일 · 확인 질문 - 데이터가 있는 글에만 나온다 */}
+          <AttachmentList items={post.attachments} className="mt-10" />
+          <PostQuiz quiz={post.quiz} />
 
           {/* PDF 첨부 뷰어 */}
           {post.pdf_file && (

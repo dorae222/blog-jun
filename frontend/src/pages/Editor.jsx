@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import {
-  Eye, Code, Columns, List, Check, Circle, Link2, BookOpen, SlidersHorizontal, AlertTriangle, RotateCcw, LoaderCircle, Tags,
+  Eye, Code, Columns, List, Check, Circle, Link2, BookOpen, SlidersHorizontal, AlertTriangle, RotateCcw, LoaderCircle, Tags, ListChecks,
 } from 'lucide-react'
 import PostLinkModal from '../components/editor/PostLinkModal'
 import NotionEditor from '../components/editor/NotionEditor'
@@ -11,6 +11,9 @@ import SplitEditor from '../components/editor/SplitEditor'
 import MarkdownEditor from '../components/editor/MarkdownEditor'
 import PublishChecklist from '../components/editor/PublishChecklist'
 import TagPicker from '../components/editor/TagPicker'
+import PostExtrasPanel from '../components/editor/PostExtrasPanel'
+import SummaryCard from '../components/blog/SummaryCard'
+import PostQuiz from '../components/blog/PostQuiz'
 import useLeaveGuard from '../hooks/useLeaveGuard'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
 import ConfirmDialog from '../components/common/ConfirmDialog'
@@ -18,6 +21,7 @@ import client from '../api/client'
 import { getPost, createPost, updatePost, getCategories, getSeries, getTemplates, getAllTags, uploadImage } from '../api/posts'
 import { readDraft, writeDraft, clearDraft } from '../utils/editorDraft'
 import { autoSlug, slugSuffix, timeAgo } from '../utils/noteText'
+import { emptyCard, emptyQuiz, cardToForm, quizToForm, cardPayload, quizPayload } from '../utils/postExtras'
 
 /**
  * 글 편집기.
@@ -46,6 +50,9 @@ const EMPTY_FORM = {
   venue: '',
   paper_year: null,
   paper_authors: '',
+  // 글 머리 요약 카드 · 글 끝 확인 질문(폼 모양. 서버 형식으로는 toPayload 에서 바꾼다)
+  summary_card: emptyCard(),
+  quiz: emptyQuiz(),
 }
 
 const LOCAL_DEBOUNCE_MS = 600
@@ -68,6 +75,8 @@ function toForm(p) {
     venue: p.venue || '',
     paper_year: p.paper_year || null,
     paper_authors: p.paper_authors || '',
+    summary_card: cardToForm(p.summary_card),
+    quiz: quizToForm(p.quiz),
   }
 }
 
@@ -93,6 +102,14 @@ function toPayload(form, { isNew, originalSlug }) {
   if (!data.series) { if (isNew) delete data.series; else data.series = null }
   if (!data.published_at) delete data.published_at
   if (!data.paper_year) data.paper_year = null
+  // 요약 카드·질문: 다 비었으면 null(지움), 쓰는 중(필수 칸이 빔)이면 보내지 않아 서버 값을 그대로 둔다.
+  // 쓰는 중인 값을 보내면 400 이 나서 본문 자동 저장까지 막힌다.
+  const card = cardPayload(form.summary_card)
+  if (card.state === 'incomplete') delete data.summary_card
+  else data.summary_card = card.value
+  const quiz = quizPayload(form.quiz)
+  if (quiz.state === 'incomplete') delete data.quiz
+  else data.quiz = quiz.value
   return data
 }
 
@@ -149,6 +166,7 @@ export default function Editor() {
   const [showLinkModal, setShowLinkModal] = useState(false)
   const [showChecklist, setShowChecklist] = useState(false)
   const [showMeta, setShowMeta] = useState(false)
+  const [showExtras, setShowExtras] = useState(false)
   const [templates, setTemplates] = useState([])
   const [categories, setCategories] = useState([])
   const [allTags, setAllTags] = useState([])
@@ -316,7 +334,11 @@ export default function Editor() {
       }
       const savedSlug = r.data?.slug || payload.slug || cur.slug || slug
       const editedDuring = formRef.current !== snapshot
-      setForm(prev => ({ ...prev, ...overrides, slug: savedSlug }))
+      // 서버가 다듬은 요약 카드(선수 글 제목 채움 등)를 폼에 되돌려 놓는다. 저장 중에 더 고쳤으면 건드리지 않는다.
+      const normalized = !editedDuring && r.data && 'summary_card' in payload && r.data.summary_card !== undefined
+        ? { summary_card: cardToForm(r.data.summary_card) }
+        : {}
+      setForm(prev => ({ ...prev, ...overrides, ...normalized, slug: savedSlug }))
       setServerStatus(cur.status)
       setLastSavedAt(Date.now())
       setSaveError(null)
@@ -486,7 +508,8 @@ export default function Editor() {
 
   const restoreDraft = () => {
     if (!recovery) return
-    setForm({ ...EMPTY_FORM, ...recovery.form })
+    // 예전 임시저장본에는 요약 카드·질문 칸이 없다. 그때는 지금(서버) 값을 그대로 둔다.
+    setForm(prev => ({ ...EMPTY_FORM, summary_card: prev.summary_card, quiz: prev.quiz, ...recovery.form }))
     extractHeadings(recovery.form.content)
     if (recovery.form.slug && isNew) setSlugTouched(Boolean(recovery.form.slug))
     setDirty(true)
@@ -618,6 +641,12 @@ export default function Editor() {
             Templates
           </button>
 
+          <button onClick={() => setShowExtras(true)}
+            className="shrink-0 inline-flex items-center gap-1 text-sm px-3 py-1 rounded border hover:bg-gray-50"
+            style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }} title="요약 카드 · 확인 질문 · 첨부 파일">
+            <ListChecks size={14} /> 요약·질문·첨부
+          </button>
+
           <div className="relative">
             <button onClick={() => setShowTagPicker(v => !v)} aria-expanded={showTagPicker}
               className="shrink-0 inline-flex items-center gap-1 text-sm px-3 py-1 rounded border hover:bg-gray-50"
@@ -741,7 +770,9 @@ export default function Editor() {
             <article className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
               <h1 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: 'var(--text)' }}>{form.title || '제목 없음'}</h1>
               {form.summary && <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>{form.summary}</p>}
+              <SummaryCard card={cardPayload(form.summary_card).value} />
               <div data-toc-root><MarkdownRenderer content={form.content} /></div>
+              <PostQuiz quiz={quizPayload(form.quiz).value} />
             </article>
           </div>
         )}
@@ -816,6 +847,8 @@ export default function Editor() {
           </div>
         </div>
       )}
+
+      <PostExtrasPanel open={showExtras} onClose={() => setShowExtras(false)} form={form} onChange={updateForm} slug={slug} />
 
       <PostLinkModal isOpen={showLinkModal} onClose={() => setShowLinkModal(false)} onInsert={handleInsertLink} />
     </motion.div>

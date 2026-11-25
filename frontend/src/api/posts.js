@@ -23,6 +23,17 @@ export const uploadImage = (formData) =>
     headers: { 'Content-Type': 'multipart/form-data' },
   })
 
+// 글 첨부 파일(실습 파일). 올리기는 20MB 까지라 기본 30초 제한을 늘린다.
+export const getAttachments = (slug) => client.get(`/posts/${slug}/attachments/`)
+export const uploadAttachment = (slug, formData, onUploadProgress) =>
+  client.post(`/posts/${slug}/attachments/`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 300000,
+    onUploadProgress,
+  })
+export const updateAttachment = (slug, id, data) => client.patch(`/posts/${slug}/attachments/${id}/`, data)
+export const deleteAttachment = (slug, id) => client.delete(`/posts/${slug}/attachments/${id}/`)
+
 export const getStats = () => client.get('/stats/')
 export const getDashboardStats = () => client.get('/dashboard/stats/')
 

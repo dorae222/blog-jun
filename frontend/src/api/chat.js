@@ -4,8 +4,30 @@ import { createSSEParser } from '../utils/sse'
 const API_BASE = import.meta.env.VITE_API_URL || '/api'
 
 /** 비스트리밍(JSON) 호출. 스트리밍이 안 될 때의 폴백. */
+
+/**
+ * 지금 보고 있는 화면. 챗봇이 "여기/이 글"을 해석하는 데 쓴다(서버가 slug를 DB로 다시 확인한다).
+ * - /post/<slug> → post_slug, /series?s=<slug> → series_slug
+ */
+export function currentPage() {
+  if (typeof window === 'undefined') return undefined
+  const { pathname, search } = window.location
+  const page = { path: (pathname + search).slice(0, 300) }
+  const m = pathname.match(/^\/post\/([^/]+)\/?$/)
+  if (m) {
+    try { page.post_slug = decodeURIComponent(m[1]).slice(0, 200) } catch { /* 잘못된 인코딩은 무시 */ }
+  }
+  if (pathname.replace(/\/$/, '') === '/series') {
+    const s = new URLSearchParams(search).get('s')
+    if (s) page.series_slug = s.slice(0, 200)
+  }
+  const title = (document.title || '').replace(/\s*[·|-]\s*HJ Tech.*$/i, '').trim()
+  if (title) page.title = title.slice(0, 300)
+  return page
+}
+
 export const sendMessage = (message, sessionId, turnstileToken) =>
-  client.post('/chat/', { message, session_id: sessionId || undefined }, {
+  client.post('/chat/', { message, session_id: sessionId || undefined, page: currentPage() }, {
     headers: turnstileToken ? { 'X-Turnstile-Token': turnstileToken } : {},
     timeout: 120000,
   })
@@ -62,7 +84,7 @@ export async function streamChat({ message, sessionId, turnstileToken, signal, o
     res = await fetch(`${API_BASE}/chat/`, {
       method: 'POST',
       headers,
-      body: JSON.stringify({ message, session_id: sessionId || undefined }),
+      body: JSON.stringify({ message, session_id: sessionId || undefined, page: currentPage() }),
       signal,
     })
   } catch (err) {

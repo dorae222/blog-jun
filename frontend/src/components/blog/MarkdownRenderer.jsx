@@ -9,6 +9,8 @@ import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
 import BookmarkEmbed from '../common/BookmarkEmbed'
 import PostLinkTooltip from './PostLinkTooltip'
+import AttachmentList from './AttachmentList'
+import { attachmentPath, attachmentFromLink, filenameFromPath } from '../../utils/attachments'
 import { OptimizedImage } from '../../utils/mediaVariants'
 
 // Obsidian 위키 링크를 내부 링크 또는 텍스트로 변환
@@ -518,7 +520,9 @@ function ImageWithZoom({ src, alt }) {
   )
 }
 
-export default function MarkdownRenderer({ content, postLinks = [] }) {
+const currentHost = () => (typeof window !== 'undefined' ? window.location.hostname : '')
+
+export default function MarkdownRenderer({ content, postLinks = [], attachments = [] }) {
   const processed = useMemo(() => preprocessContent(content, postLinks), [content, postLinks])
 
   return (
@@ -555,6 +559,15 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
                 const linkData = postLinks.find(l => l.slug === slug)
                 return <PostLinkTooltip href={href} linkData={linkData}>{children}</PostLinkTooltip>
               }
+              // 첨부 파일(/media/.../files/...)은 새 탭을 열지 않고 같은 탭에서 내려받는다
+              const filePath = attachmentPath(href, currentHost())
+              if (filePath) {
+                return (
+                  <a href={filePath} download={filenameFromPath(filePath)} className="text-primary-600 hover:underline break-words">
+                    {children}
+                  </a>
+                )
+              }
               return (
                 <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline break-words">
                   {children}
@@ -563,6 +576,12 @@ export default function MarkdownRenderer({ content, postLinks = [] }) {
             },
             p: ({ children }) => {
               const arr = React.Children.toArray(children)
+              // 문단에 첨부 링크 하나만 있으면 내려받기 카드로 그린다(외부 링크 카드로 바뀌지 않게 먼저 본다)
+              const filePath = arr.length === 1 ? attachmentPath(arr[0]?.props?.href, currentHost()) : null
+              if (filePath) {
+                const item = attachmentFromLink(filePath, extractPlainText(arr[0].props.children), attachments)
+                return <AttachmentList items={[item]} title="" />
+              }
               if (arr.length === 1 && arr[0]?.props?.href && !arr[0].props.href.startsWith('/')) {
                 const text = extractPlainText(arr[0].props.children)
                 if (text === arr[0].props.href || text.length < 100) {
