@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import AttachmentList from './AttachmentList'
+import InlineRich from '../common/InlineRich'
 
 /**
  * 글 머리 요약 카드. summary_card 가 없는 글에서는 아무것도 그리지 않는다.
@@ -20,7 +21,7 @@ export default function SummaryCard({ card, attachments = [] }) {
     >
       <p className={label} style={labelStyle}>한 줄 요약</p>
       <p className="m-0 text-lg sm:text-xl font-semibold leading-snug break-words" style={{ color: 'var(--text)' }}>
-        {card.one_line}
+        <InlineRich text={card.one_line} />
       </p>
 
       {(card.level || card.read_min) && (
@@ -38,7 +39,7 @@ export default function SummaryCard({ card, attachments = [] }) {
             {learn.map((item, i) => (
               <li key={i} className="flex gap-2.5 text-[0.95rem] leading-relaxed" style={{ color: 'var(--text)' }}>
                 <span className="shrink-0 tabular-nums" style={{ color: 'var(--text-secondary)' }} aria-hidden="true">{i + 1}.</span>
-                <span className="min-w-0 break-words">{item}</span>
+                <span className="min-w-0 break-words"><InlineRich text={item} /></span>
               </li>
             ))}
           </ol>

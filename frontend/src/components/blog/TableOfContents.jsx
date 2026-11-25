@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { headingHtml } from '../../utils/headingText'
 
 /**
  * 본문 헤딩 목차.
@@ -26,7 +27,7 @@ export default function TableOfContents({ content, onNavigate, containerSelector
         .filter((el) => el.id && el.textContent.trim())
         .map((el) => ({
           id: el.id,
-          text: el.textContent.trim(),
+          html: headingHtml(el),
           level: Number(el.tagName[1]),
         }))
       if (found.length) {
@@ -124,7 +125,7 @@ export default function TableOfContents({ content, onNavigate, containerSelector
           style={{ height: `${progress}%`, background: 'var(--color-primary-500, #3b82f6)' }} />
 
         <ul className="space-y-0.5 text-sm">
-          {headings.map(({ id, text, level }) => {
+          {headings.map(({ id, html, level }) => {
             const active = activeId === id
             return (
               <li key={id} style={{ paddingLeft: `${(level - 1) * 12 + 14}px` }}>
@@ -139,7 +140,7 @@ export default function TableOfContents({ content, onNavigate, containerSelector
                     fontSize: level === 1 ? '0.875rem' : level === 2 ? '0.83rem' : '0.8rem',
                   }}
                 >
-                  {text}
+                  <span dangerouslySetInnerHTML={{ __html: html }} />
                 </a>
               </li>
             )

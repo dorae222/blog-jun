@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { BookOpen, List, X, ChevronRight } from 'lucide-react'
 import { getCategoryIcon } from '../utils/categoryIcons'
 import MarkdownRenderer from '../components/blog/MarkdownRenderer'
+import useAuth from '../hooks/useAuth'
 import PaperSummaryBox from '../components/blog/PaperSummaryBox'
 import PDFViewer from '../components/blog/PDFViewer'
 import TableOfContents from '../components/blog/TableOfContents'
@@ -51,6 +52,7 @@ export default function PostView() {
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
   const [tocOpen, setTocOpen] = useState(false)
+  const { user, loading: authLoading } = useAuth()
 
   // TOC 드로어 열릴 때 배경 스크롤 잠금
   useEffect(() => {
@@ -62,9 +64,10 @@ export default function PostView() {
     setLoading(true)
     getPost(slug)
       .then((r) => setPost(r.data))
-      .catch(() => {})
+      .catch(() => setPost(null))
       .finally(() => setLoading(false))
-  }, [slug])
+    // 로그인 상태가 바뀌면 다시 받는다(비공개 초안은 로그인해야 보인다)
+  }, [slug, user?.id])
 
   if (loading) {
     return (
@@ -81,8 +84,19 @@ export default function PostView() {
   if (!post) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-12 text-center">
-        <h2 className="text-2xl font-bold mb-4">Post not found</h2>
-        <Link to="/" className="text-primary-600 hover:underline">Back to Home</Link>
+        <h2 className="text-2xl font-bold mb-3">글을 찾을 수 없습니다</h2>
+        {!authLoading && !user ? (
+          <>
+            <p className="mb-5 text-sm" style={{ color: 'var(--text-secondary)' }}>
+              주소가 바뀌었거나, 아직 공개하지 않은 글일 수 있습니다. 비공개 글은 로그인해야 보입니다.
+            </p>
+            <Link to={`/login?next=${encodeURIComponent(`/post/${slug}`)}`}
+              className="inline-block px-4 py-2 rounded-lg bg-primary-600 text-white hover:bg-primary-700">로그인하고 다시 열기</Link>
+            <div className="mt-4"><Link to="/" className="text-sm text-primary-600 hover:underline">홈으로</Link></div>
+          </>
+        ) : (
+          <Link to="/" className="text-primary-600 hover:underline">홈으로</Link>
+        )}
       </div>
     )
   }

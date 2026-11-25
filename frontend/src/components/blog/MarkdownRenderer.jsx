@@ -17,7 +17,11 @@ import { OptimizedImage } from '../../utils/mediaVariants'
  * 마크다운에서 코드(펜스 블록, 인라인 코드)를 뺀 부분에만 fn을 적용한다.
  * 펜스는 줄 머리의 ``` 또는 ~~~ (들여쓰기 3칸까지)로 열고 같은 문자로 닫는다. 닫히지 않으면 끝까지 코드로 본다.
  */
-export function mapOutsideCode(raw, fn) {
+export function isSvgFigure(src) {
+  return /\.svg(\?|#|$)/i.test(String(src || ''))
+}
+
+function mapOutsideCode(raw, fn) {
   const lines = raw.split('\n')
   const out = []
   let buf = []
@@ -535,7 +539,9 @@ function ImageWithZoom({ src, alt }) {
         onClick={() => setZoomed(true)}
         onError={() => setBroken(true)}
         className="rounded-lg cursor-zoom-in max-w-full mx-auto hover:shadow-lg transition-shadow"
-        style={{ maxHeight: '70vh' }}
+        // 설명 그림(SVG)은 패널을 세로로 쌓아 키가 크다. 높이를 화면에 맞춰 줄이면 칸의 숫자가 안 읽힌다.
+        // 그래서 SVG 는 높이 제한 없이 본문 폭(최대 720px)에 맞춘다.
+        style={isSvgFigure(src) ? { width: '100%', maxWidth: 720 } : { maxHeight: '70vh' }}
         sizes="(max-width: 768px) 100vw, 896px"
       />
       {zoomed && (
