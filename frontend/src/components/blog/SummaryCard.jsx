@@ -24,11 +24,10 @@ export default function SummaryCard({ card, attachments = [] }) {
         <InlineRich text={card.one_line} />
       </p>
 
-      {(card.level || card.read_min) && (
+      {/* 읽는 시간은 보여 주지 않는다(글 머리에 이미 있고, 요약 카드에는 군더더기다). */}
+      {card.level && (
         <p className="m-0 mt-3 text-sm" style={{ color: 'var(--text-secondary)' }}>
-          {card.level && <span>난이도 <strong style={{ color: 'var(--text)', fontWeight: 600 }}>{card.level}</strong></span>}
-          {card.level && card.read_min ? <span aria-hidden="true"> · </span> : null}
-          {card.read_min ? <span>읽는 시간 <strong style={{ color: 'var(--text)', fontWeight: 600 }}>약 {card.read_min}분</strong></span> : null}
+          <span>난이도 <strong style={{ color: 'var(--text)', fontWeight: 600 }}>{card.level}</strong></span>
         </p>
       )}
 

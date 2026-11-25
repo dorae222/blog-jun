@@ -32,7 +32,7 @@ function Section({ title, hint, children }) {
   )
 }
 
-/** 요약 카드 폼: 한 줄 요약, 다루는 것 3가지, 난이도, 읽는 시간, 선수 지식 */
+/** 요약 카드 폼: 한 줄 요약, 다루는 것 3가지, 난이도, 선수 지식 */
 function CardForm({ card, onChange }) {
   const set = (patch) => onChange({ ...card, ...patch })
   const setLearn = (i, v) => set({ learn: card.learn.map((x, j) => (j === i ? v : x)) })
@@ -59,18 +59,13 @@ function CardForm({ card, onChange }) {
           ))}
         </div>
       </fieldset>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3">
         <div>
           <label className={labelCls} style={labelStyle} htmlFor="sc-level">난이도</label>
           <select id="sc-level" value={card.level} onChange={(e) => set({ level: e.target.value })} className={inputCls} style={inputStyle}>
             <option value="">고르지 않음</option>
             {LEVELS.map((l) => <option key={l} value={l}>{l}</option>)}
           </select>
-        </div>
-        <div>
-          <label className={labelCls} style={labelStyle} htmlFor="sc-read">읽는 시간(분)</label>
-          <input id="sc-read" type="number" inputMode="numeric" min="1" max="300" value={card.read_min}
-            onChange={(e) => set({ read_min: e.target.value })} className={inputCls} style={inputStyle} />
         </div>
       </div>
       <fieldset className="m-0 border-0 p-0">
