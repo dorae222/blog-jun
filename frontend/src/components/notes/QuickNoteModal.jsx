@@ -53,7 +53,7 @@ export default function QuickNoteModal() {
             열기
           </button>
         </span>
-      ))
+      ), { duration: 8000 })
     } catch {
       toast.error('메모 저장에 실패했어요. 내용은 그대로 남겨 뒀어요.')
     } finally {

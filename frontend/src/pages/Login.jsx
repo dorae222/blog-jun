@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import useAuth from '../hooks/useAuth'
@@ -8,7 +8,7 @@ export default function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
-  const { login } = useAuth()
+  const { login, user, loading: authLoading } = useAuth()
   const navigate = useNavigate()
   const [params] = useSearchParams()
   // 보호된 화면(/notes, /editor 등)에서 튕겨 왔으면 로그인 뒤 그 자리로 돌려보낸다. 같은 사이트 경로만 허용.
@@ -35,6 +35,9 @@ export default function Login() {
       setLoading(false)
     }
   }
+
+  // 이미 로그인한 상태로 /login 에 오면 입력 화면 대신 원래 가려던 곳(기본 대시보드)으로 보낸다.
+  if (!authLoading && user) return <Navigate to={next} replace />
 
   return (
     <motion.div
