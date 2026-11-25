@@ -229,7 +229,7 @@ export default function Notes() {
           {listState === 'ready' && sorted.length === 0 && (
             <div className="p-6 text-center text-sm space-y-1" style={{ color: 'var(--text-secondary)' }}>
               <p>{q || tag ? '조건에 맞는 메모가 없어요.' : archived ? '보관한 메모가 없어요.' : '아직 메모가 없어요.'}</p>
-              {!q && !tag && !archived && <p className="text-xs">어디서든 <kbd className="px-1 border rounded" style={{ borderColor: 'var(--border)' }}>m</kbd> 을 눌러 빠르게 적을 수 있어요.</p>}
+              {!q && !tag && !archived && <p className="kbd-hint text-xs">어디서든 <kbd className="px-1 border rounded" style={{ borderColor: 'var(--border)' }}>m</kbd> 을 눌러 빠르게 적을 수 있어요.</p>}
             </div>
           )}
           <ul>

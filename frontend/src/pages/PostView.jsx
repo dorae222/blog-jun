@@ -157,11 +157,11 @@ export default function PostView() {
 
           {/* Header */}
           <header className="mb-8 min-w-0">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mb-4">
               {post.category && (
                 <Link
                   to={`/posts/${catRouteKey}`}
-                  className="text-sm font-medium px-3 py-1 rounded-full"
+                  className="shrink-0 whitespace-nowrap text-sm font-medium px-3 py-1 rounded-full"
                   style={{
                     backgroundColor: post.category.color + '12',
                     color: post.category.color,

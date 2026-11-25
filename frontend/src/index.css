@@ -251,6 +251,17 @@ figure[data-wide="1"] .wide-hint { display: inline; }
   }
 }
 
+/* iOS Safari는 16px 미만 입력칸에 포커스하면 화면을 확대해 버린다(메모·챗봇 입력이 14px).
+   터치 기기에서만 16px로 올리고, 키보드 단축키 안내(.kbd-hint)는 숨긴다. */
+@media (pointer: coarse) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+  .kbd-hint { display: none !important; }
+}
+
 /* 가로 슬라이드는 손가락으로 넘기는 게 기본이라 스냅을 부드럽게 */
 @media (pointer: coarse) {
   .no-scrollbar { scroll-padding-left: 1rem; -webkit-overflow-scrolling: touch; }

@@ -8,6 +8,7 @@ import useWorkspace from '../../hooks/useWorkspace'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import { createNote } from '../../api/notes'
 import { parseQuickNote, noteTitleFrom } from '../../utils/noteText'
+import { isCoarsePointer } from '../../utils/pointer'
 
 /**
  * 어디서든 여는 빠른 메모(단축키 m, 헤더 버튼).
@@ -62,7 +63,8 @@ export default function QuickNoteModal() {
   }
 
   const onKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
+    // 터치 기기는 Shift+Enter가 없으니 Enter는 줄바꿈으로 두고 저장은 버튼으로 한다.
+    if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing && !isCoarsePointer()) {
       e.preventDefault()
       save()
     }
@@ -87,7 +89,7 @@ export default function QuickNoteModal() {
             <div className="flex items-center gap-2 mb-3">
               <StickyNote size={16} className="text-primary-600" />
               <h2 id="quick-note-title" className="text-sm font-semibold" style={{ color: 'var(--text)' }}>빠른 메모</h2>
-              <span className="ml-auto text-[11px]" style={{ color: 'var(--text-secondary)' }}>
+              <span className="kbd-hint ml-auto text-[11px]" style={{ color: 'var(--text-secondary)' }}>
                 Enter 저장 · Shift+Enter 줄바꿈 · Esc 닫기
               </span>
             </div>

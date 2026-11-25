@@ -6,6 +6,7 @@ import ChatMessage from './ChatMessage'
 import TurnstileWidget, { turnstileEnabled } from './TurnstileWidget'
 import useFocusTrap from '../../hooks/useFocusTrap'
 import { streamChat, sendFeedback } from '../../api/chat'
+import { isCoarsePointer } from '../../utils/pointer'
 
 const STORE_KEY = 'chat:v1'
 const MAX_INPUT = 2000
@@ -199,9 +200,10 @@ export default function ChatModal({ onClose }) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
               // 한글 입력 중(조합 중) Enter는 글자 확정용이라 보내지 않는다.
-              if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); send() }
+              // 터치 기기에서는 Enter=줄바꿈, 보내기는 버튼(모바일 키보드엔 Shift+Enter가 없다).
+              if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing && !isCoarsePointer()) { e.preventDefault(); send() }
             }}
-            placeholder="질문을 입력하세요 (Shift+Enter 줄바꿈)"
+            placeholder={isCoarsePointer() ? '질문을 입력하세요' : '질문을 입력하세요 (Shift+Enter 줄바꿈)'}
             aria-label="질문"
             className="flex-1 max-h-32 resize-none px-3 py-2 rounded-xl text-sm border outline-none focus:ring-2 focus:ring-primary-500"
             style={{ background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--text)', fieldSizing: 'content' }}

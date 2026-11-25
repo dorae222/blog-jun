@@ -98,7 +98,7 @@ export default function WorkspaceWidgets() {
         {notes === null && <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>불러오는 중…</p>}
         {notesError && <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>메모를 불러오지 못했어요.</p>}
         {notes?.length === 0 && !notesError && (
-          <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>아직 메모가 없어요. 어디서든 <kbd className="px-1 border rounded" style={{ borderColor: 'var(--border)' }}>m</kbd>으로 적어 두세요.</p>
+          <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>아직 메모가 없어요.<span className="kbd-hint"> 어디서든 <kbd className="px-1 border rounded" style={{ borderColor: 'var(--border)' }}>m</kbd>으로 적어 두세요.</span></p>
         )}
         <ul>
           {notes?.map((n) => (
