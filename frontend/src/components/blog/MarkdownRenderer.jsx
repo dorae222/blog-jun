@@ -13,6 +13,38 @@ import AttachmentList from './AttachmentList'
 import { attachmentPath, attachmentFromLink, filenameFromPath } from '../../utils/attachments'
 import { OptimizedImage } from '../../utils/mediaVariants'
 
+/**
+ * 마크다운에서 코드(펜스 블록, 인라인 코드)를 뺀 부분에만 fn을 적용한다.
+ * 펜스는 줄 머리의 ``` 또는 ~~~ (들여쓰기 3칸까지)로 열고 같은 문자로 닫는다. 닫히지 않으면 끝까지 코드로 본다.
+ */
+export function mapOutsideCode(raw, fn) {
+  const lines = raw.split('\n')
+  const out = []
+  let buf = []
+  let fence = null
+  const flush = () => {
+    if (!buf.length) return
+    // 인라인 코드(`...`, ``...``)는 그대로 두고 나머지만 바꾼다
+    out.push(buf.join('\n').split(/(`+[^`\n]*?`+)/g).map((part, k) => (k % 2 ? part : fn(part))).join(''))
+    buf = []
+  }
+  for (const line of lines) {
+    const m = line.match(/^ {0,3}(`{3,}|~{3,})/)
+    if (fence) {
+      out.push(line)
+      if (m && m[1][0] === fence[0] && m[1].length >= fence.length && line.trim() === m[1]) fence = null
+    } else if (m) {
+      flush()
+      fence = m[1]
+      out.push(line)
+    } else {
+      buf.push(line)
+    }
+  }
+  flush()
+  return out.join('\n')
+}
+
 // Obsidian 위키 링크를 내부 링크 또는 텍스트로 변환
 function preprocessContent(raw, postLinks = []) {
   if (!raw) return ''
@@ -23,7 +55,9 @@ function preprocessContent(raw, postLinks = []) {
     linkMap[link.title?.toLowerCase()] = link.slug
   })
 
-  let processed = raw
+  // 위키 링크 치환은 코드 밖에서만 한다. 코드 블록·인라인 코드 안의 `df[['a','b']]`, bash `[[ -f x ]]`까지
+  // 링크로 바꿔 코드가 깨지던 문제(15편)를 막는다.
+  const linkify = (text) => text
     .replace(/\[\[\[([^\]]*?)\|([^\]]*?)\]\]\]/g, (_, target, display) => {
       const slug = linkMap[target.toLowerCase()]
       return `[${display}](/post/${slug || target})`
@@ -40,8 +74,9 @@ function preprocessContent(raw, postLinks = []) {
       const slug = linkMap[title.toLowerCase()]
       return `[${title}](/post/${slug || title})`
     })
-    // closing ** 뒤에 한국어가 바로 오면 bold 파싱 실패 → 공백 삽입
-    .replace(/([^\s*])\*\*([\uAC00-\uD7AF])/g, '$1** $2')
+  let processed = mapOutsideCode(raw, linkify)
+  // closing ** 뒤에 한국어가 바로 오면 bold 파싱 실패 → 공백 삽입
+  processed = processed.replace(/([^\s*])\*\*([\uAC00-\uD7AF])/g, '$1** $2')
 
   // remark-math v6: multi-line display math에서 $$는 반드시 독립 행이어야 함.
   //

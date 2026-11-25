@@ -74,3 +74,12 @@ test('isTypingTarget', () => {
   assert.ok(!isTypingTarget({ tagName: 'BUTTON' }))
   assert.ok(!isTypingTarget(null))
 })
+
+test("챗봇 피드백 본문: 의견은 다듬어 300자까지, 비면 넣지 않는다", async () => {
+  const { feedbackPayload, FEEDBACK_COMMENT_MAX } = await import("../src/utils/feedback.js")
+  const base = { messageId: "a".repeat(32), feedbackToken: "t".repeat(32) }
+  assert.deepEqual(feedbackPayload({ ...base, value: "up" }), { message_id: base.messageId, feedback_token: base.feedbackToken, value: "up" })
+  assert.equal("comment" in feedbackPayload({ ...base, value: "down", comment: "   " }), false)
+  assert.equal(feedbackPayload({ ...base, value: "down", comment: "  출처가 달라요 " }).comment, "출처가 달라요")
+  assert.equal(feedbackPayload({ ...base, value: "down", comment: "가".repeat(500) }).comment.length, FEEDBACK_COMMENT_MAX)
+})

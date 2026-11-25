@@ -32,7 +32,7 @@ function Section({ title, hint, children }) {
   )
 }
 
-/** 요약 카드 폼: 한 줄 결론, 알게 되는 것 3가지, 난이도, 읽는 시간, 선수 지식 */
+/** 요약 카드 폼: 한 줄 요약, 다루는 것 3가지, 난이도, 읽는 시간, 선수 지식 */
 function CardForm({ card, onChange }) {
   const set = (patch) => onChange({ ...card, ...patch })
   const setLearn = (i, v) => set({ learn: card.learn.map((x, j) => (j === i ? v : x)) })
@@ -42,19 +42,19 @@ function CardForm({ card, onChange }) {
   return (
     <div className="space-y-3">
       <div>
-        <label className={labelCls} style={labelStyle} htmlFor="sc-one">한 줄 결론</label>
+        <label className={labelCls} style={labelStyle} htmlFor="sc-one">한 줄 요약</label>
         <textarea id="sc-one" rows={2} maxLength={200} value={card.one_line}
           onChange={(e) => set({ one_line: e.target.value })}
           placeholder="이 글을 한 문장으로 줄이면" className={inputCls} style={inputStyle} />
       </div>
       <fieldset className="m-0 border-0 p-0">
-        <legend className={labelCls} style={labelStyle}>이 글로 알게 되는 것 (최대 3가지)</legend>
+        <legend className={labelCls} style={labelStyle}>이 글에서 다루는 것 (최대 3가지)</legend>
         <div className="space-y-2">
           {card.learn.map((v, i) => (
             <div key={i} className="flex items-center gap-2">
               <span className="w-4 shrink-0 text-xs tabular-nums" style={labelStyle} aria-hidden="true">{i + 1}.</span>
               <input value={v} maxLength={200} onChange={(e) => setLearn(i, e.target.value)}
-                aria-label={`알게 되는 것 ${i + 1}`} className={inputCls} style={inputStyle} />
+                aria-label={`다루는 것 ${i + 1}`} className={inputCls} style={inputStyle} />
             </div>
           ))}
         </div>
@@ -74,7 +74,7 @@ function CardForm({ card, onChange }) {
         </div>
       </div>
       <fieldset className="m-0 border-0 p-0">
-        <legend className={labelCls} style={labelStyle}>먼저 알면 좋은 글 (공개된 글의 slug 또는 주소)</legend>
+        <legend className={labelCls} style={labelStyle}>먼저 읽으면 좋은 글 (공개된 글의 slug 또는 주소)</legend>
         <div className="space-y-2">
           {card.prereq.map((p, i) => (
             <div key={i} className="flex flex-wrap items-center gap-2 sm:flex-nowrap">
@@ -105,7 +105,7 @@ function CardForm({ card, onChange }) {
   )
 }
 
-/** 확인 질문 폼: 질문 / 답 / 어디에 나오나 3쌍 */
+/** 확인 질문 폼: 질문 / 답 / 본문 소제목 3쌍 */
 function QuizForm({ quiz, onChange }) {
   const setRow = (i, patch) => onChange(quiz.map((r, j) => (j === i ? { ...r, ...patch } : r)))
   const state = quizPayload(quiz)
@@ -119,7 +119,7 @@ function QuizForm({ quiz, onChange }) {
           <textarea rows={2} value={r.a} maxLength={1500} onChange={(e) => setRow(i, { a: e.target.value })}
             placeholder="답" aria-label={`질문 ${i + 1}의 답`} className={inputCls} style={inputStyle} />
           <input value={r.where} maxLength={200} onChange={(e) => setRow(i, { where: e.target.value })}
-            placeholder="어디에 나오나 (소제목)" aria-label={`질문 ${i + 1}의 답이 나오는 소제목`} className={inputCls} style={inputStyle} />
+            placeholder="본문 소제목 (그 절로 이동하는 링크가 된다)" aria-label={`질문 ${i + 1}의 답이 나오는 소제목`} className={inputCls} style={inputStyle} />
         </fieldset>
       ))}
       {state.state === 'incomplete' && (

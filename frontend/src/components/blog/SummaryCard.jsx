@@ -18,7 +18,7 @@ export default function SummaryCard({ card, attachments = [] }) {
       style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
       aria-label="이 글 요약"
     >
-      <p className={label} style={labelStyle}>한 줄 결론</p>
+      <p className={label} style={labelStyle}>한 줄 요약</p>
       <p className="m-0 text-lg sm:text-xl font-semibold leading-snug break-words" style={{ color: 'var(--text)' }}>
         {card.one_line}
       </p>
@@ -33,7 +33,7 @@ export default function SummaryCard({ card, attachments = [] }) {
 
       {learn.length > 0 && (
         <div className="mt-5 border-t pt-4" style={{ borderColor: 'var(--border)' }}>
-          <p className={label} style={labelStyle}>이 글로 알게 되는 것</p>
+          <p className={label} style={labelStyle}>이 글에서 다루는 것</p>
           <ol className="m-0 list-none p-0 space-y-1.5">
             {learn.map((item, i) => (
               <li key={i} className="flex gap-2.5 text-[0.95rem] leading-relaxed" style={{ color: 'var(--text)' }}>
@@ -47,7 +47,7 @@ export default function SummaryCard({ card, attachments = [] }) {
 
       {prereq.length > 0 && (
         <div className="mt-4 border-t pt-4" style={{ borderColor: 'var(--border)' }}>
-          <p className={label} style={labelStyle}>먼저 알면 좋은 것</p>
+          <p className={label} style={labelStyle}>먼저 읽으면 좋은 글</p>
           <ul className="m-0 list-none p-0 flex flex-col gap-1">
             {prereq.map((p) => (
               <li key={p.slug}>

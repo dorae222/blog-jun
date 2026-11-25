@@ -1,5 +1,6 @@
 import client from './client'
 import { createSSEParser } from '../utils/sse'
+import { feedbackPayload } from '../utils/feedback'
 
 const API_BASE = import.meta.env.VITE_API_URL || '/api'
 
@@ -32,13 +33,7 @@ export const sendMessage = (message, sessionId, turnstileToken) =>
     timeout: 120000,
   })
 
-export const sendFeedback = ({ messageId, feedbackToken, value, comment }) =>
-  client.post('/chat/feedback/', {
-    message_id: messageId,
-    feedback_token: feedbackToken,
-    value,
-    ...(comment ? { comment } : {}),
-  })
+export const sendFeedback = (args) => client.post('/chat/feedback/', feedbackPayload(args))
 
 /** 서버가 돌려준 오류를 화면에 쓸 형태로 맞춘다. */
 export class ChatError extends Error {

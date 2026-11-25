@@ -199,13 +199,17 @@ export default function ChatModal({ onClose }) {
     })
   }, [])
 
-  const feedback = useCallback(async (msg, value) => {
-    patch(msg.id, { feedback: value })
+  // 👍/👎는 누르는 즉시 보낸다. 👎 뒤의 의견은 같은 답변에 한 번 더 보낸다(comment). 다른 쪽을 누르면 바꿔 보낸다.
+  const feedback = useCallback(async (msg, value, comment) => {
+    const before = { feedback: msg.feedback || null, commentSent: Boolean(msg.commentSent) }
+    patch(msg.id, comment ? { commentSent: true } : { feedback: value, commentSent: false })
     try {
-      await sendFeedback({ messageId: msg.messageId, feedbackToken: msg.feedbackToken, value })
+      await sendFeedback({ messageId: msg.messageId, feedbackToken: msg.feedbackToken, value, comment })
+      return true
     } catch {
-      patch(msg.id, { feedback: null })
+      patch(msg.id, before)
       toast.error('피드백을 보내지 못했어요')
+      return false
     }
   }, [patch])
 

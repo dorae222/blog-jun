@@ -4,15 +4,24 @@ import { ChevronRight } from 'lucide-react'
  * 글 끝 확인 질문. 답은 접혀 있다가 누르면 펼쳐진다.
  * <details>/<summary> 라서 Tab 으로 옮기고 Enter·Space 로 여닫을 수 있다. quiz 가 없으면 아무것도 그리지 않는다.
  */
+/** 답의 근거가 된 본문 소제목으로 이동한다. 제목 글자가 같은 h2~h4 를 찾아 스크롤한다. */
+function goToHeading(text) {
+  const want = String(text || '').replace(/\s+/g, ' ').trim()
+  if (!want) return
+  const hit = [...document.querySelectorAll('article h2, article h3, article h4, .prose h2, .prose h3, .prose h4')]
+    .find((h) => h.textContent.replace(/\s+/g, ' ').trim() === want)
+  if (hit) hit.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
 export default function PostQuiz({ quiz }) {
   const items = (quiz || []).filter((x) => x?.q && x?.a)
   if (!items.length) return null
 
   return (
-    <section className="not-prose mt-10 border-t pt-8" style={{ borderColor: 'var(--border)' }} aria-label="읽고 나서 확인하기">
-      <p className="m-0 text-lg font-bold" style={{ color: 'var(--text)' }}>읽고 나서 확인하기</p>
+    <section className="not-prose mt-10 border-t pt-8" style={{ borderColor: 'var(--border)' }} aria-label="확인 질문">
+      <p className="m-0 text-lg font-bold" style={{ color: 'var(--text)' }}>확인 질문</p>
       <p className="m-0 mt-1 mb-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
-        먼저 답을 떠올려 본 다음 질문을 눌러 맞춰 보세요.
+        질문을 누르면 답이 펼쳐진다.
       </p>
       <ol className="m-0 list-none p-0 space-y-2">
         {items.map((item, i) => (
@@ -32,9 +41,10 @@ export default function PostQuiz({ quiz }) {
               <div className="border-t px-4 py-3" style={{ borderColor: 'var(--border)' }}>
                 <p className="m-0 whitespace-pre-line text-[0.95rem] leading-relaxed break-words" style={{ color: 'var(--text)' }}>{item.a}</p>
                 {item.where && (
-                  <p className="m-0 mt-2 text-xs" style={{ color: 'var(--text-secondary)' }}>
-                    어디에 나오나: {item.where}
-                  </p>
+                  <button type="button" onClick={() => goToHeading(item.where)}
+                    className="mt-2 inline-flex items-center gap-1 text-xs text-primary-600 hover:underline">
+                    본문에서 다시 보기: {item.where}
+                  </button>
                 )}
               </div>
             </details>

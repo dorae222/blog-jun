@@ -61,8 +61,8 @@ export function cardPayload(form) {
   const readRaw = String(f.read_min ?? '').trim()
   const level = f.level || ''
   if (!one && !learn.length && !prereq.length && !level && !readRaw) return { state: 'empty', value: null }
-  if (!one) return { state: 'incomplete', reason: '한 줄 결론을 채워 주세요.' }
-  if (!learn.length) return { state: 'incomplete', reason: '"알게 되는 것"을 하나 이상 채워 주세요.' }
+  if (!one) return { state: 'incomplete', reason: '한 줄 요약을 채워 주세요.' }
+  if (!learn.length) return { state: 'incomplete', reason: '"다루는 것"을 하나 이상 채워 주세요.' }
   if (prereq.some((p) => !p.slug)) return { state: 'incomplete', reason: '선수 지식에는 글 slug 가 필요해요.' }
   let read = null
   if (readRaw) {
